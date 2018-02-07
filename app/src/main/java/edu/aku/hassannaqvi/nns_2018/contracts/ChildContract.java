@@ -13,7 +13,7 @@ import org.json.JSONObject;
 public class ChildContract {
 
 
-    private final String projectName = "DMU-TOICSCREENING";
+    private final String projectName = "DMU-NNS-2018";
     //private final String surveyType = "SN";
     private String _ID = "";
     private String _UID = "";
