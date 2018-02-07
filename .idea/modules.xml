@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://D:\nns_2018\NNS_2018.iml" filepath="D:\nns_2018\NNS_2018.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://D:\nns_2018\app\app.iml" filepath="D:\nns_2018\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/nns_2018.iml" filepath="$PROJECT_DIR$/nns_2018.iml" />
     </modules>
   </component>
