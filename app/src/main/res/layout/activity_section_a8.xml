@@ -57,7 +57,7 @@ tools:context="edu.aku.hassannaqvi.src_preg.ui.SectionA8Activity">
 
 
             <RadioButton
-                android:id="@+id/na80101"
+                android:id="@+id/na801a"
                 style="@style/radiobutton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -82,6 +82,18 @@ tools:context="edu.aku.hassannaqvi.src_preg.ui.SectionA8Activity">
             android:text="@string/na802"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@android:color/white" />
+        <EditText
+            android:id="@+id/na"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:digits="0123456789"
+            android:hint="@string/toicc06b"
+            android:inputType="number"
+            android:maxLength="2"
+            android:text='@{na801b.checked ? toicc06bb.getText.toString : ""}'
+            android:visibility="@{na801b.checked ? View.VISIBLE : View.GONE}" />
+
 
 
         <!--  = = = = =  END OF FORM FIELDS  = = = = = -->
