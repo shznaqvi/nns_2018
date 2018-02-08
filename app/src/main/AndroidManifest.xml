@@ -60,12 +60,13 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme1"
             android:windowSoftInputMode="adjustResize|stateHidden" />
-        <activity android:name=".ui.SectionA2Activity"></activity>
+        <activity android:name=".ui.SectionA2Activity" />
         <activity
             android:name=".ui.SectionA5Activity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme1"
-            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity android:name=".ui.SectionA6Activity"></activity>
     </application>
 
 </manifest>
