@@ -7,18 +7,20 @@ import android.widget.Toast;
 
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
-import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA1Binding;
+import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB3Binding;
 
-public class SectionA1Activity extends AppCompatActivity {
+public class SectionB3Activity extends AppCompatActivity {
 
-    ActivitySectionA1Binding binding;
+    ActivitySectionB3Binding binding;
     DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_section_a8a);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_section_b3);
         db = new DatabaseHelper(this);
+
+//        Assigning data to UI binding
         binding.setCallback(this);
     }
 
@@ -46,5 +48,6 @@ public class SectionA1Activity extends AppCompatActivity {
 
     public void BtnEnd() {
         MainApp.endActivity(this, this);
+
     }
 }

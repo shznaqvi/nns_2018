@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
+import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA8ABinding;
 
 public class SectionA8AActivity extends Activity {
 
@@ -16,7 +17,6 @@ public class SectionA8AActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_section_a8_a);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_a8a);
         db = new DatabaseHelper(this);
         binding.setCallback(this);
