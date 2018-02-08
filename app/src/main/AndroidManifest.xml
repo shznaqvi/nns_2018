@@ -66,7 +66,8 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme1"
             android:windowSoftInputMode="adjustResize|stateHidden" />
-        <activity android:name=".ui.SectionA6Activity"></activity>
+        <activity android:name=".ui.SectionA6Activity" />
+        <activity android:name=".ui.SectionA7Activity"></activity>
     </application>
 
 </manifest>
