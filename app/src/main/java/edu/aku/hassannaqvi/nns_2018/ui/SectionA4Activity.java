@@ -10,4 +10,10 @@ public class SectionA4Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_section_a4);
     }
+    public void BtnEnd(){
+
+    }
+    public void BtnContinue(){
+
+    }
 }
