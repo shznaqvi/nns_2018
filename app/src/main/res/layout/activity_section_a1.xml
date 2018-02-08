@@ -30,7 +30,7 @@
                 android:layout_marginTop="2dp"
                 android:background="@color/colorPrimaryDark"
                 android:gravity="center"
-                android:text="@string/secA1Label"
+                android:text="@string/na1heading"
                 android:textSize="40sp" />
 
             <View
@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
-                android:hint="@string/hhno"
+                android:hint="@string/na103"
                 android:maxLength="6" />
 
             <!--na101a-->
