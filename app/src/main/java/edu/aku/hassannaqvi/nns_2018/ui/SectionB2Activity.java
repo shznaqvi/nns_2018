@@ -7,17 +7,18 @@ import android.widget.Toast;
 
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
-import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB1Binding;
+import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB2Binding;
 
-public class SectionB1Activity extends Activity {
+public class SectionB2Activity extends Activity {
 
-    ActivitySectionB1Binding bi;
+    ActivitySectionB2Binding bi;
     DatabaseHelper db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_section_b1);
+        //setContentView(R.layout.activity_section_b2);
 
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_a8a);
         db = new DatabaseHelper(this);
