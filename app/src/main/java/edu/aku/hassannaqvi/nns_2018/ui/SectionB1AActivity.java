@@ -1,26 +1,29 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
-import android.app.Activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
-import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA8ABinding;
+import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB1ABinding;
 
-public class SectionA8AActivity extends Activity {
+public class SectionB1AActivity extends AppCompatActivity {
 
-    ActivitySectionA8ABinding binding;
+    ActivitySectionB1ABinding bi;
     DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_section_a8_a);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_section_a8a);
+        //setContentView(R.layout.activity_section_b1_a);
+
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_a8a);
         db = new DatabaseHelper(this);
-        binding.setCallback(this);
+        bi.setCallback(this);
+
+
     }
 
     public void BtnContinue() {
