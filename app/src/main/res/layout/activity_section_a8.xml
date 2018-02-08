@@ -81,17 +81,18 @@ tools:context="edu.aku.hassannaqvi.src_preg.ui.SectionA8Activity">
             android:background="@color/colorPrimary"
             android:text="@string/na802"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            android:visibility="@{na801b.checked ? View.VISIBLE : View.GONE}" />
         <EditText
-            android:id="@+id/na"
+            android:id="@+id/na802"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
             android:digits="0123456789"
-            android:hint="@string/toicc06b"
+            android:hint="@string/na802"
             android:inputType="number"
             android:maxLength="2"
-            android:text='@{na801b.checked ? toicc06bb.getText.toString : ""}'
+            android:text='@{na801b.checked ? na802.getText.toString : ""}'
             android:visibility="@{na801b.checked ? View.VISIBLE : View.GONE}" />
 
 
