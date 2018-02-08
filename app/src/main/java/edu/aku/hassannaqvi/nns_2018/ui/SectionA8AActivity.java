@@ -1,25 +1,24 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
+import android.app.Activity;
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySecA6Binding;
+import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
+import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 
-public class SectionA6Activity extends AppCompatActivity {
+public class SectionA8AActivity extends Activity {
 
-
-    ActivitySecA6Binding binding;
+    ActivitySectionA8ABinding binding;
     DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_section_a6);
+        //setContentView(R.layout.activity_section_a8_a);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_section_a8a);
         db = new DatabaseHelper(this);
-
-//        Assigning data to UI binding
         binding.setCallback(this);
     }
 
@@ -47,5 +46,6 @@ public class SectionA6Activity extends AppCompatActivity {
 
     public void BtnEnd() {
         MainApp.endActivity(this, this);
+
     }
 }

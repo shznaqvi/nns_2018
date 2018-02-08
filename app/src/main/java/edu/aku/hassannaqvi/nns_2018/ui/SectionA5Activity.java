@@ -1,15 +1,13 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
-
-import org.json.JSONException;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
+import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA5Binding;
 
 public class SectionA5Activity extends AppCompatActivity {
@@ -51,5 +49,8 @@ public class SectionA5Activity extends AppCompatActivity {
 
     public void BtnEnd() {
         MainApp.endActivity(this, this);
+
     }
+
+
 }
