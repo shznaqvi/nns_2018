@@ -460,10 +460,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
-                android:hint="@string/hhno"
-                android:maxLength="3"
+                android:hint="@string/other"
                 android:visibility='@{na50696b.checked ? View.VISIBLE : View.GONE}'
                 android:text='@{na50696b.checked ? na50688x.getText.toString : ""}' />
+
+            <!--na5a-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@android:color/holo_red_light"
+                android:text="@string/na6a"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@android:color/white" />
 
             <!--  = = = = =  END OF FORM FIELDS  = = = = = -->
             <LinearLayout

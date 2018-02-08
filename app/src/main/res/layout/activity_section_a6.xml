@@ -31,7 +31,7 @@
                 android:layout_marginTop="2dp"
                 android:background="@color/colorPrimaryDark"
                 android:gravity="center"
-                android:text="@string/secA5Label"
+                android:text="@string/secA6Label"
                 android:textSize="40sp" />
 
             <View
@@ -115,8 +115,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
-                android:hint="@string/hhno"
-                android:maxLength="3"
+                android:hint="@string/other"
                 android:visibility='@{na60196.checked ? View.VISIBLE : View.GONE}'
                 android:text='@{na60196.checked ? na60196x.getText.toString : ""}' />
 
