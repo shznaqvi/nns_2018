@@ -18,7 +18,7 @@ public class SectionA3Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_section_a3);
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_a5);
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_a3);
         db = new DatabaseHelper(this);
 
 //        Assigning data to UI binding
