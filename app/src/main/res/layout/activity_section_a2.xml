@@ -32,7 +32,7 @@
                 android:layout_marginTop="2dp"
                 android:background="@color/colorPrimaryDark"
                 android:gravity="center"
-                android:text="@string/NA2"
+                android:text="@string/na2heading"
                 android:textSize="40sp" />
 
             <View
@@ -120,23 +120,6 @@
                     android:layout_weight="1"
                     android:text="@string/na203e" />
 
-                <RadioButton
-                    android:id="@+id/na203d"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:text="@string/na203d" />
-
-                <RadioButton
-                    android:id="@+id/na203e"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:text="@string/na203e" />
 
                 <RadioButton
                     android:id="@+id/na203f"
@@ -211,41 +194,32 @@
                     android:text="@string/na203m" />
 
                 <RadioButton
-                    android:id="@+id/na203n"
+                    android:id="@+id/na20398"
                     style="@style/radiobutton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
-                    android:text="@string/na203n" />
+                    android:text="@string/na20398" />
 
                 <RadioButton
-                    android:id="@+id/na20388"
+                    android:id="@+id/na20396"
                     style="@style/radiobutton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
-                    android:text="@string/other" />
-
-                <RadioButton
-                    android:id="@+id/na20399"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:text="@string/dkn" />
+                    android:text="@string/na20396" />
 
             </RadioGroup>
 
             <EditText
-                android:id="@+id/na20388x"
+                android:id="@+id/na20396x"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
                 android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                android:hint="@string/other"
+                android:hint="@string/na20396"
                 android:inputType="textCapWords"
                 android:visibility="gone" />
 
@@ -336,7 +310,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na207"
+                android:text="@string/na2dob"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
@@ -680,7 +654,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na214"
+                android:text="@string/na2mw"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
@@ -704,33 +678,33 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
-            <RadioGroup
-                android:id="@+id/na2ad"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <RadioButton
+
+                <EditText
                     android:id="@+id/na2adm"
-                    style="@style/radiobutton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
-                    android:text="@string/na2adm" />
+                    android:digits="0123456789"
+                    android:hint="@string/na2adm"
+                    android:maxLength="2" />
 
-                <RadioButton
+                <EditText
                     android:id="@+id/na2adf"
-                    style="@style/radiobutton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
-                    android:text="@string/na2adf" />
+                    android:digits="0123456789"
+                    android:hint="@string/na2adf"
+                    android:maxLength="2" />
 
-            </RadioGroup>
-
-
+            </LinearLayout>
             <!--16-->
             <TextView
                 android:layout_width="match_parent"
@@ -741,23 +715,33 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
-            <EditText
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <EditText
                 android:id="@+id/na2u5g"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                 android:digits="0123456789"
                 android:hint="@string/na2u5g"
-                android:maxLength="2" />
+                    android:maxLength="2" />
 
             <EditText
                 android:id="@+id/na2u5b"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
+                android:layout_weight="1"
                 android:digits="0123456789"
                 android:hint="@string/na2u5b"
                 android:maxLength="2" />
+
+            </LinearLayout>
 
 
             <!--17-->
@@ -770,23 +754,33 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
-            <EditText
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <EditText
                 android:id="@+id/na2tm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                 android:digits="0123456789"
                 android:hint="@string/na2tm"
-                android:maxLength="2" />
+                    android:maxLength="2" />
 
             <EditText
                 android:id="@+id/na2tf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
+                android:layout_weight="1"
                 android:digits="0123456789"
                 android:hint="@string/na2tf"
                 android:maxLength="2" />
+
+            </LinearLayout>
 
 
             <!--  = = = = =  END OF FORM FIELDS  = = = = = -->
