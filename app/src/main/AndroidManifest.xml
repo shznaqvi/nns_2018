@@ -75,9 +75,9 @@
         <activity android:name=".ui.SectionB1AActivity" />
         <activity android:name=".ui.SectionB2Activity" />
         <activity android:name=".ui.SectionB4Activity"></activity>
-        <activity android:name=".ui.SectionA8AActivity" />
         <activity android:name=".ui.SectionB3Activity" />
         <activity android:name=".ui.SectionB5Activity"></activity>
+        <activity android:name=".ui.SectionB6Activity"></activity>
     </application>
 
 </manifest>
