@@ -30,7 +30,7 @@ tools:context="edu.aku.hassannaqvi.src_preg.ui.SectionC5Activity">
             android:layout_marginTop="2dp"
             android:background="@color/colorPrimaryDark"
             android:gravity="center"
-            android:text="@string/nc5"
+            android:text="@string/nc5heading"
             android:textSize="40sp" />
 
         <View
