@@ -31,7 +31,7 @@
                 android:layout_marginTop="2dp"
                 android:background="@color/colorPrimaryDark"
                 android:gravity="center"
-                android:text="@string/nc3"
+                android:text="@string/nc3heading"
                 android:textSize="40sp" />
 
             <View
@@ -185,10 +185,10 @@
                         android:focusable="true"
                         android:hint="@string/nc3bcgdt"
                         android:padding="15dp"
+                        android:text='@{nc3bcga.checked ? nc3bcgdt.getText.toString : ""}'
                         android:textColor="@android:color/black"
-                        app:dateFormat="dd-MM-yyyy"
                         android:visibility='@{nc3bcga.checked ? View.VISIBLE : View.GONE}'
-                        android:text='@{nc3bcga.checked ? nc3bcgdt.getText.toString() : ""}'
+                        app:dateFormat="dd-MM-yyyy"
                         />
 
                     <!-- opv0 -->
@@ -231,10 +231,10 @@
                         android:focusable="true"
                         android:hint="@string/nc3opv0dt"
                         android:padding="15dp"
+                        android:text='@{nc3opv0a.checked ? nc3opv0dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
-                        app:dateFormat="dd-MM-yyyy"
                         android:visibility='@{nc3opv0a.checked ? View.VISIBLE : View.GONE}'
-                        android:text='@{nc3opv0a.checked ? nc3opv0dt.getText.toString() : ""}'
+                        app:dateFormat="dd-MM-yyyy"
                         />
 
                 </LinearLayout>
@@ -245,7 +245,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorHeading"
-                    android:text="@string/at6weeks"
+                    android:text="@string/at6wks"
                     android:textColor="@color/colorPrimaryDark" />
 
                 <LinearLayout
@@ -294,10 +294,10 @@
                         android:focusable="true"
                         android:hint="@string/nc3opv1dt"
                         android:padding="15dp"
+                        android:text='@{nc3opv1a.checked ? nc3opv1dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
-                        app:dateFormat="dd-MM-yyyy"
                         android:visibility='@{nc3opv1a.checked ? View.VISIBLE : View.GONE}'
-                        android:text='@{nc3opv1a.checked ? nc3opv1dt.getText.toString() : ""}'
+                        app:dateFormat="dd-MM-yyyy"
                         />
 
                     <!-- Penta - 1 -->
@@ -339,12 +339,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="1dp"
                         android:focusable="true"
-                        android:hint="@string/nc3penta1dt"
+                        android:hint="@string/nc3p1dt"
                         android:padding="15dp"
+                        android:text='@{nc3penta1a.checked ? nc3penta1dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
-                        app:dateFormat="dd-MM-yyyy"
                         android:visibility='@{nc3penta1a.checked ? View.VISIBLE : View.GONE}'
-                        android:text='@{nc3penta1a.checked ? nc3penta1dt.getText.toString() : ""}'
+                        app:dateFormat="dd-MM-yyyy"
                         />
 
                     <!-- PCV - 1 -->
@@ -386,10 +386,10 @@
                         android:focusable="true"
                         android:hint="@string/nc3pcv1dt"
                         android:padding="15dp"
+                        android:text='@{nc3pcv1a.checked ? nc3pcv1dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
-                        app:dateFormat="dd-MM-yyyy"
                         android:visibility='@{nc3pcv1a.checked ? View.VISIBLE : View.GONE}'
-                        android:text='@{nc3pcv1a.checked ? nc3pcv1dt.getText.toString() : ""}'
+                        app:dateFormat="dd-MM-yyyy"
                         />
                 </LinearLayout>
 
@@ -400,7 +400,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorHeading"
-                    android:text="@string/at10weeks"
+                    android:text="@string/at10wks"
                     android:textColor="@color/colorPrimaryDark" />
 
                 <LinearLayout
@@ -449,10 +449,10 @@
                         android:focusable="true"
                         android:hint="@string/nc3opv2dt"
                         android:padding="15dp"
+                        android:text='@{nc3opv2a.checked ? nc3opv2dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
-                        app:dateFormat="dd-MM-yyyy"
                         android:visibility='@{nc3opv2a.checked ? View.VISIBLE : View.GONE}'
-                        android:text='@{nc3opv2a.checked ? nc3opv2dt.getText.toString() : ""}'
+                        app:dateFormat="dd-MM-yyyy"
                         />
 
                     <!-- Penta - 2 -->
@@ -496,10 +496,10 @@
                         android:focusable="true"
                         android:hint="@string/nc3p2dt"
                         android:padding="15dp"
+                        android:text='@{nc3p2a.checked ? nc3p2dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
-                        app:dateFormat="dd-MM-yyyy"
                         android:visibility='@{nc3p2a.checked ? View.VISIBLE : View.GONE}'
-                        android:text='@{nc3p2a.checked ? nc3p2dt.getText.toString() : ""}'
+                        app:dateFormat="dd-MM-yyyy"
                         />
 
                     <!-- PVC - 2 -->
@@ -541,10 +541,10 @@
                         android:focusable="true"
                         android:hint="@string/nc3pcv2dt"
                         android:padding="15dp"
+                        android:text='@{nc3pcv2a.checked ? nc3pcv2dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
-                        app:dateFormat="dd-MM-yyyy"
                         android:visibility='@{nc3pcv2a.checked ? View.VISIBLE : View.GONE}'
-                        android:text='@{nc3pcv2a.checked ? nc3pcv2dt.getText.toString() : ""}'
+                        app:dateFormat="dd-MM-yyyy"
                         />
 
 
@@ -556,7 +556,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorHeading"
-                    android:text="@string/at14weeks"
+                    android:text="@string/at14wks"
                     android:textColor="@color/colorPrimaryDark" />
 
                 <LinearLayout
@@ -605,10 +605,10 @@
                         android:focusable="true"
                         android:hint="@string/nc3opv3dt"
                         android:padding="15dp"
+                        android:text='@{nc3opv3a.checked ? nc3opv3dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
-                        app:dateFormat="dd-MM-yyyy"
                         android:visibility='@{nc3opv3a.checked ? View.VISIBLE : View.GONE}'
-                        android:text='@{nc3opv3a.checked ? nc3opv3dt.getText.toString() : ""}'
+                        app:dateFormat="dd-MM-yyyy"
                         />
 
                     <!-- Penta - 3 -->
@@ -652,10 +652,10 @@
                         android:focusable="true"
                         android:hint="@string/nc3p3dt"
                         android:padding="15dp"
+                        android:text='@{nc3p3a.checked ? nc3p3dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
-                        app:dateFormat="dd-MM-yyyy"
                         android:visibility='@{nc3p3a.checked ? View.VISIBLE : View.GONE}'
-                        android:text='@{nc3p3a.checked ? nc3p3dt.getText.toString() : ""}'
+                        app:dateFormat="dd-MM-yyyy"
                         />
 
                     <!-- PCV - 3 -->
@@ -697,10 +697,10 @@
                         android:focusable="true"
                         android:hint="@string/nc3pcv3dt"
                         android:padding="15dp"
+                        android:text='@{nc3pcv3a.checked ? nc3pcv3dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
-                        app:dateFormat="dd-MM-yyyy"
                         android:visibility='@{nc3pcv3a.checked ? View.VISIBLE : View.GONE}'
-                        android:text='@{nc3pcv3a.checked ? nc3pcv3dt.getText.toString() : ""}'
+                        app:dateFormat="dd-MM-yyyy"
                         />
 
                     <!-- IPV  -->
@@ -742,10 +742,10 @@
                         android:focusable="true"
                         android:hint="@string/nc3ipvdt"
                         android:padding="15dp"
+                        android:text='@{nc3ipva.checked ? nc3ipvdt.getText.toString : ""}'
                         android:textColor="@android:color/black"
-                        app:dateFormat="dd-MM-yyyy"
                         android:visibility='@{nc3ipva.checked ? View.VISIBLE : View.GONE}'
-                        android:text='@{nc3ipva.checked ? nc3ipvdt.getText.toString() : ""}'
+                        app:dateFormat="dd-MM-yyyy"
                         />
 
 
@@ -758,7 +758,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorHeading"
-                    android:text="@string/at9months"
+                    android:text="@string/at9m"
                     android:textColor="@color/colorPrimaryDark" />
 
                 <LinearLayout
@@ -807,10 +807,10 @@
                         android:focusable="true"
                         android:hint="@string/nc3m1dt"
                         android:padding="15dp"
+                        android:text='@{nc3m1a.checked ? nc3m1dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
-                        app:dateFormat="dd-MM-yyyy"
                         android:visibility='@{nc3m1a.checked ? View.VISIBLE : View.GONE}'
-                        android:text='@{nc3m1a.checked ? nc3m1dt.getText.toString() : ""}'
+                        app:dateFormat="dd-MM-yyyy"
                         />
 
                 </LinearLayout>
@@ -822,7 +822,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorHeading"
-                    android:text="@string/at15months"
+                    android:text="@string/at15m"
                     android:textColor="@color/colorPrimaryDark" />
 
                 <LinearLayout
@@ -871,10 +871,10 @@
                         android:focusable="true"
                         android:hint="@string/nc3m2dt"
                         android:padding="15dp"
+                        android:text='@{nc3m2a.checked ? nc3m2dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
-                        app:dateFormat="dd-MM-yyyy"
                         android:visibility='@{nc3m2a.checked ? View.VISIBLE : View.GONE}'
-                        android:text='@{nc3m2a.checked ? nc3m2dt.getText.toString() : ""}'
+                        app:dateFormat="dd-MM-yyyy"
                         />
 
                 </LinearLayout>
@@ -903,6 +903,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/yes" />
 
                 <RadioButton
@@ -910,6 +911,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/no" />
 
                 <RadioButton
@@ -917,6 +919,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/dkn" />
 
             </RadioGroup>
@@ -941,6 +944,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/yes" />
 
                 <RadioButton
@@ -948,6 +952,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/no" />
 
                 <RadioButton
@@ -955,6 +960,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/dkn" />
 
             </RadioGroup>
@@ -982,7 +988,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:digits="123456789"
-                    android:hint="@string/nc308"
+                    android:hint="@string/times"
                     android:inputType="number"
                     android:maxLength="2" />
             </LinearLayout>
@@ -1008,6 +1014,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/yes" />
 
                 <RadioButton
@@ -1015,6 +1022,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/no" />
 
             </RadioGroup>
@@ -1039,6 +1047,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/yes" />
 
                 <RadioButton
@@ -1046,6 +1055,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/no" />
 
                 <RadioButton
@@ -1053,6 +1063,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/dkn" />
 
             </RadioGroup>
@@ -1084,6 +1095,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/nc311a" />
 
                     <RadioButton
@@ -1091,13 +1103,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/nc311b" />
 
                     <RadioButton
-                        android:id="@+id/nc311c"
+                        android:id="@+id/nc31198"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/dkn" />
 
                 </RadioGroup>
@@ -1124,6 +1138,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/yes" />
 
                 <RadioButton
@@ -1131,6 +1146,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/no" />
 
                 <RadioButton
@@ -1138,6 +1154,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/dkn" />
 
             </RadioGroup>
@@ -1162,6 +1179,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/yes" />
 
                 <RadioButton
@@ -1169,13 +1187,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/no" />
 
                 <RadioButton
-                    android:id="@+id/nc313c"
+                    android:id="@+id/nc31398"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/dkn" />
 
             </RadioGroup>
@@ -1203,7 +1223,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:digits="123456789"
-                    android:hint="@string/nc314"
+                    android:hint="@string/times"
                     android:inputType="number"
                     android:maxLength="2" />
             </LinearLayout>

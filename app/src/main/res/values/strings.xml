@@ -17,9 +17,11 @@
     <string name="start_interview"> انٹروہو شروع کریں </string>
     <string name="nextSection"> اگلا سیکشن </string>
     <string name="addMember"> افراد کا اندراج </string>
-    <string name="dcstatus">انٹروہو کا نتیجہ</string>
-    <string name="complete"> مکمل</string>
-    <string name="incomplete">نا مکمل</string>
+  <string name="istatus">انٹروہو کا نتیجہ</string>
+  <string name="istatusa"> مکمل</string>
+  <string name="istatusb">نا مکمل</string>
+  <string name="istatusc">انکار کردیا</string>
+  <string name="istatusd">گھر بند ہے</string>
     <!-- String related to section headings -->
 
 
@@ -42,6 +44,7 @@
   <string name="kg"> kg</string>
   <string name="times">تعداد</string>
   <string name="nr">جواب نہیں دیا</string>
+  <string name="dose">خوراکیں</string>
 
 
   <!-- Strings related to Sections Below -->
@@ -722,7 +725,7 @@
   <string name="nc212h"> پانی/ ڈرپ/روایتی جڑی بوٹیوں سے بناہوا </string>
   <string name="nc212i"> شہد </string>
   <string name="nc212j"> دوائیاں </string>
-  <string name="nc212l"> پینے کے لئے کچھ بھی نہیں دیا </string>
+  <string name="nc21299"> پینے کے لئے کچھ بھی نہیں دیا </string>
   <string name="nc213"> کیا(نام) نے کل دن یا رات کے دوران کوئی وٹامن یا منرل سپلیمنٹ یا کوئی دوائی پی یاکھائی تھی؟ </string>
   <string name="nc214"> کیا (نام) نے کل دن یا رات کے دوران نمکول(او-آر-ایس) پیاتھا؟ </string>
   <string name="nc215"> اب میں آپ سےپوچھنا چاہونگا کے کیا (نام) نے کل دن اور رات کے دوران کوئی مائع یا مشروب دیاتھا؟ </string>
@@ -837,6 +840,8 @@
   <string name="nc309"> کیابچے (نام) کو پچھلے پولیو مہم میں پولیو کے قطرے پلائے گئے تھے؟ </string>
   <string name="nc310"> پولیو کے قطرے جو کہ منہ کے ذریعے پلائے جاتے ہیں ؟ </string>
   <string name="nc311"> کیا پولیو کے پہلے قطرے بچے کی پیدائش کے بعدپہلے 2 ہفتوں میں دئے گئے تھےیابعد میں ؟ </string>
+  <string name="nc311a">پہلے دو ہفتے</string>
+  <string name="nc311b">بعد میں</string>
   <string name="nc312"> کیابچے (نام) کو ہیپاٹائٹس بی سے بچاؤ کے ٹیکے لگوایا جو کہ ران یا کولہے پر لگایا جاتا ہے یہ ٹیکہ کبھی کبھی پولیو کے قطرے پلاتے وقت بھی لگایا جاتا ہے </string>
   <string name="nc313"> کیابچے (نام) کو Measles یا MMR کا ا نجکشن لگوایا جو خسرہ سے بچاؤ کے لیے ہوتا ہے جو کہ بازو میں 9 مہینے یا اس سے بڑی عمر میں لگایا جاتا ہے </string>
   <string name="nc314"> ۔ Mesasles / MMR۔ کے ٹیکے کتنی دفعہ لگوائے تھے۔ </string>

@@ -56,7 +56,7 @@
                     android:layout_marginBottom="1dp"
                     android:text="@string/istatusb" />
 
-                <!-- <RadioButton
+                <RadioButton
                      android:id="@+id/istatusc"
 
                      style="@style/radiobutton"
@@ -74,7 +74,7 @@
                      android:layout_marginBottom="1dp"
                      android:text="@string/istatusd" />
 
-                 <RadioButton
+                <!-- <RadioButton
                      android:id="@+id/istatuse"
 
                      style="@style/radiobutton"
@@ -117,8 +117,8 @@
                      android:layout_width="match_parent"
                      android:layout_height="wrap_content"
                      android:layout_marginBottom="1dp"
-                     android:text="@string/other" />-->
-
+                     android:text="@string/other" />&ndash;&gt;
+-->
             </RadioGroup>
 
             <!--<EditText

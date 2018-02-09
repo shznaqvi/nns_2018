@@ -1,3 +1,4 @@
+/*
 package edu.aku.hassannaqvi.nns_2018.ui;
 
 import android.app.Activity;
@@ -350,3 +351,4 @@ public class SectionInfoActivity extends Activity {
     }
 
 }
+*/

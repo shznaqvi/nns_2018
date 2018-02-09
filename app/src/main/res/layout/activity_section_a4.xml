@@ -2176,7 +2176,7 @@
                     android:hint="@string/na422a"
                     android:inputType="number"
                     android:maxLength="2"
-                    android:text='@{na421a.checked ? na42201.getText.toString : ""}' />
+                    android:text='@{na421a.checked ? na422a.getText.toString : ""}' />
 
                 <!--b-->
                 <TextView

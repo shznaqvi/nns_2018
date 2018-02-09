@@ -258,7 +258,7 @@ public class MainActivity extends Activity {
     public void openForm() {
 
 //        if (spAreas.getSelectedItemPosition() != 0) {
-        final Intent oF = new Intent(MainActivity.this, SectionInfoActivity.class);
+        final Intent oF = new Intent(MainActivity.this, SectionA1Activity.class);
 
         if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null && !MainApp.userName.equals("0000")) {
             startActivity(oF);
@@ -305,12 +305,12 @@ public class MainActivity extends Activity {
 
 
     public void openA(View v) {
-        Intent iA = new Intent(this, SectionInfoActivity.class);
+        Intent iA = new Intent(this, SectionA1Activity.class);
         startActivity(iA);
     }
 
     public void openB(View v) {
-        Intent iB = new Intent(this, ChildAssessmentActivity.class);
+        Intent iB = new Intent(this, SectionA2Activity.class);
         startActivity(iB);
     }
 

@@ -43,13 +43,10 @@ tools:context="edu.aku.hassannaqvi.nns_2018.ui.SectionB6Activity">
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@android:color/white" />
         <TextView
+            style="@style/sub"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
-            android:text="@string/nb601info"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
+            android:text="@string/nb601info" />
         <!--1-->
         <TextView
             android:layout_width="match_parent"
