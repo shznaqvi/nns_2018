@@ -200,8 +200,8 @@
                 android:hint="@string/week"
                 android:inputType="number"
                 android:maxLength="2"
-                android:text='@{nb20398.checked ? nb203w.getText.toString : ""}'
-                android:visibility='@{nb20398.checked ? View.VISIBLE : View.GONE}' />
+                android:text='@{nb20398.checked ? "" : nb203w.getText.toString}'
+                android:visibility='@{nb20398.checked ? View.GONE : View.VISIBLE}' />
 
 
             <EditText
@@ -212,8 +212,8 @@
                 android:hint="@string/month"
                 android:inputType="number"
                 android:maxLength="1"
-                android:text='@{nb20398.checked ? nb203m.getText.toString : ""}'
-                android:visibility='@{nb20398.checked ? View.VISIBLE : View.GONE}' />
+                android:text='@{nb20398.checked ? "" : nb203m.getText.toString}'
+                android:visibility='@{nb20398.checked ? View.GONE : View.VISIBLE}' />
 
             <CheckBox
                 android:id="@+id/nb20398"
