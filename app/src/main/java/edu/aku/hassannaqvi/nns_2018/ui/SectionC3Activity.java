@@ -10,4 +10,11 @@ public class SectionC3Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_section_c3);
     }
+
+    public void BtnContinue(){
+
+    }
+    public void BtnEnd(){
+
+    }
 }

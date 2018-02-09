@@ -25,7 +25,7 @@ tools:context="edu.aku.hassannaqvi.nns_2018.ui.SectionB6Activity">
             android:layout_marginTop="2dp"
             android:background="@color/colorPrimaryDark"
             android:gravity="center"
-            android:text="@string/nb6"
+            android:text="@string/nb6heading"
             android:textSize="40sp" />
 
         <View
@@ -33,7 +33,7 @@ tools:context="edu.aku.hassannaqvi.nns_2018.ui.SectionB6Activity">
             android:layout_height="2dp"
             android:background="@color/colorPrimary" />
 
-        <!--1-->
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,13 +42,21 @@ tools:context="edu.aku.hassannaqvi.nns_2018.ui.SectionB6Activity">
             android:text="@string/nb601"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@android:color/white" />
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@color/colorPrimary"
-            android:text="@string/nb60101"
+            android:text="@string/nb601info"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/white" />
+        <!--1-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/nb601a"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@android:color/white" />
         <RadioGroup
@@ -82,7 +90,7 @@ tools:context="edu.aku.hassannaqvi.nns_2018.ui.SectionB6Activity">
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@color/colorPrimary"
-            android:text="@string/nb60102"
+            android:text="@string/nb601b"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@android:color/white" />
         <RadioGroup
@@ -116,7 +124,7 @@ tools:context="edu.aku.hassannaqvi.nns_2018.ui.SectionB6Activity">
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@color/colorPrimary"
-            android:text="@string/nb60103"
+            android:text="@string/nb601c"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@android:color/white" />
         <RadioGroup
@@ -150,7 +158,7 @@ tools:context="edu.aku.hassannaqvi.nns_2018.ui.SectionB6Activity">
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@color/colorPrimary"
-            android:text="@string/nb60104"
+            android:text="@string/nb601d"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@android:color/white" />
         <RadioGroup
@@ -184,7 +192,7 @@ tools:context="edu.aku.hassannaqvi.nns_2018.ui.SectionB6Activity">
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@color/colorPrimary"
-            android:text="@string/nb60105"
+            android:text="@string/nb601e"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@android:color/white" />
         <RadioGroup
@@ -217,7 +225,7 @@ tools:context="edu.aku.hassannaqvi.nns_2018.ui.SectionB6Activity">
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@color/colorPrimary"
-            android:text="@string/nb60106"
+            android:text="@string/nb601f"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@android:color/white" />
         <RadioGroup
@@ -250,7 +258,7 @@ tools:context="edu.aku.hassannaqvi.nns_2018.ui.SectionB6Activity">
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@color/colorPrimary"
-            android:text="@string/nb60107"
+            android:text="@string/nb601g"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@android:color/white" />
         <RadioGroup
@@ -283,7 +291,7 @@ tools:context="edu.aku.hassannaqvi.nns_2018.ui.SectionB6Activity">
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@color/colorPrimary"
-            android:text="@string/nb60108"
+            android:text="@string/nb601h"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@android:color/white" />
         <RadioGroup
@@ -327,7 +335,7 @@ tools:context="edu.aku.hassannaqvi.nns_2018.ui.SectionB6Activity">
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@color/colorPrimary"
-            android:text="@string/nb60109"
+            android:text="@string/nb601i"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@android:color/white" />
         <RadioGroup
@@ -371,7 +379,7 @@ tools:context="edu.aku.hassannaqvi.nns_2018.ui.SectionB6Activity">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
-            android:text="@string/other" />
+            android:text="@string/nb601j" />
         <EditText
         android:id="@+id/nb601963x"
         android:layout_width="match_parent"
