@@ -31,7 +31,7 @@
                 android:layout_marginTop="2dp"
                 android:background="@color/colorPrimaryDark"
                 android:gravity="center"
-                android:text="@string/secA5Label"
+                android:text="@string/na5heading"
                 android:textSize="40sp" />
 
             <View
@@ -66,9 +66,10 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/na50101"
+                    android:background="@color/colorPrimaryAlpha"
+                    android:text="@string/na501info"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <RadioButton
                     android:id="@+id/na501b"
@@ -197,7 +198,8 @@
             <RadioGroup
                 android:id="@+id/na504"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/na504a"
@@ -205,6 +207,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/yes" />
 
                 <RadioButton
@@ -213,6 +216,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/no" />
 
             </RadioGroup>
@@ -227,31 +231,48 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
-            <CheckBox
-                android:id="@+id/na505a"
+            <LinearLayout
+                android:id="@+id/fldGrpna505check"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/na505a" />
-            <CheckBox
-                android:id="@+id/na505b"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/na505b" />
-            <CheckBox
-                android:id="@+id/na505c"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/na505c" />
-            <CheckBox
-                android:id="@+id/na505d"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/na505d" />
-            <CheckBox
-                android:id="@+id/na505e"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/na505e" />
+                android:orientation="vertical">
+
+                <CheckBox
+                    android:id="@+id/na505a"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:text="@string/na505a" />
+
+                <CheckBox
+                    android:id="@+id/na505b"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:text="@string/na505b" />
+
+                <CheckBox
+                    android:id="@+id/na505c"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:text="@string/na505c" />
+
+                <CheckBox
+                    android:id="@+id/na505d"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:text="@string/na505d" />
+
+                <CheckBox
+                    android:id="@+id/na505e"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:text="@string/na505e" />
+
+            </LinearLayout>
 
             <!--na506-->
             <TextView
@@ -429,7 +450,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na50696"
+                android:text="@string/other"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
@@ -466,14 +487,12 @@
                 android:visibility='@{na50696b.checked ? View.VISIBLE : View.GONE}' />
 
             <!--na5a-->
+
             <TextView
+                style="@style/sub"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@android:color/holo_red_light"
-                android:text="@string/na6a"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
+                android:text="@string/na6info" />
 
             <!-- Section A6 Start here -->
 
@@ -489,7 +508,7 @@
                 android:layout_marginTop="2dp"
                 android:background="@color/colorPrimaryDark"
                 android:gravity="center"
-                android:text="@string/secA6Label"
+                android:text="@string/na6heading"
                 android:textSize="40sp" />
 
             <View
@@ -516,9 +535,10 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/na60101"
+                    android:background="@color/colorPrimaryAlpha"
+                    android:text="@string/na601info"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <RadioButton
                     android:id="@+id/na601a"
@@ -547,9 +567,10 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/na60102"
+                    android:background="@color/colorPrimaryAlpha"
+                    android:text="@string/na601info1"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <RadioButton
                     android:id="@+id/na601d"
@@ -584,7 +605,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@android:color/holo_red_light"
-                android:text="@string/na6a"
+                android:text="@string/na602info"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
@@ -606,9 +627,10 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/na60201"
+                    android:background="@color/colorPrimaryAlpha"
+                    android:text="@string/na602info1"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <RadioButton
                     android:id="@+id/na602a"
@@ -657,7 +679,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/na603a" />
+                    android:text="@string/yes" />
 
                 <RadioButton
                     android:id="@+id/na603b"
@@ -665,7 +687,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/na603b" />
+                    android:text="@string/no" />
 
                 <RadioButton
                     android:id="@+id/na603c"
@@ -698,7 +720,7 @@
                 android:layout_marginTop="2dp"
                 android:background="@color/colorPrimaryDark"
                 android:gravity="center"
-                android:text="@string/na7"
+                android:text="@string/na7heading"
                 android:textSize="40sp" />
 
 
@@ -749,7 +771,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/rfs" />
+                    android:text="@string/refused" />
 
             </RadioGroup>
 
@@ -796,7 +818,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/rfs" />
+                    android:text="@string/refused" />
 
             </RadioGroup>
 
@@ -842,7 +864,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/rfs" />
+                    android:text="@string/refused" />
 
             </RadioGroup>
 
@@ -888,7 +910,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/rfs" />
+                    android:text="@string/refused" />
 
             </RadioGroup>
 
@@ -934,7 +956,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/rfs" />
+                    android:text="@string/refused" />
 
             </RadioGroup>
 
@@ -980,7 +1002,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/rfs" />
+                    android:text="@string/refused" />
 
             </RadioGroup>
 
@@ -1026,7 +1048,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/rfs" />
+                    android:text="@string/refused" />
 
             </RadioGroup>
 
@@ -1072,7 +1094,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/rfs" />
+                    android:text="@string/refused" />
 
             </RadioGroup>
 
@@ -1089,7 +1111,7 @@
                 android:layout_marginTop="2dp"
                 android:background="@color/colorPrimaryDark"
                 android:gravity="center"
-                android:text="@string/na8"
+                android:text="@string/na8heading"
                 android:textSize="40sp" />
 
             <View
@@ -1142,12 +1164,12 @@
                 android:textColor="@android:color/white" />
 
             <EditText
-                android:id="@+id/na"
+                android:id="@+id/na802"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
                 android:digits="0123456789"
-                android:hint="@string/toicc06b"
+                android:hint="@string/na802a"
                 android:inputType="number"
                 android:maxLength="2"
                 android:text='@{na801b.checked ? toicc06bb.getText.toString : ""}'

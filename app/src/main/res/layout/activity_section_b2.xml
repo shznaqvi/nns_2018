@@ -243,7 +243,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:hint="@string/times"
+                android:hint="@string/nb204a"
                 android:inputType="number"
                 android:maxLength="1"
                 android:text='@{nb20498.checked ? nb204.getText.toString : ""}'

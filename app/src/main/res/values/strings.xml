@@ -34,9 +34,17 @@
     <string name="dkn"> معلوم نہیں </string>
     <string name="count"> تعداد </string>
     <string name="other"> دیگر وضاحت کریں </string>
+  <string name="refused"> جواب سے انکار </string>
+  <string name="never"> کبھی نہیں </string>
+  <string name="rs">Rupees</string>
+  <string name="week"> ہفتے </string>
+  <string name="months"> مہینے </string>
+  <string name="kg"> kg</string>
+  <string name="times">تعداد</string>
+  <string name="nr">جواب نہیں دیا</string>
 
 
-    <!-- Strings related to Sections Below -->
+  <!-- Strings related to Sections Below -->
     <string name="na1heading"> HOUSEHOLD INFORMATION </string>
     <string name="na101"> جغرافیائی علاقہ </string>
     <string name="na102"> ڈیٹا کلشن بلاک نمبر </string>
@@ -340,11 +348,11 @@
   <string name="na505d"> راکھ /مٹی /ریت </string>
   <string name="na505e"> کوئی نہیں </string>
   <string name="na506"> آپ کس کس وقت اپنے ہاتھ صابن سے دھوتے/دھوتی ہیں؟ </string>
-  <string name="na506a"> کھانا تیار کرنے سے پہلے </string>
-  <string name="na506b"> کھانے سے پہلے </string>
-  <string name="na506c"> بچے کو کھانا کھلانے سے پہلے </string>
-  <string name="na506d"> بچوں کا ڈائپر / پاخانہ صاف کرنے کے بعد </string>
-  <string name="na506e"> بیت الخلاء سے آنے کے بعد یابیت الخلاء استعمال کرنے بعد </string>
+  <string name="na50601"> کھانا تیار کرنے سے پہلے </string>
+  <string name="na50602"> کھانے سے پہلے </string>
+  <string name="na50603"> بچے کو کھانا کھلانے سے پہلے </string>
+  <string name="na50604"> بچوں کا ڈائپر / پاخانہ صاف کرنے کے بعد </string>
+  <string name="na50605"> بیت الخلاء سے آنے کے بعد یابیت الخلاء استعمال کرنے بعد </string>
   <string name="na6info"> یہ از خود وضاحت پر مشتمل سوال ہیں اس لئے جواب دہندہ کو جواب پڑھ کر نہ سنائیں </string>
   <string name="na6info1"> جب جواب دہندہ رک جائے تو پوچھیں " کیا کوئی اورموقع صورتحال ہیں جہاں آپ اپنے ہاتھ صابن سے دھوتے /دھوتی ہیں"؟اس سوال کو پوچھتے رہیں جب تک جواب دہندہ کو لگتا ہے کہ کوئی اور موقع نہیں ہے ۔اگر جواب دہندہ کسی موقع کا ذکر کرتا/کرتی ہے تو (y) نشان لگائیں اور اگر نہیں تو (N) نشان لگائی </string>
   <string name="na6heading"> سیکشن6: آیوڈین ملے نمک کے بارے میں </string>
@@ -355,15 +363,15 @@
   <string name="na601c"> 15 پی پی سے زیادہ (15 پی پی ایم کم از کم ) </string>
   <string name="na601info1"> نمک چیک نہیں کیاگیا </string>
   <string name="na601d"> گھر میں نمک نہیں تھا </string>
-  <string name="na602info2"> دوقطرے ٹیسٹ سلوشن کے نمک پرڈالیں اور30 سیکنڈ کے لیے رک جائیں اور کلر چارٹ سے رنگ کا موازنہ کریں اور ریکارڈ کریں جوابات (1،2،3،) ٹیسٹ کے نتائج کے مطابق نتیجہ(2،1 یا 3 ) ریکارڈ کریں </string>
+  <string name="na602info"> دوقطرے ٹیسٹ سلوشن کے نمک پرڈالیں اور30 سیکنڈ کے لیے رک جائیں اور کلر چارٹ سے رنگ کا موازنہ کریں اور ریکارڈ کریں جوابات (1،2،3،) ٹیسٹ کے نتائج کے مطابق نتیجہ(2،1 یا 3 ) ریکارڈ کریں </string>
   <string name="na602"> استعمال ہونے والے نمک کی ساخت کا مشاہدہ کریں </string>
-  <string name="na602info3"> ساخت </string>
+  <string name="na602info1"> ساخت </string>
   <string name="na602a"> پاوڈر </string>
   <string name="na602b"> دانےدار </string>
   <string name="na602c"> خام نمک </string>
   <string name="na603"> "ہانڈی " کانشنا ن نمک کی تھیلی پر چھپا ہے یا نہیں؟ </string>
-  <string name="na603a"> مشاہدہ نہیں کیا </string>
-  <string name="na603b"> برنی میں نمک </string>
+  <string name="na603c"> مشاہدہ نہیں کیا </string>
+  <string name="na603d"> برنی میں نمک </string>
   <string name="na7heading"> سیکشن7: غذائی قلت اور عدم تحفظ </string>
   <string name="na7info"> میں آپ سے کھانے اور غذا کےبارے میں چند سوالات پوچھوں گا پچھلے 12 مہینوں کے دوران کسی موقع پر جب: </string>
   <string name="na701"> کیاآپ اور آپ کے گھر والے پریشان رہتے ہیں کہ پیسوں اور دیگر وسائل کی کمی کی وجہ سے کھانے کے لئے غذا کافی نہیں ہے ؟ </string>
@@ -428,9 +436,9 @@
   <string name="nb1a04a"> حیات </string>
   <string name="nb1a04b"> فوت </string>
   <string name="nb1a05"> Age of alive child </string>
-  <string name="nb1a05y"> Years </string>
-  <string name="nb1a05m"> Months </string>
-  <string name="nb1a05d"> Days </string>
+  <string name="year"> Years </string>
+  <string name="month"> Months </string>
+  <string name="day"> Days </string>
   <string name="nb1a06"> Age at time of death </string>
   <string name="nb1a06y"> Years </string>
   <string name="nb1a06m"> Months </string>
@@ -450,8 +458,7 @@
   <string name="nb202h"> دائی </string>
   <string name="nb203"> جب آپ نے پہلی دفعہ اس حمل کے لئے معائنہ کروایا تو آپ کا کتنے ہفتوں یا مہینہ کا حمل تھا؟ </string>
   <string name="nb203info"> جواب نوٹ کریں جیسے جوابدہندہ نے بتایا ہے ۔اگر 9 مہینے یا اس زیادہ ہے تو "9" ریکارڈ کریں </string>
-  <string name="nb203w"> ہفتے </string>
-  <string name="nb203m"> مہینے </string>
+
   <string name="nb204"> اس حمل کے دوران آپ نے کتنی مرتبہ اپنا معائنہ کروایا؟ </string>
   <string name="nb204info"> مزید پوچھیں: حمل کے معائنہ کے وزٹ کی تعداد کے بارے میں مزید پوچھیں ،اگر کوئی رینج دی ہے تو جو نمبر کم ہو وہ لکھیں </string>
   <string name="nb204a"> معائنہ کی تعداد </string>
@@ -475,10 +482,10 @@
   <string name="nb208"> آپ نے دوران حمل کتنی مرتبہ ،تشنج کی بیماری سے بچانے والا ٹیکہ /انجکشن لگوایا تھا؟ </string>
   <string name="nb209"> کیا آپ نےکبھی حمل کے دوارن فولاد کی گولیاں استعمال کیں؟ </string>
   <string name="nb210"> اگر ہاں ہے تو کسی نے دی یا خریدی </string>
-  <string name="nb210a"> کلینک پر ملی </string>
-  <string name="nb210b"> خریدی </string>
-  <string name="nb210c"> نہ ملی نہ خریدی </string>
-  <string name="nb210e"> جواب نہیں دیا </string>
+  <string name="nb21001"> کلینک پر ملی </string>
+  <string name="nb21002"> خریدی </string>
+  <string name="nb21003"> نہ ملی نہ خریدی </string>
+  <string name="nb21004"> جواب نہیں دیا </string>
   <string name="nb211"> آپ حمل کے دوارن کتنی مرتبہ فولاد کی گولیاں استعمال کرتی تھی؟ </string>
   <string name="nb211a"> روزانہ </string>
   <string name="nb211b"> ہفتے میں ایک مرتبہ </string>
@@ -590,7 +597,8 @@
   <string name="nb409a"> ایک گھنٹے سے بھی کم وقت میں </string>
   <string name="nb409h"> گھنٹوں میں </string>
   <string name="nb409d"> دنوں </string>
-  <string name="nb409b"> کبھی نہیں </string>
+  <string name="nb40997"> کبھی نہیں </string>
+  <string name="nb40998"> معلوم نہیں /یاد نہیں </string>
   <string name="nb410"> ناڑوپر کٹنے کے بعد سے لے کر اس کے جھٹرنے تک کیاآپ نے کچھ لگایاتھا؟ </string>
   <string name="nb411"> ناڑو پر کیا لگایاگیاتھا؟ </string>
   <string name="nb411a"> کلورو ہیکزیڈن دوسری جراثیم کشی ادویات </string>

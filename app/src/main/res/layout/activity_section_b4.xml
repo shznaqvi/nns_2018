@@ -104,7 +104,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/noone" />
+                    android:text="@string/nb401g" />
 
 
                 <CheckBox
@@ -556,14 +556,14 @@
                     android:layout_height="match_parent"
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
-                    android:text="@string/hours" />
+                    android:text="@string/nb409h" />
 
                 <EditText
                     android:id="@+id/nb409h"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:hint="@string/hours"
+                    android:hint="@string/nb409h"
                     android:inputType="number"
                     android:maxLength="2"
                     android:text='@{nb409b.checked ? "" : nb409h.getText.toString}'
@@ -575,14 +575,14 @@
                     android:layout_height="match_parent"
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
-                    android:text="@string/days" />
+                    android:text="@string/nb409d" />
 
                 <EditText
                     android:id="@+id/nb409d"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:hint="@string/days"
+                    android:hint="@string/nb409d"
                     android:inputType="number"
                     android:maxLength="2"
                     android:text='@{nb409c.checked ? "" : nb409d.getText.toString}'
@@ -594,7 +594,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
-                    android:text="@string/nb40997" />
+                    android:text="@string/never" />
 
                 <RadioButton
                     android:id="@+id/nb40998"

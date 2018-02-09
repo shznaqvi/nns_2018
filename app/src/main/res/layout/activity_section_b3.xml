@@ -164,7 +164,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/nb30296" />
+                    android:text="@string/other" />
 
             </RadioGroup>
 
@@ -304,7 +304,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/nb304d" />
+                    android:text="@string/never" />
 
             </RadioGroup>
 

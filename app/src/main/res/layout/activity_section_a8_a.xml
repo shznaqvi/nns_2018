@@ -30,7 +30,7 @@
                 android:layout_marginTop="2dp"
                 android:background="@color/colorPrimaryDark"
                 android:gravity="center"
-                android:text="@string/secA8ALabel"
+                android:text="@string/na8aheading"
                 android:textSize="40sp" />
 
             <View
