@@ -3,8 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nns_2018.iml" filepath="$PROJECT_DIR$/nns_2018.iml" />
       <module fileurl="file://E:\Android\nns_2018-Final\nns_2018.iml" filepath="E:\Android\nns_2018-Final\nns_2018.iml" />
-      <module fileurl="file://$PROJECT_DIR$/nns_2018-Final.iml" filepath="$PROJECT_DIR$/nns_2018-Final.iml" />
+      <module fileurl="file://D:\nns_2018\nns_2018-Final.iml" filepath="D:\nns_2018\nns_2018-Final.iml" />
     </modules>
   </component>
 </project>
