@@ -477,10 +477,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:background="@color/colorPrimary"
+                    android:background="@color/colorPrimaryAlpha"
                     android:text="@string/na405info1"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <RadioButton
                     android:id="@+id/na405e"
@@ -609,6 +609,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:maxLength="2"
+                        android:inputType="number"
+                        android:digits="123456789"
                         android:hint="@string/na407"
                         android:text='@{na406a.checked ? na407.getText.toString : ""}' />
 
@@ -1461,7 +1464,8 @@
                 android:background="@color/colorPrimary"
                 android:text="@string/na414"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
+                android:textColor="@color/white"
+                 />
 
             <RadioGroup
                 android:id="@+id/na414"
@@ -1472,10 +1476,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
+                    android:background="@color/colorPrimaryAlpha"
                     android:text="@string/na414info"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@color/colorPrimaryDark"
+                    />
 
                 <RadioButton
                     android:id="@+id/na414a"
@@ -1497,10 +1502,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
+                    android:background="@color/colorPrimaryAlpha"
                     android:text="@string/na414info1"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <RadioButton
                     android:id="@+id/na414c"
@@ -1522,10 +1527,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
+                    android:background="@color/colorPrimaryAlpha"
                     android:text="@string/na414info2"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <RadioButton
                     android:id="@+id/na414e"
@@ -1623,10 +1628,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
+                    android:background="@color/colorPrimaryAlpha"
                     android:text="@string/na415info"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <RadioButton
                     android:id="@+id/na415a"
@@ -1656,10 +1661,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
+                    android:background="@color/colorPrimaryAlpha"
                     android:text="@string/na415info1"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <RadioButton
                     android:id="@+id/na415d"
@@ -1697,10 +1702,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
+                    android:background="@color/colorPrimaryAlpha"
                     android:text="@string/na415info2"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <RadioButton
                     android:id="@+id/na415h"
@@ -2176,7 +2181,7 @@
                     android:layout_marginBottom="1dp"
                     android:hint="@string/na422a"
                     android:inputType="number"
-                    android:maxLength="2"
+                    android:maxLength="3"
                     android:text='@{na421a.checked ? na422a.getText.toString : ""}' />
 
                 <!--b-->
@@ -2196,7 +2201,7 @@
                     android:layout_marginBottom="1dp"
                     android:hint="@string/na422b"
                     android:inputType="number"
-                    android:maxLength="2"
+                    android:maxLength="3"
                     android:text='@{na421a.checked ? na422b.getText.toString : ""}' />
 
                 <!-- c -->
@@ -2216,7 +2221,7 @@
                     android:layout_marginBottom="1dp"
                     android:hint="@string/na422c"
                     android:inputType="number"
-                    android:maxLength="2"
+                    android:maxLength="3"
                     android:text='@{na421a.checked ? na422c.getText.toString : ""}' />
 
                 <!-- d -->
@@ -2236,7 +2241,7 @@
                     android:layout_marginBottom="1dp"
                     android:hint="@string/na422d"
                     android:inputType="number"
-                    android:maxLength="2"
+                    android:maxLength="3"
                     android:text='@{na421a.checked ? na422d.getText.toString : ""}' />
 
                 <!-- e -->
@@ -2256,7 +2261,7 @@
                     android:layout_marginBottom="1dp"
                     android:hint="@string/na422e"
                     android:inputType="number"
-                    android:maxLength="2"
+                    android:maxLength="3"
                     android:text='@{na421a.checked ? na422e.getText.toString : ""}' />
 
                 <!-- f -->
@@ -2276,7 +2281,7 @@
                     android:layout_marginBottom="1dp"
                     android:hint="@string/na422f"
                     android:inputType="number"
-                    android:maxLength="2"
+                    android:maxLength="3"
                     android:text='@{na421a.checked ? na422f.getText.toString : ""}' />
 
                 <!--g-->
@@ -2296,7 +2301,7 @@
                     android:layout_marginBottom="1dp"
                     android:hint="@string/na422g"
                     android:inputType="number"
-                    android:maxLength="2"
+                    android:maxLength="3"
                     android:text='@{na421a.checked ? na422g.getText.toString : ""}' />
 
             </LinearLayout>
