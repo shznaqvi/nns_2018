@@ -350,22 +350,64 @@
                 app:minDate="01/01/1917" />
 
             <CheckBox
-                android:id="@+id/na20799"
+                android:id="@+id/na20798"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/dkn" />
 
             <!--08-->
-            <EditText
-                android:id="@+id/na2age"
+
+
+            <LinearLayout
+                android:id="@+id/fldGrpna2age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
-                android:digits="0123456789"
-                android:hint="@string/na2age"
-                android:inputType="number"
-                android:visibility="gone" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/na2age"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@android:color/white" />
+
+                <EditText
+                    android:id="@+id/na2agey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:hint="@string/year"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:visibility="visible" />
+
+                <EditText
+                    android:id="@+id/na2agem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:digits="0123456789"
+                    android:hint="@string/year"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:visibility="visible" />
+
+                <EditText
+                    android:id="@+id/na2aged"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:digits="0123456789"
+                    android:hint="@string/year"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:visibility="visible" />
+
+
+            </LinearLayout>
 
 
             <!--09-->
@@ -702,7 +744,7 @@
 
             <!--14-->
 
-            <LinearLayout
+            <!--<LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -730,7 +772,7 @@
             </LinearLayout>
 
 
-            <!--15-->
+            &lt;!&ndash;15&ndash;&gt;
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -772,7 +814,7 @@
                     android:maxLength="2" />
 
             </LinearLayout>
-            <!--16-->
+            &lt;!&ndash;16&ndash;&gt;
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -816,7 +858,7 @@
             </LinearLayout>
 
 
-            <!--17-->
+            &lt;!&ndash;17&ndash;&gt;
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -858,7 +900,7 @@
                     android:maxLength="2" />
 
             </LinearLayout>
-
+-->
 
             <!--  = = = = =  END OF FORM FIELDS  = = = = = -->
             <LinearLayout

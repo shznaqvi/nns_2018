@@ -13,6 +13,7 @@ import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB1Binding;
+import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionB1Activity extends Activity {
 
@@ -65,7 +66,7 @@ public class SectionB1Activity extends Activity {
     public void BtnContinue() {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
-        /*if (formValidation()) {
+        /*if (ValidateForm()) {
             try {
                 SaveDraft();
             } catch (JSONException e) {
@@ -90,4 +91,36 @@ public class SectionB1Activity extends Activity {
         MainApp.endActivity(this, this);
 
     }
+
+    private boolean ValidateForm() {
+
+        Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
+
+        if (!validatorClass.EmptyTextBox(this, bi.nb103, getString(R.string.nb103))) {
+            return false;
+        }
+
+        if (!validatorClass.RangeTextBox(this, bi.nb103, 15, 49, getString(R.string.na8a03m), " years")) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyTextBox(this, bi.nb104, getString(R.string.nb104))) {
+            return false;
+        }
+
+        if (Integer.valueOf(bi.nb104.getText().toString()) < 0) {
+            if (!validatorClass.EmptyRadioButton(this, bi.nb105, bi.nb105a, getString(R.string.nb105))) {
+                return false;
+            }
+
+            if (!validatorClass.EmptyTextBox(this, bi.nb106, getString(R.string.nb106))) {
+                return false;
+            }
+
+        }
+
+
+        return true;
+    }
+
 }
