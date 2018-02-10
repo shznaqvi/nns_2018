@@ -9,6 +9,7 @@ import android.widget.Toast;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA1Binding;
+import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionA1Activity extends AppCompatActivity {
 
@@ -68,6 +69,82 @@ public class SectionA1Activity extends AppCompatActivity {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
         }*/
+    }
+
+    public boolean formValidation() {
+
+        Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
+
+//        na102
+        if (!validatorClass.EmptyTextBox(this, binding.na102, getString(R.string.na102))) {
+            return false;
+        }
+
+//        na101a
+        if (!validatorClass.EmptySpinner(this, binding.na101a, "Province")) {
+            return false;
+        }
+//        na101b
+        if (!validatorClass.EmptySpinner(this, binding.na101b, "District")) {
+            return false;
+        }
+//        na101c
+        if (!validatorClass.EmptySpinner(this, binding.na101c, "Tehsil/Taluka")) {
+            return false;
+        }
+//        na101d
+        if (!validatorClass.EmptySpinner(this, binding.na101d, "City/Village")) {
+            return false;
+        }
+
+//        na103
+        if (!validatorClass.EmptyTextBox(this, binding.na103, getString(R.string.na103))) {
+            return false;
+        }
+
+        String[] str = binding.na103.getText().toString().split("-");
+        if (str.length > 2 || binding.na103.getText().toString().charAt(3) != '-' || !str[0].matches("[0-9]+")) {
+            binding.na103.setError("Wrong presentation!!");
+            return false;
+        }
+
+//        na105
+        if (!validatorClass.EmptyTextBox(this, binding.na105, getString(R.string.na105))) {
+            return false;
+        }
+//        na107
+        if (!validatorClass.EmptyTextBox(this, binding.na107, getString(R.string.na107))) {
+            return false;
+        }
+//        na108
+        if (!validatorClass.EmptyTextBox(this, binding.na108, getString(R.string.na108))) {
+            return false;
+        }
+//        na11101blood
+        if (!validatorClass.EmptyRadioButton(this, binding.na11101blood, binding.na11101bloodb, getString(R.string.na11101blood))) {
+            return false;
+        }
+//        na11102water
+        if (!validatorClass.EmptyRadioButton(this, binding.na11102water, binding.na11102waterb, getString(R.string.na11102water))) {
+            return false;
+        }
+//        na11201
+        if (!validatorClass.EmptyRadioButton(this, binding.na11201, binding.na11201b, getString(R.string.na11201))) {
+            return false;
+        }
+//        na11202
+        if (!validatorClass.EmptyRadioButton(this, binding.na11202, binding.na11202b, getString(R.string.na11202))) {
+            return false;
+        }
+
+//        na113
+        if (binding.na11201a.isChecked()) {
+            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpna113, binding.na11396, binding.na11396x, String.valueOf(R.string.na113))) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public void BtnCheckHH() {

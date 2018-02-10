@@ -11,6 +11,7 @@ import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB3Binding;
+import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionB3Activity extends AppCompatActivity {
 
@@ -86,5 +87,49 @@ public class SectionB3Activity extends AppCompatActivity {
 
     public void BtnEnd() {
         MainApp.endActivity(this, this);
+    }
+
+
+    public boolean formValidation() {
+
+        Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
+
+//        nb301
+        if (!validatorClass.EmptyRadioButton(this, binding.nb301, binding.nb30198, getString(R.string.nb301))) {
+            return false;
+        }
+
+        if (!binding.nb30198.isChecked()) {
+            // nb302
+            if (!validatorClass.EmptyRadioButton(this, binding.nb302, binding.nb30296, binding.nb30296x, getString(R.string.nb302))) {
+                return false;
+            }
+            // nb303
+            if (!validatorClass.EmptyRadioButton(this, binding.nb303, binding.nb303h, getString(R.string.nb303))) {
+                return false;
+            }
+            // nb304
+            if (!validatorClass.EmptyRadioButton(this, binding.nb304, binding.nb304d, getString(R.string.nb304))) {
+                return false;
+            }
+
+            if (!binding.nb304d.isChecked()) {
+                // nb305
+                if (!validatorClass.EmptyRadioButton(this, binding.nb305, binding.nb305b, getString(R.string.nb305))) {
+                    return false;
+                }
+
+                if (binding.nb305a.isChecked()) {
+                    // nb306
+                    if (!validatorClass.EmptyRadioButton(this, binding.nb306, binding.nb306d, getString(R.string.nb306))) {
+                        return false;
+                    }
+                }
+            }
+
+        }
+
+
+        return true;
     }
 }
