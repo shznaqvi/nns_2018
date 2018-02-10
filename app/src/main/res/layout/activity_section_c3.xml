@@ -61,6 +61,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/yes" />
 
                 <RadioButton
@@ -69,6 +70,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/no" />
 
             </RadioGroup>
@@ -177,6 +179,7 @@
                             android:text="@string/no" />
 
                     </RadioGroup>
+
                     <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                         android:id="@+id/nc3bcgdt"
                         android:layout_width="match_parent"
@@ -188,8 +191,7 @@
                         android:text='@{nc3bcga.checked ? nc3bcgdt.getText.toString : ""}'
                         android:textColor="@android:color/black"
                         android:visibility='@{nc3bcga.checked ? View.VISIBLE : View.GONE}'
-                        app:dateFormat="dd-MM-yyyy"
-                        />
+                        app:dateFormat="dd-MM-yyyy" />
 
                     <!-- opv0 -->
                     <TextView
@@ -223,6 +225,7 @@
                             android:text="@string/no" />
 
                     </RadioGroup>
+
                     <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                         android:id="@+id/nc3opv0dt"
                         android:layout_width="match_parent"
@@ -234,8 +237,7 @@
                         android:text='@{nc3opv0a.checked ? nc3opv0dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
                         android:visibility='@{nc3opv0a.checked ? View.VISIBLE : View.GONE}'
-                        app:dateFormat="dd-MM-yyyy"
-                        />
+                        app:dateFormat="dd-MM-yyyy" />
 
                 </LinearLayout>
 
@@ -286,6 +288,7 @@
                             android:text="@string/no" />
 
                     </RadioGroup>
+
                     <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                         android:id="@+id/nc3opv1dt"
                         android:layout_width="match_parent"
@@ -297,8 +300,7 @@
                         android:text='@{nc3opv1a.checked ? nc3opv1dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
                         android:visibility='@{nc3opv1a.checked ? View.VISIBLE : View.GONE}'
-                        app:dateFormat="dd-MM-yyyy"
-                        />
+                        app:dateFormat="dd-MM-yyyy" />
 
                     <!-- Penta - 1 -->
                     <TextView
@@ -344,8 +346,7 @@
                         android:text='@{nc3penta1a.checked ? nc3penta1dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
                         android:visibility='@{nc3penta1a.checked ? View.VISIBLE : View.GONE}'
-                        app:dateFormat="dd-MM-yyyy"
-                        />
+                        app:dateFormat="dd-MM-yyyy" />
 
                     <!-- PCV - 1 -->
                     <TextView
@@ -355,6 +356,7 @@
                         android:background="@color/pink_100"
                         android:text="@string/nc3pcv1"
                         android:textColor="@color/colorPrimaryDark" />
+
                     <RadioGroup
                         android:id="@+id/nc3pcv1"
                         android:layout_width="match_parent"
@@ -378,6 +380,7 @@
                             android:text="@string/no" />
 
                     </RadioGroup>
+
                     <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                         android:id="@+id/nc3pcv1dt"
                         android:layout_width="match_parent"
@@ -389,8 +392,7 @@
                         android:text='@{nc3pcv1a.checked ? nc3pcv1dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
                         android:visibility='@{nc3pcv1a.checked ? View.VISIBLE : View.GONE}'
-                        app:dateFormat="dd-MM-yyyy"
-                        />
+                        app:dateFormat="dd-MM-yyyy" />
                 </LinearLayout>
 
 
@@ -441,6 +443,7 @@
                             android:text="@string/no" />
 
                     </RadioGroup>
+
                     <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                         android:id="@+id/nc3opv2dt"
                         android:layout_width="match_parent"
@@ -452,8 +455,7 @@
                         android:text='@{nc3opv2a.checked ? nc3opv2dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
                         android:visibility='@{nc3opv2a.checked ? View.VISIBLE : View.GONE}'
-                        app:dateFormat="dd-MM-yyyy"
-                        />
+                        app:dateFormat="dd-MM-yyyy" />
 
                     <!-- Penta - 2 -->
                     <TextView
@@ -499,8 +501,7 @@
                         android:text='@{nc3p2a.checked ? nc3p2dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
                         android:visibility='@{nc3p2a.checked ? View.VISIBLE : View.GONE}'
-                        app:dateFormat="dd-MM-yyyy"
-                        />
+                        app:dateFormat="dd-MM-yyyy" />
 
                     <!-- PVC - 2 -->
                     <TextView
@@ -510,6 +511,7 @@
                         android:background="@color/pink_100"
                         android:text="@string/nc3pcv2"
                         android:textColor="@color/colorPrimaryDark" />
+
                     <RadioGroup
                         android:id="@+id/nc3pcv2"
                         android:layout_width="match_parent"
@@ -533,6 +535,7 @@
                             android:text="@string/no" />
 
                     </RadioGroup>
+
                     <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                         android:id="@+id/nc3pcv2dt"
                         android:layout_width="match_parent"
@@ -544,8 +547,7 @@
                         android:text='@{nc3pcv2a.checked ? nc3pcv2dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
                         android:visibility='@{nc3pcv2a.checked ? View.VISIBLE : View.GONE}'
-                        app:dateFormat="dd-MM-yyyy"
-                        />
+                        app:dateFormat="dd-MM-yyyy" />
 
 
                 </LinearLayout>
@@ -597,6 +599,7 @@
                             android:text="@string/no" />
 
                     </RadioGroup>
+
                     <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                         android:id="@+id/nc3opv3dt"
                         android:layout_width="match_parent"
@@ -608,8 +611,7 @@
                         android:text='@{nc3opv3a.checked ? nc3opv3dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
                         android:visibility='@{nc3opv3a.checked ? View.VISIBLE : View.GONE}'
-                        app:dateFormat="dd-MM-yyyy"
-                        />
+                        app:dateFormat="dd-MM-yyyy" />
 
                     <!-- Penta - 3 -->
                     <TextView
@@ -655,8 +657,7 @@
                         android:text='@{nc3p3a.checked ? nc3p3dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
                         android:visibility='@{nc3p3a.checked ? View.VISIBLE : View.GONE}'
-                        app:dateFormat="dd-MM-yyyy"
-                        />
+                        app:dateFormat="dd-MM-yyyy" />
 
                     <!-- PCV - 3 -->
                     <TextView
@@ -666,6 +667,7 @@
                         android:background="@color/pink_100"
                         android:text="@string/nc3pcv3"
                         android:textColor="@color/colorPrimaryDark" />
+
                     <RadioGroup
                         android:id="@+id/nc3pcv3"
                         android:layout_width="match_parent"
@@ -689,6 +691,7 @@
                             android:text="@string/no" />
 
                     </RadioGroup>
+
                     <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                         android:id="@+id/nc3pcv3dt"
                         android:layout_width="match_parent"
@@ -700,8 +703,7 @@
                         android:text='@{nc3pcv3a.checked ? nc3pcv3dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
                         android:visibility='@{nc3pcv3a.checked ? View.VISIBLE : View.GONE}'
-                        app:dateFormat="dd-MM-yyyy"
-                        />
+                        app:dateFormat="dd-MM-yyyy" />
 
                     <!-- IPV  -->
                     <TextView
@@ -711,6 +713,7 @@
                         android:background="@color/pink_100"
                         android:text="@string/nc3ipv"
                         android:textColor="@color/colorPrimaryDark" />
+
                     <RadioGroup
                         android:id="@+id/nc3ipv"
                         android:layout_width="match_parent"
@@ -734,6 +737,7 @@
                             android:text="@string/no" />
 
                     </RadioGroup>
+
                     <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                         android:id="@+id/nc3ipvdt"
                         android:layout_width="match_parent"
@@ -745,8 +749,7 @@
                         android:text='@{nc3ipva.checked ? nc3ipvdt.getText.toString : ""}'
                         android:textColor="@android:color/black"
                         android:visibility='@{nc3ipva.checked ? View.VISIBLE : View.GONE}'
-                        app:dateFormat="dd-MM-yyyy"
-                        />
+                        app:dateFormat="dd-MM-yyyy" />
 
 
                 </LinearLayout>
@@ -799,6 +802,7 @@
                             android:text="@string/no" />
 
                     </RadioGroup>
+
                     <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                         android:id="@+id/nc3m1dt"
                         android:layout_width="match_parent"
@@ -810,8 +814,7 @@
                         android:text='@{nc3m1a.checked ? nc3m1dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
                         android:visibility='@{nc3m1a.checked ? View.VISIBLE : View.GONE}'
-                        app:dateFormat="dd-MM-yyyy"
-                        />
+                        app:dateFormat="dd-MM-yyyy" />
 
                 </LinearLayout>
 
@@ -863,6 +866,7 @@
                             android:text="@string/no" />
 
                     </RadioGroup>
+
                     <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                         android:id="@+id/nc3m2dt"
                         android:layout_width="match_parent"
@@ -874,13 +878,12 @@
                         android:text='@{nc3m2a.checked ? nc3m2dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
                         android:visibility='@{nc3m2a.checked ? View.VISIBLE : View.GONE}'
-                        app:dateFormat="dd-MM-yyyy"
-                        />
+                        app:dateFormat="dd-MM-yyyy" />
 
                 </LinearLayout>
 
-<!-- end of skip pattern-->
-                </LinearLayout>
+                <!-- end of skip pattern-->
+            </LinearLayout>
 
 
             <!-- 6 -->

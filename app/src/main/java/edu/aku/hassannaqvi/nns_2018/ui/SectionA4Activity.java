@@ -84,7 +84,7 @@ public class SectionA4Activity extends AppCompatActivity {
             }
         }*/
 
-        startActivity(new Intent(this, SectionA4Activity.class));
+        startActivity(new Intent(this, SectionA5Activity.class));
     }
 
     public void BtnEnd() {

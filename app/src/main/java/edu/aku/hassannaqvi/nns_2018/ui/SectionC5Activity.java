@@ -23,7 +23,7 @@ public class SectionC5Activity extends AppCompatActivity {
         bi.setCallback(this);
     }
 
-    public void BtnContinue(){
+    public void BtnContinue() {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         /*if (formValidation()) {
@@ -48,7 +48,7 @@ public class SectionC5Activity extends AppCompatActivity {
 
     }
 
-    public void BtnEnd(){
+    public void BtnEnd() {
 
         MainApp.endActivity(this, this);
 

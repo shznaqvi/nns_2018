@@ -40,6 +40,11 @@
                 android:layout_height="2dp"
                 android:background="@color/colorPrimary" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/na202" />
+
             <!--02-->
             <TextView
                 android:layout_width="match_parent"
@@ -73,7 +78,7 @@
                 android:id="@+id/na203"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <RadioButton
                     android:id="@+id/na203a"
@@ -359,7 +364,7 @@
                 android:id="@+id/na2edu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <RadioButton
                     android:id="@+id/na2edua"
@@ -459,7 +464,7 @@
                 android:id="@+id/na2occ"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <RadioButton
                     android:id="@+id/na2occa"
@@ -722,24 +727,24 @@
 
 
                 <EditText
-                android:id="@+id/na2u5g"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
+                    android:id="@+id/na2u5g"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
                     android:layout_weight="1"
-                android:digits="0123456789"
-                android:hint="@string/na2u5g"
+                    android:digits="0123456789"
+                    android:hint="@string/na2u5g"
                     android:maxLength="2" />
 
-            <EditText
-                android:id="@+id/na2u5b"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:digits="0123456789"
-                android:hint="@string/na2u5b"
-                android:maxLength="2" />
+                <EditText
+                    android:id="@+id/na2u5b"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:digits="0123456789"
+                    android:hint="@string/na2u5b"
+                    android:maxLength="2" />
 
             </LinearLayout>
 
@@ -761,24 +766,24 @@
 
 
                 <EditText
-                android:id="@+id/na2tm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
+                    android:id="@+id/na2tm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
                     android:layout_weight="1"
-                android:digits="0123456789"
-                android:hint="@string/na2tm"
+                    android:digits="0123456789"
+                    android:hint="@string/na2tm"
                     android:maxLength="2" />
 
-            <EditText
-                android:id="@+id/na2tf"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:digits="0123456789"
-                android:hint="@string/na2tf"
-                android:maxLength="2" />
+                <EditText
+                    android:id="@+id/na2tf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:digits="0123456789"
+                    android:hint="@string/na2tf"
+                    android:maxLength="2" />
 
             </LinearLayout>
 
