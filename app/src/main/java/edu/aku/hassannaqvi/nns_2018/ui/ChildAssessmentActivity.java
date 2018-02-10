@@ -167,6 +167,7 @@ public class ChildAssessmentActivity extends AppCompatActivity {
             return false;
         }
 
+
         if (!validatorClass.EmptyRadioButton(this, binding.toicb08, binding.toicb07b, getString(R.string.toicb07))) {
             return false;
         }

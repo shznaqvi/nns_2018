@@ -144,7 +144,7 @@
     <string name="na2tf"> خواتین </string>
     <string name="na3heading"> سیکشن 3: گھر میں موجود پانچ سال سے کم عمر بچے، شادی شدہ خواتین، اور نوعمر مرد اور خواتین کے لیے </string>
     <string name="na301sno"> لائن نمبر </string>
-    <string name="na3w"> وزن(سینٹی میٹر) </string>
+  <string name="na3w"> وزن(کلو گرام) </string>
     <string name="na3h"> لمبائی (سینٹی میٹر) </string>
     <string name="na3muac"> (سینٹی میٹر) MUAC </string>
     <string name="na3bcgscar"> BCG Scar </string>
