@@ -100,7 +100,7 @@
 
 
                 <CheckBox
-                    android:id="@+id/nb40177"
+                    android:id="@+id/nb40199"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
@@ -589,7 +589,7 @@
                     android:visibility='@{nb409c.checked ? View.GONE : View.VISIBLE}' />
 
                 <RadioButton
-                    android:id="@+id/nb40997"
+                    android:id="@+id/nb4099"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="1dp"
@@ -647,20 +647,21 @@
 
             </RadioGroup>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/nb411"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
+
 
             <LinearLayout
                 android:id="@+id/fldGrpnb411check"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/nb411"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@android:color/white" />
 
                 <CheckBox
                     android:id="@+id/nb411a"
@@ -670,7 +671,7 @@
                     android:text="@string/nb411a" />
 
                 <CheckBox
-                    android:id="@+id/nb4111b"
+                    android:id="@+id/nb411b"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
