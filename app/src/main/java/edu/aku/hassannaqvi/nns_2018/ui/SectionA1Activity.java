@@ -1,10 +1,12 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA1Binding;
@@ -17,7 +19,7 @@ public class SectionA1Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_section_a8a);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_section_a1);
         db = new DatabaseHelper(this);
         binding.setCallback(this);
     }
@@ -42,6 +44,8 @@ public class SectionA1Activity extends AppCompatActivity {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
         }*/
+
+        startActivity(new Intent(this, SectionA2Activity.class));
     }
 
     public void BtnEnd() {

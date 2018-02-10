@@ -217,7 +217,8 @@
             <RadioGroup
                 android:id="@+id/na11101blood"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/na11101blooda"
@@ -225,6 +226,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/yes" />
 
                 <RadioButton
@@ -233,6 +235,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/no" />
             </RadioGroup>
 
@@ -270,13 +273,10 @@
 
             <!--na1a-->
             <TextView
+                style="@style/sub"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@android:color/holo_red_light"
-                android:text="@string/na112info"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
+                android:text="@string/na112info" />
 
             <!--na112-->
             <TextView
@@ -354,13 +354,10 @@
 
             <!--na1b-->
             <TextView
+                style="@style/sub"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@android:color/holo_red_light"
-                android:text="@string/na113info"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
+                android:text="@string/na113info" />
 
             <!--na113-->
             <TextView

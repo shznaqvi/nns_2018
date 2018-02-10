@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.SectionC1Activity">
 
@@ -72,6 +71,7 @@
                 android:id="@+id/nc103"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <RadioButton
                     android:id="@+id/nc103a"
                     style="@style/radiobutton"
@@ -87,6 +87,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:text="@string/nc103b" />
+
                 <RadioButton
                     android:id="@+id/nc103c"
                     style="@style/radiobutton"

@@ -185,27 +185,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/hour" />
+                    android:text="@string/nb503h" />
 
                 <EditText
                     android:id="@+id/nb503hr"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:hint="@string/month"
+                    android:hint="@string/nb503h"
                     android:inputType="number"
                     android:maxLength="2"
                     android:text='@{nb503a.checked ? nb503hr.getText.toString : ""}'
                     android:visibility='@{nb503a.checked ? View.VISIBLE : View.GONE}' />
 
                 <TextView
+                    style="@style/sub"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/nb503b"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
+                    android:text="@string/nb503b" />
 
                 <RadioButton
                     android:id="@+id/nb503b"
@@ -227,13 +224,10 @@
                     android:visibility='@{nb503b.checked ? View.VISIBLE : View.GONE}' />
 
                 <TextView
+                    style="@style/sub"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/nb503c"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
+                    android:text="@string/nb503c" />
 
                 <RadioButton
                     android:id="@+id/nb503c"
@@ -241,7 +235,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/day" />
+                    android:text="@string/week" />
 
                 <EditText
                     android:id="@+id/nb503w"
@@ -507,7 +501,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/hour" />
+                    android:text="@string/nb508h" />
 
                 <EditText
                     android:id="@+id/nb508hr"

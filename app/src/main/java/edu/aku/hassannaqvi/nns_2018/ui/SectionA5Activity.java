@@ -1,5 +1,6 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -45,6 +46,8 @@ public class SectionA5Activity extends AppCompatActivity {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
         }*/
+
+        startActivity(new Intent(this, SectionA8AActivity.class));
     }
 
     public void BtnEnd() {
