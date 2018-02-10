@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
 import android.widget.Toast;
 
 import edu.aku.hassannaqvi.nns_2018.R;
@@ -24,6 +27,37 @@ public class SectionB1Activity extends Activity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_b1);
         db = new DatabaseHelper(this);
         bi.setCallback(this);
+
+        setupViews();
+    }
+
+    public void setupViews() {
+
+        bi.nb104.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (bi.nb104.getText().toString().equals("0")) {
+                    bi.fldGrpnb105.setVisibility(View.GONE);
+                    bi.nb105.clearCheck();
+                    bi.nb106.setText(null);
+                } else {
+                    bi.fldGrpnb105.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
     }
 
     public void BtnContinue() {

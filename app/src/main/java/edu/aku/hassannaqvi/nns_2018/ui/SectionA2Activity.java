@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import edu.aku.hassannaqvi.nns_2018.R;
@@ -23,8 +24,34 @@ public class SectionA2Activity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_a2);
         bi.setCallback(this);
 
+        setupViews();
+
         bi.na2dob.setManager(getSupportFragmentManager());
     }
+
+
+    public void setupViews() {
+        bi.na2dob.setManager(getSupportFragmentManager());
+
+        bi.na20799.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    bi.na2dob.setEnabled(false);
+                    bi.na2dob.setText(null);
+                    bi.na2age.setEnabled(true);
+                } else {
+                    bi.na2dob.setEnabled(true);
+                    bi.na2age.setEnabled(false);
+                    bi.na2age.setText(null);
+                }
+            }
+        });
+
+
+    }
+
+
 
     public void BtnContinue() {
 

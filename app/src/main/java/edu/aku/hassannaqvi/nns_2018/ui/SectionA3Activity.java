@@ -26,6 +26,12 @@ public class SectionA3Activity extends AppCompatActivity {
 //        Assigning data to UI binding
         bi.setCallback(this);
 
+        //setupViews();
+
+
+    }
+
+    public void setupViews() {
 
     }
 
