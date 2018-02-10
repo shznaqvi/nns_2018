@@ -124,13 +124,15 @@
             </RadioGroup>
 
             <!-- skip pattern layout-->
+
             <LinearLayout
                 android:id="@+id/fldGrpnc305"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bacground_border"
                 android:orientation="vertical"
-                android:padding="8px">
+                android:padding="8px"
+                android:visibility="@{nc304b.checked ? View.GONE : View.VISIBLE}">
 
                 <!-- At Birth-->
                 <TextView
@@ -885,7 +887,6 @@
                 <!-- end of skip pattern-->
             </LinearLayout>
 
-
             <!-- 6 -->
             <TextView
                 android:layout_width="match_parent"
@@ -968,7 +969,6 @@
 
             </RadioGroup>
 
-            <!-- 8 -->
             <LinearLayout
                 android:id="@+id/fldGrpnc308"
                 android:layout_width="match_parent"
@@ -976,6 +976,7 @@
                 android:orientation="vertical"
                 android:visibility="@{nc307b.checked? View.GONE : View.VISIBLE}">
 
+                <!-- 8 -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -993,7 +994,8 @@
                     android:digits="123456789"
                     android:hint="@string/times"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:text='@{nc307a.checked ? nc308.getText.toString : ""}' />
             </LinearLayout>
 
 
@@ -1041,6 +1043,7 @@
                 android:textColor="@android:color/white" />
 
             <RadioGroup
+                android:id="@+id/nc310"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -1071,7 +1074,6 @@
 
             </RadioGroup>
 
-            <!-- 11 -->
             <LinearLayout
                 android:id="@+id/fldGrpnc311"
                 android:layout_width="match_parent"
@@ -1079,6 +1081,7 @@
                 android:orientation="vertical"
                 android:visibility="@{nc310b.checked ? View.GONE : View.VISIBLE}">
 
+                <!-- 11 -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -1089,6 +1092,7 @@
                     android:textColor="@android:color/white" />
 
                 <RadioGroup
+                    android:id="@+id/nc311"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -1120,7 +1124,6 @@
                 </RadioGroup>
             </LinearLayout>
 
-
             <!-- 12 -->
             <TextView
                 android:layout_width="match_parent"
@@ -1132,6 +1135,7 @@
                 android:textColor="@android:color/white" />
 
             <RadioGroup
+                android:id="@+id/nc312"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -1173,6 +1177,7 @@
                 android:textColor="@android:color/white" />
 
             <RadioGroup
+                android:id="@+id/nc313"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -1203,7 +1208,6 @@
 
             </RadioGroup>
 
-            <!-- 14 -->
             <LinearLayout
                 android:id="@+id/fldGrpnc314"
                 android:layout_width="match_parent"
@@ -1211,6 +1215,7 @@
                 android:orientation="vertical"
                 android:visibility="@{nc313b.checked ? View.GONE : View.VISIBLE}">
 
+                <!-- 14 -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -1228,8 +1233,11 @@
                     android:digits="123456789"
                     android:hint="@string/times"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:text='@{nc313a.checked ? nc314.getText.toString : ""}' />
+
             </LinearLayout>
+
             <!--  = = = = =  END OF FORM FIELDS  = = = = = -->
             <LinearLayout
                 android:layout_width="match_parent"

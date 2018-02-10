@@ -8,7 +8,6 @@ import android.widget.Toast;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
-import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA1Binding;
 
 public class SectionA1Activity extends AppCompatActivity {
@@ -22,6 +21,7 @@ public class SectionA1Activity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_a1);
         db = new DatabaseHelper(this);
         binding.setCallback(this);
+
     }
 
     public void BtnContinue() {
@@ -49,6 +49,32 @@ public class SectionA1Activity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        MainApp.endActivity(this, this);
+
+        Toast.makeText(this, "Processing End Section", Toast.LENGTH_SHORT).show();
+        /*if (formValidation()) {
+            try {
+                SaveDraft();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            if (UpdateDB()) {
+                Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
+
+                finish();
+
+                startActivity(new Intent(this, ChildAssessmentActivity.class));
+
+            } else {
+                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
+            }
+        }*/
+    }
+
+    public void BtnCheckHH() {
+
+    }
+
+    public void BtnCheckEnm() {
+
     }
 }

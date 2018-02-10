@@ -51,6 +51,7 @@ public class SectionC1Activity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
+
         MainApp.endActivity(this, this);
     }
 }

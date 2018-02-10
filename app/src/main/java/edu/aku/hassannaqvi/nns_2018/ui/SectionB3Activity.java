@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import edu.aku.hassannaqvi.nns_2018.R;
@@ -24,6 +25,39 @@ public class SectionB3Activity extends AppCompatActivity {
 
 //        Assigning data to UI binding
         binding.setCallback(this);
+
+//        Skip Patterns
+        binding.nb301.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if (i == R.id.nb30198) {
+                    binding.nb302.clearCheck();
+                    binding.nb303.clearCheck();
+                    binding.nb304.clearCheck();
+                    binding.nb305.clearCheck();
+                    binding.nb306.clearCheck();
+                }
+            }
+        });
+
+        binding.nb304.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if (i == R.id.nb304d) {
+                    binding.nb305.clearCheck();
+                    binding.nb306.clearCheck();
+                }
+            }
+        });
+
+        binding.nb305.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if (i == R.id.nb305b) {
+                    binding.nb306.clearCheck();
+                }
+            }
+        });
     }
 
     public void BtnContinue() {
@@ -52,6 +86,5 @@ public class SectionB3Activity extends AppCompatActivity {
 
     public void BtnEnd() {
         MainApp.endActivity(this, this);
-
     }
 }

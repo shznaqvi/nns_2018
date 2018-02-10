@@ -26,6 +26,8 @@ public class SectionB1Activity extends Activity {
 
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_b1);
         db = new DatabaseHelper(this);
+
+        //Assigning data to UI binding
         bi.setCallback(this);
 
         setupViews();
