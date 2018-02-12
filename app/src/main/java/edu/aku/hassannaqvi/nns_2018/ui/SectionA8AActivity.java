@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -101,6 +104,65 @@ public class SectionA8AActivity extends Activity {
 
         return validatorClass.EmptyTextBox(this, bi.na8a06, getString(R.string.na8a06));
     }
+
+    private void SaveDraft() throws JSONException {
+        Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
+
+        JSONObject sA8a = new JSONObject();
+
+        sA8a.put("na8a02", bi.na8a02.getText().toString());
+
+        sA8a.put("na8a03y", bi.na8a03y.getText().toString());
+
+        sA8a.put("na8a03m", bi.na8a03m.getText().toString());
+
+        sA8a.put("na8a04a", bi.na8a04a.isChecked() ? "1" : "0");
+        sA8a.put("na8a04b", bi.na8a04b.isChecked() ? "2" : "0");
+        sA8a.put("na8a04c", bi.na8a04c.isChecked() ? "3" : "0");
+        sA8a.put("na8a04d", bi.na8a04d.isChecked() ? "4" : "0");
+        sA8a.put("na8a04e", bi.na8a04e.isChecked() ? "5" : "0");
+        sA8a.put("na8a04f", bi.na8a04f.isChecked() ? "6" : "0");
+        sA8a.put("na8a04g", bi.na8a04g.isChecked() ? "7" : "0");
+        sA8a.put("na8a04h", bi.na8a04h.isChecked() ? "8" : "0");
+        sA8a.put("na8a04i", bi.na8a04i.isChecked() ? "9" : "0");
+        sA8a.put("na8a0496", bi.na8a0496.isChecked() ? "96" : "0");
+        sA8a.put("na8a0496x", bi.na8a0496x.getText().toString());
+        sA8a.put("na8a05", bi.na8a05.getText().toString());
+        sA8a.put("na8a06", bi.na8a06.getText().toString());
+
+
+        //MainApp.cc.setsB(String.valueOf(sB));
+
+
+        Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
+
+    }
+
+    private boolean UpdateDB() {
+
+        //Long rowId;
+        DatabaseHelper db = new DatabaseHelper(this);
+
+        /*Long updcount = db.addChildForm(MainApp.cc);
+        MainApp.cc.set_ID(String.valueOf(updcount));
+
+        if (updcount != 0) {
+            Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+
+            MainApp.cc.setUID(
+                    (MainApp.cc.getDeviceID() + MainApp.cc.get_ID()));
+            db.updateFormChildID();
+
+            return true;
+        } else {
+            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            return false;
+        }*/
+
+        return true;
+
+    }
+
 
 
 }

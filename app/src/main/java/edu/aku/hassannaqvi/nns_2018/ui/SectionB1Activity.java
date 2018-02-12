@@ -9,6 +9,9 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -122,5 +125,51 @@ public class SectionB1Activity extends Activity {
 
         return true;
     }
+
+    private void SaveDraft() throws JSONException {
+        Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
+
+        JSONObject sB1 = new JSONObject();
+
+        sB1.put("nb104", bi.nb104.getText().toString());
+
+        sB1.put("nb105", bi.nb105a.isChecked() ? "1"
+                : bi.nb105b.isChecked() ? "2" : "0");
+
+        sB1.put("nb106", bi.nb106.getText().toString());
+
+
+        //MainApp.cc.setsB(String.valueOf(sB));
+
+
+        Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
+
+    }
+
+    private boolean UpdateDB() {
+
+        //Long rowId;
+        DatabaseHelper db = new DatabaseHelper(this);
+
+        /*Long updcount = db.addChildForm(MainApp.cc);
+        MainApp.cc.set_ID(String.valueOf(updcount));
+
+        if (updcount != 0) {
+            Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+
+            MainApp.cc.setUID(
+                    (MainApp.cc.getDeviceID() + MainApp.cc.get_ID()));
+            db.updateFormChildID();
+
+            return true;
+        } else {
+            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            return false;
+        }*/
+
+        return true;
+
+    }
+
 
 }

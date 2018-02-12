@@ -9,6 +9,7 @@ import android.widget.Toast;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC5Binding;
+import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionC5Activity extends AppCompatActivity {
 
@@ -53,4 +54,30 @@ public class SectionC5Activity extends AppCompatActivity {
         MainApp.endActivity(this, this);
 
     }
+   private boolean formValidation(){
+        Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc503, bi.nc503a, getString(R.string.nc503))) {
+            return false;
+        }
+        if (!validatorClass.EmptyRadioButton(this, bi.nc504, bi.nc504a, getString(R.string.nc504))) {
+            return false;
+        }
+        if (!validatorClass.EmptyRadioButton(this, bi.nc505, bi.nc505a, getString(R.string.nc505))) {
+            return false;
+        }
+        if (!validatorClass.EmptyRadioButton(this, bi.nc506, bi.nc506a, getString(R.string.nc506))) {
+            return false;
+        }
+        if (!validatorClass.EmptyRadioButton(this, bi.nc507, bi.nc507a, getString(R.string.nc507))) {
+            return false;
+        }
+        if (!validatorClass.EmptyRadioButton(this, bi.nc508, bi.nc508a, getString(R.string.nc508))) {
+            return false;
+        }
+
+        return true;
+
+    }
+
 }
