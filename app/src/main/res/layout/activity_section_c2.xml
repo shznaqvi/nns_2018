@@ -664,15 +664,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bacground_border"
+                android:background="@drawable/bacground_border1"
                 android:orientation="vertical"
-                android:padding="8px">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorHeading"
+                    android:background="@color/pink_100"
                     android:text="@string/nc215a"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -712,7 +712,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorHeading"
+                    android:background="@color/pink_100"
                     android:text="@string/nc215b"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -758,7 +758,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:background="@color/colorHeading"
+                        android:background="@color/pink_100"
                         android:text="@string/nc215b1"
                         android:textColor="@color/colorPrimaryDark" />
 
@@ -767,8 +767,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="1dp"
-                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
-                        android:hint="@string/other" />
+                        android:hint="@string/nc215b01"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:text='@{nc215b198.checked ? "" : nc215b1.getText.toString}'
+                        android:visibility='@{nc215b198.checked ? View.GONE : View.VISIBLE}' />
 
                     <CheckBox
                         android:id="@+id/nc215b198"
@@ -784,7 +787,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorHeading"
+                    android:background="@color/pink_100"
                     android:text="@string/nc215c"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -830,7 +833,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:background="@color/colorHeading"
+                        android:background="@color/pink_100"
                         android:text="@string/nc215c1"
                         android:textColor="@color/colorPrimaryDark" />
 
@@ -846,8 +849,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="1dp"
-                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
-                        android:hint="@string/other" />
+                        android:hint="@string/nc215c1times"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:text='@{nc215c198.checked ? "" : nc215c1.getText.toString}'
+                        android:visibility='@{nc215c198.checked ? View.GONE : View.VISIBLE}' />
 
                     <CheckBox
                         android:id="@+id/nc215c198"
@@ -863,7 +869,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorHeading"
+                    android:background="@color/pink_100"
                     android:text="@string/nc215d"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -903,7 +909,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorHeading"
+                    android:background="@color/pink_100"
                     android:text="@string/nc215e"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -943,7 +949,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorHeading"
+                    android:background="@color/pink_100"
                     android:text="@string/nc215f"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -990,7 +996,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:background="@color/colorHeading"
+                        android:background="@color/pink_100"
                         android:text="@string/nc215f1"
                         android:textColor="@color/colorPrimaryDark" />
 
@@ -1006,8 +1012,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="1dp"
-                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
-                        android:hint="@string/other" />
+                        android:hint="@string/nc215f1a"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:text='@{nc215f198.checked ? "" : nc215f1.getText.toString}'
+                        android:visibility='@{nc215f198.checked ? View.GONE : View.VISIBLE}' />
 
                     <CheckBox
                         android:id="@+id/nc215f198"
@@ -1023,7 +1032,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorHeading"
+                    android:background="@color/pink_100"
                     android:text="@string/nc215g"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -1063,7 +1072,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorHeading"
+                    android:background="@color/pink_100"
                     android:text="@string/nc215h"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -1104,7 +1113,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorHeading"
+                    android:background="@color/pink_100"
                     android:text="@string/nc215i"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -1181,15 +1190,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bacground_border"
+                android:background="@drawable/bacground_border1"
                 android:orientation="vertical"
-                android:padding="8px">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorHeading"
+                    android:background="@color/pink_100"
                     android:text="@string/nc216a"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -1236,7 +1245,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:background="@color/colorHeading"
+                        android:background="@color/pink_100"
                         android:text="@string/nc216a1"
                         android:textColor="@color/colorPrimaryDark" />
 
@@ -1252,8 +1261,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="1dp"
-                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
-                        android:hint="@string/other" />
+                        android:hint="@string/nc216a1times"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:text='@{nc216a198.checked ? "" : nc216a1.getText.toString}'
+                        android:visibility='@{nc216a198.checked ? View.GONE : View.VISIBLE}' />
 
                     <CheckBox
                         android:id="@+id/nc216a198"
@@ -1269,7 +1281,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorHeading"
+                    android:background="@color/pink_100"
                     android:text="@string/nc216b"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -1309,7 +1321,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorHeading"
+                    android:background="@color/pink_100"
                     android:text="@string/nc216c"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -1350,7 +1362,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorHeading"
+                    android:background="@color/pink_100"
                     android:text="@string/nc216d"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -1391,7 +1403,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorHeading"
+                    android:background="@color/pink_100"
                     android:text="@string/nc216e"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -1432,7 +1444,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorHeading"
+                    android:background="@color/pink_100"
                     android:text="@string/nc216f"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -1473,7 +1485,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorHeading"
+                    android:background="@color/pink_100"
                     android:text="@string/nc216g"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -1514,7 +1526,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorHeading"
+                    android:background="@color/pink_100"
                     android:text="@string/nc216h"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -1555,7 +1567,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorHeading"
+                    android:background="@color/pink_100"
                     android:text="@string/nc216i"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -1596,7 +1608,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorHeading"
+                    android:background="@color/pink_100"
                     android:text="@string/nc216j"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -1637,7 +1649,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorHeading"
+                    android:background="@color/pink_100"
                     android:text="@string/nc216k"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -1678,7 +1690,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorHeading"
+                    android:background="@color/pink_100"
                     android:text="@string/nc216l"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -1718,7 +1730,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorHeading"
+                    android:background="@color/pink_100"
                     android:text="@string/nc216m"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -1758,47 +1770,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorHeading"
-                    android:text="@string/nc216o"
-                    android:textColor="@color/colorPrimaryDark" />
-
-                <RadioGroup
-                    android:id="@+id/nc216o"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/nc216oa"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:text="@string/yes" />
-
-                    <RadioButton
-                        android:id="@+id/nc216ob"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:text="@string/no" />
-
-                    <RadioButton
-                        android:id="@+id/nc216o98"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:text="@string/dkn" />
-
-                </RadioGroup>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorHeading"
+                    android:background="@color/pink_100"
                     android:text="@string/nc216x"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -1845,7 +1817,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:background="@color/colorHeading"
+                        android:background="@color/pink_100"
                         android:text="@string/nc216x1"
                         android:textColor="@color/colorPrimaryDark" />
 
@@ -2135,7 +2107,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="1dp"
-                    android:hint="@string/iron"
+                    android:hint="@string/dose"
                     android:inputType="number"
                     android:maxLength="2"
                     android:text='@{nc221a.checked ? nc222.getText.toString : ""}' />
@@ -2204,7 +2176,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="1dp"
-                    android:hint="@string/iron"
+                    android:hint="@string/dose"
                     android:inputType="number"
                     android:maxLength="2"
                     android:text='@{nc223a.checked ? nc224.getText.toString : ""}' />
@@ -2263,7 +2235,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="1dp"
-                    android:hint="@string/iron"
+                    android:hint="@string/dose"
                     android:inputType="number"
                     android:maxLength="1"
                     android:text='@{nc225a.checked ? nc226.getText.toString : ""}' />

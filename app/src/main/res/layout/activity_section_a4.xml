@@ -31,7 +31,7 @@
                 android:layout_marginTop="2dp"
                 android:background="@color/colorPrimaryDark"
                 android:gravity="center"
-                android:text="@string/na4"
+                android:text="@string/na4heading"
                 android:textSize="40sp" />
 
             <View
@@ -109,7 +109,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/na40196" />
+                    android:text="@string/other" />
 
             </RadioGroup>
 
@@ -137,10 +137,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/piped_water"
+                android:background="@color/colorPrimaryAlpha"
+                android:text="Piped Water"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
+                android:textColor="@color/colorPrimaryDark" />
 
             <RadioGroup
                 android:id="@+id/na402"
@@ -273,7 +273,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/na40296" />
+                    android:text="@string/other" />
 
             </RadioGroup>
 
@@ -401,7 +401,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:text="@string/na40496" />
+                        android:text="@string/other" />
 
                 </RadioGroup>
 
@@ -435,11 +435,11 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/na40501"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/colorPrimaryAlpha"
+                    android:text="@string/na405info"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <RadioButton
                     android:id="@+id/na405a"
@@ -476,11 +476,11 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/na40502"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/colorPrimaryAlpha"
+                    android:text="@string/na405info1"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <RadioButton
                     android:id="@+id/na405e"
@@ -528,7 +528,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/na40596" />
+                    android:text="@string/other" />
 
             </RadioGroup>
 
@@ -609,6 +609,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:maxLength="2"
+                        android:inputType="number"
+                        android:digits="123456789"
                         android:hint="@string/na407"
                         android:text='@{na406a.checked ? na407.getText.toString : ""}' />
 
@@ -894,311 +897,311 @@
                 android:text="@string/na410"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
-            <!--4001-->
+            <!--a-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na41001"
+                android:text="@string/na410a"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
             <EditText
-                android:id="@+id/na41001"
+                android:id="@+id/na410a"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:hint="@string/na41001"
+                android:hint="@string/na410a"
                 android:inputType="number"
                 android:maxLength="2" />
 
-            <!--4002-->
+            <!--b-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na41002"
+                android:text="@string/na410b"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
             <EditText
-                android:id="@+id/na41002"
+                android:id="@+id/na410b"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:hint="@string/na41002"
+                android:hint="@string/na410b"
                 android:inputType="number"
                 android:maxLength="2" />
 
-            <!--4003-->
+            <!--c-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na41003"
+                android:text="@string/na410c"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
             <EditText
-                android:id="@+id/na41003"
+                android:id="@+id/na410c"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:hint="@string/na41003"
+                android:hint="@string/na410c"
                 android:inputType="number"
                 android:maxLength="2" />
 
-            <!--4004-->
+            <!--d-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na41004"
+                android:text="@string/na410d"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
             <EditText
-                android:id="@+id/na41004"
+                android:id="@+id/na410d"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:hint="@string/na41004"
+                android:hint="@string/na410d"
                 android:inputType="number"
                 android:maxLength="2" />
 
-            <!--4005-->
+            <!--e-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na41005"
+                android:text="@string/na410e"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
             <EditText
-                android:id="@+id/na41005"
+                android:id="@+id/na410e"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:hint="@string/na41005"
+                android:hint="@string/na410e"
                 android:inputType="number"
                 android:maxLength="2" />
 
-            <!--4006-->
+            <!-- f -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na41006"
+                android:text="@string/na410f"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
             <EditText
-                android:id="@+id/na41006"
+                android:id="@+id/na410f"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:hint="@string/na41006"
+                android:hint="@string/na410f"
                 android:inputType="number"
                 android:maxLength="2" />
 
-            <!--4007-->
+            <!-- g -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na41007"
+                android:text="@string/na410g"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
             <EditText
-                android:id="@+id/na41007"
+                android:id="@+id/na410g"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:hint="@string/na41007"
+                android:hint="@string/na410g"
                 android:inputType="number"
                 android:maxLength="2" />
 
-            <!--4008-->
+            <!-- h -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na41008"
+                android:text="@string/na410h"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
             <EditText
-                android:id="@+id/na41008"
+                android:id="@+id/na410h"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:hint="@string/na41008"
+                android:hint="@string/na410h"
                 android:inputType="number"
                 android:maxLength="2" />
 
-            <!--4009-->
+            <!-- i -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na41009"
+                android:text="@string/na410i"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
             <EditText
-                android:id="@+id/na41009"
+                android:id="@+id/na410i"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:hint="@string/na41009"
+                android:hint="@string/na410i"
                 android:inputType="number"
                 android:maxLength="2" />
 
-            <!--4010-->
+            <!--j-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na41010"
+                android:text="@string/na410j"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
             <EditText
-                android:id="@+id/na41010"
+                android:id="@+id/na410j"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:hint="@string/na41010"
+                android:hint="@string/na410j"
                 android:inputType="number"
                 android:maxLength="2" />
 
-            <!--4011-->
+            <!-- k -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na41011"
+                android:text="@string/na410k"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
             <EditText
-                android:id="@+id/na41011"
+                android:id="@+id/na410k"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:hint="@string/na41011"
+                android:hint="@string/na410k"
                 android:inputType="number"
                 android:maxLength="2" />
 
-            <!--4012-->
+            <!-- l -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na41012"
+                android:text="@string/na410l"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
             <EditText
-                android:id="@+id/na41012"
+                android:id="@+id/na410l"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:hint="@string/na41012"
+                android:hint="@string/na410l"
                 android:inputType="number"
                 android:maxLength="2" />
 
-            <!--4013-->
+            <!-- m -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na41013"
+                android:text="@string/na410m"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
             <EditText
-                android:id="@+id/na41013"
+                android:id="@+id/na410m"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:hint="@string/na41013"
+                android:hint="@string/na410m"
                 android:inputType="number"
                 android:maxLength="2" />
 
-            <!--4014-->
+            <!-- n -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na41014"
+                android:text="@string/na410n"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
             <EditText
-                android:id="@+id/na41014"
+                android:id="@+id/na410n"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:hint="@string/na41014"
+                android:hint="@string/na410n"
                 android:inputType="number"
                 android:maxLength="2" />
 
-            <!--4015-->
+            <!-- o -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na41015"
+                android:text="@string/na410o"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
             <EditText
-                android:id="@+id/na41015"
+                android:id="@+id/na410o"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:hint="@string/na41015"
+                android:hint="@string/na410o"
                 android:inputType="number"
                 android:maxLength="2" />
 
-            <!--4016-->
+            <!-- p -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na41016"
+                android:text="@string/na410p"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
             <EditText
-                android:id="@+id/na41016"
+                android:id="@+id/na410p"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:hint="@string/na41016"
+                android:hint="@string/na410p"
                 android:inputType="number"
                 android:maxLength="2" />
 
-            <!-- 11 -->
+            <!-- 411 -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1461,7 +1464,8 @@
                 android:background="@color/colorPrimary"
                 android:text="@string/na414"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
+                android:textColor="@color/white"
+                 />
 
             <RadioGroup
                 android:id="@+id/na414"
@@ -1472,10 +1476,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/na41401"
+                    android:background="@color/colorPrimaryAlpha"
+                    android:text="@string/na414info"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@color/colorPrimaryDark"
+                    />
 
                 <RadioButton
                     android:id="@+id/na414a"
@@ -1497,10 +1502,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/na41402"
+                    android:background="@color/colorPrimaryAlpha"
+                    android:text="@string/na414info1"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <RadioButton
                     android:id="@+id/na414c"
@@ -1522,10 +1527,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/na41403"
+                    android:background="@color/colorPrimaryAlpha"
+                    android:text="@string/na414info2"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <RadioButton
                     android:id="@+id/na414e"
@@ -1623,10 +1628,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/na41501"
+                    android:background="@color/colorPrimaryAlpha"
+                    android:text="@string/na415info"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <RadioButton
                     android:id="@+id/na415a"
@@ -1656,10 +1661,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/na41502"
+                    android:background="@color/colorPrimaryAlpha"
+                    android:text="@string/na415info1"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <RadioButton
                     android:id="@+id/na415d"
@@ -1697,10 +1702,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/na41503"
+                    android:background="@color/colorPrimaryAlpha"
+                    android:text="@string/na415info2"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <RadioButton
                     android:id="@+id/na415h"
@@ -2056,36 +2061,36 @@
                         android:id="@+id/na420a"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/na420a" />
+                        android:text="@string/na420acr" />
 
                     <EditText
-                        android:id="@+id/na420Acr"
+                        android:id="@+id/na420acr"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
                         android:digits="123456789"
-                        android:hint="@string/na420Acr"
+                        android:hint="@string/na420acr"
                         android:inputType="number"
                         android:maxLength="3"
-                        android:text='@{na420a.checked ? na420Acr.getText.toString : ""}'
+                        android:text='@{na420a.checked ? na420acr.getText.toString : ""}'
                         android:visibility="@{na420a.checked ? View.VISIBLE : View.GONE}" />
 
                     <RadioButton
                         android:id="@+id/na420b"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/na420b" />
+                        android:text="@string/na420can" />
 
                     <EditText
-                        android:id="@+id/na420Can"
+                        android:id="@+id/na420can"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
                         android:digits="123456789"
-                        android:hint="@string/na420Can"
+                        android:hint="@string/na420can"
                         android:inputType="number"
                         android:maxLength="3"
-                        android:text='@{na420b.checked ? na420Can.getText.toString : ""}'
+                        android:text='@{na420b.checked ? na420can.getText.toString : ""}'
                         android:visibility="@{na420b.checked ? View.VISIBLE : View.GONE}" />
 
                     <RadioButton
@@ -2150,145 +2155,154 @@
                     android:text="@string/na422"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
-                <!--42201-->
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorPrimary"
-                    android:text="@string/na42201"
+                    android:text="@string/na422info"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
-
-                <EditText
-                    android:id="@+id/na42201"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:hint="@string/na42201"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    android:text='@{na421a.checked ? na42201.getText.toString : ""}' />
-
-                <!--42202-->
+                <!--a-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorPrimary"
-                    android:text="@string/na42202"
+                    android:text="@string/na422a"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
 
                 <EditText
-                    android:id="@+id/na42202"
+                    android:id="@+id/na422a"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:hint="@string/na42202"
+                    android:hint="@string/na422a"
                     android:inputType="number"
-                    android:maxLength="2"
-                    android:text='@{na421a.checked ? na42202.getText.toString : ""}' />
+                    android:maxLength="3"
+                    android:text='@{na421a.checked ? na422a.getText.toString : ""}' />
 
-                <!--42203-->
+                <!--b-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorPrimary"
-                    android:text="@string/na42203"
+                    android:text="@string/na422b"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
 
                 <EditText
-                    android:id="@+id/na42203"
+                    android:id="@+id/na422b"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:hint="@string/na42203"
+                    android:hint="@string/na422b"
                     android:inputType="number"
-                    android:maxLength="2"
-                    android:text='@{na421a.checked ? na42203.getText.toString : ""}' />
+                    android:maxLength="3"
+                    android:text='@{na421a.checked ? na422b.getText.toString : ""}' />
 
-                <!--42204-->
+                <!-- c -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorPrimary"
-                    android:text="@string/na42204"
+                    android:text="@string/na422c"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
 
                 <EditText
-                    android:id="@+id/na42204"
+                    android:id="@+id/na422c"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:hint="@string/na42204"
+                    android:hint="@string/na422c"
                     android:inputType="number"
-                    android:maxLength="2"
-                    android:text='@{na421a.checked ? na42204.getText.toString : ""}' />
+                    android:maxLength="3"
+                    android:text='@{na421a.checked ? na422c.getText.toString : ""}' />
 
-                <!--42205-->
+                <!-- d -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorPrimary"
-                    android:text="@string/na42205"
+                    android:text="@string/na422d"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
 
                 <EditText
-                    android:id="@+id/na42205"
+                    android:id="@+id/na422d"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:hint="@string/na42205"
+                    android:hint="@string/na422d"
                     android:inputType="number"
-                    android:maxLength="2"
-                    android:text='@{na421a.checked ? na42205.getText.toString : ""}' />
+                    android:maxLength="3"
+                    android:text='@{na421a.checked ? na422d.getText.toString : ""}' />
 
-                <!--42206-->
+                <!-- e -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorPrimary"
-                    android:text="@string/na42206"
+                    android:text="@string/na422e"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
 
                 <EditText
-                    android:id="@+id/na42206"
+                    android:id="@+id/na422e"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:hint="@string/na42206"
+                    android:hint="@string/na422e"
                     android:inputType="number"
-                    android:maxLength="2"
-                    android:text='@{na421a.checked ? na42206.getText.toString : ""}' />
+                    android:maxLength="3"
+                    android:text='@{na421a.checked ? na422e.getText.toString : ""}' />
 
-                <!--42207-->
+                <!-- f -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorPrimary"
-                    android:text="@string/na42207"
+                    android:text="@string/na422f"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
 
                 <EditText
-                    android:id="@+id/na42207"
+                    android:id="@+id/na422f"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:hint="@string/na42207"
+                    android:hint="@string/na422f"
                     android:inputType="number"
-                    android:maxLength="2"
-                    android:text='@{na421a.checked ? na42207.getText.toString : ""}' />
+                    android:maxLength="3"
+                    android:text='@{na421a.checked ? na422f.getText.toString : ""}' />
+
+                <!--g-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/na422g"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@android:color/white" />
+
+                <EditText
+                    android:id="@+id/na422g"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:hint="@string/na422g"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:text='@{na421a.checked ? na422g.getText.toString : ""}' />
 
             </LinearLayout>
 

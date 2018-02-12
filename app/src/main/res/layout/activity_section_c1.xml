@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.SectionC1Activity">
 
@@ -67,6 +66,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
+
             <RadioGroup
                 android:id="@+id/nc103"
                 android:layout_width="match_parent"
@@ -79,17 +79,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:text="@string/nc103a" />
-
-                <EditText
-                    android:id="@+id/nc103m"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:hint="@string/month"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    android:text='@{nc103a.checked ? nc103m.getText.toString : ""}'
-                    android:visibility='@{nc103a.checked ? View.VISIBLE : View.GONE}' />
 
                 <RadioButton
                     android:id="@+id/nc103b"
@@ -105,21 +94,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/nc103c" />
-
-                <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
-                    android:id="@+id/nc103dt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="1dp"
-                    android:focusable="true"
-                    android:hint="@string/date"
-                    android:padding="15dp"
-                    android:text='@{nc103c.checked ? nc103dt.getText.toString : ""}'
-                    android:textColor="@android:color/black"
-                    android:visibility='@{nc103c.checked ? View.VISIBLE : View.GONE}'
-                    app:dateFormat="dd-MM-yyyy"
-                    app:minDate="01/01/1917" />
+                    android:text="@string/no" />
 
                 <RadioButton
                     android:id="@+id/nc103d"
@@ -127,7 +102,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/nc103d" />
+                    android:text="@string/dkn" />
 
             </RadioGroup>
 

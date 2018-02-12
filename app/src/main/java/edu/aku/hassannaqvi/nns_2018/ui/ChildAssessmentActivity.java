@@ -1,3 +1,4 @@
+/*
 package edu.aku.hassannaqvi.nns_2018.ui;
 
 import android.content.Intent;
@@ -37,7 +38,9 @@ public class ChildAssessmentActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sec_childassessment);
         binding.setCallback(this);
 
-        /*Lbl head*/
+        */
+/*Lbl head*//*
+
         if (getIntent().getBooleanExtra("childFlag", false)) {
             childCount = getIntent().getExtras().getInt("childRange");
         }
@@ -164,6 +167,7 @@ public class ChildAssessmentActivity extends AppCompatActivity {
             return false;
         }
 
+
         if (!validatorClass.EmptyRadioButton(this, binding.toicb08, binding.toicb07b, getString(R.string.toicb07))) {
             return false;
         }
@@ -175,4 +179,4 @@ public class ChildAssessmentActivity extends AppCompatActivity {
     public void onBackPressed() {
         Toast.makeText(getApplicationContext(), "You Can't go back", Toast.LENGTH_LONG).show();
     }
-}
+}*/
