@@ -98,8 +98,14 @@
 
             </RadioGroup>
 
-
             <!--04-->
+<LinearLayout
+    android:id="@+id/fldGrnc404"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -137,6 +143,7 @@
 
 
             <!--05-->
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -144,13 +151,14 @@
                 android:background="@color/colorPrimary"
                 android:text="@string/nc405"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:visibility='@{nc404a.checked ? View.VISIBLE : View.GONE}'/>
 
             <RadioGroup
                 android:id="@+id/nc405"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -365,7 +373,7 @@
                 android:id="@+id/fldGrpnc406"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <CheckBox
                     android:id="@+id/nc406a"
@@ -482,6 +490,7 @@
             </LinearLayout>
 
 
+</LinearLayout>
 
 
             <!--07-->
@@ -522,6 +531,11 @@
 
 
             <!--08-->
+        <LinearLayout
+            android:id="@+id/fldGrnc408"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -572,7 +586,7 @@
                 android:id="@+id/nc409"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <RadioButton
                     android:id="@+id/nc409a"
@@ -763,7 +777,7 @@
                 android:id="@+id/fldGrnc410check"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <CheckBox
                     android:id="@+id/nc410a"
@@ -857,7 +871,7 @@
                     android:visibility="gone" />
 
             </LinearLayout>
-
+        </LinearLayout>
 
             <!--11-->
             <TextView
@@ -897,6 +911,12 @@
 
 
             <!--12-->
+
+        <LinearLayout
+            android:id="@+id/fldGrnc412"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -947,7 +967,7 @@
                 android:id="@+id/nc413"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <RadioButton
                     android:id="@+id/nc413a"
@@ -1140,7 +1160,7 @@
                 android:id="@+id/fldGrnc414check"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <CheckBox
                     android:id="@+id/nc414a"
@@ -1241,7 +1261,7 @@
                     android:visibility="gone" />
 
             </LinearLayout>
-
+        </LinearLayout>
 
             <!--15-->
             <TextView
