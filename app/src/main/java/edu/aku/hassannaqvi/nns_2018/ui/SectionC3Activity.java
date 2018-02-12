@@ -10,6 +10,7 @@ import android.widget.Toast;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC3Binding;
+import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionC3Activity extends AppCompatActivity {
 
@@ -38,21 +39,19 @@ public class SectionC3Activity extends AppCompatActivity {
         binding.nc3m2dt.setManager(getSupportFragmentManager());
 
 //        Skip Patterns
-        binding.nc310.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        binding.nc312.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (i == R.id.nc310b) {
-                    binding.nc311.clearCheck();
-                    binding.nc312.clearCheck();
+                if (i == R.id.nc312b) {
                     binding.nc313.clearCheck();
                 }
             }
         });
 
-        binding.nc305.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        binding.nc304.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (i == R.id.nc305c) {
+                if (i == R.id.nc304d) {
                     binding.nc3bcg.clearCheck();
                     binding.nc3opv0.clearCheck();
                     binding.nc3opv1.clearCheck();
@@ -103,4 +102,9 @@ public class SectionC3Activity extends AppCompatActivity {
         MainApp.endActivity(this, this);
 
     }
-}
+    private boolean formValidation(){
+
+        return true;
+    }
+    }
+
