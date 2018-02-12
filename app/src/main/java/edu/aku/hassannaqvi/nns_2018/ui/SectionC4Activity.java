@@ -3,6 +3,8 @@ package edu.aku.hassannaqvi.nns_2018.ui;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import edu.aku.hassannaqvi.nns_2018.R;
@@ -26,6 +28,145 @@ public class SectionC4Activity extends AppCompatActivity {
 
         //        Assigning data to UI binding
         binding.setCallback(this);
+
+        setupViews();
+    }
+
+    private void setupViews() {
+        binding.nc403.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (binding.nc403a.isChecked()) {
+                    binding.fldGrnc404.setVisibility(View.VISIBLE);
+                } else {
+                    binding.fldGrnc404.setVisibility(View.GONE);
+                    binding.nc404.clearCheck();
+                    binding.nc405.clearCheck();
+
+                    binding.nc406a.setChecked(false);
+                    binding.nc406b.setChecked(false);
+                    binding.nc406c.setChecked(false);
+                    binding.nc406d.setChecked(false);
+                    binding.nc406e.setChecked(false);
+                    binding.nc406f.setChecked(false);
+                    binding.nc406g.setChecked(false);
+                    binding.nc406h.setChecked(false);
+                    binding.nc406i.setChecked(false);
+                    binding.nc406j.setChecked(false);
+                    binding.nc40696x.setText(null);
+
+                    binding.nc4059601.setText(null);
+                    binding.nc4059602.setText(null);
+                    binding.nc4059603.setText(null);
+                }
+            }
+        });
+        binding.nc404.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (binding.nc404a.isChecked()) {
+                    binding.nc405.setVisibility(View.VISIBLE);
+                } else {
+                    binding.nc405.setVisibility(View.GONE);
+                    binding.nc405.clearCheck();
+
+                    binding.nc4059601.setText(null);
+                    binding.nc4059602.setText(null);
+                    binding.nc4059603.setText(null);
+                }
+            }
+        });
+
+        binding.nc407.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (binding.nc407a.isChecked()) {
+                    binding.fldGrnc408.setVisibility(View.VISIBLE);
+                } else {
+                    binding.fldGrnc408.setVisibility(View.GONE);
+                    binding.nc408.clearCheck();
+                    binding.nc409.clearCheck();
+
+                    binding.nc4099601.setText(null);
+                    binding.nc4099602.setText(null);
+                    binding.nc4099603.setText(null);
+
+                    binding.nc410a.setChecked(false);
+                    binding.nc410b.setChecked(false);
+                    binding.nc410c.setChecked(false);
+                    binding.nc410d.setChecked(false);
+                    binding.nc410e.setChecked(false);
+                    binding.nc410f.setChecked(false);
+                    binding.nc410g.setChecked(false);
+                    binding.nc410h.setChecked(false);
+                    binding.nc410i.setChecked(false);
+                    binding.nc4109601x.setText(null);
+
+
+                }
+            }
+        });
+        binding.nc408.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (binding.nc408a.isChecked()) {
+                    binding.nc409.setVisibility(View.VISIBLE);
+                } else {
+                    binding.nc409.setVisibility(View.GONE);
+                    binding.nc409.clearCheck();
+
+                    binding.nc4099601.setText(null);
+                    binding.nc4099602.setText(null);
+                    binding.nc4099603.setText(null);
+                }
+            }
+        });
+
+        binding.nc411.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (binding.nc411a.isChecked()) {
+                    binding.fldGrnc412.setVisibility(View.VISIBLE);
+                } else {
+                    binding.fldGrnc412.setVisibility(View.GONE);
+                    binding.nc412.clearCheck();
+                    binding.nc413.clearCheck();
+
+                    binding.nc4139601.setText(null);
+                    binding.nc4139602.setText(null);
+                    binding.nc4139603.setText(null);
+
+                    binding.nc414a.setChecked(false);
+                    binding.nc414b.setChecked(false);
+                    binding.nc414c.setChecked(false);
+                    binding.nc414d.setChecked(false);
+                    binding.nc414e.setChecked(false);
+                    binding.nc414f.setChecked(false);
+                    binding.nc414g.setChecked(false);
+                    binding.nc414h.setChecked(false);
+                    binding.nc414i.setChecked(false);
+                    binding.nc4149601x.setText(null);
+
+
+                }
+            }
+        });
+        binding.nc412.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (binding.nc412a.isChecked()) {
+                    binding.nc413.setVisibility(View.VISIBLE);
+                } else {
+                    binding.nc413.setVisibility(View.GONE);
+                    binding.nc413.clearCheck();
+
+                    binding.nc4139601.setText(null);
+                    binding.nc4139602.setText(null);
+                    binding.nc4139603.setText(null);
+                }
+            }
+        });
+
     }
 
 
