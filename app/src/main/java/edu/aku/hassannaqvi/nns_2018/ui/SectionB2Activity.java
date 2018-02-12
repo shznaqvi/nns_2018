@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -12,6 +13,7 @@ import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB2Binding;
+import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionB2Activity extends Activity {
 
@@ -178,7 +180,7 @@ public class SectionB2Activity extends Activity {
     public void BtnContinue() {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
-        /*if (formValidation()) {
+        /*if (ValidateForm()) {
             try {
                 SaveDraft();
             } catch (JSONException e) {
@@ -202,5 +204,220 @@ public class SectionB2Activity extends Activity {
     public void BtnEnd() {
         MainApp.endActivity(this, this);
 
+    }
+
+    private boolean ValidateForm() {
+
+        Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nb201, bi.nb201a, getString(R.string.nb201))) {
+            return false;
+        }
+
+        if (bi.nb201a.isChecked()) {
+            if (!validatorClass.EmptyCheckBox(this, bi.fldGrpnb202check, bi.nb202a, getString(R.string.nb202))) {
+                return false;
+            }
+
+            if (!validatorClass.EmptyCheckBox(this, bi.fldGrpnb202check, bi.nb20296, bi.nb20296x, getString(R.string.nb202) + " - " + getString(R.string.other))) {
+                return false;
+            }
+
+            if (!bi.nb20398.isChecked()) {
+                if (!validatorClass.EmptyTextBox(this, bi.nb203w, getString(R.string.nb203) + " - " + getString(R.string.week))) {
+                    return false;
+                }
+
+                if (!validatorClass.EmptyTextBox(this, bi.nb203m, getString(R.string.nb203) + " - " + getString(R.string.months))) {
+                    return false;
+                }
+
+                if (bi.nb203w.getText().toString().equals("0") && bi.nb203m.getText().toString().equals("0")) {
+                    Toast.makeText(this, "ERROR(invalid): " + "All can not be zero" + getString(R.string.nb203), Toast.LENGTH_LONG).show();
+                    bi.nb203w.setError("All can not be zero");
+                    bi.nb203w.setError("All can not be zero");
+                    Log.i(SectionB2Activity.class.getSimpleName(), "nb203" + ": This data is Required!");
+                } else {
+                    bi.nb203w.setError(null);
+                    bi.nb203m.setError(null);
+
+                }
+
+            }
+
+            if (!bi.nb20498.isChecked()) {
+                if (!validatorClass.EmptyTextBox(this, bi.nb204, getString(R.string.nb204) + " - " + getString(R.string.times))) {
+                    return false;
+                }
+            }
+
+            if (!validatorClass.EmptyCheckBox(this, bi.fldGrpnb205check, bi.nb205a, getString(R.string.nb205))) {
+                return false;
+            }
+
+            if (!validatorClass.EmptyCheckBox(this, bi.fldGrpnb205check, bi.nb20596, bi.nb20596x, getString(R.string.nb205) + " - " + getString(R.string.other))) {
+                return false;
+            }
+
+        }
+
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nb206, bi.nb206a, getString(R.string.nb206))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nb207, bi.nb207a, getString(R.string.nb207))) {
+            return false;
+        }
+
+        if (bi.nb207a.isChecked()) {
+            if (!bi.nb20898.isChecked()) {
+                if (!validatorClass.EmptyTextBox(this, bi.nb208, getString(R.string.nb208) + " - " + getString(R.string.times))) {
+                    return false;
+                }
+            }
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nb209, bi.nb209a, getString(R.string.nb209))) {
+            return false;
+        }
+
+        if (bi.nb209a.isChecked()) {
+
+            if (!bi.nb21098a.isChecked() || !bi.nb21099a.isChecked()) {
+                if (!validatorClass.EmptyRadioButton(this, bi.nb21001, bi.nb21001a, getString(R.string.nb21001))) {
+                    return false;
+                }
+
+                if (!validatorClass.EmptyRadioButton(this, bi.nb21002, bi.nb21002a, getString(R.string.nb21002))) {
+                    return false;
+                }
+
+                if (!validatorClass.EmptyRadioButton(this, bi.nb21003, bi.nb21003a, getString(R.string.nb21003))) {
+                    return false;
+                }
+            }
+
+
+            if (!validatorClass.EmptyRadioButton(this, bi.nb211, bi.nb211a, getString(R.string.nb211))) {
+                return false;
+            }
+
+            if (!validatorClass.EmptyTextBox(this, bi.nb212m, getString(R.string.nb212) + " - " + getString(R.string.month))) {
+                return false;
+            }
+
+            if (!validatorClass.EmptyTextBox(this, bi.nb212d, getString(R.string.nb212) + " - " + getString(R.string.day))) {
+                return false;
+            }
+
+            if (!validatorClass.RangeTextBox(this, bi.nb212m, 0, 11, getString(R.string.nb212), " months")) {
+                return false;
+            }
+
+            if (!validatorClass.RangeTextBox(this, bi.nb212d, 0, 29, getString(R.string.nb212), " days")) {
+                return false;
+            }
+
+            if (bi.nb212m.getText().toString().equals("0") && bi.nb212d.getText().toString().equals("0")) {
+                Toast.makeText(this, "ERROR(invalid): " + "All can not be zero" + getString(R.string.nb212), Toast.LENGTH_LONG).show();
+                bi.nb212m.setError("All can not be zero");
+                bi.nb212d.setError("All can not be zero");
+                Log.i(SectionB2Activity.class.getSimpleName(), "nb212" + ": This data is Required!");
+            } else {
+                bi.nb212m.setError(null);
+                bi.nb212d.setError(null);
+
+            }
+
+        }
+
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nb213, bi.nb213a, getString(R.string.nb213))) {
+            return false;
+        }
+
+        if (bi.nb213a.isChecked()) {
+
+
+            if (!validatorClass.EmptyRadioButton(this, bi.nb214, bi.nb214a, getString(R.string.nb214))) {
+                return false;
+            }
+
+            if (!validatorClass.EmptyTextBox(this, bi.nb215m, getString(R.string.nb215) + " - " + getString(R.string.month))) {
+                return false;
+            }
+
+            if (!validatorClass.EmptyTextBox(this, bi.nb215d, getString(R.string.nb215) + " - " + getString(R.string.day))) {
+                return false;
+            }
+
+            if (!validatorClass.RangeTextBox(this, bi.nb215m, 0, 11, getString(R.string.nb215), " months")) {
+                return false;
+            }
+
+            if (!validatorClass.RangeTextBox(this, bi.nb215d, 0, 29, getString(R.string.nb215), " days")) {
+                return false;
+            }
+
+            if (bi.nb215m.getText().toString().equals("0") && bi.nb215d.getText().toString().equals("0")) {
+                Toast.makeText(this, "ERROR(invalid): " + "All can not be zero" + getString(R.string.nb215), Toast.LENGTH_LONG).show();
+                bi.nb215m.setError("All can not be zero");
+                bi.nb215d.setError("All can not be zero");
+                Log.i(SectionB2Activity.class.getSimpleName(), "nb215" + ": This data is Required!");
+            } else {
+                bi.nb215m.setError(null);
+                bi.nb215d.setError(null);
+
+            }
+
+        }
+
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nb216, bi.nb216a, getString(R.string.nb216))) {
+            return false;
+        }
+
+        if (bi.nb216a.isChecked()) {
+
+
+            if (!validatorClass.EmptyRadioButton(this, bi.nb217, bi.nb217a, getString(R.string.nb217))) {
+                return false;
+            }
+
+            if (!validatorClass.EmptyTextBox(this, bi.nb218m, getString(R.string.nb218) + " - " + getString(R.string.month))) {
+                return false;
+            }
+
+            if (!validatorClass.EmptyTextBox(this, bi.nb218d, getString(R.string.nb218) + " - " + getString(R.string.day))) {
+                return false;
+            }
+
+            if (!validatorClass.RangeTextBox(this, bi.nb218m, 0, 11, getString(R.string.nb218), " months")) {
+                return false;
+            }
+
+            if (!validatorClass.RangeTextBox(this, bi.nb218d, 0, 29, getString(R.string.nb218), " days")) {
+                return false;
+            }
+
+            if (bi.nb218m.getText().toString().equals("0") && bi.nb218d.getText().toString().equals("0")) {
+                Toast.makeText(this, "ERROR(invalid): " + "All can not be zero" + getString(R.string.nb218), Toast.LENGTH_LONG).show();
+                bi.nb218m.setError("All can not be zero");
+                bi.nb218d.setError("All can not be zero");
+                Log.i(SectionB2Activity.class.getSimpleName(), "nb218" + ": This data is Required!");
+            } else {
+                bi.nb218m.setError(null);
+                bi.nb218d.setError(null);
+
+            }
+
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nb219, bi.nb219a, getString(R.string.nb219))) {
+            return false;
+        }
+
+        return validatorClass.EmptyRadioButton(this, bi.nb220, bi.nb220a, getString(R.string.nb220));
     }
 }

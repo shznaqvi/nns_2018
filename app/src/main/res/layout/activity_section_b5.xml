@@ -86,79 +86,87 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
 
-                <CheckBox
-                    android:id="@+id/nb502a"
-                    style="@style/radiobutton"
+                <LinearLayout
+                    android:id="@+id/fldGrpnb502check"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb502a" />
+                    android:orientation="vertical">
 
-                <CheckBox
-                    android:id="@+id/nb502b"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb502b" />
+                    <CheckBox
+                        android:id="@+id/nb502a"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb502a" />
 
-                <CheckBox
-                    android:id="@+id/nb502c"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb502c" />
+                    <CheckBox
+                        android:id="@+id/nb502b"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb502b" />
 
-                <CheckBox
-                    android:id="@+id/nb502d"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb502d" />
+                    <CheckBox
+                        android:id="@+id/nb502c"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb502c" />
 
-                <CheckBox
-                    android:id="@+id/nb502e"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb502e" />
+                    <CheckBox
+                        android:id="@+id/nb502d"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb502d" />
 
-                <CheckBox
-                    android:id="@+id/nb502f"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb502f" />
+                    <CheckBox
+                        android:id="@+id/nb502e"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb502e" />
 
-                <CheckBox
-                    android:id="@+id/nb502g"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb502g" />
+                    <CheckBox
+                        android:id="@+id/nb502f"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb502f" />
 
-                <CheckBox
-                    android:id="@+id/nb50296"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/other" />
+                    <CheckBox
+                        android:id="@+id/nb502g"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb502g" />
 
-                <EditText
-                    android:id="@+id/nb50296x"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789"
-                    android:hint="@string/other"
-                    android:text='@{nb50296.checked ? nb50296x.getText.toString : ""}'
-                    android:visibility='@{nb50296.checked ? View.VISIBLE : View.GONE}' />
+                    <CheckBox
+                        android:id="@+id/nb50296"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/other" />
+
+                    <EditText
+                        android:id="@+id/nb50296x"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789"
+                        android:hint="@string/other"
+                        android:text='@{nb50296.checked ? nb50296x.getText.toString : ""}'
+                        android:visibility='@{nb50296.checked ? View.VISIBLE : View.GONE}' />
+
+                </LinearLayout>
 
                 <!--nb503-->
                 <TextView
@@ -293,87 +301,95 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
 
-                <CheckBox
-                    android:id="@+id/nb505a"
-                    style="@style/radiobutton"
+                <LinearLayout
+                    android:id="@+id/fldGrpnb505check"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb505a" />
+                    android:orientation="vertical">
 
-                <CheckBox
-                    android:id="@+id/nb505b"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb505b" />
+                    <CheckBox
+                        android:id="@+id/nb505a"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb505a" />
 
-                <CheckBox
-                    android:id="@+id/nb505c"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb505c" />
+                    <CheckBox
+                        android:id="@+id/nb505b"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb505b" />
 
-                <CheckBox
-                    android:id="@+id/nb505d"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb505d" />
+                    <CheckBox
+                        android:id="@+id/nb505c"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb505c" />
 
-                <CheckBox
-                    android:id="@+id/nb505e"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb505e" />
+                    <CheckBox
+                        android:id="@+id/nb505d"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb505d" />
 
-                <CheckBox
-                    android:id="@+id/nb505f"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb505f" />
+                    <CheckBox
+                        android:id="@+id/nb505e"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb505e" />
 
-                <CheckBox
-                    android:id="@+id/nb505g"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb505g" />
+                    <CheckBox
+                        android:id="@+id/nb505f"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb505f" />
 
-                <CheckBox
-                    android:id="@+id/nb505h"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb505h" />
+                    <CheckBox
+                        android:id="@+id/nb505g"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb505g" />
 
-                <CheckBox
-                    android:id="@+id/nb50596"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/other" />
+                    <CheckBox
+                        android:id="@+id/nb505h"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb505h" />
 
-                <EditText
-                    android:id="@+id/nb50596x"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789"
-                    android:hint="@string/other"
-                    android:text='@{nb50596.checked ? nb50596x.getText.toString : ""}'
-                    android:visibility='@{nb50596.checked ? View.VISIBLE : View.GONE}' />
+                    <CheckBox
+                        android:id="@+id/nb50596"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/other" />
+
+                    <EditText
+                        android:id="@+id/nb50596x"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789"
+                        android:hint="@string/other"
+                        android:text='@{nb50596.checked ? nb50596x.getText.toString : ""}'
+                        android:visibility='@{nb50596.checked ? View.VISIBLE : View.GONE}' />
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -426,79 +442,87 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
 
-                <CheckBox
-                    android:id="@+id/nb507a"
-                    style="@style/radiobutton"
+                <LinearLayout
+                    android:id="@+id/fldGrpnb507check"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb507a" />
+                    android:orientation="vertical">
 
-                <CheckBox
-                    android:id="@+id/nb507b"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb507b" />
+                    <CheckBox
+                        android:id="@+id/nb507a"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb507a" />
 
-                <CheckBox
-                    android:id="@+id/nb507c"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb507c" />
+                    <CheckBox
+                        android:id="@+id/nb507b"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb507b" />
 
-                <CheckBox
-                    android:id="@+id/nb507d"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb507d" />
+                    <CheckBox
+                        android:id="@+id/nb507c"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb507c" />
 
-                <CheckBox
-                    android:id="@+id/nb507e"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb507e" />
+                    <CheckBox
+                        android:id="@+id/nb507d"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb507d" />
 
-                <CheckBox
-                    android:id="@+id/nb507f"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb507f" />
+                    <CheckBox
+                        android:id="@+id/nb507e"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb507e" />
 
-                <CheckBox
-                    android:id="@+id/nb507g"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb507g" />
+                    <CheckBox
+                        android:id="@+id/nb507f"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb507f" />
 
-                <CheckBox
-                    android:id="@+id/nb50796"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/other" />
+                    <CheckBox
+                        android:id="@+id/nb507g"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb507g" />
 
-                <EditText
-                    android:id="@+id/nb50796x"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789"
-                    android:hint="@string/other"
-                    android:text='@{nb50796.checked ? nb50796x.getText.toString : ""}'
-                    android:visibility='@{nb50796.checked ? View.VISIBLE : View.GONE}' />
+                    <CheckBox
+                        android:id="@+id/nb50796"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/other" />
+
+                    <EditText
+                        android:id="@+id/nb50796x"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789"
+                        android:hint="@string/other"
+                        android:text='@{nb50796.checked ? nb50796x.getText.toString : ""}'
+                        android:visibility='@{nb50796.checked ? View.VISIBLE : View.GONE}' />
+
+                </LinearLayout>
 
                 <!--nb508-->
                 <TextView
@@ -639,63 +663,71 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
 
-                <CheckBox
-                    android:id="@+id/nb510a"
-                    style="@style/radiobutton"
+                <LinearLayout
+                    android:id="@+id/fldGrpnb510check"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb510a" />
+                    android:orientation="vertical">
 
-                <CheckBox
-                    android:id="@+id/nb510b"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb510b" />
+                    <CheckBox
+                        android:id="@+id/nb510a"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb510a" />
 
-                <CheckBox
-                    android:id="@+id/nb510c"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb510c" />
+                    <CheckBox
+                        android:id="@+id/nb510b"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb510b" />
 
-                <CheckBox
-                    android:id="@+id/nb510d"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb510d" />
+                    <CheckBox
+                        android:id="@+id/nb510c"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb510c" />
 
-                <CheckBox
-                    android:id="@+id/nb510e"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb510e" />
+                    <CheckBox
+                        android:id="@+id/nb510d"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb510d" />
 
-                <CheckBox
-                    android:id="@+id/nb51096"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/other" />
+                    <CheckBox
+                        android:id="@+id/nb510e"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb510e" />
 
-                <EditText
-                    android:id="@+id/nb51096x"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789"
-                    android:hint="@string/other"
-                    android:text='@{nb51096.checked ? nb51096x.getText.toString : ""}'
-                    android:visibility='@{nb51096.checked ? View.VISIBLE : View.GONE}' />
+                    <CheckBox
+                        android:id="@+id/nb51096"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/other" />
+
+                    <EditText
+                        android:id="@+id/nb51096x"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789"
+                        android:hint="@string/other"
+                        android:text='@{nb51096.checked ? nb51096x.getText.toString : ""}'
+                        android:visibility='@{nb51096.checked ? View.VISIBLE : View.GONE}' />
+
+                </LinearLayout>
 
             </LinearLayout>
 
