@@ -69,7 +69,6 @@
         <activity android:name=".ui.SectionA1Activity" />
         <activity android:name=".ui.SectionA3Activity" />
         <activity android:name=".ui.SectionA4Activity" />
-        <activity android:name=".ui.SectionA6Activity" />
         <activity android:name=".ui.SectionB1Activity" />
         <activity android:name=".ui.SectionA8AActivity" />
         <activity android:name=".ui.SectionB1AActivity" />
@@ -78,6 +77,11 @@
         <activity android:name=".ui.SectionA8AActivity" />
         <activity android:name=".ui.SectionB3Activity" />
         <activity android:name=".ui.SectionB5Activity" />
+        <activity android:name=".ui.SectionC2Activity"></activity>
+        <activity android:name=".ui.SectionB5Activity" />
+        <activity android:name=".ui.SectionC1Activity" />
+        <activity android:name=".ui.SectionB6Activity" />
+        <activity android:name=".ui.SectionC5Activity" />
         <activity android:name=".ui.SectionC4Activity"></activity>
     </application>
 
