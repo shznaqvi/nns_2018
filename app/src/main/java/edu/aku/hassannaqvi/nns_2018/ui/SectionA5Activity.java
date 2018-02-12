@@ -8,6 +8,9 @@ import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -231,6 +234,182 @@ public class SectionA5Activity extends AppCompatActivity {
         MainApp.endActivity(this, this);
 
     }
+
+
+    private void SaveDraft() throws JSONException {
+        Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
+
+        JSONObject sA5 = new JSONObject();
+
+        sA5.put("na501", binding.na501a.isChecked() ? "1"
+                : binding.na501b.isChecked() ? "2"
+                : binding.na501c.isChecked() ? "3"
+                : binding.na501d.isChecked() ? "4"
+                : "0");
+
+        sA5.put("na502", binding.na502a.isChecked() ? "1"
+                : binding.na502b.isChecked() ? "2"
+                : "0");
+
+        sA5.put("na503a", binding.na503a.isChecked() ? "1" : "0");
+        sA5.put("na503b", binding.na503b.isChecked() ? "2" : "0");
+        sA5.put("na503c", binding.na503c.isChecked() ? "3" : "0");
+        sA5.put("na503d", binding.na503d.isChecked() ? "4" : "0");
+        sA5.put("na503e", binding.na503e.isChecked() ? "5" : "0");
+
+        sA5.put("na504", binding.na504a.isChecked() ? "1"
+                : binding.na504b.isChecked() ? "2"
+                : "0");
+
+        sA5.put("na505a", binding.na505a.isChecked() ? "1" : "0");
+        sA5.put("na505b", binding.na505b.isChecked() ? "2" : "0");
+        sA5.put("na505c", binding.na505c.isChecked() ? "3" : "0");
+        sA5.put("na505d", binding.na505d.isChecked() ? "4" : "0");
+        sA5.put("na505e", binding.na505e.isChecked() ? "5" : "0");
+
+
+        sA5.put("na50601", binding.na50601a.isChecked() ? "1"
+                : binding.na50601b.isChecked() ? "2"
+                : "0");
+
+
+        sA5.put("na50602", binding.na50602a.isChecked() ? "1"
+                : binding.na50602b.isChecked() ? "2"
+                : "0");
+
+        sA5.put("na50603", binding.na50603a.isChecked() ? "1"
+                : binding.na50603b.isChecked() ? "2"
+                : "0");
+
+        sA5.put("na50604", binding.na50604a.isChecked() ? "1"
+                : binding.na50604b.isChecked() ? "2"
+                : "0");
+
+        sA5.put("na50605", binding.na50605a.isChecked() ? "1"
+                : binding.na50605b.isChecked() ? "2"
+                : "0");
+
+        sA5.put("na50696", binding.na50696a.isChecked() ? "1"
+                : binding.na50696b.isChecked() ? "2"
+                : "0");
+
+        sA5.put("na50696x", binding.na50696x.getText().toString());
+
+        // Section A6
+
+
+        sA5.put("na601", binding.na601a.isChecked() ? "1"
+                : binding.na601b.isChecked() ? "2"
+                : binding.na601c.isChecked() ? "3"
+                : binding.na601d.isChecked() ? "4"
+                : binding.na60196.isChecked() ? "96"
+                : "0");
+
+        sA5.put("na60196x", binding.na60196x.getText().toString());
+
+        sA5.put("na602", binding.na602a.isChecked() ? "1"
+                : binding.na602b.isChecked() ? "2"
+                : binding.na602c.isChecked() ? "3"
+                : "0");
+
+        sA5.put("na603", binding.na603a.isChecked() ? "1"
+                : binding.na603b.isChecked() ? "2"
+                : binding.na603c.isChecked() ? "3"
+                : binding.na603d.isChecked() ? "4"
+                : "0");
+
+        //Section A7
+
+        sA5.put("na701", binding.na701a.isChecked() ? "1"
+                : binding.na701b.isChecked() ? "2"
+                : binding.na70198.isChecked() ? "98"
+                : binding.na70199.isChecked() ? "99"
+                : "0");
+
+        sA5.put("na702", binding.na702a.isChecked() ? "1"
+                : binding.na702b.isChecked() ? "2"
+                : binding.na70298.isChecked() ? "98"
+                : binding.na70299.isChecked() ? "99"
+                : "0");
+
+        sA5.put("na703", binding.na703a.isChecked() ? "1"
+                : binding.na703b.isChecked() ? "2"
+                : binding.na70398.isChecked() ? "98"
+                : binding.na70399.isChecked() ? "99"
+                : "0");
+
+        sA5.put("na704", binding.na704a.isChecked() ? "1"
+                : binding.na704b.isChecked() ? "2"
+                : binding.na70498.isChecked() ? "98"
+                : binding.na70499.isChecked() ? "99"
+                : "0");
+
+        sA5.put("na705", binding.na705a.isChecked() ? "1"
+                : binding.na705b.isChecked() ? "2"
+                : binding.na70598.isChecked() ? "98"
+                : binding.na70599.isChecked() ? "99"
+                : "0");
+
+        sA5.put("na706", binding.na706a.isChecked() ? "1"
+                : binding.na706b.isChecked() ? "2"
+                : binding.na70698.isChecked() ? "98"
+                : binding.na70699.isChecked() ? "99"
+                : "0");
+
+        sA5.put("na707", binding.na707a.isChecked() ? "1"
+                : binding.na707b.isChecked() ? "2"
+                : binding.na70798.isChecked() ? "98"
+                : binding.na70799.isChecked() ? "99"
+                : "0");
+
+        sA5.put("na708", binding.na708a.isChecked() ? "1"
+                : binding.na708b.isChecked() ? "2"
+                : binding.na70898.isChecked() ? "98"
+                : binding.na70899.isChecked() ? "99"
+                : "0");
+
+        sA5.put("na709", binding.na709a.isChecked() ? "1"
+                : binding.na709b.isChecked() ? "2"
+                : binding.na70998.isChecked() ? "98"
+                : binding.na70999.isChecked() ? "99"
+                : "0");
+
+        // Section A8
+
+        sA5.put("na801", binding.na801a.isChecked() ? "1"
+                : binding.na801b.isChecked() ? "2"
+                : "0");
+
+        sA5.put("na802", binding.na802.getText().toString());
+
+
+        //MainApp.cc.setsB(String.valueOf(sB));
+
+
+        Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
+
+    }
+
+    private boolean UpdateDB() {
+
+        //Long rowId;
+        DatabaseHelper db = new DatabaseHelper(this);
+
+        /*int updcount = db.updateF03();
+
+        if (updcount == 1) {
+            Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+            return true;
+        } else {
+            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+*/
+
+        return true;
+
+    }
+
 
 
 }

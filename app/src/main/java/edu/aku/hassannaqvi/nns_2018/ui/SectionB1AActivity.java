@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -199,4 +202,67 @@ public class SectionB1AActivity extends AppCompatActivity {
         return true;
     }
 
+
+    private void SaveDraft() throws JSONException {
+        Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
+
+        JSONObject sB1a = new JSONObject();
+
+        sB1a.put("nb1a01", bi.nb1a01.getText().toString());
+
+        sB1a.put("nb1a02", bi.nb1a02a.isChecked() ? "1"
+                : bi.nb1a02b.isChecked() ? "2"
+                : bi.nb1a02c.isChecked() ? "3"
+                : bi.nb1a02d.isChecked() ? "4"
+                : bi.nb1a02e.isChecked() ? "5"
+                : bi.nb1a02f.isChecked() ? "6"
+                : "0");
+
+        sB1a.put("nb1a03", "1");
+
+        sB1a.put("nb1a04", bi.nb1a04a.isChecked() ? "1"
+                : bi.nb1a04b.isChecked() ? "2"
+                : "0");
+
+        sB1a.put("nb1a05y", bi.nb1a05y.getText().toString());
+        sB1a.put("nb1a05m", bi.nb1a05m.getText().toString());
+        sB1a.put("nb1a05d", bi.nb1a05d.getText().toString());
+
+        sB1a.put("nb1a06y", bi.nb1a06y.getText().toString());
+        sB1a.put("nb1a06m", bi.nb1a06m.getText().toString());
+        sB1a.put("nb1a06d", bi.nb1a06d.getText().toString());
+
+        //MainApp.cc.setsB(String.valueOf(sB));
+
+
+        Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
+
+    }
+
+    private boolean UpdateDB() {
+
+        //Long rowId;
+        DatabaseHelper db = new DatabaseHelper(this);
+
+        /*Long updcount = db.addChildForm(MainApp.cc);
+        MainApp.cc.set_ID(String.valueOf(updcount));
+
+        if (updcount != 0) {
+            Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+
+            MainApp.cc.setUID(
+                    (MainApp.cc.getDeviceID() + MainApp.cc.get_ID()));
+            db.updateFormChildID();
+
+            return true;
+        } else {
+            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            return false;
+        }*/
+
+        return true;
+
+    }
+
 }
+

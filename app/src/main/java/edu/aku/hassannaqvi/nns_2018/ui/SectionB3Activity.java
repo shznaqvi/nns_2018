@@ -7,6 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -132,4 +135,82 @@ public class SectionB3Activity extends AppCompatActivity {
 
         return true;
     }
+
+
+    private void SaveDraft() throws JSONException {
+        Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
+
+        JSONObject sB3 = new JSONObject();
+
+        sB3.put("nb301", binding.nb301a.isChecked() ? "1"
+                : binding.nb301b.isChecked() ? "2"
+                : binding.nb30198.isChecked() ? "98"
+                : "0");
+        sB3.put("nb301m", binding.nb301m.getText().toString());
+        sB3.put("nb301d", binding.nb301d.getText().toString());
+
+        sB3.put("nb302", binding.nb302a.isChecked() ? "1"
+                : binding.nb302b.isChecked() ? "2"
+                : binding.nb302c.isChecked() ? "3"
+                : binding.nb302d.isChecked() ? "4"
+                : binding.nb302e.isChecked() ? "5"
+                : binding.nb30296.isChecked() ? "96"
+                : "0");
+
+        sB3.put("nb30296x", binding.nb30296x.getText().toString());
+
+        sB3.put("nb303", binding.nb303a.isChecked() ? "1"
+                : binding.nb303b.isChecked() ? "2"
+                : binding.nb303c.isChecked() ? "3"
+                : binding.nb303d.isChecked() ? "4"
+                : binding.nb303e.isChecked() ? "5"
+                : binding.nb303f.isChecked() ? "6"
+                : binding.nb303g.isChecked() ? "7"
+                : binding.nb303h.isChecked() ? "8"
+                : "0");
+
+        sB3.put("nb304", binding.nb304a.isChecked() ? "1"
+                : binding.nb304b.isChecked() ? "2"
+                : binding.nb304c.isChecked() ? "3"
+                : binding.nb304d.isChecked() ? "4"
+                : "0");
+
+        sB3.put("nb305", binding.nb305a.isChecked() ? "1"
+                : binding.nb305b.isChecked() ? "2"
+                : "0");
+
+        sB3.put("nb306", binding.nb306a.isChecked() ? "1"
+                : binding.nb306b.isChecked() ? "2"
+                : binding.nb306c.isChecked() ? "3"
+                : binding.nb306d.isChecked() ? "4"
+                : "0");
+
+        //MainApp.cc.setsB(String.valueOf(sB));
+
+
+        Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
+
+    }
+
+    private boolean UpdateDB() {
+
+        //Long rowId;
+        DatabaseHelper db = new DatabaseHelper(this);
+
+        /*int updcount = db.updateF03();
+
+        if (updcount == 1) {
+            Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+            return true;
+        } else {
+            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+*/
+
+        return true;
+
+    }
+
 }
+
