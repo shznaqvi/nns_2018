@@ -76,7 +76,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
-                    android:layout_weight="30"
+                    android:layout_weight="20"
                     android:orientation="vertical">
 
                     <TextView
@@ -168,7 +168,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
-                    android:layout_weight="30"
+                    android:layout_weight="20"
                     android:orientation="vertical">
 
                     <TextView
@@ -536,8 +536,7 @@
                 android:id="@+id/fldGrpna2age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="gone">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -563,7 +562,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:digits="0123456789"
                     android:hint="@string/month"
                     android:inputType="number"
                     android:maxLength="2"
@@ -912,8 +910,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:digits="0123456789"
                 android:hint="@string/na213"
+                android:inputType="number"
                 android:maxLength="11" />
 
             <!--  = = = = =  END OF FORM FIELDS  = = = = = -->
@@ -925,14 +923,14 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btn_AddMore"
+                    android:id="@+id/btn_Continue"
                     style="@style/buttons"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@color/red"
-                    android:onClick="@{() -> callback.BtnAddMore()}"
-                    android:text="@string/end_interview"
+                    android:background="#1ed61e"
+                    android:onClick="@{() -> callback.BtnContinue()}"
+                    android:text="@string/nextSection"
                     android:textColor="@color/white" />
 
                 <Button
@@ -947,14 +945,14 @@
                     android:textColor="@color/white" />
 
                 <Button
-                    android:id="@+id/btn_Continue"
+                    android:id="@+id/btn_AddMore"
                     style="@style/buttons"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="#1ed61e"
-                    android:onClick="@{() -> callback.BtnContinue()}"
-                    android:text="@string/nextSection"
+                    android:background="@color/colorPrimary"
+                    android:onClick="@{() -> callback.BtnAddMore()}"
+                    android:text="@string/addMember"
                     android:textColor="@color/white" />
 
             </LinearLayout>

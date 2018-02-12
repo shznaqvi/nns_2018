@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
@@ -13,8 +14,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import edu.aku.hassannaqvi.nns_2018.R;
@@ -30,6 +33,8 @@ public class SectionA2Activity extends AppCompatActivity {
     ActivitySectionA2Binding binding;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     Map<Integer, Map<Integer, Integer>> mem;
+    List<String> mothersList, fathersList;
+    Map<String, FamilyMembersContract> mothersMap, fathersMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +73,6 @@ public class SectionA2Activity extends AppCompatActivity {
         binding.na2dob.setManager(getSupportFragmentManager());
 
 //        Setting Counts
-
         mem = MainApp.membersCount.getMembers();
 
         // Total
@@ -80,6 +84,36 @@ public class SectionA2Activity extends AppCompatActivity {
         // Children < 5
         binding.na2u5b.setText(mem.get(3).get(1).toString());
         binding.na2u5g.setText(mem.get(3).get(2).toString());
+
+        binding.na2mw.setText(String.valueOf(MainApp.membersCount.getMwra()));
+
+//        Setting Dropdowns
+        mothersList = new ArrayList<>();
+        mothersMap = new HashMap<>();
+
+        mothersList.add("....");
+        mothersList.add("N/A");
+        mothersMap.put("N/A", new FamilyMembersContract());
+
+        fathersList = new ArrayList<>();
+        fathersMap = new HashMap<>();
+
+        fathersList.add("....");
+        fathersList.add("N/A");
+        fathersMap.put("N/A", new FamilyMembersContract());
+
+        for (FamilyMembersContract mem : MainApp.members_f_m) {
+            if (mem.getGender().equals("1")) {
+                fathersList.add(mem.getName() + "_" + mem.getSerialNo());
+                fathersMap.put(mem.getName() + "_" + mem.getSerialNo(), mem);
+            } else {
+                mothersList.add(mem.getName() + "_" + mem.getSerialNo());
+                mothersMap.put(mem.getName() + "_" + mem.getSerialNo(), mem);
+            }
+        }
+
+        binding.na204.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, mothersList));
+        binding.na205.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, fathersList));
 
     }
 
@@ -274,10 +308,13 @@ public class SectionA2Activity extends AppCompatActivity {
         //Total
         if (binding.na206a.isChecked()) {
             memType.put(1, Integer.valueOf(binding.na2tm.getText().toString()) + 1);
+            memType.put(2, Integer.valueOf(binding.na2tf.getText().toString()));
         } else {
             memType.put(2, Integer.valueOf(binding.na2tf.getText().toString()) + 1);
+            memType.put(1, Integer.valueOf(binding.na2tm.getText().toString()));
         }
-        mem.put(1, memType);
+
+        MainApp.membersCount.setMembers(1, memType);
 
         //MWRA
         if ((Age >= 15 && Age <= 49) && binding.na206b.isChecked() && !binding.na2mse.isChecked()) {
@@ -290,19 +327,23 @@ public class SectionA2Activity extends AppCompatActivity {
         else if ((Age >= 10 && Age <= 19) && binding.na2mse.isChecked()) {
             if (binding.na206a.isChecked()) {
                 memType.put(1, Integer.valueOf(binding.na2adm.getText().toString()) + 1);
+                memType.put(2, Integer.valueOf(binding.na2adf.getText().toString()));
             } else {
                 memType.put(2, Integer.valueOf(binding.na2adf.getText().toString()) + 1);
+                memType.put(1, Integer.valueOf(binding.na2adm.getText().toString()));
             }
-            mem.put(2, memType);
+            MainApp.membersCount.setMembers(2, memType);
         }
         //Children < 5
         else if (Age < 5) {
             if (binding.na206a.isChecked()) {
                 memType.put(1, Integer.valueOf(binding.na2u5b.getText().toString()) + 1);
+                memType.put(2, Integer.valueOf(binding.na2u5g.getText().toString()));
             } else {
                 memType.put(2, Integer.valueOf(binding.na2u5g.getText().toString()) + 1);
+                memType.put(1, Integer.valueOf(binding.na2u5b.getText().toString()));
             }
-            mem.put(3, memType);
+            MainApp.membersCount.setMembers(3, memType);
 
             // Add data in list
             if (Age < 5 && Age > 2) {
@@ -316,8 +357,6 @@ public class SectionA2Activity extends AppCompatActivity {
             // Add data in list
             MainApp.members_f_m.add(MainApp.fmc);
         }
-
-        MainApp.membersCount.setMembers(mem);
 
         /*End*/
 

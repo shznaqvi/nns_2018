@@ -27,6 +27,10 @@ public class MembersCount {
         this.members = members;
     }
 
+    public void setMembers(int type, Map<Integer, Integer> members) {
+        this.members.put(type, members);
+    }
+
     public int getCount() {
         return members.get(1).get(1) + members.get(1).get(2);
     }

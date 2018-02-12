@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
@@ -29,6 +31,20 @@ public class SectionA1Activity extends AppCompatActivity {
 
 //        Members Initialization
         MainApp.membersCount = new MembersCount();
+
+        //Setting members in map
+        Map<Integer, Map<Integer, Integer>> mem = new HashMap<>();
+        Map<Integer, Integer> memType = new HashMap<>();
+        memType.put(1, 0);
+        memType.put(2, 0);
+
+        mem.put(1, memType);
+        mem.put(2, memType);
+        mem.put(3, memType);
+
+        MainApp.membersCount.setMembers(mem);
+        MainApp.membersCount.setMwra(0);
+
         MainApp.members_f_m = new ArrayList<>();
         MainApp.childUnder2 = new ArrayList<>();
         MainApp.childUnder5 = new ArrayList<>();
@@ -91,6 +107,7 @@ public class SectionA1Activity extends AppCompatActivity {
         if (!validatorClass.EmptyTextBox(this, binding.na102, getString(R.string.na102))) {
             return false;
         }
+/*
 
 //        na101a
         if (!validatorClass.EmptySpinner(this, binding.na101a, "Province")) {
@@ -108,6 +125,7 @@ public class SectionA1Activity extends AppCompatActivity {
         if (!validatorClass.EmptySpinner(this, binding.na101d, "City/Village")) {
             return false;
         }
+*/
 
 //        na103
         if (!validatorClass.EmptyTextBox(this, binding.na103, getString(R.string.na103))) {
