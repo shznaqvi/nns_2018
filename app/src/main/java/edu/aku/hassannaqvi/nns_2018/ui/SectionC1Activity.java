@@ -10,6 +10,7 @@ import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC1Binding;
+import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionC1Activity extends AppCompatActivity {
 
@@ -53,5 +54,25 @@ public class SectionC1Activity extends AppCompatActivity {
     public void BtnEnd() {
 
         MainApp.endActivity(this, this);
+    }
+
+    private boolean formValidation(){
+        Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
+
+//        nc101
+        if (!validatorClass.EmptyTextBox(this, binding.nc101, getString(R.string.nc101))) {
+            return false;
+        }
+//        nc103
+        if (!validatorClass.EmptyRadioButton(this, binding.nc103,binding.nc103d, getString(R.string.nc103))) {
+            return false;
+        }
+//        nc104
+        if (!validatorClass.EmptyRadioButton(this, binding.nc104,binding.nc10498, getString(R.string.nc104))) {
+            return false;
+        }
+
+
+        return true;
     }
 }

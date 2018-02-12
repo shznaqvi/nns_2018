@@ -430,8 +430,8 @@
                 android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                 android:hint="@string/other"
                 android:inputType="text"
-                android:text='@{nb6019603.checked ? nb6019603x.getText.toString : ""}'
-                android:visibility="@{nb6019603.checked ? View.VISIBLE : View.GONE}" />
+                android:text='@{nb6019603a.checked ? nb6019603x.getText.toString : ""}'
+                android:visibility="@{nb6019603a.checked ? View.VISIBLE : View.GONE}" />
 
 
             <!--  = = = = =  END OF FORM FIELDS  = = = = = -->

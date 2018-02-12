@@ -889,11 +889,12 @@
     <string name="nc4059603"> دیگر وضاحت کریں </string>
     <string name="nc406"> (نام)کو اسہال(دست) کی بیماری کے علاج کے لئے کون کونسی دواء دی گئی </string>
     <string name="nc406a"> نمکول (او آر ایس) </string>
-    <string name="nc406b"> گولیاں یا شربت اینٹی بائیوٹک </string>
+    <string name="nc406b">  اینٹی بائیوٹک </string>
     <string name="nc406c"> دست روکنے والی ادویات </string>
     <string name="nc406d"> زنگ </string>
+  <string name="nc406sub1">گولیاں یا شربت</string>
     <string name="nc406e"> گولیاں/شربت </string>
-    <string name="nc406sub1"> انجکشن </string>
+    <string name="nc406sub2"> انجکشن </string>
     <string name="nc406f"> اینٹی بائیوٹک </string>
     <string name="nc406g"> اینٹی بائیوٹک کے علاوہ </string>
     <string name="nc406h"> نامعلوم انجکش </string>

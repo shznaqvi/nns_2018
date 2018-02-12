@@ -320,13 +320,13 @@
                         android:textColor="@color/colorPrimaryDark" />
 
                     <RadioGroup
-                        android:id="@+id/nc3penta1"
+                        android:id="@+id/nc3p1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <RadioButton
-                            android:id="@+id/nc3penta1a"
+                            android:id="@+id/nc3p1a"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginBottom="1dp"
@@ -334,7 +334,7 @@
                             android:text="@string/yes" />
 
                         <RadioButton
-                            android:id="@+id/nc3penta1b"
+                            android:id="@+id/nc3p1b"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginBottom="1dp"
@@ -344,16 +344,16 @@
                     </RadioGroup>
 
                     <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
-                        android:id="@+id/nc3penta1dt"
+                        android:id="@+id/nc3p1dt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="1dp"
                         android:focusable="true"
                         android:hint="@string/nc3p1dt"
                         android:padding="15dp"
-                        android:text='@{nc3penta1a.checked ? nc3penta1dt.getText.toString : ""}'
+                        android:text='@{nc3p1a.checked ? nc3p1dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
-                        android:visibility='@{nc3penta1a.checked ? View.VISIBLE : View.GONE}'
+                        android:visibility='@{nc3p1a.checked ? View.VISIBLE : View.GONE}'
                         app:dateFormat="dd-MM-yyyy" />
 
                     <!-- PCV - 1 -->
@@ -904,6 +904,7 @@
                 android:textColor="@android:color/white" />
 
             <RadioGroup
+                android:id="@+id/nc306"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -937,6 +938,7 @@
                 android:textColor="@android:color/white" />
 
             <RadioGroup
+                android:id="@+id/nc307"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -978,6 +980,7 @@
                 android:textColor="@android:color/white" />
 
             <RadioGroup
+                android:id="@+id/nc308"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -1200,47 +1203,6 @@
                 </RadioGroup>
             </LinearLayout>
 
-            <!--&lt;!&ndash; 13 &ndash;&gt;-->
-            <!--<TextView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="16dp"-->
-                <!--android:background="@color/colorPrimary"-->
-                <!--android:text="@string/nc313"-->
-                <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
-                <!--android:textColor="@android:color/white" />-->
-
-            <!--<RadioGroup-->
-                <!--android:id="@+id/nc313"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:orientation="horizontal">-->
-
-                <!--<RadioButton-->
-                    <!--android:id="@+id/nc313a"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginBottom="1dp"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:text="@string/yes" />-->
-
-                <!--<RadioButton-->
-                    <!--android:id="@+id/nc313b"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginBottom="1dp"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:text="@string/no" />-->
-
-                <!--<RadioButton-->
-                    <!--android:id="@+id/nc313c"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginBottom="1dp"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:text="@string/dkn" />-->
-
-            <!--</RadioGroup>-->
 
             <!-- 14 -->
             <TextView
@@ -1342,6 +1304,13 @@
                         android:layout_marginBottom="1dp"
                         android:layout_weight="1"
                         android:text="@string/no" />
+                    <RadioButton
+                        android:id="@+id/nc31698"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:text="@string/dkn" />
 
                 </RadioGroup>
 
