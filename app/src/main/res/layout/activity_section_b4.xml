@@ -647,13 +647,12 @@
 
             </RadioGroup>
 
-
-
             <LinearLayout
-                android:id="@+id/fldGrpnb411check"
+                android:id="@+id/fldGrpnb411"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -663,70 +662,77 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
 
-                <CheckBox
-                    android:id="@+id/nb411a"
+                <LinearLayout
+                    android:id="@+id/fldGrpnb411check"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb411a" />
+                    android:orientation="vertical">
 
-                <CheckBox
-                    android:id="@+id/nb411b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb411b" />
+                    <CheckBox
+                        android:id="@+id/nb411a"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb411a" />
 
-                <CheckBox
-                    android:id="@+id/nb411c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb411c" />
+                    <CheckBox
+                        android:id="@+id/nb411b"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb411b" />
 
-                <CheckBox
-                    android:id="@+id/nb411d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb411d" />
+                    <CheckBox
+                        android:id="@+id/nb411c"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb411c" />
 
-                <CheckBox
-                    android:id="@+id/nb411e"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/nb411e" />
+                    <CheckBox
+                        android:id="@+id/nb411d"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb411d" />
 
-
-                <CheckBox
-                    android:id="@+id/nb41198"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/dkn" />
+                    <CheckBox
+                        android:id="@+id/nb411e"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nb411e" />
 
 
-                <CheckBox
-                    android:id="@+id/nb41196"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/other" />
+                    <CheckBox
+                        android:id="@+id/nb41198"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/dkn" />
 
 
-                <EditText
-                    android:id="@+id/nb41196x"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
-                    android:hint="@string/other"
-                    android:text='@{nb41196.checked ? nb41196x.getText.toString : ""}'
-                    android:visibility='@{nb41196.checked ? View.VISIBLE : View.GONE}' />
+                    <CheckBox
+                        android:id="@+id/nb41196"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/other" />
+
+
+                    <EditText
+                        android:id="@+id/nb41196x"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
+                        android:hint="@string/other"
+                        android:text='@{nb41196.checked ? nb41196x.getText.toString : ""}'
+                        android:visibility='@{nb41196.checked ? View.VISIBLE : View.GONE}' />
+
+                </LinearLayout>
 
             </LinearLayout>
-
 
             <!--  = = = = =  END OF FORM FIELDS  = = = = = -->
             <LinearLayout
