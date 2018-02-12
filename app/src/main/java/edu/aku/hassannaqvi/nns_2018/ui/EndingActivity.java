@@ -12,7 +12,6 @@ import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivityEndingBinding;
-import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class EndingActivity extends AppCompatActivity {
 
@@ -104,9 +103,9 @@ public class EndingActivity extends AppCompatActivity {
     private boolean formValidation() {
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
-        if (!validatorClass.EmptyRadioButton(this, binding.istatus, binding.istatusb, getString(R.string.istatus))) {
+        /*if (!validatorClass.EmptyRadioButton(this, binding.istatus, binding.istatusb, getString(R.string.istatus))) {
             return false;
-        }
+        }*/
 
         /*if (istatus88.isChecked()) {
 

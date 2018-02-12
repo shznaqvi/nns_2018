@@ -6,9 +6,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
+import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA1Binding;
+import edu.aku.hassannaqvi.nns_2018.other.MembersCount;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionA1Activity extends AppCompatActivity {
@@ -23,6 +27,14 @@ public class SectionA1Activity extends AppCompatActivity {
         db = new DatabaseHelper(this);
         binding.setCallback(this);
 
+//        Members Initialization
+        MainApp.membersCount = new MembersCount();
+        MainApp.members_f_m = new ArrayList<>();
+        MainApp.childUnder2 = new ArrayList<>();
+        MainApp.childUnder5 = new ArrayList<>();
+        MainApp.childUnder5 = new ArrayList<>();
+        MainApp.mwra = new ArrayList<>();
+        MainApp.serial_no = 1;
     }
 
     public void BtnContinue() {

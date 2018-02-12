@@ -40,11 +40,184 @@
                 android:layout_height="2dp"
                 android:background="@color/colorPrimary" />
 
-            <!--<TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/na202" />
--->
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_weight="20"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/colorPrimary"
+                        android:text="@string/na2mw"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:id="@+id/na2mw"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_weight="2" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_weight="30"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/colorPrimary"
+                        android:text="@string/na2ad"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@android:color/white" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/na2adm"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="2dp"
+                                android:layout_weight="50" />
+
+                            <TextView
+                                android:id="@+id/na2adf"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="50" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_weight="30"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/colorPrimary"
+                        android:text="@string/na2u5"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@android:color/white" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/na2u5g"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="2dp"
+                                android:layout_weight="50" />
+
+                            <TextView
+                                android:id="@+id/na2u5b"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="50" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_weight="30"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/colorPrimary"
+                        android:text="@string/na2t"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@android:color/white" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:orientation="horizontal">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/na2tm"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="2dp"
+                                android:layout_weight="50" />
+
+                            <TextView
+                                android:id="@+id/na2tf"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="50" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/na202Info" />
+
             <!--02-->
             <TextView
                 android:layout_width="match_parent"
@@ -363,7 +536,8 @@
                 android:id="@+id/fldGrpna2age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -390,7 +564,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:digits="0123456789"
-                    android:hint="@string/year"
+                    android:hint="@string/month"
                     android:inputType="number"
                     android:maxLength="2"
                     android:visibility="visible" />
@@ -401,7 +575,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:digits="0123456789"
-                    android:hint="@string/year"
+                    android:hint="@string/day"
                     android:inputType="number"
                     android:maxLength="2"
                     android:visibility="visible" />
@@ -742,166 +916,6 @@
                 android:hint="@string/na213"
                 android:maxLength="11" />
 
-            <!--14-->
-
-            <!--<LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_weight="1"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/na2mw"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
-
-                <EditText
-                    android:id="@+id/na2mw"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:layout_weight="2"
-                    android:digits="0123456789"
-                    android:hint="@string/times"
-                    android:maxLength="2" />
-
-            </LinearLayout>
-
-
-            &lt;!&ndash;15&ndash;&gt;
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/na2ad"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-                <EditText
-                    android:id="@+id/na2adm"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:digits="0123456789"
-                    android:hint="@string/na2adm"
-                    android:maxLength="2" />
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorPrimaryDark" />
-
-                <EditText
-                    android:id="@+id/na2adf"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:digits="0123456789"
-                    android:hint="@string/na2adf"
-                    android:maxLength="2" />
-
-            </LinearLayout>
-            &lt;!&ndash;16&ndash;&gt;
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/na2u5"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-                <EditText
-                    android:id="@+id/na2u5g"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:digits="0123456789"
-                    android:hint="@string/na2u5g"
-                    android:maxLength="2" />
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorPrimaryDark" />
-
-                <EditText
-                    android:id="@+id/na2u5b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:digits="0123456789"
-                    android:hint="@string/na2u5b"
-                    android:maxLength="2" />
-
-            </LinearLayout>
-
-
-            &lt;!&ndash;17&ndash;&gt;
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/na2t"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-                <EditText
-                    android:id="@+id/na2tm"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:digits="0123456789"
-                    android:hint="@string/na2tm"
-                    android:maxLength="2" />
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorPrimaryDark" />
-
-                <EditText
-                    android:id="@+id/na2tf"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:digits="0123456789"
-                    android:hint="@string/na2tf"
-                    android:maxLength="2" />
-
-            </LinearLayout>
--->
-
             <!--  = = = = =  END OF FORM FIELDS  = = = = = -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -909,6 +923,17 @@
                 android:layout_gravity="end"
                 android:layout_marginTop="80dp"
                 android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_AddMore"
+                    style="@style/buttons"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/red"
+                    android:onClick="@{() -> callback.BtnAddMore()}"
+                    android:text="@string/end_interview"
+                    android:textColor="@color/white" />
 
                 <Button
                     android:id="@+id/btn_End"

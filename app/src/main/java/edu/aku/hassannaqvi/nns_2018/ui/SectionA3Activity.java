@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Toast;
 
 import edu.aku.hassannaqvi.nns_2018.R;
@@ -29,6 +30,10 @@ public class SectionA3Activity extends AppCompatActivity {
 
         //setupViews();
 
+        Log.d("Mem", String.valueOf(MainApp.members_f_m));
+        Log.d("Mem", String.valueOf(MainApp.childUnder2));
+        Log.d("Mem", String.valueOf(MainApp.childUnder5));
+        Log.d("Mem", String.valueOf(MainApp.mwra));
 
     }
 
@@ -98,7 +103,6 @@ public class SectionA3Activity extends AppCompatActivity {
 
         return validatorClass.EmptyRadioButton(this, bi.na3o, bi.na3oa, getString(R.string.na3o));
     }
-
 
 
 }

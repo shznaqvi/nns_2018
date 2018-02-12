@@ -18,10 +18,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract;
+import edu.aku.hassannaqvi.nns_2018.other.MembersCount;
 import edu.aku.hassannaqvi.nns_2018.ui.EndingActivity;
 
 /**
@@ -58,18 +61,23 @@ public class MainApp extends Application {
 
     private static final long DAYS_IN_2_YEAR = 365 * 2;
     public static final long MILLISECONDS_IN_2Years = MILLIS_IN_SECOND * SECONDS_IN_MINUTE * MINUTES_IN_HOUR * HOURS_IN_DAY * DAYS_IN_2_YEAR;
-    //public static final long MILLISECONDS_IN_100_YEAR = MILLISECONDS_IN_YEAR * 100;
     public static String deviceId;
 
     public static Boolean admin = false;
     public static FormsContract fc;
     public static ChildContract cc;
     public static SerialContract sc;
+    public static MembersCount membersCount;
     public static String userName = "0000";
     public static int versionCode;
-    public static int totalChild = 0;
     public static String versionName;
-    public static Integer areaCode;
+    //    Ali
+    public static FamilyMembersContract fmc;
+    public static List<FamilyMembersContract> members_f_m;
+    public static List<FamilyMembersContract> childUnder2;
+    public static List<FamilyMembersContract> childUnder5;
+    public static List<FamilyMembersContract> mwra;
+    public static int serial_no;
     protected static LocationManager locationManager;
 
     public static int monthsBetweenDates(Date startDate, Date endDate) {
@@ -142,6 +150,11 @@ public class MainApp extends Application {
                 });
         AlertDialog alert = alertDialogBuilder.create();
         alert.show();
+    }
+
+    public static String getTagName(Context mContext) {
+        SharedPreferences sharedPref = mContext.getSharedPreferences("tagName", MODE_PRIVATE);
+        return sharedPref.getString("tagName", null);
     }
 
     public static void finishActivity(final Context context, final Activity activity) {
@@ -217,6 +230,15 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
         return calendar;
+    }
+
+    public static long ageInYearByDOB(String dateStr) {
+        Calendar cal = getCalendarDate(dateStr);
+        Date dob = cal.getTime();
+        Date today = new Date();
+        Long diff = today.getTime() - dob.getTime();
+        long ageInYears = (diff / (24 * 60 * 60 * 1000)) / 365;
+        return ageInYears;
     }
 
     @Override
