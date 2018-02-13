@@ -304,7 +304,7 @@ public class SectionA2Activity extends AppCompatActivity {
         MainApp.fmc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
         MainApp.fmc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
-//        MainApp.fmc.set_UUID(MainApp.fc.getUID());
+        MainApp.fmc.set_UUID(MainApp.fc.getUID());
 
         MainApp.serial_no++;
 

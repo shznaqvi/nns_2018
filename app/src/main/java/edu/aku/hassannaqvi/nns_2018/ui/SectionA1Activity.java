@@ -1,16 +1,27 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.text.format.DateFormat;
+import android.util.Log;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA1Binding;
@@ -19,7 +30,9 @@ import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionA1Activity extends AppCompatActivity {
 
+    private static final String TAG = SectionA1Activity.class.getName();
     ActivitySectionA1Binding binding;
+    String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     DatabaseHelper db;
 
     @Override
@@ -57,7 +70,7 @@ public class SectionA1Activity extends AppCompatActivity {
     public void BtnContinue() {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
-        /*if (formValidation()) {
+        if (formValidation()) {
             try {
                 SaveDraft();
             } catch (JSONException e) {
@@ -68,12 +81,12 @@ public class SectionA1Activity extends AppCompatActivity {
 
                 finish();
 
-                startActivity(new Intent(this, ChildAssessmentActivity.class));
+                startActivity(new Intent(this, SectionA2Activity.class));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
-        }*/
+        }
 
         startActivity(new Intent(this, SectionA2Activity.class));
     }
@@ -81,7 +94,7 @@ public class SectionA1Activity extends AppCompatActivity {
     public void BtnEnd() {
 
         Toast.makeText(this, "Processing End Section", Toast.LENGTH_SHORT).show();
-        /*if (formValidation()) {
+        if (formValidation()) {
             try {
                 SaveDraft();
             } catch (JSONException e) {
@@ -92,12 +105,12 @@ public class SectionA1Activity extends AppCompatActivity {
 
                 finish();
 
-                startActivity(new Intent(this, ChildAssessmentActivity.class));
+                startActivity(new Intent(this, EndingActivity.class));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
-        }*/
+        }
     }
 
     public boolean formValidation() {
@@ -182,6 +195,77 @@ public class SectionA1Activity extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    private void SaveDraft() throws JSONException {
+        Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
+
+        MainApp.fc = new FormsContract();
+
+        MainApp.fc.setDevicetagID(MainApp.getTagName(this));
+        MainApp.fc.setFormDate(dtToday);
+        MainApp.fc.setUser(MainApp.userName);
+        MainApp.fc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
+                Settings.Secure.ANDROID_ID));
+        MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
+
+        setGPS(); // Set GPS
+
+        JSONObject sA1 = new JSONObject();
+
+        MainApp.fc.setsA1(String.valueOf(sA1));
+
+
+    }
+
+    public void setGPS() {
+        SharedPreferences GPSPref = getSharedPreferences("GPSCoordinates", Context.MODE_PRIVATE);
+        try {
+            String lat = GPSPref.getString("Latitude", "0");
+            String lang = GPSPref.getString("Longitude", "0");
+            String acc = GPSPref.getString("Accuracy", "0");
+
+            if (lat == "0" && lang == "0") {
+                Toast.makeText(this, "Could not obtained GPS points", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "GPS set", Toast.LENGTH_SHORT).show();
+            }
+
+            String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
+
+            MainApp.fc.setGpsLat(lat);
+            MainApp.fc.setGpsLng(lang);
+            MainApp.fc.setGpsAcc(acc);
+            MainApp.fc.setGpsDT(date); // Timestamp is converted to date above
+
+            Toast.makeText(this, "GPS set", Toast.LENGTH_SHORT).show();
+
+        } catch (Exception e) {
+            Log.e(TAG, "setGPS: " + e.getMessage());
+        }
+
+    }
+
+
+    private boolean UpdateDB() {
+
+        DatabaseHelper db = new DatabaseHelper(this);
+
+        long updcount = db.addForm(MainApp.fc);
+
+        MainApp.fc.set_ID(String.valueOf(updcount));
+
+        if (updcount != 0) {
+            Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+
+            MainApp.fc.setUID(
+                    (MainApp.fc.getDeviceID() + MainApp.fc.get_ID()));
+            db.updateFormID();
+            return true;
+        } else {
+            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
     }
 
     public void BtnCheckHH() {

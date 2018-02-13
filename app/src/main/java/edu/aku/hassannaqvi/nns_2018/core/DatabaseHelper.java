@@ -63,7 +63,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsTable.COLUMN_FORMDATE + " TEXT," +
             FormsTable.COLUMN_USER + " TEXT," +
             //FormsChildTable.COLUMN_FORMTYPE + " TEXT," +
-            FormsTable.COLUMN_SA + " TEXT," +
+            FormsTable.COLUMN_SA1 + " TEXT," +
             FormsTable.COLUMN_SB + " TEXT," +
             FormsTable.COLUMN_SC + " TEXT," +
             FormsTable.COLUMN_SD + " TEXT," +
@@ -519,7 +519,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //values.put(FormsChildTable.COLUMN_FORMTYPE, fc.getFormtype());
         values.put(FormsTable.COLUMN_ISTATUS, fc.getIstatus());
         values.put(FormsTable.COLUMN_ISTATUS88x, fc.getIstatus88x());
-        values.put(FormsTable.COLUMN_SA, fc.getsA());
+        values.put(FormsTable.COLUMN_SA1, fc.getsA1());
         values.put(FormsTable.COLUMN_SB, fc.getsB());
         values.put(FormsTable.COLUMN_SC, fc.getsC());
         values.put(FormsTable.COLUMN_SD, fc.getsD());
@@ -933,7 +933,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_USER,
                 FormsTable.COLUMN_ISTATUS,
                 //FormsTable.COLUMN_FORMTYPE,
-                FormsTable.COLUMN_SA,
+                FormsTable.COLUMN_SA1,
                 FormsTable.COLUMN_SB,
                 FormsTable.COLUMN_SC,
                 FormsTable.COLUMN_SD,
@@ -1428,7 +1428,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 // New value for one column
         ContentValues values = new ContentValues();
-        values.put(FormsTable.COLUMN_SA, MainApp.fc.getsA());
+        values.put(FormsTable.COLUMN_SA1, MainApp.fc.getsA1());
 
 // Which row to update, based on the ID
         String selection = FormsTable._ID + " = ?";

@@ -23,7 +23,7 @@ public class FormsContract {
     private String istatus = ""; // Interview Status
     private String istatus88x = ""; // Interview Status
 
-    private String sA = "";     // Info Section
+    private String sA1 = "";     // Info Section
     private String sB = ""; // sB
     private String sC = ""; //
     private String sD = "";
@@ -51,7 +51,7 @@ public class FormsContract {
         this.istatus = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
         this.istatus88x = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
         //this.formtype = jsonObject.getString(FormsChildTable.COLUMN_FORMTYPE);
-        this.sA = jsonObject.getString(FormsTable.COLUMN_SA);
+        this.sA1 = jsonObject.getString(FormsTable.COLUMN_SA1);
         this.sB = jsonObject.getString(FormsTable.COLUMN_SB);
         this.sC = jsonObject.getString(FormsTable.COLUMN_SC);
         this.sD = jsonObject.getString(FormsTable.COLUMN_SD);
@@ -77,7 +77,7 @@ public class FormsContract {
         this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
         this.istatus88x = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
         //this.formtype = cursor.getString(cursor.getColumnIndex(FormsChildTable.COLUMN_FORMTYPE));
-        this.sA = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA));
+        this.sA1 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA1));
         this.sB = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SB));
         this.sC = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SC));
         this.sD = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SD));
@@ -110,9 +110,9 @@ public class FormsContract {
         json.put(FormsTable.COLUMN_ISTATUS88x, this.istatus88x == null ? JSONObject.NULL : this.istatus88x);
         //json.put(FormsChildTable.COLUMN_FORMTYPE, this.formtype == null ? JSONObject.NULL : this.formtype);
 
-        if (!this.sA.equals("")) {
+        if (!this.sA1.equals("")) {
 
-            json.put(FormsTable.COLUMN_SA, this.sA.equals("") ? JSONObject.NULL : new JSONObject(this.sA));
+            json.put(FormsTable.COLUMN_SA1, this.sA1.equals("") ? JSONObject.NULL : new JSONObject(this.sA1));
         }
         /*if (!this.sB.equals("")) {
 
@@ -194,12 +194,12 @@ public class FormsContract {
     }
 
 
-    public String getsA() {
-        return sA;
+    public String getsA1() {
+        return sA1;
     }
 
-    public void setsA(String sA) {
-        this.sA = sA;
+    public void setsA1(String sA1) {
+        this.sA1 = sA1;
     }
 
 
@@ -320,7 +320,7 @@ public class FormsContract {
         public static final String COLUMN_ISTATUS = "istatus";
         public static final String COLUMN_ISTATUS88x = "istatus88x";
         //public static final String COLUMN_FORMTYPE = "formtype";
-        public static final String COLUMN_SA = "sa";
+        public static final String COLUMN_SA1 = "sa1";
         public static final String COLUMN_SB = "sb";
         public static final String COLUMN_SC = "sc";
         public static final String COLUMN_SD = "sd";
