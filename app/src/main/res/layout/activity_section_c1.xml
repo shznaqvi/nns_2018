@@ -97,7 +97,7 @@
                     android:text="@string/no" />
 
                 <RadioButton
-                    android:id="@+id/nc103d"
+                    android:id="@+id/nc10398"
                     style="@style/radiobutton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

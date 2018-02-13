@@ -10,7 +10,11 @@ import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC2Binding;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
@@ -553,6 +557,371 @@ public class SectionC2Activity extends Activity {
 
 
         return true;
+    }
+
+
+    private void SaveDraft() throws JSONException {
+        Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
+
+        JSONObject sC2 = new JSONObject();
+
+//        nc204
+        sC2.put("nc204", bi.nc204a.isChecked() ? "1"
+                : bi.nc204b.isChecked() ? "2"
+                : bi.nc20498.isChecked() ? "98"
+                : "0");
+
+//      nc205
+        sC2.put("nc205", bi.nc205a.isChecked() ? "1"
+                : bi.nc205b.isChecked() ? "2"
+                : bi.nc20598.isChecked() ? "98"
+                : "0");
+
+//      nc206
+        sC2.put("nc206", bi.nc206a.isChecked() ? "1"
+                : bi.nc206b.isChecked() ? "2"
+                : bi.nc20698.isChecked() ? "98"
+                : "0");
+
+
+//      nc207
+        sC2.put("nc207", bi.nc207a.isChecked() ? "1"
+                : bi.nc207b.isChecked() ? "2"
+                : bi.nc20798.isChecked() ? "98"
+                : "0");
+
+//      nc208
+        sC2.put("nc208", bi.nc208a.isChecked() ? "1"
+                : bi.nc208b.isChecked() ? "2"
+                : bi.nc208c.isChecked() ? "3"
+                : bi.nc208d.isChecked() ? "4"
+                : bi.nc208e.isChecked() ? "5"
+                : "0");
+
+//      nc209
+        sC2.put("nc209", bi.nc209a.isChecked() ? "1"
+                : bi.nc209b.isChecked() ? "2"
+                : bi.nc20998.isChecked() ? "98"
+                : "0");
+
+//      nc210
+        sC2.put("nc210", bi.nc210a.isChecked() ? "1"
+                : bi.nc210b.isChecked() ? "2"
+                : bi.nc210c.isChecked() ? "3"
+                : bi.nc21096.isChecked() ? "96"
+                : "0");
+
+//      nc211
+        sC2.put("nc211", bi.nc211a.isChecked() ? "1"
+                : bi.nc211b.isChecked() ? "2"
+                : "0");
+
+//      nc212
+        sC2.put("nc212a", bi.nc212a.isChecked() ? "1" : "0");
+        sC2.put("nc212b", bi.nc212b.isChecked() ? "2" : "0");
+        sC2.put("nc212c", bi.nc212c.isChecked() ? "3" : "0");
+        sC2.put("nc212d", bi.nc212d.isChecked() ? "4" : "0");
+        sC2.put("nc212e", bi.nc212e.isChecked() ? "5" : "0");
+        sC2.put("nc212f", bi.nc212f.isChecked() ? "6" : "0");
+        sC2.put("nc212g", bi.nc212g.isChecked() ? "7" : "0");
+        sC2.put("nc212h", bi.nc212h.isChecked() ? "8" : "0");
+        sC2.put("nc212i", bi.nc212i.isChecked() ? "9" : "0");
+        sC2.put("nc212j", bi.nc212j.isChecked() ? "10" : "0");
+        sC2.put("nc21296", bi.nc21296.isChecked() ? "96" : "0");
+        sC2.put("nc21299", bi.nc21299.isChecked() ? "99" : "0");
+
+
+        sC2.put("nc21296x", bi.nc21296x.getText().toString());
+
+
+//      nc213
+        sC2.put("nc213", bi.nc213a.isChecked() ? "1"
+                : bi.nc213b.isChecked() ? "2"
+                : bi.nc21398.isChecked() ? "98"
+                : "0");
+
+
+//      nc214
+        sC2.put("nc214", bi.nc214a.isChecked() ? "1"
+                : bi.nc214b.isChecked() ? "2"
+                : bi.nc21498.isChecked() ? "98"
+                : "0");
+
+//      nc215a
+        sC2.put("nc215a", bi.nc215aa.isChecked() ? "1"
+                : bi.nc215ab.isChecked() ? "2"
+                : bi.nc215a98.isChecked() ? "98"
+                : "0");
+
+//      nc215b
+        sC2.put("nc215b", bi.nc215ba.isChecked() ? "1"
+                : bi.nc215bb.isChecked() ? "2"
+                : bi.nc215b98.isChecked() ? "98"
+                : "0");
+//        nc215b1
+        sC2.put("nc215b1", bi.nc215b1.getText().toString());
+
+//        nc215b198
+
+        sC2.put("nc215b198", bi.nc215b198.isChecked() ? "1" : "0");
+
+//      nc215c
+        sC2.put("nc215c", bi.nc215ca.isChecked() ? "1"
+                : bi.nc215cb.isChecked() ? "2"
+                : bi.nc215c98.isChecked() ? "98"
+                : "0");
+
+//        nc215c1
+        sC2.put("nc215c1", bi.nc215c1.getText().toString());
+
+//        nc215c198
+        sC2.put("nc215c198", bi.nc215c198.isChecked() ? "1" : "0");
+
+
+//      nc215d
+        sC2.put("nc215d", bi.nc215da.isChecked() ? "1"
+                : bi.nc215db.isChecked() ? "2"
+                : bi.nc215d98.isChecked() ? "98"
+                : "0");
+
+//      nc215e
+        sC2.put("nc215e", bi.nc215ea.isChecked() ? "1"
+                : bi.nc215eb.isChecked() ? "2"
+                : bi.nc215e98.isChecked() ? "98"
+                : "0");
+
+        //      nc215f
+        sC2.put("nc215f", bi.nc215fa.isChecked() ? "1"
+                : bi.nc215fb.isChecked() ? "2"
+                : bi.nc215f98.isChecked() ? "98"
+                : "0");
+//        nc215f1
+        sC2.put("nc215f1", bi.nc215f1.getText().toString());
+
+//        nc215f198
+
+        sC2.put("nc215f198", bi.nc215f198.isChecked() ? "1" : "0");
+
+
+//      nc215g
+        sC2.put("nc215g", bi.nc215ga.isChecked() ? "1"
+                : bi.nc215gb.isChecked() ? "2"
+                : bi.nc215g98.isChecked() ? "98"
+                : "0");
+
+//      nc215h
+        sC2.put("nc215h", bi.nc215ha.isChecked() ? "1"
+                : bi.nc215hb.isChecked() ? "2"
+                : bi.nc215h98.isChecked() ? "98"
+                : "0");
+
+ //      nc215i
+        sC2.put("nc215i", bi.nc215ia.isChecked() ? "1"
+                : bi.nc215ib.isChecked() ? "2"
+                : bi.nc215i98.isChecked() ? "98"
+                : "0");
+
+        sC2.put("nc215i96x", bi.nc215i96x.getText().toString());
+
+
+//        nc216a
+        sC2.put("nc216a", bi.nc216aa.isChecked() ? "1"
+                : bi.nc216ab.isChecked() ? "2"
+                : bi.nc216a98.isChecked() ? "98"
+                : "0");
+//        nc216a1
+        sC2.put("nc216a1", bi.nc216a1.getText().toString());
+
+//        nc216a198
+
+        sC2.put("nc216a198", bi.nc216a198.isChecked() ? "1" : "0");
+
+
+//        nc216b
+        sC2.put("nc216b", bi.nc216ba.isChecked() ? "1"
+                : bi.nc216bb.isChecked() ? "2"
+                : bi.nc216b98.isChecked() ? "98"
+                : "0");
+
+//        nc216c
+        sC2.put("nc216c", bi.nc216ca.isChecked() ? "1"
+                : bi.nc216cb.isChecked() ? "2"
+                : bi.nc216c98.isChecked() ? "98"
+                : "0");
+
+//        nc216d
+        sC2.put("nc216d", bi.nc216da.isChecked() ? "1"
+                : bi.nc216db.isChecked() ? "2"
+                : bi.nc216d98.isChecked() ? "98"
+                : "0");
+
+//        nc216e
+        sC2.put("nc216e", bi.nc216ea.isChecked() ? "1"
+                : bi.nc216eb.isChecked() ? "2"
+                : bi.nc216e98.isChecked() ? "98"
+                : "0");
+
+//        nc216f
+        sC2.put("nc216f", bi.nc216fa.isChecked() ? "1"
+                : bi.nc216fb.isChecked() ? "2"
+                : bi.nc216f98.isChecked() ? "98"
+                : "0");
+
+//        nc216g
+        sC2.put("nc216g", bi.nc216ga.isChecked() ? "1"
+                : bi.nc216gb.isChecked() ? "2"
+                : bi.nc216g98.isChecked() ? "98"
+                : "0");
+
+//        nc216h
+        sC2.put("nc216h", bi.nc216ha.isChecked() ? "1"
+                : bi.nc216hb.isChecked() ? "2"
+                : bi.nc216h98.isChecked() ? "98"
+                : "0");
+
+//        nc216g
+        sC2.put("nc216g", bi.nc216ga.isChecked() ? "1"
+                : bi.nc216gb.isChecked() ? "2"
+                : bi.nc216g98.isChecked() ? "98"
+                : "0");
+
+//        nc216h
+        sC2.put("nc216h", bi.nc216ha.isChecked() ? "1"
+                : bi.nc216hb.isChecked() ? "2"
+                : bi.nc216h98.isChecked() ? "98"
+                : "0");
+
+//        nc216i
+        sC2.put("nc216i", bi.nc216ia.isChecked() ? "1"
+                : bi.nc216ib.isChecked() ? "2"
+                : bi.nc216i98.isChecked() ? "98"
+                : "0");
+
+//        nc216j
+        sC2.put("nc216j", bi.nc216ja.isChecked() ? "1"
+                : bi.nc216jb.isChecked() ? "2"
+                : bi.nc216j98.isChecked() ? "98"
+                : "0");
+
+//        nc216k
+        sC2.put("nc216k", bi.nc216ka.isChecked() ? "1"
+                : bi.nc216kb.isChecked() ? "2"
+                : bi.nc216k98.isChecked() ? "98"
+                : "0");
+
+//        nc216l
+        sC2.put("nc216l", bi.nc216la.isChecked() ? "1"
+                : bi.nc216lb.isChecked() ? "2"
+                : bi.nc216l98.isChecked() ? "98"
+                : "0");
+
+//        nc216m
+        sC2.put("nc216m", bi.nc216ma.isChecked() ? "1"
+                : bi.nc216mb.isChecked() ? "2"
+                : bi.nc216m98.isChecked() ? "98"
+                : "0");
+
+//        nc216n
+        sC2.put("nc216n", bi.nc216na.isChecked() ? "1"
+                : bi.nc216nb.isChecked() ? "2"
+                : bi.nc216n98.isChecked() ? "98"
+                : "0");
+
+//        nc216x
+        sC2.put("nc216x", bi.nc216xa.isChecked() ? "1"
+                : bi.nc216xb.isChecked() ? "2"
+                : bi.nc216x98.isChecked() ? "98"
+                : "0");
+//        nc216x1
+        sC2.put("nc216x1", bi.nc216x1.getText().toString());
+
+
+//      nc217
+        sC2.put("nc217", bi.nc217.getText().toString());
+        sC2.put("nc21798", bi.nc21798.isChecked() ? "1" : "0");
+
+//      nc218
+        sC2.put("nc218", bi.nc218a.isChecked() ? "1"
+                : bi.nc218b.isChecked() ? "2"
+                : bi.nc21898.isChecked() ? "98"
+                : "0");
+//      nc219
+        sC2.put("nc219", bi.nc219a.isChecked() ? "1"
+                : bi.nc219b.isChecked() ? "2"
+                : bi.nc219c.isChecked() ? "3"
+                : bi.nc21996.isChecked() ? "96"
+                : "0");
+        sC2.put("nc21996x", bi.nc21996x.getText().toString());
+
+
+//      nc220
+        sC2.put("nc220", bi.nc220a.isChecked() ? "1"
+                : bi.nc220b.isChecked() ? "2"
+                : bi.nc220c.isChecked() ? "3"
+                : bi.nc22096.isChecked() ? "96"
+                : "0");
+        sC2.put("nc22096x", bi.nc22096x.getText().toString());
+
+
+//      nc221
+        sC2.put("nc221", bi.nc221a.isChecked() ? "1"
+                : bi.nc221b.isChecked() ? "2"
+                : bi.nc22198.isChecked() ? "98"
+                : "0");
+
+//    nc222
+
+        sC2.put("nc222", bi.nc222.getText().toString());
+
+//      nc223
+        sC2.put("nc223", bi.nc223a.isChecked() ? "1"
+                : bi.nc223b.isChecked() ? "2"
+                : bi.nc22398.isChecked() ? "98"
+                : "0");
+
+//    nc224
+
+        sC2.put("nc224", bi.nc224.getText().toString());
+
+//      nc225
+        sC2.put("nc225", bi.nc225a.isChecked() ? "1"
+                : bi.nc225b.isChecked() ? "2"
+                : "0");
+
+
+//    nc226
+
+        sC2.put("nc226", bi.nc226.getText().toString());
+
+        //MainApp.cc.setsB(String.valueOf(sB));
+
+
+        Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
+    }
+
+    private boolean UpdateDB() {
+
+        //Long rowId;
+        DatabaseHelper db = new DatabaseHelper(this);
+
+        /*Long updcount = db.addChildForm(MainApp.cc);
+        MainApp.cc.set_ID(String.valueOf(updcount));
+
+        if (updcount != 0) {
+            Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+
+            MainApp.cc.setUID(
+                    (MainApp.cc.getDeviceID() + MainApp.cc.get_ID()));
+            db.updateFormChildID();
+
+            return true;
+        } else {
+            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            return false;
+        }*/
+
+        return true;
+
     }
 
 }

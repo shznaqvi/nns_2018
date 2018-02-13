@@ -135,7 +135,7 @@
                 android:visibility='@{nb40196.checked ? View.VISIBLE : View.GONE}' />
 
 
-            <!--na501-->
+            <!--nb402-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -684,7 +684,7 @@
                     android:visibility='@{nb410c.checked ? View.GONE : View.VISIBLE}' />
 
                 <RadioButton
-                    android:id="@+id/nb4109"
+                    android:id="@+id/nb41097"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="1dp"
