@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -420,4 +423,173 @@ public class SectionB2Activity extends Activity {
 
         return validatorClass.EmptyRadioButton(this, bi.nb220, bi.nb220a, getString(R.string.nb220));
     }
+
+
+    private void SaveDraft() throws JSONException {
+        Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
+//       nb201
+        JSONObject sB2 = new JSONObject();
+        sB2.put("nb201", bi.nb201a.isChecked() ? "1"
+                : bi.nb201b.isChecked() ? "2"
+                : "0");
+
+//       nb202
+        sB2.put("nb202a", bi.nb202a.isChecked() ? "1" : "0");
+        sB2.put("nb202b", bi.nb202b.isChecked() ? "2" : "0");
+        sB2.put("nb202c", bi.nb202c.isChecked() ? "3" : "0");
+        sB2.put("nb202d", bi.nb202d.isChecked() ? "4" : "0");
+        sB2.put("nb202e", bi.nb202e.isChecked() ? "5" : "0");
+        sB2.put("nb202f", bi.nb202f.isChecked() ? "6" : "0");
+        sB2.put("nb202g", bi.nb202g.isChecked() ? "7" : "0");
+        sB2.put("nb202h", bi.nb202h.isChecked() ? "8" : "0");
+        sB2.put("nb202i", bi.nb20296.isChecked() ? "96" : "0");
+        sB2.put("nb20296x", bi.nb20296x.getText().toString());
+
+
+//        nb203
+        sB2.put("nb203",bi.nb203w.getText().toString());
+        sB2.put("nb203",bi.nb203w.getText().toString());
+        sB2.put("nb20398", bi.nb20398.isChecked() ? "98" : "0");
+
+
+        //        nb204
+        sB2.put("nb204",bi.nb204.getText().toString());
+        sB2.put("nb20498", bi.nb20498.isChecked() ? "98" : "0");
+
+//      nb205
+        sB2.put("nb205a", bi.nb205a.isChecked() ? "1" : "0");
+        sB2.put("nb205b", bi.nb205b.isChecked() ? "2" : "0");
+        sB2.put("nb205c", bi.nb205c.isChecked() ? "3" : "0");
+        sB2.put("nb205d", bi.nb205d.isChecked() ? "4" : "0");
+        sB2.put("nb205e", bi.nb205e.isChecked() ? "5" : "0");
+        sB2.put("nb205f", bi.nb205f.isChecked() ? "6" : "0");
+        sB2.put("nb205g", bi.nb205g.isChecked() ? "7" : "0");
+        sB2.put("nb205h", bi.nb205h.isChecked() ? "8" : "0");
+        sB2.put("nb205i", bi.nb20596.isChecked() ? "96" : "0");
+        sB2.put("nb20596x", bi.nb20596x.getText().toString());
+
+//        nb206
+        sB2.put("nb206", bi.nb206a.isChecked() ? "1"
+                : bi.nb206b.isChecked() ? "2"
+                : bi.nb206c.isChecked() ? "3"
+                : bi.nb20698.isChecked() ? "98"
+                : "0");
+//        nb207
+        sB2.put("nb207", bi.nb207a.isChecked() ? "1"
+                : bi.nb207b.isChecked() ? "2"
+                : bi.nb20798.isChecked() ? "98"
+                : "0");
+//        nb208
+
+        sB2.put("nb208",bi.nb208.getText().toString());
+        sB2.put("nb20898", bi.nb20898.isChecked() ? "98" : "0");
+
+//        nb209
+        sB2.put("nb209", bi.nb209a.isChecked() ? "1"
+                : bi.nb209b.isChecked() ? "2"
+                : "0");
+//        nb210
+        sB2.put("nb21001", bi.nb21001a.isChecked() ? "1"
+                : bi.nb21001b.isChecked() ? "2"
+                : "0");
+        sB2.put("nb21002", bi.nb21002a.isChecked() ? "1"
+                : bi.nb21002b.isChecked() ? "2"
+                : "0");
+        sB2.put("nb21003", bi.nb21003a.isChecked() ? "1"
+                : bi.nb21003b.isChecked() ? "2"
+                : "0");
+        sB2.put("nb21098", bi.nb21098a.isChecked() ? "1"
+                : bi.nb21098b.isChecked() ? "2"
+                : "0");
+        sB2.put("nb21099", bi.nb21099a.isChecked() ? "1"
+                : bi.nb21099b.isChecked() ? "2"
+                : "0");
+
+        //          nb211
+        sB2.put("nb211", bi.nb211a.isChecked() ? "1"
+                : bi.nb211b.isChecked() ? "2"
+                : bi.nb211c.isChecked() ? "3"
+                : bi.nb211d.isChecked() ? "4"
+                : bi.nb211e.isChecked() ? "5"
+                : "0");
+
+//         nb212
+        sB2.put("nb212m",bi.nb212m.getText().toString());
+        sB2.put("nb212d",bi.nb212d.getText().toString());
+
+        //        nb213
+        sB2.put("nb213", bi.nb213a.isChecked() ? "1"
+                : bi.nb213b.isChecked() ? "2"
+                : "0");
+
+//        nb214
+        sB2.put("nb214", bi.nb214a.isChecked() ? "1"
+                : bi.nb214b.isChecked() ? "2"
+                : bi.nb214b.isChecked() ? "3"
+                : bi.nb214b.isChecked() ? "4"
+                : bi.nb214b.isChecked() ? "5"
+                : "0");
+
+//        nb215
+        sB2.put("nb215m",bi.nb215m.getText().toString());
+        sB2.put("nb215d",bi.nb215d.getText().toString());
+
+//        nb216
+        sB2.put("nb216", bi.nb216a.isChecked() ? "1"
+                : bi.nb216b.isChecked() ? "2"
+                : "0");
+//        nb217
+        sB2.put("nb217", bi.nb217a.isChecked() ? "1"
+                : bi.nb217b.isChecked() ? "2"
+                : bi.nb217c.isChecked() ? "3"
+                : bi.nb217d.isChecked() ? "4"
+                : bi.nb217e.isChecked() ? "5"
+                : "0");
+
+//        nb218
+        sB2.put("nb218m",bi.nb218m.getText().toString());
+        sB2.put("nb218d",bi.nb218d.getText().toString());
+
+//        nb219
+        sB2.put("nb219", bi.nb219a.isChecked() ? "1"
+                : bi.nb219b.isChecked() ? "2"
+                : "0");
+//        nb220
+        sB2.put("nb220", bi.nb220a.isChecked() ? "1"
+                : bi.nb220b.isChecked() ? "2"
+                : bi.nb22098.isChecked() ? "98"
+                : "0");
+
+        //MainApp.cc.setsB(String.valueOf(sB));
+
+
+        Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
+
+    }
+
+    private boolean UpdateDB() {
+
+        //Long rowId;
+        DatabaseHelper db = new DatabaseHelper(this);
+
+        /*Long updcount = db.addChildForm(MainApp.cc);
+        MainApp.cc.set_ID(String.valueOf(updcount));
+
+        if (updcount != 0) {
+            Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+
+            MainApp.cc.setUID(
+                    (MainApp.cc.getDeviceID() + MainApp.cc.get_ID()));
+            db.updateFormChildID();
+
+            return true;
+        } else {
+            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            return false;
+        }*/
+
+        return true;
+
+    }
+
 }

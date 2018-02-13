@@ -132,7 +132,6 @@ public class SectionB3Activity extends AppCompatActivity {
 
         }
 
-
         return true;
     }
 

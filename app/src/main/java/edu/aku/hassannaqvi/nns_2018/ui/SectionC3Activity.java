@@ -7,7 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC3Binding;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
@@ -245,5 +249,210 @@ public class SectionC3Activity extends AppCompatActivity {
 
         return true;
     }
+
+    private void SaveDraft() throws JSONException {
+        Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
+
+        JSONObject sC3 = new JSONObject();
+
+//        nc303
+        sC3.put("nc303", binding.nc303a.isChecked() ? "1"
+                : binding.nc303b.isChecked() ? "2"
+                : "0");
+
+//        nc304
+        sC3.put("nc304", binding.nc304a.isChecked() ? "1"
+                : binding.nc304b.isChecked() ? "2"
+                : binding.nc304c.isChecked() ? "3"
+                : binding.nc304d.isChecked() ? "4"
+                : "0");
+//at birth
+//          nc3bcg
+        sC3.put("nc3bcg", binding.nc3bcga.isChecked() ? "1"
+                : binding.nc3bcgb.isChecked() ? "2"
+                : "0");
+        sC3.put("nc3bcgdt", binding.nc3bcgdt.getText().toString());
+
+//          nc3opv0
+        sC3.put("nc3opv0", binding.nc3opv0a.isChecked() ? "1"
+                : binding.nc3opv0b.isChecked() ? "2"
+                : "0");
+        sC3.put("nc3opv0dt", binding.nc3opv0dt.getText().toString());
+
+//       at age of 6
+
+//          nc3opv1
+        sC3.put("nc3opv1", binding.nc3opv1a.isChecked() ? "1"
+                : binding.nc3opv1b.isChecked() ? "2"
+                : "0");
+        sC3.put("nc3opv1dt", binding.nc3opv1dt.getText().toString());
+
+//          nc3p1
+        sC3.put("nc3p1", binding.nc3p1a.isChecked() ? "1"
+                : binding.nc3p1b.isChecked() ? "2"
+                : "0");
+        sC3.put("nc3p1dt", binding.nc3p1dt.getText().toString());
+
+//          nc3pcv1
+        sC3.put("nc3pcv1", binding.nc3pcv1a.isChecked() ? "1"
+                : binding.nc3pcv1b.isChecked() ? "2"
+                : "0");
+        sC3.put("nc3pcv1dt", binding.nc3pcv1dt.getText().toString());
+
+//       at age of 10 weeks
+
+//          nc3opv2
+        sC3.put("nc3opv2", binding.nc3opv2a.isChecked() ? "1"
+                : binding.nc3opv2b.isChecked() ? "2"
+                : "0");
+        sC3.put("nc3opv2dt", binding.nc3opv2dt.getText().toString());
+
+//          nc3p2
+        sC3.put("nc3p2", binding.nc3p2a.isChecked() ? "1"
+                : binding.nc3p2b.isChecked() ? "2"
+                : "0");
+        sC3.put("nc3p2dt", binding.nc3p2dt.getText().toString());
+
+//          nc3pcv2
+        sC3.put("nc3pcv2", binding.nc3pcv2a.isChecked() ? "1"
+                : binding.nc3pcv2b.isChecked() ? "2"
+                : "0");
+        sC3.put("nc3pcv2dt", binding.nc3pcv2dt.getText().toString());
+
+
+//       at age of 14 weeks
+
+//          nc3opv3
+        sC3.put("nc3opv3", binding.nc3opv3a.isChecked() ? "1"
+                : binding.nc3opv3b.isChecked() ? "2"
+                : "0");
+        sC3.put("nc3opv3dt", binding.nc3opv3dt.getText().toString());
+
+//          nc3p3
+        sC3.put("nc3p3", binding.nc3p3a.isChecked() ? "1"
+                : binding.nc3p3b.isChecked() ? "2"
+                : "0");
+        sC3.put("nc3p3dt", binding.nc3p3dt.getText().toString());
+
+//          nc3pcv3
+        sC3.put("nc3pcv3", binding.nc3pcv3a.isChecked() ? "1"
+                : binding.nc3pcv3b.isChecked() ? "2"
+                : "0");
+        sC3.put("nc3pcv3dt", binding.nc3pcv3dt.getText().toString());
+
+//          nc3ipv
+        sC3.put("nc3ipv", binding.nc3ipva.isChecked() ? "1"
+                : binding.nc3ipvb.isChecked() ? "2"
+                : "0");
+        sC3.put("nc3ipvdt", binding.nc3ipvdt.getText().toString());
+
+//at the age of 9 months
+//          nc3m1
+        sC3.put("nc3m1", binding.nc3m1a.isChecked() ? "1"
+                : binding.nc3m1b.isChecked() ? "2"
+                : "0");
+        sC3.put("nc3m1dt", binding.nc3m1dt.getText().toString());
+
+//at age of 15 months
+//          nc3m2
+        sC3.put("nc3m2", binding.nc3m2a.isChecked() ? "1"
+                : binding.nc3m2b.isChecked() ? "2"
+                : "0");
+        sC3.put("nc3m2dt", binding.nc3m2dt.getText().toString());
+
+
+//        nc306
+        sC3.put("nc306", binding.nc306a.isChecked() ? "1"
+                : binding.nc306b.isChecked() ? "2"
+                : "0");
+
+//        nc307
+        sC3.put("nc307", binding.nc307a.isChecked() ? "1"
+                : binding.nc307b.isChecked() ? "2"
+                : binding.nc307c.isChecked() ? "3"
+                : "0");
+
+//        nc308
+        sC3.put("nc308", binding.nc308a.isChecked() ? "1"
+                : binding.nc308b.isChecked() ? "2"
+                : binding.nc308c.isChecked() ? "3"
+                : "0");
+
+//        nc309
+        sC3.put("nc309", binding.nc309.getText().toString());
+
+//        nc310
+        sC3.put("nc310", binding.nc310a.isChecked() ? "1"
+                : binding.nc310b.isChecked() ? "2"
+                : binding.nc310c.isChecked() ? "3"
+                : "0");
+
+//        nc311
+        sC3.put("nc311", binding.nc311.getText().toString());
+
+//        nc312
+        sC3.put("nc312", binding.nc312a.isChecked() ? "1"
+                : binding.nc312b.isChecked() ? "2"
+                : binding.nc312c.isChecked() ? "3"
+                : "0");
+//        nc313
+        sC3.put("nc313", binding.nc313a.isChecked() ? "1"
+                : binding.nc313b.isChecked() ? "2"
+                : binding.nc31398.isChecked() ? "98"
+                : "0");
+
+
+//        nc314
+        sC3.put("nc314", binding.nc314a.isChecked() ? "1"
+                : binding.nc314b.isChecked() ? "2"
+                : binding.nc31498.isChecked() ? "98"
+                : "0");
+
+//        nc315
+        sC3.put("nc315", binding.nc315.getText().toString());
+
+//        nc316
+        sC3.put("nc316", binding.nc316a.isChecked() ? "1"
+                : binding.nc316b.isChecked() ? "2"
+                : binding.nc31698.isChecked() ? "98"
+                : "0");
+
+//        nc317
+        sC3.put("nc317", binding.nc317.getText().toString());
+
+        //MainApp.cc.setsB(String.valueOf(sB));
+
+
+        Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }
+
+    private boolean UpdateDB() {
+
+        //Long rowId;
+        DatabaseHelper db = new DatabaseHelper(this);
+
+        /*Long updcount = db.addChildForm(MainApp.cc);
+        MainApp.cc.set_ID(String.valueOf(updcount));
+
+        if (updcount != 0) {
+            Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+
+            MainApp.cc.setUID(
+                    (MainApp.cc.getDeviceID() + MainApp.cc.get_ID()));
+            db.updateFormChildID();
+
+            return true;
+        } else {
+            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            return false;
+        }*/
+
+        return true;
+
+    }
+
+
+
+
+}
 

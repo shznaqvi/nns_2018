@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -56,7 +59,7 @@ public class SectionC1Activity extends AppCompatActivity {
         MainApp.endActivity(this, this);
     }
 
-    private boolean formValidation(){
+    private boolean formValidation() {
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
 //        nc101
@@ -64,15 +67,67 @@ public class SectionC1Activity extends AppCompatActivity {
             return false;
         }
 //        nc103
-        if (!validatorClass.EmptyRadioButton(this, binding.nc103,binding.nc103d, getString(R.string.nc103))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nc103, binding.nc10398, getString(R.string.nc103))) {
             return false;
         }
 //        nc104
-        if (!validatorClass.EmptyRadioButton(this, binding.nc104,binding.nc10498, getString(R.string.nc104))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nc104, binding.nc10498, getString(R.string.nc104))) {
             return false;
         }
 
 
         return true;
     }
+
+    private void SaveDraft() throws JSONException {
+        Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
+
+        JSONObject sC1 = new JSONObject();
+        //       nc101
+        sC1.put("nc101", binding.nc101.getText().toString());
+//        nc103
+        sC1.put("nc103", binding.nc103a.isChecked() ? "1"
+                : binding.nc103b.isChecked() ? "2"
+                : binding.nc103c.isChecked() ? "3"
+                : binding.nc10398.isChecked() ? "98"
+                : "0");
+
+//        nc104
+        sC1.put("nc104", binding.nc104a.isChecked() ? "1"
+                : binding.nc104b.isChecked() ? "2"
+                : binding.nc10498.isChecked() ? "98"
+                : "0");
+
+
+        //MainApp.cc.setsB(String.valueOf(sB));
+
+
+        Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
+    }
+
+    private boolean UpdateDB() {
+
+        //Long rowId;
+        DatabaseHelper db = new DatabaseHelper(this);
+
+        /*Long updcount = db.addChildForm(MainApp.cc);
+        MainApp.cc.set_ID(String.valueOf(updcount));
+
+        if (updcount != 0) {
+            Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+
+            MainApp.cc.setUID(
+                    (MainApp.cc.getDeviceID() + MainApp.cc.get_ID()));
+            db.updateFormChildID();
+
+            return true;
+        } else {
+            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            return false;
+        }*/
+
+        return true;
+
+    }
+
 }

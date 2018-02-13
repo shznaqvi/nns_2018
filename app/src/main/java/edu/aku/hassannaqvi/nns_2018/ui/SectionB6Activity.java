@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -90,27 +93,110 @@ public class SectionB6Activity extends AppCompatActivity {
             return false;
         }
 
-        if (!validatorClass.EmptyRadioButton(this, bi.nb6019601, bi.nb6019601a, getString(R.string.nb601h))) {
+        if (!validatorClass.EmptyRadioButton(this, bi.nb60108, bi.nb60108a, getString(R.string.nb601h))) {
             return false;
         }
 
-        if (!validatorClass.EmptyRadioButton(this, bi.nb6019601, bi.nb6019601a, bi.nb6019601x, getString(R.string.nb601h) + " - " + getString(R.string.other))) {
+        if (!validatorClass.EmptyRadioButton(this, bi.nb60108, bi.nb60108a, bi.nb60108x, getString(R.string.nb601h) + " - " + getString(R.string.other))) {
             return false;
         }
 
-        if (!validatorClass.EmptyRadioButton(this, bi.nb6019602, bi.nb6019602a, getString(R.string.nb601i))) {
+        if (!validatorClass.EmptyRadioButton(this, bi.nb60109, bi.nb60109a, getString(R.string.nb601i))) {
             return false;
         }
 
-        if (!validatorClass.EmptyRadioButton(this, bi.nb6019602, bi.nb6019602a, bi.nb6019602x, getString(R.string.nb601j) + " - " + getString(R.string.other))) {
+        if (!validatorClass.EmptyRadioButton(this, bi.nb60109, bi.nb60109a, bi.nb60109x, getString(R.string.nb601j) + " - " + getString(R.string.other))) {
             return false;
         }
 
-        if (!validatorClass.EmptyRadioButton(this, bi.nb6019603, bi.nb6019603a, getString(R.string.nb601j))) {
+        if (!validatorClass.EmptyRadioButton(this, bi.nb60196, bi.nb60196a, getString(R.string.nb601j))) {
             return false;
         }
 
-        return validatorClass.EmptyRadioButton(this, bi.nb6019603, bi.nb6019603a, bi.nb6019603x, getString(R.string.nb601j) + " - " + getString(R.string.other));
+        return validatorClass.EmptyRadioButton(this, bi.nb60196, bi.nb60196a, bi.nb60196x, getString(R.string.nb601j) + " - " + getString(R.string.other));
+    }
+    private void SaveDraft() throws JSONException {
+        Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
+
+        JSONObject sB6 = new JSONObject();
+        //       nb601
+//        60101
+        sB6.put("nb60101", bi.nb60101a.isChecked() ? "1"
+                : bi.nb60101b.isChecked() ? "2"
+                : "0");
+//        60102
+        sB6.put("nb60102", bi.nb60102a.isChecked() ? "1"
+                : bi.nb60102b.isChecked() ? "2"
+                : "0");
+//        60103
+        sB6.put("nb60103", bi.nb60103a.isChecked() ? "1"
+                : bi.nb60103b.isChecked() ? "2"
+                : "0");
+//        60104
+        sB6.put("nb60104", bi.nb60104a.isChecked() ? "1"
+                : bi.nb60104b.isChecked() ? "2"
+                : "0");
+//        60105
+        sB6.put("nb60105", bi.nb60105a.isChecked() ? "1"
+                : bi.nb60105b.isChecked() ? "2"
+                : "0");
+//        60106
+        sB6.put("nb60106", bi.nb60106a.isChecked() ? "1"
+                : bi.nb60106b.isChecked() ? "2"
+                : "0");
+//        60107
+        sB6.put("nb60107", bi.nb60107a.isChecked() ? "1"
+                : bi.nb60107b.isChecked() ? "2"
+                : "0");
+//        60108
+        sB6.put("nb60108", bi.nb60108a.isChecked() ? "1"
+                : bi.nb60108b.isChecked() ? "2"
+                : "0");
+//        60109
+        sB6.put("nb60109", bi.nb60109a.isChecked() ? "1"
+                : bi.nb60109b.isChecked() ? "2"
+                : "0");
+
+//        60196
+        sB6.put("nb60196", bi.nb60196a.isChecked() ? "1"
+                : bi.nb60196b.isChecked() ? "2"
+                : "0");
+
+
+
+        sB6.put("nc101", bi.nb60108x.getText().toString());
+        sB6.put("nc101", bi.nb60109x.getText().toString());
+        sB6.put("nc101", bi.nb60196x.getText().toString());
+
+        //MainApp.cc.setsB(String.valueOf(sB));
+
+
+        Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
+    }
+
+    private boolean UpdateDB() {
+
+        //Long rowId;
+        DatabaseHelper db = new DatabaseHelper(this);
+
+        /*Long updcount = db.addChildForm(MainApp.cc);
+        MainApp.cc.set_ID(String.valueOf(updcount));
+
+        if (updcount != 0) {
+            Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+
+            MainApp.cc.setUID(
+                    (MainApp.cc.getDeviceID() + MainApp.cc.get_ID()));
+            db.updateFormChildID();
+
+            return true;
+        } else {
+            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            return false;
+        }*/
+
+        return true;
+
     }
 
 }
