@@ -186,7 +186,7 @@ public class FamilyMembersContract {
         this.deviceId = jsonObject.getString(familyMembers.COLUMN_DEVICEID);
         this.user = jsonObject.getString(familyMembers.COLUMN_USER);
         this.app_ver = jsonObject.getString(familyMembers.COLUMN_APP_VERSION);
-        this.sA2 = jsonObject.getString(familyMembers.COLUMN_SB);
+        this.sA2 = jsonObject.getString(familyMembers.COLUMN_SA2);
         this.synced = jsonObject.getString(familyMembers.COLUMN_SYNCED);
         this.syncedDate = jsonObject.getString(familyMembers.COLUMN_SYNCED_DATE);
         this.devicetagID = jsonObject.getString(familyMembers.COLUMN_DEVICETAGID);
@@ -204,7 +204,7 @@ public class FamilyMembersContract {
         this.deviceId = cursor.getString(cursor.getColumnIndex(familyMembers.COLUMN_DEVICEID));
         this.user = cursor.getString(cursor.getColumnIndex(familyMembers.COLUMN_USER));
         this.app_ver = cursor.getString(cursor.getColumnIndex(familyMembers.COLUMN_APP_VERSION));
-        this.sA2 = cursor.getString(cursor.getColumnIndex(familyMembers.COLUMN_SB));
+        this.sA2 = cursor.getString(cursor.getColumnIndex(familyMembers.COLUMN_SA2));
         this.devicetagID = cursor.getString(cursor.getColumnIndex(familyMembers.COLUMN_DEVICETAGID));
 
         return this;
@@ -224,7 +224,7 @@ public class FamilyMembersContract {
         json.put(familyMembers.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
         json.put(familyMembers.COLUMN_APP_VERSION, this.app_ver == null ? JSONObject.NULL : this.app_ver);
         if (!this.sA2.equals("")) {
-            json.put(familyMembers.COLUMN_SB, this.sA2.equals("") ? JSONObject.NULL : new JSONObject(this.sA2));
+            json.put(familyMembers.COLUMN_SA2, this.sA2.equals("") ? JSONObject.NULL : new JSONObject(this.sA2));
         }
         json.put(familyMembers.COLUMN_PROJECT_NAME, this.projectName == null ? JSONObject.NULL : this.projectName);
         json.put(familyMembers.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
@@ -248,7 +248,7 @@ public class FamilyMembersContract {
         public static final String COLUMN_USER = "user";
         public static final String COLUMN_APP_VERSION = "app_ver";
 
-        public static final String COLUMN_SB = "sA2";
+        public static final String COLUMN_SA2 = "sA2";
 
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNCED_DATE = "sync_date";

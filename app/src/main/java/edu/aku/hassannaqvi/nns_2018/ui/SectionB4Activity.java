@@ -9,6 +9,9 @@ import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -207,4 +210,144 @@ public class SectionB4Activity extends Activity {
 
         return true;
     }
+
+
+    private void SaveDraft() throws JSONException {
+        Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
+
+        JSONObject sB4 = new JSONObject();
+        //       nb401
+        sB4.put("nb401", binding.nb401a.isChecked() ? "1"
+                : binding.nb401b.isChecked() ? "2"
+                : binding.nb401c.isChecked() ? "3"
+                : binding.nb401d.isChecked() ? "4"
+                : binding.nb401e.isChecked() ? "5"
+                : binding.nb40196.isChecked() ? "96"
+                : binding.nb40199.isChecked() ? "99"
+                : "0");
+        sB4.put("nb40196x", binding.nb40196x.getText().toString());
+
+//        nb402
+        sB4.put("nb402a", binding.nb402a.isChecked() ? "1" : "0");
+        sB4.put("nb402b", binding.nb402b.isChecked() ? "2" :"0");
+        sB4.put("nb402c", binding.nb402c.isChecked() ? "3" :"0");
+        sB4.put("nb402d", binding.nb402d.isChecked() ? "4" :"0");
+        sB4.put("nb402e", binding.nb402e.isChecked() ? "5" :"0");
+        sB4.put("nb40299", binding.nb40299.isChecked() ? "99" :"0");
+        sB4.put("nb40296", binding.nb40296.isChecked() ? "96" :"0");
+        sB4.put("nb40296x", binding.nb40296x.getText().toString());
+
+//       nb403
+        sB4.put("nb403", binding.nb403a.isChecked() ? "1"
+                : binding.nb403b.isChecked() ? "2"
+                : binding.nb403c.isChecked() ? "3"
+                : binding.nb403d.isChecked() ? "4"
+                : binding.nb403e.isChecked() ? "5"
+                : binding.nb403f.isChecked() ? "6"
+                : binding.nb403g.isChecked() ? "7"
+                : binding.nb403h.isChecked() ? "8"
+                : binding.nb403i.isChecked() ? "9"
+                : binding.nb403j.isChecked() ? "10"
+                : binding.nb403k.isChecked() ? "11"
+                : binding.nb40396.isChecked() ? "96"
+                : "0");
+        sB4.put("nb40396x", binding.nb40396x.getText().toString());
+
+//        nb404
+        sB4.put("nb404", binding.nb404a.isChecked() ? "1"
+                : binding.nb404b.isChecked() ? "2"
+                : binding.nb404c.isChecked() ? "3"
+                : binding.nb404d.isChecked() ? "4"
+                : binding.nb404e.isChecked() ? "5"
+                : binding.nb40498.isChecked() ? "98"
+                : "0");
+//        nb405
+        sB4.put("nb405", binding.nb405a.isChecked() ? "1"
+                : binding.nb405b.isChecked() ? "2"
+                : binding.nb40598.isChecked() ? "98"
+                : "0");
+//        nb406
+        sB4.put("nb406c", binding.nb406c.getText().toString());
+        sB4.put("nb406r", binding.nb406r.getText().toString());
+
+        sB4.put("nb40698", binding.nb40698.isChecked() ? "1" : "0");
+
+//        nb407
+        sB4.put("nb407", binding.nb407a.isChecked() ? "1"
+                : binding.nb407b.isChecked() ? "2"
+                : binding.nb40798.isChecked() ? "98"
+                : "0");
+
+//        nb408
+        sB4.put("nb408", binding.nb408a.isChecked() ? "1"
+                : binding.nb408b.isChecked() ? "2"
+                : binding.nb40898.isChecked() ? "98"
+                : "0");
+
+//        nb409
+        sB4.put("nb409", binding.nb409a.isChecked() ? "1"
+                : binding.nb409b.isChecked() ? "2"
+                : binding.nb40998.isChecked() ? "98"
+                : "0");
+
+
+//        nb410
+        sB4.put("nb410h", binding.nb410h.getText().toString());
+        sB4.put("nb410d", binding.nb410d.getText().toString());
+        sB4.put("nb410", binding.nb410a.isChecked() ? "1"
+                : binding.nb410b.isChecked() ? "2"
+                : binding.nb41097.isChecked() ? "97"
+                : binding.nb41098.isChecked() ? "98"
+                : "0");
+
+//        nb411
+        sB4.put("nb411", binding.nb411a.isChecked() ? "1"
+                : binding.nb411b.isChecked() ? "2"
+                : binding.nb41198.isChecked() ? "98"
+                : "0");
+
+//      nb412
+        sB4.put("nb412a", binding.nb412a.isChecked() ? "1" : "0");
+        sB4.put("nb412b", binding.nb412b.isChecked() ? "2" :"0");
+        sB4.put("nb412c", binding.nb412c.isChecked() ? "3" :"0");
+        sB4.put("nb412d", binding.nb412d.isChecked() ? "4" :"0");
+        sB4.put("nb412e", binding.nb412e.isChecked() ? "5" :"0");
+        sB4.put("nb412e", binding.nb412e.isChecked() ? "6" :"0");
+        sB4.put("nb4128", binding.nb41298.isChecked() ? "98" :"0");
+
+        sB4.put("nb41296x", binding.nb41296x.getText().toString());
+
+        //MainApp.cc.setsB(String.valueOf(sB));
+
+
+        Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
+
+    }
+
+    private boolean UpdateDB() {
+
+        //Long rowId;
+        DatabaseHelper db = new DatabaseHelper(this);
+
+        /*Long updcount = db.addChildForm(MainApp.cc);
+        MainApp.cc.set_ID(String.valueOf(updcount));
+
+        if (updcount != 0) {
+            Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+
+            MainApp.cc.setUID(
+                    (MainApp.cc.getDeviceID() + MainApp.cc.get_ID()));
+            db.updateFormChildID();
+
+            return true;
+        } else {
+            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            return false;
+        }*/
+
+        return true;
+
+    }
+
+
 }
