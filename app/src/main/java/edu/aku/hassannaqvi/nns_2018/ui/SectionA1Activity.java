@@ -50,6 +50,7 @@ public class SectionA1Activity extends AppCompatActivity {
         MainApp.childUnder5 = new ArrayList<>();
         MainApp.childUnder5 = new ArrayList<>();
         MainApp.mwra = new ArrayList<>();
+        MainApp.adolescents = new ArrayList<>();
         MainApp.serial_no = 1;
     }
 
