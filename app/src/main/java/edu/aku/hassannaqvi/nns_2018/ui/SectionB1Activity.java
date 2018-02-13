@@ -105,7 +105,7 @@ public class SectionB1Activity extends Activity {
     public void BtnContinue() {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
-        /*if (ValidateForm()) {
+        if (ValidateForm()) {
             try {
                 SaveDraft();
             } catch (JSONException e) {
@@ -116,14 +116,21 @@ public class SectionB1Activity extends Activity {
 
                 finish();
 
-                startActivity(new Intent(this, ChildAssessmentActivity.class));
+                if (MainApp.totalPregnancy > 0) {
+
+                    startActivity(new Intent(this, SectionB1AActivity.class));
+                } else if (MainApp.totalPregnancy == 1 && bi.nb105a.isChecked()) {
+                    startActivity(new Intent(this, SectionB2Activity.class));
+                } else if (MainApp.totalPregnancy == 0) {
+                    startActivity(new Intent(this, SectionB6Activity.class));
+                }
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
-        }*/
+        }
 
-        startActivity(new Intent(this, SectionB1AActivity.class));
+        //startActivity(new Intent(this, SectionB1AActivity.class));
     }
 
     public void BtnEnd() {
@@ -139,7 +146,7 @@ public class SectionB1Activity extends Activity {
             return false;
         }
 
-        if (!validatorClass.RangeTextBox(this, bi.nb103, 15, Integer.valueOf(MainApp.mwra.get(position).getAge()), getString(R.string.na8a03m), " years")) {
+        if (!validatorClass.RangeTextBox(this, bi.nb103, 15, 49, getString(R.string.na8a03m), " years")) {
             return false;
         }
 
@@ -182,10 +189,18 @@ public class SectionB1Activity extends Activity {
         sB1.put("nb1serialno", MainApp.mwraMap.get(bi.nb101.getSelectedItem().toString()));
         sB1.put("nb104", bi.nb104.getText().toString());
 
+
         sB1.put("nb105", bi.nb105a.isChecked() ? "1"
                 : bi.nb105b.isChecked() ? "2" : "0");
 
         sB1.put("nb106", bi.nb106.getText().toString());
+
+        if (bi.nb105a.isChecked()) {
+            MainApp.totalPregnancy = Integer.valueOf(bi.nb104.getText().toString()) - 1;
+        } else {
+            MainApp.totalPregnancy = Integer.valueOf(bi.nb104.getText().toString());
+        }
+
 
 
         MainApp.mc.setsB1(String.valueOf(sB1));

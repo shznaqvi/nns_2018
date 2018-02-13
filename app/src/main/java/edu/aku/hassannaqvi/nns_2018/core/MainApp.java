@@ -90,6 +90,10 @@ public class MainApp extends Application {
     public static int serial_no;
     // Gul Sanober
     public static Map<String, String> mwraMap = new HashMap<>();
+    public static int totalPregnancy = 0;
+    public static int count = 1;
+    public static boolean flag = false;
+    public static int outcome = 0;
     protected static LocationManager locationManager;
 
     public static int monthsBetweenDates(Date startDate, Date endDate) {
