@@ -3,6 +3,7 @@ package edu.aku.hassannaqvi.nns_2018.ui;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -12,7 +13,10 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB1ABinding;
@@ -23,6 +27,8 @@ public class SectionB1AActivity extends AppCompatActivity {
     ActivitySectionB1ABinding bi;
     DatabaseHelper db;
 
+    int childSerial = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,9 +37,24 @@ public class SectionB1AActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_b1_a);
         db = new DatabaseHelper(this);
         bi.setCallback(this);
-
-
         setupViews();
+
+        if (MainApp.flag) {
+            Boolean type = getIntent().getExtras().getBoolean("type");
+            String date = getIntent().getExtras().getString("date");
+
+            if (type) {
+                bi.nb1a01.setText(date);
+                bi.nb1a02d.setChecked(true);
+                bi.nb1a01.setEnabled(false);
+                bi.nb1a02.setEnabled(false);
+            } else {
+                bi.nb1a01.setText(null);
+                bi.nb1a02d.setChecked(false);
+                bi.nb1a01.setEnabled(true);
+                bi.nb1a02.setEnabled(true);
+            }
+        }
 
     }
 
@@ -80,13 +101,15 @@ public class SectionB1AActivity extends AppCompatActivity {
 
             }
         });
+
+
     }
 
 
     public void BtnContinue() {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
-        /*if (ValidateForm()) {
+        if (ValidateForm()) {
             try {
                 SaveDraft();
             } catch (JSONException e) {
@@ -94,17 +117,35 @@ public class SectionB1AActivity extends AppCompatActivity {
             }
             if (UpdateDB()) {
                 Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
-
                 finish();
 
-                startActivity(new Intent(this, ChildAssessmentActivity.class));
+                if (MainApp.outcome != 4) {
+                    MainApp.count++;
+                    if (MainApp.totalPregnancy > MainApp.count) {
+                        startActivity(new Intent(this, SectionB1Activity.class).putExtra("type", false));
+                    } else {
+                        startActivity(new Intent(this, SectionB2Activity.class));
+                    }
+                } else {
+
+                    MainApp.outcome = 0;
+                    MainApp.flag = true;
+                    childSerial++;
+                    Intent i = new Intent(this, SectionB1AActivity.class);
+                    i.putExtra("date", bi.nb1a01.getText().toString());
+                    i.putExtra("type", true);
+                    startActivity(i);
+
+                    //startActivity(new Intent(this, SectionB1Activity.class).putExtra(""));
+                }
+
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
-        }*/
+        }
 
-        startActivity(new Intent(this, SectionB2Activity.class));
+        //startActivity(new Intent(this, SectionB2Activity.class));
     }
 
     public void BtnEnd() {
@@ -206,6 +247,17 @@ public class SectionB1AActivity extends AppCompatActivity {
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
+
+        MainApp.oc = new OutcomeContract();
+        MainApp.oc.setDevicetagID(MainApp.getTagName(this));
+        MainApp.oc.setFormDate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+        MainApp.oc.setUser(MainApp.userName);
+        MainApp.oc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
+                Settings.Secure.ANDROID_ID));
+        MainApp.oc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
+        //MainApp.oc.set_UUID(MainApp.fc.getUID());
+
+
         JSONObject sB1a = new JSONObject();
 
         sB1a.put("nb1a01", bi.nb1a01.getText().toString());
@@ -218,7 +270,12 @@ public class SectionB1AActivity extends AppCompatActivity {
                 : bi.nb1a02f.isChecked() ? "6"
                 : "0");
 
-        sB1a.put("nb1a03", "1");
+        if (!MainApp.flag) {
+            MainApp.outcome = bi.nb1a02.indexOfChild(findViewById(bi.nb1a02.getCheckedRadioButtonId())) + 1;
+        }
+
+
+        sB1a.put("nb1a03", String.valueOf(childSerial));
 
         sB1a.put("nb1a04", bi.nb1a04a.isChecked() ? "1"
                 : bi.nb1a04b.isChecked() ? "2"
@@ -244,21 +301,22 @@ public class SectionB1AActivity extends AppCompatActivity {
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        /*Long updcount = db.addChildForm(MainApp.cc);
-        MainApp.cc.set_ID(String.valueOf(updcount));
+        /*Long updcount = db.addOutcome(MainApp.oc);
+        MainApp.oc.set_ID(String.valueOf(updcount));
 
         if (updcount != 0) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
 
-            MainApp.cc.setUID(
-                    (MainApp.cc.getDeviceID() + MainApp.cc.get_ID()));
-            db.updateFormChildID();
+            MainApp.oc.set_UID(
+                    (MainApp.oc.getDeviceId() + MainApp.oc.get_ID()));
+            db.updateOutcomeID();
 
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
         }*/
+
 
         return true;
 
