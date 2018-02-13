@@ -51,7 +51,7 @@ public class SectionA1Activity extends AppCompatActivity {
         MainApp.childUnder5 = new ArrayList<>();
         MainApp.mwra = new ArrayList<>();
         MainApp.adolescents = new ArrayList<>();
-        MainApp.serial_no = 1;
+        MainApp.serial_no = 0;
     }
 
     public void BtnContinue() {
@@ -151,6 +151,12 @@ public class SectionA1Activity extends AppCompatActivity {
         if (!validatorClass.EmptyTextBox(this, binding.na108, getString(R.string.na108))) {
             return false;
         }
+
+//        na213
+        if (!validatorClass.EmptyTextBox(this, binding.na213, getString(R.string.na213))) {
+            return false;
+        }
+
 //        na11101blood
         if (!validatorClass.EmptyRadioButton(this, binding.na11101blood, binding.na11101bloodb, getString(R.string.na11101blood))) {
             return false;

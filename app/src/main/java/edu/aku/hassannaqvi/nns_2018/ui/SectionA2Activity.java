@@ -142,8 +142,8 @@ public class SectionA2Activity extends AppCompatActivity {
             }
         }
 
-        binding.na204.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, mothersList));
-        binding.na205.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, fathersList));
+        binding.na204.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, fathersList));
+        binding.na205.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, mothersList));
 
     }
 
@@ -289,11 +289,7 @@ public class SectionA2Activity extends AppCompatActivity {
             return false;
         }
 
-        if (!validatorClass.EmptyRadioButton(this, binding.na212, binding.na212a, getString(R.string.na212))) {
-            return false;
-        }
-
-        return validatorClass.EmptyTextBox(this, binding.na213, getString(R.string.na213));
+        return validatorClass.EmptyRadioButton(this, binding.na212, binding.na212a, getString(R.string.na212));
     }
 
 
@@ -310,7 +306,9 @@ public class SectionA2Activity extends AppCompatActivity {
         MainApp.fmc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
 //        MainApp.fmc.set_UUID(MainApp.fc.getUID());
 
-        MainApp.fmc.setSerialNo(String.valueOf(MainApp.serial_no + 1));
+        MainApp.serial_no++;
+
+        MainApp.fmc.setSerialNo(String.valueOf(MainApp.serial_no));
         MainApp.fmc.setName(binding.na202.getText().toString());
         MainApp.fmc.setDob(binding.na2dob.getText().toString());
         MainApp.fmc.setAge(binding.na2agey.getText().toString() + "-" + binding.na2agem.getText().toString() + "-" + binding.na2aged.getText().toString());
@@ -318,11 +316,41 @@ public class SectionA2Activity extends AppCompatActivity {
 
         JSONObject sA2 = new JSONObject();
 
-        /*sB.put("toicb01", binding.toicb01.getText().toString());
-        sB.put("toicb03", binding.toicb03a.isChecked() ? "1" : binding.toicb03b.isChecked() ? "2" : "0");*/
+        sA2.put("na2SerialNo", String.valueOf(MainApp.serial_no));
+        sA2.put("na202", binding.na202.getText().toString());
+        sA2.put("na203", binding.na203a.isChecked() ? "1" : binding.na203b.isChecked() ? "2" : binding.na203c.isChecked() ? "3" : binding.na203d.isChecked() ? "4"
+                : binding.na203e.isChecked() ? "5" : binding.na203f.isChecked() ? "6" : binding.na203g.isChecked() ? "7" : binding.na203h.isChecked() ? "8"
+                : binding.na203i.isChecked() ? "9" : binding.na203j.isChecked() ? "10" : binding.na203k.isChecked() ? "11" : binding.na203l.isChecked() ? "12"
+                : binding.na203m.isChecked() ? "13" : binding.na20398.isChecked() ? "98" : binding.na20396.isChecked() ? "96" : "0");
+        sA2.put("na20396x", binding.na20396x.getText().toString());
+
+        if (!binding.na203a.isChecked()) {
+            sA2.put("na204", fathersMap.get(binding.na204.getSelectedItem().toString()));
+            sA2.put("na205", mothersMap.get(binding.na205.getSelectedItem().toString()));
+        }
+
+        sA2.put("na206", binding.na206a.isChecked() ? "1" : binding.na206b.isChecked() ? "2" : "0");
+
+        sA2.put("na20798", binding.na20798.getText().toString());
+
+        sA2.put("na2agey", binding.na2agey.getText().toString());
+        sA2.put("na2agem", binding.na2agem.getText().toString());
+        sA2.put("na2aged", binding.na2aged.getText().toString());
+
+        sA2.put("na2edu", binding.na2edua.isChecked() ? "1" : binding.na2edub.isChecked() ? "2" : binding.na2educ.isChecked() ? "3" : binding.na2edud.isChecked() ? "4"
+                : binding.na2edue.isChecked() ? "5" : binding.na2eduf.isChecked() ? "6" : binding.na2edug.isChecked() ? "7" : binding.na2eduh.isChecked() ? "8"
+                : binding.na2edui.isChecked() ? "9" : "0");
+
+        sA2.put("na2occ", binding.na2occa.isChecked() ? "1" : binding.na2occb.isChecked() ? "2" : binding.na2occc.isChecked() ? "3" : binding.na2occd.isChecked() ? "4"
+                : binding.na2occe.isChecked() ? "5" : binding.na2occf.isChecked() ? "6" : binding.na2occg.isChecked() ? "7" : binding.na2occh.isChecked() ? "8"
+                : binding.na2occ96.isChecked() ? "96" : "0");
+        sA2.put("na2occ96x", binding.na2occ96x.getText().toString());
+
+        sA2.put("na2ms", binding.na2msa.isChecked() ? "1" : binding.na2msb.isChecked() ? "2" : binding.na2msc.isChecked() ? "3" : binding.na2msd.isChecked() ? "4"
+                : binding.na2mse.isChecked() ? "5" : "0");
+        sA2.put("na212", binding.na212a.isChecked() ? "1" : binding.na212b.isChecked() ? "2" : "0");
 
         MainApp.fmc.setsA2(String.valueOf(sA2));
-
 
         /*Functionality Setting*/
 
@@ -403,7 +431,7 @@ public class SectionA2Activity extends AppCompatActivity {
 
         DatabaseHelper db = new DatabaseHelper(this);
 
-        /*long updcount = db.addFamilyMembers(MainApp.fmc);
+        long updcount = db.addFamilyMembers(MainApp.fmc);
 
         MainApp.fmc.set_ID(String.valueOf(updcount));
 
@@ -417,9 +445,7 @@ public class SectionA2Activity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
-        }*/
-
-        return true;
+        }
     }
 
 

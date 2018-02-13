@@ -22,6 +22,8 @@ import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract.FormsChildTable;
 import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract.eligibleMembers;
+import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract.familyMembers;
 import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract.FormsTable;
 import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
@@ -78,6 +80,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsTable.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
 
+    private static final String SQL_CREATE_FAMILY_MEMEBERS = "CREATE TABLE "
+            + familyMembers.TABLE_NAME + "("
+            + familyMembers.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + familyMembers.COLUMN_PROJECT_NAME + " TEXT,"
+            + familyMembers.COLUMN_UID + " TEXT," +
+            familyMembers.COLUMN_UUID + " TEXT," +
+            familyMembers.COLUMN_FORMDATE + " TEXT," +
+            familyMembers.COLUMN_USER + " TEXT," +
+            familyMembers.COLUMN_SA2 + " TEXT," +
+            familyMembers.COLUMN_DEVICEID + " TEXT," +
+            familyMembers.COLUMN_DEVICETAGID + " TEXT," +
+            familyMembers.COLUMN_APP_VERSION + " TEXT," +
+            familyMembers.COLUMN_SYNCED + " TEXT," +
+            familyMembers.COLUMN_SYNCED_DATE + " TEXT"
+            + " );";
 
     private static final String SQL_CREATE_CHILD_FORMS = "CREATE TABLE "
             + FormsChildTable.TABLE_NAME + "("
@@ -112,6 +129,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String SQL_DELETE_ELIGIBLE_MEMBERS = "DROP TABLE IF EXISTS " + eligibleMembers.TABLE_NAME;
     private static final String SQL_DELETE_MWRAS = "DROP TABLE IF EXISTS " + MWRATable.TABLE_NAME;
     private static final String SQL_DELETE_OUTCOME = "DROP TABLE IF EXISTS " + outcomeTable.TABLE_NAME;
+    private static final String SQL_DELETE_FAMILYMEMBERS = "DROP TABLE IF EXISTS " + familyMembers.TABLE_NAME;
     final String SQL_CREATE_SERIAL = "CREATE TABLE " + singleSerial.TABLE_NAME + " (" +
             singleSerial._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             singleSerial.COLUMN_DEVICE_ID + " TEXT, " +
@@ -191,7 +209,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             ");";
 
 
-
     private final String TAG = "DatabaseHelper";
 
 
@@ -214,6 +231,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_ELIGIBLE_MEMBERS);
         db.execSQL(SQL_CREATE_MWRAS);
         db.execSQL(SQL_CREATE_OUTCOME);
+        db.execSQL(SQL_CREATE_FAMILY_MEMEBERS);
     }
 
     @Override
@@ -227,6 +245,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_ELIGIBLE_MEMBERS);
         db.execSQL(SQL_DELETE_MWRAS);
         db.execSQL(SQL_DELETE_OUTCOME);
+        db.execSQL(SQL_DELETE_FAMILYMEMBERS);
 
 
     }
@@ -524,6 +543,35 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return newRowId;
     }
 
+    public Long addFamilyMembers(FamilyMembersContract fmc) {
+
+        // Gets the data repository in write mode
+        SQLiteDatabase db = this.getWritableDatabase();
+
+// Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(familyMembers.COLUMN_PROJECT_NAME, fmc.getProjectName());
+        values.put(familyMembers.COLUMN_UID, fmc.get_UID());
+        values.put(familyMembers.COLUMN_UUID, fmc.get_UUID());
+        values.put(familyMembers.COLUMN_FORMDATE, fmc.getFormDate());
+        values.put(familyMembers.COLUMN_USER, fmc.getUser());
+        values.put(familyMembers.COLUMN_SA2, fmc.getsA2());
+        values.put(familyMembers.COLUMN_DEVICETAGID, fmc.getDevicetagID());
+        values.put(familyMembers.COLUMN_DEVICEID, fmc.getDeviceId());
+        values.put(familyMembers.COLUMN_SYNCED, fmc.getSynced());
+        values.put(familyMembers.COLUMN_SYNCED_DATE, fmc.getSyncedDate());
+        values.put(familyMembers.COLUMN_APP_VERSION, fmc.getApp_ver());
+
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId;
+        newRowId = db.insert(
+                familyMembers.TABLE_NAME,
+                familyMembers.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
+
 
     public Long addChildForm(ChildContract fc) {
 
@@ -778,6 +826,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};
 
         int count = db.update(FormsTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
+
+    public int updateFamilyMemberID() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(familyMembers.COLUMN_UID, MainApp.fmc.get_UID());
+
+// Which row to update, based on the ID
+        String selection = familyMembers._ID + " = ?";
+        String[] selectionArgs = {String.valueOf(MainApp.fmc.get_ID())};
+
+        int count = db.update(familyMembers.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);
@@ -1355,8 +1421,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
         return count;
     }
-
-
 
 
     public int updateSA() {
