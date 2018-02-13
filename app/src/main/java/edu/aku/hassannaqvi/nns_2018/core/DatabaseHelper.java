@@ -20,8 +20,14 @@ import java.util.List;
 
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract.FormsChildTable;
+import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract.eligibleMembers;
 import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract.FormsTable;
+import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract.MWRATable;
+import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract.outcomeTable;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract.singleSerial;
 import edu.aku.hassannaqvi.nns_2018.contracts.TehsilsContract;
@@ -103,6 +109,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String SQL_DELETE_SINGLE = "DROP TABLE IF EXISTS " + singleSerial.TABLE_NAME;
     private static final String SQL_DELETE_TALUKAS = "DROP TABLE IF EXISTS " + TehsilsTable.TABLE_NAME;
     private static final String SQL_DELETE_UCS = "DROP TABLE IF EXISTS " + UCsTable.TABLE_NAME;
+    private static final String SQL_DELETE_ELIGIBLE_MEMBERS = "DROP TABLE IF EXISTS " + eligibleMembers.TABLE_NAME;
+    private static final String SQL_DELETE_MWRAS = "DROP TABLE IF EXISTS " + MWRATable.TABLE_NAME;
+    private static final String SQL_DELETE_OUTCOME = "DROP TABLE IF EXISTS " + outcomeTable.TABLE_NAME;
     final String SQL_CREATE_SERIAL = "CREATE TABLE " + singleSerial.TABLE_NAME + " (" +
             singleSerial._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             singleSerial.COLUMN_DEVICE_ID + " TEXT, " +
@@ -123,6 +132,66 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             UCsTable.COLUMN_TALUKA_CODE + " TEXT " +
             ");";
 
+    final String SQL_CREATE_ELIGIBLE_MEMBERS = "CREATE TABLE " + eligibleMembers.TABLE_NAME + " (" +
+            eligibleMembers.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            eligibleMembers.COLUMN_UID + " TEXT," +
+            eligibleMembers.COLUMN_UUID + " TEXT," +
+            eligibleMembers.COLUMN_FORMDATE + " TEXT," +
+            eligibleMembers.COLUMN_DEVICEID + " TEXT," +
+            eligibleMembers.COLUMN_DEVICETAGID + " TEXT," +
+            eligibleMembers.COLUMN_USER + " TEXT," +
+            eligibleMembers.COLUMN_APPVERSION + " TEXT," +
+            eligibleMembers.COLUMN_A3SERIALNO + " TEXT," +
+            eligibleMembers.COLUMN_NAME + " TEXT," +
+            eligibleMembers.COLUMN_DOB + " TEXT," +
+            eligibleMembers.COLUMN_AGE + " TEXT," +
+            eligibleMembers.COLUMN_GENDER + " TEXT," +
+            eligibleMembers.COLUMN_SA3 + " TEXT," +
+            eligibleMembers.COLUMN_SYNCED + " TEXT," +
+            eligibleMembers.COLUMN_SYNCEDDATE + " TEXT" +
+
+            ");";
+
+
+    final String SQL_CREATE_MWRAS = "CREATE TABLE " + MWRATable.TABLE_NAME + " (" +
+            MWRATable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            MWRATable.COLUMN_UID + " TEXT," +
+            MWRATable.COLUMN_UUID + " TEXT," +
+            MWRATable.COLUMN_FORMDATE + " TEXT," +
+            MWRATable.COLUMN_DEVICEID + " TEXT," +
+            MWRATable.COLUMN_DEVICETAGID + " TEXT," +
+            MWRATable.COLUMN_USER + " TEXT," +
+            MWRATable.COLUMN_APP_VER + " TEXT," +
+            MWRATable.COLUMN_B1SERIALNO + " TEXT," +
+            MWRATable.COLUMN_SB1 + " TEXT," +
+            MWRATable.COLUMN_SB2 + " TEXT," +
+            MWRATable.COLUMN_SB4 + " TEXT," +
+            MWRATable.COLUMN_SB5 + " TEXT," +
+            MWRATable.COLUMN_SB6 + " TEXT," +
+            MWRATable.COLUMN_SYNCED + " TEXT," +
+            MWRATable.COLUMN_SYNCEDDATE + " TEXT " +
+
+            ");";
+
+
+    final String SQL_CREATE_OUTCOME = "CREATE TABLE " + outcomeTable.TABLE_NAME + " (" +
+            outcomeTable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            outcomeTable.COLUMN_UID + " TEXT," +
+            outcomeTable.COLUMN_UUID + " TEXT," +
+            outcomeTable.COLUMN_FORMDATE + " TEXT," +
+            outcomeTable.COLUMN_DEVICEID + " TEXT," +
+            outcomeTable.COLUMN_DEVICETAGID + " TEXT," +
+            outcomeTable.COLUMN_USER + " TEXT," +
+            outcomeTable.COLUMN_APP_VER + " TEXT," +
+            outcomeTable.COLUMN_B1APregSNO + " TEXT," +
+            outcomeTable.COLUMN_SB1A + " TEXT," +
+            outcomeTable.COLUMN_SYNCED + " TEXT," +
+            outcomeTable.COLUMN_SYNCEDDATE + " TEXT " +
+
+            ");";
+
+
+
     private final String TAG = "DatabaseHelper";
 
 
@@ -142,6 +211,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_SERIAL);
         db.execSQL(SQL_CREATE_TALUKA);
         db.execSQL(SQL_CREATE_UC);
+        db.execSQL(SQL_CREATE_ELIGIBLE_MEMBERS);
+        db.execSQL(SQL_CREATE_MWRAS);
+        db.execSQL(SQL_CREATE_OUTCOME);
     }
 
     @Override
@@ -152,6 +224,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_SINGLE);
         db.execSQL(SQL_DELETE_TALUKAS);
         db.execSQL(SQL_DELETE_UCS);
+        db.execSQL(SQL_DELETE_ELIGIBLE_MEMBERS);
+        db.execSQL(SQL_DELETE_MWRAS);
+        db.execSQL(SQL_DELETE_OUTCOME);
+
+
     }
 
     public void syncTehsils(JSONArray Talukaslist) {
@@ -481,6 +558,111 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return newRowId;
     }
 
+
+    public Long addEligibleMember(EligibleMembersContract ec) {
+
+        // Gets the data repository in write mode
+        SQLiteDatabase db = this.getWritableDatabase();
+
+// Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(eligibleMembers.COLUMN_PROJECTNAME, ec.getProjectName());
+        values.put(eligibleMembers.COLUMN__ID, ec.get_ID());
+        values.put(eligibleMembers.COLUMN_UID, ec.get_UID());
+        values.put(eligibleMembers.COLUMN_UUID, ec.get_UUID());
+        values.put(eligibleMembers.COLUMN_FORMDATE, ec.getFormDate());
+        values.put(eligibleMembers.COLUMN_DEVICEID, ec.getDeviceId());
+        values.put(eligibleMembers.COLUMN_DEVICETAGID, ec.getDevicetagID());
+        values.put(eligibleMembers.COLUMN_USER, ec.getUser());
+        values.put(eligibleMembers.COLUMN_APPVERSION, ec.getApp_ver());
+        values.put(eligibleMembers.COLUMN_A3SERIALNO, ec.getA3SerialNo());
+        values.put(eligibleMembers.COLUMN_NAME, ec.getName());
+        values.put(eligibleMembers.COLUMN_DOB, ec.getDob());
+        values.put(eligibleMembers.COLUMN_AGE, ec.getAge());
+        values.put(eligibleMembers.COLUMN_GENDER, ec.getGender());
+        values.put(eligibleMembers.COLUMN_SA3, ec.getsA3());
+        values.put(eligibleMembers.COLUMN_SYNCED, ec.getSynced());
+        values.put(eligibleMembers.COLUMN_SYNCEDDATE, ec.getSyncedDate());
+
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId;
+        newRowId = db.insert(
+                eligibleMembers.TABLE_NAME,
+                eligibleMembers.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
+
+
+    public Long addMWRA(MWRAContract mc) {
+
+        // Gets the data repository in write mode
+        SQLiteDatabase db = this.getWritableDatabase();
+
+// Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(MWRATable.COLUMN_PROJECTNAME, mc.getProjectName());
+        values.put(MWRATable.COLUMN__ID, mc.get_ID());
+        values.put(MWRATable.COLUMN_UID, mc.get_UID());
+        values.put(MWRATable.COLUMN_UUID, mc.get_UUID());
+        values.put(MWRATable.COLUMN_FORMDATE, mc.getFormDate());
+        values.put(MWRATable.COLUMN_DEVICEID, mc.getDeviceId());
+        values.put(MWRATable.COLUMN_DEVICETAGID, mc.getDevicetagID());
+        values.put(MWRATable.COLUMN_USER, mc.getUser());
+        values.put(MWRATable.COLUMN_APP_VER, mc.getApp_ver());
+        values.put(MWRATable.COLUMN_B1SERIALNO, mc.getB1SerialNo());
+        values.put(MWRATable.COLUMN_SB1, mc.getsB1());
+        values.put(MWRATable.COLUMN_SB2, mc.getsB2());
+        values.put(MWRATable.COLUMN_SB4, mc.getsB4());
+        values.put(MWRATable.COLUMN_SB5, mc.getsB5());
+        values.put(MWRATable.COLUMN_SB6, mc.getsB6());
+        values.put(MWRATable.COLUMN_SYNCED, mc.getSynced());
+        values.put(MWRATable.COLUMN_SYNCEDDATE, mc.getSyncedDate());
+
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId;
+        newRowId = db.insert(
+                MWRATable.TABLE_NAME,
+                MWRATable.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
+
+    public Long addOutcome(OutcomeContract oc) {
+
+        // Gets the data repository in write mode
+        SQLiteDatabase db = this.getWritableDatabase();
+
+// Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(outcomeTable.COLUMN_PROJECTNAME, oc.getProjectName());
+        values.put(outcomeTable.COLUMN__ID, oc.get_ID());
+        values.put(outcomeTable.COLUMN_UID, oc.get_UID());
+        values.put(outcomeTable.COLUMN_UUID, oc.get_UUID());
+        values.put(outcomeTable.COLUMN_FORMDATE, oc.getFormDate());
+        values.put(outcomeTable.COLUMN_DEVICEID, oc.getDeviceId());
+        values.put(outcomeTable.COLUMN_DEVICETAGID, oc.getDevicetagID());
+        values.put(outcomeTable.COLUMN_USER, oc.getUser());
+        values.put(outcomeTable.COLUMN_APP_VER, oc.getApp_ver());
+        values.put(outcomeTable.COLUMN_B1APregSNO, oc.getB1aPregSNo());
+        values.put(outcomeTable.COLUMN_SB1A, oc.getsB1A());
+
+        values.put(outcomeTable.COLUMN_SYNCED, oc.getSynced());
+        values.put(outcomeTable.COLUMN_SYNCEDDATE, oc.getSyncedDate());
+
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId;
+        newRowId = db.insert(
+                outcomeTable.TABLE_NAME,
+                outcomeTable.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
+
+
     public Long addSerialForm(SerialContract sc) {
 
         // Gets the data repository in write mode
@@ -602,6 +784,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
+    public int updateMWRAID() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(MWRATable.COLUMN_UID, MainApp.mc.get_UID());
+
+// Which row to update, based on the ID
+        String selection = MWRATable._ID + " = ?";
+        String[] selectionArgs = {String.valueOf(MainApp.mc.get_ID())};
+
+        int count = db.update(MWRATable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
+
+    public int updateOutcomeID() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(outcomeTable.COLUMN_UID, MainApp.oc.get_UID());
+
+// Which row to update, based on the ID
+        String selection = outcomeTable._ID + " = ?";
+        String[] selectionArgs = {String.valueOf(MainApp.oc.get_ID())};
+
+        int count = db.update(outcomeTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
+
     public int updateFormChildID() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -614,6 +832,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] selectionArgs = {String.valueOf(MainApp.cc.get_ID())};
 
         int count = db.update(FormsChildTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
+
+
+    public int updateEligibleMemberID() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(eligibleMembers.COLUMN_UID, MainApp.ec.get_UUID());
+
+// Which row to update, based on the ID
+        String selection = eligibleMembers.COLUMN__ID + " = ?";
+        String[] selectionArgs = {String.valueOf(MainApp.ec.get_ID())};
+
+        int count = db.update(eligibleMembers.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);
@@ -720,6 +957,175 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 ChildContract fc = new ChildContract();
+                allFC.add(fc.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
+
+    public Collection<EligibleMembersContract> getUnsyncedEligbleMembers() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                eligibleMembers.COLUMN__ID,
+                eligibleMembers.COLUMN_UID,
+                eligibleMembers.COLUMN_UUID,
+                eligibleMembers.COLUMN_FORMDATE,
+                eligibleMembers.COLUMN_DEVICEID,
+                eligibleMembers.COLUMN_DEVICETAGID,
+                eligibleMembers.COLUMN_USER,
+                eligibleMembers.COLUMN_APPVERSION,
+                eligibleMembers.COLUMN_A3SERIALNO,
+                eligibleMembers.COLUMN_NAME,
+                eligibleMembers.COLUMN_DOB,
+                eligibleMembers.COLUMN_AGE,
+                eligibleMembers.COLUMN_GENDER,
+                eligibleMembers.COLUMN_SA3,
+                eligibleMembers.COLUMN_SYNCED,
+                eligibleMembers.COLUMN_SYNCEDDATE,
+
+        };
+        String whereClause = eligibleMembers.COLUMN_SYNCED + " is null OR " + eligibleMembers.COLUMN_SYNCED + " = '' ";
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                eligibleMembers._ID + " ASC";
+
+        Collection<EligibleMembersContract> allFC = new ArrayList<EligibleMembersContract>();
+        try {
+            c = db.query(
+                    eligibleMembers.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                EligibleMembersContract fc = new EligibleMembersContract();
+                allFC.add(fc.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
+
+    public Collection<MWRAContract> getUnsyncedMWRA() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                MWRATable.COLUMN__ID,
+                MWRATable.COLUMN_UID,
+                MWRATable.COLUMN_UUID,
+                MWRATable.COLUMN_FORMDATE,
+                MWRATable.COLUMN_DEVICEID,
+                MWRATable.COLUMN_DEVICETAGID,
+                MWRATable.COLUMN_USER,
+                MWRATable.COLUMN_APP_VER,
+                MWRATable.COLUMN_B1SERIALNO,
+                MWRATable.COLUMN_SB1,
+                MWRATable.COLUMN_SB2,
+                MWRATable.COLUMN_SB4,
+                MWRATable.COLUMN_SB5,
+                MWRATable.COLUMN_SB6,
+
+                MWRATable.COLUMN_SYNCED,
+                MWRATable.COLUMN_SYNCEDDATE,
+
+        };
+        String whereClause = MWRATable.COLUMN_SYNCED + " is null OR " + MWRATable.COLUMN_SYNCED + " = '' ";
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                MWRATable._ID + " ASC";
+
+        Collection<MWRAContract> allFC = new ArrayList<MWRAContract>();
+        try {
+            c = db.query(
+                    MWRATable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                MWRAContract fc = new MWRAContract();
+                allFC.add(fc.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
+
+    public Collection<OutcomeContract> getUnsyncedOutcome() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                outcomeTable.COLUMN__ID,
+                outcomeTable.COLUMN_UID,
+                outcomeTable.COLUMN_UUID,
+                outcomeTable.COLUMN_FORMDATE,
+                outcomeTable.COLUMN_DEVICEID,
+                outcomeTable.COLUMN_DEVICETAGID,
+                outcomeTable.COLUMN_USER,
+                outcomeTable.COLUMN_APP_VER,
+                outcomeTable.COLUMN_B1APregSNO,
+                outcomeTable.COLUMN_SB1A,
+
+                outcomeTable.COLUMN_SYNCED,
+                outcomeTable.COLUMN_SYNCEDDATE,
+
+        };
+        String whereClause = outcomeTable.COLUMN_SYNCED + " is null OR " + outcomeTable.COLUMN_SYNCED + " = '' ";
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                MWRATable._ID + " ASC";
+
+        Collection<OutcomeContract> allFC = new ArrayList<OutcomeContract>();
+        try {
+            c = db.query(
+                    outcomeTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                OutcomeContract fc = new OutcomeContract();
                 allFC.add(fc.Hydrate(c));
             }
         } finally {
@@ -876,6 +1282,83 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    // mwra - uPDATE
+    public int updateSB2() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(MWRATable.COLUMN_SB2, MainApp.mc.getsB2());
+
+// Which row to update, based on the ID
+        String selection = MWRATable._ID + " = ?";
+        String[] selectionArgs = {String.valueOf(MainApp.mc.get_ID())};
+
+        int count = db.update(MWRATable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
+
+
+    public int updateSB4() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(MWRATable.COLUMN_SB4, MainApp.mc.getsB4());
+
+// Which row to update, based on the ID
+        String selection = MWRATable._ID + " = ?";
+        String[] selectionArgs = {String.valueOf(MainApp.mc.get_ID())};
+
+        int count = db.update(MWRATable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
+
+    public int updateSB5() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(MWRATable.COLUMN_SB5, MainApp.mc.getsB5());
+
+// Which row to update, based on the ID
+        String selection = MWRATable._ID + " = ?";
+        String[] selectionArgs = {String.valueOf(MainApp.mc.get_ID())};
+
+        int count = db.update(MWRATable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
+
+    public int updateSB6() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(MWRATable.COLUMN_SB6, MainApp.mc.getsB6());
+
+// Which row to update, based on the ID
+        String selection = MWRATable._ID + " = ?";
+        String[] selectionArgs = {String.valueOf(MainApp.mc.get_ID())};
+
+        int count = db.update(MWRATable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
+
+
+
+
     public int updateSA() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -893,6 +1376,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
         return count;
     }
+
 
     public int updateSB() {
         SQLiteDatabase db = this.getReadableDatabase();

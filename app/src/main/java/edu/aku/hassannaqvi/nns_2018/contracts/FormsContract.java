@@ -116,7 +116,7 @@ public class FormsContract {
         }
         /*if (!this.sB.equals("")) {
 
-            json.put(FormsTable.COLUMN_SB, this.sB.equals("") ? JSONObject.NULL : new JSONObject(this.sB));
+            json.put(FormsTable.COLUMN_SA3, this.sB.equals("") ? JSONObject.NULL : new JSONObject(this.sB));
         }
         if (!this.sC.equals("")) {
 

@@ -4,15 +4,22 @@ import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB1Binding;
@@ -22,6 +29,8 @@ public class SectionB1Activity extends Activity {
 
     ActivitySectionB1Binding bi;
     DatabaseHelper db;
+    ArrayList<String> lstMwra;
+    int position = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +39,10 @@ public class SectionB1Activity extends Activity {
 
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_b1);
         db = new DatabaseHelper(this);
+        lstMwra = new ArrayList<>();
+
+        MainApp.mwraMap.put("....", "");
+        lstMwra.add("....");
 
         //Assigning data to UI binding
         bi.setCallback(this);
@@ -62,6 +75,29 @@ public class SectionB1Activity extends Activity {
 
             }
         });
+
+        for (byte i = 0; i < MainApp.mwra.size(); i++) {
+            MainApp.mwraMap.put(MainApp.mwra.get(i).getName(), MainApp.mwra.get(i).getSerialNo());
+            lstMwra.add(MainApp.mwra.get(i).getName());
+        }
+
+        bi.nb101.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, lstMwra));
+
+        bi.nb101.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
+                position = i;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+
+
 
 
     }
@@ -103,7 +139,7 @@ public class SectionB1Activity extends Activity {
             return false;
         }
 
-        if (!validatorClass.RangeTextBox(this, bi.nb103, 15, 49, getString(R.string.na8a03m), " years")) {
+        if (!validatorClass.RangeTextBox(this, bi.nb103, 15, Integer.valueOf(MainApp.mwra.get(position).getAge()), getString(R.string.na8a03m), " years")) {
             return false;
         }
 
@@ -129,8 +165,21 @@ public class SectionB1Activity extends Activity {
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
+        MainApp.mc = new MWRAContract();
+
+        MainApp.mc.setDevicetagID(MainApp.getTagName(this));
+        MainApp.mc.setFormDate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+        MainApp.mc.setUser(MainApp.userName);
+        MainApp.mc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
+                Settings.Secure.ANDROID_ID));
+        MainApp.mc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
+        //MainApp.mc.set_UUID(MainApp.fc.getUID());
+
+
         JSONObject sB1 = new JSONObject();
 
+        sB1.put("nb101", bi.nb101.getSelectedItem().toString());
+        sB1.put("nb1serialno", MainApp.mwraMap.get(bi.nb101.getSelectedItem().toString()));
         sB1.put("nb104", bi.nb104.getText().toString());
 
         sB1.put("nb105", bi.nb105a.isChecked() ? "1"
@@ -139,7 +188,7 @@ public class SectionB1Activity extends Activity {
         sB1.put("nb106", bi.nb106.getText().toString());
 
 
-        //MainApp.cc.setsB(String.valueOf(sB));
+        MainApp.mc.setsB1(String.valueOf(sB1));
 
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
@@ -151,15 +200,15 @@ public class SectionB1Activity extends Activity {
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        /*Long updcount = db.addChildForm(MainApp.cc);
-        MainApp.cc.set_ID(String.valueOf(updcount));
+        /*Long updcount = db.addMWRA(MainApp.mc);
+        MainApp.mc.set_ID(String.valueOf(updcount));
 
         if (updcount != 0) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
 
-            MainApp.cc.setUID(
-                    (MainApp.cc.getDeviceID() + MainApp.cc.get_ID()));
-            db.updateFormChildID();
+            MainApp.mc.set_UID(
+                    (MainApp.mc.getDeviceId() + MainApp.mc.get_ID()));
+            db.updateMWRAID();
 
             return true;
         } else {
