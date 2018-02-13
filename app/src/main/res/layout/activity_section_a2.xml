@@ -405,9 +405,11 @@
             <!--04-->
 
             <LinearLayout
+                android:id="@+id/fldGrpfid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility='@{na203a.checked ? View.GONE : View.VISIBLE}'>
 
                 <TextView
                     style="?android:textAppearanceMedium"
@@ -435,9 +437,11 @@
             <!--05-->
 
             <LinearLayout
+                android:id="@+id/fldGrpmid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility='@{na203a.checked ? View.GONE : View.VISIBLE}'>
 
                 <TextView
                     style="?android:textAppearanceMedium"

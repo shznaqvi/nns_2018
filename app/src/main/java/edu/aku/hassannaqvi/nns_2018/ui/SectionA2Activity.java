@@ -5,7 +5,10 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.Toast;
@@ -70,6 +73,33 @@ public class SectionA2Activity extends AppCompatActivity {
             }
         });
 
+        binding.na2agey.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (!binding.na2agey.getText().toString().isEmpty()) {
+                    if (Integer.valueOf(binding.na2agey.getText().toString()) >= 5) {
+                        binding.na2agem.setVisibility(View.GONE);
+                        binding.na2aged.setVisibility(View.GONE);
+                        binding.na2agem.setText("0");
+                        binding.na2aged.setText("0");
+                    } else {
+                        binding.na2agem.setVisibility(View.VISIBLE);
+                        binding.na2aged.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
         binding.na2dob.setManager(getSupportFragmentManager());
 
 //        Setting Counts
@@ -131,7 +161,7 @@ public class SectionA2Activity extends AppCompatActivity {
 
                 finish();
 
-                startActivity(new Intent(this, SectionA3Activity.class));
+                startActivity(new Intent(this, SectionB1Activity.class));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -182,12 +212,14 @@ public class SectionA2Activity extends AppCompatActivity {
         }
 
 
-        if (!validatorClass.EmptySpinner(this, binding.na204, getString(R.string.na204))) {
-            return false;
-        }
+        if (!binding.na203a.isChecked()) {
+            if (!validatorClass.EmptySpinner(this, binding.na204, getString(R.string.na204))) {
+                return false;
+            }
 
-        if (!validatorClass.EmptySpinner(this, binding.na205, getString(R.string.na205))) {
-            return false;
+            if (!validatorClass.EmptySpinner(this, binding.na205, getString(R.string.na205))) {
+                return false;
+            }
         }
 
         if (!validatorClass.EmptyRadioButton(this, binding.na206, binding.na206a, getString(R.string.na206))) {
