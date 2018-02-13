@@ -365,6 +365,9 @@ public class SectionA2Activity extends AppCompatActivity {
                 memType.put(1, Integer.valueOf(binding.na2adm.getText().toString()));
             }
             MainApp.membersCount.setMembers(2, memType);
+
+            // Add data in list
+            MainApp.adolescents.add(MainApp.fmc);
         }
         //Children < 5
         else if (Age < 5) {
