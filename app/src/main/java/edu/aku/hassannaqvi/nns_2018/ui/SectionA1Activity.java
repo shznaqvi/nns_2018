@@ -224,6 +224,7 @@ public class SectionA1Activity extends AppCompatActivity {
             String lat = GPSPref.getString("Latitude", "0");
             String lang = GPSPref.getString("Longitude", "0");
             String acc = GPSPref.getString("Accuracy", "0");
+            String elevation = GPSPref.getString("Elevation", "0");
 
             if (lat == "0" && lang == "0") {
                 Toast.makeText(this, "Could not obtained GPS points", Toast.LENGTH_SHORT).show();
@@ -237,6 +238,7 @@ public class SectionA1Activity extends AppCompatActivity {
             MainApp.fc.setGpsLng(lang);
             MainApp.fc.setGpsAcc(acc);
             MainApp.fc.setGpsDT(date); // Timestamp is converted to date above
+            MainApp.fc.setGpsElev(elevation);
 
             Toast.makeText(this, "GPS set", Toast.LENGTH_SHORT).show();
 

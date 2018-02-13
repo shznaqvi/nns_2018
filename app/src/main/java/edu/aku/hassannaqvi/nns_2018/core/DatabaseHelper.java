@@ -62,7 +62,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + FormsTable.COLUMN_UID + " TEXT," +
             FormsTable.COLUMN_FORMDATE + " TEXT," +
             FormsTable.COLUMN_USER + " TEXT," +
-            //FormsChildTable.COLUMN_FORMTYPE + " TEXT," +
+            FormsTable.COLUMN_GPSELEV + " TEXT," +
             FormsTable.COLUMN_SA1 + " TEXT," +
             FormsTable.COLUMN_SB + " TEXT," +
             FormsTable.COLUMN_SC + " TEXT," +
@@ -516,7 +516,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_UID, fc.getUID());
         values.put(FormsTable.COLUMN_FORMDATE, fc.getFormDate());
         values.put(FormsTable.COLUMN_USER, fc.getUser());
-        //values.put(FormsChildTable.COLUMN_FORMTYPE, fc.getFormtype());
+        values.put(FormsTable.COLUMN_GPSELEV, fc.getGpsElev());
         values.put(FormsTable.COLUMN_ISTATUS, fc.getIstatus());
         values.put(FormsTable.COLUMN_ISTATUS88x, fc.getIstatus88x());
         values.put(FormsTable.COLUMN_SA1, fc.getsA1());
@@ -932,7 +932,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_FORMDATE,
                 FormsTable.COLUMN_USER,
                 FormsTable.COLUMN_ISTATUS,
-                //FormsTable.COLUMN_FORMTYPE,
+                //FormsTable.COLUMN_GPSELEV,
                 FormsTable.COLUMN_SA1,
                 FormsTable.COLUMN_SB,
                 FormsTable.COLUMN_SC,

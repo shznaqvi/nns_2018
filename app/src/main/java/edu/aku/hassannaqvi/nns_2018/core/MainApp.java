@@ -390,6 +390,7 @@ public class MainApp extends Application {
                 editor.putString("Latitude", String.valueOf(location.getLatitude()));
                 editor.putString("Accuracy", String.valueOf(location.getAccuracy()));
                 editor.putString("Time", String.valueOf(location.getTime()));
+                editor.putString("Elevation", String.valueOf(location.getAltitude()));
                 String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(String.valueOf(location.getTime()))).toString();
 //                Toast.makeText(getApplicationContext(),
 //                        "GPS Commit! LAT: " + String.valueOf(location.getLongitude()) +
