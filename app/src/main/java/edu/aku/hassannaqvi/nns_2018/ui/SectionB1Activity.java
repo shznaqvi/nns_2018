@@ -180,7 +180,7 @@ public class SectionB1Activity extends Activity {
         MainApp.mc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
         MainApp.mc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
-        //MainApp.mc.set_UUID(MainApp.fc.getUID());
+        MainApp.mc.set_UUID(MainApp.fmc.get_UID());
 
 
         JSONObject sB1 = new JSONObject();
@@ -215,7 +215,7 @@ public class SectionB1Activity extends Activity {
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        /*Long updcount = db.addMWRA(MainApp.mc);
+        Long updcount = db.addMWRA(MainApp.mc);
         MainApp.mc.set_ID(String.valueOf(updcount));
 
         if (updcount != 0) {
@@ -229,9 +229,9 @@ public class SectionB1Activity extends Activity {
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
-        }*/
+        }
 
-        return true;
+        //return true;
 
     }
 

@@ -196,7 +196,7 @@ public class SectionB3Activity extends AppCompatActivity {
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        /*int updcount = db.updateF03();
+        /*int updcount = db.updateSB3();
 
         if (updcount == 1) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
@@ -206,7 +206,6 @@ public class SectionB3Activity extends AppCompatActivity {
             return false;
         }
 */
-
         return true;
 
     }

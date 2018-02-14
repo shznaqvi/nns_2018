@@ -71,12 +71,7 @@ public class SectionC1Activity extends AppCompatActivity {
             return false;
         }
 //        nc104
-        if (!validatorClass.EmptyRadioButton(this, binding.nc104, binding.nc10498, getString(R.string.nc104))) {
-            return false;
-        }
-
-
-        return true;
+        return validatorClass.EmptyRadioButton(this, binding.nc104, binding.nc10498, getString(R.string.nc104));
     }
 
     private void SaveDraft() throws JSONException {
@@ -99,7 +94,7 @@ public class SectionC1Activity extends AppCompatActivity {
                 : "0");
 
 
-        //MainApp.cc.setsB(String.valueOf(sB));
+        //MainApp.cc.setsA4(String.valueOf(sB));
 
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
