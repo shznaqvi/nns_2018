@@ -38,6 +38,14 @@
                 android:layout_height="2dp"
                 android:background="@color/colorPrimary" />
 
+            <TextView
+                android:id="@+id/txtCounter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:textAlignment="center" />
+
             <!--nc101-->
             <TextView
                 android:layout_width="match_parent"
@@ -48,7 +56,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
-            <EditText
+            <Spinner
                 android:id="@+id/nc101"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

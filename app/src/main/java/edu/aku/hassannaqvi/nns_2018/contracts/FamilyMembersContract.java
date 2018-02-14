@@ -28,6 +28,7 @@ public class FamilyMembersContract {
     private String name = "";
     private String dob = "";
     private String age = "";
+    private String ageInYear = "";
     private String gender = "";
     private String motherId = "";
     private String sA2 = "";
@@ -104,6 +105,14 @@ public class FamilyMembersContract {
 
     public void setDob(String dob) {
         this.dob = dob;
+    }
+
+    public String getAgeInYear() {
+        return ageInYear;
+    }
+
+    public void setAgeInYear(String ageInYear) {
+        this.ageInYear = ageInYear;
     }
 
     public String getGender() {

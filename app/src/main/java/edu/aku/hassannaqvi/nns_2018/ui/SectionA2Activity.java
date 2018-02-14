@@ -426,6 +426,8 @@ public class SectionA2Activity extends AppCompatActivity {
 
         /*End*/
 
+        MainApp.fmc.setAgeInYear(String.valueOf(Age));
+
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
 
     }

@@ -3,6 +3,7 @@ package edu.aku.hassannaqvi.nns_2018.ui;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -13,12 +14,15 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -28,13 +32,14 @@ import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 public class SectionA3Activity extends AppCompatActivity {
 
     static List<String> members;
+    static Map<String, SelectedMem> membersMap;
     static int counter = 1;
     ActivitySectionA3Binding binding;
     DatabaseHelper db;
-    int position, slc_type;
+    int slc_type;
 
-    Map<String, SelectedMem> membersMap;
     FamilyMembersContract slcMem;
+    String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,28 +56,28 @@ public class SectionA3Activity extends AppCompatActivity {
         Log.d("Mem", String.valueOf(MainApp.childUnder2));
         Log.d("Mem", String.valueOf(MainApp.childUnder5));
         Log.d("Mem", String.valueOf(MainApp.mwra));
-
-//        Getting Extra
-        if (getIntent().getBooleanExtra("flag", false)) {
-            members.remove(getIntent().getExtras().getInt("serial"));
-            counter++;
-        }
-
     }
 
     public void setupViews() {
 
 //        Setup spinner
-        members = new ArrayList<>();
-        membersMap = new HashMap<>();
+
+        //  Getting Extra
+        if (getIntent().getBooleanExtra("flag", false)) {
+            members.remove(getIntent().getExtras().getInt("serial"));
+            counter++;
+        } else {
+            members = new ArrayList<>();
+            membersMap = new HashMap<>();
+
+            members.add("....");
+
+            familyMembersSetting(MainApp.mwra, 1);  // 1 for Mwra
+            familyMembersSetting(MainApp.childUnder5, 2);  // 2 for Under 5
+            familyMembersSetting(MainApp.adolescents, 3);  // 3 for Adolescents
+        }
+
         slcMem = new FamilyMembersContract();
-
-        members.add("....");
-
-        familyMembersSetting(MainApp.mwra, 1);  // 1 for Mwra
-        familyMembersSetting(MainApp.childUnder5, 2);  // 2 for Under 5
-        familyMembersSetting(MainApp.adolescents, 3);  // 3 for Adolescents
-
         binding.na301.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, members));
 
 //        Spinner setting
@@ -81,7 +86,6 @@ public class SectionA3Activity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
                 if (i != 0) {
-                    position = i;
 
                     SelectedMem mem = membersMap.get(binding.na301.getSelectedItem().toString());
                     slc_type = mem.getType();
@@ -118,6 +122,9 @@ public class SectionA3Activity extends AppCompatActivity {
             }
         });
 
+        // setup head
+        binding.txtCounter.setText("Count " + counter + " out of " + MainApp.membersCount.getEligibleCount());
+
     }
 
     public void familyMembersSetting(List<FamilyMembersContract> family, int type) {
@@ -150,7 +157,7 @@ public class SectionA3Activity extends AppCompatActivity {
                     startActivity(new Intent(this, SectionA4Activity.class));
                 } else {
                     startActivity(new Intent(this, SectionA3Activity.class)
-                            .putExtra("flag", true).putExtra("serial", position));
+                            .putExtra("flag", true).putExtra("serial", binding.na301.getSelectedItem().toString()));
                 }
 
             } else {
@@ -166,6 +173,10 @@ public class SectionA3Activity extends AppCompatActivity {
     private boolean formValidation() {
 
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
+
+        if (!validatorClass.EmptySpinner(this, binding.na301, getString(R.string.na3w))) {
+            return false;
+        }
 
         if (!validatorClass.EmptyTextBox(this, binding.na3w, getString(R.string.na3w))) {
             return false;
@@ -208,7 +219,20 @@ public class SectionA3Activity extends AppCompatActivity {
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
+        MainApp.emc = new EligibleMembersContract();
+
+        MainApp.emc.setDevicetagID(MainApp.getTagName(this));
+        MainApp.emc.setFormDate(dtToday);
+        MainApp.emc.setUser(MainApp.userName);
+        MainApp.emc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
+                Settings.Secure.ANDROID_ID));
+        MainApp.emc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
+        MainApp.emc.set_UUID(slcMem.get_UID());
+
         JSONObject sA3 = new JSONObject();
+
+        sA3.put("na301", slcMem.getName());
+        sA3.put("na301Serial", slcMem.getSerialNo());
 
         sA3.put("na3Serial", String.valueOf(counter));
 
@@ -231,7 +255,7 @@ public class SectionA3Activity extends AppCompatActivity {
                 : binding.na3ob.isChecked() ? "2" : "0");
 
 
-        //MainApp.cc.setsB(String.valueOf(sB));
+        MainApp.emc.setsA3(String.valueOf(sA3));
 
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
@@ -243,24 +267,21 @@ public class SectionA3Activity extends AppCompatActivity {
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        /*Long updcount = db.addChildForm(MainApp.cc);
-        MainApp.cc.set_ID(String.valueOf(updcount));
+        Long updcount = db.addEligibleMember(MainApp.emc);
+        MainApp.emc.set_ID(String.valueOf(updcount));
 
         if (updcount != 0) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
 
-            MainApp.cc.setUID(
-                    (MainApp.cc.getDeviceID() + MainApp.cc.get_ID()));
+            MainApp.emc.set_UID(
+                    (MainApp.emc.getDeviceId() + MainApp.emc.get_ID()));
             db.updateFormChildID();
 
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
-        }*/
-
-        return true;
-
+        }
     }
 
     public class SelectedMem {

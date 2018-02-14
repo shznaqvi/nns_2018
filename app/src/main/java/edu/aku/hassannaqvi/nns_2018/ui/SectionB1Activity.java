@@ -180,8 +180,8 @@ public class SectionB1Activity extends Activity {
         MainApp.mc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
         MainApp.mc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
-        //MainApp.mc.set_UUID(MainApp.fc.getUID());
-
+        MainApp.mc.setB1SerialNo(MainApp.mwraMap.get(bi.nb101.getSelectedItem().toString()));
+        MainApp.mc.set_UUID(MainApp.fc.getUID());
 
         JSONObject sB1 = new JSONObject();
 

@@ -3,13 +3,25 @@ package edu.aku.hassannaqvi.nns_2018.ui;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC1Binding;
@@ -17,8 +29,14 @@ import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionC1Activity extends AppCompatActivity {
 
+    static List<String> childU5;
+    static Map<String, FamilyMembersContract> childMap;
+    static int counter = 1;
+    static int counterPerMom = 0;
     ActivitySectionC1Binding binding;
     DatabaseHelper db;
+
+    String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +46,37 @@ public class SectionC1Activity extends AppCompatActivity {
 
 //        Assigning data to UI binding
         binding.setCallback(this);
+
+//        Setup views
+        if (getIntent().getBooleanExtra("flag", false)) {
+            childU5.remove(getIntent().getExtras().getInt("name"));
+            counter++;
+        } else {
+            childU5 = new ArrayList<>();
+            childMap = new HashMap<>();
+
+            childU5.add("....");
+
+            for (FamilyMembersContract fmc : MainApp.childUnder5) {
+                if (fmc.getMotherId().equals(MainApp.mc.getB1SerialNo())) {
+                    childMap.put(fmc.getName(), fmc);
+                    childU5.add(fmc.getName());
+                    counterPerMom++;
+                }
+            }
+        }
+
+        // setup head
+        binding.txtCounter.setText("Count " + counter + " out of " + counterPerMom);
+
+        // setup spinner
+        binding.nc101.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, childU5));
     }
 
     public void BtnContinue() {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
-        /*if (formValidation()) {
+        if (formValidation()) {
             try {
                 SaveDraft();
             } catch (JSONException e) {
@@ -44,14 +87,24 @@ public class SectionC1Activity extends AppCompatActivity {
 
                 finish();
 
-                startActivity(new Intent(this, ChildAssessmentActivity.class));
+                if (counter == counterPerMom) {
+
+                    counter = 1;
+                    counterPerMom = 0;
+
+//                    startActivity(new Intent(this, SectionC2Activity.class));
+                } else {
+                    if (Integer.valueOf(childMap.get(binding.nc101.getSelectedItem().toString()).getAgeInYear()) > 2) {
+                        startActivity(new Intent(this, SectionC2Activity.class).putExtra("selectedChild", (Serializable) childMap.get(binding.nc101.getSelectedItem().toString())));
+                    } else {
+                        startActivity(new Intent(this, SectionC3Activity.class).putExtra("selectedChild", (Serializable) childMap.get(binding.nc101.getSelectedItem().toString())));
+                    }
+                }
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
-        }*/
-
-        startActivity(new Intent(this, SectionC2Activity.class));
+        }
     }
 
     public void BtnEnd() {
@@ -63,7 +116,7 @@ public class SectionC1Activity extends AppCompatActivity {
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
 //        nc101
-        if (!validatorClass.EmptyTextBox(this, binding.nc101, getString(R.string.nc101))) {
+        if (!validatorClass.EmptySpinner(this, binding.nc101, getString(R.string.nc101))) {
             return false;
         }
 //        nc103
@@ -71,20 +124,26 @@ public class SectionC1Activity extends AppCompatActivity {
             return false;
         }
 //        nc104
-        if (!validatorClass.EmptyRadioButton(this, binding.nc104, binding.nc10498, getString(R.string.nc104))) {
-            return false;
-        }
-
-
-        return true;
+        return validatorClass.EmptyRadioButton(this, binding.nc104, binding.nc10498, getString(R.string.nc104));
     }
 
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
+        MainApp.cc = new ChildContract();
+
+        MainApp.cc.setDevicetagID(MainApp.getTagName(this));
+        MainApp.cc.setFormDate(dtToday);
+        MainApp.cc.setUser(MainApp.userName);
+        MainApp.cc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
+                Settings.Secure.ANDROID_ID));
+        MainApp.cc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
+        MainApp.cc.setUUID(MainApp.mc.get_UID());
+
         JSONObject sC1 = new JSONObject();
-        //       nc101
-        sC1.put("nc101", binding.nc101.getText().toString());
+
+//       nc101
+        sC1.put("nc101", binding.nc101.getSelectedItem().toString());
 //        nc103
         sC1.put("nc103", binding.nc103a.isChecked() ? "1"
                 : binding.nc103b.isChecked() ? "2"
@@ -98,9 +157,7 @@ public class SectionC1Activity extends AppCompatActivity {
                 : binding.nc10498.isChecked() ? "98"
                 : "0");
 
-
-        //MainApp.cc.setsB(String.valueOf(sB));
-
+        MainApp.cc.setsC1(String.valueOf(sC1));
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }
@@ -110,7 +167,7 @@ public class SectionC1Activity extends AppCompatActivity {
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        /*Long updcount = db.addChildForm(MainApp.cc);
+        Long updcount = db.addChildForm(MainApp.cc);
         MainApp.cc.set_ID(String.valueOf(updcount));
 
         if (updcount != 0) {
@@ -124,9 +181,7 @@ public class SectionC1Activity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
-        }*/
-
-        return true;
+        }
 
     }
 
