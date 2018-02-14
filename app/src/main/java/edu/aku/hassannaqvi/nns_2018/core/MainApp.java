@@ -79,6 +79,7 @@ public class MainApp extends Application {
     public static String userName = "0000";
     public static int versionCode;
     public static String versionName;
+
     //    Ali
     public static FamilyMembersContract fmc;
     public static List<FamilyMembersContract> members_f_m;
@@ -86,8 +87,8 @@ public class MainApp extends Application {
     public static List<FamilyMembersContract> childUnder5;
     public static List<FamilyMembersContract> mwra;
     public static List<FamilyMembersContract> adolescents;
-
     public static int serial_no;
+
     // Gul Sanober
     public static Map<String, String> mwraMap = new HashMap<>();
     public static int totalPregnancy = 0;

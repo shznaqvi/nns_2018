@@ -5,12 +5,21 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA3Binding;
@@ -18,36 +27,112 @@ import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionA3Activity extends AppCompatActivity {
 
-    ActivitySectionA3Binding bi;
+    static List<String> members;
+    static int counter = 1;
+    ActivitySectionA3Binding binding;
     DatabaseHelper db;
+    int position, slc_type;
+
+    Map<String, SelectedMem> membersMap;
+    FamilyMembersContract slcMem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_section_a3);
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_a3);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_section_a3);
         db = new DatabaseHelper(this);
 
 //        Assigning data to UI binding
-        bi.setCallback(this);
+        binding.setCallback(this);
 
-        //setupViews();
+        setupViews();
 
         Log.d("Mem", String.valueOf(MainApp.members_f_m));
         Log.d("Mem", String.valueOf(MainApp.childUnder2));
         Log.d("Mem", String.valueOf(MainApp.childUnder5));
         Log.d("Mem", String.valueOf(MainApp.mwra));
 
+//        Getting Extra
+        if (getIntent().getBooleanExtra("flag", false)) {
+            members.remove(getIntent().getExtras().getInt("serial"));
+            counter++;
+        }
+
     }
 
     public void setupViews() {
+
+//        Setup spinner
+        members = new ArrayList<>();
+        membersMap = new HashMap<>();
+        slcMem = new FamilyMembersContract();
+
+        members.add("....");
+
+        familyMembersSetting(MainApp.mwra, 1);  // 1 for Mwra
+        familyMembersSetting(MainApp.childUnder5, 2);  // 2 for Under 5
+        familyMembersSetting(MainApp.adolescents, 3);  // 3 for Adolescents
+
+        binding.na301.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, members));
+
+//        Spinner setting
+        binding.na301.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                if (i != 0) {
+                    position = i;
+
+                    SelectedMem mem = membersMap.get(binding.na301.getSelectedItem().toString());
+                    slc_type = mem.getType();
+                    slcMem = mem.getFmc();
+
+                    switch (slc_type) {
+                        case 1:
+                            binding.fldGrpbcgScar.setVisibility(View.GONE);
+                            binding.fldGrpgoiter.setVisibility(View.VISIBLE);
+                            binding.fldGrpca.setVisibility(View.VISIBLE);
+                            binding.fldGrpode.setVisibility(View.VISIBLE);
+                            break;
+                        case 2:
+                            binding.fldGrpbcgScar.setVisibility(View.VISIBLE);
+                            binding.fldGrpgoiter.setVisibility(View.GONE);
+                            binding.fldGrpca.setVisibility(View.GONE);
+                            binding.fldGrpode.setVisibility(View.GONE);
+                            break;
+                        case 3:
+                            binding.fldGrpbcgScar.setVisibility(View.GONE);
+                            binding.fldGrpgoiter.setVisibility(View.VISIBLE);
+                            binding.fldGrpca.setVisibility(View.VISIBLE);
+                            binding.fldGrpode.setVisibility(View.GONE);
+                            break;
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+    }
+
+    public void familyMembersSetting(List<FamilyMembersContract> family, int type) {
+
+        for (FamilyMembersContract fmc : family) {
+            membersMap.put(fmc.getName() + "_" + fmc.getSerialNo(), new SelectedMem(type, fmc));
+            members.add(fmc.getName() + "_" + fmc.getSerialNo());
+        }
 
     }
 
     public void BtnContinue() {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
-        /*if (ValidateForm()) {
+        if (formValidation()) {
             try {
                 SaveDraft();
             } catch (JSONException e) {
@@ -58,53 +143,66 @@ public class SectionA3Activity extends AppCompatActivity {
 
                 finish();
 
-                startActivity(new Intent(this, ChildAssessmentActivity.class));
+                if (counter == MainApp.membersCount.getEligibleCount()) {
+
+                    counter = 1;
+
+                    startActivity(new Intent(this, SectionA4Activity.class));
+                } else {
+                    startActivity(new Intent(this, SectionA3Activity.class)
+                            .putExtra("flag", true).putExtra("serial", position));
+                }
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
-        }*/
-
-        startActivity(new Intent(this, SectionA4Activity.class));
-
-
+        }
     }
 
     public void BtnEnd() {
         MainApp.endActivity(this, this);
     }
 
-
-    private boolean ValidateForm() {
+    private boolean formValidation() {
 
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
-        if (!validatorClass.EmptyTextBox(this, bi.na3w, getString(R.string.na3w))) {
+        if (!validatorClass.EmptyTextBox(this, binding.na3w, getString(R.string.na3w))) {
             return false;
         }
 
-        if (!validatorClass.EmptyTextBox(this, bi.na3h, getString(R.string.na3h))) {
+        if (!validatorClass.EmptyTextBox(this, binding.na3h, getString(R.string.na3h))) {
             return false;
         }
 
-        if (!validatorClass.EmptyTextBox(this, bi.na3muac, getString(R.string.na3muac))) {
+        if (!validatorClass.EmptyTextBox(this, binding.na3muac, getString(R.string.na3muac))) {
             return false;
         }
 
-
-        if (!validatorClass.EmptyRadioButton(this, bi.na3bcgscar, bi.na3bcgscara, getString(R.string.na3bcgscar))) {
-            return false;
+        if (slc_type == 2) {
+            if (!validatorClass.EmptyRadioButton(this, binding.na3bcgscar, binding.na3bcgscara, getString(R.string.na3bcgscar))) {
+                return false;
+            }
         }
 
-        if (!validatorClass.EmptyRadioButton(this, bi.na3g, bi.na3ga, getString(R.string.na3g))) {
-            return false;
-        }
+        if (slc_type == 1) {
 
-        if (!validatorClass.EmptyRadioButton(this, bi.na3ca, bi.na3caa, getString(R.string.na3ca))) {
-            return false;
-        }
+            if (slc_type == 3) {
+                if (!validatorClass.EmptyRadioButton(this, binding.na3g, binding.na3ga, getString(R.string.na3g))) {
+                    return false;
+                }
 
-        return validatorClass.EmptyRadioButton(this, bi.na3o, bi.na3oa, getString(R.string.na3o));
+                if (!validatorClass.EmptyRadioButton(this, binding.na3ca, binding.na3caa, getString(R.string.na3ca))) {
+                    return false;
+                }
+            }
+
+            if (!validatorClass.EmptyRadioButton(this, binding.na3o, binding.na3oa, getString(R.string.na3o))) {
+                return false;
+            }
+
+        }
+        return true;
     }
 
     private void SaveDraft() throws JSONException {
@@ -112,23 +210,25 @@ public class SectionA3Activity extends AppCompatActivity {
 
         JSONObject sA3 = new JSONObject();
 
-        sA3.put("na3w", bi.na3w.getText().toString());
+        sA3.put("na3Serial", String.valueOf(counter));
 
-        sA3.put("na3h", bi.na3h.getText().toString());
+        sA3.put("na3w", binding.na3w.getText().toString());
 
-        sA3.put("na3muac", bi.na3muac.getText().toString());
+        sA3.put("na3h", binding.na3h.getText().toString());
 
-        sA3.put("na3bcgscar", bi.na3bcgscara.isChecked() ? "1"
-                : bi.na3bcgscarb.isChecked() ? "2" : "0");
+        sA3.put("na3muac", binding.na3muac.getText().toString());
 
-        sA3.put("na3g", bi.na3ga.isChecked() ? "1"
-                : bi.na3gb.isChecked() ? "2" : "0");
+        sA3.put("na3bcgscar", binding.na3bcgscara.isChecked() ? "1"
+                : binding.na3bcgscarb.isChecked() ? "2" : "0");
 
-        sA3.put("na3g", bi.na3caa.isChecked() ? "1"
-                : bi.na3cab.isChecked() ? "2" : "0");
+        sA3.put("na3g", binding.na3ga.isChecked() ? "1"
+                : binding.na3gb.isChecked() ? "2" : "0");
 
-        sA3.put("na3o", bi.na3oa.isChecked() ? "1"
-                : bi.na3ob.isChecked() ? "2" : "0");
+        sA3.put("na3g", binding.na3caa.isChecked() ? "1"
+                : binding.na3cab.isChecked() ? "2" : "0");
+
+        sA3.put("na3o", binding.na3oa.isChecked() ? "1"
+                : binding.na3ob.isChecked() ? "2" : "0");
 
 
         //MainApp.cc.setsB(String.valueOf(sB));
@@ -161,6 +261,24 @@ public class SectionA3Activity extends AppCompatActivity {
 
         return true;
 
+    }
+
+    public class SelectedMem {
+        int type;
+        FamilyMembersContract fmc;
+
+        public SelectedMem(int type, FamilyMembersContract fmc) {
+            this.type = type;
+            this.fmc = fmc;
+        }
+
+        public int getType() {
+            return type;
+        }
+
+        public FamilyMembersContract getFmc() {
+            return fmc;
+        }
     }
 
 }
