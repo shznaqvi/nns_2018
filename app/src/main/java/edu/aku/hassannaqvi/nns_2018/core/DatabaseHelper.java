@@ -19,7 +19,7 @@ import java.util.Date;
 import java.util.List;
 
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract.FormsChildTable;
+import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract.ChildTable;
 import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract.eligibleMembers;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
@@ -97,23 +97,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + " );";
 
     private static final String SQL_CREATE_CHILD_FORMS = "CREATE TABLE "
-            + FormsChildTable.TABLE_NAME + "("
-            + FormsChildTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + FormsChildTable.COLUMN_PROJECT_NAME + " TEXT,"
-            + FormsChildTable.COLUMN_UID + " TEXT," +
-            FormsChildTable.COLUMN_UUID + " TEXT," +
-            FormsChildTable.COLUMN_FORMDATE + " TEXT," +
-            FormsChildTable.COLUMN_USER + " TEXT," +
-            FormsChildTable.COLUMN_SB + " TEXT," +
-            FormsChildTable.COLUMN_GPSLAT + " TEXT," +
-            FormsChildTable.COLUMN_GPSLNG + " TEXT," +
-            FormsChildTable.COLUMN_GPSDATE + " TEXT," +
-            FormsChildTable.COLUMN_GPSACC + " TEXT," +
-            FormsChildTable.COLUMN_DEVICEID + " TEXT," +
-            FormsChildTable.COLUMN_DEVICETAGID + " TEXT," +
-            FormsChildTable.COLUMN_APP_VERSION + " TEXT," +
-            FormsChildTable.COLUMN_SYNCED + " TEXT," +
-            FormsChildTable.COLUMN_SYNCED_DATE + " TEXT"
+            + ChildTable.TABLE_NAME + "("
+            + ChildTable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + ChildTable.COLUMN_PROJECTNAME + " TEXT," +
+            ChildTable.COLUMN__UID + " TEXT," +
+            ChildTable.COLUMN_FORMDATE + " TEXT," +
+            ChildTable.COLUMN_USER + " TEXT," +
+            ChildTable.COLUMN_C1SERIALNO + " TEXT," +
+            ChildTable.COLUMN_SC1 + " TEXT," +
+            ChildTable.COLUMN_SC2 + " TEXT," +
+            ChildTable.COLUMN_SC3 + " TEXT," +
+            ChildTable.COLUMN_SC4 + " TEXT," +
+            ChildTable.COLUMN_SC5 + " TEXT," +
+            ChildTable.COLUMN_DEVICEID + " TEXT," +
+            ChildTable.COLUMN_DEVICETAGID + " TEXT," +
+            ChildTable.COLUMN_SYNCED + " TEXT," +
+            ChildTable.COLUMN_SYNCED_DATE + " TEXT," +
+            ChildTable.COLUMN_APPVERSION + " TEXT "
+
             + " );";
 
     private static final String SQL_DELETE_USERS =
@@ -122,7 +123,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "DROP TABLE IF EXISTS " + FormsTable.TABLE_NAME;
 
     private static final String SQL_DELETE_CHILD_FORMS =
-            "DROP TABLE IF EXISTS " + FormsChildTable.TABLE_NAME;
+            "DROP TABLE IF EXISTS " + ChildContract.ChildTable.TABLE_NAME;
     private static final String SQL_DELETE_SINGLE = "DROP TABLE IF EXISTS " + singleSerial.TABLE_NAME;
     private static final String SQL_DELETE_TALUKAS = "DROP TABLE IF EXISTS " + TehsilsTable.TABLE_NAME;
     private static final String SQL_DELETE_UCS = "DROP TABLE IF EXISTS " + UCsTable.TABLE_NAME;
@@ -573,35 +574,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public Long addChildForm(ChildContract fc) {
+    public Long addChildForm(ChildContract cc) {
 
         // Gets the data repository in write mode
         SQLiteDatabase db = this.getWritableDatabase();
 
 // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
-        values.put(FormsChildTable.COLUMN_PROJECT_NAME, fc.getProjectName());
-        values.put(FormsChildTable.COLUMN_UID, fc.getUID());
-        values.put(FormsChildTable.COLUMN_UUID, fc.getUUID());
-        values.put(FormsChildTable.COLUMN_FORMDATE, fc.getFormDate());
-        values.put(FormsChildTable.COLUMN_USER, fc.getUser());
-        values.put(FormsChildTable.COLUMN_SB, fc.getsB());
-        values.put(FormsChildTable.COLUMN_GPSLAT, fc.getGpsLat());
-        values.put(FormsChildTable.COLUMN_GPSLNG, fc.getGpsLng());
-        values.put(FormsChildTable.COLUMN_GPSDATE, fc.getGpsDT());
-        values.put(FormsChildTable.COLUMN_GPSACC, fc.getGpsAcc());
-        values.put(FormsChildTable.COLUMN_DEVICETAGID, fc.getDevicetagID());
-        values.put(FormsChildTable.COLUMN_DEVICEID, fc.getDeviceID());
-        values.put(FormsChildTable.COLUMN_SYNCED, fc.getSynced());
-        values.put(FormsChildTable.COLUMN_SYNCED_DATE, fc.getSynced_date());
-        values.put(FormsChildTable.COLUMN_APP_VERSION, fc.getAppversion());
+        values.put(ChildTable.COLUMN_PROJECTNAME, cc.getProjectName());
+        values.put(ChildTable.COLUMN__ID, cc.get_ID());
+        values.put(ChildTable.COLUMN__UID, cc.getUID());
+        values.put(ChildTable.COLUMN_FORMDATE, cc.getFormDate());
+        values.put(ChildTable.COLUMN_USER, cc.getUser());
+        values.put(ChildTable.COLUMN_C1SERIALNO, cc.getC1SerialNo());
+        values.put(ChildTable.COLUMN_SC1, cc.getsC1());
+        values.put(ChildTable.COLUMN_SC2, cc.getsC2());
+        values.put(ChildTable.COLUMN_SC3, cc.getsC3());
+        values.put(ChildTable.COLUMN_SC4, cc.getsC4());
+        values.put(ChildTable.COLUMN_SC5, cc.getsC5());
+        values.put(ChildTable.COLUMN_DEVICEID, cc.getDeviceID());
+        values.put(ChildTable.COLUMN_DEVICETAGID, cc.getDevicetagID());
+        values.put(ChildTable.COLUMN_SYNCED, cc.getSynced());
+        values.put(ChildTable.COLUMN_SYNCED_DATE, cc.getSynced_date());
+        values.put(ChildTable.COLUMN_APPVERSION, cc.getAppversion());
 
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
         newRowId = db.insert(
-                FormsChildTable.TABLE_NAME,
-                FormsChildTable.COLUMN_NAME_NULLABLE,
+                ChildTable.TABLE_NAME,
+                ChildTable.COLUMN_NAME_NULLABLE,
                 values);
         return newRowId;
     }
@@ -779,15 +781,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 // New value for one column
         ContentValues values = new ContentValues();
-        values.put(FormsChildTable.COLUMN_SYNCED, true);
-        values.put(FormsChildTable.COLUMN_SYNCED_DATE, new Date().toString());
+        values.put(ChildTable.COLUMN_SYNCED, true);
+        values.put(ChildTable.COLUMN_SYNCED_DATE, new Date().toString());
 
 // Which row to update, based on the title
-        String where = FormsChildTable._ID + " = ?";
+        String where = ChildTable._ID + " = ?";
         String[] whereArgs = {id};
 
         int count = db.update(
-                FormsChildTable.TABLE_NAME,
+                ChildTable.TABLE_NAME,
                 values,
                 where,
                 whereArgs);
@@ -891,13 +893,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 // New value for one column
         ContentValues values = new ContentValues();
-        values.put(FormsChildTable.COLUMN_UID, MainApp.cc.getUID());
+        values.put(ChildTable.COLUMN__UID, MainApp.cc.getUID());
 
 // Which row to update, based on the ID
-        String selection = FormsChildTable._ID + " = ?";
+        String selection = ChildContract.ChildTable._ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.cc.get_ID())};
 
-        int count = db.update(FormsChildTable.TABLE_NAME,
+        int count = db.update(ChildTable.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);
@@ -986,34 +988,35 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                FormsChildTable._ID,
-                FormsChildTable.COLUMN_UID,
-                FormsChildTable.COLUMN_UUID,
-                FormsChildTable.COLUMN_FORMDATE,
-                FormsChildTable.COLUMN_USER,
-                FormsChildTable.COLUMN_SB,
-                FormsChildTable.COLUMN_GPSLAT,
-                FormsChildTable.COLUMN_GPSLNG,
-                FormsChildTable.COLUMN_GPSDATE,
-                FormsChildTable.COLUMN_GPSACC,
-                FormsChildTable.COLUMN_DEVICETAGID,
-                FormsChildTable.COLUMN_DEVICEID,
-                FormsChildTable.COLUMN_SYNCED,
-                FormsChildTable.COLUMN_SYNCED_DATE,
-                FormsChildTable.COLUMN_APP_VERSION
+                ChildTable.COLUMN__ID,
+                ChildTable.COLUMN__UID,
+                ChildTable.COLUMN_FORMDATE,
+                ChildTable.COLUMN_USER,
+                ChildTable.COLUMN_C1SERIALNO,
+                ChildTable.COLUMN_SC1,
+                ChildTable.COLUMN_SC2,
+                ChildTable.COLUMN_SC3,
+                ChildTable.COLUMN_SC4,
+                ChildTable.COLUMN_SC5,
+                ChildTable.COLUMN_DEVICEID,
+                ChildTable.COLUMN_DEVICETAGID,
+                ChildTable.COLUMN_SYNCED,
+                ChildTable.COLUMN_SYNCED_DATE,
+                ChildTable.COLUMN_APPVERSION,
+
         };
-        String whereClause = FormsChildTable.COLUMN_SYNCED + " is null OR " + FormsChildTable.COLUMN_SYNCED + " = '' ";
+        String whereClause = ChildContract.ChildTable.COLUMN_SYNCED + " is null OR " + ChildTable.COLUMN_SYNCED + " = '' ";
         String[] whereArgs = null;
         String groupBy = null;
         String having = null;
 
         String orderBy =
-                FormsChildTable._ID + " ASC";
+                ChildContract.ChildTable._ID + " ASC";
 
         Collection<ChildContract> allFC = new ArrayList<ChildContract>();
         try {
             c = db.query(
-                    FormsChildTable.TABLE_NAME,  // The table to query
+                    ChildTable.TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
                     whereClause,               // The columns for the WHERE clause
                     whereArgs,                 // The values for the WHERE clause
@@ -1258,7 +1261,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor c = null;
         String[] columns = {
                 FormsTable._ID,
-                //FormsChildTable.COLUMN_DSSID,
+                //ChildTable.COLUMN_DSSID,
                 FormsTable.COLUMN_FORMDATE,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_SYNCED,
