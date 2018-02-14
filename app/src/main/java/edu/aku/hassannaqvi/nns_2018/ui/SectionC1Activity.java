@@ -29,10 +29,11 @@ import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionC1Activity extends AppCompatActivity {
 
+    public static int counter = 1;
+    public static int counterPerMom = 0;
+    public static String selectedChildName = "";
     static List<String> childU5;
     static Map<String, FamilyMembersContract> childMap;
-    static int counter = 1;
-    static int counterPerMom = 0;
     ActivitySectionC1Binding binding;
     DatabaseHelper db;
 
@@ -87,18 +88,10 @@ public class SectionC1Activity extends AppCompatActivity {
 
                 finish();
 
-                if (counter == counterPerMom) {
-
-                    counter = 1;
-                    counterPerMom = 0;
-
-//                    startActivity(new Intent(this, SectionC2Activity.class));
+                if (Integer.valueOf(childMap.get(binding.nc101.getSelectedItem().toString()).getAgeInYear()) > 2) {
+                    startActivity(new Intent(this, SectionC2Activity.class).putExtra("selectedChild", (Serializable) childMap.get(binding.nc101.getSelectedItem().toString())));
                 } else {
-                    if (Integer.valueOf(childMap.get(binding.nc101.getSelectedItem().toString()).getAgeInYear()) > 2) {
-                        startActivity(new Intent(this, SectionC2Activity.class).putExtra("selectedChild", (Serializable) childMap.get(binding.nc101.getSelectedItem().toString())));
-                    } else {
-                        startActivity(new Intent(this, SectionC3Activity.class).putExtra("selectedChild", (Serializable) childMap.get(binding.nc101.getSelectedItem().toString())));
-                    }
+                    startActivity(new Intent(this, SectionC3Activity.class).putExtra("selectedChild", (Serializable) childMap.get(binding.nc101.getSelectedItem().toString())));
                 }
 
             } else {
@@ -129,6 +122,8 @@ public class SectionC1Activity extends AppCompatActivity {
 
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
+
+        selectedChildName = binding.nc101.getSelectedItem().toString();
 
         MainApp.cc = new ChildContract();
 

@@ -1,6 +1,5 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC5Binding;
@@ -18,6 +18,7 @@ import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 public class SectionC5Activity extends AppCompatActivity {
 
     ActivitySectionC5Binding bi;
+    FamilyMembersContract selectedChild;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +27,15 @@ public class SectionC5Activity extends AppCompatActivity {
 
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_c5);
         bi.setCallback(this);
+
+        //Get Intent
+        selectedChild = (FamilyMembersContract) getIntent().getSerializableExtra("selectedChild");
     }
 
     public void BtnContinue() {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
-        /*if (formValidation()) {
+        if (formValidation()) {
             try {
                 SaveDraft();
             } catch (JSONException e) {
@@ -42,23 +46,20 @@ public class SectionC5Activity extends AppCompatActivity {
 
                 finish();
 
-                startActivity(new Intent(this, ChildAssessmentActivity.class));
+                MainApp.endActivityMother(this, this, true);
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
-        }*/
-
-        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+        }
 
     }
 
     public void BtnEnd() {
-
-        MainApp.endActivity(this, this);
-
+        MainApp.endActivityMother(this, this, false);
     }
-   private boolean formValidation(){
+
+    private boolean formValidation() {
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
         if (!validatorClass.EmptyRadioButton(this, bi.nc503, bi.nc503a, getString(R.string.nc503))) {
@@ -76,11 +77,7 @@ public class SectionC5Activity extends AppCompatActivity {
         if (!validatorClass.EmptyRadioButton(this, bi.nc507, bi.nc507a, getString(R.string.nc507))) {
             return false;
         }
-        if (!validatorClass.EmptyRadioButton(this, bi.nc508, bi.nc508a, getString(R.string.nc508))) {
-            return false;
-        }
-
-        return true;
+        return validatorClass.EmptyRadioButton(this, bi.nc508, bi.nc508a, getString(R.string.nc508));
 
     }
 
@@ -88,6 +85,11 @@ public class SectionC5Activity extends AppCompatActivity {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
         JSONObject sC5 = new JSONObject();
+
+//        nc301
+        sC5.put("nc501", selectedChild.getName());
+//        nc302
+        sC5.put("nc502Serial", selectedChild.getSerialNo());
 
 //        nc503
         sC5.put("nc503", bi.nc503a.isChecked() ? "1"
@@ -126,8 +128,7 @@ public class SectionC5Activity extends AppCompatActivity {
                 : bi.nc508d.isChecked() ? "4"
                 : "0");
 
-        //MainApp.cc.setsB(String.valueOf(sB));
-
+        MainApp.cc.setsC5(String.valueOf(sC5));
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }
@@ -137,23 +138,15 @@ public class SectionC5Activity extends AppCompatActivity {
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        /*Long updcount = db.addChildForm(MainApp.cc);
-        MainApp.cc.set_ID(String.valueOf(updcount));
+        int updcount = db.updateSC5();
 
-        if (updcount != 0) {
+        if (updcount == 1) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
-
-            MainApp.cc.setUID(
-                    (MainApp.cc.getDeviceID() + MainApp.cc.get_ID()));
-            db.updateFormChildID();
-
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
-        }*/
-
-        return true;
+        }
 
     }
 

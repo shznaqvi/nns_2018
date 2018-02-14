@@ -22,6 +22,8 @@ public class SectionA5Activity extends AppCompatActivity {
     ActivitySectionA5Binding binding;
     DatabaseHelper db;
 
+    int recipientCounter = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,20 +121,17 @@ public class SectionA5Activity extends AppCompatActivity {
 
                 finish();
 
-                if (Integer.valueOf(binding.na802.getText().toString()) > 0) {
-                    startActivity(new Intent(this, SectionA8AActivity.class));
+                if (recipientCounter > 0) {
+                    startActivity(new Intent(this, SectionA8AActivity.class).putExtra("recCounter", recipientCounter));
                 } else {
                     startActivity(new Intent(this, SectionB1Activity.class));
                 }
-
 
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
         }
-
-        //startActivity(new Intent(this, SectionA8AActivity.class));
     }
 
     public boolean formValidation() {
@@ -233,7 +232,26 @@ public class SectionA5Activity extends AppCompatActivity {
             return false;
         }
 //        na709
-        return validatorClass.EmptyRadioButton(this, binding.na709, binding.na70999, getString(R.string.na709));
+        if (!validatorClass.EmptyRadioButton(this, binding.na709, binding.na70999, getString(R.string.na709))) {
+            return false;
+        }
+//        na801
+        if (!validatorClass.EmptyRadioButton(this, binding.na801, binding.na801b, getString(R.string.na801))) {
+            return false;
+        }
+//        na802
+        if (!binding.na801a.isChecked()) {
+            if (!validatorClass.EmptyTextBox(this, binding.na802, getString(R.string.na802))) {
+                return false;
+            }
+
+            if (!validatorClass.RangeTextBox(this, binding.na802, 1, MainApp.membersCount.getCount(), getString(R.string.na802), "Recipient no")) {
+                return false;
+            }
+
+        }
+
+        return true;
     }
 
     public void BtnEnd() {
@@ -388,6 +406,7 @@ public class SectionA5Activity extends AppCompatActivity {
 
         sA5.put("na802", binding.na802.getText().toString());
 
+        recipientCounter = Integer.valueOf(binding.na802.getText().toString());
 
         MainApp.fc.setsA5(String.valueOf(sA5));
 
@@ -411,10 +430,7 @@ public class SectionA5Activity extends AppCompatActivity {
             return false;
         }
 
-        //return true;
-
     }
-
 
 
 }

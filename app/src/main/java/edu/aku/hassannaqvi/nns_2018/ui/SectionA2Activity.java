@@ -311,7 +311,7 @@ public class SectionA2Activity extends AppCompatActivity {
         MainApp.fmc.setSerialNo(String.valueOf(MainApp.serial_no));
         MainApp.fmc.setName(binding.na202.getText().toString());
         MainApp.fmc.setDob(binding.na2dob.getText().toString());
-        MainApp.fmc.setAge(binding.na2agey.getText().toString() + "-" + binding.na2agem.getText().toString() + "-" + binding.na2aged.getText().toString());
+        MainApp.fmc.setAge(binding.na2agey.getText().toString() + "/" + binding.na2agem.getText().toString() + "/" + binding.na2aged.getText().toString());
         MainApp.fmc.setGender(binding.na206a.isChecked() ? "1" : binding.na206b.isChecked() ? "2" : "0");
         if (!binding.na203a.isChecked()) {
             MainApp.fmc.setMotherId(mothersMap.get(binding.na205.getSelectedItem().toString()));

@@ -1,5 +1,6 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +11,10 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC4Binding;
@@ -20,6 +24,7 @@ public class SectionC4Activity extends AppCompatActivity {
 
     ActivitySectionC4Binding binding;
     DatabaseHelper db;
+    FamilyMembersContract selectedChild;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -170,13 +175,16 @@ public class SectionC4Activity extends AppCompatActivity {
             }
         });
 
+        //Get Intent
+        selectedChild = (FamilyMembersContract) getIntent().getSerializableExtra("selectedChild");
+
     }
 
 
     public void BtnContinue() {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
-        /*if (formValidation()) {
+        if (formValidation()) {
             try {
                 SaveDraft();
             } catch (JSONException e) {
@@ -187,138 +195,145 @@ public class SectionC4Activity extends AppCompatActivity {
 
                 finish();
 
-                startActivity(new Intent(this, ChildAssessmentActivity.class));
+                if (Integer.valueOf(selectedChild.getAgeInYear()) > 2) {
+                    startActivity(new Intent(this, SectionC5Activity.class)
+                            .putExtra("selectedChild", (Serializable) selectedChild));
+                } else {
+
+                    MainApp.endActivityMother(this, this, true);
+
+                }
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
-        }*/
+        }
     }
 
     public void BtnEnd() {
-        MainApp.endActivity(this, this);
+        MainApp.endActivityMother(this, this, false);
     }
 
-    private boolean formValidation(){
+    private boolean formValidation() {
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
 //       nc403
-        if (!validatorClass.EmptyRadioButton(this, binding.nc403,binding.nc403b, getString(R.string.nc403))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc403b, getString(R.string.nc403))) {
             return false;
         }
 
 //        nc404
-        if (!validatorClass.EmptyRadioButton(this, binding.nc404,binding.nc404b, getString(R.string.nc404))){
+        if (!validatorClass.EmptyRadioButton(this, binding.nc404, binding.nc404b, getString(R.string.nc404))) {
             return false;
         }
 
 //        nc405
-        if (!validatorClass.EmptyRadioButton(this, binding.nc405,binding.nc4059603, getString(R.string.nc405))){
+        if (!validatorClass.EmptyRadioButton(this, binding.nc405, binding.nc4059603, getString(R.string.nc405))) {
             return false;
         }
 //        nc4059601
-        if (!validatorClass.EmptyRadioButton(this, binding.nc405,binding.nc4059603, binding.nc4059601x, getString(R.string.nc405))){
+        if (!validatorClass.EmptyRadioButton(this, binding.nc405, binding.nc4059603, binding.nc4059601x, getString(R.string.nc405))) {
             return false;
         }
 //        nc4059602
-        if (!validatorClass.EmptyRadioButton(this, binding.nc405,binding.nc4059603, binding.nc4059602x, getString(R.string.nc405))){
+        if (!validatorClass.EmptyRadioButton(this, binding.nc405, binding.nc4059603, binding.nc4059602x, getString(R.string.nc405))) {
             return false;
         }
 //        nc4059603
-        if (!validatorClass.EmptyRadioButton(this, binding.nc405,binding.nc4059603, binding.nc4059603x, getString(R.string.nc405))){
+        if (!validatorClass.EmptyRadioButton(this, binding.nc405, binding.nc4059603, binding.nc4059603x, getString(R.string.nc405))) {
             return false;
         }
 
 //        fldGrpnc406
-        if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnc406, binding.nc40696, binding.nc40696x, getString(R.string.nc406))){
+        if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnc406, binding.nc40696, binding.nc40696x, getString(R.string.nc406))) {
             return false;
         }
 
 
 //       nc407
-        if (!validatorClass.EmptyRadioButton(this, binding.nc407,binding.nc407b, getString(R.string.nc407))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nc407, binding.nc407b, getString(R.string.nc407))) {
             return false;
         }
 
 //        nc408
-        if (!validatorClass.EmptyRadioButton(this, binding.nc408,binding.nc408b, getString(R.string.nc408))){
+        if (!validatorClass.EmptyRadioButton(this, binding.nc408, binding.nc408b, getString(R.string.nc408))) {
             return false;
         }
 
-       // nc409
-        if (!validatorClass.EmptyRadioButton(this, binding.nc409,binding.nc4099603, getString(R.string.nc409))){
+        // nc409
+        if (!validatorClass.EmptyRadioButton(this, binding.nc409, binding.nc4099603, getString(R.string.nc409))) {
             return false;
         }
 
 //        nc4099601x
-        if (!validatorClass.EmptyRadioButton(this, binding.nc409,binding.nc4099603, binding.nc4099601x, getString(R.string.nc409))){
+        if (!validatorClass.EmptyRadioButton(this, binding.nc409, binding.nc4099603, binding.nc4099601x, getString(R.string.nc409))) {
             return false;
         }
 //        nc4099602x
-        if (!validatorClass.EmptyRadioButton(this, binding.nc409,binding.nc4099603, binding.nc4099602x, getString(R.string.nc409))){
+        if (!validatorClass.EmptyRadioButton(this, binding.nc409, binding.nc4099603, binding.nc4099602x, getString(R.string.nc409))) {
             return false;
         }
 //        nc4099603x
-        if (!validatorClass.EmptyRadioButton(this, binding.nc409,binding.nc4099603, binding.nc4099603x, getString(R.string.nc409))){
+        if (!validatorClass.EmptyRadioButton(this, binding.nc409, binding.nc4099603, binding.nc4099603x, getString(R.string.nc409))) {
             return false;
         }
 
         //    fldGrnc410check
-        if (!validatorClass.EmptyCheckBox(this, binding.fldGrnc410check,binding.nc4109601, binding.nc4109601x, getString(R.string.nc410))){
+        if (!validatorClass.EmptyCheckBox(this, binding.fldGrnc410check, binding.nc4109601, binding.nc4109601x, getString(R.string.nc410))) {
             return false;
         }
 
 
 //       nc411
-        if (!validatorClass.EmptyRadioButton(this, binding.nc411,binding.nc411b, getString(R.string.nc411))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nc411, binding.nc411b, getString(R.string.nc411))) {
             return false;
         }
 
 //        nc412
-        if (!validatorClass.EmptyRadioButton(this, binding.nc412,binding.nc412b, getString(R.string.nc412))){
+        if (!validatorClass.EmptyRadioButton(this, binding.nc412, binding.nc412b, getString(R.string.nc412))) {
             return false;
         }
 
         // nc413
-        if (!validatorClass.EmptyRadioButton(this, binding.nc413,binding.nc4139603, getString(R.string.nc413))){
+        if (!validatorClass.EmptyRadioButton(this, binding.nc413, binding.nc4139603, getString(R.string.nc413))) {
             return false;
         }
 
 //        nc4139601x
-        if (!validatorClass.EmptyRadioButton(this, binding.nc413,binding.nc4139603, binding.nc4139601x, getString(R.string.nc413))){
+        if (!validatorClass.EmptyRadioButton(this, binding.nc413, binding.nc4139603, binding.nc4139601x, getString(R.string.nc413))) {
             return false;
         }
 //        nc4139602x
-        if (!validatorClass.EmptyRadioButton(this, binding.nc413,binding.nc4139603, binding.nc4139602x, getString(R.string.nc413))){
+        if (!validatorClass.EmptyRadioButton(this, binding.nc413, binding.nc4139603, binding.nc4139602x, getString(R.string.nc413))) {
             return false;
         }
 //        nc4139603x
-        if (!validatorClass.EmptyRadioButton(this, binding.nc413,binding.nc4139603, binding.nc4139603x, getString(R.string.nc413))){
+        if (!validatorClass.EmptyRadioButton(this, binding.nc413, binding.nc4139603, binding.nc4139603x, getString(R.string.nc413))) {
             return false;
         }
         // nc414
-        if (!validatorClass.EmptyCheckBox(this, binding.fldGrnc414check,binding.nc4149601, binding.nc4149601x, getString(R.string.nc414))){
+        if (!validatorClass.EmptyCheckBox(this, binding.fldGrnc414check, binding.nc4149601, binding.nc4149601x, getString(R.string.nc414))) {
             return false;
         }
 
 //       nc415
-        if (!validatorClass.EmptyRadioButton(this, binding.nc415,binding.nc41598, getString(R.string.nc415))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nc415, binding.nc41598, getString(R.string.nc415))) {
             return false;
         }
 
 //        nc416
-        if (!validatorClass.EmptyRadioButton(this, binding.nc416,binding.nc41698, getString(R.string.nc416))){
-            return false;
-        }
-
-
-        return true;
-        }
+        return validatorClass.EmptyRadioButton(this, binding.nc416, binding.nc41698, getString(R.string.nc416));
+    }
 
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
         JSONObject sC4 = new JSONObject();
+
+//        nc301
+        sC4.put("nc401", selectedChild.getName());
+//        nc302
+        sC4.put("nc402Serial", selectedChild.getSerialNo());
 
 //        nc403
         sC4.put("nc403", binding.nc403a.isChecked() ? "1"
@@ -482,10 +497,7 @@ public class SectionC4Activity extends AppCompatActivity {
                 : binding.nc41698.isChecked() ? "98"
                 : "0");
 
-
-
-        //MainApp.cc.setsB(String.valueOf(sB));
-
+        MainApp.cc.setsC4(String.valueOf(sC4));
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }
@@ -495,24 +507,15 @@ public class SectionC4Activity extends AppCompatActivity {
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        /*Long updcount = db.addChildForm(MainApp.cc);
-        MainApp.cc.set_ID(String.valueOf(updcount));
+        int updcount = db.updateSC4();
 
-        if (updcount != 0) {
+        if (updcount == 1) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
-
-            MainApp.cc.setUID(
-                    (MainApp.cc.getDeviceID() + MainApp.cc.get_ID()));
-            db.updateFormChildID();
-
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
-        }*/
-
-        return true;
-
+        }
     }
 
 

@@ -10,7 +10,10 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC3Binding;
@@ -19,6 +22,7 @@ import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 public class SectionC3Activity extends AppCompatActivity {
 
     ActivitySectionC3Binding binding;
+    FamilyMembersContract selectedChild;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,12 +78,15 @@ public class SectionC3Activity extends AppCompatActivity {
             }
         });
 
+        //Get Intent
+        selectedChild = (FamilyMembersContract) getIntent().getSerializableExtra("selectedChild");
+
     }
 
     public void BtnContinue() {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
-        /*if (formValidation()) {
+        if (formValidation()) {
             try {
                 SaveDraft();
             } catch (JSONException e) {
@@ -90,116 +97,112 @@ public class SectionC3Activity extends AppCompatActivity {
 
                 finish();
 
-                startActivity(new Intent(this, ChildAssessmentActivity.class));
+                startActivity(new Intent(this, SectionC4Activity.class)
+                        .putExtra("selectedChild", (Serializable) selectedChild));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
-        }*/
-
-        startActivity(new Intent(this, SectionC5Activity.class));
+        }
 
     }
 
     public void BtnEnd() {
 
-        MainApp.endActivity(this, this);
+        MainApp.endActivityMother(this, this, false);
 
     }
-    private boolean formValidation(){
+
+    private boolean formValidation() {
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
 //       nc303
-        if (!validatorClass.EmptyRadioButton(this, binding.nc303,binding.nc303b, getString(R.string.nc303))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nc303, binding.nc303b, getString(R.string.nc303))) {
             return false;
         }
 
 //        nc304
-        if (!validatorClass.EmptyRadioButton(this, binding.nc304,binding.nc304d, getString(R.string.nc304))){
+        if (!validatorClass.EmptyRadioButton(this, binding.nc304, binding.nc304d, getString(R.string.nc304))) {
             return false;
         }
 
 //        nc3bcg
-        if(!validatorClass.EmptyRadioButton(this,binding.nc3bcg, binding.nc3bcgb, binding.nc3bcgdt, getString(R.string.nc3bcg))){
+        if (!validatorClass.EmptyRadioButton(this, binding.nc3bcg, binding.nc3bcgb, binding.nc3bcgdt, getString(R.string.nc3bcg))) {
             return false;
         }
 //        nc3opv0
-        if(!validatorClass.EmptyRadioButton(this,binding.nc3opv0, binding.nc3opv0b, binding.nc3opv0dt, getString(R.string.nc3opv0))){
+        if (!validatorClass.EmptyRadioButton(this, binding.nc3opv0, binding.nc3opv0b, binding.nc3opv0dt, getString(R.string.nc3opv0))) {
             return false;
         }
 
 
 //        nc3opv1
-        if(!validatorClass.EmptyRadioButton(this,binding.nc3opv1, binding.nc3opv1b, binding.nc3opv1dt, getString(R.string.nc3opv1))){
+        if (!validatorClass.EmptyRadioButton(this, binding.nc3opv1, binding.nc3opv1b, binding.nc3opv1dt, getString(R.string.nc3opv1))) {
             return false;
         }
 //        nc3p1
-        if(!validatorClass.EmptyRadioButton(this,binding.nc3p1, binding.nc3p1b, binding.nc3p1dt, getString(R.string.nc3p1))){
+        if (!validatorClass.EmptyRadioButton(this, binding.nc3p1, binding.nc3p1b, binding.nc3p1dt, getString(R.string.nc3p1))) {
             return false;
         }
 //        nc3pcv1
-        if(!validatorClass.EmptyRadioButton(this,binding.nc3pcv1, binding.nc3pcv1b, binding.nc3pcv1dt, getString(R.string.nc3pcv1))){
+        if (!validatorClass.EmptyRadioButton(this, binding.nc3pcv1, binding.nc3pcv1b, binding.nc3pcv1dt, getString(R.string.nc3pcv1))) {
             return false;
         }
-
-
 
 
 //        nc3opv2
-        if(!validatorClass.EmptyRadioButton(this,binding.nc3opv2, binding.nc3opv2b, binding.nc3opv2dt, getString(R.string.nc3opv2))){
+        if (!validatorClass.EmptyRadioButton(this, binding.nc3opv2, binding.nc3opv2b, binding.nc3opv2dt, getString(R.string.nc3opv2))) {
             return false;
         }
 //        nc3p2
-        if(!validatorClass.EmptyRadioButton(this,binding.nc3p2, binding.nc3p2b, binding.nc3p2dt, getString(R.string.nc3p2))){
+        if (!validatorClass.EmptyRadioButton(this, binding.nc3p2, binding.nc3p2b, binding.nc3p2dt, getString(R.string.nc3p2))) {
             return false;
         }
 //        nc3pcv2
-        if(!validatorClass.EmptyRadioButton(this,binding.nc3pcv2, binding.nc3pcv2b, binding.nc3pcv2dt, getString(R.string.nc3pcv2))){
+        if (!validatorClass.EmptyRadioButton(this, binding.nc3pcv2, binding.nc3pcv2b, binding.nc3pcv2dt, getString(R.string.nc3pcv2))) {
             return false;
         }
-
 
 
 //        nc3opv3
-        if(!validatorClass.EmptyRadioButton(this,binding.nc3opv3, binding.nc3opv3b, binding.nc3opv3dt, getString(R.string.nc3opv3))){
+        if (!validatorClass.EmptyRadioButton(this, binding.nc3opv3, binding.nc3opv3b, binding.nc3opv3dt, getString(R.string.nc3opv3))) {
             return false;
         }
 //        nc3p3
-        if(!validatorClass.EmptyRadioButton(this,binding.nc3p3, binding.nc3p3b, binding.nc3p3dt, getString(R.string.nc3p3))){
+        if (!validatorClass.EmptyRadioButton(this, binding.nc3p3, binding.nc3p3b, binding.nc3p3dt, getString(R.string.nc3p3))) {
             return false;
         }
 //        nc3pcv3
-        if(!validatorClass.EmptyRadioButton(this,binding.nc3pcv3, binding.nc3pcv3b, binding.nc3pcv3dt, getString(R.string.nc3pcv3))){
+        if (!validatorClass.EmptyRadioButton(this, binding.nc3pcv3, binding.nc3pcv3b, binding.nc3pcv3dt, getString(R.string.nc3pcv3))) {
             return false;
         }
 //        nc3ipv3
-        if(!validatorClass.EmptyRadioButton(this,binding.nc3ipv, binding.nc3ipvb, binding.nc3ipvdt, getString(R.string.nc3ipv))){
+        if (!validatorClass.EmptyRadioButton(this, binding.nc3ipv, binding.nc3ipvb, binding.nc3ipvdt, getString(R.string.nc3ipv))) {
             return false;
         }
 
 //        nc3m1dt
-        if(!validatorClass.EmptyRadioButton(this,binding.nc3m1, binding.nc3m1b, binding.nc3m1dt, getString(R.string.nc3m1))){
+        if (!validatorClass.EmptyRadioButton(this, binding.nc3m1, binding.nc3m1b, binding.nc3m1dt, getString(R.string.nc3m1))) {
             return false;
         }
 
 //        nc3m2dt
-        if(!validatorClass.EmptyRadioButton(this,binding.nc3m2, binding.nc3m2b, binding.nc3m2dt, getString(R.string.nc3m2))){
+        if (!validatorClass.EmptyRadioButton(this, binding.nc3m2, binding.nc3m2b, binding.nc3m2dt, getString(R.string.nc3m2))) {
             return false;
         }
 
 
-
 //        nc306
-        if (!validatorClass.EmptyRadioButton(this, binding.nc306, binding.nc306b,getString(R.string.nc306))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nc306, binding.nc306b, getString(R.string.nc306))) {
             return false;
         }
 
 //        nc307
-        if (!validatorClass.EmptyRadioButton(this, binding.nc307, binding.nc307b,getString(R.string.nc307))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nc307, binding.nc307b, getString(R.string.nc307))) {
             return false;
         }
 //        nc308
-        if (!validatorClass.EmptyRadioButton(this, binding.nc308, binding.nc308b,getString(R.string.nc308))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nc308, binding.nc308b, getString(R.string.nc308))) {
             return false;
         }
 
@@ -242,18 +245,18 @@ public class SectionC3Activity extends AppCompatActivity {
         }
 
 //        nc317
-        if (!validatorClass.EmptyTextBox(this, binding.nc317, getString(R.string.nc317))) {
-            return false;
-        }
-
-
-        return true;
+        return validatorClass.EmptyTextBox(this, binding.nc317, getString(R.string.nc317));
     }
 
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
         JSONObject sC3 = new JSONObject();
+
+//        nc301
+        sC3.put("nc301", selectedChild.getName());
+//        nc302
+        sC3.put("nc302Serial", selectedChild.getSerialNo());
 
 //        nc303
         sC3.put("nc303", binding.nc303a.isChecked() ? "1"
@@ -420,7 +423,7 @@ public class SectionC3Activity extends AppCompatActivity {
 //        nc317
         sC3.put("nc317", binding.nc317.getText().toString());
 
-        //MainApp.cc.setsB(String.valueOf(sB));
+        MainApp.cc.setsC3(String.valueOf(sC3));
 
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
@@ -431,27 +434,17 @@ public class SectionC3Activity extends AppCompatActivity {
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        /*Long updcount = db.addChildForm(MainApp.cc);
-        MainApp.cc.set_ID(String.valueOf(updcount));
+        int updcount = db.updateSC3();
 
-        if (updcount != 0) {
+        if (updcount == 1) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
-
-            MainApp.cc.setUID(
-                    (MainApp.cc.getDeviceID() + MainApp.cc.get_ID()));
-            db.updateFormChildID();
-
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
-        }*/
-
-        return true;
+        }
 
     }
-
-
 
 
 }

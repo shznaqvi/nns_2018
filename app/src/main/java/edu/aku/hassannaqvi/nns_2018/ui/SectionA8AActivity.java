@@ -29,11 +29,14 @@ import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionA8AActivity extends Activity {
 
+    static int counter = 1;
+    static int reccounter = 0;
+    static Map<String, FamilyMembersContract> recpmap;
+    static ArrayList<String> recpNames;
+    static ArrayList<String> recpSerial;
     ActivitySectionA8ABinding bi;
     DatabaseHelper db;
-
-    Map<String, FamilyMembersContract> recpmap;
-    ArrayList<String> recpNames;
+    FamilyMembersContract fmcSelected;
 
     int position = 0;
 
@@ -44,16 +47,23 @@ public class SectionA8AActivity extends Activity {
         db = new DatabaseHelper(this);
         bi.setCallback(this);
 
-        recpmap = new HashMap<>();
-        recpNames = new ArrayList<>();
+        if (getIntent().getBooleanExtra("flag", true)) {
+            reccounter = getIntent().getIntExtra("recCounter", 0);
 
-        recpNames.add("....");
+            recpmap = new HashMap<>();
+            recpNames = new ArrayList<>();
 
-        for (byte i = 0; i < MainApp.members_f_m.size(); i++) {
-            recpmap.put(MainApp.members_f_m.get(i).getName(), new FamilyMembersContract());
-            recpNames.add(MainApp.members_f_m.get(i).getName());
+            recpNames.add("....");
+
+            for (FamilyMembersContract fmc : MainApp.members_f_m) {
+                recpmap.put(fmc.getName() + "_" + fmc.getSerialNo(), new FamilyMembersContract());
+                recpNames.add(fmc.getName());
+                recpSerial.add(fmc.getSerialNo());
+            }
+
+        } else {
+            counter++;
         }
-
 
         bi.na8a02.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, recpNames));
 
@@ -61,6 +71,10 @@ public class SectionA8AActivity extends Activity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 position = i;
+
+                if (position != 0) {
+                    fmcSelected = recpmap.get(recpNames.get(position) + "_" + recpSerial.get(position));
+                }
             }
 
             @Override
@@ -68,6 +82,9 @@ public class SectionA8AActivity extends Activity {
 
             }
         });
+
+        // setup head
+        bi.txtCounter.setText("Count " + counter + " out of " + reccounter);
 
     }
 
@@ -85,19 +102,29 @@ public class SectionA8AActivity extends Activity {
 
                 finish();
 
-                startActivity(new Intent(this, SectionB1Activity.class));
+                if (counter == reccounter) {
+
+                    counter = 1;
+
+                    startActivity(new Intent(this, SectionB1Activity.class));
+                } else {
+
+                    recpNames.remove(bi.na8a02.getSelectedItem().toString());
+                    recpSerial.remove(recpSerial.get(position));
+
+                    startActivity(new Intent(this, SectionA8AActivity.class).putExtra("flag", false));
+                }
+
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
         }
 
-        //startActivity(new Intent(this, SectionB1Activity.class));
     }
 
     public void BtnEnd() {
         MainApp.endActivity(this, this);
-
     }
 
 
@@ -158,9 +185,12 @@ public class SectionA8AActivity extends Activity {
         MainApp.rc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
         MainApp.rc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
-        MainApp.rc.set_UUID(MainApp.fmc.get_UID());
+        MainApp.rc.set_UUID(fmcSelected.get_UID());
 
         JSONObject sA8a = new JSONObject();
+
+        sA8a.put("na8a01", fmcSelected.getName());
+        sA8a.put("na8a01Serial", fmcSelected.getSerialNo());
 
         sA8a.put("na8a02", bi.na8a02.getSelectedItem().toString());
 
@@ -214,7 +244,6 @@ public class SectionA8AActivity extends Activity {
         //return true;
 
     }
-
 
 
 }

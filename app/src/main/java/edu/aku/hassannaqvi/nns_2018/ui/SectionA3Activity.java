@@ -64,7 +64,6 @@ public class SectionA3Activity extends AppCompatActivity {
 
         //  Getting Extra
         if (getIntent().getBooleanExtra("flag", false)) {
-            members.remove(getIntent().getExtras().getInt("serial"));
             counter++;
         } else {
             members = new ArrayList<>();
@@ -156,8 +155,11 @@ public class SectionA3Activity extends AppCompatActivity {
 
                     startActivity(new Intent(this, SectionA4Activity.class));
                 } else {
+
+                    members.remove(binding.na301.getSelectedItem().toString());
+
                     startActivity(new Intent(this, SectionA3Activity.class)
-                            .putExtra("flag", true).putExtra("serial", binding.na301.getSelectedItem().toString()));
+                            .putExtra("flag", true));
                 }
 
             } else {
