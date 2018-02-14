@@ -28,6 +28,7 @@ import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract;
 import edu.aku.hassannaqvi.nns_2018.other.MembersCount;
 import edu.aku.hassannaqvi.nns_2018.ui.EndingActivity;
@@ -75,6 +76,7 @@ public class MainApp extends Application {
     public static ChildContract cc;
     public static EligibleMembersContract ec;
     public static SerialContract sc;
+    public static RecipientsContract rc;
     public static MembersCount membersCount;
     public static String userName = "0000";
     public static int versionCode;

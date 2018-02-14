@@ -30,6 +30,8 @@ import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract.MWRATable;
 import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract.outcomeTable;
+import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract.RecipientsTable;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract.singleSerial;
 import edu.aku.hassannaqvi.nns_2018.contracts.TehsilsContract;
@@ -131,6 +133,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String SQL_DELETE_MWRAS = "DROP TABLE IF EXISTS " + MWRATable.TABLE_NAME;
     private static final String SQL_DELETE_OUTCOME = "DROP TABLE IF EXISTS " + outcomeTable.TABLE_NAME;
     private static final String SQL_DELETE_FAMILYMEMBERS = "DROP TABLE IF EXISTS " + familyMembers.TABLE_NAME;
+    private static final String SQL_DELETE_RECIENPTS = "DROP TABLE IF EXISTS " + RecipientsTable.TABLE_NAME;
     final String SQL_CREATE_SERIAL = "CREATE TABLE " + singleSerial.TABLE_NAME + " (" +
             singleSerial._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             singleSerial.COLUMN_DEVICE_ID + " TEXT, " +
@@ -209,6 +212,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             ");";
 
+    final String SQL_CREATE_RECIPIENTS = "CREATE TABLE " + RecipientsTable.TABLE_NAME + " (" +
+            RecipientsTable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            RecipientsTable.COLUMN_UID + " TEXT," +
+            RecipientsTable.COLUMN_UUID + " TEXT," +
+            RecipientsTable.COLUMN_FORMDATE + " TEXT," +
+            RecipientsTable.COLUMN_DEVICEID + " TEXT," +
+            RecipientsTable.COLUMN_DEVICETAGID + " TEXT," +
+            RecipientsTable.COLUMN_USER + " TEXT," +
+            RecipientsTable.COLUMN_APP_VER + " TEXT," +
+            RecipientsTable.COLUMN_A8ASNO + " TEXT," +
+            RecipientsTable.COLUMN_SA8A + " TEXT," +
+            outcomeTable.COLUMN_SYNCED + " TEXT," +
+            outcomeTable.COLUMN_SYNCEDDATE + " TEXT " +
+
+            ");";
+
 
     private final String TAG = "DatabaseHelper";
 
@@ -233,6 +252,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_MWRAS);
         db.execSQL(SQL_CREATE_OUTCOME);
         db.execSQL(SQL_CREATE_FAMILY_MEMEBERS);
+        db.execSQL(SQL_CREATE_RECIPIENTS);
     }
 
     @Override
@@ -247,6 +267,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_MWRAS);
         db.execSQL(SQL_DELETE_OUTCOME);
         db.execSQL(SQL_DELETE_FAMILYMEMBERS);
+        db.execSQL(SQL_DELETE_RECIENPTS);
 
 
     }
@@ -574,6 +595,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    public Long addRecipient(RecipientsContract rc) {
+
+        // Gets the data repository in write mode
+        SQLiteDatabase db = this.getWritableDatabase();
+
+// Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(RecipientsTable.COLUMN_PROJECTNAME, rc.getProjectName());
+        values.put(RecipientsTable.COLUMN_UID, rc.get_UID());
+        values.put(RecipientsTable.COLUMN_UUID, rc.get_UUID());
+        values.put(RecipientsTable.COLUMN_FORMDATE, rc.getFormDate());
+        values.put(RecipientsTable.COLUMN_USER, rc.getUser());
+        values.put(RecipientsTable.COLUMN_A8ASNO, rc.getA8aSNo());
+        values.put(RecipientsTable.COLUMN_SA8A, rc.getsA8A());
+        values.put(RecipientsTable.COLUMN_DEVICETAGID, rc.getDevicetagID());
+        values.put(RecipientsTable.COLUMN_DEVICEID, rc.getDeviceId());
+        values.put(RecipientsTable.COLUMN_SYNCED, rc.getSynced());
+        values.put(RecipientsTable.COLUMN_SYNCEDDATE, rc.getSyncedDate());
+        values.put(RecipientsTable.COLUMN_APP_VER, rc.getApp_ver());
+
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId;
+        newRowId = db.insert(
+                familyMembers.TABLE_NAME,
+                familyMembers.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
+
     public Long addChildForm(ChildContract cc) {
 
         // Gets the data repository in write mode
@@ -860,7 +911,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(MWRATable.COLUMN_UID, MainApp.mc.get_UID());
 
 // Which row to update, based on the ID
-        String selection = MWRATable._ID + " = ?";
+        String selection = MWRATable.COLUMN__ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.mc.get_ID())};
 
         int count = db.update(MWRATable.TABLE_NAME,
@@ -878,10 +929,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(outcomeTable.COLUMN_UID, MainApp.oc.get_UID());
 
 // Which row to update, based on the ID
-        String selection = outcomeTable._ID + " = ?";
+        String selection = outcomeTable.COLUMN__ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.oc.get_ID())};
 
         int count = db.update(outcomeTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
+
+    public int updateRecepientID() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(RecipientsTable.COLUMN_UID, MainApp.rc.get_UID());
+
+// Which row to update, based on the ID
+        String selection = RecipientsTable.COLUMN__ID + " = ?";
+        String[] selectionArgs = {String.valueOf(MainApp.rc.get_ID())};
+
+        int count = db.update(ChildTable.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);
@@ -896,7 +965,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(ChildTable.COLUMN__UID, MainApp.cc.getUID());
 
 // Which row to update, based on the ID
-        String selection = ChildContract.ChildTable._ID + " = ?";
+        String selection = ChildTable.COLUMN__ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.cc.get_ID())};
 
         int count = db.update(ChildTable.TABLE_NAME,
@@ -1141,6 +1210,60 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 MWRAContract fc = new MWRAContract();
+                allFC.add(fc.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
+
+    public Collection<RecipientsContract> getUnsyncedRecipients() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                RecipientsTable.COLUMN__ID,
+                RecipientsTable.COLUMN_UID,
+                RecipientsTable.COLUMN_UUID,
+                RecipientsTable.COLUMN_FORMDATE,
+                RecipientsTable.COLUMN_DEVICEID,
+                RecipientsTable.COLUMN_DEVICETAGID,
+                RecipientsTable.COLUMN_USER,
+                RecipientsTable.COLUMN_APP_VER,
+                RecipientsTable.COLUMN_A8ASNO,
+                RecipientsTable.COLUMN_SA8A,
+
+                RecipientsTable.COLUMN_SYNCED,
+                RecipientsTable.COLUMN_SYNCEDDATE,
+
+        };
+        String whereClause = RecipientsTable.COLUMN_SYNCED + " is null OR " + RecipientsTable.COLUMN_SYNCED + " = '' ";
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                RecipientsTable._ID + " ASC";
+
+        Collection<RecipientsContract> allFC = new ArrayList<RecipientsContract>();
+        try {
+            c = db.query(
+                    RecipientsTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                RecipientsContract fc = new RecipientsContract();
                 allFC.add(fc.Hydrate(c));
             }
         } finally {

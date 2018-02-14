@@ -5,12 +5,20 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA8ABinding;
@@ -21,18 +29,49 @@ public class SectionA8AActivity extends Activity {
     ActivitySectionA8ABinding bi;
     DatabaseHelper db;
 
+    Map<String, FamilyMembersContract> recpmap;
+    ArrayList<String> recpNames;
+
+    int position = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_a8_a);
         db = new DatabaseHelper(this);
         bi.setCallback(this);
+
+        recpmap = new HashMap<>();
+        recpNames = new ArrayList<>();
+
+        recpNames.add("....");
+
+        for (byte i = 0; i < MainApp.members_f_m.size(); i++) {
+            recpmap.put(MainApp.members_f_m.get(i).getName(), new FamilyMembersContract());
+            recpNames.add(MainApp.members_f_m.get(i).getName());
+        }
+
+
+        bi.na8a02.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, recpNames));
+
+        bi.na8a02.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                position = i;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
     }
 
     public void BtnContinue() {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
-        /*if (ValidateForm()) {
+        if (ValidateForm()) {
             try {
                 SaveDraft();
             } catch (JSONException e) {
@@ -43,14 +82,14 @@ public class SectionA8AActivity extends Activity {
 
                 finish();
 
-                startActivity(new Intent(this, ChildAssessmentActivity.class));
+                startActivity(new Intent(this, SectionB1Activity.class));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
-        }*/
+        }
 
-        startActivity(new Intent(this, SectionB1Activity.class));
+        //startActivity(new Intent(this, SectionB1Activity.class));
     }
 
     public void BtnEnd() {
@@ -63,7 +102,7 @@ public class SectionA8AActivity extends Activity {
 
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
-        if (!validatorClass.EmptyTextBox(this, bi.na8a02, getString(R.string.na8a02))) {
+        if (!validatorClass.EmptySpinner(this, bi.na8a02, getString(R.string.na8a02))) {
             return false;
         }
 

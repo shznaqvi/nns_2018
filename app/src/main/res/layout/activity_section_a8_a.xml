@@ -49,14 +49,11 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
-            <EditText
+            <Spinner
                 android:id="@+id/na8a02"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                android:hint="@string/na8a02"
-                android:inputType="textCapWords" />
+                android:layout_marginTop="5dp" />
 
             <TextView
                 android:layout_width="match_parent"

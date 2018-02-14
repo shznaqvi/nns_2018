@@ -27,6 +27,7 @@ public class FormsContract {
     private String sA4 = ""; // sA4
     private String sA5 = ""; //
     private String sB4 = "";
+    private String count = "";
 
 
     private String gpsLat = "";
@@ -56,6 +57,7 @@ public class FormsContract {
         this.sA4 = jsonObject.getString(FormsTable.COLUMN_SA4);
         this.sA5 = jsonObject.getString(FormsTable.COLUMN_SA5);
         this.sB4 = jsonObject.getString(FormsTable.COLUMN_SB4);
+        this.count = jsonObject.getString(FormsTable.COLUMN_COUNT);
         this.gpsLat = jsonObject.getString(FormsTable.COLUMN_GPSLAT);
         this.gpsLng = jsonObject.getString(FormsTable.COLUMN_GPSLNG);
         this.gpsDT = jsonObject.getString(FormsTable.COLUMN_GPSDATE);
@@ -82,6 +84,7 @@ public class FormsContract {
         this.sA4 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA4));
         this.sA5 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA5));
         this.sB4 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SB4));
+        this.count = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_COUNT));
         this.gpsLat = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSLAT));
         this.gpsLng = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSLNG));
         this.gpsDT = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSDATE));
@@ -115,6 +118,14 @@ public class FormsContract {
 
             json.put(FormsTable.COLUMN_SA1, this.sA1.equals("") ? JSONObject.NULL : new JSONObject(this.sA1));
         }
+
+
+        if (!this.count.equals("")) {
+
+            json.put(FormsTable.COLUMN_COUNT, this.count.equals("") ? JSONObject.NULL : new JSONObject(this.count));
+        }
+
+
         /*if (!this.sA4.equals("")) {
 
             json.put(FormsTable.COLUMN_SA3, this.sA4.equals("") ? JSONObject.NULL : new JSONObject(this.sA4));
@@ -139,6 +150,14 @@ public class FormsContract {
 
 
         return json;
+    }
+
+    public String getCount() {
+        return count;
+    }
+
+    public void setCount(String count) {
+        this.count = count;
     }
 
     public String getProjectName() {
@@ -325,6 +344,7 @@ public class FormsContract {
         public static final String COLUMN_SA4 = "sa4";
         public static final String COLUMN_SA5 = "sa5";
         public static final String COLUMN_SB4 = "sb4";
+        public static final String COLUMN_COUNT = "count";
 
         public static final String COLUMN_GPSLAT = "gpslat";
         public static final String COLUMN_GPSLNG = "gpslng";
