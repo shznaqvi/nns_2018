@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.Collection;
 
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract.FormsChildTable;
+import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract.ChildTable;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 
@@ -64,7 +64,7 @@ public class SyncChildForms extends AsyncTask<Void, Void, String> {
         try {
             String url;
 
-            url = MainApp._HOST_URL + FormsChildTable._URL;
+            url = MainApp._HOST_URL + ChildTable._URL;
 
             Log.d(TAG, "doInBackground: URL " + url);
             return downloadUrl(url);

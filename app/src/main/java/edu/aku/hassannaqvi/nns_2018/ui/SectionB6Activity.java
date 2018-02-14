@@ -33,7 +33,7 @@ public class SectionB6Activity extends AppCompatActivity {
     public void BtnContinue() {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
-        /*if (formValidation()) {
+        if (ValidateForm()) {
             try {
                 SaveDraft();
             } catch (JSONException e) {
@@ -44,14 +44,14 @@ public class SectionB6Activity extends AppCompatActivity {
 
                 finish();
 
-                startActivity(new Intent(this, ChildAssessmentActivity.class));
+                startActivity(new Intent(this, SectionC1Activity.class));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
-        }*/
+        }
 
-        startActivity(new Intent(this, SectionC1Activity.class));
+        //startActivity(new Intent(this, SectionC1Activity.class));
 
     }
 
@@ -168,7 +168,7 @@ public class SectionB6Activity extends AppCompatActivity {
         sB6.put("nc101", bi.nb60109x.getText().toString());
         sB6.put("nc101", bi.nb60196x.getText().toString());
 
-        //MainApp.cc.setsB(String.valueOf(sB));
+        MainApp.mc.setsB6(String.valueOf(sB6));
 
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
@@ -179,23 +179,17 @@ public class SectionB6Activity extends AppCompatActivity {
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        /*Long updcount = db.addChildForm(MainApp.cc);
-        MainApp.cc.set_ID(String.valueOf(updcount));
+        int updcount = db.updateSB6();
 
-        if (updcount != 0) {
+        if (updcount == 1) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
-
-            MainApp.cc.setUID(
-                    (MainApp.cc.getDeviceID() + MainApp.cc.get_ID()));
-            db.updateFormChildID();
-
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
-        }*/
+        }
 
-        return true;
+        //return true;
 
     }
 

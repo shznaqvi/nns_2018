@@ -3,13 +3,16 @@ package edu.aku.hassannaqvi.nns_2018.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -30,6 +33,7 @@ public class SectionB1Activity extends Activity {
     ActivitySectionB1Binding bi;
     DatabaseHelper db;
     ArrayList<String> lstMwra;
+    ArrayList<String> respName;
     int position = 0;
 
     @Override
@@ -43,6 +47,8 @@ public class SectionB1Activity extends Activity {
 
         MainApp.mwraMap.put("....", "");
         lstMwra.add("....");
+        respName = new ArrayList<>();
+        respName.add("....");
 
         //Assigning data to UI binding
         bi.setCallback(this);
@@ -76,14 +82,33 @@ public class SectionB1Activity extends Activity {
             }
         });
 
+        for (byte i = 0; i < MainApp.members_f_m.size(); i++) {
+            respName.add(MainApp.members_f_m.get(i).getName());
+        }
+
+
         for (byte i = 0; i < MainApp.mwra.size(); i++) {
             MainApp.mwraMap.put(MainApp.mwra.get(i).getName(), MainApp.mwra.get(i).getSerialNo());
             lstMwra.add(MainApp.mwra.get(i).getName());
         }
 
+
         bi.nb101.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, lstMwra));
+        bi.resp.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, respName));
 
         bi.nb101.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
+                position = i;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        bi.resp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
                 position = i;
@@ -141,6 +166,31 @@ public class SectionB1Activity extends Activity {
     private boolean ValidateForm() {
 
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
+
+
+        if (!validatorClass.EmptySpinner(this, bi.resp, getString(R.string.na107))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptySpinner(this, bi.nb101, getString(R.string.nb101))) {
+            return false;
+        }
+
+        if (!bi.nb101.getSelectedItem().toString().equals(bi.resp.getSelectedItem().toString())) {
+            Toast.makeText(this, "ERROR(invalid): " + "Respondent should be same as Selected Woman" + getString(R.string.nb101), Toast.LENGTH_LONG).show();
+
+            ((TextView) bi.nb101.getSelectedView()).setText("Respondent should be same as Selected Woman");
+            ((TextView) bi.nb101.getSelectedView()).setTextColor(Color.RED);
+
+            ((TextView) bi.resp.getSelectedView()).setText("Respondent should be same as Selected Woman");
+            ((TextView) bi.resp.getSelectedView()).setTextColor(Color.RED);
+
+            Log.i(SectionB2Activity.class.getSimpleName(), "nb203" + ": This data is Required!");
+            return false;
+        } else {
+            ((TextView) bi.resp.getSelectedView()).setError(null);
+            ((TextView) bi.nb101.getSelectedView()).setError(null);
+        }
 
         if (!validatorClass.EmptyTextBox(this, bi.nb103, getString(R.string.nb103))) {
             return false;
@@ -215,7 +265,7 @@ public class SectionB1Activity extends Activity {
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        /*Long updcount = db.addMWRA(MainApp.mc);
+        Long updcount = db.addMWRA(MainApp.mc);
         MainApp.mc.set_ID(String.valueOf(updcount));
 
         if (updcount != 0) {
@@ -229,9 +279,9 @@ public class SectionB1Activity extends Activity {
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
-        }*/
+        }
 
-        return true;
+        //return true;
 
     }
 
