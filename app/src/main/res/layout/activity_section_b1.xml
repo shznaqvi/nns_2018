@@ -39,6 +39,21 @@
                 android:layout_height="2dp"
                 android:background="@color/colorPrimary" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/na107"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@android:color/white" />
+
+
+            <Spinner
+                android:id="@+id/resp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
 
             <!--na501-->
             <TextView

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,12 +14,14 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA8ABinding;
@@ -147,9 +150,19 @@ public class SectionA8AActivity extends Activity {
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
+        MainApp.rc = new RecipientsContract();
+
+        MainApp.rc.setDevicetagID(MainApp.getTagName(this));
+        MainApp.rc.setFormDate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+        MainApp.rc.setUser(MainApp.userName);
+        MainApp.rc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
+                Settings.Secure.ANDROID_ID));
+        MainApp.rc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
+        MainApp.rc.set_UUID(MainApp.fmc.get_UID());
+
         JSONObject sA8a = new JSONObject();
 
-        sA8a.put("na8a02", bi.na8a02.getText().toString());
+        sA8a.put("na8a02", bi.na8a02.getSelectedItem().toString());
 
         sA8a.put("na8a03y", bi.na8a03y.getText().toString());
 
@@ -170,7 +183,7 @@ public class SectionA8AActivity extends Activity {
         sA8a.put("na8a06", bi.na8a06.getText().toString());
 
 
-        //MainApp.cc.setsB(String.valueOf(sB));
+        MainApp.rc.setsA8A(String.valueOf(sA8a));
 
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
@@ -182,23 +195,23 @@ public class SectionA8AActivity extends Activity {
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        /*Long updcount = db.addChildForm(MainApp.cc);
-        MainApp.cc.set_ID(String.valueOf(updcount));
+        Long updcount = db.addRecipient(MainApp.rc);
+        MainApp.rc.set_ID(String.valueOf(updcount));
 
         if (updcount != 0) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
 
-            MainApp.cc.setUID(
-                    (MainApp.cc.getDeviceID() + MainApp.cc.get_ID()));
-            db.updateFormChildID();
+            MainApp.rc.set_UID(
+                    (MainApp.rc.getDeviceId() + MainApp.rc.get_ID()));
+            db.updateRecepientID();
 
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
-        }*/
+        }
 
-        return true;
+        //return true;
 
     }
 
