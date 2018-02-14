@@ -37,7 +37,7 @@ public class SectionA2Activity extends AppCompatActivity {
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     Map<Integer, Map<Integer, Integer>> mem;
     List<String> mothersList, fathersList;
-    Map<String, FamilyMembersContract> mothersMap, fathersMap;
+    Map<String, String> mothersMap, fathersMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,22 +123,22 @@ public class SectionA2Activity extends AppCompatActivity {
 
         mothersList.add("....");
         mothersList.add("N/A");
-        mothersMap.put("N/A", new FamilyMembersContract());
+        mothersMap.put("N/A", "");
 
         fathersList = new ArrayList<>();
         fathersMap = new HashMap<>();
 
         fathersList.add("....");
         fathersList.add("N/A");
-        fathersMap.put("N/A", new FamilyMembersContract());
+        fathersMap.put("N/A", "");
 
         for (FamilyMembersContract mem : MainApp.members_f_m) {
             if (mem.getGender().equals("1")) {
                 fathersList.add(mem.getName() + "_" + mem.getSerialNo());
-                fathersMap.put(mem.getName() + "_" + mem.getSerialNo(), mem);
+                fathersMap.put(mem.getName() + "_" + mem.getSerialNo(), mem.getSerialNo());
             } else {
                 mothersList.add(mem.getName() + "_" + mem.getSerialNo());
-                mothersMap.put(mem.getName() + "_" + mem.getSerialNo(), mem);
+                mothersMap.put(mem.getName() + "_" + mem.getSerialNo(), mem.getSerialNo());
             }
         }
 
@@ -313,6 +313,9 @@ public class SectionA2Activity extends AppCompatActivity {
         MainApp.fmc.setDob(binding.na2dob.getText().toString());
         MainApp.fmc.setAge(binding.na2agey.getText().toString() + "-" + binding.na2agem.getText().toString() + "-" + binding.na2aged.getText().toString());
         MainApp.fmc.setGender(binding.na206a.isChecked() ? "1" : binding.na206b.isChecked() ? "2" : "0");
+        if (!binding.na203a.isChecked()) {
+            MainApp.fmc.setMotherId(mothersMap.get(binding.na205.getSelectedItem().toString()));
+        }
 
         JSONObject sA2 = new JSONObject();
 

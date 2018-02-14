@@ -31,9 +31,10 @@ public class SectionA3Activity extends AppCompatActivity {
     static int counter = 1;
     ActivitySectionA3Binding binding;
     DatabaseHelper db;
-    int position;
+    int position, slc_type;
 
-    Map<String, Map<Integer, FamilyMembersContract>> membersMap;
+    Map<String, SelectedMem> membersMap;
+    FamilyMembersContract slcMem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,10 +65,13 @@ public class SectionA3Activity extends AppCompatActivity {
 //        Setup spinner
         members = new ArrayList<>();
         membersMap = new HashMap<>();
+        slcMem = new FamilyMembersContract();
 
-        familyMembersSetting(MainApp.mwra, 1);
-        familyMembersSetting(MainApp.childUnder5, 2);
-        familyMembersSetting(MainApp.adolescents, 3);
+        members.add("....");
+
+        familyMembersSetting(MainApp.mwra, 1);  // 1 for Mwra
+        familyMembersSetting(MainApp.childUnder5, 2);  // 2 for Under 5
+        familyMembersSetting(MainApp.adolescents, 3);  // 3 for Adolescents
 
         binding.na301.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, members));
 
@@ -76,7 +80,35 @@ public class SectionA3Activity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                position = i;
+                if (i != 0) {
+                    position = i;
+
+                    SelectedMem mem = membersMap.get(binding.na301.getSelectedItem().toString());
+                    slc_type = mem.getType();
+                    slcMem = mem.getFmc();
+
+                    switch (slc_type) {
+                        case 1:
+                            binding.fldGrpbcgScar.setVisibility(View.GONE);
+                            binding.fldGrpgoiter.setVisibility(View.VISIBLE);
+                            binding.fldGrpca.setVisibility(View.VISIBLE);
+                            binding.fldGrpode.setVisibility(View.VISIBLE);
+                            break;
+                        case 2:
+                            binding.fldGrpbcgScar.setVisibility(View.VISIBLE);
+                            binding.fldGrpgoiter.setVisibility(View.GONE);
+                            binding.fldGrpca.setVisibility(View.GONE);
+                            binding.fldGrpode.setVisibility(View.GONE);
+                            break;
+                        case 3:
+                            binding.fldGrpbcgScar.setVisibility(View.GONE);
+                            binding.fldGrpgoiter.setVisibility(View.VISIBLE);
+                            binding.fldGrpca.setVisibility(View.VISIBLE);
+                            binding.fldGrpode.setVisibility(View.GONE);
+                            break;
+                    }
+
+                }
 
             }
 
@@ -91,7 +123,7 @@ public class SectionA3Activity extends AppCompatActivity {
     public void familyMembersSetting(List<FamilyMembersContract> family, int type) {
 
         for (FamilyMembersContract fmc : family) {
-            membersMap.put(fmc.getName() + "_" + fmc.getSerialNo(), (Map<Integer, FamilyMembersContract>) new HashMap<Integer, FamilyMembersContract>().put(type, fmc));
+            membersMap.put(fmc.getName() + "_" + fmc.getSerialNo(), new SelectedMem(type, fmc));
             members.add(fmc.getName() + "_" + fmc.getSerialNo());
         }
 
@@ -100,7 +132,7 @@ public class SectionA3Activity extends AppCompatActivity {
     public void BtnContinue() {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
-        if (ValidateForm()) {
+        if (formValidation()) {
             try {
                 SaveDraft();
             } catch (JSONException e) {
@@ -131,8 +163,7 @@ public class SectionA3Activity extends AppCompatActivity {
         MainApp.endActivity(this, this);
     }
 
-
-    private boolean ValidateForm() {
+    private boolean formValidation() {
 
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
@@ -148,20 +179,30 @@ public class SectionA3Activity extends AppCompatActivity {
             return false;
         }
 
-
-        if (!validatorClass.EmptyRadioButton(this, binding.na3bcgscar, binding.na3bcgscara, getString(R.string.na3bcgscar))) {
-            return false;
+        if (slc_type == 2) {
+            if (!validatorClass.EmptyRadioButton(this, binding.na3bcgscar, binding.na3bcgscara, getString(R.string.na3bcgscar))) {
+                return false;
+            }
         }
 
-        if (!validatorClass.EmptyRadioButton(this, binding.na3g, binding.na3ga, getString(R.string.na3g))) {
-            return false;
-        }
+        if (slc_type == 1) {
 
-        if (!validatorClass.EmptyRadioButton(this, binding.na3ca, binding.na3caa, getString(R.string.na3ca))) {
-            return false;
-        }
+            if (slc_type == 3) {
+                if (!validatorClass.EmptyRadioButton(this, binding.na3g, binding.na3ga, getString(R.string.na3g))) {
+                    return false;
+                }
 
-        return validatorClass.EmptyRadioButton(this, binding.na3o, binding.na3oa, getString(R.string.na3o));
+                if (!validatorClass.EmptyRadioButton(this, binding.na3ca, binding.na3caa, getString(R.string.na3ca))) {
+                    return false;
+                }
+            }
+
+            if (!validatorClass.EmptyRadioButton(this, binding.na3o, binding.na3oa, getString(R.string.na3o))) {
+                return false;
+            }
+
+        }
+        return true;
     }
 
     private void SaveDraft() throws JSONException {
@@ -220,6 +261,24 @@ public class SectionA3Activity extends AppCompatActivity {
 
         return true;
 
+    }
+
+    public class SelectedMem {
+        int type;
+        FamilyMembersContract fmc;
+
+        public SelectedMem(int type, FamilyMembersContract fmc) {
+            this.type = type;
+            this.fmc = fmc;
+        }
+
+        public int getType() {
+            return type;
+        }
+
+        public FamilyMembersContract getFmc() {
+            return fmc;
+        }
     }
 
 }
