@@ -633,7 +633,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
         values.put(ChildTable.COLUMN_PROJECTNAME, cc.getProjectName());
-        values.put(ChildTable.COLUMN__ID, cc.get_ID());
+        //values.put(ChildTable.COLUMN__ID, cc.get_ID());
         values.put(ChildTable.COLUMN__UID, cc.getUID());
         values.put(ChildTable.COLUMN_FORMDATE, cc.getFormDate());
         values.put(ChildTable.COLUMN_USER, cc.getUser());
@@ -668,7 +668,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
         values.put(eligibleMembers.COLUMN_PROJECTNAME, ec.getProjectName());
-        values.put(eligibleMembers.COLUMN__ID, ec.get_ID());
+        //values.put(eligibleMembers.COLUMN__ID, ec.get_ID());
         values.put(eligibleMembers.COLUMN_UID, ec.get_UID());
         values.put(eligibleMembers.COLUMN_UUID, ec.get_UUID());
         values.put(eligibleMembers.COLUMN_FORMDATE, ec.getFormDate());
@@ -704,7 +704,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
         values.put(MWRATable.COLUMN_PROJECTNAME, mc.getProjectName());
-        values.put(MWRATable.COLUMN__ID, mc.get_ID());
+        //values.put(MWRATable.COLUMN__ID, mc.get_ID());
         values.put(MWRATable.COLUMN_UID, mc.get_UID());
         values.put(MWRATable.COLUMN_UUID, mc.get_UUID());
         values.put(MWRATable.COLUMN_FORMDATE, mc.getFormDate());
@@ -739,7 +739,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
         values.put(outcomeTable.COLUMN_PROJECTNAME, oc.getProjectName());
-        values.put(outcomeTable.COLUMN__ID, oc.get_ID());
+        //values.put(outcomeTable.COLUMN__ID, oc.get_ID());
         values.put(outcomeTable.COLUMN_UID, oc.get_UID());
         values.put(outcomeTable.COLUMN_UUID, oc.get_UUID());
         values.put(outcomeTable.COLUMN_FORMDATE, oc.getFormDate());

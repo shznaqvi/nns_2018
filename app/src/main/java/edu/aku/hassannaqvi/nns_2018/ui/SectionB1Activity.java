@@ -22,6 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -30,10 +31,11 @@ import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionB1Activity extends Activity {
 
+    static ArrayList<String> respName;
+    static ArrayList<String> respSerial;
     ActivitySectionB1Binding bi;
     DatabaseHelper db;
     ArrayList<String> lstMwra;
-    ArrayList<String> respName;
     int position = 0;
 
     @Override
@@ -48,7 +50,9 @@ public class SectionB1Activity extends Activity {
         MainApp.mwraMap.put("....", "");
         lstMwra.add("....");
         respName = new ArrayList<>();
+        respSerial = new ArrayList<>();
         respName.add("....");
+        //respSerial.
 
         //Assigning data to UI binding
         bi.setCallback(this);
@@ -82,8 +86,11 @@ public class SectionB1Activity extends Activity {
             }
         });
 
-        for (byte i = 0; i < MainApp.members_f_m.size(); i++) {
-            respName.add(MainApp.members_f_m.get(i).getName());
+
+        for (FamilyMembersContract fmc : MainApp.members_f_m) {
+
+            respName.add(fmc.getName());
+            respSerial.add(fmc.getSerialNo());
         }
 
 

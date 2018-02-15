@@ -88,7 +88,7 @@ public class SectionA1Activity extends AppCompatActivity {
             }
         }
 
-        startActivity(new Intent(this, SectionA2Activity.class));
+        //startActivity(new Intent(this, SectionA2Activity.class));
     }
 
     public void BtnEnd() {
@@ -146,11 +146,11 @@ public class SectionA1Activity extends AppCompatActivity {
             return false;
         }
 
-        String[] str = binding.na103.getText().toString().split("-");
+        /*String[] str = binding.na103.getText().toString().split("-");
         if (str.length > 2 || binding.na103.getText().toString().charAt(3) != '-' || !str[0].matches("[0-9]+")) {
             binding.na103.setError("Wrong presentation!!");
             return false;
-        }
+        }*/
 
 //        na105
         if (!validatorClass.EmptyTextBox(this, binding.na105, getString(R.string.na105))) {
@@ -188,7 +188,7 @@ public class SectionA1Activity extends AppCompatActivity {
         }
 
 //        na113
-        if (binding.na11201a.isChecked()) {
+        if (binding.na11201b.isChecked()) {
             if (!validatorClass.EmptyCheckBox(this, binding.fldGrpna113, binding.na11396, binding.na11396x, String.valueOf(R.string.na113))) {
                 return false;
             }

@@ -24,7 +24,7 @@ public abstract class validatorClass {
         if (TextUtils.isEmpty(txt.getText().toString())) {
             Toast.makeText(context, "ERROR(empty): " + msg, Toast.LENGTH_SHORT).show();
             txt.setError("This data is Required! ");    // Set Error on last radio button
-            //txt.requestFocus();
+            txt.requestFocus();
             Log.i(context.getClass().getName(), context.getResources().getResourceEntryName(txt.getId()) + ": This data is Required!");
             return false;
         } else {
