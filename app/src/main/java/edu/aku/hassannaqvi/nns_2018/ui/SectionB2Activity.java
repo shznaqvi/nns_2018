@@ -93,11 +93,11 @@ public class SectionB2Activity extends Activity {
                     bi.fldGrpnb210.setVisibility(View.VISIBLE);
                 } else {
                     bi.fldGrpnb210.setVisibility(View.GONE);
-                    bi.nb21001.clearCheck();
-                    bi.nb21002.clearCheck();
-                    bi.nb21003.clearCheck();
-                    bi.nb21098.clearCheck();
-                    bi.nb21099.clearCheck();
+//                    bi.nb21001.clearCheck();
+//                    bi.nb21002.clearCheck();
+//                    bi.nb21003.clearCheck();
+//                    bi.nb21098.clearCheck();
+//                    bi.nb21099.clearCheck();
                     bi.nb211.clearCheck();
                     bi.nb212m.setText(null);
                     bi.nb212d.setText(null);
@@ -105,49 +105,49 @@ public class SectionB2Activity extends Activity {
             }
         });
 
-        bi.nb21098.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (bi.nb21098a.isChecked()) {
-                    bi.nb21001.setEnabled(false);
-                    bi.nb21001.clearCheck();
-                    bi.nb21002.setEnabled(false);
-                    bi.nb21002.clearCheck();
-                    bi.nb21003.setEnabled(false);
-                    bi.nb21003.clearCheck();
-                    bi.nb21099.setEnabled(false);
-                    bi.nb21099.clearCheck();
-                } else {
-                    bi.nb21001.setEnabled(true);
-                    bi.nb21002.setEnabled(true);
-                    bi.nb21003.setEnabled(true);
-                    bi.nb21099.setEnabled(true);
-
-                }
-            }
-        });
-
-        bi.nb21099.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (bi.nb21099a.isChecked()) {
-                    bi.nb21001.setEnabled(false);
-                    bi.nb21001.clearCheck();
-                    bi.nb21002.setEnabled(false);
-                    bi.nb21002.clearCheck();
-                    bi.nb21003.setEnabled(false);
-                    bi.nb21003.clearCheck();
-                    bi.nb21098.setEnabled(false);
-                    bi.nb21098.clearCheck();
-                } else {
-                    bi.nb21001.setEnabled(true);
-                    bi.nb21002.setEnabled(true);
-                    bi.nb21003.setEnabled(true);
-                    bi.nb21098.setEnabled(true);
-
-                }
-            }
-        });
+//        bi.nb21098.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup group, int checkedId) {
+//                if (bi.nb21098a.isChecked()) {
+//                    bi.nb21001.setEnabled(false);
+//                    bi.nb21001.clearCheck();
+//                    bi.nb21002.setEnabled(false);
+//                    bi.nb21002.clearCheck();
+//                    bi.nb21003.setEnabled(false);
+//                    bi.nb21003.clearCheck();
+//                    bi.nb21099.setEnabled(false);
+//                    bi.nb21099.clearCheck();
+//                } else {
+//                    bi.nb21001.setEnabled(true);
+//                    bi.nb21002.setEnabled(true);
+//                    bi.nb21003.setEnabled(true);
+//                    bi.nb21099.setEnabled(true);
+//
+//                }
+//            }
+//        });
+//
+//        bi.nb21099.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup group, int checkedId) {
+//                if (bi.nb21099a.isChecked()) {
+//                    bi.nb21001.setEnabled(false);
+//                    bi.nb21001.clearCheck();
+//                    bi.nb21002.setEnabled(false);
+//                    bi.nb21002.clearCheck();
+//                    bi.nb21003.setEnabled(false);
+//                    bi.nb21003.clearCheck();
+//                    bi.nb21098.setEnabled(false);
+//                    bi.nb21098.clearCheck();
+//                } else {
+//                    bi.nb21001.setEnabled(true);
+//                    bi.nb21002.setEnabled(true);
+//                    bi.nb21003.setEnabled(true);
+//                    bi.nb21098.setEnabled(true);
+//
+//                }
+//            }
+//        });
 
         bi.nb213.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -287,18 +287,37 @@ public class SectionB2Activity extends Activity {
 
         if (bi.nb209a.isChecked()) {
 
-            if (!bi.nb21098a.isChecked() || !bi.nb21099a.isChecked()) {
-                if (!validatorClass.EmptyRadioButton(this, bi.nb21001, bi.nb21001a, getString(R.string.nb21001))) {
-                    return false;
-                }
+//            if (!bi.nb21098a.isChecked() || !bi.nb21099a.isChecked()) {
+//                if (!validatorClass.EmptyRadioButton(this, bi.nb21001, bi.nb21001a, getString(R.string.nb21001))) {
+//                    return false;
+//                }
+//
+//                if (!validatorClass.EmptyRadioButton(this, bi.nb21002, bi.nb21002a, getString(R.string.nb21002))) {
+//                    return false;
+//                }
+//
+//                if (!validatorClass.EmptyRadioButton(this, bi.nb21003, bi.nb21003a, getString(R.string.nb21003))) {
+//                    return false;
+//                }
+//            }
 
-                if (!validatorClass.EmptyRadioButton(this, bi.nb21002, bi.nb21002a, getString(R.string.nb21002))) {
-                    return false;
-                }
-
-                if (!validatorClass.EmptyRadioButton(this, bi.nb21003, bi.nb21003a, getString(R.string.nb21003))) {
-                    return false;
-                }
+            if (!validatorClass.EmptyRadioButton(this,bi.nw310,bi.nw310a,getString(R.id.nw310))){
+                return false;
+            }
+            if (!validatorClass.EmptyRadioButton(this,bi.nw310,bi.nw310a,bi.nw31096x,getString(R.id.nw310))){
+                return false;
+            }
+            if (!validatorClass.EmptyRadioButton(this,bi.nw315,bi.nw315a,getString(R.id.nw315))){
+                return false;
+            }
+            if (!validatorClass.EmptyRadioButton(this,bi.nw315,bi.nw315a,bi.nw31596x,getString(R.id.nw315))){
+                return false;
+            }
+            if (!validatorClass.EmptyRadioButton(this,bi.nw320,bi.nw320a,getString(R.id.nw320))){
+                return false;
+            }
+            if (!validatorClass.EmptyRadioButton(this,bi.nw320,bi.nw320a,bi.nw32096x,getString(R.id.nw320))){
+                return false;
             }
 
 
@@ -429,32 +448,32 @@ public class SectionB2Activity extends Activity {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 //       nb201
         JSONObject sB2 = new JSONObject();
-        sB2.put("nb201", bi.nb201a.isChecked() ? "1"
+        sB2.put("nw301", bi.nb201a.isChecked() ? "1"
                 : bi.nb201b.isChecked() ? "2"
                 : "0");
 
 //       nb202
-        sB2.put("nb202a", bi.nb202a.isChecked() ? "1" : "0");
-        sB2.put("nb202b", bi.nb202b.isChecked() ? "2" : "0");
-        sB2.put("nb202c", bi.nb202c.isChecked() ? "3" : "0");
-        sB2.put("nb202d", bi.nb202d.isChecked() ? "4" : "0");
-        sB2.put("nb202e", bi.nb202e.isChecked() ? "5" : "0");
-        sB2.put("nb202f", bi.nb202f.isChecked() ? "6" : "0");
-        sB2.put("nb202g", bi.nb202g.isChecked() ? "7" : "0");
-        sB2.put("nb202h", bi.nb202h.isChecked() ? "8" : "0");
-        sB2.put("nb202i", bi.nb20296.isChecked() ? "96" : "0");
-        sB2.put("nb20296x", bi.nb20296x.getText().toString());
+        sB2.put("nw302a", bi.nb202a.isChecked() ? "1" : "0");
+        sB2.put("nw302b", bi.nb202b.isChecked() ? "2" : "0");
+        sB2.put("nw302c", bi.nb202c.isChecked() ? "3" : "0");
+        sB2.put("nw302d", bi.nb202d.isChecked() ? "4" : "0");
+        sB2.put("nw302e", bi.nb202e.isChecked() ? "5" : "0");
+        sB2.put("nw302f", bi.nb202f.isChecked() ? "6" : "0");
+        sB2.put("nw302g", bi.nb202g.isChecked() ? "7" : "0");
+        sB2.put("nw302h", bi.nb202h.isChecked() ? "8" : "0");
+        sB2.put("nw302i", bi.nb20296.isChecked() ? "96" : "0");
+        sB2.put("nw30296x", bi.nb20296x.getText().toString());
 
 
 //        nb203
-        sB2.put("nb203",bi.nb203w.getText().toString());
-        sB2.put("nb203",bi.nb203w.getText().toString());
-        sB2.put("nb20398", bi.nb20398.isChecked() ? "98" : "0");
+        sB2.put("nw303",bi.nb203w.getText().toString());
+        sB2.put("nw303",bi.nb203w.getText().toString());
+        sB2.put("nw30398", bi.nb20398.isChecked() ? "98" : "0");
 
 
         //        nb204
-        sB2.put("nb204",bi.nb204.getText().toString());
-        sB2.put("nb20498", bi.nb20498.isChecked() ? "98" : "0");
+        sB2.put("nw304",bi.nb204.getText().toString());
+        sB2.put("nw30498", bi.nb20498.isChecked() ? "98" : "0");
 
 //      nb205
         sB2.put("nb205a", bi.nb205a.isChecked() ? "1" : "0");
@@ -487,22 +506,6 @@ public class SectionB2Activity extends Activity {
 //        nb209
         sB2.put("nb209", bi.nb209a.isChecked() ? "1"
                 : bi.nb209b.isChecked() ? "2"
-                : "0");
-//        nb210
-        sB2.put("nb21001", bi.nb21001a.isChecked() ? "1"
-                : bi.nb21001b.isChecked() ? "2"
-                : "0");
-        sB2.put("nb21002", bi.nb21002a.isChecked() ? "1"
-                : bi.nb21002b.isChecked() ? "2"
-                : "0");
-        sB2.put("nb21003", bi.nb21003a.isChecked() ? "1"
-                : bi.nb21003b.isChecked() ? "2"
-                : "0");
-        sB2.put("nb21098", bi.nb21098a.isChecked() ? "1"
-                : bi.nb21098b.isChecked() ? "2"
-                : "0");
-        sB2.put("nb21099", bi.nb21099a.isChecked() ? "1"
-                : bi.nb21099b.isChecked() ? "2"
                 : "0");
 
         //          nb211
