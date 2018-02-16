@@ -189,11 +189,11 @@ public class SectionA8AActivity extends Activity {
 
         JSONObject sA8a = new JSONObject();
 
-        sA8a.put("na8a01", fmcSelected.getName());
-        sA8a.put("na8a01Serial", fmcSelected.getSerialNo());
+        sA8a.put("na7a01", fmcSelected.getName());
+        sA8a.put("na7a01Serial", fmcSelected.getSerialNo());
 
-        sA8a.put("na8a02", bi.na8a02.getSelectedItem().toString());
-        sA8a.put("nh7a02", bi.na8a02.getText().toString());
+        sA8a.put("na7a02", bi.na8a02.getSelectedItem().toString());
+        //sA8a.put("nh7a02", bi.na8a02.getText().toString());
 
         sA8a.put("nh7a03y", bi.na8a03y.getText().toString());
 
