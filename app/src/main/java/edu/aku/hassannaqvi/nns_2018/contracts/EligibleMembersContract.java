@@ -259,7 +259,7 @@ public class EligibleMembersContract {
 
     public static abstract class eligibleMembers implements BaseColumns {
 
-        public static final String TABLE_NAME = "familymembers";
+        public static final String TABLE_NAME = "eligibles";
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
 
         public static final String COLUMN_PROJECTNAME = "projectname";

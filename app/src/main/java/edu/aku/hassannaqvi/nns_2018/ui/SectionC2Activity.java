@@ -14,6 +14,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC2Binding;
@@ -22,6 +23,7 @@ import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 public class SectionC2Activity extends Activity {
 
     ActivitySectionC2Binding bi;
+    FamilyMembersContract selectedChild;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -226,13 +228,16 @@ public class SectionC2Activity extends Activity {
             }
         });
 
+        //Get Intent
+        selectedChild = (FamilyMembersContract) getIntent().getSerializableExtra("selectedChild");
+
 
     }
 
     public void BtnContinue() {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
-        /*if (ValidateForm()) {
+        if (ValidateForm()) {
             try {
                 SaveDraft();
             } catch (JSONException e) {
@@ -243,20 +248,17 @@ public class SectionC2Activity extends Activity {
 
                 finish();
 
-                startActivity(new Intent(this, ChildAssessmentActivity.class));
+                startActivity(new Intent(this, SectionC3Activity.class));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
-        }*/
-
-
-        startActivity(new Intent(this, SectionC3Activity.class));
+        }
     }
 
     public void BtnEnd() {
 
-        MainApp.endActivity(this, this);
+        MainApp.endActivityMother(this, this, false);
 
     }
 
@@ -565,6 +567,17 @@ public class SectionC2Activity extends Activity {
 
         JSONObject sC2 = new JSONObject();
 
+//        nc201
+        sC2.put("nc201", selectedChild.getName());
+//        nc202
+        sC2.put("nc202Serial", selectedChild.getSerialNo());
+//        nc203
+        if (selectedChild.getDob().equals("")) {
+            sC2.put("nc203", selectedChild.getAge());
+        } else {
+            sC2.put("nc203", selectedChild.getDob());
+        }
+
 //        nc204
         sC2.put("nc204", bi.nc204a.isChecked() ? "1"
                 : bi.nc204b.isChecked() ? "2"
@@ -715,7 +728,7 @@ public class SectionC2Activity extends Activity {
                 : bi.nc215h98.isChecked() ? "98"
                 : "0");
 
- //      nc215i
+        //      nc215i
         sC2.put("nc215i", bi.nc215ia.isChecked() ? "1"
                 : bi.nc215ib.isChecked() ? "2"
                 : bi.nc215i98.isChecked() ? "98"
@@ -893,7 +906,7 @@ public class SectionC2Activity extends Activity {
 
         sC2.put("nc226", bi.nc226.getText().toString());
 
-        //MainApp.cc.setsB(String.valueOf(sB));
+        MainApp.cc.setsC2(String.valueOf(sC2));
 
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
@@ -904,23 +917,15 @@ public class SectionC2Activity extends Activity {
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        /*Long updcount = db.addChildForm(MainApp.cc);
-        MainApp.cc.set_ID(String.valueOf(updcount));
+        int updcount = db.updateSC2();
 
-        if (updcount != 0) {
+        if (updcount == 1) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
-
-            MainApp.cc.setUID(
-                    (MainApp.cc.getDeviceID() + MainApp.cc.get_ID()));
-            db.updateFormChildID();
-
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
-        }*/
-
-        return true;
+        }
 
     }
 

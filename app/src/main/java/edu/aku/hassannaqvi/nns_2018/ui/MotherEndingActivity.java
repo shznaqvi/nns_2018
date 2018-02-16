@@ -10,8 +10,6 @@ import org.json.JSONException;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
-import edu.aku.hassannaqvi.nns_2018.core.MainApp;
-import edu.aku.hassannaqvi.nns_2018.databinding.ActivityEndingBinding;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivityMotherEndingBinding;
 
 public class MotherEndingActivity extends AppCompatActivity {
@@ -24,7 +22,7 @@ public class MotherEndingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_mother_ending);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_ending);
         binding.setCallback(this);
 
         Boolean check = getIntent().getExtras().getBoolean("complete");
@@ -32,9 +30,11 @@ public class MotherEndingActivity extends AppCompatActivity {
         if (check) {
             binding.istatusa.setEnabled(true);
             binding.istatusb.setEnabled(false);
+            binding.istatusc.setEnabled(false);
         } else {
             binding.istatusa.setEnabled(false);
             binding.istatusb.setEnabled(true);
+            binding.istatusc.setEnabled(true);
         }
 
 /*        istatus.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -65,8 +65,16 @@ public class MotherEndingActivity extends AppCompatActivity {
 
                 finish();
 
-                Intent endSec = new Intent(this, MainActivity.class);
-                startActivity(endSec);
+                if (SectionC1Activity.counter == SectionC1Activity.counterPerMom) {
+
+                    startActivity(new Intent(this, EndingActivity.class)
+                            .putExtra("complete", true));
+
+                } else {
+                    startActivity(new Intent(this, SectionC1Activity.class)
+                            .putExtra("name", SectionC1Activity.selectedChildName));
+                }
+
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
@@ -76,9 +84,9 @@ public class MotherEndingActivity extends AppCompatActivity {
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
-        MainApp.fc.setIstatus(binding.istatusa.isChecked() ? "1"
+        /*MainApp.fc.setIstatus(binding.istatusa.isChecked() ? "1"
                 : binding.istatusb.isChecked() ? "2"
-                : "0");
+                : "0");*/
 
 //        MainApp.fc.setIstatus88x(istatus88x.getText().toString());
 
@@ -89,7 +97,7 @@ public class MotherEndingActivity extends AppCompatActivity {
     private boolean UpdateDB() {
         DatabaseHelper db = new DatabaseHelper(this);
 
-        int updcount = db.updateEnding();
+        /*int updcount = db.updateEnding();
 
         if (updcount == 1) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
@@ -97,7 +105,9 @@ public class MotherEndingActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
-        }
+        }*/
+
+        return true;
 
     }
 

@@ -121,7 +121,7 @@ public class SectionB1AActivity extends AppCompatActivity {
 
                 if (MainApp.outcome != 4) {
                     MainApp.count++;
-                    if (MainApp.totalPregnancy > MainApp.count) {
+                    if (MainApp.totalPregnancy >= MainApp.count) {
                         startActivity(new Intent(this, SectionB1Activity.class).putExtra("type", false));
                     } else {
                         startActivity(new Intent(this, SectionB2Activity.class));
@@ -249,13 +249,14 @@ public class SectionB1AActivity extends AppCompatActivity {
 
 
         MainApp.oc = new OutcomeContract();
+
         MainApp.oc.setDevicetagID(MainApp.getTagName(this));
         MainApp.oc.setFormDate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
         MainApp.oc.setUser(MainApp.userName);
         MainApp.oc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
         MainApp.oc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
-        //MainApp.oc.set_UUID(MainApp.fc.getUID());
+        MainApp.oc.set_UUID(MainApp.mc.get_UID());
 
 
         JSONObject sB1a = new JSONObject();
@@ -289,7 +290,7 @@ public class SectionB1AActivity extends AppCompatActivity {
         sB1a.put("nb1a06m", bi.nb1a06m.getText().toString());
         sB1a.put("nb1a06d", bi.nb1a06d.getText().toString());
 
-        //MainApp.cc.setsB(String.valueOf(sB));
+        MainApp.oc.setsB1A(String.valueOf(sB1a));
 
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
@@ -301,7 +302,7 @@ public class SectionB1AActivity extends AppCompatActivity {
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        /*Long updcount = db.addOutcome(MainApp.oc);
+        Long updcount = db.addOutcome(MainApp.oc);
         MainApp.oc.set_ID(String.valueOf(updcount));
 
         if (updcount != 0) {
@@ -315,10 +316,9 @@ public class SectionB1AActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
-        }*/
+        }
 
-
-        return true;
+        //return true;
 
     }
 

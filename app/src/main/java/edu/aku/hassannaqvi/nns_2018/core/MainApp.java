@@ -28,9 +28,12 @@ import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract;
 import edu.aku.hassannaqvi.nns_2018.other.MembersCount;
 import edu.aku.hassannaqvi.nns_2018.ui.EndingActivity;
+import edu.aku.hassannaqvi.nns_2018.ui.MotherEndingActivity;
+import edu.aku.hassannaqvi.nns_2018.ui.SectionC1Activity;
 
 /**
  * Created by hassan.naqvi on 11/30/2016.
@@ -75,19 +78,22 @@ public class MainApp extends Application {
     public static ChildContract cc;
     public static EligibleMembersContract ec;
     public static SerialContract sc;
+    public static RecipientsContract rc;
     public static MembersCount membersCount;
     public static String userName = "0000";
     public static int versionCode;
     public static String versionName;
+
     //    Ali
     public static FamilyMembersContract fmc;
+    public static EligibleMembersContract emc;
     public static List<FamilyMembersContract> members_f_m;
     public static List<FamilyMembersContract> childUnder2;
     public static List<FamilyMembersContract> childUnder5;
     public static List<FamilyMembersContract> mwra;
     public static List<FamilyMembersContract> adolescents;
-
     public static int serial_no;
+
     // Gul Sanober
     public static Map<String, String> mwraMap = new HashMap<>();
     public static int totalPregnancy = 0;
@@ -184,6 +190,36 @@ public class MainApp extends Application {
                             public void onClick(DialogInterface dialog,
                                                 int id) {
                                 activity.finish();
+                            }
+                        });
+        alertDialogBuilder.setNegativeButton("No",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = alertDialogBuilder.create();
+        alert.show();
+    }
+
+    public static void endActivityMother(final Context context, final Activity activity, final Boolean flag) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                context);
+        alertDialogBuilder
+                .setMessage("Do you want to Exit??")
+                .setCancelable(false)
+                .setPositiveButton("Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,
+                                                int id) {
+
+                                SectionC1Activity.counter = 1;
+                                SectionC1Activity.counterPerMom = 0;
+
+                                activity.finish();
+                                Intent end_intent = new Intent(context, MotherEndingActivity.class);
+                                end_intent.putExtra("complete", flag);
+                                context.startActivity(end_intent);
                             }
                         });
         alertDialogBuilder.setNegativeButton("No",

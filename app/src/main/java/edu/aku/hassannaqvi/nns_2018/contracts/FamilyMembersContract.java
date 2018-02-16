@@ -28,21 +28,15 @@ public class FamilyMembersContract {
     private String name = "";
     private String dob = "";
     private String age = "";
+    private String ageInYear = "";
     private String gender = "";
+    private String motherId = "";
     private String sA2 = "";
 
     private String synced = "";
     private String syncedDate = "";
 
     public FamilyMembersContract() {
-    }
-
-    public FamilyMembersContract(FamilyMembersContract fc) {
-        this.serialNo = fc.getSerialNo();
-        this.name = fc.getName();
-        this.dob = fc.getDob();
-        this.age = fc.getAge();
-        this.gender = fc.getGender();
     }
 
     public String getProjectName() {
@@ -113,6 +107,14 @@ public class FamilyMembersContract {
         this.dob = dob;
     }
 
+    public String getAgeInYear() {
+        return ageInYear;
+    }
+
+    public void setAgeInYear(String ageInYear) {
+        this.ageInYear = ageInYear;
+    }
+
     public String getGender() {
         return gender;
     }
@@ -127,6 +129,14 @@ public class FamilyMembersContract {
 
     public void setApp_ver(String app_ver) {
         this.app_ver = app_ver;
+    }
+
+    public String getMotherId() {
+        return motherId;
+    }
+
+    public void setMotherId(String motherId) {
+        this.motherId = motherId;
     }
 
     public String getsA2() {

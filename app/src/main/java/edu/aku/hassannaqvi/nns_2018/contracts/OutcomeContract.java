@@ -209,7 +209,7 @@ public class OutcomeContract {
 
     public static abstract class outcomeTable implements BaseColumns {
 
-        public static final String TABLE_NAME = "mwra";
+        public static final String TABLE_NAME = "outcome";
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
 
         public static final String COLUMN_PROJECTNAME = "projectname";

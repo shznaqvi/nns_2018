@@ -22,6 +22,8 @@ public class SectionA5Activity extends AppCompatActivity {
     ActivitySectionA5Binding binding;
     DatabaseHelper db;
 
+    int recipientCounter = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,7 +110,7 @@ public class SectionA5Activity extends AppCompatActivity {
     public void BtnContinue() {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
-        /*if (formValidation()) {
+        if (formValidation()) {
             try {
                 SaveDraft();
             } catch (JSONException e) {
@@ -119,14 +121,17 @@ public class SectionA5Activity extends AppCompatActivity {
 
                 finish();
 
-                startActivity(new Intent(this, ChildAssessmentActivity.class));
+                if (recipientCounter > 0) {
+                    startActivity(new Intent(this, SectionA8AActivity.class).putExtra("recCounter", recipientCounter));
+                } else {
+                    startActivity(new Intent(this, SectionB1Activity.class));
+                }
+
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
-        }*/
-
-        startActivity(new Intent(this, SectionA8AActivity.class));
+        }
     }
 
     public boolean formValidation() {
@@ -227,7 +232,26 @@ public class SectionA5Activity extends AppCompatActivity {
             return false;
         }
 //        na709
-        return validatorClass.EmptyRadioButton(this, binding.na709, binding.na70999, getString(R.string.na709));
+        if (!validatorClass.EmptyRadioButton(this, binding.na709, binding.na70999, getString(R.string.na709))) {
+            return false;
+        }
+//        na801
+        if (!validatorClass.EmptyRadioButton(this, binding.na801, binding.na801b, getString(R.string.na801))) {
+            return false;
+        }
+//        na802
+        if (!binding.na801a.isChecked()) {
+            if (!validatorClass.EmptyTextBox(this, binding.na802, getString(R.string.na802))) {
+                return false;
+            }
+
+            if (!validatorClass.RangeTextBox(this, binding.na802, 1, MainApp.membersCount.getCount(), getString(R.string.na802), "Recipient no")) {
+                return false;
+            }
+
+        }
+
+        return true;
     }
 
     public void BtnEnd() {
@@ -382,8 +406,9 @@ public class SectionA5Activity extends AppCompatActivity {
 
         sA5.put("nh702", binding.na802.getText().toString());
 
+        recipientCounter = Integer.valueOf(binding.na802.getText().toString());
 
-        //MainApp.cc.setsB(String.valueOf(sB));
+        MainApp.fc.setsA5(String.valueOf(sA5));
 
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
@@ -395,7 +420,7 @@ public class SectionA5Activity extends AppCompatActivity {
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        /*int updcount = db.updateF03();
+        int updcount = db.updateSA5();
 
         if (updcount == 1) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
@@ -404,12 +429,8 @@ public class SectionA5Activity extends AppCompatActivity {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
         }
-*/
-
-        return true;
 
     }
-
 
 
 }
