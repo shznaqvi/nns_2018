@@ -14,7 +14,7 @@
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="@dimen/_200sdp"
         android:visibility="gone" />
 
     <ScrollView
@@ -22,10 +22,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="110dp"
-        android:paddingLeft="65dp"
-        android:paddingRight="65dp"
-        android:paddingTop="15dp">
+        android:layout_marginTop="@dimen/_50sdp"
+        android:paddingLeft="@dimen/_35sdp"
+        android:paddingRight="@dimen/_35sdp"
+        android:paddingTop="@dimen/_12sdp">
 
         <LinearLayout
             android:id="@+id/email_login_form"
@@ -44,7 +44,7 @@
                 android:paddingBottom="2dp"
                 android:text="Aga Khan University"
                 android:textColor="@android:color/black"
-                android:textSize="32sp"
+                android:textSize="@dimen/_18sdp"
                 android:textStyle="bold" />
 
             <TextView
@@ -56,96 +56,111 @@
                 android:keepScreenOn="true"
                 android:text="Center of excellence in\nWomen and Child Health"
                 android:textColor="@android:color/black"
-                android:textSize="27sp" />
+                android:textSize="@dimen/_14sdp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:elevation="2dp"
                 android:fontFamily="serif"
                 android:gravity="center_horizontal"
                 android:keepScreenOn="true"
-                android:padding="16dp"
+                android:padding="@dimen/_9sdp"
                 android:text="@string/app_name"
                 android:textColor="@color/selectedBlue"
-                android:textSize="45sp"
+                android:textSize="@dimen/_22sdp"
                 android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/_12sdp"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="@dimen/_30sdp"
+                    android:layoutDirection="ltr">
 
-                    <EditText
-                        android:id="@+id/email"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_weight="0.99"
-                        android:drawableEnd="@drawable/ic_assignment_ind_black_24dp"
-                        android:drawablePadding="8dp"
-                        android:hint="Username/Code"
-                        android:imeActionId="@+id/login"
-                        android:imeActionLabel="@string/action_sign_in_short"
-                        android:imeOptions="actionUnspecified"
-                        android:inputType="textEmailAddress"
-                        android:maxLines="1"
-                        android:paddingEnd="4dp"
-                        android:paddingStart="4dp"
-                        android:singleLine="true"
-                        android:textSize="18sp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                        <requestFocus />
-                    </EditText>
+                        <TextView
+                            android:id="@+id/txt_user"
+                            android:layout_width="@dimen/_36sdp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:background="@color/selectedBlue"
+                            android:drawableLeft="@drawable/ic_assignment_ind_black_24dp"
+                            android:gravity="center"
+                            android:paddingLeft="@dimen/_13sdp" />
+
+                        <EditText
+                            android:id="@+id/email"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignBaseline="@+id/txt_user"
+                            android:layout_alignBottom="@+id/txt_user"
+                            android:layout_toEndOf="@+id/txt_user"
+                            android:background="#dcd3d3"
+                            android:padding="@dimen/_5sdp"
+                            android:textColor="@color/black" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
-                <!--android:text="dmu@aku"-->
-
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layoutDirection="ltr">
 
-                    <Button
-                        android:id="@+id/showPassword"
-                        style="?android:attr/borderlessButtonStyle"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/round_button"
-                        android:drawableStart="@drawable/ic_remove_red_eye_black_24dp"
-                        android:gravity="center"
-                        android:padding="3dp"
-                        android:textSize="18sp" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                    <EditText
-                        android:id="@+id/password"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_weight="0.99"
-                        android:drawableEnd="@drawable/ic_lock_black_24dp"
-                        android:drawablePadding="8dp"
-                        android:hint="@string/prompt_password"
-                        android:imeActionId="@+id/login"
-                        android:imeActionLabel="@string/action_sign_in_short"
-                        android:imeOptions="actionUnspecified"
-                        android:inputType="textPassword"
-                        android:maxLines="1"
-                        android:paddingEnd="4dp"
-                        android:paddingStart="4dp"
-                        android:singleLine="true"
-                        android:textSize="18sp" />
+                        <TextView
+                            android:id="@+id/txt_password"
+                            android:layout_width="@dimen/_36sdp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:background="@color/selectedBlue"
+                            android:drawableLeft="@drawable/ic_lock_black_24dp"
+                            android:gravity="center"
+                            android:paddingLeft="@dimen/_13sdp" />
 
-                    <!--android:text="aku?dmu"-->
+                        <EditText
+                            android:id="@+id/password"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignBaseline="@+id/txt_password"
+                            android:layout_alignBottom="@+id/txt_password"
+                            android:layout_toEndOf="@+id/txt_password"
+                            android:background="#dcd3d3"
+                            android:inputType="textPassword"
+                            android:padding="@dimen/_5sdp"
+                            android:textColor="@color/black" />
+
+                        <Button
+                            android:id="@+id/showPassword"
+                            style="?android:attr/borderlessButtonStyle"
+                            android:layout_width="@dimen/_18sdp"
+                            android:layout_height="@dimen/_18sdp"
+                            android:layout_alignBaseline="@+id/password"
+                            android:layout_alignBottom="@+id/password"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginRight="@dimen/_2sdp"
+                            android:layout_marginTop="@dimen/_11sdp"
+                            android:background="@drawable/round_button"
+                            android:drawableStart="@drawable/ic_remove_red_eye_black_24dp"
+                            android:gravity="center"
+                            android:padding="@dimen/_3sdp"
+                            android:textAlignment="center" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -177,7 +192,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp">
+                android:layout_marginTop="@dimen/_20sdp">
 
                 <Button
                     android:id="@+id/syncData"
@@ -197,10 +212,9 @@
                     style="?android:textAppearanceSmall"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-
                     android:layout_marginRight="2dp"
                     android:layout_weight="68"
-                    android:background="#56ae51"
+                    android:background="@color/colorPrimary"
                     android:elevation="2dp"
                     android:padding="16dp"
                     android:text="@string/action_sign_in"
@@ -210,7 +224,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginTop="150dp"
+                android:layout_marginTop="@dimen/_82sdp"
                 android:orientation="vertical">
 
                 <TextView

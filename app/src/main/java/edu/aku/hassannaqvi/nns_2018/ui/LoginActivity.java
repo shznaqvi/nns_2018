@@ -30,7 +30,6 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -104,6 +103,8 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     EditText mEmailView;
     @BindView(R.id.password)
     EditText mPasswordView;
+    @BindView(R.id.txt_password)
+    TextView txt_password;
     @BindView(R.id.txtinstalldate)
     TextView txtinstalldate;
     @BindView(R.id.email_sign_in_button)
@@ -168,11 +169,9 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
-                    return true;
-                }
-                return false;
+                attemptLogin();
+
+                return true;
             }
         });
 
@@ -420,10 +419,10 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         //TODO implement
         if (mPasswordView.getTransformationMethod() == null) {
             mPasswordView.setTransformationMethod(new PasswordTransformationMethod());
-            mPasswordView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_lock_black_24dp, 0, 0, 0);
+            txt_password.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_lock_black_24dp, 0, 0, 0);
         } else {
             mPasswordView.setTransformationMethod(null);
-            mPasswordView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_lock_open_black_24dp, 0, 0, 0);
+            txt_password.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_lock_open_black_24dp, 0, 0, 0);
         }
     }
 
