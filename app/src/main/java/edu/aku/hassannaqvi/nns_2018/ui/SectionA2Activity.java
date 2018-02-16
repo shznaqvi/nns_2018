@@ -105,6 +105,7 @@ public class SectionA2Activity extends AppCompatActivity {
 //        Setting Counts
         mem = MainApp.membersCount.getMembers();
 
+
         // Total
         binding.na2tm.setText(mem.get(1).get(1).toString());
         binding.na2tf.setText(mem.get(1).get(2).toString());
