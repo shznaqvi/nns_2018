@@ -243,7 +243,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/nc203"
+                android:text="@string/nc206"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
@@ -903,63 +903,63 @@
 
             </RadioGroup>
 
-            <!--nh2u5-->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/nh2u5"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
-            <EditText
-                android:id="@+id/nh2u5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
-                android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                android:hint="@string/nh2u5"
-                android:inputType="textCapWords"
-              />
+            <!--&lt;!&ndash;nh2u5&ndash;&gt;-->
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="16dp"-->
+                <!--android:background="@color/colorPrimary"-->
+                <!--android:text="@string/nh2u5"-->
+                <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
+                <!--android:textColor="@android:color/white" />-->
+            <!--<EditText-->
+                <!--android:id="@+id/nh2u5"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="1dp"-->
+                <!--android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"-->
+                <!--android:hint="@string/nh2u5"-->
+                <!--android:inputType="textCapWords"-->
+              <!--/>-->
 
-            <!--h2adol-->
+            <!--&lt;!&ndash;h2adol&ndash;&gt;-->
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/h2adol"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
-            <EditText
-                android:id="@+id/h2adol"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
-                android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                android:hint="@string/h2adol"
-                android:inputType="textCapWords"
-                />
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="16dp"-->
+                <!--android:background="@color/colorPrimary"-->
+                <!--android:text="@string/h2adol"-->
+                <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
+                <!--android:textColor="@android:color/white" />-->
+            <!--<EditText-->
+                <!--android:id="@+id/h2adol"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="1dp"-->
+                <!--android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"-->
+                <!--android:hint="@string/h2adol"-->
+                <!--android:inputType="textCapWords"-->
+                <!--/>-->
 
-            <!--h2mwra-->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/h2mwra"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
-            <EditText
-                android:id="@+id/h2mwra"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
-                android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                android:hint="@string/h2mwra"
-                android:inputType="textCapWords"
-                />
+            <!--&lt;!&ndash;h2mwra&ndash;&gt;-->
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="16dp"-->
+                <!--android:background="@color/colorPrimary"-->
+                <!--android:text="@string/h2mwra"-->
+                <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
+                <!--android:textColor="@android:color/white" />-->
+            <!--<EditText-->
+                <!--android:id="@+id/h2mwra"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="1dp"-->
+                <!--android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"-->
+                <!--android:hint="@string/h2mwra"-->
+                <!--android:inputType="textCapWords"-->
+                <!--/>-->
 
 
 

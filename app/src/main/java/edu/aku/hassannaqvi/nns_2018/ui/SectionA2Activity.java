@@ -162,7 +162,7 @@ public class SectionA2Activity extends AppCompatActivity {
 
                 finish();
 
-                startActivity(new Intent(this, SectionB1Activity.class));
+                startActivity(new Intent(this, SectionA4Activity.class));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -352,9 +352,9 @@ public class SectionA2Activity extends AppCompatActivity {
         sA2.put("na2ms", binding.na2msa.isChecked() ? "1" : binding.na2msb.isChecked() ? "2" : binding.na2msc.isChecked() ? "3" : binding.na2msd.isChecked() ? "4"
                 : binding.na2mse.isChecked() ? "5" : "0");
         sA2.put("na212", binding.na212a.isChecked() ? "1" : binding.na212b.isChecked() ? "2" : "0");
-        sA2.put("h2u5", binding.nh2u5.getText().toString());
-        sA2.put("h2adol", binding.h2adol.getText().toString());
-        sA2.put("h2mwra", binding.h2mwra.getText().toString());
+//        sA2.put("h2u5", binding.nh2u5.getText().toString());
+//        sA2.put("h2adol", binding.h2adol.getText().toString());
+//        sA2.put("h2mwra", binding.h2mwra.getText().toString());
         MainApp.fmc.setsA2(String.valueOf(sA2));
 
         /*Functionality Setting*/

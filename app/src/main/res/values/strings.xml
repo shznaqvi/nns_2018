@@ -163,7 +163,7 @@
     <string name="na3oinfo"> (for MWRA) </string>
 
 
-    <string name="na4heading"> سیکشن 4 : سماجی اور معاشی حیثیت </string>
+    <string name="na4heading"> سیکشن 3 : سماجی اور معاشی حیثیت </string>
     <string name="na401"> آپکی مادری زبان کیا ہے ؟ </string>
     <string name="na401a"> اردو </string>
     <string name="na401b"> پنجابی </string>
@@ -351,7 +351,7 @@
     <string name="na421e"> مرغیاں </string>
     <string name="na421f"> بھینسیں </string>
     <string name="na421g"> اونٹ </string>
-    <string name="na5heading"> سیکشن 5: ہاتھوں کا دھونا </string>
+    <string name="na5heading"> سیکشن 4: ہاتھوں کا دھونا </string>
     <string name="na501"> براہ مہربانی دکھائیں کہ عام طورپر آپ اور آپ کے گھروالے اپنے ہاتھ کہاں دھوتے ہیں؟ </string>
     <string name="na501a"> مشاہدہ </string>
     <string name="na501info"> مشاہدہ نہیں کیا </string>
@@ -382,7 +382,7 @@
     <string name="na50605"> بیت الخلاء سے آنے کے بعد یابیت الخلاء استعمال کرنے بعد </string>
     <string name="na6info"> یہ از خود وضاحت پر مشتمل سوال ہیں اس لئے جواب دہندہ کو جواب پڑھ کر نہ سنائیں </string>
     <string name="na6info1"> جب جواب دہندہ رک جائے تو پوچھیں " کیا کوئی اورموقع صورتحال ہیں جہاں آپ اپنے ہاتھ صابن سے دھوتے /دھوتی ہیں"؟اس سوال کو پوچھتے رہیں جب تک جواب دہندہ کو لگتا ہے کہ کوئی اور موقع نہیں ہے ۔اگر جواب دہندہ کسی موقع کا ذکر کرتا/کرتی ہے تو (y) نشان لگائیں اور اگر نہیں تو (N) نشان لگائی </string>
-    <string name="na6heading"> سیکشن6: آیوڈین ملے نمک کے بارے میں </string>
+    <string name="na6heading"> سیکشن 5: آیوڈین ملے نمک کے بارے میں </string>
     <string name="na601"> ہم چیک کرنا چاہتے ہیں کہ کیاآپ کا گھرانا آیوڈین ملا نمک استعمال کرتا ہیں کیا ہم آپ کے نمک کا نمونہ لے سکتے ہیں جو آپ اپنے کھانے پکانے میں استعمال کرتے ہیں </string>
     <string name="na601info"> چیک کیاگیا نمک </string>
     <string name="na601a"> 0 پی پی ایم ک(کوئی ردعمل/کیمیائی تبدیلی نہیں) </string>
@@ -399,7 +399,7 @@
     <string name="na603"> "ہانڈی " کانشنا ن نمک کی تھیلی پر چھپا ہے یا نہیں؟ </string>
     <string name="na603c"> مشاہدہ نہیں کیا </string>
     <string name="na603d"> برنی میں نمک </string>
-    <string name="na7heading"> سیکشن7: غذائی قلت اور عدم تحفظ </string>
+    <string name="na7heading"> سیکشن 6: غذائی قلت اور عدم تحفظ </string>
     <string name="na7info"> میں آپ سے کھانے اور غذا کےبارے میں چند سوالات پوچھوں گا پچھلے 12 مہینوں کے دوران کسی موقع پر جب: </string>
     <string name="na701"> کیاآپ اور آپ کے گھر والے پریشان رہتے ہیں کہ پیسوں اور دیگر وسائل کی کمی کی وجہ سے کھانے کے لئے غذا کافی نہیں ہے ؟ </string>
     <string name="na702"> پچھلے 12 مہینوں کے دوران سوچ کر بتائیں کہ کیا کبھی ایساوقت آیا کہ جب آپ اور آپ کے گھر والوں نے پیسوں اور دیگر وسائل کی کمی کی وجہ سے صحت مند اور غذائیت سے بھر پور غذا نہیں کھائی تھی؟ </string>
@@ -415,7 +415,7 @@
     <string name="na801"> کیاآپ یا آپ کے گھر میں کسی نے 12 مہینے سے امداد حاصل کی ہے؟ </string>
     <string name="na802"> کتنے گھر کے افراد کو امداد ملی ؟ </string>
     <string name="na802a"> وصول کردہ کانمبر </string>
-    <string name="na8aheading"> سیکشن 8:امداد وصول کرنے والے افراد کی معلومات </string>
+    <string name="na8aheading"> سیکشن 7:امداد وصول کرنے والے افراد کی معلومات </string>
     <string name="na8a01info"> وصول کرنے والا
     سیکشن A2 سے دیکھ کر لکھیں </string>
     <string name="na8a01"> Line No </string>

@@ -183,11 +183,15 @@ public class SectionA5Activity extends AppCompatActivity {
             return false;
         }
 //        na50696
-        if (!validatorClass.EmptyRadioButton(this, binding.na50696, binding.na50696a, binding.na50696x, getString(R.string.other))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.na50696, binding.na50696a, binding.na50696x, getString(R.string.na506) + " - " +getString(R.string.other))) {
             return false;
         }
 //        na601
-        if (!validatorClass.EmptyRadioButton(this, binding.na601, binding.na60196, binding.na60196x, getString(R.string.other))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.na601, binding.na601a,getString(R.string.na601) )) {
+            return false;
+        }
+//        na601
+        if (!validatorClass.EmptyRadioButton(this, binding.na601, binding.na60196, binding.na60196x,getString(R.string.na601) + " - " + getString(R.string.other))) {
             return false;
         }
 //        na602

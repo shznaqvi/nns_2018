@@ -60,9 +60,10 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_weight="60"
-                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+                    android:digits="0123456789"
                     android:hint="@string/na102"
-                    android:maxLength="6" />
+                    android:inputType="number"
+                    android:maxLength="9" />
 
                 <Button
                     android:id="@+id/checkEnmBtn"
@@ -317,7 +318,8 @@
                 <RadioGroup
                     android:id="@+id/na11102water"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <RadioButton
                         android:id="@+id/na11102watera"
@@ -325,6 +327,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/yes" />
 
                     <RadioButton
@@ -333,6 +336,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/no" />
                 </RadioGroup>
 
@@ -366,7 +370,8 @@
                 <RadioGroup
                     android:id="@+id/na11201"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <RadioButton
                         android:id="@+id/na11201a"
@@ -374,6 +379,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/yes" />
 
                     <RadioButton
@@ -382,6 +388,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/no" />
                 </RadioGroup>
 
@@ -398,7 +405,8 @@
                 <RadioGroup
                     android:id="@+id/na11202"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <RadioButton
                         android:id="@+id/na11202a"
@@ -406,6 +414,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/yes" />
 
                     <RadioButton
@@ -414,6 +423,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/no" />
                 </RadioGroup>
 
@@ -448,7 +458,7 @@
 
                         <CheckBox
                             android:id="@+id/na113a"
-                            style="@style/radiobutton"
+                            style="@style/checkbox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
@@ -456,7 +466,7 @@
 
                         <CheckBox
                             android:id="@+id/na113b"
-                            style="@style/radiobutton"
+                            style="@style/checkbox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
@@ -464,7 +474,7 @@
 
                         <CheckBox
                             android:id="@+id/na113c"
-                            style="@style/radiobutton"
+                            style="@style/checkbox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
@@ -472,7 +482,7 @@
 
                         <CheckBox
                             android:id="@+id/na113d"
-                            style="@style/radiobutton"
+                            style="@style/checkbox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
@@ -480,7 +490,7 @@
 
                         <CheckBox
                             android:id="@+id/na113e"
-                            style="@style/radiobutton"
+                            style="@style/checkbox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
@@ -488,7 +498,7 @@
 
                         <CheckBox
                             android:id="@+id/na113f"
-                            style="@style/radiobutton"
+                            style="@style/checkbox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
@@ -496,7 +506,7 @@
 
                         <CheckBox
                             android:id="@+id/na113g"
-                            style="@style/radiobutton"
+                            style="@style/checkbox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
@@ -504,7 +514,7 @@
 
                         <CheckBox
                             android:id="@+id/na11396"
-                            style="@style/radiobutton"
+                            style="@style/checkbox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
