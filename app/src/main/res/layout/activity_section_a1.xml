@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layoutDirection="rtl"
     tools:context=".ui.SectionA1Activity">
 
     <data>
@@ -20,7 +21,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:animateLayoutChanges="true"
-            android:layoutDirection="rtl"
             android:orientation="vertical">
 
             <TextView
@@ -33,10 +33,6 @@
                 android:text="@string/na1heading"
                 android:textSize="40sp" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/colorPrimary" />
 
             <!--na102-->
             <TextView
@@ -87,59 +83,59 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_2sdp"
-                        android:layout_weight="45"
-                        android:orientation="vertical">
+                        android:orientation="horizontal">
                         <!--na101a-->
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
                             android:layout_marginTop="16dp"
+                            android:layout_weight="1"
                             android:background="@color/colorPrimary"
                             android:text="@string/na101a"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@android:color/white" />
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_1sdp"
-                            android:background="@color/white" />
+
 
                         <TextView
                             android:id="@+id/na101a"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/_3sdp" />
-                    </LinearLayout>
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_weight="2"
+                            android:background="@null"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp" />
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/_2sdp"
-                        android:layout_weight="45"
-                        android:orientation="vertical">
                         <!--na101b-->
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
                             android:layout_marginTop="16dp"
+                            android:layout_weight="1"
                             android:background="@color/colorPrimary"
                             android:text="@string/na101b"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@android:color/white" />
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_1sdp"
-                            android:background="@color/white" />
 
                         <TextView
                             android:id="@+id/na101b"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/_3sdp" />
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_weight="2"
+                            android:background="@null"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -150,59 +146,60 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_2sdp"
-                        android:layout_weight="45"
-                        android:orientation="vertical">
+                        android:orientation="horizontal">
                         <!--na101c-->
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
                             android:layout_marginTop="16dp"
+                            android:layout_weight="1"
                             android:background="@color/colorPrimary"
                             android:text="@string/na101c"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@android:color/white" />
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_1sdp"
-                            android:background="@color/white" />
+
 
                         <TextView
                             android:id="@+id/na101c"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/_3sdp" />
-                    </LinearLayout>
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_weight="2"
+                            android:background="@null"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp" />
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/_2sdp"
-                        android:layout_weight="45"
-                        android:orientation="vertical">
                         <!--na101d-->
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
                             android:layout_marginTop="16dp"
+                            android:layout_weight="1"
                             android:background="@color/colorPrimary"
                             android:text="@string/na101d"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@android:color/white" />
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_1sdp"
-                            android:background="@color/white" />
+
 
                         <TextView
                             android:id="@+id/na101d"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/_3sdp" />
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_weight="2"
+                            android:background="@null"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -265,7 +262,9 @@
                         android:layout_marginBottom="1dp"
                         android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                         android:hint="@string/na105"
-                        android:maxLength="25" />
+                        android:maxLength="25"
+
+                        />
 
                     <!--na107-->
                     <TextView
@@ -336,25 +335,34 @@
                         android:textColor="@android:color/white" />
 
                     <!--na11101blood-->
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/colorPrimary"
-                        android:text="@string/na11101blood"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white" />
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:layout_weight="1"
+                            android:background="@color/colorPrimary"
+                            android:text="@string/na11101blood"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@android:color/white" />
 
                     <RadioGroup
                         android:id="@+id/na11101blood"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+
+                        android:layout_weight="1"
                         android:orientation="horizontal">
 
                         <RadioButton
                             android:id="@+id/na11101blooda"
                             style="@style/radiobutton"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
                             android:layout_weight="1"
@@ -363,46 +371,57 @@
                         <RadioButton
                             android:id="@+id/na11101bloodb"
                             style="@style/radiobutton"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
                             android:layout_weight="1"
                             android:text="@string/no" />
                     </RadioGroup>
-
+                    </LinearLayout>
                     <!--na11102water-->
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/colorPrimary"
-                        android:text="@string/na11102water"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white" />
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:layout_weight="1"
+                            android:background="@color/colorPrimary"
+                            android:text="@string/na11102water"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@android:color/white" />
 
                     <RadioGroup
                         android:id="@+id/na11102water"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                        android:layout_marginTop="16dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
                     <RadioButton
                         android:id="@+id/na11102watera"
                         style="@style/radiobutton"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:layout_weight="1"android:text="@string/yes" />
+                        android:layout_weight="1"
+
+                        android:text="@string/yes" />
 
                     <RadioButton
                         android:id="@+id/na11102waterb"
                         style="@style/radiobutton"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:layout_weight="1"android:text="@string/no" />
+                        android:layout_weight="1"
+                        android:text="@string/no" />
                 </RadioGroup>
-
+                    </LinearLayout>
                     <!--na1a-->
                     <TextView
                         style="@style/sub"
@@ -442,7 +461,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:layout_weight="1"android:text="@string/yes" />
+                        android:layout_weight="1"
+                        android:text="@string/yes" />
 
                     <RadioButton
                         android:id="@+id/na11201b"
@@ -450,7 +470,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:layout_weight="1"android:text="@string/no" />
+                        android:layout_weight="1"
+                        android:text="@string/no" />
                 </RadioGroup>
 
                     <!--na11202-->
@@ -475,7 +496,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:layout_weight="1"android:text="@string/yes" />
+                        android:layout_weight="1"
+                        android:text="@string/yes" />
 
                     <RadioButton
                         android:id="@+id/na11202b"
@@ -483,7 +505,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:layout_weight="1"android:text="@string/no" />
+                        android:layout_weight="1"
+                        android:text="@string/no" />
                 </RadioGroup>
 
                     <LinearLayout
