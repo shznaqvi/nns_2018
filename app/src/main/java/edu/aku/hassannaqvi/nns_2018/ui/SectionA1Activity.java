@@ -148,6 +148,11 @@ public class SectionA1Activity extends AppCompatActivity {
 
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
+//        na101
+        if (!validatorClass.EmptyTextBox(this, binding.na101, getString(R.string.na101))) {
+            return false;
+        }
+
 //        na102
         if (!validatorClass.EmptyTextBox(this, binding.na102, getString(R.string.na102))) {
             return false;
@@ -193,6 +198,10 @@ public class SectionA1Activity extends AppCompatActivity {
         }
 //        na108
         if (!validatorClass.EmptyTextBox(this, binding.na108, getString(R.string.na108))) {
+            return false;
+        }
+
+        if (!validatorClass.RangeTextBox(this, binding.na108, 15, 99, getString(R.string.na108), "age")) {
             return false;
         }
 
@@ -252,7 +261,6 @@ public class SectionA1Activity extends AppCompatActivity {
         JSONObject sA1 = new JSONObject();
 
         MainApp.fc.setsA1(String.valueOf(sA1));
-
 
     }
 
