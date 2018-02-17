@@ -37,7 +37,10 @@ public class SectionA2Activity extends AppCompatActivity {
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     Map<Integer, Map<Integer, Integer>> mem;
     List<String> mothersList, fathersList;
-    Map<String, FamilyMembersContract> mothersMap, fathersMap;
+    List<String> mothersSerials, fathersSerials;
+    Map<String, String> mothersMap, fathersMap;
+
+    int Age = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +64,9 @@ public class SectionA2Activity extends AppCompatActivity {
                     binding.na2aged.setEnabled(true);
                     binding.na2agem.setEnabled(true);
                     binding.na2agey.setEnabled(true);
+
+                    binding.na2agem.setVisibility(View.VISIBLE);
+                    binding.na2aged.setVisibility(View.VISIBLE);
                 } else {
                     binding.na2dob.setEnabled(true);
                     binding.na2aged.setEnabled(false);
@@ -91,6 +97,8 @@ public class SectionA2Activity extends AppCompatActivity {
                         binding.na2agem.setVisibility(View.VISIBLE);
                         binding.na2aged.setVisibility(View.VISIBLE);
                     }
+
+                    Age = Integer.valueOf(binding.na2agey.getText().toString());
                 }
             }
 
@@ -102,9 +110,28 @@ public class SectionA2Activity extends AppCompatActivity {
 
         binding.na2dob.setManager(getSupportFragmentManager());
 
+        binding.na2dob.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (!binding.na2dob.getText().toString().isEmpty()) {
+                    Age = (int) MainApp.ageInYearByDOB(binding.na2dob.getText().toString());
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
 //        Setting Counts
         mem = MainApp.membersCount.getMembers();
-
 
         // Total
         binding.na2tm.setText(mem.get(1).get(1).toString());
@@ -120,26 +147,32 @@ public class SectionA2Activity extends AppCompatActivity {
 
 //        Setting Dropdowns
         mothersList = new ArrayList<>();
+        mothersSerials = new ArrayList<>();
         mothersMap = new HashMap<>();
 
         mothersList.add("....");
         mothersList.add("N/A");
-        mothersMap.put("N/A", new FamilyMembersContract());
+        mothersSerials.add("0");
+        mothersMap.put("N/A_0", "00");
 
         fathersList = new ArrayList<>();
+        fathersSerials = new ArrayList<>();
         fathersMap = new HashMap<>();
 
         fathersList.add("....");
         fathersList.add("N/A");
-        fathersMap.put("N/A", new FamilyMembersContract());
+        fathersSerials.add("0");
+        fathersMap.put("N/A_0", "00");
 
         for (FamilyMembersContract mem : MainApp.members_f_m) {
             if (mem.getGender().equals("1")) {
-                fathersList.add(mem.getName() + "_" + mem.getSerialNo());
-                fathersMap.put(mem.getName() + "_" + mem.getSerialNo(), mem);
+                fathersList.add(mem.getName());
+                fathersSerials.add(mem.getSerialNo());
+                fathersMap.put(mem.getName() + "_" + mem.getSerialNo(), mem.getSerialNo());
             } else {
-                mothersList.add(mem.getName() + "_" + mem.getSerialNo());
-                mothersMap.put(mem.getName() + "_" + mem.getSerialNo(), mem);
+                mothersList.add(mem.getName());
+                mothersSerials.add(mem.getSerialNo());
+                mothersMap.put(mem.getName() + "_" + mem.getSerialNo(), mem.getSerialNo());
             }
         }
 
@@ -218,15 +251,12 @@ public class SectionA2Activity extends AppCompatActivity {
             return false;
         }
 
+        if (!validatorClass.EmptySpinner(this, binding.na205, getString(R.string.na205))) {
+            return false;
+        }
 
-        if (!binding.na203a.isChecked()) {
-            if (!validatorClass.EmptySpinner(this, binding.na205, getString(R.string.na205))) {
-                return false;
-            }
-
-            if (!validatorClass.EmptySpinner(this, binding.na206, getString(R.string.na206))) {
-                return false;
-            }
+        if (!validatorClass.EmptySpinner(this, binding.na206, getString(R.string.na206))) {
+            return false;
         }
 
         if (!validatorClass.EmptyRadioButton(this, binding.na203, binding.na203a, getString(R.string.na203))) {
@@ -318,8 +348,8 @@ public class SectionA2Activity extends AppCompatActivity {
         MainApp.fmc.setDob(binding.na2dob.getText().toString());
         MainApp.fmc.setAge(binding.na2agey.getText().toString() + "/" + binding.na2agem.getText().toString() + "/" + binding.na2aged.getText().toString());
         MainApp.fmc.setGender(binding.na203a.isChecked() ? "1" : binding.na203b.isChecked() ? "2" : "0");
-        if (binding.na203b.isChecked()) {
-            MainApp.fmc.setMotherId(mothersMap.get(binding.na206.getSelectedItem().toString()).getSerialNo());
+        if (Age < 5) {
+            MainApp.fmc.setMotherId(mothersMap.get(binding.na206.getSelectedItem().toString() + "_" + mothersSerials.get(mothersList.indexOf(binding.na206.getSelectedItem().toString()) - 1)));
         }
 
         JSONObject sA2 = new JSONObject();
@@ -332,10 +362,8 @@ public class SectionA2Activity extends AppCompatActivity {
                 : binding.na204m.isChecked() ? "13" : binding.na20498.isChecked() ? "98" : binding.na20496.isChecked() ? "96" : "0");
         sA2.put("na20496x", binding.na20496x.getText().toString());
 
-        if (!binding.na203a.isChecked()) {
-            sA2.put("na205", fathersMap.get(binding.na205.getSelectedItem().toString()));
-            sA2.put("na206", mothersMap.get(binding.na206.getSelectedItem().toString()));
-        }
+        sA2.put("na205", fathersMap.get(binding.na205.getSelectedItem().toString() + "_" + fathersSerials.get(fathersList.indexOf(binding.na205.getSelectedItem().toString()) - 1)));
+        sA2.put("na206", mothersMap.get(binding.na206.getSelectedItem().toString() + "_" + mothersSerials.get(mothersList.indexOf(binding.na206.getSelectedItem().toString()) - 1)));
 
         sA2.put("na203", binding.na203a.isChecked() ? "1" : binding.na203b.isChecked() ? "2" : "0");
 
@@ -369,13 +397,12 @@ public class SectionA2Activity extends AppCompatActivity {
 
         /*Functionality Setting*/
 
-        int Age;
 //        Get Age in year
-        if (binding.na20798.isChecked()) {
+        /*if (binding.na20798.isChecked()) {
             Age = Integer.valueOf(binding.na2agey.getText().toString());
         } else {
             Age = (int) MainApp.ageInYearByDOB(binding.na2dob.getText().toString());
-        }
+        }*/
 
 //        Calculation
         Map<Integer, Integer> memType = new HashMap<>();
@@ -465,5 +492,8 @@ public class SectionA2Activity extends AppCompatActivity {
         }
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

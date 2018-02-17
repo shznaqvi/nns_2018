@@ -52,6 +52,7 @@ public class SectionA8AActivity extends Activity {
 
             recpmap = new HashMap<>();
             recpNames = new ArrayList<>();
+            recpSerial = new ArrayList<>();
 
             recpNames.add("....");
 

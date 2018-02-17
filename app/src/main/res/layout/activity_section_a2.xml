@@ -476,8 +476,7 @@
                 android:id="@+id/fldGrpfid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:visibility='@{na204a.checked ? View.GONE : View.VISIBLE}'>
+                android:orientation="horizontal">
 
                 <TextView
                     style="?android:textAppearanceMedium"
@@ -508,8 +507,7 @@
                 android:id="@+id/fldGrpmid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:visibility='@{na204a.checked ? View.GONE : View.VISIBLE}'>
+                android:orientation="horizontal">
 
                 <TextView
                     style="?android:textAppearanceMedium"
