@@ -22,6 +22,8 @@ import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract.ChildTable;
 import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract.eligibleMembers;
+import edu.aku.hassannaqvi.nns_2018.contracts.EnumBlockContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.EnumBlockContract.EnumBlockTable;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract.familyMembers;
 import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
@@ -34,8 +36,6 @@ import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract.RecipientsTable;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract.singleSerial;
-import edu.aku.hassannaqvi.nns_2018.contracts.TehsilsContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.TehsilsContract.TehsilsTable;
 import edu.aku.hassannaqvi.nns_2018.contracts.UCsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.UCsContract.UCsTable;
 import edu.aku.hassannaqvi.nns_2018.contracts.UsersContract;
@@ -127,7 +127,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String SQL_DELETE_CHILD_FORMS =
             "DROP TABLE IF EXISTS " + ChildContract.ChildTable.TABLE_NAME;
     private static final String SQL_DELETE_SINGLE = "DROP TABLE IF EXISTS " + singleSerial.TABLE_NAME;
-    private static final String SQL_DELETE_TALUKAS = "DROP TABLE IF EXISTS " + TehsilsTable.TABLE_NAME;
+    private static final String SQL_DELETE_TALUKAS = "DROP TABLE IF EXISTS " + EnumBlockTable.TABLE_NAME;
     private static final String SQL_DELETE_UCS = "DROP TABLE IF EXISTS " + UCsTable.TABLE_NAME;
     private static final String SQL_DELETE_ELIGIBLE_MEMBERS = "DROP TABLE IF EXISTS " + eligibleMembers.TABLE_NAME;
     private static final String SQL_DELETE_MWRAS = "DROP TABLE IF EXISTS " + MWRATable.TABLE_NAME;
@@ -142,10 +142,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             singleSerial.COLUMN_SYNCED + " TEXT, " +
             singleSerial.COLUMN_SYNCED_DATE + " TEXT " +
             ");";
-    final String SQL_CREATE_TALUKA = "CREATE TABLE " + TehsilsTable.TABLE_NAME + " (" +
-            TehsilsTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            TehsilsTable.COLUMN_TALUKA_CODE + " TEXT, " +
-            TehsilsTable.COLUMN_TALUKA_NAME + " TEXT " +
+    final String SQL_CREATE_TALUKA = "CREATE TABLE " + EnumBlockTable.TABLE_NAME + " (" +
+            EnumBlockTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            EnumBlockTable.COLUMN_EB_CODE + " TEXT, " +
+            EnumBlockTable.COLUMN_GEO_AREA + " TEXT " +
             ");";
     final String SQL_CREATE_UC = "CREATE TABLE " + UCsTable.TABLE_NAME + " (" +
             UCsTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -272,23 +272,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public void syncTehsils(JSONArray Talukaslist) {
+    public void syncEnumBlocks(JSONArray Enumlist) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TehsilsTable.TABLE_NAME, null, null);
+        db.delete(EnumBlockTable.TABLE_NAME, null, null);
         try {
-            JSONArray jsonArray = Talukaslist;
+            JSONArray jsonArray = Enumlist;
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObjectCC = jsonArray.getJSONObject(i);
 
-                TehsilsContract Vc = new TehsilsContract();
+                EnumBlockContract Vc = new EnumBlockContract();
                 Vc.Sync(jsonObjectCC);
 
                 ContentValues values = new ContentValues();
 
-                values.put(TehsilsTable.COLUMN_TALUKA_CODE, Vc.getTalukacode());
-                values.put(TehsilsTable.COLUMN_TALUKA_NAME, Vc.getTalukaName());
+                values.put(EnumBlockTable.COLUMN_EB_CODE, Vc.getEbcode());
+                values.put(EnumBlockTable.COLUMN_GEO_AREA, Vc.getTalukaName());
 
-                db.insert(TehsilsTable.TABLE_NAME, null, values);
+                db.insert(EnumBlockTable.TABLE_NAME, null, values);
             }
         } catch (Exception e) {
         } finally {
@@ -321,28 +321,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Collection<TehsilsContract> getAllTalukas() {
+    public String getEnumBlock(String enumBlock) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                TehsilsTable._ID,
-                TehsilsTable.COLUMN_TALUKA_CODE,
-                TehsilsTable.COLUMN_TALUKA_NAME
+                EnumBlockTable._ID,
+                EnumBlockTable.COLUMN_EB_CODE,
+                EnumBlockTable.COLUMN_GEO_AREA
         };
 
-        String whereClause = null;
-        String[] whereArgs = null;
+        String whereClause = EnumBlockTable.COLUMN_EB_CODE + " =?";
+        String[] whereArgs = new String[]{enumBlock};
         String groupBy = null;
         String having = null;
 
         String orderBy =
-                TehsilsTable.COLUMN_TALUKA_NAME + " ASC";
+                EnumBlockTable._ID + " ASC";
 
-        Collection<TehsilsContract> allDC = new ArrayList<>();
+//        Collection<EnumBlockContract> allEB = new ArrayList<>();
+        String allEB = "";
         try {
             c = db.query(
-                    TehsilsTable.TABLE_NAME,  // The table to query
+                    EnumBlockTable.TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
                     whereClause,               // The columns for the WHERE clause
                     whereArgs,                 // The values for the WHERE clause
@@ -351,8 +352,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                TehsilsContract dc = new TehsilsContract();
-                allDC.add(dc.HydrateTalukas(c));
+//                EnumBlockContract eb = new EnumBlockContract();
+//                allEB.add(eb.HydrateTalukas(c));
+                allEB = c.getString(c.getColumnIndex(EnumBlockTable.COLUMN_GEO_AREA));
             }
         } finally {
             if (c != null) {
@@ -362,7 +364,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.close();
             }
         }
-        return allDC;
+        return allEB;
     }
 
     public SerialContract getSerialWRTDate(String date) {

@@ -7,8 +7,11 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.text.format.DateFormat;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -42,10 +45,15 @@ public class SectionA1Activity extends AppCompatActivity {
         db = new DatabaseHelper(this);
         binding.setCallback(this);
 
-//        Members Initialization
+        SetupViewFunctionality();
+    }
+
+    public void SetupViewFunctionality() {
+
+        //  Members Initialization
         MainApp.membersCount = new MembersCount();
 
-        //Setting members in map
+        //  Setting members in map for Section A2
         Map<Integer, Map<Integer, Integer>> mem = new HashMap<>();
         Map<Integer, Integer> memType = new HashMap<>();
         memType.put(1, 0);
@@ -65,6 +73,27 @@ public class SectionA1Activity extends AppCompatActivity {
         MainApp.mwra = new ArrayList<>();
         MainApp.adolescents = new ArrayList<>();
         MainApp.serial_no = 0;
+
+//        Listener
+
+        binding.na102.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                binding.fldGrpna101.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
     }
 
     public void BtnContinue() {
@@ -87,8 +116,6 @@ public class SectionA1Activity extends AppCompatActivity {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
         }
-
-        //startActivity(new Intent(this, SectionA2Activity.class));
     }
 
     public void BtnEnd() {
@@ -248,7 +275,6 @@ public class SectionA1Activity extends AppCompatActivity {
 
     }
 
-
     private boolean UpdateDB() {
 
         DatabaseHelper db = new DatabaseHelper(this);
@@ -276,5 +302,24 @@ public class SectionA1Activity extends AppCompatActivity {
 
     public void BtnCheckEnm() {
 
+        if (validatorClass.EmptyTextBox(this, binding.na102, getString(R.string.na102))) {
+
+            String selected = db.getEnumBlock(binding.na102.getText().toString());
+            if (!selected.equals("")) {
+
+                String[] selSplit = selected.split("\\|");
+
+                binding.na101a.setText(selSplit[0]);
+                binding.na101b.setText(selSplit[1].equals("") ? "----" : selSplit[1]);
+                binding.na101c.setText(selSplit[2].equals("") ? "----" : selSplit[2]);
+                binding.na101d.setText(selSplit[3]);
+
+                binding.fldGrpna101.setVisibility(View.VISIBLE);
+
+            } else {
+                Toast.makeText(this, "Sorry not found any block", Toast.LENGTH_SHORT).show();
+            }
+
+        }
     }
 }

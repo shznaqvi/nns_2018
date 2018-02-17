@@ -16,6 +16,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import edu.aku.hassannaqvi.nns_2018.contracts.EnumBlockContract.EnumBlockTable;
+import edu.aku.hassannaqvi.nns_2018.contracts.UsersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 
@@ -23,22 +24,28 @@ import edu.aku.hassannaqvi.nns_2018.core.MainApp;
  * Created by ali.azaz on 7/14/2017.
  */
 
-public class GetTehsils extends AsyncTask<String, String, String> {
+public class GetAllData extends AsyncTask<String, String, String> {
 
-    private final String TAG = "GetTehsils()";
     HttpURLConnection urlConnection;
+    private String TAG = "";
     private Context mContext;
     private ProgressDialog pd;
 
-    public GetTehsils(Context context) {
+    private String syncClass;
+
+
+    public GetAllData(Context context, String syncClass) {
         mContext = context;
+        this.syncClass = syncClass;
+
+        TAG = "Get" + syncClass;
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
         pd = new ProgressDialog(mContext);
-        pd.setTitle("Syncing Talukas");
+        pd.setTitle("Syncing " + syncClass);
         pd.setMessage("Getting connected to server...");
         pd.show();
 
@@ -51,7 +58,15 @@ public class GetTehsils extends AsyncTask<String, String, String> {
 
         URL url = null;
         try {
-            url = new URL(MainApp._HOST_URL + EnumBlockTable._URI);
+            switch (syncClass) {
+                case "EnumBlock":
+                    url = new URL(MainApp._HOST_URL + EnumBlockTable._URI);
+                    break;
+                case "User":
+                    url = new URL(MainApp._HOST_URL + UsersContract.UsersTable._URI);
+                    break;
+            }
+
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setReadTimeout(10000 /* milliseconds */);
             urlConnection.setConnectTimeout(15000 /* milliseconds */);
@@ -63,7 +78,7 @@ public class GetTehsils extends AsyncTask<String, String, String> {
 
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    Log.i(TAG, "Tehsils In: " + line);
+                    Log.i(TAG, syncClass + " In: " + line);
                     result.append(line);
                 }
             }
@@ -83,14 +98,22 @@ public class GetTehsils extends AsyncTask<String, String, String> {
     protected void onPostExecute(String result) {
 
         //Do something with the JSON string
-
         if (result != null) {
             String json = result;
             if (json.length() > 0) {
                 DatabaseHelper db = new DatabaseHelper(mContext);
                 try {
                     JSONArray jsonArray = new JSONArray(json);
-                    db.syncEnumBlocks(jsonArray);
+
+                    switch (syncClass) {
+                        case "EnumBlock":
+                            db.syncEnumBlocks(jsonArray);
+                            break;
+                        case "User":
+                            db.syncUser(jsonArray);
+                            break;
+                    }
+
                     pd.setMessage("Received: " + jsonArray.length());
                     pd.show();
                 } catch (JSONException e) {

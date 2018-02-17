@@ -59,13 +59,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.aku.hassannaqvi.nns_2018.R;
-import edu.aku.hassannaqvi.nns_2018.contracts.TehsilsContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.EnumBlockContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.UCsContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
-import edu.aku.hassannaqvi.nns_2018.get.GetTehsils;
-import edu.aku.hassannaqvi.nns_2018.get.GetUCs;
-import edu.aku.hassannaqvi.nns_2018.get.GetUsers;
+import edu.aku.hassannaqvi.nns_2018.get.GetAllData;
 
 import static java.lang.Thread.sleep;
 
@@ -86,7 +84,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     ArrayAdapter<String> dataAdapter;
 
     ArrayList<String> lablesTalukas;
-    Collection<TehsilsContract> TalukasList;
+    Collection<EnumBlockContract> TalukasList;
     Map<String, String> talukasMap;
 
     ArrayList<String> lablesUCs;
@@ -444,6 +442,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                             "\r\nHassan Naqvi, " +
                             "Ali Azaz, " +
                             "Gul Sanober, " +
+                            "Ramsha Ahmed, " +
                             "Javed Khan",
                     Toast.LENGTH_LONG)
                     .show();
@@ -570,12 +569,10 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
                 @Override
                 public void run() {
-                    Toast.makeText(LoginActivity.this, "Sync Tehsil's", Toast.LENGTH_LONG).show();
-                    new GetTehsils(mContext).execute();
-                    Toast.makeText(LoginActivity.this, "Sync UCs", Toast.LENGTH_LONG).show();
-                    new GetUCs(mContext).execute();
-                    Toast.makeText(LoginActivity.this, "Sync User", Toast.LENGTH_LONG).show();
-                    new GetUsers(mContext).execute();
+                    Toast.makeText(LoginActivity.this, "Sync Enum Blocks", Toast.LENGTH_LONG).show();
+                    new GetAllData(mContext, "EnumBlock").execute();
+                    Toast.makeText(LoginActivity.this, "Sync Users", Toast.LENGTH_LONG).show();
+                    new GetAllData(mContext, "User").execute();
                 }
             });
 

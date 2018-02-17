@@ -41,15 +41,6 @@ public class SyncChildForms extends AsyncTask<Void, Void, String> {
         this.flag = flag;
     }
 
-    public static void longInfo(String str) {
-        if (str.length() > 4000) {
-            Log.i(TAG, str.substring(0, 4000));
-            longInfo(str.substring(4000));
-        } else
-            Log.i("TAG: ", str);
-    }
-
-
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
