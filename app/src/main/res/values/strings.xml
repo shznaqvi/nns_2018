@@ -1066,5 +1066,15 @@
 
 
 
+  <string name="nw206">موجودہ حمل کے دوران ،کیا آپ کو فولاد کی گولیا ں دی گئی یا آپ نے خریدی؟ </string>
+  <string name="nw207">اگر ہاں ،خریدی یا دی گئی ؟</string>
+
+
+  <string name="nw20701">کلینک پر ملی</string>
+  <string name="nw20702">خریدی</string>
+  <string name="nw20703">نہ  ملی نہ خریدی</string>
+
+
+
 
 </resources>

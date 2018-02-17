@@ -340,7 +340,7 @@ public class SectionA4Activity extends AppCompatActivity {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
         JSONObject sA4 = new JSONObject();
-        sA4.put("h301", binding.na401a.isChecked() ? "1"
+        sA4.put("nh301", binding.na401a.isChecked() ? "1"
                 : binding.na401b.isChecked() ? "2"
                 : binding.na401c.isChecked() ? "3"
                 : binding.na401d.isChecked() ? "4"
