@@ -74,6 +74,9 @@ public class SectionA1Activity extends AppCompatActivity {
         MainApp.adolescents = new ArrayList<>();
         MainApp.serial_no = 0;
 
+//        Checking IsHead
+        MainApp.IsHead = false;
+
 //        Listener
 
         binding.na102.addTextChangedListener(new TextWatcher() {
@@ -173,11 +176,11 @@ public class SectionA1Activity extends AppCompatActivity {
             return false;
         }
 
-        /*String[] str = binding.na103.getText().toString().split("-");
+        String[] str = binding.na103.getText().toString().split("-");
         if (str.length > 2 || binding.na103.getText().toString().charAt(3) != '-' || !str[0].matches("[0-9]+")) {
             binding.na103.setError("Wrong presentation!!");
             return false;
-        }*/
+        }
 
 //        na105
         if (!validatorClass.EmptyTextBox(this, binding.na105, getString(R.string.na105))) {
@@ -211,6 +214,13 @@ public class SectionA1Activity extends AppCompatActivity {
         }
 //        na11202
         if (!validatorClass.EmptyRadioButton(this, binding.na11202, binding.na11202b, getString(R.string.na11202))) {
+            return false;
+        }
+
+        if (!(binding.na11101blooda.isChecked() && binding.na11202a.isChecked())) {
+            binding.na11202a.setError("Wrong Selection");
+            Toast.makeText(this, "Wrong Selection", Toast.LENGTH_SHORT).show();
+
             return false;
         }
 

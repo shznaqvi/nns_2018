@@ -144,8 +144,8 @@ public class SectionA5Activity extends AppCompatActivity {
         }
 
 //        na502
-        if (!binding.na502a.isChecked()) {
-            if (!validatorClass.EmptyRadioButton(this, binding.na501, binding.na502b, getString(R.string.na502b))) {
+        if (binding.na501a.isChecked()) {
+            if (!validatorClass.EmptyRadioButton(this, binding.na502, binding.na502b, getString(R.string.na502b))) {
                 return false;
             }
             // na503
@@ -158,9 +158,12 @@ public class SectionA5Activity extends AppCompatActivity {
         if (!validatorClass.EmptyRadioButton(this, binding.na504, binding.na504b, getString(R.string.na504))) {
             return false;
         }
+
 //        na505
-        if (!validatorClass.EmptyCheckBox(this, binding.fldGrpna505check, binding.na505e, String.valueOf(R.string.na505))) {
-            return false;
+        if (binding.na504a.isChecked()) {
+            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpna505check, binding.na505e, String.valueOf(R.string.na505))) {
+                return false;
+            }
         }
 //        na50601
         if (!validatorClass.EmptyRadioButton(this, binding.na50601, binding.na50601b, getString(R.string.na50601))) {

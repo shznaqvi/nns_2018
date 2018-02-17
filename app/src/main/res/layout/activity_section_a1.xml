@@ -227,8 +227,8 @@
                         android:layout_marginTop="5dp"
                         android:layout_weight="60"
                         android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-"
-                        android:hint="@string/na103"
-                        android:maxLength="3" />
+                        android:hint="XXX-X"
+                        android:maxLength="5" />
 
                     <Button
                         android:id="@+id/checkHHBtn"
@@ -260,7 +260,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789"
                         android:hint="@string/na105"
                         android:maxLength="25"
 
@@ -453,7 +453,7 @@
                         android:id="@+id/na11201"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                        android:orientation="horizontal">
 
                     <RadioButton
                         android:id="@+id/na11201a"
