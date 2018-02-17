@@ -243,7 +243,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/nc206"
+                android:text="@string/na203"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
@@ -442,6 +442,7 @@
                 android:inputType="textCapWords"
                 android:text='@{na20496.checked ? na20496x.getText.toString : ""  }'
                 android:visibility='@{na20496.checked ? View.VISIBLE : View.GONE}' />
+
 
             <!--05-->
 
