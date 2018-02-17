@@ -83,6 +83,7 @@ public class MainApp extends Application {
     public static String userName = "0000";
     public static int versionCode;
     public static String versionName;
+    public static Boolean IsHead;
 
     //    Ali
     public static FamilyMembersContract fmc;

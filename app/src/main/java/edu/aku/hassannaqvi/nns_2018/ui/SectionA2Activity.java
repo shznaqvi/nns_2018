@@ -136,16 +136,22 @@ public class SectionA2Activity extends AppCompatActivity {
         for (FamilyMembersContract mem : MainApp.members_f_m) {
             if (mem.getGender().equals("1")) {
                 fathersList.add(mem.getName() + "_" + mem.getSerialNo());
-              fathersMap.put(mem.getName() + "_" + mem.getSerialNo(), mem);
+                fathersMap.put(mem.getName() + "_" + mem.getSerialNo(), mem);
             } else {
                 mothersList.add(mem.getName() + "_" + mem.getSerialNo());
-              mothersMap.put(mem.getName() + "_" + mem.getSerialNo(), mem);
+                mothersMap.put(mem.getName() + "_" + mem.getSerialNo(), mem);
             }
         }
 
         binding.na205.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, fathersList));
         binding.na206.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, mothersList));
 
+//        Visibility for isHead
+        if (MainApp.IsHead) {
+            binding.na204a.setEnabled(false);
+        } else {
+            binding.na204a.setEnabled(true);
+        }
     }
 
     public void BtnContinue() {
@@ -293,7 +299,6 @@ public class SectionA2Activity extends AppCompatActivity {
         return validatorClass.EmptyRadioButton(this, binding.na212, binding.na212a, getString(R.string.na212));
     }
 
-
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
@@ -356,6 +361,11 @@ public class SectionA2Activity extends AppCompatActivity {
 //        sA2.put("h2adol", binding.h2adol.getText().toString());
 //        sA2.put("h2mwra", binding.h2mwra.getText().toString());
         MainApp.fmc.setsA2(String.valueOf(sA2));
+
+//        Checking IsHead
+        if (!MainApp.IsHead && binding.na204a.isChecked()) {
+            MainApp.IsHead = true;
+        }
 
         /*Functionality Setting*/
 

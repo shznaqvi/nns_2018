@@ -305,7 +305,6 @@
             <!--4-->
 
 
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -550,9 +549,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
+                android:enabled="@{na20798.checked ? false : true}"
                 android:focusable="true"
                 android:hint="@string/na2dob"
                 android:padding="15dp"
+                android:text='@{na20798.checked ? "" : na2dob.getText.toString }'
                 android:textColor="@android:color/black"
                 app:dateFormat="dd-MM-yyyy"
                 app:minDate="01/01/1917" />
@@ -570,7 +571,8 @@
                 android:id="@+id/fldGrpna2age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="@{na20798.checked ? View.VISIBLE : View.GONE}">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -589,6 +591,7 @@
                     android:hint="@string/year"
                     android:inputType="number"
                     android:maxLength="2"
+                    android:text='@{na20798.checked ? na2agey.getText.toString : "" }'
                     android:visibility="visible" />
 
                 <EditText
@@ -599,6 +602,7 @@
                     android:hint="@string/month"
                     android:inputType="number"
                     android:maxLength="2"
+                    android:text='@{na20798.checked ? na2agem.getText.toString : "" }'
                     android:visibility="visible" />
 
                 <EditText
@@ -610,6 +614,7 @@
                     android:hint="@string/day"
                     android:inputType="number"
                     android:maxLength="2"
+                    android:text='@{na20798.checked ? na2aged.getText.toString : "" }'
                     android:visibility="visible" />
 
 
@@ -679,8 +684,6 @@
 
 
             </RadioGroup>
-
-
 
 
             <!--10-->
@@ -933,62 +936,61 @@
 
             <!--&lt;!&ndash;nh2u5&ndash;&gt;-->
             <!--<TextView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="16dp"-->
-                <!--android:background="@color/colorPrimary"-->
-                <!--android:text="@string/nh2u5"-->
-                <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
-                <!--android:textColor="@android:color/white" />-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="16dp"-->
+            <!--android:background="@color/colorPrimary"-->
+            <!--android:text="@string/nh2u5"-->
+            <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
+            <!--android:textColor="@android:color/white" />-->
             <!--<EditText-->
-                <!--android:id="@+id/nh2u5"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginBottom="1dp"-->
-                <!--android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"-->
-                <!--android:hint="@string/nh2u5"-->
-                <!--android:inputType="textCapWords"-->
-              <!--/>-->
+            <!--android:id="@+id/nh2u5"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="1dp"-->
+            <!--android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"-->
+            <!--android:hint="@string/nh2u5"-->
+            <!--android:inputType="textCapWords"-->
+            <!--/>-->
 
             <!--&lt;!&ndash;h2adol&ndash;&gt;-->
 
             <!--<TextView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="16dp"-->
-                <!--android:background="@color/colorPrimary"-->
-                <!--android:text="@string/h2adol"-->
-                <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
-                <!--android:textColor="@android:color/white" />-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="16dp"-->
+            <!--android:background="@color/colorPrimary"-->
+            <!--android:text="@string/h2adol"-->
+            <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
+            <!--android:textColor="@android:color/white" />-->
             <!--<EditText-->
-                <!--android:id="@+id/h2adol"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginBottom="1dp"-->
-                <!--android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"-->
-                <!--android:hint="@string/h2adol"-->
-                <!--android:inputType="textCapWords"-->
-                <!--/>-->
+            <!--android:id="@+id/h2adol"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="1dp"-->
+            <!--android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"-->
+            <!--android:hint="@string/h2adol"-->
+            <!--android:inputType="textCapWords"-->
+            <!--/>-->
 
             <!--&lt;!&ndash;h2mwra&ndash;&gt;-->
             <!--<TextView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="16dp"-->
-                <!--android:background="@color/colorPrimary"-->
-                <!--android:text="@string/h2mwra"-->
-                <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
-                <!--android:textColor="@android:color/white" />-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="16dp"-->
+            <!--android:background="@color/colorPrimary"-->
+            <!--android:text="@string/h2mwra"-->
+            <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
+            <!--android:textColor="@android:color/white" />-->
             <!--<EditText-->
-                <!--android:id="@+id/h2mwra"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginBottom="1dp"-->
-                <!--android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"-->
-                <!--android:hint="@string/h2mwra"-->
-                <!--android:inputType="textCapWords"-->
-                <!--/>-->
-
+            <!--android:id="@+id/h2mwra"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="1dp"-->
+            <!--android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"-->
+            <!--android:hint="@string/h2mwra"-->
+            <!--android:inputType="textCapWords"-->
+            <!--/>-->
 
 
             <!--  = = = = =  END OF FORM FIELDS  = = = = = -->
