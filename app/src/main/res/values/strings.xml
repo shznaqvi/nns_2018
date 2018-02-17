@@ -1028,6 +1028,41 @@
     <string name="nc508c"> بہت مشکل سے سنائی دیتا ہے </string>
     <string name="nc508d"> بلکل نہیں سنائی دیتاہے </string>
 
+  <string name="nw310">آپ کو حمل کے دوران فولاد کی گولیا ں استعمال کرنے کا مشورہ کس نے دیا ؟ </string>
+
+  <string name="nw310a"> گائنا کولوجسٹ </string>
+  <string name="nw310b"> کوئی اور ڈاکٹر </string>
+  <string name="nw310c"> نرس </string>
+  <string name="nw310d"> کمیونٹی ہیلتھ ورکر </string>
+  <string name="nw310e"> لیڈی ہیلتھ ورکر </string>
+  <string name="nw310f">کیمونٹی مڈوائف </string>
+  <string name="nw310g"> لیڈی ہیلتھ وزیٹر</string>
+  <string name="nw310h"> دائی </string>
+
+  <string name="nw311">آپ نے حمل کے دوران فولاد کی گولیاں کہاں سے حاصل کیں؟</string>
+  <string name="nw311sub1"> بپلک میڈیکل سیکٹر</string>
+  <string name="nw311sub2">  نجی ہسپتال/سیکٹر</string>
+  <string name="nw311sub3">  دیگر زرائع</string>
+  <string name="nw311a">   سرکاری ہسپتال</string>
+  <string name="nw311b"> سرکاری صحت سینٹر</string>
+  <string name="nw311c">  سرکاری صحت پوسٹ</string>
+  <string name="nw311d"> کمیونٹی ہیلتھ ورکر</string>
+  <string name="nw311e">موبائل / دوسرے کلینک</string>
+  <string name="nw311f"> نجی ہسپتال /کلینک</string>
+  <string name="nw311g">  نجی ڈاکٹر</string>
+  <string name="nw311h">  نجی  دواخانہ </string>
+  <string name="nw311i">  غیرسرکاری عوامی صحت کارکن </string>
+  <string name="nw311j">   موبائل کلینک </string>
+  <string name="nw311k">   رشتہ دار /صحت </string>
+  <string name="nw311l">  دوکان /بازار/گلی </string>
+  <string name="nw311m">   روایتی  </string>
+
+
+  <string name="nw312">آپ حمل کے دوارن کتنی مرتبہ فولاد کی گولیاں استعمال کرتی تھی؟</string>
+  <string name="nw315"> آپ کو حمل کے دوران اضافی طاقت  کی گولیا ں استعمال کرنے کا مشورہ کس نے دیا؟</string>
+  <string name="nw316">آپ نے حمل کے دوران اضافی طاقت کی گولیاں کہاں سے حاصل کیں؟</string>
+  <string name="nw320">آپ کو حمل کے دوران کیلشیم کی گولیا ں استعمال کرنے کا مشورہ کس نے دیا ؟</string>
+  <string name="nw321">آپ نے حمل کے دوران کیلشیم کی گولیاں کہاں سے حاصل کیں؟</string>
 
 
 

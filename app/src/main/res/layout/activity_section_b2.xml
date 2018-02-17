@@ -610,7 +610,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/nw31096" />
+                    android:text="@string/other" />
             </RadioGroup>
             <EditText
                 android:id="@+id/nw31096x"
@@ -686,7 +686,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/nw311961" />
+                    android:text="@string/other" />
 
                 <EditText
                     android:id="@+id/nw311961x"
@@ -743,7 +743,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/nw311962" />
+                    android:text="@string/other" />
 
                 <EditText
                     android:id="@+id/nw311962x"
@@ -788,7 +788,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/nw311963" />
+                    android:text="@string/other" />
 
                 <EditText
                     android:id="@+id/nw311963x"
@@ -1016,7 +1016,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/nw31096" />
+                    android:text="@string/other" />
             </RadioGroup>
             <EditText
                 android:id="@+id/nw31596x"
@@ -1092,7 +1092,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/nw311961" />
+                    android:text="@string/other" />
 
                 <EditText
                     android:id="@+id/nw316961x"
@@ -1149,7 +1149,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/nw311962" />
+                    android:text="@string/other" />
 
                 <EditText
                     android:id="@+id/nw316962x"
@@ -1194,7 +1194,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/nw311963" />
+                    android:text="@string/other" />
 
                 <EditText
                     android:id="@+id/nw316963x"
@@ -1413,7 +1413,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/nw31096" />
+                    android:text="@string/other" />
             </RadioGroup>
             <EditText
                 android:id="@+id/nw32096x"
@@ -1489,7 +1489,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/nw311961" />
+                    android:text="@string/other" />
 
                 <EditText
                     android:id="@+id/nw321961x"
@@ -1546,7 +1546,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/nw311962" />
+                    android:text="@string/other" />
 
                 <EditText
                     android:id="@+id/nw321962x"
@@ -1591,7 +1591,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/nw311963" />
+                    android:text="@string/other" />
 
                 <EditText
                     android:id="@+id/nw321963x"
