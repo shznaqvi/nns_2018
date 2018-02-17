@@ -463,6 +463,9 @@ public class SectionA2Activity extends AppCompatActivity {
             MainApp.members_f_m.add(MainApp.fmc);
         }
 
+        // Add data in list for all members
+        MainApp.all_members.add(MainApp.fmc);
+
         /*End*/
 
         MainApp.fmc.setAgeInYear(String.valueOf(Age));
