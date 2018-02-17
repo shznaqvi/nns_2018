@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +30,8 @@ import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB1Binding;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
+
+import static android.view.View.GONE;
 
 public class SectionB1Activity extends Activity {
 
@@ -72,7 +76,7 @@ public class SectionB1Activity extends Activity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 if (bi.nb104.getText().toString().equals("0")) {
-                    bi.fldGrpnb105.setVisibility(View.GONE);
+                    bi.fldGrpnb105.setVisibility(GONE);
                     bi.nb105.clearCheck();
                     bi.nb106.setText(null);
                 } else {
@@ -127,6 +131,57 @@ public class SectionB1Activity extends Activity {
             }
         });
 
+bi.nb105.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        if(checkedId == R.id.nb105b){
+            bi.fldGrpnb106.setVisibility(GONE);
+            bi.nw206.clearCheck();
+            bi.nw20701.clearCheck();
+            bi.nw20702.clearCheck();
+            bi.nw20703.clearCheck();
+            bi.nw20798.setChecked(false);
+            bi.nw20799.setChecked(false);
+        }
+        else{
+            bi.fldGrpnb106.setVisibility(View.VISIBLE);
+        }
+
+    }
+});
+bi.nw20798.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if (isChecked){
+            bi.nw206.clearCheck();
+            bi.nw20701.clearCheck();
+            bi.nw20702.clearCheck();
+            bi.nw20703.clearCheck();
+            bi.nw20701.setEnabled(false);
+            bi.nw20702.setEnabled(false);
+            bi.nw20703.setEnabled(false);
+            bi.nw20799.setChecked(false);
+            bi.nw20799.setEnabled(false);
+        }
+        else{
+            bi.nw20701.setEnabled(true);
+            bi.nw20702.setEnabled(true);
+            bi.nw20703.setEnabled(true);
+            bi.nw20799.setEnabled(true);
+        }
+    }
+});
+bi.nw20799.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if(isChecked){
+            bi.nw20798.setChecked(false);
+            bi.nw20701.clearCheck();
+            bi.nw20702.clearCheck();
+            bi.nw20703.clearCheck();
+        }
+    }
+});
 
 
 
