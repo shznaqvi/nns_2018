@@ -183,11 +183,15 @@ public class SectionA5Activity extends AppCompatActivity {
             return false;
         }
 //        na50696
-        if (!validatorClass.EmptyRadioButton(this, binding.na50696, binding.na50696a, binding.na50696x, getString(R.string.other))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.na50696, binding.na50696a, binding.na50696x, getString(R.string.na506) + " - " +getString(R.string.other))) {
             return false;
         }
 //        na601
-        if (!validatorClass.EmptyRadioButton(this, binding.na601, binding.na60196, binding.na60196x, getString(R.string.other))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.na601, binding.na601a,getString(R.string.na601) )) {
+            return false;
+        }
+//        na601
+        if (!validatorClass.EmptyRadioButton(this, binding.na601, binding.na60196, binding.na60196x,getString(R.string.na601) + " - " + getString(R.string.other))) {
             return false;
         }
 //        na602
@@ -265,78 +269,78 @@ public class SectionA5Activity extends AppCompatActivity {
 
         JSONObject sA5 = new JSONObject();
 
-        sA5.put("na501", binding.na501a.isChecked() ? "1"
+        sA5.put("nh401", binding.na501a.isChecked() ? "1"
                 : binding.na501b.isChecked() ? "2"
                 : binding.na501c.isChecked() ? "3"
                 : binding.na501d.isChecked() ? "4"
                 : "0");
 
-        sA5.put("na502", binding.na502a.isChecked() ? "1"
+        sA5.put("nh402", binding.na502a.isChecked() ? "1"
                 : binding.na502b.isChecked() ? "2"
                 : "0");
 
-        sA5.put("na503a", binding.na503a.isChecked() ? "1" : "0");
-        sA5.put("na503b", binding.na503b.isChecked() ? "2" : "0");
-        sA5.put("na503c", binding.na503c.isChecked() ? "3" : "0");
-        sA5.put("na503d", binding.na503d.isChecked() ? "4" : "0");
-        sA5.put("na503e", binding.na503e.isChecked() ? "5" : "0");
+        sA5.put("nh403a", binding.na503a.isChecked() ? "1" : "0");
+        sA5.put("nh403b", binding.na503b.isChecked() ? "2" : "0");
+        sA5.put("nh403c", binding.na503c.isChecked() ? "3" : "0");
+        sA5.put("nh403d", binding.na503d.isChecked() ? "4" : "0");
+        sA5.put("nh403e", binding.na503e.isChecked() ? "5" : "0");
 
-        sA5.put("na504", binding.na504a.isChecked() ? "1"
+        sA5.put("nh404", binding.na504a.isChecked() ? "1"
                 : binding.na504b.isChecked() ? "2"
                 : "0");
 
-        sA5.put("na505a", binding.na505a.isChecked() ? "1" : "0");
-        sA5.put("na505b", binding.na505b.isChecked() ? "2" : "0");
-        sA5.put("na505c", binding.na505c.isChecked() ? "3" : "0");
-        sA5.put("na505d", binding.na505d.isChecked() ? "4" : "0");
-        sA5.put("na505e", binding.na505e.isChecked() ? "5" : "0");
+        sA5.put("nh405a", binding.na505a.isChecked() ? "1" : "0");
+        sA5.put("nh405b", binding.na505b.isChecked() ? "2" : "0");
+        sA5.put("nh405c", binding.na505c.isChecked() ? "3" : "0");
+        sA5.put("nh405d", binding.na505d.isChecked() ? "4" : "0");
+        sA5.put("nh405e", binding.na505e.isChecked() ? "5" : "0");
 
 
-        sA5.put("na50601", binding.na50601a.isChecked() ? "1"
+        sA5.put("nh40601", binding.na50601a.isChecked() ? "1"
                 : binding.na50601b.isChecked() ? "2"
                 : "0");
 
 
-        sA5.put("na50602", binding.na50602a.isChecked() ? "1"
+        sA5.put("nh40602", binding.na50602a.isChecked() ? "1"
                 : binding.na50602b.isChecked() ? "2"
                 : "0");
 
-        sA5.put("na50603", binding.na50603a.isChecked() ? "1"
+        sA5.put("nh40603", binding.na50603a.isChecked() ? "1"
                 : binding.na50603b.isChecked() ? "2"
                 : "0");
 
-        sA5.put("na50604", binding.na50604a.isChecked() ? "1"
+        sA5.put("nh40604", binding.na50604a.isChecked() ? "1"
                 : binding.na50604b.isChecked() ? "2"
                 : "0");
 
-        sA5.put("na50605", binding.na50605a.isChecked() ? "1"
+        sA5.put("nh40605", binding.na50605a.isChecked() ? "1"
                 : binding.na50605b.isChecked() ? "2"
                 : "0");
 
-        sA5.put("na50696", binding.na50696a.isChecked() ? "1"
+        sA5.put("nh40696", binding.na50696a.isChecked() ? "1"
                 : binding.na50696b.isChecked() ? "2"
                 : "0");
 
-        sA5.put("na50696x", binding.na50696x.getText().toString());
+        sA5.put("nh40696x", binding.na50696x.getText().toString());
 
         // Section A6
 
 
-        sA5.put("na601", binding.na601a.isChecked() ? "1"
+        sA5.put("nh501", binding.na601a.isChecked() ? "1"
                 : binding.na601b.isChecked() ? "2"
                 : binding.na601c.isChecked() ? "3"
                 : binding.na601d.isChecked() ? "4"
                 : binding.na60196.isChecked() ? "96"
                 : "0");
 
-        sA5.put("na60196x", binding.na60196x.getText().toString());
+        sA5.put("nh50196x", binding.na60196x.getText().toString());
 
-        sA5.put("na602", binding.na602a.isChecked() ? "1"
+        sA5.put("nh502", binding.na602a.isChecked() ? "1"
                 : binding.na602b.isChecked() ? "2"
                 : binding.na602c.isChecked() ? "3"
                 : "0");
 
-        sA5.put("na603", binding.na603a.isChecked() ? "1"
+        sA5.put("nh503", binding.na603a.isChecked() ? "1"
                 : binding.na603b.isChecked() ? "2"
                 : binding.na603c.isChecked() ? "3"
                 : binding.na603d.isChecked() ? "4"
@@ -344,55 +348,55 @@ public class SectionA5Activity extends AppCompatActivity {
 
         //Section A7
 
-        sA5.put("na701", binding.na701a.isChecked() ? "1"
+        sA5.put("nh601", binding.na701a.isChecked() ? "1"
                 : binding.na701b.isChecked() ? "2"
                 : binding.na70198.isChecked() ? "98"
                 : binding.na70199.isChecked() ? "99"
                 : "0");
 
-        sA5.put("na702", binding.na702a.isChecked() ? "1"
+        sA5.put("nh602", binding.na702a.isChecked() ? "1"
                 : binding.na702b.isChecked() ? "2"
                 : binding.na70298.isChecked() ? "98"
                 : binding.na70299.isChecked() ? "99"
                 : "0");
 
-        sA5.put("na703", binding.na703a.isChecked() ? "1"
+        sA5.put("nh603", binding.na703a.isChecked() ? "1"
                 : binding.na703b.isChecked() ? "2"
                 : binding.na70398.isChecked() ? "98"
                 : binding.na70399.isChecked() ? "99"
                 : "0");
 
-        sA5.put("na704", binding.na704a.isChecked() ? "1"
+        sA5.put("nh604", binding.na704a.isChecked() ? "1"
                 : binding.na704b.isChecked() ? "2"
                 : binding.na70498.isChecked() ? "98"
                 : binding.na70499.isChecked() ? "99"
                 : "0");
 
-        sA5.put("na705", binding.na705a.isChecked() ? "1"
+        sA5.put("nh605", binding.na705a.isChecked() ? "1"
                 : binding.na705b.isChecked() ? "2"
                 : binding.na70598.isChecked() ? "98"
                 : binding.na70599.isChecked() ? "99"
                 : "0");
 
-        sA5.put("na706", binding.na706a.isChecked() ? "1"
+        sA5.put("nh606", binding.na706a.isChecked() ? "1"
                 : binding.na706b.isChecked() ? "2"
                 : binding.na70698.isChecked() ? "98"
                 : binding.na70699.isChecked() ? "99"
                 : "0");
 
-        sA5.put("na707", binding.na707a.isChecked() ? "1"
+        sA5.put("nh607", binding.na707a.isChecked() ? "1"
                 : binding.na707b.isChecked() ? "2"
                 : binding.na70798.isChecked() ? "98"
                 : binding.na70799.isChecked() ? "99"
                 : "0");
 
-        sA5.put("na708", binding.na708a.isChecked() ? "1"
+        sA5.put("nh608", binding.na708a.isChecked() ? "1"
                 : binding.na708b.isChecked() ? "2"
                 : binding.na70898.isChecked() ? "98"
                 : binding.na70899.isChecked() ? "99"
                 : "0");
 
-        sA5.put("na709", binding.na709a.isChecked() ? "1"
+        sA5.put("nh609", binding.na709a.isChecked() ? "1"
                 : binding.na709b.isChecked() ? "2"
                 : binding.na70998.isChecked() ? "98"
                 : binding.na70999.isChecked() ? "99"
@@ -400,11 +404,11 @@ public class SectionA5Activity extends AppCompatActivity {
 
         // Section A8
 
-        sA5.put("na801", binding.na801a.isChecked() ? "1"
+        sA5.put("nh701", binding.na801a.isChecked() ? "1"
                 : binding.na801b.isChecked() ? "2"
                 : "0");
 
-        sA5.put("na802", binding.na802.getText().toString());
+        sA5.put("nh702", binding.na802.getText().toString());
 
         recipientCounter = Integer.valueOf(binding.na802.getText().toString());
 

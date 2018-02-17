@@ -189,28 +189,29 @@ public class SectionA8AActivity extends Activity {
 
         JSONObject sA8a = new JSONObject();
 
-        sA8a.put("na8a01", fmcSelected.getName());
-        sA8a.put("na8a01Serial", fmcSelected.getSerialNo());
+        sA8a.put("na7a01", fmcSelected.getName());
+        sA8a.put("na7a01Serial", fmcSelected.getSerialNo());
 
-        sA8a.put("na8a02", bi.na8a02.getSelectedItem().toString());
+        sA8a.put("na7a02", bi.na8a02.getSelectedItem().toString());
+        //sA8a.put("nh7a02", bi.na8a02.getText().toString());
 
-        sA8a.put("na8a03y", bi.na8a03y.getText().toString());
+        sA8a.put("nh7a03y", bi.na8a03y.getText().toString());
 
-        sA8a.put("na8a03m", bi.na8a03m.getText().toString());
+        sA8a.put("nh7a03m", bi.na8a03m.getText().toString());
 
-        sA8a.put("na8a04a", bi.na8a04a.isChecked() ? "1" : "0");
-        sA8a.put("na8a04b", bi.na8a04b.isChecked() ? "2" : "0");
-        sA8a.put("na8a04c", bi.na8a04c.isChecked() ? "3" : "0");
-        sA8a.put("na8a04d", bi.na8a04d.isChecked() ? "4" : "0");
-        sA8a.put("na8a04e", bi.na8a04e.isChecked() ? "5" : "0");
-        sA8a.put("na8a04f", bi.na8a04f.isChecked() ? "6" : "0");
-        sA8a.put("na8a04g", bi.na8a04g.isChecked() ? "7" : "0");
-        sA8a.put("na8a04h", bi.na8a04h.isChecked() ? "8" : "0");
-        sA8a.put("na8a04i", bi.na8a04i.isChecked() ? "9" : "0");
-        sA8a.put("na8a0496", bi.na8a0496.isChecked() ? "96" : "0");
-        sA8a.put("na8a0496x", bi.na8a0496x.getText().toString());
-        sA8a.put("na8a05", bi.na8a05.getText().toString());
-        sA8a.put("na8a06", bi.na8a06.getText().toString());
+        sA8a.put("nh7a04a", bi.na8a04a.isChecked() ? "1" : "0");
+        sA8a.put("nh7a04b", bi.na8a04b.isChecked() ? "2" : "0");
+        sA8a.put("nh7a04c", bi.na8a04c.isChecked() ? "3" : "0");
+        sA8a.put("nh7a04d", bi.na8a04d.isChecked() ? "4" : "0");
+        sA8a.put("nh7a04e", bi.na8a04e.isChecked() ? "5" : "0");
+        sA8a.put("nh7a04f", bi.na8a04f.isChecked() ? "6" : "0");
+        sA8a.put("nh7a04g", bi.na8a04g.isChecked() ? "7" : "0");
+        sA8a.put("nh7a04h", bi.na8a04h.isChecked() ? "8" : "0");
+        sA8a.put("nh7a04i", bi.na8a04i.isChecked() ? "9" : "0");
+        sA8a.put("nh7a0496", bi.na8a0496.isChecked() ? "96" : "0");
+        sA8a.put("nh7a0496x", bi.na8a0496x.getText().toString());
+        sA8a.put("nh7a05", bi.na8a05.getText().toString());
+        sA8a.put("nh7a06", bi.na8a06.getText().toString());
 
 
         MainApp.rc.setsA8A(String.valueOf(sA8a));
@@ -244,6 +245,7 @@ public class SectionA8AActivity extends Activity {
         //return true;
 
     }
+
 
 
 }
