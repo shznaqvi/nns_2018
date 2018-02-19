@@ -161,7 +161,7 @@ public class SectionA5Activity extends AppCompatActivity {
 
 //        na505
         if (binding.na504a.isChecked()) {
-            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpna505check, binding.na505e, String.valueOf(R.string.na505))) {
+            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpna505check, binding.na505e, getString(R.string.na505))) {
                 return false;
             }
         }

@@ -320,13 +320,13 @@ public class SectionC2Activity extends Activity {
             }
         }
 
-        if (!validatorClass.EmptyRadioButton(this, bi.nc213, bi.nc213a, getString(R.string.nc213))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, bi.nc214, bi.nc214a, getString(R.string.nc214))) {
-            return false;
-        }
+//        if (!validatorClass.EmptyRadioButton(this, bi.nc213, bi.nc213a, getString(R.string.nc213))) {
+//            return false;
+//        }
+//
+//        if (!validatorClass.EmptyRadioButton(this, bi.nc214, bi.nc214a, getString(R.string.nc214))) {
+//            return false;
+//        }
 
         if (!validatorClass.EmptyRadioButton(this, bi.nc215a, bi.nc215aa, getString(R.string.nc215a))) {
             return false;
@@ -411,7 +411,6 @@ public class SectionC2Activity extends Activity {
             return false;
         }
 
-
         if (bi.nc216aa.isChecked() && !bi.nc216a198.isChecked()) {
 
             if (!validatorClass.EmptyTextBox(this, bi.nc216a1, getString(R.string.nc216a1))) {
@@ -486,7 +485,6 @@ public class SectionC2Activity extends Activity {
                     bi.nc217.setError("Number of times recored for Yogurt in A1 is " + bi.nc216a1.getText().toString() + "Check again plz");    // Set Error on last radio button
                     bi.nc217.requestFocus();
                     Log.i(SectionC2Activity.class.getSimpleName(), "nc217: Both values should be same");
-
                 } else {
                     bi.nc217.setError(null);
                 }
@@ -526,7 +524,12 @@ public class SectionC2Activity extends Activity {
                 return false;
             }
         }
-
+        if(!validatorClass.EmptyRadioButton(this, bi.newnc221, bi.newnc22198, getString(R.string.newnc221))){
+            return false;
+        }
+        if(!validatorClass.EmptyRadioButton(this, bi.newnc222, bi.newnc22298, getString(R.string.newnc222))){
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, bi.nc221, bi.nc221a, getString(R.string.nc221))) {
             return false;
         }
@@ -646,19 +649,19 @@ public class SectionC2Activity extends Activity {
 
         sC2.put("nc21296x", bi.nc21296x.getText().toString());
 
-
-//      nc213
-        sC2.put("nc213", bi.nc213a.isChecked() ? "1"
-                : bi.nc213b.isChecked() ? "2"
-                : bi.nc21398.isChecked() ? "98"
-                : "0");
-
-
-//      nc214
-        sC2.put("nc214", bi.nc214a.isChecked() ? "1"
-                : bi.nc214b.isChecked() ? "2"
-                : bi.nc21498.isChecked() ? "98"
-                : "0");
+//
+////      nc213
+//        sC2.put("nc213", bi.nc213a.isChecked() ? "1"
+//                : bi.nc213b.isChecked() ? "2"
+//                : bi.nc21398.isChecked() ? "98"
+//                : "0");
+//
+//
+////      nc214
+//        sC2.put("nc214", bi.nc214a.isChecked() ? "1"
+//                : bi.nc214b.isChecked() ? "2"
+//                : bi.nc21498.isChecked() ? "98"
+//                : "0");
 
 //      nc215a
         sC2.put("nc215a", bi.nc215aa.isChecked() ? "1"
@@ -875,36 +878,45 @@ public class SectionC2Activity extends Activity {
                 : "0");
         sC2.put("nc22096x", bi.nc22096x.getText().toString());
 
+//
 
-//      nc221
-        sC2.put("nc221", bi.nc221a.isChecked() ? "1"
+//        nc221
+        sC2.put("nc221", bi.newnc221a.isChecked() ? "1"
+                : bi.newnc221b.isChecked() ? "2"
+                : "0");
+
+//        nc222
+        sC2.put("nc222", bi.newnc222a.isChecked() ? "1"
+                : bi.newnc222b.isChecked() ? "2"
+                : "0");
+////      nc223
+        sC2.put("nc223", bi.nc221a.isChecked() ? "1"
                 : bi.nc221b.isChecked() ? "2"
                 : bi.nc22198.isChecked() ? "98"
                 : "0");
 
-//    nc222
+////    nc224
 
-        sC2.put("nc222", bi.nc222.getText().toString());
+        sC2.put("nc224", bi.nc222.getText().toString());
 
-//      nc223
-        sC2.put("nc223", bi.nc223a.isChecked() ? "1"
+//      nc225
+        sC2.put("nc225", bi.nc223a.isChecked() ? "1"
                 : bi.nc223b.isChecked() ? "2"
                 : bi.nc22398.isChecked() ? "98"
                 : "0");
 
-//    nc224
+//    nc226
 
-        sC2.put("nc224", bi.nc224.getText().toString());
+        sC2.put("nc226", bi.nc224.getText().toString());
 
-//      nc225
-        sC2.put("nc225", bi.nc225a.isChecked() ? "1"
+//      nc227
+        sC2.put("nc227", bi.nc225a.isChecked() ? "1"
                 : bi.nc225b.isChecked() ? "2"
                 : "0");
 
 
-//    nc226
-
-        sC2.put("nc226", bi.nc226.getText().toString());
+//    nc228
+        sC2.put("nc228", bi.nc226.getText().toString());
 
         MainApp.cc.setsC2(String.valueOf(sC2));
 
