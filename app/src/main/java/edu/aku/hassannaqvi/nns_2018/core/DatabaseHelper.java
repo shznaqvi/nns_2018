@@ -73,6 +73,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsTable.COLUMN_SB4 + " TEXT," +
             FormsTable.COLUMN_ISTATUS + " TEXT," +
             FormsTable.COLUMN_ISTATUS88x + " TEXT," +
+            FormsTable.COLUMN_COUNT + " TEXT," +
             FormsTable.COLUMN_GPSLAT + " TEXT," +
             FormsTable.COLUMN_GPSLNG + " TEXT," +
             FormsTable.COLUMN_GPSDATE + " TEXT," +
@@ -554,6 +555,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_SA4, fc.getsA4());
         values.put(FormsTable.COLUMN_SA5, fc.getsA5());
         values.put(FormsTable.COLUMN_SB4, fc.getsB4());
+        values.put(FormsTable.COLUMN_COUNT, fc.getCount());
         values.put(FormsTable.COLUMN_GPSLAT, fc.getGpsLat());
         values.put(FormsTable.COLUMN_GPSLNG, fc.getGpsLng());
         values.put(FormsTable.COLUMN_GPSDATE, fc.getGpsDT());
@@ -1018,6 +1020,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_SA4,
                 FormsTable.COLUMN_SA5,
                 FormsTable.COLUMN_SB4,
+                FormsTable.COLUMN_COUNT,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
                 FormsTable.COLUMN_GPSDATE,
