@@ -19,6 +19,18 @@
         <item name="android:buttonStyle">@style/buttons</item>
         <item name="android:checkboxStyle">@style/checkbox</item>
         <item name="android:radioButtonStyle">@style/radiobutton</item>
+        <item name="android:checkedTextViewStyle">@style/labels2</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="AppTheme2" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:scrollViewStyle">@style/BackgroundStyle</item>
+        <item name="android:textViewStyle">@style/labels</item>
+        <item name="android:editTextStyle">@style/textInput</item>
+        <item name="android:buttonStyle">@style/buttons</item>
+        <item name="android:checkboxStyle">@style/checkbox2</item>
+        <item name="android:radioButtonStyle">@style/radiobutton</item>
+        <item name="android:checkedTextViewStyle">@style/labels2</item>
         <!-- Customize your theme here. -->
     </style>
 
@@ -44,6 +56,25 @@
 
     <!-- Form Styles -->
     <style name="labels" parent="android:Widget.Material.Light.TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:background">@drawable/background_grad</item>
+        <item name="android:drawable">@drawable/textview_background_grad</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:paddingTop">24dp</item>
+        <item name="android:elevation">1dp</item>
+
+
+    </style>
+
+
+    <style name="labels2" parent="android:Widget.Material.Light.CheckedTextView">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">24dp</item>
@@ -179,8 +210,22 @@
         <item name="android:background">#d6d6d6</item>
         <item name="android:padding">4dp</item>
 
+    </style>
+
+    <style name="checkbox2" parent="android:Widget.Material.Light.CompoundButton.CheckBox">
+        <item name="android:layout_gravity">right</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:button">@null</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:drawableStart">?android:attr/listChoiceIndicatorMultiple</item>
+        <item name="android:background">#d6d6d6</item>
+        <item name="android:padding">4dp</item>
 
     </style>
+
+
 
     <!-- <style name="CustomShowcaseTheme" parent="ShowcaseView.Light">
          <item name="sv_backgroundColor">#33b78ff7</item>
