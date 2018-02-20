@@ -215,6 +215,11 @@
                         android:text='@{nb20398.checked ? "" : nb203w.getText.toString}'
                         android:visibility='@{nb20398.checked ? View.GONE : View.VISIBLE}' />
 
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPrimaryDark" />
+
 
                     <EditText
                         android:id="@+id/nb203m"
@@ -649,10 +654,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimaryAlpha"
+                    android:background="@color/pink_100"
                     android:text="@string/nw311sub1"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/primary_text_dark" />
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <RadioButton
                     android:id="@+id/nw311a"
@@ -709,10 +714,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimaryAlpha"
+                    android:background="@color/pink_100"
                     android:text="@string/nw311sub2"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/primary_text_dark" />
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <RadioButton
                     android:id="@+id/nw311f"
@@ -767,10 +772,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimaryAlpha"
+                    android:background="@color/pink_100"
                     android:text="@string/nw311sub3"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/primary_text_dark" />
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <RadioButton
                     android:id="@+id/nw311k"
@@ -895,6 +900,12 @@
                         android:hint="@string/month"
                         android:inputType="number"
                         android:maxLength="1" />
+
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPrimaryDark" />
 
                     <EditText
                         android:id="@+id/nb212d"
@@ -1056,10 +1067,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimaryAlpha"
+                    android:background="@color/pink_100"
                     android:text="@string/nw311sub1"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/primary_text_dark" />
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <RadioButton
                     android:id="@+id/nw316a"
@@ -1116,10 +1127,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimaryAlpha"
+                    android:background="@color/pink_100"
                     android:text="@string/nw311sub2"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/primary_text_dark" />
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <RadioButton
                     android:id="@+id/nw316f"
@@ -1174,10 +1185,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimaryAlpha"
+                    android:background="@color/pink_100"
                     android:text="@string/nw311sub3"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/primary_text_dark" />
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <RadioButton
                     android:id="@+id/nw316k"
@@ -1453,10 +1464,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimaryAlpha"
+                    android:background="@color/pink_100"
                     android:text="@string/nw311sub1"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/primary_text_dark" />
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <RadioButton
                     android:id="@+id/nw321a"
@@ -1513,10 +1524,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimaryAlpha"
+                    android:background="@color/pink_100"
                     android:text="@string/nw311sub2"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/primary_text_dark" />
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <RadioButton
                     android:id="@+id/nw321f"
@@ -1571,10 +1582,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimaryAlpha"
+                    android:background="@color/pink_100"
                     android:text="@string/nw311sub3"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/primary_text_dark" />
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <RadioButton
                     android:id="@+id/nw321k"
