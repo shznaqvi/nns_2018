@@ -156,28 +156,53 @@ public class SectionB2Activity extends Activity {
                     bi.fldGrpnb214.setVisibility(View.VISIBLE);
                 } else {
                     bi.fldGrpnb214.setVisibility(View.GONE);
+
+                    bi.nw315.clearCheck();
+                    bi.nw31596x.setText(null);
+
+                    bi.nw316.clearCheck();
+                    bi.nw316961x.setText(null);
+                    bi.nw316962x.setText(null);
+                    bi.nw316963x.setText(null);
+
                     bi.nb214.clearCheck();
+
                     bi.nb215m.setText(null);
                     bi.nb215d.setText(null);
                 }
             }
         });
 
+
         bi.nb216.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (bi.nb216a.isChecked()) {
+
                     bi.fldGrpnb217.setVisibility(View.VISIBLE);
+
                 } else {
+
                     bi.fldGrpnb217.setVisibility(View.GONE);
+
+                    bi.nw320.clearCheck();
+                    bi.nw32096x.setText(null);
+
+                    bi.nw321.clearCheck();
+                    bi.nw321961x.setText(null);
+                    bi.nw321962x.setText(null);
+                    bi.nw321963x.setText(null);
+
                     bi.nb217.clearCheck();
+
                     bi.nb218d.setText(null);
                     bi.nb218m.setText(null);
                 }
             }
         });
 
-        bi.nb216.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+        bi.nb214.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
 

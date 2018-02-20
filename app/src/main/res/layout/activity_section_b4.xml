@@ -456,7 +456,7 @@
 
                 <TextView
                     style="@style/sub"
-                    android:layout_width="match_parent"
+                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="@string/nb406info" />
@@ -661,8 +661,8 @@
                     android:hint="@string/nb410h"
                     android:inputType="number"
                     android:maxLength="2"
-                    android:text='@{nb410b.checked ? "" : nb410h.getText.toString}'
-                    android:visibility='@{nb410b.checked ? View.GONE : View.VISIBLE}' />
+                    android:text='@{nb410b.checked ? nb410h.getText.toString : ""}'
+                    android:visibility='@{nb410b.checked ? View.VISIBLE : View.GONE}' />
 
                 <RadioButton
                     android:id="@+id/nb410c"
@@ -680,8 +680,8 @@
                     android:hint="@string/nb410d"
                     android:inputType="number"
                     android:maxLength="2"
-                    android:text='@{nb410c.checked ? "" : nb410d.getText.toString}'
-                    android:visibility='@{nb410c.checked ? View.GONE : View.VISIBLE}' />
+                    android:text='@{nb410c.checked ? nb410d.getText.toString : ""}'
+                    android:visibility='@{nb410c.checked ? View.VISIBLE : View.GONE}' />
 
                 <RadioButton
                     android:id="@+id/nb41097"

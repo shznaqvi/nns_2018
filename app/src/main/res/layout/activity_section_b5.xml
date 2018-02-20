@@ -51,7 +51,8 @@
             <RadioGroup
                 android:id="@+id/nb501"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/nb501a"
@@ -59,6 +60,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/yes" />
 
                 <RadioButton
@@ -67,6 +69,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/no" />
 
             </RadioGroup>
@@ -94,7 +97,6 @@
 
                     <CheckBox
                         android:id="@+id/nb502a"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -102,7 +104,6 @@
 
                     <CheckBox
                         android:id="@+id/nb502b"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -110,7 +111,6 @@
 
                     <CheckBox
                         android:id="@+id/nb502c"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -118,7 +118,6 @@
 
                     <CheckBox
                         android:id="@+id/nb502d"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -126,7 +125,6 @@
 
                     <CheckBox
                         android:id="@+id/nb502e"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -134,7 +132,6 @@
 
                     <CheckBox
                         android:id="@+id/nb502f"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -142,7 +139,6 @@
 
                     <CheckBox
                         android:id="@+id/nb502g"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -150,7 +146,6 @@
 
                     <CheckBox
                         android:id="@+id/nb50296"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -406,7 +401,8 @@
             <RadioGroup
                 android:id="@+id/nb506"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/nb506a"
@@ -414,6 +410,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/yes" />
 
                 <RadioButton
@@ -422,6 +419,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/no" />
 
             </RadioGroup>
@@ -671,7 +669,6 @@
 
                     <CheckBox
                         android:id="@+id/nb510a"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -679,7 +676,6 @@
 
                     <CheckBox
                         android:id="@+id/nb510b"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -687,7 +683,6 @@
 
                     <CheckBox
                         android:id="@+id/nb510c"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -695,7 +690,6 @@
 
                     <CheckBox
                         android:id="@+id/nb510d"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -703,7 +697,6 @@
 
                     <CheckBox
                         android:id="@+id/nb510e"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -711,7 +704,6 @@
 
                     <CheckBox
                         android:id="@+id/nb51096"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"

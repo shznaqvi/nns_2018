@@ -102,6 +102,7 @@ public class MainApp extends Application {
     public static int count = 1;
     public static boolean flag = false;
     public static int outcome = 0;
+    public static String lineNo = "";
     protected static LocationManager locationManager;
 
     public static int monthsBetweenDates(Date startDate, Date endDate) {

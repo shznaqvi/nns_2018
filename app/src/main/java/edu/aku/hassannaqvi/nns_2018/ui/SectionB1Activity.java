@@ -279,7 +279,9 @@ bi.nw20799.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             }
 
         }
-
+        if (!validatorClass.EmptyRadioButton(this,bi.nw20701, bi.nw20701b,getString(R.string.nw20701))){
+            return false;
+        }
 
         return true;
     }
@@ -304,11 +306,27 @@ bi.nw20799.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
         sB1.put("nb1serialno", MainApp.mwraMap.get(bi.nb101.getSelectedItem().toString()));
         sB1.put("nb104", bi.nb104.getText().toString());
 
-
         sB1.put("nb105", bi.nb105a.isChecked() ? "1"
                 : bi.nb105b.isChecked() ? "2" : "0");
 
         sB1.put("nb106", bi.nb106.getText().toString());
+
+        //        nw20701
+        sB1.put("nw20701", bi.nw20701a.isChecked() ? "1"
+                : bi.nw20701b.isChecked() ? "2" : "0");
+        //        nw20702
+        sB1.put("nw20702", bi.nw20702a.isChecked() ? "1"
+                : bi.nw20702b.isChecked() ? "2" : "0");
+        //        nw20703
+        sB1.put("nw20703", bi.nw20703a.isChecked() ? "1"
+                : bi.nw20703b.isChecked() ? "2" : "0");
+        //        nw20798
+        sB1.put("nw20798", bi.nw20798a.isChecked() ? "1"
+                : bi.nw20798b.isChecked() ? "2" : "0");
+        //        nw20799
+        sB1.put("nw20799", bi.nw20799a.isChecked() ? "1"
+                : bi.nw20799b.isChecked() ? "2" : "0");
+
 
         if (bi.nb105a.isChecked()) {
             MainApp.totalPregnancy = Integer.valueOf(bi.nb104.getText().toString()) - 1;

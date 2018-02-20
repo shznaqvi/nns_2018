@@ -28,6 +28,8 @@ public class FormsContract {
     private String sA5 = ""; //
     private String sB4 = "";
     private String count = "";
+    private String respLineNo = "";
+
 
 
     private String gpsLat = "";
@@ -50,6 +52,8 @@ public class FormsContract {
         this._UID = jsonObject.getString(FormsTable.COLUMN_UID);
         this.formDate = jsonObject.getString(FormsTable.COLUMN_FORMDATE);
         this.user = jsonObject.getString(FormsTable.COLUMN_USER);
+        this.respLineNo = jsonObject.getString(FormsTable.COLUMN_RESP_LNO);
+
         this.istatus = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
         this.istatus88x = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
         this.gpsElev = jsonObject.getString(FormsTable.COLUMN_GPSELEV);
@@ -77,6 +81,7 @@ public class FormsContract {
         this._UID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_UID));
         this.formDate = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FORMDATE));
         this.user = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_USER));
+        this.respLineNo = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_RESP_LNO));
         this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
         this.istatus88x = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
         this.gpsElev = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSELEV));
@@ -110,6 +115,8 @@ public class FormsContract {
         json.put(FormsTable.COLUMN_UID, this._UID == null ? JSONObject.NULL : this._UID);
         json.put(FormsTable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
         json.put(FormsTable.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
+        json.put(FormsTable.COLUMN_RESP_LNO, this.respLineNo == null ? JSONObject.NULL : this.respLineNo);
+
         json.put(FormsTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
         json.put(FormsTable.COLUMN_ISTATUS88x, this.istatus88x == null ? JSONObject.NULL : this.istatus88x);
         json.put(FormsTable.COLUMN_GPSELEV, this.gpsElev == null ? JSONObject.NULL : this.gpsElev);
@@ -150,6 +157,14 @@ public class FormsContract {
 
 
         return json;
+    }
+
+    public String getRespLineNo() {
+        return respLineNo;
+    }
+
+    public void setRespLineNo(String respLineNo) {
+        this.respLineNo = respLineNo;
     }
 
     public String getCount() {
@@ -345,6 +360,7 @@ public class FormsContract {
         public static final String COLUMN_SA5 = "sa5";
         public static final String COLUMN_SB4 = "sb4";
         public static final String COLUMN_COUNT = "count";
+        public static final String COLUMN_RESP_LNO = "resp_lno";
 
         public static final String COLUMN_GPSLAT = "gpslat";
         public static final String COLUMN_GPSLNG = "gpslng";

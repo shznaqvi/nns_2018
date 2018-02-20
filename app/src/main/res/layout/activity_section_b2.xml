@@ -945,6 +945,11 @@
             </RadioGroup>
 
             <!--nw315-->
+            <LinearLayout
+                android:id="@+id/fldGrpnb214"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
@@ -1211,11 +1216,6 @@
             </RadioGroup>
 
             <!--nw317-->
-            <LinearLayout
-                android:id="@+id/fldGrpnb214"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -1611,11 +1611,10 @@
                     android:text='@{nw321963.checked ? nw321963x.getText.toString : ""}'
                     android:visibility='@{nw321963.checked ? View.VISIBLE : View.GONE}' />
             </RadioGroup>
-<!--nw322-->
 
 
 
-
+            <!--nw322-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

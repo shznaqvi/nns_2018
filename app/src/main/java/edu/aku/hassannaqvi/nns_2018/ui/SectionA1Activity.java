@@ -247,6 +247,7 @@ public class SectionA1Activity extends AppCompatActivity {
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
+
         MainApp.fc = new FormsContract();
 
         MainApp.fc.setDevicetagID(MainApp.getTagName(this));
@@ -255,10 +256,46 @@ public class SectionA1Activity extends AppCompatActivity {
         MainApp.fc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
         MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
+        MainApp.fc.setRespLineNo(MainApp.lineNo);
+
 
         setGPS(); // Set GPS
 
         JSONObject sA1 = new JSONObject();
+
+        sA1.put("nw101", binding.na101.getText().toString());
+        sA1.put("nw102", binding.na102.getText().toString());
+        sA1.put("nw103", binding.na101a.getText().toString());
+        sA1.put("nw104", binding.na101b.getText().toString());
+        sA1.put("nw105", binding.na101c.getText().toString());
+        sA1.put("nw106", binding.na101d.getText().toString());
+        sA1.put("nw107", binding.na103.getText().toString());
+        sA1.put("nw109", binding.na105.getText().toString());
+        sA1.put("nw112", binding.na107.getText().toString());
+        sA1.put("na114", binding.na108.getText().toString());
+
+        sA1.put("nw11501blood", binding.na11101blooda.isChecked() ? "1"
+                : binding.na11101bloodb.isChecked() ? "2" : "0");
+
+        sA1.put("nw11502water", binding.na11102watera.isChecked() ? "1"
+                : binding.na11102waterb.isChecked() ? "2" : "0");
+
+        sA1.put("nw11601", binding.na11201a.isChecked() ? "1"
+                : binding.na11201b.isChecked() ? "2" : "0");
+
+        sA1.put("nw11602", binding.na11202a.isChecked() ? "1"
+                : binding.na11202b.isChecked() ? "2" : "0");
+
+//        na117
+        sA1.put("nw117a", binding.na113a.isChecked() ? "1" : "0");
+        sA1.put("nw117b", binding.na113b.isChecked() ? "2" :"0");
+        sA1.put("nw117c", binding.na113c.isChecked() ? "3" :"0");
+        sA1.put("nw117d", binding.na113d.isChecked() ? "4" :"0");
+        sA1.put("nw117e", binding.na113e.isChecked() ? "5" :"0");
+        sA1.put("nw117f", binding.na113f.isChecked() ? "6" :"0");
+        sA1.put("nw117g", binding.na113g.isChecked() ? "7" :"0");
+        sA1.put("nw11796", binding.na11396.isChecked() ? "96" :"0");
+        sA1.put("nw11796x", binding.na11396x.getText().toString());
 
         MainApp.fc.setsA1(String.valueOf(sA1));
 
