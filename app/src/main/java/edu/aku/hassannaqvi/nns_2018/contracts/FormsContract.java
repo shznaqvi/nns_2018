@@ -352,7 +352,7 @@ public class FormsContract {
         public static final String COLUMN_GPSACC = "gpsacc";
         public static final String COLUMN_GPSELEV = "gpselev";
         public static final String COLUMN_DEVICEID = "deviceid";
-        public static final String COLUMN_DEVICETAGID = "tagid";
+        public static final String COLUMN_DEVICETAGID = "devicetagid";
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNCED_DATE = "synced_date";
         public static final String COLUMN_APP_VERSION = "appversion";

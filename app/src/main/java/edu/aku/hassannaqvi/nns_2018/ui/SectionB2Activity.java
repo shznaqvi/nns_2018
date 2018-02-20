@@ -177,6 +177,13 @@ public class SectionB2Activity extends Activity {
             }
         });
 
+        bi.nb216.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+            }
+        });
+
 
     }
 

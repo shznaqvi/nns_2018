@@ -140,8 +140,9 @@ bi.nb105.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             bi.nw20701.clearCheck();
             bi.nw20702.clearCheck();
             bi.nw20703.clearCheck();
-            bi.nw20798.setChecked(false);
-            bi.nw20799.setChecked(false);
+            bi.nw20799.clearCheck();
+            bi.nw20798.clearCheck();
+
         }
         else{
             bi.fldGrpnb106.setVisibility(View.VISIBLE);
@@ -149,18 +150,19 @@ bi.nb105.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
     }
 });
-bi.nw20798.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+bi.nw20798.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
     @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if (isChecked){
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        if (checkedId == R.id.nw20798a){
             bi.nw206.clearCheck();
             bi.nw20701.clearCheck();
             bi.nw20702.clearCheck();
             bi.nw20703.clearCheck();
+            bi.nw20799.clearCheck();
+
             bi.nw20701.setEnabled(false);
             bi.nw20702.setEnabled(false);
             bi.nw20703.setEnabled(false);
-            bi.nw20799.setChecked(false);
             bi.nw20799.setEnabled(false);
         }
         else{
@@ -171,17 +173,18 @@ bi.nw20798.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener
         }
     }
 });
-bi.nw20799.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+bi.nw20799.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
     @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if(isChecked){
-            bi.nw20798.setChecked(false);
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        if(checkedId == R.id.nw20798a){
+            bi.nw20798.clearCheck();
             bi.nw20701.clearCheck();
             bi.nw20702.clearCheck();
             bi.nw20703.clearCheck();
         }
     }
 });
+
 
 
 

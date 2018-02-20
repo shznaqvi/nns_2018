@@ -447,7 +447,7 @@
     <string name="nb104a"> # of pregnancies </string>
     <string name="nb105"> کیا آپ ابھی حاملہ ہیں؟ </string>
     <string name="nb106info"> IF FIRST PREGNANCY AFTER MARRIAGE THEN GO TO SECTION B2 </string>
-    <string name="nb106"> پہلےبچے کی پیدائش کے وقت آپ کی عمر کیاتھی؟ </string>
+    <string name="nb106"> پہلے بچے کی پیدائش کے وقت آپ کی عمر کیاتھی؟ </string>
     <string name="nb106a"> عمر سالوں میں </string>
     <string name="nb1aheading"> SECTION B1(a) : DETAILS OF ALL PREGNANCIES </string>
     <string name="nb1a01"> Date of outcome * </string>
@@ -507,7 +507,7 @@
     <string name="nb206b"> ہاں (کارڈ اور دیگر دستاویزات نہیں دیکھے </string>
     <string name="nb207"> جب آپ حمل سے تھیں تو کیا آپ نے بازو یا کندھے پر بچے کو تشنج سے بچاؤ کے ٹیکہ لگوائے تھے؟جس میں بچے کو پیدائش جھٹکے آتے ہیں؟ </string>
     <string name="nb208"> آپ نے دوران حمل کتنی مرتبہ ،تشنج کی بیماری سے بچانے والا ٹیکہ /انجکشن لگوایا تھا؟ </string>
-    <string name="nb209"> کیا آپ نےکبھی حمل کے دوارن فولاد کی گولیاں استعمال کیں؟ </string>
+    <string name="nb209"> کیا آپ نے کبھی حمل کے دوارن فولاد کی گولیاں استعمال کیں؟ </string>
     <string name="nb210"> اگر ہاں ہے تو کسی نے دی یا خریدی </string>
     <string name="nb21001"> کلینک پر ملی </string>
     <string name="nb21002"> خریدی </string>

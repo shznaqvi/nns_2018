@@ -1408,19 +1408,37 @@
                     android:text="@string/nc317"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/white"
-                    android:visibility='@{nc316b.checked ? View.GONE: View.VISIBLE}'/>
+                 />
+                <RadioGroup
+                android:id="@+id/nc317"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/nc317"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:digits="123456789"
-                    android:hint="@string/times"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    android:text='@{nc316a.checked ? nc317.getText.toString : ""}'
-                    android:visibility='@{nc316a.checked ? View.VISIBLE: View.GONE}'/>
+                <RadioButton
+                android:id="@+id/nc317a"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:text="@string/yes" />
+
+                <RadioButton
+                android:id="@+id/nc317b"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:text="@string/no" />
+                <RadioButton
+                android:id="@+id/nc31798"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:text="@string/dkn" />
+
+                </RadioGroup>
 
             </LinearLayout>
 

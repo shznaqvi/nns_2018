@@ -262,7 +262,7 @@
                     android:inputType="number"
                     android:maxLength="1"
                     android:text='@{nb20498.checked ? nb204.getText.toString : ""}'
-                    android:visibility='@{nb20498.checked ? View.VISIBLE : View.GONE}' />
+                    android:visibility='@{nb20498.checked ? View.GONE : View.VISIBLE}' />
 
                 <CheckBox
                     android:id="@+id/nb20498"
@@ -491,7 +491,7 @@
                     android:inputType="number"
                     android:maxLength="1"
                     android:text='@{nb20898.checked ? nb208.getText.toString : ""}'
-                    android:visibility='@{nb20898.checked ? View.VISIBLE : View.GONE}' />
+                    android:visibility='@{nb20898.checked ? View.GONE : View.VISIBLE}' />
 
                 <CheckBox
                     android:id="@+id/nb20898"
@@ -537,6 +537,13 @@
             </RadioGroup>
 
             <!--nw310-->
+
+        <LinearLayout
+            android:id="@+id/fldGrpnb210"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -801,11 +808,7 @@
                     android:visibility='@{nw311963.checked ? View.VISIBLE : View.GONE}' />
             </RadioGroup>
 <!--nw312-->
-            <LinearLayout
-                android:id="@+id/fldGrpnb210"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+
 
                 <TextView
                     android:layout_width="match_parent"
@@ -1339,6 +1342,11 @@
 
             </RadioGroup>
 <!--nw320-->
+            <LinearLayout
+                android:id="@+id/fldGrpnb217"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
@@ -1606,11 +1614,7 @@
 <!--nw322-->
 
 
-            <LinearLayout
-                android:id="@+id/fldGrpnb217"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+
 
                 <TextView
                     android:layout_width="match_parent"

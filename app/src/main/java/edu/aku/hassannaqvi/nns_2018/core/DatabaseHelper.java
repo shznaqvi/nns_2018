@@ -158,6 +158,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             eligibleMembers.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             eligibleMembers.COLUMN_UID + " TEXT," +
             eligibleMembers.COLUMN_UUID + " TEXT," +
+            eligibleMembers.COLUMN_PROJECTNAME + " TEXT," +
             eligibleMembers.COLUMN_FORMDATE + " TEXT," +
             eligibleMembers.COLUMN_DEVICEID + " TEXT," +
             eligibleMembers.COLUMN_DEVICETAGID + " TEXT," +
@@ -177,6 +178,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     final String SQL_CREATE_MWRAS = "CREATE TABLE " + MWRATable.TABLE_NAME + " (" +
             MWRATable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            MWRATable.COLUMN_PROJECTNAME + " TEXT," +
             MWRATable.COLUMN_UID + " TEXT," +
             MWRATable.COLUMN_UUID + " TEXT," +
             MWRATable.COLUMN_FORMDATE + " TEXT," +
@@ -198,6 +200,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     final String SQL_CREATE_OUTCOME = "CREATE TABLE " + outcomeTable.TABLE_NAME + " (" +
             outcomeTable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            outcomeTable.COLUMN_PROJECTNAME + " TEXT," +
             outcomeTable.COLUMN_UID + " TEXT," +
             outcomeTable.COLUMN_UUID + " TEXT," +
             outcomeTable.COLUMN_FORMDATE + " TEXT," +
@@ -214,6 +217,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     final String SQL_CREATE_RECIPIENTS = "CREATE TABLE " + RecipientsTable.TABLE_NAME + " (" +
             RecipientsTable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            RecipientsTable.COLUMN_PROJECTNAME + " TEXT," +
             RecipientsTable.COLUMN_UID + " TEXT," +
             RecipientsTable.COLUMN_UUID + " TEXT," +
             RecipientsTable.COLUMN_FORMDATE + " TEXT," +
@@ -223,8 +227,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             RecipientsTable.COLUMN_APP_VER + " TEXT," +
             RecipientsTable.COLUMN_A8ASNO + " TEXT," +
             RecipientsTable.COLUMN_SA8A + " TEXT," +
-            outcomeTable.COLUMN_SYNCED + " TEXT," +
-            outcomeTable.COLUMN_SYNCEDDATE + " TEXT " +
+            RecipientsTable.COLUMN_SYNCED + " TEXT," +
+            RecipientsTable.COLUMN_SYNCEDDATE + " TEXT " +
 
             ");";
 
@@ -621,8 +625,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
         newRowId = db.insert(
-                familyMembers.TABLE_NAME,
-                familyMembers.COLUMN_NAME_NULLABLE,
+                RecipientsTable.TABLE_NAME,
+                RecipientsTable.COLUMN_NAME_NULLABLE,
                 values);
         return newRowId;
     }
@@ -952,7 +956,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String selection = RecipientsTable.COLUMN__ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.rc.get_ID())};
 
-        int count = db.update(ChildTable.TABLE_NAME,
+        int count = db.update(RecipientsTable.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);
