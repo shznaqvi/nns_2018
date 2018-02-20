@@ -26,6 +26,7 @@
             android:orientation="vertical">
 
 
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -39,263 +40,275 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:weightSum="100">
 
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dp"
-                    android:layout_weight="25"
-                    android:orientation="vertical">
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="50"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:text="@string/na2mw"
+                        android:layout_weight="23"
                         android:background="@color/colorPrimary"
+                        android:text="@string/na2mw"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@android:color/white" />
 
 
                     <TextView
-                        android:id="@+id/na2mw"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="1dp"
-                        android:textAlignment="center"
-                        android:paddingBottom="@dimen/_18sdp"
-                        android:paddingTop="@dimen/_18sdp"
-                        android:background="@color/pink_100"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:layout_marginTop="2dp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dp"
-                    android:layout_weight="25"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="1dp"
                         android:layout_marginTop="16dp"
+                        android:layout_weight="23"
                         android:background="@color/colorPrimary"
                         android:text="@string/na2ad"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@android:color/white" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:orientation="horizontal"
-                        android:weightSum="100">
-
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="2dp"
-                                android:layout_weight="50"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="F"
-                                    android:textAlignment="center" />
-
-
-                            <TextView
-                                android:id="@+id/na2adm"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/colorPrimaryDark"
-                                android:background="@color/pink_100"
-                                android:textAlignment="center"/>
-
-                            </LinearLayout>
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="50"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="M"
-                                    android:textAlignment="center" />
-                            <TextView
-                                android:id="@+id/na2adf"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textAlignment="center"
-                                android:background="@color/pink_100"
-                                android:textColor="@color/colorPrimaryDark"/>
-
-                    </LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dp"
-                    android:layout_weight="25"
-                    android:orientation="vertical">
-
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="1dp"
                         android:layout_marginTop="16dp"
+                        android:layout_weight="30"
                         android:background="@color/colorPrimary"
                         android:text="@string/na2u5"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@android:color/white" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:orientation="horizontal"
-                        android:weightSum="100">
-
-
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="2dp"
-                                android:layout_weight="50"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="F"
-                                    android:textAlignment="center" />
-
-                                <TextView
-                                android:id="@+id/na2u5g"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                    android:textColor="@color/colorPrimaryDark"
-                                    android:background="@color/pink_100"
-                                    android:textAlignment="center" />
-                            </LinearLayout>
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="50"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="M"
-                                    android:textAlignment="center" />
-                            <TextView
-                                android:id="@+id/na2u5b"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@color/pink_100"
-                                android:textColor="@color/colorPrimaryDark"
-                                android:textAlignment="center"/>
-                        </LinearLayout>
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                <!--</LinearLayout>-->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dp"
-                    android:layout_weight="25"
-                    android:orientation="vertical">
-
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="1dp"
                         android:layout_marginTop="16dp"
+                        android:layout_weight="23"
                         android:background="@color/colorPrimary"
                         android:text="@string/na2t"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@android:color/white" />
 
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="50"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        android:id="@+id/na2mw"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="1dp"
+                        android:layout_marginLeft="1dp"
                         android:layout_marginTop="2dp"
-                        android:orientation="horizontal"
+                        android:layout_weight="23"
+                        android:background="@color/pink_100"
+                        android:paddingBottom="@dimen/_18sdp"
+                        android:paddingTop="@dimen/_18sdp"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="30"
+                        android:orientation="vertical"
                         android:weightSum="100">
 
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="50"
+                            android:orientation="horizontal"
+                            android:weightSum="100">
 
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="2dp"
-                                android:layout_weight="50"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="F"
-                                    android:textAlignment="center" />
-
-                                <TextView
-                                    android:id="@+id/na2tf"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:textColor="@color/colorPrimaryDark"
-                                    android:background="@color/pink_100"
-                                    android:textAlignment="center" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
+                            <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="50"
-                                android:orientation="vertical">
+                                android:text="F"
+                                android:textAlignment="center" />
 
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="M"
-                                    android:textAlignment="center" />
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="50"
+                                android:text="M"
+                                android:textAlignment="center" />
 
-                                <TextView
-                                    android:id="@+id/na2tm"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/colorPrimaryDark"
-                                    android:background="@color/pink_100"/>
+                        </LinearLayout>
 
-                            </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="50"
+                            android:orientation="horizontal"
+                            android:weightSum="100">
+
+                            <TextView
+                                android:id="@+id/na2adm"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="50"
+                                android:background="@color/pink_100"
+                                android:textAlignment="center"
+                                android:textColor="@color/colorPrimaryDark" />
+
+                            <TextView
+                                android:id="@+id/na2adf"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="1dp"
+                                android:layout_weight="50"
+                                android:background="@color/pink_100"
+                                android:textAlignment="center"
+                                android:textColor="@color/colorPrimaryDark"/>
 
 
+                        </LinearLayout>
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="23"
+                        android:orientation="vertical"
+                        android:weightSum="100">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="50"
+                            android:orientation="horizontal"
+                            android:weightSum="100">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="50"
+                                android:text="F"
+                                android:textAlignment="center" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="50"
+                                android:text="M"
+                                android:textAlignment="center" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="50"
+                            android:orientation="horizontal"
+                            android:weightSum="100">
+
+                            <TextView
+                                android:id="@+id/na2u5g"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="1dp"
+                                android:layout_weight="50"
+                                android:background="@color/pink_100"
+                                android:textAlignment="center"
+                                android:textColor="@color/colorPrimaryDark" />
+
+                            <TextView
+                                android:id="@+id/na2u5b"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="1dp"
+                                android:layout_weight="50"
+                                android:background="@color/pink_100"
+                                android:textAlignment="center"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="23"
+                        android:orientation="vertical"
+                        android:weightSum="100">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="50"
+                            android:orientation="horizontal"
+                            android:weightSum="100">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="50"
+                                android:text="F"
+                                android:textAlignment="center" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="50"
+                                android:text="M"
+                                android:textAlignment="center" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="50"
+                            android:orientation="horizontal"
+                            android:weightSum="100">
+
+                            <TextView
+                                android:id="@+id/na2tf"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="1dp"
+                                android:layout_weight="50"
+                                android:background="@color/pink_100"
+                                android:textAlignment="center"
+                                android:textColor="@color/colorPrimaryDark" />
+
+                            <TextView
+                                android:id="@+id/na2tm"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="50"
+                                android:background="@color/pink_100"
+                                android:textAlignment="center"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                        </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>
+
 
             <TextView
                 style="@style/sub"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:text="@string/na202Info" />
 
             <!--02-->
@@ -544,7 +557,7 @@
 
                 <Spinner
                     android:id="@+id/na205"
-                    style="@style/Widget.AppCompat.Spinner.Underlined"
+                    style="@style/spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -575,7 +588,7 @@
 
                 <Spinner
                     android:id="@+id/na206"
-                    style="@style/Widget.AppCompat.Spinner.Underlined"
+                    style="@style/spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"

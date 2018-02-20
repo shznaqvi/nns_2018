@@ -447,7 +447,7 @@
     <string name="nb104a"> # of pregnancies </string>
     <string name="nb105"> کیا آپ ابھی حاملہ ہیں؟ </string>
     <string name="nb106info"> IF FIRST PREGNANCY AFTER MARRIAGE THEN GO TO SECTION B2 </string>
-    <string name="nb106"> پہلےبچے کی پیدائش کے وقت آپ کی عمر کیاتھی؟ </string>
+    <string name="nb106"> پہلے بچے کی پیدائش کے وقت آپ کی عمر کیاتھی؟ </string>
     <string name="nb106a"> عمر سالوں میں </string>
     <string name="nb1aheading"> SECTION B1(a) : DETAILS OF ALL PREGNANCIES </string>
     <string name="nb1a01"> Date of outcome * </string>
@@ -507,7 +507,7 @@
     <string name="nb206b"> ہاں (کارڈ اور دیگر دستاویزات نہیں دیکھے </string>
     <string name="nb207"> جب آپ حمل سے تھیں تو کیا آپ نے بازو یا کندھے پر بچے کو تشنج سے بچاؤ کے ٹیکہ لگوائے تھے؟جس میں بچے کو پیدائش جھٹکے آتے ہیں؟ </string>
     <string name="nb208"> آپ نے دوران حمل کتنی مرتبہ ،تشنج کی بیماری سے بچانے والا ٹیکہ /انجکشن لگوایا تھا؟ </string>
-    <string name="nb209"> کیا آپ نےکبھی حمل کے دوارن فولاد کی گولیاں استعمال کیں؟ </string>
+    <string name="nb209"> کیا آپ نے کبھی حمل کے دوارن فولاد کی گولیاں استعمال کیں؟ </string>
     <string name="nb210"> اگر ہاں ہے تو کسی نے دی یا خریدی </string>
     <string name="nb21001"> کلینک پر ملی </string>
     <string name="nb21002"> خریدی </string>
@@ -1073,9 +1073,12 @@
   <string name="nw20701">کلینک پر ملی</string>
   <string name="nw20702">خریدی</string>
   <string name="nw20703">نہ  ملی نہ خریدی</string>
+    <string name="newnc221">کیا(نام) نے کل دن یا رات کے دوران کوئی وٹامن یا منرل سپلیمنٹ یا کوئی دوائی پی یاکھائی تھی</string>
+    <string name="newnc222">کیا (نام) نے کل دن  یا رات کے دوران نمکول(او-آر-ایس) پیاتھا؟</string>
+    <string name="newnc306">Did (name of child) ever have any vaccinations to prevent him/her from getting diseases, including vaccinations received in a national immunization day campaign?</string>
 
 
-  <string name="head">What did you eat in....?</string>
+    <string name="head">What did you eat in....?</string>
   <string name="a"> Bread </string>
   <string name="b"> Rice </string>
   <string name="c"> Meat </string>
