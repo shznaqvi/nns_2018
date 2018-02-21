@@ -429,6 +429,7 @@ public class SectionA2Activity extends AppCompatActivity {
         }
         //Adolescent
         else if ((Age >= 10 && Age <= 19) && binding.na2mse.isChecked()) {
+            memType = new HashMap<>();
             if (binding.na203a.isChecked()) {
                 memType.put(1, Integer.valueOf(binding.na2adm.getText().toString()) + 1);
                 memType.put(2, Integer.valueOf(binding.na2adf.getText().toString()));
@@ -443,6 +444,7 @@ public class SectionA2Activity extends AppCompatActivity {
         }
         //Children < 5
         else if (Age < 5) {
+            memType = new HashMap<>();
             if (binding.na203a.isChecked()) {
                 memType.put(1, Integer.valueOf(binding.na2u5b.getText().toString()) + 1);
                 memType.put(2, Integer.valueOf(binding.na2u5g.getText().toString()));

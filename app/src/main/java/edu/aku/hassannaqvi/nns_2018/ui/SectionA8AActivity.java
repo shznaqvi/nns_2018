@@ -115,7 +115,12 @@ public class SectionA8AActivity extends Activity {
 
                     counter = 1;
 
-                    startActivity(new Intent(this, SectionB1Activity.class));
+                    if (MainApp.mwra.size() > 0) {
+
+                        startActivity(new Intent(this, SectionB1Activity.class));
+                    } else {
+                        startActivity(new Intent(this, SectionC1Activity.class));
+                    }
                 } else {
 
                     recpNames.remove(bi.na8a02.getSelectedItem().toString());
