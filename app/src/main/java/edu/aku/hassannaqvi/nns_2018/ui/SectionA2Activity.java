@@ -176,8 +176,8 @@ public class SectionA2Activity extends AppCompatActivity {
             }
         }
 
-        binding.na205.setAdapter(new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, fathersList));
-        binding.na206.setAdapter(new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, mothersList));
+        binding.na205.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, fathersList));
+        binding.na206.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, mothersList));
 
 //        Visibility for isHead
         if (MainApp.IsHead) {
