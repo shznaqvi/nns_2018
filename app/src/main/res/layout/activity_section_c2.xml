@@ -285,7 +285,6 @@
                 </RadioGroup>
 
 
-            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/fldGrpnc212"
@@ -464,6 +463,8 @@
 
             </RadioGroup>
 
+        </LinearLayout>
+
             <LinearLayout
             android:id="@+id/fldGrpnc206"
             android:layout_width="match_parent"
@@ -519,13 +520,13 @@
 
 
             <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
-            android:text="@string/nc207"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/nc207"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@android:color/white" />
 
             <RadioGroup
             android:id="@+id/nc207"
@@ -647,28 +648,29 @@
 
             <!--</RadioGroup>-->
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/nc215"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
-
-            <TextView
-                style="@style/sub"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="@string/nc215info" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bacground_border1"
                 android:orientation="vertical"
                 android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/nc215"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    style="@style/sub"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/nc215info" />
+
 
                 <TextView
                     android:layout_width="match_parent"
@@ -1166,35 +1168,37 @@
             </LinearLayout>
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/nc216"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
-
-            <TextView
-                style="@style/sub"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="@string/nc216info" />
-
-            <TextView
-                style="@style/sub"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="@string/nc216info1" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bacground_border1"
                 android:orientation="vertical"
                 android:padding="20dp">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/nc216"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    style="@style/sub"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/nc216info" />
+
+                <TextView
+                    style="@style/sub"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/nc216info1" />
+
 
                 <TextView
                     android:layout_width="match_parent"
@@ -2232,9 +2236,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorHeading"
+                    android:background="@color/colorPrimary"
                     android:text="@string/nc222"
-                    android:textColor="@color/colorPrimaryDark" />
+                    android:textColor="@android:color/white" />
 
                 <EditText
                     android:id="@+id/nc222"
@@ -2301,9 +2305,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorHeading"
+                    android:background="@color/colorPrimary"
                     android:text="@string/nc224"
-                    android:textColor="@color/colorPrimaryDark" />
+                    android:textColor="@android:color/white" />
 
                 <EditText
                     android:id="@+id/nc224"
@@ -2360,9 +2364,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@color/colorHeading"
+                    android:background="@color/colorPrimary"
                     android:text="@string/nc226"
-                    android:textColor="@color/colorPrimaryDark" />
+                    android:textColor="@android:color/white" />
 
                 <EditText
                     android:id="@+id/nc226"

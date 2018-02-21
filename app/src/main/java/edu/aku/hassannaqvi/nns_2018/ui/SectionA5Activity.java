@@ -247,7 +247,7 @@ public class SectionA5Activity extends AppCompatActivity {
             return false;
         }
 //        na802
-        if (!binding.na801a.isChecked()) {
+        if (binding.na801a.isChecked()) {
             if (!validatorClass.EmptyTextBox(this, binding.na802, getString(R.string.na802))) {
                 return false;
             }

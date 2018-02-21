@@ -179,13 +179,10 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        style="@style/sub"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/colorPrimary"
-                        android:text="@string/nb503a"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white" />
+                        android:text="@string/nb503a" />
 
                     <RadioButton
                         android:id="@+id/nb503a"
@@ -538,13 +535,10 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        style="@style/sub"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/colorPrimary"
-                        android:text="@string/nb508a"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white" />
+                        android:text="@string/nb508a" />
 
                     <RadioButton
                         android:id="@+id/nb508a"
@@ -566,13 +560,10 @@
                         android:visibility='@{nb508a.checked ? View.VISIBLE : View.GONE}' />
 
                     <TextView
+                        style="@style/sub"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/colorPrimary"
-                        android:text="@string/nb508b"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white" />
+                        android:text="@string/nb508b" />
 
                     <RadioButton
                         android:id="@+id/nb508b"
@@ -594,13 +585,10 @@
                         android:visibility='@{nb508b.checked ? View.VISIBLE : View.GONE}' />
 
                     <TextView
+                        style="@style/sub"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/colorPrimary"
-                        android:text="@string/nb508c"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white" />
+                        android:text="@string/nb508c" />
 
                     <RadioButton
                         android:id="@+id/nb508c"
