@@ -110,6 +110,8 @@ public class SectionA2Activity extends AppCompatActivity {
 
         binding.na2dob.setManager(getSupportFragmentManager());
 
+        binding.na2dob.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+
         binding.na2dob.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
