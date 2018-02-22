@@ -231,7 +231,7 @@ public class MainActivity extends Activity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                if (spAreas.getSelectedItemPosition() != 0) {
+                if (spAreas.getSelectedInc308osition() != 0) {
                     MainApp.areaCode = Integer.valueOf(AreasMap.get(spAreas.getSelectedItem().toString()));
                 }
             }
@@ -257,7 +257,7 @@ public class MainActivity extends Activity {
 
     public void openForm() {
 
-//        if (spAreas.getSelectedItemPosition() != 0) {
+//        if (spAreas.getSelectedInc308osition() != 0) {
         final Intent oF = new Intent(MainActivity.this, SectionA1Activity.class);
 
         if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null && !MainApp.userName.equals("0000")) {
