@@ -819,12 +819,12 @@
     <string name="nc220a"> صحت مہیا کرنے والا </string>
     <string name="nc220b"> فارمیسی/فارمیسٹ </string>
     <string name="nc220c"> رشتہ دار </string>
-    <string name="nc221"> بچہ(نام) کو کل، رات یا دن کے دوران Iron کی اضافی خوراک دی گئی ؟ </string>
-    <string name="nc222"> کی خوراکیں دی گئیں ۔ Iron (نام) کو کتنی </string>
-    <string name="nc223"> بچہ(نام) کو کل، رات یا دن کے دوران وٹامن اے کی اضافی خوراک دی گئی ؟ </string>
-    <string name="nc224"> (نام) کو کتنی وٹامن اے کی اضافی خوراکیں دی گئی؟ </string>
-    <string name="nc225"> بچہ(نام) کو کل، رات یا دن کے دوران اضافی غذائی خوراک(MNP) دی گئی؟ </string>
-    <string name="nc226">  (نام) کو کتنی وٹامن اے کی اضافی غذائی خوراک(MNP). دی گئیں  </string>
+    <string name="nc223"> بچہ(نام) کو کل، رات یا دن کے دوران Iron کی اضافی خوراک دی گئی ؟ </string>
+    <string name="nc224"> کی خوراکیں دی گئیں ۔ Iron (نام) کو کتنی </string>
+    <string name="nc225"> بچہ(نام) کو کل، رات یا دن کے دوران وٹامن اے کی اضافی خوراک دی گئی ؟ </string>
+    <string name="nc226"> (نام) کو کتنی وٹامن اے کی اضافی خوراکیں دی گئی؟ </string>
+    <string name="nc227"> بچہ(نام) کو کل، رات یا دن کے دوران اضافی غذائی خوراک(MNP) دی گئی؟ </string>
+    <string name="nc228">  (نام) کو کتنی وٹامن اے کی اضافی غذائی خوراک(MNP). دی گئیں  </string>
   <string name="nc3heading"> IMMUNIZATION STATUS  </string>
   <string name="nc3info"> اس سیکشن میں صرف ان بچوں کا اندراج ہوگا جو 5 سال سے چھوٹے ہیں  </string>
     <string name="nc303"> کیاآپ کے پاس قومی حفاظتی ٹیکوں کاکارڈ یا کسی نجی ادارے کی طرف سے دیاگیا حفاظتی ٹیکوں کا ریکارڈ موجود ہے ؟ </string>
@@ -1075,8 +1075,8 @@
   <string name="nw20901">کلینک پر ملی</string>
   <string name="nw20902">خریدی</string>
   <string name="nw20903">نہ  ملی نہ خریدی</string>
-    <string name="newnc221">کیا(نام) نے کل دن یا رات کے دوران کوئی وٹامن یا منرل سپلیمنٹ یا کوئی دوائی پی یاکھائی تھی</string>
-    <string name="newnc222">کیا (نام) نے کل دن  یا رات کے دوران نمکول(او-آر-ایس) پیاتھا؟</string>
+    <string name="nc221">کیا(نام) نے کل دن یا رات کے دوران کوئی وٹامن یا منرل سپلیمنٹ یا کوئی دوائی پی یاکھائی تھی</string>
+    <string name="nc222">کیا (نام) نے کل دن  یا رات کے دوران نمکول(او-آر-ایس) پیاتھا؟</string>
     <string name="newnc306">Did (name of child) ever have any vaccinations to prevent him/her from getting diseases, including vaccinations received in a national immunization day campaign?</string>
 
 
