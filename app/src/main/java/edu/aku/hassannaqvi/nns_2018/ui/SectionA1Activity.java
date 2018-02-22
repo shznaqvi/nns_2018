@@ -98,12 +98,16 @@ public class SectionA1Activity extends AppCompatActivity {
             }
         });
 
+//        FamilyMembersList initialization
+        MainApp.familyMembersList = new ArrayList<>();
+        MainApp.hhClicked = new ArrayList<>();
+
     }
 
     public void BtnContinue() {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
-        if (formValidation()) {
+        /*if (formValidation()) {
             try {
                 SaveDraft();
             } catch (JSONException e) {
@@ -114,12 +118,14 @@ public class SectionA1Activity extends AppCompatActivity {
 
                 finish();
 
-                startActivity(new Intent(this, SectionA2Activity.class));
+                startActivity(new Intent(this, SectionA2ListActivity.class));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
-        }
+        }*/
+
+        startActivity(new Intent(this, SectionA2ListActivity.class));
     }
 
     public void BtnEnd() {
@@ -288,13 +294,13 @@ public class SectionA1Activity extends AppCompatActivity {
 
 //        na117
         sA1.put("nw117a", binding.na113a.isChecked() ? "1" : "0");
-        sA1.put("nw117b", binding.na113b.isChecked() ? "2" :"0");
-        sA1.put("nw117c", binding.na113c.isChecked() ? "3" :"0");
-        sA1.put("nw117d", binding.na113d.isChecked() ? "4" :"0");
-        sA1.put("nw117e", binding.na113e.isChecked() ? "5" :"0");
-        sA1.put("nw117f", binding.na113f.isChecked() ? "6" :"0");
-        sA1.put("nw117g", binding.na113g.isChecked() ? "7" :"0");
-        sA1.put("nw11796", binding.na11396.isChecked() ? "96" :"0");
+        sA1.put("nw117b", binding.na113b.isChecked() ? "2" : "0");
+        sA1.put("nw117c", binding.na113c.isChecked() ? "3" : "0");
+        sA1.put("nw117d", binding.na113d.isChecked() ? "4" : "0");
+        sA1.put("nw117e", binding.na113e.isChecked() ? "5" : "0");
+        sA1.put("nw117f", binding.na113f.isChecked() ? "6" : "0");
+        sA1.put("nw117g", binding.na113g.isChecked() ? "7" : "0");
+        sA1.put("nw11796", binding.na11396.isChecked() ? "96" : "0");
         sA1.put("nw11796x", binding.na11396x.getText().toString());
 
         MainApp.fc.setsA1(String.valueOf(sA1));

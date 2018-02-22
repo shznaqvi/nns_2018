@@ -95,6 +95,9 @@ public class MainApp extends Application {
     public static List<FamilyMembersContract> mwra;
     public static List<FamilyMembersContract> adolescents;
     public static int serial_no;
+    // fro section A2
+    public static List<FamilyMembersContract> familyMembersList;
+    public static List<Integer> hhClicked;
 
     // Gul Sanober
     public static Map<String, String> mwraMap = new HashMap<>();

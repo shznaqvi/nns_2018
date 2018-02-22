@@ -6,13 +6,15 @@ import android.provider.BaseColumns;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 import edu.aku.hassannaqvi.nns_2018.R;
 
 /**
  * Created by hassan.naqvi on 11/30/2016.
  */
 
-public class FamilyMembersContract {
+public class FamilyMembersContract implements Serializable {
 
     private final String projectName = String.valueOf(R.string.app_name);
     private String _ID = "";
@@ -36,7 +38,54 @@ public class FamilyMembersContract {
     private String synced = "";
     private String syncedDate = "";
 
+    private String motherName = "";
+    private String fatherName = "";
+    private String maritialStatus = "";
+    private String realtionHH = "";
+
     public FamilyMembersContract() {
+    }
+
+    public FamilyMembersContract(FamilyMembersContract fmc) {
+        this.serialNo = fmc.serialNo;
+        this.name = fmc.name;
+        this.ageInYear = fmc.ageInYear;
+        this.gender = fmc.gender;
+        this.motherName = fmc.motherName;
+        this.fatherName = fmc.fatherName;
+        this.maritialStatus = fmc.maritialStatus;
+    }
+
+    public String getRealtionHH() {
+        return realtionHH;
+    }
+
+    public void setRealtionHH(String realtionHH) {
+        this.realtionHH = realtionHH;
+    }
+
+    public String getMotherName() {
+        return motherName;
+    }
+
+    public void setMotherName(String motherName) {
+        this.motherName = motherName;
+    }
+
+    public String getFatherName() {
+        return fatherName;
+    }
+
+    public void setFatherName(String fatherName) {
+        this.fatherName = fatherName;
+    }
+
+    public String getMaritialStatus() {
+        return maritialStatus;
+    }
+
+    public void setMaritialStatus(String maritialStatus) {
+        this.maritialStatus = maritialStatus;
     }
 
     public String getProjectName() {
