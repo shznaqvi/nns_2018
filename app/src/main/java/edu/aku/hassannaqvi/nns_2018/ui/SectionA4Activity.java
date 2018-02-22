@@ -288,21 +288,21 @@ public class SectionA4Activity extends AppCompatActivity {
         if (!validatorClass.EmptyRadioButton(this, binding.na418, binding.na418b, getString(R.string.na418))) {
             return false;
         }
+
         if (binding.na418a.isChecked()) {
-//            if (binding.na419a.isChecked()) {-
-                if(!validatorClass.EmptyRadioButton(this,binding.na419,binding.na419a,binding.na419acr,getString(R.string.na419acr))){
+            if (!validatorClass.EmptyRadioButton(this, binding.na419, binding.na419a, getString(R.string.na419))) {
+                return false;
+            }
+
+            if (binding.na419a.isChecked()) {
+                if (!validatorClass.EmptyTextBox(this, binding.na419acr, getString(R.string.na419acr))) {
                     return  false;
                 }
-//            }
-//            if (binding.na419b.isChecked()) {
-                else if(!validatorClass.EmptyRadioButton(this,binding.na419,binding.na419a,binding.na419can,getString(R.string.na419can))){
+            } else if (binding.na419b.isChecked()) {
+                if (!validatorClass.EmptyTextBox(this, binding.na419can, getString(R.string.na419can))) {
                     return  false;
                 }
-//            } else if (binding.na41998.isChecked()) {
-                else if(!validatorClass.EmptyRadioButton(this,binding.na419,binding.na419a,getString(R.string.na419))){
-                    return  false;
-                }
-//            }
+            }
         }
 
         if (!validatorClass.EmptyRadioButton(this, binding.na420, binding.na420b, getString(R.string.na420))) {
