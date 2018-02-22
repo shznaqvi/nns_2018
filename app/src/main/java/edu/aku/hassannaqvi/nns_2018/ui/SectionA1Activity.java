@@ -178,13 +178,16 @@ public class SectionA1Activity extends AppCompatActivity {
 */
 
 //        na103
-        if (!validatorClass.EmptyTextBox(this, binding.na103, getString(R.string.na103))) {
-            return false;
-        }
 
-        String[] str = binding.na103.getText().toString().split("-");
-        if (str.length > 2 || binding.na103.getText().toString().charAt(3) != '-' || !str[0].matches("[0-9]+")) {
-            binding.na103.setError("Wrong presentation!!");
+        if (binding.na103.getText().toString().length() == 5) {
+            String[] str = binding.na103.getText().toString().split("-");
+            if (str.length > 2 || binding.na103.getText().toString().charAt(3) != '-' || !str[0].matches("[0-9]+") || !str[1].matches("[a-zA-Z]")) {
+                binding.na103.setError("Wrong presentation!!");
+                return false;
+            }
+        } else {
+            Toast.makeText(this, "Invalid length: " + getString(R.string.na103), Toast.LENGTH_SHORT).show();
+            binding.na103.setError("Invalid length");
             return false;
         }
 
