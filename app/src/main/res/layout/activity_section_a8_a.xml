@@ -61,9 +61,11 @@
 
             <Spinner
                 android:id="@+id/na8a02"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp" />
+                android:layout_marginTop="10dp"
+                android:gravity="center" />
 
             <TextView
                 android:layout_width="match_parent"

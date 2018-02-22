@@ -558,11 +558,11 @@
 
                 <Spinner
                     android:id="@+id/na205"
+                    style="@style/Widget.AppCompat.Spinner.Underlined"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
-                    android:background="@color/white"
                     android:gravity="center" />
 
             </LinearLayout>
@@ -588,11 +588,11 @@
 
                 <Spinner
                     android:id="@+id/na206"
+                    style="@style/Widget.AppCompat.Spinner.Underlined"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
-                    android:background="#ffffff"
                     android:gravity="center" />
 
             </LinearLayout>

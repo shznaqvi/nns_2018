@@ -178,8 +178,8 @@ public class SectionA2Activity extends AppCompatActivity {
             }
         }
 
-        binding.na205.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, fathersList));
-        binding.na206.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, mothersList));
+        binding.na205.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, fathersList));
+        binding.na206.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, mothersList));
 
 //        Visibility for isHead
         if (MainApp.IsHead) {

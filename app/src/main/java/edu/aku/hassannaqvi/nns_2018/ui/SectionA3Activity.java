@@ -77,7 +77,7 @@ public class SectionA3Activity extends AppCompatActivity {
         }
 
         slcMem = new FamilyMembersContract();
-        binding.na301.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, members));
+        binding.na301.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, members));
 
 //        Spinner setting
         binding.na301.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

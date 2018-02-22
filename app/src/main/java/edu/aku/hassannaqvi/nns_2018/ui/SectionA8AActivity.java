@@ -66,9 +66,10 @@ public class SectionA8AActivity extends Activity {
 
         } else {
             counter++;
+
         }
 
-        bi.na8a02.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, recpNames));
+        bi.na8a02.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, recpNames));
 
         bi.na8a02.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

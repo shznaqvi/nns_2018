@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -104,8 +103,8 @@ public class SectionB1Activity extends Activity {
         }
 
 
-        bi.nb101.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, lstMwra));
-        bi.resp.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, respName));
+        bi.nb101.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, lstMwra));
+        bi.resp.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, respName));
 
         bi.nb101.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -279,11 +278,7 @@ bi.nw20799.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             }
 
         }
-        if (!validatorClass.EmptyRadioButton(this,bi.nw20701, bi.nw20701b,getString(R.string.nw20701))){
-            return false;
-        }
-
-        return true;
+        return validatorClass.EmptyRadioButton(this, bi.nw20701, bi.nw20701b, getString(R.string.nw20701));
     }
 
     private void SaveDraft() throws JSONException {

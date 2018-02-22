@@ -42,7 +42,7 @@
                 android:gravity="center_horizontal"
                 android:keepScreenOn="true"
                 android:paddingBottom="2dp"
-                android:text="Aga Khan University"
+                android:text="The Aga Khan University"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/_18sdp"
                 android:textStyle="bold" />
@@ -54,7 +54,7 @@
                 android:fontFamily="serif"
                 android:gravity="center_horizontal"
                 android:keepScreenOn="true"
-                android:text="Center of excellence in\nWomen and Child Health"
+                android:text="Center of Excellence  in\nWomen and Child Health"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/_14sdp" />
 
@@ -249,7 +249,7 @@
                     android:layout_marginTop="2dp"
                     android:gravity="center"
                     android:onClick="showCredits"
-                    android:text="This app is developed by The Software Developers Team of Data Management Unit,\nPediatrics Department, Division of Women and Child Health, \n Aga Khan University. "
+                    android:text="This application has been developed by the Software Development Team of the Data Management Unit, Department of Paediatrics and Child Health, Aga Khan University. All rights reserved. Copyright Aga Khan University 2018. For questions/comments, please email us at dmu@aku.edu "
                     android:textColor="@color/black"
                     android:textSize="12sp" />
             </LinearLayout>

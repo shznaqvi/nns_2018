@@ -71,7 +71,7 @@ public class SectionC1Activity extends AppCompatActivity {
         binding.txtCounter.setText("Count " + counter + " out of " + counterPerMom);
 
         // setup spinner
-        binding.nc101.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, childU5));
+        binding.nc101.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, childU5));
     }
 
     public void BtnContinue() {

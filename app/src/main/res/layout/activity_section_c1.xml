@@ -60,11 +60,11 @@
 
             <Spinner
                 android:id="@+id/nc101"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
-                android:hint="@string/nc101" />
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp" />
 
             <!--nc103-->
             <TextView
