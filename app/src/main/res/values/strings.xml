@@ -440,15 +440,15 @@
     <string name="nbheading"> SECTION B1: REPRODUCTIVE HISTORY </string>
     <string name="nb101"> شادی شدہ خاتون کانام </string>
     <string name="nb102"> شادی شدہ خاتون کالائن نمبر سیکشن A2 سے دیکھ کر لکھیں </string>
-    <string name="nb103"> شادی کے وقت آپ کی عمر کیا تھی؟ </string>
-    <string name="nb103a"> عمر سالوں میں </string>
-    <string name="nb104"> کل حمل کی تعداد </string>
-    <string name="nb104info"> (بشمول موجودہ حمل) </string>
-    <string name="nb104a"> # of pregnancies </string>
-    <string name="nb105"> کیا آپ ابھی حاملہ ہیں؟ </string>
-    <string name="nb106info"> IF FIRST PREGNANCY AFTER MARRIAGE THEN GO TO SECTION B2 </string>
-    <string name="nb106"> پہلے بچے کی پیدائش کے وقت آپ کی عمر کیاتھی؟ </string>
-    <string name="nb106a"> عمر سالوں میں </string>
+    <string name="nw203"> شادی کے وقت آپ کی عمر کیا تھی؟ </string>
+    <string name="nw203a"> عمر سالوں میں </string>
+    <string name="nw204"> کل حمل کی تعداد </string>
+    <string name="nw204info"> (بشمول موجودہ حمل) </string>
+    <string name="nw204a"> # of pregnancies </string>
+    <string name="nw207"> کیا آپ ابھی حاملہ ہیں؟ </string>
+    <string name="nw206info"> IF FIRST PREGNANCY AFTER MARRIAGE THEN GO TO SECTION B2 </string>
+    <string name="nw206"> پہلے بچے کی پیدائش کے وقت آپ کی عمر کیاتھی؟ </string>
+    <string name="nw206a"> عمر سالوں میں </string>
     <string name="nb1aheading"> SECTION B1(a) : DETAILS OF ALL PREGNANCIES </string>
     <string name="nb1a01"> Date of outcome * </string>
     <string name="nb1a02"> Outcome </string>
@@ -1065,14 +1065,15 @@
   <string name="nw321">آپ نے حمل کے دوران کیلشیم کی گولیاں کہاں سے حاصل کیں؟</string>
 
 
+    <string name="nw205">Total number of deliveries so far? </string>
+    <string name="nw205time"> # of deliveries </string>
+    <string name="nw208">موجودہ حمل کے دوران ،کیا آپ کو فولاد کی گولیا ں دی گئی یا آپ نے خریدی؟ </string>
+    <string name="nw209">اگر ہاں ،خریدی یا دی گئی ؟</string>
 
-  <string name="nw206">موجودہ حمل کے دوران ،کیا آپ کو فولاد کی گولیا ں دی گئی یا آپ نے خریدی؟ </string>
-  <string name="nw207">اگر ہاں ،خریدی یا دی گئی ؟</string>
 
-
-  <string name="nw20701">کلینک پر ملی</string>
-  <string name="nw20702">خریدی</string>
-  <string name="nw20703">نہ  ملی نہ خریدی</string>
+    <string name="nw20901">کلینک پر ملی</string>
+    <string name="nw20902">خریدی</string>
+    <string name="nw20903">نہ  ملی نہ خریدی</string>
     <string name="newnc221">کیا(نام) نے کل دن یا رات کے دوران کوئی وٹامن یا منرل سپلیمنٹ یا کوئی دوائی پی یاکھائی تھی</string>
     <string name="newnc222">کیا (نام) نے کل دن  یا رات کے دوران نمکول(او-آر-ایس) پیاتھا؟</string>
     <string name="newnc306">Did (name of child) ever have any vaccinations to prevent him/her from getting diseases, including vaccinations received in a national immunization day campaign?</string>
