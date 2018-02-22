@@ -138,6 +138,11 @@ public class SectionA2Activity extends AppCompatActivity {
                         binding.fldGrpna2edu.setVisibility(View.VISIBLE);
                         binding.fldGrpna2ms.setVisibility(View.VISIBLE);
                         binding.fldGrpna2occ.setVisibility(View.VISIBLE);
+
+                        binding.na2edu.clearCheck();
+                        binding.na2ms.clearCheck();
+                        binding.na2occ.clearCheck();
+
                         binding.na2msa.setEnabled(true);
                         binding.na2msb.setEnabled(true);
                         binding.na2msc.setEnabled(true);
@@ -153,15 +158,6 @@ public class SectionA2Activity extends AppCompatActivity {
                         binding.na2edug.setEnabled(true);
                         binding.na2eduh.setEnabled(true);
                         binding.na2edui.setEnabled(true);
-                    } else {
-
-                        binding.fldGrpna2edu.setVisibility(View.GONE);
-                        binding.fldGrpna2ms.setVisibility(View.GONE);
-                        binding.fldGrpna2occ.setVisibility(View.GONE);
-                        binding.na2edu.clearCheck();
-                        binding.na2ms.clearCheck();
-                        binding.na2occ.clearCheck();
-                        Toast.makeText(SectionA2Activity.this, "Age must be less than 49", Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -226,6 +222,9 @@ public class SectionA2Activity extends AppCompatActivity {
                         binding.fldGrpna2edu.setVisibility(View.VISIBLE);
                         binding.fldGrpna2ms.setVisibility(View.VISIBLE);
                         binding.fldGrpna2occ.setVisibility(View.VISIBLE);
+                        binding.na2edu.clearCheck();
+                        binding.na2ms.clearCheck();
+                        binding.na2occ.clearCheck();
                         binding.na2msa.setEnabled(true);
                         binding.na2msb.setEnabled(true);
                         binding.na2msc.setEnabled(true);

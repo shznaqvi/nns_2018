@@ -187,7 +187,22 @@ bi.nw20799.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
 
 
+bi.nw206.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        if (checkedId == R.id.nw206b){
+            bi.fldGrpnb107radio.setVisibility(View.GONE);
+            bi.nw20701.clearCheck();
+            bi.nw20702.clearCheck();
+            bi.nw20703.clearCheck();
+            bi.nw20798.clearCheck();
+            bi.nw20799.clearCheck();
+        }else{
+            bi.fldGrpnb107radio.setVisibility(View.VISIBLE);
 
+        }
+    }
+});
 
     }
 
