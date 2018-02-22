@@ -413,7 +413,9 @@ public class SectionA5Activity extends AppCompatActivity {
 
         sA5.put("nh702", binding.na802.getText().toString());
 
-        recipientCounter = Integer.valueOf(binding.na802.getText().toString());
+        if (binding.na801a.isChecked()) {
+            recipientCounter = Integer.valueOf(binding.na802.getText().toString());
+        }
 
         MainApp.fc.setsA5(String.valueOf(sA5));
 

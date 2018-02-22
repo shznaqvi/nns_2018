@@ -324,6 +324,7 @@ public class SectionA2Activity extends AppCompatActivity {
                 finish();
 
                 startActivity(new Intent(this, SectionA4Activity.class));
+                //startActivity(new Intent(this, SectionB1Activity.class));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -575,10 +576,11 @@ public class SectionA2Activity extends AppCompatActivity {
             MainApp.membersCount.setMembers(3, memType);
 
             // Add data in list
-            if (Age < 5 && Age > 2) {
+            if (Age < 2) {
                 MainApp.childUnder5.add(MainApp.fmc);
-            } else {
                 MainApp.childUnder2.add(MainApp.fmc);
+            } else {
+                MainApp.childUnder5.add(MainApp.fmc);
             }
         }
 

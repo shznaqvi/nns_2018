@@ -308,23 +308,49 @@ public class SectionA4Activity extends AppCompatActivity {
         if (!validatorClass.EmptyRadioButton(this, binding.na420, binding.na420b, getString(R.string.na420))) {
             return false;
         }
+
+
         if (binding.na420a.isChecked()) {
+            if (!validatorClass.EmptyTextBox(this, binding.na421a, getString(R.string.na421a))) {
+                return false;
+            }
+
             if (!validatorClass.RangeTextBox(this, binding.na421a, 0, 999, getString(R.string.na421a), "Animal")) {
+                return false;
+            }
+
+            if (!validatorClass.EmptyTextBox(this, binding.na421b, getString(R.string.na421b))) {
                 return false;
             }
             if (!validatorClass.RangeTextBox(this, binding.na421b, 0, 999, getString(R.string.na421b), "Animal")) {
                 return false;
             }
+
+            if (!validatorClass.EmptyTextBox(this, binding.na421c, getString(R.string.na421c))) {
+                return false;
+            }
             if (!validatorClass.RangeTextBox(this, binding.na421c, 0, 999, getString(R.string.na421c), "Animal")) {
+                return false;
+            }
+            if (!validatorClass.EmptyTextBox(this, binding.na421d, getString(R.string.na421d))) {
                 return false;
             }
             if (!validatorClass.RangeTextBox(this, binding.na421d, 0, 999, getString(R.string.na421d), "Animal")) {
                 return false;
             }
+            if (!validatorClass.EmptyTextBox(this, binding.na421e, getString(R.string.na421e))) {
+                return false;
+            }
             if (!validatorClass.RangeTextBox(this, binding.na421e, 0, 999, getString(R.string.na421e), "Animal")) {
                 return false;
             }
+            if (!validatorClass.EmptyTextBox(this, binding.na421f, getString(R.string.na421f))) {
+                return false;
+            }
             if (!validatorClass.RangeTextBox(this, binding.na421f, 0, 999, getString(R.string.na421f), "Animal")) {
+                return false;
+            }
+            if (!validatorClass.EmptyTextBox(this, binding.na421g, getString(R.string.na421g))) {
                 return false;
             }
             if (!validatorClass.RangeTextBox(this, binding.na421g, 0, 999, getString(R.string.na421g), "Animal")) {

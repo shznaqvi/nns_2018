@@ -11,7 +11,6 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -34,9 +33,10 @@ public class SectionC1Activity extends AppCompatActivity {
     public static String selectedChildName = "";
     static List<String> childU5;
     static Map<String, FamilyMembersContract> childMap;
+    static ArrayList<String> respName;
+    static ArrayList<String> respSerial;
     ActivitySectionC1Binding binding;
     DatabaseHelper db;
-
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
 
     @Override
@@ -44,6 +44,10 @@ public class SectionC1Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_c1);
         db = new DatabaseHelper(this);
+        respName = new ArrayList<>();
+        respSerial = new ArrayList<>();
+        respName.add("....");
+        //childMap = new HashMap<>();
 
 //        Assigning data to UI binding
         binding.setCallback(this);
@@ -67,11 +71,18 @@ public class SectionC1Activity extends AppCompatActivity {
             }
         }
 
+        for (FamilyMembersContract fmc : MainApp.members_f_m) {
+
+            respName.add(fmc.getName());
+            respSerial.add(fmc.getSerialNo());
+        }
+
         // setup head
         binding.txtCounter.setText("Count " + counter + " out of " + counterPerMom);
 
         // setup spinner
         binding.nc101.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, childU5));
+        binding.resp.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, respName));
     }
 
     public void BtnContinue() {
@@ -88,10 +99,10 @@ public class SectionC1Activity extends AppCompatActivity {
 
                 finish();
 
-                if (Integer.valueOf(childMap.get(binding.nc101.getSelectedItem().toString()).getAgeInYear()) > 2) {
-                    startActivity(new Intent(this, SectionC2Activity.class).putExtra("selectedChild", (Serializable) childMap.get(binding.nc101.getSelectedItem().toString())));
+                if (Integer.valueOf(childMap.get(binding.nc101.getSelectedItem().toString()).getAgeInYear()) < 2) {
+                    startActivity(new Intent(this, SectionC2Activity.class).putExtra("selectedChild", childMap.get(binding.nc101.getSelectedItem().toString())));
                 } else {
-                    startActivity(new Intent(this, SectionC3Activity.class).putExtra("selectedChild", (Serializable) childMap.get(binding.nc101.getSelectedItem().toString())));
+                    startActivity(new Intent(this, SectionC3Activity.class).putExtra("selectedChild", childMap.get(binding.nc101.getSelectedItem().toString())));
                 }
 
             } else {
@@ -136,6 +147,8 @@ public class SectionC1Activity extends AppCompatActivity {
         MainApp.cc.setUUID(MainApp.mc.get_UID());
 
         JSONObject sC1 = new JSONObject();
+
+        sC1.put("respName", binding.resp.getSelectedItem().toString());
 
 //       nc101
         sC1.put("nc101", binding.nc101.getSelectedItem().toString());

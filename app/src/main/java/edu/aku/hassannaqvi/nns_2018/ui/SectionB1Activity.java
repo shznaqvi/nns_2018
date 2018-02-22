@@ -226,6 +226,8 @@ public class SectionB1Activity extends Activity {
                     startActivity(new Intent(this, SectionB6Activity.class));
                 }
 
+                //startActivity(new Intent(this, SectionC1Activity.class));
+
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
