@@ -99,6 +99,71 @@ public class SectionA2Activity extends AppCompatActivity {
                     }
 
                     Age = Integer.valueOf(binding.na2agey.getText().toString());
+                    if (Age < 5) {
+                        binding.fldGrpna2edu.setVisibility(View.GONE);
+                        binding.fldGrpna2ms.setVisibility(View.GONE);
+                        binding.fldGrpna2occ.setVisibility(View.GONE);
+                        binding.na2edu.clearCheck();
+                        binding.na2ms.clearCheck();
+                        binding.na2occ.clearCheck();
+
+
+                        binding.na2edua.setChecked(true);
+                        binding.na2occa.setChecked(true);
+                        binding.na2mse.setChecked(true);
+                    } else if (Age >= 5 && Age <= 12) {
+                        //  binding.na2edua.setEnabled(false);
+                        binding.fldGrpna2edu.setVisibility(View.VISIBLE);
+                        binding.fldGrpna2ms.setVisibility(View.GONE);
+                        binding.fldGrpna2occ.setVisibility(View.GONE);
+                        binding.na2edu.clearCheck();
+                        binding.na2ms.clearCheck();
+                        binding.na2occ.clearCheck();
+
+
+                        binding.na2occa.setChecked(true);
+                        binding.na2mse.setChecked(true);
+
+                        binding.na2edua.setEnabled(true);
+                        binding.na2edub.setEnabled(true);
+                        binding.na2educ.setEnabled(true);
+                        binding.na2edud.setEnabled(true);
+                        binding.na2edue.setEnabled(true);
+
+                        binding.na2eduf.setEnabled(false);
+                        binding.na2edug.setEnabled(false);
+                        binding.na2eduh.setEnabled(false);
+                        binding.na2edui.setEnabled(false);
+                    } else if (Age > 12 ) {
+                        binding.fldGrpna2edu.setVisibility(View.VISIBLE);
+                        binding.fldGrpna2ms.setVisibility(View.VISIBLE);
+                        binding.fldGrpna2occ.setVisibility(View.VISIBLE);
+                        binding.na2msa.setEnabled(true);
+                        binding.na2msb.setEnabled(true);
+                        binding.na2msc.setEnabled(true);
+                        binding.na2msd.setEnabled(true);
+                        binding.na2mse.setEnabled(true);
+
+                        binding.na2edua.setEnabled(true);
+                        binding.na2edub.setEnabled(true);
+                        binding.na2educ.setEnabled(true);
+                        binding.na2edud.setEnabled(true);
+                        binding.na2edue.setEnabled(true);
+                        binding.na2eduf.setEnabled(true);
+                        binding.na2edug.setEnabled(true);
+                        binding.na2eduh.setEnabled(true);
+                        binding.na2edui.setEnabled(true);
+                    } else {
+
+                        binding.fldGrpna2edu.setVisibility(View.GONE);
+                        binding.fldGrpna2ms.setVisibility(View.GONE);
+                        binding.fldGrpna2occ.setVisibility(View.GONE);
+                        binding.na2edu.clearCheck();
+                        binding.na2ms.clearCheck();
+                        binding.na2occ.clearCheck();
+                        Toast.makeText(SectionA2Activity.this, "Age must be less than 49", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
             }
 
@@ -122,6 +187,62 @@ public class SectionA2Activity extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (!binding.na2dob.getText().toString().isEmpty()) {
                     Age = (int) MainApp.ageInYearByDOB(binding.na2dob.getText().toString());
+                    //here
+
+                    if (Age < 5) {
+                        binding.fldGrpna2edu.setVisibility(View.GONE);
+                        binding.fldGrpna2ms.setVisibility(View.GONE);
+                        binding.fldGrpna2occ.setVisibility(View.GONE);
+                        binding.na2edu.clearCheck();
+                        binding.na2ms.clearCheck();
+                        binding.na2occ.clearCheck();
+                        binding.na2edua.setChecked(true);
+                        binding.na2occa.setChecked(true);
+                        binding.na2mse.setChecked(true);
+                    } else if (Age >= 5 && Age <= 12) {
+                        //  binding.na2edua.setEnabled(false);
+                        binding.fldGrpna2edu.setVisibility(View.VISIBLE);
+                        binding.fldGrpna2ms.setVisibility(View.GONE);
+                        binding.fldGrpna2occ.setVisibility(View.GONE);
+
+                        binding.na2edu.clearCheck();
+                        binding.na2ms.clearCheck();
+                        binding.na2occ.clearCheck();
+
+                        binding.na2occa.setChecked(true);
+                        binding.na2mse.setChecked(true);
+
+                        binding.na2edua.setEnabled(true);
+                        binding.na2edub.setEnabled(true);
+                        binding.na2educ.setEnabled(true);
+                        binding.na2edud.setEnabled(true);
+                        binding.na2edue.setEnabled(true);
+
+                        binding.na2eduf.setEnabled(false);
+                        binding.na2edug.setEnabled(false);
+                        binding.na2eduh.setEnabled(false);
+                        binding.na2edui.setEnabled(false);
+                    } else if (Age > 12 ) {
+                        binding.fldGrpna2edu.setVisibility(View.VISIBLE);
+                        binding.fldGrpna2ms.setVisibility(View.VISIBLE);
+                        binding.fldGrpna2occ.setVisibility(View.VISIBLE);
+                        binding.na2msa.setEnabled(true);
+                        binding.na2msb.setEnabled(true);
+                        binding.na2msc.setEnabled(true);
+                        binding.na2msd.setEnabled(true);
+                        binding.na2mse.setEnabled(true);
+
+                        binding.na2edua.setEnabled(true);
+                        binding.na2edub.setEnabled(true);
+                        binding.na2educ.setEnabled(true);
+                        binding.na2edud.setEnabled(true);
+                        binding.na2edue.setEnabled(true);
+                        binding.na2eduf.setEnabled(true);
+                        binding.na2edug.setEnabled(true);
+                        binding.na2eduh.setEnabled(true);
+                        binding.na2edui.setEnabled(true);
+                    }
+
                 }
             }
 
@@ -245,6 +366,7 @@ public class SectionA2Activity extends AppCompatActivity {
             return false;
         }
 
+
         if (!validatorClass.EmptyRadioButton(this, binding.na203, binding.na203a, getString(R.string.na203))) {
             return false;
         }
@@ -314,7 +436,6 @@ public class SectionA2Activity extends AppCompatActivity {
         if (!validatorClass.EmptyRadioButton(this, binding.na2edu, binding.na2edua, getString(R.string.na2edu))) {
             return false;
         }
-
 
         if (!validatorClass.EmptyRadioButton(this, binding.na2occ, binding.na2occa, getString(R.string.na2occ))) {
             return false;
