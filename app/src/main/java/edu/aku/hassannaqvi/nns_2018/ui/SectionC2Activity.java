@@ -314,7 +314,7 @@ public class SectionC2Activity extends Activity {
                     return false;
                 }
 
-                if (!validatorClass.EmptyCheckBox(this, bi.fldGrpnc212check, bi.nc21296, bi.nc21296x, getString(R.string.nb212) + " - " + getString(R.string.other))) {
+                if (!validatorClass.EmptyCheckBox(this, bi.fldGrpnc212check, bi.nc21296, bi.nc21296x, getString(R.string.nw313) + " - " + getString(R.string.other))) {
                     return false;
                 }
             }
@@ -342,10 +342,10 @@ public class SectionC2Activity extends Activity {
 
         if (bi.nc215ba.isChecked() && !bi.nc215b198.isChecked()) {
 
-            if (!validatorClass.EmptyTextBox(this, bi.nc215b1, getString(R.string.nb215))) {
+            if (!validatorClass.EmptyTextBox(this, bi.nc215b1, getString(R.string.nw318))) {
                 return false;
             }
-            if (!validatorClass.RangeTextBox(this, bi.nc215b1, 1, 7, getString(R.string.nb215), " times")) {
+            if (!validatorClass.RangeTextBox(this, bi.nc215b1, 1, 7, getString(R.string.nw318), " times")) {
                 return false;
             }
         }
@@ -357,7 +357,7 @@ public class SectionC2Activity extends Activity {
 
         if (bi.nc215ca.isChecked() && !bi.nc215c198.isChecked()) {
 
-            if (!validatorClass.EmptyTextBox(this, bi.nc215c1, getString(R.string.nb215))) {
+            if (!validatorClass.EmptyTextBox(this, bi.nc215c1, getString(R.string.nw318))) {
                 return false;
             }
 
@@ -381,7 +381,7 @@ public class SectionC2Activity extends Activity {
 
         if (bi.nc215fa.isChecked() && !bi.nc215f198.isChecked()) {
 
-            if (!validatorClass.EmptyTextBox(this, bi.nc215f1, getString(R.string.nb215))) {
+            if (!validatorClass.EmptyTextBox(this, bi.nc215f1, getString(R.string.nw318))) {
                 return false;
             }
 
