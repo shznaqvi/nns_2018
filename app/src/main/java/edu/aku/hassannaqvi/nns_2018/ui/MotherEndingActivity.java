@@ -65,6 +65,7 @@ public class MotherEndingActivity extends AppCompatActivity {
 
                 finish();
 
+
                 if (SectionC1Activity.counter == SectionC1Activity.counterPerMom) {
 
                     startActivity(new Intent(this, EndingActivity.class)

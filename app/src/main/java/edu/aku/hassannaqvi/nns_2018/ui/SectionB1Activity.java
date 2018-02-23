@@ -52,7 +52,7 @@ public class SectionB1Activity extends Activity {
         db = new DatabaseHelper(this);
         lstMwra = new ArrayList<>();
 
-        MainApp.mwraMap.put("....", "");
+        MainApp.mwraMap.put("....", null);
         lstMwra.add("....");
         respName = new ArrayList<>();
         respName.add("....");
@@ -98,7 +98,7 @@ public class SectionB1Activity extends Activity {
 
 
         for (byte i = 0; i < MainApp.mwra.size(); i++) {
-            MainApp.mwraMap.put(MainApp.mwra.get(i).getName(), MainApp.mwra.get(i).getSerialNo());
+            MainApp.mwraMap.put(MainApp.mwra.get(i).getName(), new FamilyMembersContract(MainApp.mwra.get(i)));
             lstMwra.add(MainApp.mwra.get(i).getName());
         }
 
@@ -109,7 +109,7 @@ public class SectionB1Activity extends Activity {
         bi.nb101.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
-                position = i;
+                MainApp.mwraPosition = i;
             }
 
             @Override
@@ -204,6 +204,7 @@ public class SectionB1Activity extends Activity {
 
                 finish();
 
+                lstMwra.remove(MainApp.mwraPosition);
                 if (MainApp.totalPregnancy > 0) {
 
                     startActivity(new Intent(this, SectionB1AActivity.class));
@@ -212,6 +213,7 @@ public class SectionB1Activity extends Activity {
                 } else if (MainApp.totalPregnancy == 0) {
                     startActivity(new Intent(this, SectionB6Activity.class));
                 }
+
 
                 //startActivity(new Intent(this, SectionC1Activity.class));
 
@@ -261,7 +263,7 @@ public class SectionB1Activity extends Activity {
             return false;
         }
 
-        if (!validatorClass.RangeTextBox(this, bi.nw203, 15, 49, getString(R.string.na8a03m), " years")) {
+        if (!validatorClass.RangeTextBox(this, bi.nw203, 15, 49, getString(R.string.nw203), " years")) {
             return false;
         }
 
@@ -324,7 +326,7 @@ public class SectionB1Activity extends Activity {
         MainApp.mc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
         MainApp.mc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
-        MainApp.mc.setB1SerialNo(MainApp.mwraMap.get(bi.nb101.getSelectedItem().toString()));
+        MainApp.mc.setB1SerialNo(MainApp.mwraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
         MainApp.mc.set_UUID(MainApp.fc.getUID());
 
         JSONObject sB1 = new JSONObject();

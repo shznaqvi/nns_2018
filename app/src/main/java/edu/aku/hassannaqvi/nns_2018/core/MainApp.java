@@ -100,12 +100,13 @@ public class MainApp extends Application {
     public static List<Integer> hhClicked;
 
     // Gul Sanober
-    public static Map<String, String> mwraMap = new HashMap<>();
+    public static Map<String, FamilyMembersContract> mwraMap = new HashMap<>();
     public static int totalPregnancy = 0;
     public static int count = 1;
     public static boolean flag = false;
     public static int outcome = 0;
     public static String lineNo = "";
+    public static int mwraPosition = 0;
     protected static LocationManager locationManager;
 
     public static int monthsBetweenDates(Date startDate, Date endDate) {
