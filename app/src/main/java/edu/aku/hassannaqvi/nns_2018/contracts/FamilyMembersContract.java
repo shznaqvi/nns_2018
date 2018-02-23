@@ -38,7 +38,54 @@ public class FamilyMembersContract implements Serializable {
     private String synced = "";
     private String syncedDate = "";
 
+    private String motherName = "";
+    private String fatherName = "";
+    private String maritialStatus = "";
+    private String realtionHH = "";
+
     public FamilyMembersContract() {
+    }
+
+    public FamilyMembersContract(FamilyMembersContract fmc) {
+        this.serialNo = fmc.serialNo;
+        this.name = fmc.name;
+        this.ageInYear = fmc.ageInYear;
+        this.gender = fmc.gender;
+        this.motherName = fmc.motherName;
+        this.fatherName = fmc.fatherName;
+        this.maritialStatus = fmc.maritialStatus;
+    }
+
+    public String getRealtionHH() {
+        return realtionHH;
+    }
+
+    public void setRealtionHH(String realtionHH) {
+        this.realtionHH = realtionHH;
+    }
+
+    public String getMotherName() {
+        return motherName;
+    }
+
+    public void setMotherName(String motherName) {
+        this.motherName = motherName;
+    }
+
+    public String getFatherName() {
+        return fatherName;
+    }
+
+    public void setFatherName(String fatherName) {
+        this.fatherName = fatherName;
+    }
+
+    public String getMaritialStatus() {
+        return maritialStatus;
+    }
+
+    public void setMaritialStatus(String maritialStatus) {
+        this.maritialStatus = maritialStatus;
     }
 
     public String getProjectName() {

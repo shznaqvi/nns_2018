@@ -588,7 +588,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(familyMembers.COLUMN_UUID, fmc.get_UUID());
         values.put(familyMembers.COLUMN_FORMDATE, fmc.getFormDate());
         values.put(familyMembers.COLUMN_USER, fmc.getUser());
-        values.put(familyMembers.COLUMN_SA2, fmc.getsA2());
+
         values.put(familyMembers.COLUMN_DEVICETAGID, fmc.getDevicetagID());
         values.put(familyMembers.COLUMN_DEVICEID, fmc.getDeviceId());
         values.put(familyMembers.COLUMN_SYNCED, fmc.getSynced());
@@ -904,8 +904,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(familyMembers.COLUMN_UID, MainApp.fmc.get_UID());
 
 // Which row to update, based on the ID
-        String selection = familyMembers._ID + " = ?";
+        String selection = familyMembers.COLUMN_ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.fmc.get_ID())};
+
+        int count = db.update(familyMembers.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
+
+    public int updateFamilyMember(FamilyMembersContract fmc) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(familyMembers.COLUMN_SA2, MainApp.fmc.getsA2());
+
+// Which row to update, based on the ID
+        String selection = familyMembers.COLUMN_UID + " = ?";
+        String[] selectionArgs = {String.valueOf(fmc.get_UID())};
 
         int count = db.update(familyMembers.TABLE_NAME,
                 values,
@@ -1562,12 +1580,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public int updateSA1() {
+    public int updateSACount() {
         SQLiteDatabase db = this.getReadableDatabase();
 
 // New value for one column
         ContentValues values = new ContentValues();
-        values.put(FormsTable.COLUMN_SA1, MainApp.fc.getsA1());
+        values.put(FormsTable.COLUMN_COUNT, MainApp.fc.getCount());
 
 // Which row to update, based on the ID
         String selection = FormsTable._ID + " = ?";

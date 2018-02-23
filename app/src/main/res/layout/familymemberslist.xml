@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="10dp">
+
+        <ImageView
+            android:id="@+id/imgUser"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/toic" />
+
+        <RelativeLayout
+            android:id="@+id/info"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@+id/imgUser">
+            <!-- Family Member Name-->
+            <TextView
+                android:id="@+id/memberName"
+                style="@style/listItems"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:text="Memeber Name"
+                android:textColor="#efefef"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:typeface="sans" />
+
+            <!-- Mother -->
+            <TextView
+                android:id="@+id/mmName"
+                style="@style/listItems"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/memberName"
+                android:layout_marginTop="1dip"
+                android:text="ABCDEFG"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp" />
+
+            <!-- Father -->
+            <TextView
+                android:id="@+id/ffName"
+                style="@style/listItems"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/mmName"
+                android:layout_marginTop="1dip"
+                android:text="ABCDEFG"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp" />
+
+            <!-- LineNo -->
+            <TextView
+                android:id="@+id/lineNo"
+                style="@style/listItems"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/maritalStatus"
+                android:layout_alignParentTop="true"
+                android:gravity="right"
+                android:text="Line No"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- Gender -->
+            <TextView
+                android:id="@+id/gender"
+                style="@style/listItems"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/mmName"
+                android:layout_alignBottom="@+id/mmName"
+                android:layout_alignEnd="@+id/maritalStatus"
+                android:layout_alignParentEnd="@id/lineNo"
+                android:gravity="right"
+                android:text="Gender"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- Status -->
+            <TextView
+                android:id="@+id/maritalStatus"
+                style="@style/listItems"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="false"
+                android:layout_below="@id/gender"
+                android:layout_marginRight="8dp"
+                android:gravity="right"
+                android:text="M.S"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</layout>

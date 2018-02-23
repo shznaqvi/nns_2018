@@ -80,7 +80,8 @@
     <string name="na113e"> سروے پر اعتبار نہیں </string>
     <string name="na113f"> پچھلا برا تجربہ </string>
     <string name="na113g"> خون اور پیشاب کے نمونے کا لینا </string>
-    <string name="na2heading"> LIST OF HOUSEHOLD MEMBERS </string>
+  <string name="na2heading"> HOUSEHOLD MEMBERS </string>
+  <string name="na2subHeading"> HOUSEHOLD MEMBERS DATA </string>
     <string name="na201"> Line number </string>
     <string name="na202Info"> براہ مہربانی پہلے مجھے ان سب کانام بتائیں جو عام طور پر یہاں رہتے ہیں خاندان کے سربراہ سے شروع کریں </string>
     <string name="na202"> نام </string>

@@ -98,6 +98,10 @@ public class SectionA1Activity extends AppCompatActivity {
             }
         });
 
+//        FamilyMembersList initialization
+        MainApp.familyMembersList = new ArrayList<>();
+        MainApp.hhClicked = new ArrayList<>();
+
     }
 
     public void BtnContinue() {
@@ -114,7 +118,7 @@ public class SectionA1Activity extends AppCompatActivity {
 
                 finish();
 
-                startActivity(new Intent(this, SectionA2Activity.class));
+                startActivity(new Intent(this, SectionA2ListActivity.class));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();

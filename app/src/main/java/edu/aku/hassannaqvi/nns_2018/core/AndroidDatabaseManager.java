@@ -404,17 +404,17 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
 
                                                                         String Query6 = "Drop table " + indexInfo.table_name;
                                                                         ArrayList<Cursor> aldropt = dbm.getData(Query6);
-                                                                        Cursor nc308c = aldropt.get(1);
-                                                                        nc308c.moveToLast();
-                                                                        Log.d("Drop table Mesage", nc308c.getString(0));
-                                                                        if (nc308c.getString(0).equalsIgnoreCase("Success")) {
+                                                                        Cursor tempc = aldropt.get(1);
+                                                                        tempc.moveToLast();
+                                                                        Log.d("Drop table Mesage", tempc.getString(0));
+                                                                        if (tempc.getString(0).equalsIgnoreCase("Success")) {
                                                                             tvmessage.setBackgroundColor(Color.parseColor("#2ecc71"));
                                                                             tvmessage.setText(indexInfo.table_name + "Dropped successfully");
                                                                             refreshactivity();
                                                                         } else {
                                                                             //if there is any error we displayd the error message at the bottom of the screen
                                                                             tvmessage.setBackgroundColor(Color.parseColor("#e74c3c"));
-                                                                            tvmessage.setText("Error:" + nc308c.getString(0));
+                                                                            tvmessage.setText("Error:" + tempc.getString(0));
                                                                             spinnertable.setSelection(0);
                                                                         }
                                                                     }
@@ -449,17 +449,17 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
                                                                         String Query7 = "Delete  from " + indexInfo.table_name;
                                                                         Log.d("delete table query", Query7);
                                                                         ArrayList<Cursor> aldeletet = dbm.getData(Query7);
-                                                                        Cursor nc308c = aldeletet.get(1);
-                                                                        nc308c.moveToLast();
-                                                                        Log.d("Delete table Mesage", nc308c.getString(0));
-                                                                        if (nc308c.getString(0).equalsIgnoreCase("Success")) {
+                                                                        Cursor tempc = aldeletet.get(1);
+                                                                        tempc.moveToLast();
+                                                                        Log.d("Delete table Mesage", tempc.getString(0));
+                                                                        if (tempc.getString(0).equalsIgnoreCase("Success")) {
                                                                             tvmessage.setBackgroundColor(Color.parseColor("#2ecc71"));
                                                                             tvmessage.setText(indexInfo.table_name + " table content deleted successfully");
                                                                             indexInfo.isEmpty = true;
                                                                             refreshTable(0);
                                                                         } else {
                                                                             tvmessage.setBackgroundColor(Color.parseColor("#e74c3c"));
-                                                                            tvmessage.setText("Error:" + nc308c.getString(0));
+                                                                            tvmessage.setText("Error:" + tempc.getString(0));
                                                                             spinnertable.setSelection(0);
                                                                         }
                                                                     }
@@ -594,16 +594,16 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
                                                                         //this is the insert query which has been generated
                                                                         Log.d("Insert Query", Query4);
                                                                         ArrayList<Cursor> altc = dbm.getData(Query4);
-                                                                        Cursor nc308c = altc.get(1);
-                                                                        nc308c.moveToLast();
-                                                                        Log.d("Add New Row", nc308c.getString(0));
-                                                                        if (nc308c.getString(0).equalsIgnoreCase("Success")) {
+                                                                        Cursor tempc = altc.get(1);
+                                                                        tempc.moveToLast();
+                                                                        Log.d("Add New Row", tempc.getString(0));
+                                                                        if (tempc.getString(0).equalsIgnoreCase("Success")) {
                                                                             tvmessage.setBackgroundColor(Color.parseColor("#2ecc71"));
                                                                             tvmessage.setText("New Row added succesfully to " + indexInfo.table_name);
                                                                             refreshTable(0);
                                                                         } else {
                                                                             tvmessage.setBackgroundColor(Color.parseColor("#e74c3c"));
-                                                                            tvmessage.setText("Error:" + nc308c.getString(0));
+                                                                            tvmessage.setText("Error:" + tempc.getString(0));
                                                                             spinnertable.setSelection(0);
                                                                         }
 
@@ -891,17 +891,17 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
                                                 Log.d("Update Query", Query3);
                                                 //dbm.getData(Query3);
                                                 ArrayList<Cursor> aluc = dbm.getData(Query3);
-                                                Cursor nc308c = aluc.get(1);
-                                                nc308c.moveToLast();
-                                                Log.d("Update Mesage", nc308c.getString(0));
+                                                Cursor tempc = aluc.get(1);
+                                                tempc.moveToLast();
+                                                Log.d("Update Mesage", tempc.getString(0));
 
-                                                if (nc308c.getString(0).equalsIgnoreCase("Success")) {
+                                                if (tempc.getString(0).equalsIgnoreCase("Success")) {
                                                     tvmessage.setBackgroundColor(Color.parseColor("#2ecc71"));
                                                     tvmessage.setText(indexInfo.table_name + " table Updated Successfully");
                                                     refreshTable(0);
                                                 } else {
                                                     tvmessage.setBackgroundColor(Color.parseColor("#e74c3c"));
-                                                    tvmessage.setText("Error:" + nc308c.getString(0));
+                                                    tvmessage.setText("Error:" + tempc.getString(0));
                                                 }
                                             }
                                             //it he spinner value is delete this row get the values from
@@ -933,17 +933,17 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
                                                 dbm.getData(Query5);
 
                                                 ArrayList<Cursor> aldc = dbm.getData(Query5);
-                                                Cursor nc308c = aldc.get(1);
-                                                nc308c.moveToLast();
-                                                Log.d("Update Mesage", nc308c.getString(0));
+                                                Cursor tempc = aldc.get(1);
+                                                tempc.moveToLast();
+                                                Log.d("Update Mesage", tempc.getString(0));
 
-                                                if (nc308c.getString(0).equalsIgnoreCase("Success")) {
+                                                if (tempc.getString(0).equalsIgnoreCase("Success")) {
                                                     tvmessage.setBackgroundColor(Color.parseColor("#2ecc71"));
                                                     tvmessage.setText("Row deleted from " + indexInfo.table_name + " table");
                                                     refreshTable(0);
                                                 } else {
                                                     tvmessage.setBackgroundColor(Color.parseColor("#e74c3c"));
-                                                    tvmessage.setText("Error:" + nc308c.getString(0));
+                                                    tvmessage.setText("Error:" + tempc.getString(0));
                                                 }
                                             }
                                         }

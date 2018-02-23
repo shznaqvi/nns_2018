@@ -40,7 +40,11 @@ public class SectionA2Activity extends AppCompatActivity {
     List<String> mothersSerials, fathersSerials;
     Map<String, String> mothersMap, fathersMap;
 
-    int Age = 0;
+    int Age = 0, position = 0;
+
+    Boolean flag = false;
+
+    FamilyMembersContract family;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +59,25 @@ public class SectionA2Activity extends AppCompatActivity {
 
 
     public void setupViews() {
+
+//        Getting Intent
+        flag = getIntent().getBooleanExtra("flag", false);
+
+        if (flag) {
+            binding.fldGrpA201.setVisibility(View.VISIBLE);
+            binding.fldGrpA202.setVisibility(View.GONE);
+        } else {
+
+            family = (FamilyMembersContract) getIntent().getSerializableExtra("data");
+            position = getIntent().getIntExtra("pos", 0);
+
+            binding.selectedName.setText(family.getName().toUpperCase());
+
+            binding.fldGrpA201.setVisibility(View.GONE);
+            binding.fldGrpA202.setVisibility(View.VISIBLE);
+        }
+
+//        Listeners
         binding.na20798.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -251,21 +274,8 @@ public class SectionA2Activity extends AppCompatActivity {
             }
         });
 
-
-//        Setting Counts
+//        Getting Members with types
         mem = MainApp.membersCount.getMembers();
-
-        // Total
-        binding.na2tm.setText(mem.get(1).get(1).toString());
-        binding.na2tf.setText(mem.get(1).get(2).toString());
-        // Adolescents
-        binding.na2adm.setText(mem.get(2).get(1).toString());
-        binding.na2adf.setText(mem.get(2).get(2).toString());
-        // Children < 5
-        binding.na2u5b.setText(mem.get(3).get(1).toString());
-        binding.na2u5g.setText(mem.get(3).get(2).toString());
-
-        binding.na2mw.setText(String.valueOf(MainApp.membersCount.getMwra()));
 
 //        Setting Dropdowns
         mothersList = new ArrayList<>();
@@ -323,30 +333,7 @@ public class SectionA2Activity extends AppCompatActivity {
 
                 finish();
 
-                startActivity(new Intent(this, SectionA4Activity.class));
-                //startActivity(new Intent(this, SectionB1Activity.class));
-
-            } else {
-                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
-    public void BtnAddMore() {
-
-        Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
-        if (formValidation()) {
-            try {
-                SaveDraft();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            if (UpdateDB()) {
-                Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
-
-                finish();
-
-                startActivity(new Intent(this, SectionA2Activity.class));
+                startActivity(new Intent(this, SectionA2ListActivity.class));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -362,262 +349,285 @@ public class SectionA2Activity extends AppCompatActivity {
 
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
-        if (!validatorClass.EmptyTextBox(this, binding.na202, getString(R.string.na202Info))) {
-            return false;
-        }
+        if (flag) {
 
-
-        if (!validatorClass.EmptyRadioButton(this, binding.na203, binding.na203a, getString(R.string.na203))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, binding.na204, binding.na20496, binding.na20496x, getString(R.string.na204) + " - " + getString(R.string.other))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptySpinner(this, binding.na205, getString(R.string.na205))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptySpinner(this, binding.na206, getString(R.string.na206))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, binding.na203, binding.na203a, getString(R.string.na203))) {
-            return false;
-        }
-
-        if (binding.na20798.isChecked()) {
-
-            if (!validatorClass.EmptyTextBox(this, binding.na2aged, getString(R.string.na2age))) {
+            if (!validatorClass.EmptyTextBox(this, binding.na202, getString(R.string.na202Info))) {
                 return false;
             }
 
-            if (!validatorClass.RangeTextBox(this, binding.na2aged, 0, 29, getString(R.string.na2age), " days")) {
+            if (!validatorClass.EmptyRadioButton(this, binding.na203, binding.na203a, getString(R.string.na203))) {
                 return false;
             }
 
-            if (!validatorClass.EmptyTextBox(this, binding.na2agem, getString(R.string.na2age))) {
+            if (!validatorClass.EmptyRadioButton(this, binding.na204, binding.na20496, getString(R.string.na204))) {
                 return false;
             }
-
-            if (!validatorClass.RangeTextBox(this, binding.na2agem, 0, 11, getString(R.string.na2age), " months")) {
-                return false;
-            }
-
-            if (!validatorClass.EmptyTextBox(this, binding.na2agey, getString(R.string.na2age))) {
-                return false;
-            }
-
-            if (!validatorClass.RangeTextBox(this, binding.na2aged, 0, 99, getString(R.string.na2age), " years")) {
-                return false;
-            }
-
-            if (binding.na2aged.getText().toString().equals("0") && binding.na2agem.getText().toString().equals("0") && binding.na2agey.getText().toString().equals("0")) {
-                Toast.makeText(this, "ERROR(invalid): " + "All can not be zero" + getString(R.string.na2age), Toast.LENGTH_LONG).show();
-                binding.na2agey.setError("All can not be zero");
-                binding.na2agem.setError("All can not be zero");
-                binding.na2aged.setError("All can not be zero");
-                Log.i(SectionA2Activity.class.getSimpleName(), "na2age" + ": This data is Required!");
-            } else {
-                binding.na2agey.setError(null);
-                binding.na2agem.setError(null);
-                binding.na2aged.setError(null);
-            }
-
 
         } else {
-            if (!validatorClass.EmptyTextBox(this, binding.na2dob, getString(R.string.na2dob))) {
+
+            if (!validatorClass.EmptySpinner(this, binding.na205, getString(R.string.na205))) {
                 return false;
             }
 
+            if (!validatorClass.EmptySpinner(this, binding.na206, getString(R.string.na206))) {
+                return false;
+            }
+
+            if (binding.na20798.isChecked()) {
+
+                if (!validatorClass.EmptyTextBox(this, binding.na2aged, getString(R.string.na2age))) {
+                    return false;
+                }
+
+                if (!validatorClass.RangeTextBox(this, binding.na2aged, 0, 29, getString(R.string.na2age), " days")) {
+                    return false;
+                }
+
+                if (!validatorClass.EmptyTextBox(this, binding.na2agem, getString(R.string.na2age))) {
+                    return false;
+                }
+
+                if (!validatorClass.RangeTextBox(this, binding.na2agem, 0, 11, getString(R.string.na2age), " months")) {
+                    return false;
+                }
+
+                if (!validatorClass.EmptyTextBox(this, binding.na2agey, getString(R.string.na2age))) {
+                    return false;
+                }
+
+                if (!validatorClass.RangeTextBox(this, binding.na2aged, 0, 99, getString(R.string.na2age), " years")) {
+                    return false;
+                }
+
+                if (binding.na2aged.getText().toString().equals("0") && binding.na2agem.getText().toString().equals("0") && binding.na2agey.getText().toString().equals("0")) {
+                    Toast.makeText(this, "ERROR(invalid): " + "All can not be zero" + getString(R.string.na2age), Toast.LENGTH_LONG).show();
+                    binding.na2agey.setError("All can not be zero");
+                    binding.na2agem.setError("All can not be zero");
+                    binding.na2aged.setError("All can not be zero");
+                    Log.i(SectionA2Activity.class.getSimpleName(), "na2age" + ": This data is Required!");
+                } else {
+                    binding.na2agey.setError(null);
+                    binding.na2agem.setError(null);
+                    binding.na2aged.setError(null);
+                }
+
+
+            } else {
+                if (!validatorClass.EmptyTextBox(this, binding.na2dob, getString(R.string.na2dob))) {
+                    return false;
+                }
+
+            }
+
+            if (!validatorClass.EmptyRadioButton(this, binding.na2edu, binding.na2edua, getString(R.string.na2edu))) {
+                return false;
+            }
+
+
+            if (!validatorClass.EmptyRadioButton(this, binding.na2occ, binding.na2occa, getString(R.string.na2occ))) {
+                return false;
+            }
+
+            if (!validatorClass.EmptyRadioButton(this, binding.na2occ, binding.na2occ96, binding.na2occ96x, getString(R.string.na2occ) + " - " + getString(R.string.other))) {
+                return false;
+            }
+
+            if (!validatorClass.EmptyRadioButton(this, binding.na2ms, binding.na2msa, getString(R.string.na2ms))) {
+                return false;
+            }
+
+            if (!validatorClass.EmptyRadioButton(this, binding.na212, binding.na212a, getString(R.string.na212))) {
+                return false;
+            }
         }
 
-        if (!validatorClass.EmptyRadioButton(this, binding.na2edu, binding.na2edua, getString(R.string.na2edu))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, binding.na2occ, binding.na2occa, getString(R.string.na2occ))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, binding.na2occ, binding.na2occ96, binding.na2occ96x, getString(R.string.na2occ) + " - " + getString(R.string.other))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, binding.na2ms, binding.na2msa, getString(R.string.na2ms))) {
-            return false;
-        }
-
-        return validatorClass.EmptyRadioButton(this, binding.na212, binding.na212a, getString(R.string.na212));
+        return true;
     }
 
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
-        MainApp.fmc = new FamilyMembersContract();
+        if (flag) {
+            MainApp.serial_no++;
 
-        MainApp.fmc.setDevicetagID(MainApp.getTagName(this));
-        MainApp.fmc.setFormDate(dtToday);
-        MainApp.fmc.setUser(MainApp.userName);
-        MainApp.fmc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID));
-        MainApp.fmc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
-        MainApp.fmc.set_UUID(MainApp.fc.getUID());
+            MainApp.fmc = new FamilyMembersContract();
 
-        MainApp.serial_no++;
+            MainApp.fmc.setDevicetagID(MainApp.getTagName(this));
+            MainApp.fmc.setFormDate(dtToday);
+            MainApp.fmc.setUser(MainApp.userName);
+            MainApp.fmc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID));
+            MainApp.fmc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
+            MainApp.fmc.set_UUID(MainApp.fc.getUID());
 
-        MainApp.fmc.setSerialNo(String.valueOf(MainApp.serial_no));
-        MainApp.fmc.setName(binding.na202.getText().toString());
-        MainApp.fmc.setDob(binding.na2dob.getText().toString());
-        MainApp.fmc.setAge(binding.na2agey.getText().toString() + "/" + binding.na2agem.getText().toString() + "/" + binding.na2aged.getText().toString());
-        MainApp.fmc.setGender(binding.na203a.isChecked() ? "1" : binding.na203b.isChecked() ? "2" : "0");
-        if (Age < 5) {
-            MainApp.fmc.setMotherId(mothersMap.get(binding.na206.getSelectedItem().toString() + "_" + mothersSerials.get(mothersList.indexOf(binding.na206.getSelectedItem().toString()) - 1)));
-        }
+            MainApp.fmc.setSerialNo(String.valueOf(MainApp.serial_no));
+            MainApp.fmc.setGender(binding.na203a.isChecked() ? "1" : binding.na203b.isChecked() ? "2" : "0");
+            MainApp.fmc.setName(binding.na202.getText().toString());
+            MainApp.fmc.setRealtionHH(binding.na204a.isChecked() ? "1" : binding.na204b.isChecked() ? "2" : binding.na204c.isChecked() ? "3" : binding.na204d.isChecked() ? "4"
+                    : binding.na204e.isChecked() ? "5" : binding.na204f.isChecked() ? "6" : binding.na204g.isChecked() ? "7" : binding.na204h.isChecked() ? "8"
+                    : binding.na204i.isChecked() ? "9" : binding.na204j.isChecked() ? "10" : binding.na204k.isChecked() ? "11" : binding.na204l.isChecked() ? "12"
+                    : binding.na204m.isChecked() ? "13" : binding.na20498.isChecked() ? "98" : binding.na20496.isChecked() ? "96" : "0");
 
-        JSONObject sA2 = new JSONObject();
-
-        sA2.put("na2SerialNo", String.valueOf(MainApp.serial_no));
-        sA2.put("na202", binding.na202.getText().toString());
-        sA2.put("na204", binding.na204a.isChecked() ? "1" : binding.na204b.isChecked() ? "2" : binding.na204c.isChecked() ? "3" : binding.na204d.isChecked() ? "4"
-                : binding.na204e.isChecked() ? "5" : binding.na204f.isChecked() ? "6" : binding.na204g.isChecked() ? "7" : binding.na204h.isChecked() ? "8"
-                : binding.na204i.isChecked() ? "9" : binding.na204j.isChecked() ? "10" : binding.na204k.isChecked() ? "11" : binding.na204l.isChecked() ? "12"
-                : binding.na204m.isChecked() ? "13" : binding.na20498.isChecked() ? "98" : binding.na20496.isChecked() ? "96" : "0");
-        sA2.put("na20496x", binding.na20496x.getText().toString());
-
-        sA2.put("na205", fathersMap.get(binding.na205.getSelectedItem().toString() + "_" + fathersSerials.get(fathersList.indexOf(binding.na205.getSelectedItem().toString()) - 1)));
-        sA2.put("na206", mothersMap.get(binding.na206.getSelectedItem().toString() + "_" + mothersSerials.get(mothersList.indexOf(binding.na206.getSelectedItem().toString()) - 1)));
-
-        sA2.put("na203", binding.na203a.isChecked() ? "1" : binding.na203b.isChecked() ? "2" : "0");
-
-        sA2.put("na20798", binding.na20798.getText().toString());
-
-        sA2.put("na2agey", binding.na2agey.getText().toString());
-        sA2.put("na2agem", binding.na2agem.getText().toString());
-        sA2.put("na2aged", binding.na2aged.getText().toString());
-
-        sA2.put("na2edu", binding.na2edua.isChecked() ? "1" : binding.na2edub.isChecked() ? "2" : binding.na2educ.isChecked() ? "3" : binding.na2edud.isChecked() ? "4"
-                : binding.na2edue.isChecked() ? "5" : binding.na2eduf.isChecked() ? "6" : binding.na2edug.isChecked() ? "7" : binding.na2eduh.isChecked() ? "8"
-                : binding.na2edui.isChecked() ? "9" : "0");
-
-        sA2.put("na2occ", binding.na2occa.isChecked() ? "1" : binding.na2occb.isChecked() ? "2" : binding.na2occc.isChecked() ? "3" : binding.na2occd.isChecked() ? "4"
-                : binding.na2occe.isChecked() ? "5" : binding.na2occf.isChecked() ? "6" : binding.na2occg.isChecked() ? "7" : binding.na2occh.isChecked() ? "8"
-                : binding.na2occ96.isChecked() ? "96" : "0");
-        sA2.put("na2occ96x", binding.na2occ96x.getText().toString());
-
-        sA2.put("na2ms", binding.na2msa.isChecked() ? "1" : binding.na2msb.isChecked() ? "2" : binding.na2msc.isChecked() ? "3" : binding.na2msd.isChecked() ? "4"
-                : binding.na2mse.isChecked() ? "5" : "0");
-        sA2.put("na212", binding.na212a.isChecked() ? "1" : binding.na212b.isChecked() ? "2" : "0");
-//        sA2.put("h2u5", binding.nh2u5.getText().toString());
-//        sA2.put("h2adol", binding.h2adol.getText().toString());
-//        sA2.put("h2mwra", binding.h2mwra.getText().toString());
-        MainApp.fmc.setsA2(String.valueOf(sA2));
+            MainApp.familyMembersList.add(MainApp.fmc);
 
 //        Checking IsHead
-        if (!MainApp.IsHead && binding.na204a.isChecked()) {
-            MainApp.IsHead = true;
-        }
+            if (!MainApp.IsHead && binding.na204a.isChecked()) {
+                MainApp.IsHead = true;
+            }
+
+        } else {
+
+            family.setDob(binding.na2dob.getText().toString());
+            family.setAge(binding.na2agey.getText().toString() + "/" + binding.na2agem.getText().toString() + "/" + binding.na2aged.getText().toString());
+            if (Age < 5) {
+                family.setMotherId(mothersMap.get(binding.na206.getSelectedItem().toString() + "_" + mothersSerials.get(mothersList.indexOf(binding.na206.getSelectedItem().toString()) - 1)));
+            }
+
+            JSONObject sA2 = new JSONObject();
+
+            sA2.put("na2SerialNo", family.getSerialNo());
+            sA2.put("na202", family.getName());
+            sA2.put("na203", family.getGender());
+            sA2.put("na204", family.getRealtionHH());
+
+            sA2.put("na205", fathersMap.get(binding.na205.getSelectedItem().toString() + "_" + fathersSerials.get(fathersList.indexOf(binding.na205.getSelectedItem().toString()) - 1)));
+            sA2.put("na206", mothersMap.get(binding.na206.getSelectedItem().toString() + "_" + mothersSerials.get(mothersList.indexOf(binding.na206.getSelectedItem().toString()) - 1)));
+
+            sA2.put("na2dob", binding.na2dob.getText().toString());
+            sA2.put("na20798", binding.na20798.getText().toString());
+
+            sA2.put("na2agey", binding.na2agey.getText().toString());
+            sA2.put("na2agem", binding.na2agem.getText().toString());
+            sA2.put("na2aged", binding.na2aged.getText().toString());
+
+            sA2.put("na2edu", binding.na2edua.isChecked() ? "1" : binding.na2edub.isChecked() ? "2" : binding.na2educ.isChecked() ? "3" : binding.na2edud.isChecked() ? "4"
+                    : binding.na2edue.isChecked() ? "5" : binding.na2eduf.isChecked() ? "6" : binding.na2edug.isChecked() ? "7" : binding.na2eduh.isChecked() ? "8"
+                    : binding.na2edui.isChecked() ? "9" : "0");
+
+            sA2.put("na2occ", binding.na2occa.isChecked() ? "1" : binding.na2occb.isChecked() ? "2" : binding.na2occc.isChecked() ? "3" : binding.na2occd.isChecked() ? "4"
+                    : binding.na2occe.isChecked() ? "5" : binding.na2occf.isChecked() ? "6" : binding.na2occg.isChecked() ? "7" : binding.na2occh.isChecked() ? "8"
+                    : binding.na2occ96.isChecked() ? "96" : "0");
+            sA2.put("na2occ96x", binding.na2occ96x.getText().toString());
+
+            sA2.put("na2ms", binding.na2msa.isChecked() ? "1" : binding.na2msb.isChecked() ? "2" : binding.na2msc.isChecked() ? "3" : binding.na2msd.isChecked() ? "4"
+                    : binding.na2mse.isChecked() ? "5" : "0");
+            sA2.put("na212", binding.na212a.isChecked() ? "1" : binding.na212b.isChecked() ? "2" : "0");
+
+            family.setsA2(String.valueOf(sA2));
+
+            //Setting for FamilyMembers List
+            family.setMaritialStatus(binding.na2msa.isChecked() ? "1" : binding.na2msb.isChecked() ? "2" : binding.na2msc.isChecked() ? "3" : binding.na2msd.isChecked() ? "4"
+                    : binding.na2mse.isChecked() ? "5" : "0");
+            family.setFatherName(binding.na205.getSelectedItem().toString().toUpperCase());
+            family.setMotherName(binding.na206.getSelectedItem().toString().toUpperCase());
 
         /*Functionality Setting*/
 
-//        Get Age in year
-        /*if (binding.na20798.isChecked()) {
-            Age = Integer.valueOf(binding.na2agey.getText().toString());
-        } else {
-            Age = (int) MainApp.ageInYearByDOB(binding.na2dob.getText().toString());
-        }*/
-
 //        Calculation
-        Map<Integer, Integer> memType = new HashMap<>();
+            Map<Integer, Integer> memType = new HashMap<>();
 
-        //Total
-        if (binding.na203a.isChecked()) {
-            memType.put(1, Integer.valueOf(binding.na2tm.getText().toString()) + 1);
-            memType.put(2, Integer.valueOf(binding.na2tf.getText().toString()));
-        } else {
-            memType.put(2, Integer.valueOf(binding.na2tf.getText().toString()) + 1);
-            memType.put(1, Integer.valueOf(binding.na2tm.getText().toString()));
-        }
-
-        MainApp.membersCount.setMembers(1, memType);
-
-        //MWRA
-        if ((Age >= 15 && Age <= 49) && binding.na203b.isChecked() && !binding.na2mse.isChecked()) {
-            MainApp.membersCount.setMwra(MainApp.membersCount.getMwra() + 1);
-
-            // Add data in list
-            MainApp.mwra.add(MainApp.fmc);
-        }
-        //Adolescent
-        else if ((Age >= 10 && Age <= 19) && binding.na2mse.isChecked()) {
-            memType = new HashMap<>();
-            if (binding.na203a.isChecked()) {
-                memType.put(1, Integer.valueOf(binding.na2adm.getText().toString()) + 1);
-                memType.put(2, Integer.valueOf(binding.na2adf.getText().toString()));
+            //Total
+            if (family.getGender().equals("1")) {
+                memType.put(1, Integer.valueOf(mem.get(1).get(1).toString()) + 1);
+                memType.put(2, Integer.valueOf(mem.get(1).get(2).toString()));
             } else {
-                memType.put(2, Integer.valueOf(binding.na2adf.getText().toString()) + 1);
-                memType.put(1, Integer.valueOf(binding.na2adm.getText().toString()));
+                memType.put(2, Integer.valueOf(mem.get(1).get(2).toString()) + 1);
+                memType.put(1, Integer.valueOf(mem.get(1).get(1).toString()));
             }
-            MainApp.membersCount.setMembers(2, memType);
 
-            // Add data in list
-            MainApp.adolescents.add(MainApp.fmc);
-        }
-        //Children < 5
-        else if (Age < 5) {
-            memType = new HashMap<>();
-            if (binding.na203a.isChecked()) {
-                memType.put(1, Integer.valueOf(binding.na2u5b.getText().toString()) + 1);
-                memType.put(2, Integer.valueOf(binding.na2u5g.getText().toString()));
-            } else {
-                memType.put(2, Integer.valueOf(binding.na2u5g.getText().toString()) + 1);
-                memType.put(1, Integer.valueOf(binding.na2u5b.getText().toString()));
+            MainApp.membersCount.setMembers(1, memType);
+
+            //MWRA
+            if ((Age >= 15 && Age <= 49) && binding.na203b.isChecked() && !binding.na2mse.isChecked()) {
+                MainApp.membersCount.setMwra(MainApp.membersCount.getMwra() + 1);
+
+                // Add data in list
+                MainApp.mwra.add(family);
             }
-            MainApp.membersCount.setMembers(3, memType);
+            //Adolescent
+            else if ((Age >= 10 && Age <= 19) && binding.na2mse.isChecked()) {
+                memType = new HashMap<>();
+                if (family.getGender().equals("1")) {
+                    memType.put(1, Integer.valueOf(mem.get(2).get(1).toString()) + 1);
+                    memType.put(2, Integer.valueOf(mem.get(2).get(2).toString()));
+                } else {
+                    memType.put(2, Integer.valueOf(mem.get(2).get(2).toString()) + 1);
+                    memType.put(1, Integer.valueOf(mem.get(2).get(1).toString()));
+                }
+                MainApp.membersCount.setMembers(2, memType);
 
-            // Add data in list
-            if (Age < 2) {
-                MainApp.childUnder5.add(MainApp.fmc);
-                MainApp.childUnder2.add(MainApp.fmc);
-            } else {
-                MainApp.childUnder5.add(MainApp.fmc);
+                // Add data in list
+                MainApp.adolescents.add(family);
             }
-        }
+            //Children < 5
+            else if (Age < 5) {
+                memType = new HashMap<>();
+                if (family.getGender().equals("1")) {
+                    memType.put(1, Integer.valueOf(mem.get(3).get(1).toString()) + 1);
+                    memType.put(2, Integer.valueOf(mem.get(3).get(2).toString()));
+                } else {
+                    memType.put(2, Integer.valueOf(mem.get(3).get(2).toString()) + 1);
+                    memType.put(1, Integer.valueOf(mem.get(3).get(1).toString()));
+                }
+                MainApp.membersCount.setMembers(3, memType);
 
-        if (Age >= 15 && !binding.na2mse.isChecked()) {
-            // Add data in list
-            MainApp.members_f_m.add(MainApp.fmc);
-        }
+                // Add data in list
+                if (Age < 2) {
+                    MainApp.childUnder2.add(family);
+                    MainApp.childUnder5.add(family);
+                } else {
+                    MainApp.childUnder5.add(family);
+                }
+            }
 
-        // Add data in list for all members
-        MainApp.all_members.add(MainApp.fmc);
+            if (Age >= 15 && !binding.na2mse.isChecked()) {
+                // Add data in list
+                MainApp.members_f_m.add(family);
+            }
+
+            // Add data in list for all members
+            MainApp.all_members.add(family);
 
         /*End*/
 
-        MainApp.fmc.setAgeInYear(String.valueOf(Age));
+            family.setAgeInYear(String.valueOf(Age));
+
+            MainApp.familyMembersList.set(position, family);
+        }
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
-
     }
 
     private boolean UpdateDB() {
 
         DatabaseHelper db = new DatabaseHelper(this);
 
-        long updcount = db.addFamilyMembers(MainApp.fmc);
+        if (flag) {
 
-        MainApp.fmc.set_ID(String.valueOf(updcount));
+            long updcount = db.addFamilyMembers(MainApp.fmc);
 
-        if (updcount != 0) {
-            Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+            MainApp.fmc.set_ID(String.valueOf(updcount));
 
-            MainApp.fmc.set_UID(
-                    (MainApp.fmc.getDeviceId() + MainApp.fmc.get_ID()));
-            db.updateFamilyMemberID();
-            return true;
+            if (updcount != 0) {
+                Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+
+                MainApp.fmc.set_UID(
+                        (MainApp.fmc.getDeviceId() + MainApp.fmc.get_ID()));
+                db.updateFamilyMemberID();
+                return true;
+            } else {
+                Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         } else {
-            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
-            return false;
+            int updcount = db.updateFamilyMember(family);
+
+            if (updcount == 1) {
+                Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+                return true;
+            } else {
+                Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         }
     }
 

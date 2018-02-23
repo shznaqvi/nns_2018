@@ -25,8 +25,6 @@
             android:layoutDirection="rtl"
             android:orientation="vertical">
 
-
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -34,302 +32,39 @@
                 android:layout_marginTop="2dp"
                 android:background="@color/colorPrimaryDark"
                 android:gravity="center"
-                android:text="@string/na2heading"
-                android:textSize="40sp" />
+                android:text="@string/na2subHeading" />
 
             <LinearLayout
+                android:id="@+id/fldGrpA201"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:weightSum="100">
+                android:orientation="vertical">
 
-                <LinearLayout
+                <TextView
+                    style="@style/sub"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="50"
-                    android:orientation="horizontal"
-                    android:weightSum="100">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/na202Info" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_weight="23"
-                        android:background="@color/colorPrimary"
-                        android:text="@string/na2mw"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white" />
-
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="1dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_weight="23"
-                        android:background="@color/colorPrimary"
-                        android:text="@string/na2ad"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="1dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_weight="30"
-                        android:background="@color/colorPrimary"
-                        android:text="@string/na2u5"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="1dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_weight="23"
-                        android:background="@color/colorPrimary"
-                        android:text="@string/na2t"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
+                <!--02-->
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="50"
-                    android:orientation="horizontal"
-                    android:weightSum="100">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/na202"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@android:color/white" />
 
-                    <TextView
-                        android:id="@+id/na2mw"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="1dp"
-                        android:layout_marginLeft="1dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_weight="23"
-                        android:background="@color/pink_100"
-                        android:paddingBottom="@dimen/_18sdp"
-                        android:paddingTop="@dimen/_18sdp"
-                        android:textAlignment="center"
-                        android:textColor="@color/colorPrimaryDark" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="23"
-                        android:orientation="vertical"
-                        android:weightSum="100">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="50"
-                            android:orientation="horizontal"
-                            android:weightSum="100">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="50"
-                                android:text="F"
-                                android:textAlignment="center" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="50"
-                                android:text="M"
-                                android:textAlignment="center" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="50"
-                            android:orientation="horizontal"
-                            android:weightSum="100">
-
-                            <TextView
-                                android:id="@+id/na2adm"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="1dp"
-                                android:layout_weight="50"
-                                android:background="@color/pink_100"
-                                android:textAlignment="center"
-                                android:textColor="@color/colorPrimaryDark" />
-
-                            <TextView
-                                android:id="@+id/na2adf"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="1dp"
-                                android:layout_weight="50"
-                                android:background="@color/pink_100"
-                                android:textAlignment="center"
-                                android:textColor="@color/colorPrimaryDark"/>
-
-
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="30"
-                        android:orientation="vertical"
-                        android:weightSum="100">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="50"
-                            android:orientation="horizontal"
-                            android:weightSum="100">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="50"
-                                android:text="F"
-                                android:textAlignment="center" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="50"
-                                android:text="M"
-                                android:textAlignment="center" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="50"
-                            android:orientation="horizontal"
-                            android:weightSum="100">
-
-                            <TextView
-                                android:id="@+id/na2u5g"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="1dp"
-                                android:layout_weight="50"
-                                android:background="@color/pink_100"
-                                android:textAlignment="center"
-                                android:textColor="@color/colorPrimaryDark" />
-
-                            <TextView
-                                android:id="@+id/na2u5b"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="1dp"
-                                android:layout_weight="50"
-                                android:background="@color/pink_100"
-                                android:textAlignment="center"
-                                android:textColor="@color/colorPrimaryDark" />
-
-
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="23"
-                        android:orientation="vertical"
-                        android:weightSum="100">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="50"
-                            android:orientation="horizontal"
-                            android:weightSum="100">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="50"
-                                android:text="F"
-                                android:textAlignment="center" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="50"
-                                android:text="M"
-                                android:textAlignment="center" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="50"
-                            android:orientation="horizontal"
-                            android:weightSum="100">
-
-                            <TextView
-                                android:id="@+id/na2tf"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="1dp"
-                                android:layout_weight="50"
-                                android:background="@color/pink_100"
-                                android:textAlignment="center"
-                                android:textColor="@color/colorPrimaryDark" />
-
-                            <TextView
-                                android:id="@+id/na2tm"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="50"
-                                android:background="@color/pink_100"
-                                android:textAlignment="center"
-                                android:textColor="@color/colorPrimaryDark" />
-
-
-                        </LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
-
-            </LinearLayout>
-
-
-            <TextView
-                style="@style/sub"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/na202Info" />
-
-            <!--02-->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/na202"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
-
-            <EditText
-                android:id="@+id/na202"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
-                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
-                android:hint="@string/na202"
-                android:maxLength="25" />
+                <EditText
+                    android:id="@+id/na202"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
+                    android:hint="@string/na202"
+                    android:maxLength="25" />
 
             <!--3-->
             <TextView
@@ -525,36 +260,42 @@
 
             </RadioGroup>
 
-            <EditText
-                android:id="@+id/na20496x"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
-                android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                android:hint="@string/na20496"
-                android:inputType="textCapWords"
-                android:text='@{na20496.checked ? na20496x.getText.toString : ""  }'
-                android:visibility='@{na20496.checked ? View.VISIBLE : View.GONE}' />
+            </LinearLayout>
 
-
-            <!--05-->
 
             <LinearLayout
-                android:id="@+id/fldGrpfid"
+                android:id="@+id/fldGrpA202"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
-                    style="?android:textAppearanceMedium"
+                    android:id="@+id/selectedName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="1.5"
-                    android:background="@android:color/transparent"
-                    android:text="@string/na205"
-                    android:textAlignment="center"
-                    android:textStyle="bold" />
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:gravity="center" />
+
+                <!--05-->
+                <LinearLayout
+                    android:id="@+id/fldGrpfid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="?android:textAppearanceMedium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1.5"
+                        android:background="@android:color/transparent"
+                        android:text="@string/na205"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
 
                 <Spinner
                     android:id="@+id/na205"
@@ -565,7 +306,7 @@
                     android:layout_weight="1"
                     android:gravity="center" />
 
-            </LinearLayout>
+                </LinearLayout>
 
             <!--06-->
 
@@ -613,7 +354,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:enabled="@{na20798.checked ? false : true}"
-                android:focusable="true"
+                android:focusable="false"
                 android:hint="@string/na2dob"
                 android:padding="15dp"
                 android:text='@{na20798.checked ? "" : na2dob.getText.toString }'
@@ -1024,64 +765,7 @@
 
             </RadioGroup>
 
-            <!--&lt;!&ndash;nh2u5&ndash;&gt;-->
-            <!--<TextView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginTop="16dp"-->
-            <!--android:background="@color/colorPrimary"-->
-            <!--android:text="@string/nh2u5"-->
-            <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
-            <!--android:textColor="@android:color/white" />-->
-            <!--<EditText-->
-            <!--android:id="@+id/nh2u5"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="1dp"-->
-            <!--android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"-->
-            <!--android:hint="@string/nh2u5"-->
-            <!--android:inputType="textCapWords"-->
-            <!--/>-->
-
-            <!--&lt;!&ndash;h2adol&ndash;&gt;-->
-
-            <!--<TextView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginTop="16dp"-->
-            <!--android:background="@color/colorPrimary"-->
-            <!--android:text="@string/h2adol"-->
-            <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
-            <!--android:textColor="@android:color/white" />-->
-            <!--<EditText-->
-            <!--android:id="@+id/h2adol"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="1dp"-->
-            <!--android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"-->
-            <!--android:hint="@string/h2adol"-->
-            <!--android:inputType="textCapWords"-->
-            <!--/>-->
-
-            <!--&lt;!&ndash;h2mwra&ndash;&gt;-->
-            <!--<TextView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginTop="16dp"-->
-            <!--android:background="@color/colorPrimary"-->
-            <!--android:text="@string/h2mwra"-->
-            <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
-            <!--android:textColor="@android:color/white" />-->
-            <!--<EditText-->
-            <!--android:id="@+id/h2mwra"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="1dp"-->
-            <!--android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"-->
-            <!--android:hint="@string/h2mwra"-->
-            <!--android:inputType="textCapWords"-->
-            <!--/>-->
-
+            </LinearLayout>
 
             <!--  = = = = =  END OF FORM FIELDS  = = = = = -->
             <LinearLayout
@@ -1099,7 +783,7 @@
                     android:layout_weight="1"
                     android:background="#1ed61e"
                     android:onClick="@{() -> callback.BtnContinue()}"
-                    android:text="@string/nextSection"
+                    android:text="@string/addMember"
                     android:textColor="@color/white" />
 
                 <Button
@@ -1111,17 +795,6 @@
                     android:background="@color/red"
                     android:onClick="@{() -> callback.BtnEnd()}"
                     android:text="@string/end_interview"
-                    android:textColor="@color/white" />
-
-                <Button
-                    android:id="@+id/btn_AddMore"
-                    style="@style/buttons"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/colorPrimary"
-                    android:onClick="@{() -> callback.BtnAddMore()}"
-                    android:text="@string/addMember"
                     android:textColor="@color/white" />
 
             </LinearLayout>
