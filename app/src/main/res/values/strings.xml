@@ -439,7 +439,7 @@
     <string name="nbinfo"> MODULE B: MWRA (15 to 50); REPRODUCTIVE HISTORY, LAST ANC, IFA AND MNP SUPPLEMENTS, 24 HOURS FOOD RECALL, FOOD FREQUENCY </string>
     <string name="nbinfo1"> Instructions: To be filled for all MWRAs </string>
     <string name="nbheading"> SECTION B1: REPRODUCTIVE HISTORY </string>
-    <string name="nb101"> شادی شدہ خاتون کانام </string>
+  <string name="nb101"> خاتون کانام </string>
     <string name="nb102"> شادی شدہ خاتون کالائن نمبر سیکشن A2 سے دیکھ کر لکھیں </string>
     <string name="nw203"> شادی کے وقت آپ کی عمر کیا تھی؟ </string>
     <string name="nw203a"> عمر سالوں میں </string>

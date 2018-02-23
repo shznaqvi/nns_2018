@@ -537,7 +537,7 @@ public class SectionA2Activity extends AppCompatActivity {
             MainApp.membersCount.setMembers(1, memType);
 
             //MWRA
-            if ((Age >= 15 && Age <= 49) && family.getGender().equals("2") && !binding.na2mse.isChecked()) {
+            if ((Age >= 15 && Age <= 49) && family.getGender().equals("2")) {
                 MainApp.membersCount.setMwra(MainApp.membersCount.getMwra() + 1);
 
                 // Add data in list
