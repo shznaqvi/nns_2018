@@ -128,9 +128,9 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
 //        Checking Button continue
         if (MainApp.hhClicked.size() == 0 || MainApp.hhClicked.size() != MainApp.familyMembersList.size()) {
-            binding.btnContinue.setEnabled(false);
+            binding.btnContinue.setVisibility(View.GONE);
         } else {
-            binding.btnContinue.setEnabled(true);
+            binding.btnContinue.setVisibility(View.VISIBLE);
         }
 
     }
