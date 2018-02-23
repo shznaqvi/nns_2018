@@ -107,7 +107,7 @@ public class SectionA1Activity extends AppCompatActivity {
     public void BtnContinue() {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
-        /*if (formValidation()) {
+        if (formValidation()) {
             try {
                 SaveDraft();
             } catch (JSONException e) {
@@ -123,9 +123,7 @@ public class SectionA1Activity extends AppCompatActivity {
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
-        }*/
-
-        startActivity(new Intent(this, SectionA2ListActivity.class));
+        }
     }
 
     public void BtnEnd() {

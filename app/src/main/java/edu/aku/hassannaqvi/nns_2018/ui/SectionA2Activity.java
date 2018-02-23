@@ -337,7 +337,7 @@ public class SectionA2Activity extends AppCompatActivity {
             MainApp.fmc.setUser(MainApp.userName);
             MainApp.fmc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID));
             MainApp.fmc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
-//            MainApp.fmc.set_UUID(MainApp.fc.getUID());
+            MainApp.fmc.set_UUID(MainApp.fc.getUID());
 
             MainApp.fmc.setSerialNo(String.valueOf(MainApp.serial_no));
             MainApp.fmc.setGender(binding.na203a.isChecked() ? "1" : binding.na203b.isChecked() ? "2" : "0");
@@ -356,10 +356,10 @@ public class SectionA2Activity extends AppCompatActivity {
 
         } else {
 
-            MainApp.fmc.setDob(binding.na2dob.getText().toString());
-            MainApp.fmc.setAge(binding.na2agey.getText().toString() + "/" + binding.na2agem.getText().toString() + "/" + binding.na2aged.getText().toString());
+            family.setDob(binding.na2dob.getText().toString());
+            family.setAge(binding.na2agey.getText().toString() + "/" + binding.na2agem.getText().toString() + "/" + binding.na2aged.getText().toString());
             if (Age < 5) {
-                MainApp.fmc.setMotherId(mothersMap.get(binding.na206.getSelectedItem().toString() + "_" + mothersSerials.get(mothersList.indexOf(binding.na206.getSelectedItem().toString()) - 1)));
+                family.setMotherId(mothersMap.get(binding.na206.getSelectedItem().toString() + "_" + mothersSerials.get(mothersList.indexOf(binding.na206.getSelectedItem().toString()) - 1)));
             }
 
             JSONObject sA2 = new JSONObject();
@@ -392,13 +392,13 @@ public class SectionA2Activity extends AppCompatActivity {
                     : binding.na2mse.isChecked() ? "5" : "0");
             sA2.put("na212", binding.na212a.isChecked() ? "1" : binding.na212b.isChecked() ? "2" : "0");
 
-            MainApp.fmc.setsA2(String.valueOf(sA2));
+            family.setsA2(String.valueOf(sA2));
 
             //Setting for FamilyMembers List
-            MainApp.fmc.setMaritialStatus(binding.na2msa.isChecked() ? "1" : binding.na2msb.isChecked() ? "2" : binding.na2msc.isChecked() ? "3" : binding.na2msd.isChecked() ? "4"
+            family.setMaritialStatus(binding.na2msa.isChecked() ? "1" : binding.na2msb.isChecked() ? "2" : binding.na2msc.isChecked() ? "3" : binding.na2msd.isChecked() ? "4"
                     : binding.na2mse.isChecked() ? "5" : "0");
-            MainApp.fmc.setFatherName(binding.na205.getSelectedItem().toString().toUpperCase());
-            MainApp.fmc.setMotherName(binding.na206.getSelectedItem().toString().toUpperCase());
+            family.setFatherName(binding.na205.getSelectedItem().toString().toUpperCase());
+            family.setMotherName(binding.na206.getSelectedItem().toString().toUpperCase());
 
         /*Functionality Setting*/
 
@@ -406,7 +406,7 @@ public class SectionA2Activity extends AppCompatActivity {
             Map<Integer, Integer> memType = new HashMap<>();
 
             //Total
-            if (binding.na203a.isChecked()) {
+            if (family.getGender().equals("1")) {
                 memType.put(1, Integer.valueOf(mem.get(1).get(1).toString()) + 1);
                 memType.put(2, Integer.valueOf(mem.get(1).get(2).toString()));
             } else {
@@ -421,12 +421,12 @@ public class SectionA2Activity extends AppCompatActivity {
                 MainApp.membersCount.setMwra(MainApp.membersCount.getMwra() + 1);
 
                 // Add data in list
-                MainApp.mwra.add(MainApp.fmc);
+                MainApp.mwra.add(family);
             }
             //Adolescent
             else if ((Age >= 10 && Age <= 19) && binding.na2mse.isChecked()) {
                 memType = new HashMap<>();
-                if (binding.na203a.isChecked()) {
+                if (family.getGender().equals("1")) {
                     memType.put(1, Integer.valueOf(mem.get(2).get(1).toString()) + 1);
                     memType.put(2, Integer.valueOf(mem.get(2).get(2).toString()));
                 } else {
@@ -436,12 +436,12 @@ public class SectionA2Activity extends AppCompatActivity {
                 MainApp.membersCount.setMembers(2, memType);
 
                 // Add data in list
-                MainApp.adolescents.add(MainApp.fmc);
+                MainApp.adolescents.add(family);
             }
             //Children < 5
             else if (Age < 5) {
                 memType = new HashMap<>();
-                if (binding.na203a.isChecked()) {
+                if (family.getGender().equals("1")) {
                     memType.put(1, Integer.valueOf(mem.get(3).get(1).toString()) + 1);
                     memType.put(2, Integer.valueOf(mem.get(3).get(2).toString()));
                 } else {
@@ -452,26 +452,26 @@ public class SectionA2Activity extends AppCompatActivity {
 
                 // Add data in list
                 if (Age < 2) {
-                    MainApp.childUnder2.add(MainApp.fmc);
-                    MainApp.childUnder5.add(MainApp.fmc);
+                    MainApp.childUnder2.add(family);
+                    MainApp.childUnder5.add(family);
                 } else {
-                    MainApp.childUnder5.add(MainApp.fmc);
+                    MainApp.childUnder5.add(family);
                 }
             }
 
             if (Age >= 15 && !binding.na2mse.isChecked()) {
                 // Add data in list
-                MainApp.members_f_m.add(MainApp.fmc);
+                MainApp.members_f_m.add(family);
             }
 
             // Add data in list for all members
-            MainApp.all_members.add(MainApp.fmc);
+            MainApp.all_members.add(family);
 
         /*End*/
 
-            MainApp.fmc.setAgeInYear(String.valueOf(Age));
+            family.setAgeInYear(String.valueOf(Age));
 
-            MainApp.familyMembersList.set(position, MainApp.fmc);
+            MainApp.familyMembersList.set(position, family);
         }
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();

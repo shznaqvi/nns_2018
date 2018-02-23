@@ -1,6 +1,5 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -73,7 +72,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
         binding.na2mw.setText(String.valueOf(MainApp.membersCount.getMwra()));
 
 //        Populate RecyclerView
-        new populateRecyclerView(this, this).execute();
+        new populateRecyclerView(this).execute();
 
         //        Recycler click listener
         binding.recyclerNoMembers.addOnItemTouchListener(
@@ -126,6 +125,13 @@ public class SectionA2ListActivity extends AppCompatActivity {
                     }
                 })
         );
+
+//        Checking Button continue
+        if (MainApp.hhClicked.size() == 0 || MainApp.hhClicked.size() != MainApp.familyMembersList.size()) {
+            binding.btnContinue.setEnabled(false);
+        } else {
+            binding.btnContinue.setEnabled(true);
+        }
 
     }
 
@@ -273,6 +279,28 @@ public class SectionA2ListActivity extends AppCompatActivity {
             return membersList.size();
         }
 
+        public String MStatusChecking(String ms) {
+            String result = "";
+            switch (ms) {
+                case "1":
+                    result = "Married";
+                    break;
+                case "2":
+                    result = "Widowed";
+                    break;
+                case "3":
+                    result = "Divorced";
+                    break;
+                case "4":
+                    result = "Seperated";
+                    break;
+                case "5":
+                    result = "Never Married";
+                    break;
+            }
+            return result;
+        }
+
         public class MyViewHolder extends RecyclerView.ViewHolder {
 
             FamilymemberslistBinding familyBinding;
@@ -284,22 +312,20 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
             public void bindUser(FamilyMembersContract mem) {
                 familyBinding.memberName.setText(mem.getName().toUpperCase());
-                familyBinding.gender.setText(mem.getGender());
-                familyBinding.lineNo.setText(mem.getSerialNo());
-                familyBinding.ffName.setText(mem.getFatherName());
-                familyBinding.mmName.setText(mem.getMotherName());
-                familyBinding.maritalStatus.setText(mem.getMaritialStatus());
+                familyBinding.gender.setText(mem.getGender().equals("1") ? "Male" : "Female");
+                familyBinding.lineNo.setText("Line No:" + mem.getSerialNo());
+                familyBinding.ffName.setText(mem.getFatherName().equals("") ? "..." : mem.getFatherName());
+                familyBinding.mmName.setText(mem.getMotherName().equals("") ? "..." : mem.getMotherName());
+                familyBinding.maritalStatus.setText(MStatusChecking(mem.getMaritialStatus()));
             }
         }
     }
 
     public class populateRecyclerView extends AsyncTask<String, String, String> {
         private Context mContext;
-        private Activity activity;
 
-        public populateRecyclerView(Context mContext, Activity activity) {
+        public populateRecyclerView(Context mContext) {
             this.mContext = mContext;
-            this.activity = activity;
         }
 
         @Override
