@@ -71,7 +71,7 @@ public class SectionC1Activity extends AppCompatActivity {
             }
         }
 
-        for (FamilyMembersContract fmc : MainApp.members_f_m) {
+        for (FamilyMembersContract fmc : MainApp.respList) {
             respName.add(fmc.getName());
             respMap.put(fmc.getName(), fmc.getSerialNo());
         }

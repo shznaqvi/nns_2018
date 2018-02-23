@@ -10,7 +10,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -36,12 +35,14 @@ import static android.view.View.GONE;
 
 public class SectionB1Activity extends Activity {
 
+    public static String wraName = "";
+    public static int WRAcounter = 0;
+    static Map<String, String> wraMap;
+    static ArrayList<String> lstMwra;
     ArrayList<String> respName;
     Map<String, String> respMap;
     ActivitySectionB1Binding bi;
     DatabaseHelper db;
-    ArrayList<String> lstMwra;
-    int position = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,13 +51,6 @@ public class SectionB1Activity extends Activity {
 
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_b1);
         db = new DatabaseHelper(this);
-        lstMwra = new ArrayList<>();
-
-        MainApp.mwraMap.put("....", null);
-        lstMwra.add("....");
-        respName = new ArrayList<>();
-        respName.add("....");
-        respMap = new HashMap<>();
 
         //Assigning data to UI binding
         bi.setCallback(this);
@@ -65,6 +59,30 @@ public class SectionB1Activity extends Activity {
     }
 
     public void setupViews() {
+
+        respName = new ArrayList<>();
+        respName.add("....");
+        respMap = new HashMap<>();
+
+//      Get intent
+        if (getIntent().getBooleanExtra("mwraFlag", false)) {
+            lstMwra.remove(getIntent().getStringExtra("wraName"));
+        } else {
+            wraMap = new HashMap<>();
+            lstMwra = new ArrayList<>();
+
+            lstMwra.add("....");
+
+            for (byte i = 0; i < MainApp.mwra.size(); i++) {
+                MainApp.mwraMap.put(MainApp.mwra.get(i).getName(), new FamilyMembersContract(MainApp.mwra.get(i)));
+                lstMwra.add(MainApp.mwra.get(i).getName());
+            }
+
+            WRAcounter = 0;
+        }
+
+//      Increment WRA COUNTER
+        WRAcounter++;
 
         bi.nw204.addTextChangedListener(new TextWatcher() {
             @Override
@@ -90,33 +108,13 @@ public class SectionB1Activity extends Activity {
             }
         });
 
-        for (FamilyMembersContract fmc : MainApp.members_f_m) {
-
+        for (FamilyMembersContract fmc : MainApp.respList) {
             respName.add(fmc.getName());
             respMap.put(fmc.getName(), fmc.getSerialNo());
         }
 
-
-        for (byte i = 0; i < MainApp.mwra.size(); i++) {
-            MainApp.mwraMap.put(MainApp.mwra.get(i).getName(), new FamilyMembersContract(MainApp.mwra.get(i)));
-            lstMwra.add(MainApp.mwra.get(i).getName());
-        }
-
-
         bi.nb101.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, lstMwra));
         bi.resp.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, respName));
-
-        bi.nb101.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
-                MainApp.mwraPosition = i;
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
 
         bi.nw207.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -204,7 +202,6 @@ public class SectionB1Activity extends Activity {
 
                 finish();
 
-                lstMwra.remove(MainApp.mwraPosition);
                 if (MainApp.totalPregnancy > 0) {
 
                     startActivity(new Intent(this, SectionB1AActivity.class));
@@ -328,6 +325,8 @@ public class SectionB1Activity extends Activity {
         MainApp.mc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
         MainApp.mc.setB1SerialNo(MainApp.mwraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
         MainApp.mc.set_UUID(MainApp.fc.getUID());
+
+        wraName = bi.nb101.getSelectedItem().toString();
 
         JSONObject sB1 = new JSONObject();
 

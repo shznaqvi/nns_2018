@@ -8,8 +8,6 @@ import android.widget.Toast;
 
 import org.json.JSONException;
 
-import java.util.HashMap;
-
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -65,9 +63,6 @@ public class EndingActivity extends AppCompatActivity {
             if (UpdateDB()) {
 
                 finish();
-                MainApp.mwraMap = new HashMap<>();
-                MainApp.mwraPosition = 0;
-                MainApp.mwra.clear();
 
                 Intent endSec = new Intent(this, MainActivity.class);
                 startActivity(endSec);

@@ -157,7 +157,7 @@ public class SectionA2Activity extends AppCompatActivity {
                         binding.na2edug.setEnabled(false);
                         binding.na2eduh.setEnabled(false);
                         binding.na2edui.setEnabled(false);
-                    } else if (Age > 12 ) {
+                    } else if (Age > 12) {
                         binding.fldGrpna2edu.setVisibility(View.VISIBLE);
                         binding.fldGrpna2ms.setVisibility(View.VISIBLE);
                         binding.fldGrpna2occ.setVisibility(View.VISIBLE);
@@ -241,7 +241,7 @@ public class SectionA2Activity extends AppCompatActivity {
                         binding.na2edug.setEnabled(false);
                         binding.na2eduh.setEnabled(false);
                         binding.na2edui.setEnabled(false);
-                    } else if (Age > 12 ) {
+                    } else if (Age > 12) {
                         binding.fldGrpna2edu.setVisibility(View.VISIBLE);
                         binding.fldGrpna2ms.setVisibility(View.VISIBLE);
                         binding.fldGrpna2occ.setVisibility(View.VISIBLE);
@@ -317,6 +317,10 @@ public class SectionA2Activity extends AppCompatActivity {
         } else {
             binding.na204a.setEnabled(true);
         }
+
+        if (MainApp.IsResp) {
+            binding.fldGrpA20101.setVisibility(View.GONE);
+        }
     }
 
     public void BtnContinue() {
@@ -333,7 +337,9 @@ public class SectionA2Activity extends AppCompatActivity {
 
                 finish();
 
-                startActivity(new Intent(this, SectionA2ListActivity.class));
+                startActivity(new Intent(this, SectionA2ListActivity.class)
+                        .putExtra("respChecking", binding.respa.isChecked())
+                        .putExtra("respLineNo", family.getSerialNo()));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -357,6 +363,16 @@ public class SectionA2Activity extends AppCompatActivity {
 
             if (!validatorClass.EmptyRadioButton(this, binding.na203, binding.na203a, getString(R.string.na203))) {
                 return false;
+            }
+
+            if (!validatorClass.EmptyRadioButton(this, binding.na204, binding.na20496, getString(R.string.na204))) {
+                return false;
+            }
+
+            if (!MainApp.IsResp) {
+                if (!validatorClass.EmptyRadioButton(this, binding.resp, binding.respb, getString(R.string.resp))) {
+                    return false;
+                }
             }
 
             if (!validatorClass.EmptyRadioButton(this, binding.na204, binding.na20496, getString(R.string.na204))) {
@@ -467,11 +483,17 @@ public class SectionA2Activity extends AppCompatActivity {
                     : binding.na204i.isChecked() ? "9" : binding.na204j.isChecked() ? "10" : binding.na204k.isChecked() ? "11" : binding.na204l.isChecked() ? "12"
                     : binding.na204m.isChecked() ? "13" : binding.na20498.isChecked() ? "98" : binding.na20496.isChecked() ? "96" : "0");
 
+            MainApp.fmc.setResp(binding.respa.isChecked() ? "1" : "0"); //respondent
+
             MainApp.familyMembersList.add(MainApp.fmc);
 
 //        Checking IsHead
             if (!MainApp.IsHead && binding.na204a.isChecked()) {
                 MainApp.IsHead = true;
+            }
+
+            if (!MainApp.IsResp && binding.respa.isChecked()) {
+                MainApp.IsResp = true;
             }
 
         } else {
@@ -484,6 +506,7 @@ public class SectionA2Activity extends AppCompatActivity {
 
             JSONObject sA2 = new JSONObject();
 
+            sA2.put("resp", family.getResp().equals("0") ? "" : family.getResp());
             sA2.put("na2SerialNo", family.getSerialNo());
             sA2.put("na202", family.getName());
             sA2.put("na203", family.getGender());
@@ -580,9 +603,13 @@ public class SectionA2Activity extends AppCompatActivity {
                 }
             }
 
-            if (Age >= 15 && !binding.na2mse.isChecked()) {
+            if (Age >= 15) {
                 // Add data in list
-                MainApp.members_f_m.add(family);
+                if (!binding.na2mse.isChecked()) {
+                    MainApp.members_f_m.add(family);
+                }
+
+                MainApp.respList.add(family);
             }
 
             // Add data in list for all members

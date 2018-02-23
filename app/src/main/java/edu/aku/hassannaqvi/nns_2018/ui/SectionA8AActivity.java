@@ -117,7 +117,6 @@ public class SectionA8AActivity extends Activity {
                     counter = 1;
 
                     if (MainApp.mwra.size() > 0) {
-
                         startActivity(new Intent(this, SectionB1Activity.class));
                     } else {
                         startActivity(new Intent(this, SectionC1Activity.class));

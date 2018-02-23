@@ -67,6 +67,7 @@ public class SectionA1Activity extends AppCompatActivity {
         MainApp.membersCount.setMwra(0);
 
         MainApp.members_f_m = new ArrayList<>();
+        MainApp.respList = new ArrayList<>();
         MainApp.all_members = new ArrayList<>();
         MainApp.childUnder2 = new ArrayList<>();
         MainApp.childUnder5 = new ArrayList<>();
@@ -77,6 +78,7 @@ public class SectionA1Activity extends AppCompatActivity {
 
 //        Checking IsHead
         MainApp.IsHead = false;
+        MainApp.IsResp = false;
 
 //        Listener
 

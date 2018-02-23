@@ -18,7 +18,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -84,11 +83,13 @@ public class MainApp extends Application {
     public static int versionCode;
     public static String versionName;
     public static Boolean IsHead;
+    public static Boolean IsResp;
 
     //    Ali
     public static FamilyMembersContract fmc;
     public static EligibleMembersContract emc;
     public static List<FamilyMembersContract> members_f_m;
+    public static List<FamilyMembersContract> respList;
     public static List<FamilyMembersContract> all_members;
     public static List<FamilyMembersContract> childUnder2;
     public static List<FamilyMembersContract> childUnder5;
@@ -100,7 +101,7 @@ public class MainApp extends Application {
     public static List<Integer> hhClicked;
 
     // Gul Sanober
-    public static Map<String, FamilyMembersContract> mwraMap = new HashMap<>();
+    public static Map<String, FamilyMembersContract> mwraMap;
     public static int totalPregnancy = 0;
     public static int count = 1;
     public static boolean flag = false;

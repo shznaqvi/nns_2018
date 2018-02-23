@@ -42,6 +42,7 @@ public class FamilyMembersContract implements Serializable {
     private String fatherName = "";
     private String maritialStatus = "";
     private String realtionHH = "";
+    private String resp = "";
 
     public FamilyMembersContract() {
     }
@@ -54,6 +55,14 @@ public class FamilyMembersContract implements Serializable {
         this.motherName = fmc.motherName;
         this.fatherName = fmc.fatherName;
         this.maritialStatus = fmc.maritialStatus;
+    }
+
+    public String getResp() {
+        return resp;
+    }
+
+    public void setResp(String resp) {
+        this.resp = resp;
     }
 
     public String getRealtionHH() {

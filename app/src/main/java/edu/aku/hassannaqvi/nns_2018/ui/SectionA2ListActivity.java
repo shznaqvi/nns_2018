@@ -36,9 +36,9 @@ import edu.aku.hassannaqvi.nns_2018.databinding.FamilymemberslistBinding;
 
 public class SectionA2ListActivity extends AppCompatActivity {
 
+    static String respLineNo = "";
     ActivitySectionListA2Binding binding;
     Map<Integer, Map<Integer, Integer>> mem;
-
     /*Variables*/
     DatabaseHelper db;
     FamilyMembersAdapter mAdapter;
@@ -133,6 +133,11 @@ public class SectionA2ListActivity extends AppCompatActivity {
             binding.btnContinue.setVisibility(View.VISIBLE);
         }
 
+//        Getting resp Line no
+        if (getIntent().getBooleanExtra("respChecking", false)) {
+            respLineNo = getIntent().getStringExtra("respLineNo");
+        }
+
     }
 
     public void BtnContinue() {
@@ -149,6 +154,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
                 finish();
 
+                respLineNo = "";
                 startActivity(new Intent(this, SectionA4Activity.class));
 
             } else {
@@ -184,6 +190,8 @@ public class SectionA2ListActivity extends AppCompatActivity {
         count.put("na2u5b", binding.na2u5b.getText().toString());
         count.put("na2u5g", binding.na2u5g.getText().toString());
         count.put("na2mw", binding.na2mw.getText().toString());
+
+        MainApp.fc.setRespLineNo(respLineNo);
 
         MainApp.fc.setCount(String.valueOf(count));
 

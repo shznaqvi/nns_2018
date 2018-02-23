@@ -10,6 +10,7 @@ import org.json.JSONException;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
+import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivityMotherEndingBinding;
 
 public class MotherEndingActivity extends AppCompatActivity {
@@ -68,8 +69,14 @@ public class MotherEndingActivity extends AppCompatActivity {
 
                 if (SectionC1Activity.counter == SectionC1Activity.counterPerMom) {
 
-                    startActivity(new Intent(this, EndingActivity.class)
-                            .putExtra("complete", true));
+                    if (SectionB1Activity.WRAcounter == MainApp.mwra.size()) {
+
+                    } else {
+                        startActivity(new Intent(this, SectionB1Activity.class)
+                                .putExtra("mwraFlag", true)
+                                .putExtra("wraName", SectionB1Activity.wraName));
+                    }
+
 
                 } else {
                     startActivity(new Intent(this, SectionC1Activity.class)
