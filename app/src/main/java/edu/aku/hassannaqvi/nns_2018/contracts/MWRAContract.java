@@ -27,6 +27,7 @@ public class MWRAContract {
     private String b1SerialNo = "";
     private String sB1 = "";
     private String sB2 = "";
+    private String sB3 = "";
     private String sB4 = "";
     private String sB5 = "";
     private String sB6 = "";
@@ -177,6 +178,14 @@ public class MWRAContract {
         this.sB6 = sB6;
     }
 
+    public String getsB3() {
+        return sB3;
+    }
+
+    public void setsB3(String sB3) {
+        this.sB3 = sB3;
+    }
+
     public MWRAContract Sync(JSONObject jsonObject) throws JSONException {
 
         this._ID = jsonObject.getString(MWRATable.COLUMN__ID);
@@ -190,6 +199,7 @@ public class MWRAContract {
         this.b1SerialNo = jsonObject.getString(MWRATable.COLUMN_B1SERIALNO);
         this.sB1 = jsonObject.getString(MWRATable.COLUMN_SB1);
         this.sB2 = jsonObject.getString(MWRATable.COLUMN_SB2);
+        this.sB3 = jsonObject.getString(MWRATable.COLUMN_SB3);
         this.sB4 = jsonObject.getString(MWRATable.COLUMN_SB4);
         this.sB5 = jsonObject.getString(MWRATable.COLUMN_SB5);
         this.sB6 = jsonObject.getString(MWRATable.COLUMN_SB6);
@@ -214,6 +224,7 @@ public class MWRAContract {
         this.b1SerialNo = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_B1SERIALNO));
         this.sB1 = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB1));
         this.sB2 = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB2));
+        this.sB3 = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB3));
         this.sB4 = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB4));
         this.sB5 = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB5));
         this.sB6 = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB6));
@@ -247,6 +258,10 @@ public class MWRAContract {
 
         if (!this.sB2.equals("")) {
             json.put(MWRATable.COLUMN_SB2, this.sB2.equals("") ? JSONObject.NULL : new JSONObject(this.sB2));
+        }
+
+        if (!this.sB3.equals("")) {
+            json.put(MWRATable.COLUMN_SB3, this.sB3.equals("") ? JSONObject.NULL : new JSONObject(this.sB3));
         }
 
         if (!this.sB4.equals("")) {
@@ -285,6 +300,7 @@ public class MWRAContract {
         public static final String COLUMN_B1SERIALNO = "b1serialno";
         public static final String COLUMN_SB1 = "sb1";
         public static final String COLUMN_SB2 = "sb2";
+        public static final String COLUMN_SB3 = "sb3";
         public static final String COLUMN_SB4 = "sb4";
         public static final String COLUMN_SB5 = "sb5";
         public static final String COLUMN_SB6 = "sb6";

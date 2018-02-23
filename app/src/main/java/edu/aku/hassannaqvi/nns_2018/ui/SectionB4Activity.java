@@ -127,7 +127,7 @@ public class SectionB4Activity extends Activity {
     public void BtnContinue() {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
-        /*if (formValidation()) {
+        if (formValidation()) {
             try {
                 SaveDraft();
             } catch (JSONException e) {
@@ -138,14 +138,14 @@ public class SectionB4Activity extends Activity {
 
                 finish();
 
-                startActivity(new Intent(this, ChildAssessmentActivity.class));
+                startActivity(new Intent(this, SectionB5Activity.class));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
-        }*/
+        }
 
-        startActivity(new Intent(this, SectionB5Activity.class));
+        //startActivity(new Intent(this, SectionB5Activity.class));
     }
 
     public void BtnEnd() {

@@ -67,7 +67,7 @@ public class SectionB3Activity extends AppCompatActivity {
     public void BtnContinue() {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
-        /*if (formValidation()) {
+        if (formValidation()) {
             try {
                 SaveDraft();
             } catch (JSONException e) {
@@ -78,14 +78,14 @@ public class SectionB3Activity extends AppCompatActivity {
 
                 finish();
 
-                startActivity(new Intent(this, ChildAssessmentActivity.class));
+                startActivity(new Intent(this, SectionB5Activity.class));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
-        }*/
+        }
 
-        startActivity(new Intent(this, SectionB4Activity.class));
+//        startActivity(new Intent(this, SectionB4Activity.class));
     }
 
     public void BtnEnd() {
@@ -196,7 +196,7 @@ public class SectionB3Activity extends AppCompatActivity {
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        /*int updcount = db.updateSB3();
+        int updcount = db.updateSB3();
 
         if (updcount == 1) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
@@ -205,8 +205,8 @@ public class SectionB3Activity extends AppCompatActivity {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
         }
-*/
-        return true;
+
+        //return true;
 
     }
 

@@ -392,42 +392,92 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <EditText
-                        android:id="@+id/na2agey"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
                         android:layout_weight="1"
-                        android:hint="@string/year"
-                        android:inputType="number"
-                        android:maxLength="2"
-                        android:text='@{na20798.checked ? na2agey.getText.toString : "" }'
-                        android:visibility="visible" />
+                        android:background="@drawable/bacground_border_heading"
+                        android:orientation="vertical">
 
-                    <EditText
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/pink_100"
+                            android:gravity="center"
+                            android:text="@string/year"
+                            android:textColor="@color/colorPrimaryDark" />
+
+
+                        <EditText
+                            android:id="@+id/na2agey"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="1dp"
+                            android:hint="@string/year"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:text='@{na20798.checked ? na2agey.getText.toString : "" }'
+                            android:visibility="visible" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/fldGrpmonths"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/bacground_border_heading"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/pink_100"
+                            android:text="@string/month"
+                            android:textColor="@color/colorPrimaryDark" />
+
+
+                        <EditText
                         android:id="@+id/na2agem"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
                         android:hint="@string/month"
                         android:inputType="number"
                         android:maxLength="2"
                         android:text='@{na20798.checked ? na2agem.getText.toString : "" }'
                         android:visibility="visible" />
 
-                    <EditText
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/fldGrpdays"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/bacground_border_heading"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/pink_100"
+                            android:text="@string/day"
+                            android:textColor="@color/colorPrimaryDark" />
+
+                        <EditText
                         android:id="@+id/na2aged"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
                         android:digits="0123456789"
                         android:hint="@string/day"
                         android:inputType="number"
                         android:maxLength="2"
                         android:text='@{na20798.checked ? na2aged.getText.toString : "" }'
                         android:visibility="visible" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 

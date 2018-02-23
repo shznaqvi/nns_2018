@@ -112,13 +112,13 @@ public class SectionA2Activity extends AppCompatActivity {
 
                 if (!binding.na2agey.getText().toString().isEmpty()) {
                     if (Integer.valueOf(binding.na2agey.getText().toString()) >= 5) {
-                        binding.na2agem.setVisibility(View.GONE);
-                        binding.na2aged.setVisibility(View.GONE);
+                        binding.fldGrpmonths.setVisibility(View.GONE);
+                        binding.fldGrpdays.setVisibility(View.GONE);
                         binding.na2agem.setText("0");
                         binding.na2aged.setText("0");
                     } else {
-                        binding.na2agem.setVisibility(View.VISIBLE);
-                        binding.na2aged.setVisibility(View.VISIBLE);
+                        binding.fldGrpmonths.setVisibility(View.VISIBLE);
+                        binding.fldGrpdays.setVisibility(View.VISIBLE);
                     }
 
                     Age = Integer.valueOf(binding.na2agey.getText().toString());

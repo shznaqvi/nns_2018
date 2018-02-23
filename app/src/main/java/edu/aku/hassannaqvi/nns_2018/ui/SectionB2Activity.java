@@ -215,7 +215,7 @@ public class SectionB2Activity extends Activity {
     public void BtnContinue() {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
-        /*if (ValidateForm()) {
+        if (ValidateForm()) {
             try {
                 SaveDraft();
             } catch (JSONException e) {
@@ -226,14 +226,14 @@ public class SectionB2Activity extends Activity {
 
                 finish();
 
-                startActivity(new Intent(this, ChildAssessmentActivity.class));
+                startActivity(new Intent(this, SectionB3Activity.class));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
-        }*/
+        }
 
-        startActivity(new Intent(this, SectionB3Activity.class));
+        //startActivity(new Intent(this, SectionB3Activity.class));
     }
 
     public void BtnEnd() {

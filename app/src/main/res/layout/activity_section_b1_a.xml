@@ -179,35 +179,78 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
-                        <EditText
-                            android:id="@+id/nb1a05y"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:hint="@string/year"
-                            android:inputType="number"
-                            android:maxLength="2" />
+                            android:orientation="horizontal">
 
-                        <EditText
-                            android:id="@+id/nb1a05m"
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@color/pink_100"
+                                android:text="@string/year"
+                                android:textColor="@color/colorPrimaryDark" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@color/pink_100"
+                                android:text="@string/month"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@color/pink_100"
+                                android:text="@string/day"
+                                android:textColor="@color/colorPrimaryDark" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:hint="@string/month"
-                            android:inputType="number"
-                            android:maxLength="2" />
+                            android:orientation="horizontal">
 
-                        <EditText
-                            android:id="@+id/nb1a05d"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:hint="@string/day"
-                            android:inputType="number"
-                            android:maxLength="2" />
+
+                            <EditText
+                                android:id="@+id/nb1a05y"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:hint="@string/year"
+                                android:inputType="number"
+                                android:maxLength="2" />
+
+                            <EditText
+                                android:id="@+id/nb1a05m"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:hint="@string/month"
+                                android:inputType="number"
+                                android:maxLength="2" />
+
+                            <EditText
+                                android:id="@+id/nb1a05d"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:hint="@string/day"
+                                android:inputType="number"
+                                android:maxLength="2" />
+                        </LinearLayout>
+
+
                     </LinearLayout>
+
 
                 </LinearLayout>
 
@@ -229,34 +272,75 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
-                        <EditText
-                            android:id="@+id/nb1a06y"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:hint="@string/year"
-                            android:inputType="number"
-                            android:maxLength="2" />
+                            android:orientation="horizontal">
 
-                        <EditText
-                            android:id="@+id/nb1a06m"
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@color/pink_100"
+                                android:text="@string/year"
+                                android:textColor="@color/colorPrimaryDark" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@color/pink_100"
+                                android:text="@string/month"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@color/pink_100"
+                                android:text="@string/day"
+                                android:textColor="@color/colorPrimaryDark" />
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:hint="@string/month"
-                            android:inputType="number"
-                            android:maxLength="2" />
+                            android:orientation="horizontal">
 
-                        <EditText
-                            android:id="@+id/nb1a06d"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:hint="@string/day"
-                            android:inputType="number"
-                            android:maxLength="2" />
+                            <EditText
+                                android:id="@+id/nb1a06y"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:hint="@string/year"
+                                android:inputType="number"
+                                android:maxLength="2" />
+
+                            <EditText
+                                android:id="@+id/nb1a06m"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:hint="@string/month"
+                                android:inputType="number"
+                                android:maxLength="2" />
+
+                            <EditText
+                                android:id="@+id/nb1a06d"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:hint="@string/day"
+                                android:inputType="number"
+                                android:maxLength="2" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 

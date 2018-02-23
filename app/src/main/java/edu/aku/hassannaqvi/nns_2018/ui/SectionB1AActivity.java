@@ -85,7 +85,7 @@ public class SectionB1AActivity extends AppCompatActivity {
         bi.nb1a02.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (bi.nb1a02a.isChecked() || bi.nb1a02b.isChecked() || bi.nb1a02c.isChecked()) {
+                if (bi.nb1a02a.isChecked() || bi.nb1a02b.isChecked() || bi.nb1a02e.isChecked()) {
                     bi.fldGrpnb1a03.setVisibility(View.GONE);
                     bi.nb1a04.clearCheck();
                     bi.nb1a05d.setText(null);

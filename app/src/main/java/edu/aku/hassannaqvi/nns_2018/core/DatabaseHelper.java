@@ -192,6 +192,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             MWRATable.COLUMN_B1SERIALNO + " TEXT," +
             MWRATable.COLUMN_SB1 + " TEXT," +
             MWRATable.COLUMN_SB2 + " TEXT," +
+            MWRATable.COLUMN_SB3 + " TEXT," +
             MWRATable.COLUMN_SB4 + " TEXT," +
             MWRATable.COLUMN_SB5 + " TEXT," +
             MWRATable.COLUMN_SB6 + " TEXT," +
@@ -726,6 +727,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(MWRATable.COLUMN_B1SERIALNO, mc.getB1SerialNo());
         values.put(MWRATable.COLUMN_SB1, mc.getsB1());
         values.put(MWRATable.COLUMN_SB2, mc.getsB2());
+        values.put(MWRATable.COLUMN_SB3, mc.getsB3());
         values.put(MWRATable.COLUMN_SB4, mc.getsB4());
         values.put(MWRATable.COLUMN_SB5, mc.getsB5());
         values.put(MWRATable.COLUMN_SB6, mc.getsB6());
@@ -1212,6 +1214,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 MWRATable.COLUMN_B1SERIALNO,
                 MWRATable.COLUMN_SB1,
                 MWRATable.COLUMN_SB2,
+                MWRATable.COLUMN_SB3,
                 MWRATable.COLUMN_SB4,
                 MWRATable.COLUMN_SB5,
                 MWRATable.COLUMN_SB6,
@@ -1512,6 +1515,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 // New value for one column
         ContentValues values = new ContentValues();
         values.put(MWRATable.COLUMN_SB2, MainApp.mc.getsB2());
+
+// Which row to update, based on the ID
+        String selection = MWRATable._ID + " = ?";
+        String[] selectionArgs = {String.valueOf(MainApp.mc.get_ID())};
+
+        int count = db.update(MWRATable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
+
+
+    public int updateSB3() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(MWRATable.COLUMN_SB3, MainApp.mc.getsB3());
 
 // Which row to update, based on the ID
         String selection = MWRATable._ID + " = ?";
