@@ -33,8 +33,8 @@ public class SectionC1Activity extends AppCompatActivity {
     public static String selectedChildName = "";
     static List<String> childU5;
     static Map<String, FamilyMembersContract> childMap;
-    static ArrayList<String> respName;
-    static ArrayList<String> respSerial;
+    Map<String, String> respMap;
+    ArrayList<String> respName;
     ActivitySectionC1Binding binding;
     DatabaseHelper db;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
@@ -45,8 +45,8 @@ public class SectionC1Activity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_c1);
         db = new DatabaseHelper(this);
         respName = new ArrayList<>();
-        respSerial = new ArrayList<>();
         respName.add("....");
+        respMap = new HashMap<>();
         //childMap = new HashMap<>();
 
 //        Assigning data to UI binding
@@ -72,9 +72,8 @@ public class SectionC1Activity extends AppCompatActivity {
         }
 
         for (FamilyMembersContract fmc : MainApp.members_f_m) {
-
             respName.add(fmc.getName());
-            respSerial.add(fmc.getSerialNo());
+            respMap.put(fmc.getName(), fmc.getSerialNo());
         }
 
         // setup head
@@ -149,6 +148,7 @@ public class SectionC1Activity extends AppCompatActivity {
         JSONObject sC1 = new JSONObject();
 
         sC1.put("respName", binding.resp.getSelectedItem().toString());
+        sC1.put("respSerial", respMap.get(binding.resp.getSelectedItem().toString()));
 
 //       nc101
         sC1.put("nc101", binding.nc101.getSelectedItem().toString());
