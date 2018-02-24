@@ -1608,6 +1608,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 // New value for one column
         ContentValues values = new ContentValues();
         values.put(FormsTable.COLUMN_COUNT, MainApp.fc.getCount());
+        values.put(FormsTable.COLUMN_RESP_LNO, MainApp.fc.getRespLineNo());
 
 // Which row to update, based on the ID
         String selection = FormsTable._ID + " = ?";

@@ -263,8 +263,28 @@ public class SectionB2Activity extends Activity {
                     return false;
                 }
 
+                if (bi.nw303m.getText().toString().equals("0")) {
+                    if (!validatorClass.RangeTextBox(this, bi.nw303w, 2, 44, getString(R.string.nw203), " weeks")) {
+                        return false;
+                    }
+                } else {
+                    if (!validatorClass.RangeTextBox(this, bi.nw303w, 0, 44, getString(R.string.nw203), " weeks")) {
+                        return false;
+                    }
+                }
+
                 if (!validatorClass.EmptyTextBox(this, bi.nw303m, getString(R.string.nw303) + " - " + getString(R.string.months))) {
                     return false;
+                }
+
+                if (bi.nw303w.getText().toString().equals("0")) {
+                    if (!validatorClass.RangeTextBox(this, bi.nw303m, 1, 9, getString(R.string.nw203), " months")) {
+                        return false;
+                    }
+                } else {
+                    if (!validatorClass.RangeTextBox(this, bi.nw303m, 0, 9, getString(R.string.nw203), " months")) {
+                        return false;
+                    }
                 }
 
                 if (bi.nw303w.getText().toString().equals("0") && bi.nw303m.getText().toString().equals("0")) {
@@ -284,6 +304,10 @@ public class SectionB2Activity extends Activity {
                 if (!validatorClass.EmptyTextBox(this, bi.nw304, getString(R.string.nw304) + " - " + getString(R.string.times))) {
                     return false;
                 }
+                if (!validatorClass.RangeTextBox(this, bi.nw304, 1, 9, getString(R.string.nw203), " times")) {
+                    return false;
+                }
+
             }
 
             if (!validatorClass.EmptyCheckBox(this, bi.fldGrpnw305check, bi.nw305a, getString(R.string.nw305))) {
@@ -308,6 +332,10 @@ public class SectionB2Activity extends Activity {
         if (bi.nw307a.isChecked()) {
             if (!bi.nw30898.isChecked()) {
                 if (!validatorClass.EmptyTextBox(this, bi.nw308, getString(R.string.nw308) + " - " + getString(R.string.times))) {
+                    return false;
+                }
+
+                if (!validatorClass.RangeTextBox(this, bi.nw308, 1, 5, getString(R.string.nw203), " times")) {
                     return false;
                 }
             }

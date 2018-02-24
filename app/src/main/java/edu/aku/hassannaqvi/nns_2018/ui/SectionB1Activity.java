@@ -37,7 +37,7 @@ public class SectionB1Activity extends Activity {
 
     public static String wraName = "";
     public static int WRAcounter = 0;
-    static Map<String, String> wraMap;
+    static Map<String, FamilyMembersContract> wraMap;
     static ArrayList<String> lstMwra;
     ArrayList<String> respName;
     Map<String, String> respMap;
@@ -74,8 +74,9 @@ public class SectionB1Activity extends Activity {
             lstMwra.add("....");
 
             for (byte i = 0; i < MainApp.mwra.size(); i++) {
-                MainApp.mwraMap.put(MainApp.mwra.get(i).getName(), new FamilyMembersContract(MainApp.mwra.get(i)));
+                wraMap.put(MainApp.mwra.get(i).getName(), MainApp.mwra.get(i));
                 lstMwra.add(MainApp.mwra.get(i).getName());
+
             }
 
             WRAcounter = 0;
@@ -260,7 +261,7 @@ public class SectionB1Activity extends Activity {
             return false;
         }
 
-        if (!validatorClass.RangeTextBox(this, bi.nw203, 15, 49, getString(R.string.nw203), " years")) {
+        if (!validatorClass.RangeTextBox(this, bi.nw203, 15, Integer.valueOf(wraMap.get(bi.nb101.getSelectedItem().toString()).getAgeInYear()), getString(R.string.nw203), " years")) {
             return false;
         }
 
@@ -273,6 +274,11 @@ public class SectionB1Activity extends Activity {
             if (!validatorClass.EmptyTextBox(this, bi.nw206, getString(R.string.nw206))) {
                 return false;
             }
+
+            if (!validatorClass.RangeTextBox(this, bi.nw206, Integer.valueOf(bi.nw203.getText().toString()), Integer.valueOf(wraMap.get(bi.nb101.getSelectedItem().toString()).getAgeInYear()), getString(R.string.nw203), " years")) {
+                return false;
+            }
+
 
             if (!validatorClass.EmptyRadioButton(this, bi.nw207, bi.nw207a, getString(R.string.nw207))) {
                 return false;
@@ -323,7 +329,7 @@ public class SectionB1Activity extends Activity {
         MainApp.mc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
         MainApp.mc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
-        MainApp.mc.setB1SerialNo(MainApp.mwraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
+        MainApp.mc.setB1SerialNo(wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
         MainApp.mc.set_UUID(MainApp.fc.getUID());
 
         wraName = bi.nb101.getSelectedItem().toString();
@@ -333,7 +339,7 @@ public class SectionB1Activity extends Activity {
         sB1.put("respName", bi.resp.getSelectedItem().toString());
         sB1.put("respSerial", respMap.get(bi.resp.getSelectedItem().toString()));
         sB1.put("nb101", bi.nb101.getSelectedItem().toString());
-        sB1.put("nb1serialno", MainApp.mwraMap.get(bi.nb101.getSelectedItem().toString()));
+        sB1.put("nb1serialno", wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
         sB1.put("nw204", bi.nw204.getText().toString());
 
         sB1.put("nw207", bi.nw207a.isChecked() ? "1"

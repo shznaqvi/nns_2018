@@ -364,6 +364,7 @@ public class SectionA4Activity extends AppCompatActivity {
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
+
         JSONObject sA4 = new JSONObject();
         sA4.put("nh301", binding.na401a.isChecked() ? "1"
                 : binding.na401b.isChecked() ? "2"

@@ -66,6 +66,7 @@ public class SectionA2Activity extends AppCompatActivity {
         if (flag) {
             binding.fldGrpA201.setVisibility(View.VISIBLE);
             binding.fldGrpA202.setVisibility(View.GONE);
+            //family = (FamilyMembersContract) getIntent().getSerializableExtra("data");
         } else {
 
             family = (FamilyMembersContract) getIntent().getSerializableExtra("data");
@@ -75,6 +76,7 @@ public class SectionA2Activity extends AppCompatActivity {
 
             binding.fldGrpA201.setVisibility(View.GONE);
             binding.fldGrpA202.setVisibility(View.VISIBLE);
+            binding.fldGrpA20101.setVisibility(View.VISIBLE);
         }
 
 //        Listeners
@@ -337,9 +339,14 @@ public class SectionA2Activity extends AppCompatActivity {
 
                 finish();
 
-                startActivity(new Intent(this, SectionA2ListActivity.class)
-                        .putExtra("respChecking", binding.respa.isChecked())
-                        .putExtra("respLineNo", family.getSerialNo()));
+                if (flag) {
+                    startActivity(new Intent(this, SectionA2ListActivity.class));
+                } else {
+                    startActivity(new Intent(this, SectionA2ListActivity.class)
+                            .putExtra("respChecking", binding.respa.isChecked())
+                            .putExtra("respLineNo", family.getSerialNo()));
+                }
+
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -369,17 +376,19 @@ public class SectionA2Activity extends AppCompatActivity {
                 return false;
             }
 
-            if (!MainApp.IsResp) {
-                if (!validatorClass.EmptyRadioButton(this, binding.resp, binding.respb, getString(R.string.resp))) {
-                    return false;
-                }
-            }
+
 
             if (!validatorClass.EmptyRadioButton(this, binding.na204, binding.na20496, getString(R.string.na204))) {
                 return false;
             }
 
         } else {
+
+            if (!MainApp.IsResp) {
+                if (!validatorClass.EmptyRadioButton(this, binding.resp, binding.respb, getString(R.string.resp))) {
+                    return false;
+                }
+            }
 
             if (!validatorClass.EmptySpinner(this, binding.na205, getString(R.string.na205))) {
                 return false;
@@ -492,11 +501,12 @@ public class SectionA2Activity extends AppCompatActivity {
                 MainApp.IsHead = true;
             }
 
+
+        } else {
+
             if (!MainApp.IsResp && binding.respa.isChecked()) {
                 MainApp.IsResp = true;
             }
-
-        } else {
 
             family.setDob(binding.na2dob.getText().toString());
             family.setAge(binding.na2agey.getText().toString() + "/" + binding.na2agem.getText().toString() + "/" + binding.na2aged.getText().toString());
