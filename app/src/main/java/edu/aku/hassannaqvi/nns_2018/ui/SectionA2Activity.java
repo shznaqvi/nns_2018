@@ -339,13 +339,13 @@ public class SectionA2Activity extends AppCompatActivity {
 
                 finish();
 
-                if (flag) {
-                    startActivity(new Intent(this, SectionA2ListActivity.class));
-                } else {
+                //if (flag) {
+                //  startActivity(new Intent(this, SectionA2ListActivity.class));
+                //} else {
                     startActivity(new Intent(this, SectionA2ListActivity.class)
                             .putExtra("respChecking", binding.respa.isChecked())
                             .putExtra("respLineNo", MainApp.fmc.getSerialNo()));
-                }
+                //}
 
 
             } else {
@@ -493,6 +493,7 @@ public class SectionA2Activity extends AppCompatActivity {
                     : binding.na204m.isChecked() ? "13" : binding.na20498.isChecked() ? "98" : binding.na20496.isChecked() ? "96" : "0");
 
             MainApp.fmc.setResp(binding.respa.isChecked() ? "1" : "0"); //respondent
+
 
             MainApp.familyMembersList.add(MainApp.fmc);
 
