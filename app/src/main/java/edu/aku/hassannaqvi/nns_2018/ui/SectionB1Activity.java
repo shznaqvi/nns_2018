@@ -10,6 +10,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -92,6 +93,21 @@ public class SectionB1Activity extends Activity {
 
         bi.nb101.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, lstMwra));
         bi.resp.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, respName));
+
+        bi.nb101.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (bi.nb101.getSelectedItemPosition() != 0) {
+                    bi.curAge.setText("Current Age is: " + wraMap.get(bi.nb101.getSelectedItem().toString()).getAgeInYear() + " years");
+                    bi.curAge1.setText("Current Age is: " + wraMap.get(bi.nb101.getSelectedItem().toString()).getAgeInYear() + " years");
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 //============================================ Skip Patterns =======================================
 

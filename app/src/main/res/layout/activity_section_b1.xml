@@ -165,6 +165,16 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
+                <TextView
+                    android:id="@+id/curAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/pink_100"
+                    android:padding="2dp"
+                    android:text=""
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="18sp" />
+
             <EditText
                 android:id="@+id/nw203"
                 android:layout_width="match_parent"
@@ -225,6 +235,16 @@
                     android:text="@string/nw206"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
+
+                <TextView
+                    android:id="@+id/curAge1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/pink_100"
+                    android:padding="2dp"
+                    android:text=""
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/nw206"
