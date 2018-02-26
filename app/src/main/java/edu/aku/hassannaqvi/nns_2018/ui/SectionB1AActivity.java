@@ -47,12 +47,21 @@ public class SectionB1AActivity extends AppCompatActivity {
                 bi.nb1a01.setText(date);
                 bi.nb1a02d.setChecked(true);
                 bi.nb1a01.setEnabled(false);
-                bi.nb1a02.setEnabled(false);
+                bi.nb1a02a.setEnabled(false);
+                bi.nb1a02b.setEnabled(false);
+                bi.nb1a02c.setEnabled(false);
+                bi.nb1a02e.setEnabled(false);
+                bi.nb1a02f.setEnabled(false);
             } else {
                 bi.nb1a01.setText(null);
                 bi.nb1a02d.setChecked(false);
                 bi.nb1a01.setEnabled(true);
-                bi.nb1a02.setEnabled(true);
+                bi.nb1a02a.setEnabled(true);
+                bi.nb1a02b.setEnabled(true);
+                bi.nb1a02c.setEnabled(true);
+                bi.nb1a02e.setEnabled(true);
+                bi.nb1a02f.setEnabled(true);
+
             }
         }
 
@@ -61,6 +70,7 @@ public class SectionB1AActivity extends AppCompatActivity {
     public void setupViews() {
 
         bi.nb1a01.setManager(getSupportFragmentManager());
+        bi.nb1a01.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
 
         bi.nb1a04.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override

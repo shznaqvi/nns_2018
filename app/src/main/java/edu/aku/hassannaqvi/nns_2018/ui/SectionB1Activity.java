@@ -10,6 +10,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -85,6 +86,65 @@ public class SectionB1Activity extends Activity {
 //      Increment WRA COUNTER
         WRAcounter++;
 
+        for (FamilyMembersContract fmc : MainApp.respList) {
+            respName.add(fmc.getName());
+            respMap.put(fmc.getName(), fmc.getSerialNo());
+        }
+
+        bi.nb101.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, lstMwra));
+        bi.resp.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, respName));
+
+        bi.nb101.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (bi.nb101.getSelectedItemPosition() != 0) {
+                    bi.curAge.setText("Current Age is: " + wraMap.get(bi.nb101.getSelectedItem().toString()).getAgeInYear() + " years");
+                    bi.curAge1.setText("Current Age is: " + wraMap.get(bi.nb101.getSelectedItem().toString()).getAgeInYear() + " years");
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+//============================================ Skip Patterns =======================================
+
+        bi.nw201.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (bi.nw201a.isChecked()) {
+                    bi.fldGrpnw202.setVisibility(View.GONE);
+                    bi.nw202.clearCheck();
+                } else {
+                    bi.fldGrpnw202.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        bi.nw202.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (bi.nw202b.isChecked()) {
+                    bi.fldGrpnw203.setVisibility(View.GONE);
+                    bi.nw203.setText(null);
+                    bi.nw204.setText(null);
+                    bi.nw205.setText(null);
+                    bi.nw206.setText(null);
+                    bi.nw207.clearCheck();
+                    bi.nw208.clearCheck();
+                    bi.nw20901.clearCheck();
+                    bi.nw20902.clearCheck();
+                    bi.nw20903.clearCheck();
+                    bi.nw20998.clearCheck();
+                    bi.nw20999.clearCheck();
+                } else {
+                    bi.fldGrpnw203.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
         bi.nw204.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -96,6 +156,7 @@ public class SectionB1Activity extends Activity {
 
                 if (bi.nw204.getText().toString().equals("0")) {
                     bi.fldGrpnw205.setVisibility(GONE);
+                    bi.nw205.setText(null);
                     bi.nw207.clearCheck();
                     bi.nw206.setText(null);
                 } else {
@@ -109,13 +170,6 @@ public class SectionB1Activity extends Activity {
             }
         });
 
-        for (FamilyMembersContract fmc : MainApp.respList) {
-            respName.add(fmc.getName());
-            respMap.put(fmc.getName(), fmc.getSerialNo());
-        }
-
-        bi.nb101.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, lstMwra));
-        bi.resp.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, respName));
 
         bi.nw207.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -145,26 +199,52 @@ public class SectionB1Activity extends Activity {
                     bi.nw20903.clearCheck();
                     bi.nw20999.clearCheck();
 
-                    bi.nw20901.setEnabled(false);
-                    bi.nw20902.setEnabled(false);
-                    bi.nw20903.setEnabled(false);
-                    bi.nw20999.setEnabled(false);
+                    bi.nw20901a.setEnabled(false);
+                    bi.nw20901b.setEnabled(false);
+                    bi.nw20902a.setEnabled(false);
+                    bi.nw20902b.setEnabled(false);
+                    bi.nw20903a.setEnabled(false);
+                    bi.nw20903b.setEnabled(false);
+                    bi.nw20999a.setEnabled(false);
+                    bi.nw20999b.setEnabled(false);
                 } else {
-                    bi.nw20901.setEnabled(true);
-                    bi.nw20902.setEnabled(true);
-                    bi.nw20903.setEnabled(true);
-                    bi.nw20999.setEnabled(true);
+                    bi.nw20901a.setEnabled(true);
+                    bi.nw20901b.setEnabled(true);
+                    bi.nw20902a.setEnabled(true);
+                    bi.nw20902b.setEnabled(true);
+                    bi.nw20903a.setEnabled(true);
+                    bi.nw20903b.setEnabled(true);
+                    bi.nw20998a.setEnabled(true);
+                    bi.nw20998b.setEnabled(true);
                 }
             }
         });
         bi.nw20999.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.nw20998a) {
+                if (checkedId == R.id.nw20999a) {
                     bi.nw20998.clearCheck();
                     bi.nw20901.clearCheck();
                     bi.nw20902.clearCheck();
                     bi.nw20903.clearCheck();
+
+                    bi.nw20901a.setEnabled(false);
+                    bi.nw20901b.setEnabled(false);
+                    bi.nw20902a.setEnabled(false);
+                    bi.nw20902b.setEnabled(false);
+                    bi.nw20903a.setEnabled(false);
+                    bi.nw20903b.setEnabled(false);
+                    bi.nw20998a.setEnabled(false);
+                    bi.nw20998b.setEnabled(false);
+                } else {
+                    bi.nw20901a.setEnabled(true);
+                    bi.nw20901b.setEnabled(true);
+                    bi.nw20902a.setEnabled(true);
+                    bi.nw20902b.setEnabled(true);
+                    bi.nw20903a.setEnabled(true);
+                    bi.nw20903b.setEnabled(true);
+                    bi.nw20998a.setEnabled(true);
+                    bi.nw20998b.setEnabled(true);
                 }
             }
         });
@@ -203,14 +283,20 @@ public class SectionB1Activity extends Activity {
 
                 finish();
 
-                if (MainApp.totalPregnancy > 0) {
+                if (bi.nw201a.isChecked() || bi.nw202a.isChecked()) {
+                    if (MainApp.totalPregnancy > 0) {
 
-                    startActivity(new Intent(this, SectionB1AActivity.class));
-                } else if (MainApp.totalPregnancy == 1 && bi.nw207a.isChecked()) {
-                    startActivity(new Intent(this, SectionB2Activity.class));
-                } else if (MainApp.totalPregnancy == 0) {
+                        startActivity(new Intent(this, SectionB1AActivity.class));
+                    } else if (MainApp.totalPregnancy == 1 && bi.nw207a.isChecked()) {
+                        startActivity(new Intent(this, SectionB2Activity.class));
+                    } else if (MainApp.totalPregnancy == 0) {
+                        startActivity(new Intent(this, SectionB6Activity.class));
+                    }
+                } else {
                     startActivity(new Intent(this, SectionB6Activity.class));
                 }
+
+
 
 
                 //startActivity(new Intent(this, SectionC1Activity.class));
@@ -257,63 +343,79 @@ public class SectionB1Activity extends Activity {
             ((TextView) bi.nb101.getSelectedView()).setError(null);
         }
 
-        if (!validatorClass.EmptyTextBox(this, bi.nw203, getString(R.string.nw203))) {
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nw201, bi.nw201a, getString(R.string.nw201))) {
             return false;
         }
 
-        if (!validatorClass.RangeTextBox(this, bi.nw203, 15, Integer.valueOf(wraMap.get(bi.nb101.getSelectedItem().toString()).getAgeInYear()), getString(R.string.nw203), " years")) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyTextBox(this, bi.nw204, getString(R.string.nw204))) {
-            return false;
-        }
-
-        if (Integer.valueOf(bi.nw204.getText().toString()) > 0) {
-
-            if (!validatorClass.EmptyTextBox(this, bi.nw206, getString(R.string.nw206))) {
+        if (bi.nw201b.isChecked()) {
+            if (!validatorClass.EmptyRadioButton(this, bi.nw202, bi.nw202a, getString(R.string.nw202))) {
                 return false;
             }
+        } else {
 
-            if (!validatorClass.RangeTextBox(this, bi.nw206, Integer.valueOf(bi.nw203.getText().toString()), Integer.valueOf(wraMap.get(bi.nb101.getSelectedItem().toString()).getAgeInYear()), getString(R.string.nw203), " years")) {
-                return false;
-            }
-
-
-            if (!validatorClass.EmptyRadioButton(this, bi.nw207, bi.nw207a, getString(R.string.nw207))) {
-                return false;
-            }
-
-            if (bi.nw207a.isChecked()) {
-                if (!validatorClass.EmptyRadioButton(this, bi.nw208, bi.nw208a, getString(R.string.nw208))) {
+            if (bi.nw201a.isChecked() || bi.nw202a.isChecked()) {
+                if (!validatorClass.EmptyTextBox(this, bi.nw203, getString(R.string.nw203))) {
                     return false;
                 }
 
-                if (bi.nw208a.isChecked()) {
-                    if (!validatorClass.EmptyRadioButton(this, bi.nw20901, bi.nw20901a, getString(R.string.nw20901))) {
+                if (!validatorClass.RangeTextBox(this, bi.nw203, 15, Integer.valueOf(wraMap.get(bi.nb101.getSelectedItem().toString()).getAgeInYear()), getString(R.string.nw203), " years")) {
+                    return false;
+                }
+
+                if (!validatorClass.EmptyTextBox(this, bi.nw204, getString(R.string.nw204))) {
+                    return false;
+                }
+
+                if (Integer.valueOf(bi.nw204.getText().toString()) > 0) {
+
+                    if (!validatorClass.EmptyTextBox(this, bi.nw206, getString(R.string.nw206))) {
                         return false;
                     }
 
-                    if (!validatorClass.EmptyRadioButton(this, bi.nw20902, bi.nw20902a, getString(R.string.nw20902))) {
+                    if (!validatorClass.RangeTextBox(this, bi.nw206, Integer.valueOf(bi.nw203.getText().toString()), Integer.valueOf(wraMap.get(bi.nb101.getSelectedItem().toString()).getAgeInYear()), getString(R.string.nw203), " years")) {
                         return false;
                     }
 
-                    if (!validatorClass.EmptyRadioButton(this, bi.nw20903, bi.nw20903a, getString(R.string.nw20903))) {
+
+                    if (!validatorClass.EmptyRadioButton(this, bi.nw207, bi.nw207a, getString(R.string.nw207))) {
                         return false;
                     }
 
-                    if (!validatorClass.EmptyRadioButton(this, bi.nw20998, bi.nw20998a, getString(R.string.dkn))) {
-                        return false;
-                    }
+                    if (bi.nw207a.isChecked()) {
+                        if (!validatorClass.EmptyRadioButton(this, bi.nw208, bi.nw208a, getString(R.string.nw208))) {
+                            return false;
+                        }
 
-                    if (!validatorClass.EmptyRadioButton(this, bi.nw20999, bi.nw20999a, getString(R.string.nr))) {
-                        return false;
+                        if (bi.nw208a.isChecked()) {
+
+                            if (bi.nw20998b.isChecked() || bi.nw20999b.isChecked()) {
+                                if (!validatorClass.EmptyRadioButton(this, bi.nw20901, bi.nw20901a, getString(R.string.nw20901))) {
+                                    return false;
+                                }
+
+                                if (!validatorClass.EmptyRadioButton(this, bi.nw20902, bi.nw20902a, getString(R.string.nw20902))) {
+                                    return false;
+                                }
+
+                                if (!validatorClass.EmptyRadioButton(this, bi.nw20903, bi.nw20903a, getString(R.string.nw20903))) {
+                                    return false;
+                                }
+
+                                if (!validatorClass.EmptyRadioButton(this, bi.nw20998, bi.nw20998a, getString(R.string.dkn))) {
+                                    return false;
+                                }
+
+                                if (!validatorClass.EmptyRadioButton(this, bi.nw20999, bi.nw20999a, getString(R.string.nr))) {
+                                    return false;
+                                }
+                            }
+
+                        }
                     }
 
                 }
             }
-
-
         }
         return true;
     }
@@ -364,10 +466,12 @@ public class SectionB1Activity extends Activity {
                 : bi.nw20999b.isChecked() ? "2" : "0");
 
 
-        if (bi.nw207a.isChecked()) {
-            MainApp.totalPregnancy = Integer.valueOf(bi.nw204.getText().toString()) - 1;
-        } else {
-            MainApp.totalPregnancy = Integer.valueOf(bi.nw204.getText().toString());
+        if (!bi.nw204.getText().toString().isEmpty()) {
+            if (bi.nw207a.isChecked()) {
+                MainApp.totalPregnancy = Integer.valueOf(bi.nw204.getText().toString()) - 1;
+            } else {
+                MainApp.totalPregnancy = Integer.valueOf(bi.nw204.getText().toString());
+            }
         }
 
 

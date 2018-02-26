@@ -56,7 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:focusable="true"
+                android:focusable="false"
                 android:hint="@string/nb1a01"
                 android:padding="15dp"
                 android:textColor="@android:color/black"
@@ -165,7 +165,8 @@
                     android:id="@+id/fldGrpnb1a05"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -258,7 +259,8 @@
                     android:id="@+id/fldGrpnb1a06"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="match_parent"
