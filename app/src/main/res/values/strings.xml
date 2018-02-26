@@ -444,6 +444,8 @@
     <string name="nbheading"> SECTION B1: REPRODUCTIVE HISTORY </string>
     <string name="nb101"> خاتون کانام </string>
     <string name="nb102"> شادی شدہ خاتون کالائن نمبر سیکشن A2 سے دیکھ کر لکھیں </string>
+    <string name="nw201"> Are you currently married? </string>
+    <string name="nw202"> Have you ever been married?</string>
     <string name="nw203"> شادی کے وقت آپ کی عمر کیا تھی؟ </string>
     <string name="nw203a"> عمر سالوں میں </string>
     <string name="nw204"> کل حمل کی تعداد </string>

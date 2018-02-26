@@ -192,69 +192,6 @@ public class SectionA4Activity extends AppCompatActivity {
             return false;
         }
 
-//        if (!validatorClass.EmptyTextBox(this, binding.deletea, getString(R.string.deletea))) {
-//            return false;
-//        }
-//
-//        if (!validatorClass.EmptyTextBox(this, binding.deleteb, getString(R.string.deleteb))) {
-//            return false;
-//        }
-//
-//        if (!validatorClass.EmptyTextBox(this, binding.deletec, getString(R.string.deletec))) {
-//            return false;
-//        }
-//
-//        if (!validatorClass.EmptyTextBox(this, binding.deleted, getString(R.string.deleted))) {
-//            return false;
-//        }
-//
-//        if (!validatorClass.EmptyTextBox(this, binding.deletee, getString(R.string.deletee))) {
-//            return false;
-//        }
-//
-//        if (!validatorClass.EmptyTextBox(this, binding.deletef, getString(R.string.deletef))) {
-//            return false;
-//        }
-//
-//        if (!validatorClass.EmptyTextBox(this, binding.deleteg, getString(R.string.deleteg))) {
-//            return false;
-//        }
-//
-//        if (!validatorClass.EmptyTextBox(this, binding.deleteh, getString(R.string.deleteh))) {
-//            return false;
-//        }
-//
-//        if (!validatorClass.EmptyTextBox(this, binding.deletei, getString(R.string.deletei))) {
-//            return false;
-//        }
-//
-//        if (!validatorClass.EmptyTextBox(this, binding.deletej, getString(R.string.deletej))) {
-//            return false;
-//        }
-//
-//        if (!validatorClass.EmptyTextBox(this, binding.deletek, getString(R.string.deletek))) {
-//            return false;
-//        }
-//
-//        if (!validatorClass.EmptyTextBox(this, binding.deletel, getString(R.string.deletel))) {
-//            return false;
-//        }
-//
-//        if (!validatorClass.EmptyTextBox(this, binding.deletem, getString(R.string.deletem))) {
-//            return false;
-//        }
-//
-//        if (!validatorClass.EmptyTextBox(this, binding.deleten, getString(R.string.deleten))) {
-//            return false;
-//        }
-//
-//        if (!validatorClass.EmptyTextBox(this, binding.deleteo, getString(R.string.deleteo))) {
-//            return false;
-//        }
-//
-//        if (!validatorClass.EmptyTextBox(this, binding.deletep, getString(R.string.deletep))) {
-//            return false;
-//        }
 
         if (!validatorClass.EmptyCheckBox(this, binding.fldGrpna0411check, binding.na41096, binding.na41096x, getString(R.string.na410))) {
             return false;
