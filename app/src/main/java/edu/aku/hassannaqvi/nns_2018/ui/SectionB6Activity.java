@@ -47,9 +47,9 @@ public class SectionB6Activity extends AppCompatActivity {
                 if (MainApp.childUnder5.size() > 0) {
                     startActivity(new Intent(this, SectionC1Activity.class));
                 } else {
-                    startActivity(new Intent(this, SectionB1Activity.class)
-                            .putExtra("mwraFlag", true)
-                            .putExtra("wraName", SectionB1Activity.wraName));
+                    startActivity(new Intent(this, MotherEndingActivity.class)
+                            .putExtra("checkingFlag", true)
+                            .putExtra("complete", true));
                 }
 
             } else {

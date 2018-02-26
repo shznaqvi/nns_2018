@@ -89,7 +89,7 @@ public class SectionB3Activity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        MainApp.endActivity(this, this);
+        MainApp.endActivityMotherChild(this, this, true, false);
     }
 
 

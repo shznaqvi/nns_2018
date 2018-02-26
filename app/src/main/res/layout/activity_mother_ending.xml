@@ -25,6 +25,16 @@
             android:layoutDirection="rtl"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/lblheaderName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/pink_100"
+                android:padding="5dp"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
+
             <!--Status-->
             <TextView
                 android:layout_width="match_parent"

@@ -149,7 +149,7 @@ public class SectionB4Activity extends Activity {
     }
 
     public void BtnEnd() {
-        MainApp.endActivity(this, this);
+        MainApp.endActivityMotherChild(this, this, true, false);
 
     }
 

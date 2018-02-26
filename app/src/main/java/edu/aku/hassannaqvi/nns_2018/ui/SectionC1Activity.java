@@ -53,10 +53,14 @@ public class SectionC1Activity extends AppCompatActivity {
         binding.setCallback(this);
 
 //        Setup views
-        if (getIntent().getBooleanExtra("flag", false)) {
+        if (getIntent().getBooleanExtra("childFlag", false)) {
             childU5.remove(getIntent().getExtras().getInt("name"));
             counter++;
         } else {
+
+            counter = 1;
+            counterPerMom = 0;
+
             childU5 = new ArrayList<>();
             childMap = new HashMap<>();
 
@@ -112,7 +116,7 @@ public class SectionC1Activity extends AppCompatActivity {
 
     public void BtnEnd() {
 
-        MainApp.endActivity(this, this);
+        MainApp.endActivityMotherChild(this, this, false, false);
     }
 
     private boolean formValidation() {

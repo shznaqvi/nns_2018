@@ -46,7 +46,7 @@ public class SectionC5Activity extends AppCompatActivity {
 
                 finish();
 
-                MainApp.endActivityMother(this, this, true);
+                MainApp.endActivityMotherChild(this, this, false, true);
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -56,7 +56,7 @@ public class SectionC5Activity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        MainApp.endActivityMother(this, this, false);
+        MainApp.endActivityMotherChild(this, this, false, false);
     }
 
     private boolean formValidation() {

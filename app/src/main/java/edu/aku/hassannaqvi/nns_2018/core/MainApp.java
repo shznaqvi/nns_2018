@@ -32,7 +32,6 @@ import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract;
 import edu.aku.hassannaqvi.nns_2018.other.MembersCount;
 import edu.aku.hassannaqvi.nns_2018.ui.EndingActivity;
 import edu.aku.hassannaqvi.nns_2018.ui.MotherEndingActivity;
-import edu.aku.hassannaqvi.nns_2018.ui.SectionC1Activity;
 
 /**
  * Created by hassan.naqvi on 11/30/2016.
@@ -210,7 +209,7 @@ public class MainApp extends Application {
         alert.show();
     }
 
-    public static void endActivityMother(final Context context, final Activity activity, final Boolean flag) {
+    public static void endActivityMotherChild(final Context context, final Activity activity, final Boolean flag, final Boolean completeFlag) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 context);
         alertDialogBuilder
@@ -221,12 +220,10 @@ public class MainApp extends Application {
                             public void onClick(DialogInterface dialog,
                                                 int id) {
 
-                                SectionC1Activity.counter = 1;
-                                SectionC1Activity.counterPerMom = 0;
-
                                 activity.finish();
                                 Intent end_intent = new Intent(context, MotherEndingActivity.class);
-                                end_intent.putExtra("complete", flag);
+                                end_intent.putExtra("complete", completeFlag)
+                                        .putExtra("checkingFlag", flag);
                                 context.startActivity(end_intent);
                             }
                         });

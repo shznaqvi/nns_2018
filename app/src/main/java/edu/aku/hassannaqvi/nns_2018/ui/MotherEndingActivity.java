@@ -12,12 +12,14 @@ import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivityMotherEndingBinding;
+import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class MotherEndingActivity extends AppCompatActivity {
 
     private static final String TAG = MotherEndingActivity.class.getSimpleName();
 
     ActivityMotherEndingBinding binding;
+    Boolean flagMotherChild = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,13 @@ public class MotherEndingActivity extends AppCompatActivity {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_ending);
         binding.setCallback(this);
+
+        flagMotherChild = getIntent().getBooleanExtra("checkingFlag", false);
+        if (flagMotherChild) {
+            binding.lblheaderName.setText(SectionB1Activity.wraName.toUpperCase());
+        } else {
+            binding.lblheaderName.setText(SectionC1Activity.selectedChildName.toUpperCase());
+        }
 
         Boolean check = getIntent().getExtras().getBoolean("complete");
 
@@ -66,20 +75,22 @@ public class MotherEndingActivity extends AppCompatActivity {
 
                 finish();
 
-
-                if (SectionC1Activity.counter == SectionC1Activity.counterPerMom) {
-
+                if (flagMotherChild) {
                     if (SectionB1Activity.WRAcounter == MainApp.mwra.size()) {
-
+                        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
                     } else {
                         startActivity(new Intent(this, SectionB1Activity.class)
                                 .putExtra("mwraFlag", true)
                                 .putExtra("wraName", SectionB1Activity.wraName));
                     }
+                }
+
+                if (SectionC1Activity.counter == SectionC1Activity.counterPerMom) {
 
 
                 } else {
                     startActivity(new Intent(this, SectionC1Activity.class)
+                            .putExtra("childFlag", true)
                             .putExtra("name", SectionC1Activity.selectedChildName));
                 }
 
@@ -92,12 +103,23 @@ public class MotherEndingActivity extends AppCompatActivity {
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
-        /*MainApp.fc.setIstatus(binding.istatusa.isChecked() ? "1"
-                : binding.istatusb.isChecked() ? "2"
-                : "0");*/
+        if (flagMotherChild) {
+            /*
+            MainApp.mc.setIstatus(binding.istatusa.isChecked() ? "1"
+                    : binding.istatusb.isChecked() ? "2"
+                    : "0");
 
-//        MainApp.fc.setIstatus88x(istatus88x.getText().toString());
+            MainApp.mc.setIstatus88x(istatus88x.getText().toString());
+            */
+        } else {
+            /*
+            MainApp.cc.setIstatus(binding.istatusa.isChecked() ? "1"
+                    : binding.istatusb.isChecked() ? "2"
+                    : "0");
 
+            MainApp.cc.setIstatus88x(istatus88x.getText().toString());
+            */
+        }
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }
@@ -105,8 +127,12 @@ public class MotherEndingActivity extends AppCompatActivity {
     private boolean UpdateDB() {
         DatabaseHelper db = new DatabaseHelper(this);
 
-        /*int updcount = db.updateEnding();
-
+        if (flagMotherChild) {
+//            int updcount = db.updateMotherEnding();
+        } else {
+//            int updcount = db.updatechildEnding();
+        }
+/*
         if (updcount == 1) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
             return true;
@@ -122,9 +148,9 @@ public class MotherEndingActivity extends AppCompatActivity {
     private boolean formValidation() {
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
-        /*if (!validatorClass.EmptyRadioButton(this, binding.istatus, binding.istatusb, getString(R.string.istatus))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.istatus, binding.istatusc, getString(R.string.istatus))) {
             return false;
-        }*/
+        }
 
         /*if (istatus88.isChecked()) {
 

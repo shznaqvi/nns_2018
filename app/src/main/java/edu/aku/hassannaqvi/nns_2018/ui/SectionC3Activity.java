@@ -107,7 +107,7 @@ public class SectionC3Activity extends AppCompatActivity {
 
     public void BtnEnd() {
 
-        MainApp.endActivityMother(this, this, false);
+        MainApp.endActivityMotherChild(this, this, false, false);
 
     }
 

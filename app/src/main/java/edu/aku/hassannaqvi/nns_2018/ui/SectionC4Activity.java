@@ -198,7 +198,7 @@ public class SectionC4Activity extends Activity {
                             .putExtra("selectedChild", selectedChild));
                 } else {
 
-                    MainApp.endActivityMother(this, this, true);
+                    MainApp.endActivityMotherChild(this, this, false, true);
 
                 }
 
@@ -209,7 +209,7 @@ public class SectionC4Activity extends Activity {
     }
 
     public void BtnEnd() {
-        MainApp.endActivityMother(this, this, false);
+        MainApp.endActivityMotherChild(this, this, false, false);
     }
 
     private boolean formValidation() {
