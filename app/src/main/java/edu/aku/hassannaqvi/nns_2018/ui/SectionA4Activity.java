@@ -121,6 +121,7 @@ public class SectionA4Activity extends AppCompatActivity {
             if (!validatorClass.EmptyRadioButton(this, binding.na406, binding.na406b, getString(R.string.na406))) {
                 return false;
             }
+        }
 
             if (binding.na406a.isChecked()) {
                 if (!validatorClass.EmptyTextBox(this, binding.na407, getString(R.string.na407))) {
@@ -240,8 +241,14 @@ public class SectionA4Activity extends AppCompatActivity {
                     if (!validatorClass.EmptyTextBox(this, binding.na419acr, getString(R.string.na419acr))) {
                         return false;
                     }
+                    if (!validatorClass.RangeTextBox(this, binding.na419acr, 1, 999, getString(R.string.na419acr), "acre")) {
+
+                    }
                 } else if (binding.na419b.isChecked()) {
                     if (!validatorClass.EmptyTextBox(this, binding.na419can, getString(R.string.na419can))) {
+                        return false;
+                    }
+                    if (!validatorClass.RangeTextBox(this, binding.na419can, 1, 999, getString(R.string.na419can), "kanal")) {
                         return false;
                     }
                 }
@@ -299,7 +306,6 @@ public class SectionA4Activity extends AppCompatActivity {
                     return false;
                 }
             }
-        }
         return true;
 
     }

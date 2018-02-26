@@ -214,8 +214,8 @@ public class SectionB1Activity extends Activity {
                     bi.nw20902b.setEnabled(true);
                     bi.nw20903a.setEnabled(true);
                     bi.nw20903b.setEnabled(true);
-                    bi.nw20998a.setEnabled(true);
-                    bi.nw20998b.setEnabled(true);
+                    bi.nw20999a.setEnabled(true);
+                    bi.nw20999b.setEnabled(true);
                 }
             }
         });
