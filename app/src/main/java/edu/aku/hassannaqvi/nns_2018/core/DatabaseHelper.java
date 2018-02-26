@@ -921,7 +921,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 // New value for one column
         ContentValues values = new ContentValues();
-        values.put(familyMembers.COLUMN_SA2, MainApp.fmc.getsA2());
+        values.put(familyMembers.COLUMN_SA2, fmc.getsA2());
 
 // Which row to update, based on the ID
         String selection = familyMembers.COLUMN_UID + " = ?";
