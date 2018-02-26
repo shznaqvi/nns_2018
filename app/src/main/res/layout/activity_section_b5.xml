@@ -553,7 +553,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:hint="@string/month"
+                        android:hint="@string/nb508h"
                         android:inputType="number"
                         android:maxLength="2"
                         android:text='@{nb508a.checked ? nb508hr.getText.toString : ""}'
@@ -596,7 +596,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:text="@string/day" />
+                        android:text="@string/week" />
 
                     <EditText
                         android:id="@+id/nb508w"

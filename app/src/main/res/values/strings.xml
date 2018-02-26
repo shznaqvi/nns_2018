@@ -36,6 +36,8 @@
     <string name="dkn"> معلوم نہیں </string>
     <string name="count"> تعداد </string>
     <string name="other"> دیگر وضاحت کریں </string>
+    <string name="otherpubm"> دوسرے عوامی طبی مرکز </string>
+    <string name="otherprim"> دوسرے نجی دواخانہ </string>
     <string name="refused"> جواب سے انکار </string>
     <string name="never"> کبھی نہیں </string>
     <string name="rs">Rupees</string>
@@ -470,9 +472,9 @@
     <string name="nb1a04a"> حیات </string>
     <string name="nb1a04b"> فوت </string>
     <string name="nb1a05"> Age of alive child </string>
-    <string name="year"> Years </string>
+    <string name="year">سال </string>
     <string name="month"> Months </string>
-    <string name="day"> Days </string>
+    <string name="day"> دن </string>
     <string name="nb1a06"> Age at time of death </string>
     <string name="nb1a06y"> Years </string>
     <string name="nb1a06m"> Months </string>

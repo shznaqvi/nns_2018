@@ -59,7 +59,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/month" />
+                    android:text="@string/months" />
 
                 <EditText
                     android:id="@+id/nb301m"
@@ -67,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:digits="0123456789"
-                    android:hint="@string/month"
+                    android:hint="@string/months"
                     android:inputType="number"
                     android:maxLength="2"
                     android:text='@{nb301a.checked ? nb301m.getText.toString : ""}'

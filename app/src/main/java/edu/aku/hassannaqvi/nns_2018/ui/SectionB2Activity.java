@@ -292,6 +292,7 @@ public class SectionB2Activity extends Activity {
                     bi.nw303w.setError("All can not be zero");
                     bi.nw303w.setError("All can not be zero");
                     Log.i(SectionB2Activity.class.getSimpleName(), "nw303" + ": This data is Required!");
+                    return false;
                 } else {
                     bi.nw303w.setError(null);
                     bi.nw303m.setError(null);
@@ -406,6 +407,7 @@ public class SectionB2Activity extends Activity {
                 bi.nw313m.setError("All can not be zero");
                 bi.nw313d.setError("All can not be zero");
                 Log.i(SectionB2Activity.class.getSimpleName(), "nw313" + ": This data is Required!");
+                return false;
             } else {
                 bi.nw313m.setError(null);
                 bi.nw313d.setError(null);
@@ -447,6 +449,7 @@ public class SectionB2Activity extends Activity {
                 bi.nw318m.setError("All can not be zero");
                 bi.nw318d.setError("All can not be zero");
                 Log.i(SectionB2Activity.class.getSimpleName(), "nw318" + ": This data is Required!");
+                return false;
             } else {
                 bi.nw318m.setError(null);
                 bi.nw318d.setError(null);
@@ -488,6 +491,7 @@ public class SectionB2Activity extends Activity {
                 bi.nw323m.setError("All can not be zero");
                 bi.nw323d.setError("All can not be zero");
                 Log.i(SectionB2Activity.class.getSimpleName(), "nw323" + ": This data is Required!");
+                return false;
             } else {
                 bi.nw323m.setError(null);
                 bi.nw323d.setError(null);

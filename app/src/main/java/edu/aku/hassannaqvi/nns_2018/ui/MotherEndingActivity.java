@@ -25,7 +25,7 @@ public class MotherEndingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_ending);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_mother_ending);
         binding.setCallback(this);
 
         flagMotherChild = getIntent().getBooleanExtra("checkingFlag", false);

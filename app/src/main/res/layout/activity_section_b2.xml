@@ -227,7 +227,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
                         android:layout_weight="1"
-                        android:hint="@string/month"
+                        android:hint="@string/months"
                         android:inputType="number"
                         android:maxLength="1"
                         android:text='@{nw30398.checked ? "" : nw303m.getText.toString}'
@@ -915,7 +915,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
                         android:layout_weight="1"
-                        android:hint="@string/month"
+                        android:hint="@string/months"
                         android:inputType="number"
                         android:maxLength="1" />
 
@@ -1337,7 +1337,7 @@
                         android:layout_marginBottom="1dp"
                         android:layout_marginRight="2dp"
                         android:layout_weight="1"
-                        android:hint="@string/month"
+                        android:hint="@string/months"
                         android:inputType="number"
                         android:maxLength="1" />
 
@@ -1756,7 +1756,7 @@
                         android:layout_marginBottom="1dp"
                         android:layout_marginRight="2dp"
                         android:layout_weight="1"
-                        android:hint="@string/month"
+                        android:hint="@string/months"
                         android:inputType="number"
                         android:maxLength="1" />
 

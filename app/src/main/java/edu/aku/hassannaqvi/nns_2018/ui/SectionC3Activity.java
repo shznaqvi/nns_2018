@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -72,6 +73,19 @@ public class SectionC3Activity extends AppCompatActivity {
                     binding.nc3ipv.clearCheck();
                     binding.nc3m1.clearCheck();
                     binding.nc3m2.clearCheck();
+                }
+            }
+        });
+        binding.nc306.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.nc306b) {
+                    binding.fldGrnc307.setVisibility(View.GONE);
+                    binding.nc307.clearCheck();
+                    binding.nc308.clearCheck();
+                } else {
+                    binding.fldGrnc307.setVisibility(View.VISIBLE);
+
                 }
             }
         });
@@ -221,6 +235,9 @@ public class SectionC3Activity extends AppCompatActivity {
             if (!validatorClass.EmptyTextBox(this, binding.nc310, getString(R.string.nc310))) {
                 return false;
             }
+            if (!validatorClass.RangeTextBox(this, binding.nc310, 1, 99, getString(R.string.nc310), "DPT/COMBO/PENT")) {
+                return false;
+            }
         }
 
 //        nc311
@@ -231,6 +248,9 @@ public class SectionC3Activity extends AppCompatActivity {
         if (!binding.nc311b.isChecked()) {
 //        nc312
             if (!validatorClass.EmptyTextBox(this, binding.nc312, getString(R.string.nc312))) {
+                return false;
+            }
+            if (!validatorClass.RangeTextBox(this, binding.nc312, 1, 99, getString(R.string.nc312), "PCV")) {
                 return false;
             }
         }
@@ -252,6 +272,9 @@ public class SectionC3Activity extends AppCompatActivity {
 
 //        nc314
             if (!validatorClass.EmptyTextBox(this, binding.nc314, getString(R.string.nc314))) {
+                return false;
+            }
+            if (!validatorClass.RangeTextBox(this, binding.nc314, 1, 99, getString(R.string.nc314), "Mesasles / MMR")) {
                 return false;
             }
 
