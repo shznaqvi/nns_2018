@@ -42,12 +42,15 @@ public class SectionB6Activity extends AppCompatActivity {
             if (UpdateDB()) {
                 Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
-                MainApp.mwraMap.remove(MainApp.mwraPosition);
-
-
                 finish();
 
-                startActivity(new Intent(this, SectionC1Activity.class));
+                if (MainApp.childUnder5.size() > 0) {
+                    startActivity(new Intent(this, SectionC1Activity.class));
+                } else {
+                    startActivity(new Intent(this, SectionB1Activity.class)
+                            .putExtra("mwraFlag", true)
+                            .putExtra("wraName", SectionB1Activity.wraName));
+                }
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -118,6 +121,7 @@ public class SectionB6Activity extends AppCompatActivity {
 
         return validatorClass.EmptyRadioButton(this, bi.nb60196, bi.nb60196a, bi.nb60196x, getString(R.string.nb601j) + " - " + getString(R.string.other));
     }
+
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
@@ -164,7 +168,6 @@ public class SectionB6Activity extends AppCompatActivity {
         sB6.put("nb60196", bi.nb60196a.isChecked() ? "1"
                 : bi.nb60196b.isChecked() ? "2"
                 : "0");
-
 
 
         sB6.put("nc101", bi.nb60108x.getText().toString());

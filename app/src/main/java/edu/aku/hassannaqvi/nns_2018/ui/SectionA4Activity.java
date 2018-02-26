@@ -95,6 +95,7 @@ public class SectionA4Activity extends AppCompatActivity {
         MainApp.endActivity(this, this);
 
     }
+
     private boolean formValidation() {
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
         if (!validatorClass.EmptyRadioButton(this, binding.na401, binding.na40196, binding.na40196x, getString(R.string.na401))) {
@@ -116,13 +117,15 @@ public class SectionA4Activity extends AppCompatActivity {
             return false;
         }
 
-        if (!validatorClass.EmptyRadioButton(this, binding.na406, binding.na406b, getString(R.string.na406))) {
-            return false;
-        }
-
-        if (binding.na406a.isChecked()) {
-            if (!validatorClass.EmptyTextBox(this, binding.na407, getString(R.string.na407))) {
+        if (binding.na405i.isChecked()) {
+            if (!validatorClass.EmptyRadioButton(this, binding.na406, binding.na406b, getString(R.string.na406))) {
                 return false;
+            }
+
+            if (binding.na406a.isChecked()) {
+                if (!validatorClass.EmptyTextBox(this, binding.na407, getString(R.string.na407))) {
+                    return false;
+                }
             }
         }
 
@@ -296,11 +299,11 @@ public class SectionA4Activity extends AppCompatActivity {
 
             if (binding.na419a.isChecked()) {
                 if (!validatorClass.EmptyTextBox(this, binding.na419acr, getString(R.string.na419acr))) {
-                    return  false;
+                    return false;
                 }
             } else if (binding.na419b.isChecked()) {
                 if (!validatorClass.EmptyTextBox(this, binding.na419can, getString(R.string.na419can))) {
-                    return  false;
+                    return false;
                 }
             }
         }
