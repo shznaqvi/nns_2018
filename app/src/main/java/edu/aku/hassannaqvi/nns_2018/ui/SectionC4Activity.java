@@ -61,9 +61,9 @@ public class SectionC4Activity extends Activity {
                     binding.nc404j.setChecked(false);
                     binding.nc40496x.setText(null);
 
-                    binding.nc4039601.setText(null);
-                    binding.nc4039602.setText(null);
-                    binding.nc4039603.setText(null);
+                    binding.nc4039601x.setText(null);
+                    binding.nc4039602x.setText(null);
+                    binding.nc4039603x.setText(null);
                 }
             }
         });
@@ -76,9 +76,9 @@ public class SectionC4Activity extends Activity {
                     binding.fldGrnc403.setVisibility(View.GONE);
                     binding.nc403.clearCheck();
 
-                    binding.nc4039601.setText(null);
-                    binding.nc4039602.setText(null);
-                    binding.nc4039603.setText(null);
+                    binding.nc4039601x.setText(null);
+                    binding.nc4039602x.setText(null);
+                    binding.nc4039603x.setText(null);
 
                     binding.nc404a.setChecked(false);
                     binding.nc404b.setChecked(false);
@@ -107,9 +107,9 @@ public class SectionC4Activity extends Activity {
                     binding.nc406.clearCheck();
                     binding.nc407.clearCheck();
 
-                    binding.nc4079601.setText(null);
-                    binding.nc4079602.setText(null);
-                    binding.nc4079603.setText(null);
+                    binding.nc4079601x.setText(null);
+                    binding.nc4079602x.setText(null);
+                    binding.nc4079603x.setText(null);
 
                     binding.nc408a.setChecked(false);
                     binding.nc408b.setChecked(false);
@@ -121,8 +121,6 @@ public class SectionC4Activity extends Activity {
                     binding.nc408h.setChecked(false);
                     binding.nc408i.setChecked(false);
                     binding.nc4089601x.setText(null);
-
-
                 }
             }
         });
@@ -163,9 +161,9 @@ public class SectionC4Activity extends Activity {
                     binding.nc410.clearCheck();
                     binding.nc411.clearCheck();
 
-                    binding.nc4119601.setText(null);
-                    binding.nc4119602.setText(null);
-                    binding.nc4119603.setText(null);
+                    binding.nc4119601x.setText(null);
+                    binding.nc4119602x.setText(null);
+                    binding.nc4119603x.setText(null);
 
 
                     binding.nc412b.setChecked(false);
@@ -186,14 +184,14 @@ public class SectionC4Activity extends Activity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (binding.nc410a.isChecked()) {
-                    binding.fldGrnc410.setVisibility(View.VISIBLE);
+                    binding.fldGrnc411.setVisibility(View.VISIBLE);
                 } else {
-                    binding.fldGrnc410.setVisibility(View.GONE);
+                    binding.fldGrnc411.setVisibility(View.GONE);
                     binding.nc411.clearCheck();
 
-                    binding.nc4119601.setText(null);
-                    binding.nc4119602.setText(null);
-                    binding.nc4119603.setText(null);
+                    binding.nc4119601x.setText(null);
+                    binding.nc4119602x.setText(null);
+                    binding.nc4119603x.setText(null);
 
                     binding.nc412b.setChecked(false);
                     binding.nc412c.setChecked(false);
@@ -258,99 +256,110 @@ public class SectionC4Activity extends Activity {
         if (!validatorClass.EmptyRadioButton(this, binding.nc401, binding.nc401b, getString(R.string.nc401))) {
             return false;
         }
+        if (binding.nc401a.isChecked()) {
 
 //        nc402
-        if (!validatorClass.EmptyRadioButton(this, binding.nc402, binding.nc402b, getString(R.string.nc402))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, binding.nc402, binding.nc402b, getString(R.string.nc402))) {
+                return false;
+            }
 
+            if (binding.nc402a.isChecked()) {
 //        nc403
-        if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc4039603, getString(R.string.nc403))) {
-            return false;
-        }
+                if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc4039603, getString(R.string.nc403))) {
+                    return false;
+                }
 //        nc4039601
-        if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc4039603, binding.nc4039601x, getString(R.string.nc403))) {
-            return false;
-        }
+                if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc4039603, binding.nc4039601x, getString(R.string.nc403))) {
+                    return false;
+                }
 //        nc4039602
-        if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc4039603, binding.nc4039602x, getString(R.string.nc403))) {
-            return false;
-        }
+                if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc4039603, binding.nc4039602x, getString(R.string.nc403))) {
+                    return false;
+                }
 //        nc4039603
-        if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc4039603, binding.nc4039603x, getString(R.string.nc403))) {
-            return false;
-        }
+                if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc4039603, binding.nc4039603x, getString(R.string.nc403))) {
+                    return false;
+                }
 
 //        fldGrpnc404
-        if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnc404, binding.nc40496, binding.nc40496x, getString(R.string.nc404))) {
-            return false;
-        }
+                if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnc404, binding.nc40496, binding.nc40496x, getString(R.string.nc404))) {
+                    return false;
+                }
+            }
 
+
+        }
 
 //       nc405
         if (!validatorClass.EmptyRadioButton(this, binding.nc405, binding.nc405b, getString(R.string.nc405))) {
             return false;
         }
 
-//        nc406
-        if (!validatorClass.EmptyRadioButton(this, binding.nc406, binding.nc406b, getString(R.string.nc406))) {
-            return false;
-        }
+        if (binding.nc405a.isChecked()) {
 
-        // nc407
-        if (!validatorClass.EmptyRadioButton(this, binding.nc407, binding.nc4079603, getString(R.string.nc407))) {
-            return false;
-        }
+//        nc406
+            if (!validatorClass.EmptyRadioButton(this, binding.nc406, binding.nc406b, getString(R.string.nc406))) {
+                return false;
+            }
+            if (binding.nc406a.isChecked()) {
+
+                // nc407
+                if (!validatorClass.EmptyRadioButton(this, binding.nc407, binding.nc4079603, getString(R.string.nc407))) {
+                    return false;
+                }
 
 //        nc4079601x
-        if (!validatorClass.EmptyRadioButton(this, binding.nc407, binding.nc4079603, binding.nc4079601x, getString(R.string.nc407))) {
-            return false;
-        }
+                if (!validatorClass.EmptyRadioButton(this, binding.nc407, binding.nc4079603, binding.nc4079601x, getString(R.string.nc407))) {
+                    return false;
+                }
 //        nc4079602x
-        if (!validatorClass.EmptyRadioButton(this, binding.nc407, binding.nc4079603, binding.nc4079602x, getString(R.string.nc407))) {
-            return false;
-        }
+                if (!validatorClass.EmptyRadioButton(this, binding.nc407, binding.nc4079603, binding.nc4079602x, getString(R.string.nc407))) {
+                    return false;
+                }
 //        nc4079603x
-        if (!validatorClass.EmptyRadioButton(this, binding.nc407, binding.nc4079603, binding.nc4079603x, getString(R.string.nc407))) {
-            return false;
-        }
+                if (!validatorClass.EmptyRadioButton(this, binding.nc407, binding.nc4079603, binding.nc4079603x, getString(R.string.nc407))) {
+                    return false;
+                }
 
-        //    fldGrnc408check
-        if (!validatorClass.EmptyCheckBox(this, binding.fldGrnc408check, binding.nc4089601, binding.nc4089601x, getString(R.string.nc408))) {
-            return false;
+                //    fldGrnc408check
+                if (!validatorClass.EmptyCheckBox(this, binding.fldGrnc408check, binding.nc4089601, binding.nc4089601x, getString(R.string.nc408))) {
+                    return false;
+                }
+            }
         }
-
 
 //       nc409
         if (!validatorClass.EmptyRadioButton(this, binding.nc409, binding.nc409b, getString(R.string.nc409))) {
             return false;
         }
-
+        if (binding.nc409a.isChecked()) {
 //        nc410
-        if (!validatorClass.EmptyRadioButton(this, binding.nc410, binding.nc410b, getString(R.string.nc410))) {
-            return false;
-        }
-
-        // nc411
-        if (!validatorClass.EmptyRadioButton(this, binding.nc411, binding.nc4119603, getString(R.string.nc411))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, binding.nc410, binding.nc410b, getString(R.string.nc410))) {
+                return false;
+            }
+            if (binding.nc410a.isChecked()) {
+                // nc411
+                if (!validatorClass.EmptyRadioButton(this, binding.nc411, binding.nc4119603, getString(R.string.nc411))) {
+                    return false;
+                }
 
 //        nc4119601x
-        if (!validatorClass.EmptyRadioButton(this, binding.nc411, binding.nc4119603, binding.nc4119601x, getString(R.string.nc411))) {
-            return false;
-        }
+                if (!validatorClass.EmptyRadioButton(this, binding.nc411, binding.nc4119603, binding.nc4119601x, getString(R.string.nc411))) {
+                    return false;
+                }
 //        nc4119602x
-        if (!validatorClass.EmptyRadioButton(this, binding.nc411, binding.nc4119603, binding.nc4119602x, getString(R.string.nc411))) {
-            return false;
-        }
+                if (!validatorClass.EmptyRadioButton(this, binding.nc411, binding.nc4119603, binding.nc4119602x, getString(R.string.nc411))) {
+                    return false;
+                }
 //        nc4119603x
-        if (!validatorClass.EmptyRadioButton(this, binding.nc411, binding.nc4119603, binding.nc4119603x, getString(R.string.nc411))) {
-            return false;
-        }
-        // nc412
-        if (!validatorClass.EmptyCheckBox(this, binding.fldGrnc412check, binding.nc4129601, binding.nc4129601x, getString(R.string.nc412))) {
-            return false;
+                if (!validatorClass.EmptyRadioButton(this, binding.nc411, binding.nc4119603, binding.nc4119603x, getString(R.string.nc411))) {
+                    return false;
+                }
+                // fldGrnc412check
+                if (!validatorClass.EmptyCheckBox(this, binding.fldGrnc412check, binding.nc4129601, binding.nc4129601x, getString(R.string.nc412))) {
+                    return false;
+                }
+            }
         }
 
 //       nc413

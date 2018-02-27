@@ -85,11 +85,12 @@ public class SectionC2Activity extends Activity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (bi.nc209b.isChecked()) {
-                    bi.fldGrpnc210.setVisibility(View.VISIBLE);
-                } else {
                     bi.fldGrpnc210.setVisibility(View.GONE);
                     bi.nc210.clearCheck();
                     bi.nc21096x.setText(null);
+                } else {
+                    bi.fldGrpnc210.setVisibility(View.VISIBLE);
+
                 }
             }
         });
@@ -248,7 +249,8 @@ public class SectionC2Activity extends Activity {
 
                 finish();
 
-                startActivity(new Intent(this, SectionC3Activity.class));
+                startActivity(new Intent(this, SectionC3Activity.class)
+                        .putExtra("selectedChild", selectedChild));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();

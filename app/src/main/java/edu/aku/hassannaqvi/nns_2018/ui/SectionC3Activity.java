@@ -11,6 +11,8 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
@@ -31,19 +33,46 @@ public class SectionC3Activity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_c3);
         binding.setCallback(this);
         binding.nc3bcgdt.setManager(getSupportFragmentManager());
+        binding.nc3bcgdt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+
         binding.nc3opv0dt.setManager(getSupportFragmentManager());
+        binding.nc3opv0dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+
         binding.nc3opv1dt.setManager(getSupportFragmentManager());
+        binding.nc3opv1dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+
         binding.nc3p1dt.setManager(getSupportFragmentManager());
+        binding.nc3p1dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+
         binding.nc3pcv1dt.setManager(getSupportFragmentManager());
+        binding.nc3pcv1dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+
         binding.nc3opv2dt.setManager(getSupportFragmentManager());
+        binding.nc3opv2dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+
         binding.nc3p2dt.setManager(getSupportFragmentManager());
+        binding.nc3p2dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+
         binding.nc3pcv2dt.setManager(getSupportFragmentManager());
+        binding.nc3pcv2dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+
         binding.nc3opv3dt.setManager(getSupportFragmentManager());
+        binding.nc3opv3dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+
         binding.nc3p3dt.setManager(getSupportFragmentManager());
+        binding.nc3p3dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+
         binding.nc3pcv3dt.setManager(getSupportFragmentManager());
+        binding.nc3pcv3dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+
         binding.nc3ipvdt.setManager(getSupportFragmentManager());
+        binding.nc3ipvdt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+
         binding.nc3m1dt.setManager(getSupportFragmentManager());
+        binding.nc3m1dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+
         binding.nc3m2dt.setManager(getSupportFragmentManager());
+        binding.nc3m2dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
 
 //        Skip Patterns
 //        binding.nc312.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {

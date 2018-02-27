@@ -1908,8 +1908,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="1dp"
-                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
-                    android:hint="@string/other" />
+                    android:digits="0123456789"
+                    android:hint="@string/times"
+                    android:text='@{nc21798.checked ? "" : nc217.getText.toString}'
+                    android:visibility='@{nc21798.checked ? View.GONE : View.VISIBLE}' />
 
                 <CheckBox
                     android:id="@+id/nc21798"
