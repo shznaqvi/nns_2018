@@ -193,7 +193,7 @@ public class SectionB1Activity extends Activity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.nw20998a) {
-                    bi.nw208.clearCheck();
+                    //  bi.nw208.clearCheck();
                     bi.nw20901.clearCheck();
                     bi.nw20902.clearCheck();
                     bi.nw20903.clearCheck();
@@ -210,10 +210,13 @@ public class SectionB1Activity extends Activity {
                 } else {
                     bi.nw20901a.setEnabled(true);
                     bi.nw20901b.setEnabled(true);
+
                     bi.nw20902a.setEnabled(true);
                     bi.nw20902b.setEnabled(true);
+
                     bi.nw20903a.setEnabled(true);
                     bi.nw20903b.setEnabled(true);
+
                     bi.nw20999a.setEnabled(true);
                     bi.nw20999b.setEnabled(true);
                 }
@@ -223,26 +226,32 @@ public class SectionB1Activity extends Activity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.nw20999a) {
-                    bi.nw20998.clearCheck();
                     bi.nw20901.clearCheck();
                     bi.nw20902.clearCheck();
                     bi.nw20903.clearCheck();
+                    bi.nw20998.clearCheck();
 
                     bi.nw20901a.setEnabled(false);
                     bi.nw20901b.setEnabled(false);
+
                     bi.nw20902a.setEnabled(false);
                     bi.nw20902b.setEnabled(false);
+
                     bi.nw20903a.setEnabled(false);
                     bi.nw20903b.setEnabled(false);
+
                     bi.nw20998a.setEnabled(false);
                     bi.nw20998b.setEnabled(false);
                 } else {
                     bi.nw20901a.setEnabled(true);
                     bi.nw20901b.setEnabled(true);
+
                     bi.nw20902a.setEnabled(true);
                     bi.nw20902b.setEnabled(true);
+
                     bi.nw20903a.setEnabled(true);
                     bi.nw20903b.setEnabled(true);
+
                     bi.nw20998a.setEnabled(true);
                     bi.nw20998b.setEnabled(true);
                 }
