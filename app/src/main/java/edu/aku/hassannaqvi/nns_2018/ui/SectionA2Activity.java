@@ -612,6 +612,10 @@ public class SectionA2Activity extends AppCompatActivity {
                 } else {
                     MainApp.childUnder5.add(family);
                 }
+
+                if (Age < 5 && family.getMotherId().equals("00")) {
+                    MainApp.childNA.add(family);
+                }
             }
 
             if (Age >= 15) {

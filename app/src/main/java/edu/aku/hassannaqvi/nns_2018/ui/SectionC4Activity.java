@@ -198,7 +198,11 @@ public class SectionC4Activity extends Activity {
                             .putExtra("selectedChild", selectedChild));
                 } else {
 
-                    MainApp.endActivityMotherChild(this, this, false, true);
+                    /*MainApp.endActivityMotherChild(this, this, false, true);*/
+
+                    startActivity(new Intent(this, ChildEndingActivity.class)
+                            //.putExtra("checkingFlag", false)
+                            .putExtra("complete", true));
 
                 }
 

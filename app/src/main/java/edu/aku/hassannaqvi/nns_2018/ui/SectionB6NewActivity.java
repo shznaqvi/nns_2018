@@ -4,29 +4,20 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.util.List;
-
-import butterknife.BindViews;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
-import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB6Binding;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB6NewBinding;
-import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionB6NewActivity extends AppCompatActivity {
 
     ActivitySectionB6NewBinding bi;
     DatabaseHelper db;
-    @BindViews({R.id.nb6a1, R.id.nb6a2, R.id.nb6a3, R.id.nb6a4, R.id.nb6a5}) List<CheckBox> groupA1;
+    //@BindViews({R.id.nb6a1, R.id.nb6a2, R.id.nb6a3, R.id.nb6a4, R.id.nb6a5}) List<CheckBox> groupA1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +34,7 @@ public class SectionB6NewActivity extends AppCompatActivity {
     public void setUpViews(){
 
 
-        bi.nb6a.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        /*bi.nb6a.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked)
@@ -118,7 +109,7 @@ public class SectionB6NewActivity extends AppCompatActivity {
 
             }
         });
-
+*/
 
 
 

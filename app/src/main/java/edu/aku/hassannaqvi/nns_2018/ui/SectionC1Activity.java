@@ -30,7 +30,9 @@ public class SectionC1Activity extends AppCompatActivity {
 
     public static int counter = 1;
     public static int counterPerMom = 0;
+    public static int counterPerNA = 0;
     public static String selectedChildName = "";
+    public static boolean isNA = false;
     static List<String> childU5;
     static Map<String, FamilyMembersContract> childMap;
     Map<String, String> respMap;
@@ -52,9 +54,10 @@ public class SectionC1Activity extends AppCompatActivity {
 //        Assigning data to UI binding
         binding.setCallback(this);
 
+
 //        Setup views
         if (getIntent().getBooleanExtra("childFlag", false)) {
-            childU5.remove(getIntent().getExtras().getInt("name"));
+            childU5.remove(getIntent().getStringExtra("name"));
             counter++;
         } else {
 
@@ -66,14 +69,29 @@ public class SectionC1Activity extends AppCompatActivity {
 
             childU5.add("....");
 
-            for (FamilyMembersContract fmc : MainApp.childUnder5) {
-                if (fmc.getMotherId().equals(MainApp.mc.getB1SerialNo())) {
+            if (isNA) {
+                childU5 = new ArrayList<>();
+                childMap = new HashMap<>();
+
+                childU5.add("....");
+
+                for (FamilyMembersContract fmc : MainApp.childNA) {
                     childMap.put(fmc.getName(), fmc);
                     childU5.add(fmc.getName());
-                    counterPerMom++;
+                    counterPerNA++;
+                }
+
+            } else {
+                for (FamilyMembersContract fmc : MainApp.childUnder5) {
+                    if (fmc.getMotherId().equals(MainApp.mc.getB1SerialNo())) {
+                        childMap.put(fmc.getName(), fmc);
+                        childU5.add(fmc.getName());
+                        counterPerMom++;
+                    }
                 }
             }
         }
+
 
         for (FamilyMembersContract fmc : MainApp.respList) {
             respName.add(fmc.getName());
@@ -81,7 +99,11 @@ public class SectionC1Activity extends AppCompatActivity {
         }
 
         // setup head
-        binding.txtCounter.setText("Count " + counter + " out of " + counterPerMom);
+        if (!isNA) {
+            binding.txtCounter.setText("Count " + counter + " out of " + counterPerMom);
+        } else {
+            binding.txtCounter.setText("Count " + counter + " out of " + counterPerNA);
+        }
 
         // setup spinner
         binding.nc101.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, childU5));
@@ -103,11 +125,15 @@ public class SectionC1Activity extends AppCompatActivity {
                 finish();
 
                 if (Integer.valueOf(childMap.get(binding.nc101.getSelectedItem().toString()).getAgeInYear()) < 2) {
-                    startActivity(new Intent(this, SectionC2Activity.class).putExtra("selectedChild", childMap.get(binding.nc101.getSelectedItem().toString())));
+                    startActivity(new Intent(this, SectionC2Activity.class)
+                            .putExtra("selectedChild", childMap.get(binding.nc101.getSelectedItem().toString())));
                 } else {
-                    startActivity(new Intent(this, SectionC3Activity.class).putExtra("selectedChild", childMap.get(binding.nc101.getSelectedItem().toString())));
+                    startActivity(new Intent(this, SectionC3Activity.class)
+                            .putExtra("selectedChild", childMap.get(binding.nc101.getSelectedItem().toString())));
                 }
 
+               /* startActivity(new Intent(this, SectionC5Activity.class)
+                        .putExtra("selectedChild", childMap.get(binding.nc101.getSelectedItem().toString())));*/
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
@@ -147,7 +173,12 @@ public class SectionC1Activity extends AppCompatActivity {
         MainApp.cc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
         MainApp.cc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
-        MainApp.cc.setUUID(MainApp.mc.get_UID());
+
+        if (childMap.get(binding.nc101.getSelectedItem().toString()).getMotherId().equals("00")) {
+            MainApp.cc.setUUID(MainApp.fc.getUID());
+        } else {
+            MainApp.cc.setUUID(MainApp.mc.get_UID());
+        }
 
         JSONObject sC1 = new JSONObject();
 

@@ -38,6 +38,7 @@ public class SectionA1Activity extends AppCompatActivity {
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     DatabaseHelper db;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +73,7 @@ public class SectionA1Activity extends AppCompatActivity {
         MainApp.childUnder2 = new ArrayList<>();
         MainApp.childUnder5 = new ArrayList<>();
         MainApp.childUnder5 = new ArrayList<>();
+        MainApp.childNA = new ArrayList<>();
         MainApp.mwra = new ArrayList<>();
         MainApp.adolescents = new ArrayList<>();
         MainApp.serial_no = 0;
@@ -99,6 +101,7 @@ public class SectionA1Activity extends AppCompatActivity {
 
             }
         });
+
 
 //        FamilyMembersList initialization
         MainApp.familyMembersList = new ArrayList<>();
@@ -236,12 +239,12 @@ public class SectionA1Activity extends AppCompatActivity {
             return false;
         }
 
-        if (!(binding.na11101blooda.isChecked() && binding.na11202a.isChecked())) {
+        /*if (!(binding.na11101blooda.isChecked() || binding.na11202a.isChecked())) {
             binding.na11202a.setError("Wrong Selection");
             Toast.makeText(this, "Wrong Selection", Toast.LENGTH_SHORT).show();
 
             return false;
-        }
+        }*/
 
 //        na113
         if (binding.na11201b.isChecked()) {

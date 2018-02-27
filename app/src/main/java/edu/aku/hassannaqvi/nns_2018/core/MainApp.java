@@ -92,6 +92,7 @@ public class MainApp extends Application {
     public static List<FamilyMembersContract> all_members;
     public static List<FamilyMembersContract> childUnder2;
     public static List<FamilyMembersContract> childUnder5;
+    public static List<FamilyMembersContract> childNA;
     public static List<FamilyMembersContract> mwra;
     public static List<FamilyMembersContract> adolescents;
     public static int serial_no;

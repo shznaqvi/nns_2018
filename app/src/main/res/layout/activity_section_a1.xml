@@ -21,8 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:animateLayoutChanges="true"
-            android:orientation="vertical"
-            android:layoutDirection="rtl">
+            android:layoutDirection="rtl"
+            android:orientation="vertical">
 
 
             <TextView
@@ -86,13 +86,13 @@
                     android:id="@+id/checkEnmBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:layout_weight="30"
+                    android:background="@drawable/button_bg"
+                    android:elevation="5dp"
                     android:onClick="@{() -> callback.BtnCheckEnm()}"
                     android:text="CHECK"
-                    android:elevation="5dp"
-                    android:layout_marginTop="5dp"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:background="@drawable/button_bg"/>
+                    android:textColor="@color/colorPrimaryDark" />
 
             </LinearLayout>
 
@@ -121,8 +121,8 @@
                             android:layout_marginTop="16dp"
                             android:layout_weight="1"
                             android:background="@color/colorPrimary"
-                            android:text="@string/na101a"
                             android:gravity="center_horizontal|center_vertical"
+                            android:text="@string/na101a"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@android:color/white" />
 
@@ -147,8 +147,8 @@
                             android:layout_marginTop="16dp"
                             android:layout_weight="1"
                             android:background="@color/colorPrimary"
-                            android:text="@string/na101b"
                             android:gravity="center_horizontal|center_vertical"
+                            android:text="@string/na101b"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@android:color/white" />
 
@@ -185,8 +185,8 @@
                             android:layout_marginTop="16dp"
                             android:layout_weight="1"
                             android:background="@color/colorPrimary"
-                            android:text="@string/na101c"
                             android:gravity="center_horizontal|center_vertical"
+                            android:text="@string/na101c"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@android:color/white" />
 
@@ -210,8 +210,8 @@
                             android:layout_marginBottom="8dp"
                             android:layout_marginTop="16dp"
                             android:layout_weight="1"
-                            android:gravity="center_horizontal|center_vertical"
                             android:background="@color/colorPrimary"
+                            android:gravity="center_horizontal|center_vertical"
                             android:text="@string/na101d"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@android:color/white" />
@@ -262,12 +262,12 @@
                         android:id="@+id/checkHHBtn"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
                         android:layout_weight="30"
-                        android:onClick="@{() -> callback.BtnCheckHH()}"
-                        android:text="CHECK"
                         android:background="@drawable/button_bg"
                         android:elevation="5dp"
-                        android:layout_marginTop="5dp"
+                        android:onClick="@{() -> callback.BtnCheckHH()}"
+                        android:text="CHECK"
                         android:textColor="@color/colorPrimaryDark"/>
 
                 </LinearLayout>
@@ -361,8 +361,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:background="@drawable/bacground_border1">
+                        android:background="@drawable/bacground_border1"
+                        android:orientation="vertical">
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -463,9 +463,9 @@
                     <!--na1a-->
                     <TextView
                         style="@style/sub"
-                        android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
                         android:text="@string/na112info" />
 
                     <!--na112-->
@@ -473,8 +473,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:background="@drawable/bacground_border1">
+                        android:background="@drawable/bacground_border1"
+                        android:orientation="vertical">
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -520,42 +520,51 @@
                     </RadioGroup>
 
                     <!--na11202-->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/pink_100"
-                        android:text="@string/na11202"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@color/colorPrimaryDark" />
 
-                    <RadioGroup
-                        android:id="@+id/na11202"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <RadioButton
-                            android:id="@+id/na11202a"
-                            style="@style/radiobutton"
+                        <LinearLayout
+                            android:id="@+id/fldGrpna1202"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="1dp"
-                            android:layout_weight="1"
-                            android:text="@string/yes" />
+                            android:orientation="vertical">
 
-                        <RadioButton
-                            android:id="@+id/na11202b"
-                            style="@style/radiobutton"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="1dp"
-                            android:layout_weight="1"
-                            android:text="@string/no" />
-                    </RadioGroup>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:background="@color/pink_100"
+                                android:text="@string/na11202"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="@color/colorPrimaryDark" />
+
+                            <RadioGroup
+                                android:id="@+id/na11202"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/na11202a"
+                                    style="@style/radiobutton"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/yes" />
+
+                                <RadioButton
+                                    android:id="@+id/na11202b"
+                                    style="@style/radiobutton"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/no" />
+                            </RadioGroup>
+
+                        </LinearLayout>
 
 
-                    <LinearLayout
+                        <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
@@ -564,9 +573,9 @@
                         <!--na1b-->
                         <TextView
                             style="@style/sub"
-                            android:layout_marginTop="5dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
                             android:text="@string/na113info" />
 
                         <!--na113-->

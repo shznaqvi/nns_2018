@@ -1085,110 +1085,95 @@
     <string name="nc222">کیا (نام) نے کل دن  یا رات کے دوران نمکول(او-آر-ایس) پیاتھا؟</string>
 
 
-    <string name="head">What did you eat in....?</string>
-    <string name="a"> Bread </string>
-    <string name="b"> Rice </string>
-    <string name="c"> Meat </string>
-    <string name="d"> Vegitables </string>
-    <string name="e"> Fruits </string>
-    <string name="f"> Tea/Cofee </string>
-    <string name="g"> BreakFast </string>
-    <string name="h"> Lentils and Beans </string>
-    <string name="a1"> Chapati </string>
-    <string name="a2"> Nan </string>
-    <string name="a3"> Bread </string>
-    <string name="a4"> Bran Bred </string>
-    <string name="a5"> Paratha </string>
-    <string name="a6"> Puri </string>
-    <string name="c1"> Chicken </string>
-    <string name="c2"> Fish </string>
-    <string name="c3"> Beef </string>
-    <string name="c4"> Mutton </string>
-    <string name="d1"> Tomato </string>
-    <string name="d2"> Potato </string>
-    <string name="d3"> Onion </string>
-    <string name="d4"> Carrot </string>
-    <string name="d5"> Garlic </string>
-    <string name="d6"> Bronccli </string>
-    <string name="d7"> Cucumber </string>
-    <string name="d8"> Spinach </string>
-    <string name="d9"> Eggplant/Bringle </string>
-    <string name="d10"> Corn </string>
-    <string name="d11"> Cauliflower </string>
-    <string name="d12"> Beetroot </string>
-    <string name="d13"> Turnip </string>
-    <string name="d14"> Biter melon </string>
-    <string name="d15"> Lady finger </string>
-    <string name="d16"> Lettuce </string>
-    <string name="d17"> Cabbage </string>
-    <string name="d18"> Lauki </string>
-    <string name="d19"> Capsicum </string>
-    <string name="d20"> Cluster Beans </string>
-    <string name="d21"> Colocasia roots </string>
-    <string name="d22"> Ginger </string>
-    <string name="d23"> Mustard Leaves </string>
-    <string name="d24"> Green Peas </string>
-    <string name="d25"> Radish </string>
-    <string name="d26"> Ridge Gourd </string>
-    <string name="d27"> Sweet Potatp </string>
-    <string name="e1"> Apple </string>
-    <string name="e2"> Apricot </string>
-    <string name="e3"> Banana </string>
-    <string name="e4"> Cherry </string>
-    <string name="e5"> Sugar Apple </string>
-    <string name="e6"> Coconut </string>
-    <string name="e7"> Dates </string>
-    <string name="e8"> Papaya </string>
-    <string name="e9"> Fig </string>
-    <string name="e10"> Grapes </string>
-    <string name="e11"> Oranges </string>
-    <string name="e12"> Kiwi </string>
-    <string name="e13"> Lychee </string>
-    <string name="e14"> Mango </string>
-    <string name="e15"> Melon </string>
-    <string name="e16"> Cantaloupe </string>
-    <string name="e17"> Mulberry </string>
-    <string name="e18"> Peach </string>
-    <string name="e19"> Pomegranate </string>
-    <string name="e20"> Strawberry </string>
-    <string name="e21"> Guava </string>
-    <string name="e22"> Chiku </string>
-    <string name="e23"> Plum </string>
-    <string name="e24"> Pear </string>
-    <string name="e25"> Jujube </string>
-    <string name="g1"> Tea </string>
-    <string name="g2"> Coffee </string>
-    <string name="g3"> Bread/Toast </string>
-    <string name="g4"> Egg </string>
-    <string name="g5"> Cheese </string>
-    <string name="g6"> Butter </string>
-    <string name="g7"> Milk </string>
-    <string name="g8"> French Fries </string>
-    <string name="g9"> Chocolate </string>
-    <string name="g10"> Porridge </string>
-    <string name="g11"> Cereals/Grains </string>
-    <string name="h1"> Chick Pea </string>
-    <string name="h2"> Soybean </string>
-    <string name="h3"> Red kidney Beans </string>
-    <string name="h4"> Mong </string>
-    <string name="h5"> Masoor </string>
-    <string name="h6"> Maash </string>
-    <string name="h7"> Arher </string>
-    <string name="h8"> White kidney beans </string>
-    <string name="gr1"> Wheat </string>
-    <string name="gr2"> Maize/Corn </string>
-    <string name="gr3"> Rice </string>
-    <string name="gr4"> Barley </string>
-    <string name="gr5"> Oat </string>
-    <string name="oil1"> Ghee </string>
-    <string name="oil2"> Vegitable oil </string>
-    <string name="oil3"> Synthetic Oil </string>
-    <string name="oil4"> Animal Fat </string>
-    <string name="cook1"> Baked </string>
-    <string name="cook2"> Boilled </string>
-    <string name="cook3"> Fried </string>
-    <string name="cook4"> Grilled </string>
-    <string name="cook5"> Rosted </string>
+    <string name="nw601">Yesterday during the day or night, did you eat or drink:</string>
 
+    <!-- Foods-->
+    <string name="nw601a1">روٹی</string>
+    <string name="nw601a2">دلیہ / اناج / کارن فلیکس</string>
+    <string name="nw601a3">نوڈلس / پاستا</string>
+    <string name="nw601a4">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601f">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601i">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="vegi">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="fruit">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601v">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601c">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601e">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601q">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601d">Yesterday during the day or night, did you eat or drink:</string>
+
+    <!-- Green Leafy vegitables-->
+
+    <string name="nw601j1">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601j2">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601j3">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601j4">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601j5">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601j6">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601j7">Yesterday during the day or night, did you eat or drink:</string>
+
+    <!-- Green vegitables-->
+
+    <string name="nw601m1">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601m2">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601m3">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601m4">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601m5">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601m6">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601m7">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601m8">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601m9">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601m10">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601m11">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601m12">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601m13">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601m14">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601m15">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601m16">Yesterday during the day or night, did you eat or drink:</string>
+
+    <!-- Red and orange vegi-->
+    <string name="nw601k1">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601k2">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601k3">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601k4">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601k5">Yesterday during the day or night, did you eat or drink:</string>
+
+
+    <!-- Single seed fruits-->
+    <string name="nw601n1">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601n2">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601n3">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601n4">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601n5">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601n6">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601n7">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601n8">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601n9">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601n10">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601n11">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601n12">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601n13">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601n14">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601n15">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601n16">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601n17">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601n18">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601n19">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601n20">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601n21">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601n22">Yesterday during the day or night, did you eat or drink:</string>
+
+    <!-- Multiple seed fruits-->
+    <string name="nw601l1">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601l2">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601l3">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601l4">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601l5">Yesterday during the day or night, did you eat or drink:</string>
+
+
+    <string name="nw601b1">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601b2">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601b3">Yesterday during the day or night, did you eat or drink:</string>
+    <string name="nw601b4">Yesterday during the day or night, did you eat or drink:</string>
 
 </resources>
