@@ -116,7 +116,8 @@ public class SectionB5Activity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        MainApp.endActivityMotherChild(this, this, true, false);
+
+        MainApp.endActivityMother(this, this, false);
     }
 
 

@@ -52,18 +52,7 @@ public class MotherEndingActivity extends AppCompatActivity {
         }
 
         flagNAChild = SectionC1Activity.counterPerMom <= 0;
-/*        istatus.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-                if (istatus88.isChecked()) {
-                    istatus88x.setVisibility(View.VISIBLE);
-                    //istatus88x.requestFocus();
-                } else {
-                    istatus88x.setText(null);
-                    istatus88x.setVisibility(View.GONE);
-                }
-            }
-        });*/
+
 
     }
 
@@ -87,7 +76,9 @@ public class MotherEndingActivity extends AppCompatActivity {
                             SectionC1Activity.isNA = true;
                             startActivity(new Intent(this, SectionC1Activity.class));
                         } else {
-                            startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+                            //startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+
+                            startActivity(new Intent(this, SectionA3Activity.class));
                         }
 
                     } else {
@@ -95,55 +86,6 @@ public class MotherEndingActivity extends AppCompatActivity {
                                 .putExtra("mwraFlag", true)
                                 .putExtra("wraName", SectionB1Activity.wraName));
                     }
-                //}
-/*
-
-                    if (!flagNAChild) {
-
-                        if (SectionC1Activity.counter == SectionC1Activity.counterPerMom) {
-
-                            startActivity(new Intent(this, MotherEndingActivity.class)
-                                    .putExtra("checkingFlag", true)
-                                    .putExtra("complete", true));
-                        */
-/*if(MainApp.childNA.size() > 0)
-                        {
-                            SectionC1Activity.isNA = true;
-                            startActivity(new Intent(this, SectionC1Activity.class));
-                        }else {
-
-                            startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
-                        }*//*
-
-                        } else {
-                            startActivity(new Intent(this, SectionC1Activity.class)
-                                    .putExtra("childFlag", true)
-                                    .putExtra("name", SectionC1Activity.selectedChildName));
-                        }
-                    } else {
-
-                    */
-/*if (MainApp.childNA.size() > 0) {
-
-                        SectionC1Activity.isNA = true;
-                        if (SectionC1Activity.counter > SectionC1Activity.counterPerNA) {
-                            startActivity(new Intent(this, SectionC1Activity.class));*//*
-
-                        if (SectionC1Activity.counter == SectionC1Activity.counterPerNA) {
-                            startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
-                        } else {
-
-                            startActivity(new Intent(this, SectionC1Activity.class)
-                                    .putExtra("childFlag", true)
-                                    .putExtra("name", SectionC1Activity.selectedChildName));
-                        }
-                        //}
-                    }
-                }
-*/
-
-
-
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -154,23 +96,11 @@ public class MotherEndingActivity extends AppCompatActivity {
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
-        if (flagMotherChild) {
-            /*
-            MainApp.mc.setIstatus(binding.istatusa.isChecked() ? "1"
+
+        MainApp.mc.setMstatus(binding.istatusa.isChecked() ? "1"
                     : binding.istatusb.isChecked() ? "2"
                     : "0");
 
-            MainApp.mc.setIstatus88x(istatus88x.getText().toString());
-            */
-        } else {
-            /*
-            MainApp.cc.setIstatus(binding.istatusa.isChecked() ? "1"
-                    : binding.istatusb.isChecked() ? "2"
-                    : "0");
-
-            MainApp.cc.setIstatus88x(istatus88x.getText().toString());
-            */
-        }
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }
@@ -178,21 +108,16 @@ public class MotherEndingActivity extends AppCompatActivity {
     private boolean UpdateDB() {
         DatabaseHelper db = new DatabaseHelper(this);
 
-        if (flagMotherChild) {
-//            int updcount = db.updateMotherEnding();
-        } else {
-//            int updcount = db.updatechildEnding();
-        }
-/*
+        int updcount = db.updateMotherEnding();
         if (updcount == 1) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
-        }*/
+        }
 
-        return true;
+        //return true;
 
     }
 

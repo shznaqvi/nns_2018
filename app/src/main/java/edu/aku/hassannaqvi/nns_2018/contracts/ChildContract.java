@@ -38,6 +38,7 @@ public class ChildContract {
     private String synced = "";
     private String synced_date = "";
     private String appversion;
+    private String cstatus = "";
 
     public ChildContract() {
 
@@ -60,6 +61,7 @@ public class ChildContract {
         this.synced = jsonObject.getString(ChildTable.COLUMN_SYNCED);
         this.synced_date = jsonObject.getString(ChildTable.COLUMN_SYNCED_DATE);
         this.appversion = jsonObject.getString(ChildTable.COLUMN_APPVERSION);
+        this.cstatus = jsonObject.getString(ChildTable.COLUMN_CSTATUS);
 
 
         return this;
@@ -82,6 +84,7 @@ public class ChildContract {
         this.synced = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_SYNCED));
         this.synced_date = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_SYNCED_DATE));
         this.appversion = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_APPVERSION));
+        this.cstatus = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_CSTATUS));
 
 
         // TODO:
@@ -126,6 +129,7 @@ public class ChildContract {
         json.put(ChildTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
         json.put(ChildTable.COLUMN_SYNCED_DATE, this.synced_date == null ? JSONObject.NULL : this.synced_date);
         json.put(ChildTable.COLUMN_APPVERSION, this.appversion == null ? JSONObject.NULL : this.appversion);
+        json.put(ChildTable.COLUMN_CSTATUS, this.cstatus == null ? JSONObject.NULL : this.cstatus);
 
 
         return json;
@@ -267,6 +271,14 @@ public class ChildContract {
         this.sC5 = sC5;
     }
 
+    public String getCstatus() {
+        return cstatus;
+    }
+
+    public void setCstatus(String cstatus) {
+        this.cstatus = cstatus;
+    }
+
     public static abstract class ChildTable implements BaseColumns {
 
         public static final String TABLE_NAME = "child";
@@ -288,6 +300,7 @@ public class ChildContract {
         public static final String COLUMN_SYNCED = "synced ";
         public static final String COLUMN_SYNCED_DATE = "synced_date ";
         public static final String COLUMN_APPVERSION = "appversion";
+        public static final String COLUMN_CSTATUS = "cstatus";
 
         public static String _URL = "childforms.php";
     }

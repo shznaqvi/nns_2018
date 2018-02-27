@@ -159,7 +159,7 @@ public class SectionB1AActivity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        MainApp.endActivity(this, this);
+        MainApp.endActivityMother(this, this, false);
 
     }
 

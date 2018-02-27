@@ -60,7 +60,8 @@ public class SectionC5Activity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        MainApp.endActivityMotherChild(this, this, false, false);
+
+        MainApp.endChildActivity(this, this, false);
     }
 
     private boolean formValidation() {

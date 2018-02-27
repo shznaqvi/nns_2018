@@ -237,7 +237,7 @@ public class SectionB2Activity extends Activity {
     }
 
     public void BtnEnd() {
-        MainApp.endActivityMotherChild(this, this, true, false);
+        MainApp.endActivityMother(this, this, false);
 
     }
 

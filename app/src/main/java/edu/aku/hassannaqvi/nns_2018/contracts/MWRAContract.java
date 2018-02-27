@@ -23,6 +23,7 @@ public class MWRAContract {
     private String devicetagID = "";
     private String user = "";
     private String app_ver = "";
+    private String mstatus = "";
 
     private String b1SerialNo = "";
     private String sB1 = "";
@@ -186,6 +187,14 @@ public class MWRAContract {
         this.sB3 = sB3;
     }
 
+    public String getMstatus() {
+        return mstatus;
+    }
+
+    public void setMstatus(String mstatus) {
+        this.mstatus = mstatus;
+    }
+
     public MWRAContract Sync(JSONObject jsonObject) throws JSONException {
 
         this._ID = jsonObject.getString(MWRATable.COLUMN__ID);
@@ -205,6 +214,7 @@ public class MWRAContract {
         this.sB6 = jsonObject.getString(MWRATable.COLUMN_SB6);
         this.synced = jsonObject.getString(MWRATable.COLUMN_SYNCED);
         this.syncedDate = jsonObject.getString(MWRATable.COLUMN_SYNCEDDATE);
+        this.mstatus = jsonObject.getString(MWRATable.COLUMN_MSTATUS);
 
 
         return this;
@@ -230,6 +240,7 @@ public class MWRAContract {
         this.sB6 = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB6));
         this.synced = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SYNCED));
         this.syncedDate = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SYNCEDDATE));
+        this.mstatus = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_MSTATUS));
 
 
         return this;
@@ -278,6 +289,7 @@ public class MWRAContract {
 
         json.put(MWRATable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
         json.put(MWRATable.COLUMN_SYNCEDDATE, this.syncedDate == null ? JSONObject.NULL : this.syncedDate);
+        json.put(MWRATable.COLUMN_MSTATUS, this.mstatus == null ? JSONObject.NULL : this.mstatus);
 
 
         return json;
@@ -306,6 +318,7 @@ public class MWRAContract {
         public static final String COLUMN_SB6 = "sb6";
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNCEDDATE = "synceddate";
+        public static final String COLUMN_MSTATUS = "mstatus";
 
 
         public static String _URL = "familymembers.php";

@@ -118,6 +118,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             ChildTable.COLUMN_DEVICETAGID + " TEXT," +
             ChildTable.COLUMN_SYNCED + " TEXT," +
             ChildTable.COLUMN_SYNCED_DATE + " TEXT," +
+            ChildTable.COLUMN_CSTATUS + " TEXT," +
             ChildTable.COLUMN_APPVERSION + " TEXT "
 
             + " );";
@@ -197,6 +198,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             MWRATable.COLUMN_SB5 + " TEXT," +
             MWRATable.COLUMN_SB6 + " TEXT," +
             MWRATable.COLUMN_SYNCED + " TEXT," +
+            MWRATable.COLUMN_MSTATUS + " TEXT," +
             MWRATable.COLUMN_SYNCEDDATE + " TEXT " +
 
             ");";
@@ -660,6 +662,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(ChildTable.COLUMN_SYNCED, cc.getSynced());
         values.put(ChildTable.COLUMN_SYNCED_DATE, cc.getSynced_date());
         values.put(ChildTable.COLUMN_APPVERSION, cc.getAppversion());
+        values.put(ChildTable.COLUMN_CSTATUS, cc.getCstatus());
 
 
         // Insert the new row, returning the primary key value of the new row
@@ -733,6 +736,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(MWRATable.COLUMN_SB6, mc.getsB6());
         values.put(MWRATable.COLUMN_SYNCED, mc.getSynced());
         values.put(MWRATable.COLUMN_SYNCEDDATE, mc.getSyncedDate());
+        values.put(MWRATable.COLUMN_MSTATUS, mc.getMstatus());
 
 
         // Insert the new row, returning the primary key value of the new row
@@ -1105,6 +1109,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ChildTable.COLUMN_SYNCED,
                 ChildTable.COLUMN_SYNCED_DATE,
                 ChildTable.COLUMN_APPVERSION,
+                ChildTable.COLUMN_CSTATUS,
 
         };
         String whereClause = ChildContract.ChildTable.COLUMN_SYNCED + " is null OR " + ChildTable.COLUMN_SYNCED + " = '' ";
@@ -1806,13 +1811,33 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
-/*    public int updateMotherEnding() {
+
+    public int updateChildEnding() {
         SQLiteDatabase db = this.getReadableDatabase();
 
 // New value for one column
         ContentValues values = new ContentValues();
-        values.put(MWRATable.COLUMN_ISTATUS, MainApp.mc.getIstatus());
-        values.put(MWRATable.COLUMN_ISTATUS88x, MainApp.mc.getIstatus88x());
+        values.put(ChildTable.COLUMN_CSTATUS, MainApp.cc.getCstatus());
+        //values.put(FormsTable.COLUMN_ISTATUS88x, MainApp.fc.getIstatus88x());
+
+// Which row to update, based on the ID
+        String selection = ChildTable._ID + " =? ";
+        String[] selectionArgs = {String.valueOf(MainApp.cc.get_ID())};
+
+        int count = db.update(ChildTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
+
+    public int updateMotherEnding() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(MWRATable.COLUMN_MSTATUS, MainApp.mc.getMstatus());
+        //values.put(MWRATable.COLUMN_ISTATUS88x, MainApp.mc.getIstatus88x());
 
 // Which row to update, based on the ID
         String selection = MWRATable._ID + " =? ";
@@ -1823,6 +1848,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selection,
                 selectionArgs);
         return count;
-    }*/
+    }
 
 }

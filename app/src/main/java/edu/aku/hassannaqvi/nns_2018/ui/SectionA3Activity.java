@@ -153,7 +153,8 @@ public class SectionA3Activity extends AppCompatActivity {
 
                     counter = 1;
 
-                    startActivity(new Intent(this, SectionA4Activity.class));
+                    startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+
                 } else {
 
                     members.remove(binding.na301.getSelectedItem().toString());

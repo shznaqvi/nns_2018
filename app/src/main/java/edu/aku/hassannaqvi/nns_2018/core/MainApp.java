@@ -30,6 +30,7 @@ import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract;
 import edu.aku.hassannaqvi.nns_2018.other.MembersCount;
+import edu.aku.hassannaqvi.nns_2018.ui.ChildEndingActivity;
 import edu.aku.hassannaqvi.nns_2018.ui.EndingActivity;
 import edu.aku.hassannaqvi.nns_2018.ui.MotherEndingActivity;
 
@@ -210,7 +211,7 @@ public class MainApp extends Application {
         alert.show();
     }
 
-    public static void endActivityMotherChild(final Context context, final Activity activity, final Boolean flag, final Boolean completeFlag) {
+    public static void endActivityMother(final Context context, final Activity activity, final Boolean completeFlag) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 context);
         alertDialogBuilder
@@ -223,8 +224,35 @@ public class MainApp extends Application {
 
                                 activity.finish();
                                 Intent end_intent = new Intent(context, MotherEndingActivity.class);
-                                end_intent.putExtra("complete", completeFlag)
-                                        .putExtra("checkingFlag", flag);
+                                end_intent.putExtra("complete", completeFlag);
+                                context.startActivity(end_intent);
+                            }
+                        });
+        alertDialogBuilder.setNegativeButton("No",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = alertDialogBuilder.create();
+        alert.show();
+    }
+
+
+    public static void endChildActivity(final Context context, final Activity activity, final Boolean completeFlag) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                context);
+        alertDialogBuilder
+                .setMessage("Do you want to Exit??")
+                .setCancelable(false)
+                .setPositiveButton("Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,
+                                                int id) {
+
+                                activity.finish();
+                                Intent end_intent = new Intent(context, ChildEndingActivity.class);
+                                end_intent.putExtra("complete", completeFlag);
                                 context.startActivity(end_intent);
                             }
                         });
