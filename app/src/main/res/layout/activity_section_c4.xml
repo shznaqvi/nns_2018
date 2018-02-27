@@ -182,7 +182,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:layout_weight="1"
                 android:text="@string/nc403a" />
 
             <RadioButton
@@ -191,7 +190,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:layout_weight="1"
                 android:text="@string/nc403b" />
 
             <RadioButton
@@ -200,7 +198,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:layout_weight="1"
                 android:text="@string/nc403c" />
 
             <RadioButton
@@ -209,7 +206,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:layout_weight="1"
                 android:text="@string/nc403d" />
 
             <RadioButton
@@ -218,16 +214,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:layout_weight="1"
                 android:text="@string/nc403e" />
 
             <RadioButton
                 android:id="@+id/nc4039601"
-                style="@style/radiobutton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:layout_weight="1"
                 android:text="@string/otherpubm" />
 
             <EditText
@@ -256,7 +249,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:layout_weight="1"
                 android:text="@string/nc403f" />
 
             <RadioButton
@@ -265,7 +257,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:layout_weight="1"
                 android:text="@string/nc403g" />
 
             <RadioButton
@@ -274,7 +265,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:layout_weight="1"
                 android:text="@string/nc403h" />
 
             <RadioButton
@@ -283,7 +273,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:layout_weight="1"
                 android:text="@string/nc403i" />
 
             <RadioButton
@@ -292,7 +281,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:layout_weight="1"
                 android:text="@string/nc403j" />
 
             <RadioButton
@@ -301,7 +289,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:layout_weight="1"
                 android:text="@string/otherprim" />
 
             <EditText
@@ -330,7 +317,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:layout_weight="1"
                 android:text="@string/nc403k" />
 
             <RadioButton
@@ -339,7 +325,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:layout_weight="1"
                 android:text="@string/nc403l" />
 
             <RadioButton
@@ -348,7 +333,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:layout_weight="1"
                 android:text="@string/nc403m" />
 
             <RadioButton
@@ -357,7 +341,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:layout_weight="1"
                 android:text="@string/other" />
 
             <EditText
@@ -376,11 +359,7 @@
 
         <!--nc404-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bacground_border1"
-        android:orientation="vertical">
+
 
         <TextView
             android:layout_width="match_parent"
@@ -516,7 +495,6 @@
 
         </LinearLayout>
 
-    </LinearLayout>
 
     </LinearLayout>
 
@@ -1292,7 +1270,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
                     android:text="@string/nc412b" />
 
                 <CheckBox
@@ -1300,23 +1277,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
                     android:text="@string/nc412c" />
 
-                <CheckBox
-                    android:id="@+id/nc412d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:text="@string/nc412d" />
+                <!--<CheckBox-->
+                <!--android:id="@+id/nc412d"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="1dp"-->
+                <!--android:text="@string/nc412d" />-->
 
                 <CheckBox
                     android:id="@+id/nc412e"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
                     android:text="@string/nc412e" />
 
                 <TextView
@@ -1332,7 +1306,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
                     android:text="@string/nc412f" />
 
                 <CheckBox
@@ -1348,7 +1321,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
                     android:text="@string/nc412h" />
 
                 <CheckBox
@@ -1356,23 +1328,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:text="@string/nc411i" />
+                    android:text="@string/nc412i" />
 
                 <CheckBox
                     android:id="@+id/nc412j"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:text="@string/nc411j" />
+                    android:text="@string/nc412j" />
 
                 <CheckBox
                     android:id="@+id/nc4129601"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
                     android:text="@string/other" />
 
                 <EditText
@@ -1390,7 +1359,7 @@
             </LinearLayout>
         </LinearLayout>
 
-            <!--15-->
+            <!--nc413-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
