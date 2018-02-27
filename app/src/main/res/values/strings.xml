@@ -36,6 +36,8 @@
     <string name="dkn"> معلوم نہیں </string>
     <string name="count"> تعداد </string>
     <string name="other"> دیگر وضاحت کریں </string>
+    <string name="otherpubm"> دوسرے عوامی طبی مرکز </string>
+    <string name="otherprim"> دوسرے نجی دواخانہ </string>
     <string name="refused"> جواب سے انکار </string>
     <string name="never"> کبھی نہیں </string>
     <string name="rs">Rupees</string>
@@ -470,9 +472,9 @@
     <string name="nb1a04a"> حیات </string>
     <string name="nb1a04b"> فوت </string>
     <string name="nb1a05"> Age of alive child </string>
-    <string name="year"> Years </string>
+    <string name="year">سال </string>
     <string name="month"> Months </string>
-    <string name="day"> Days </string>
+    <string name="day"> دن </string>
     <string name="nb1a06"> Age at time of death </string>
     <string name="nb1a06y"> Years </string>
     <string name="nb1a06m"> Months </string>
@@ -995,12 +997,13 @@
     <string name="nc412b"> اینٹی بائیوٹک </string>
     <string name="nc412c"> دست روکنے والی ادویات </string>
     <string name="nc412d"> زنگ </string>
-    <string name="nc412e"> گولیاں/شربت </string>
+    <string name="nc412e">نامعلوم گولیاں/شربت </string>
     <string name="nc412sub2"> انجکشن </string>
     <string name="nc412f"> اینٹی بائیوٹک </string>
-    <string name="nc412g"> اینٹی بائیوٹک کے علاوہ نامعلوم انجکش </string>
-    <string name="nc412h"> نس کے ذریعہ </string>
-    <string name="nc412i"> گھر یلو ادویات یا ہربل ادویات </string>
+    <string name="nc412g"> اینٹی بائیوٹک کے علاوہ </string>
+    <string name="nc412h"> نامعلوم انجکش  </string>
+    <string name="nc412i"> نس کے ذریعہ </string>
+    <string name="nc412j"> گھر یلو ادویات یا ہربل ادویات </string>
     <string name="nc413"> کیا بچہ (نام) کوگزشتہ چھ مہینوں میں پیٹ کے کیٹرے مارنے والی دوا دی گئی تھیں </string>
     <string name="nc414"> کیا بچہ (نام) کو گزشتہ چھ مہینے کے دوران رات میں کم نظر آتا ہے </string>
 
