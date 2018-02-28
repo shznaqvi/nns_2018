@@ -11,14 +11,14 @@ import org.json.JSONException;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
-import edu.aku.hassannaqvi.nns_2018.databinding.ActivityMotherEndingBinding;
+import edu.aku.hassannaqvi.nns_2018.databinding.ActivityChildEndingBinding;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class MotherEndingActivity extends AppCompatActivity {
+public class ChildEndingActivity extends AppCompatActivity {
 
-    private static final String TAG = MotherEndingActivity.class.getSimpleName();
+    private static final String TAG = ChildEndingActivity.class.getSimpleName();
 
-    ActivityMotherEndingBinding binding;
+    ActivityChildEndingBinding binding;
     Boolean flagMotherChild = false;
     Boolean flagNAChild = false;
 
@@ -27,17 +27,11 @@ public class MotherEndingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_mother_ending);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_child_ending);
         binding.setCallback(this);
 
-/*
-        flagMotherChild = getIntent().getBooleanExtra("checkingFlag", false);
-        if (flagMotherChild) {
-            binding.lblheaderName.setText(SectionB1Activity.wraName.toUpperCase());
-        } else {
-*/
-        binding.lblheaderName.setText(SectionB1Activity.wraName.toUpperCase());
-        //}
+        binding.lblheaderName.setText(SectionC1Activity.selectedChildName.toUpperCase());
+
 
         Boolean check = getIntent().getExtras().getBoolean("complete");
 
@@ -52,7 +46,6 @@ public class MotherEndingActivity extends AppCompatActivity {
         }
 
         flagNAChild = SectionC1Activity.counterPerMom <= 0;
-
 
     }
 
@@ -69,23 +62,35 @@ public class MotherEndingActivity extends AppCompatActivity {
 
                 finish();
 
+                if (!flagNAChild) {
 
-                //if (flagMotherChild) {
-                    if (SectionB1Activity.WRAcounter == MainApp.mwra.size()) {
-                        if (MainApp.childNA.size() > 0) {
-                            SectionC1Activity.isNA = true;
-                            startActivity(new Intent(this, SectionC1Activity.class));
-                        } else {
-                            //startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+                    if (SectionC1Activity.counter == SectionC1Activity.counterPerMom) {
 
-                            startActivity(new Intent(this, SectionA3Activity.class));
-                        }
+                        startActivity(new Intent(this, MotherEndingActivity.class)
+                                .putExtra("checkingFlag", true)
+                                .putExtra("complete", true));
 
                     } else {
-                        startActivity(new Intent(this, SectionB1Activity.class)
-                                .putExtra("mwraFlag", true)
-                                .putExtra("wraName", SectionB1Activity.wraName));
+                        startActivity(new Intent(this, SectionC1Activity.class)
+                                .putExtra("childFlag", true)
+                                .putExtra("name", SectionC1Activity.selectedChildName));
                     }
+                } else {
+
+                    if (SectionC1Activity.counter == SectionC1Activity.counterPerNA) {
+                        SectionC1Activity.isNA = false;
+                        //startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+                        startActivity(new Intent(this, SectionA3Activity.class));
+
+                    } else {
+
+                        startActivity(new Intent(this, SectionC1Activity.class)
+                                .putExtra("childFlag", true)
+                                .putExtra("name", SectionC1Activity.selectedChildName));
+                    }
+                    //}
+                }
+
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -97,10 +102,9 @@ public class MotherEndingActivity extends AppCompatActivity {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
 
-        MainApp.mc.setMstatus(binding.istatusa.isChecked() ? "1"
-                    : binding.istatusb.isChecked() ? "2"
-                    : "0");
-
+        MainApp.cc.setCstatus(binding.istatusa.isChecked() ? "1"
+                : binding.istatusb.isChecked() ? "2"
+                : "0");
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }
@@ -108,7 +112,7 @@ public class MotherEndingActivity extends AppCompatActivity {
     private boolean UpdateDB() {
         DatabaseHelper db = new DatabaseHelper(this);
 
-        int updcount = db.updateMotherEnding();
+        int updcount = db.updateChildEnding();
         if (updcount == 1) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
             return true;
@@ -116,9 +120,6 @@ public class MotherEndingActivity extends AppCompatActivity {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
         }
-
-        //return true;
-
     }
 
     private boolean formValidation() {

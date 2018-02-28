@@ -7,27 +7,112 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
-import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB6Binding;
-import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
+import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB6NewBinding;
 
-public class SectionB6Activity extends AppCompatActivity {
+public class SectionB6NewActivity extends AppCompatActivity {
 
-    ActivitySectionB6Binding bi;
+    ActivitySectionB6NewBinding bi;
     DatabaseHelper db;
+    //@BindViews({R.id.nb6a1, R.id.nb6a2, R.id.nb6a3, R.id.nb6a4, R.id.nb6a5}) List<CheckBox> groupA1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_section_b6);
 
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_b6);
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_b6_new);
         db = new DatabaseHelper(this);
         bi.setCallback(this);
+
+        setUpViews();
+    }
+
+    public void setUpViews(){
+
+
+        /*bi.nb6a.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    bi.cardViewA.setVisibility(View.VISIBLE);
+                }else{
+                    bi.cardViewA.setVisibility(View.GONE);
+                    bi.fldGrp01.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        bi.nb6c.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    bi.cardViewC.setVisibility(View.VISIBLE);
+                }else{
+                    bi.cardViewC.setVisibility(View.GONE);
+                    bi.fldGrp03.setVisibility(View.GONE);
+
+                }
+            }
+        });
+
+        bi.cardViewA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(bi.fldGrp01.getVisibility() == View.VISIBLE)
+                {
+                    bi.fldGrp01.setVisibility(View.GONE);
+
+
+                }else{
+                    bi.fldGrp01.setVisibility(View.VISIBLE);
+
+                }
+
+            }
+        });
+
+        bi.cardViewC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(bi.fldGrp03.getVisibility() == View.VISIBLE)
+                {
+                    bi.fldGrp03.setVisibility(View.GONE);
+
+
+                }else{
+                    bi.fldGrp03.setVisibility(View.VISIBLE);
+
+                }
+
+            }
+        });
+
+
+        bi.cardViewD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(bi.fldGrp04.getVisibility() == View.VISIBLE)
+                {
+                    bi.fldGrp04.setVisibility(View.GONE);
+
+                }else{
+                    bi.fldGrp04.setVisibility(View.VISIBLE);
+
+                }
+
+            }
+        });
+*/
+
+
+
     }
 
     public void BtnContinue() {
@@ -44,13 +129,7 @@ public class SectionB6Activity extends AppCompatActivity {
 
                 finish();
 
-                if (MainApp.childUnder5.size() == MainApp.childNA.size()) {
-                    startActivity(new Intent(this, MotherEndingActivity.class)
-                            .putExtra("checkingFlag", true)
-                            .putExtra("complete", true));
-                } else {
-                    startActivity(new Intent(this, SectionC1Activity.class));
-                }
+                startActivity(new Intent(this, SectionC1Activity.class));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -63,7 +142,7 @@ public class SectionB6Activity extends AppCompatActivity {
 
     public void BtnEnd() {
 
-        MainApp.endActivityMother(this, this, false);
+        MainApp.endActivity(this, this);
 
     }
 
@@ -71,7 +150,7 @@ public class SectionB6Activity extends AppCompatActivity {
 
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
-        if (!validatorClass.EmptyRadioButton(this, bi.nb60101, bi.nb60101a, getString(R.string.nb601a))) {
+/*        if (!validatorClass.EmptyRadioButton(this, bi.nb60101, bi.nb60101a, getString(R.string.nb601a))) {
             return false;
         }
 
@@ -119,12 +198,14 @@ public class SectionB6Activity extends AppCompatActivity {
             return false;
         }
 
-        return validatorClass.EmptyRadioButton(this, bi.nb60196, bi.nb60196a, bi.nb60196x, getString(R.string.nb601j) + " - " + getString(R.string.other));
-    }
+        return validatorClass.EmptyRadioButton(this, bi.nb60196, bi.nb60196a, bi.nb60196x, getString(R.string.nb601j) + " - " + getString(R.string.other));*/
 
+        return true;
+    }
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
+/*
         JSONObject sB6 = new JSONObject();
         //       nb601
 //        60101
@@ -170,11 +251,13 @@ public class SectionB6Activity extends AppCompatActivity {
                 : "0");
 
 
+
         sB6.put("nc101", bi.nb60108x.getText().toString());
         sB6.put("nc101", bi.nb60109x.getText().toString());
         sB6.put("nc101", bi.nb60196x.getText().toString());
 
         MainApp.mc.setsB6(String.valueOf(sB6));
+*/
 
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
@@ -183,7 +266,7 @@ public class SectionB6Activity extends AppCompatActivity {
     private boolean UpdateDB() {
 
         //Long rowId;
-        DatabaseHelper db = new DatabaseHelper(this);
+        /*DatabaseHelper db = new DatabaseHelper(this);
 
         int updcount = db.updateSB6();
 
@@ -194,9 +277,10 @@ public class SectionB6Activity extends AppCompatActivity {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
         }
-
-        //return true;
+*/
+        return true;
 
     }
+
 
 }

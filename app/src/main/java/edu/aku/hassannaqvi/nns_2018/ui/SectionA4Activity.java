@@ -95,6 +95,7 @@ public class SectionA4Activity extends AppCompatActivity {
         MainApp.endActivity(this, this);
 
     }
+
     private boolean formValidation() {
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
         if (!validatorClass.EmptyRadioButton(this, binding.na401, binding.na40196, binding.na40196x, getString(R.string.na401))) {
@@ -116,12 +117,17 @@ public class SectionA4Activity extends AppCompatActivity {
             return false;
         }
 
-        if (!validatorClass.EmptyRadioButton(this, binding.na406, binding.na406b, getString(R.string.na406))) {
-            return false;
+        if (binding.na405i.isChecked()) {
+            if (!validatorClass.EmptyRadioButton(this, binding.na406, binding.na406b, getString(R.string.na406))) {
+                return false;
+            }
         }
 
         if (binding.na406a.isChecked()) {
             if (!validatorClass.EmptyTextBox(this, binding.na407, getString(R.string.na407))) {
+                return false;
+            }
+            if (!validatorClass.RangeTextBox(this, binding.na407, 1, 99, getString(R.string.na407), "Toilet")) {
                 return false;
             }
         }
@@ -192,69 +198,6 @@ public class SectionA4Activity extends AppCompatActivity {
             return false;
         }
 
-//        if (!validatorClass.EmptyTextBox(this, binding.deletea, getString(R.string.deletea))) {
-//            return false;
-//        }
-//
-//        if (!validatorClass.EmptyTextBox(this, binding.deleteb, getString(R.string.deleteb))) {
-//            return false;
-//        }
-//
-//        if (!validatorClass.EmptyTextBox(this, binding.deletec, getString(R.string.deletec))) {
-//            return false;
-//        }
-//
-//        if (!validatorClass.EmptyTextBox(this, binding.deleted, getString(R.string.deleted))) {
-//            return false;
-//        }
-//
-//        if (!validatorClass.EmptyTextBox(this, binding.deletee, getString(R.string.deletee))) {
-//            return false;
-//        }
-//
-//        if (!validatorClass.EmptyTextBox(this, binding.deletef, getString(R.string.deletef))) {
-//            return false;
-//        }
-//
-//        if (!validatorClass.EmptyTextBox(this, binding.deleteg, getString(R.string.deleteg))) {
-//            return false;
-//        }
-//
-//        if (!validatorClass.EmptyTextBox(this, binding.deleteh, getString(R.string.deleteh))) {
-//            return false;
-//        }
-//
-//        if (!validatorClass.EmptyTextBox(this, binding.deletei, getString(R.string.deletei))) {
-//            return false;
-//        }
-//
-//        if (!validatorClass.EmptyTextBox(this, binding.deletej, getString(R.string.deletej))) {
-//            return false;
-//        }
-//
-//        if (!validatorClass.EmptyTextBox(this, binding.deletek, getString(R.string.deletek))) {
-//            return false;
-//        }
-//
-//        if (!validatorClass.EmptyTextBox(this, binding.deletel, getString(R.string.deletel))) {
-//            return false;
-//        }
-//
-//        if (!validatorClass.EmptyTextBox(this, binding.deletem, getString(R.string.deletem))) {
-//            return false;
-//        }
-//
-//        if (!validatorClass.EmptyTextBox(this, binding.deleten, getString(R.string.deleten))) {
-//            return false;
-//        }
-//
-//        if (!validatorClass.EmptyTextBox(this, binding.deleteo, getString(R.string.deleteo))) {
-//            return false;
-//        }
-//
-//        if (!validatorClass.EmptyTextBox(this, binding.deletep, getString(R.string.deletep))) {
-//            return false;
-//        }
 
         if (!validatorClass.EmptyCheckBox(this, binding.fldGrpna0411check, binding.na41096, binding.na41096x, getString(R.string.na410))) {
             return false;
@@ -288,20 +231,25 @@ public class SectionA4Activity extends AppCompatActivity {
         if (!validatorClass.EmptyRadioButton(this, binding.na418, binding.na418b, getString(R.string.na418))) {
             return false;
         }
+
         if (binding.na418a.isChecked()) {
-            if (binding.na419a.isChecked()){
-                if(!validatorClass.EmptyRadioButton(this,binding.na419,binding.na419a,binding.na419acr,getString(R.string.na419))){
-                    return  false;
-                }
+            if (!validatorClass.EmptyRadioButton(this, binding.na419, binding.na419a, getString(R.string.na419))) {
+                return false;
             }
-            else if(binding.na419b.isChecked()){
-                if(!validatorClass.EmptyRadioButton(this,binding.na419,binding.na419a,binding.na419can,getString(R.string.na419))){
-                    return  false;
+
+            if (binding.na419a.isChecked()) {
+                if (!validatorClass.EmptyTextBox(this, binding.na419acr, getString(R.string.na419acr))) {
+                    return false;
                 }
-            }
-            else if(binding.na41998.isChecked()){
-                if(!validatorClass.EmptyRadioButton(this,binding.na419,binding.na419a,getString(R.string.na419))){
-                    return  false;
+                if (!validatorClass.RangeTextBox(this, binding.na419acr, 1, 999, getString(R.string.na419acr), "acre")) {
+                    return false;
+                }
+            } else if (binding.na419b.isChecked()) {
+                if (!validatorClass.EmptyTextBox(this, binding.na419can, getString(R.string.na419can))) {
+                    return false;
+                }
+                if (!validatorClass.RangeTextBox(this, binding.na419can, 1, 999, getString(R.string.na419can), "kanal")) {
+                    return false;
                 }
             }
         }
@@ -309,23 +257,49 @@ public class SectionA4Activity extends AppCompatActivity {
         if (!validatorClass.EmptyRadioButton(this, binding.na420, binding.na420b, getString(R.string.na420))) {
             return false;
         }
+
+
         if (binding.na420a.isChecked()) {
+            if (!validatorClass.EmptyTextBox(this, binding.na421a, getString(R.string.na421a))) {
+                return false;
+            }
+
             if (!validatorClass.RangeTextBox(this, binding.na421a, 0, 999, getString(R.string.na421a), "Animal")) {
+                return false;
+            }
+
+            if (!validatorClass.EmptyTextBox(this, binding.na421b, getString(R.string.na421b))) {
                 return false;
             }
             if (!validatorClass.RangeTextBox(this, binding.na421b, 0, 999, getString(R.string.na421b), "Animal")) {
                 return false;
             }
+
+            if (!validatorClass.EmptyTextBox(this, binding.na421c, getString(R.string.na421c))) {
+                return false;
+            }
             if (!validatorClass.RangeTextBox(this, binding.na421c, 0, 999, getString(R.string.na421c), "Animal")) {
+                return false;
+            }
+            if (!validatorClass.EmptyTextBox(this, binding.na421d, getString(R.string.na421d))) {
                 return false;
             }
             if (!validatorClass.RangeTextBox(this, binding.na421d, 0, 999, getString(R.string.na421d), "Animal")) {
                 return false;
             }
+            if (!validatorClass.EmptyTextBox(this, binding.na421e, getString(R.string.na421e))) {
+                return false;
+            }
             if (!validatorClass.RangeTextBox(this, binding.na421e, 0, 999, getString(R.string.na421e), "Animal")) {
                 return false;
             }
+            if (!validatorClass.EmptyTextBox(this, binding.na421f, getString(R.string.na421f))) {
+                return false;
+            }
             if (!validatorClass.RangeTextBox(this, binding.na421f, 0, 999, getString(R.string.na421f), "Animal")) {
+                return false;
+            }
+            if (!validatorClass.EmptyTextBox(this, binding.na421g, getString(R.string.na421g))) {
                 return false;
             }
             if (!validatorClass.RangeTextBox(this, binding.na421g, 0, 999, getString(R.string.na421g), "Animal")) {
@@ -338,6 +312,7 @@ public class SectionA4Activity extends AppCompatActivity {
 
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
+
 
         JSONObject sA4 = new JSONObject();
         sA4.put("nh301", binding.na401a.isChecked() ? "1"

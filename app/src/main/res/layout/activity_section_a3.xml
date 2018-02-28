@@ -33,18 +33,16 @@
                 android:text="@string/na3heading"
                 android:textSize="40sp" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/colorPrimary" />
 
             <TextView
                 android:id="@+id/txtCounter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:background="@color/pink_100"
                 android:padding="5dp"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
             <!--na100-->
             <TextView
@@ -58,9 +56,12 @@
 
             <Spinner
                 android:id="@+id/na301"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"/>
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:gravity="center" />
 
             <!--na101-->
             <TextView

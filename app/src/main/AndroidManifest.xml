@@ -55,8 +55,19 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme1"
             android:windowSoftInputMode="adjustResize|stateHidden" />
+
+        <activity
+            android:name=".ui.ChildEndingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme1"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
             android:name=".ui.SectionA2Activity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme1"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".ui.SectionA2ListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme1"
             android:windowSoftInputMode="adjustResize|stateHidden" />
@@ -124,6 +135,12 @@
             android:name=".ui.SectionB6Activity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme1"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+        <activity
+            android:name=".ui.SectionB6NewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme2"
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
             android:name=".ui.SectionC5Activity"

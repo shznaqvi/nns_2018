@@ -76,7 +76,7 @@ public class SectionB4Activity extends Activity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.nb411b || checkedId == R.id.nb41198) {
-                    binding.fldGrpnb412check.setVisibility(View.GONE);
+                    binding.fldGrpnb412.setVisibility(View.GONE);
                     binding.nb412a.setChecked(false);
                     binding.nb412b.setChecked(false);
                     binding.nb412c.setChecked(false);
@@ -88,7 +88,7 @@ public class SectionB4Activity extends Activity {
                     binding.nb41296x.setText(null);
 
                 } else {
-                    binding.fldGrpnb412check.setVisibility(View.VISIBLE);
+                    binding.fldGrpnb412.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -127,7 +127,7 @@ public class SectionB4Activity extends Activity {
     public void BtnContinue() {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
-        /*if (formValidation()) {
+        if (formValidation()) {
             try {
                 SaveDraft();
             } catch (JSONException e) {
@@ -138,18 +138,18 @@ public class SectionB4Activity extends Activity {
 
                 finish();
 
-                startActivity(new Intent(this, ChildAssessmentActivity.class));
+                startActivity(new Intent(this, SectionB5Activity.class));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
-        }*/
+        }
 
-        startActivity(new Intent(this, SectionB5Activity.class));
+        //startActivity(new Intent(this, SectionB5Activity.class));
     }
 
     public void BtnEnd() {
-        MainApp.endActivity(this, this);
+        MainApp.endActivityMother(this, this, false);
 
     }
 

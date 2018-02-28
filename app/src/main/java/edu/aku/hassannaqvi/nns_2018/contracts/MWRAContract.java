@@ -23,10 +23,12 @@ public class MWRAContract {
     private String devicetagID = "";
     private String user = "";
     private String app_ver = "";
+    private String mstatus = "";
 
     private String b1SerialNo = "";
     private String sB1 = "";
     private String sB2 = "";
+    private String sB3 = "";
     private String sB4 = "";
     private String sB5 = "";
     private String sB6 = "";
@@ -177,6 +179,22 @@ public class MWRAContract {
         this.sB6 = sB6;
     }
 
+    public String getsB3() {
+        return sB3;
+    }
+
+    public void setsB3(String sB3) {
+        this.sB3 = sB3;
+    }
+
+    public String getMstatus() {
+        return mstatus;
+    }
+
+    public void setMstatus(String mstatus) {
+        this.mstatus = mstatus;
+    }
+
     public MWRAContract Sync(JSONObject jsonObject) throws JSONException {
 
         this._ID = jsonObject.getString(MWRATable.COLUMN__ID);
@@ -190,11 +208,13 @@ public class MWRAContract {
         this.b1SerialNo = jsonObject.getString(MWRATable.COLUMN_B1SERIALNO);
         this.sB1 = jsonObject.getString(MWRATable.COLUMN_SB1);
         this.sB2 = jsonObject.getString(MWRATable.COLUMN_SB2);
+        this.sB3 = jsonObject.getString(MWRATable.COLUMN_SB3);
         this.sB4 = jsonObject.getString(MWRATable.COLUMN_SB4);
         this.sB5 = jsonObject.getString(MWRATable.COLUMN_SB5);
         this.sB6 = jsonObject.getString(MWRATable.COLUMN_SB6);
         this.synced = jsonObject.getString(MWRATable.COLUMN_SYNCED);
         this.syncedDate = jsonObject.getString(MWRATable.COLUMN_SYNCEDDATE);
+        this.mstatus = jsonObject.getString(MWRATable.COLUMN_MSTATUS);
 
 
         return this;
@@ -214,11 +234,13 @@ public class MWRAContract {
         this.b1SerialNo = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_B1SERIALNO));
         this.sB1 = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB1));
         this.sB2 = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB2));
+        this.sB3 = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB3));
         this.sB4 = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB4));
         this.sB5 = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB5));
         this.sB6 = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB6));
         this.synced = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SYNCED));
         this.syncedDate = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SYNCEDDATE));
+        this.mstatus = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_MSTATUS));
 
 
         return this;
@@ -249,6 +271,10 @@ public class MWRAContract {
             json.put(MWRATable.COLUMN_SB2, this.sB2.equals("") ? JSONObject.NULL : new JSONObject(this.sB2));
         }
 
+        if (!this.sB3.equals("")) {
+            json.put(MWRATable.COLUMN_SB3, this.sB3.equals("") ? JSONObject.NULL : new JSONObject(this.sB3));
+        }
+
         if (!this.sB4.equals("")) {
             json.put(MWRATable.COLUMN_SB4, this.sB4.equals("") ? JSONObject.NULL : new JSONObject(this.sB4));
         }
@@ -263,6 +289,7 @@ public class MWRAContract {
 
         json.put(MWRATable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
         json.put(MWRATable.COLUMN_SYNCEDDATE, this.syncedDate == null ? JSONObject.NULL : this.syncedDate);
+        json.put(MWRATable.COLUMN_MSTATUS, this.mstatus == null ? JSONObject.NULL : this.mstatus);
 
 
         return json;
@@ -285,11 +312,13 @@ public class MWRAContract {
         public static final String COLUMN_B1SERIALNO = "b1serialno";
         public static final String COLUMN_SB1 = "sb1";
         public static final String COLUMN_SB2 = "sb2";
+        public static final String COLUMN_SB3 = "sb3";
         public static final String COLUMN_SB4 = "sb4";
         public static final String COLUMN_SB5 = "sb5";
         public static final String COLUMN_SB6 = "sb6";
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNCEDDATE = "synceddate";
+        public static final String COLUMN_MSTATUS = "mstatus";
 
 
         public static String _URL = "familymembers.php";

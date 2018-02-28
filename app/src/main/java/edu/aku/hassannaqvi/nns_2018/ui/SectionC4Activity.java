@@ -1,17 +1,15 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.Serializable;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
@@ -20,7 +18,7 @@ import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC4Binding;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionC4Activity extends AppCompatActivity {
+public class SectionC4Activity extends Activity {
 
     ActivitySectionC4Binding binding;
     DatabaseHelper db;
@@ -41,136 +39,169 @@ public class SectionC4Activity extends AppCompatActivity {
     }
 
     private void setupViews() {
-        binding.nc403.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        binding.nc401.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (binding.nc403a.isChecked()) {
-                    binding.fldGrnc404.setVisibility(View.VISIBLE);
+                if (binding.nc401a.isChecked()) {
+                    binding.fldGrnc402.setVisibility(View.VISIBLE);
                 } else {
-                    binding.fldGrnc404.setVisibility(View.GONE);
-                    binding.nc404.clearCheck();
-                    binding.nc405.clearCheck();
+                    binding.fldGrnc402.setVisibility(View.GONE);
+                    binding.nc402.clearCheck();
+                    binding.nc403.clearCheck();
 
-                    binding.nc406a.setChecked(false);
-                    binding.nc406b.setChecked(false);
-                    binding.nc406c.setChecked(false);
-                    binding.nc406d.setChecked(false);
-                    binding.nc406e.setChecked(false);
-                    binding.nc406f.setChecked(false);
-                    binding.nc406g.setChecked(false);
-                    binding.nc406h.setChecked(false);
-                    binding.nc406i.setChecked(false);
-                    binding.nc406j.setChecked(false);
-                    binding.nc40696x.setText(null);
+                    binding.nc404a.setChecked(false);
+                    binding.nc404b.setChecked(false);
+                    binding.nc404c.setChecked(false);
+                    binding.nc404d.setChecked(false);
+                    binding.nc404e.setChecked(false);
+                    binding.nc404f.setChecked(false);
+                    binding.nc404g.setChecked(false);
+                    binding.nc404h.setChecked(false);
+                    binding.nc404i.setChecked(false);
+                    binding.nc404j.setChecked(false);
+                    binding.nc40496x.setText(null);
 
-                    binding.nc4059601.setText(null);
-                    binding.nc4059602.setText(null);
-                    binding.nc4059603.setText(null);
+                    binding.nc4039601x.setText(null);
+                    binding.nc4039602x.setText(null);
+                    binding.nc4039603x.setText(null);
                 }
             }
         });
-        binding.nc404.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        binding.nc402.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (binding.nc404a.isChecked()) {
-                    binding.nc405.setVisibility(View.VISIBLE);
+                if (binding.nc402a.isChecked()) {
+                    binding.fldGrnc403.setVisibility(View.VISIBLE);
                 } else {
-                    binding.nc405.setVisibility(View.GONE);
-                    binding.nc405.clearCheck();
+                    binding.fldGrnc403.setVisibility(View.GONE);
+                    binding.nc403.clearCheck();
 
-                    binding.nc4059601.setText(null);
-                    binding.nc4059602.setText(null);
-                    binding.nc4059603.setText(null);
-                }
-            }
-        });
+                    binding.nc4039601x.setText(null);
+                    binding.nc4039602x.setText(null);
+                    binding.nc4039603x.setText(null);
 
-        binding.nc407.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (binding.nc407a.isChecked()) {
-                    binding.fldGrnc408.setVisibility(View.VISIBLE);
-                } else {
-                    binding.fldGrnc408.setVisibility(View.GONE);
-                    binding.nc408.clearCheck();
-                    binding.nc409.clearCheck();
+                    binding.nc404a.setChecked(false);
+                    binding.nc404b.setChecked(false);
+                    binding.nc404c.setChecked(false);
+                    binding.nc404d.setChecked(false);
+                    binding.nc404e.setChecked(false);
+                    binding.nc404f.setChecked(false);
+                    binding.nc404g.setChecked(false);
+                    binding.nc404h.setChecked(false);
+                    binding.nc404i.setChecked(false);
+                    binding.nc404j.setChecked(false);
+                    binding.nc40496.setChecked(false);
 
-                    binding.nc4099601.setText(null);
-                    binding.nc4099602.setText(null);
-                    binding.nc4099603.setText(null);
-
-                    binding.nc410a.setChecked(false);
-                    binding.nc410b.setChecked(false);
-                    binding.nc410c.setChecked(false);
-                    binding.nc410d.setChecked(false);
-                    binding.nc410e.setChecked(false);
-                    binding.nc410f.setChecked(false);
-                    binding.nc410g.setChecked(false);
-                    binding.nc410h.setChecked(false);
-                    binding.nc410i.setChecked(false);
-                    binding.nc4109601x.setText(null);
-
-
-                }
-            }
-        });
-        binding.nc408.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (binding.nc408a.isChecked()) {
-                    binding.nc409.setVisibility(View.VISIBLE);
-                } else {
-                    binding.nc409.setVisibility(View.GONE);
-                    binding.nc409.clearCheck();
-
-                    binding.nc4099601.setText(null);
-                    binding.nc4099602.setText(null);
-                    binding.nc4099603.setText(null);
+                    binding.nc40496x.setText(null);
                 }
             }
         });
 
-        binding.nc411.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        binding.nc405.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (binding.nc411a.isChecked()) {
-                    binding.fldGrnc412.setVisibility(View.VISIBLE);
+                if (binding.nc405a.isChecked()) {
+                    binding.fldGrnc406.setVisibility(View.VISIBLE);
                 } else {
-                    binding.fldGrnc412.setVisibility(View.GONE);
-                    binding.nc412.clearCheck();
-                    binding.nc413.clearCheck();
+                    binding.fldGrnc406.setVisibility(View.GONE);
+                    binding.nc406.clearCheck();
+                    binding.nc407.clearCheck();
 
-                    binding.nc4139601.setText(null);
-                    binding.nc4139602.setText(null);
-                    binding.nc4139603.setText(null);
+                    binding.nc4079601x.setText(null);
+                    binding.nc4079602x.setText(null);
+                    binding.nc4079603x.setText(null);
 
-                    binding.nc414a.setChecked(false);
-                    binding.nc414b.setChecked(false);
-                    binding.nc414c.setChecked(false);
-                    binding.nc414d.setChecked(false);
-                    binding.nc414e.setChecked(false);
-                    binding.nc414f.setChecked(false);
-                    binding.nc414g.setChecked(false);
-                    binding.nc414h.setChecked(false);
-                    binding.nc414i.setChecked(false);
-                    binding.nc4149601x.setText(null);
+                    binding.nc408a.setChecked(false);
+                    binding.nc408b.setChecked(false);
+                    binding.nc408c.setChecked(false);
+                    binding.nc408d.setChecked(false);
+                    binding.nc408e.setChecked(false);
+                    binding.nc408f.setChecked(false);
+                    binding.nc408g.setChecked(false);
+                    binding.nc408h.setChecked(false);
+                    binding.nc408i.setChecked(false);
+                    binding.nc4089601x.setText(null);
+                }
+            }
+        });
+        binding.nc406.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (binding.nc406a.isChecked()) {
+                    binding.fldGrnc407.setVisibility(View.VISIBLE);
+                } else {
+                    binding.fldGrnc407.setVisibility(View.GONE);
+                    binding.nc407.clearCheck();
+
+                    binding.nc4079601.setText(null);
+                    binding.nc4079602.setText(null);
+                    binding.nc4079603.setText(null);
+
+                    binding.nc408a.setChecked(false);
+                    binding.nc408b.setChecked(false);
+                    binding.nc408c.setChecked(false);
+                    binding.nc408d.setChecked(false);
+                    binding.nc408e.setChecked(false);
+                    binding.nc408f.setChecked(false);
+                    binding.nc408g.setChecked(false);
+                    binding.nc408h.setChecked(false);
+                    binding.nc408i.setChecked(false);
+                    binding.nc4089601x.setText(null);
+                }
+            }
+        });
+
+        binding.nc409.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (binding.nc409a.isChecked()) {
+                    binding.fldGrnc410.setVisibility(View.VISIBLE);
+                } else {
+                    binding.fldGrnc410.setVisibility(View.GONE);
+                    binding.nc410.clearCheck();
+                    binding.nc411.clearCheck();
+
+                    binding.nc4119601x.setText(null);
+                    binding.nc4119602x.setText(null);
+                    binding.nc4119603x.setText(null);
+
+
+                    binding.nc412b.setChecked(false);
+                    binding.nc412c.setChecked(false);
+//                    binding.nc412d.setChecked(false);
+                    binding.nc412e.setChecked(false);
+                    binding.nc412f.setChecked(false);
+                    binding.nc412g.setChecked(false);
+                    binding.nc412h.setChecked(false);
+                    binding.nc412i.setChecked(false);
+                    binding.nc4129601x.setText(null);
 
 
                 }
             }
         });
-        binding.nc412.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        binding.nc410.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (binding.nc412a.isChecked()) {
-                    binding.nc413.setVisibility(View.VISIBLE);
+                if (binding.nc410a.isChecked()) {
+                    binding.fldGrnc411.setVisibility(View.VISIBLE);
                 } else {
-                    binding.nc413.setVisibility(View.GONE);
-                    binding.nc413.clearCheck();
+                    binding.fldGrnc411.setVisibility(View.GONE);
+                    binding.nc411.clearCheck();
 
-                    binding.nc4139601.setText(null);
-                    binding.nc4139602.setText(null);
-                    binding.nc4139603.setText(null);
+                    binding.nc4119601x.setText(null);
+                    binding.nc4119602x.setText(null);
+                    binding.nc4119603x.setText(null);
+
+                    binding.nc412b.setChecked(false);
+                    binding.nc412c.setChecked(false);
+//                    binding.nc412d.setChecked(false);
+                    binding.nc412e.setChecked(false);
+                    binding.nc412f.setChecked(false);
+                    binding.nc412g.setChecked(false);
+                    binding.nc412h.setChecked(false);
+                    binding.nc412i.setChecked(false);
+                    binding.nc4129601x.setText(null);
                 }
             }
         });
@@ -195,12 +226,16 @@ public class SectionC4Activity extends AppCompatActivity {
 
                 finish();
 
-                if (Integer.valueOf(selectedChild.getAgeInYear()) > 2) {
+                if (Integer.valueOf(selectedChild.getAgeInYear()) >= 2) {
                     startActivity(new Intent(this, SectionC5Activity.class)
-                            .putExtra("selectedChild", (Serializable) selectedChild));
+                            .putExtra("selectedChild", selectedChild));
                 } else {
 
-                    MainApp.endActivityMother(this, this, true);
+                    /*MainApp.endActivityMotherChild(this, this, false, true);*/
+
+                    startActivity(new Intent(this, ChildEndingActivity.class)
+                            //.putExtra("checkingFlag", false)
+                            .putExtra("complete", true));
 
                 }
 
@@ -211,118 +246,129 @@ public class SectionC4Activity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        MainApp.endActivityMother(this, this, false);
+        MainApp.endChildActivity(this, this, false);
     }
 
     private boolean formValidation() {
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
-//       nc403
-        if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc403b, getString(R.string.nc403))) {
+//       nc401
+        if (!validatorClass.EmptyRadioButton(this, binding.nc401, binding.nc401b, getString(R.string.nc401))) {
+            return false;
+        }
+        if (binding.nc401a.isChecked()) {
+
+//        nc402
+            if (!validatorClass.EmptyRadioButton(this, binding.nc402, binding.nc402b, getString(R.string.nc402))) {
+                return false;
+            }
+
+            if (binding.nc402a.isChecked()) {
+//        nc403
+                if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc4039603, getString(R.string.nc403))) {
+                    return false;
+                }
+//        nc4039601
+                if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc4039603, binding.nc4039601x, getString(R.string.nc403))) {
+                    return false;
+                }
+//        nc4039602
+                if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc4039603, binding.nc4039602x, getString(R.string.nc403))) {
+                    return false;
+                }
+//        nc4039603
+                if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc4039603, binding.nc4039603x, getString(R.string.nc403))) {
+                    return false;
+                }
+
+//        fldGrpnc404
+                if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnc404, binding.nc40496, binding.nc40496x, getString(R.string.nc404))) {
+                    return false;
+                }
+            }
+
+
+        }
+
+//       nc405
+        if (!validatorClass.EmptyRadioButton(this, binding.nc405, binding.nc405b, getString(R.string.nc405))) {
             return false;
         }
 
-//        nc404
-        if (!validatorClass.EmptyRadioButton(this, binding.nc404, binding.nc404b, getString(R.string.nc404))) {
+        if (binding.nc405a.isChecked()) {
+
+//        nc406
+            if (!validatorClass.EmptyRadioButton(this, binding.nc406, binding.nc406b, getString(R.string.nc406))) {
+                return false;
+            }
+            if (binding.nc406a.isChecked()) {
+
+                // nc407
+                if (!validatorClass.EmptyRadioButton(this, binding.nc407, binding.nc4079603, getString(R.string.nc407))) {
+                    return false;
+                }
+
+//        nc4079601x
+                if (!validatorClass.EmptyRadioButton(this, binding.nc407, binding.nc4079603, binding.nc4079601x, getString(R.string.nc407))) {
+                    return false;
+                }
+//        nc4079602x
+                if (!validatorClass.EmptyRadioButton(this, binding.nc407, binding.nc4079603, binding.nc4079602x, getString(R.string.nc407))) {
+                    return false;
+                }
+//        nc4079603x
+                if (!validatorClass.EmptyRadioButton(this, binding.nc407, binding.nc4079603, binding.nc4079603x, getString(R.string.nc407))) {
+                    return false;
+                }
+
+                //    fldGrnc408check
+                if (!validatorClass.EmptyCheckBox(this, binding.fldGrnc408check, binding.nc4089601, binding.nc4089601x, getString(R.string.nc408))) {
+                    return false;
+                }
+            }
+        }
+
+//       nc409
+        if (!validatorClass.EmptyRadioButton(this, binding.nc409, binding.nc409b, getString(R.string.nc409))) {
+            return false;
+        }
+        if (binding.nc409a.isChecked()) {
+//        nc410
+            if (!validatorClass.EmptyRadioButton(this, binding.nc410, binding.nc410b, getString(R.string.nc410))) {
+                return false;
+            }
+            if (binding.nc410a.isChecked()) {
+                // nc411
+                if (!validatorClass.EmptyRadioButton(this, binding.nc411, binding.nc4119603, getString(R.string.nc411))) {
+                    return false;
+                }
+
+//        nc4119601x
+                if (!validatorClass.EmptyRadioButton(this, binding.nc411, binding.nc4119603, binding.nc4119601x, getString(R.string.nc411))) {
+                    return false;
+                }
+//        nc4119602x
+                if (!validatorClass.EmptyRadioButton(this, binding.nc411, binding.nc4119603, binding.nc4119602x, getString(R.string.nc411))) {
+                    return false;
+                }
+//        nc4119603x
+                if (!validatorClass.EmptyRadioButton(this, binding.nc411, binding.nc4119603, binding.nc4119603x, getString(R.string.nc411))) {
+                    return false;
+                }
+                // fldGrnc412check
+                if (!validatorClass.EmptyCheckBox(this, binding.fldGrnc412check, binding.nc4129601, binding.nc4129601x, getString(R.string.nc412))) {
+                    return false;
+                }
+            }
+        }
+
+//       nc413
+        if (!validatorClass.EmptyRadioButton(this, binding.nc413, binding.nc41398, getString(R.string.nc413))) {
             return false;
         }
 
-//        nc405
-        if (!validatorClass.EmptyRadioButton(this, binding.nc405, binding.nc4059603, getString(R.string.nc405))) {
-            return false;
-        }
-//        nc4059601
-        if (!validatorClass.EmptyRadioButton(this, binding.nc405, binding.nc4059603, binding.nc4059601x, getString(R.string.nc405))) {
-            return false;
-        }
-//        nc4059602
-        if (!validatorClass.EmptyRadioButton(this, binding.nc405, binding.nc4059603, binding.nc4059602x, getString(R.string.nc405))) {
-            return false;
-        }
-//        nc4059603
-        if (!validatorClass.EmptyRadioButton(this, binding.nc405, binding.nc4059603, binding.nc4059603x, getString(R.string.nc405))) {
-            return false;
-        }
-
-//        fldGrpnc406
-        if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnc406, binding.nc40696, binding.nc40696x, getString(R.string.nc406))) {
-            return false;
-        }
-
-
-//       nc407
-        if (!validatorClass.EmptyRadioButton(this, binding.nc407, binding.nc407b, getString(R.string.nc407))) {
-            return false;
-        }
-
-//        nc408
-        if (!validatorClass.EmptyRadioButton(this, binding.nc408, binding.nc408b, getString(R.string.nc408))) {
-            return false;
-        }
-
-        // nc409
-        if (!validatorClass.EmptyRadioButton(this, binding.nc409, binding.nc4099603, getString(R.string.nc409))) {
-            return false;
-        }
-
-//        nc4099601x
-        if (!validatorClass.EmptyRadioButton(this, binding.nc409, binding.nc4099603, binding.nc4099601x, getString(R.string.nc409))) {
-            return false;
-        }
-//        nc4099602x
-        if (!validatorClass.EmptyRadioButton(this, binding.nc409, binding.nc4099603, binding.nc4099602x, getString(R.string.nc409))) {
-            return false;
-        }
-//        nc4099603x
-        if (!validatorClass.EmptyRadioButton(this, binding.nc409, binding.nc4099603, binding.nc4099603x, getString(R.string.nc409))) {
-            return false;
-        }
-
-        //    fldGrnc410check
-        if (!validatorClass.EmptyCheckBox(this, binding.fldGrnc410check, binding.nc4109601, binding.nc4109601x, getString(R.string.nc410))) {
-            return false;
-        }
-
-
-//       nc411
-        if (!validatorClass.EmptyRadioButton(this, binding.nc411, binding.nc411b, getString(R.string.nc411))) {
-            return false;
-        }
-
-//        nc412
-        if (!validatorClass.EmptyRadioButton(this, binding.nc412, binding.nc412b, getString(R.string.nc412))) {
-            return false;
-        }
-
-        // nc413
-        if (!validatorClass.EmptyRadioButton(this, binding.nc413, binding.nc4139603, getString(R.string.nc413))) {
-            return false;
-        }
-
-//        nc4139601x
-        if (!validatorClass.EmptyRadioButton(this, binding.nc413, binding.nc4139603, binding.nc4139601x, getString(R.string.nc413))) {
-            return false;
-        }
-//        nc4139602x
-        if (!validatorClass.EmptyRadioButton(this, binding.nc413, binding.nc4139603, binding.nc4139602x, getString(R.string.nc413))) {
-            return false;
-        }
-//        nc4139603x
-        if (!validatorClass.EmptyRadioButton(this, binding.nc413, binding.nc4139603, binding.nc4139603x, getString(R.string.nc413))) {
-            return false;
-        }
-        // nc414
-        if (!validatorClass.EmptyCheckBox(this, binding.fldGrnc414check, binding.nc4149601, binding.nc4149601x, getString(R.string.nc414))) {
-            return false;
-        }
-
-//       nc415
-        if (!validatorClass.EmptyRadioButton(this, binding.nc415, binding.nc41598, getString(R.string.nc415))) {
-            return false;
-        }
-
-//        nc416
-        return validatorClass.EmptyRadioButton(this, binding.nc416, binding.nc41698, getString(R.string.nc416));
+//        nc414
+        return validatorClass.EmptyRadioButton(this, binding.nc414, binding.nc41498, getString(R.string.nc414));
     }
 
     private void SaveDraft() throws JSONException {
@@ -335,166 +381,166 @@ public class SectionC4Activity extends AppCompatActivity {
 //        nc302
         sC4.put("nc402Serial", selectedChild.getSerialNo());
 
+//        nc401
+        sC4.put("nc401", binding.nc401a.isChecked() ? "1"
+                : binding.nc401b.isChecked() ? "2"
+                : "0");
+
+//      nc402
+        sC4.put("nc402", binding.nc402a.isChecked() ? "1"
+                : binding.nc402b.isChecked() ? "2"
+                : "0");
+
+
 //        nc403
         sC4.put("nc403", binding.nc403a.isChecked() ? "1"
                 : binding.nc403b.isChecked() ? "2"
+                : binding.nc403c.isChecked() ? "3"
+                : binding.nc403d.isChecked() ? "4"
+                : binding.nc403e.isChecked() ? "5"
+                : binding.nc4039601.isChecked() ? "961"
+                : binding.nc403f.isChecked() ? "6"
+                : binding.nc403g.isChecked() ? "7"
+                : binding.nc403h.isChecked() ? "8"
+                : binding.nc403i.isChecked() ? "9"
+                : binding.nc403j.isChecked() ? "10"
+                : binding.nc4039602.isChecked() ? "962"
+                : binding.nc403k.isChecked() ? "11"
+                : binding.nc403l.isChecked() ? "12"
+                : binding.nc403m.isChecked() ? "13"
+                : binding.nc4039603.isChecked() ? "963"
                 : "0");
 
-//      nc404
-        sC4.put("nc404", binding.nc404a.isChecked() ? "1"
-                : binding.nc404b.isChecked() ? "2"
-                : "0");
 
+        sC4.put("nc4039601x", binding.nc4039601x.getText().toString());
+        sC4.put("nc4039602x", binding.nc4039602x.getText().toString());
+        sC4.put("nc4039603x", binding.nc4039603x.getText().toString());
+
+//     nc404
+        sC4.put("nc404a", binding.nc404a.isChecked() ? "1" : "0");
+        sC4.put("nc404b", binding.nc404b.isChecked() ? "2" : "0");
+        sC4.put("nc404c", binding.nc404c.isChecked() ? "3" : "0");
+        sC4.put("nc404d", binding.nc404d.isChecked() ? "4" : "0");
+        sC4.put("nc404e", binding.nc404e.isChecked() ? "5" : "0");
+        sC4.put("nc404f", binding.nc404f.isChecked() ? "6" : "0");
+        sC4.put("nc404g", binding.nc404g.isChecked() ? "7" : "0");
+        sC4.put("nc404h", binding.nc404h.isChecked() ? "8" : "0");
+        sC4.put("nc404i", binding.nc404i.isChecked() ? "9" : "0");
+        sC4.put("nc404j", binding.nc404j.isChecked() ? "10" : "0");
+        sC4.put("nc40496", binding.nc40496.isChecked() ? "96" : "0");
+
+        sC4.put("nc40496x", binding.nc40496x.getText().toString());
 
 //        nc405
         sC4.put("nc405", binding.nc405a.isChecked() ? "1"
                 : binding.nc405b.isChecked() ? "2"
-                : binding.nc405c.isChecked() ? "3"
-                : binding.nc405d.isChecked() ? "4"
-                : binding.nc405e.isChecked() ? "5"
-                : binding.nc4059601.isChecked() ? "961"
-                : binding.nc405f.isChecked() ? "6"
-                : binding.nc405g.isChecked() ? "7"
-                : binding.nc405h.isChecked() ? "8"
-                : binding.nc405i.isChecked() ? "9"
-                : binding.nc405j.isChecked() ? "10"
-                : binding.nc4059602.isChecked() ? "962"
-                : binding.nc405k.isChecked() ? "11"
-                : binding.nc405l.isChecked() ? "12"
-                : binding.nc405m.isChecked() ? "13"
-                : binding.nc4059603.isChecked() ? "963"
                 : "0");
 
+//      nc406
+        sC4.put("nc406", binding.nc406a.isChecked() ? "1"
+                : binding.nc406b.isChecked() ? "2"
+                : "0");
 
-        sC4.put("nc4059601x", binding.nc4059601x.getText().toString());
-        sC4.put("nc4059602x", binding.nc4059602x.getText().toString());
-        sC4.put("nc4059603x", binding.nc4059603x.getText().toString());
-
-//     nc406
-        sC4.put("nc406a", binding.nc406a.isChecked() ? "1" : "0");
-        sC4.put("nc406b", binding.nc406b.isChecked() ? "2" : "0");
-        sC4.put("nc406c", binding.nc406c.isChecked() ? "3" : "0");
-        sC4.put("nc406d", binding.nc406d.isChecked() ? "4" : "0");
-        sC4.put("nc406e", binding.nc406e.isChecked() ? "5" : "0");
-        sC4.put("nc406f", binding.nc406f.isChecked() ? "6" : "0");
-        sC4.put("nc406g", binding.nc406g.isChecked() ? "7" : "0");
-        sC4.put("nc406h", binding.nc406h.isChecked() ? "8" : "0");
-        sC4.put("nc406i", binding.nc406i.isChecked() ? "9" : "0");
-        sC4.put("nc406j", binding.nc406j.isChecked() ? "10" : "0");
-        sC4.put("nc40696", binding.nc40696.isChecked() ? "96" : "0");
-
-        sC4.put("nc40696x", binding.nc40696x.getText().toString());
 
 //        nc407
         sC4.put("nc407", binding.nc407a.isChecked() ? "1"
                 : binding.nc407b.isChecked() ? "2"
+                : binding.nc407c.isChecked() ? "3"
+                : binding.nc407d.isChecked() ? "4"
+                : binding.nc407e.isChecked() ? "5"
+                : binding.nc4079601.isChecked() ? "961"
+                : binding.nc407f.isChecked() ? "6"
+                : binding.nc407g.isChecked() ? "7"
+                : binding.nc407h.isChecked() ? "8"
+                : binding.nc407i.isChecked() ? "9"
+                : binding.nc407j.isChecked() ? "10"
+                : binding.nc4079602.isChecked() ? "962"
+                : binding.nc407k.isChecked() ? "11"
+                : binding.nc407l.isChecked() ? "12"
+                : binding.nc407m.isChecked() ? "13"
+                : binding.nc4079603.isChecked() ? "963"
                 : "0");
 
-//      nc408
-        sC4.put("nc408", binding.nc408a.isChecked() ? "1"
-                : binding.nc408b.isChecked() ? "2"
-                : "0");
+
+        sC4.put("nc4079601x", binding.nc4079601x.getText().toString());
+        sC4.put("nc4079602x", binding.nc4079602x.getText().toString());
+        sC4.put("nc4079603x", binding.nc4079603x.getText().toString());
+
+//     nc408
+        sC4.put("nc408a", binding.nc408a.isChecked() ? "1" : "0");
+        sC4.put("nc408b", binding.nc408b.isChecked() ? "2" : "0");
+        sC4.put("nc408c", binding.nc408c.isChecked() ? "3" : "0");
+        sC4.put("nc408d", binding.nc408d.isChecked() ? "4" : "0");
+        sC4.put("nc408e", binding.nc408e.isChecked() ? "5" : "0");
+        sC4.put("nc408f", binding.nc408f.isChecked() ? "6" : "0");
+        sC4.put("nc408g", binding.nc408g.isChecked() ? "7" : "0");
+        sC4.put("nc408h", binding.nc408h.isChecked() ? "8" : "0");
+        sC4.put("nc408i", binding.nc408i.isChecked() ? "9" : "0");
+        sC4.put("nc4089601", binding.nc4089601.isChecked() ? "96" : "0");
+
+        sC4.put("nc4089601x", binding.nc4089601x.getText().toString());
 
 
 //        nc409
         sC4.put("nc409", binding.nc409a.isChecked() ? "1"
                 : binding.nc409b.isChecked() ? "2"
-                : binding.nc409c.isChecked() ? "3"
-                : binding.nc409d.isChecked() ? "4"
-                : binding.nc409e.isChecked() ? "5"
-                : binding.nc4099601.isChecked() ? "961"
-                : binding.nc409f.isChecked() ? "6"
-                : binding.nc409g.isChecked() ? "7"
-                : binding.nc409h.isChecked() ? "8"
-                : binding.nc409i.isChecked() ? "9"
-                : binding.nc409j.isChecked() ? "10"
-                : binding.nc4099602.isChecked() ? "962"
-                : binding.nc409k.isChecked() ? "11"
-                : binding.nc409l.isChecked() ? "12"
-                : binding.nc409m.isChecked() ? "13"
-                : binding.nc4099603.isChecked() ? "963"
                 : "0");
 
-
-        sC4.put("nc4099601x", binding.nc4099601x.getText().toString());
-        sC4.put("nc4099602x", binding.nc4099602x.getText().toString());
-        sC4.put("nc4099603x", binding.nc4099603x.getText().toString());
-
-//     nc410
-        sC4.put("nc410a", binding.nc410a.isChecked() ? "1" : "0");
-        sC4.put("nc410b", binding.nc410b.isChecked() ? "2" : "0");
-        sC4.put("nc410c", binding.nc410c.isChecked() ? "3" : "0");
-        sC4.put("nc410d", binding.nc410d.isChecked() ? "4" : "0");
-        sC4.put("nc410e", binding.nc410e.isChecked() ? "5" : "0");
-        sC4.put("nc410f", binding.nc410f.isChecked() ? "6" : "0");
-        sC4.put("nc410g", binding.nc410g.isChecked() ? "7" : "0");
-        sC4.put("nc410h", binding.nc410h.isChecked() ? "8" : "0");
-        sC4.put("nc410i", binding.nc410i.isChecked() ? "9" : "0");
-        sC4.put("nc4109601", binding.nc4109601.isChecked() ? "96" : "0");
-
-        sC4.put("nc4109601x", binding.nc4109601x.getText().toString());
+//      nc410
+        sC4.put("nc410", binding.nc410a.isChecked() ? "1"
+                : binding.nc410b.isChecked() ? "2"
+                : "0");
 
 
 //        nc411
         sC4.put("nc411", binding.nc411a.isChecked() ? "1"
                 : binding.nc411b.isChecked() ? "2"
+                : binding.nc411c.isChecked() ? "3"
+                : binding.nc411d.isChecked() ? "4"
+                : binding.nc411e.isChecked() ? "5"
+                : binding.nc4119601.isChecked() ? "961"
+                : binding.nc411f.isChecked() ? "6"
+                : binding.nc411g.isChecked() ? "7"
+                : binding.nc411h.isChecked() ? "8"
+                : binding.nc411i.isChecked() ? "9"
+                : binding.nc411j.isChecked() ? "10"
+                : binding.nc4119602.isChecked() ? "962"
+                : binding.nc411k.isChecked() ? "11"
+                : binding.nc411l.isChecked() ? "12"
+                : binding.nc411m.isChecked() ? "13"
+                : binding.nc4119603.isChecked() ? "963"
                 : "0");
 
-//      nc412
-        sC4.put("nc412", binding.nc412a.isChecked() ? "1"
-                : binding.nc412b.isChecked() ? "2"
-                : "0");
+
+        sC4.put("nc4119601x", binding.nc4119601x.getText().toString());
+        sC4.put("nc4119602x", binding.nc4119602x.getText().toString());
+        sC4.put("nc4119603x", binding.nc4119603x.getText().toString());
+
+//     nc412
+        sC4.put("nc412b", binding.nc412b.isChecked() ? "1" : "0");
+        sC4.put("nc412c", binding.nc412c.isChecked() ? "2" : "0");
+//        sC4.put("nc412d", binding.nc412d.isChecked() ? "3" : "0");
+        sC4.put("nc412e", binding.nc412e.isChecked() ? "3" : "0");
+        sC4.put("nc412f", binding.nc412f.isChecked() ? "4" : "0");
+        sC4.put("nc412g", binding.nc412g.isChecked() ? "5" : "0");
+        sC4.put("nc412h", binding.nc412h.isChecked() ? "6" : "0");
+        sC4.put("nc412i", binding.nc412i.isChecked() ? "7" : "0");
+        sC4.put("nc412j", binding.nc412j.isChecked() ? "8" : "0");
+        sC4.put("nc4129601", binding.nc4129601.isChecked() ? "96" : "0");
+
+        sC4.put("nc4129601x", binding.nc4129601x.getText().toString());
 
 
 //        nc413
-        sC4.put("nc413", binding.nc414a.isChecked() ? "1"
+        sC4.put("nc413", binding.nc413a.isChecked() ? "1"
                 : binding.nc413b.isChecked() ? "2"
-                : binding.nc413c.isChecked() ? "3"
-                : binding.nc413d.isChecked() ? "4"
-                : binding.nc413e.isChecked() ? "5"
-                : binding.nc4139601.isChecked() ? "961"
-                : binding.nc413f.isChecked() ? "6"
-                : binding.nc413g.isChecked() ? "7"
-                : binding.nc413h.isChecked() ? "8"
-                : binding.nc413i.isChecked() ? "9"
-                : binding.nc413j.isChecked() ? "10"
-                : binding.nc4139602.isChecked() ? "962"
-                : binding.nc413k.isChecked() ? "11"
-                : binding.nc413l.isChecked() ? "12"
-                : binding.nc413m.isChecked() ? "13"
-                : binding.nc4139603.isChecked() ? "963"
+                : binding.nc41498.isChecked() ? "98"
                 : "0");
 
-
-        sC4.put("nc4139601x", binding.nc4139601x.getText().toString());
-        sC4.put("nc4139602x", binding.nc4139602x.getText().toString());
-        sC4.put("nc4139603x", binding.nc4139603x.getText().toString());
-
-//     nc414
-        sC4.put("nc414a", binding.nc414a.isChecked() ? "1" : "0");
-        sC4.put("nc414b", binding.nc414b.isChecked() ? "2" : "0");
-        sC4.put("nc414c", binding.nc414c.isChecked() ? "3" : "0");
-        sC4.put("nc414d", binding.nc414d.isChecked() ? "4" : "0");
-        sC4.put("nc414e", binding.nc414e.isChecked() ? "5" : "0");
-        sC4.put("nc414f", binding.nc414f.isChecked() ? "6" : "0");
-        sC4.put("nc414g", binding.nc414g.isChecked() ? "7" : "0");
-        sC4.put("nc414h", binding.nc414h.isChecked() ? "8" : "0");
-        sC4.put("nc414i", binding.nc414i.isChecked() ? "9" : "0");
-        sC4.put("nc4149601", binding.nc4149601.isChecked() ? "96" : "0");
-
-        sC4.put("nc4149601x", binding.nc4149601x.getText().toString());
-
-
-//        nc415
-        sC4.put("nc415", binding.nc415a.isChecked() ? "1"
-                : binding.nc415b.isChecked() ? "2"
-                : binding.nc41698.isChecked() ? "98"
-                : "0");
-
-//      nc416
-        sC4.put("nc416", binding.nc416a.isChecked() ? "1"
-                : binding.nc416b.isChecked() ? "2"
-                : binding.nc41698.isChecked() ? "98"
+//      nc414
+        sC4.put("nc414", binding.nc414a.isChecked() ? "1"
+                : binding.nc414b.isChecked() ? "2"
+                : binding.nc41498.isChecked() ? "98"
                 : "0");
 
         MainApp.cc.setsC4(String.valueOf(sC4));

@@ -38,6 +38,7 @@ public class SectionA1Activity extends AppCompatActivity {
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     DatabaseHelper db;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,16 +68,19 @@ public class SectionA1Activity extends AppCompatActivity {
         MainApp.membersCount.setMwra(0);
 
         MainApp.members_f_m = new ArrayList<>();
+        MainApp.respList = new ArrayList<>();
         MainApp.all_members = new ArrayList<>();
         MainApp.childUnder2 = new ArrayList<>();
         MainApp.childUnder5 = new ArrayList<>();
         MainApp.childUnder5 = new ArrayList<>();
+        MainApp.childNA = new ArrayList<>();
         MainApp.mwra = new ArrayList<>();
         MainApp.adolescents = new ArrayList<>();
         MainApp.serial_no = 0;
 
 //        Checking IsHead
         MainApp.IsHead = false;
+        MainApp.IsResp = false;
 
 //        Listener
 
@@ -98,6 +102,11 @@ public class SectionA1Activity extends AppCompatActivity {
             }
         });
 
+
+//        FamilyMembersList initialization
+        MainApp.familyMembersList = new ArrayList<>();
+        MainApp.hhClicked = new ArrayList<>();
+
     }
 
     public void BtnContinue() {
@@ -114,7 +123,7 @@ public class SectionA1Activity extends AppCompatActivity {
 
                 finish();
 
-                startActivity(new Intent(this, SectionA2Activity.class));
+                startActivity(new Intent(this, SectionA2ListActivity.class));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -148,6 +157,11 @@ public class SectionA1Activity extends AppCompatActivity {
 
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
+//        na101
+        if (!validatorClass.EmptyTextBox(this, binding.na101, getString(R.string.na101))) {
+            return false;
+        }
+
 //        na102
         if (!validatorClass.EmptyTextBox(this, binding.na102, getString(R.string.na102))) {
             return false;
@@ -173,13 +187,16 @@ public class SectionA1Activity extends AppCompatActivity {
 */
 
 //        na103
-        if (!validatorClass.EmptyTextBox(this, binding.na103, getString(R.string.na103))) {
-            return false;
-        }
 
-        String[] str = binding.na103.getText().toString().split("-");
-        if (str.length > 2 || binding.na103.getText().toString().charAt(3) != '-' || !str[0].matches("[0-9]+")) {
-            binding.na103.setError("Wrong presentation!!");
+        if (binding.na103.getText().toString().length() == 5) {
+            String[] str = binding.na103.getText().toString().split("-");
+            if (str.length > 2 || binding.na103.getText().toString().charAt(3) != '-' || !str[0].matches("[0-9]+") || !str[1].matches("[a-zA-Z]")) {
+                binding.na103.setError("Wrong presentation!!");
+                return false;
+            }
+        } else {
+            Toast.makeText(this, "Invalid length: " + getString(R.string.na103), Toast.LENGTH_SHORT).show();
+            binding.na103.setError("Invalid length");
             return false;
         }
 
@@ -193,6 +210,10 @@ public class SectionA1Activity extends AppCompatActivity {
         }
 //        na108
         if (!validatorClass.EmptyTextBox(this, binding.na108, getString(R.string.na108))) {
+            return false;
+        }
+
+        if (!validatorClass.RangeTextBox(this, binding.na108, 15, 99, getString(R.string.na108), "age")) {
             return false;
         }
 
@@ -218,12 +239,12 @@ public class SectionA1Activity extends AppCompatActivity {
             return false;
         }
 
-        if (!(binding.na11101blooda.isChecked() && binding.na11202a.isChecked())) {
+        /*if (!(binding.na11101blooda.isChecked() || binding.na11202a.isChecked())) {
             binding.na11202a.setError("Wrong Selection");
             Toast.makeText(this, "Wrong Selection", Toast.LENGTH_SHORT).show();
 
             return false;
-        }
+        }*/
 
 //        na113
         if (binding.na11201b.isChecked()) {
@@ -238,6 +259,7 @@ public class SectionA1Activity extends AppCompatActivity {
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
+
         MainApp.fc = new FormsContract();
 
         MainApp.fc.setDevicetagID(MainApp.getTagName(this));
@@ -246,13 +268,48 @@ public class SectionA1Activity extends AppCompatActivity {
         MainApp.fc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
         MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
+        MainApp.fc.setRespLineNo(MainApp.lineNo);
+
 
         setGPS(); // Set GPS
 
         JSONObject sA1 = new JSONObject();
 
-        MainApp.fc.setsA1(String.valueOf(sA1));
+        sA1.put("nw101", binding.na101.getText().toString());
+        sA1.put("nw102", binding.na102.getText().toString());
+        sA1.put("nw103", binding.na101a.getText().toString());
+        sA1.put("nw104", binding.na101b.getText().toString());
+        sA1.put("nw105", binding.na101c.getText().toString());
+        sA1.put("nw106", binding.na101d.getText().toString());
+        sA1.put("nw107", binding.na103.getText().toString());
+        sA1.put("nw109", binding.na105.getText().toString());
+        sA1.put("nw112", binding.na107.getText().toString());
+        sA1.put("na114", binding.na108.getText().toString());
 
+        sA1.put("nw11501blood", binding.na11101blooda.isChecked() ? "1"
+                : binding.na11101bloodb.isChecked() ? "2" : "0");
+
+        sA1.put("nw11502water", binding.na11102watera.isChecked() ? "1"
+                : binding.na11102waterb.isChecked() ? "2" : "0");
+
+        sA1.put("nw11601", binding.na11201a.isChecked() ? "1"
+                : binding.na11201b.isChecked() ? "2" : "0");
+
+        sA1.put("nw11602", binding.na11202a.isChecked() ? "1"
+                : binding.na11202b.isChecked() ? "2" : "0");
+
+//        na117
+        sA1.put("nw117a", binding.na113a.isChecked() ? "1" : "0");
+        sA1.put("nw117b", binding.na113b.isChecked() ? "2" :"0");
+        sA1.put("nw117c", binding.na113c.isChecked() ? "3" :"0");
+        sA1.put("nw117d", binding.na113d.isChecked() ? "4" :"0");
+        sA1.put("nw117e", binding.na113e.isChecked() ? "5" :"0");
+        sA1.put("nw117f", binding.na113f.isChecked() ? "6" :"0");
+        sA1.put("nw117g", binding.na113g.isChecked() ? "7" :"0");
+        sA1.put("nw11796", binding.na11396.isChecked() ? "96" :"0");
+        sA1.put("nw11796x", binding.na11396x.getText().toString());
+
+        MainApp.fc.setsA1(String.valueOf(sA1));
 
     }
 

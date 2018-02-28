@@ -1,5 +1,6 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -46,7 +47,10 @@ public class SectionC5Activity extends AppCompatActivity {
 
                 finish();
 
-                MainApp.endActivityMother(this, this, true);
+                //MainApp.endActivityMotherChild(this, this, false, true);
+                startActivity(new Intent(this, ChildEndingActivity.class)
+                        //.putExtra("checkingFlag", false)
+                        .putExtra("complete", true));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -56,7 +60,8 @@ public class SectionC5Activity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        MainApp.endActivityMother(this, this, false);
+
+        MainApp.endChildActivity(this, this, false);
     }
 
     private boolean formValidation() {

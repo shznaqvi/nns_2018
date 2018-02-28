@@ -329,7 +329,7 @@ public class SectionInfoActivity extends Activity {
 
                 UCs.add("....");
 
-                if (binding.spTowns.getSelectedItemPosition() != 0) {
+                if (binding.spTowns.getSelectedInc308osition() != 0) {
                     Collection<UCsContract> allDis = db.getAllUCsByTalukas(getAllTalukas.get(binding.spTowns.getSelectedItem().toString()));
                     for (UCsContract aUCs : allDis) {
                         getAllUCs.put(aUCs.getUcsName(), aUCs.getUccode());

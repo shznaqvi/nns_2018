@@ -18,7 +18,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -31,9 +30,9 @@ import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract;
 import edu.aku.hassannaqvi.nns_2018.other.MembersCount;
+import edu.aku.hassannaqvi.nns_2018.ui.ChildEndingActivity;
 import edu.aku.hassannaqvi.nns_2018.ui.EndingActivity;
 import edu.aku.hassannaqvi.nns_2018.ui.MotherEndingActivity;
-import edu.aku.hassannaqvi.nns_2018.ui.SectionC1Activity;
 
 /**
  * Created by hassan.naqvi on 11/30/2016.
@@ -84,24 +83,32 @@ public class MainApp extends Application {
     public static int versionCode;
     public static String versionName;
     public static Boolean IsHead;
+    public static Boolean IsResp;
 
     //    Ali
     public static FamilyMembersContract fmc;
     public static EligibleMembersContract emc;
     public static List<FamilyMembersContract> members_f_m;
+    public static List<FamilyMembersContract> respList;
     public static List<FamilyMembersContract> all_members;
     public static List<FamilyMembersContract> childUnder2;
     public static List<FamilyMembersContract> childUnder5;
+    public static List<FamilyMembersContract> childNA;
     public static List<FamilyMembersContract> mwra;
     public static List<FamilyMembersContract> adolescents;
     public static int serial_no;
+    // fro section A2
+    public static List<FamilyMembersContract> familyMembersList;
+    public static List<Integer> hhClicked;
 
     // Gul Sanober
-    public static Map<String, String> mwraMap = new HashMap<>();
+    public static Map<String, FamilyMembersContract> mwraMap;
     public static int totalPregnancy = 0;
     public static int count = 1;
     public static boolean flag = false;
     public static int outcome = 0;
+    public static String lineNo = "";
+    public static int mwraPosition = 0;
     protected static LocationManager locationManager;
 
     public static int monthsBetweenDates(Date startDate, Date endDate) {
@@ -204,7 +211,7 @@ public class MainApp extends Application {
         alert.show();
     }
 
-    public static void endActivityMother(final Context context, final Activity activity, final Boolean flag) {
+    public static void endActivityMother(final Context context, final Activity activity, final Boolean completeFlag) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 context);
         alertDialogBuilder
@@ -215,12 +222,37 @@ public class MainApp extends Application {
                             public void onClick(DialogInterface dialog,
                                                 int id) {
 
-                                SectionC1Activity.counter = 1;
-                                SectionC1Activity.counterPerMom = 0;
-
                                 activity.finish();
                                 Intent end_intent = new Intent(context, MotherEndingActivity.class);
-                                end_intent.putExtra("complete", flag);
+                                end_intent.putExtra("complete", completeFlag);
+                                context.startActivity(end_intent);
+                            }
+                        });
+        alertDialogBuilder.setNegativeButton("No",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = alertDialogBuilder.create();
+        alert.show();
+    }
+
+
+    public static void endChildActivity(final Context context, final Activity activity, final Boolean completeFlag) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                context);
+        alertDialogBuilder
+                .setMessage("Do you want to Exit??")
+                .setCancelable(false)
+                .setPositiveButton("Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,
+                                                int id) {
+
+                                activity.finish();
+                                Intent end_intent = new Intent(context, ChildEndingActivity.class);
+                                end_intent.putExtra("complete", completeFlag);
                                 context.startActivity(end_intent);
                             }
                         });

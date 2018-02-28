@@ -116,7 +116,8 @@ public class SectionB5Activity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        MainApp.endActivity(this, this);
+
+        MainApp.endActivityMother(this, this, false);
     }
 
 
@@ -278,6 +279,7 @@ public class SectionB5Activity extends AppCompatActivity {
 
         return true;
     }
+
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 

@@ -55,27 +55,36 @@ public class SectionA8AActivity extends Activity {
             recpSerial = new ArrayList<>();
 
             recpNames.add("....");
+            recpSerial.add("0");
+
 
             for (FamilyMembersContract fmc : MainApp.all_members) {
-                recpmap.put(fmc.getName() + "_" + fmc.getSerialNo(), new FamilyMembersContract());
+                recpmap.put(fmc.getName() + "_" + fmc.getSerialNo(), fmc);
                 recpNames.add(fmc.getName());
                 recpSerial.add(fmc.getSerialNo());
             }
 
         } else {
             counter++;
+
         }
 
-        bi.na8a02.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, recpNames));
+        bi.na8a02.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, recpNames));
 
         bi.na8a02.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 position = i;
+                Log.d("For Debug", "Position selected is: "+position);
+                try {
+                    if (position != 0) {
 
-                if (position != 0) {
-                    fmcSelected = recpmap.get(recpNames.get(position) + "_" + recpSerial.get(position));
+                        fmcSelected = recpmap.get(recpNames.get(position) + "_" + recpSerial.get(position));
+                    }
+                }catch(Exception e){
+                    Log.e("Error","There is an error while selecting name from spinner: "+e);
                 }
+
             }
 
             @Override
@@ -107,7 +116,11 @@ public class SectionA8AActivity extends Activity {
 
                     counter = 1;
 
-                    startActivity(new Intent(this, SectionB1Activity.class));
+                    if (MainApp.mwra.size() > 0) {
+                        startActivity(new Intent(this, SectionB1Activity.class));
+                    } else {
+                        startActivity(new Intent(this, SectionC1Activity.class));
+                    }
                 } else {
 
                     recpNames.remove(bi.na8a02.getSelectedItem().toString());

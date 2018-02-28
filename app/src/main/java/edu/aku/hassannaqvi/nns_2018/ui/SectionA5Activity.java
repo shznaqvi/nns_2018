@@ -161,7 +161,7 @@ public class SectionA5Activity extends AppCompatActivity {
 
 //        na505
         if (binding.na504a.isChecked()) {
-            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpna505check, binding.na505e, String.valueOf(R.string.na505))) {
+            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpna505check, binding.na505e, getString(R.string.na505))) {
                 return false;
             }
         }
@@ -247,7 +247,7 @@ public class SectionA5Activity extends AppCompatActivity {
             return false;
         }
 //        na802
-        if (!binding.na801a.isChecked()) {
+        if (binding.na801a.isChecked()) {
             if (!validatorClass.EmptyTextBox(this, binding.na802, getString(R.string.na802))) {
                 return false;
             }
@@ -413,7 +413,9 @@ public class SectionA5Activity extends AppCompatActivity {
 
         sA5.put("nh702", binding.na802.getText().toString());
 
-        recipientCounter = Integer.valueOf(binding.na802.getText().toString());
+        if (binding.na801a.isChecked()) {
+            recipientCounter = Integer.valueOf(binding.na802.getText().toString());
+        }
 
         MainApp.fc.setsA5(String.valueOf(sA5));
 

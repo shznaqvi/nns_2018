@@ -44,8 +44,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:background="@color/pink_100"
                 android:padding="5dp"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
             <!--na101-->
             <TextView
@@ -59,9 +61,11 @@
 
             <Spinner
                 android:id="@+id/na8a02"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp" />
+                android:layout_marginTop="10dp"
+                android:gravity="center" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -81,6 +85,7 @@
                     android:id="@+id/na8a03y"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
                     android:layout_marginTop="5dp"
                     android:layout_weight="1"
                     android:hint="@string/na8a03y"

@@ -11,7 +11,6 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -31,12 +30,15 @@ public class SectionC1Activity extends AppCompatActivity {
 
     public static int counter = 1;
     public static int counterPerMom = 0;
+    public static int counterPerNA = 0;
     public static String selectedChildName = "";
+    public static boolean isNA = false;
     static List<String> childU5;
     static Map<String, FamilyMembersContract> childMap;
+    Map<String, String> respMap;
+    ArrayList<String> respName;
     ActivitySectionC1Binding binding;
     DatabaseHelper db;
-
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
 
     @Override
@@ -44,34 +46,68 @@ public class SectionC1Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_c1);
         db = new DatabaseHelper(this);
+        respName = new ArrayList<>();
+        respName.add("....");
+        respMap = new HashMap<>();
+        //childMap = new HashMap<>();
 
 //        Assigning data to UI binding
         binding.setCallback(this);
 
+
 //        Setup views
-        if (getIntent().getBooleanExtra("flag", false)) {
-            childU5.remove(getIntent().getExtras().getInt("name"));
+        if (getIntent().getBooleanExtra("childFlag", false)) {
+            childU5.remove(getIntent().getStringExtra("name"));
             counter++;
         } else {
+
+            counter = 1;
+            counterPerMom = 0;
+
             childU5 = new ArrayList<>();
             childMap = new HashMap<>();
 
             childU5.add("....");
 
-            for (FamilyMembersContract fmc : MainApp.childUnder5) {
-                if (fmc.getMotherId().equals(MainApp.mc.getB1SerialNo())) {
+            if (isNA) {
+                childU5 = new ArrayList<>();
+                childMap = new HashMap<>();
+
+                childU5.add("....");
+
+                for (FamilyMembersContract fmc : MainApp.childNA) {
                     childMap.put(fmc.getName(), fmc);
                     childU5.add(fmc.getName());
-                    counterPerMom++;
+                    counterPerNA++;
+                }
+
+            } else {
+                for (FamilyMembersContract fmc : MainApp.childUnder5) {
+                    if (fmc.getMotherId().equals(MainApp.mc.getB1SerialNo())) {
+                        childMap.put(fmc.getName(), fmc);
+                        childU5.add(fmc.getName());
+                        counterPerMom++;
+                    }
                 }
             }
         }
 
+
+        for (FamilyMembersContract fmc : MainApp.respList) {
+            respName.add(fmc.getName());
+            respMap.put(fmc.getName(), fmc.getSerialNo());
+        }
+
         // setup head
-        binding.txtCounter.setText("Count " + counter + " out of " + counterPerMom);
+        if (!isNA) {
+            binding.txtCounter.setText("Count " + counter + " out of " + counterPerMom);
+        } else {
+            binding.txtCounter.setText("Count " + counter + " out of " + counterPerNA);
+        }
 
         // setup spinner
-        binding.nc101.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, childU5));
+        binding.nc101.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, childU5));
+        binding.resp.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, respName));
     }
 
     public void BtnContinue() {
@@ -88,12 +124,16 @@ public class SectionC1Activity extends AppCompatActivity {
 
                 finish();
 
-                if (Integer.valueOf(childMap.get(binding.nc101.getSelectedItem().toString()).getAgeInYear()) > 2) {
-                    startActivity(new Intent(this, SectionC2Activity.class).putExtra("selectedChild", (Serializable) childMap.get(binding.nc101.getSelectedItem().toString())));
+                if (Integer.valueOf(childMap.get(binding.nc101.getSelectedItem().toString()).getAgeInYear()) < 2) {
+                    startActivity(new Intent(this, SectionC2Activity.class)
+                            .putExtra("selectedChild", childMap.get(binding.nc101.getSelectedItem().toString())));
                 } else {
-                    startActivity(new Intent(this, SectionC3Activity.class).putExtra("selectedChild", (Serializable) childMap.get(binding.nc101.getSelectedItem().toString())));
+                    startActivity(new Intent(this, SectionC3Activity.class)
+                            .putExtra("selectedChild", childMap.get(binding.nc101.getSelectedItem().toString())));
                 }
 
+               /* startActivity(new Intent(this, SectionC5Activity.class)
+                        .putExtra("selectedChild", childMap.get(binding.nc101.getSelectedItem().toString())));*/
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
@@ -102,7 +142,7 @@ public class SectionC1Activity extends AppCompatActivity {
 
     public void BtnEnd() {
 
-        MainApp.endActivity(this, this);
+        MainApp.endChildActivity(this, this, false);
     }
 
     private boolean formValidation() {
@@ -133,9 +173,17 @@ public class SectionC1Activity extends AppCompatActivity {
         MainApp.cc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
         MainApp.cc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
-        MainApp.cc.setUUID(MainApp.mc.get_UID());
+
+        if (childMap.get(binding.nc101.getSelectedItem().toString()).getMotherId().equals("00")) {
+            MainApp.cc.setUUID(MainApp.fc.getUID());
+        } else {
+            MainApp.cc.setUUID(MainApp.mc.get_UID());
+        }
 
         JSONObject sC1 = new JSONObject();
+
+        sC1.put("respName", binding.resp.getSelectedItem().toString());
+        sC1.put("respSerial", respMap.get(binding.resp.getSelectedItem().toString()));
 
 //       nc101
         sC1.put("nc101", binding.nc101.getSelectedItem().toString());

@@ -4,13 +4,14 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.Serializable;
+import java.text.SimpleDateFormat;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
@@ -32,34 +33,61 @@ public class SectionC3Activity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_c3);
         binding.setCallback(this);
         binding.nc3bcgdt.setManager(getSupportFragmentManager());
+        binding.nc3bcgdt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+
         binding.nc3opv0dt.setManager(getSupportFragmentManager());
+        binding.nc3opv0dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+
         binding.nc3opv1dt.setManager(getSupportFragmentManager());
+        binding.nc3opv1dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+
         binding.nc3p1dt.setManager(getSupportFragmentManager());
+        binding.nc3p1dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+
         binding.nc3pcv1dt.setManager(getSupportFragmentManager());
+        binding.nc3pcv1dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+
         binding.nc3opv2dt.setManager(getSupportFragmentManager());
+        binding.nc3opv2dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+
         binding.nc3p2dt.setManager(getSupportFragmentManager());
+        binding.nc3p2dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+
         binding.nc3pcv2dt.setManager(getSupportFragmentManager());
+        binding.nc3pcv2dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+
         binding.nc3opv3dt.setManager(getSupportFragmentManager());
+        binding.nc3opv3dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+
         binding.nc3p3dt.setManager(getSupportFragmentManager());
+        binding.nc3p3dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+
         binding.nc3pcv3dt.setManager(getSupportFragmentManager());
+        binding.nc3pcv3dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+
         binding.nc3ipvdt.setManager(getSupportFragmentManager());
+        binding.nc3ipvdt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+
         binding.nc3m1dt.setManager(getSupportFragmentManager());
+        binding.nc3m1dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+
         binding.nc3m2dt.setManager(getSupportFragmentManager());
+        binding.nc3m2dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
 
 //        Skip Patterns
-        binding.nc312.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (i == R.id.nc312b) {
-                    binding.nc313.clearCheck();
-                }
-            }
-        });
+//        binding.nc312.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+//                if (i == R.id.nc312b) {
+//                    binding.nc313.clearCheck();
+//                }
+//            }
+//        });
 
-        binding.nc304.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        binding.nc303.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (i == R.id.nc304d) {
+                if (i == R.id.nc303d) {
                     binding.nc3bcg.clearCheck();
                     binding.nc3opv0.clearCheck();
                     binding.nc3opv1.clearCheck();
@@ -74,6 +102,19 @@ public class SectionC3Activity extends AppCompatActivity {
                     binding.nc3ipv.clearCheck();
                     binding.nc3m1.clearCheck();
                     binding.nc3m2.clearCheck();
+                }
+            }
+        });
+        binding.nc306.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.nc306b) {
+                    binding.fldGrnc307.setVisibility(View.GONE);
+                    binding.nc307.clearCheck();
+                    binding.nc308.clearCheck();
+                } else {
+                    binding.fldGrnc307.setVisibility(View.VISIBLE);
+
                 }
             }
         });
@@ -98,7 +139,7 @@ public class SectionC3Activity extends AppCompatActivity {
                 finish();
 
                 startActivity(new Intent(this, SectionC4Activity.class)
-                        .putExtra("selectedChild", (Serializable) selectedChild));
+                        .putExtra("selectedChild", selectedChild));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -109,143 +150,171 @@ public class SectionC3Activity extends AppCompatActivity {
 
     public void BtnEnd() {
 
-        MainApp.endActivityMother(this, this, false);
+        MainApp.endChildActivity(this, this, false);
 
     }
 
     private boolean formValidation() {
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
-//       nc303
-        if (!validatorClass.EmptyRadioButton(this, binding.nc303, binding.nc303b, getString(R.string.nc303))) {
+//       nc302
+        if (!validatorClass.EmptyRadioButton(this, binding.nc302, binding.nc302b, getString(R.string.nc302))) {
             return false;
         }
 
-//        nc304
-        if (!validatorClass.EmptyRadioButton(this, binding.nc304, binding.nc304d, getString(R.string.nc304))) {
+//        nc303
+        if (!validatorClass.EmptyRadioButton(this, binding.nc303, binding.nc303d, getString(R.string.nc303))) {
             return false;
         }
 
+
+        if (!binding.nc303d.isChecked()) {
 //        nc3bcg
-        if (!validatorClass.EmptyRadioButton(this, binding.nc3bcg, binding.nc3bcgb, binding.nc3bcgdt, getString(R.string.nc3bcg))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, binding.nc3bcg, binding.nc3bcga, binding.nc3bcgdt, getString(R.string.nc3bcg))) {
+                return false;
+            }
 //        nc3opv0
-        if (!validatorClass.EmptyRadioButton(this, binding.nc3opv0, binding.nc3opv0b, binding.nc3opv0dt, getString(R.string.nc3opv0))) {
-            return false;
-        }
-
+            if (!validatorClass.EmptyRadioButton(this, binding.nc3opv0, binding.nc3opv0a, binding.nc3opv0dt, getString(R.string.nc3opv0))) {
+                return false;
+            }
 
 //        nc3opv1
-        if (!validatorClass.EmptyRadioButton(this, binding.nc3opv1, binding.nc3opv1b, binding.nc3opv1dt, getString(R.string.nc3opv1))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, binding.nc3opv1, binding.nc3opv1a, binding.nc3opv1dt, getString(R.string.nc3opv1))) {
+                return false;
+            }
 //        nc3p1
-        if (!validatorClass.EmptyRadioButton(this, binding.nc3p1, binding.nc3p1b, binding.nc3p1dt, getString(R.string.nc3p1))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, binding.nc3p1, binding.nc3p1a, binding.nc3p1dt, getString(R.string.nc3p1))) {
+                return false;
+            }
 //        nc3pcv1
-        if (!validatorClass.EmptyRadioButton(this, binding.nc3pcv1, binding.nc3pcv1b, binding.nc3pcv1dt, getString(R.string.nc3pcv1))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, binding.nc3pcv1, binding.nc3pcv1a, binding.nc3pcv1dt, getString(R.string.nc3pcv1))) {
+                return false;
+            }
 
 
 //        nc3opv2
-        if (!validatorClass.EmptyRadioButton(this, binding.nc3opv2, binding.nc3opv2b, binding.nc3opv2dt, getString(R.string.nc3opv2))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, binding.nc3opv2, binding.nc3opv2a, binding.nc3opv2dt, getString(R.string.nc3opv2))) {
+                return false;
+            }
 //        nc3p2
-        if (!validatorClass.EmptyRadioButton(this, binding.nc3p2, binding.nc3p2b, binding.nc3p2dt, getString(R.string.nc3p2))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, binding.nc3p2, binding.nc3p2a, binding.nc3p2dt, getString(R.string.nc3p2))) {
+                return false;
+            }
 //        nc3pcv2
-        if (!validatorClass.EmptyRadioButton(this, binding.nc3pcv2, binding.nc3pcv2b, binding.nc3pcv2dt, getString(R.string.nc3pcv2))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, binding.nc3pcv2, binding.nc3pcv2a, binding.nc3pcv2dt, getString(R.string.nc3pcv2))) {
+                return false;
+            }
 
 
 //        nc3opv3
-        if (!validatorClass.EmptyRadioButton(this, binding.nc3opv3, binding.nc3opv3b, binding.nc3opv3dt, getString(R.string.nc3opv3))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, binding.nc3opv3, binding.nc3opv3a, binding.nc3opv3dt, getString(R.string.nc3opv3))) {
+                return false;
+            }
 //        nc3p3
-        if (!validatorClass.EmptyRadioButton(this, binding.nc3p3, binding.nc3p3b, binding.nc3p3dt, getString(R.string.nc3p3))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, binding.nc3p3, binding.nc3p3a, binding.nc3p3dt, getString(R.string.nc3p3))) {
+                return false;
+            }
 //        nc3pcv3
-        if (!validatorClass.EmptyRadioButton(this, binding.nc3pcv3, binding.nc3pcv3b, binding.nc3pcv3dt, getString(R.string.nc3pcv3))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, binding.nc3pcv3, binding.nc3pcv3a, binding.nc3pcv3dt, getString(R.string.nc3pcv3))) {
+                return false;
+            }
 //        nc3ipv3
-        if (!validatorClass.EmptyRadioButton(this, binding.nc3ipv, binding.nc3ipvb, binding.nc3ipvdt, getString(R.string.nc3ipv))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, binding.nc3ipv, binding.nc3ipva, binding.nc3ipvdt, getString(R.string.nc3ipv))) {
+                return false;
+            }
 
 //        nc3m1dt
-        if (!validatorClass.EmptyRadioButton(this, binding.nc3m1, binding.nc3m1b, binding.nc3m1dt, getString(R.string.nc3m1))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, binding.nc3m1, binding.nc3m1a, binding.nc3m1dt, getString(R.string.nc3m1))) {
+                return false;
+            }
 
 //        nc3m2dt
-        if (!validatorClass.EmptyRadioButton(this, binding.nc3m2, binding.nc3m2b, binding.nc3m2dt, getString(R.string.nc3m2))) {
+            if (!validatorClass.EmptyRadioButton(this, binding.nc3m2, binding.nc3m2a, binding.nc3m2dt, getString(R.string.nc3m2))) {
+                return false;
+            }
+
+        }
+
+//        nc305
+        if (!validatorClass.EmptyRadioButton(this, binding.nc305, binding.nc305b, getString(R.string.nc305))) {
             return false;
         }
 
-
-//        nc306
-        if (!validatorClass.EmptyRadioButton(this, binding.nc306, binding.nc306b, getString(R.string.nc306))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nc306, binding.nc306a, getString(R.string.nc306))) {
             return false;
         }
 
+        if (!binding.nc306b.isChecked()) {
 //        nc307
-        if (!validatorClass.EmptyRadioButton(this, binding.nc307, binding.nc307b, getString(R.string.nc307))) {
-            return false;
-        }
-//        nc308
-        if (!validatorClass.EmptyRadioButton(this, binding.nc308, binding.nc308b, getString(R.string.nc308))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, binding.nc307, binding.nc307b, getString(R.string.nc307))) {
+                return false;
+            }
 
+            if (!validatorClass.EmptyRadioButton(this, binding.nc308, binding.nc308b, getString(R.string.nc308))) {
+                return false;
+            }
+        }
 //        nc309
-        if (!validatorClass.EmptyTextBox(this, binding.nc309, getString(R.string.nc309))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nc309, binding.nc309b, getString(R.string.nc309))) {
             return false;
         }
 
+        if (!binding.nc309b.isChecked()) {
 //        nc310
-        if (!validatorClass.EmptyRadioButton(this, binding.nc310, binding.nc310b, getString(R.string.nc310))) {
-            return false;
+            if (!validatorClass.EmptyTextBox(this, binding.nc310, getString(R.string.nc310))) {
+                return false;
+            }
+            if (!validatorClass.RangeTextBox(this, binding.nc310, 1, 99, getString(R.string.nc310), "DPT/COMBO/PENT")) {
+                return false;
+            }
         }
 
 //        nc311
-        if (!validatorClass.EmptyTextBox(this, binding.nc311, getString(R.string.nc311))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nc311, binding.nc311b, getString(R.string.nc311))) {
             return false;
         }
 
+        if (!binding.nc311b.isChecked()) {
 //        nc312
-        if (!validatorClass.EmptyRadioButton(this, binding.nc312, binding.nc312b, getString(R.string.nc312))) {
-            return false;
+            if (!validatorClass.EmptyTextBox(this, binding.nc312, getString(R.string.nc312))) {
+                return false;
+            }
+            if (!validatorClass.RangeTextBox(this, binding.nc312, 1, 99, getString(R.string.nc312), "PCV")) {
+                return false;
+            }
         }
+
+//        nc312
+//        if (!validatorClass.EmptyRadioButton(this, binding.nc312, binding.nc312b, getString(R.string.nc312))) {
+//            return false;
+//        }
+////        nc313
+//        if (!validatorClass.EmptyRadioButton(this, binding.nc313, binding.nc31398, getString(R.string.nc313))) {
+//            return false;
+//        }
 //        nc313
         if (!validatorClass.EmptyRadioButton(this, binding.nc313, binding.nc31398, getString(R.string.nc313))) {
             return false;
         }
-//        nc314
-        if (!validatorClass.EmptyRadioButton(this, binding.nc314, binding.nc31498, getString(R.string.nc314))) {
-            return false;
-        }
 
-//        nc315
-        if (!validatorClass.EmptyTextBox(this, binding.nc315, getString(R.string.nc315))) {
-            return false;
-        }
+        if (!binding.nc313b.isChecked()) {
+
+//        nc314
+            if (!validatorClass.EmptyTextBox(this, binding.nc314, getString(R.string.nc314))) {
+                return false;
+            }
+            if (!validatorClass.RangeTextBox(this, binding.nc314, 1, 99, getString(R.string.nc314), "Mesasles / MMR")) {
+                return false;
+            }
 
 //        nc316
-        if (!validatorClass.EmptyRadioButton(this, binding.nc316, binding.nc31698, getString(R.string.nc316))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, binding.nc315, binding.nc31598, getString(R.string.nc315))) {
+                return false;
+            }
 
-//        nc317
-        return validatorClass.EmptyTextBox(this, binding.nc317, getString(R.string.nc317));
+        }
+//        nc315
+        return true;
     }
 
     private void SaveDraft() throws JSONException {
@@ -258,16 +327,16 @@ public class SectionC3Activity extends AppCompatActivity {
 //        nc302
         sC3.put("nc302Serial", selectedChild.getSerialNo());
 
+//        nc302
+        sC3.put("nc302", binding.nc302a.isChecked() ? "1"
+                : binding.nc302b.isChecked() ? "2"
+                : "0");
+
 //        nc303
         sC3.put("nc303", binding.nc303a.isChecked() ? "1"
                 : binding.nc303b.isChecked() ? "2"
-                : "0");
-
-//        nc304
-        sC3.put("nc304", binding.nc304a.isChecked() ? "1"
-                : binding.nc304b.isChecked() ? "2"
-                : binding.nc304c.isChecked() ? "3"
-                : binding.nc304d.isChecked() ? "4"
+                : binding.nc303c.isChecked() ? "3"
+                : binding.nc303d.isChecked() ? "4"
                 : "0");
 //at birth
 //          nc3bcg
@@ -364,9 +433,9 @@ public class SectionC3Activity extends AppCompatActivity {
         sC3.put("nc3m2dt", binding.nc3m2dt.getText().toString());
 
 
-//        nc306
-        sC3.put("nc306", binding.nc306a.isChecked() ? "1"
-                : binding.nc306b.isChecked() ? "2"
+//        nc305
+        sC3.put("nc305", binding.nc305a.isChecked() ? "1"
+                : binding.nc305b.isChecked() ? "2"
                 : "0");
 
 //        nc307
@@ -375,53 +444,51 @@ public class SectionC3Activity extends AppCompatActivity {
                 : binding.nc307c.isChecked() ? "3"
                 : "0");
 
-//        nc308
-        sC3.put("nc308", binding.nc308a.isChecked() ? "1"
-                : binding.nc308b.isChecked() ? "2"
-                : binding.nc308c.isChecked() ? "3"
-                : "0");
-
 //        nc309
-        sC3.put("nc309", binding.nc309.getText().toString());
+        sC3.put("nc309", binding.nc309a.isChecked() ? "1"
+                : binding.nc309b.isChecked() ? "2"
+                : binding.nc309c.isChecked() ? "3"
+                : "0");
 
 //        nc310
-        sC3.put("nc310", binding.nc310a.isChecked() ? "1"
-                : binding.nc310b.isChecked() ? "2"
-                : binding.nc310c.isChecked() ? "3"
-                : "0");
+        sC3.put("nc310", binding.nc310.getText().toString());
 
 //        nc311
-        sC3.put("nc311", binding.nc311.getText().toString());
+        sC3.put("nc311", binding.nc311a.isChecked() ? "1"
+                : binding.nc311b.isChecked() ? "2"
+                : binding.nc311c.isChecked() ? "3"
+                : "0");
 
 //        nc312
-        sC3.put("nc312", binding.nc312a.isChecked() ? "1"
-                : binding.nc312b.isChecked() ? "2"
-                : binding.nc312c.isChecked() ? "3"
-                : "0");
+        sC3.put("nc312", binding.nc312.getText().toString());
+
+//        nc312
+//        sC3.put("nc312", binding.nc312a.isChecked() ? "1"
+//                : binding.nc312b.isChecked() ? "2"
+//                : binding.nc312c.isChecked() ? "3"
+//                : "0");
+////        nc313
+//        sC3.put("nc313", binding.nc313a.isChecked() ? "1"
+//                : binding.nc313b.isChecked() ? "2"
+//                : binding.nc31398.isChecked() ? "98"
+//                : "0");
+
+
 //        nc313
         sC3.put("nc313", binding.nc313a.isChecked() ? "1"
                 : binding.nc313b.isChecked() ? "2"
                 : binding.nc31398.isChecked() ? "98"
                 : "0");
 
+//        nc313
+        sC3.put("nc313", binding.nc314.getText().toString());
 
 //        nc314
-        sC3.put("nc314", binding.nc314a.isChecked() ? "1"
-                : binding.nc314b.isChecked() ? "2"
-                : binding.nc31498.isChecked() ? "98"
+        sC3.put("nc314", binding.nc315a.isChecked() ? "1"
+                : binding.nc315b.isChecked() ? "2"
+                : binding.nc31598.isChecked() ? "98"
                 : "0");
 
-//        nc315
-        sC3.put("nc315", binding.nc315.getText().toString());
-
-//        nc316
-        sC3.put("nc316", binding.nc316a.isChecked() ? "1"
-                : binding.nc316b.isChecked() ? "2"
-                : binding.nc31698.isChecked() ? "98"
-                : "0");
-
-//        nc317
-        sC3.put("nc317", binding.nc317.getText().toString());
 
         MainApp.cc.setsC3(String.valueOf(sC3));
 
