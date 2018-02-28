@@ -117,18 +117,18 @@ public class SectionA4Activity extends AppCompatActivity {
             return false;
         }
 
-        if (binding.na405i.isChecked()) {
+        if (!binding.na405i.isChecked()) {
             if (!validatorClass.EmptyRadioButton(this, binding.na406, binding.na406b, getString(R.string.na406))) {
                 return false;
             }
-        }
 
-        if (binding.na406a.isChecked()) {
-            if (!validatorClass.EmptyTextBox(this, binding.na407, getString(R.string.na407))) {
-                return false;
-            }
-            if (!validatorClass.RangeTextBox(this, binding.na407, 1, 99, getString(R.string.na407), "Toilet")) {
-                return false;
+            if (binding.na406a.isChecked()) {
+                if (!validatorClass.EmptyTextBox(this, binding.na407, getString(R.string.na407))) {
+                    return false;
+                }
+                if (!validatorClass.RangeTextBox(this, binding.na407, 1, 99, getString(R.string.na407), "Toilet")) {
+                    return false;
+                }
             }
         }
 
