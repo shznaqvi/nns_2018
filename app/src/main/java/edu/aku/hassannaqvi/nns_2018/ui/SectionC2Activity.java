@@ -41,16 +41,15 @@ public class SectionC2Activity extends Activity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (bi.nc204a.isChecked()) {
-                    bi.fldGrpnc205.setVisibility(View.VISIBLE);
+                    bi.fldGrpnc208.setVisibility(View.VISIBLE);
                 } else {
-                    bi.fldGrpnc205.setVisibility(View.GONE);
-                    bi.nc205.clearCheck();
-                    bi.nc206.clearCheck();
-                    bi.nc207.clearCheck();
+                    bi.fldGrpnc208.setVisibility(View.GONE);
                     bi.nc208.clearCheck();
                     bi.nc209.clearCheck();
+
                     bi.nc210.clearCheck();
                     bi.nc21096x.setText(null);
+
                     bi.nc211.clearCheck();
                 }
             }
@@ -90,7 +89,6 @@ public class SectionC2Activity extends Activity {
                     bi.nc21096x.setText(null);
                 } else {
                     bi.fldGrpnc210.setVisibility(View.VISIBLE);
-
                 }
             }
         });
