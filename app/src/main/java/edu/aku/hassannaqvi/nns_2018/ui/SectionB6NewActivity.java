@@ -4,10 +4,17 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import org.json.JSONException;
 
+import java.util.List;
+
+import butterknife.BindViews;
+import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -17,7 +24,93 @@ public class SectionB6NewActivity extends AppCompatActivity {
 
     ActivitySectionB6NewBinding bi;
     DatabaseHelper db;
-    //@BindViews({R.id.nb6a1, R.id.nb6a2, R.id.nb6a3, R.id.nb6a4, R.id.nb6a5}) List<CheckBox> groupA1;
+    @BindViews({R.id.nw601j1, R.id.nw601j2, R.id.nw601j3, R.id.nw601j4, R.id.nw601j5, R.id.nw601j6})
+    List<CheckBox> greenLeafy;
+    public CheckBox.OnCheckedChangeListener greenLeafyCheck = new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            if (isGreenLeafy()) {
+                bi.txtGrLeaf.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_shortcut_checked_checkbox, 0);
+            } else {
+                bi.txtGrLeaf.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_shortcut_unchecked, 0);
+            }
+        }
+    };
+    @BindViews({R.id.nw601m1, R.id.nw601m2, R.id.nw601m3, R.id.nw601j7, R.id.nw601m4, R.id.nw601m5, R.id.nw601m6, R.id.nw601m7})
+    List<CheckBox> green;
+    public CheckBox.OnCheckedChangeListener greenCheck = new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            if (isGreen()) {
+                bi.txtGreen.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_shortcut_checked_checkbox, 0);
+            } else {
+                bi.txtGreen.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_shortcut_unchecked, 0);
+            }
+        }
+    };
+    @BindViews({R.id.nw601k1, R.id.nw601k2, R.id.nw601k3, R.id.nw601k4, R.id.nw601m8, R.id.nw601m9})
+    List<CheckBox> redVegi;
+    public CheckBox.OnCheckedChangeListener redVegiCheck = new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            if (isRed()) {
+                bi.txtRedVegi.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_shortcut_checked_checkbox, 0);
+            } else {
+                bi.txtRedVegi.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_shortcut_unchecked, 0);
+            }
+        }
+    };
+    @BindViews({R.id.nw601m10, R.id.nw601m11, R.id.nw601m12, R.id.nw601b1, R.id.nw601m13, R.id.nw601m14, R.id.nw601m15,
+            R.id.nw601b2, R.id.nw601b3, R.id.nw601m16, R.id.nw601b4})
+    List<CheckBox> otherVegi;
+    public CheckBox.OnCheckedChangeListener othVegiCheck = new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            if (isOtherVegi()) {
+                bi.txtOthVeg.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_shortcut_checked_checkbox, 0);
+            } else {
+                bi.txtOthVeg.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_shortcut_unchecked, 0);
+            }
+        }
+    };
+    @BindViews({R.id.nw601l1, R.id.nw601n1, R.id.nw601n2, R.id.nw601n3, R.id.nw601l2, R.id.nw601n4, R.id.nw601n5,
+            R.id.nw601n6})
+    List<CheckBox> singSeed;
+    public CheckBox.OnCheckedChangeListener sinSeedCheck = new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            if (isSingleSeed()) {
+                bi.txtSinSeed.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_shortcut_checked_checkbox, 0);
+            } else {
+                bi.txtSinSeed.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_shortcut_unchecked, 0);
+            }
+        }
+    };
+    @BindViews({R.id.nw601n7, R.id.nw601n8, R.id.nw601l3, R.id.nw601n9, R.id.nw601n10, R.id.nw601n11, R.id.nw601n12,
+            R.id.nw601l4, R.id.nw601n13, R.id.nw601n14, R.id.nw601n15, R.id.nw601n16})
+    List<CheckBox> mulSeed;
+    public CheckBox.OnCheckedChangeListener mulSeedCheck = new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            if (isMulSeed()) {
+                bi.txtMulSeed.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_shortcut_checked_checkbox, 0);
+            } else {
+                bi.txtMulSeed.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_shortcut_unchecked, 0);
+            }
+        }
+    };
+    @BindViews({R.id.nw601n17, R.id.nw601n18, R.id.nw601n19, R.id.nw601n20, R.id.nw601n21, R.id.nw601n15})
+    List<CheckBox> othFru;
+    public CheckBox.OnCheckedChangeListener othFruCheck = new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            if (isOthFru()) {
+                bi.txtothFru.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_shortcut_checked_checkbox, 0);
+            } else {
+                bi.txtothFru.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_shortcut_unchecked, 0);
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +118,7 @@ public class SectionB6NewActivity extends AppCompatActivity {
         //setContentView(R.layout.activity_section_b6);
 
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_b6_new);
+        ButterKnife.bind(this);
         db = new DatabaseHelper(this);
         bi.setCallback(this);
 
@@ -33,83 +127,170 @@ public class SectionB6NewActivity extends AppCompatActivity {
 
     public void setUpViews(){
 
-
-        /*bi.nb6a.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        bi.vegi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked)
                 {
-                    bi.cardViewA.setVisibility(View.VISIBLE);
+                    bi.fldGrpVegi.setVisibility(View.VISIBLE);
                 }else{
-                    bi.cardViewA.setVisibility(View.GONE);
-                    bi.fldGrp01.setVisibility(View.GONE);
+                    bi.fldGrpVegi.setVisibility(View.GONE);
+                    for (CheckBox ck : greenLeafy) {
+                        ck.setChecked(false);
+                    }
+
+                    for (CheckBox ck : green) {
+                        ck.setChecked(false);
+                    }
+
+                    for (CheckBox ck : redVegi) {
+                        ck.setChecked(false);
+                    }
+
+                    for (CheckBox ck : otherVegi) {
+                        ck.setChecked(false);
+                    }
+
                 }
             }
         });
 
-        bi.nb6c.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        bi.fruit.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked)
                 {
-                    bi.cardViewC.setVisibility(View.VISIBLE);
+                    bi.fldGrpFruit.setVisibility(View.VISIBLE);
                 }else{
-                    bi.cardViewC.setVisibility(View.GONE);
-                    bi.fldGrp03.setVisibility(View.GONE);
+                    bi.fldGrpFruit.setVisibility(View.GONE);
+                    for (CheckBox ck : singSeed) {
+                        ck.setChecked(false);
+                    }
+                    for (CheckBox ck : mulSeed) {
+                        ck.setChecked(false);
+                    }
+
+                    for (CheckBox ck : othFru) {
+                        ck.setChecked(false);
+                    }
 
                 }
             }
         });
 
-        bi.cardViewA.setOnClickListener(new View.OnClickListener() {
+
+        bi.cardGrLeafy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(bi.fldGrp01.getVisibility() == View.VISIBLE)
+                if (bi.fldGrpgrLeafy.getVisibility() == View.GONE)
                 {
-                    bi.fldGrp01.setVisibility(View.GONE);
-
-
+                    bi.fldGrpgrLeafy.setVisibility(View.VISIBLE);
                 }else{
-                    bi.fldGrp01.setVisibility(View.VISIBLE);
+                    bi.fldGrpgrLeafy.setVisibility(View.GONE);
 
                 }
-
             }
         });
 
-        bi.cardViewC.setOnClickListener(new View.OnClickListener() {
+        bi.cardGrVegi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if(bi.fldGrp03.getVisibility() == View.VISIBLE)
+                if (bi.fldGrpgrVegi.getVisibility() == View.GONE)
                 {
-                    bi.fldGrp03.setVisibility(View.GONE);
-
-
+                    bi.fldGrpgrVegi.setVisibility(View.VISIBLE);
                 }else{
-                    bi.fldGrp03.setVisibility(View.VISIBLE);
-
+                    bi.fldGrpgrVegi.setVisibility(View.GONE);
                 }
-
             }
         });
 
-
-        bi.cardViewD.setOnClickListener(new View.OnClickListener() {
+        bi.cardRedVegi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(bi.fldGrp04.getVisibility() == View.VISIBLE)
+                if (bi.fldGrpregVegi.getVisibility() == View.GONE)
                 {
-                    bi.fldGrp04.setVisibility(View.GONE);
-
+                    bi.fldGrpregVegi.setVisibility(View.VISIBLE);
                 }else{
-                    bi.fldGrp04.setVisibility(View.VISIBLE);
-
+                    bi.fldGrpregVegi.setVisibility(View.GONE);
                 }
-
             }
         });
-*/
+
+        bi.cardOthVegi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (bi.fldGrpothVegi.getVisibility() == View.GONE) {
+                    bi.fldGrpothVegi.setVisibility(View.VISIBLE);
+                } else {
+                    bi.fldGrpothVegi.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        bi.cardSingSeed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (bi.fldGrpsingSeed.getVisibility() == View.GONE) {
+                    bi.fldGrpsingSeed.setVisibility(View.VISIBLE);
+                } else {
+                    bi.fldGrpsingSeed.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        bi.cardMulSeeds.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (bi.fldGrpmulSeed.getVisibility() == View.GONE) {
+                    bi.fldGrpmulSeed.setVisibility(View.VISIBLE);
+                } else {
+                    bi.fldGrpmulSeed.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        bi.cardOtherFruits.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (bi.fldGrpothFruits.getVisibility() == View.GONE) {
+                    bi.fldGrpothFruits.setVisibility(View.VISIBLE);
+                } else {
+                    bi.fldGrpothFruits.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        for (CheckBox ck : greenLeafy) {
+            ck.setOnCheckedChangeListener(greenLeafyCheck);
+        }
+
+
+        for (CheckBox ck : green) {
+            ck.setOnCheckedChangeListener(greenCheck);
+        }
+
+        for (CheckBox ck : redVegi) {
+            ck.setOnCheckedChangeListener(redVegiCheck);
+        }
+
+        for (CheckBox ck : otherVegi) {
+            ck.setOnCheckedChangeListener(othVegiCheck);
+        }
+
+        for (CheckBox ck : singSeed) {
+            ck.setOnCheckedChangeListener(sinSeedCheck);
+        }
+
+        for (CheckBox ck : mulSeed) {
+            ck.setOnCheckedChangeListener(mulSeedCheck);
+        }
+
+        for (CheckBox ck : othFru) {
+            ck.setOnCheckedChangeListener(othFruCheck);
+        }
+
+
+
 
 
 
@@ -129,7 +310,7 @@ public class SectionB6NewActivity extends AppCompatActivity {
 
                 finish();
 
-                startActivity(new Intent(this, SectionC1Activity.class));
+                startActivity(new Intent(this, MainActivity.class));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -202,6 +383,7 @@ public class SectionB6NewActivity extends AppCompatActivity {
 
         return true;
     }
+
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
@@ -282,5 +464,97 @@ public class SectionB6NewActivity extends AppCompatActivity {
 
     }
 
+    public boolean isGreenLeafy() {
+
+        for (CheckBox ck : greenLeafy) {
+            if (ck.isChecked())
+                return true;
+        }
+
+        // Show answer here
+        // return i == rg;
+        return false;
+    }
+
+    public boolean isGreen() {
+
+        int i = 0;
+        for (CheckBox ck : green) {
+            if (ck.isChecked())
+                return true;
+        }
+
+        // Show answer here
+        // return i == rg;
+        return false;
+    }
+
+    public boolean isRed() {
+
+        int i = 0;
+        for (CheckBox ck : redVegi) {
+            if (ck.isChecked())
+                return true;
+        }
+
+        // Show answer here
+        // return i == rg;
+        return false;
+    }
+
+
+    public boolean isOtherVegi() {
+
+        int i = 0;
+        for (CheckBox ck : otherVegi) {
+            if (ck.isChecked())
+                return true;
+        }
+
+        // Show answer here
+        // return i == rg;
+        return false;
+    }
+
+    public boolean isSingleSeed() {
+
+        int i = 0;
+        for (CheckBox ck : singSeed) {
+            if (ck.isChecked())
+                return true;
+        }
+
+        // Show answer here
+        // return i == rg;
+        return false;
+    }
+
+    public boolean isMulSeed() {
+
+        int i = 0;
+        for (CheckBox ck : mulSeed) {
+            if (ck.isChecked())
+                return true;
+        }
+
+        // Show answer here
+        // return i == rg;
+        return false;
+    }
+
+    public boolean isOthFru() {
+
+        int i = 0;
+        for (CheckBox ck : othFru) {
+            if (ck.isChecked())
+                return true;
+        }
+
+        // Show answer here
+        // return i == rg;
+        return false;
+    }
 
 }
+
+

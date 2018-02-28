@@ -133,9 +133,9 @@ public class SectionC4Activity extends Activity {
                     binding.fldGrnc407.setVisibility(View.GONE);
                     binding.nc407.clearCheck();
 
-                    binding.nc4079601.setText(null);
-                    binding.nc4079602.setText(null);
-                    binding.nc4079603.setText(null);
+                    binding.nc4079601x.setText(null);
+                    binding.nc4079602x.setText(null);
+                    binding.nc4079603x.setText(null);
 
                     binding.nc408a.setChecked(false);
                     binding.nc408b.setChecked(false);
