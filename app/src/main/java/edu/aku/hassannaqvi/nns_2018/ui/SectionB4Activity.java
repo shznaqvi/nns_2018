@@ -182,6 +182,17 @@ public class SectionB4Activity extends Activity {
         if (!binding.nb405b.isChecked()) {
             // nb406
 
+            if (!binding.nb40698.isChecked()) {
+                if (!validatorClass.EmptyTextBox(this, binding.nb406c, getString(R.string.nb406) + " - " + getString(R.string.nb406c))) {
+                    return false;
+                }
+
+                if (!validatorClass.EmptyTextBox(this, binding.nb406r, getString(R.string.nb406) + " - " + getString(R.string.nb406r))) {
+                    return false;
+                }
+
+            }
+
         }
 
         // nb407
@@ -201,7 +212,33 @@ public class SectionB4Activity extends Activity {
             return false;
         }
 
-        if (!binding.nb411a.isChecked()) {
+
+        if (binding.nb410b.isChecked()) {
+            if (!validatorClass.EmptyTextBox(this, binding.nb410h, getString(R.string.nb410) + " - " + getString(R.string.nb410h))) {
+                return false;
+            }
+
+            if (!validatorClass.RangeTextBox(this, binding.nb410h, 1, 24, getString(R.string.nb410), " hours")) {
+                return false;
+            }
+        }
+
+        if (binding.nb410c.isChecked()) {
+            if (!validatorClass.EmptyTextBox(this, binding.nb410d, getString(R.string.nb410) + " - " + getString(R.string.nb410d))) {
+                return false;
+            }
+
+            if (!validatorClass.RangeTextBox(this, binding.nb410d, 1, 30, getString(R.string.nb410), " days")) {
+                return false;
+            }
+        }
+
+
+        if (!validatorClass.EmptyRadioButton(this, binding.nb411, binding.nb41198, getString(R.string.nb411))) {
+            return false;
+        }
+
+        if (binding.nb411a.isChecked()) {
             // nb412
             if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnb412check, binding.nb41296, binding.nb41296x, String.valueOf(R.string.nb402))) {
                 return false;
