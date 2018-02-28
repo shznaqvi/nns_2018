@@ -221,6 +221,11 @@ public class SectionA4Activity extends AppCompatActivity {
         if (!validatorClass.EmptyRadioButton(this, binding.na415, binding.na41596, binding.na41596x, getString(R.string.na415))) {
             return false;
         }
+
+        if (!validatorClass.EmptyTextBox(this, binding.na416, getString(R.string.na416))) {
+            return false;
+        }
+
         if (!validatorClass.RangeTextBox(this, binding.na416, 1, 15, getString(R.string.na416), "Room")) {
             return false;
         }
