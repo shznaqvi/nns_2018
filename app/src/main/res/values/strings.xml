@@ -367,7 +367,7 @@
     <string name="na502"> ہاتھ دھونے کے لئے مخصوص جگہ پر پانی کی موجودگی کا مشاہدہ کریں </string>
     <string name="na502a"> پانی موجود ہے </string>
     <string name="na502b"> پانی موجود نہیں ہے </string>
-    <string name="na503"> اگرہاتھ دھونے کے لیے مخصوص جگہ پر صابن/ڈیٹرجنٹ موجود ہےتو ریکارڈ کریں </string>
+  <string name="na503"> اگرہاتھ دھونے کے لیے مخصوص جگہ پر صابن يا ڈیٹرجنٹ موجود ہےتو ریکارڈ کریں </string>
     <string name="na503a"> صابن </string>
     <string name="na503b"> ڈیٹرجنٹ/پاوڈر/ مائع/پیسٹ </string>
     <string name="na503c"> مائع صابن </string>

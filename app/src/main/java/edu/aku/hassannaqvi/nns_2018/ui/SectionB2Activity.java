@@ -425,17 +425,17 @@ public class SectionB2Activity extends Activity {
             if (!validatorClass.EmptyRadioButton(this, bi.nw315, bi.nw315a, getString(R.string.nw315))) {
                 return false;
             }
-            if (!validatorClass.EmptyRadioButton(this, bi.nw315, bi.nw315a, bi.nw31596x, getString(R.string.nw315))) {
+            if (!validatorClass.EmptyRadioButton(this, bi.nw315, bi.nw31596, bi.nw31596x, getString(R.string.nw315))) {
                 return false;
             }
             if (!validatorClass.EmptyRadioButton(this, bi.nw316, bi.nw316a, getString(R.string.nw316))) {
                 return false;
             }
-            if (!validatorClass.EmptyRadioButton(this, bi.nw316, bi.nw311a, bi.nw316961x, getString(R.string.nw316))) {
+            if (!validatorClass.EmptyRadioButton(this, bi.nw316, bi.nw316961, bi.nw316961x, getString(R.string.nw316))) {
                 return false;
             }
 
-            if (!validatorClass.EmptyRadioButton(this, bi.nw316, bi.nw311a, bi.nw316962x, getString(R.string.nw316))) {
+            if (!validatorClass.EmptyRadioButton(this, bi.nw316, bi.nw316a, bi.nw316962x, getString(R.string.nw316))) {
                 return false;
             }
 
@@ -495,11 +495,11 @@ public class SectionB2Activity extends Activity {
             if (!validatorClass.EmptyRadioButton(this, bi.nw321, bi.nw321a, getString(R.string.nw321))) {
                 return false;
             }
-            if (!validatorClass.EmptyRadioButton(this, bi.nw321, bi.nw311a, bi.nw321961x, getString(R.string.nw321))) {
+            if (!validatorClass.EmptyRadioButton(this, bi.nw321, bi.nw321a, bi.nw321961x, getString(R.string.nw321))) {
                 return false;
             }
 
-            if (!validatorClass.EmptyRadioButton(this, bi.nw321, bi.nw311a, bi.nw321962x, getString(R.string.nw321))) {
+            if (!validatorClass.EmptyRadioButton(this, bi.nw321, bi.nw321a, bi.nw321962x, getString(R.string.nw321))) {
                 return false;
             }
 
