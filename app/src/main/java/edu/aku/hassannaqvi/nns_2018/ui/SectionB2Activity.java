@@ -27,8 +27,6 @@ public class SectionB2Activity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_section_b2);
-
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_b2);
         db = new DatabaseHelper(this);
         bi.setCallback(this);
@@ -93,61 +91,18 @@ public class SectionB2Activity extends Activity {
                     bi.fldGrpnb210.setVisibility(View.VISIBLE);
                 } else {
                     bi.fldGrpnb210.setVisibility(View.GONE);
-//                    bi.nb21001.clearCheck();
-//                    bi.nb21002.clearCheck();
-//                    bi.nb21003.clearCheck();
-//                    bi.nb21098.clearCheck();
-//                    bi.nb21099.clearCheck();
+                    bi.nw310.clearCheck();
+                    bi.nw31096x.setText(null);
+                    bi.nw311.clearCheck();
+                    bi.nw311961x.setText(null);
+                    bi.nw311962x.setText(null);
+                    bi.nw311963x.setText(null);
                     bi.nw312.clearCheck();
                     bi.nw313m.setText(null);
                     bi.nw313d.setText(null);
                 }
             }
         });
-
-//        bi.nb21098.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(RadioGroup group, int checkedId) {
-//                if (bi.nb21098a.isChecked()) {
-//                    bi.nb21001.setEnabled(false);
-//                    bi.nb21001.clearCheck();
-//                    bi.nb21002.setEnabled(false);
-//                    bi.nb21002.clearCheck();
-//                    bi.nb21003.setEnabled(false);
-//                    bi.nb21003.clearCheck();
-//                    bi.nb21099.setEnabled(false);
-//                    bi.nb21099.clearCheck();
-//                } else {
-//                    bi.nb21001.setEnabled(true);
-//                    bi.nb21002.setEnabled(true);
-//                    bi.nb21003.setEnabled(true);
-//                    bi.nb21099.setEnabled(true);
-//
-//                }
-//            }
-//        });
-//
-//        bi.nb21099.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(RadioGroup group, int checkedId) {
-//                if (bi.nb21099a.isChecked()) {
-//                    bi.nb21001.setEnabled(false);
-//                    bi.nb21001.clearCheck();
-//                    bi.nb21002.setEnabled(false);
-//                    bi.nb21002.clearCheck();
-//                    bi.nb21003.setEnabled(false);
-//                    bi.nb21003.clearCheck();
-//                    bi.nb21098.setEnabled(false);
-//                    bi.nb21098.clearCheck();
-//                } else {
-//                    bi.nb21001.setEnabled(true);
-//                    bi.nb21002.setEnabled(true);
-//                    bi.nb21003.setEnabled(true);
-//                    bi.nb21098.setEnabled(true);
-//
-//                }
-//            }
-//        });
 
         bi.nw314.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -202,12 +157,6 @@ public class SectionB2Activity extends Activity {
         });
 
 
-        bi.nw317.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-
-            }
-        });
 
 
     }
@@ -365,21 +314,21 @@ public class SectionB2Activity extends Activity {
             if (!validatorClass.EmptyRadioButton(this,bi.nw310,bi.nw310a,getString(R.string.nw310))){
                 return false;
             }
-            if (!validatorClass.EmptyRadioButton(this,bi.nw310,bi.nw310a,bi.nw31096x,getString(R.string.nw310))){
+            if (!validatorClass.EmptyRadioButton(this, bi.nw310, bi.nw31096, bi.nw31096x, getString(R.string.nw310))) {
                 return false;
             }
             if (!validatorClass.EmptyRadioButton(this, bi.nw311, bi.nw311a, getString(R.string.nw311))) {
                 return false;
             }
-            if (!validatorClass.EmptyRadioButton(this, bi.nw311, bi.nw311a, bi.nw311961x, getString(R.string.nw311))) {
+            if (!validatorClass.EmptyRadioButton(this, bi.nw311, bi.nw311961, bi.nw311961x, getString(R.string.nw311))) {
                 return false;
             }
 
-            if (!validatorClass.EmptyRadioButton(this, bi.nw311, bi.nw311a, bi.nw311962x, getString(R.string.nw311))) {
+            if (!validatorClass.EmptyRadioButton(this, bi.nw311, bi.nw311962, bi.nw311962x, getString(R.string.nw311))) {
                 return false;
             }
 
-            if (!validatorClass.EmptyRadioButton(this, bi.nw311, bi.nw311a, bi.nw311963x, getString(R.string.nw311))) {
+            if (!validatorClass.EmptyRadioButton(this, bi.nw311, bi.nw311963, bi.nw311963x, getString(R.string.nw311))) {
                 return false;
             }
 
@@ -435,11 +384,11 @@ public class SectionB2Activity extends Activity {
                 return false;
             }
 
-            if (!validatorClass.EmptyRadioButton(this, bi.nw316, bi.nw316a, bi.nw316962x, getString(R.string.nw316))) {
+            if (!validatorClass.EmptyRadioButton(this, bi.nw316, bi.nw316962, bi.nw316962x, getString(R.string.nw316))) {
                 return false;
             }
 
-            if (!validatorClass.EmptyRadioButton(this, bi.nw316, bi.nw316a, bi.nw316963x, getString(R.string.nw316))) {
+            if (!validatorClass.EmptyRadioButton(this, bi.nw316, bi.nw316963, bi.nw316963x, getString(R.string.nw316))) {
                 return false;
             }
 
@@ -489,21 +438,21 @@ public class SectionB2Activity extends Activity {
             if (!validatorClass.EmptyRadioButton(this, bi.nw320, bi.nw320a, getString(R.string.nw320))) {
                 return false;
             }
-            if (!validatorClass.EmptyRadioButton(this, bi.nw320, bi.nw320a, bi.nw32096x, getString(R.string.nw320))) {
+            if (!validatorClass.EmptyRadioButton(this, bi.nw320, bi.nw32096, bi.nw32096x, getString(R.string.nw320))) {
                 return false;
             }
             if (!validatorClass.EmptyRadioButton(this, bi.nw321, bi.nw321a, getString(R.string.nw321))) {
                 return false;
             }
-            if (!validatorClass.EmptyRadioButton(this, bi.nw321, bi.nw321a, bi.nw321961x, getString(R.string.nw321))) {
+            if (!validatorClass.EmptyRadioButton(this, bi.nw321, bi.nw321961, bi.nw321961x, getString(R.string.nw321))) {
                 return false;
             }
 
-            if (!validatorClass.EmptyRadioButton(this, bi.nw321, bi.nw321a, bi.nw321962x, getString(R.string.nw321))) {
+            if (!validatorClass.EmptyRadioButton(this, bi.nw321, bi.nw321962, bi.nw321962x, getString(R.string.nw321))) {
                 return false;
             }
 
-            if (!validatorClass.EmptyRadioButton(this, bi.nw321, bi.nw321a, bi.nw321963x, getString(R.string.nw321))) {
+            if (!validatorClass.EmptyRadioButton(this, bi.nw321, bi.nw321963, bi.nw321963x, getString(R.string.nw321))) {
                 return false;
             }
 

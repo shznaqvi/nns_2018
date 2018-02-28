@@ -130,9 +130,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
+                android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:hint="@string/other"
-                android:inputType="number"
-                android:maxLength="1"
+                android:inputType="text"
                 android:text='@{nb40196.checked ? nb40196x.getText.toString : ""}'
                 android:visibility='@{nb40196.checked ? View.VISIBLE : View.GONE}' />
 
@@ -221,6 +221,7 @@
                     android:layout_marginTop="5dp"
                     android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                     android:hint="@string/other"
+                    android:inputType="text"
                     android:text='@{nb40296.checked ? nb40296x.getText.toString : ""}'
                     android:visibility='@{nb40296.checked ? View.VISIBLE : View.GONE}' />
 
@@ -338,9 +339,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
+                android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:hint="@string/other"
-                android:inputType="number"
-                android:maxLength="1"
+                android:inputType="text"
                 android:text='@{nb40396.checked ? nb40396x.getText.toString : ""}'
                 android:visibility='@{nb40396.checked ? View.VISIBLE : View.GONE}' />
 
@@ -471,8 +472,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:hint="@string/kg"
-                    android:inputType="number"
-                    android:maxLength="2"
+                    android:inputType="numberDecimal"
+                    android:maxLength="4"
                     android:text='@{nb40698.checked ? "" : nb406c.getText.toString}'
                     android:visibility='@{nb40698.checked ? View.GONE : View.VISIBLE}' />
 
@@ -483,8 +484,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:hint="@string/kg"
-                    android:inputType="number"
-                    android:maxLength="1"
+                    android:inputType="numberDecimal"
+                    android:maxLength="4"
                     android:text='@{nb40698.checked ? "" : nb406r.getText.toString}'
                     android:visibility='@{nb40698.checked ? View.GONE : View.VISIBLE}' />
 
