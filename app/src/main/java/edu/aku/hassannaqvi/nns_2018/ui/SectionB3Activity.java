@@ -103,6 +103,14 @@ public class SectionB3Activity extends AppCompatActivity {
             return false;
         }
 
+        if (!validatorClass.EmptyRadioButton(this, binding.nb301, binding.nb301a, binding.nb301m, getString(R.string.nb301))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, binding.nb301, binding.nb301b, binding.nb301d, getString(R.string.nb301))) {
+            return false;
+        }
+
         if (!binding.nb30198.isChecked()) {
             // nb302
             if (!validatorClass.EmptyRadioButton(this, binding.nb302, binding.nb30296, binding.nb30296x, getString(R.string.nb302))) {
