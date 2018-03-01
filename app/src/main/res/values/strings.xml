@@ -89,20 +89,20 @@
     <string name="na202"> نام </string>
 
     <string name="na204"> گھر کے سربراہ سے رشتہ ؟ </string>
-    <string name="na204a">Head</string>
-    <string name="na204b">Spouse</string>
-    <string name="na204c">Son / daughter</string>
-    <string name="na204d">son-in-law / daughter-in-law</string>
-    <string name="na204e">granchild</string>
-    <string name="na204f">parent</string>
-    <string name="na204g">parent-in-law</string>
-    <string name="na204h">brother / sister</string>
-    <string name="na204i">brother-in-law / sister-in-law</string>
-    <string name="na204j">uncle / aunt</string>
-    <string name="na204k">niece / nephew</string>
-    <string name="na204l">adopted / foster / stepchild</string>
-    <string name="na204m">servant (live-in)</string>
-    <string name="na20496">other (not related)</string>
+    <string name="na204a">سربراہ </string>
+    <string name="na204b">خاوند/ بیوی </string>
+    <string name="na204c">بیٹا / بیٹی </string>
+    <string name="na204d">داماد / بہو </string>
+    <string name="na204e">پوتا / پوتی / نواسا / نواسی</string>
+    <string name="na204f">والدین </string>
+    <string name="na204g">ساس / سسر </string>
+    <string name="na204h"> بھائی / بہن </string>
+    <string name="na204i">سالا / سالی / دیور / دیورانی </string>
+    <string name="na204j">چچا / چچی / ماموں / ممانی / پھوپھا / پھوپھی </string>
+    <string name="na204k">بھانجا / بھانجی / بھتیجا / بھتیجی</string>
+    <string name="na204l">سوتیلے / رضاعی / لے پالک بچے </string>
+    <string name="na204m">ملازم</string>
+    <string name="na20496">دیگر رشتہ دار </string>
     <string name="na20498"> Dont know relative</string>
 
     <string name="resp"> Is he/she a respondent? </string>
@@ -113,30 +113,32 @@
     <string name="na2dob"> (نام) کی پیدائش کی تاریخ کیا ہے؟ </string>
     <string name="na2age"> (نام)کتنی عمر ہے؟ </string>
     <string name="na2edu"> تعلیم </string>
-    <string name="na2edua"> none</string>
-    <string name="na2edub"> pre-primary</string>
-    <string name="na2educ"> primary (1-5)</string>
-    <string name="na2edud"> middle (6-8)</string>
-    <string name="na2edue"> secondary (9-10)</string>
-    <string name="na2eduf"> intermediate</string>
-    <string name="na2edug"> graduation</string>
-    <string name="na2eduh"> masters</string>
-    <string name="na2edui"> phd</string>
+    <string name="na2edua"> کوئی نہیں</string>
+    <string name="na2edub"> پری پرائمری</string>
+    <string name="na2educ"> پرائمری (5-1)</string>
+    <string name="na2edud"> مڈل(8-6)</string>
+    <string name="na2edue"> سیکنڈری(10-9)</string>
+    <string name="na2eduf"> انٹرمیڈیٹ</string>
+    <string name="na2edug"> گریجویشن </string>
+    <string name="na2eduh"> ماسٹرز </string>
+    <string name="na2edui"> پی-ایچ-ڈی</string>
     <string name="na2occ"> پیشہ </string>
-    <string name="na2occa"> none</string>
-    <string name="na2occb"> unskilled manual labour</string>
-    <string name="na2occc"> skilled manual labour</string>
-    <string name="na2occd"> agriculture</string>
-    <string name="na2occe"> sales and services</string>
-    <string name="na2occf"> professional</string>
-    <string name="na2occg">student</string>
-    <string name="na2occh"> unemployed / housewife</string>
+    <string name="na2occa"> کوئی نہیں</string>
+    <string name="na2occb"> غیر ہنرمند مزدور</string>
+    <string name="na2occc"> ہنرمند مزدور</string>
+    <string name="na2occd"> زراعت سے متعلق</string>
+    <string name="na2occe"> سیل اور سروسز</string>
+    <string name="na2occf"> پروفیشنل </string>
+    <string name="na2occg"> طالب علم</string>
+    <string name="na2occh"> بےروزگار </string>
+    <string name="na2occi"> خاتون خانہ </string>
+    <string name="na2occj"> ریٹائرڈ </string>
     <string name="na2ms"> ازواجی حیثیت </string>
-    <string name="na2msa"> married </string>
-    <string name="na2msb"> widowed </string>
-    <string name="na2msc"> divorced </string>
-    <string name="na2msd"> separated </string>
-    <string name="na2mse"> never married </string>
+    <string name="na2msa"> شادی شدہ </string>
+    <string name="na2msb"> بیوہ </string>
+    <string name="na2msc"> طلاق یافتہ </string>
+    <string name="na2msd">  الگ رہتی ہو </string>
+    <string name="na2mse"> کنوارہ</string>
     <string name="na212"> (نام) کیا موجود ہے </string>
 
     <string name="nh2u5"> Record line No. for child under five years </string>
@@ -155,6 +157,7 @@
     <string name="na2tm"> مرد </string>
     <string name="na2tf"> خواتین </string>
     <string name="na3heading"> سیکشن 3: گھر میں موجود پانچ سال سے کم عمر بچے، شادی شدہ خواتین، اور نوعمر مرد اور خواتین کے لیے </string>
+    <string name="na3subHeading"> یہ سیکشن گھر کے سربراہ سے یا گھر میں کم سے کم 18 سال یا اس سے ذائد عمر کے کسی سمجھدار شخص سے پوچھا جائیگا </string>
     <string name="na301sno"> لائن نمبر </string>
     <string name="na3w"> وزن(کلو گرام) </string>
     <string name="na3h"> لمبائی (سینٹی میٹر) </string>
@@ -367,7 +370,7 @@
     <string name="na502"> ہاتھ دھونے کے لئے مخصوص جگہ پر پانی کی موجودگی کا مشاہدہ کریں </string>
     <string name="na502a"> پانی موجود ہے </string>
     <string name="na502b"> پانی موجود نہیں ہے </string>
-  <string name="na503"> اگرہاتھ دھونے کے لیے مخصوص جگہ پر صابن يا ڈیٹرجنٹ موجود ہےتو ریکارڈ کریں </string>
+    <string name="na503"> اگرہاتھ دھونے کے لیے مخصوص جگہ پر صابن يا ڈیٹرجنٹ موجود ہےتو ریکارڈ کریں </string>
     <string name="na503a"> صابن </string>
     <string name="na503b"> ڈیٹرجنٹ/پاوڈر/ مائع/پیسٹ </string>
     <string name="na503c"> مائع صابن </string>
@@ -441,45 +444,45 @@
     <string name="na8a04i"> نیشنل انکم سپورٹ پروگرام </string>
     <string name="na8a05"> گزشتہ 12 مہینوں کے درمیان آپ نے کتنے پیسے وصل کئے؟ </string>
     <string name="na8a06"> گزشتہ مہیا کی گئی سہولت میں سے کتنے پیسوں سے آپ نے کھانا خریدا تھا؟ </string>
-    <string name="nbinfo"> MODULE B: MWRA (15 to 50); REPRODUCTIVE HISTORY, LAST ANC, IFA AND MNP SUPPLEMENTS, 24 HOURS FOOD RECALL, FOOD FREQUENCY </string>
+    <string name="nbinfo"> ماڈیول بی: خاتون کا سوالنامہ جس کی عمر 49-15 سال ہو </string>
     <string name="nbinfo1"> Instructions: To be filled for all MWRAs </string>
-    <string name="nbheading"> SECTION B1: REPRODUCTIVE HISTORY </string>
+    <string name="nbheading"> سیکشن ڈبلیو 2: تولیدی معلومات </string>
     <string name="nb101"> خاتون کانام </string>
     <string name="nb102"> شادی شدہ خاتون کالائن نمبر سیکشن A2 سے دیکھ کر لکھیں </string>
-    <string name="nw201"> Are you currently married? </string>
-    <string name="nw202"> Have you ever been married?</string>
+    <string name="nw201"> کیا اس وقت آپ  شادی شدہ ہیں؟ </string>
+    <string name="nw202"> کیا کبھی آپ کی شادی ہوئی ؟</string>
     <string name="nw203"> شادی کے وقت آپ کی عمر کیا تھی؟ </string>
     <string name="nw203a"> عمر سالوں میں </string>
     <string name="nw204"> کل حمل کی تعداد </string>
     <string name="nw204info"> (بشمول موجودہ حمل) </string>
-    <string name="nw204a"> # of pregnancies </string>
+    <string name="nw204a"> حمل کی تعداد </string>
     <string name="nw207"> کیا آپ ابھی حاملہ ہیں؟ </string>
     <string name="nw206info"> IF FIRST PREGNANCY AFTER MARRIAGE THEN GO TO SECTION B2 </string>
     <string name="nw206"> پہلے بچے کی پیدائش کے وقت آپ کی عمر کیاتھی؟ </string>
     <string name="nw206a"> عمر سالوں میں </string>
 
     <string name="nb1aheading"> SECTION B1(a) : DETAILS OF ALL PREGNANCIES </string>
-    <string name="nb1a01"> Date of outcome * </string>
-    <string name="nb1a02"> Outcome </string>
+    <string name="nb1a01"> حمل کے نتیجے کی تاریخ </string>
+    <string name="nb1a02"> نتیجہ </string>
     <string name="nb1a02a"> حمل ضائع </string>
     <string name="nb1a02b"> مردہ بچے کی پیدائش </string>
     <string name="nb1a02c"> زندہ بچے کی پیدائش </string>
     <string name="nb1a02d"> جڑواں بچوں کی پیدائش </string>
     <string name="nb1a02e"> جڑواں مردہ بچوں کی پیدائش </string>
     <string name="nb1a02f"> ایک زندہ ایک مردہ بچوں کی پیدائش </string>
-    <string name="nb1a03"> Child # </string>
-    <string name="nb1a04"> Current Status of child </string>
+    <string name="nb1a03"> بچے کا نمبر </string>
+    <string name="nb1a04"> بچے کی موجودہ صورت حال </string>
     <string name="nb1a04a"> حیات </string>
     <string name="nb1a04b"> فوت </string>
-    <string name="nb1a05"> Age of alive child </string>
+    <string name="nb1a05"> زندہ بچے کی عمر </string>
     <string name="year">سال </string>
-    <string name="month"> Months </string>
+    <string name="month"> ماہ </string>
     <string name="day"> دن </string>
-    <string name="nb1a06"> Age at time of death </string>
-    <string name="nb1a06y"> Years </string>
-    <string name="nb1a06m"> Months </string>
-    <string name="nb1a06d"> Days </string>
-    <string name="nb2heading"> SECTION B2: ANTE-NATAL CARE </string>
+    <string name="nb1a06"> وفات کے وقت بچے کی عمر </string>
+    <string name="nb1a06y"> سال </string>
+    <string name="nb1a06m"> ماہ </string>
+    <string name="nb1a06d"> دن </string>
+    <string name="nb2heading"> سیکشن ڈبلیو 3: حمل کے دوران کیے گئے طبی معانئے کی معلومات </string>
     <string name="nw301"> کیاآپ نے گزشتہ حمل کےدوران کسی سے اپنا معائنہ کرایاتھا؟ </string>
     <string name="nw302"> آپ نے کس سے معائنہ کروایاتھا؟ </string>
     <string name="nw302info"> مزید پوچھیں :کوئی اور
@@ -718,9 +721,9 @@
     <string name="nb601h"> دیگر سبزیاں اور وٹامن اےسے بھرپور پھل </string>
     <string name="nb601i"> دیگر سبزیاں </string>
     <string name="nb601j"> دیگر پھل </string>
-    <string name="nc1info"> MODULE C: CHILD NUTRITION AND IYCF PRACTICES </string>
-    <string name="nc1heading"> SECTION C1: UNDER 5 CHILDREN INFORMATION SECTION (For Under 5) </string>
-    <string name="nc1info1"> Under-five child information panel </string>
+    <string name="nc1info"> ماڈیول سی: پانچ سال سے کمر عمر بچے کی غذائی معلومات </string>
+    <string name="nc1heading"> سیکشن سی 1:پانچ سال سے کم عمر بچوں کی معلومات  </string>
+    <string name="nc1info1"> ماڈیول سی پانچ سال سے کم عمر بچوں کا بھرا جائے گا،اور کچھ مخصوص حصہ عمر کے حساب سے گھرمیں موجود بچوں کا بھرا جائے گا </string>
     <string name="nc101"> بچے کانام،لائن نمبر اور جنس </string>
     <string name="nc101a"> نام </string>
     <string name="nc102"> بچے کا لائن نمبر(سیکشن A2 سے دیکھ کر لکھیں ۔) </string>
@@ -833,8 +836,8 @@
     <string name="nc226"> (نام) کو کتنی وٹامن اے کی اضافی خوراکیں دی گئی؟ </string>
     <string name="nc227"> بچہ(نام) کو کل، رات یا دن کے دوران اضافی غذائی خوراک(MNP) دی گئی؟ </string>
     <string name="nc228">  (نام) کو کتنی وٹامن اے کی اضافی غذائی خوراک(MNP). دی گئیں  </string>
-    <string name="nc3heading"> IMMUNIZATION STATUS  </string>
-    <string name="nc3info"> اس سیکشن میں صرف ان بچوں کا اندراج ہوگا جو 5 سال سے چھوٹے ہیں  </string>
+    <string name="nc3heading"> سیکشن سی 3: حفاظتی ٹیکہ جات کی معلومات </string>
+    <string name="nc3info"> اس سیکشن میں صرف ان بچوں کا اندراج ہوگا جو 5 سال سے چھوٹے ہیں </string>
     <string name="nc302"> کیاآپ کے پاس قومی حفاظتی ٹیکوں کاکارڈ یا کسی نجی ادارے کی طرف سے دیاگیا حفاظتی ٹیکوں کا ریکارڈ موجود ہے ؟ </string>
     <string name="nc303"> کیا میں کارڈ یا دوسرے دستاویزات دیکھ سکتا ہوں؟ </string>
     <string name="nc303a"> ہاں ،صرف کارڈ دیکھاہے </string>
@@ -895,8 +898,8 @@
 
     <string name="nc316"> کیا بچے کو IPV کے ٹیکے لگوائے ہیں ؟ </string>
 
-    <string name="nc4info"> MODULE C: CHILD NUTRITION AND IYCF PRACTICES </string>
-    <string name="nc4heading"> SECTION C4: MORBIDITY AND CARE SEEKING BEHAVIOUR </string>
+    <string name="nc4info"> سیکشن سی 2: نومولود اور چھوٹے بچوں کی غذا کے بارے میں معلومات </string>
+    <string name="nc4heading"> سیکشن سی 4:امراض اور علاج حاصل کرنے کے رویے </string>
     <!--<string name="nc401"> بچے کا نام </string>-->
     <string name="nc401"> کیا (نام) کو گزشتہ دو ہفتوں کے دوران اسہال(دست) ہوئے </string>
     <string name="nc402"> کیا آپ نے (نام)کا اسہال(دست) کی بیماری کا علاج کروایا </string>
@@ -1075,8 +1078,8 @@
     <string name="nw321">آپ نے حمل کے دوران کیلشیم کی گولیاں کہاں سے حاصل کیں؟</string>
 
 
-    <string name="nw205">Total number of deliveries so far? </string>
-    <string name="nw205time"> # of deliveries </string>
+    <string name="nw205">زچگیوں کی تعداد </string>
+    <string name="nw205time"> زچگیوں کی تعداد </string>
     <string name="nw208">موجودہ حمل کے دوران ،کیا آپ کو فولاد کی گولیا ں دی گئی یا آپ نے خریدی؟ </string>
     <string name="nw209">اگر ہاں ،خریدی یا دی گئی ؟</string>
 
@@ -1094,95 +1097,95 @@
     <string name="nw601a1">روٹی</string>
     <string name="nw601a2">دلیہ / اناج / کارن فلیکس</string>
     <string name="nw601a3">نوڈلس / پاستا</string>
-  <string name="nw601a4">چاول</string>
-  <string name="nw601f">گوشت / مرغی / مچھلی</string>
-  <string name="nw601i">انڈے</string>
-  <string name="vegi">سبزیاں</string>
-  <string name="grLeafy">Green Leafy</string>
-  <string name="grVegi">Green Vegitables</string>
-  <string name="RedVegi">Red and Orange Vegitables</string>
-  <string name="othVegi">Other Vegitables</string>
-  <string name="fruit">پھل</string>
-  <string name="sinSeed">Single Seed Fruits</string>
-  <string name="mulSeed">Multiple Seeds Fruits</string>
-  <string name="othSeed">Other Fruits</string>
-  <string name="nw601v">چائے / کافی</string>
-  <string name="nw601c">دالیں اور پھلیاں</string>
-  <string name="nw601e">دودھ / دہی / پنير</string>
-  <string name="nw601q">مکھن / کریم / آئس کریم</string>
-  <string name="nw601d">خشک پھل اور بیج</string>
+    <string name="nw601a4">چاول</string>
+    <string name="nw601f">گوشت / مرغی / مچھلی</string>
+    <string name="nw601i">انڈے</string>
+    <string name="vegi">سبزیاں</string>
+    <string name="grLeafy">Green Leafy</string>
+    <string name="grVegi">Green Vegitables</string>
+    <string name="RedVegi">Red and Orange Vegitables</string>
+    <string name="othVegi">Other Vegitables</string>
+    <string name="fruit">پھل</string>
+    <string name="sinSeed">Single Seed Fruits</string>
+    <string name="mulSeed">Multiple Seeds Fruits</string>
+    <string name="othSeed">Other Fruits</string>
+    <string name="nw601v">چائے / کافی</string>
+    <string name="nw601c">دالیں اور پھلیاں</string>
+    <string name="nw601e">دودھ / دہی / پنير</string>
+    <string name="nw601q">مکھن / کریم / آئس کریم</string>
+    <string name="nw601d">خشک پھل اور بیج</string>
 
     <!-- Green Leafy vegitables-->
 
-  <string name="nw601j1">پالک</string>
-  <string name="nw601j2">شلجم کے پتے</string>
-  <string name="nw601j3">سلاد کے پتے</string>
-  <string name="nw601j4">بند گوبھی</string>
-  <string name="nw601j5">سرسوں کے پتے</string>
-  <string name="nw601j6">مولی کے پتے</string>
-  <string name="nw601j7">بروکلی</string>
+    <string name="nw601j1">پالک</string>
+    <string name="nw601j2">شلجم کے پتے</string>
+    <string name="nw601j3">سلاد کے پتے</string>
+    <string name="nw601j4">بند گوبھی</string>
+    <string name="nw601j5">سرسوں کے پتے</string>
+    <string name="nw601j6">مولی کے پتے</string>
+    <string name="nw601j7">بروکلی</string>
 
     <!-- Green vegitables-->
 
-  <string name="nw601m1">کڑوا خربوزہ</string>
-  <string name="nw601m2"> سبز مرچ / ہری مرچ</string>
-  <string name="nw601m3">کھیرا</string>
-  <string name="nw601m4">بھنڈی</string>
-  <string name="nw601m5">گوار کی پھلی</string>
-  <string name="nw601m6">مٹر</string>
-  <string name="nw601m7"> لوکی / کدو</string>
-  <string name="nw601m8">ٹماٹر</string>
-  <string name="nw601m9">سرخ مولی</string>
-  <string name="nw601m10">پیاز</string>
-  <string name="nw601m11">تازہ مکئی</string>
-  <string name="nw601m12">کھمبی / مشرومس</string>
-  <string name="nw601m13">بینگن</string>
-  <string name="nw601m14">گوبھی</string>
-  <string name="nw601m15">چقندر</string>
-  <string name="nw601m16">آلو</string>
+    <string name="nw601m1">کڑوا خربوزہ</string>
+    <string name="nw601m2"> سبز مرچ / ہری مرچ</string>
+    <string name="nw601m3">کھیرا</string>
+    <string name="nw601m4">بھنڈی</string>
+    <string name="nw601m5">گوار کی پھلی</string>
+    <string name="nw601m6">مٹر</string>
+    <string name="nw601m7"> لوکی / کدو</string>
+    <string name="nw601m8">ٹماٹر</string>
+    <string name="nw601m9">سرخ مولی</string>
+    <string name="nw601m10">پیاز</string>
+    <string name="nw601m11">تازہ مکئی</string>
+    <string name="nw601m12">کھمبی / مشرومس</string>
+    <string name="nw601m13">بینگن</string>
+    <string name="nw601m14">گوبھی</string>
+    <string name="nw601m15">چقندر</string>
+    <string name="nw601m16">آلو</string>
 
     <!-- Red and orange vegi-->
-  <string name="nw601k1">گاجر</string>
-  <string name="nw601k2">میٹھا کدو / اسکواش </string>
-  <string name="nw601k3">لال مرچ</string>
-  <string name="nw601k4">لال شکر قندی / کچالو</string>
+    <string name="nw601k1">گاجر</string>
+    <string name="nw601k2">میٹھا کدو / اسکواش </string>
+    <string name="nw601k3">لال مرچ</string>
+    <string name="nw601k4">لال شکر قندی / کچالو</string>
 
 
-  <!-- Single seed fruits-->
-  <string name="nw601n1">چیری</string>
-  <string name="nw601n2">کھجور</string>
-  <string name="nw601n3">لیچی</string>
-  <string name="nw601n4">آڑو</string>
-  <string name="nw601n5">آلو بخارہ</string>
-  <string name="nw601n6">بیر</string>
-  <string name="nw601n7">سیب</string>
-  <string name="nw601n8">شریفہ</string>
-  <string name="nw601n9">انجیر</string>
-  <string name="nw601n10">سنگترہ</string>
-  <string name="nw601n11">کیوی</string>
-  <string name="nw601n12">تربوز</string>
-  <string name="nw601n13">انار</string>
-  <string name="nw601n14">گووا</string>
-  <string name="nw601n15">چیکو</string>
-  <string name="nw601n16">ناشپاتی</string>
-  <string name="nw601n17">کیلا</string>
-  <string name="nw601n18">ناریل</string>
-  <string name="nw601n19">انگور</string>
-  <string name="nw601n20">شہتوت</string>
-  <string name="nw601n21">اسٹرابیری</string>
+    <!-- Single seed fruits-->
+    <string name="nw601n1">چیری</string>
+    <string name="nw601n2">کھجور</string>
+    <string name="nw601n3">لیچی</string>
+    <string name="nw601n4">آڑو</string>
+    <string name="nw601n5">آلو بخارہ</string>
+    <string name="nw601n6">بیر</string>
+    <string name="nw601n7">سیب</string>
+    <string name="nw601n8">شریفہ</string>
+    <string name="nw601n9">انجیر</string>
+    <string name="nw601n10">سنگترہ</string>
+    <string name="nw601n11">کیوی</string>
+    <string name="nw601n12">تربوز</string>
+    <string name="nw601n13">انار</string>
+    <string name="nw601n14">گووا</string>
+    <string name="nw601n15">چیکو</string>
+    <string name="nw601n16">ناشپاتی</string>
+    <string name="nw601n17">کیلا</string>
+    <string name="nw601n18">ناریل</string>
+    <string name="nw601n19">انگور</string>
+    <string name="nw601n20">شہتوت</string>
+    <string name="nw601n21">اسٹرابیری</string>
 
 
-  <!-- Multiple seed fruits-->
-  <string name="nw601l1">خوبانی</string>
-  <string name="nw601l2">آم</string>
-  <string name="nw601l3">پپیتہ</string>
-  <string name="nw601l4">گرما</string>
-  <string name="nw601l5">املوک</string>
+    <!-- Multiple seed fruits-->
+    <string name="nw601l1">خوبانی</string>
+    <string name="nw601l2">آم</string>
+    <string name="nw601l3">پپیتہ</string>
+    <string name="nw601l4">گرما</string>
+    <string name="nw601l5">املوک</string>
 
 
-  <string name="nw601b1">سفید شکر قندی / کچالو</string>
-  <string name="nw601b2">شلجم</string>
-  <string name="nw601b3">مولی</string>
-  <string name="nw601b4">اروی</string>
+    <string name="nw601b1">سفید شکر قندی / کچالو</string>
+    <string name="nw601b2">شلجم</string>
+    <string name="nw601b3">مولی</string>
+    <string name="nw601b4">اروی</string>
 
 </resources>
