@@ -116,6 +116,14 @@
                         android:layout_weight="1"
                         android:text="@string/nw601i" />
 
+                    <CheckBox
+                        android:id="@+id/vegi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:text="@string/vegi" />
+
                 </LinearLayout>
 
                 <View
@@ -129,13 +137,7 @@
                     android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <CheckBox
-                        android:id="@+id/vegi"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:text="@string/vegi" />
+
 
                     <CheckBox
                         android:id="@+id/fruit"
@@ -162,6 +164,15 @@
                         android:text="@string/nw601c" />
 
                     <CheckBox
+                        android:id="@+id/nw601e"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:text="@string/nw601e" />
+
+
+                    <CheckBox
                         android:id="@+id/nw601q"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -177,9 +188,31 @@
                         android:layout_weight="1"
                         android:text="@string/nw601d" />
 
+                    <CheckBox
+                        android:id="@+id/nw601oth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:text="@string/other" />
+
+
                 </LinearLayout>
 
+
             </LinearLayout>
+
+
+            <edu.aku.hassannaqvi.nns_2018.other.CompletionTextView
+                android:id="@+id/nw60196x"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/other"
+                android:inputType="textCapWords"
+                android:text='@{nw601oth.checked ? nw60196x.getText.toString : ""}'
+                android:visibility='@{nw601oth.checked ? View.VISIBLE : View.GONE}'
+
+                />
 
 
             <LinearLayout
@@ -189,6 +222,14 @@
                 android:orientation="vertical"
                 android:visibility="gone"
                 tools:visibility="visible">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:text="@string/vegi"
+                    android:textSize="40sp" />
 
                 <!-- ============== Green Leafy Vegitables ============= -->
                 <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -274,6 +315,23 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
                         android:text="@string/nw601j6" />
+
+                    <CheckBox
+                        android:id="@+id/nw601joth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:text="@string/other" />
+
+                    <edu.aku.hassannaqvi.nns_2018.other.CompletionTextView
+                        android:id="@+id/nw601j96x"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/other"
+                        android:inputType="textCapWords"
+                        android:text='@{nw601joth.checked ? nw601j96x.getText.toString : ""}'
+                        android:visibility='@{nw601joth.checked ? View.VISIBLE : View.GONE}' />
 
 
                 </LinearLayout>
@@ -380,6 +438,23 @@
                     android:layout_marginBottom="1dp"
                     android:text="@string/nw601m7" />
 
+                <CheckBox
+                    android:id="@+id/nw601moth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:text="@string/other" />
+
+                <edu.aku.hassannaqvi.nns_2018.other.CompletionTextView
+                    android:id="@+id/nw601m96x"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/other"
+                    android:inputType="textCapWords"
+                    android:text='@{nw601moth.checked ? nw601m96x.getText.toString : ""}'
+                    android:visibility='@{nw601moth.checked ? View.VISIBLE : View.GONE}' />
+
 
             </LinearLayout>
 
@@ -475,6 +550,24 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:text="@string/nw601m9" />
+
+                <CheckBox
+                    android:id="@+id/nw601koth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:text="@string/other" />
+
+                <edu.aku.hassannaqvi.nns_2018.other.CompletionTextView
+                    android:id="@+id/nw601k96x"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/other"
+                    android:inputType="textCapWords"
+                    android:text='@{nw601koth.checked ? nw601k96x.getText.toString : ""}'
+                    android:visibility='@{nw601koth.checked ? View.VISIBLE : View.GONE}' />
+
 
             </LinearLayout>
 
@@ -605,6 +698,23 @@
                     android:layout_marginBottom="1dp"
                     android:text="@string/nw601b4" />
 
+                <CheckBox
+                    android:id="@+id/nw601both"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:text="@string/other" />
+
+                <edu.aku.hassannaqvi.nns_2018.other.CompletionTextView
+                    android:id="@+id/nw601b96x"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/other"
+                    android:inputType="textCapWords"
+                    android:text='@{nw601both.checked ? nw601b96x.getText.toString : ""}'
+                    android:visibility='@{nw601both.checked ? View.VISIBLE : View.GONE}' />
+
 
             </LinearLayout>
 
@@ -616,7 +726,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:gravity="center"
+                    android:text="@string/fruit"
+                    android:textSize="40sp" />
 
                 <!-- ============== Single Seed Fruits ============= -->
                 <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -717,6 +836,23 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
                         android:text="@string/nw601n6" />
+
+                    <CheckBox
+                        android:id="@+id/nw601loth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:text="@string/other" />
+
+                    <edu.aku.hassannaqvi.nns_2018.other.CompletionTextView
+                        android:id="@+id/nw601l96x"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/other"
+                        android:inputType="textCapWords"
+                        android:text='@{nw601loth.checked ? nw601l96x.getText.toString : ""}'
+                        android:visibility='@{nw601loth.checked ? View.VISIBLE : View.GONE}' />
 
 
                 </LinearLayout>
@@ -853,6 +989,23 @@
                         android:layout_marginBottom="1dp"
                         android:text="@string/nw601n16" />
 
+                    <CheckBox
+                        android:id="@+id/nw601noth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:text="@string/other" />
+
+                    <edu.aku.hassannaqvi.nns_2018.other.CompletionTextView
+                        android:id="@+id/nw601n96x"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/other"
+                        android:inputType="textCapWords"
+                        android:text='@{nw601noth.checked ? nw601n96x.getText.toString : ""}'
+                        android:visibility='@{nw601noth.checked ? View.VISIBLE : View.GONE}' />
+
                 </LinearLayout>
 
                 <!-- ============== Other Fruits ============= -->
@@ -945,6 +1098,23 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
                         android:text="@string/nw601l5" />
+
+                    <CheckBox
+                        android:id="@+id/nw601n1oth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:text="@string/other" />
+
+                    <edu.aku.hassannaqvi.nns_2018.other.CompletionTextView
+                        android:id="@+id/nw601n196x"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/other"
+                        android:inputType="textCapWords"
+                        android:text='@{nw601n1oth.checked ? nw601n196x.getText.toString : ""}'
+                        android:visibility='@{nw601n1oth.checked ? View.VISIBLE : View.GONE}' />
 
 
                 </LinearLayout>

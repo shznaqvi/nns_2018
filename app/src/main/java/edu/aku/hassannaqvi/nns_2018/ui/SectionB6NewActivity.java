@@ -9,6 +9,8 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
+import com.tokenautocomplete.TokenCompleteTextView;
+
 import org.json.JSONException;
 
 import java.util.List;
@@ -19,8 +21,9 @@ import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB6NewBinding;
+import edu.aku.hassannaqvi.nns_2018.other.CompletionTextView;
 
-public class SectionB6NewActivity extends AppCompatActivity {
+public class SectionB6NewActivity extends AppCompatActivity implements TokenCompleteTextView.TokenListener<String> {
 
     ActivitySectionB6NewBinding bi;
     DatabaseHelper db;
@@ -112,6 +115,9 @@ public class SectionB6NewActivity extends AppCompatActivity {
         }
     };
 
+    @BindViews({R.id.nw60196x, R.id.nw601b96x, R.id.nw601j96x, R.id.nw601k96x, R.id.nw601l96x, R.id.nw601m96x, R.id.nw601n96x, R.id.nw601n196x})
+    List<CompletionTextView> groupOthers;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,6 +127,12 @@ public class SectionB6NewActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         db = new DatabaseHelper(this);
         bi.setCallback(this);
+
+        for (CompletionTextView ct : groupOthers) {
+            ct.setTokenLimit(10);
+            ct.setTokenListener(this);
+        }
+
 
         setUpViews();
     }
@@ -290,7 +302,7 @@ public class SectionB6NewActivity extends AppCompatActivity {
         }
 
 
-
+        // Other Foods
 
 
 
@@ -310,6 +322,7 @@ public class SectionB6NewActivity extends AppCompatActivity {
 
                 finish();
 
+
                 startActivity(new Intent(this, MainActivity.class));
 
             } else {
@@ -317,7 +330,6 @@ public class SectionB6NewActivity extends AppCompatActivity {
             }
         }
 
-        //startActivity(new Intent(this, SectionC1Activity.class));
 
     }
 
@@ -555,6 +567,15 @@ public class SectionB6NewActivity extends AppCompatActivity {
         return false;
     }
 
+    @Override
+    public void onTokenAdded(String token) {
+
+    }
+
+    @Override
+    public void onTokenRemoved(String token) {
+
+    }
 }
 
 

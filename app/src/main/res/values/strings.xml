@@ -1101,19 +1101,19 @@
     <string name="nw601f">گوشت / مرغی / مچھلی</string>
     <string name="nw601i">انڈے</string>
     <string name="vegi">سبزیاں</string>
-    <string name="grLeafy">Green Leafy</string>
-    <string name="grVegi">Green Vegitables</string>
-    <string name="RedVegi">Red and Orange Vegitables</string>
-    <string name="othVegi">Other Vegitables</string>
+    <string name="grLeafy">ہرے پتوں والی سبزیاں</string>
+    <string name="grVegi">ہرے رنگ کی سبزیاں</string>
+    <string name="RedVegi">لال اور نارنجی سبزیاں</string>
+    <string name="othVegi">دوسری سبزیاں</string>
     <string name="fruit">پھل</string>
-    <string name="sinSeed">Single Seed Fruits</string>
-    <string name="mulSeed">Multiple Seeds Fruits</string>
-    <string name="othSeed">Other Fruits</string>
+    <string name="sinSeed">ایک بیج والے پھل</string>
+    <string name="mulSeed">ایک سے زیادہ بیجوں والے پھل</string>
+    <string name="othSeed">دوسرے پھل</string>
     <string name="nw601v">چائے / کافی</string>
     <string name="nw601c">دالیں اور پھلیاں</string>
     <string name="nw601e">دودھ / دہی / پنير</string>
-    <string name="nw601q">مکھن / کریم / آئس کریم</string>
-    <string name="nw601d">خشک پھل اور بیج</string>
+    <string name="nw601q">مکھن / بالائی / آئس کریم</string>
+    <string name="nw601d">خشک میوہ اور بیج</string>
 
     <!-- Green Leafy vegitables-->
 
