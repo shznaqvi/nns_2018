@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.tokenautocomplete.TokenCompleteTextView;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -22,12 +23,13 @@ import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB6NewBinding;
 import edu.aku.hassannaqvi.nns_2018.other.CompletionTextView;
+import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionB6NewActivity extends AppCompatActivity implements TokenCompleteTextView.TokenListener<String> {
 
     ActivitySectionB6NewBinding bi;
     DatabaseHelper db;
-    @BindViews({R.id.nw601j1, R.id.nw601j2, R.id.nw601j3, R.id.nw601j4, R.id.nw601j5, R.id.nw601j6})
+    @BindViews({R.id.nw601j1, R.id.nw601j2, R.id.nw601j3, R.id.nw601j4, R.id.nw601j5, R.id.nw601j6, R.id.nw601j96})
     List<CheckBox> greenLeafy;
     public CheckBox.OnCheckedChangeListener greenLeafyCheck = new CompoundButton.OnCheckedChangeListener() {
         @Override
@@ -39,7 +41,7 @@ public class SectionB6NewActivity extends AppCompatActivity implements TokenComp
             }
         }
     };
-    @BindViews({R.id.nw601m1, R.id.nw601m2, R.id.nw601m3, R.id.nw601j7, R.id.nw601m4, R.id.nw601m5, R.id.nw601m6, R.id.nw601m7})
+    @BindViews({R.id.nw601m1, R.id.nw601m2, R.id.nw601m3, R.id.nw601j7, R.id.nw601m4, R.id.nw601m5, R.id.nw601m6, R.id.nw601m7, R.id.nw601m96})
     List<CheckBox> green;
     public CheckBox.OnCheckedChangeListener greenCheck = new CompoundButton.OnCheckedChangeListener() {
         @Override
@@ -51,7 +53,7 @@ public class SectionB6NewActivity extends AppCompatActivity implements TokenComp
             }
         }
     };
-    @BindViews({R.id.nw601k1, R.id.nw601k2, R.id.nw601k3, R.id.nw601k4, R.id.nw601m8, R.id.nw601m9})
+    @BindViews({R.id.nw601k1, R.id.nw601k2, R.id.nw601k3, R.id.nw601k4, R.id.nw601m8, R.id.nw601m9, R.id.nw601k96})
     List<CheckBox> redVegi;
     public CheckBox.OnCheckedChangeListener redVegiCheck = new CompoundButton.OnCheckedChangeListener() {
         @Override
@@ -64,7 +66,7 @@ public class SectionB6NewActivity extends AppCompatActivity implements TokenComp
         }
     };
     @BindViews({R.id.nw601m10, R.id.nw601m11, R.id.nw601m12, R.id.nw601b1, R.id.nw601m13, R.id.nw601m14, R.id.nw601m15,
-            R.id.nw601b2, R.id.nw601b3, R.id.nw601m16, R.id.nw601b4})
+            R.id.nw601b2, R.id.nw601b3, R.id.nw601m16, R.id.nw601b4, R.id.nw601b96})
     List<CheckBox> otherVegi;
     public CheckBox.OnCheckedChangeListener othVegiCheck = new CompoundButton.OnCheckedChangeListener() {
         @Override
@@ -77,7 +79,7 @@ public class SectionB6NewActivity extends AppCompatActivity implements TokenComp
         }
     };
     @BindViews({R.id.nw601l1, R.id.nw601n1, R.id.nw601n2, R.id.nw601n3, R.id.nw601l2, R.id.nw601n4, R.id.nw601n5,
-            R.id.nw601n6})
+            R.id.nw601n6, R.id.nw601l96})
     List<CheckBox> singSeed;
     public CheckBox.OnCheckedChangeListener sinSeedCheck = new CompoundButton.OnCheckedChangeListener() {
         @Override
@@ -90,7 +92,7 @@ public class SectionB6NewActivity extends AppCompatActivity implements TokenComp
         }
     };
     @BindViews({R.id.nw601n7, R.id.nw601n8, R.id.nw601l3, R.id.nw601n9, R.id.nw601n10, R.id.nw601n11, R.id.nw601n12,
-            R.id.nw601l4, R.id.nw601n13, R.id.nw601n14, R.id.nw601n15, R.id.nw601n16})
+            R.id.nw601l4, R.id.nw601n13, R.id.nw601n14, R.id.nw601n15, R.id.nw601n16, R.id.nw601n96})
     List<CheckBox> mulSeed;
     public CheckBox.OnCheckedChangeListener mulSeedCheck = new CompoundButton.OnCheckedChangeListener() {
         @Override
@@ -102,7 +104,7 @@ public class SectionB6NewActivity extends AppCompatActivity implements TokenComp
             }
         }
     };
-    @BindViews({R.id.nw601n17, R.id.nw601n18, R.id.nw601n19, R.id.nw601n20, R.id.nw601n21, R.id.nw601n15})
+    @BindViews({R.id.nw601n17, R.id.nw601n18, R.id.nw601n19, R.id.nw601n20, R.id.nw601n21, R.id.nw601n15, R.id.nw601n196})
     List<CheckBox> othFru;
     public CheckBox.OnCheckedChangeListener othFruCheck = new CompoundButton.OnCheckedChangeListener() {
         @Override
@@ -118,6 +120,10 @@ public class SectionB6NewActivity extends AppCompatActivity implements TokenComp
     @BindViews({R.id.nw60196x, R.id.nw601b96x, R.id.nw601j96x, R.id.nw601k96x, R.id.nw601l96x, R.id.nw601m96x, R.id.nw601n96x, R.id.nw601n196x})
     List<CompletionTextView> groupOthers;
 
+    @BindViews({R.id.nw601a1, R.id.nw601a2, R.id.nw601a3, R.id.nw601a4, R.id.nw601f,
+            R.id.nw601i, R.id.vegi, R.id.fruit, R.id.nw601v, R.id.nw601c,
+            R.id.nw601e, R.id.nw601q, R.id.nw601d})
+    List<CheckBox> listFoods;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -343,55 +349,96 @@ public class SectionB6NewActivity extends AppCompatActivity implements TokenComp
 
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
-/*        if (!validatorClass.EmptyRadioButton(this, bi.nb60101, bi.nb60101a, getString(R.string.nb601a))) {
+        if (!isFood()) {
+            Toast.makeText(this, "ERROR(empty): " + getString(R.string.nw601), Toast.LENGTH_LONG).show();
+            bi.nw601a1.setError("This data is required");
             return false;
+        } else {
+            bi.nw601a1.setError(null);
         }
 
-        if (!validatorClass.EmptyRadioButton(this, bi.nb60102, bi.nb60102a, getString(R.string.nb601b))) {
-            return false;
+        if (bi.nw60196.isChecked()) {
+            if (!validatorClass.EmptyTextBox(this, bi.nw601b96x, getString(R.string.nw601) + " - " + getString(R.string.other))) {
+                return false;
+            }
         }
 
-        if (!validatorClass.EmptyRadioButton(this, bi.nb60103, bi.nb60103a, getString(R.string.nb601c))) {
-            return false;
+
+        if (bi.vegi.isChecked()) {
+            if (!isGreen() && !isGreenLeafy() && !isRed() && !isOtherVegi()) {
+                Toast.makeText(this, "ERROR(empty): " + getString(R.string.vegi), Toast.LENGTH_LONG).show();
+                bi.txtGrLeaf.setError("This data is required");
+                bi.txtGreen.setError("This data is required");
+                bi.txtRedVegi.setError("This data is required");
+                bi.txtOthVeg.setError("This data is required");
+                return false;
+            } else {
+                bi.txtGrLeaf.setError(null);
+                bi.txtGreen.setError(null);
+                bi.txtRedVegi.setError(null);
+                bi.txtOthVeg.setError(null);
+            }
+
+            if (bi.fldGrpgrLeafy.getVisibility() == View.VISIBLE) {
+                if (!validatorClass.EmptyCheckBox(this, bi.fldGrpgrLeafy, bi.nw601j96, bi.nw601j96x, getString(R.string.grLeafy))) {
+                    return false;
+                }
+            }
+
+            if (bi.fldGrpgrVegi.getVisibility() == View.VISIBLE) {
+                if (!validatorClass.EmptyCheckBox(this, bi.fldGrpgrVegi, bi.nw601m96, bi.nw601m96x, getString(R.string.grLeafy))) {
+                    return false;
+                }
+            }
+
+            if (bi.fldGrpregVegi.getVisibility() == View.VISIBLE) {
+                if (!validatorClass.EmptyCheckBox(this, bi.fldGrpregVegi, bi.nw601k96, bi.nw601k96x, getString(R.string.grLeafy))) {
+                    return false;
+                }
+            }
+
+            if (bi.fldGrpothVegi.getVisibility() == View.VISIBLE) {
+                if (!validatorClass.EmptyCheckBox(this, bi.fldGrpothVegi, bi.nw601b96, bi.nw601b96x, getString(R.string.grLeafy))) {
+                    return false;
+                }
+            }
+
         }
 
-        if (!validatorClass.EmptyRadioButton(this, bi.nb60104, bi.nb60104a, getString(R.string.nb601d))) {
-            return false;
+        if (bi.fruit.isChecked()) {
+            if (!isSingleSeed() && !isMulSeed() && !isOthFru()) {
+                Toast.makeText(this, "ERROR(empty): " + getString(R.string.fruit), Toast.LENGTH_LONG).show();
+                bi.txtSinSeed.setError("This data is required");
+                bi.txtMulSeed.setError("This data is required");
+                bi.txtothFru.setError("This data is required");
+                return false;
+            } else {
+                bi.txtSinSeed.setError(null);
+                bi.txtMulSeed.setError(null);
+                bi.txtothFru.setError(null);
+
+            }
+
+            if (bi.fldGrpsingSeed.getVisibility() == View.VISIBLE) {
+                if (!validatorClass.EmptyCheckBox(this, bi.fldGrpsingSeed, bi.nw601l96, bi.nw601l96x, getString(R.string.sinSeed))) {
+                    return false;
+                }
+            }
+
+            if (bi.fldGrpmulSeed.getVisibility() == View.VISIBLE) {
+                if (!validatorClass.EmptyCheckBox(this, bi.fldGrpmulSeed, bi.nw601n96, bi.nw601n96x, getString(R.string.mulSeed))) {
+                    return false;
+                }
+            }
+
+            if (bi.fldGrpothFruits.getVisibility() == View.VISIBLE) {
+                if (!validatorClass.EmptyCheckBox(this, bi.fldGrpothFruits, bi.nw601n196, bi.nw601n196x, getString(R.string.grLeafy))) {
+                    return false;
+                }
+            }
+
         }
 
-        if (!validatorClass.EmptyRadioButton(this, bi.nb60105, bi.nb60105a, getString(R.string.nb601e))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, bi.nb60106, bi.nb60106a, getString(R.string.nb601f))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, bi.nb60107, bi.nb60107a, getString(R.string.nb601g))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, bi.nb60108, bi.nb60108a, getString(R.string.nb601h))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, bi.nb60108, bi.nb60108a, bi.nb60108x, getString(R.string.nb601h) + " - " + getString(R.string.other))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, bi.nb60109, bi.nb60109a, getString(R.string.nb601i))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, bi.nb60109, bi.nb60109a, bi.nb60109x, getString(R.string.nb601j) + " - " + getString(R.string.other))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, bi.nb60196, bi.nb60196a, getString(R.string.nb601j))) {
-            return false;
-        }
-
-        return validatorClass.EmptyRadioButton(this, bi.nb60196, bi.nb60196a, bi.nb60196x, getString(R.string.nb601j) + " - " + getString(R.string.other));*/
 
         return true;
     }
@@ -399,59 +446,104 @@ public class SectionB6NewActivity extends AppCompatActivity implements TokenComp
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
-/*
+
         JSONObject sB6 = new JSONObject();
-        //       nb601
-//        60101
-        sB6.put("nb60101", bi.nb60101a.isChecked() ? "1"
-                : bi.nb60101b.isChecked() ? "2"
-                : "0");
-//        60102
-        sB6.put("nb60102", bi.nb60102a.isChecked() ? "1"
-                : bi.nb60102b.isChecked() ? "2"
-                : "0");
-//        60103
-        sB6.put("nb60103", bi.nb60103a.isChecked() ? "1"
-                : bi.nb60103b.isChecked() ? "2"
-                : "0");
-//        60104
-        sB6.put("nb60104", bi.nb60104a.isChecked() ? "1"
-                : bi.nb60104b.isChecked() ? "2"
-                : "0");
-//        60105
-        sB6.put("nb60105", bi.nb60105a.isChecked() ? "1"
-                : bi.nb60105b.isChecked() ? "2"
-                : "0");
-//        60106
-        sB6.put("nb60106", bi.nb60106a.isChecked() ? "1"
-                : bi.nb60106b.isChecked() ? "2"
-                : "0");
-//        60107
-        sB6.put("nb60107", bi.nb60107a.isChecked() ? "1"
-                : bi.nb60107b.isChecked() ? "2"
-                : "0");
-//        60108
-        sB6.put("nb60108", bi.nb60108a.isChecked() ? "1"
-                : bi.nb60108b.isChecked() ? "2"
-                : "0");
-//        60109
-        sB6.put("nb60109", bi.nb60109a.isChecked() ? "1"
-                : bi.nb60109b.isChecked() ? "2"
-                : "0");
 
-//        60196
-        sB6.put("nb60196", bi.nb60196a.isChecked() ? "1"
-                : bi.nb60196b.isChecked() ? "2"
-                : "0");
+        sB6.put("nw601a1", bi.nw601a1.isChecked() ? "1" : "2");
+        sB6.put("nw601a2", bi.nw601a2.isChecked() ? "1" : "2");
+        sB6.put("nw601a3", bi.nw601a3.isChecked() ? "1" : "2");
+        sB6.put("nw601a4", bi.nw601a4.isChecked() ? "1" : "2");
+        sB6.put("nw601f", bi.nw601f.isChecked() ? "1" : "2");
+        sB6.put("nw601i", bi.nw601i.isChecked() ? "1" : "2");
+        sB6.put("nw601v", bi.nw601v.isChecked() ? "1" : "2");
+        sB6.put("nw601c", bi.nw601c.isChecked() ? "1" : "2");
+        sB6.put("nw601e", bi.nw601e.isChecked() ? "1" : "2");
+        sB6.put("nw601q", bi.nw601q.isChecked() ? "1" : "2");
+        sB6.put("nw601d", bi.nw601d.isChecked() ? "1" : "2");
+        sB6.put("nw601oth", bi.nw60196.isChecked() ? "1" : "2");
+        sB6.put("nw60196x", bi.nw60196x.getText().toString());
+
+        sB6.put("nw601j1", bi.nw601j1.isChecked() ? "1" : "2");
+        sB6.put("nw601j2", bi.nw601j2.isChecked() ? "1" : "2");
+        sB6.put("nw601j3", bi.nw601j3.isChecked() ? "1" : "2");
+        sB6.put("nw601j4", bi.nw601j4.isChecked() ? "1" : "2");
+        sB6.put("nw601j5", bi.nw601j5.isChecked() ? "1" : "2");
+        sB6.put("nw601j6", bi.nw601j6.isChecked() ? "1" : "2");
+        sB6.put("nw601joth", bi.nw601j96.isChecked() ? "1" : "2");
+        sB6.put("nw601j96x", bi.nw601j96x.getText().toString());
+
+        sB6.put("nw601m1", bi.nw601m1.isChecked() ? "1" : "2");
+        sB6.put("nw601m2", bi.nw601m2.isChecked() ? "1" : "2");
+        sB6.put("nw601m3", bi.nw601m3.isChecked() ? "1" : "2");
+        sB6.put("nw601j7", bi.nw601j7.isChecked() ? "1" : "2");
+        sB6.put("nw601m4", bi.nw601m4.isChecked() ? "1" : "2");
+        sB6.put("nw601m5", bi.nw601m5.isChecked() ? "1" : "2");
+        sB6.put("nw601m6", bi.nw601m6.isChecked() ? "1" : "2");
+        sB6.put("nw601m7", bi.nw601m7.isChecked() ? "1" : "2");
+        sB6.put("nw601moth", bi.nw601m96.isChecked() ? "1" : "2");
+        sB6.put("nw601m96x", bi.nw601m96x.getText().toString());
+        sB6.put("nw601k1", bi.nw601k1.isChecked() ? "1" : "2");
+        sB6.put("nw601k2", bi.nw601k2.isChecked() ? "1" : "2");
+        sB6.put("nw601k3", bi.nw601k3.isChecked() ? "1" : "2");
+        sB6.put("nw601m8", bi.nw601m8.isChecked() ? "1" : "2");
+        sB6.put("nw601k4", bi.nw601k4.isChecked() ? "1" : "2");
+        sB6.put("nw601m9", bi.nw601m9.isChecked() ? "1" : "2");
+
+        sB6.put("nw601koth", bi.nw601k96.isChecked() ? "1" : "2");
+        sB6.put("nw601k96x", bi.nw601k96x.getText().toString());
+
+        sB6.put("nw601m10", bi.nw601m10.isChecked() ? "1" : "2");
+        sB6.put("nw601m11", bi.nw601m11.isChecked() ? "1" : "2");
+        sB6.put("nw601m12", bi.nw601m12.isChecked() ? "1" : "2");
+        sB6.put("nw601b1", bi.nw601b1.isChecked() ? "1" : "2");
+        sB6.put("nw601m13", bi.nw601m13.isChecked() ? "1" : "2");
+        sB6.put("nw601m14", bi.nw601m14.isChecked() ? "1" : "2");
+        sB6.put("nw601m15", bi.nw601m15.isChecked() ? "1" : "2");
+        sB6.put("nw601b2", bi.nw601b2.isChecked() ? "1" : "2");
+        sB6.put("nw601b3", bi.nw601b3.isChecked() ? "1" : "2");
+        sB6.put("nw601m16", bi.nw601m16.isChecked() ? "1" : "2");
+        sB6.put("nw601b4", bi.nw601b4.isChecked() ? "1" : "2");
+        sB6.put("nw601b96", bi.nw601b96.isChecked() ? "1" : "2");
+        sB6.put("nw601b96x", bi.nw601b96x.getText().toString());
+        sB6.put("nw601l1", bi.nw601l1.isChecked() ? "1" : "2");
+        sB6.put("nw601n1", bi.nw601n1.isChecked() ? "1" : "2");
+        sB6.put("nw601n2", bi.nw601n2.isChecked() ? "1" : "2");
+        sB6.put("nw601n3", bi.nw601n3.isChecked() ? "1" : "2");
+        sB6.put("nw601l2", bi.nw601l2.isChecked() ? "1" : "2");
+        sB6.put("nw601n4", bi.nw601n4.isChecked() ? "1" : "2");
+        sB6.put("nw601n5", bi.nw601n5.isChecked() ? "1" : "2");
+        sB6.put("nw601n6", bi.nw601n6.isChecked() ? "1" : "2");
+        sB6.put("nw601l96", bi.nw601l96.isChecked() ? "1" : "2");
+        sB6.put("nw601l96x", bi.nw601l96x.getText().toString());
+
+        sB6.put("nw601n7", bi.nw601n7.isChecked() ? "1" : "2");
+        sB6.put("nw601n8", bi.nw601n8.isChecked() ? "1" : "2");
+        sB6.put("nw601l3", bi.nw601l3.isChecked() ? "1" : "2");
+        sB6.put("nw601n9", bi.nw601n9.isChecked() ? "1" : "2");
+        sB6.put("nw601n10", bi.nw601n10.isChecked() ? "1" : "2");
+        sB6.put("nw601n11", bi.nw601n11.isChecked() ? "1" : "2");
+        sB6.put("nw601n12", bi.nw601n12.isChecked() ? "1" : "2");
+        sB6.put("nw601l4", bi.nw601l4.isChecked() ? "1" : "2");
+        sB6.put("nw601n13", bi.nw601n13.isChecked() ? "1" : "2");
+        sB6.put("nw601n14", bi.nw601n14.isChecked() ? "1" : "2");
+        sB6.put("nw601n15", bi.nw601n15.isChecked() ? "1" : "2");
+        sB6.put("nw601n16", bi.nw601n16.isChecked() ? "1" : "2");
+        sB6.put("nw601n96", bi.nw601n96.isChecked() ? "1" : "2");
+        sB6.put("nw601n96x", bi.nw601n96x.getText().toString());
+        sB6.put("nw601n17", bi.nw601n17.isChecked() ? "1" : "2");
+        sB6.put("nw601n18", bi.nw601n18.isChecked() ? "1" : "2");
+        sB6.put("nw601n19", bi.nw601n19.isChecked() ? "1" : "2");
+        sB6.put("nw601n20", bi.nw601n20.isChecked() ? "1" : "2");
+        sB6.put("nw601n21", bi.nw601n21.isChecked() ? "1" : "2");
+        sB6.put("nw601n16", bi.nw601n16.isChecked() ? "1" : "2");
+        sB6.put("nw601l5", bi.nw601l5.isChecked() ? "1" : "2");
+
+        sB6.put("nw601n196", bi.nw601n96.isChecked() ? "1" : "2");
+        sB6.put("nw601n196x", bi.nw601n96x.getText().toString());
 
 
+        //MainApp.mc.setsB6(String.valueOf(sB6));
 
-        sB6.put("nc101", bi.nb60108x.getText().toString());
-        sB6.put("nc101", bi.nb60109x.getText().toString());
-        sB6.put("nc101", bi.nb60196x.getText().toString());
-
-        MainApp.mc.setsB6(String.valueOf(sB6));
-*/
 
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
@@ -558,6 +650,19 @@ public class SectionB6NewActivity extends AppCompatActivity implements TokenComp
 
         int i = 0;
         for (CheckBox ck : othFru) {
+            if (ck.isChecked())
+                return true;
+        }
+
+        // Show answer here
+        // return i == rg;
+        return false;
+    }
+
+    public boolean isFood() {
+
+        int i = 0;
+        for (CheckBox ck : listFoods) {
             if (ck.isChecked())
                 return true;
         }

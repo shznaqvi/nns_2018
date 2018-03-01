@@ -55,6 +55,7 @@
                 android:text="@string/nb601info" />
 
             <LinearLayout
+                android:id="@+id/fldGrpfoods"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bacground_border_heading"
@@ -138,7 +139,6 @@
                     android:orientation="vertical">
 
 
-
                     <CheckBox
                         android:id="@+id/fruit"
                         android:layout_width="match_parent"
@@ -189,7 +189,7 @@
                         android:text="@string/nw601d" />
 
                     <CheckBox
-                        android:id="@+id/nw601oth"
+                        android:id="@+id/nw60196"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -209,10 +209,8 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/other"
                 android:inputType="textCapWords"
-                android:text='@{nw601oth.checked ? nw60196x.getText.toString : ""}'
-                android:visibility='@{nw601oth.checked ? View.VISIBLE : View.GONE}'
-
-                />
+                android:text='@{nw60196.checked ? nw60196x.getText.toString : ""}'
+                android:visibility='@{nw60196.checked ? View.VISIBLE : View.GONE}' />
 
 
             <LinearLayout
@@ -317,7 +315,7 @@
                         android:text="@string/nw601j6" />
 
                     <CheckBox
-                        android:id="@+id/nw601joth"
+                        android:id="@+id/nw601j96"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -330,8 +328,8 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/other"
                         android:inputType="textCapWords"
-                        android:text='@{nw601joth.checked ? nw601j96x.getText.toString : ""}'
-                        android:visibility='@{nw601joth.checked ? View.VISIBLE : View.GONE}' />
+                        android:text='@{nw601j96.checked ? nw601j96x.getText.toString : ""}'
+                        android:visibility='@{nw601j96.checked ? View.VISIBLE : View.GONE}' />
 
 
                 </LinearLayout>
@@ -439,7 +437,7 @@
                     android:text="@string/nw601m7" />
 
                 <CheckBox
-                    android:id="@+id/nw601moth"
+                    android:id="@+id/nw601m96"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
@@ -452,8 +450,8 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/other"
                     android:inputType="textCapWords"
-                    android:text='@{nw601moth.checked ? nw601m96x.getText.toString : ""}'
-                    android:visibility='@{nw601moth.checked ? View.VISIBLE : View.GONE}' />
+                    android:text='@{nw601m96.checked ? nw601m96x.getText.toString : ""}'
+                    android:visibility='@{nw601m96.checked ? View.VISIBLE : View.GONE}' />
 
 
             </LinearLayout>
@@ -552,7 +550,7 @@
                     android:text="@string/nw601m9" />
 
                 <CheckBox
-                    android:id="@+id/nw601koth"
+                    android:id="@+id/nw601k96"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
@@ -565,8 +563,8 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/other"
                     android:inputType="textCapWords"
-                    android:text='@{nw601koth.checked ? nw601k96x.getText.toString : ""}'
-                    android:visibility='@{nw601koth.checked ? View.VISIBLE : View.GONE}' />
+                    android:text='@{nw601k96.checked ? nw601k96x.getText.toString : ""}'
+                    android:visibility='@{nw601k96.checked ? View.VISIBLE : View.GONE}' />
 
 
             </LinearLayout>
@@ -699,7 +697,7 @@
                     android:text="@string/nw601b4" />
 
                 <CheckBox
-                    android:id="@+id/nw601both"
+                    android:id="@+id/nw601b96"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
@@ -712,8 +710,8 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/other"
                     android:inputType="textCapWords"
-                    android:text='@{nw601both.checked ? nw601b96x.getText.toString : ""}'
-                    android:visibility='@{nw601both.checked ? View.VISIBLE : View.GONE}' />
+                    android:text='@{nw601b96.checked ? nw601b96x.getText.toString : ""}'
+                    android:visibility='@{nw601b96.checked ? View.VISIBLE : View.GONE}' />
 
 
             </LinearLayout>
@@ -838,7 +836,7 @@
                         android:text="@string/nw601n6" />
 
                     <CheckBox
-                        android:id="@+id/nw601loth"
+                        android:id="@+id/nw601l96"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -851,8 +849,8 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/other"
                         android:inputType="textCapWords"
-                        android:text='@{nw601loth.checked ? nw601l96x.getText.toString : ""}'
-                        android:visibility='@{nw601loth.checked ? View.VISIBLE : View.GONE}' />
+                        android:text='@{nw601l96.checked ? nw601l96x.getText.toString : ""}'
+                        android:visibility='@{nw601l96.checked ? View.VISIBLE : View.GONE}' />
 
 
                 </LinearLayout>
@@ -990,7 +988,7 @@
                         android:text="@string/nw601n16" />
 
                     <CheckBox
-                        android:id="@+id/nw601noth"
+                        android:id="@+id/nw601n96"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -1003,8 +1001,8 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/other"
                         android:inputType="textCapWords"
-                        android:text='@{nw601noth.checked ? nw601n96x.getText.toString : ""}'
-                        android:visibility='@{nw601noth.checked ? View.VISIBLE : View.GONE}' />
+                        android:text='@{nw601n96.checked ? nw601n96x.getText.toString : ""}'
+                        android:visibility='@{nw601n96.checked ? View.VISIBLE : View.GONE}' />
 
                 </LinearLayout>
 
@@ -1100,7 +1098,7 @@
                         android:text="@string/nw601l5" />
 
                     <CheckBox
-                        android:id="@+id/nw601n1oth"
+                        android:id="@+id/nw601n196"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -1113,8 +1111,8 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/other"
                         android:inputType="textCapWords"
-                        android:text='@{nw601n1oth.checked ? nw601n196x.getText.toString : ""}'
-                        android:visibility='@{nw601n1oth.checked ? View.VISIBLE : View.GONE}' />
+                        android:text='@{nw601n196.checked ? nw601n196x.getText.toString : ""}'
+                        android:visibility='@{nw601n196.checked ? View.VISIBLE : View.GONE}' />
 
 
                 </LinearLayout>
