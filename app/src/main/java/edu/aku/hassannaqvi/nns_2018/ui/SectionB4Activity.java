@@ -97,9 +97,9 @@ public class SectionB4Activity extends Activity {
                     binding.nb41296x.setText(null);
 
                     binding.nw413.clearCheck();
-                    binding.nw413961.setText(null);
-                    binding.nw413962.setText(null);
-                    binding.nw413963.setText(null);
+                    binding.nw413961x.setText(null);
+                    binding.nw413962x.setText(null);
+                    binding.nw413963x.setText(null);
 
                 } else {
                     binding.fldGrpnb412.setVisibility(View.VISIBLE);
@@ -415,8 +415,8 @@ public class SectionB4Activity extends Activity {
                 : binding.nw413l.isChecked() ? "12"
                 : binding.nw413m.isChecked() ? "13"
                 : binding.nw413961.isChecked() ? "961"
-                : binding.nw413961.isChecked() ? "962"
-                : binding.nw413961.isChecked() ? "963"
+                : binding.nw413962.isChecked() ? "962"
+                : binding.nw413963.isChecked() ? "963"
                 : "0");
 
 
