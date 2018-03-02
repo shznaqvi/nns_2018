@@ -135,6 +135,12 @@ public class SectionA3Activity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
+    }
+
+
     public void BtnContinue() {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();

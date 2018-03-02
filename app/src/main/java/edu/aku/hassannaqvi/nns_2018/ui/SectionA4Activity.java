@@ -109,6 +109,13 @@ public class SectionA4Activity extends AppCompatActivity {
 
     }
 
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
+    }
+
+
     private boolean formValidation() {
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
         if (!validatorClass.EmptyRadioButton(this, binding.nh301, binding.nh30196, binding.nh30196x, getString(R.string.nh301))) {

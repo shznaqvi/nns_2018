@@ -317,6 +317,12 @@ public class SectionC3Activity extends AppCompatActivity {
         return true;
     }
 
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
+    }
+
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 

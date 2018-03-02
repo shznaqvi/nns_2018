@@ -134,6 +134,12 @@ public class SectionA5Activity extends AppCompatActivity {
         }
     }
 
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
+    }
+
     public boolean formValidation() {
 
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
