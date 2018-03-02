@@ -115,7 +115,8 @@ public class SectionB4Activity extends Activity {
                     binding.nb412c.setEnabled(false);
                     binding.nb412d.setEnabled(false);
                     binding.nb412e.setEnabled(false);
-                    binding.nb41296.setEnabled(false);
+                    binding.nb41296.setEnabled(false)
+                    ;
 
                     binding.nb412a.setChecked(false);
                     binding.nb412b.setChecked(false);
@@ -125,6 +126,7 @@ public class SectionB4Activity extends Activity {
                     binding.nb41296.setChecked(false);
 
                     binding.nb41296x.setText(null);
+
 
                 } else {
                     binding.nb412a.setEnabled(true);
