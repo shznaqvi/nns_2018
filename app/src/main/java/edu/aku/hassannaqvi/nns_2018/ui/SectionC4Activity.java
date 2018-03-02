@@ -206,6 +206,7 @@ public class SectionC4Activity extends Activity {
             }
         });
 
+
         //Get Intent
         selectedChild = (FamilyMembersContract) getIntent().getSerializableExtra("selectedChild");
 
