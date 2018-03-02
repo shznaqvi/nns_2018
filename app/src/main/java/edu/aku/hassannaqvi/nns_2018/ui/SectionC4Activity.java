@@ -265,15 +265,15 @@ public class SectionC4Activity extends Activity {
 
             if (binding.nc402a.isChecked()) {
 //        nc403
-                if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc4039603, getString(R.string.nc403))) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc403a, getString(R.string.nc403))) {
                     return false;
                 }
 //        nc4039601
-                if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc4039603, binding.nc4039601x, getString(R.string.nc403))) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc4039601, binding.nc4039601x, getString(R.string.nc403))) {
                     return false;
                 }
 //        nc4039602
-                if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc4039603, binding.nc4039602x, getString(R.string.nc403))) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc4039601, binding.nc4039602x, getString(R.string.nc403))) {
                     return false;
                 }
 //        nc4039603
