@@ -392,14 +392,14 @@ public class SectionB1Activity extends Activity {
         if (!validatorClass.EmptyTextBox(this, bi.nw201days, getString(R.string.day))) {
             return false;
         }
-        if (!validatorClass.RangeTextBox(this, bi.nw201days, 1, 29, 98, "Range 1-29", getString(R.string.day))) {
+        if (!validatorClass.RangeTextBox(this, bi.nw201days, 1, 29, 98, "Range 1-29 or 98", getString(R.string.day))) {
             return false;
         }
 
         if (!validatorClass.EmptyTextBox(this, bi.nw201months, getString(R.string.months))) {
             return false;
         }
-        if (!validatorClass.RangeTextBox(this, bi.nw201months, 1, 11, 98, "Range 1-11", getString(R.string.months))) {
+        if (!validatorClass.RangeTextBox(this, bi.nw201months, 1, 11, 98, "Range 1-11 or 98", getString(R.string.months))) {
             return false;
         }
 
