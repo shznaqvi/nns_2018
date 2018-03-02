@@ -28,7 +28,7 @@ public class EligibleMembersContract {
     private String name = "";
     private String dob = "";
     private String age = "";
-    private String gender = "";
+    private String na204 = "";
     private String sA3 = "";
 
     private String synced = "";
@@ -42,7 +42,7 @@ public class EligibleMembersContract {
         this.name = ec.getName();
         this.dob = ec.getDob();
         this.age = ec.getAge();
-        this.gender = ec.getGender();
+        this.na204 = ec.getna204();
 
 
     }
@@ -116,12 +116,12 @@ public class EligibleMembersContract {
         this.dob = dob;
     }
 
-    public String getGender() {
-        return gender;
+    public String getna204() {
+        return na204;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setna204(String na204) {
+        this.na204 = na204;
     }
 
     public String getApp_ver() {
@@ -194,7 +194,7 @@ public class EligibleMembersContract {
         this.name = jsonObject.getString(eligibleMembers.COLUMN_NAME);
         this.dob = jsonObject.getString(eligibleMembers.COLUMN_DOB);
         this.age = jsonObject.getString(eligibleMembers.COLUMN_AGE);
-        this.gender = jsonObject.getString(eligibleMembers.COLUMN_GENDER);
+        this.na204 = jsonObject.getString(eligibleMembers.COLUMN_na204);
         this.sA3 = jsonObject.getString(eligibleMembers.COLUMN_SA3);
         this.synced = jsonObject.getString(eligibleMembers.COLUMN_SYNCED);
         this.syncedDate = jsonObject.getString(eligibleMembers.COLUMN_SYNCEDDATE);
@@ -217,7 +217,7 @@ public class EligibleMembersContract {
         this.name = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_NAME));
         this.dob = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_DOB));
         this.age = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_AGE));
-        this.gender = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_GENDER));
+        this.na204 = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_na204));
         this.sA3 = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_SA3));
         this.synced = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_SYNCED));
         this.syncedDate = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_SYNCEDDATE));
@@ -248,7 +248,7 @@ public class EligibleMembersContract {
         json.put(eligibleMembers.COLUMN_NAME, this.name == null ? JSONObject.NULL : this.name);
         json.put(eligibleMembers.COLUMN_DOB, this.dob == null ? JSONObject.NULL : this.dob);
         json.put(eligibleMembers.COLUMN_AGE, this.age == null ? JSONObject.NULL : this.age);
-        json.put(eligibleMembers.COLUMN_GENDER, this.gender == null ? JSONObject.NULL : this.gender);
+        json.put(eligibleMembers.COLUMN_na204, this.na204 == null ? JSONObject.NULL : this.na204);
         json.put(eligibleMembers.COLUMN_SA3, this.sA3 == null ? JSONObject.NULL : this.sA3);
         json.put(eligibleMembers.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
         json.put(eligibleMembers.COLUMN_SYNCEDDATE, this.syncedDate == null ? JSONObject.NULL : this.syncedDate);
@@ -275,7 +275,7 @@ public class EligibleMembersContract {
         public static final String COLUMN_NAME = "name";
         public static final String COLUMN_DOB = "dob";
         public static final String COLUMN_AGE = "age";
-        public static final String COLUMN_GENDER = "gender";
+        public static final String COLUMN_na204 = "na204";
         public static final String COLUMN_SA3 = "sa3";
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNCEDDATE = "synceddate";

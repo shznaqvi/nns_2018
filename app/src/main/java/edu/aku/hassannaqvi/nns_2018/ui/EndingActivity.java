@@ -3,7 +3,10 @@ package edu.aku.hassannaqvi.nns_2018.ui;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -12,6 +15,7 @@ import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivityEndingBinding;
+import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class EndingActivity extends AppCompatActivity {
 
@@ -36,19 +40,18 @@ public class EndingActivity extends AppCompatActivity {
             binding.istatusb.setEnabled(true);
         }
 
-/*        istatus.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        binding.istatus.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-                if (istatus88.isChecked()) {
-                    istatus88x.setVisibility(View.VISIBLE);
+                if (binding.istatus96.isChecked()) {
+                    binding.istatus96x.setVisibility(View.VISIBLE);
                     //istatus88x.requestFocus();
                 } else {
-                    istatus88x.setText(null);
-                    istatus88x.setVisibility(View.GONE);
+                    binding.istatus96x.setText(null);
+                    binding.istatus96x.setVisibility(View.GONE);
                 }
             }
-        });*/
-
+        });
     }
 
     public void BtnEnd() {
@@ -79,7 +82,7 @@ public class EndingActivity extends AppCompatActivity {
                 : binding.istatusb.isChecked() ? "2"
                 : "0");
 
-//        MainApp.fc.setIstatus88x(istatus88x.getText().toString());
+        MainApp.fc.setIstatus88x(binding.istatus96x.getText().toString());
 
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
@@ -103,9 +106,10 @@ public class EndingActivity extends AppCompatActivity {
     private boolean formValidation() {
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
-        /*if (!validatorClass.EmptyRadioButton(this, binding.istatus, binding.istatusb, getString(R.string.istatus))) {
+
+        if (!validatorClass.EmptyRadioButton(this, binding.istatus, binding.istatus96, binding.istatus96x, getString(R.string.istatus))) {
             return false;
-        }*/
+        }
 
         /*if (istatus88.isChecked()) {
 

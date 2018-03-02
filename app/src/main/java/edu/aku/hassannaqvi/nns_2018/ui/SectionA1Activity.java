@@ -226,6 +226,10 @@ public class SectionA1Activity extends AppCompatActivity {
         if (!validatorClass.EmptyRadioButton(this, binding.na11101blood, binding.na11101bloodb, getString(R.string.na11101blood))) {
             return false;
         }
+
+        if (!validatorClass.EmptyRadioButton(this, binding.na11101urine, binding.na11101urinea, getString(R.string.na11101urine))) {
+            return false;
+        }
 //        na11102water
         if (!validatorClass.EmptyRadioButton(this, binding.na11102water, binding.na11102waterb, getString(R.string.na11102water))) {
             return false;
@@ -288,6 +292,9 @@ public class SectionA1Activity extends AppCompatActivity {
 
         sA1.put("nw11501blood", binding.na11101blooda.isChecked() ? "1"
                 : binding.na11101bloodb.isChecked() ? "2" : "0");
+
+        sA1.put("nw11501urine", binding.na11101urinea.isChecked() ? "1"
+                : binding.na11101urineb.isChecked() ? "2" : "0");
 
         sA1.put("nw11502water", binding.na11102watera.isChecked() ? "1"
                 : binding.na11102waterb.isChecked() ? "2" : "0");

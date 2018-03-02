@@ -172,7 +172,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             eligibleMembers.COLUMN_NAME + " TEXT," +
             eligibleMembers.COLUMN_DOB + " TEXT," +
             eligibleMembers.COLUMN_AGE + " TEXT," +
-            eligibleMembers.COLUMN_GENDER + " TEXT," +
+            eligibleMembers.COLUMN_na204 + " TEXT," +
             eligibleMembers.COLUMN_SA3 + " TEXT," +
             eligibleMembers.COLUMN_SYNCED + " TEXT," +
             eligibleMembers.COLUMN_SYNCEDDATE + " TEXT" +
@@ -695,7 +695,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(eligibleMembers.COLUMN_NAME, ec.getName());
         values.put(eligibleMembers.COLUMN_DOB, ec.getDob());
         values.put(eligibleMembers.COLUMN_AGE, ec.getAge());
-        values.put(eligibleMembers.COLUMN_GENDER, ec.getGender());
+        values.put(eligibleMembers.COLUMN_na204, ec.getna204());
         values.put(eligibleMembers.COLUMN_SA3, ec.getsA3());
         values.put(eligibleMembers.COLUMN_SYNCED, ec.getSynced());
         values.put(eligibleMembers.COLUMN_SYNCEDDATE, ec.getSyncedDate());
@@ -1163,7 +1163,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 eligibleMembers.COLUMN_NAME,
                 eligibleMembers.COLUMN_DOB,
                 eligibleMembers.COLUMN_AGE,
-                eligibleMembers.COLUMN_GENDER,
+                eligibleMembers.COLUMN_na204,
                 eligibleMembers.COLUMN_SA3,
                 eligibleMembers.COLUMN_SYNCED,
                 eligibleMembers.COLUMN_SYNCEDDATE,

@@ -310,9 +310,9 @@ public class SectionA2ListActivity extends AppCompatActivity {
             return result;
         }
 
-        public int SetImage(String gender, String age) {
+        public int SetImage(String na204, String age) {
             int result = 0;
-            switch (gender) {
+            switch (na204) {
                 case "1":
                     if (age != "") {
                         if (Integer.valueOf(age) < 15) {
@@ -349,9 +349,9 @@ public class SectionA2ListActivity extends AppCompatActivity {
             }
 
             public void bindUser(FamilyMembersContract mem) {
-                familyBinding.imgUser.setImageDrawable(getDrawable(SetImage(mem.getGender(), mem.getAgeInYear())));
+                familyBinding.imgUser.setImageDrawable(getDrawable(SetImage(mem.getna204(), mem.getAgeInYear())));
                 familyBinding.memberName.setText(mem.getName().toUpperCase());
-                familyBinding.gender.setText(mem.getGender().equals("1") ? "Male" : "Female");
+                familyBinding.na204.setText(mem.getna204().equals("1") ? "Male" : "Female");
                 familyBinding.lineNo.setText("Line No:" + mem.getSerialNo());
                 familyBinding.ffName.setText(mem.getFatherName().equals("") ? "..." : mem.getFatherName());
                 familyBinding.mmName.setText(mem.getMotherName().equals("") ? "..." : mem.getMotherName());

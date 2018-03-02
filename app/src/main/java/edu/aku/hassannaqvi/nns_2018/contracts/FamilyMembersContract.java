@@ -31,7 +31,7 @@ public class FamilyMembersContract implements Serializable {
     private String dob = "";
     private String age = "";
     private String ageInYear = "";
-    private String gender = "";
+    private String na204 = "";
     private String motherId = "";
     private String sA2 = "";
 
@@ -51,7 +51,7 @@ public class FamilyMembersContract implements Serializable {
         this.serialNo = fmc.serialNo;
         this.name = fmc.name;
         this.ageInYear = fmc.ageInYear;
-        this.gender = fmc.gender;
+        this.na204 = fmc.na204;
         this.motherName = fmc.motherName;
         this.fatherName = fmc.fatherName;
         this.maritialStatus = fmc.maritialStatus;
@@ -173,12 +173,12 @@ public class FamilyMembersContract implements Serializable {
         this.ageInYear = ageInYear;
     }
 
-    public String getGender() {
-        return gender;
+    public String getna204() {
+        return na204;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setna204(String na204) {
+        this.na204 = na204;
     }
 
     public String getApp_ver() {

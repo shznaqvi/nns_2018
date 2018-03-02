@@ -85,9 +85,9 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <!-- Gender -->
+            <!-- na204 -->
             <TextView
-                android:id="@+id/gender"
+                android:id="@+id/na204"
                 style="@style/listItems"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -96,7 +96,7 @@
                 android:layout_alignEnd="@+id/maritalStatus"
                 android:layout_alignParentEnd="@id/lineNo"
                 android:gravity="right"
-                android:text="Gender"
+                android:text="na204"
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -109,7 +109,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentStart="false"
-                android:layout_below="@id/gender"
+                android:layout_below="@id/na204"
                 android:layout_marginRight="8dp"
                 android:gravity="right"
                 android:text="M.S"
