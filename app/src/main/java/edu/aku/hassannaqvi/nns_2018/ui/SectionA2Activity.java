@@ -419,7 +419,7 @@ public class SectionA2Activity extends AppCompatActivity {
                     return false;
                 }
 
-                if (!validatorClass.RangeTextBox(this, binding.na2aged, 0, 99, getString(R.string.na2age), " years")) {
+                if (!validatorClass.RangeTextBox(this, binding.na2agey, 0, 99, getString(R.string.na2age), " years")) {
                     return false;
                 }
 
