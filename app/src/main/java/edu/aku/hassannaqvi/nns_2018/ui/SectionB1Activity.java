@@ -132,8 +132,12 @@ public class SectionB1Activity extends Activity {
                 if (bi.nw204a.isChecked()) {
                     bi.fldGrpnw205.setVisibility(View.GONE);
                     bi.nw205.clearCheck();
+                    bi.fldGrpnw206.setVisibility(View.VISIBLE);
                 } else {
                     bi.fldGrpnw205.setVisibility(View.VISIBLE);
+                    bi.fldGrpnw206.setVisibility(View.GONE);
+                    bi.nw206.setText(null);
+                    bi.nw207.clearCheck();
                 }
             }
         });
@@ -420,6 +424,9 @@ public class SectionB1Activity extends Activity {
         if (!validatorClass.EmptyTextBox(this, bi.nw202, getString(R.string.nw202))) {
             return false;
         }
+        if (!validatorClass.RangeTextBox(this, bi.nw202, 15, 49, "Range 15-49", getString(R.string.year))) {
+            return false;
+        }
 
         if (!validatorClass.EmptyRadioButton(this, bi.nw203, bi.nw203b, getString(R.string.nw203))) {
             return false;
@@ -435,7 +442,9 @@ public class SectionB1Activity extends Activity {
                 if (!validatorClass.EmptyRadioButton(this, bi.nw205, bi.nw205a, getString(R.string.nw205))) {
                     return false;
                 }
-            } else {
+            }
+
+            if (bi.nw204a.isChecked() || bi.nw205a.isChecked()) {
 
                 if (bi.nw204a.isChecked() || bi.nw205a.isChecked()) {
                     if (!validatorClass.EmptyTextBox(this, bi.nw206, getString(R.string.nw206))) {

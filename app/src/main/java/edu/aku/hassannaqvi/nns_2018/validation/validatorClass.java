@@ -49,13 +49,17 @@ public abstract class validatorClass {
 
     public static boolean RangeTextBox(Context context, EditText txt, int min, int max, int defaultVal, String msg, String type) {
 
-        if ((Integer.valueOf(txt.getText().toString()) < min || Integer.valueOf(txt.getText().toString()) > max)
-                || Integer.valueOf(txt.getText().toString()) != defaultVal) {
-            Toast.makeText(context, "ERROR(invalid): " + msg, Toast.LENGTH_SHORT).show();
-            txt.setError("Range is " + min + " to " + max + " or " + defaultVal + type + " ... ");    // Set Error on last radio button
-            txt.requestFocus();
-            Log.i(context.getClass().getName(), context.getResources().getResourceEntryName(txt.getId()) + ": Range is " + min + " to " + max + " or " + defaultVal + " ...  ");
-            return false;
+        if (Integer.valueOf(txt.getText().toString()) != defaultVal) {
+            if ((Integer.valueOf(txt.getText().toString()) < min || Integer.valueOf(txt.getText().toString()) > max)) {
+                Toast.makeText(context, "ERROR(invalid): " + msg, Toast.LENGTH_SHORT).show();
+                txt.setError("Range is " + min + " to " + max + " or " + defaultVal + type + " ... ");    // Set Error on last radio button
+                txt.requestFocus();
+                Log.i(context.getClass().getName(), context.getResources().getResourceEntryName(txt.getId()) + ": Range is " + min + " to " + max + " or " + defaultVal + " ...  ");
+                return false;
+            } else {
+                txt.setError(null);
+                return true;
+            }
         } else {
             txt.setError(null);
             return true;
