@@ -47,20 +47,20 @@ public abstract class validatorClass {
         }
     }
 
-    public static boolean RangeTextBoxEqual(Context context, EditText txt, int min, int max, String msg, String type) {
+    public static boolean RangeTextBox(Context context, EditText txt, int min, int max, int defaultVal, String msg, String type) {
 
-        if (Integer.valueOf(txt.getText().toString()) <= min || Integer.valueOf(txt.getText().toString()) >= max) {
+        if ((Integer.valueOf(txt.getText().toString()) < min || Integer.valueOf(txt.getText().toString()) > max)
+                || Integer.valueOf(txt.getText().toString()) != defaultVal) {
             Toast.makeText(context, "ERROR(invalid): " + msg, Toast.LENGTH_SHORT).show();
-            txt.setError("Range is " + min + " to " + max + type + " ... ");    // Set Error on last radio button
+            txt.setError("Range is " + min + " to " + max + " or " + defaultVal + type + " ... ");    // Set Error on last radio button
             txt.requestFocus();
-            Log.i(context.getClass().getName(), context.getResources().getResourceEntryName(txt.getId()) + ": Range is " + min + " to " + max + " times...  ");
+            Log.i(context.getClass().getName(), context.getResources().getResourceEntryName(txt.getId()) + ": Range is " + min + " to " + max + " or " + defaultVal + " ...  ");
             return false;
         } else {
             txt.setError(null);
             return true;
         }
     }
-
 
     public static boolean RangeTextBox(Context context, EditText txt, double min, double max, String msg, String type) {
 

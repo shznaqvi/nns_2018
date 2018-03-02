@@ -453,16 +453,23 @@
     <string name="nbheading"> سیکشن ڈبلیو 2: تولیدی معلومات </string>
     <string name="nb101"> خاتون کانام </string>
     <string name="nb102"> شادی شدہ خاتون کالائن نمبر سیکشن A2 سے دیکھ کر لکھیں </string>
-    <string name="nw201"> کیا اس وقت آپ  شادی شدہ ہیں؟ </string>
-    <string name="nw202"> کیا کبھی آپ کی شادی ہوئی ؟</string>
-    <string name="nw203"> شادی کے وقت آپ کی عمر کیا تھی؟ </string>
-    <string name="nw203a"> عمر سالوں میں </string>
-    <string name="nw204"> کل حمل کی تعداد </string>
+  <string name="nw201"> آپ کی تاریخ پیدائش کیا ہے ؟ </string>
+  <string name="nw201sub1"> اگر دن معلوم نہیں تو 98 لکھیں </string>
+  <string name="nw201sub2"> اگر مہینہ معلوم نہیں تو 98 لکھیں </string>
+  <string name="nw201sub3"> اگر سال معلوم نہیں تو 9998 لکھیں </string>
+  <string name="nw202"> برائے مہربانی اپنی عمر بتایئے۔ آپکی گزشتہ سالگرہ پر آپکی عمر کتنی تھی. </string>
+  <string name="nw202a"> عمر سالوں میں </string>
+  <string name="nw203"> اطمینان کیجئے کہ جوابدہندہ کی عمر 49-15 سال ہے </string>
+  <string name="nw204"> کیا اس وقت آپ  شادی شدہ ہیں؟ </string>
+  <string name="nw205"> کیا کبھی آپ کی شادی ہوئی ؟</string>
+  <string name="nw206"> شادی کے وقت آپ کی عمر کیا تھی؟ </string>
+  <string name="nw207"> کیا آپ کبھی حاملہ ہوئی ہیں؟ </string>
+  <string name="nw208"> کل حمل کی تعداد </string>
     <string name="nw204info"> (بشمول موجودہ حمل) </string>
     <string name="nw204a"> حمل کی تعداد </string>
-    <string name="nw207"> کیا آپ ابھی حاملہ ہیں؟ </string>
+  <string name="nw211"> کیا آپ ابھی حاملہ ہیں؟ </string>
     <string name="nw206info"> IF FIRST PREGNANCY AFTER MARRIAGE THEN GO TO SECTION B2 </string>
-    <string name="nw206"> پہلے بچے کی پیدائش کے وقت آپ کی عمر کیاتھی؟ </string>
+  <string name="nw210"> پہلے بچے کی پیدائش کے وقت آپ کی عمر کیاتھی؟ </string>
     <string name="nw206a"> عمر سالوں میں </string>
 
     <string name="nb1aheading"> SECTION B1(a) : DETAILS OF ALL PREGNANCIES </string>
@@ -1082,15 +1089,15 @@
     <string name="nw321">آپ نے حمل کے دوران کیلشیم کی گولیاں کہاں سے حاصل کیں؟</string>
 
 
-    <string name="nw205">زچگیوں کی تعداد </string>
+  <string name="nw209">زچگیوں کی تعداد </string>
     <string name="nw205time"> زچگیوں کی تعداد </string>
-    <string name="nw208">موجودہ حمل کے دوران ،کیا آپ کو فولاد کی گولیا ں دی گئی یا آپ نے خریدی؟ </string>
-    <string name="nw209">اگر ہاں ،خریدی یا دی گئی ؟</string>
+  <string name="nw212">موجودہ حمل کے دوران ،کیا آپ کو فولاد کی گولیا ں دی گئی یا آپ نے خریدی؟ </string>
+  <string name="nw213">اگر ہاں ،خریدی یا دی گئی ؟</string>
 
 
-    <string name="nw20901">کلینک پر ملی</string>
-    <string name="nw20902">خریدی</string>
-    <string name="nw20903">نہ  ملی نہ خریدی</string>
+  <string name="nw21301">کلینک پر ملی</string>
+  <string name="nw21302">خریدی</string>
+  <string name="nw21303">نہ  ملی نہ خریدی</string>
     <string name="nc221">کیا(نام) نے کل دن یا رات کے دوران کوئی وٹامن یا منرل سپلیمنٹ یا کوئی دوائی پی یاکھائی تھی</string>
     <string name="nc222">کیا (نام) نے کل دن  یا رات کے دوران نمکول(او-آر-ایس) پیاتھا؟</string>
 
