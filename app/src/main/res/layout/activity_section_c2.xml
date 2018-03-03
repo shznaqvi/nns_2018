@@ -69,6 +69,7 @@
                         android:background="@color/pink_100"
                         android:gravity="center"
                         android:text="@string/year"
+
                         android:textColor="@color/colorPrimaryDark" />
 
 
@@ -440,7 +441,8 @@
                             android:hint="@string/nc207b"
                             android:inputType="number"
                             android:maxLength="2"
-                            android:visibility="gone" />
+                            android:text='@{nc207b.checked ? nc207h.getText.toString : ""}'
+                            android:visibility="@{nc207b.checked ? View.VISIBLE : View.GONE}" />
 
                         <RadioButton
                             android:id="@+id/nc207c"
@@ -457,7 +459,8 @@
                             android:hint="@string/nc207c"
                             android:inputType="number"
                             android:maxLength="2"
-                            android:visibility="gone" />
+                            android:text='@{nc207c.checked ? nc207d.getText.toString : ""}'
+                            android:visibility="@{nc207c.checked ? View.VISIBLE : View.GONE}" />
 
 
                     </RadioGroup>
@@ -1040,6 +1043,7 @@
                         android:id="@+id/nc215bx"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
                         android:hint="@string/times"
                         android:inputType="number"
                         android:maxLength="2" />
@@ -1095,6 +1099,7 @@
                         android:id="@+id/nc215cx"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
                         android:hint="@string/times"
                         android:inputType="number"
                         android:maxLength="2" />
@@ -1239,6 +1244,7 @@
                         android:id="@+id/nc215fx"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
                         android:hint="@string/times"
                         android:inputType="number"
                         android:maxLength="2" />

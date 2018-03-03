@@ -249,7 +249,7 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
                 return false;
             }
 
-            if (!validatorClass.RangeTextBox(this, bi.nc201d, 0, 29, getString(R.string.nc201), " days")) {
+            if (!validatorClass.RangeTextBox(this, bi.nc201d, 1, 29, getString(R.string.nc201), " days")) {
                 return false;
             }
 
@@ -257,7 +257,7 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
                 return false;
             }
 
-            if (!validatorClass.RangeTextBox(this, bi.nc201m, 0, 11, getString(R.string.nc201), " months")) {
+            if (!validatorClass.RangeTextBox(this, bi.nc201m, 1, 11, getString(R.string.nc201), " months")) {
                 return false;
             }
 
@@ -269,7 +269,7 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
                 return false;
             }
 
-            if (bi.nc201d.getText().toString().equals("0") && bi.nc201m.getText().toString().equals("0") && bi.nc201y.getText().toString().equals("0")) {
+            /*if (bi.nc201d.getText().toString().equals("0") && bi.nc201m.getText().toString().equals("0") && bi.nc201y.getText().toString().equals("0")) {
                 Toast.makeText(this, "ERROR(invalid): " + "All can not be zero" + getString(R.string.nc201), Toast.LENGTH_LONG).show();
                 bi.nc201d.setError("All can not be zero");
                 bi.nc201y.setError("All can not be zero");
@@ -279,9 +279,11 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
                 bi.nc201y.setError(null);
                 bi.nc201m.setError(null);
                 bi.nc201d.setError(null);
-            }
+            }*/
 
-            //Date dob = MainApp.getCalendarDate()
+            /*Calendar dob = MainApp.getCalendarDate(bi.nc201d.getText().toString() + "-" + bi.nc201m.getText().toString() + "-" + bi.nc201y.getText().toString());
+            Calendar today = Calendar.getInstance();*/
+
         }
 
         if (!validatorClass.EmptyRadioButton(this, bi.nc202, bi.nc202a, getString(R.string.nc202))) {
@@ -292,7 +294,7 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
             return false;
         }
 
-        if (!validatorClass.RangeTextBox(this, bi.nc203, 0, 24, getString(R.string.nc201), " months")) {
+        if (!validatorClass.RangeTextBox(this, bi.nc203, 0, 23, getString(R.string.nc203), " months")) {
             return false;
         }
 
@@ -506,7 +508,7 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
             }
 
             if (bi.nc219a.isChecked()) {
-                if (!validatorClass.RangeTextBox(this, bi.nc219x, 1, 10, getString(R.string.nc201), " times")) {
+                if (!validatorClass.RangeTextBox(this, bi.nc219x, 1, 10, getString(R.string.nc219), " times")) {
                     return false;
                 }
             }
@@ -827,10 +829,10 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
     public void onCheckedChanged(RadioGroup group, int checkedId) {
 
         if (isoneYes()) {
-            bi.fldGrpnc219.setVisibility(View.GONE);
-            bi.nc219.clearCheck();
+            bi.fldGrpnc218.setVisibility(View.GONE);
+            bi.nc218.clearCheck();
         } else {
-            bi.fldGrpnc219.setVisibility(View.VISIBLE);
+            bi.fldGrpnc218.setVisibility(View.VISIBLE);
         }
 
 
