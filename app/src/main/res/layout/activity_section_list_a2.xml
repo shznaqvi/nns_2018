@@ -159,16 +159,6 @@
                                 android:weightSum="100">
 
                                 <TextView
-                                    android:id="@+id/na2adm"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="1dp"
-                                    android:layout_weight="50"
-                                    android:background="@color/pink_100"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/colorPrimaryDark" />
-
-                                <TextView
                                     android:id="@+id/na2adf"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
@@ -178,6 +168,15 @@
                                     android:textAlignment="center"
                                     android:textColor="@color/colorPrimaryDark" />
 
+                                <TextView
+                                    android:id="@+id/na2adm"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="1dp"
+                                    android:layout_weight="50"
+                                    android:background="@color/pink_100"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/colorPrimaryDark" />
 
                             </LinearLayout>
                         </LinearLayout>
