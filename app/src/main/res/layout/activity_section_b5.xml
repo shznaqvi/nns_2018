@@ -435,7 +435,6 @@
 
                     <CheckBox
                         android:id="@+id/nb507a"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -443,7 +442,6 @@
 
                     <CheckBox
                         android:id="@+id/nb507b"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -459,7 +457,6 @@
 
                     <CheckBox
                         android:id="@+id/nb507d"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -467,7 +464,6 @@
 
                     <CheckBox
                         android:id="@+id/nb507e"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -475,7 +471,6 @@
 
                     <CheckBox
                         android:id="@+id/nb507f"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -483,7 +478,6 @@
 
                     <CheckBox
                         android:id="@+id/nb507g"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -491,7 +485,6 @@
 
                     <CheckBox
                         android:id="@+id/nb50796"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
