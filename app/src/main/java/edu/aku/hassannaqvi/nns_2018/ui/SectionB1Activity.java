@@ -416,8 +416,8 @@ public class SectionB1Activity extends Activity {
         cal.setTime(date);
         int year = cal.get(Calendar.YEAR);
 
-        if (!validatorClass.RangeTextBox(this, bi.nw201years, year - 15, year - 49, 9998,
-                "Range " + (year - 15) + " - " + (year - 49), getString(R.string.year))) {
+        if (!validatorClass.RangeTextBox(this, bi.nw201years, year - 49, year - 15, 9998,
+                "Range " + (year - 49) + " - " + (year - 15), getString(R.string.year))) {
             return false;
         }
 

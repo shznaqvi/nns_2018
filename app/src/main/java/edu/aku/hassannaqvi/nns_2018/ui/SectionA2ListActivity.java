@@ -402,4 +402,6 @@ public class SectionA2ListActivity extends AppCompatActivity {
             }, 800);
         }
     }
+
+
 }

@@ -32,7 +32,7 @@ public class SectionC1Activity extends AppCompatActivity {
     public static int counterPerMom = 0;
     public static int counterPerNA = 0;
     public static String selectedChildName = "";
-    public static boolean isNA = false;
+    public static boolean isNA;
     static List<String> childU5;
     static Map<String, FamilyMembersContract> childMap;
     Map<String, String> respMap;

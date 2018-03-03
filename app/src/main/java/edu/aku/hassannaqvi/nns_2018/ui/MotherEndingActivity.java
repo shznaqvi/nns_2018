@@ -68,17 +68,16 @@ public class MotherEndingActivity extends AppCompatActivity {
             if (UpdateDB()) {
 
                 finish();
-
-
                 //if (flagMotherChild) {
                     if (SectionB1Activity.WRAcounter == MainApp.mwra.size()) {
                         if (MainApp.childNA.size() > 0) {
                             SectionC1Activity.isNA = true;
                             startActivity(new Intent(this, SectionC1Activity.class));
-                        } else {
+                        } else if (MainApp.adolescents.size() > 0) {
                             //startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
-
                             startActivity(new Intent(this, SectionA3Activity.class));
+                        } else {
+                            startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
                         }
 
                     } else {

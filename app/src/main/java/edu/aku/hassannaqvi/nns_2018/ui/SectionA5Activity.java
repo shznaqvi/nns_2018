@@ -123,8 +123,20 @@ public class SectionA5Activity extends AppCompatActivity {
 
                 if (recipientCounter > 0) {
                     startActivity(new Intent(this, SectionA8AActivity.class).putExtra("recCounter", recipientCounter));
-                } else {
+                } else if (MainApp.mwra.size() > 0) {
                     startActivity(new Intent(this, SectionB1Activity.class));
+                } else if (MainApp.childUnder5.size() > 0) {
+                    if (MainApp.childUnder5.size() == MainApp.childNA.size()) {
+                        SectionC1Activity.isNA = true;
+                        startActivity(new Intent(this, SectionC1Activity.class));
+                    } else {
+                        SectionC1Activity.isNA = false;
+                        startActivity(new Intent(this, SectionC1Activity.class));
+                    }
+                } else if (MainApp.adolescents.size() > 0) {
+                    startActivity(new Intent(this, SectionA3Activity.class));
+                } else {
+                    startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
                 }
 
 
