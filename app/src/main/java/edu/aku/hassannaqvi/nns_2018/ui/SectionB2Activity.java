@@ -53,7 +53,9 @@ public class SectionB2Activity extends Activity {
                     bi.nw30296.setChecked(false);
                     bi.nw30296x.setText(null);
                     bi.nw303.clearCheck();
-                    bi.nw30396x.setText(null);
+                    bi.nw303961x.setText(null);
+                    bi.nw303962x.setText(null);
+                    bi.nw303963x.setText(null);
                     bi.nw304m.setText(null);
                     bi.nw304w.setText(null);
                     bi.nw30498.setChecked(false);
@@ -213,7 +215,13 @@ public class SectionB2Activity extends Activity {
             if (!validatorClass.EmptyRadioButton(this, bi.nw303, bi.nw303a, getString(R.string.nw303))) {
                 return false;
             }
-            if (!validatorClass.EmptyRadioButton(this, bi.nw303, bi.nw30396, bi.nw30396x, getString(R.string.nw303) + " - " + getString(R.string.other))) {
+            if (!validatorClass.EmptyRadioButton(this, bi.nw303, bi.nw303f, bi.nw303961x, getString(R.string.nw303) + " - " + getString(R.string.nw303f))) {
+                return false;
+            }
+            if (!validatorClass.EmptyRadioButton(this, bi.nw303, bi.nw303j, bi.nw303962x, getString(R.string.nw303) + " - " + getString(R.string.nw303j))) {
+                return false;
+            }
+            if (!validatorClass.EmptyRadioButton(this, bi.nw303, bi.nw30396, bi.nw303963x, getString(R.string.nw303) + " - " + getString(R.string.other))) {
                 return false;
             }
 
@@ -545,7 +553,10 @@ public class SectionB2Activity extends Activity {
                 : bi.nw303j.isChecked() ? "10"
                 : bi.nw30396.isChecked() ? "96"
                 : "0");
-        sB2.put("nw30396x", bi.nw30396x.getText().toString());
+        sB2.put("nw303961x", bi.nw303961x.getText().toString());
+        sB2.put("nw303962x", bi.nw303962x.getText().toString());
+        sB2.put("nw303963x", bi.nw303963x.getText().toString());
+
 
 //        nw304
         sB2.put("nw304", bi.nw304w.getText().toString());

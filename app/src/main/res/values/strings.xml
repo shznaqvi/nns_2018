@@ -539,7 +539,7 @@
     <string name="nw303sub2"> Public medical sector </string>
 
     <string name="nw303c"> سرکاری ہسپتال  </string>
-    <string name="nw303d"> /سرکاری کلینک </string>
+    <string name="nw303d">سرکاری کلینک </string>
     <string name="nw303e">ماں اور بچہ کا صحت مرکز   </string>
     <string name="nw303f">  دیگر  سرکاری(وضاحت کریں ) </string>
     <string name="nw303sub3"> Private medical sector </string>
@@ -547,7 +547,7 @@
     <string name="nw303g"> نجی ہسپتال </string>
     <string name="nw303h"> نجی  کلینک </string>
     <string name="nw303i"> نجی زچہ و بچہ سینٹر </string>
-    <string name="nw303j">) دیگرنجی  (وضاحت کریں)  </string>
+    <string name="nw303j"> دیگرنجی  (وضاحت کریں)  </string>
     <string name="nw303k">  جگہ کا نام </string>
     <string name="nw303l"> </string>
 
@@ -1120,39 +1120,40 @@
     <string name="nc420a"> مہینوں </string>
     <string name="nc420b"> دنوں </string>
 
-    <string name="nc5heading"> سیکشن 5: بچہ میں معذوری(59-24 مہینے کے بچوں کے لیے ) </string>
-    <string name="nc503"> کیا آپ کےبچےکو دیکھنے میں مشکل پیش آتی ہے یہا ں تک کے چشمہ بھی پہنا ہو؟ </string>
-    <string name="nc503a"> سنائی دینے میں کوئی مشکل نہیں </string>
-    <string name="nc503b"> کچھ مشکل سے سنائی دیتا ہے </string>
-    <string name="nc503c"> بہت مشکل سے سنائی دیتا ہے </string>
-    <string name="nc503d"> بلکل نہیں سنائی دیتاہے </string>
-    <string name="nc504"> کیا آپ کےبچےکو سننےمیں مشکل پیش آتی ہیں یہاں تک کے کانوں والی مشین لگی ہوئی ہو؟ </string>
-    <string name="nc504a"> سنائی دینے میں کوئی مشکل نہیں </string>
-    <string name="nc504b"> کچھ مشکل سے سنائی دیتا ہے </string>
-    <string name="nc504c"> بہت مشکل سے سنائی دیتا ہے </string>
-    <string name="nc504d"> بلکل نہیں سنائی دیتاہے </string>
-    <string name="nc505"> کیا آپ کےبچےکو چلنے یا چڑھنے کے دوران کوئی مشکلات پیش آتی ہے؟ </string>
-    <string name="nc505a"> سنائی دینے میں کوئی مشکل نہیں </string>
-    <string name="nc505b"> کچھ مشکل سے سنائی دیتا ہے </string>
-    <string name="nc505c"> بہت مشکل سے سنائی دیتا ہے </string>
-    <string name="nc505d"> بلکل نہیں سنائی دیتاہے </string>
-    <string name="nc506"> کیا آپ کےبچےکو یاد رکھنے اور توجہ دینے میں کوئی مشکلات پیش آتی ہے؟ </string>
-    <string name="nc506a"> سنائی دینے میں کوئی مشکل نہیں </string>
-    <string name="nc506b"> کچھ مشکل سے سنائی دیتا ہے </string>
-    <string name="nc506c"> بہت مشکل سے سنائی دیتا ہے </string>
-    <string name="nc506d"> بلکل نہیں سنائی دیتاہے </string>
-    <string name="nc507"> کیا آپ کےبچےکو اپنے دیکھ بھال( مثلاً: ہاتھ منہ دھونا ،وغیرہ) میں مشکل پیش آتی ہے؟ </string>
-    <string name="nc507a"> سنائی دینے میں کوئی مشکل نہیں </string>
-    <string name="nc507b"> کچھ مشکل سے سنائی دیتا ہے </string>
-    <string name="nc507c"> بہت مشکل سے سنائی دیتا ہے </string>
-    <string name="nc507d"> بلکل نہیں سنائی دیتاہے </string>
-    <string name="nc508"> کیااپنی روز مرہ کی زبان استعمال کرتے ہوئے آپ کےبچےکو بات چیت میں (مثلاً کسی کو بات سمجھاتے وقت یا کسی کی بات سمجھتے وقت) دشواری پیش آتی ہے ؟ </string>
-    <string name="nc508a"> سنائی دینے میں کوئی مشکل نہیں </string>
-    <string name="nc508b"> کچھ مشکل سے سنائی دیتا ہے </string>
-    <string name="nc508c"> بہت مشکل سے سنائی دیتا ہے </string>
-    <string name="nc508d"> بلکل نہیں سنائی دیتاہے </string>
+    <string name="nc5heading"> (صرف59-24 مہینے کے بچوں کے لیےماں سے پوچھیں ) </string>
+    <string name="nc501"> کیا آپ کےبچےکو دیکھنے میں مشکل پیش آتی ہے یہا ں تک کے چشمہ بھی پہنا ہو؟ </string>
+    <string name="nc501a"> کوئی مشکل نہیں </string>
+    <string name="nc501b"> کچھ مشکل ہے </string>
+    <string name="nc501c"> بہت مشکل ہے </string>
+    <string name="nc501d"> بلکل نہیں ہے </string>
+    <string name="nc502"> کیا آپ کےبچےکو سننےمیں مشکل پیش آتی ہیں یہاں تک کے کانوں والی مشین لگی ہوئی ہو؟ </string>
+    <string name="nc502a"> کوئی مشکل نہیں </string>
+    <string name="nc502b"> کچھ مشکل ہے </string>
+    <string name="nc502c"> بہت مشکل ہے </string>
+    <string name="nc502d"> بلکل نہیں ہے </string>
+    <string name="nc503"> کیا آپ کےبچےکو چلنے یا چڑھنے کے دوران کوئی مشکلات پیش آتی ہے؟ </string>
+    <string name="nc503a"> کوئی مشکل نہیں </string>
+    <string name="nc503b"> کچھ مشکل ہے </string>
+    <string name="nc503c"> بہت مشکل ہے </string>
+    <string name="nc503d"> بلکل نہیں ہے </string>
+    <string name="nc504"> کیا آپ کےبچےکو یاد رکھنے اور توجہ دینے میں کوئی مشکلات پیش آتی ہے؟ </string>
+    <string name="nc504a"> کوئی مشکل نہیں </string>
+    <string name="nc504b"> کچھ مشکل ہے </string>
+    <string name="nc504c"> بہت مشکل ہے </string>
+    <string name="nc504d"> بلکل نہیں ہے </string>
+    <string name="nc505"> کیا آپ کےبچےکو اپنے دیکھ بھال( مثلاً: ہاتھ منہ دھونا ،وغیرہ) میں مشکل پیش آتی ہے؟ </string>
+    <string name="nc505a"> کوئی مشکل نہیں </string>
+    <string name="nc505b"> کچھ مشکل ہے </string>
+    <string name="nc505c"> بہت مشکل ہے </string>
+    <string name="nc505d"> بلکل نہیں ہے </string>
+    <string name="nc506"> کیااپنی روز مرہ کی زبان استعمال کرتے ہوئے آپ کےبچےکو بات چیت میں (مثلاً کسی کو بات سمجھاتے وقت یا کسی کی بات سمجھتے وقت) دشواری پیش آتی ہے ؟ </string>
+    <string name="nc506a"> کوئی مشکل نہیں </string>
+    <string name="nc506b"> کچھ مشکل ہے </string>
+    <string name="nc506c"> بہت مشکل ہے </string>
+    <string name="nc506d"> بلکل نہیں ہے </string>
 
-  <string name="nw311">آپ کو حمل کے دوران فولاد کی گولیا ں استعمال کرنے کا مشورہ کس نے دیا ؟ </string>
+
+    <string name="nw311">آپ کو حمل کے دوران فولاد کی گولیا ں استعمال کرنے کا مشورہ کس نے دیا ؟ </string>
 
   <string name="nw311a"> گائنا کولوجسٹ </string>
   <string name="nw311b"> کوئی اور ڈاکٹر </string>

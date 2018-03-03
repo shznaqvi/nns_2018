@@ -170,7 +170,6 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:background="@color/pink_100"
                 android:text="@string/nc403sub1"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -237,7 +236,6 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:background="@color/pink_100"
                 android:text="@string/nc403sub2"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -305,7 +303,6 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:background="@color/pink_100"
                 android:text="@string/nc403sub3"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -387,7 +384,6 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:background="@color/pink_100"
                 android:text="@string/nc404sub1"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -444,7 +440,6 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:background="@color/pink_100"
                 android:text="@string/nc404sub2"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -604,7 +599,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+
                     android:background="@color/pink_100"
                     android:text="@string/nc403sub1"
                     android:textAppearance="?android:attr/textAppearanceLarge"
@@ -678,7 +673,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+
                     android:background="@color/pink_100"
                     android:text="@string/nc403sub2"
                     android:textAppearance="?android:attr/textAppearanceLarge"
@@ -752,7 +747,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+
                     android:background="@color/pink_100"
                     android:text="@string/nc403sub3"
                     android:textAppearance="?android:attr/textAppearanceLarge"
@@ -824,7 +819,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+
                     android:background="@color/pink_100"
                     android:text="@string/nc404sub1"
                     android:textAppearance="?android:attr/textAppearanceLarge"
@@ -864,7 +859,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+
                     android:background="@color/pink_100"
                     android:text="@string/nc404sub2"
                     android:textAppearance="?android:attr/textAppearanceLarge"
@@ -1038,7 +1033,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+
                     android:background="@color/pink_100"
                     android:text="@string/nc403sub1"
                     android:textAppearance="?android:attr/textAppearanceLarge"
@@ -1111,7 +1106,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+
                     android:background="@color/pink_100"
                     android:text="@string/nc403sub2"
                     android:textAppearance="?android:attr/textAppearanceLarge"
@@ -1185,7 +1180,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+
                     android:background="@color/pink_100"
                     android:text="@string/nc403sub3"
                     android:textAppearance="?android:attr/textAppearanceLarge"
@@ -1259,7 +1254,6 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
                     android:background="@color/pink_100"
                     android:text="@string/nc404sub1"
                     android:textAppearance="?android:attr/textAppearanceLarge"
@@ -1296,7 +1290,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+
                     android:background="@color/pink_100"
                     android:text="@string/nc404sub2"
                     android:textAppearance="?android:attr/textAppearanceLarge"
@@ -1710,25 +1704,33 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
 
-                <EditText
-                    android:id="@+id/nc420m"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/months"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    android:text='@{nc418a.checked ? nc416.getText.toString : ""}' />
+                    android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/nc420d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/day"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    android:text='@{nc418a.checked ? nc416.getText.toString : ""}' />
+                    <EditText
+                        android:id="@+id/nc420m"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="@string/months"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:text='@{nc418a.checked ? nc420m.getText.toString : ""}' />
+
+                    <EditText
+                        android:id="@+id/nc420d"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="@string/day"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:text='@{nc418a.checked ? nc420d.getText.toString : ""}' />
 
 
+                </LinearLayout>
             </LinearLayout>
 
 

@@ -34,6 +34,10 @@
                 android:text="@string/nb2heading"
                 android:textSize="40sp" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/colorPrimary" />
             <TextView
                 style="@style/sub"
                 android:layout_width="match_parent"
@@ -43,10 +47,7 @@
                 android:text="@string/nb2subHeading" />
 
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/colorPrimary" />
+
 
 
             <!--nw301-->
@@ -265,6 +266,17 @@
                         android:layout_marginBottom="1dp"
                         android:text="@string/nw303f" />
 
+                    <EditText
+                        android:id="@+id/nw303961x"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                        android:hint="@string/nw303f"
+                        android:inputType="text"
+                        android:text='@{nw303f.checked ? nw303961x.getText.toString : ""}'
+                        android:visibility='@{nw303f.checked ? View.VISIBLE : View.GONE}' />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -302,19 +314,17 @@
                         android:layout_marginBottom="1dp"
                         android:text="@string/nw303j" />
 
-                    <!--  <RadioButton
-                          android:id="@+id/nw303k"
-                          android:layout_width="match_parent"
-                          android:layout_height="match_parent"
-                          android:layout_marginBottom="1dp"
-                          android:text="@string/nw303k" />
+                    <EditText
+                        android:id="@+id/nw303962x"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                        android:hint="@string/nw303j"
+                        android:inputType="text"
+                        android:text='@{nw303j.checked ? nw303962x.getText.toString : ""}'
+                        android:visibility='@{nw303j.checked ? View.VISIBLE : View.GONE}' />
 
-                      <RadioButton
-                          android:id="@+id/nw303l"
-                          android:layout_width="match_parent"
-                          android:layout_height="match_parent"
-                          android:layout_marginBottom="1dp"
-                          android:text="@string/nw303l" />-->
 
                     <RadioButton
                         android:id="@+id/nw30396"
@@ -324,13 +334,13 @@
                         android:text="@string/other" />
 
                     <EditText
-                        android:id="@+id/nw30396x"
+                        android:id="@+id/nw303963x"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                         android:hint="@string/nw303k"
-                        android:text='@{nw30396.checked ? nw30396x.getText.toString : ""}'
+                        android:text='@{nw30396.checked ? nw303963x.getText.toString : ""}'
                         android:visibility='@{nw30396.checked ? View.VISIBLE : View.GONE}' />
 
                 </RadioGroup>
