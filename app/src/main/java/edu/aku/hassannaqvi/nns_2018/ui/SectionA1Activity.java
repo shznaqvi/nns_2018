@@ -66,6 +66,7 @@ public class SectionA1Activity extends AppCompatActivity {
 
         MainApp.membersCount.setMembers(mem);
         MainApp.membersCount.setMwra(0);
+        MainApp.membersCount.setWra(0);
 
         MainApp.members_f_m = new ArrayList<>();
         MainApp.respList = new ArrayList<>();

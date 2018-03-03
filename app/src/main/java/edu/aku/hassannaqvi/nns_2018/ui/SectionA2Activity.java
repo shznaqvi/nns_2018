@@ -342,9 +342,9 @@ public class SectionA2Activity extends AppCompatActivity {
                 //if (flag) {
                 //  startActivity(new Intent(this, SectionA2ListActivity.class));
                 //} else {
-                    startActivity(new Intent(this, SectionA2ListActivity.class)
-                            .putExtra("respChecking", binding.respa.isChecked())
-                            .putExtra("respLineNo", MainApp.fmc.getSerialNo()));
+                startActivity(new Intent(this, SectionA2ListActivity.class)
+                        .putExtra("respChecking", binding.respa.isChecked())
+                        .putExtra("respLineNo", MainApp.fmc.getSerialNo()));
                 //}
 
 
@@ -548,7 +548,6 @@ public class SectionA2Activity extends AppCompatActivity {
             sA2.put("na212", mothersMap.get(binding.na212.getSelectedItem().toString() + "_" + mothersSerials.get(mothersList.indexOf(binding.na212.getSelectedItem().toString()) - 1)));
 
 
-
             family.setsA2(String.valueOf(sA2));
 
             //Setting for FamilyMembers List
@@ -575,7 +574,9 @@ public class SectionA2Activity extends AppCompatActivity {
 
             //MWRA
             if ((Age >= 15 && Age <= 49) && family.getna204().equals("2")) {
-                if (!binding.na2mse.isChecked()) {
+                if (binding.na2mse.isChecked()) {
+                    MainApp.membersCount.setWra(MainApp.membersCount.getWra() + 1);
+                } else {
                     MainApp.membersCount.setMwra(MainApp.membersCount.getMwra() + 1);
                 }
                 MainApp.mwra.add(family);

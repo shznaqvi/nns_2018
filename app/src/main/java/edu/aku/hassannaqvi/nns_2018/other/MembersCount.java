@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class MembersCount {
 
-    int mwra;
+    int mwra, wra;
     Map<Integer, Map<Integer, Integer>> members;
 
     public int getMwra() {
@@ -17,6 +17,14 @@ public class MembersCount {
 
     public void setMwra(int mwra) {
         this.mwra = mwra;
+    }
+
+    public int getWra() {
+        return wra;
+    }
+
+    public void setWra(int wra) {
+        this.wra = wra;
     }
 
     public Map<Integer, Map<Integer, Integer>> getMembers() {
@@ -36,6 +44,8 @@ public class MembersCount {
     }
 
     public int getEligibleCount() {
-        return getMembers().get(2).get(1) + getMembers().get(2).get(2) + getMembers().get(3).get(1) + getMembers().get(3).get(2) + getMwra();
+        return getMembers().get(2).get(1) + getMembers().get(2).get(2)
+                + getMembers().get(3).get(1) + getMembers().get(3).get(2)
+                + getMwra() + getWra();
     }
 }

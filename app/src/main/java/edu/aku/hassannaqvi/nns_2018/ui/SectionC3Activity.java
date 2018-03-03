@@ -240,7 +240,7 @@ public class SectionC3Activity extends AppCompatActivity {
             return false;
         }
 
-//        na308
+//        na307
         if (!validatorClass.EmptyRadioButton(this, binding.nc307, binding.nc307b, getString(R.string.nc307))) {
             return false;
         }
@@ -298,10 +298,10 @@ public class SectionC3Activity extends AppCompatActivity {
                 return false;
             }
 
+        }
 //        nc314
-            if (!validatorClass.EmptyRadioButton(this, binding.nc314, binding.nc31498, getString(R.string.nc314))) {
-                return false;
-            }
+        if (!validatorClass.EmptyRadioButton(this, binding.nc314, binding.nc31498, getString(R.string.nc314))) {
+            return false;
         }
 
 //        nc315
