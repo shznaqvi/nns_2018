@@ -53,7 +53,6 @@ public class SectionA2ListActivity extends AppCompatActivity {
         setupViews();
     }
 
-
     public void setupViews() {
 
 //        Setting Counts
@@ -403,4 +402,6 @@ public class SectionA2ListActivity extends AppCompatActivity {
             }, 800);
         }
     }
+
+
 }

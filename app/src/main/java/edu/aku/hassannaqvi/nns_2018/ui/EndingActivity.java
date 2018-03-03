@@ -80,6 +80,11 @@ public class EndingActivity extends AppCompatActivity {
 
         MainApp.fc.setIstatus(binding.istatusa.isChecked() ? "1"
                 : binding.istatusb.isChecked() ? "2"
+                : binding.istatusc.isChecked() ? "3"
+                : binding.istatusd.isChecked() ? "4"
+                : binding.istatuse.isChecked() ? "5"
+                : binding.istatusf.isChecked() ? "6"
+                : binding.istatus96.isChecked() ? "96"
                 : "0");
 
         MainApp.fc.setIstatus88x(binding.istatus96x.getText().toString());

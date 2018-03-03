@@ -419,7 +419,7 @@ public class SectionA2Activity extends AppCompatActivity {
                     return false;
                 }
 
-                if (!validatorClass.RangeTextBox(this, binding.na2aged, 0, 99, getString(R.string.na2age), " years")) {
+                if (!validatorClass.RangeTextBox(this, binding.na2agey, 0, 99, getString(R.string.na2age), " years")) {
                     return false;
                 }
 
@@ -578,11 +578,11 @@ public class SectionA2Activity extends AppCompatActivity {
                 if (!binding.na2mse.isChecked()) {
                     MainApp.membersCount.setMwra(MainApp.membersCount.getMwra() + 1);
                 }
-                // Add data in list
                 MainApp.mwra.add(family);
+                //MainApp.adolescents.add(family);
             }
             //Adolescent
-            else if ((Age >= 10 && Age <= 19) && binding.na2mse.isChecked()) {
+            if ((Age >= 10 && Age <= 19) && binding.na2mse.isChecked()) {
                 memType = new HashMap<>();
                 if (family.getna204().equals("1")) {
                     memType.put(1, Integer.valueOf(mem.get(2).get(1).toString()) + 1);
@@ -614,6 +614,7 @@ public class SectionA2Activity extends AppCompatActivity {
                     MainApp.childUnder5.add(family);
                 } else {
                     MainApp.childUnder5.add(family);
+                    //MainApp.adolescents.add(family);
                 }
 
                 if (Age < 5 && family.getMotherId().equals("00")) {
@@ -679,6 +680,6 @@ public class SectionA2Activity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
     }
 }

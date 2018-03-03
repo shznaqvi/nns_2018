@@ -93,6 +93,11 @@ public class SectionB3Activity extends AppCompatActivity {
         MainApp.endActivityMother(this, this, false);
     }
 
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
+    }
+
 
     public boolean formValidation() {
 

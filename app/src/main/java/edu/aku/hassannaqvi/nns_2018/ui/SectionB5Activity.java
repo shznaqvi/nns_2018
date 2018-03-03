@@ -121,6 +121,12 @@ public class SectionB5Activity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
+    }
+
+
     private boolean ValidateForm() {
 
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
@@ -286,82 +292,82 @@ public class SectionB5Activity extends AppCompatActivity {
         JSONObject sB5 = new JSONObject();
         //       nb501
 //        nb501
-        sB5.put("nb501", binding.nb501a.isChecked() ? "1"
+        sB5.put("nw501", binding.nb501a.isChecked() ? "1"
                 : binding.nb501b.isChecked() ? "2"
                 : "0");
 //      nb502
-        sB5.put("nb502a", binding.nb502a.isChecked() ? "1" : "0");
-        sB5.put("nb502b", binding.nb502b.isChecked() ? "2" : "0");
-        sB5.put("nb502c", binding.nb502c.isChecked() ? "3" : "0");
-        sB5.put("nb502d", binding.nb502d.isChecked() ? "4" : "0");
-        sB5.put("nb502e", binding.nb502e.isChecked() ? "5" : "0");
-        sB5.put("nb502f", binding.nb502f.isChecked() ? "6" : "0");
-        sB5.put("nb502g", binding.nb502g.isChecked() ? "7" : "0");
-        sB5.put("nb50296", binding.nb50296.isChecked() ? "96" : "0");
-        sB5.put("nb50296x", binding.nb50296x.getText().toString());
+        sB5.put("nw502a", binding.nb502a.isChecked() ? "1" : "0");
+        sB5.put("nw502b", binding.nb502b.isChecked() ? "2" : "0");
+        sB5.put("nw502c", binding.nb502c.isChecked() ? "3" : "0");
+        sB5.put("nw502d", binding.nb502d.isChecked() ? "4" : "0");
+        sB5.put("nw502e", binding.nb502e.isChecked() ? "5" : "0");
+        sB5.put("nw502f", binding.nb502f.isChecked() ? "6" : "0");
+        sB5.put("nw502g", binding.nb502g.isChecked() ? "7" : "0");
+        sB5.put("nw50296", binding.nb50296.isChecked() ? "96" : "0");
+        sB5.put("nw50296x", binding.nb50296x.getText().toString());
 
 //      nb503
-        sB5.put("nb503", binding.nb503a.isChecked() ? "1"
+        sB5.put("nw503", binding.nb503a.isChecked() ? "1"
                 : binding.nb503b.isChecked() ? "2"
                 : binding.nb503c.isChecked() ? "3"
                 : binding.nb50398.isChecked() ? "98"
                 : "0");
-        sB5.put("nb503hr", binding.nb503hr.getText().toString());
-        sB5.put("nb503d", binding.nb503d.getText().toString());
-        sB5.put("nb503w", binding.nb503w.getText().toString());
+        sB5.put("nw503hr", binding.nb503hr.getText().toString());
+        sB5.put("nw503d", binding.nb503d.getText().toString());
+        sB5.put("nw503w", binding.nb503w.getText().toString());
 
 //        nb504
-        sB5.put("nb504", binding.nb504.getText().toString());
+        sB5.put("nw504", binding.nb504.getText().toString());
 
 //        nb505
-        sB5.put("nb505a", binding.nb505a.isChecked() ? "1" : "0");
-        sB5.put("nb505b", binding.nb505b.isChecked() ? "2" : "0");
-        sB5.put("nb505c", binding.nb505c.isChecked() ? "3" : "0");
-        sB5.put("nb505d", binding.nb505d.isChecked() ? "4" : "0");
-        sB5.put("nb505e", binding.nb505e.isChecked() ? "5" : "0");
-        sB5.put("nb505f", binding.nb505f.isChecked() ? "6" : "0");
-        sB5.put("nb505g", binding.nb505g.isChecked() ? "7" : "0");
-        sB5.put("nb505h", binding.nb505h.isChecked() ? "8" : "0");
-        sB5.put("nb50596", binding.nb50596.isChecked() ? "96" : "0");
-        sB5.put("nb50596x", binding.nb50596x.getText().toString());
+        sB5.put("nw505a", binding.nb505a.isChecked() ? "1" : "0");
+        sB5.put("nw505b", binding.nb505b.isChecked() ? "2" : "0");
+        sB5.put("nw505c", binding.nb505c.isChecked() ? "3" : "0");
+        sB5.put("nw505d", binding.nb505d.isChecked() ? "4" : "0");
+        sB5.put("nw505e", binding.nb505e.isChecked() ? "5" : "0");
+        sB5.put("nw505f", binding.nb505f.isChecked() ? "6" : "0");
+        sB5.put("nw505g", binding.nb505g.isChecked() ? "7" : "0");
+        sB5.put("nw505h", binding.nb505h.isChecked() ? "8" : "0");
+        sB5.put("nw50596", binding.nb50596.isChecked() ? "96" : "0");
+        sB5.put("nw50596x", binding.nb50596x.getText().toString());
 
 //        nb506
-        sB5.put("nb506", binding.nb506a.isChecked() ? "1"
+        sB5.put("nw506", binding.nb506a.isChecked() ? "1"
                 : binding.nb506b.isChecked() ? "2"
                 : "0");
 //        nb507
-        sB5.put("nb507a", binding.nb507a.isChecked() ? "1" : "0");
-        sB5.put("nb507b", binding.nb507b.isChecked() ? "2" : "0");
-        sB5.put("nb507c", binding.nb507c.isChecked() ? "3" : "0");
-        sB5.put("nb507d", binding.nb507d.isChecked() ? "4" : "0");
-        sB5.put("nb507e", binding.nb507e.isChecked() ? "5" : "0");
-        sB5.put("nb507f", binding.nb507f.isChecked() ? "6" : "0");
-        sB5.put("nb507g", binding.nb507g.isChecked() ? "7" : "0");
-        sB5.put("nb50796", binding.nb50796.isChecked() ? "96" : "0");
-        sB5.put("nb50796x", binding.nb50796x.getText().toString());
+        sB5.put("nw507a", binding.nb507a.isChecked() ? "1" : "0");
+        sB5.put("nw507b", binding.nb507b.isChecked() ? "2" : "0");
+        sB5.put("nw507c", binding.nb507c.isChecked() ? "3" : "0");
+        sB5.put("nw507d", binding.nb507d.isChecked() ? "4" : "0");
+        sB5.put("nw507e", binding.nb507e.isChecked() ? "5" : "0");
+        sB5.put("nw507f", binding.nb507f.isChecked() ? "6" : "0");
+        sB5.put("nw507g", binding.nb507g.isChecked() ? "7" : "0");
+        sB5.put("nw50796", binding.nb50796.isChecked() ? "96" : "0");
+        sB5.put("nw50796x", binding.nb50796x.getText().toString());
 
 
 //        nb508
-        sB5.put("nb508", binding.nb508a.isChecked() ? "1"
+        sB5.put("nw508", binding.nb508a.isChecked() ? "1"
                 : binding.nb508b.isChecked() ? "2"
                 : binding.nb508c.isChecked() ? "3"
                 : binding.nb50898.isChecked() ? "98"
                 : "0");
-        sB5.put("nb508hr", binding.nb508hr.getText().toString());
-        sB5.put("nb508d", binding.nb508d.getText().toString());
-        sB5.put("nb508w", binding.nb508w.getText().toString());
+        sB5.put("nw508hr", binding.nb508hr.getText().toString());
+        sB5.put("nw508d", binding.nb508d.getText().toString());
+        sB5.put("nw508w", binding.nb508w.getText().toString());
 
 //        nb509
-        sB5.put("nb509", binding.nb509.getText().toString());
+        sB5.put("nw509", binding.nb509.getText().toString());
 
 //        nb510
-        sB5.put("nb510a", binding.nb510a.isChecked() ? "1" : "0");
-        sB5.put("nb510b", binding.nb510b.isChecked() ? "2" : "0");
-        sB5.put("nb510c", binding.nb510c.isChecked() ? "3" : "0");
-        sB5.put("nb510d", binding.nb510d.isChecked() ? "4" : "0");
-        sB5.put("nb510e", binding.nb510e.isChecked() ? "5" : "0");
-        sB5.put("nb51096", binding.nb51096.isChecked() ? "96" : "0");
-        sB5.put("nb51096x", binding.nb51096x.getText().toString());
+        sB5.put("nw510a", binding.nb510a.isChecked() ? "1" : "0");
+        sB5.put("nw510b", binding.nb510b.isChecked() ? "2" : "0");
+        sB5.put("nw510c", binding.nb510c.isChecked() ? "3" : "0");
+        sB5.put("nw510d", binding.nb510d.isChecked() ? "4" : "0");
+        sB5.put("nw510e", binding.nb510e.isChecked() ? "5" : "0");
+        sB5.put("nw51096", binding.nb51096.isChecked() ? "96" : "0");
+        sB5.put("nw51096x", binding.nb51096x.getText().toString());
 
 
         MainApp.mc.setsB5(String.valueOf(sB5));

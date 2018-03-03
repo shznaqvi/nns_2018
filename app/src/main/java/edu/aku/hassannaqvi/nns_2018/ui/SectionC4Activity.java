@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -206,9 +207,16 @@ public class SectionC4Activity extends Activity {
             }
         });
 
+
         //Get Intent
         selectedChild = (FamilyMembersContract) getIntent().getSerializableExtra("selectedChild");
 
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
     }
 
 
@@ -265,15 +273,15 @@ public class SectionC4Activity extends Activity {
 
             if (binding.nc402a.isChecked()) {
 //        nc403
-                if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc4039603, getString(R.string.nc403))) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc403a, getString(R.string.nc403))) {
                     return false;
                 }
 //        nc4039601
-                if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc4039603, binding.nc4039601x, getString(R.string.nc403))) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc4039601, binding.nc4039601x, getString(R.string.nc403))) {
                     return false;
                 }
 //        nc4039602
-                if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc4039603, binding.nc4039602x, getString(R.string.nc403))) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc4039601, binding.nc4039602x, getString(R.string.nc403))) {
                     return false;
                 }
 //        nc4039603
@@ -368,8 +376,59 @@ public class SectionC4Activity extends Activity {
         }
 
 //        nc414
-        return validatorClass.EmptyRadioButton(this, binding.nc414, binding.nc41498, getString(R.string.nc414));
+        if (!validatorClass.EmptyRadioButton(this, binding.nc414, binding.nc41498, getString(R.string.nc414))) {
+            return false;
+        }
+//    nc415
+        if (!validatorClass.EmptyRadioButton(this, binding.nc415, binding.nc41598, getString(R.string.nc415))) {
+            return false;
+        }
+
+        if (binding.nc415a.isChecked()) {
+            if (!validatorClass.EmptyTextBox(this, binding.nc416, getString(R.string.nc416))) {
+                return false;
+            }
+            if (!validatorClass.EmptyRadioButton(this, binding.nc417, binding.nc417a, getString(R.string.nc417))) {
+                return false;
+            }
+        }
+        if (!validatorClass.EmptyRadioButton(this, binding.nc418, binding.nc418a, getString(R.string.nc418))) {
+            return false;
+        }
+        if (binding.nc418a.isChecked()) {
+            if (!validatorClass.EmptyRadioButton(this, binding.nc419, binding.nc419a, getString(R.string.nc419))) {
+                return false;
+            }
+            if (!validatorClass.EmptyTextBox(this, binding.nc420m, getString(R.string.months))) {
+                return false;
+            }
+            if (!validatorClass.EmptyTextBox(this, binding.nc420d, getString(R.string.day))) {
+                return false;
+            }
+            if (!validatorClass.RangeTextBox(this, binding.nc420m, 0, 11, getString(R.string.nc420), " months")) {
+                return false;
+            }
+
+            if (!validatorClass.RangeTextBox(this, binding.nc420d, 0, 29, getString(R.string.nc420), " days")) {
+                return false;
+            }
+
+            if (binding.nc420m.getText().toString().equals("0") && binding.nc420d.getText().toString().equals("0")) {
+                Toast.makeText(this, "ERROR(invalid): " + "All can not be zero" + getString(R.string.nc420), Toast.LENGTH_LONG).show();
+                binding.nc420m.setError("All can not be zero");
+                binding.nc420d.setError("All can not be zero");
+                Log.i(SectionC4Activity.class.getSimpleName(), "nw420" + ": This data is Required!");
+                return false;
+            } else {
+                binding.nc420m.setError(null);
+                binding.nc420d.setError(null);
+            }
+
+        }
+        return true;
     }
+
+
 
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
@@ -542,6 +601,38 @@ public class SectionC4Activity extends Activity {
                 : binding.nc414b.isChecked() ? "2"
                 : binding.nc41498.isChecked() ? "98"
                 : "0");
+//        nc415
+        sC4.put("nc415", binding.nc415a.isChecked() ? "1"
+                : binding.nc415b.isChecked() ? "2"
+                : "0");
+
+//        nc416
+        sC4.put("nc416", binding.nc416.getText().toString());
+
+//        nc417
+        sC4.put("nc417", binding.nc417a.isChecked() ? "1"
+                : binding.nc417b.isChecked() ? "2"
+                : binding.nc417c.isChecked() ? "3"
+                : binding.nc417d.isChecked() ? "4"
+                : binding.nc417e.isChecked() ? "5"
+                : "0");
+//        nc418
+        sC4.put("nc418", binding.nc418a.isChecked() ? "1"
+                : binding.nc418b.isChecked() ? "2"
+                : "0");
+//        nc419
+        sC4.put("nc419", binding.nc419a.isChecked() ? "1"
+                : binding.nc419b.isChecked() ? "2"
+                : binding.nc419c.isChecked() ? "3"
+                : binding.nc419d.isChecked() ? "4"
+                : binding.nc419e.isChecked() ? "5"
+                : "0");
+//        nc420m
+        sC4.put("nc420m", binding.nc420m.getText().toString());
+
+//        nc420d
+
+        sC4.put("nc420d", binding.nc420d.getText().toString());
 
         MainApp.cc.setsC4(String.valueOf(sC4));
 

@@ -98,6 +98,12 @@ public class SectionA8AActivity extends Activity {
 
     }
 
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
+    }
+
     public void BtnContinue() {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
@@ -118,8 +124,18 @@ public class SectionA8AActivity extends Activity {
 
                     if (MainApp.mwra.size() > 0) {
                         startActivity(new Intent(this, SectionB1Activity.class));
+                    } else if (MainApp.childUnder5.size() > 0) {
+                        if (MainApp.childUnder5.size() == MainApp.childNA.size()) {
+                            SectionC1Activity.isNA = true;
+                            startActivity(new Intent(this, SectionC1Activity.class));
+                        } else {
+                            SectionC1Activity.isNA = false;
+                            startActivity(new Intent(this, SectionC1Activity.class));
+                        }
+                    } else if (MainApp.adolescents.size() > 0) {
+                        startActivity(new Intent(this, SectionA3Activity.class));
                     } else {
-                        startActivity(new Intent(this, SectionC1Activity.class));
+                        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
                     }
                 } else {
 
@@ -185,7 +201,15 @@ public class SectionA8AActivity extends Activity {
             return false;
         }
 
-        return validatorClass.EmptyTextBox(this, bi.na8a06, getString(R.string.na8a06));
+        if (!validatorClass.RangeTextBox(this, bi.na8a05, 1000, 99999, getString(R.string.na8a05), " Rupees")) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyTextBox(this, bi.na8a06, getString(R.string.na8a06))) {
+            return false;
+        }
+
+        return validatorClass.RangeTextBox(this, bi.na8a05, 0, Integer.valueOf(bi.na8a05.getText().toString()), getString(R.string.na8a06), " Rupees");
     }
 
     private void SaveDraft() throws JSONException {
@@ -259,7 +283,6 @@ public class SectionA8AActivity extends Activity {
         //return true;
 
     }
-
 
 
 }

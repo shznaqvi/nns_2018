@@ -44,12 +44,18 @@ public class SectionB6Activity extends AppCompatActivity {
 
                 finish();
 
-                if (MainApp.childUnder5.size() == MainApp.childNA.size()) {
+                if (MainApp.childUnder5.size() > 0) {
+                    if (MainApp.childUnder5.size() == MainApp.childNA.size()) {
+                        startActivity(new Intent(this, MotherEndingActivity.class)
+                                .putExtra("checkingFlag", true)
+                                .putExtra("complete", true));
+                    } else {
+                        startActivity(new Intent(this, SectionC1Activity.class));
+                    }
+                } else {
                     startActivity(new Intent(this, MotherEndingActivity.class)
                             .putExtra("checkingFlag", true)
                             .putExtra("complete", true));
-                } else {
-                    startActivity(new Intent(this, SectionC1Activity.class));
                 }
 
             } else {
@@ -65,6 +71,11 @@ public class SectionB6Activity extends AppCompatActivity {
 
         MainApp.endActivityMother(this, this, false);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
     }
 
     private boolean ValidateForm() {

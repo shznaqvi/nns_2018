@@ -68,24 +68,22 @@ public class MotherEndingActivity extends AppCompatActivity {
             if (UpdateDB()) {
 
                 finish();
-
-
                 //if (flagMotherChild) {
-                    if (SectionB1Activity.WRAcounter == MainApp.mwra.size()) {
-                        if (MainApp.childNA.size() > 0) {
-                            SectionC1Activity.isNA = true;
-                            startActivity(new Intent(this, SectionC1Activity.class));
-                        } else {
-                            //startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
-
-                            startActivity(new Intent(this, SectionA3Activity.class));
-                        }
-
+                if (SectionB1Activity.WRAcounter == MainApp.mwra.size()) {
+                    if (MainApp.childNA.size() > 0) {
+                        SectionC1Activity.isNA = true;
+                        startActivity(new Intent(this, SectionC1Activity.class));
+                    } else if (MainApp.adolescents.size() > 0) {
+                        startActivity(new Intent(this, SectionA3Activity.class));
                     } else {
-                        startActivity(new Intent(this, SectionB1Activity.class)
-                                .putExtra("mwraFlag", true)
-                                .putExtra("wraName", SectionB1Activity.wraName));
+                        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
                     }
+
+                } else {
+                    startActivity(new Intent(this, SectionB1Activity.class)
+                            .putExtra("mwraFlag", true)
+                            .putExtra("wraName", SectionB1Activity.wraName));
+                }
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -93,13 +91,14 @@ public class MotherEndingActivity extends AppCompatActivity {
         }
     }
 
+
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
 
         MainApp.mc.setMstatus(binding.istatusa.isChecked() ? "1"
-                    : binding.istatusb.isChecked() ? "2"
-                    : "0");
+                : binding.istatusb.isChecked() ? "2"
+                : "0");
 
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();

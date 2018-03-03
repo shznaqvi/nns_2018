@@ -59,6 +59,12 @@ public class SectionC5Activity extends AppCompatActivity {
 
     }
 
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
+    }
+
     public void BtnEnd() {
 
         MainApp.endChildActivity(this, this, false);
@@ -67,6 +73,12 @@ public class SectionC5Activity extends AppCompatActivity {
     private boolean formValidation() {
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
+        if (!validatorClass.EmptyRadioButton(this, bi.nc501, bi.nc501a, getString(R.string.nc501))) {
+            return false;
+        }
+        if (!validatorClass.EmptyRadioButton(this, bi.nc502, bi.nc502a, getString(R.string.nc502))) {
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, bi.nc503, bi.nc503a, getString(R.string.nc503))) {
             return false;
         }
@@ -76,13 +88,7 @@ public class SectionC5Activity extends AppCompatActivity {
         if (!validatorClass.EmptyRadioButton(this, bi.nc505, bi.nc505a, getString(R.string.nc505))) {
             return false;
         }
-        if (!validatorClass.EmptyRadioButton(this, bi.nc506, bi.nc506a, getString(R.string.nc506))) {
-            return false;
-        }
-        if (!validatorClass.EmptyRadioButton(this, bi.nc507, bi.nc507a, getString(R.string.nc507))) {
-            return false;
-        }
-        return validatorClass.EmptyRadioButton(this, bi.nc508, bi.nc508a, getString(R.string.nc508));
+        return validatorClass.EmptyRadioButton(this, bi.nc506, bi.nc506a, getString(R.string.nc506));
 
     }
 
@@ -96,6 +102,18 @@ public class SectionC5Activity extends AppCompatActivity {
 //        nc302
         sC5.put("nc502Serial", selectedChild.getSerialNo());
 
+//        nc501
+        sC5.put("nc501", bi.nc501a.isChecked() ? "1"
+                : bi.nc501b.isChecked() ? "2"
+                : bi.nc501c.isChecked() ? "3"
+                : bi.nc501d.isChecked() ? "4"
+                : "0");
+//        nc502
+        sC5.put("nc502", bi.nc502a.isChecked() ? "1"
+                : bi.nc502b.isChecked() ? "2"
+                : bi.nc502c.isChecked() ? "3"
+                : bi.nc502d.isChecked() ? "4"
+                : "0");
 //        nc503
         sC5.put("nc503", bi.nc503a.isChecked() ? "1"
                 : bi.nc503b.isChecked() ? "2"
@@ -119,18 +137,6 @@ public class SectionC5Activity extends AppCompatActivity {
                 : bi.nc506b.isChecked() ? "2"
                 : bi.nc506c.isChecked() ? "3"
                 : bi.nc506d.isChecked() ? "4"
-                : "0");
-//        nc507
-        sC5.put("nc507", bi.nc507a.isChecked() ? "1"
-                : bi.nc507b.isChecked() ? "2"
-                : bi.nc507c.isChecked() ? "3"
-                : bi.nc507d.isChecked() ? "4"
-                : "0");
-//        nc508
-        sC5.put("nc508", bi.nc508a.isChecked() ? "1"
-                : bi.nc508b.isChecked() ? "2"
-                : bi.nc508c.isChecked() ? "3"
-                : bi.nc508d.isChecked() ? "4"
                 : "0");
 
         MainApp.cc.setsC5(String.valueOf(sC5));

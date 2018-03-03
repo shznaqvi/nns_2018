@@ -32,7 +32,7 @@ public class SectionC1Activity extends AppCompatActivity {
     public static int counterPerMom = 0;
     public static int counterPerNA = 0;
     public static String selectedChildName = "";
-    public static boolean isNA = false;
+    public static boolean isNA;
     static List<String> childU5;
     static Map<String, FamilyMembersContract> childMap;
     Map<String, String> respMap;
@@ -108,6 +108,12 @@ public class SectionC1Activity extends AppCompatActivity {
         // setup spinner
         binding.nc101.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, childU5));
         binding.resp.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, respName));
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
     }
 
     public void BtnContinue() {
