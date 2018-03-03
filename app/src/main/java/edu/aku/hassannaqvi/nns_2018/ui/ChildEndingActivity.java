@@ -79,7 +79,6 @@ public class ChildEndingActivity extends AppCompatActivity {
 
                     if (SectionC1Activity.counter == SectionC1Activity.counterPerNA) {
                         SectionC1Activity.isNA = false;
-                        //startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
                         startActivity(new Intent(this, SectionA3Activity.class));
 
                     } else {
@@ -88,7 +87,6 @@ public class ChildEndingActivity extends AppCompatActivity {
                                 .putExtra("childFlag", true)
                                 .putExtra("name", SectionC1Activity.selectedChildName));
                     }
-                    //}
                 }
 
 

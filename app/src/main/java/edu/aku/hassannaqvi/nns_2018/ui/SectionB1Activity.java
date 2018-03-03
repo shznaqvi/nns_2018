@@ -78,7 +78,7 @@ public class SectionB1Activity extends Activity {
 
             for (byte i = 0; i < MainApp.mwra.size(); i++) {
                 wraMap.put(MainApp.mwra.get(i).getName(), MainApp.mwra.get(i));
-                lstMwra.add(MainApp.mwra.get(i).getName());
+                lstMwra.add(MainApp.mwra.get(i).getName() + "-" + MainApp.mwra.get(i).getSerialNo());
 
             }
 
@@ -89,7 +89,7 @@ public class SectionB1Activity extends Activity {
         WRAcounter++;
 
         for (FamilyMembersContract fmc : MainApp.respList) {
-            respName.add(fmc.getName());
+            respName.add(fmc.getName() + "-" + fmc.getSerialNo());
             respMap.put(fmc.getName(), fmc.getSerialNo());
         }
 
@@ -464,6 +464,7 @@ public class SectionB1Activity extends Activity {
                         if (!validatorClass.EmptyTextBox(this, bi.nw208, getString(R.string.nw208))) {
                             return false;
                         }
+
 
                         if (Integer.valueOf(bi.nw208.getText().toString()) > 0) {
 

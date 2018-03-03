@@ -86,8 +86,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:hint="@string/na3w"
-                android:inputType="number"
-                android:maxLength="5" />
+                android:inputType="numberDecimal"
+                android:maxLength="6" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -104,8 +104,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:hint="@string/na3h"
-                android:inputType="number"
-                android:maxLength="5" />
+                android:inputType="numberDecimal"
+                android:maxLength="6" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -122,8 +122,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:hint="@string/na3muac"
-                android:inputType="number"
-                android:maxLength="5" />
+                android:inputType="numberDecimal"
+                android:maxLength="6" />
 
 
             <LinearLayout

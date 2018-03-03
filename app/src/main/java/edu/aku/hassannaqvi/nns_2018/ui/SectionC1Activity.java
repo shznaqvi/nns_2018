@@ -70,22 +70,16 @@ public class SectionC1Activity extends AppCompatActivity {
             childU5.add("....");
 
             if (isNA) {
-                childU5 = new ArrayList<>();
-                childMap = new HashMap<>();
-
-                childU5.add("....");
-
                 for (FamilyMembersContract fmc : MainApp.childNA) {
                     childMap.put(fmc.getName(), fmc);
-                    childU5.add(fmc.getName());
+                    childU5.add(fmc.getName() + "-" + fmc.getSerialNo());
                     counterPerNA++;
                 }
-
             } else {
                 for (FamilyMembersContract fmc : MainApp.childUnder5) {
                     if (fmc.getMotherId().equals(MainApp.mc.getB1SerialNo())) {
                         childMap.put(fmc.getName(), fmc);
-                        childU5.add(fmc.getName());
+                        childU5.add(fmc.getName() + "-" + fmc.getSerialNo());
                         counterPerMom++;
                     }
                 }
@@ -94,7 +88,7 @@ public class SectionC1Activity extends AppCompatActivity {
 
 
         for (FamilyMembersContract fmc : MainApp.respList) {
-            respName.add(fmc.getName());
+            respName.add(fmc.getName() + "-" + fmc.getSerialNo());
             respMap.put(fmc.getName(), fmc.getSerialNo());
         }
 

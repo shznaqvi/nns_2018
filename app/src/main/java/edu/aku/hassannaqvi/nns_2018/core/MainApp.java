@@ -75,7 +75,6 @@ public class MainApp extends Application {
     public static MWRAContract mc;
     public static OutcomeContract oc;
     public static ChildContract cc;
-    public static EligibleMembersContract ec;
     public static SerialContract sc;
     public static RecipientsContract rc;
     public static MembersCount membersCount;

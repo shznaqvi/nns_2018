@@ -44,18 +44,12 @@ public class SectionB6Activity extends AppCompatActivity {
 
                 finish();
 
-                if (MainApp.childUnder5.size() > 0) {
-                    if (MainApp.childUnder5.size() == MainApp.childNA.size()) {
+                if (MainApp.childUnder5.size() < 1) {
                         startActivity(new Intent(this, MotherEndingActivity.class)
                                 .putExtra("checkingFlag", true)
                                 .putExtra("complete", true));
-                    } else {
-                        startActivity(new Intent(this, SectionC1Activity.class));
-                    }
                 } else {
-                    startActivity(new Intent(this, MotherEndingActivity.class)
-                            .putExtra("checkingFlag", true)
-                            .putExtra("complete", true));
+                    startActivity(new Intent(this, SectionC1Activity.class));
                 }
 
             } else {

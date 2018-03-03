@@ -432,7 +432,7 @@ public class SectionB2Activity extends Activity {
                 return false;
             }
 
-            if (bi.nw319m.getText().toString().equals("0") && bi.nw319d.getText().toString().equals("0")) {
+            if (bi.nw319m.getText().toString().equals("0") && bi.nw319d.getText().toString().equals(" 0")) {
                 Toast.makeText(this, "ERROR(invalid): " + "All can not be zero" + getString(R.string.nw319), Toast.LENGTH_LONG).show();
                 bi.nw319m.setError("All can not be zero");
                 bi.nw319d.setError("All can not be zero");

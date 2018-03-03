@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -276,6 +277,18 @@ public class SectionA2Activity extends AppCompatActivity {
             }
         });
 
+        binding.na2edu.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.na2edua) {
+                    binding.na2occf.setEnabled(false);
+                    binding.na2occ.clearCheck();
+                } else {
+                    binding.na2occf.setEnabled(true);
+                }
+            }
+        });
+
 //        Getting Members with types
         mem = MainApp.membersCount.getMembers();
 
@@ -442,6 +455,9 @@ public class SectionA2Activity extends AppCompatActivity {
                 }
 
             }
+            if (!validatorClass.EmptyRadioButton(this, binding.na2ms, binding.na2msa, getString(R.string.na2ms))) {
+                return false;
+            }
 
             if (!validatorClass.EmptyRadioButton(this, binding.na2edu, binding.na2edua, getString(R.string.na2edu))) {
                 return false;
@@ -456,9 +472,6 @@ public class SectionA2Activity extends AppCompatActivity {
                 return false;
             }
 
-            if (!validatorClass.EmptyRadioButton(this, binding.na2ms, binding.na2msa, getString(R.string.na2ms))) {
-                return false;
-            }
 
             if (!validatorClass.EmptyRadioButton(this, binding.na210, binding.na210a, getString(R.string.na210))) {
                 return false;
@@ -523,7 +536,7 @@ public class SectionA2Activity extends AppCompatActivity {
             sA2.put("na204", family.getna204());
 
             sA2.put("na2dob", binding.na2dob.getText().toString());
-            sA2.put("na20598", binding.na20598.getText().toString());
+            sA2.put("na20598", binding.na20598.isChecked() ? "98" : "0");
 
             sA2.put("na206y", binding.na2agey.getText().toString());
             sA2.put("na206m", binding.na2agem.getText().toString());
