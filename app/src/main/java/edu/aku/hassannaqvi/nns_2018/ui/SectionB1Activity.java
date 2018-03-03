@@ -465,6 +465,7 @@ public class SectionB1Activity extends Activity {
                             return false;
                         }
 
+
                         if (Integer.valueOf(bi.nw208.getText().toString()) > 0) {
 
                             if (!validatorClass.EmptyTextBox(this, bi.nw209, getString(R.string.nw209))) {
