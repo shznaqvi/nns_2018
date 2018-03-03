@@ -70,17 +70,11 @@ public class SectionC1Activity extends AppCompatActivity {
             childU5.add("....");
 
             if (isNA) {
-                childU5 = new ArrayList<>();
-                childMap = new HashMap<>();
-
-                childU5.add("....");
-
                 for (FamilyMembersContract fmc : MainApp.childNA) {
                     childMap.put(fmc.getName(), fmc);
                     childU5.add(fmc.getName());
                     counterPerNA++;
                 }
-
             } else {
                 for (FamilyMembersContract fmc : MainApp.childUnder5) {
                     if (fmc.getMotherId().equals(MainApp.mc.getB1SerialNo())) {
