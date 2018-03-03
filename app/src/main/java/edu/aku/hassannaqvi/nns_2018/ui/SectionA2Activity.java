@@ -579,7 +579,7 @@ public class SectionA2Activity extends AppCompatActivity {
                     MainApp.membersCount.setMwra(MainApp.membersCount.getMwra() + 1);
                 }
                 MainApp.mwra.add(family);
-                MainApp.adolescents.add(family);
+                //MainApp.adolescents.add(family);
             }
             //Adolescent
             if ((Age >= 10 && Age <= 19) && binding.na2mse.isChecked()) {
@@ -614,7 +614,7 @@ public class SectionA2Activity extends AppCompatActivity {
                     MainApp.childUnder5.add(family);
                 } else {
                     MainApp.childUnder5.add(family);
-                    MainApp.adolescents.add(family);
+                    //MainApp.adolescents.add(family);
                 }
 
                 if (Age < 5 && family.getMotherId().equals("00")) {
