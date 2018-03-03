@@ -60,7 +60,7 @@ public class SectionA8AActivity extends Activity {
 
             for (FamilyMembersContract fmc : MainApp.all_members) {
                 recpmap.put(fmc.getName() + "_" + fmc.getSerialNo(), fmc);
-                recpNames.add(fmc.getName());
+                recpNames.add(fmc.getName() + "-" + fmc.getSerialNo());
                 recpSerial.add(fmc.getSerialNo());
             }
 
