@@ -309,7 +309,7 @@ public class SectionC3Activity extends AppCompatActivity {
             return false;
         }
 
-        if (!binding.nc315b.isChecked()) {
+        if (!binding.nc315a.isChecked()) {
 //        nc316
             if (!validatorClass.EmptyRadioButton(this, binding.nc316, binding.nc31698, getString(R.string.nc316))) {
                 return false;
