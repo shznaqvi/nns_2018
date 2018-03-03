@@ -582,7 +582,7 @@ public class SectionA2Activity extends AppCompatActivity {
                 MainApp.mwra.add(family);
             }
             //Adolescent
-            else if ((Age >= 10 && Age <= 19) && binding.na2mse.isChecked()) {
+            if ((Age >= 10 && Age <= 19) && binding.na2mse.isChecked()) {
                 memType = new HashMap<>();
                 if (family.getna204().equals("1")) {
                     memType.put(1, Integer.valueOf(mem.get(2).get(1).toString()) + 1);
