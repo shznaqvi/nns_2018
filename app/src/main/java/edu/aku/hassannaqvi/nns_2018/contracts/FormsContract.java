@@ -12,7 +12,7 @@ import org.json.JSONObject;
 
 public class FormsContract {
 
-    private final String projectName = "DMU-TOICSCREENING";
+    private final String projectName = "NNS-2018";
     //private final String surveyType = "SN";
     private String _ID = "";
     private String _UID = "";
@@ -29,7 +29,6 @@ public class FormsContract {
     private String sB4 = "";
     private String count = "";
     private String respLineNo = "";
-
 
 
     private String gpsLat = "";

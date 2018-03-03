@@ -19,13 +19,13 @@
     <string name="addMember"> افراد کا اندراج </string>
     <string name="istatus">انٹروہو کا نتیجہ</string>
     <string name="istatusa"> مکمل</string>
-  <string name="istatusb">گھرانے کا کوئی فرد یا باصلاحیت جواب دہندہ گھر پر موجود نہیں تھا</string>
-  <string name="istatusc">گھرانہ کے تمام افراد لمبے عرصے کے لیے گھر سے غیر حاضر تھے</string>
-  <string name="istatusd">انکار کردیا</string>
-  <string name="istatuse">خالی گھر/گھر کا پتہ نہ تھا</string>
-  <string name="istatusf">گھر نہیں ملا</string>
+    <string name="istatusb">گھرانے کا کوئی فرد یا باصلاحیت جواب دہندہ گھر پر موجود نہیں تھا</string>
+    <string name="istatusc">گھرانہ کے تمام افراد لمبے عرصے کے لیے گھر سے غیر حاضر تھے</string>
+    <string name="istatusd">انکار کردیا</string>
+    <string name="istatuse">خالی گھر/گھر کا پتہ نہ تھا</string>
+    <string name="istatusf">گھر نہیں ملا</string>
 
-  <!-- String related to section headings -->
+    <!-- String related to section headings -->
 
 
     <!-- Strings that are fixed for all apps -->
@@ -55,7 +55,7 @@
     <!-- Strings related to Sections Below -->
     <string name="na1heading"> HOUSEHOLD INFORMATION </string>
     <string name="na101"> جغرافیائی علاقہ </string>
-  <string name="na102"> اینومریشن بلاک نمبر </string>
+    <string name="na102"> اینومریشن بلاک نمبر </string>
     <string name="na101a"> صوبہ </string>
     <string name="na101b"> ضلع </string>
     <string name="na101c"> تحصیل/تعلُقہ </string>
@@ -71,8 +71,8 @@
     <string name="na109"> جواب دہندہ کی تعلیم </string>
     <string name="na110"> جواب دہندہ کا پیشہ </string>
     <string name="na111"> یہ گھر کس قسم کے نمونےکے لیے منتخب کیاگیا ہے؟ </string>
-  <string name="na11101blood"> خون کے نمونے لینے کے لیے </string>
-  <string name="na11101urine"> پیشاب  کے نمونے لینے کے لیے </string>
+    <string name="na11101blood"> خون کے نمونے لینے کے لیے </string>
+    <string name="na11101urine"> پیشاب  کے نمونے لینے کے لیے </string>
     <string name="na11102water"> پانی کے معیار کو جانچنے کے لیے </string>
     <string name="na112info"> سوال کنندہ اجازت نامہ جواب دہندہ سمجھانے کے لیے پڑھ کر سنائے گا اور مطالعہ کا مقصد اور انٹرویو کے لیے درکار وقت کے متعلق آگا ہ کرےگا ۔ (سوال کنندہ کو علیحدہ سے اجازت نامہ کی شیٹ مہیا کی جائےگی) </string>
     <string name="na112"> کیااجازت لی گئی ؟ </string>
@@ -93,28 +93,28 @@
     <string name="na202Info"> براہ مہربانی پہلے مجھے ان سب کانام بتائیں جو عام طور پر یہاں رہتے ہیں خاندان کے سربراہ سے شروع کریں </string>
     <string name="na202"> نام </string>
 
-  <string name="na203"> گھر کے سربراہ سے رشتہ ؟ </string>
-  <string name="na203a">سربراہ </string>
-  <string name="na203b">خاوند/ بیوی </string>
-  <string name="na203c">بیٹا / بیٹی </string>
-  <string name="na203d">داماد / بہو </string>
-  <string name="na203e">پوتا / پوتی / نواسا / نواسی</string>
-  <string name="na203f">والدین </string>
-  <string name="na203g">ساس / سسر </string>
-  <string name="na203h"> بھائی / بہن </string>
-  <string name="na203i">سالا / سالی / دیور / دیورانی </string>
-  <string name="na203j">چچا / چچی / ماموں / ممانی / پھوپھا / پھوپھی </string>
-  <string name="na203k">بھانجا / بھانجی / بھتیجا / بھتیجی</string>
-  <string name="na203l">سوتیلے / رضاعی / لے پالک بچے </string>
-  <string name="na203m">ملازم</string>
-  <string name="na20396">دیگر رشتہ دار </string>
-  <string name="na20398"> Dont know relative</string>
+    <string name="na203"> گھر کے سربراہ سے رشتہ ؟ </string>
+    <string name="na203a">سربراہ </string>
+    <string name="na203b">خاوند/ بیوی </string>
+    <string name="na203c">بیٹا / بیٹی </string>
+    <string name="na203d">داماد / بہو </string>
+    <string name="na203e">پوتا / پوتی / نواسا / نواسی</string>
+    <string name="na203f">والدین </string>
+    <string name="na203g">ساس / سسر </string>
+    <string name="na203h"> بھائی / بہن </string>
+    <string name="na203i">سالا / سالی / دیور / دیورانی </string>
+    <string name="na203j">چچا / چچی / ماموں / ممانی / پھوپھا / پھوپھی </string>
+    <string name="na203k">بھانجا / بھانجی / بھتیجا / بھتیجی</string>
+    <string name="na203l">سوتیلے / رضاعی / لے پالک بچے </string>
+    <string name="na203m">ملازم</string>
+    <string name="na20396">دیگر رشتہ دار </string>
+    <string name="na20398"> Dont know relative</string>
 
     <string name="resp"> Is he/she a respondent? </string>
 
-  <string name="na211"> والد کا لائن نمبر </string>
-  <string name="na212"> والدہ کا لائن نمبر </string>
-  <string name="na204"> جنس </string>
+    <string name="na211"> والد کا لائن نمبر </string>
+    <string name="na212"> والدہ کا لائن نمبر </string>
+    <string name="na204"> جنس </string>
     <string name="na2dob"> (نام) کی پیدائش کی تاریخ کیا ہے؟ </string>
     <string name="na2age"> (نام)کتنی عمر ہے؟ </string>
     <string name="na2edu"> تعلیم </string>
@@ -144,7 +144,7 @@
     <string name="na2msc"> طلاق یافتہ </string>
     <string name="na2msd">  الگ رہتی ہو </string>
     <string name="na2mse"> کنوارہ</string>
-  <string name="na210"> (نام) کیا موجود ہے </string>
+    <string name="na210"> (نام) کیا موجود ہے </string>
 
     <string name="nh2u5"> Record line No. for child under five years </string>
     <string name="h2adol"> Record line No. for Adolescent 10-19 years </string>
@@ -475,23 +475,23 @@
     <string name="nbheading"> سیکشن ڈبلیو 2: تولیدی معلومات </string>
     <string name="nb101"> خاتون کانام </string>
     <string name="nb102"> شادی شدہ خاتون کالائن نمبر سیکشن A2 سے دیکھ کر لکھیں </string>
-  <string name="nw201"> آپ کی تاریخ پیدائش کیا ہے ؟ </string>
-  <string name="nw201sub1"> اگر دن معلوم نہیں تو 98 لکھیں </string>
-  <string name="nw201sub2"> اگر مہینہ معلوم نہیں تو 98 لکھیں </string>
-  <string name="nw201sub3"> اگر سال معلوم نہیں تو 9998 لکھیں </string>
-  <string name="nw202"> برائے مہربانی اپنی عمر بتایئے۔ آپکی گزشتہ سالگرہ پر آپکی عمر کتنی تھی. </string>
-  <string name="nw202a"> عمر سالوں میں </string>
-  <string name="nw203"> اطمینان کیجئے کہ جوابدہندہ کی عمر 49-15 سال ہے </string>
-  <string name="nw204"> کیا اس وقت آپ  شادی شدہ ہیں؟ </string>
-  <string name="nw205"> کیا کبھی آپ کی شادی ہوئی ؟</string>
-  <string name="nw206"> شادی کے وقت آپ کی عمر کیا تھی؟ </string>
-  <string name="nw207"> کیا آپ کبھی حاملہ ہوئی ہیں؟ </string>
-  <string name="nw208"> کل حمل کی تعداد </string>
+    <string name="nw201"> آپ کی تاریخ پیدائش کیا ہے ؟ </string>
+    <string name="nw201sub1"> اگر دن معلوم نہیں تو 98 لکھیں </string>
+    <string name="nw201sub2"> اگر مہینہ معلوم نہیں تو 98 لکھیں </string>
+    <string name="nw201sub3"> اگر سال معلوم نہیں تو 9998 لکھیں </string>
+    <string name="nw202"> برائے مہربانی اپنی عمر بتایئے۔ آپکی گزشتہ سالگرہ پر آپکی عمر کتنی تھی. </string>
+    <string name="nw202a"> عمر سالوں میں </string>
+    <string name="nw203"> اطمینان کیجئے کہ جوابدہندہ کی عمر 49-15 سال ہے </string>
+    <string name="nw204"> کیا اس وقت آپ  شادی شدہ ہیں؟ </string>
+    <string name="nw205"> کیا کبھی آپ کی شادی ہوئی ؟</string>
+    <string name="nw206"> شادی کے وقت آپ کی عمر کیا تھی؟ </string>
+    <string name="nw207"> کیا آپ کبھی حاملہ ہوئی ہیں؟ </string>
+    <string name="nw208"> کل حمل کی تعداد </string>
     <string name="nw204info"> (بشمول موجودہ حمل) </string>
     <string name="nw204a"> حمل کی تعداد </string>
-  <string name="nw211"> کیا آپ ابھی حاملہ ہیں؟ </string>
+    <string name="nw211"> کیا آپ ابھی حاملہ ہیں؟ </string>
     <string name="nw206info"> IF FIRST PREGNANCY AFTER MARRIAGE THEN GO TO SECTION B2 </string>
-  <string name="nw210"> پہلے بچے کی پیدائش کے وقت آپ کی عمر کیاتھی؟ </string>
+    <string name="nw210"> پہلے بچے کی پیدائش کے وقت آپ کی عمر کیاتھی؟ </string>
     <string name="nw206a"> عمر سالوں میں </string>
 
     <string name="nb1aheading"> SECTION B1(a) : DETAILS OF ALL PREGNANCIES </string>
@@ -517,7 +517,7 @@
     <string name="nb1a06d"> دن </string>
     <string name="nb2heading"> سیکشن ڈبلیو 3: حمل کے دوران کیے گئے طبی معانئے کی معلومات   </string>
     <string name="nb2subHeading">یہ حصہ ہر اُس خاتون کا بھرا جائے گا جس کی عمر 49-15 سال ہے اور گذشتہ 2 سال میں زندہ بچے کی پیدائش ہوئی ہو  </string>
-  <string name="nb2sub"> یہ حصہ ہر اُس خاتون کا بھرا جائے گا جس کی عمر 49-15 سال ہے اور گذشتہ 2 سال میں زندہ بچے کی پیدائش ہوئی ہو  </string>
+    <string name="nb2sub"> یہ حصہ ہر اُس خاتون کا بھرا جائے گا جس کی عمر 49-15 سال ہے اور گذشتہ 2 سال میں زندہ بچے کی پیدائش ہوئی ہو  </string>
     <string name="nw301"> کیاآپ نے گزشتہ حمل کےدوران کسی سے اپنا معائنہ کرایاتھا؟ </string>
     <string name="nw302"> آپ نے کس سے معائنہ کروایاتھا؟ </string>
     <string name="nw302info"> مزید پوچھیں :کوئی اور
@@ -744,7 +744,7 @@
     <string name="nw413962"> دیگر نجی  (وضاحت کریں) </string>
 
 
-  <string name="nb5heading"> SECTION B5: POST NATAL CARE (For all MWRA with at least one delivery REF B1 Q6) </string>
+    <string name="nb5heading"> SECTION B5: POST NATAL CARE (For all MWRA with at least one delivery REF B1 Q6) </string>
     <string name="nb501"> کیا زچگی کے بعد کسی نے آپ کی صحت کا معائنہ کیا </string>
     <string name="nb502"> زچگی کے بعد کس نے آپ کی صحت کا معائنہ کیاتھا؟ </string>
     <string name="nb502a"> گائنا کولوجسٹ </string>
@@ -1189,15 +1189,15 @@
   <string name="nw322">آپ نے حمل کے دوران کیلشیم کی گولیاں کہاں سے حاصل کیں؟</string>
 
 
-  <string name="nw209">زچگیوں کی تعداد </string>
+    <string name="nw209">زچگیوں کی تعداد </string>
     <string name="nw205time"> زچگیوں کی تعداد </string>
-  <string name="nw212">موجودہ حمل کے دوران ،کیا آپ کو فولاد کی گولیا ں دی گئی یا آپ نے خریدی؟ </string>
-  <string name="nw213">اگر ہاں ،خریدی یا دی گئی ؟</string>
+    <string name="nw212">موجودہ حمل کے دوران ،کیا آپ کو فولاد کی گولیا ں دی گئی یا آپ نے خریدی؟ </string>
+    <string name="nw213">اگر ہاں ،خریدی یا دی گئی ؟</string>
 
 
-  <string name="nw21301">کلینک پر ملی</string>
-  <string name="nw21302">خریدی</string>
-  <string name="nw21303">نہ  ملی نہ خریدی</string>
+    <string name="nw21301">کلینک پر ملی</string>
+    <string name="nw21302">خریدی</string>
+    <string name="nw21303">نہ  ملی نہ خریدی</string>
 
 
     <string name="nw601">Yesterday during the day or night, did you eat or drink:</string>

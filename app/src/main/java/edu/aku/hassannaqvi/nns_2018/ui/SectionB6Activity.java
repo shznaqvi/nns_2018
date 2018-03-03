@@ -52,10 +52,10 @@ public class SectionB6Activity extends AppCompatActivity {
                     } else {
                         startActivity(new Intent(this, SectionC1Activity.class));
                     }
-                } else if (MainApp.adolescents.size() > 0) {
-                    startActivity(new Intent(this, SectionA3Activity.class));
                 } else {
-                    startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+                    startActivity(new Intent(this, MotherEndingActivity.class)
+                            .putExtra("checkingFlag", true)
+                            .putExtra("complete", true));
                 }
 
             } else {
