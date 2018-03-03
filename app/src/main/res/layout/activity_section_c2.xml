@@ -438,6 +438,7 @@
                             android:id="@+id/nc207h"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp"
                             android:hint="@string/nc207b"
                             android:inputType="number"
                             android:maxLength="2"
@@ -456,6 +457,7 @@
                             android:id="@+id/nc207d"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp"
                             android:hint="@string/nc207c"
                             android:inputType="number"
                             android:maxLength="2"
@@ -2272,7 +2274,9 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/times"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:text='@{nc219a.checked ? nc219x.getText.toString : ""}'
+                    android:visibility="@{nc219a.checked ? View.VISIBLE : View.GONE}" />
 
             </LinearLayout>
 

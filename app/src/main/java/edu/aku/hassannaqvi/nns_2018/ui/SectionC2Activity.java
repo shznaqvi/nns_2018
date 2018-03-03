@@ -13,6 +13,8 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindViews;
@@ -196,6 +198,20 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
             }
         });
 
+        /*bi.nc218.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(bi.nc218a.isChecked())
+                {
+                    bi.fldGrpnc219.setVisibility(View.VISIBLE);
+                }else{
+                    bi.fldGrpnc219.setVisibility(View.GONE);
+                    bi.nc219.clearCheck();
+                    bi.nc219x.setText(null);
+                }
+            }
+        });*/
+
         for (RadioGroup rg : grpnc215) {
             rg.setOnCheckedChangeListener(this);
         }
@@ -265,9 +281,9 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
                 return false;
             }
 
-            if (!validatorClass.RangeTextBox(this, bi.nc201y, 2016, 2020, getString(R.string.nc201), " years")) {
+            /*if (!validatorClass.RangeTextBox(this, bi.nc201y, 2016, 2020, getString(R.string.nc201), " years")) {
                 return false;
-            }
+            }*/
 
             /*if (bi.nc201d.getText().toString().equals("0") && bi.nc201m.getText().toString().equals("0") && bi.nc201y.getText().toString().equals("0")) {
                 Toast.makeText(this, "ERROR(invalid): " + "All can not be zero" + getString(R.string.nc201), Toast.LENGTH_LONG).show();
@@ -281,8 +297,14 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
                 bi.nc201d.setError(null);
             }*/
 
-            /*Calendar dob = MainApp.getCalendarDate(bi.nc201d.getText().toString() + "-" + bi.nc201m.getText().toString() + "-" + bi.nc201y.getText().toString());
-            Calendar today = Calendar.getInstance();*/
+            Date date = new Date(); // Current date
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            int year = cal.get(Calendar.YEAR);
+
+            if (!validatorClass.RangeTextBox(this, bi.nc201y, year - 2, year, getString(R.string.nc201), " years")) {
+                return false;
+            }
 
         }
 
@@ -830,6 +852,7 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
 
         if (isoneYes()) {
             bi.fldGrpnc218.setVisibility(View.GONE);
+            bi.fldGrpnc219.setVisibility(View.VISIBLE);
             bi.nc218.clearCheck();
         } else {
             bi.fldGrpnc218.setVisibility(View.VISIBLE);
