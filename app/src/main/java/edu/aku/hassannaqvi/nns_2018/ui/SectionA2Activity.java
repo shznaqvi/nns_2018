@@ -536,7 +536,7 @@ public class SectionA2Activity extends AppCompatActivity {
             sA2.put("na204", family.getna204());
 
             sA2.put("na2dob", binding.na2dob.getText().toString());
-            sA2.put("na20598", binding.na20598.getText().toString());
+            sA2.put("na20598", binding.na20598.isChecked() ? "98" : "0");
 
             sA2.put("na206y", binding.na2agey.getText().toString());
             sA2.put("na206m", binding.na2agem.getText().toString());
