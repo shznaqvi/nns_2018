@@ -52,8 +52,6 @@ public class MotherEndingActivity extends AppCompatActivity {
         }
 
         flagNAChild = SectionC1Activity.counterPerMom <= 0;
-
-
     }
 
     public void BtnEnd() {
@@ -69,22 +67,22 @@ public class MotherEndingActivity extends AppCompatActivity {
 
                 finish();
                 //if (flagMotherChild) {
-                    if (SectionB1Activity.WRAcounter == MainApp.mwra.size()) {
-                        if (MainApp.childNA.size() > 0) {
-                            SectionC1Activity.isNA = true;
-                            startActivity(new Intent(this, SectionC1Activity.class));
-                        } else if (MainApp.adolescents.size() > 0) {
-                            //startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
-                            startActivity(new Intent(this, SectionA3Activity.class));
-                        } else {
-                            startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
-                        }
-
+                if (SectionB1Activity.WRAcounter == MainApp.mwra.size()) {
+                    if (MainApp.childNA.size() > 0) {
+                        SectionC1Activity.isNA = true;
+                        startActivity(new Intent(this, SectionC1Activity.class));
+                    } else if (MainApp.adolescents.size() > 0) {
+                        //startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+                        startActivity(new Intent(this, SectionA3Activity.class));
                     } else {
-                        startActivity(new Intent(this, SectionB1Activity.class)
-                                .putExtra("mwraFlag", true)
-                                .putExtra("wraName", SectionB1Activity.wraName));
+                        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
                     }
+
+                } else {
+                    startActivity(new Intent(this, SectionB1Activity.class)
+                            .putExtra("mwraFlag", true)
+                            .putExtra("wraName", SectionB1Activity.wraName));
+                }
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -98,9 +96,9 @@ public class MotherEndingActivity extends AppCompatActivity {
 
 
         MainApp.mc.setMstatus(binding.istatusa.isChecked() ? "1"
-                    : binding.istatusb.isChecked() ? "2"
-                    : "0");
-
+                : binding.istatusb.isChecked() ? "2"
+                : binding.istatusc.isChecked() ? "3"
+                : "0");
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }

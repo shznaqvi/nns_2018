@@ -104,6 +104,7 @@ public class ChildEndingActivity extends AppCompatActivity {
 
         MainApp.cc.setCstatus(binding.istatusa.isChecked() ? "1"
                 : binding.istatusb.isChecked() ? "2"
+                : binding.istatusc.isChecked() ? "3"
                 : "0");
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
