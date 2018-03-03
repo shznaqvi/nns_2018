@@ -284,7 +284,7 @@ public class SectionA3Activity extends AppCompatActivity {
 
             MainApp.emc.set_UID(
                     (MainApp.emc.getDeviceId() + MainApp.emc.get_ID()));
-            db.updateFormChildID();
+            db.updateEligibleMemberID();
 
             return true;
         } else {
