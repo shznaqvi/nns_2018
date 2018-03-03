@@ -280,6 +280,8 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
                 bi.nc201m.setError(null);
                 bi.nc201d.setError(null);
             }
+
+            //Date dob = MainApp.getCalendarDate()
         }
 
         if (!validatorClass.EmptyRadioButton(this, bi.nc202, bi.nc202a, getString(R.string.nc202))) {
