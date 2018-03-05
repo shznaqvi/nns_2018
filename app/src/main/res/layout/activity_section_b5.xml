@@ -449,7 +449,6 @@
 
                     <CheckBox
                         android:id="@+id/nb507c"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"

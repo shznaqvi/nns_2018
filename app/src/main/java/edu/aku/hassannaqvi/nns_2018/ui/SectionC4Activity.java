@@ -277,15 +277,15 @@ public class SectionC4Activity extends Activity {
                     return false;
                 }
 //        nc4039601
-                if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc4039601, binding.nc4039601x, getString(R.string.nc403))) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc4039601, binding.nc4039601x, getString(R.string.nc403) + " - " + getString(R.string.otherpubm))) {
                     return false;
                 }
 //        nc4039602
-                if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc4039601, binding.nc4039602x, getString(R.string.nc403))) {
+                else if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc4039602, binding.nc4039602x, getString(R.string.nc403) + " - " + getString(R.string.otherprim))) {
                     return false;
                 }
 //        nc4039603
-                if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc4039603, binding.nc4039603x, getString(R.string.nc403))) {
+                else if (!validatorClass.EmptyRadioButton(this, binding.nc403, binding.nc4039603, binding.nc4039603x, getString(R.string.nc403) + " - " + getString(R.string.other))) {
                     return false;
                 }
 
@@ -317,15 +317,15 @@ public class SectionC4Activity extends Activity {
                 }
 
 //        nc4079601x
-                if (!validatorClass.EmptyRadioButton(this, binding.nc407, binding.nc4079603, binding.nc4079601x, getString(R.string.nc407))) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nc407, binding.nc4079601, binding.nc4079601x, getString(R.string.nc407) + " - " + getString(R.string.otherpubm))) {
                     return false;
                 }
 //        nc4079602x
-                if (!validatorClass.EmptyRadioButton(this, binding.nc407, binding.nc4079603, binding.nc4079602x, getString(R.string.nc407))) {
+                else if (!validatorClass.EmptyRadioButton(this, binding.nc407, binding.nc4079602, binding.nc4079602x, getString(R.string.nc407) + " - " + getString(R.string.otherprim))) {
                     return false;
                 }
 //        nc4079603x
-                if (!validatorClass.EmptyRadioButton(this, binding.nc407, binding.nc4079603, binding.nc4079603x, getString(R.string.nc407))) {
+                else if (!validatorClass.EmptyRadioButton(this, binding.nc407, binding.nc4079603, binding.nc4079603x, getString(R.string.nc407) + " - " + getString(R.string.other))) {
                     return false;
                 }
 
@@ -352,15 +352,15 @@ public class SectionC4Activity extends Activity {
                 }
 
 //        nc4119601x
-                if (!validatorClass.EmptyRadioButton(this, binding.nc411, binding.nc4119603, binding.nc4119601x, getString(R.string.nc411))) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nc411, binding.nc4119601, binding.nc4119601x, getString(R.string.nc411) + " - " + getString(R.string.otherpubm))) {
                     return false;
                 }
 //        nc4119602x
-                if (!validatorClass.EmptyRadioButton(this, binding.nc411, binding.nc4119603, binding.nc4119602x, getString(R.string.nc411))) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nc411, binding.nc4119602, binding.nc4119602x, getString(R.string.nc411) + " - " + getString(R.string.otherprim))) {
                     return false;
                 }
 //        nc4119603x
-                if (!validatorClass.EmptyRadioButton(this, binding.nc411, binding.nc4119603, binding.nc4119603x, getString(R.string.nc411))) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nc411, binding.nc4119603, binding.nc4119603x, getString(R.string.nc411) + " - " + getString(R.string.other))) {
                     return false;
                 }
                 // fldGrnc412check
