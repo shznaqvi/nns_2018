@@ -15,8 +15,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import edu.aku.hassannaqvi.nns_2018.contracts.EnumBlockContract.EnumBlockTable;
+import edu.aku.hassannaqvi.nns_2018.contracts.EnumBlockContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.UsersContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 
@@ -60,10 +61,13 @@ public class GetAllData extends AsyncTask<String, String, String> {
         try {
             switch (syncClass) {
                 case "EnumBlock":
-                    url = new URL(MainApp._HOST_URL + EnumBlockTable._URI);
+                    url = new URL(MainApp._HOST_URL + EnumBlockContract.EnumBlockTable._URI);
                     break;
                 case "User":
                     url = new URL(MainApp._HOST_URL + UsersContract.UsersTable._URI);
+                    break;
+                case "VersionApp":
+                    url = new URL(MainApp._UPDATE_URL + VersionAppContract.VersionAppTable._URI);
                     break;
             }
 
@@ -111,6 +115,9 @@ public class GetAllData extends AsyncTask<String, String, String> {
                             break;
                         case "User":
                             db.syncUser(jsonArray);
+                            break;
+                        case "VersionApp":
+                            db.syncVersionApp(jsonArray);
                             break;
                     }
 

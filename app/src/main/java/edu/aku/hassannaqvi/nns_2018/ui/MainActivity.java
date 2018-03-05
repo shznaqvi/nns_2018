@@ -397,7 +397,7 @@ public class MainActivity extends Activity {
                                                 int id) {
                                 // this is how you fire the downloader
                                 try {
-                                    URL url = new URL(MainApp._UPDATE_URL);
+                                    URL url = new URL(MainApp._UPDATE_URL + "app-debug.apk");
                                     HttpURLConnection c = (HttpURLConnection) url.openConnection();
                                     c.setRequestMethod("GET");
                                     c.setDoOutput(true);

@@ -40,6 +40,9 @@ import edu.aku.hassannaqvi.nns_2018.contracts.UCsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.UCsContract.UCsTable;
 import edu.aku.hassannaqvi.nns_2018.contracts.UsersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.UsersContract.UsersTable;
+import edu.aku.hassannaqvi.nns_2018.contracts.VersionAppContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.VersionAppContract.VersionAppTable;
+
 
 /**
  * Created by hassan.naqvi on 11/30/2016.
@@ -238,6 +241,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             ");";
 
+    final String SQL_CREATE_VERSIONAPP = "CREATE TABLE " + VersionAppTable.TABLE_NAME + " (" +
+            VersionAppTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            VersionAppTable.COLUMN_VERSION_CODE + " TEXT, " +
+            VersionAppTable.COLUMN_PATH_NAME + " TEXT " +
+            ");";
+
 
     private final String TAG = "DatabaseHelper";
 
@@ -263,6 +272,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_OUTCOME);
         db.execSQL(SQL_CREATE_FAMILY_MEMEBERS);
         db.execSQL(SQL_CREATE_RECIPIENTS);
+        db.execSQL(SQL_CREATE_VERSIONAPP);
     }
 
     @Override
@@ -278,7 +288,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_OUTCOME);
         db.execSQL(SQL_DELETE_FAMILYMEMBERS);
         db.execSQL(SQL_DELETE_RECIENPTS);
-
 
     }
 
@@ -331,6 +340,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public void syncVersionApp(JSONArray Versionlist) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(VersionAppTable.TABLE_NAME, null, null);
+        try {
+            JSONArray jsonArray = Versionlist;
+            JSONObject jsonObjectCC = jsonArray.getJSONObject(0);
+
+            VersionAppContract Vc = new VersionAppContract();
+            Vc.Sync(jsonObjectCC);
+
+            ContentValues values = new ContentValues();
+
+            values.put(VersionAppTable.COLUMN_PATH_NAME, Vc.getPathname());
+            values.put(VersionAppTable.COLUMN_VERSION_CODE, Vc.getVersioncode());
+
+            db.insert(VersionAppTable.TABLE_NAME, null, values);
+        } catch (Exception e) {
+        } finally {
+            db.close();
+        }
+    }
+
     public String getEnumBlock(String enumBlock) {
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -349,7 +380,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String orderBy =
                 EnumBlockTable._ID + " ASC";
 
-//        Collection<EnumBlockContract> allEB = new ArrayList<>();
         String allEB = "";
         try {
             c = db.query(
@@ -362,8 +392,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-//                EnumBlockContract eb = new EnumBlockContract();
-//                allEB.add(eb.HydrateTalukas(c));
                 allEB = c.getString(c.getColumnIndex(EnumBlockTable.COLUMN_GEO_AREA));
             }
         } finally {
@@ -375,6 +403,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allEB;
+    }
+
+    public VersionAppContract getVersionApp() {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                VersionAppTable._ID,
+                VersionAppTable.COLUMN_VERSION_CODE,
+                VersionAppTable.COLUMN_PATH_NAME
+        };
+
+        String whereClause = null;
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = singleSerial._ID + " ASC";
+
+        VersionAppContract allVC = new VersionAppContract();
+        try {
+            c = db.query(
+                    VersionAppTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                allVC.hydrate(c);
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allVC;
     }
 
     public SerialContract getSerialWRTDate(String date) {
