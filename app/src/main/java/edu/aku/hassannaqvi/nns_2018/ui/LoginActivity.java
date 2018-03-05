@@ -573,6 +573,8 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                     new GetAllData(mContext, "EnumBlock").execute();
                     Toast.makeText(LoginActivity.this, "Sync Users", Toast.LENGTH_LONG).show();
                     new GetAllData(mContext, "User").execute();
+                    Toast.makeText(LoginActivity.this, "Sync App Version", Toast.LENGTH_LONG).show();
+                    new GetAllData(mContext, "VersionApp").execute();
                 }
             });
 
