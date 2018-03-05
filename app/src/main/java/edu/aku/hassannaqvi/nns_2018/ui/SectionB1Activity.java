@@ -76,10 +76,9 @@ public class SectionB1Activity extends Activity {
 
             lstMwra.add("....");
 
-            for (byte i = 0; i < MainApp.mwra.size(); i++) {
-                wraMap.put(MainApp.mwra.get(i).getName(), MainApp.mwra.get(i));
-                lstMwra.add(MainApp.mwra.get(i).getName() + "-" + MainApp.mwra.get(i).getSerialNo());
-
+            for (FamilyMembersContract wra : MainApp.mwra) {
+                wraMap.put(wra.getName() + "-" + wra.getSerialNo(), wra);
+                lstMwra.add(wra.getName() + "-" + wra.getSerialNo());
             }
 
             WRAcounter = 0;
@@ -90,7 +89,7 @@ public class SectionB1Activity extends Activity {
 
         for (FamilyMembersContract fmc : MainApp.respList) {
             respName.add(fmc.getName() + "-" + fmc.getSerialNo());
-            respMap.put(fmc.getName(), fmc.getSerialNo());
+            respMap.put(fmc.getName() + "-" + fmc.getSerialNo(), fmc.getSerialNo());
         }
 
         bi.nb101.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, lstMwra));
