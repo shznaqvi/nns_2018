@@ -10,13 +10,13 @@
             type="edu.aku.hassannaqvi.nns_2018.ui.MainActivity" />
     </data>
 
-    <!--    <android.support.v7.widget.Toolbar
-            android:id="@+id/my_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            style="@style/HeaderBar"
-            android:elevation="4dp"
-            />-->
+    <!--        <android.support.v7.widget.Toolbar
+                android:id="@+id/my_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                style="@style/HeaderBar"
+                android:elevation="4dp"
+                />-->
 
     <ScrollView
         android:id="@+id/activity_main"
@@ -34,11 +34,22 @@
             <!-- Login progress -->
 
             <TextView
-                android:id="@+id/lblheader"
+                android:id="@+id/lblAppVersion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="16dp"
+                android:background="@color/black"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lblheader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="2dp"
                 android:background="@color/dullWhile"
                 android:text="Main Menu"
                 android:textColor="@color/colorPrimary"

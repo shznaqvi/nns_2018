@@ -18,6 +18,8 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract.singleRandomHH;
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract.ChildTable;
 import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract;
@@ -59,6 +61,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "nns_2018.db";
     public static final String DB_NAME = DATABASE_NAME.replace(".", "_copy.");
     public static final String PROJECT_NAME = "NNS-2018";
+    public static final String SQL_CREATE_BL_RANDOM = "CREATE TABLE " + singleRandomHH.TABLE_NAME + "("
+            + singleRandomHH.COLUMN_ID + " TEXT,"
+            + singleRandomHH.COLUMN_ENUM_BLOCK_CODE + " TEXT,"
+            + singleRandomHH.COLUMN_LUID + " TEXT,"
+            + singleRandomHH.COLUMN_HH + " TEXT,"
+            + singleRandomHH.COLUMN_STRUCTURE_NO + " TEXT,"
+            + singleRandomHH.COLUMN_FAMILY_EXT_CODE + " TEXT,"
+            + singleRandomHH.COLUMN_HH_HEAD + " TEXT,"
+            + singleRandomHH.COLUMN_CONTACT + " TEXT,"
+            + singleRandomHH.COLUMN_HH_SELECTED_STRUCT + " TEXT,"
+            + singleRandomHH.COLUMN_RANDOMDT + " TEXT );";
     private static final int DATABASE_VERSION = 1;
     private static final String SQL_CREATE_FORMS = "CREATE TABLE "
             + FormsTable.TABLE_NAME + "("
@@ -87,7 +100,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsTable.COLUMN_SYNCED + " TEXT," +
             FormsTable.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
-
     private static final String SQL_CREATE_FAMILY_MEMEBERS = "CREATE TABLE "
             + familyMembers.TABLE_NAME + "("
             + familyMembers.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -103,7 +115,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             familyMembers.COLUMN_SYNCED + " TEXT," +
             familyMembers.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
-
     private static final String SQL_CREATE_CHILD_FORMS = "CREATE TABLE "
             + ChildTable.TABLE_NAME + "("
             + ChildTable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -122,15 +133,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             ChildTable.COLUMN_SYNCED + " TEXT," +
             ChildTable.COLUMN_SYNCED_DATE + " TEXT," +
             ChildTable.COLUMN_CSTATUS + " TEXT," +
-            ChildTable.COLUMN_APPVERSION + " TEXT "
-
-            + " );";
-
+            ChildTable.COLUMN_APPVERSION + " TEXT " + " );";
     private static final String SQL_DELETE_USERS =
             "DROP TABLE IF EXISTS " + UsersContract.UsersTable.TABLE_NAME;
     private static final String SQL_DELETE_FORMS =
             "DROP TABLE IF EXISTS " + FormsTable.TABLE_NAME;
-
     private static final String SQL_DELETE_CHILD_FORMS =
             "DROP TABLE IF EXISTS " + ChildContract.ChildTable.TABLE_NAME;
     private static final String SQL_DELETE_SINGLE = "DROP TABLE IF EXISTS " + singleSerial.TABLE_NAME;
@@ -160,7 +167,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             UCsTable.COLUMN_UCS_NAME + " TEXT, " +
             UCsTable.COLUMN_TALUKA_CODE + " TEXT " +
             ");";
-
     final String SQL_CREATE_ELIGIBLE_MEMBERS = "CREATE TABLE " + eligibleMembers.TABLE_NAME + " (" +
             eligibleMembers.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             eligibleMembers.COLUMN_UID + " TEXT," +
@@ -181,8 +187,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             eligibleMembers.COLUMN_SYNCEDDATE + " TEXT" +
 
             ");";
-
-
     final String SQL_CREATE_MWRAS = "CREATE TABLE " + MWRATable.TABLE_NAME + " (" +
             MWRATable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             MWRATable.COLUMN_PROJECTNAME + " TEXT," +
@@ -205,8 +209,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             MWRATable.COLUMN_SYNCEDDATE + " TEXT " +
 
             ");";
-
-
     final String SQL_CREATE_OUTCOME = "CREATE TABLE " + outcomeTable.TABLE_NAME + " (" +
             outcomeTable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             outcomeTable.COLUMN_PROJECTNAME + " TEXT," +
@@ -223,7 +225,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             outcomeTable.COLUMN_SYNCEDDATE + " TEXT " +
 
             ");";
-
     final String SQL_CREATE_RECIPIENTS = "CREATE TABLE " + RecipientsTable.TABLE_NAME + " (" +
             RecipientsTable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             RecipientsTable.COLUMN_PROJECTNAME + " TEXT," +
@@ -240,19 +241,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             RecipientsTable.COLUMN_SYNCEDDATE + " TEXT " +
 
             ");";
-
     final String SQL_CREATE_VERSIONAPP = "CREATE TABLE " + VersionAppTable.TABLE_NAME + " (" +
             VersionAppTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             VersionAppTable.COLUMN_VERSION_CODE + " TEXT, " +
             VersionAppTable.COLUMN_PATH_NAME + " TEXT " +
             ");";
-
-
     private final String TAG = "DatabaseHelper";
-
-
     public String spDateT = new SimpleDateFormat("dd-MM-yy").format(new Date().getTime());
-
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -273,6 +268,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_FAMILY_MEMEBERS);
         db.execSQL(SQL_CREATE_RECIPIENTS);
         db.execSQL(SQL_CREATE_VERSIONAPP);
+        db.execSQL(SQL_CREATE_BL_RANDOM);
     }
 
     @Override
@@ -360,6 +356,89 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         } finally {
             db.close();
         }
+    }
+
+    public void syncBLRandom(JSONArray BLlist) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(singleRandomHH.TABLE_NAME, null, null);
+        try {
+            JSONArray jsonArray = BLlist;
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObjectCC = jsonArray.getJSONObject(i);
+
+                BLRandomContract Vc = new BLRandomContract();
+                Vc.Sync(jsonObjectCC);
+
+                ContentValues values = new ContentValues();
+
+                values.put(singleRandomHH.COLUMN_ID, Vc.get_ID());
+                values.put(singleRandomHH.COLUMN_LUID, Vc.getLUID());
+                values.put(singleRandomHH.COLUMN_STRUCTURE_NO, Vc.getStructure());
+                values.put(singleRandomHH.COLUMN_FAMILY_EXT_CODE, Vc.getExtension());
+                values.put(singleRandomHH.COLUMN_HH, Vc.getHh());
+                values.put(singleRandomHH.COLUMN_ENUM_BLOCK_CODE, Vc.getSubVillageCode());
+                values.put(singleRandomHH.COLUMN_RANDOMDT, Vc.getRandomDT());
+                values.put(singleRandomHH.COLUMN_HH_HEAD, Vc.getHhhead());
+                values.put(singleRandomHH.COLUMN_CONTACT, Vc.getContact());
+                values.put(singleRandomHH.COLUMN_HH_SELECTED_STRUCT, Vc.getSelStructure());
+
+                db.insert(singleRandomHH.TABLE_NAME, null, values);
+            }
+        } catch (Exception e) {
+        } finally {
+            db.close();
+        }
+    }
+
+    public Collection<BLRandomContract> getAllBLRandom(String subAreaCode, String hh) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                singleRandomHH.COLUMN_ID,
+                singleRandomHH.COLUMN_LUID,
+                singleRandomHH.COLUMN_STRUCTURE_NO,
+                singleRandomHH.COLUMN_FAMILY_EXT_CODE,
+                singleRandomHH.COLUMN_HH,
+                singleRandomHH.COLUMN_ENUM_BLOCK_CODE,
+                singleRandomHH.COLUMN_RANDOMDT,
+                singleRandomHH.COLUMN_HH_SELECTED_STRUCT,
+                singleRandomHH.COLUMN_CONTACT,
+                singleRandomHH.COLUMN_HH_HEAD
+        };
+
+        String whereClause = singleRandomHH.COLUMN_ENUM_BLOCK_CODE + "=? AND " +
+                singleRandomHH.COLUMN_HH + "=?";
+        String[] whereArgs = new String[]{subAreaCode, hh};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                singleRandomHH.COLUMN_ID + " ASC";
+
+        Collection<BLRandomContract> allBL = new ArrayList<>();
+        try {
+            c = db.query(
+                    singleRandomHH.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                BLRandomContract dc = new BLRandomContract();
+                allBL.add(dc.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allBL;
     }
 
     public String getEnumBlock(String enumBlock) {

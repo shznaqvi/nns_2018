@@ -254,8 +254,8 @@
                         android:layout_marginTop="5dp"
                         android:layout_weight="60"
                         android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-"
-                        android:hint="XXX-X"
-                        android:maxLength="5" />
+                        android:hint="XXXX-X"
+                        android:maxLength="6" />
 
                     <Button
                         android:id="@+id/checkHHBtn"
@@ -275,7 +275,48 @@
                     android:id="@+id/fldGrpna105"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/hhName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:paddingLeft="10dp" />
+
+                    <CheckBox
+                        android:id="@+id/checkHHHeadpresent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:text="@string/checkHHpresent" />
+
+                    <LinearLayout
+                        android:id="@+id/fldGrpna105a"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:background="@color/colorPrimary"
+                            android:text="New Head name"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@android:color/white" />
+
+                        <EditText
+                            android:id="@+id/newHHheadname"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
+                            android:maxLength="25" />
+
+                    </LinearLayout>
+
+
                     <!--na105-->
                     <TextView
                         android:layout_width="match_parent"
@@ -361,7 +402,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/bacground_border1"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:visibility="gone">
 
                         <TextView
                             android:layout_width="match_parent"

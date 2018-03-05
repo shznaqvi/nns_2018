@@ -21,6 +21,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
@@ -95,6 +96,7 @@ public class MainApp extends Application {
     public static List<FamilyMembersContract> childNA;
     public static List<FamilyMembersContract> mwra;
     public static List<FamilyMembersContract> adolescents;
+    public static BLRandomContract selectedHead;
     public static int serial_no;
     // fro section A2
     public static List<FamilyMembersContract> familyMembersList;

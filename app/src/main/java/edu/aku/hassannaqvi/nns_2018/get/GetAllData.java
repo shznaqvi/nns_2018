@@ -15,6 +15,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.EnumBlockContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.UsersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.VersionAppContract;
@@ -66,6 +67,9 @@ public class GetAllData extends AsyncTask<String, String, String> {
                 case "User":
                     url = new URL(MainApp._HOST_URL + UsersContract.UsersTable._URI);
                     break;
+                case "BLRandom":
+                    url = new URL(MainApp._HOST_URL + BLRandomContract.singleRandomHH._URI);
+                    break;
                 case "VersionApp":
                     url = new URL(MainApp._UPDATE_URL + VersionAppContract.VersionAppTable._URI);
                     break;
@@ -115,6 +119,9 @@ public class GetAllData extends AsyncTask<String, String, String> {
                             break;
                         case "User":
                             db.syncUser(jsonArray);
+                            break;
+                        case "BLRandom":
+                            db.syncBLRandom(jsonArray);
                             break;
                         case "VersionApp":
                             db.syncVersionApp(jsonArray);
