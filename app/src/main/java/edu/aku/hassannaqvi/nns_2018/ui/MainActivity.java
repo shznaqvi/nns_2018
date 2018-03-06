@@ -257,12 +257,14 @@ public class MainActivity extends Activity {
 
 //        Version Checking
         versionAppContract = db.getVersionApp();
-        if (MainApp.versionCode < Integer.valueOf(versionAppContract.getVersioncode())) {
-            mainBinding.lblAppVersion.setVisibility(View.VISIBLE);
-            mainBinding.lblAppVersion.setText("New Version Available");
-        } else {
-            mainBinding.lblAppVersion.setVisibility(View.GONE);
-            mainBinding.lblAppVersion.setText(null);
+        if (versionAppContract.getVersioncode() != null) {
+            if (MainApp.versionCode < Integer.valueOf(versionAppContract.getVersioncode())) {
+                mainBinding.lblAppVersion.setVisibility(View.VISIBLE);
+                mainBinding.lblAppVersion.setText("New Version Available");
+            } else {
+                mainBinding.lblAppVersion.setVisibility(View.GONE);
+                mainBinding.lblAppVersion.setText(null);
+            }
         }
 
     }
