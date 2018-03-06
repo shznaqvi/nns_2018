@@ -61,6 +61,7 @@
     <string name="na101c"> تحصیل/تعلُقہ </string>
     <string name="na101d"> شہر/گاؤں </string>
     <string name="na103"> گھرانا نمبر </string>
+    <string name="checkHHpresent"> Selected Head name present (A/C Line listing) </string>
     <string name="na104"> انٹرویو لینے والے کا نام اور نمبر </string>
     <string name="na105"> ٹیم لیڈر کا نام اور نمبر </string>
     <string name="na106"> انٹرویو کی تاریخ اور وقت </string>

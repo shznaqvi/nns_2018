@@ -11,8 +11,7 @@
         <item name="android:radioButtonStyle">@style/radiobutton</item>
         <item name="android:spinnerStyle">@style/spinnerStyle</item>
         <item name="android:spinnerItemStyle">@style/SpinnerItem</item>
-        <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownItem
-        </item>
+        <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownItem</item>
         <!-- Customize your theme here. -->
     </style>
 
@@ -73,9 +72,9 @@
         </style>
     -->
 
-    <style name="ActionBarTheme" parent="android:Widget.Material.Light.ActionBar">
-        <item name="android:background">@drawable/background_grad</item>
-        <item name="background">@drawable/background_grad</item>
+    <style name="ActionBarTheme" parent="android:Theme.Material.Light.DarkActionBar">
+        <!--<item name="android:background">@drawable/background_grad</item>-->
+        <item name="background">@color/colorPrimary</item>
     </style>
 
 
@@ -347,5 +346,8 @@
         <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
     </style>
 
+    <style name="HeaderBar">
+        <item name="android:background">#303F9F</item>
+    </style>
 
 </resources>

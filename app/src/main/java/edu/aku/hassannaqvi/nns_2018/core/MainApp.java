@@ -21,6 +21,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
@@ -43,7 +44,7 @@ public class MainApp extends Application {
     public static final String _IP = "43.245.131.159"; // Test PHP server
     public static final Integer _PORT = 8080; // Port - with colon (:)
     public static final String _HOST_URL = "http://" + MainApp._IP + ":" + MainApp._PORT + "/nns/api/";
-    public static final String _UPDATE_URL = "http://" + MainApp._IP + ":" + MainApp._PORT + "/nns/app/app-debug.apk";
+    public static final String _UPDATE_URL = "http://" + MainApp._IP + ":" + MainApp._PORT + "/nns/app/";
 
     public static final Integer MONTHS_LIMIT = 11;
     public static final Integer DAYS_LIMIT = 29;
@@ -95,6 +96,7 @@ public class MainApp extends Application {
     public static List<FamilyMembersContract> childNA;
     public static List<FamilyMembersContract> mwra;
     public static List<FamilyMembersContract> adolescents;
+    public static BLRandomContract selectedHead;
     public static int serial_no;
     // fro section A2
     public static List<FamilyMembersContract> familyMembersList;

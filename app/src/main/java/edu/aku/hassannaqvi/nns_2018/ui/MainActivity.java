@@ -46,6 +46,7 @@ import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.nns_2018.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -79,6 +80,7 @@ public class MainActivity extends Activity {
     ProgressDialog mProgressDialog;
     ArrayList<String> lablesAreas;
     Map<String, String> AreasMap;
+    VersionAppContract versionAppContract;
     private ProgressDialog pd;
     private Boolean exit = false;
     private String rSumText = "";
@@ -253,6 +255,16 @@ public class MainActivity extends Activity {
             MainApp.sc = db.getSerialWRTDate(new SimpleDateFormat("dd-MM-yy").format(new Date()).toString());
         }
 
+//        Version Checking
+        versionAppContract = db.getVersionApp();
+        if (MainApp.versionCode < Integer.valueOf(versionAppContract.getVersioncode())) {
+            mainBinding.lblAppVersion.setVisibility(View.VISIBLE);
+            mainBinding.lblAppVersion.setText("New Version Available");
+        } else {
+            mainBinding.lblAppVersion.setVisibility(View.GONE);
+            mainBinding.lblAppVersion.setText(null);
+        }
+
     }
 
     public void openForm() {
@@ -397,7 +409,7 @@ public class MainActivity extends Activity {
                                                 int id) {
                                 // this is how you fire the downloader
                                 try {
-                                    URL url = new URL(MainApp._UPDATE_URL);
+                                    URL url = new URL(MainApp._UPDATE_URL + "app-debug.apk");
                                     HttpURLConnection c = (HttpURLConnection) url.openConnection();
                                     c.setRequestMethod("GET");
                                     c.setDoOutput(true);
