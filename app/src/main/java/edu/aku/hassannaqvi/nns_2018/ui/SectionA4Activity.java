@@ -245,7 +245,9 @@ public class SectionA4Activity extends AppCompatActivity {
         if (!validatorClass.EmptyRadioButton(this, binding.nh314, binding.nh31496, binding.nh31496x, getString(R.string.nh314))) {
             return false;
         }
-
+        if (!validatorClass.EmptyRadioButton(this, binding.nh315, binding.nh315a, getString(R.string.nh315))) {
+            return false;
+        }
         // 315
         if (binding.nh315a.isChecked()) {
             if (!validatorClass.EmptyRadioButton(this, binding.nh316, binding.nh316b, getString(R.string.nh316))) {
@@ -537,7 +539,7 @@ public class SectionA4Activity extends AppCompatActivity {
         sA4.put("nh314", binding.nh314a.isChecked() ? "1"
                 : binding.nh314b.isChecked() ? "2"
                 : binding.nh314c.isChecked() ? "3"
-                : binding.nh31396.isChecked() ? "96"
+                : binding.nh31496.isChecked() ? "96"
                 : "0");
         sA4.put("nh31496x", binding.nh31496x.getText().toString());
 

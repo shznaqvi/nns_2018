@@ -222,14 +222,12 @@ public class SectionA2Activity extends AppCompatActivity {
                         binding.na2occa.setChecked(true);
                         binding.na2mse.setChecked(true);
                     } else if (Age >= 5 && Age <= 12) {
-                        //  binding.na2edua.setEnabled(false);
+                        binding.na2edu.clearCheck();
+
                         binding.fldGrpna2edu.setVisibility(View.VISIBLE);
                         binding.fldGrpna2ms.setVisibility(View.GONE);
                         binding.fldGrpna2occ.setVisibility(View.GONE);
 
-                        binding.na2edu.clearCheck();
-                        binding.na2ms.clearCheck();
-                        binding.na2occ.clearCheck();
 
                         binding.na2occa.setChecked(true);
                         binding.na2mse.setChecked(true);
