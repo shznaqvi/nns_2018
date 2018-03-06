@@ -46,17 +46,14 @@
                 android:layout_marginTop="2dp"
                 android:text="@string/nb2subHeading" />
 
-
-
-
-
             <!--nw301-->
             <TextView
+                android:id="@+id/nw301Txt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/nw301"
+                android:text="@string/nw301b"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
