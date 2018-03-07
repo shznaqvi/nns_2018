@@ -24,8 +24,8 @@ public class EligibleMembersContract {
     private String user = "";
     private String app_ver = "";
 
-    private String a3SerialNo = "";
-    private String name = "";
+    private String enm_no = "";
+    private String hh_no = "";
     private String dob = "";
     private String age = "";
     private String na204 = "";
@@ -40,8 +40,8 @@ public class EligibleMembersContract {
     }
 
     public EligibleMembersContract(EligibleMembersContract ec) {
-        this.a3SerialNo = ec.getA3SerialNo();
-        this.name = ec.getName();
+        this.enm_no = ec.getEnm_no();
+        this.hh_no = ec.getHh_no();
         this.dob = ec.getDob();
         this.age = ec.getAge();
         this.na204 = ec.getna204();
@@ -102,12 +102,12 @@ public class EligibleMembersContract {
         this.user = user;
     }
 
-    public String getName() {
-        return name;
+    public String getHh_no() {
+        return hh_no;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setHh_no(String hh_no) {
+        this.hh_no = hh_no;
     }
 
     public String getDob() {
@@ -158,12 +158,12 @@ public class EligibleMembersContract {
         this.syncedDate = syncedDate;
     }
 
-    public String getA3SerialNo() {
-        return a3SerialNo;
+    public String getEnm_no() {
+        return enm_no;
     }
 
-    public void setA3SerialNo(String a3SerialNo) {
-        this.a3SerialNo = a3SerialNo;
+    public void setEnm_no(String enm_no) {
+        this.enm_no = enm_no;
     }
 
     public String getAge() {
@@ -208,8 +208,8 @@ public class EligibleMembersContract {
         this.devicetagID = jsonObject.getString(eligibleMembers.COLUMN_DEVICETAGID);
         this.user = jsonObject.getString(eligibleMembers.COLUMN_USER);
         this.app_ver = jsonObject.getString(eligibleMembers.COLUMN_APPVERSION);
-        this.a3SerialNo = jsonObject.getString(eligibleMembers.COLUMN_A3SERIALNO);
-        this.name = jsonObject.getString(eligibleMembers.COLUMN_NAME);
+        this.enm_no = jsonObject.getString(eligibleMembers.COLUMN_ENM_NO);
+        this.hh_no = jsonObject.getString(eligibleMembers.COLUMN_HH_NO);
         this.dob = jsonObject.getString(eligibleMembers.COLUMN_DOB);
         this.age = jsonObject.getString(eligibleMembers.COLUMN_AGE);
         this.na204 = jsonObject.getString(eligibleMembers.COLUMN_na204);
@@ -233,8 +233,8 @@ public class EligibleMembersContract {
         this.devicetagID = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_DEVICETAGID));
         this.user = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_USER));
         this.app_ver = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_APPVERSION));
-        this.a3SerialNo = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_A3SERIALNO));
-        this.name = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_NAME));
+        this.enm_no = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_ENM_NO));
+        this.hh_no = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_HH_NO));
         this.dob = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_DOB));
         this.age = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_AGE));
         this.na204 = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_na204));
@@ -267,7 +267,8 @@ public class EligibleMembersContract {
         if (!this.sA3.equals("")) {
             json.put(eligibleMembers.COLUMN_SA3, this.sA3.equals("") ? JSONObject.NULL : new JSONObject(this.sA3));
         }
-        json.put(eligibleMembers.COLUMN_NAME, this.name == null ? JSONObject.NULL : this.name);
+        json.put(eligibleMembers.COLUMN_HH_NO, this.hh_no == null ? JSONObject.NULL : this.hh_no);
+        json.put(eligibleMembers.COLUMN_ENM_NO, this.enm_no == null ? JSONObject.NULL : this.enm_no);
         json.put(eligibleMembers.COLUMN_DOB, this.dob == null ? JSONObject.NULL : this.dob);
         json.put(eligibleMembers.COLUMN_AGE, this.age == null ? JSONObject.NULL : this.age);
         json.put(eligibleMembers.COLUMN_na204, this.na204 == null ? JSONObject.NULL : this.na204);
@@ -295,8 +296,8 @@ public class EligibleMembersContract {
         public static final String COLUMN_DEVICETAGID = "devicetagid ";
         public static final String COLUMN_USER = "user";
         public static final String COLUMN_APPVERSION = "appversion";
-        public static final String COLUMN_A3SERIALNO = "a3serialno";
-        public static final String COLUMN_NAME = "name";
+        public static final String COLUMN_ENM_NO = "enm_no";
+        public static final String COLUMN_HH_NO = "hh_no";
         public static final String COLUMN_DOB = "dob";
         public static final String COLUMN_AGE = "age";
         public static final String COLUMN_na204 = "na204";
