@@ -4,19 +4,10 @@
     tools:context="edu.aku.hassannaqvi.nns_2018.edu.aku.hassannaqvi.nns_2018.MainActivity">
 
     <data>
-
         <variable
             name="callback"
             type="edu.aku.hassannaqvi.nns_2018.ui.MainActivity" />
     </data>
-
-    <!--        <android.support.v7.widget.Toolbar
-                android:id="@+id/my_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                style="@style/HeaderBar"
-                android:elevation="4dp"
-                />-->
 
     <ScrollView
         android:id="@+id/activity_main"
@@ -113,20 +104,24 @@
 
             <Button
                 android:id="@+id/openForm"
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="16dp"
+                android:background="#1565C0"
                 android:onClick="@{() -> callback.openForm()}"
                 android:text="OPEN FORM" />
 
 
             <Button
                 android:id="@+id/openA"
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="16dp"
+                android:background="#1565C0"
                 android:onClick="openA"
                 android:text="OPEN B6" />
 
@@ -134,10 +129,12 @@
 
             <Button
                 android:id="@+id/syncServer"
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="16dp"
+                android:background="#1565C0"
                 android:onClick="syncServer"
                 android:text="Upload Data" />
 
@@ -149,15 +146,18 @@
 
                 <Button
                     android:id="@+id/syncDevice"
+                    style="@style/Widget.AppCompat.Button.Colored"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="16dp"
+                    android:background="#1565C0"
                     android:onClick="syncDevice"
                     android:text="Download Data" />
 
                 <Button
                     android:id="@+id/downloadApp"
+                    style="@style/Widget.AppCompat.Button.Colored"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
@@ -169,6 +169,7 @@
 
                 <Button
                     android:id="@+id/updateApp"
+                    style="@style/Widget.AppCompat.Button.Colored"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
@@ -180,10 +181,12 @@
 
                 <Button
                     android:id="@+id/openDB"
+                    style="@style/Widget.AppCompat.Button.Colored"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="16dp"
+                    android:background="#1565C0"
                     android:onClick="openDB"
                     android:text="Open Database Manager" />
 
