@@ -355,6 +355,17 @@ public class SectionA2ListActivity extends AppCompatActivity {
                 familyBinding.ffName.setText(mem.getFatherName().equals("") ? "..." : mem.getFatherName());
                 familyBinding.mmName.setText(mem.getMotherName().equals("") ? "..." : mem.getMotherName());
                 familyBinding.maritalStatus.setText(MStatusChecking(mem.getMaritialStatus()));
+                if (mem.getResp().equals("1")) {
+                    familyBinding.imgResp.setVisibility(View.VISIBLE);
+                } else {
+                    familyBinding.imgResp.setVisibility(View.GONE);
+                }
+
+                if (mem.getRealtionHH().equals("1")) {
+                    familyBinding.imgHead.setVisibility(View.VISIBLE);
+                } else {
+                    familyBinding.imgHead.setVisibility(View.GONE);
+                }
             }
         }
     }

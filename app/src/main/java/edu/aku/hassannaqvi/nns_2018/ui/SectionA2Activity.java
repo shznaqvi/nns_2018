@@ -469,12 +469,28 @@ public class SectionA2Activity extends AppCompatActivity {
                     binding.na2aged.setError(null);
                 }
 
+                if ((family.getResp().equals("1") || family.getRealtionHH().equals("1")) && Age < 18) {
+                    String chk = family.getResp().equals("1") ? "Resp" : "Head";
+                    binding.na2agey.setError("Error(Invalid) Age for " + chk);
+                    Toast.makeText(this, chk + " Age greater then or equal 18..", Toast.LENGTH_SHORT).show();
+                    return false;
+                } else {
+                    binding.na2agey.setError(null);
+                }
 
             } else {
                 if (!validatorClass.EmptyTextBox(this, binding.na2dob, getString(R.string.na2dob))) {
                     return false;
                 }
 
+                if ((family.getResp().equals("1") || family.getRealtionHH().equals("1")) && Age < 18) {
+                    String chk = family.getResp().equals("1") ? "Resp" : "Head";
+                    binding.na2dob.setError("Error(Invalid) Age for " + chk);
+                    Toast.makeText(this, chk + " Age greater then or equal 18..", Toast.LENGTH_SHORT).show();
+                    return false;
+                } else {
+                    binding.na2dob.setError(null);
+                }
             }
             if (!validatorClass.EmptyRadioButton(this, binding.na2ms, binding.na2msa, getString(R.string.na2ms))) {
                 return false;
