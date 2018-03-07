@@ -74,69 +74,69 @@
                     android:layout_marginBottom="1dp"
                     android:text="@string/istatusc" />
 
-                <!--   <RadioButton
-                       android:id="@+id/istatusd"
+                <RadioButton
+                    android:id="@+id/istatusd"
 
-                       style="@style/radiobutton"
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:layout_marginBottom="1dp"
-                       android:text="@string/istatusd" />
+                    style="@style/radiobutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:text="@string/istatusd" />
 
-                    <RadioButton
-                        android:id="@+id/istatuse"
+                <RadioButton
+                    android:id="@+id/istatuse"
 
-                        style="@style/radiobutton"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:text="@string/istatuse" />
+                    style="@style/radiobutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:text="@string/istatuse" />
 
-                    <RadioButton
-                        android:id="@+id/istatusf"
+                <!--      <RadioButton
+                      android:id="@+id/istatusf"
 
-                        style="@style/radiobutton"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:text="@string/istatusf" />
+                      style="@style/radiobutton"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginBottom="1dp"
+                      android:text="@string/istatusf" />
 
-                    <RadioButton
-                        android:id="@+id/istatusg"
+                  <RadioButton
+                      android:id="@+id/istatusg"
 
-                        style="@style/radiobutton"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:text="@string/istatusg" />
+                      style="@style/radiobutton"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginBottom="1dp"
+                      android:text="@string/istatusg" />
 
-                    <RadioButton
-                        android:id="@+id/istatush"
+                  <RadioButton
+                      android:id="@+id/istatush"
 
-                        style="@style/radiobutton"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:text="@string/istatush" />
+                      style="@style/radiobutton"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginBottom="1dp"
+                      android:text="@string/istatush" />
+ -->
+                <RadioButton
+                    android:id="@+id/istatus96"
 
-                    <RadioButton
-                        android:id="@+id/istatus88"
+                    style="@style/radiobutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:text="@string/other" />
 
-                        style="@style/radiobutton"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:text="@string/other" />&ndash;&gt;
-   -->
             </RadioGroup>
 
-            <!--<EditText
-                android:id="@+id/istatus88x"
+            <EditText
+                android:id="@+id/istatus96x"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                 android:maxLength="40"
-                android:text="@string/other" />-->
+                android:text="@string/other" />
 
             <Button
                 android:id="@+id/btn_End"

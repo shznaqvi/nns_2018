@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -104,6 +105,73 @@ public class SectionA5Activity extends AppCompatActivity {
                 }
             }
         });
+        binding.na503a.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (binding.na503a.isChecked() || binding.na503b.isChecked() || binding.na503c.isChecked()) {
+                    binding.fldGrna504.setVisibility(View.GONE);
+                    binding.fldGrpna505.setVisibility(View.GONE);
+                    binding.na504.clearCheck();
+                    binding.na505a.setChecked(false);
+                    binding.na505b.setChecked(false);
+                    binding.na505c.setChecked(false);
+                    binding.na505d.setChecked(false);
+                    binding.na505e.setChecked(false);
+                } else {
+                    binding.fldGrna504.setVisibility(View.VISIBLE);
+                    binding.fldGrpna505.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        binding.na503b.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (binding.na503a.isChecked() || binding.na503b.isChecked() || binding.na503c.isChecked()) {
+                    binding.fldGrna504.setVisibility(View.GONE);
+                    binding.fldGrpna505.setVisibility(View.GONE);
+                    binding.na504.clearCheck();
+                    binding.na505a.setChecked(false);
+                    binding.na505b.setChecked(false);
+                    binding.na505c.setChecked(false);
+                    binding.na505d.setChecked(false);
+                    binding.na505e.setChecked(false);
+                } else {
+                    binding.fldGrna504.setVisibility(View.VISIBLE);
+                    binding.fldGrpna505.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        binding.na503c.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (binding.na503a.isChecked() || binding.na503b.isChecked() || binding.na503c.isChecked()) {
+                    binding.fldGrna504.setVisibility(View.GONE);
+                    binding.fldGrpna505.setVisibility(View.GONE);
+                    binding.na504.clearCheck();
+                    binding.na505a.setChecked(false);
+                    binding.na505b.setChecked(false);
+                    binding.na505c.setChecked(false);
+                    binding.na505d.setChecked(false);
+                    binding.na505e.setChecked(false);
+                } else {
+                    binding.fldGrna504.setVisibility(View.VISIBLE);
+                    binding.fldGrpna505.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        binding.na601.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.na601d) {
+                    binding.fldGrnh602.setVisibility(View.GONE);
+                    binding.na602.clearCheck();
+                    binding.na603.clearCheck();
+                } else {
+                    binding.fldGrnh602.setVisibility(View.VISIBLE);
+                }
+            }
+        });
 
     }
 
@@ -167,20 +235,21 @@ public class SectionA5Activity extends AppCompatActivity {
                 return false;
             }
             // na503
-            if (!validatorClass.EmptyCheckBox(this, binding.fldGrna503check, binding.na503e, getString(R.string.na503))) {
+            if (!validatorClass.EmptyCheckBox(this, binding.fldGrna503check, binding.na503a, getString(R.string.na503))) {
                 return false;
             }
         }
-
+        if (!binding.na503a.isChecked() && !binding.na503b.isChecked() && !binding.na503c.isChecked()) {
 //        na504
-        if (!validatorClass.EmptyRadioButton(this, binding.na504, binding.na504b, getString(R.string.na504))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, binding.na504, binding.na504a, getString(R.string.na504))) {
+                return false;
+            }
 
 //        na505
-        if (binding.na504a.isChecked()) {
-            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpna505check, binding.na505e, getString(R.string.na505))) {
-                return false;
+            if (binding.na504a.isChecked()) {
+                if (!validatorClass.EmptyCheckBox(this, binding.fldGrpna505check, binding.na505e, getString(R.string.na505))) {
+                    return false;
+                }
             }
         }
 //        na50601

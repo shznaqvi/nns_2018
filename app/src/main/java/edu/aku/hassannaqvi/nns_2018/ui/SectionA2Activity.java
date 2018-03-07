@@ -133,7 +133,6 @@ public class SectionA2Activity extends AppCompatActivity {
                         binding.na2ms.clearCheck();
                         binding.na2occ.clearCheck();
 
-
                         binding.na2edua.setChecked(true);
                         binding.na2occa.setChecked(true);
                         binding.na2mse.setChecked(true);
@@ -225,12 +224,15 @@ public class SectionA2Activity extends AppCompatActivity {
                         binding.na2edu.clearCheck();
 
                         binding.fldGrpna2edu.setVisibility(View.VISIBLE);
-                        binding.fldGrpna2ms.setVisibility(View.GONE);
-                        binding.fldGrpna2occ.setVisibility(View.GONE);
+//                        binding.fldGrpna2ms.setVisibility(View.GONE);
+//                        binding.fldGrpna2occ.setVisibility(View.GONE);
+                        binding.na2occ.clearCheck();
+                        binding.na2occ.check(R.id.na2occa);
+                        binding.na2ms.check(R.id.na2mse);
 
-
-                        binding.na2occa.setChecked(true);
-                        binding.na2mse.setChecked(true);
+//
+//                        binding.na2occa.setChecked(true);
+//                        binding.na2mse.setChecked(true);
 
                         binding.na2edua.setEnabled(true);
                         binding.na2edub.setEnabled(true);

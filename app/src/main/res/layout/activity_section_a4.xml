@@ -31,7 +31,7 @@
                 android:layout_marginTop="2dp"
                 android:background="@color/colorPrimaryDark"
                 android:gravity="center"
-                android:text="@string/na4heading"
+                android:text="@string/nh3heading"
                 android:textSize="40sp" />
 
             <View
@@ -44,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/na4heading" />
+                android:text="@string/nh3sub" />
             <!--1-->
             <TextView
                 android:layout_width="match_parent"
@@ -208,24 +208,29 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
                     android:background="@color/pink_100"
                     android:text="Piped Water"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/colorPrimaryDark" />
+
+                <TextView
+                    style="@style/sub"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nh303sub" />
 
                 <RadioGroup
                     android:id="@+id/nh303"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <RadioButton
-                        android:id="@+id/nh303a"
-                        style="@style/radiobutton"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:text="@string/nh303a" />
+                    <!--<RadioButton-->
+                    <!--android:id="@+id/nh303a"-->
+                    <!--style="@style/radiobutton"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginBottom="1dp"-->
+                    <!--android:text="@string/nh303a" />-->
 
                     <RadioButton
                         android:id="@+id/nh303b"
@@ -371,6 +376,26 @@
 
             </LinearLayout>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/nh306"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@android:color/white"
+                android:visibility="@{nh303b.checked ? View.GONE : View.VISIBLE}" />
+
+            <EditText
+                android:id="@+id/nh306"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/nh306min"
+                android:inputType="number"
+                android:maxLength="2"
+                android:text='@{nh303b.checked ? "":nh306.getText.toString }'
+                android:visibility="@{nh303b.checked ? View.GONE : View.VISIBLE }" />
+
             <!--03-->
             <TextView
                 android:layout_width="match_parent"
@@ -499,24 +524,6 @@
                     android:text='@{nh30596.checked ? nh30596x.getText.toString : ""}'
                     android:visibility="@{nh30596.checked ? View.VISIBLE : View.GONE}" />
             </LinearLayout>
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/nh306"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
-
-            <EditText
-                android:id="@+id/nh306"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/nh306min"
-                android:inputType="number"
-                android:maxLength="2" />
 
 
             <LinearLayout
@@ -2557,7 +2564,7 @@
 
             </RadioGroup>
 
-            <!-- 21 -->
+            <!-- 24 -->
             <LinearLayout
                 android:id="@+id/fldGrpnh324"
                 android:layout_width="match_parent"
