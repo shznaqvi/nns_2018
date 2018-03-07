@@ -319,12 +319,12 @@ public class MainActivity extends Activity {
 
 
     public void openA(View v) {
-        Intent iA = new Intent(this, SectionC2Activity.class);
+        Intent iA = new Intent(this, SectionA4Activity.class);
         startActivity(iA);
     }
 
     public void openB(View v) {
-        Intent iB = new Intent(this, SectionA2Activity.class);
+        Intent iB = new Intent(this, AntrhoInfoActivity.class);
         startActivity(iB);
     }
 

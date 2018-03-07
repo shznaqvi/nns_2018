@@ -332,6 +332,8 @@ public class SectionA1Activity extends AppCompatActivity {
                 Settings.Secure.ANDROID_ID));
         MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
         MainApp.fc.setRespLineNo(MainApp.lineNo);
+        MainApp.fc.setEnmNo(binding.na102.getText().toString());
+        MainApp.fc.setHhNo(binding.na103.getText().toString());
 
 
         setGPS(); // Set GPS
@@ -349,16 +351,16 @@ public class SectionA1Activity extends AppCompatActivity {
         sA1.put("hhheadpresent", binding.checkHHHeadpresent.isChecked() ? "1" : "2");
         sA1.put("hhheadpresentnew", binding.newHHheadname.getText().toString());
 
-        sA1.put("nw101", binding.na101.getText().toString());
-        sA1.put("nw102", binding.na102.getText().toString());
-        sA1.put("nw103", binding.na101a.getText().toString());
-        sA1.put("nw104", binding.na101b.getText().toString());
-        sA1.put("nw105", binding.na101c.getText().toString());
-        sA1.put("nw106", binding.na101d.getText().toString());
-        sA1.put("nw107", binding.na103.getText().toString());
-        sA1.put("nw109", binding.na105.getText().toString());
-        sA1.put("nw112", binding.na107.getText().toString());
-        sA1.put("na114", binding.na108.getText().toString());
+        sA1.put("nh101", binding.na101.getText().toString());
+        //sA1.put("nw102", binding.na102.getText().toString());
+        sA1.put("nh103", binding.na101a.getText().toString());
+        sA1.put("nh104", binding.na101b.getText().toString());
+        sA1.put("nh105", binding.na101c.getText().toString());
+        sA1.put("nh106", binding.na101d.getText().toString());
+        //sA1.put("nh107", binding.na103.getText().toString());
+        sA1.put("nh110", binding.na105.getText().toString());
+        sA1.put("nh113", binding.na107.getText().toString());
+        sA1.put("nh115", binding.na108.getText().toString());
 
 /*        sA1.put("nw11501blood", binding.na11101blooda.isChecked() ? "1"
                 : binding.na11101bloodb.isChecked() ? "2" : "0");
@@ -370,20 +372,20 @@ public class SectionA1Activity extends AppCompatActivity {
                 : binding.na11102waterb.isChecked() ? "2" : "0");
 */
 
-        sA1.put("nw11501blood", MainApp.selectedHead.getSelStructure());
+        sA1.put("nh11701blood", MainApp.selectedHead.getSelStructure());
 
-        sA1.put("nw11501urine", MainApp.selectedHead.getSelStructure());
+        sA1.put("nh11702urine", MainApp.selectedHead.getSelStructure());
 
-        sA1.put("nw11502water", MainApp.selectedHead.getSelStructure());
+        sA1.put("nh11703water", MainApp.selectedHead.getSelStructure());
 
-        sA1.put("nw11601", binding.na11201a.isChecked() ? "1"
+        sA1.put("nh11801", binding.na11201a.isChecked() ? "1"
                 : binding.na11201b.isChecked() ? "2" : "0");
 
-        sA1.put("nw11602", binding.na11202a.isChecked() ? "1"
+        sA1.put("nh11802", binding.na11202a.isChecked() ? "1"
                 : binding.na11202b.isChecked() ? "2" : "0");
 
 //        na117
-        sA1.put("nw117a", binding.na113a.isChecked() ? "1" : "0");
+        sA1.put("nh119a", binding.na113a.isChecked() ? "1" : "0");
         sA1.put("nw117b", binding.na113b.isChecked() ? "2" : "0");
         sA1.put("nw117c", binding.na113c.isChecked() ? "3" : "0");
         sA1.put("nw117d", binding.na113d.isChecked() ? "4" : "0");

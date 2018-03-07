@@ -115,6 +115,15 @@
 
 
             <Button
+                android:id="@+id/openB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="16dp"
+                android:onClick="openB"
+                android:text="OPEN Anthropometry Section" />
+
+            <Button
                 android:id="@+id/openA"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
