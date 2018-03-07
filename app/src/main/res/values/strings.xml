@@ -456,7 +456,7 @@
     <string name="na707"> کیا کبھی ایسا وقت آیا کہ جب آپ یا آپ کے گھر کے دوسرے افراد بھوکے تھے اور پیسوں کی کمی اور دیگر وسائل کی کمی کی وجہ سے کچھ نہیں کھاسکتے تھے؟ </string>
     <string name="na708"> کیاکبھی ایسا وقت آیا تھا کہ جب آپ یا گھر کے دوسرے افراد نے پیسوں اور دیگر وسائل کی کمی کی وجہ سے پورے دن کھانا نہ کھایا ہو؟ </string>
     <string name="na709"> کیا آپ یا آپ کے گھر والوں پر کبھی ایسا وقت آیا ہے کہ آپ کھانا کھانے کہیں باہر گئے ہوں؟ </string>
-    <string name="na8heading"> سیکشن 8: سوشل سیکورٹی ورک </string>
+    <string name="na8heading"> سیکشن ایچ 7: سوشل سیفٹی نیٹ    </string>
     <string name="na8info"> میں آپ سے مختلف بیرونی معاشی امدادی پروگرام کے بارے میں پوچھوں گا جو گھر کی سطح پرامداد مہیا کرتے ہیں۔بیرونی امداد سے میرا مطلب حکومتی ادارے یا غیر سرکاری ادارے جیسے مذہبی فلاحی یا سماجی ادارے ہیں۔اس میں وہ امداد شامل نہیں ہے جو فیملی دیگر رشتہ دار ،دوست یا پڑوسیوں سے حاصل ہوتی ہے ۔ </string>
     <string name="na801"> کیاآپ یا آپ کے گھر میں کسی نے 12 مہینے سے امداد حاصل کی ہے؟ </string>
     <string name="na802"> کتنے گھر کے افراد کو امداد ملی ؟ </string>
@@ -543,8 +543,8 @@
     <string name="nw302g"> لیڈی ہیلتھ وزیٹر </string>
     <string name="nw302h"> دائی </string>
 
-  <string name="nw303"> آپ نے یہ معائنہ کہاں کروایا تھا؟ </string>
-  <string name="nw303sub1"> گھر </string>
+    <string name="nw303"> آپ نے یہ معائنہ کہاں کروایا تھا؟ </string>
+    <string name="nw303sub1"> گھر </string>
 
     <string name="nw303a"> جواب دہندہ کے گھر پر </string>
     <string name="nw303b"> کسی اور کے گھر پر  </string>
@@ -565,66 +565,66 @@
 
 
     <string name="nw304"> جب آپ نے گزشتہ حمل کے دوران  پہلی دفعہ معائنہ کروایا ،تو آپ کاحمل  کتنے ہفتوں یا مہینہ کا تھا؟ </string>
-  <string name="nw304info"> جواب نوٹ کریں جیسے جوابدہندہ نے بتایا ہے ۔اگر 9 مہینے یا اس زیادہ ہے تو "9" ریکارڈ کریں </string>
+    <string name="nw304info"> جواب نوٹ کریں جیسے جوابدہندہ نے بتایا ہے ۔اگر 9 مہینے یا اس زیادہ ہے تو "9" ریکارڈ کریں </string>
 
-  <string name="nw305"> اس حمل کے دوران آپ نے کتنی مرتبہ اپنا معائنہ کروایا؟ </string>
+    <string name="nw305"> اس حمل کے دوران آپ نے کتنی مرتبہ اپنا معائنہ کروایا؟ </string>
     <string name="nw305info"> مزید پوچھیں: حمل کے معائنہ کے وزٹ کی تعداد کے بارے میں مزید پوچھیں ،اگر کوئی تعداد بتائی ہے تو جو کم سے کم نمبر وہ لکھیں </string>
-  <string name="nw305a"> معائنہ کی تعداد </string>
-  <string name="nw305b"> معلوم نہیں </string>
-  <string name="nw306"> آپ کے حمل کے دوران طبی معائنہ کے وقت کیا مندرجہ ذیل میں سے کوئی عمل کم از کم ایک دفعہ کیا تھا </string>
+    <string name="nw305a"> معائنہ کی تعداد </string>
+    <string name="nw305b"> معلوم نہیں </string>
+    <string name="nw306"> آپ کے حمل کے دوران طبی معائنہ کے وقت کیا مندرجہ ذیل میں سے کوئی عمل کم از کم ایک دفعہ کیا تھا </string>
     <string name="nw306info">(ہر انتخاب کے بارے میں پوچھیں اور تمام مثبت جواب کو دائرہ کریں ) </string>
-  <string name="nw306a"> کیا آپ کا وزن کیاگیا </string>
-  <string name="nw306b"> کیاآپ کا بلڈپریشر چیک کیاگیا </string>
-  <string name="nw306c"> کیا آپ نے پیشاب کانمونہ دیا </string>
-  <string name="nw306d"> کیاآپ نے خون کا نمونہ دیا </string>
-  <string name="nw306e"> الٹراساؤنڈ </string>
+    <string name="nw306a"> کیا آپ کا وزن کیاگیا </string>
+    <string name="nw306b"> کیاآپ کا بلڈپریشر چیک کیاگیا </string>
+    <string name="nw306c"> کیا آپ نے پیشاب کانمونہ دیا </string>
+    <string name="nw306d"> کیاآپ نے خون کا نمونہ دیا </string>
+    <string name="nw306e"> الٹراساؤنڈ </string>
     <string name="nw306f"> غذا کے باے میں مشورہ ملا</string>
     <string name="nw306g"> ماں کا دودھ پلانے کے بارے میں مشورہ ملا </string>
     <string name="nw306h"> فیملی پلاننگ کے بارے میں مشورہ ملا </string>
     <string name="nw307">کیا آپ کے پاس حفاظتی ٹیکہ جات سے متعلق کوئی کارڈ یا دستیاویزات موجود ہے ؟ اگر ہاں  تو پوچھیں کیا میں دیکھ سکتی ہوں </string>
-  <string name="nw307info"> اگر آپ کے پاس موجود ہے تو پوچھیں کیا میں دیکھ سکتی ہوں
+    <string name="nw307info"> اگر آپ کے پاس موجود ہے تو پوچھیں کیا میں دیکھ سکتی ہوں
     اگر کارڈ موجود ہے تو درج ذیل سوالات کے جوابات کا پتہ کریں </string>
-  <string name="nw307a"> ہاں (کارڈ اور دیگر دستاویزات دیکھے) </string>
-  <string name="nw307b"> ہاں (کارڈ اور دیگر دستاویزات نہیں دیکھے) </string>
+    <string name="nw307a"> ہاں (کارڈ اور دیگر دستاویزات دیکھے) </string>
+    <string name="nw307b"> ہاں (کارڈ اور دیگر دستاویزات نہیں دیکھے) </string>
     <string name="nw308"> جب آپ حمل سے تھیں تو کیا آپ نے بازو پر تشنج سے بچاؤ کے ٹیکے لگوائے تھے  ؟</string>
     <string name="nw309"> آپ نے دوران حمل کتنی مرتبہ ،تشنج کی بیماری سے بچانے والے ٹیکے لگوائے تھے؟</string>
-  <string name="nw310"> کیا آپ نے کبھی حمل کے دوارن فولاد کی گولیاں استعمال کیں؟ </string>
+    <string name="nw310"> کیا آپ نے کبھی حمل کے دوارن فولاد کی گولیاں استعمال کیں؟ </string>
     <string name="nb210"> اگر ہاں ہے تو کسی نے دی یا خریدی </string>
     <string name="nb21001"> کلینک پر ملی </string>
     <string name="nb21002"> خریدی </string>
     <string name="nb21003"> نہ ملی نہ خریدی </string>
     <string name="nb21004"> جواب نہیں دیا </string>
     <string name="nw313"> آپ نےعموماً کتنی دفعہ حمل کے دوران اضافی طاقت کی گولیوں کا استعمال کیا؟ </string>
-  <string name="nw313a"> روزانہ </string>
-  <string name="nw313b"> ہفتے میں ایک مرتبہ </string>
-  <string name="nw313c"> ہفتے میں دو مرتبہ </string>
-  <string name="nw313d"> ہرمہینے </string>
-  <string name="nw313e"> کبھی کبھار </string>
-  <string name="nw314"> کتنے مہینے یا کتنے دنوں تک آپ (آئرن فولک )گولیوں کا استعمال کرتی رہی تھی؟ </string>
-  <string name="nw314m"> مہینے </string>
-  <string name="nw314d"> دنوں </string>
-  <string name="nw315"> کیا آپ نے کبھی دوران حمل اضافی طاقت کی گولیاں استعمال کیاتھا؟ </string>
-  <string name="nw318"> عموماً کتنی دفعہ حمل کے دوران اضافی طاقت کی گولیوں کا استعمال کیا؟ </string>
-  <string name="nw318a"> روزانہ </string>
-  <string name="nw318b"> ہفتے میں ایک مرتبہ </string>
-  <string name="nw318c"> ہفتے میں دو مرتبہ </string>
-  <string name="nw318d"> ہرمہینے </string>
-  <string name="nw318e"> کبھی کبھار </string>
-  <string name="nw319"> آپ کتنے مہینوں یا دنوں تک اضافی طاقت کی گولیاں کھاتی رہی تھی؟ </string>
-  <string name="nw319m"> مہینے </string>
-  <string name="nw319d"> دنوں </string>
-  <string name="nw320"> جب آپ حمل سے تھیں کیا آپ نے کبھی کیلشیم گولیاں استعمال کی تھیں؟ </string>
-  <string name="nw323"> آپ حمل کے دوران کیلیشم کی گولیاں کتنی بار کھاتی تھی؟ </string>
-  <string name="nw323a"> روزانہ </string>
-  <string name="nw323b"> ہفتے میں ایک مرتبہ </string>
-  <string name="nw323c"> ہفتے میں دو مرتبہ </string>
-  <string name="nw323d"> ہرمہینے </string>
-  <string name="nw323e"> کبھی کبھار </string>
-  <string name="nw324"> آپ کتنے مہینوں یا دنوں تک کیلیشم کی گولیاں کھاتی رہی تھی؟ </string>
-  <string name="nw324m"> مہینے </string>
-  <string name="nw324d"> دنوں </string>
-  <string name="nw325"> کیاآپ کو حمل کے دوران پیٹ کے کیڑوں کو ختم کرنے والی گولیاں دی گئی تھی؟ </string>
-  <string name="nw326"> کیا آپ نے گزشتہ حمل کے دوران محسوس کیا کہ شام کے وقت آپ کو دیکھنے میں مشکل ہورہی تھی؟ </string>
+    <string name="nw313a"> روزانہ </string>
+    <string name="nw313b"> ہفتے میں ایک مرتبہ </string>
+    <string name="nw313c"> ہفتے میں دو مرتبہ </string>
+    <string name="nw313d"> ہرمہینے </string>
+    <string name="nw313e"> کبھی کبھار </string>
+    <string name="nw314"> کتنے مہینے یا کتنے دنوں تک آپ (آئرن فولک )گولیوں کا استعمال کرتی رہی تھی؟ </string>
+    <string name="nw314m"> مہینے </string>
+    <string name="nw314d"> دنوں </string>
+    <string name="nw315"> کیا آپ نے کبھی دوران حمل اضافی طاقت کی گولیاں استعمال کیاتھا؟ </string>
+    <string name="nw318"> عموماً کتنی دفعہ حمل کے دوران اضافی طاقت کی گولیوں کا استعمال کیا؟ </string>
+    <string name="nw318a"> روزانہ </string>
+    <string name="nw318b"> ہفتے میں ایک مرتبہ </string>
+    <string name="nw318c"> ہفتے میں دو مرتبہ </string>
+    <string name="nw318d"> ہرمہینے </string>
+    <string name="nw318e"> کبھی کبھار </string>
+    <string name="nw319"> آپ کتنے مہینوں یا دنوں تک اضافی طاقت کی گولیاں کھاتی رہی تھی؟ </string>
+    <string name="nw319m"> مہینے </string>
+    <string name="nw319d"> دنوں </string>
+    <string name="nw320"> جب آپ حمل سے تھیں کیا آپ نے کبھی کیلشیم گولیاں استعمال کی تھیں؟ </string>
+    <string name="nw323"> آپ حمل کے دوران کیلیشم کی گولیاں کتنی بار کھاتی تھی؟ </string>
+    <string name="nw323a"> روزانہ </string>
+    <string name="nw323b"> ہفتے میں ایک مرتبہ </string>
+    <string name="nw323c"> ہفتے میں دو مرتبہ </string>
+    <string name="nw323d"> ہرمہینے </string>
+    <string name="nw323e"> کبھی کبھار </string>
+    <string name="nw324"> آپ کتنے مہینوں یا دنوں تک کیلیشم کی گولیاں کھاتی رہی تھی؟ </string>
+    <string name="nw324m"> مہینے </string>
+    <string name="nw324d"> دنوں </string>
+    <string name="nw325"> کیاآپ کو حمل کے دوران پیٹ کے کیڑوں کو ختم کرنے والی گولیاں دی گئی تھی؟ </string>
+    <string name="nw326"> کیا آپ نے گزشتہ حمل کے دوران محسوس کیا کہ شام کے وقت آپ کو دیکھنے میں مشکل ہورہی تھی؟ </string>
     <string name="nb3heading"> Section B3 LHW Coverage </string>
     <string name="nb301"> لیڈی ہیلتھ ورکر نے آخری مرتبہ آپ کے گھر کا دورہ کبکیا تھا؟ </string>
     <string name="nb301m"> مہینوں </string>
@@ -669,7 +669,7 @@
     <string name="nb401h">دوست /رشتہ دار </string>
     <string name="nb401i"> کوئی بھی نہیں </string>
 
-  <string name="nb402"> (نام) کو کس نے زچگی کے دوران مدد کروائی تھی </string>
+    <string name="nb402"> (نام) کو کس نے زچگی کے دوران مدد کروائی تھی </string>
     <string name="nb402info"> پوچھیں : کوئی اور
     پوچھیں: زچگی میں مدد کروانے والوں کانام پوچھیں اور تمام جوابات لکھیں۔ </string>
     <string name="nb402a"> ڈاکٹر </string>
@@ -681,7 +681,7 @@
     <string name="nb402f"> کمیونٹی ہیلتھ ورکر  </string>
     <string name="nb402g">  لیڈی ہیلتھ ورکر </string>
     <string name="nb402h"> دوست /رشتہ دار </string>
-  <string name="nb40299"> کوئی بھی نہیں </string>
+    <string name="nb40299"> کوئی بھی نہیں </string>
 
 
     <string name="nb403"> آپ کے بچے(نام) کی پیدائش کس جگہ واقع ہوئی تھی؟ </string>
@@ -1167,38 +1167,38 @@
 
     <string name="nw311">آپ کو حمل کے دوران فولاد کی گولیا ں استعمال کرنے کا مشورہ کس نے دیا ؟ </string>
 
-  <string name="nw311a"> گائنا کولوجسٹ </string>
-  <string name="nw311b"> کوئی اور ڈاکٹر </string>
-  <string name="nw311c"> نرس </string>
-  <string name="nw311d"> کمیونٹی ہیلتھ ورکر </string>
-  <string name="nw311e"> لیڈی ہیلتھ ورکر </string>
-  <string name="nw311f">کیمونٹی مڈوائف </string>
-  <string name="nw311g"> لیڈی ہیلتھ وزیٹر</string>
-  <string name="nw311h"> دائی </string>
+    <string name="nw311a"> گائنا کولوجسٹ </string>
+    <string name="nw311b"> کوئی اور ڈاکٹر </string>
+    <string name="nw311c"> نرس </string>
+    <string name="nw311d"> کمیونٹی ہیلتھ ورکر </string>
+    <string name="nw311e"> لیڈی ہیلتھ ورکر </string>
+    <string name="nw311f">کیمونٹی مڈوائف </string>
+    <string name="nw311g"> لیڈی ہیلتھ وزیٹر</string>
+    <string name="nw311h"> دائی </string>
 
-  <string name="nw312">آپ نے حمل کے دوران فولاد کی گولیاں کہاں سے حاصل کیں؟</string>
-  <string name="nw312sub1"> بپلک میڈیکل سیکٹر</string>
-  <string name="nw312sub2">  نجی ہسپتال/سیکٹر</string>
-  <string name="nw312sub3">  دیگر زرائع</string>
-  <string name="nw312a">   سرکاری ہسپتال</string>
-  <string name="nw312b"> سرکاری صحت سینٹر</string>
-  <string name="nw312c">  سرکاری صحت پوسٹ</string>
-  <string name="nw312d"> کمیونٹی ہیلتھ ورکر</string>
-  <string name="nw312e">موبائل / دوسرے کلینک</string>
-  <string name="nw312f"> نجی ہسپتال /کلینک</string>
-  <string name="nw312g">  نجی ڈاکٹر</string>
-  <string name="nw312h">  نجی  دواخانہ </string>
-  <string name="nw312i">  غیرسرکاری عوامی صحت کارکن </string>
-  <string name="nw312j">   موبائل کلینک </string>
-  <string name="nw312k">   رشتہ دار /صحت </string>
-  <string name="nw312l">  دوکان /بازار/گلی </string>
-  <string name="nw312m">   روایتی  </string>
+    <string name="nw312">آپ نے حمل کے دوران فولاد کی گولیاں کہاں سے حاصل کیں؟</string>
+    <string name="nw312sub1"> بپلک میڈیکل سیکٹر</string>
+    <string name="nw312sub2">  نجی ہسپتال/سیکٹر</string>
+    <string name="nw312sub3">  دیگر زرائع</string>
+    <string name="nw312a">   سرکاری ہسپتال</string>
+    <string name="nw312b"> سرکاری صحت سینٹر</string>
+    <string name="nw312c">  سرکاری صحت پوسٹ</string>
+    <string name="nw312d"> کمیونٹی ہیلتھ ورکر</string>
+    <string name="nw312e">موبائل / دوسرے کلینک</string>
+    <string name="nw312f"> نجی ہسپتال /کلینک</string>
+    <string name="nw312g">  نجی ڈاکٹر</string>
+    <string name="nw312h">  نجی  دواخانہ </string>
+    <string name="nw312i">  غیرسرکاری عوامی صحت کارکن </string>
+    <string name="nw312j">   موبائل کلینک </string>
+    <string name="nw312k">   رشتہ دار /صحت </string>
+    <string name="nw312l">  دوکان /بازار/گلی </string>
+    <string name="nw312m">   روایتی  </string>
 
 
-  <string name="nw316"> آپ کو حمل کے دوران اضافی طاقت  کی گولیا ں استعمال کرنے کا مشورہ کس نے دیا؟</string>
-  <string name="nw317">آپ نے حمل کے دوران اضافی طاقت کی گولیاں کہاں سے حاصل کیں؟</string>
-  <string name="nw321">آپ کو حمل کے دوران کیلشیم کی گولیا ں استعمال کرنے کا مشورہ کس نے دیا ؟</string>
-  <string name="nw322">آپ نے حمل کے دوران کیلشیم کی گولیاں کہاں سے حاصل کیں؟</string>
+    <string name="nw316"> آپ کو حمل کے دوران اضافی طاقت  کی گولیا ں استعمال کرنے کا مشورہ کس نے دیا؟</string>
+    <string name="nw317">آپ نے حمل کے دوران اضافی طاقت کی گولیاں کہاں سے حاصل کیں؟</string>
+    <string name="nw321">آپ کو حمل کے دوران کیلشیم کی گولیا ں استعمال کرنے کا مشورہ کس نے دیا ؟</string>
+    <string name="nw322">آپ نے حمل کے دوران کیلشیم کی گولیاں کہاں سے حاصل کیں؟</string>
 
 
     <string name="nw209">زچگیوں کی تعداد </string>

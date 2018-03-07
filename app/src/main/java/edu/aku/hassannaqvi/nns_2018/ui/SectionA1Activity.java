@@ -332,6 +332,8 @@ public class SectionA1Activity extends AppCompatActivity {
                 Settings.Secure.ANDROID_ID));
         MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
         MainApp.fc.setRespLineNo(MainApp.lineNo);
+        MainApp.fc.setEnmNo(binding.na102.getText().toString());
+        MainApp.fc.setHhNo(binding.na103.getText().toString());
 
 
         setGPS(); // Set GPS
@@ -350,7 +352,7 @@ public class SectionA1Activity extends AppCompatActivity {
         sA1.put("hhheadpresentnew", binding.newHHheadname.getText().toString());
 
         sA1.put("nw101", binding.na101.getText().toString());
-        sA1.put("nw102", binding.na102.getText().toString());
+        //sA1.put("nw102", binding.na102.getText().toString());
         sA1.put("nw103", binding.na101a.getText().toString());
         sA1.put("nw104", binding.na101b.getText().toString());
         sA1.put("nw105", binding.na101c.getText().toString());

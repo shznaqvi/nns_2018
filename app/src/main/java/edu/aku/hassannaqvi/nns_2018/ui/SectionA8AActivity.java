@@ -132,8 +132,6 @@ public class SectionA8AActivity extends Activity {
                             SectionC1Activity.isNA = false;
                             startActivity(new Intent(this, SectionC1Activity.class));
                         }
-                    } else if (MainApp.adolescents.size() > 0) {
-                        startActivity(new Intent(this, SectionA3Activity.class));
                     } else {
                         startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
                     }

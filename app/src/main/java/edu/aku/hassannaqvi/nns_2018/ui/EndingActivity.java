@@ -112,25 +112,7 @@ public class EndingActivity extends AppCompatActivity {
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
 
-        if (!validatorClass.EmptyRadioButton(this, binding.istatus, binding.istatus96, binding.istatus96x, getString(R.string.istatus))) {
-            return false;
-        }
-
-        /*if (istatus88.isChecked()) {
-
-            if (istatus88x.getText().toString().isEmpty()) {
-                Toast.makeText(this, "ERROR(empty): " + getString(R.string.other), Toast.LENGTH_SHORT).show();
-                istatus88x.setError("This data is Required!");    // Set Error on last radio button
-                Log.i(TAG, "istatus88x: This data is Required!");
-                return false;
-            } else {
-                istatus88x.setError(null);
-            }
-
-        }*/
-
-
-        return true;
+        return validatorClass.EmptyRadioButton(this, binding.istatus, binding.istatus96, binding.istatus96x, getString(R.string.istatus));
     }
 
 
