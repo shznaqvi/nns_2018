@@ -79,7 +79,7 @@ public class ChildEndingActivity extends AppCompatActivity {
 
                     if (SectionC1Activity.counter == SectionC1Activity.counterPerNA) {
                         SectionC1Activity.isNA = false;
-                        startActivity(new Intent(this, SectionA3Activity.class));
+                        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
 
                     } else {
 

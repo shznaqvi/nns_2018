@@ -518,6 +518,8 @@ public class SectionA2Activity extends AppCompatActivity {
             MainApp.fmc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID));
             MainApp.fmc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
             MainApp.fmc.set_UUID(MainApp.fc.getUID());
+            MainApp.fmc.setEnmNo(MainApp.fc.getEnmNo());
+            MainApp.fmc.setHhNo(MainApp.fc.getHhNo());
 
             MainApp.fmc.setSerialNo(String.valueOf(MainApp.serial_no));
             MainApp.fmc.setna204(binding.na204a.isChecked() ? "1" : binding.na204b.isChecked() ? "2" : "0");
@@ -528,7 +530,6 @@ public class SectionA2Activity extends AppCompatActivity {
                     : binding.na203m.isChecked() ? "13" : binding.na20398.isChecked() ? "98" : binding.na20396.isChecked() ? "96" : "0");
 
             MainApp.fmc.setResp(binding.respa.isChecked() ? "1" : "0"); //respondent
-
 
             MainApp.familyMembersList.add(MainApp.fmc);
 
@@ -550,6 +551,7 @@ public class SectionA2Activity extends AppCompatActivity {
                 family.setMotherId(mothersMap.get(binding.na212.getSelectedItem().toString() + "_" + mothersSerials.get(mothersList.indexOf(binding.na212.getSelectedItem().toString()) - 1)));
             }
 
+
             JSONObject sA2 = new JSONObject();
 
             sA2.put("resp", family.getResp().equals("0") ? "" : family.getResp());
@@ -564,6 +566,15 @@ public class SectionA2Activity extends AppCompatActivity {
             sA2.put("na206y", binding.na2agey.getText().toString());
             sA2.put("na206m", binding.na2agem.getText().toString());
             sA2.put("na206d", binding.na2aged.getText().toString());
+
+            if (binding.na20598.isChecked()) {
+                Age = Integer.valueOf(binding.na2agey.getText().toString());
+            } else {
+                Age = (int) MainApp.ageInYearByDOB(binding.na2dob.getText().toString());
+            }
+
+            sA2.put("age", String.valueOf(Age));
+
 
             sA2.put("na207", binding.na2msa.isChecked() ? "1" : binding.na2msb.isChecked() ? "2" : binding.na2msc.isChecked() ? "3" : binding.na2msd.isChecked() ? "4"
                     : binding.na2mse.isChecked() ? "5" : "0");
