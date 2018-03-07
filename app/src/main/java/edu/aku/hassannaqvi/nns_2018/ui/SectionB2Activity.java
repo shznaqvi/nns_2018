@@ -160,6 +160,8 @@ public class SectionB2Activity extends Activity {
             }
         });
 
+//        Setting name of women
+        bi.nw301Txt.setText(getString(R.string.nw301b) + " " + SectionB1Activity.wraName + " " + getString(R.string.nw301a));
 
     }
 
@@ -201,7 +203,7 @@ public class SectionB2Activity extends Activity {
 
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
-        if (!validatorClass.EmptyRadioButton(this, bi.nw301, bi.nw301a, getString(R.string.nw301))) {
+        if (!validatorClass.EmptyRadioButton(this, bi.nw301, bi.nw301a, getString(R.string.nw301b) + " " + SectionB1Activity.wraName + " " + getString(R.string.nw301a))) {
             return false;
         }
 
