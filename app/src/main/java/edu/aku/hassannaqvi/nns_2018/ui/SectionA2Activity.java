@@ -129,10 +129,13 @@ public class SectionA2Activity extends AppCompatActivity {
                         binding.fldGrpna2edu.setVisibility(View.GONE);
                         binding.fldGrpna2ms.setVisibility(View.GONE);
                         binding.fldGrpna2occ.setVisibility(View.GONE);
+
+                        binding.fldGrpfid.setVisibility(View.VISIBLE);
+                        binding.fldGrpmid.setVisibility(View.VISIBLE);
+
                         binding.na2edu.clearCheck();
                         binding.na2ms.clearCheck();
                         binding.na2occ.clearCheck();
-
 
                         binding.na2edua.setChecked(true);
                         binding.na2occa.setChecked(true);
@@ -142,10 +145,15 @@ public class SectionA2Activity extends AppCompatActivity {
                         binding.fldGrpna2edu.setVisibility(View.VISIBLE);
                         binding.fldGrpna2ms.setVisibility(View.GONE);
                         binding.fldGrpna2occ.setVisibility(View.GONE);
+
+                        binding.fldGrpfid.setVisibility(View.GONE);
+                        binding.fldGrpmid.setVisibility(View.GONE);
+                        binding.na211.setSelection(1);
+                        binding.na212.setSelection(1);
+
                         binding.na2edu.clearCheck();
                         binding.na2ms.clearCheck();
                         binding.na2occ.clearCheck();
-
 
                         binding.na2occa.setChecked(true);
                         binding.na2mse.setChecked(true);
@@ -164,6 +172,11 @@ public class SectionA2Activity extends AppCompatActivity {
                         binding.fldGrpna2edu.setVisibility(View.VISIBLE);
                         binding.fldGrpna2ms.setVisibility(View.VISIBLE);
                         binding.fldGrpna2occ.setVisibility(View.VISIBLE);
+
+                        binding.fldGrpfid.setVisibility(View.GONE);
+                        binding.fldGrpmid.setVisibility(View.GONE);
+                        binding.na211.setSelection(1);
+                        binding.na212.setSelection(1);
 
                         binding.na2edu.clearCheck();
                         binding.na2ms.clearCheck();
@@ -215,19 +228,30 @@ public class SectionA2Activity extends AppCompatActivity {
                         binding.fldGrpna2edu.setVisibility(View.GONE);
                         binding.fldGrpna2ms.setVisibility(View.GONE);
                         binding.fldGrpna2occ.setVisibility(View.GONE);
+
+                        binding.fldGrpfid.setVisibility(View.VISIBLE);
+                        binding.fldGrpmid.setVisibility(View.VISIBLE);
+
                         binding.na2edu.clearCheck();
                         binding.na2ms.clearCheck();
                         binding.na2occ.clearCheck();
+
                         binding.na2edua.setChecked(true);
                         binding.na2occa.setChecked(true);
                         binding.na2mse.setChecked(true);
                     } else if (Age >= 5 && Age <= 12) {
-                        binding.na2edu.clearCheck();
-
                         binding.fldGrpna2edu.setVisibility(View.VISIBLE);
                         binding.fldGrpna2ms.setVisibility(View.GONE);
                         binding.fldGrpna2occ.setVisibility(View.GONE);
 
+                        binding.fldGrpfid.setVisibility(View.GONE);
+                        binding.fldGrpmid.setVisibility(View.GONE);
+                        binding.na211.setSelection(1);
+                        binding.na212.setSelection(1);
+
+                        binding.na2edu.clearCheck();
+                        binding.na2ms.clearCheck();
+                        binding.na2occ.clearCheck();
 
                         binding.na2occa.setChecked(true);
                         binding.na2mse.setChecked(true);
@@ -246,9 +270,16 @@ public class SectionA2Activity extends AppCompatActivity {
                         binding.fldGrpna2edu.setVisibility(View.VISIBLE);
                         binding.fldGrpna2ms.setVisibility(View.VISIBLE);
                         binding.fldGrpna2occ.setVisibility(View.VISIBLE);
+
+                        binding.fldGrpfid.setVisibility(View.GONE);
+                        binding.fldGrpmid.setVisibility(View.GONE);
+                        binding.na211.setSelection(1);
+                        binding.na212.setSelection(1);
+
                         binding.na2edu.clearCheck();
                         binding.na2ms.clearCheck();
                         binding.na2occ.clearCheck();
+
                         binding.na2msa.setEnabled(true);
                         binding.na2msb.setEnabled(true);
                         binding.na2msc.setEnabled(true);
@@ -280,7 +311,7 @@ public class SectionA2Activity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.na2edua) {
                     binding.na2occf.setEnabled(false);
-                    binding.na2occ.clearCheck();
+                    binding.na2occf.setChecked(false);
                 } else {
                     binding.na2occf.setEnabled(true);
                 }
@@ -400,14 +431,6 @@ public class SectionA2Activity extends AppCompatActivity {
 
         } else {
 
-            if (!validatorClass.EmptySpinner(this, binding.na211, getString(R.string.na211))) {
-                return false;
-            }
-
-            if (!validatorClass.EmptySpinner(this, binding.na212, getString(R.string.na212))) {
-                return false;
-            }
-
             if (binding.na20598.isChecked()) {
 
                 if (!validatorClass.EmptyTextBox(this, binding.na2aged, getString(R.string.na2age))) {
@@ -461,15 +484,17 @@ public class SectionA2Activity extends AppCompatActivity {
                 return false;
             }
 
-
-            if (!validatorClass.EmptyRadioButton(this, binding.na2occ, binding.na2occa, getString(R.string.na2occ))) {
+            if (!validatorClass.EmptyRadioButton(this, binding.na2occ, binding.na2occ96, binding.na2occ96x, getString(R.string.na2occ))) {
                 return false;
             }
 
-            if (!validatorClass.EmptyRadioButton(this, binding.na2occ, binding.na2occ96, binding.na2occ96x, getString(R.string.na2occ) + " - " + getString(R.string.other))) {
+            if (!validatorClass.EmptySpinner(this, binding.na211, getString(R.string.na211))) {
                 return false;
             }
 
+            if (!validatorClass.EmptySpinner(this, binding.na212, getString(R.string.na212))) {
+                return false;
+            }
 
             if (!validatorClass.EmptyRadioButton(this, binding.na210, binding.na210a, getString(R.string.na210))) {
                 return false;
