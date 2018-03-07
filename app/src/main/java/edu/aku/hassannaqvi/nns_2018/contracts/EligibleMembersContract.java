@@ -30,6 +30,8 @@ public class EligibleMembersContract {
     private String age = "";
     private String na204 = "";
     private String sA3 = "";
+    private String istatus = ""; // Interview Status
+    private String istatus88x = ""; // Interview Status
 
     private String synced = "";
     private String syncedDate = "";
@@ -180,6 +182,22 @@ public class EligibleMembersContract {
         this.devicetagID = devicetagID;
     }
 
+    public String getIstatus() {
+        return istatus;
+    }
+
+    public void setIstatus(String istatus) {
+        this.istatus = istatus;
+    }
+
+    public String getIstatus88x() {
+        return istatus88x;
+    }
+
+    public void setIstatus88x(String istatus88x) {
+        this.istatus88x = istatus88x;
+    }
+
     public EligibleMembersContract Sync(JSONObject jsonObject) throws JSONException {
 
         this._ID = jsonObject.getString(eligibleMembers.COLUMN__ID);
@@ -196,6 +214,8 @@ public class EligibleMembersContract {
         this.age = jsonObject.getString(eligibleMembers.COLUMN_AGE);
         this.na204 = jsonObject.getString(eligibleMembers.COLUMN_na204);
         this.sA3 = jsonObject.getString(eligibleMembers.COLUMN_SA3);
+        this.istatus = jsonObject.getString(eligibleMembers.COLUMN_ISTATUS);
+        this.istatus88x = jsonObject.getString(eligibleMembers.COLUMN_ISTATUS88x);
         this.synced = jsonObject.getString(eligibleMembers.COLUMN_SYNCED);
         this.syncedDate = jsonObject.getString(eligibleMembers.COLUMN_SYNCEDDATE);
 
@@ -219,6 +239,8 @@ public class EligibleMembersContract {
         this.age = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_AGE));
         this.na204 = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_na204));
         this.sA3 = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_SA3));
+        this.istatus = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_ISTATUS));
+        this.istatus88x = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_ISTATUS88x));
         this.synced = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_SYNCED));
         this.syncedDate = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_SYNCEDDATE));
 
@@ -250,6 +272,8 @@ public class EligibleMembersContract {
         json.put(eligibleMembers.COLUMN_AGE, this.age == null ? JSONObject.NULL : this.age);
         json.put(eligibleMembers.COLUMN_na204, this.na204 == null ? JSONObject.NULL : this.na204);
         json.put(eligibleMembers.COLUMN_SA3, this.sA3 == null ? JSONObject.NULL : this.sA3);
+        json.put(eligibleMembers.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
+        json.put(eligibleMembers.COLUMN_ISTATUS88x, this.istatus88x == null ? JSONObject.NULL : this.istatus88x);
         json.put(eligibleMembers.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
         json.put(eligibleMembers.COLUMN_SYNCEDDATE, this.syncedDate == null ? JSONObject.NULL : this.syncedDate);
 
@@ -277,6 +301,8 @@ public class EligibleMembersContract {
         public static final String COLUMN_AGE = "age";
         public static final String COLUMN_na204 = "na204";
         public static final String COLUMN_SA3 = "sa3";
+        public static final String COLUMN_ISTATUS = "istatus";
+        public static final String COLUMN_ISTATUS88x = "istatus88x";
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNCEDDATE = "synceddate";
 

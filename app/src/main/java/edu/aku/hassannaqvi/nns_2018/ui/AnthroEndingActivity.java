@@ -14,20 +14,20 @@ import org.json.JSONException;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
-import edu.aku.hassannaqvi.nns_2018.databinding.ActivityEndingBinding;
+import edu.aku.hassannaqvi.nns_2018.databinding.ActivityAnthroEndingBinding;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class EndingActivity extends AppCompatActivity {
+public class AnthroEndingActivity extends AppCompatActivity {
 
-    private static final String TAG = EndingActivity.class.getSimpleName();
+    private static final String TAG = AnthroEndingActivity.class.getSimpleName();
 
-    ActivityEndingBinding binding;
+    ActivityAnthroEndingBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_ending);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_anthro_ending);
         binding.setCallback(this);
 
         Boolean check = getIntent().getExtras().getBoolean("complete");
@@ -67,8 +67,20 @@ public class EndingActivity extends AppCompatActivity {
 
                 finish();
 
-                Intent endSec = new Intent(this, MainActivity.class);
-                startActivity(endSec);
+                if (SectionA3Activity.counter == MainApp.all_members.size()) {
+
+                    SectionA3Activity.counter = 1;
+
+                    //startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+                    startActivity(new Intent(this, MainActivity.class));
+
+                } else {
+
+
+                    startActivity(new Intent(this, SectionA3Activity.class)
+                            .putExtra("flag", true).putExtra("name", SectionA3Activity.name));
+                }
+
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
@@ -78,7 +90,7 @@ public class EndingActivity extends AppCompatActivity {
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
-        MainApp.fc.setIstatus(binding.istatusa.isChecked() ? "1"
+        MainApp.emc.setIstatus(binding.istatusa.isChecked() ? "1"
                 : binding.istatusb.isChecked() ? "2"
                 : binding.istatusc.isChecked() ? "3"
                 : binding.istatusd.isChecked() ? "4"
@@ -87,7 +99,7 @@ public class EndingActivity extends AppCompatActivity {
                 : binding.istatus96.isChecked() ? "96"
                 : "0");
 
-        MainApp.fc.setIstatus88x(binding.istatus96x.getText().toString());
+        MainApp.emc.setIstatus88x(binding.istatus96x.getText().toString());
 
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
@@ -96,7 +108,7 @@ public class EndingActivity extends AppCompatActivity {
     private boolean UpdateDB() {
         DatabaseHelper db = new DatabaseHelper(this);
 
-        int updcount = db.updateEnding();
+        int updcount = db.updateAnthroEnding();
 
         if (updcount == 1) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();

@@ -74,8 +74,8 @@ public class MotherEndingActivity extends AppCompatActivity {
                     if (MainApp.childNA.size() > 0) {
                         SectionC1Activity.isNA = true;
                         startActivity(new Intent(this, SectionC1Activity.class));
-                    } else if (MainApp.adolescents.size() > 0 || MainApp.mwra.size() > 0 || MainApp.childUnder5.size() > 0) {
-                        startActivity(new Intent(this, SectionA3Activity.class));
+                    } else {
+                        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
                     }
 
                 } else {

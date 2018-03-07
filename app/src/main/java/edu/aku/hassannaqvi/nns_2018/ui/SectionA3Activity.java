@@ -33,12 +33,17 @@ public class SectionA3Activity extends AppCompatActivity {
 
     static List<String> members;
     static Map<String, SelectedMem> membersMap;
+    static String name;
     static int counter = 1;
     ActivitySectionA3Binding binding;
     DatabaseHelper db;
     int slc_type;
 
-    FamilyMembersContract slcMem;
+
+    FamilyMembersContract slecMem;
+
+
+
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
 
     @Override
@@ -49,6 +54,7 @@ public class SectionA3Activity extends AppCompatActivity {
 
 //        Assigning data to UI binding
         binding.setCallback(this);
+
 
         setupViews();
 
@@ -64,6 +70,7 @@ public class SectionA3Activity extends AppCompatActivity {
 
         //  Getting Extra
         if (getIntent().getBooleanExtra("flag", false)) {
+            members.remove(getIntent().getStringExtra("name"));
             counter++;
         } else {
             members = new ArrayList<>();
@@ -75,8 +82,7 @@ public class SectionA3Activity extends AppCompatActivity {
             familyMembersSetting(MainApp.childUnder5, 2);  // 2 for Under 5
             familyMembersSetting(MainApp.adolescents, 3);  // 3 for Adolescents
         }
-
-        slcMem = new FamilyMembersContract();
+        slecMem = new FamilyMembersContract();
         binding.na301.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, members));
 
 //        Spinner setting
@@ -88,7 +94,7 @@ public class SectionA3Activity extends AppCompatActivity {
 
                     SelectedMem mem = membersMap.get(binding.na301.getSelectedItem().toString());
                     slc_type = mem.getType();
-                    slcMem = mem.getFmc();
+                    slecMem = mem.getFmc();
 
                     switch (slc_type) {
                         case 1:
@@ -122,16 +128,17 @@ public class SectionA3Activity extends AppCompatActivity {
         });
 
         // setup head
-        binding.txtCounter.setText("Count " + counter + " out of " + MainApp.membersCount.getEligibleCount());
+        binding.txtCounter.setText("Count " + counter + " out of " + MainApp.all_members.size());
 
     }
 
     public void familyMembersSetting(List<FamilyMembersContract> family, int type) {
 
         for (FamilyMembersContract fmc : family) {
-            membersMap.put(fmc.getName() + "_" + fmc.getSerialNo(), new SelectedMem(type, fmc));
-            members.add(fmc.getName() + "_" + fmc.getSerialNo());
+            membersMap.put(AntrhoInfoActivity.json.getName() + "_" + AntrhoInfoActivity.json.getSerialNo(), new SelectedMem(type, fmc));
+            members.add(AntrhoInfoActivity.json.getName() + "_" + AntrhoInfoActivity.json.getSerialNo());
         }
+
 
     }
 
@@ -155,7 +162,8 @@ public class SectionA3Activity extends AppCompatActivity {
 
                 finish();
 
-                if (counter == MainApp.membersCount.getEligibleCount()) {
+/*
+                if (counter == MainApp.all_members.size()) {
 
                     counter = 1;
 
@@ -168,6 +176,9 @@ public class SectionA3Activity extends AppCompatActivity {
                     startActivity(new Intent(this, SectionA3Activity.class)
                             .putExtra("flag", true));
                 }
+*/
+
+                startActivity(new Intent(this, AnthroEndingActivity.class).putExtra("complete", true));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -236,12 +247,13 @@ public class SectionA3Activity extends AppCompatActivity {
         MainApp.emc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
         MainApp.emc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
-        MainApp.emc.set_UUID(slcMem.get_UID());
+        MainApp.emc.set_UUID(slecMem.get_UID());
 
         JSONObject sA3 = new JSONObject();
 
-        sA3.put("na301", slcMem.getName());
-        sA3.put("na301Serial", slcMem.getSerialNo());
+        name = binding.na301.getSelectedItem().toString();
+        sA3.put("na301", binding.na301.getSelectedItem().toString());
+        sA3.put("na301Serial", AntrhoInfoActivity.json.getSerialNo());
 
         sA3.put("na3Serial", String.valueOf(counter));
 
@@ -297,6 +309,7 @@ public class SectionA3Activity extends AppCompatActivity {
         int type;
         FamilyMembersContract fmc;
 
+
         public SelectedMem(int type, FamilyMembersContract fmc) {
             this.type = type;
             this.fmc = fmc;
@@ -305,6 +318,7 @@ public class SectionA3Activity extends AppCompatActivity {
         public int getType() {
             return type;
         }
+
 
         public FamilyMembersContract getFmc() {
             return fmc;
