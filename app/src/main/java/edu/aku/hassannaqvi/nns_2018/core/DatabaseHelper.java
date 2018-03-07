@@ -183,8 +183,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             eligibleMembers.COLUMN_DEVICETAGID + " TEXT," +
             eligibleMembers.COLUMN_USER + " TEXT," +
             eligibleMembers.COLUMN_APPVERSION + " TEXT," +
-            eligibleMembers.COLUMN_A3SERIALNO + " TEXT," +
-            eligibleMembers.COLUMN_NAME + " TEXT," +
+            eligibleMembers.COLUMN_ENM_NO + " TEXT," +
+            eligibleMembers.COLUMN_HH_NO + " TEXT," +
             eligibleMembers.COLUMN_DOB + " TEXT," +
             eligibleMembers.COLUMN_AGE + " TEXT," +
             eligibleMembers.COLUMN_na204 + " TEXT," +
@@ -911,8 +911,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(eligibleMembers.COLUMN_DEVICETAGID, ec.getDevicetagID());
         values.put(eligibleMembers.COLUMN_USER, ec.getUser());
         values.put(eligibleMembers.COLUMN_APPVERSION, ec.getApp_ver());
-        values.put(eligibleMembers.COLUMN_A3SERIALNO, ec.getA3SerialNo());
-        values.put(eligibleMembers.COLUMN_NAME, ec.getName());
+        values.put(eligibleMembers.COLUMN_ENM_NO, ec.getEnm_no());
+        values.put(eligibleMembers.COLUMN_HH_NO, ec.getHh_no());
         values.put(eligibleMembers.COLUMN_DOB, ec.getDob());
         values.put(eligibleMembers.COLUMN_AGE, ec.getAge());
         values.put(eligibleMembers.COLUMN_na204, ec.getna204());
@@ -1438,8 +1438,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 eligibleMembers.COLUMN_DEVICETAGID,
                 eligibleMembers.COLUMN_USER,
                 eligibleMembers.COLUMN_APPVERSION,
-                eligibleMembers.COLUMN_A3SERIALNO,
-                eligibleMembers.COLUMN_NAME,
+                eligibleMembers.COLUMN_ENM_NO,
+                eligibleMembers.COLUMN_HH_NO,
                 eligibleMembers.COLUMN_DOB,
                 eligibleMembers.COLUMN_AGE,
                 eligibleMembers.COLUMN_na204,

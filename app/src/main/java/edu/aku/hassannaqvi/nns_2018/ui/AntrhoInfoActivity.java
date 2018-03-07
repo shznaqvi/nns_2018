@@ -30,6 +30,8 @@ public class AntrhoInfoActivity extends Activity {
 
     private static final String TAG = SectionA1Activity.class.getName();
     static JSONModelClass json;
+    static String enm_no;
+    static String hh_no;
     ActivityAntrhoInfoBinding binding;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     DatabaseHelper db;
@@ -181,6 +183,9 @@ public class AntrhoInfoActivity extends Activity {
 
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
+
+        enm_no = binding.na102.getText().toString();
+        hh_no = binding.na103.getText().toString();
 
     }
 

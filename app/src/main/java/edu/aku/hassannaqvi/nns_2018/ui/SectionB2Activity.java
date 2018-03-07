@@ -97,7 +97,22 @@ public class SectionB2Activity extends Activity {
                     bi.fldGrpnb210.setVisibility(View.GONE);
                     bi.nw311.clearCheck();
                     bi.nw31196x.setText(null);
-                    bi.nw312.clearCheck();
+                    bi.nw312a.setChecked(false);
+                    bi.nw312b.setChecked(false);
+                    bi.nw312c.setChecked(false);
+                    bi.nw312d.setChecked(false);
+                    bi.nw312e.setChecked(false);
+                    bi.nw312f.setChecked(false);
+                    bi.nw312g.setChecked(false);
+                    bi.nw312h.setChecked(false);
+                    bi.nw312i.setChecked(false);
+                    bi.nw312j.setChecked(false);
+                    bi.nw312k.setChecked(false);
+                    bi.nw312l.setChecked(false);
+                    bi.nw312m.setChecked(false);
+                    bi.nw312961.setChecked(false);
+                    bi.nw312962.setChecked(false);
+                    bi.nw312963.setChecked(false);
                     bi.nw312961x.setText(null);
                     bi.nw312962x.setText(null);
                     bi.nw312963x.setText(null);
@@ -119,7 +134,22 @@ public class SectionB2Activity extends Activity {
                     bi.nw316.clearCheck();
                     bi.nw31696x.setText(null);
 
-                    bi.nw317.clearCheck();
+                    bi.nw317a.setChecked(false);
+                    bi.nw317b.setChecked(false);
+                    bi.nw317c.setChecked(false);
+                    bi.nw317d.setChecked(false);
+                    bi.nw317e.setChecked(false);
+                    bi.nw317f.setChecked(false);
+                    bi.nw317g.setChecked(false);
+                    bi.nw317h.setChecked(false);
+                    bi.nw317i.setChecked(false);
+                    bi.nw317j.setChecked(false);
+                    bi.nw317k.setChecked(false);
+                    bi.nw317l.setChecked(false);
+                    bi.nw317m.setChecked(false);
+                    bi.nw317961.setChecked(false);
+                    bi.nw317962.setChecked(false);
+                    bi.nw317963.setChecked(false);
                     bi.nw317961x.setText(null);
                     bi.nw317962x.setText(null);
                     bi.nw317963x.setText(null);
@@ -147,7 +177,23 @@ public class SectionB2Activity extends Activity {
                     bi.nw321.clearCheck();
                     bi.nw32196x.setText(null);
 
-                    bi.nw322.clearCheck();
+                    bi.nw322a.setChecked(false);
+                    bi.nw322b.setChecked(false);
+                    bi.nw322c.setChecked(false);
+                    bi.nw322d.setChecked(false);
+                    bi.nw322e.setChecked(false);
+                    bi.nw322f.setChecked(false);
+                    bi.nw322g.setChecked(false);
+                    bi.nw322h.setChecked(false);
+                    bi.nw322i.setChecked(false);
+                    bi.nw322j.setChecked(false);
+                    bi.nw322k.setChecked(false);
+                    bi.nw322l.setChecked(false);
+                    bi.nw322m.setChecked(false);
+                    bi.nw322961.setChecked(false);
+                    bi.nw322962.setChecked(false);
+                    bi.nw322963.setChecked(false);
+
                     bi.nw322961x.setText(null);
                     bi.nw322962x.setText(null);
                     bi.nw322963x.setText(null);
@@ -338,18 +384,18 @@ public class SectionB2Activity extends Activity {
             if (!validatorClass.EmptyRadioButton(this, bi.nw311, bi.nw31196, bi.nw31196x, getString(R.string.nw311))) {
                 return false;
             }
-            if (!validatorClass.EmptyRadioButton(this, bi.nw312, bi.nw312a, getString(R.string.nw312))) {
+            if (!validatorClass.EmptyCheckBox(this, bi.fldGrpnw312, bi.nw312a, getString(R.string.nw312))) {
                 return false;
             }
-            if (!validatorClass.EmptyRadioButton(this, bi.nw312, bi.nw312961, bi.nw312961x, getString(R.string.nw312))) {
-                return false;
-            }
-
-            if (!validatorClass.EmptyRadioButton(this, bi.nw312, bi.nw312962, bi.nw312962x, getString(R.string.nw312))) {
+            if (!validatorClass.EmptyCheckBox(this, bi.fldGrpnw312, bi.nw312961, bi.nw312961x, getString(R.string.nw312))) {
                 return false;
             }
 
-            if (!validatorClass.EmptyRadioButton(this, bi.nw312, bi.nw312963, bi.nw312963x, getString(R.string.nw312))) {
+            if (!validatorClass.EmptyCheckBox(this, bi.fldGrpnw312, bi.nw312962, bi.nw312962x, getString(R.string.nw312))) {
+                return false;
+            }
+
+            if (!validatorClass.EmptyCheckBox(this, bi.fldGrpnw312, bi.nw312963, bi.nw312963x, getString(R.string.nw312))) {
                 return false;
             }
 
@@ -398,18 +444,18 @@ public class SectionB2Activity extends Activity {
             if (!validatorClass.EmptyRadioButton(this, bi.nw316, bi.nw31696, bi.nw31696x, getString(R.string.nw316))) {
                 return false;
             }
-            if (!validatorClass.EmptyRadioButton(this, bi.nw317, bi.nw317a, getString(R.string.nw317))) {
+            if (!validatorClass.EmptyCheckBox(this, bi.fldGrpnw317, bi.nw317a, getString(R.string.nw317))) {
                 return false;
             }
-            if (!validatorClass.EmptyRadioButton(this, bi.nw317, bi.nw317961, bi.nw317961x, getString(R.string.nw317))) {
-                return false;
-            }
-
-            if (!validatorClass.EmptyRadioButton(this, bi.nw317, bi.nw317962, bi.nw317962x, getString(R.string.nw317))) {
+            if (!validatorClass.EmptyCheckBox(this, bi.fldGrpnw317, bi.nw317961, bi.nw317961x, getString(R.string.nw317))) {
                 return false;
             }
 
-            if (!validatorClass.EmptyRadioButton(this, bi.nw317, bi.nw317963, bi.nw317963x, getString(R.string.nw317))) {
+            if (!validatorClass.EmptyCheckBox(this, bi.fldGrpnw317, bi.nw317962, bi.nw317962x, getString(R.string.nw317))) {
+                return false;
+            }
+
+            if (!validatorClass.EmptyCheckBox(this, bi.fldGrpnw317, bi.nw317963, bi.nw317963x, getString(R.string.nw317))) {
                 return false;
             }
 
@@ -462,18 +508,18 @@ public class SectionB2Activity extends Activity {
             if (!validatorClass.EmptyRadioButton(this, bi.nw321, bi.nw32196, bi.nw32196x, getString(R.string.nw321))) {
                 return false;
             }
-            if (!validatorClass.EmptyRadioButton(this, bi.nw322, bi.nw322a, getString(R.string.nw322))) {
+            if (!validatorClass.EmptyCheckBox(this, bi.fldGrpnw322, bi.nw322a, getString(R.string.nw322))) {
                 return false;
             }
-            if (!validatorClass.EmptyRadioButton(this, bi.nw322, bi.nw322961, bi.nw322961x, getString(R.string.nw322))) {
-                return false;
-            }
-
-            if (!validatorClass.EmptyRadioButton(this, bi.nw322, bi.nw322962, bi.nw322962x, getString(R.string.nw322))) {
+            if (!validatorClass.EmptyCheckBox(this, bi.fldGrpnw322, bi.nw322961, bi.nw322961x, getString(R.string.nw322))) {
                 return false;
             }
 
-            if (!validatorClass.EmptyRadioButton(this, bi.nw322, bi.nw322963, bi.nw322963x, getString(R.string.nw322))) {
+            if (!validatorClass.EmptyCheckBox(this, bi.fldGrpnw322, bi.nw322962, bi.nw322962x, getString(R.string.nw322))) {
+                return false;
+            }
+
+            if (!validatorClass.EmptyCheckBox(this, bi.fldGrpnw322, bi.nw322963, bi.nw322963x, getString(R.string.nw322))) {
                 return false;
             }
 
@@ -616,23 +662,23 @@ public class SectionB2Activity extends Activity {
                 : "0");
         sB2.put("nw31196x", bi.nw31196x.getText().toString());
 //        nw312
-        sB2.put("nw312", bi.nw312a.isChecked() ? "1"
-                : bi.nw312b.isChecked() ? "2"
-                : bi.nw312c.isChecked() ? "3"
-                : bi.nw312d.isChecked() ? "4"
-                : bi.nw312e.isChecked() ? "5"
-                : bi.nw312f.isChecked() ? "6"
-                : bi.nw312g.isChecked() ? "7"
-                : bi.nw312h.isChecked() ? "8"
-                : bi.nw312i.isChecked() ? "9"
-                : bi.nw312j.isChecked() ? "10"
-                : bi.nw312k.isChecked() ? "11"
-                : bi.nw312l.isChecked() ? "12"
-                : bi.nw312m.isChecked() ? "13"
-                : bi.nw312961.isChecked() ? "961"
-                : bi.nw312962.isChecked() ? "962"
-                : bi.nw312963.isChecked() ? "963"
-                : "0");
+        sB2.put("nw312a", bi.nw312a.isChecked() ? "1" : "0");
+        sB2.put("nw312b", bi.nw312b.isChecked() ? "2" : "0");
+        sB2.put("nw312c", bi.nw312c.isChecked() ? "3" : "0");
+        sB2.put("nw312d", bi.nw312d.isChecked() ? "4" : "0");
+        sB2.put("nw312e", bi.nw312e.isChecked() ? "5" : "0");
+        sB2.put("nw312f", bi.nw312f.isChecked() ? "6" : "0");
+        sB2.put("nw312g", bi.nw312g.isChecked() ? "7" : "0");
+        sB2.put("nw312h", bi.nw312h.isChecked() ? "8" : "0");
+        sB2.put("nw312i", bi.nw312i.isChecked() ? "9" : "0");
+        sB2.put("nw312j", bi.nw312j.isChecked() ? "10" : "0");
+        sB2.put("nw312k", bi.nw312k.isChecked() ? "11" : "0");
+        sB2.put("nw312l", bi.nw312l.isChecked() ? "12" : "0");
+        sB2.put("nw312m", bi.nw312m.isChecked() ? "13" : "0");
+        sB2.put("nw312961", bi.nw312961.isChecked() ? "961" : "0");
+        sB2.put("nw312962", bi.nw312962.isChecked() ? "962" : "0");
+        sB2.put("nw312963", bi.nw312963.isChecked() ? "963" : "0");
+
         sB2.put("nw312961x", bi.nw312961x.getText().toString());
         sB2.put("nw312962x", bi.nw312962x.getText().toString());
         sB2.put("nw312963x", bi.nw312963x.getText().toString());
@@ -669,23 +715,23 @@ public class SectionB2Activity extends Activity {
         sB2.put("nw31696x", bi.nw31696x.getText().toString());
 
 //        nw317
-        sB2.put("nw317", bi.nw317a.isChecked() ? "1"
-                : bi.nw317b.isChecked() ? "2"
-                : bi.nw317c.isChecked() ? "3"
-                : bi.nw317d.isChecked() ? "4"
-                : bi.nw317e.isChecked() ? "5"
-                : bi.nw317f.isChecked() ? "6"
-                : bi.nw317g.isChecked() ? "7"
-                : bi.nw317h.isChecked() ? "8"
-                : bi.nw317i.isChecked() ? "9"
-                : bi.nw317j.isChecked() ? "10"
-                : bi.nw317k.isChecked() ? "11"
-                : bi.nw317l.isChecked() ? "12"
-                : bi.nw317m.isChecked() ? "13"
-                : bi.nw317961.isChecked() ? "961"
-                : bi.nw317962.isChecked() ? "962"
-                : bi.nw317963.isChecked() ? "963"
-                : "0");
+        sB2.put("nw317a", bi.nw317a.isChecked() ? "1" : "0");
+        sB2.put("nw317b", bi.nw317b.isChecked() ? "2" : "0");
+        sB2.put("nw317c", bi.nw317c.isChecked() ? "3" : "0");
+        sB2.put("nw317d", bi.nw317d.isChecked() ? "4" : "0");
+        sB2.put("nw317e", bi.nw317e.isChecked() ? "5" : "0");
+        sB2.put("nw317f", bi.nw317f.isChecked() ? "6" : "0");
+        sB2.put("nw317g", bi.nw317g.isChecked() ? "7" : "0");
+        sB2.put("nw317h", bi.nw317h.isChecked() ? "8" : "0");
+        sB2.put("nw317i", bi.nw317i.isChecked() ? "9" : "0");
+        sB2.put("nw317j", bi.nw317j.isChecked() ? "10" : "0");
+        sB2.put("nw317k", bi.nw317k.isChecked() ? "11" : "0");
+        sB2.put("nw317l", bi.nw317l.isChecked() ? "12" : "0");
+        sB2.put("nw317m", bi.nw317m.isChecked() ? "13" : "0");
+        sB2.put("nw317961", bi.nw317961.isChecked() ? "961" : "0");
+        sB2.put("nw317962", bi.nw317962.isChecked() ? "962" : "0");
+        sB2.put("nw317963", bi.nw317963.isChecked() ? "963" : "0");
+
         sB2.put("nw317961x", bi.nw317961x.getText().toString());
         sB2.put("nw317962x", bi.nw317962x.getText().toString());
         sB2.put("nw317963x", bi.nw317963x.getText().toString());
@@ -724,23 +770,24 @@ public class SectionB2Activity extends Activity {
         sB2.put("nwnw32196x", bi.nw32196x.getText().toString());
 
 //        nw322
-        sB2.put("nw322", bi.nw322a.isChecked() ? "1"
-                : bi.nw322b.isChecked() ? "2"
-                : bi.nw322c.isChecked() ? "3"
-                : bi.nw322d.isChecked() ? "4"
-                : bi.nw322e.isChecked() ? "5"
-                : bi.nw322f.isChecked() ? "6"
-                : bi.nw322g.isChecked() ? "7"
-                : bi.nw322h.isChecked() ? "8"
-                : bi.nw322i.isChecked() ? "9"
-                : bi.nw322j.isChecked() ? "10"
-                : bi.nw322k.isChecked() ? "11"
-                : bi.nw322l.isChecked() ? "12"
-                : bi.nw322m.isChecked() ? "13"
-                : bi.nw322961.isChecked() ? "961"
-                : bi.nw322962.isChecked() ? "962"
-                : bi.nw322963.isChecked() ? "963"
-                : "0");
+        sB2.put("nw322a", bi.nw322a.isChecked() ? "1" : "0");
+        sB2.put("nw322b", bi.nw322b.isChecked() ? "2" : "0");
+        sB2.put("nw322c", bi.nw322c.isChecked() ? "3" : "0");
+        sB2.put("nw322d", bi.nw322d.isChecked() ? "4" : "0");
+        sB2.put("nw322e", bi.nw322e.isChecked() ? "5" : "0");
+        sB2.put("nw322f", bi.nw322f.isChecked() ? "6" : "0");
+        sB2.put("nw322g", bi.nw322g.isChecked() ? "7" : "0");
+        sB2.put("nw322h", bi.nw322h.isChecked() ? "8" : "0");
+        sB2.put("nw322i", bi.nw322i.isChecked() ? "9" : "0");
+        sB2.put("nw322j", bi.nw322j.isChecked() ? "10" : "0");
+        sB2.put("nw322k", bi.nw322k.isChecked() ? "11" : "0");
+        sB2.put("nw322l", bi.nw322l.isChecked() ? "12" : "0");
+        sB2.put("nw322m", bi.nw322m.isChecked() ? "13" : "0");
+        sB2.put("nw322961", bi.nw322961.isChecked() ? "961" : "0");
+        sB2.put("nw322962", bi.nw322962.isChecked() ? "962" : "0");
+        sB2.put("nw322963", bi.nw322963.isChecked() ? "963" : "0");
+
+
         sB2.put("nw322961x", bi.nw322961x.getText().toString());
         sB2.put("nw322962x", bi.nw322962x.getText().toString());
         sB2.put("nw322963x", bi.nw322963x.getText().toString());
