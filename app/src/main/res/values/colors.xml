@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimaryDark">#142B77</color>
+    <color name="redforborder">#EF9A9A</color>
     <!--<conamename="colorPrimary">#880E4F</color>-->
     <color name="colorPrimary">#3071D5</color>
     <color name="colorPrimaryAlpha">#607d8b</color>
@@ -8,7 +9,7 @@
     <color name="pink_100">#9BD8FF</color>
     <color name="colorHeading">#99FFCC</color>
     <color name="colorRedsub">#d6ff8a80</color>
-
+    <color name="lightred">#FFEBEE</color>
 
     <color name="black">#000000</color>
     <color name="blackOverlay">#66000000</color>

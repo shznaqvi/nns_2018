@@ -284,13 +284,17 @@ public class SectionA5Activity extends AppCompatActivity {
         if (!validatorClass.EmptyRadioButton(this, binding.na601, binding.na60196, binding.na60196x, getString(R.string.na601) + " - " + getString(R.string.other))) {
             return false;
         }
+        if (!binding.na601d.isChecked()) {
+
+
 //        na602
-        if (!validatorClass.EmptyRadioButton(this, binding.na602, binding.na602c, getString(R.string.na602))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, binding.na602, binding.na602c, getString(R.string.na602))) {
+                return false;
+            }
 //        na603
-        if (!validatorClass.EmptyRadioButton(this, binding.na603, binding.na603d, getString(R.string.na603))) {
-            return false;
+            if (!validatorClass.EmptyRadioButton(this, binding.na603, binding.na603d, getString(R.string.na603))) {
+                return false;
+            }
         }
 
 //        na701

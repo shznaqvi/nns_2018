@@ -203,8 +203,6 @@ public class SectionC4Activity extends Activity {
                     binding.nc412h.setChecked(false);
                     binding.nc412i.setChecked(false);
                     binding.nc4129601x.setText(null);
-
-                    binding.nc413.clearCheck();
                 }
             }
         });
@@ -369,12 +367,12 @@ public class SectionC4Activity extends Activity {
                 if (!validatorClass.EmptyCheckBox(this, binding.fldGrnc412check, binding.nc4129601, binding.nc4129601x, getString(R.string.nc412))) {
                     return false;
                 }
+            }
+        }
 
 //       nc413
-                if (!validatorClass.EmptyRadioButton(this, binding.nc413, binding.nc41398, getString(R.string.nc413))) {
-                    return false;
-                }
-            }
+        if (!validatorClass.EmptyRadioButton(this, binding.nc413, binding.nc41398, getString(R.string.nc413))) {
+            return false;
         }
 
 //        nc414

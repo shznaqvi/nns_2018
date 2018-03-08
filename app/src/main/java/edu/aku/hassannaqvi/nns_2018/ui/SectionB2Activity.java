@@ -207,7 +207,7 @@ public class SectionB2Activity extends Activity {
         });
 
 //        Setting name of women
-        bi.nw301Txt.setText(getString(R.string.nw301b) + " " + SectionB1Activity.wraName + " " + getString(R.string.nw301a));
+        bi.nw301Txt.setText(getString(R.string.nw301a) + " " + SectionB1Activity.wraName + " " + getString(R.string.nw301b));
 
     }
 

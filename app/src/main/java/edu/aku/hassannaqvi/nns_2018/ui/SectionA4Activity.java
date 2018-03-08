@@ -239,7 +239,7 @@ public class SectionA4Activity extends AppCompatActivity {
         if (!validatorClass.EmptyCheckBox(this, binding.fldGrpna0411check, binding.nh312a, getString(R.string.nh312))) {
             return false;
         }
-        if (!validatorClass.EmptyCheckBox(this, binding.fldGrpna0411check, binding.nh313a, binding.nh31396x, getString(R.string.nh313))) {
+        if (!validatorClass.EmptyCheckBox(this, binding.fldGrpna0413check, binding.nh31396, binding.nh31396x, getString(R.string.nh313))) {
             return false;
         }
 
@@ -250,15 +250,17 @@ public class SectionA4Activity extends AppCompatActivity {
         if (!validatorClass.EmptyRadioButton(this, binding.nh315, binding.nh31596, binding.nh31596x, getString(R.string.nh315))) {
             return false;
         }
-        if (!validatorClass.EmptyRadioButton(this, binding.nh316, binding.nh316a, getString(R.string.nh316))) {
-            return false;
-        }
-        // 315
-        if (binding.nh316a.isChecked()) {
-            if (!validatorClass.EmptyRadioButton(this, binding.nh317, binding.nh317b, getString(R.string.nh317))) {
+        if (binding.nh315a.isChecked()) {
+            if (!validatorClass.EmptyRadioButton(this, binding.nh316, binding.nh316a, getString(R.string.nh316))) {
                 return false;
             }
         }
+        // 315
+
+        if (!validatorClass.EmptyRadioButton(this, binding.nh317, binding.nh317b, getString(R.string.nh317))) {
+                return false;
+            }
+
 
         if (!validatorClass.EmptyRadioButton(this, binding.nh317, binding.nh31796, binding.nh31796x, getString(R.string.nh317))) {
             return false;
