@@ -36,7 +36,14 @@ public class SectionB3Activity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (i == R.id.nb30198) {
                     binding.nb302.clearCheck();
-                    binding.nb303.clearCheck();
+                    binding.nb303a.setChecked(false);
+                    binding.nb303b.setChecked(false);
+                    binding.nb303c.setChecked(false);
+                    binding.nb303d.setChecked(false);
+                    binding.nb303e.setChecked(false);
+                    binding.nb303f.setChecked(false);
+                    binding.nb303g.setChecked(false);
+                    binding.nb303h.setChecked(false);
                     binding.nb304.clearCheck();
                     binding.nb305.clearCheck();
                     binding.nb306.clearCheck();
@@ -122,7 +129,7 @@ public class SectionB3Activity extends AppCompatActivity {
                 return false;
             }
             // nb303
-            if (!validatorClass.EmptyRadioButton(this, binding.nb303, binding.nb303h, getString(R.string.nb303))) {
+            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnb303, binding.nb303h, getString(R.string.nb303))) {
                 return false;
             }
             // nb304
@@ -172,15 +179,15 @@ public class SectionB3Activity extends AppCompatActivity {
 
         sB3.put("nb30296x", binding.nb30296x.getText().toString());
 
-        sB3.put("nb303", binding.nb303a.isChecked() ? "1"
-                : binding.nb303b.isChecked() ? "2"
-                : binding.nb303c.isChecked() ? "3"
-                : binding.nb303d.isChecked() ? "4"
-                : binding.nb303e.isChecked() ? "5"
-                : binding.nb303f.isChecked() ? "6"
-                : binding.nb303g.isChecked() ? "7"
-                : binding.nb303h.isChecked() ? "8"
-                : "0");
+        sB3.put("nb303a", binding.nb303a.isChecked() ? "1" : "0");
+        sB3.put("nb303b", binding.nb303b.isChecked() ? "2" : "0");
+        sB3.put("nb303c", binding.nb303c.isChecked() ? "3" : "0");
+        sB3.put("nb303d", binding.nb303d.isChecked() ? "4" : "0");
+        sB3.put("nb303e", binding.nb303e.isChecked() ? "5" : "0");
+        sB3.put("nb303f", binding.nb303f.isChecked() ? "6" : "0");
+        sB3.put("nb303g", binding.nb303g.isChecked() ? "7" : "0");
+        sB3.put("nb303h", binding.nb303h.isChecked() ? "8" : "0");
+
 
         sB3.put("nb304", binding.nb304a.isChecked() ? "1"
                 : binding.nb304b.isChecked() ? "2"

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -45,11 +46,18 @@ public class MotherEndingActivity extends AppCompatActivity {
             binding.istatusa.setEnabled(true);
             binding.istatusb.setEnabled(false);
             binding.istatusc.setEnabled(false);
+            binding.istatusd.setEnabled(false);
+            binding.istatuse.setEnabled(false);
+            binding.istatus96.setEnabled(false);
         } else {
             binding.istatusa.setEnabled(false);
             binding.istatusb.setEnabled(true);
             binding.istatusc.setEnabled(true);
+            binding.istatusd.setEnabled(true);
+            binding.istatuse.setEnabled(true);
+            binding.istatus96.setEnabled(true);
         }
+
 
         flagNAChild = SectionC1Activity.counterPerMom <= 0;
 
@@ -95,10 +103,14 @@ public class MotherEndingActivity extends AppCompatActivity {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
 
+
         MainApp.mc.setMstatus(binding.istatusa.isChecked() ? "1"
                 : binding.istatusb.isChecked() ? "2"
+                : binding.istatusc.isChecked() ? "3"
+                : binding.istatusd.isChecked() ? "4"
+                : binding.istatuse.isChecked() ? "5"
+                : binding.istatus96.isChecked() ? "96"
                 : "0");
-
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }
@@ -122,22 +134,22 @@ public class MotherEndingActivity extends AppCompatActivity {
     private boolean formValidation() {
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
-        if (!validatorClass.EmptyRadioButton(this, binding.istatus, binding.istatusc, getString(R.string.istatus))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.istatus, binding.istatusa, getString(R.string.istatus))) {
             return false;
         }
 
-        /*if (istatus88.isChecked()) {
+        if (binding.istatus96.isChecked()) {
 
-            if (istatus88x.getText().toString().isEmpty()) {
+            if (binding.istatus96x.getText().toString().isEmpty()) {
                 Toast.makeText(this, "ERROR(empty): " + getString(R.string.other), Toast.LENGTH_SHORT).show();
-                istatus88x.setError("This data is Required!");    // Set Error on last radio button
-                Log.i(TAG, "istatus88x: This data is Required!");
+                binding.istatus96x.setError("This data is Required!");    // Set Error on last radio button
+                Log.i(TAG, "istatus96x: This data is Required!");
                 return false;
             } else {
-                istatus88x.setError(null);
+                binding.istatus96x.setError(null);
             }
 
-        }*/
+        }
 
 
         return true;

@@ -248,6 +248,8 @@ public class SectionA3Activity extends AppCompatActivity {
                 Settings.Secure.ANDROID_ID));
         MainApp.emc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
         MainApp.emc.set_UUID(slecMem.get_UID());
+        MainApp.emc.setEnm_no(AntrhoInfoActivity.enm_no);
+        MainApp.emc.setHh_no(AntrhoInfoActivity.hh_no);
 
         JSONObject sA3 = new JSONObject();
 

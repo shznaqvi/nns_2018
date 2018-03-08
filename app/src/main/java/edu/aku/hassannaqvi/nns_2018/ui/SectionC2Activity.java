@@ -577,6 +577,7 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
         sC2.put("nc201m", bi.nc201m.getText().toString());
         sC2.put("nc201y", bi.nc201y.getText().toString());
         sC2.put("nc20198", bi.nc20198.isChecked() ? "1" : "0");
+
         sC2.put("nc202", bi.nc202a.isChecked() ? "1"
                 : bi.nc202b.isChecked() ? "2"
                 : bi.nc202c.isChecked() ? "3"
