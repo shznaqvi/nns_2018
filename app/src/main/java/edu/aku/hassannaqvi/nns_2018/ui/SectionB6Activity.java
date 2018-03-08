@@ -47,14 +47,11 @@ public class SectionB6Activity extends AppCompatActivity {
 
                 if (MainApp.childUnder5.size() > 0) {
                     for (FamilyMembersContract fmc : MainApp.childUnder5) {
-                        if (!fmc.getMotherId().equals(MainApp.mc.getB1SerialNo())) {
-                            startActivity(new Intent(this, MotherEndingActivity.class)
-                                    .putExtra("checkingFlag", true)
-                                    .putExtra("complete", true));
-                        } else {
+                        if (fmc.getMotherId().equals(MainApp.mc.getB1SerialNo())) {
                             startActivity(new Intent(this, SectionC1Activity.class));
                         }
                     }
+
                 } else {
                     startActivity(new Intent(this, MotherEndingActivity.class)
                             .putExtra("checkingFlag", true)
