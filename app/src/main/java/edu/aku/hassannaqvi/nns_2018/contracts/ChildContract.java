@@ -63,6 +63,7 @@ public class ChildContract {
         this.synced_date = jsonObject.getString(ChildTable.COLUMN_SYNCED_DATE);
         this.appversion = jsonObject.getString(ChildTable.COLUMN_APPVERSION);
         this.cstatus = jsonObject.getString(ChildTable.COLUMN_CSTATUS);
+        this.cstatus88x = jsonObject.getString(ChildTable.COLUMN_CSTATUS88x);
 
 
         return this;
@@ -86,7 +87,7 @@ public class ChildContract {
         this.synced_date = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_SYNCED_DATE));
         this.appversion = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_APPVERSION));
         this.cstatus = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_CSTATUS));
-
+        this.cstatus88x = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_CSTATUS88x));
 
         // TODO:
 
@@ -131,6 +132,7 @@ public class ChildContract {
         json.put(ChildTable.COLUMN_SYNCED_DATE, this.synced_date == null ? JSONObject.NULL : this.synced_date);
         json.put(ChildTable.COLUMN_APPVERSION, this.appversion == null ? JSONObject.NULL : this.appversion);
         json.put(ChildTable.COLUMN_CSTATUS, this.cstatus == null ? JSONObject.NULL : this.cstatus);
+        json.put(ChildTable.COLUMN_CSTATUS88x, this.cstatus88x == null ? JSONObject.NULL : this.cstatus88x);
 
 
         return json;
@@ -278,6 +280,14 @@ public class ChildContract {
 
     public void setCstatus(String cstatus) {
         this.cstatus = cstatus;
+    }
+
+    public String getCstatus88x() {
+        return cstatus88x;
+    }
+
+    public void setCstatus88x(String cstatus88x) {
+        this.cstatus88x = cstatus88x;
     }
 
     public static abstract class ChildTable implements BaseColumns {

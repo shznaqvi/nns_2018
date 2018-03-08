@@ -10,6 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB6Binding;
@@ -32,7 +33,7 @@ public class SectionB6Activity extends AppCompatActivity {
 
     public void BtnContinue() {
 
-        Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (ValidateForm()) {
             try {
                 SaveDraft();
@@ -40,16 +41,24 @@ public class SectionB6Activity extends AppCompatActivity {
                 e.printStackTrace();
             }
             if (UpdateDB()) {
-                Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
                 finish();
 
-                if (MainApp.childUnder5.size() < 1) {
-                        startActivity(new Intent(this, MotherEndingActivity.class)
-                                .putExtra("checkingFlag", true)
-                                .putExtra("complete", true));
+                if (MainApp.childUnder5.size() > 0) {
+                    for (FamilyMembersContract fmc : MainApp.childUnder5) {
+                        if (!fmc.getMotherId().equals(MainApp.mc.getB1SerialNo())) {
+                            startActivity(new Intent(this, MotherEndingActivity.class)
+                                    .putExtra("checkingFlag", true)
+                                    .putExtra("complete", true));
+                        } else {
+                            startActivity(new Intent(this, SectionC1Activity.class));
+                        }
+                    }
                 } else {
-                    startActivity(new Intent(this, SectionC1Activity.class));
+                    startActivity(new Intent(this, MotherEndingActivity.class)
+                            .putExtra("checkingFlag", true)
+                            .putExtra("complete", true));
                 }
 
             } else {
@@ -74,7 +83,7 @@ public class SectionB6Activity extends AppCompatActivity {
 
     private boolean ValidateForm() {
 
-        Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
         if (!validatorClass.EmptyRadioButton(this, bi.nb60101, bi.nb60101a, getString(R.string.nb601a))) {
             return false;
@@ -128,7 +137,7 @@ public class SectionB6Activity extends AppCompatActivity {
     }
 
     private void SaveDraft() throws JSONException {
-        Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
         JSONObject sB6 = new JSONObject();
         //       nb601
@@ -182,7 +191,7 @@ public class SectionB6Activity extends AppCompatActivity {
         MainApp.mc.setsB6(String.valueOf(sB6));
 
 
-        Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }
 
     private boolean UpdateDB() {
@@ -193,7 +202,7 @@ public class SectionB6Activity extends AppCompatActivity {
         int updcount = db.updateSB6();
 
         if (updcount == 1) {
-            Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();

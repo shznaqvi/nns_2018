@@ -141,7 +141,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
     public void BtnContinue() {
 
-        Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
             try {
                 SaveDraft();
@@ -149,13 +149,13 @@ public class SectionA2ListActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             if (UpdateDB()) {
-                Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
                 finish();
 
                 respLineNo = "";
-                startActivity(new Intent(this, SectionA4Activity.class));
-                //startActivity(new Intent(this, SectionB1Activity.class));
+                //startActivity(new Intent(this, SectionA4Activity.class));
+                startActivity(new Intent(this, SectionB1Activity.class));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -165,7 +165,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
     public void BtnAddMore() {
 
-        Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
 
         startActivity(new Intent(this, SectionA2Activity.class).putExtra("flag", true));
     }
@@ -179,7 +179,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
     }
 
     private void SaveDraft() throws JSONException {
-        Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
         JSONObject count = new JSONObject();
 
@@ -207,7 +207,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
         int updcount = db.updateSACount();
 
         if (updcount == 1) {
-            Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();

@@ -124,7 +124,7 @@ public class SectionB1AActivity extends AppCompatActivity {
 
     public void BtnContinue() {
 
-        Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (ValidateForm()) {
             try {
                 SaveDraft();
@@ -132,7 +132,7 @@ public class SectionB1AActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             if (UpdateDB()) {
-                Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
                 finish();
 
                 if (MainApp.outcome != 4) {
@@ -171,7 +171,7 @@ public class SectionB1AActivity extends AppCompatActivity {
 
     private boolean ValidateForm() {
 
-        Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
         if (!validatorClass.EmptyTextBox(this, bi.nb1a01, getString(R.string.nb1a01))) {
             return false;
@@ -261,7 +261,7 @@ public class SectionB1AActivity extends AppCompatActivity {
 
 
     private void SaveDraft() throws JSONException {
-        Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
 
         MainApp.oc = new OutcomeContract();
@@ -322,7 +322,7 @@ public class SectionB1AActivity extends AppCompatActivity {
         MainApp.oc.set_ID(String.valueOf(updcount));
 
         if (updcount != 0) {
-            Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
 
             MainApp.oc.set_UID(
                     (MainApp.oc.getDeviceId() + MainApp.oc.get_ID()));

@@ -282,7 +282,6 @@ public class SectionB6NewActivity extends AppCompatActivity implements TokenComp
             ck.setOnCheckedChangeListener(greenLeafyCheck);
         }
 
-
         for (CheckBox ck : green) {
             ck.setOnCheckedChangeListener(greenCheck);
         }

@@ -31,6 +31,7 @@ import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract;
 import edu.aku.hassannaqvi.nns_2018.other.MembersCount;
+import edu.aku.hassannaqvi.nns_2018.ui.AnthroEndingActivity;
 import edu.aku.hassannaqvi.nns_2018.ui.ChildEndingActivity;
 import edu.aku.hassannaqvi.nns_2018.ui.EndingActivity;
 import edu.aku.hassannaqvi.nns_2018.ui.MotherEndingActivity;
@@ -279,6 +280,33 @@ public class MainApp extends Application {
                                                 int id) {
                                 activity.finish();
                                 Intent end_intent = new Intent(context, EndingActivity.class);
+                                end_intent.putExtra("complete", false);
+                                context.startActivity(end_intent);
+                            }
+                        });
+        alertDialogBuilder.setNegativeButton("No",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = alertDialogBuilder.create();
+        alert.show();
+    }
+
+
+    public static void endAnthroActivity(final Context context, final Activity activity) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                context);
+        alertDialogBuilder
+                .setMessage("Do you want to Exit??")
+                .setCancelable(false)
+                .setPositiveButton("Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,
+                                                int id) {
+                                activity.finish();
+                                Intent end_intent = new Intent(context, AnthroEndingActivity.class);
                                 end_intent.putExtra("complete", false);
                                 context.startActivity(end_intent);
                             }

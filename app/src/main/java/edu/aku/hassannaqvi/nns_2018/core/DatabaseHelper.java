@@ -139,6 +139,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             ChildTable.COLUMN_SYNCED + " TEXT," +
             ChildTable.COLUMN_SYNCED_DATE + " TEXT," +
             ChildTable.COLUMN_CSTATUS + " TEXT," +
+            ChildTable.COLUMN_CSTATUS88x + " TEXT," +
             ChildTable.COLUMN_APPVERSION + " TEXT " + " );";
     private static final String SQL_DELETE_USERS =
             "DROP TABLE IF EXISTS " + UsersContract.UsersTable.TABLE_NAME;
@@ -214,6 +215,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             MWRATable.COLUMN_SB6 + " TEXT," +
             MWRATable.COLUMN_SYNCED + " TEXT," +
             MWRATable.COLUMN_MSTATUS + " TEXT," +
+            MWRATable.COLUMN_MSTATUS88x + " TEXT," +
             MWRATable.COLUMN_SYNCEDDATE + " TEXT " +
 
             ");";
@@ -810,8 +812,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(familyMembers.COLUMN_USER, fmc.getUser());
         values.put(familyMembers.COLUMN_ENM_NO, fmc.getEnmNo());
         values.put(familyMembers.COLUMN_HH_NO, fmc.getHhNo());
-
-
         values.put(familyMembers.COLUMN_DEVICETAGID, fmc.getDevicetagID());
         values.put(familyMembers.COLUMN_DEVICEID, fmc.getDeviceId());
         values.put(familyMembers.COLUMN_SYNCED, fmc.getSynced());
@@ -883,6 +883,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(ChildTable.COLUMN_SYNCED_DATE, cc.getSynced_date());
         values.put(ChildTable.COLUMN_APPVERSION, cc.getAppversion());
         values.put(ChildTable.COLUMN_CSTATUS, cc.getCstatus());
+        values.put(ChildTable.COLUMN_CSTATUS88x, cc.getCstatus88x());
 
 
         // Insert the new row, returning the primary key value of the new row
@@ -959,6 +960,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(MWRATable.COLUMN_SYNCED, mc.getSynced());
         values.put(MWRATable.COLUMN_SYNCEDDATE, mc.getSyncedDate());
         values.put(MWRATable.COLUMN_MSTATUS, mc.getMstatus());
+        values.put(MWRATable.COLUMN_MSTATUS88x, mc.getMstatus88x());
 
 
         // Insert the new row, returning the primary key value of the new row
@@ -1389,6 +1391,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ChildTable.COLUMN_SYNCED_DATE,
                 ChildTable.COLUMN_APPVERSION,
                 ChildTable.COLUMN_CSTATUS,
+                ChildTable.COLUMN_CSTATUS88x,
 
         };
         String whereClause = ChildContract.ChildTable.COLUMN_SYNCED + " is null OR " + ChildTable.COLUMN_SYNCED + " = '' ";
@@ -1504,6 +1507,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 MWRATable.COLUMN_SB4,
                 MWRATable.COLUMN_SB5,
                 MWRATable.COLUMN_SB6,
+                MWRATable.COLUMN_MSTATUS,
+                MWRATable.COLUMN_MSTATUS88x,
 
                 MWRATable.COLUMN_SYNCED,
                 MWRATable.COLUMN_SYNCEDDATE,
@@ -2119,7 +2124,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 // New value for one column
         ContentValues values = new ContentValues();
         values.put(ChildTable.COLUMN_CSTATUS, MainApp.cc.getCstatus());
-        //values.put(FormsTable.COLUMN_ISTATUS88x, MainApp.fc.getIstatus88x());
+        values.put(ChildTable.COLUMN_CSTATUS88x, MainApp.cc.getCstatus88x());
 
 // Which row to update, based on the ID
         String selection = ChildTable._ID + " =? ";
@@ -2138,7 +2143,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 // New value for one column
         ContentValues values = new ContentValues();
         values.put(MWRATable.COLUMN_MSTATUS, MainApp.mc.getMstatus());
-        //values.put(MWRATable.COLUMN_ISTATUS88x, MainApp.mc.getIstatus88x());
+        values.put(MWRATable.COLUMN_MSTATUS88x, MainApp.mc.getMstatus88x());
 
 // Which row to update, based on the ID
         String selection = MWRATable._ID + " =? ";

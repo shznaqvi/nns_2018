@@ -3,17 +3,14 @@ package edu.aku.hassannaqvi.nns_2018.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -63,9 +60,9 @@ public class SectionB1Activity extends Activity {
 
     public void setupViews() {
 
-        respName = new ArrayList<>();
+        /*respName = new ArrayList<>();
         respName.add("....");
-        respMap = new HashMap<>();
+        respMap = new HashMap<>();*/
 
 //      Get intent
         if (getIntent().getBooleanExtra("mwraFlag", false)) {
@@ -87,13 +84,13 @@ public class SectionB1Activity extends Activity {
 //      Increment WRA COUNTER
         WRAcounter++;
 
-        for (FamilyMembersContract fmc : MainApp.respList) {
+        /*for (FamilyMembersContract fmc : MainApp.respList) {
             respName.add(fmc.getName() + "-" + fmc.getSerialNo());
             respMap.put(fmc.getName() + "-" + fmc.getSerialNo(), fmc.getSerialNo());
-        }
+        }*/
 
         bi.nb101.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, lstMwra));
-        bi.resp.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, respName));
+        //bi.resp.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, respName));
 
         bi.nb101.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -313,7 +310,7 @@ public class SectionB1Activity extends Activity {
 
     public void BtnContinue() {
 
-        Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (ValidateForm()) {
             try {
                 SaveDraft();
@@ -321,7 +318,7 @@ public class SectionB1Activity extends Activity {
                 e.printStackTrace();
             }
             if (UpdateDB()) {
-                Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
                 finish();
 
@@ -365,18 +362,18 @@ public class SectionB1Activity extends Activity {
 
     private boolean ValidateForm() {
 
-        Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
 
-        if (!validatorClass.EmptySpinner(this, bi.resp, getString(R.string.na107))) {
+        /*if (!validatorClass.EmptySpinner(this, bi.resp, getString(R.string.na107))) {
             return false;
-        }
+        }*/
 
         if (!validatorClass.EmptySpinner(this, bi.nb101, getString(R.string.nb101))) {
             return false;
         }
 
-        if (!bi.nb101.getSelectedItem().toString().equals(bi.resp.getSelectedItem().toString())) {
+        /*if (!bi.nb101.getSelectedItem().toString().equals(bi.resp.getSelectedItem().toString())) {
             Toast.makeText(this, "ERROR(invalid): " + "Respondent should be same as Selected Woman" + getString(R.string.nb101), Toast.LENGTH_LONG).show();
 
             ((TextView) bi.nb101.getSelectedView()).setText("Respondent should be same as Selected Woman");
@@ -391,7 +388,7 @@ public class SectionB1Activity extends Activity {
             ((TextView) bi.resp.getSelectedView()).setError(null);
             ((TextView) bi.nb101.getSelectedView()).setError(null);
         }
-
+*/
         if (!validatorClass.EmptyTextBox(this, bi.nw201days, getString(R.string.day))) {
             return false;
         }
@@ -519,7 +516,7 @@ public class SectionB1Activity extends Activity {
     }
 
     private void SaveDraft() throws JSONException {
-        Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
         MainApp.mc = new MWRAContract();
 
@@ -536,8 +533,8 @@ public class SectionB1Activity extends Activity {
 
         JSONObject sB1 = new JSONObject();
 
-        sB1.put("respName", bi.resp.getSelectedItem().toString());
-        sB1.put("respSerial", respMap.get(bi.resp.getSelectedItem().toString()));
+        /*sB1.put("respName", bi.resp.getSelectedItem().toString());
+        sB1.put("respSerial", respMap.get(bi.resp.getSelectedItem().toString()));*/
         sB1.put("nb101", bi.nb101.getSelectedItem().toString());
         sB1.put("nb1serialno", wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
 
@@ -594,7 +591,7 @@ public class SectionB1Activity extends Activity {
         MainApp.mc.setsB1(String.valueOf(sB1));
 
 
-        Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -607,7 +604,7 @@ public class SectionB1Activity extends Activity {
         MainApp.mc.set_ID(String.valueOf(updcount));
 
         if (updcount != 0) {
-            Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
 
             MainApp.mc.set_UID(
                     (MainApp.mc.getDeviceId() + MainApp.mc.get_ID()));
