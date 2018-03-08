@@ -115,11 +115,11 @@ public class AntrhoInfoActivity extends Activity {
                 e.printStackTrace();
             }
             if (UpdateDB()) {
-                Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
-
+                //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
                 finish();
 
                 startActivity(new Intent(this, SectionA3Activity.class));
+
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -220,17 +220,22 @@ public class AntrhoInfoActivity extends Activity {
 
                 }
 
+                if (MainApp.all_members.size() > 0) {
+                    binding.btnContinue.setVisibility(View.VISIBLE);
+                    binding.btnEnd.setVisibility(View.GONE);
 
-                binding.btnContinue.setVisibility(View.VISIBLE);
-                binding.btnEnd.setVisibility(View.GONE);
+                } else {
+
+                    binding.btnContinue.setVisibility(View.GONE);
+                    binding.btnEnd.setVisibility(View.GONE);
+                    Toast.makeText(this, "No Eligible member found for anthropometry, Check another HH.", Toast.LENGTH_SHORT).show();
+                }
+
 
             } else {
-                binding.btnContinue.setVisibility(View.GONE);
-                binding.btnEnd.setVisibility(View.VISIBLE);
 
-                //clearFields();
 
-                Toast.makeText(this, "No Head found in this HH.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "No members found for the HH.", Toast.LENGTH_SHORT).show();
             }
 
         } else {
