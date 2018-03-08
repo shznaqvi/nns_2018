@@ -24,6 +24,7 @@ public class MWRAContract {
     private String user = "";
     private String app_ver = "";
     private String mstatus = "";
+    private String mstatus88x = "";
 
     private String b1SerialNo = "";
     private String sB1 = "";
@@ -195,6 +196,14 @@ public class MWRAContract {
         this.mstatus = mstatus;
     }
 
+    public String getMstatus88x() {
+        return mstatus88x;
+    }
+
+    public void setMstatus88x(String mstatus88x) {
+        this.mstatus88x = mstatus88x;
+    }
+
     public MWRAContract Sync(JSONObject jsonObject) throws JSONException {
 
         this._ID = jsonObject.getString(MWRATable.COLUMN__ID);
@@ -215,6 +224,7 @@ public class MWRAContract {
         this.synced = jsonObject.getString(MWRATable.COLUMN_SYNCED);
         this.syncedDate = jsonObject.getString(MWRATable.COLUMN_SYNCEDDATE);
         this.mstatus = jsonObject.getString(MWRATable.COLUMN_MSTATUS);
+        this.mstatus88x = jsonObject.getString(MWRATable.COLUMN_MSTATUS88x);
 
 
         return this;
@@ -241,6 +251,7 @@ public class MWRAContract {
         this.synced = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SYNCED));
         this.syncedDate = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SYNCEDDATE));
         this.mstatus = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_MSTATUS));
+        this.mstatus88x = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_MSTATUS88x));
 
 
         return this;
@@ -290,6 +301,7 @@ public class MWRAContract {
         json.put(MWRATable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
         json.put(MWRATable.COLUMN_SYNCEDDATE, this.syncedDate == null ? JSONObject.NULL : this.syncedDate);
         json.put(MWRATable.COLUMN_MSTATUS, this.mstatus == null ? JSONObject.NULL : this.mstatus);
+        json.put(MWRATable.COLUMN_MSTATUS88x, this.mstatus88x == null ? JSONObject.NULL : this.mstatus88x);
 
 
         return json;
@@ -319,6 +331,7 @@ public class MWRAContract {
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNCEDDATE = "synceddate";
         public static final String COLUMN_MSTATUS = "mstatus";
+        public static final String COLUMN_MSTATUS88x = "mstatus88x";
 
 
         public static String _URL = "familymembers.php";

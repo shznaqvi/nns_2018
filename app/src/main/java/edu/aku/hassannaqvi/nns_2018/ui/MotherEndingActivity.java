@@ -112,6 +112,8 @@ public class MotherEndingActivity extends AppCompatActivity {
                 : binding.istatus96.isChecked() ? "96"
                 : "0");
 
+        MainApp.mc.setMstatus88x(binding.istatus96x.getText().toString());
+
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }
 

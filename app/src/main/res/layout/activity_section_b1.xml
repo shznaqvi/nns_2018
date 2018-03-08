@@ -46,24 +46,24 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/nw2info" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/na107"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
+            <!-- <TextView
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="16dp"
+                 android:background="@color/colorPrimary"
+                 android:text="@string/na107"
+                 android:textAppearance="?android:attr/textAppearanceLarge"
+                 android:textColor="@android:color/white" />
 
 
-            <Spinner
-                android:id="@+id/resp"
-                style="@style/Widget.AppCompat.Spinner.Underlined"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center" />
-
+             <Spinner
+                 android:id="@+id/resp"
+                 style="@style/Widget.AppCompat.Spinner.Underlined"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="10dp"
+                 android:gravity="center" />
+ -->
 
             <!--nb501-->
             <TextView

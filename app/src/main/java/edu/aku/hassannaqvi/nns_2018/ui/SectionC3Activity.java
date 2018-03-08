@@ -11,18 +11,26 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.List;
 
+import butterknife.BindViews;
+import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC3Binding;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
+import io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText;
 
 public class SectionC3Activity extends AppCompatActivity {
 
     ActivitySectionC3Binding binding;
     FamilyMembersContract selectedChild;
+
+    @BindViews({R.id.nc3bcgdt, R.id.nc3opv0dt, R.id.nc3opv1dt, R.id.nc3p1dt, R.id.nc3pcv1dt, R.id.nc3opv2dt, R.id.nc3p2dt,
+            R.id.nc3pcv2dt, R.id.nc3opv3dt, R.id.nc3p3dt, R.id.nc3pcv3dt, R.id.nc3ipvdt, R.id.nc3m1dt, R.id.nc3m2dt})
+    List<DatePickerInputEditText> grpDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,58 +38,14 @@ public class SectionC3Activity extends AppCompatActivity {
         //setContentView(R.layout.activity_section_c3);
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_c3);
+        ButterKnife.bind(this);
         binding.setCallback(this);
-        binding.nc3bcgdt.setManager(getSupportFragmentManager());
-        binding.nc3bcgdt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
 
-        binding.nc3opv0dt.setManager(getSupportFragmentManager());
-        binding.nc3opv0dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+        for (DatePickerInputEditText dt : grpDate) {
+            dt.setManager(getSupportFragmentManager());
+            dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+        }
 
-        binding.nc3opv1dt.setManager(getSupportFragmentManager());
-        binding.nc3opv1dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
-
-        binding.nc3p1dt.setManager(getSupportFragmentManager());
-        binding.nc3p1dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
-
-        binding.nc3pcv1dt.setManager(getSupportFragmentManager());
-        binding.nc3pcv1dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
-
-        binding.nc3opv2dt.setManager(getSupportFragmentManager());
-        binding.nc3opv2dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
-
-        binding.nc3p2dt.setManager(getSupportFragmentManager());
-        binding.nc3p2dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
-
-        binding.nc3pcv2dt.setManager(getSupportFragmentManager());
-        binding.nc3pcv2dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
-
-        binding.nc3opv3dt.setManager(getSupportFragmentManager());
-        binding.nc3opv3dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
-
-        binding.nc3p3dt.setManager(getSupportFragmentManager());
-        binding.nc3p3dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
-
-        binding.nc3pcv3dt.setManager(getSupportFragmentManager());
-        binding.nc3pcv3dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
-
-        binding.nc3ipvdt.setManager(getSupportFragmentManager());
-        binding.nc3ipvdt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
-
-        binding.nc3m1dt.setManager(getSupportFragmentManager());
-        binding.nc3m1dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
-
-        binding.nc3m2dt.setManager(getSupportFragmentManager());
-        binding.nc3m2dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
-
-//        Skip Patterns
-//        binding.nc311.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-//                if (i == R.id.nc311b) {
-//                    binding.nc312.clearCheck();
-//                }
-//            }
-//        });
 
         binding.nc303.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -121,7 +85,7 @@ public class SectionC3Activity extends AppCompatActivity {
 
     public void BtnContinue() {
 
-        Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
             try {
                 SaveDraft();
@@ -129,7 +93,7 @@ public class SectionC3Activity extends AppCompatActivity {
                 e.printStackTrace();
             }
             if (UpdateDB()) {
-                Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
                 finish();
 
@@ -150,7 +114,7 @@ public class SectionC3Activity extends AppCompatActivity {
     }
 
     private boolean formValidation() {
-        Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
 //       nc302
         if (!validatorClass.EmptyRadioButton(this, binding.nc302, binding.nc302b, getString(R.string.nc302))) {
@@ -325,7 +289,7 @@ public class SectionC3Activity extends AppCompatActivity {
     }
 
     private void SaveDraft() throws JSONException {
-        Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
         JSONObject sC3 = new JSONObject();
 
@@ -506,7 +470,7 @@ public class SectionC3Activity extends AppCompatActivity {
         MainApp.cc.setsC3(String.valueOf(sC3));
 
 
-        Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }
 
     private boolean UpdateDB() {
@@ -517,7 +481,7 @@ public class SectionC3Activity extends AppCompatActivity {
         int updcount = db.updateSC3();
 
         if (updcount == 1) {
-            Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();

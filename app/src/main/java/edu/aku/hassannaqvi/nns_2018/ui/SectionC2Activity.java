@@ -228,7 +228,7 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
 
     public void BtnContinue() {
 
-        Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (ValidateForm()) {
             try {
                 SaveDraft();
@@ -236,7 +236,7 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
                 e.printStackTrace();
             }
             if (UpdateDB()) {
-                Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
                 finish();
 
@@ -257,7 +257,7 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
 
     private boolean ValidateForm() {
 
-        Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
         if (!bi.nc20198.isChecked()) {
 
@@ -280,22 +280,6 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
             if (!validatorClass.EmptyTextBox(this, bi.nc201y, getString(R.string.nc201))) {
                 return false;
             }
-
-            /*if (!validatorClass.RangeTextBox(this, bi.nc201y, 2016, 2020, getString(R.string.nc201), " years")) {
-                return false;
-            }*/
-
-            /*if (bi.nc201d.getText().toString().equals("0") && bi.nc201m.getText().toString().equals("0") && bi.nc201y.getText().toString().equals("0")) {
-                Toast.makeText(this, "ERROR(invalid): " + "All can not be zero" + getString(R.string.nc201), Toast.LENGTH_LONG).show();
-                bi.nc201d.setError("All can not be zero");
-                bi.nc201y.setError("All can not be zero");
-                bi.nc201m.setError("All can not be zero");
-                Log.i(SectionC2Activity.class.getSimpleName(), "nc201" + ": This data is Required!");
-            } else {
-                bi.nc201y.setError(null);
-                bi.nc201m.setError(null);
-                bi.nc201d.setError(null);
-            }*/
 
             Date date = new Date(); // Current date
             Calendar cal = Calendar.getInstance();
@@ -557,7 +541,7 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
 
 
     private void SaveDraft() throws JSONException {
-        Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
         JSONObject sC2 = new JSONObject();
 
@@ -828,7 +812,7 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
         MainApp.cc.setsC2(String.valueOf(sC2));
 
 
-        Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }
 
     private boolean UpdateDB() {
@@ -839,7 +823,7 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
         int updcount = db.updateSC2();
 
         if (updcount == 1) {
-            Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
