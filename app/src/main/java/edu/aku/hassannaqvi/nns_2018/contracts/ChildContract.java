@@ -39,6 +39,7 @@ public class ChildContract {
     private String synced_date = "";
     private String appversion;
     private String cstatus = "";
+    private String cstatus88x = "";
 
     public ChildContract() {
 
@@ -301,6 +302,7 @@ public class ChildContract {
         public static final String COLUMN_SYNCED_DATE = "synced_date ";
         public static final String COLUMN_APPVERSION = "appversion";
         public static final String COLUMN_CSTATUS = "cstatus";
+        public static final String COLUMN_CSTATUS88x = "cstatus88x";
 
         public static String _URL = "childforms.php";
     }
