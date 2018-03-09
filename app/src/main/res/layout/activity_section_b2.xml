@@ -206,7 +206,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
                         android:background="@color/pink_100"
                         android:text="@string/nw303sub1"
                         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -229,7 +228,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
                         android:background="@color/pink_100"
                         android:text="@string/nw303sub2"
                         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -269,7 +267,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
                         android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                        android:hint="@string/nw303f"
+                        android:hint="@string/explain"
                         android:inputType="text"
                         android:text='@{nw303f.checked ? nw303961x.getText.toString : ""}'
                         android:visibility='@{nw303f.checked ? View.VISIBLE : View.GONE}' />
@@ -277,7 +275,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
                         android:background="@color/pink_100"
                         android:text="@string/nw303sub3"
                         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -317,7 +314,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
                         android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                        android:hint="@string/nw303j"
+                        android:hint="@string/explain"
                         android:inputType="text"
                         android:text='@{nw303j.checked ? nw303962x.getText.toString : ""}'
                         android:visibility='@{nw303j.checked ? View.VISIBLE : View.GONE}' />
@@ -822,7 +819,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
                         android:background="@color/pink_100"
                         android:text="@string/nw312sub1"
                         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -884,7 +880,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
                         android:background="@color/pink_100"
                         android:text="@string/nw312sub2"
                         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -946,7 +941,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
                         android:background="@color/pink_100"
                         android:text="@string/nw312sub3"
                         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -1254,7 +1248,6 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
                             android:background="@color/pink_100"
                             android:text="@string/nw312sub1"
                             android:textAppearance="?android:attr/textAppearanceLarge"
@@ -1316,7 +1309,6 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
                             android:background="@color/pink_100"
                             android:text="@string/nw312sub2"
                             android:textAppearance="?android:attr/textAppearanceLarge"
@@ -1378,7 +1370,6 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
                             android:background="@color/pink_100"
                             android:text="@string/nw312sub3"
                             android:textAppearance="?android:attr/textAppearanceLarge"
@@ -1671,7 +1662,6 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
                             android:background="@color/pink_100"
                             android:text="@string/nw312sub1"
                             android:textAppearance="?android:attr/textAppearanceLarge"
@@ -1733,7 +1723,6 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
                             android:background="@color/pink_100"
                             android:text="@string/nw312sub2"
                             android:textAppearance="?android:attr/textAppearanceLarge"
@@ -1795,7 +1784,6 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
                             android:background="@color/pink_100"
                             android:text="@string/nw312sub3"
                             android:textAppearance="?android:attr/textAppearanceLarge"

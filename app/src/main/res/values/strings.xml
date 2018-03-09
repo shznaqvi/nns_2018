@@ -50,6 +50,7 @@
     <string name="times">تعداد</string>
     <string name="nr">جواب نہیں دیا</string>
     <string name="dose">خوراکیں</string>
+    <string name="explain">وضاحت کریں  </string>
 
 
     <!-- Strings related to Sections Below -->
@@ -542,13 +543,13 @@
     <string name="nw303c"> سرکاری ہسپتال  </string>
     <string name="nw303d">سرکاری کلینک </string>
     <string name="nw303e">ماں اور بچہ کا صحت مرکز   </string>
-    <string name="nw303f">  دیگر  سرکاری(وضاحت کریں ) </string>
+    <string name="nw303f">  دیگر  سرکاری</string>
     <string name="nw303sub3"> Private medical sector </string>
 
     <string name="nw303g"> نجی ہسپتال </string>
     <string name="nw303h"> نجی  کلینک </string>
     <string name="nw303i"> نجی زچہ و بچہ سینٹر </string>
-    <string name="nw303j"> دیگرنجی  (وضاحت کریں)  </string>
+    <string name="nw303j"> دیگرنجی  </string>
     <string name="nw303k">  جگہ کا نام </string>
     <string name="nw303l"> </string>
 
