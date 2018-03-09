@@ -63,6 +63,7 @@ public class SectionC1Activity extends AppCompatActivity {
 
             counter = 1;
             counterPerMom = 0;
+            counterPerNA = 0;
 
             childU5 = new ArrayList<>();
             childMap = new HashMap<>();
@@ -141,6 +142,12 @@ public class SectionC1Activity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
+
+        try {
+            SaveDraft();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         MainApp.endChildActivity(this, this, false);
     }
