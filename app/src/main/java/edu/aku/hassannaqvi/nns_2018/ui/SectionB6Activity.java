@@ -44,12 +44,10 @@ public class SectionB6Activity extends AppCompatActivity {
                 //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
                 finish();
-                //boolean shouldGotoEnd = false;
                 int childcount = 0;
                 if (MainApp.childUnder5.size() > 0) {
                     for (FamilyMembersContract fmc : MainApp.childUnder5) {
                         if (fmc.getMotherId().equals(MainApp.mc.getB1SerialNo())) {
-                            //startActivity(new Intent(this, SectionC1Activity.class));
                             childcount++;
                         }
                     }
@@ -61,14 +59,7 @@ public class SectionB6Activity extends AppCompatActivity {
                     } else {
                         startActivity(new Intent(this, SectionC1Activity.class));
                     }
-                    /*if (shouldGotoEnd) {
-                        startActivity(new Intent(this, MotherEndingActivity.class)
-                                .putExtra("checkingFlag", true)
-                                .putExtra("complete", true));
-                    }else{
-                        startActivity(new Intent(this, SectionC1Activity.class));
-                    }
-*/
+
                 } else {
                     startActivity(new Intent(this, MotherEndingActivity.class)
                             .putExtra("checkingFlag", true)
@@ -80,7 +71,6 @@ public class SectionB6Activity extends AppCompatActivity {
             }
         }
 
-        //startActivity(new Intent(this, SectionC1Activity.class));
 
     }
 
