@@ -2031,7 +2031,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
                         android:background="@color/pink_100"
                         android:text="@string/nh317info"
                         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -2056,7 +2055,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
                         android:background="@color/pink_100"
                         android:text="@string/nh317info1"
                         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -2081,7 +2079,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
                         android:background="@color/pink_100"
                         android:text="@string/nh317info2"
                         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -2190,7 +2187,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
                         android:background="@color/pink_100"
                         android:text="@string/nh318info"
                         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -2223,7 +2219,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
                         android:background="@color/pink_100"
                         android:text="@string/nh318info1"
                         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -2264,7 +2259,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
                         android:background="@color/pink_100"
                         android:text="@string/nh318info2"
                         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -2361,7 +2355,6 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:background="@color/pink_100"
                 android:text="@string/nh319sub"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -2399,7 +2392,6 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
                     android:background="@color/pink_100"
                     android:text="@string/nh319sub1"
                     android:textAppearance="?android:attr/textAppearanceLarge"
