@@ -357,6 +357,11 @@ public class SectionB1Activity extends Activity {
     }
 
     public void BtnEnd() {
+        try {
+            SaveDraft();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         MainApp.endActivityMother(this, this, false);
     }
 

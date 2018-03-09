@@ -138,7 +138,7 @@ public class SectionB1AActivity extends AppCompatActivity {
                 if (MainApp.outcome != 4) {
                     MainApp.count++;
                     if (MainApp.totalPregnancy >= MainApp.count) {
-                        startActivity(new Intent(this, SectionB1Activity.class).putExtra("type", false));
+                        startActivity(new Intent(this, SectionB1AActivity.class).putExtra("type", false));
                     } else {
                         startActivity(new Intent(this, SectionB2Activity.class));
                     }
