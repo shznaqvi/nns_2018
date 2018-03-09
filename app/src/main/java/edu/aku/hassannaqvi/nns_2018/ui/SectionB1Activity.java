@@ -549,8 +549,8 @@ public class SectionB1Activity extends Activity {
 
         /*sB1.put("respName", bi.resp.getSelectedItem().toString());
         sB1.put("respSerial", respMap.get(bi.resp.getSelectedItem().toString()));*/
-        sB1.put("nb101", bi.nb101.getSelectedItem().toString());
-        sB1.put("nb1serialno", wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
+        sB1.put("nw101", bi.nb101.getSelectedItem().toString());
+        sB1.put("nw1serialno", wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
 
         //        nw201
         sB1.put("nw201days", bi.nw201days.getText().toString());
