@@ -705,7 +705,7 @@ public class SectionA2Activity extends AppCompatActivity {
             MainApp.familyMembersList.set(position, family);
         }
 
-        Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }
 
     private boolean UpdateDB() {

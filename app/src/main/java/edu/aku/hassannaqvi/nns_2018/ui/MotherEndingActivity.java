@@ -66,7 +66,7 @@ public class MotherEndingActivity extends AppCompatActivity {
 
     public void BtnEnd() {
 
-        Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
             try {
                 SaveDraft();
@@ -100,7 +100,7 @@ public class MotherEndingActivity extends AppCompatActivity {
 
 
     private void SaveDraft() throws JSONException {
-        Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
 
 
@@ -114,7 +114,7 @@ public class MotherEndingActivity extends AppCompatActivity {
 
         MainApp.mc.setMstatus88x(binding.istatus96x.getText().toString());
 
-        Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }
 
     private boolean UpdateDB() {
@@ -134,7 +134,7 @@ public class MotherEndingActivity extends AppCompatActivity {
     }
 
     private boolean formValidation() {
-        Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
         if (!validatorClass.EmptyRadioButton(this, binding.istatus, binding.istatusa, getString(R.string.istatus))) {
             return false;

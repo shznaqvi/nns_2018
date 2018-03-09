@@ -362,7 +362,16 @@ public class SectionB1Activity extends Activity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        MainApp.endActivityMother(this, this, false);
+        if (UpdateDB()) {
+            //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
+
+            finish();
+
+            MainApp.endChildActivity(this, this, false);
+
+        } else {
+            Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private boolean ValidateForm() {

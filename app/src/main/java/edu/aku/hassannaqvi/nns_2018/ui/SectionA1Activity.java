@@ -214,7 +214,7 @@ public class SectionA1Activity extends AppCompatActivity {
 
     public void BtnEnd() {
 
-        Toast.makeText(this, "Processing End Section", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Processing End Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
             try {
                 SaveDraft();

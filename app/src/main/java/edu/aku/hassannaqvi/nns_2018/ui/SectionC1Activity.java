@@ -143,13 +143,23 @@ public class SectionC1Activity extends AppCompatActivity {
 
     public void BtnEnd() {
 
+        //if (formValidation()) {
         try {
             SaveDraft();
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        if (UpdateDB()) {
+            //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
-        MainApp.endChildActivity(this, this, false);
+            finish();
+
+            MainApp.endChildActivity(this, this, false);
+
+        } else {
+            Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
+        }
+        //}
     }
 
     private boolean formValidation() {
