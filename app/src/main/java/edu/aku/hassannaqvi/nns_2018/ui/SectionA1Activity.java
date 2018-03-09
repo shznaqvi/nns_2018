@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -37,10 +38,13 @@ import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 public class SectionA1Activity extends AppCompatActivity {
 
     private static final String TAG = SectionA1Activity.class.getName();
+    static int progress = 0;
     ActivitySectionA1Binding binding;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     DatabaseHelper db;
     Collection<BLRandomContract> selected;
+    int progressStatus = 0;
+    Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -169,11 +173,38 @@ public class SectionA1Activity extends AppCompatActivity {
                 e.printStackTrace();
             }
             if (UpdateDB()) {
-                //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
-                finish();
+                new Thread(new Runnable() {
+                    public void run() {
+                        while (progressStatus < 100) {
+                            progressStatus = doSomeWork();
+                            handler.post(new Runnable() {
+                                public void run() {
+                                    binding.progress.setProgress(progressStatus);
+                                }
+                            });
+                        }
+                        handler.post(new Runnable() {
+                            public void run() {
 
-                startActivity(new Intent(this, SectionA2ListActivity.class));
+                                progress = 0;
+                                finish();
+                                startActivity(new Intent(SectionA1Activity.this, SectionA2ListActivity.class));
+                            }
+                        });
+                    }
+
+                    private int doSomeWork() {
+                        try {
+                            // ---simulate doing some work---
+                            Thread.sleep(20);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        return ++progress;
+                    }
+                }).start();
+
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
