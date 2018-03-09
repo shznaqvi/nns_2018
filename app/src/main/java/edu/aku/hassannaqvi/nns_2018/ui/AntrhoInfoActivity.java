@@ -57,6 +57,7 @@ public class AntrhoInfoActivity extends Activity {
         MainApp.childNA = new ArrayList<>();
         MainApp.mwra = new ArrayList<>();
         MainApp.adolescents = new ArrayList<>();
+        members = new ArrayList<>();
         json = new JSONModelClass();
 
 
