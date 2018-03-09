@@ -75,6 +75,7 @@ public class SectionA2Activity extends AppCompatActivity {
 
             binding.selectedName.setText(family.getName().toUpperCase());
 
+
             binding.fldGrpA201.setVisibility(View.GONE);
             binding.fldGrpA202.setVisibility(View.VISIBLE);
             //binding.fldGrpA20101.setVisibility(View.VISIBLE);

@@ -320,8 +320,9 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="2dp"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="center" />
+                    android:background="@color/colorPrimaryBeta"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <!--07-->
                 <TextView
