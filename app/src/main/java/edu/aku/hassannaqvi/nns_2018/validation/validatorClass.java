@@ -182,5 +182,39 @@ public abstract class validatorClass {
         }
     }
 
+    public static void setErrorOnMultTextFields(Context context, String msg, Boolean condition, EditText... textFields) {
+        Boolean firstIterationFlag = true;
+        for (EditText textField : textFields) {
+            if (condition) {
+                // Toast.makeText(context, "ERROR(MultipleTxt): " + msg, Toast.LENGTH_SHORT).show();
+                textField.setError(msg);
+                if (firstIterationFlag) {
+                    textField.requestFocus();
+                    firstIterationFlag = false;
+                } else {
+                }
+                Log.i(context.getClass().getName(), context.getResources().getResourceEntryName(textField.getId()) + msg);
 
+            } else {
+                textField.setError(null);
+
+            }
+        }
+
+    }
+
+    public static void setErrorOnMultRadioFields(Context context, String msg, Boolean condition, RadioButton... Buttons) {
+        for (RadioButton button : Buttons) {
+            if (condition) {
+                button.setError(msg);
+                Log.i(context.getClass().getName(), context.getResources().getResourceEntryName(button.getId()) + msg);
+
+            } else {
+                button.setError(null);
+
+            }
+        }
+
+    }
 }
+

@@ -185,11 +185,20 @@ public class SectionB4Activity extends Activity {
         }
 
         // nb402
-        if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnb402check, binding.nb40296, binding.nb40296x, String.valueOf(R.string.nb402))) {
+        if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnb402check, binding.nb40296, binding.nb40296x, getString(R.string.nb402))) {
             return false;
         }
         // nb403
-        if (!validatorClass.EmptyRadioButton(this, binding.nb403, binding.nb40396, binding.nb40396x, getString(R.string.nb403))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nb403, binding.nb403a, getString(R.string.nb403))) {
+            return false;
+        } // nb403
+        if (!validatorClass.EmptyRadioButton(this, binding.nb403, binding.nb403f, binding.nb403fx, getString(R.string.nb403) + " " + getString(R.string.nb403f))) {
+            return false;
+        }
+        if (!validatorClass.EmptyRadioButton(this, binding.nb403, binding.nb403j, binding.nb403jx, getString(R.string.nb403) + " " + getString(R.string.nb403j))) {
+            return false;
+        }
+        if (!validatorClass.EmptyRadioButton(this, binding.nb403, binding.nb40396, binding.nb40396x, getString(R.string.nb403) + " " + getString(R.string.other))) {
             return false;
         }
         // nb404
@@ -332,6 +341,8 @@ public class SectionB4Activity extends Activity {
                 : binding.nb403j.isChecked() ? "10"
                 : binding.nb40396.isChecked() ? "96"
                 : "0");
+        sB4.put("nw403fx", binding.nb403fx.getText().toString());
+        sB4.put("nw403jx", binding.nb403jx.getText().toString());
         sB4.put("nw40396x", binding.nb40396x.getText().toString());
 
 //        nb404

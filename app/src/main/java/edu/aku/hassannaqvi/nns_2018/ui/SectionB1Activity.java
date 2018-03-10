@@ -193,6 +193,7 @@ public class SectionB1Activity extends Activity {
                 } else {
                     bi.fldGrpnw209.setVisibility(View.VISIBLE);
                 }
+
             }
 
             @Override
@@ -469,6 +470,7 @@ public class SectionB1Activity extends Activity {
                         return false;
                     }
 
+
                     if (bi.nw207a.isChecked()) {
 
                         if (!validatorClass.EmptyTextBox(this, bi.nw208, getString(R.string.nw208))) {
@@ -481,6 +483,13 @@ public class SectionB1Activity extends Activity {
                             if (!validatorClass.EmptyTextBox(this, bi.nw209, getString(R.string.nw209))) {
                                 return false;
                             }
+                            if (!validatorClass.RangeTextBox(this, bi.nw209, 0, Integer.valueOf(bi.nw208.getText().toString()), getString(R.string.nw209), " Deliveries")) {
+                                return false;
+                            }
+
+                            if (!validatorClass.EmptyTextBox(this, bi.nw210, getString(R.string.nw210))) {
+                                return false;
+                            }
 
                             if (!validatorClass.RangeTextBox(this, bi.nw210, Integer.valueOf(bi.nw210.getText().toString()), Integer.valueOf(wraMap.get(bi.nb101.getSelectedItem().toString()).getAgeInYear()), getString(R.string.nw210), " years")) {
                                 return false;
@@ -490,14 +499,32 @@ public class SectionB1Activity extends Activity {
                                 return false;
                             }
 
+
                             if (bi.nw211a.isChecked()) {
+
+                                String Errormsg = " If you are curently pregnant then total number of pregnancies and deliveries cannot be equal!";
+                                Boolean condition = bi.nw208.getText().toString().equals(bi.nw209.getText().toString());
+                                Boolean condit = Integer.valueOf(bi.nw208.getText().toString()) == Integer.valueOf(bi.nw209.getText().toString());
+                                if (condition) {
+                                    validatorClass.setErrorOnMultTextFields(this, Errormsg, condition, bi.nw208, bi.nw209);
+                                    validatorClass.setErrorOnMultRadioFields(this, Errormsg, condition, bi.nw211a);
+                                    return false;
+                                }
+
                                 if (!validatorClass.EmptyRadioButton(this, bi.nw212, bi.nw212a, getString(R.string.nw212))) {
                                     return false;
                                 }
 
                                 if (bi.nw212a.isChecked()) {
+                                 /*   if (!validatorClass.EmptyRadioButton(this, bi.nw21398, bi.nw21398a, getString(R.string.dkn))) {
+                                        return false;
+                                    }
 
-                                    if (bi.nw21398b.isChecked() || bi.nw21399b.isChecked()) {
+                                    if (!validatorClass.EmptyRadioButton(this, bi.nw21399, bi.nw21399a, getString(R.string.nr))) {
+                                        return false;
+                                    }*/
+
+                                    if (!bi.nw21398b.isChecked() || !bi.nw21399b.isChecked()) {
                                         if (!validatorClass.EmptyRadioButton(this, bi.nw21301, bi.nw21301a, getString(R.string.nw21301))) {
                                             return false;
                                         }
@@ -520,11 +547,22 @@ public class SectionB1Activity extends Activity {
                                     }
 
                                 }
+                                // When number of pregnancies is 1 and currently pregnant is yes then number of deliveries cannot be 1
+
                             }
+
+
                         }
+
+
                     }
+
+
                 }
+
+
             }
+
         }
         return true;
     }
