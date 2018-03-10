@@ -27,6 +27,8 @@ import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA3Binding;
+import edu.aku.hassannaqvi.nns_2018.other.JSONModelClass;
+import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionA3Activity extends AppCompatActivity {
@@ -38,6 +40,7 @@ public class SectionA3Activity extends AppCompatActivity {
     ActivitySectionA3Binding binding;
     DatabaseHelper db;
     int slc_type;
+    JSONModelClass json;
 
 
     FamilyMembersContract slecMem;
@@ -54,6 +57,7 @@ public class SectionA3Activity extends AppCompatActivity {
 
 //        Assigning data to UI binding
         binding.setCallback(this);
+        json = new JSONModelClass();
 
 
         setupViews();
@@ -135,8 +139,9 @@ public class SectionA3Activity extends AppCompatActivity {
     public void familyMembersSetting(List<FamilyMembersContract> family, int type) {
 
         for (FamilyMembersContract fmc : family) {
-            membersMap.put(AntrhoInfoActivity.json.getName() + "_" + AntrhoInfoActivity.json.getSerialNo(), new SelectedMem(type, fmc));
-            members.add(AntrhoInfoActivity.json.getName() + "_" + AntrhoInfoActivity.json.getSerialNo());
+            json = JSONUtilClass.getModelFromJSON(fmc.getsA2());
+            membersMap.put(json.getName() + "_" + json.getSerialNo(), new SelectedMem(type, fmc));
+            members.add(json.getName() + "_" + json.getSerialNo());
         }
 
 
@@ -187,7 +192,21 @@ public class SectionA3Activity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        MainApp.endActivity(this, this);
+        try {
+            SaveDraft();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        if (UpdateDB()) {
+            //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
+
+            finish();
+
+            MainApp.endAnthroActivity(this, this);
+
+        } else {
+            Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private boolean formValidation() {
@@ -255,7 +274,7 @@ public class SectionA3Activity extends AppCompatActivity {
 
         name = binding.na301.getSelectedItem().toString();
         sA3.put("na301", binding.na301.getSelectedItem().toString());
-        sA3.put("na301Serial", AntrhoInfoActivity.json.getSerialNo());
+        sA3.put("na301Serial", json.getSerialNo());
 
         sA3.put("na3Serial", String.valueOf(counter));
 

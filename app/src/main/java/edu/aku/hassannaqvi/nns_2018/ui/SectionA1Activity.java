@@ -364,7 +364,7 @@ public class SectionA1Activity extends AppCompatActivity {
         MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
         MainApp.fc.setRespLineNo(MainApp.lineNo);
         MainApp.fc.setEnmNo(binding.na102.getText().toString());
-        MainApp.fc.setHhNo(binding.na103.getText().toString());
+        MainApp.fc.setHhNo(binding.na103.getText().toString().toUpperCase());
 
 
         setGPS(); // Set GPS
