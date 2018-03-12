@@ -524,7 +524,7 @@ public class SectionB1Activity extends Activity {
                                         return false;
                                     }*/
 
-                                    if (!bi.nw21398b.isChecked() || !bi.nw21399b.isChecked()) {
+                                    if (!bi.nw21398a.isChecked() || !bi.nw21399a.isChecked()) {
                                         if (!validatorClass.EmptyRadioButton(this, bi.nw21301, bi.nw21301a, getString(R.string.nw21301))) {
                                             return false;
                                         }
@@ -545,6 +545,16 @@ public class SectionB1Activity extends Activity {
                                             return false;
                                         }
                                     }
+                                    /*else if(bi.nw21398a.isChecked()){
+                                        if (!validatorClass.EmptyRadioButton(this, bi.nw21398, bi.nw21398a, getString(R.string.dkn))) {
+                                            return false;
+                                        }
+                                    }
+                                    else if(bi.nw21399a.isChecked()){
+                                        if (!validatorClass.EmptyRadioButton(this, bi.nw21399, bi.nw21399a, getString(R.string.nr))) {
+                                            return false;
+                                        }
+                                    }*/
 
                                 }
                                 // When number of pregnancies is 1 and currently pregnant is yes then number of deliveries cannot be 1
