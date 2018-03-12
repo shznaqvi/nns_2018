@@ -72,6 +72,7 @@ public class AnthroEndingActivity extends AppCompatActivity {
                     SectionA3Activity.counter = 1;
 
                     //startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+
                     startActivity(new Intent(this, MainActivity.class));
 
                 } else {

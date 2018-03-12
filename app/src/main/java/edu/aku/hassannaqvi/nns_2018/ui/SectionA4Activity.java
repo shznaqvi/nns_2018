@@ -31,15 +31,17 @@ public class SectionA4Activity extends AppCompatActivity {
 //        Assigning data to UI binding
         binding.setCallback(this);
 
-//        Skip Pattern
+//        Skip Pattern;
 
 //        nh303
         binding.nh303.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (i == R.id.nh303b) {
-                    binding.nh305.clearCheck();
-//                    binding.nh30596x.setText(null);
+                if (i == R.id.nh303b || i == R.id.nh303c) {
+                    binding.fldGrnh304.setVisibility(View.GONE);
+                    binding.nh304.setText(null);
+                } else {
+                    binding.fldGrnh304.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -130,7 +132,7 @@ public class SectionA4Activity extends AppCompatActivity {
         if (!validatorClass.EmptyRadioButton(this, binding.nh303, binding.nh30396, binding.nh30396x, getString(R.string.nh303))) {
             return false;
         }
-        if (!binding.nh303b.isChecked()) {
+        if (!binding.nh303b.isChecked() || !binding.nh303c.isChecked()) {
             if (!validatorClass.EmptyTextBox(this, binding.nh304, getString(R.string.nh304))) {
                 return false;
             }
@@ -236,9 +238,38 @@ public class SectionA4Activity extends AppCompatActivity {
         }
 
 
-        if (!validatorClass.EmptyCheckBox(this, binding.fldGrpna0411check, binding.nh312a, getString(R.string.nh312))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nh312a, binding.nh312a1, getString(R.string.nh312a))) {
             return false;
         }
+
+        if (!validatorClass.EmptyRadioButton(this, binding.nh312b, binding.nh312b1, getString(R.string.nh312b))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, binding.nh312c, binding.nh312c1, getString(R.string.nh312c))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, binding.nh312d, binding.nh312d1, getString(R.string.nh312d))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, binding.nh312e, binding.nh312e1, getString(R.string.nh312e))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, binding.nh312f, binding.nh312f1, getString(R.string.nh312f))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, binding.nh312h, binding.nh312h1, getString(R.string.nh312h))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, binding.nh312i, binding.nh312i1, getString(R.string.nh312i))) {
+            return false;
+        }
+
         if (!validatorClass.EmptyCheckBox(this, binding.fldGrpna0413check, binding.nh31396, binding.nh31396x, getString(R.string.nh313))) {
             return false;
         }
@@ -385,21 +416,22 @@ public class SectionA4Activity extends AppCompatActivity {
         sA4.put("nh30296x", binding.nh30296x.getText().toString());
 
 
-        sA4.put("nh303", binding.nh303b.isChecked() ? "1"
-                : binding.nh303c.isChecked() ? "2"
-                : binding.nh303d.isChecked() ? "3"
-                : binding.nh303e.isChecked() ? "4"
-                : binding.nh303f.isChecked() ? "5"
-                : binding.nh303g.isChecked() ? "6"
-                : binding.nh303h.isChecked() ? "7"
-                : binding.nh303i.isChecked() ? "8"
-                : binding.nh303j.isChecked() ? "9"
-                : binding.nh303k.isChecked() ? "10"
-                : binding.nh303l.isChecked() ? "11"
-                : binding.nh303m.isChecked() ? "12"
-                : binding.nh303n.isChecked() ? "13"
-                : binding.nh303o.isChecked() ? "14"
-                : binding.nh303p.isChecked() ? "15"
+        sA4.put("nh303", binding.nh303a1.isChecked() ? "11" : binding.nh303a2.isChecked() ? "12"
+                : binding.nh303b.isChecked() ? "2"
+                : binding.nh303c.isChecked() ? "3"
+                : binding.nh303d.isChecked() ? "4"
+                : binding.nh303e.isChecked() ? "5"
+                : binding.nh303f.isChecked() ? "6"
+                : binding.nh303g.isChecked() ? "7"
+                : binding.nh303h.isChecked() ? "8"
+                : binding.nh303i.isChecked() ? "9"
+                : binding.nh303j.isChecked() ? "10"
+                : binding.nh303k.isChecked() ? "11"
+                : binding.nh303l.isChecked() ? "12"
+                : binding.nh303m.isChecked() ? "13"
+                : binding.nh303n.isChecked() ? "14"
+                : binding.nh303o.isChecked() ? "15"
+                : binding.nh303p.isChecked() ? "16"
                 : binding.nh30396.isChecked() ? "96"
                 : "0");
         sA4.put("nh30396x", binding.nh30396x.getText().toString());
@@ -515,15 +547,15 @@ public class SectionA4Activity extends AppCompatActivity {
                 : "0");
 
 //        nh312
-        sA4.put("nh312a", binding.nh312a.isChecked() ? "1" : "0");
-        sA4.put("nh312b", binding.nh312b.isChecked() ? "2" : "0");
-        sA4.put("nh312c", binding.nh312c.isChecked() ? "3" : "0");
-        sA4.put("nh312d", binding.nh312d.isChecked() ? "4" : "0");
-        sA4.put("nh312e", binding.nh312e.isChecked() ? "5" : "0");
-        sA4.put("nh312f", binding.nh312f.isChecked() ? "6" : "0");
-        sA4.put("nh312g", binding.nh312g.isChecked() ? "7" : "0");
-        sA4.put("nh312h", binding.nh312h.isChecked() ? "8" : "0");
-        sA4.put("nh312i", binding.nh312i.isChecked() ? "9" : "0");
+        sA4.put("nh312a", binding.nh312a1.isChecked() ? "1" : binding.nh312a2.isChecked() ? "2" : "0");
+        sA4.put("nh312b", binding.nh312b1.isChecked() ? "1" : binding.nh312b2.isChecked() ? "2" : "0");
+        sA4.put("nh312c", binding.nh312c1.isChecked() ? "1" : binding.nh312c2.isChecked() ? "2" : "0");
+        sA4.put("nh312d", binding.nh312d1.isChecked() ? "1" : binding.nh312d2.isChecked() ? "2" : "0");
+        sA4.put("nh312e", binding.nh312e1.isChecked() ? "1" : binding.nh312e2.isChecked() ? "2" : "0");
+        sA4.put("nh312f", binding.nh312f1.isChecked() ? "1" : binding.nh312f2.isChecked() ? "2" : "0");
+        sA4.put("nh312g", binding.nh312g1.isChecked() ? "1" : binding.nh312g2.isChecked() ? "2" : "0");
+        sA4.put("nh312h", binding.nh312h1.isChecked() ? "1" : binding.nh312h2.isChecked() ? "2" : "0");
+        sA4.put("nh312i", binding.nh312i1.isChecked() ? "1" : binding.nh312i2.isChecked() ? "2" : "0");
 
 //        nh313
         sA4.put("nh313a", binding.nh313a.isChecked() ? "1" : "0");
