@@ -192,7 +192,7 @@ public class SectionC1Activity extends AppCompatActivity {
         MainApp.cc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
 
         if (childMap.get(binding.nc101.getSelectedItem().toString()).getMotherId().equals("00")) {
-            MainApp.cc.setUUID(MainApp.fc.getUID());
+            MainApp.cc.setUUID(MainApp.fmc.get_UID());
         } else {
             MainApp.cc.setUUID(MainApp.mc.get_UID());
         }
