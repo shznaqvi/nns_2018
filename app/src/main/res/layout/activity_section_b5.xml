@@ -291,7 +291,6 @@
 
                     <CheckBox
                         android:id="@+id/nb505a"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -299,7 +298,6 @@
 
                     <CheckBox
                         android:id="@+id/nb505b"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -307,7 +305,6 @@
 
                     <CheckBox
                         android:id="@+id/nb505c"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -315,7 +312,6 @@
 
                     <CheckBox
                         android:id="@+id/nb505d"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -323,7 +319,6 @@
 
                     <CheckBox
                         android:id="@+id/nb505e"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -331,7 +326,6 @@
 
                     <CheckBox
                         android:id="@+id/nb505f"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -339,7 +333,6 @@
 
                     <CheckBox
                         android:id="@+id/nb505g"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -347,7 +340,6 @@
 
                     <CheckBox
                         android:id="@+id/nb505h"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -355,7 +347,6 @@
 
                     <CheckBox
                         android:id="@+id/nb50596"
-                        style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
