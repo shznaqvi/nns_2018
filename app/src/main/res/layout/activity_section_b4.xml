@@ -168,7 +168,12 @@
 
             </LinearLayout>
 
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@drawable/bacground_border3"
+                android:orientation="vertical">
             <!--nb402-->
             <TextView
                 android:layout_width="match_parent"
@@ -292,7 +297,7 @@
                     android:visibility='@{nb40296.checked ? View.VISIBLE : View.GONE}' />
 
             </LinearLayout>
-
+            </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
