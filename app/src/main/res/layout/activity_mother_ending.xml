@@ -135,8 +135,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
+                android:hint="@string/other"
                 android:maxLength="40"
-                android:text="@string/other"
                 android:visibility='@{istatus96.checked ? View.VISIBLE : View.GONE}' />
 
             <Button
