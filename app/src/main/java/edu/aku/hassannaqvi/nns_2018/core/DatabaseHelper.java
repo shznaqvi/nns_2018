@@ -126,6 +126,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + ChildTable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + ChildTable.COLUMN_PROJECTNAME + " TEXT," +
             ChildTable.COLUMN__UID + " TEXT," +
+            ChildTable.COLUMN__UUID + " TEXT," +
             ChildTable.COLUMN_FORMDATE + " TEXT," +
             ChildTable.COLUMN_USER + " TEXT," +
             ChildTable.COLUMN_C1SERIALNO + " TEXT," +
@@ -869,6 +870,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(ChildTable.COLUMN_PROJECTNAME, cc.getProjectName());
         //values.put(ChildTable.COLUMN__ID, cc.get_ID());
         values.put(ChildTable.COLUMN__UID, cc.getUID());
+        values.put(ChildTable.COLUMN__UUID, cc.getUUID());
         values.put(ChildTable.COLUMN_FORMDATE, cc.getFormDate());
         values.put(ChildTable.COLUMN_USER, cc.getUser());
         values.put(ChildTable.COLUMN_C1SERIALNO, cc.getC1SerialNo());
@@ -1377,6 +1379,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] columns = {
                 ChildTable.COLUMN__ID,
                 ChildTable.COLUMN__UID,
+                ChildTable.COLUMN__UUID,
                 ChildTable.COLUMN_FORMDATE,
                 ChildTable.COLUMN_USER,
                 ChildTable.COLUMN_C1SERIALNO,

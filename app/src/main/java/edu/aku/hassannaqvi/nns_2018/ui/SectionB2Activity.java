@@ -641,8 +641,8 @@ public class SectionB2Activity extends Activity {
                 : "0");
 //        nw309
 
-        sB2.put("nw309", bi.nw309.getText().toString());
-        sB2.put("nw30998", bi.nw30998.isChecked() ? "98" : "0");
+        sB2.put("nw309", bi.nw30998.isChecked() ? "98" : bi.nw309.getText().toString());
+        //sB2.put("nw30998", bi.nw30998.isChecked() ? "98" : "0");
 
 //        nw310
         sB2.put("nw310", bi.nw310a.isChecked() ? "1"
