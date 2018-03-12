@@ -383,26 +383,17 @@ public class SectionA1Activity extends AppCompatActivity {
         sA1.put("hhheadpresentnew", binding.newHHheadname.getText().toString());
 
         sA1.put("nh101", binding.na101.getText().toString());
-        //sA1.put("nw102", binding.na102.getText().toString());
+
         sA1.put("nh103", binding.na101a.getText().toString());
         sA1.put("nh104", binding.na101b.getText().toString());
         sA1.put("nh105", binding.na101c.getText().toString());
         sA1.put("nh106", binding.na101d.getText().toString());
-        //sA1.put("nh107", binding.na103.getText().toString());
+
         sA1.put("nh110", binding.na105.getText().toString());
         sA1.put("nh113", binding.na107.getText().toString());
         sA1.put("nh115", binding.na108.getText().toString());
 
-/*        sA1.put("nw11501blood", binding.na11101blooda.isChecked() ? "1"
-                : binding.na11101bloodb.isChecked() ? "2" : "0");
-
-        sA1.put("nw11501urine", binding.na11101urinea.isChecked() ? "1"
-                : binding.na11101urineb.isChecked() ? "2" : "0");
-
-        sA1.put("nw11502water", binding.na11102watera.isChecked() ? "1"
-                : binding.na11102waterb.isChecked() ? "2" : "0");
-*/
-
+        sA1.put("nh213", binding.na213.getText().toString());
         sA1.put("nh11701blood", MainApp.selectedHead.getSelStructure());
 
         sA1.put("nh11702urine", MainApp.selectedHead.getSelStructure());
@@ -417,14 +408,14 @@ public class SectionA1Activity extends AppCompatActivity {
 
 //        na117
         sA1.put("nh119a", binding.na113a.isChecked() ? "1" : "0");
-        sA1.put("nw117b", binding.na113b.isChecked() ? "2" : "0");
-        sA1.put("nw117c", binding.na113c.isChecked() ? "3" : "0");
-        sA1.put("nw117d", binding.na113d.isChecked() ? "4" : "0");
-        sA1.put("nw117e", binding.na113e.isChecked() ? "5" : "0");
-        sA1.put("nw117f", binding.na113f.isChecked() ? "6" : "0");
-        sA1.put("nw117g", binding.na113g.isChecked() ? "7" : "0");
-        sA1.put("nw11796", binding.na11396.isChecked() ? "96" : "0");
-        sA1.put("nw11796x", binding.na11396x.getText().toString());
+        sA1.put("nh119b", binding.na113b.isChecked() ? "2" : "0");
+        sA1.put("nh119c", binding.na113c.isChecked() ? "3" : "0");
+        sA1.put("nh119d", binding.na113d.isChecked() ? "4" : "0");
+        sA1.put("nh119e", binding.na113e.isChecked() ? "5" : "0");
+        sA1.put("nh119f", binding.na113f.isChecked() ? "6" : "0");
+        sA1.put("nh119g", binding.na113g.isChecked() ? "7" : "0");
+        sA1.put("nh11996", binding.na11396.isChecked() ? "96" : "0");
+        sA1.put("nh11996x", binding.na11396x.getText().toString());
 
         MainApp.fc.setsA1(String.valueOf(sA1));
 

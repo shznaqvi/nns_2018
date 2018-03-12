@@ -276,9 +276,9 @@ public class SectionB1AActivity extends AppCompatActivity {
 
         JSONObject sB1a = new JSONObject();
 
-        sB1a.put("nb1a01", bi.nb1a01.getText().toString());
+        sB1a.put("nw215", bi.nb1a01.getText().toString());
 
-        sB1a.put("nb1a02", bi.nb1a02a.isChecked() ? "1"
+        sB1a.put("nw216", bi.nb1a02a.isChecked() ? "1"
                 : bi.nb1a02b.isChecked() ? "2"
                 : bi.nb1a02c.isChecked() ? "3"
                 : bi.nb1a02d.isChecked() ? "4"
@@ -291,24 +291,24 @@ public class SectionB1AActivity extends AppCompatActivity {
         }
 
 
-        sB1a.put("nb1a03", String.valueOf(childSerial));
+        sB1a.put("nw218", String.valueOf(childSerial));
 
-        sB1a.put("nb1a04", bi.nb1a04a.isChecked() ? "1"
+        sB1a.put("nw217", bi.nb1a04a.isChecked() ? "1"
                 : bi.nb1a04b.isChecked() ? "2"
                 : "0");
 
-        sB1a.put("nb1a05y", bi.nb1a05y.getText().toString());
-        sB1a.put("nb1a05m", bi.nb1a05m.getText().toString());
-        sB1a.put("nb1a05d", bi.nb1a05d.getText().toString());
+        sB1a.put("nw219y", bi.nb1a05y.getText().toString());
+        sB1a.put("nw219m", bi.nb1a05m.getText().toString());
+        sB1a.put("nw219d", bi.nb1a05d.getText().toString());
 
-        sB1a.put("nb1a06y", bi.nb1a06y.getText().toString());
-        sB1a.put("nb1a06m", bi.nb1a06m.getText().toString());
-        sB1a.put("nb1a06d", bi.nb1a06d.getText().toString());
+        sB1a.put("nw220y", bi.nb1a06y.getText().toString());
+        sB1a.put("nw220m", bi.nb1a06m.getText().toString());
+        sB1a.put("nw220d", bi.nb1a06d.getText().toString());
 
         MainApp.oc.setsB1A(String.valueOf(sB1a));
 
 
-        Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
 
     }
 

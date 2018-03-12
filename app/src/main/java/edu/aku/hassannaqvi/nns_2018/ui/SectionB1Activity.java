@@ -585,8 +585,6 @@ public class SectionB1Activity extends Activity {
 
         JSONObject sB1 = new JSONObject();
 
-        /*sB1.put("respName", bi.resp.getSelectedItem().toString());
-        sB1.put("respSerial", respMap.get(bi.resp.getSelectedItem().toString()));*/
         sB1.put("nw101", bi.nb101.getSelectedItem().toString());
         sB1.put("nw1serialno", wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
 

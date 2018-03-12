@@ -162,14 +162,14 @@ public class SectionB3Activity extends AppCompatActivity {
 
         JSONObject sB3 = new JSONObject();
 
-        sB3.put("nw301", binding.nb301a.isChecked() ? "1"
+        sB3.put("nw327", binding.nb301a.isChecked() ? "1"
                 : binding.nb301b.isChecked() ? "2"
                 : binding.nb30198.isChecked() ? "98"
                 : "0");
-        sB3.put("nw301m", binding.nb301m.getText().toString());
-        sB3.put("nw301d", binding.nb301d.getText().toString());
+        sB3.put("nw327m", binding.nb301m.getText().toString());
+        sB3.put("nw327d", binding.nb301d.getText().toString());
 
-        sB3.put("nw302", binding.nb302a.isChecked() ? "1"
+        sB3.put("nw328", binding.nb302a.isChecked() ? "1"
                 : binding.nb302b.isChecked() ? "2"
                 : binding.nb302c.isChecked() ? "3"
                 : binding.nb302d.isChecked() ? "4"
@@ -177,29 +177,29 @@ public class SectionB3Activity extends AppCompatActivity {
                 : binding.nb30296.isChecked() ? "96"
                 : "0");
 
-        sB3.put("nw30296x", binding.nb30296x.getText().toString());
+        sB3.put("nw32896x", binding.nb30296x.getText().toString());
 
-        sB3.put("nw303a", binding.nb303a.isChecked() ? "1" : "0");
-        sB3.put("nw303b", binding.nb303b.isChecked() ? "2" : "0");
-        sB3.put("nw303c", binding.nb303c.isChecked() ? "3" : "0");
-        sB3.put("nw303d", binding.nb303d.isChecked() ? "4" : "0");
-        sB3.put("nw303e", binding.nb303e.isChecked() ? "5" : "0");
-        sB3.put("nw303f", binding.nb303f.isChecked() ? "6" : "0");
-        sB3.put("nw303g", binding.nb303g.isChecked() ? "7" : "0");
-        sB3.put("nw303h", binding.nb303h.isChecked() ? "8" : "0");
+        sB3.put("nw329a", binding.nb303a.isChecked() ? "1" : "0");
+        sB3.put("nw329b", binding.nb303b.isChecked() ? "2" : "0");
+        sB3.put("nw329c", binding.nb303c.isChecked() ? "3" : "0");
+        sB3.put("nw329d", binding.nb303d.isChecked() ? "4" : "0");
+        sB3.put("nw329e", binding.nb303e.isChecked() ? "5" : "0");
+        sB3.put("nw329f", binding.nb303f.isChecked() ? "6" : "0");
+        sB3.put("nw329g", binding.nb303g.isChecked() ? "7" : "0");
+        sB3.put("nw329h", binding.nb303h.isChecked() ? "8" : "0");
 
 
-        sB3.put("nw304", binding.nb304a.isChecked() ? "1"
+        sB3.put("nw330", binding.nb304a.isChecked() ? "1"
                 : binding.nb304b.isChecked() ? "2"
                 : binding.nb304c.isChecked() ? "3"
                 : binding.nb304d.isChecked() ? "4"
                 : "0");
 
-        sB3.put("nw305", binding.nb305a.isChecked() ? "1"
+        sB3.put("nw331", binding.nb305a.isChecked() ? "1"
                 : binding.nb305b.isChecked() ? "2"
                 : "0");
 
-        sB3.put("nw306", binding.nb306a.isChecked() ? "1"
+        sB3.put("nw332", binding.nb306a.isChecked() ? "1"
                 : binding.nb306b.isChecked() ? "2"
                 : binding.nb306c.isChecked() ? "3"
                 : binding.nb306d.isChecked() ? "4"

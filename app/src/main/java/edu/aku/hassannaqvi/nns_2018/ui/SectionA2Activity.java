@@ -572,17 +572,17 @@ public class SectionA2Activity extends AppCompatActivity {
             JSONObject sA2 = new JSONObject();
 
             sA2.put("resp", family.getResp().equals("0") ? "" : family.getResp());
-            sA2.put("na2SerialNo", family.getSerialNo());
-            sA2.put("na202", family.getName());
-            sA2.put("na203", family.getRealtionHH());
-            sA2.put("na204", family.getna204());
+            sA2.put("nh2SerialNo", family.getSerialNo());
+            sA2.put("nh202", family.getName());
+            sA2.put("nh203", family.getRealtionHH());
+            sA2.put("nh204", family.getna204());
 
-            sA2.put("na2dob", binding.na2dob.getText().toString());
-            sA2.put("na20598", binding.na20598.isChecked() ? "98" : "0");
+            sA2.put("nh2dob", binding.na2dob.getText().toString());
+            sA2.put("nh20598", binding.na20598.isChecked() ? "98" : "0");
 
-            sA2.put("na206y", binding.na2agey.getText().toString());
-            sA2.put("na206m", binding.na2agem.getText().toString());
-            sA2.put("na206d", binding.na2aged.getText().toString());
+            sA2.put("nh206y", binding.na2agey.getText().toString());
+            sA2.put("nh206m", binding.na2agem.getText().toString());
+            sA2.put("nh206d", binding.na2aged.getText().toString());
 
             if (binding.na20598.isChecked()) {
                 Age = Integer.valueOf(binding.na2agey.getText().toString());
@@ -593,23 +593,23 @@ public class SectionA2Activity extends AppCompatActivity {
             sA2.put("age", String.valueOf(Age));
 
 
-            sA2.put("na207", binding.na2msa.isChecked() ? "1" : binding.na2msb.isChecked() ? "2" : binding.na2msc.isChecked() ? "3" : binding.na2msd.isChecked() ? "4"
+            sA2.put("nh207", binding.na2msa.isChecked() ? "1" : binding.na2msb.isChecked() ? "2" : binding.na2msc.isChecked() ? "3" : binding.na2msd.isChecked() ? "4"
                     : binding.na2mse.isChecked() ? "5" : "0");
 
-            sA2.put("na208", binding.na2edua.isChecked() ? "1" : binding.na2edub.isChecked() ? "2" : binding.na2educ.isChecked() ? "3" : binding.na2edud.isChecked() ? "4"
+            sA2.put("nh208", binding.na2edua.isChecked() ? "1" : binding.na2edub.isChecked() ? "2" : binding.na2educ.isChecked() ? "3" : binding.na2edud.isChecked() ? "4"
                     : binding.na2edue.isChecked() ? "5" : binding.na2eduf.isChecked() ? "6" : binding.na2edug.isChecked() ? "7" : binding.na2eduh.isChecked() ? "8"
                     : binding.na2edui.isChecked() ? "9" : "0");
 
-            sA2.put("na209", binding.na2occa.isChecked() ? "1" : binding.na2occb.isChecked() ? "2" : binding.na2occc.isChecked() ? "3" : binding.na2occd.isChecked() ? "4"
+            sA2.put("nh209", binding.na2occa.isChecked() ? "1" : binding.na2occb.isChecked() ? "2" : binding.na2occc.isChecked() ? "3" : binding.na2occd.isChecked() ? "4"
                     : binding.na2occe.isChecked() ? "5" : binding.na2occf.isChecked() ? "6" : binding.na2occg.isChecked() ? "7" : binding.na2occh.isChecked() ? "8"
                     : binding.na2occ96.isChecked() ? "96" : "0");
 
-            sA2.put("na20996x", binding.na2occ96x.getText().toString());
+            sA2.put("nh20996x", binding.na2occ96x.getText().toString());
 
-            sA2.put("na210", binding.na210a.isChecked() ? "1" : binding.na210b.isChecked() ? "2" : "0");
+            sA2.put("nh210", binding.na210a.isChecked() ? "1" : binding.na210b.isChecked() ? "2" : "0");
 
-            sA2.put("na211", fathersMap.get(binding.na211.getSelectedItem().toString() + "_" + fathersSerials.get(fathersList.indexOf(binding.na211.getSelectedItem().toString()) - 1)));
-            sA2.put("na212", mothersMap.get(binding.na212.getSelectedItem().toString() + "_" + mothersSerials.get(mothersList.indexOf(binding.na212.getSelectedItem().toString()) - 1)));
+            sA2.put("nh211", fathersMap.get(binding.na211.getSelectedItem().toString() + "_" + fathersSerials.get(fathersList.indexOf(binding.na211.getSelectedItem().toString()) - 1)));
+            sA2.put("nh212", mothersMap.get(binding.na212.getSelectedItem().toString() + "_" + mothersSerials.get(mothersList.indexOf(binding.na212.getSelectedItem().toString()) - 1)));
 
 
             family.setsA2(String.valueOf(sA2));
