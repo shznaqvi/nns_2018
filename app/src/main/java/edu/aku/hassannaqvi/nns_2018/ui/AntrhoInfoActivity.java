@@ -205,18 +205,20 @@ public class AntrhoInfoActivity extends Activity {
             if (members.size() != 0) {
                 for (FamilyMembersContract fm : members) {
 
-                    json = JSONUtilClass.getModelFromJSON(fm.getsA2());
-                    if ((Integer.valueOf(json.getAge()) >= 15 && Integer.valueOf(json.getAge()) <= 49) && json.getGender().equals("2")) {
-                        MainApp.mwra.add(fm);
-                        MainApp.all_members.add(fm);
-                    }
-                    if ((Integer.valueOf(json.getAge()) >= 10 && (Integer.valueOf(json.getAge()) <= 19)) && json.getMaritalStatus().equals("5")) {
-                        MainApp.adolescents.add(fm);
-                        MainApp.all_members.add(fm);
-                    }
-                    if (Integer.valueOf(json.getAge()) < 5) {
-                        MainApp.childUnder5.add(fm);
-                        MainApp.all_members.add(fm);
+                    if (fm.getsA2() != null) {
+                        json = JSONUtilClass.getModelFromJSON(fm.getsA2());
+                        if ((Integer.valueOf(json.getAge()) >= 15 && Integer.valueOf(json.getAge()) <= 49) && json.getGender().equals("2")) {
+                            MainApp.mwra.add(fm);
+                            MainApp.all_members.add(fm);
+                        }
+                        if ((Integer.valueOf(json.getAge()) >= 10 && (Integer.valueOf(json.getAge()) <= 19)) && json.getMaritalStatus().equals("5")) {
+                            MainApp.adolescents.add(fm);
+                            MainApp.all_members.add(fm);
+                        }
+                        if (Integer.valueOf(json.getAge()) < 5) {
+                            MainApp.childUnder5.add(fm);
+                            MainApp.all_members.add(fm);
+                        }
                     }
 
                 }
