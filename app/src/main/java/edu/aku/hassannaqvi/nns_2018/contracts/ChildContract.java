@@ -49,6 +49,7 @@ public class ChildContract {
     public ChildContract Sync(JSONObject jsonObject) throws JSONException {
         this._ID = jsonObject.getString(ChildTable.COLUMN__ID);
         this._UID = jsonObject.getString(ChildTable.COLUMN__UID);
+        this._UUID = jsonObject.getString(ChildTable.COLUMN__UUID);
         this.formDate = jsonObject.getString(ChildTable.COLUMN_FORMDATE);
         this.user = jsonObject.getString(ChildTable.COLUMN_USER);
         this.c1SerialNo = jsonObject.getString(ChildTable.COLUMN_C1SERIALNO);
@@ -73,6 +74,7 @@ public class ChildContract {
     public ChildContract Hydrate(Cursor cursor) {
         this._ID = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN__ID));
         this._UID = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN__UID));
+        this._UUID = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN__UUID));
         this.formDate = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_FORMDATE));
         this.user = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_USER));
         this.c1SerialNo = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_C1SERIALNO));
@@ -102,6 +104,7 @@ public class ChildContract {
 
         json.put(ChildTable.COLUMN__ID, this._ID == null ? JSONObject.NULL : this._ID);
         json.put(ChildTable.COLUMN__UID, this._UID == null ? JSONObject.NULL : this._UID);
+        json.put(ChildTable.COLUMN__UUID, this._UUID == null ? JSONObject.NULL : this._UUID);
         json.put(ChildTable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
         json.put(ChildTable.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
         json.put(ChildTable.COLUMN_C1SERIALNO, this.c1SerialNo == null ? JSONObject.NULL : this.c1SerialNo);
@@ -298,6 +301,7 @@ public class ChildContract {
         public static final String COLUMN_PROJECTNAME = "projectname";
         public static final String COLUMN__ID = "_id ";
         public static final String COLUMN__UID = "_uid ";
+        public static final String COLUMN__UUID = "_uuid ";
         public static final String COLUMN_FORMDATE = "formdate";
         public static final String COLUMN_USER = "user";
         public static final String COLUMN_C1SERIALNO = "c1serialno";

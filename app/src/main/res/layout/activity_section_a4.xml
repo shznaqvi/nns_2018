@@ -253,6 +253,10 @@
                         android:layout_height="wrap_content"
                         android:text="@string/no" />
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/colorPrimaryDark" />
                     <!-- </LinearLayout>-->
 
                     <RadioButton
@@ -420,7 +424,15 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/nh304min"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="3"
+                    android:text='@{nh304998.checked ? nh304.getText.toString : ""}'
+                    android:visibility='@{nh304998.checked ? View.GONE : View.VISIBLE}' />
+
+                <CheckBox
+                    android:id="@+id/nh304998"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dkn" />
 
             </LinearLayout>
             <!--05-->
@@ -734,8 +746,7 @@
                     android:id="@+id/fldGrpnh309"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="@{nh308b.checked ? View.GONE : View.VISIBLE}">
+                    android:orientation="vertical">
 
                     <!-- 9 -->
                     <TextView
@@ -755,8 +766,7 @@
                         android:digits="1234567890"
                         android:hint="@string/nh309"
                         android:inputType="number"
-                        android:maxLength="2"
-                        android:text='@{nh308a.checked ? nh309.getText.toString : ""}' />
+                        android:maxLength="2" />
 
                 </LinearLayout>
 

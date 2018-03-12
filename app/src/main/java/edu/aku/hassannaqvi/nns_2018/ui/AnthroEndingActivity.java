@@ -70,9 +70,9 @@ public class AnthroEndingActivity extends AppCompatActivity {
                 if (SectionA3Activity.counter == MainApp.all_members.size()) {
 
                     SectionA3Activity.counter = 1;
-
-                    //startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
-
+                    MainApp.all_members.clear();
+                    SectionA3Activity.members.clear();
+                    SectionA3Activity.membersMap.clear();
                     startActivity(new Intent(this, MainActivity.class));
 
                 } else {

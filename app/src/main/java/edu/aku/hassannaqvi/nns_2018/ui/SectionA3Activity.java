@@ -235,20 +235,21 @@ public class SectionA3Activity extends AppCompatActivity {
             }
         }
 
-        if (slc_type == 1) {
+        if (slc_type == 1 || slc_type == 3) {
 
-            if (slc_type == 3) {
-                if (!validatorClass.EmptyRadioButton(this, binding.na3g, binding.na3ga, getString(R.string.na3g))) {
+            if (!validatorClass.EmptyRadioButton(this, binding.na3g, binding.na3ga, getString(R.string.na3g))) {
                     return false;
-                }
-
-                if (!validatorClass.EmptyRadioButton(this, binding.na3ca, binding.na3caa, getString(R.string.na3ca))) {
-                    return false;
-                }
             }
 
-            if (!validatorClass.EmptyRadioButton(this, binding.na3o, binding.na3oa, getString(R.string.na3o))) {
-                return false;
+            if (!validatorClass.EmptyRadioButton(this, binding.na3ca, binding.na3caa, getString(R.string.na3ca))) {
+                    return false;
+            }
+
+            if (slc_type == 1) {
+
+                if (!validatorClass.EmptyRadioButton(this, binding.na3o, binding.na3oa, getString(R.string.na3o))) {
+                    return false;
+                }
             }
 
         }

@@ -40,8 +40,21 @@ public class SectionA4Activity extends AppCompatActivity {
                 if (i == R.id.nh303b || i == R.id.nh303c) {
                     binding.fldGrnh304.setVisibility(View.GONE);
                     binding.nh304.setText(null);
+                    binding.nh304998.setChecked(false);
                 } else {
                     binding.fldGrnh304.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        binding.nh305.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.nh305b) {
+                    binding.fldGrpnh305.setVisibility(View.GONE);
+                    binding.nh306.clearCheck();
+                    binding.nh30696x.setText(null);
+                } else {
+                    binding.fldGrpnh305.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -50,22 +63,26 @@ public class SectionA4Activity extends AppCompatActivity {
         binding.nh307.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (i == R.id.nh307i) {
+                if (i == R.id.nh307i || i == R.id.nh307h) {
                     binding.nh308.clearCheck();
                     binding.nh309.setText(null);
                 }
             }
         });
 
-//        nh321
-        binding.nh321.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//        nh308
+        binding.nh308.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (i == R.id.nh321b) {
-                    binding.nh322.clearCheck();
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.nh308b) {
+                    binding.fldGrpnh309.setVisibility(View.GONE);
+                    binding.nh309.setText(null);
+                } else {
+                    binding.fldGrpnh309.setVisibility(View.VISIBLE);
                 }
             }
         });
+
 
         binding.nh315.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -79,6 +96,15 @@ public class SectionA4Activity extends AppCompatActivity {
             }
         });
 
+//        nh321
+        binding.nh321.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if (i == R.id.nh321b) {
+                    binding.nh322.clearCheck();
+                }
+            }
+        });
 
     }
 
@@ -133,13 +159,16 @@ public class SectionA4Activity extends AppCompatActivity {
             return false;
         }
         if (!binding.nh303b.isChecked() || !binding.nh303c.isChecked()) {
-            if (!validatorClass.EmptyTextBox(this, binding.nh304, getString(R.string.nh304))) {
-                return false;
+            if (!binding.nh304998.isChecked()) {
+                if (!validatorClass.EmptyTextBox(this, binding.nh304, getString(R.string.nh304))) {
+                    return false;
+                }
+
+                if (!validatorClass.RangeTextBox(this, binding.nh304, 1, 999, getString(R.string.nh304), "minutes")) {
+                    return false;
+                }
             }
 
-            if (!validatorClass.RangeTextBox(this, binding.nh304, 1, 99, getString(R.string.nh304), "minutes")) {
-                return false;
-            }
 
         }
         if (!validatorClass.EmptyRadioButton(this, binding.nh305, binding.nh305b, getString(R.string.nh305))) {
@@ -436,7 +465,7 @@ public class SectionA4Activity extends AppCompatActivity {
                 : "0");
         sA4.put("nh30396x", binding.nh30396x.getText().toString());
 
-        sA4.put("nh304", binding.nh304.getText().toString());
+        sA4.put("nh304", binding.nh304998.isChecked() ? "998" : binding.nh304.getText().toString());
 
         sA4.put("nh305", binding.nh305a.isChecked() ? "1"
                 : binding.nh305b.isChecked() ? "2"
