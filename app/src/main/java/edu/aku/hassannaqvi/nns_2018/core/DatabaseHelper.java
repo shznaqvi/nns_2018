@@ -457,8 +457,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allBL;
     }
 
-
-
     public Collection<BLRandomContract> getAllBLRandom(String subAreaCode, String hh) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -829,7 +827,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return newRowId;
     }
 
-
     public Long addRecipient(RecipientsContract rc) {
 
         // Gets the data repository in write mode
@@ -897,7 +894,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return newRowId;
     }
 
-
     public Long addEligibleMember(EligibleMembersContract ec) {
 
         // Gets the data repository in write mode
@@ -934,7 +930,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values);
         return newRowId;
     }
-
 
     public Long addMWRA(MWRAContract mc) {
 
@@ -1006,7 +1001,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return newRowId;
     }
 
-
     public Long addSerialForm(SerialContract sc) {
 
         // Gets the data repository in write mode
@@ -1049,7 +1043,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
-
     public void updateSyncedForms(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -1068,7 +1061,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 where,
                 whereArgs);
     }
-
 
     public void updateSyncedChildForm(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -1089,7 +1081,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 whereArgs);
     }
 
-
     public void updateSyncedSerial(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -1108,7 +1099,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 where,
                 whereArgs);
     }
-
 
     public int updateFormID() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -1235,7 +1225,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
         return count;
     }
-
 
     public int updateEligibleMemberID() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -1371,6 +1360,58 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFC;
     }
 
+    public Collection<FamilyMembersContract> getFamilyMembersACForm(String uuid) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                familyMembers._ID,
+                familyMembers.COLUMN_UID,
+                familyMembers.COLUMN_UUID,
+                familyMembers.COLUMN_FORMDATE,
+                familyMembers.COLUMN_USER,
+                //FormsTable.COLUMN_GPSELEV,
+                familyMembers.COLUMN_HH_NO,
+                familyMembers.COLUMN_ENM_NO,
+                familyMembers.COLUMN_SA2,
+                familyMembers.COLUMN_DEVICETAGID,
+                familyMembers.COLUMN_DEVICEID,
+                familyMembers.COLUMN_SYNCED,
+                familyMembers.COLUMN_SYNCED_DATE,
+                familyMembers.COLUMN_APP_VERSION
+        };
+        String whereClause = familyMembers.COLUMN_UUID + " =?";
+        String[] whereArgs = new String[]{uuid};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                familyMembers._ID + " ASC";
+
+        Collection<FamilyMembersContract> allFC = new ArrayList<FamilyMembersContract>();
+        try {
+            c = db.query(
+                    familyMembers.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                FamilyMembersContract fc = new FamilyMembersContract();
+                allFC.add(fc.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
 
 
     public Collection<ChildContract> getUnsyncedChildForms() {

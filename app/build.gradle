@@ -52,7 +52,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.0'
     implementation 'com.github.BlackBoxVision:datetimepicker-edittext:v0.3.3'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    testImplementation  'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
     implementation 'com.github.amlcurran.showcaseview:library:5.4.3'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
@@ -63,6 +63,10 @@ dependencies {
 
 
     implementation "com.splitwise:tokenautocomplete:2.0.8@aar"
+
+    // QR-Code
+    compile 'com.github.kenglxn.QRGen:android:2.2.0'
+
 }
 
 configurations.all {

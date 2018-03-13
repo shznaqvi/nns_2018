@@ -51,9 +51,7 @@ import edu.aku.hassannaqvi.nns_2018.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivityMainBinding;
-import edu.aku.hassannaqvi.nns_2018.sync.SyncChildForms;
-import edu.aku.hassannaqvi.nns_2018.sync.SyncForms;
-import edu.aku.hassannaqvi.nns_2018.sync.SyncSerials;
+import edu.aku.hassannaqvi.nns_2018.sync.SyncAllData;
 
 public class MainActivity extends Activity {
 
@@ -478,13 +476,7 @@ public class MainActivity extends Activity {
         if (networkInfo != null && networkInfo.isConnected()) {
 
             Toast.makeText(getApplicationContext(), "Syncing Forms", Toast.LENGTH_SHORT).show();
-            new SyncForms(this, true).execute();
-
-            Toast.makeText(getApplicationContext(), "Syncing Child Forms", Toast.LENGTH_SHORT).show();
-            new SyncChildForms(this, true).execute();
-
-            Toast.makeText(getApplicationContext(), "Syncing Serials", Toast.LENGTH_SHORT).show();
-            new SyncSerials(this, true).execute();
+            new SyncAllData(this, "Forms", FormsContract.class).execute();
 
 
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
