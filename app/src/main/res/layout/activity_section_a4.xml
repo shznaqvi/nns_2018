@@ -698,13 +698,12 @@
 
             </LinearLayout>
 
-            <!-- 6 and 7 -->
+            <!-- 8 and 9 -->
             <LinearLayout
                 android:id="@+id/fldGrpnh308"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="@{nh307i.checked ? View.GONE : View.VISIBLE}">
+                android:orientation="vertical">
 
                 <!-- 8 -->
                 <TextView
@@ -3011,10 +3010,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:digits="1234567890"
                         android:hint="@string/nh322acr"
-                        android:inputType="number"
-                        android:maxLength="3"
+                        android:inputType="numberDecimal"
+                        android:maxLength="6"
                         android:text='@{nh322a.checked ? nh322acr.getText.toString : ""}'
                         android:visibility="@{nh322a.checked ? View.VISIBLE : View.GONE}" />
 
@@ -3029,10 +3027,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:digits="0123456789"
                         android:hint="@string/nh322can"
-                        android:inputType="number"
-                        android:maxLength="3"
+                        android:inputType="numberDecimal"
+                        android:maxLength="6"
                         android:text='@{nh322b.checked ? nh322can.getText.toString : ""}'
                         android:visibility="@{nh322b.checked ? View.VISIBLE : View.GONE}" />
 

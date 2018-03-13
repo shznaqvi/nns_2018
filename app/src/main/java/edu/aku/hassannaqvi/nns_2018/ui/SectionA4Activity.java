@@ -63,9 +63,13 @@ public class SectionA4Activity extends AppCompatActivity {
         binding.nh307.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (i == R.id.nh307i || i == R.id.nh307h) {
+                if (i == R.id.nh307h || i == R.id.nh307i) {
+                    binding.fldGrpnh308.setVisibility(View.GONE);
                     binding.nh308.clearCheck();
                     binding.nh309.setText(null);
+                } else {
+                    binding.fldGrpnh308.setVisibility(View.VISIBLE);
+
                 }
             }
         });
@@ -185,7 +189,7 @@ public class SectionA4Activity extends AppCompatActivity {
             return false;
         }
 
-        if (!binding.nh307i.isChecked() || !binding.nh307h.isChecked()) {
+        if (!binding.nh307h.isChecked() && !binding.nh307i.isChecked()) {
             if (!validatorClass.EmptyRadioButton(this, binding.nh308, binding.nh308b, getString(R.string.nh308))) {
                 return false;
             }
@@ -354,16 +358,16 @@ public class SectionA4Activity extends AppCompatActivity {
                 if (!validatorClass.EmptyTextBox(this, binding.nh322acr, getString(R.string.nh322acr))) {
                     return false;
                 }
-                if (!validatorClass.RangeTextBox(this, binding.nh322acr, 1, 999, getString(R.string.nh322acr), "acre")) {
+                /*if (!validatorClass.RangeTextBox(this, binding.nh322acr, 1, 999, getString(R.string.nh322acr), "acre")) {
                     return false;
-                }
+                }*/
             } else if (binding.nh322b.isChecked()) {
                 if (!validatorClass.EmptyTextBox(this, binding.nh322can, getString(R.string.nh322can))) {
                     return false;
                 }
-                if (!validatorClass.RangeTextBox(this, binding.nh322can, 1, 999, getString(R.string.nh322can), "kanal")) {
+                /*if (!validatorClass.RangeTextBox(this, binding.nh322can, 1, 999, getString(R.string.nh322can), "kanal")) {
                     return false;
-                }
+                }*/
             }
         }
 
