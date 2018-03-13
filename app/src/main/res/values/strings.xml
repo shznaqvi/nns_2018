@@ -37,7 +37,9 @@
     <string name="yes"> ہاں </string>
     <string name="no"> نہیں </string>
     <string name="dkn"> معلوم نہیں </string>
-    <string name="count"> تعداد </string>
+  <string name="none">On premises or delivered to home</string>
+
+  <string name="count"> تعداد </string>
     <string name="other"> دیگر وضاحت کریں </string>
     <string name="otherpubm"> دوسرے عوامی طبی مرکز </string>
     <string name="otherprim"> دوسرے نجی دواخانہ </string>
@@ -594,6 +596,8 @@
     <string name="nw314m"> مہینے </string>
     <string name="nw314d"> دنوں </string>
     <string name="nw315"> کیا آپ نے کبھی دوران حمل اضافی طاقت کی گولیاں استعمال کیاتھا؟ </string>
+  <string name="nw316"> آپ کو حمل کے دوران اضافی طاقت  کی گولیا ں استعمال کرنے کا مشورہ کس نے دیا؟</string>
+  <string name="nw317">آپ نے حمل کے دوران اضافی طاقت کی گولیاں کہاں سے حاصل کیں؟</string>
     <string name="nw318"> عموماً کتنی دفعہ حمل کے دوران اضافی طاقت کی گولیوں کا استعمال کیا؟ </string>
     <string name="nw318a"> روزانہ </string>
     <string name="nw318b"> ہفتے میں ایک مرتبہ </string>
@@ -1021,10 +1025,10 @@
     <string name="nc4039603"> دیگر وضاحت کریں </string>
     <string name="nc404"> (نام)کو اسہال(دست) کی بیماری کے علاج کے لئے کون کونسی دواء دی گئی ؟ </string>
     <string name="nc404a"> نمکول (او آر ایس) </string>
+  <string name="nc404sub1"> گولیاں یا شربت </string>
     <string name="nc404b"> اینٹی بائیوٹک </string>
     <string name="nc404c"> دست روکنے والی ادویات </string>
     <string name="nc404d"> زنگ </string>
-    <string name="nc404sub1"> گولیاں یا شربت </string>
     <string name="nc404e"> نامعلوم گولیاں/شربت </string>
     <string name="nc404sub2"> انجکشن </string>
     <string name="nc404f"> اینٹی بائیوٹک </string>
@@ -1096,11 +1100,12 @@
     <string name="nc412b"> دست روکنے والی ادویات </string>
     <string name="nc412c"> نامعلوم گولیاں/شربت </string>
     <string name="nc412sub2"> انجکشن </string>
-    <string name="nc412f"> اینٹی بائیوٹک </string>
-    <string name="nc412g"> اینٹی بائیوٹک کے علاوہ </string>
-    <string name="nc412h"> نامعلوم انجکش </string>
-    <string name="nc412i"> نس کے ذریعہ </string>
-    <string name="nc412j"> گھر یلو ادویات یا ہربل ادویات </string>
+  <string name="nc412d"> اینٹی بائیوٹک </string>
+  <string name="nc412e"> اینٹی بائیوٹک کے علاوہ </string>
+  <string name="nc412f"> نامعلوم انجکش </string>
+  <string name="nc412g"> نس کے ذریعہ </string>
+  <string name="nc412h"> گھر یلو ادویات یا ہربل ادویات </string>
+  <string name="nc4129601"> کچھ اور </string>
     <string name="nc413"> کیا بچہ (نام) کوگزشتہ چھ مہینوں میں پیٹ کے کیٹرے مارنے والی دوا دی گئی تھیں </string>
     <string name="nc414"> کیا بچہ (نام) کو گزشتہ چھ مہینے کے دوران رات میں کم نظر آتا ہے </string>
     <string name="nc415"> کیا بچہ (نام) کو کبھی وٹامن اے کے قطرے پلائے گئے ہیں؟ </string>
@@ -1186,8 +1191,6 @@
     <string name="nw312m">   روایتی  </string>
 
 
-    <string name="nw316"> آپ کو حمل کے دوران اضافی طاقت  کی گولیا ں استعمال کرنے کا مشورہ کس نے دیا؟</string>
-    <string name="nw317">آپ نے حمل کے دوران اضافی طاقت کی گولیاں کہاں سے حاصل کیں؟</string>
     <string name="nw321">آپ کو حمل کے دوران کیلشیم کی گولیا ں استعمال کرنے کا مشورہ کس نے دیا ؟</string>
     <string name="nw322">آپ نے حمل کے دوران کیلشیم کی گولیاں کہاں سے حاصل کیں؟</string>
 

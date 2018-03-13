@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -40,12 +41,54 @@ public class SectionA4Activity extends AppCompatActivity {
                 if (i == R.id.nh303b || i == R.id.nh303c) {
                     binding.fldGrnh304.setVisibility(View.GONE);
                     binding.nh304.setText(null);
-                    binding.nh304998.setChecked(false);
+                    binding.nh30498.setChecked(false);
+                    binding.nh30499.setChecked(false);
                 } else {
                     binding.fldGrnh304.setVisibility(View.VISIBLE);
+                    binding.nh304.setVisibility(View.VISIBLE);
                 }
             }
         });
+
+        binding.nh30498.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    binding.nh30499.setChecked(false);
+                    binding.nh304.setVisibility(View.GONE);
+                    binding.nh304.setText(null);
+                } else {
+                    binding.nh304.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        binding.nh30499.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    binding.nh30498.setChecked(false);
+                    binding.nh304.setVisibility(View.GONE);
+                    binding.nh304.setText(null);
+                } else {
+                    binding.nh304.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+
+       /* binding.nh304rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.nh30498 || checkedId == R.id.nh30499) {
+                    binding.nh304.setVisibility(View.GONE);
+                    binding.nh304.setText(null);
+                } else {
+                    binding.nh304.setVisibility(View.VISIBLE);
+
+                }
+            }
+        });*/
+
         binding.nh305.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -166,12 +209,17 @@ public class SectionA4Activity extends AppCompatActivity {
             return false;
         }
         if (!binding.nh303b.isChecked() && !binding.nh303c.isChecked()) {
-            if (!binding.nh304998.isChecked()) {
+
+            if (!binding.nh30498.isChecked() && !binding.nh30499.isChecked()) {
                 if (!validatorClass.EmptyTextBox(this, binding.nh304, getString(R.string.nh304))) {
                     return false;
                 }
 
                 if (!validatorClass.RangeTextBox(this, binding.nh304, 1, 999, getString(R.string.nh304), "minutes")) {
+                    return false;
+                }
+            } else {
+                if (!validatorClass.EmptyCheckBox(this, binding.fldGrnh304check, binding.nh30499, getString(R.string.nh304))) {
                     return false;
                 }
             }
@@ -325,8 +373,8 @@ public class SectionA4Activity extends AppCompatActivity {
         // 315
 
         if (!validatorClass.EmptyRadioButton(this, binding.nh317, binding.nh317b, getString(R.string.nh317))) {
-                return false;
-            }
+            return false;
+        }
 
 
         if (!validatorClass.EmptyRadioButton(this, binding.nh317, binding.nh31796, binding.nh31796x, getString(R.string.nh317))) {
@@ -474,7 +522,7 @@ public class SectionA4Activity extends AppCompatActivity {
                 : "0");
         sA4.put("nh30396x", binding.nh30396x.getText().toString());
 
-        sA4.put("nh304", binding.nh304998.isChecked() ? "998" : binding.nh304.getText().toString());
+        sA4.put("nh304", binding.nh30498.isChecked() ? "998" : binding.nh30499.isChecked() ? "000" : binding.nh304.getText().toString());
 
         sA4.put("nh305", binding.nh305a.isChecked() ? "1"
                 : binding.nh305b.isChecked() ? "2"

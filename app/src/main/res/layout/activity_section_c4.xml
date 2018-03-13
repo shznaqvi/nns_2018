@@ -436,13 +436,7 @@
                             android:layout_weight="1"
                             android:text="@string/nc404g" />
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@color/pink_100"
-                            android:text="@string/nc404sub2"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:textColor="@color/colorPrimaryDark" />
+
 
                         <CheckBox
                             android:id="@+id/nc404h"
@@ -452,6 +446,13 @@
                             android:layout_weight="1"
                             android:text="@string/nc404h" />
 
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/pink_100"
+                            android:text="@string/nc404sub2"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/colorPrimaryDark" />
                         <CheckBox
                             android:id="@+id/nc404i"
                             android:layout_width="match_parent"
@@ -482,7 +483,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
                             android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                            android:hint="@string/other"
+                            android:hint="@string/nc4049601"
                             android:inputType="textCapWords"
                             android:text='@{nc40496.checked ? nc40496x.getText.toString : ""}'
                             android:visibility="@{nc40496.checked ? View.VISIBLE : View.GONE}" />
@@ -823,7 +824,7 @@
                             android:layout_height="wrap_content"
 
                             android:background="@color/pink_100"
-                            android:text="@string/nc404sub1"
+                            android:text="@string/nc408sub1"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@color/colorPrimaryDark" />
 
@@ -864,7 +865,7 @@
                             android:layout_height="wrap_content"
 
                             android:background="@color/pink_100"
-                            android:text="@string/nc404sub2"
+                            android:text="@string/nc408sub2"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@color/colorPrimaryDark" />
 
@@ -922,7 +923,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
                             android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                            android:hint="@string/other"
+                            android:hint="@string/nc4089601"
                             android:inputType="textCapWords"
                             android:text='@{nc4089601.checked ? nc4089601x.getText.toString : ""}'
                             android:visibility="@{nc4089601.checked ? View.VISIBLE : View.GONE}" />
@@ -1262,7 +1263,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@color/pink_100"
-                            android:text="@string/nc404sub1"
+                            android:text="@string/nc412sub1"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@color/colorPrimaryDark" />
 
@@ -1271,14 +1272,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
-                            android:text="@string/nc412b" />
+                            android:text="@string/nc412a" />
 
                         <CheckBox
                             android:id="@+id/nc412c"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
-                            android:text="@string/nc412c" />
+                            android:text="@string/nc412b" />
 
                         <!--<CheckBox-->
                         <!--android:id="@+id/nc412d"-->
@@ -1299,7 +1300,7 @@
                             android:layout_height="wrap_content"
 
                             android:background="@color/pink_100"
-                            android:text="@string/nc404sub2"
+                            android:text="@string/nc412sub2"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@color/colorPrimaryDark" />
 
@@ -1308,7 +1309,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
-                            android:text="@string/nc412f" />
+                            android:text="@string/nc412d" />
 
                         <CheckBox
                             android:id="@+id/nc412g"
@@ -1316,28 +1317,28 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
                             android:layout_weight="1"
-                            android:text="@string/nc412g" />
+                            android:text="@string/nc412e" />
 
                         <CheckBox
                             android:id="@+id/nc412h"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
-                            android:text="@string/nc412h" />
+                            android:text="@string/nc412f" />
 
                         <CheckBox
                             android:id="@+id/nc412i"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
-                            android:text="@string/nc412i" />
+                            android:text="@string/nc412g" />
 
                         <CheckBox
                             android:id="@+id/nc412j"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
-                            android:text="@string/nc412j" />
+                            android:text="@string/nc412h" />
 
                         <CheckBox
                             android:id="@+id/nc4129601"
@@ -1352,7 +1353,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
                             android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                            android:hint="@string/other"
+                            android:hint="@string/nc4129601"
                             android:inputType="textCapWords"
                             android:text='@{nc4129601.checked ? nc4129601x.getText.toString : ""}'
                             android:visibility="@{nc4129601.checked? View.VISIBLE : View.GONE}" />
