@@ -13,11 +13,11 @@ public class JSONUtilClass {
         try {
             JSONObject jsonObject = new JSONObject(json);
             JSONModelClass demo = new JSONModelClass();
-            demo.setName(jsonObject.getString("na202"));
+            demo.setName(jsonObject.getString("nh202"));
             demo.setAge(jsonObject.getString("age"));
-            demo.setMaritalStatus(jsonObject.getString("na207"));
-            demo.setSerialNo(jsonObject.getString("na2SerialNo"));
-            demo.setGender(jsonObject.getString("na204"));
+            demo.setMaritalStatus(jsonObject.getString("nh207"));
+            demo.setSerialNo(jsonObject.getString("nh2SerialNo"));
+            demo.setGender(jsonObject.getString("nh204"));
 
             return demo;
         } catch (JSONException e) {
