@@ -159,6 +159,9 @@ public class SectionA4Activity extends AppCompatActivity {
         }
 
 
+        if (!validatorClass.EmptyRadioButton(this, binding.nh303a, binding.nh303a1, getString(R.string.nh303a))) {
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, binding.nh303, binding.nh30396, binding.nh30396x, getString(R.string.nh303))) {
             return false;
         }
@@ -448,9 +451,11 @@ public class SectionA4Activity extends AppCompatActivity {
                 : binding.nh30296.isChecked() ? "96" : "0");
         sA4.put("nh30296x", binding.nh30296x.getText().toString());
 
+        sA4.put("nh303a", binding.nh303a1.isChecked() ? "1"
+                : binding.nh303a2.isChecked() ? "2"
+                : "0");
 
-        sA4.put("nh303", binding.nh303a1.isChecked() ? "11" : binding.nh303a2.isChecked() ? "12"
-                : binding.nh303b.isChecked() ? "2"
+        sA4.put("nh303", binding.nh303b.isChecked() ? "2"
                 : binding.nh303c.isChecked() ? "3"
                 : binding.nh303d.isChecked() ? "4"
                 : binding.nh303e.isChecked() ? "5"
