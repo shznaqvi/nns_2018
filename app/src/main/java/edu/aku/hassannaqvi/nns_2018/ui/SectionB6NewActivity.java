@@ -9,8 +9,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
-import com.tokenautocomplete.TokenCompleteTextView;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -22,10 +20,12 @@ import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB6NewBinding;
-import edu.aku.hassannaqvi.nns_2018.other.CompletionTextView;
-import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionB6NewActivity extends AppCompatActivity implements TokenCompleteTextView.TokenListener<String> {
+//import com.tokenautocomplete.TokenCompleteTextView;
+//import edu.aku.hassannaqvi.nns_2018.other.CompletionTextView;
+
+public class SectionB6NewActivity extends AppCompatActivity {
+    //implements TokenCompleteTextView.TokenListener<String>
 
     ActivitySectionB6NewBinding bi;
     DatabaseHelper db;
@@ -117,9 +117,9 @@ public class SectionB6NewActivity extends AppCompatActivity implements TokenComp
         }
     };
 
-    @BindViews({R.id.nw60196x, R.id.nw601b96x, R.id.nw601j96x, R.id.nw601k96x, R.id.nw601l96x, R.id.nw601m96x, R.id.nw601n96x, R.id.nw601n196x})
+    /*@BindViews({R.id.nw60196x, R.id.nw601b96x, R.id.nw601j96x, R.id.nw601k96x, R.id.nw601l96x, R.id.nw601m96x, R.id.nw601n96x, R.id.nw601n196x})
     List<CompletionTextView> groupOthers;
-
+*/
     @BindViews({R.id.nw601a1, R.id.nw601a2, R.id.nw601a3, R.id.nw601a4, R.id.nw601f,
             R.id.nw601i, R.id.vegi, R.id.fruit, R.id.nw601v, R.id.nw601c,
             R.id.nw601e, R.id.nw601q, R.id.nw601d})
@@ -134,10 +134,10 @@ public class SectionB6NewActivity extends AppCompatActivity implements TokenComp
         db = new DatabaseHelper(this);
         bi.setCallback(this);
 
-        for (CompletionTextView ct : groupOthers) {
+        /*for (CompletionTextView ct : groupOthers) {
             ct.setTokenLimit(10);
             ct.setTokenListener(this);
-        }
+        }*/
 
 
         setUpViews();
@@ -346,7 +346,7 @@ public class SectionB6NewActivity extends AppCompatActivity implements TokenComp
 
     private boolean ValidateForm() {
 
-        Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
+        /*Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
         if (!isFood()) {
             Toast.makeText(this, "ERROR(empty): " + getString(R.string.nw601), Toast.LENGTH_LONG).show();
@@ -437,7 +437,7 @@ public class SectionB6NewActivity extends AppCompatActivity implements TokenComp
             }
 
         }
-
+*/
 
         return true;
     }
@@ -460,7 +460,7 @@ public class SectionB6NewActivity extends AppCompatActivity implements TokenComp
         sB6.put("nw601q", bi.nw601q.isChecked() ? "1" : "2");
         sB6.put("nw601d", bi.nw601d.isChecked() ? "1" : "2");
         sB6.put("nw601oth", bi.nw60196.isChecked() ? "1" : "2");
-        sB6.put("nw60196x", bi.nw60196x.getText().toString());
+        //sB6.put("nw60196x", bi.nw60196x.getText().toString());
 
         sB6.put("nw601j1", bi.nw601j1.isChecked() ? "1" : "2");
         sB6.put("nw601j2", bi.nw601j2.isChecked() ? "1" : "2");
@@ -469,7 +469,7 @@ public class SectionB6NewActivity extends AppCompatActivity implements TokenComp
         sB6.put("nw601j5", bi.nw601j5.isChecked() ? "1" : "2");
         sB6.put("nw601j6", bi.nw601j6.isChecked() ? "1" : "2");
         sB6.put("nw601joth", bi.nw601j96.isChecked() ? "1" : "2");
-        sB6.put("nw601j96x", bi.nw601j96x.getText().toString());
+        //sB6.put("nw601j96x", bi.nw601j96x.getText().toString());
 
         sB6.put("nw601m1", bi.nw601m1.isChecked() ? "1" : "2");
         sB6.put("nw601m2", bi.nw601m2.isChecked() ? "1" : "2");
@@ -480,7 +480,7 @@ public class SectionB6NewActivity extends AppCompatActivity implements TokenComp
         sB6.put("nw601m6", bi.nw601m6.isChecked() ? "1" : "2");
         sB6.put("nw601m7", bi.nw601m7.isChecked() ? "1" : "2");
         sB6.put("nw601moth", bi.nw601m96.isChecked() ? "1" : "2");
-        sB6.put("nw601m96x", bi.nw601m96x.getText().toString());
+        //sB6.put("nw601m96x", bi.nw601m96x.getText().toString());
         sB6.put("nw601k1", bi.nw601k1.isChecked() ? "1" : "2");
         sB6.put("nw601k2", bi.nw601k2.isChecked() ? "1" : "2");
         sB6.put("nw601k3", bi.nw601k3.isChecked() ? "1" : "2");
@@ -489,7 +489,7 @@ public class SectionB6NewActivity extends AppCompatActivity implements TokenComp
         sB6.put("nw601m9", bi.nw601m9.isChecked() ? "1" : "2");
 
         sB6.put("nw601koth", bi.nw601k96.isChecked() ? "1" : "2");
-        sB6.put("nw601k96x", bi.nw601k96x.getText().toString());
+        //sB6.put("nw601k96x", bi.nw601k96x.getText().toString());
 
         sB6.put("nw601m10", bi.nw601m10.isChecked() ? "1" : "2");
         sB6.put("nw601m11", bi.nw601m11.isChecked() ? "1" : "2");
@@ -503,7 +503,7 @@ public class SectionB6NewActivity extends AppCompatActivity implements TokenComp
         sB6.put("nw601m16", bi.nw601m16.isChecked() ? "1" : "2");
         sB6.put("nw601b4", bi.nw601b4.isChecked() ? "1" : "2");
         sB6.put("nw601b96", bi.nw601b96.isChecked() ? "1" : "2");
-        sB6.put("nw601b96x", bi.nw601b96x.getText().toString());
+        //sB6.put("nw601b96x", bi.nw601b96x.getText().toString());
         sB6.put("nw601l1", bi.nw601l1.isChecked() ? "1" : "2");
         sB6.put("nw601n1", bi.nw601n1.isChecked() ? "1" : "2");
         sB6.put("nw601n2", bi.nw601n2.isChecked() ? "1" : "2");
@@ -513,7 +513,7 @@ public class SectionB6NewActivity extends AppCompatActivity implements TokenComp
         sB6.put("nw601n5", bi.nw601n5.isChecked() ? "1" : "2");
         sB6.put("nw601n6", bi.nw601n6.isChecked() ? "1" : "2");
         sB6.put("nw601l96", bi.nw601l96.isChecked() ? "1" : "2");
-        sB6.put("nw601l96x", bi.nw601l96x.getText().toString());
+        //sB6.put("nw601l96x", bi.nw601l96x.getText().toString());
 
         sB6.put("nw601n7", bi.nw601n7.isChecked() ? "1" : "2");
         sB6.put("nw601n8", bi.nw601n8.isChecked() ? "1" : "2");
@@ -528,7 +528,7 @@ public class SectionB6NewActivity extends AppCompatActivity implements TokenComp
         sB6.put("nw601n15", bi.nw601n15.isChecked() ? "1" : "2");
         sB6.put("nw601n16", bi.nw601n16.isChecked() ? "1" : "2");
         sB6.put("nw601n96", bi.nw601n96.isChecked() ? "1" : "2");
-        sB6.put("nw601n96x", bi.nw601n96x.getText().toString());
+        //sB6.put("nw601n96x", bi.nw601n96x.getText().toString());
         sB6.put("nw601n17", bi.nw601n17.isChecked() ? "1" : "2");
         sB6.put("nw601n18", bi.nw601n18.isChecked() ? "1" : "2");
         sB6.put("nw601n19", bi.nw601n19.isChecked() ? "1" : "2");
@@ -538,7 +538,7 @@ public class SectionB6NewActivity extends AppCompatActivity implements TokenComp
         sB6.put("nw601l5", bi.nw601l5.isChecked() ? "1" : "2");
 
         sB6.put("nw601n196", bi.nw601n96.isChecked() ? "1" : "2");
-        sB6.put("nw601n196x", bi.nw601n96x.getText().toString());
+        //sB6.put("nw601n196x", bi.nw601n96x.getText().toString());
 
 
         //MainApp.mc.setsB6(String.valueOf(sB6));
@@ -671,7 +671,7 @@ public class SectionB6NewActivity extends AppCompatActivity implements TokenComp
         return false;
     }
 
-    @Override
+    /*@Override
     public void onTokenAdded(String token) {
 
     }
@@ -679,7 +679,7 @@ public class SectionB6NewActivity extends AppCompatActivity implements TokenComp
     @Override
     public void onTokenRemoved(String token) {
 
-    }
+    }*/
 }
 
 

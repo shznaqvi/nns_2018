@@ -203,7 +203,7 @@
             </LinearLayout>
 
 
-            <edu.aku.hassannaqvi.nns_2018.other.CompletionTextView
+            <EditText
                 android:id="@+id/nw60196x"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -322,7 +322,7 @@
                         android:layout_weight="1"
                         android:text="@string/other" />
 
-                    <edu.aku.hassannaqvi.nns_2018.other.CompletionTextView
+                    <EditText
                         android:id="@+id/nw601j96x"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -444,7 +444,7 @@
                     android:layout_weight="1"
                     android:text="@string/other" />
 
-                <edu.aku.hassannaqvi.nns_2018.other.CompletionTextView
+                <EditText
                     android:id="@+id/nw601m96x"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -557,7 +557,7 @@
                     android:layout_weight="1"
                     android:text="@string/other" />
 
-                <edu.aku.hassannaqvi.nns_2018.other.CompletionTextView
+                <EditText
                     android:id="@+id/nw601k96x"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -704,7 +704,7 @@
                     android:layout_weight="1"
                     android:text="@string/other" />
 
-                <edu.aku.hassannaqvi.nns_2018.other.CompletionTextView
+                <EditText
                     android:id="@+id/nw601b96x"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -843,7 +843,7 @@
                         android:layout_weight="1"
                         android:text="@string/other" />
 
-                    <edu.aku.hassannaqvi.nns_2018.other.CompletionTextView
+                    <EditText
                         android:id="@+id/nw601l96x"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -995,7 +995,7 @@
                         android:layout_weight="1"
                         android:text="@string/other" />
 
-                    <edu.aku.hassannaqvi.nns_2018.other.CompletionTextView
+                    <EditText
                         android:id="@+id/nw601n96x"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -1105,7 +1105,7 @@
                         android:layout_weight="1"
                         android:text="@string/other" />
 
-                    <edu.aku.hassannaqvi.nns_2018.other.CompletionTextView
+                    <EditText
                         android:id="@+id/nw601n196x"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

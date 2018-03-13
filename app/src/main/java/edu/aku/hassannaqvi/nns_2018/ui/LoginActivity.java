@@ -39,10 +39,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.github.amlcurran.showcaseview.ShowcaseView;
-import com.github.amlcurran.showcaseview.targets.Target;
-import com.github.amlcurran.showcaseview.targets.ViewTarget;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -66,6 +62,10 @@ import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.get.GetAllData;
 
 import static java.lang.Thread.sleep;
+
+//import com.github.amlcurran.showcaseview.ShowcaseView;
+//import com.github.amlcurran.showcaseview.targets.Target;
+//import com.github.amlcurran.showcaseview.targets.ViewTarget;
 
 
 /**
@@ -154,7 +154,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 //        mEmailView = findViewById(R.id.email);
         populateAutoComplete();
 
-        Target viewTarget = new ViewTarget(R.id.syncData, this);
+        /*Target viewTarget = new ViewTarget(R.id.syncData, this);
 
         new ShowcaseView.Builder(this)
                 .setTarget(viewTarget)
@@ -162,7 +162,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                 .setContentText("\n\nPlease Sync Data before login...")
                 .singleShot(42)
                 .build();
-
+*/
 //        mPasswordView = findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
