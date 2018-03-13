@@ -107,6 +107,7 @@
         <item name="android:paddingBottom">8dp</item>
         <item name="android:paddingStart">8dp</item>
         <item name="android:paddingEnd">8dp</item>
+        <item name="android:layout_marginRight">8dp</item>
         <item name="android:textColor">#ffffff</item>
         <item name="android:textSize">24sp</item>
         <item name="android:typeface">serif</item>
@@ -330,7 +331,7 @@
         <item name="android:colorForeground">@color/black</item>
     </style>
 
-    <style name="CustomShowcaseTheme" parent="ShowcaseView.Light">
+    <!--<style name="CustomShowcaseTheme" parent="ShowcaseView.Light">
         <item name="sv_backgroundColor">#33b78ff7</item>
         <item name="sv_showcaseColor">@color/colorPrimaryDark</item>
         <item name="sv_buttonText">OK</item>
@@ -343,7 +344,7 @@
         <item name="android:textSize">30sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
-    </style>
+    </style>-->
 
     <style name="HeaderBar">
         <item name="android:background">#303F9F</item>
