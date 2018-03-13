@@ -146,51 +146,51 @@ public class SectionB6Activity extends AppCompatActivity {
         JSONObject sB6 = new JSONObject();
         //       nb601
 //        60101
-        sB6.put("nb60101", bi.nb60101a.isChecked() ? "1"
+        sB6.put("nw50101", bi.nb60101a.isChecked() ? "1"
                 : bi.nb60101b.isChecked() ? "2"
                 : "0");
 //        60102
-        sB6.put("nb60102", bi.nb60102a.isChecked() ? "1"
+        sB6.put("nw50102", bi.nb60102a.isChecked() ? "1"
                 : bi.nb60102b.isChecked() ? "2"
                 : "0");
 //        60103
-        sB6.put("nb60103", bi.nb60103a.isChecked() ? "1"
+        sB6.put("nw50103", bi.nb60103a.isChecked() ? "1"
                 : bi.nb60103b.isChecked() ? "2"
                 : "0");
 //        60104
-        sB6.put("nb60104", bi.nb60104a.isChecked() ? "1"
+        sB6.put("nw50104", bi.nb60104a.isChecked() ? "1"
                 : bi.nb60104b.isChecked() ? "2"
                 : "0");
 //        60105
-        sB6.put("nb60105", bi.nb60105a.isChecked() ? "1"
+        sB6.put("nw50105", bi.nb60105a.isChecked() ? "1"
                 : bi.nb60105b.isChecked() ? "2"
                 : "0");
 //        60106
-        sB6.put("nb60106", bi.nb60106a.isChecked() ? "1"
+        sB6.put("nw50106", bi.nb60106a.isChecked() ? "1"
                 : bi.nb60106b.isChecked() ? "2"
                 : "0");
 //        60107
-        sB6.put("nb60107", bi.nb60107a.isChecked() ? "1"
+        sB6.put("nw50107", bi.nb60107a.isChecked() ? "1"
                 : bi.nb60107b.isChecked() ? "2"
                 : "0");
 //        60108
-        sB6.put("nb60108", bi.nb60108a.isChecked() ? "1"
+        sB6.put("nw50108", bi.nb60108a.isChecked() ? "1"
                 : bi.nb60108b.isChecked() ? "2"
                 : "0");
 //        60109
-        sB6.put("nb60109", bi.nb60109a.isChecked() ? "1"
+        sB6.put("nw50109", bi.nb60109a.isChecked() ? "1"
                 : bi.nb60109b.isChecked() ? "2"
                 : "0");
 
 //        60196
-        sB6.put("nb60196", bi.nb60196a.isChecked() ? "1"
+        sB6.put("nw50196", bi.nb60196a.isChecked() ? "1"
                 : bi.nb60196b.isChecked() ? "2"
                 : "0");
 
 
-        sB6.put("nc101", bi.nb60108x.getText().toString());
-        sB6.put("nc101", bi.nb60109x.getText().toString());
-        sB6.put("nc101", bi.nb60196x.getText().toString());
+        sB6.put("nw50108x", bi.nb60108x.getText().toString());
+        sB6.put("nw50109x", bi.nb60109x.getText().toString());
+        sB6.put("nw50196x", bi.nb60196x.getText().toString());
 
         MainApp.mc.setsB6(String.valueOf(sB6));
 

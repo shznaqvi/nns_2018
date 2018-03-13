@@ -274,27 +274,27 @@ public class SectionA3Activity extends AppCompatActivity {
         JSONObject sA3 = new JSONObject();
 
         name = binding.na301.getSelectedItem().toString();
-        sA3.put("na301", binding.na301.getSelectedItem().toString());
-        sA3.put("na301Serial", json.getSerialNo());
+        sA3.put("nd101", binding.na301.getSelectedItem().toString());
+        sA3.put("nd101Serial", json.getSerialNo());
 
-        sA3.put("na3Serial", String.valueOf(counter));
+        sA3.put("nd1Serial", String.valueOf(counter));
 
-        sA3.put("na3w", binding.na3w.getText().toString());
+        sA3.put("nd1w", binding.na3w.getText().toString());
 
-        sA3.put("na3h", binding.na3h.getText().toString());
+        sA3.put("nd1h", binding.na3h.getText().toString());
 
-        sA3.put("na3muac", binding.na3muac.getText().toString());
+        sA3.put("nd1muac", binding.na3muac.getText().toString());
 
-        sA3.put("na3bcgscar", binding.na3bcgscara.isChecked() ? "1"
+        sA3.put("nd1bcgscar", binding.na3bcgscara.isChecked() ? "1"
                 : binding.na3bcgscarb.isChecked() ? "2" : "0");
 
-        sA3.put("na3g", binding.na3ga.isChecked() ? "1"
+        sA3.put("nd1g", binding.na3ga.isChecked() ? "1"
                 : binding.na3gb.isChecked() ? "2" : "0");
 
-        sA3.put("na3g", binding.na3caa.isChecked() ? "1"
+        sA3.put("nd1g", binding.na3caa.isChecked() ? "1"
                 : binding.na3cab.isChecked() ? "2" : "0");
 
-        sA3.put("na3o", binding.na3oa.isChecked() ? "1"
+        sA3.put("nd1o", binding.na3oa.isChecked() ? "1"
                 : binding.na3ob.isChecked() ? "2" : "0");
 
 

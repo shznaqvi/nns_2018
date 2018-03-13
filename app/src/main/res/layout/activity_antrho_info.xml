@@ -34,27 +34,6 @@
                 android:gravity="center"
                 android:text="@string/na1heading"
                 android:textSize="40sp" />
-
-
-            <!--na101-->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/na101"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
-
-            <EditText
-                android:id="@+id/na101"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
-                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789"
-                android:hint="@string/na101"
-                android:maxLength="50" />
-
             <!--na102-->
             <TextView
                 android:layout_width="match_parent"

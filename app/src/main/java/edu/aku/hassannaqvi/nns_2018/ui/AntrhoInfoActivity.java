@@ -154,11 +154,6 @@ public class AntrhoInfoActivity extends Activity {
 
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
-//        na101
-        if (!validatorClass.EmptyTextBox(this, binding.na101, getString(R.string.na101))) {
-            return false;
-        }
-
 //        na102
         if (!validatorClass.EmptyTextBox(this, binding.na102, getString(R.string.na102))) {
             return false;

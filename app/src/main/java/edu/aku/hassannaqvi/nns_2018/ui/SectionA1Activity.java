@@ -286,7 +286,7 @@ public class SectionA1Activity extends AppCompatActivity {
                 return false;
             }
 
-            if (!validatorClass.RangeTextBox(this, binding.na108, 15, 99, getString(R.string.na108), "age")) {
+            if (!validatorClass.RangeTextBox(this, binding.na108, 18, 99, getString(R.string.na108), "age")) {
                 return false;
             }
 
