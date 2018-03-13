@@ -26,7 +26,6 @@ android {
 
             versionCode code
             versionName "0.0"
-            multiDexEnabled true
             testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         }
     } else {
