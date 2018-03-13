@@ -45,6 +45,7 @@ public class SectionA1Activity extends AppCompatActivity {
     Collection<BLRandomContract> selected;
     int progressStatus = 0;
     Handler handler = new Handler();
+    Boolean flag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -214,6 +215,7 @@ public class SectionA1Activity extends AppCompatActivity {
 
     public void BtnEnd() {
 
+        flag = true;
         //Toast.makeText(this, "Processing End Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
             try {
@@ -247,25 +249,6 @@ public class SectionA1Activity extends AppCompatActivity {
         if (!validatorClass.EmptyTextBox(this, binding.na102, getString(R.string.na102))) {
             return false;
         }
-/*
-
-//        na101a
-        if (!validatorClass.EmptySpinner(this, binding.na101a, "Province")) {
-            return false;
-        }
-//        na101b
-        if (!validatorClass.EmptySpinner(this, binding.na101b, "District")) {
-            return false;
-        }
-//        na101c
-        if (!validatorClass.EmptySpinner(this, binding.na101c, "Tehsil/Taluka")) {
-            return false;
-        }
-//        na101d
-        if (!validatorClass.EmptySpinner(this, binding.na101d, "City/Village")) {
-            return false;
-        }
-*/
 
 //        na103
 
@@ -294,56 +277,44 @@ public class SectionA1Activity extends AppCompatActivity {
             return false;
         }
 //        na107
-        if (!validatorClass.EmptyTextBox(this, binding.na107, getString(R.string.na107))) {
-            return false;
-        }
+        if (!flag) {
+            if (!validatorClass.EmptyTextBox(this, binding.na107, getString(R.string.na107))) {
+                return false;
+            }
 //        na108
-        if (!validatorClass.EmptyTextBox(this, binding.na108, getString(R.string.na108))) {
-            return false;
-        }
+            if (!validatorClass.EmptyTextBox(this, binding.na108, getString(R.string.na108))) {
+                return false;
+            }
 
-        if (!validatorClass.RangeTextBox(this, binding.na108, 15, 99, getString(R.string.na108), "age")) {
-            return false;
-        }
+            if (!validatorClass.RangeTextBox(this, binding.na108, 15, 99, getString(R.string.na108), "age")) {
+                return false;
+            }
 
 //        na213
-        if (!validatorClass.EmptyTextBox(this, binding.na213, getString(R.string.na213))) {
-            return false;
-        }
-/*
-//        na11101blood
-        if (!validatorClass.EmptyRadioButton(this, binding.na11101blood, binding.na11101bloodb, getString(R.string.na11101blood))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, binding.na11101urine, binding.na11101urinea, getString(R.string.na11101urine))) {
-            return false;
-        }
-//        na11102water
-        if (!validatorClass.EmptyRadioButton(this, binding.na11102water, binding.na11102waterb, getString(R.string.na11102water))) {
-            return false;
-        }
-*/
+            if (!validatorClass.EmptyTextBox(this, binding.na213, getString(R.string.na213))) {
+                return false;
+            }
 
 //        na11201
-        if (!validatorClass.EmptyRadioButton(this, binding.na11201, binding.na11201b, getString(R.string.na11201))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, binding.na11201, binding.na11201b, getString(R.string.na11201))) {
+                return false;
+            }
 //        na11202
-        if (!validatorClass.EmptyRadioButton(this, binding.na11202, binding.na11202b, getString(R.string.na11202))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, binding.na11202, binding.na11202b, getString(R.string.na11202))) {
+                return false;
+            }
 
-        if (MainApp.selectedHead.getSelStructure().equals("1") && !binding.na11202a.isChecked()) {
-            binding.na11202a.setError("Wrong Selection");
-            Toast.makeText(this, "Wrong Selection", Toast.LENGTH_SHORT).show();
-            return false;
-        }
+            if (MainApp.selectedHead.getSelStructure().equals("1") && !binding.na11202a.isChecked()) {
+                binding.na11202a.setError("Wrong Selection");
+                Toast.makeText(this, "Wrong Selection", Toast.LENGTH_SHORT).show();
+                return false;
+            }
 
 //        na113
-        if (binding.na11201b.isChecked()) {
-            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpna113, binding.na11396, binding.na11396x, String.valueOf(R.string.na113))) {
-                return false;
+            if (binding.na11201b.isChecked()) {
+                if (!validatorClass.EmptyCheckBox(this, binding.fldGrpna113, binding.na11396, binding.na11396x, String.valueOf(R.string.na113))) {
+                    return false;
+                }
             }
         }
 
