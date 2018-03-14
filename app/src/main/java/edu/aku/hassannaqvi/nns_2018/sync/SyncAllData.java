@@ -14,38 +14,46 @@ import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collection;
 
-import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract.ChildTable;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
-import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 
 /**
- * Created by javed.khan on 1/22/2018.
+ * Created by ali.azaz on 3/14/2018.
  */
 
-public class SyncChildForms extends AsyncTask<Void, Void, String> {
+public class SyncAllData extends AsyncTask<Void, Void, String> {
 
-    private static final String TAG = "SyncChildForms";
-    Boolean flag = false;
+    private String TAG = "";
     private Context mContext;
     private ProgressDialog pd;
 
+    private String syncClass, url;
+    private Class contractClass;
+    private Collection dbData;
 
-    public SyncChildForms(Context context, Boolean flag) {
+
+    public SyncAllData(Context context, String syncClass, Class contractClass, String url, Collection dbData) {
         mContext = context;
-        this.flag = flag;
+        this.syncClass = syncClass;
+        this.contractClass = contractClass;
+        this.url = url;
+        this.dbData = dbData;
+
+        TAG = "Get" + syncClass;
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
         pd = new ProgressDialog(mContext);
-        pd.setTitle("Please wait... Processing Child Forms");
+        pd.setTitle("Syncing " + syncClass);
+        pd.setMessage("Getting connected to server...");
         pd.show();
     }
 
@@ -53,35 +61,25 @@ public class SyncChildForms extends AsyncTask<Void, Void, String> {
     @Override
     protected String doInBackground(Void... params) {
         try {
-            String url;
-
-            url = MainApp._HOST_URL + ChildTable._URL;
-
             Log.d(TAG, "doInBackground: URL " + url);
-            return downloadUrl(url);
+            return downloadUrl(contractClass);
         } catch (IOException e) {
             return "Unable to upload data. Server may be down.";
         }
     }
 
-    private String downloadUrl(String myurl) throws IOException {
+    private String downloadUrl(Class<?> contractClass) throws IOException {
         String line = "No Response";
 
-        DatabaseHelper db = new DatabaseHelper(mContext);
-        Collection<ChildContract> Forms;
-        //if (flag) {
-        Forms = db.getUnsyncedChildForms();
-        //} else {
-        //Forms = db.getFormsSg();
-        //}
-        Log.d(TAG, String.valueOf(Forms.size()));
+        Collection<?> DBData = dbData; // pass data that's coming from db
 
-        if (Forms.size() > 0) {
+        Log.d(TAG, String.valueOf(DBData.size()));
+
+        if (DBData.size() > 0) {
 
             HttpURLConnection connection = null;
             try {
-                String request = myurl;
-                //String request = "http://10.1.42.30:3000/Forms";
+                String request = url;
 
                 URL url = new URL(request);
                 connection = (HttpURLConnection) url.openConnection();
@@ -100,18 +98,31 @@ public class SyncChildForms extends AsyncTask<Void, Void, String> {
                     connection.setUseCaches(false);
                     connection.connect();
 
-
                     DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
 
-//            pd.setMessage("Total Forms: " );
+                    try {
+                        while (contractClass != null) {
+                            for (Method method : contractClass.getDeclaredMethods()) {
+                                String methodName = method.getName();
+                                if (methodName.equals("toJSONObject")) {
+                                    for (Object fc : DBData) {
+                                        jsonSync.put(fc.getClass().getMethod(methodName).invoke(fc));
+                                    }
+                                    break;
+                                }
+                            }
+                            break;
+                        }
 
-                    for (ChildContract fc : Forms) {
-                        //if (fc.getIstatus().equals("1")) {
-                        jsonSync.put(fc.toJSONObject());
-                        //}
+                    } catch (NoSuchMethodException e) {
+                        e.printStackTrace();
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    } catch (InvocationTargetException e) {
+                        e.printStackTrace();
                     }
+
                     wr.writeBytes(jsonSync.toString().replace("\uFEFF", "") + "\n");
-//                    longInfo(jsonSync.toString().replace("\uFEFF", "") + "\n");
                     wr.flush();
 
 
@@ -136,14 +147,13 @@ public class SyncChildForms extends AsyncTask<Void, Void, String> {
             } catch (IOException e) {
 
                 e.printStackTrace();
-            } catch (JSONException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
             } finally {
                 if (connection != null)
                     connection.disconnect();
             }
-        } else {
+        } else
+
+        {
             return "No new records to sync";
         }
         return line;
@@ -173,18 +183,18 @@ public class SyncChildForms extends AsyncTask<Void, Void, String> {
                     sSyncedError += "\nError: " + jsonObject.getString("message");
                 }
             }
-            Toast.makeText(mContext, " Forms synced: " + sSynced + "\r\n\r\n Errors: " + sSyncedError, Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, syncClass + " synced: " + sSynced + "\r\n\r\n Errors: " + sSyncedError, Toast.LENGTH_SHORT).show();
 
 
-            pd.setMessage("Child Forms synced: " + sSynced + "\r\n\r\n Duplicates: " + sDuplicate + "\r\n\r\n Errors: " + sSyncedError);
-            pd.setTitle("Done uploading Child Forms data");
+            pd.setMessage(syncClass + " synced: " + sSynced + "\r\n\r\n Duplicates: " + sDuplicate + "\r\n\r\n Errors: " + sSyncedError);
+            pd.setTitle("Done uploading +" + syncClass + " data");
             pd.show();
         } catch (JSONException e) {
             e.printStackTrace();
             Toast.makeText(mContext, "Failed Sync " + result, Toast.LENGTH_SHORT).show();
 
             pd.setMessage(result);
-            pd.setTitle("Child Forms Sync Failed");
+            pd.setTitle(syncClass + " Sync Failed");
             pd.show();
         }
     }
