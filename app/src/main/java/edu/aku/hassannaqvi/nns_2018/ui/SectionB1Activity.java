@@ -366,7 +366,7 @@ public class SectionB1Activity extends Activity {
         if (UpdateDB()) {
             //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
-            finish();
+            //finish();
 
             MainApp.endChildActivity(this, this, false);
 

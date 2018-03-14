@@ -152,7 +152,7 @@ public class SectionC1Activity extends AppCompatActivity {
         if (UpdateDB()) {
             //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
-            finish();
+            //finish();
 
             MainApp.endChildActivity(this, this, false);
 

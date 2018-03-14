@@ -25,7 +25,7 @@ android {
             targetSdkVersion 22
 
             versionCode code
-            versionName "0.0"
+            versionName "0.1"
             multiDexEnabled true
             testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         }
@@ -65,7 +65,7 @@ dependencies {
     //implementation "com.splitwise:tokenautocomplete:2.0.8@aar"
 }
 
-/*configurations.all {
+configurations.all {
     resolutionStrategy.eachDependency { DependencyResolveDetails details ->
         def requested = details.requested
         if (requested.group == 'com.android.support') {
@@ -74,4 +74,4 @@ dependencies {
             }
         }
     }
-}*/
+}

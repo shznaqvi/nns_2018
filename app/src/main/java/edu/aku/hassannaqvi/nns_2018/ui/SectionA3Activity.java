@@ -200,7 +200,7 @@ public class SectionA3Activity extends AppCompatActivity {
         if (UpdateDB()) {
             //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
-            finish();
+            //finish();
 
             MainApp.endAnthroActivity(this, this);
 

@@ -44,7 +44,13 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.nns_2018.core.AndroidDatabaseManager;
@@ -484,6 +490,60 @@ public class MainActivity extends Activity {
                     FormsContract.class,
                     MainApp._HOST_URL + FormsContract.FormsTable._URL,
                     db.getUnsyncedForms()
+            ).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing Family Members", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Family Members",
+                    FamilyMembersContract.class,
+                    MainApp._HOST_URL + FamilyMembersContract.familyMembers._URL,
+                    db.getUnsyncedFamilyMembers()
+            ).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing WRAs", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "WRAs",
+                    MWRAContract.class,
+                    MainApp._HOST_URL + MWRAContract.MWRATable._URL,
+                    db.getUnsyncedMWRA()
+            ).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing Children", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Children",
+                    ChildContract.class,
+                    MainApp._HOST_URL + ChildContract.ChildTable._URL,
+                    db.getUnsyncedChildForms()
+            ).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing Eligibles", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Eligibles",
+                    EligibleMembersContract.class,
+                    MainApp._HOST_URL + EligibleMembersContract.eligibleMembers._URL,
+                    db.getUnsyncedEligbleMembers()
+            ).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing Outcomes", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Outcomes",
+                    OutcomeContract.class,
+                    MainApp._HOST_URL + OutcomeContract.outcomeTable._URL,
+                    db.getUnsyncedOutcome()
+            ).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing Recepients", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Recepients",
+                    RecipientsContract.class,
+                    MainApp._HOST_URL + RecipientsContract.RecipientsTable._URL,
+                    db.getUnsyncedRecipients()
             ).execute();
 
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);

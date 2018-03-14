@@ -195,44 +195,45 @@ public class AntrhoInfoActivity extends Activity {
 
         if (!binding.na102.getText().toString().trim().isEmpty() && !binding.na103.getText().toString().trim().isEmpty()) {
 
-            members = db.getAllMembersByHH(db.getUIDByHH(binding.na102.getText().toString(), binding.na103.getText().toString().toUpperCase()));
+            String uid = db.getUIDByHH(binding.na102.getText().toString(), binding.na103.getText().toString().toUpperCase());
+            if (uid != null) {
+                members = db.getAllMembersByHH(uid);
 
-            if (members.size() != 0) {
-                for (FamilyMembersContract fm : members) {
+                if (members.size() != 0) {
+                    for (FamilyMembersContract fm : members) {
 
-                    if (fm.getsA2() != null) {
-                        json = JSONUtilClass.getModelFromJSON(fm.getsA2());
-                        if ((Integer.valueOf(json.getAge()) >= 15 && Integer.valueOf(json.getAge()) <= 49) && json.getGender().equals("2")) {
-                            MainApp.mwra.add(fm);
-                            MainApp.all_members.add(fm);
+                        if (fm.getsA2() != null) {
+                            json = JSONUtilClass.getModelFromJSON(fm.getsA2());
+                            if ((Integer.valueOf(json.getAge()) >= 15 && Integer.valueOf(json.getAge()) <= 49) && json.getGender().equals("2")) {
+                                MainApp.mwra.add(fm);
+                                MainApp.all_members.add(fm);
+                            }
+                            if ((Integer.valueOf(json.getAge()) >= 10 && (Integer.valueOf(json.getAge()) <= 19)) && json.getMaritalStatus().equals("5")) {
+                                MainApp.adolescents.add(fm);
+                                MainApp.all_members.add(fm);
+                            }
+                            if (Integer.valueOf(json.getAge()) < 5) {
+                                MainApp.childUnder5.add(fm);
+                                MainApp.all_members.add(fm);
+                            }
                         }
-                        if ((Integer.valueOf(json.getAge()) >= 10 && (Integer.valueOf(json.getAge()) <= 19)) && json.getMaritalStatus().equals("5")) {
-                            MainApp.adolescents.add(fm);
-                            MainApp.all_members.add(fm);
-                        }
-                        if (Integer.valueOf(json.getAge()) < 5) {
-                            MainApp.childUnder5.add(fm);
-                            MainApp.all_members.add(fm);
-                        }
+
+                    }
+                    if (MainApp.all_members.size() > 0) {
+                        Toast.makeText(this, "Members Found..", Toast.LENGTH_SHORT).show();
+                        binding.btnContinue.setVisibility(View.VISIBLE);
+                        binding.btnEnd.setVisibility(View.GONE);
+
+                    } else {
+
+                        binding.btnContinue.setVisibility(View.GONE);
+                        binding.btnEnd.setVisibility(View.GONE);
+                        Toast.makeText(this, "No Eligible member found for anthropometry, Check another HH.", Toast.LENGTH_SHORT).show();
                     }
 
+
                 }
-
-                if (MainApp.all_members.size() > 0) {
-                    binding.btnContinue.setVisibility(View.VISIBLE);
-                    binding.btnEnd.setVisibility(View.GONE);
-
-                } else {
-
-                    binding.btnContinue.setVisibility(View.GONE);
-                    binding.btnEnd.setVisibility(View.GONE);
-                    Toast.makeText(this, "No Eligible member found for anthropometry, Check another HH.", Toast.LENGTH_SHORT).show();
-                }
-
-
             } else {
-
-
                 Toast.makeText(this, "No members found for the HH.", Toast.LENGTH_SHORT).show();
             }
 

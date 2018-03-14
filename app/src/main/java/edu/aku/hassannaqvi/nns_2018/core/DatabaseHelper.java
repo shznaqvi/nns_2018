@@ -468,7 +468,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         };
 
-        String whereClause = familyMembers.COLUMN_UID + "=? ";
+        String whereClause = familyMembers.COLUMN_UUID + "=? ";
         //+ familyMembers.COLUMN_HH_NO + "=?";
         String[] whereArgs = new String[]{uid};
         String groupBy = null;
