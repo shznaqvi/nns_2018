@@ -1124,7 +1124,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(ChildTable.COLUMN_SYNCED_DATE, new Date().toString());
 
 // Which row to update, based on the title
-        String where = ChildTable._ID + " = ?";
+        String where = ChildTable.COLUMN__ID + " = ?";
         String[] whereArgs = {id};
 
         int count = db.update(
@@ -1133,6 +1133,103 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 where,
                 whereArgs);
     }
+
+    public void updateSyncedMWRAForm(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(MWRATable.COLUMN_SYNCED, true);
+        values.put(MWRATable.COLUMN_SYNCEDDATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = MWRATable.COLUMN__ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                MWRATable.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
+    public void updateSyncedOutcomeForm(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(outcomeTable.COLUMN_SYNCED, true);
+        values.put(outcomeTable.COLUMN_SYNCEDDATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = outcomeTable.COLUMN__ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                outcomeTable.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
+
+    public void updateSyncedRecepientsForm(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(RecipientsTable.COLUMN_SYNCED, true);
+        values.put(RecipientsTable.COLUMN_SYNCEDDATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = RecipientsTable.COLUMN__ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                RecipientsTable.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
+    public void updateSyncedFamilyMembers(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(familyMembers.COLUMN_SYNCED, true);
+        values.put(familyMembers.COLUMN_SYNCED_DATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = familyMembers._ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                familyMembers.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
+    public void updateSyncedEligibles(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(eligibleMembers.COLUMN_SYNCED, true);
+        values.put(eligibleMembers.COLUMN_SYNCEDDATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = eligibleMembers.COLUMN__ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                eligibleMembers.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
 
 
     public void updateSyncedSerial(String id) {

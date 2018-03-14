@@ -487,6 +487,7 @@ public class MainActivity extends Activity {
             new SyncAllData(
                     this,
                     "Forms",
+                    "updateSyncedForms",
                     FormsContract.class,
                     MainApp._HOST_URL + FormsContract.FormsTable._URL,
                     db.getUnsyncedForms()
@@ -496,6 +497,7 @@ public class MainActivity extends Activity {
             new SyncAllData(
                     this,
                     "Family Members",
+                    "updateSyncedFamilyMembers",
                     FamilyMembersContract.class,
                     MainApp._HOST_URL + FamilyMembersContract.familyMembers._URL,
                     db.getUnsyncedFamilyMembers()
@@ -505,6 +507,7 @@ public class MainActivity extends Activity {
             new SyncAllData(
                     this,
                     "WRAs",
+                    "updateSyncedMWRAForm",
                     MWRAContract.class,
                     MainApp._HOST_URL + MWRAContract.MWRATable._URL,
                     db.getUnsyncedMWRA()
@@ -514,6 +517,7 @@ public class MainActivity extends Activity {
             new SyncAllData(
                     this,
                     "Children",
+                    "updateSyncedChildForm",
                     ChildContract.class,
                     MainApp._HOST_URL + ChildContract.ChildTable._URL,
                     db.getUnsyncedChildForms()
@@ -523,6 +527,7 @@ public class MainActivity extends Activity {
             new SyncAllData(
                     this,
                     "Eligibles",
+                    "updateSyncedEligibles",
                     EligibleMembersContract.class,
                     MainApp._HOST_URL + EligibleMembersContract.eligibleMembers._URL,
                     db.getUnsyncedEligbleMembers()
@@ -532,6 +537,7 @@ public class MainActivity extends Activity {
             new SyncAllData(
                     this,
                     "Outcomes",
+                    "updateSyncedOutcomeForm",
                     OutcomeContract.class,
                     MainApp._HOST_URL + OutcomeContract.outcomeTable._URL,
                     db.getUnsyncedOutcome()
@@ -541,6 +547,7 @@ public class MainActivity extends Activity {
             new SyncAllData(
                     this,
                     "Recepients",
+                    "updateSyncedRecepientsForm",
                     RecipientsContract.class,
                     MainApp._HOST_URL + RecipientsContract.RecipientsTable._URL,
                     db.getUnsyncedRecipients()

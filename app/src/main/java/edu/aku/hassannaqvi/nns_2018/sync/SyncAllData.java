@@ -33,14 +33,15 @@ public class SyncAllData extends AsyncTask<Void, Void, String> {
     private Context mContext;
     private ProgressDialog pd;
 
-    private String syncClass, url;
+    private String syncClass, url, updateSyncClass;
     private Class contractClass;
     private Collection dbData;
 
 
-    public SyncAllData(Context context, String syncClass, Class contractClass, String url, Collection dbData) {
+    public SyncAllData(Context context, String syncClass, String updateSyncClass, Class contractClass, String url, Collection dbData) {
         mContext = context;
         this.syncClass = syncClass;
+        this.updateSyncClass = updateSyncClass;
         this.contractClass = contractClass;
         this.url = url;
         this.dbData = dbData;
@@ -172,12 +173,27 @@ public class SyncAllData extends AsyncTask<Void, Void, String> {
             DatabaseHelper db = new DatabaseHelper(mContext); // Database Helper
             for (int i = 0; i < json.length(); i++) {
                 JSONObject jsonObject = new JSONObject(json.getString(i));
+
+                Method method = null;
+                for (Method method1 : DatabaseHelper.class.getDeclaredMethods()) {
+                    if (method1.getName().equals(updateSyncClass)) {
+                        method = method1;
+                        break;
+                    }
+                }
+
                 if (jsonObject.getString("status").equals("1") && jsonObject.getString("error").equals("0")) {
 
-                    db.updateSyncedChildForm(jsonObject.getString("id"));  // UPDATE SYNCED
+//                    db.updateSyncedChildForm(jsonObject.getString("id"));  // UPDATE SYNCED
+
+                    method.invoke(jsonObject.getString("id"));
+
                     sSynced++;
                 } else if (jsonObject.getString("status").equals("2") && jsonObject.getString("error").equals("0")) {
-                    db.updateSyncedChildForm(jsonObject.getString("id")); // UPDATE DUPLICATES
+//                    db.updateSyncedChildForm(jsonObject.getString("id")); // UPDATE DUPLICATES
+
+                    method.invoke(jsonObject.getString("id"));
+
                     sDuplicate++;
                 } else {
                     sSyncedError += "\nError: " + jsonObject.getString("message");
@@ -196,6 +212,10 @@ public class SyncAllData extends AsyncTask<Void, Void, String> {
             pd.setMessage(result);
             pd.setTitle(syncClass + " Sync Failed");
             pd.show();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
         }
     }
 }
