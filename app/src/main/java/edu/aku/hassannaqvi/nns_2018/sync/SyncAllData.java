@@ -171,28 +171,29 @@ public class SyncAllData extends AsyncTask<Void, Void, String> {
             json = new JSONArray(result);
 
             DatabaseHelper db = new DatabaseHelper(mContext); // Database Helper
+
+            Method method = null;
+            for (Method method1 : db.getClass().getDeclaredMethods()) {
+                if (method1.getName().equals(updateSyncClass)) {
+                    method = method1;
+                    break;
+                }
+            }
+
             for (int i = 0; i < json.length(); i++) {
                 JSONObject jsonObject = new JSONObject(json.getString(i));
-
-                Method method = null;
-                for (Method method1 : DatabaseHelper.class.getDeclaredMethods()) {
-                    if (method1.getName().equals(updateSyncClass)) {
-                        method = method1;
-                        break;
-                    }
-                }
 
                 if (jsonObject.getString("status").equals("1") && jsonObject.getString("error").equals("0")) {
 
 //                    db.updateSyncedChildForm(jsonObject.getString("id"));  // UPDATE SYNCED
 
-                    method.invoke(jsonObject.getString("id"));
+                    method.invoke(db, jsonObject.getString("id"));
 
                     sSynced++;
                 } else if (jsonObject.getString("status").equals("2") && jsonObject.getString("error").equals("0")) {
 //                    db.updateSyncedChildForm(jsonObject.getString("id")); // UPDATE DUPLICATES
 
-                    method.invoke(jsonObject.getString("id"));
+                    method.invoke(db, jsonObject.getString("id"));
 
                     sDuplicate++;
                 } else {
