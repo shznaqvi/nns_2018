@@ -21,12 +21,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collection;
 
-import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
-import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 
 /**
- * Created by javed.khan on 1/22/2018.
+ * Created by ali.azaz on 3/14/2018.
  */
 
 public class SyncAllData extends AsyncTask<Void, Void, String> {
@@ -35,14 +33,17 @@ public class SyncAllData extends AsyncTask<Void, Void, String> {
     private Context mContext;
     private ProgressDialog pd;
 
-    private String syncClass;
+    private String syncClass, url;
     private Class contractClass;
+    private Collection dbData;
 
 
-    public SyncAllData(Context context, String syncClass, Class contractClass) {
+    public SyncAllData(Context context, String syncClass, Class contractClass, String url, Collection dbData) {
         mContext = context;
         this.syncClass = syncClass;
         this.contractClass = contractClass;
+        this.url = url;
+        this.dbData = dbData;
 
         TAG = "Get" + syncClass;
     }
@@ -60,41 +61,25 @@ public class SyncAllData extends AsyncTask<Void, Void, String> {
     @Override
     protected String doInBackground(Void... params) {
         try {
-            String url = null;
-
-            switch (syncClass) {
-                case "Forms":
-                    url = MainApp._HOST_URL + FormsContract.FormsTable._URL;
-                    break;
-            }
-
             Log.d(TAG, "doInBackground: URL " + url);
-            return downloadUrl(url, syncClass, contractClass);
+            return downloadUrl(contractClass);
         } catch (IOException e) {
             return "Unable to upload data. Server may be down.";
         }
     }
 
-    private String downloadUrl(String myurl, String syncClassType, Class<?> contractClass) throws IOException {
+    private String downloadUrl(Class<?> contractClass) throws IOException {
         String line = "No Response";
 
-        DatabaseHelper db = new DatabaseHelper(mContext);
+        Collection<?> DBData = dbData; // pass data that's coming from db
 
-        Collection<?> Forms = null;
+        Log.d(TAG, String.valueOf(DBData.size()));
 
-        switch (syncClassType) {
-            case "Forms":
-                Forms = db.getUnsyncedForms();
-                break;
-        }
-
-        Log.d(TAG, String.valueOf(Forms.size()));
-
-        if (Forms.size() > 0) {
+        if (DBData.size() > 0) {
 
             HttpURLConnection connection = null;
             try {
-                String request = myurl;
+                String request = url;
 
                 URL url = new URL(request);
                 connection = (HttpURLConnection) url.openConnection();
@@ -120,7 +105,7 @@ public class SyncAllData extends AsyncTask<Void, Void, String> {
                             for (Method method : contractClass.getDeclaredMethods()) {
                                 String methodName = method.getName();
                                 if (methodName.equals("toJSONObject")) {
-                                    for (Object fc : Forms) {
+                                    for (Object fc : DBData) {
                                         jsonSync.put(fc.getClass().getMethod(methodName).invoke(fc));
                                     }
                                     break;
