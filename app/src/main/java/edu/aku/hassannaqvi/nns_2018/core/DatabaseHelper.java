@@ -256,6 +256,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             VersionAppTable.COLUMN_VERSION_CODE + " TEXT, " +
             VersionAppTable.COLUMN_PATH_NAME + " TEXT " +
             ");";
+
     private final String TAG = "DatabaseHelper";
     public String spDateT = new SimpleDateFormat("dd-MM-yy").format(new Date().getTime());
 
@@ -400,7 +401,53 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Collection<FamilyMembersContract> getAllMembersByHH(String subAreaCode, String hh) {
+
+    public String getUIDByHH(String subAreaCode, String hh) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+
+                FormsTable._ID,
+                FormsTable.COLUMN_UID,
+
+        };
+
+        String whereClause = FormsTable.COLUMN_ENM_NO + "=? AND " +
+                FormsTable.COLUMN_HH_NO + "=? AND " +
+                FormsTable.COLUMN_ISTATUS + "=?";
+        String[] whereArgs = new String[]{subAreaCode, hh, "1"};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                FormsTable._ID + " DESC LIMIT 1";
+
+        try {
+            c = db.query(
+                    FormsTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext() && c.getCount() == 1) {
+                return (c.getString(c.getColumnIndex(FormsTable.COLUMN_UID)));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return null;
+    }
+
+
+    public Collection<FamilyMembersContract> getAllMembersByHH(String uid) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -421,9 +468,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         };
 
-        String whereClause = familyMembers.COLUMN_ENM_NO + "=? AND " +
-                familyMembers.COLUMN_HH_NO + "=?";
-        String[] whereArgs = new String[]{subAreaCode, hh};
+        String whereClause = familyMembers.COLUMN_UID + "=? ";
+        //+ familyMembers.COLUMN_HH_NO + "=?";
+        String[] whereArgs = new String[]{uid};
         String groupBy = null;
         String having = null;
 

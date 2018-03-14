@@ -195,7 +195,7 @@ public class AntrhoInfoActivity extends Activity {
 
         if (!binding.na102.getText().toString().trim().isEmpty() && !binding.na103.getText().toString().trim().isEmpty()) {
 
-            members = db.getAllMembersByHH(binding.na102.getText().toString(), binding.na103.getText().toString().toUpperCase());
+            members = db.getAllMembersByHH(db.getUIDByHH(binding.na102.getText().toString(), binding.na103.getText().toString().toUpperCase()));
 
             if (members.size() != 0) {
                 for (FamilyMembersContract fm : members) {
