@@ -51,13 +51,12 @@ public class FamilyMembersContract implements Serializable {
     }
 
     public FamilyMembersContract(FamilyMembersContract fmc) {
-        this.serialNo = fmc.serialNo;
+        this._UID = fmc._UID;
         this.name = fmc.name;
-        this.ageInYear = fmc.ageInYear;
-        this.na204 = fmc.na204;
-        this.motherName = fmc.motherName;
-        this.fatherName = fmc.fatherName;
-        this.maritialStatus = fmc.maritialStatus;
+        this._UUID = fmc._UUID;
+        this.serialNo = fmc.serialNo;
+        this.enmNo = fmc.enmNo;
+        this.hhNo = fmc.hhNo;
     }
 
     public String getResp() {
@@ -301,7 +300,6 @@ public class FamilyMembersContract implements Serializable {
         return this;
 
     }
-
 
     public JSONObject toJSONObject() throws JSONException {
 

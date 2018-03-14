@@ -12,15 +12,43 @@
             type="edu.aku.hassannaqvi.nns_2018.ui.SectionA2QRgenActivity" />
     </data>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_weight="20"
+                android:background="@color/colorPrimary"
+                android:text="Members"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@android:color/white" />
+
+            <Spinner
+                android:id="@+id/spMembers"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_weight="50"
+                android:gravity="center" />
+
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/imgQRcode"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </layout>

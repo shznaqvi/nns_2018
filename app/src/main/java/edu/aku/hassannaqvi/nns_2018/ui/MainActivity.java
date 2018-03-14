@@ -481,6 +481,7 @@ public class MainActivity extends Activity {
             new SyncAllData(
                     this,
                     "Forms",
+                    "updateSyncedForms",
                     FormsContract.class,
                     MainApp._HOST_URL + FormsContract.FormsTable._URL,
                     db.getUnsyncedForms()
