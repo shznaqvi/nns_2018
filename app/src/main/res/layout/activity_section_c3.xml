@@ -1080,7 +1080,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="@{nc308b.checked? View.GONE : View.VISIBLE}">
+                android:visibility="@{nc308a.checked? View.VISIBLE : View.GONE}">
 
                 <!-- 09 -->
                 <TextView
@@ -1101,7 +1101,7 @@
                     android:hint="@string/times"
                     android:inputType="number"
                     android:maxLength="2"
-                    android:text='@{nc308b.checked ? "" : nc309.getText.toString}' />
+                    android:text='@{nc308a.checked ? nc309.getText.toString : ""}' />
             </LinearLayout>
 
             <!-- 10 -->
@@ -1153,7 +1153,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="@{nc310b.checked? View.GONE : View.VISIBLE}">
+                android:visibility="@{nc310a.checked ? View.VISIBLE : View.GONE}">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -1173,7 +1173,7 @@
                     android:hint="@string/times"
                     android:inputType="number"
                     android:maxLength="2"
-                    android:text='@{nc310b.checked ? "" : nc311.getText.toString}' />
+                    android:text='@{nc310a.checked ? nc311.getText.toString : "" }' />
             </LinearLayout>
 
             <!-- 12 -->
@@ -1223,7 +1223,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="@{nc312b.checked ? View.GONE : View.VISIBLE}">
+                android:visibility="@{nc312a.checked ? View.VISIBLE : View.GONE}">
 
                 <!-- 14 -->
                 <TextView
@@ -1244,7 +1244,7 @@
                     android:hint="@string/times"
                     android:inputType="number"
                     android:maxLength="2"
-                    android:text='@{nc312b.checked ? "" : nc313.getText.toString}' />
+                    android:text='@{nc312a.checked ? nc313.getText.toString : "" }' />
 
             </LinearLayout>
             <!-- 14 -->

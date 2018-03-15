@@ -101,19 +101,19 @@ public class SectionA3Activity extends AppCompatActivity {
                     slecMem = mem.getFmc();
 
                     switch (slc_type) {
-                        case 1:
+                        case 1: // MWRA
                             binding.fldGrpbcgScar.setVisibility(View.GONE);
+                            binding.fldGrpgoiter.setVisibility(View.VISIBLE);
+                            binding.fldGrpca.setVisibility(View.VISIBLE);
+                            binding.fldGrpode.setVisibility(View.GONE);
+                            break;
+                        case 2: // U5
+                            binding.fldGrpbcgScar.setVisibility(View.VISIBLE);
                             binding.fldGrpgoiter.setVisibility(View.VISIBLE);
                             binding.fldGrpca.setVisibility(View.VISIBLE);
                             binding.fldGrpode.setVisibility(View.VISIBLE);
                             break;
-                        case 2:
-                            binding.fldGrpbcgScar.setVisibility(View.VISIBLE);
-                            binding.fldGrpgoiter.setVisibility(View.GONE);
-                            binding.fldGrpca.setVisibility(View.GONE);
-                            binding.fldGrpode.setVisibility(View.GONE);
-                            break;
-                        case 3:
+                        case 3: // Adolescent
                             binding.fldGrpbcgScar.setVisibility(View.GONE);
                             binding.fldGrpgoiter.setVisibility(View.VISIBLE);
                             binding.fldGrpca.setVisibility(View.VISIBLE);
@@ -229,30 +229,27 @@ public class SectionA3Activity extends AppCompatActivity {
             return false;
         }
 
+
         if (slc_type == 2) {
             if (!validatorClass.EmptyRadioButton(this, binding.na3bcgscar, binding.na3bcgscara, getString(R.string.na3bcgscar))) {
                 return false;
             }
         }
-
-        if (slc_type == 1 || slc_type == 3) {
-
-            if (!validatorClass.EmptyRadioButton(this, binding.na3g, binding.na3ga, getString(R.string.na3g))) {
-                    return false;
-            }
-
-            if (!validatorClass.EmptyRadioButton(this, binding.na3ca, binding.na3caa, getString(R.string.na3ca))) {
-                    return false;
-            }
-
-            if (slc_type == 1) {
-
-                if (!validatorClass.EmptyRadioButton(this, binding.na3o, binding.na3oa, getString(R.string.na3o))) {
-                    return false;
-                }
-            }
-
+        if (!validatorClass.EmptyRadioButton(this, binding.na3g, binding.na3ga, getString(R.string.na3g))) {
+            return false;
         }
+
+        if (!validatorClass.EmptyRadioButton(this, binding.na3ca, binding.na3caa, getString(R.string.na3ca))) {
+            return false;
+        }
+
+        if (slc_type == 2) {
+            if (!validatorClass.EmptyRadioButton(this, binding.na3o, binding.na3oa, getString(R.string.na3o))) {
+                return false;
+            }
+        }
+
+
         return true;
     }
 

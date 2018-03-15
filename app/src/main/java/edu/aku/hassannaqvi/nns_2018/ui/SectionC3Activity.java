@@ -72,7 +72,7 @@ public class SectionC3Activity extends AppCompatActivity {
         binding.nc315.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (i != R.id.nc315a) {
+                if (binding.nc315b.isChecked() || binding.nc31598.isChecked()) {
                     binding.nc316.clearCheck();
                 }
             }
@@ -214,7 +214,7 @@ public class SectionC3Activity extends AppCompatActivity {
             return false;
         }
 
-        if (!binding.nc308b.isChecked()) {
+        if (binding.nc308a.isChecked()) {
 //        nc309
             if (!validatorClass.EmptyTextBox(this, binding.nc309, getString(R.string.nc309))) {
                 return false;
@@ -229,7 +229,7 @@ public class SectionC3Activity extends AppCompatActivity {
             return false;
         }
 
-        if (!binding.nc310b.isChecked()) {
+        if (binding.nc310a.isChecked()) {
 //        nc311
             if (!validatorClass.EmptyTextBox(this, binding.nc311, getString(R.string.nc311))) {
                 return false;
@@ -252,7 +252,7 @@ public class SectionC3Activity extends AppCompatActivity {
             return false;
         }
 
-        if (!binding.nc312b.isChecked()) {
+        if (binding.nc312a.isChecked()) {
 
 //        nc313
             if (!validatorClass.EmptyTextBox(this, binding.nc313, getString(R.string.nc313))) {
