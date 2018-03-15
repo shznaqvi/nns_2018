@@ -2,10 +2,12 @@ package edu.aku.hassannaqvi.nns_2018.ui;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -32,14 +34,15 @@ import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA2QrgenBinding;
 
 public class SectionA2QRgenActivity extends AppCompatActivity {
 
+    static int progress = 0;
     ActivitySectionA2QrgenBinding binding;
     DatabaseHelper db;
-
     List<String> mothersList;
     Map<String, FamilyMembersContract> mothersListMap;
-
     List<FamilyMembersContract> selectedChildrens;
     FamilyMembersContract selectedMother;
+    int progressStatus = 0;
+    Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +67,7 @@ public class SectionA2QRgenActivity extends AppCompatActivity {
             }
         }
 
-        binding.spMembers.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, mothersList));
+        binding.spMembers.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, mothersList));
 
         binding.spMembers.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -82,9 +85,9 @@ public class SectionA2QRgenActivity extends AppCompatActivity {
                         }
                     }
 
-
                     new GenerateQRTask(SectionA2QRgenActivity.this, selectedMother, selectedChildrens).execute();
-
+                } else {
+                    binding.imgQRcode.setImageBitmap(null);
                 }
             }
 
@@ -93,6 +96,49 @@ public class SectionA2QRgenActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void BtnContinue() {
+
+        /*binding.linerLayoutMain.setBackgroundColor(getResources().getColor(R.color.blackOverlay));
+        binding.btnContinue.setEnabled(false);
+        binding.btnEnd.setEnabled(false);*/
+        binding.progress.setVisibility(View.VISIBLE);
+
+        new Thread(new Runnable() {
+            public void run() {
+                while (progressStatus < 100) {
+                    progressStatus = doSomeWork();
+                    handler.post(new Runnable() {
+                        public void run() {
+                            binding.progress.setProgress(progressStatus);
+                        }
+                    });
+                }
+                handler.post(new Runnable() {
+                    public void run() {
+
+                        progress = 0;
+                        finish();
+                        startActivity(new Intent(SectionA2QRgenActivity.this, SectionA4Activity.class));
+                    }
+                });
+            }
+
+            private int doSomeWork() {
+                try {
+                    // ---simulate doing some work---
+                    Thread.sleep(20);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                return ++progress;
+            }
+        }).start();
+    }
+
+    public void BtnEnd() {
+        MainApp.endActivity(this, this);
     }
 
     public JSONObject CreateJSON(FamilyMembersContract fmc) throws JSONException {
@@ -116,7 +162,6 @@ public class SectionA2QRgenActivity extends AppCompatActivity {
 
         public GenerateQRTask(Context mContext, FamilyMembersContract selectedMother, List<FamilyMembersContract> selectedChildrens) {
             this.mContext = mContext;
-            Asycdialog = new ProgressDialog(mContext);
             this.selectedMother = selectedMother;
             this.selectedChildrens = selectedChildrens;
         }
@@ -125,16 +170,23 @@ public class SectionA2QRgenActivity extends AppCompatActivity {
         protected void onPreExecute() {
 
             super.onPreExecute();
+            Asycdialog = new ProgressDialog(mContext);
             Asycdialog.setTitle("GENERATING QR");
             Asycdialog.setMessage("Loading...");
             Asycdialog.setCancelable(false);
-            Asycdialog.show();
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Asycdialog.show();
+                }
+            }, 500); // starting it in 1 second
         }
 
         @Override
         protected Void doInBackground(Void... arg0) {
 
-            JSONArray jsonSync = null;
+            JSONArray jsonSync = new JSONArray();
             JSONArray childJsonSync = null;
             // do the task you want to do. This will be executed in background.
             try {
@@ -156,7 +208,7 @@ public class SectionA2QRgenActivity extends AppCompatActivity {
                 }
                 jsonSync.put(sA);
 
-                bitmap = QRCode.from(String.valueOf(jsonSync)).withCharset("UTF-8").to(ImageType.JPG).withSize(700, 700).bitmap();
+                bitmap = QRCode.from(String.valueOf(jsonSync)).withCharset("UTF-8").to(ImageType.JPG).withSize(216, 216).bitmap();
 
                 if (selectedChildrens.size() < 20) {
                     Thread.sleep(3000);

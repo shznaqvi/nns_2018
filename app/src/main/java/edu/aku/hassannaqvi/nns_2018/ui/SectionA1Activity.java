@@ -174,6 +174,8 @@ public class SectionA1Activity extends AppCompatActivity {
             }
             if (UpdateDB()) {
 
+                binding.progress.setVisibility(View.VISIBLE);
+
                 new Thread(new Runnable() {
                     public void run() {
                         while (progressStatus < 100) {
