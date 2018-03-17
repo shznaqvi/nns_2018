@@ -46,6 +46,7 @@ public class FamilyMembersContract implements Serializable {
     private String maritialStatus = "";
     private String realtionHH = "";
     private String resp = "";
+    private String type = "";
 
     public FamilyMembersContract() {
     }
@@ -261,6 +262,14 @@ public class FamilyMembersContract implements Serializable {
 
     public void setHhNo(String hhNo) {
         this.hhNo = hhNo;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public FamilyMembersContract Sync(JSONObject jsonObject) throws JSONException {

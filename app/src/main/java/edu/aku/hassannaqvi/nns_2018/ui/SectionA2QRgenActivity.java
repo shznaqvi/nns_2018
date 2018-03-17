@@ -37,12 +37,13 @@ public class SectionA2QRgenActivity extends AppCompatActivity {
     static int progress = 0;
     ActivitySectionA2QrgenBinding binding;
     DatabaseHelper db;
-    List<String> mothersList;
-    Map<String, FamilyMembersContract> mothersListMap;
+    List<String> membersList;
+    Map<String, FamilyMembersContract> membersListMap;
     List<FamilyMembersContract> selectedChildrens;
-    FamilyMembersContract selectedMother;
+    FamilyMembersContract selectedMember;
     int progressStatus = 0;
     Handler handler = new Handler();
+    int mwraCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,19 +56,27 @@ public class SectionA2QRgenActivity extends AppCompatActivity {
 
 //        Working for QR-GENERATOR
 
-        mothersListMap = new HashMap<>();
-        mothersList = new ArrayList<>();
-        mothersList.add("....");
+        // Initializing
+        membersListMap = new HashMap<>();
+        membersList = new ArrayList<>();
+        membersList.add("....");
 
 //        Setup Spinner
-        for (FamilyMembersContract fam : MainApp.mwra) {
-            if (!fam.getMaritialStatus().equals("5")) {
-                mothersList.add(fam.getName() + "_" + fam.getSerialNo());
-                mothersListMap.put(fam.getName() + "_" + fam.getSerialNo(), fam);
+
+        for (FamilyMembersContract famMwra : MainApp.mwra) {
+            if (!famMwra.getMaritialStatus().equals("5")) {
+                membersList.add(famMwra.getName() + "_" + famMwra.getSerialNo());
+                membersListMap.put(famMwra.getName() + "_" + famMwra.getSerialNo(), famMwra);
+                mwraCount++;
             }
         }
 
-        binding.spMembers.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, mothersList));
+        for (FamilyMembersContract famChild : MainApp.childNA) {
+            membersList.add(famChild.getName() + "_" + famChild.getSerialNo());
+            membersListMap.put(famChild.getName() + "_" + famChild.getSerialNo(), famChild);
+        }
+
+        binding.spMembers.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, membersList));
 
         binding.spMembers.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -77,17 +86,24 @@ public class SectionA2QRgenActivity extends AppCompatActivity {
 
                 if (binding.spMembers.getSelectedItemPosition() != 0) {
 
-                    selectedMother = mothersListMap.get(binding.spMembers.getSelectedItem());
+                    selectedMember = membersListMap.get(binding.spMembers.getSelectedItem());
 
-                    for (FamilyMembersContract fam : MainApp.familyMembersList) {
-                        if (fam.getMotherId().equals(selectedMother.getSerialNo())) {
-                            selectedChildrens.add(fam);
+                    if (position <= mwraCount) {
+
+                        for (FamilyMembersContract fam : MainApp.familyMembersList) {
+                            if (fam.getMotherId().equals(selectedMember.getSerialNo())) {
+                                selectedChildrens.add(fam);
+                            }
                         }
-                    }
 
-                    new GenerateQRTask(SectionA2QRgenActivity.this, selectedMother, selectedChildrens).execute();
+                        new GenerateQRTask(SectionA2QRgenActivity.this, selectedMember, selectedChildrens, 1).execute(); // 1 means mother
+                    } else {
+                        new GenerateQRTask(SectionA2QRgenActivity.this, selectedMember, selectedChildrens, 2).execute(); // 2 means child NA
+                    }
                 } else {
                     binding.imgQRcode.setImageBitmap(null);
+                    binding.getData.setText(null);
+                    binding.fldGrp01.setVisibility(View.GONE);
                 }
             }
 
@@ -99,10 +115,6 @@ public class SectionA2QRgenActivity extends AppCompatActivity {
     }
 
     public void BtnContinue() {
-
-        /*binding.linerLayoutMain.setBackgroundColor(getResources().getColor(R.color.blackOverlay));
-        binding.btnContinue.setEnabled(false);
-        binding.btnEnd.setEnabled(false);*/
         binding.progress.setVisibility(View.VISIBLE);
 
         new Thread(new Runnable() {
@@ -157,13 +169,16 @@ public class SectionA2QRgenActivity extends AppCompatActivity {
         ProgressDialog Asycdialog;
         Context mContext;
         Bitmap bitmap;
-        private FamilyMembersContract selectedMother;
-        private List<FamilyMembersContract> selectedChildrens;
+        private FamilyMembersContract selectedMem;
+        private List<FamilyMembersContract> selectedSubMem;
+        private int type;
+        private String ScannedInfo = "";
 
-        public GenerateQRTask(Context mContext, FamilyMembersContract selectedMother, List<FamilyMembersContract> selectedChildrens) {
+        public GenerateQRTask(Context mContext, FamilyMembersContract selectedMem, List<FamilyMembersContract> selectedSubMem, int type) {
             this.mContext = mContext;
-            this.selectedMother = selectedMother;
-            this.selectedChildrens = selectedChildrens;
+            this.selectedMem = selectedMem;
+            this.selectedSubMem = selectedSubMem;
+            this.type = type;
         }
 
         @Override
@@ -192,17 +207,31 @@ public class SectionA2QRgenActivity extends AppCompatActivity {
             try {
 
                 JSONObject sA = new JSONObject();
-                sA.put("_UID ", selectedMother.get_UID());
-                sA.put("name ", selectedMother.getName());
-                sA.put("_UUID ", selectedMother.get_UUID());
-                sA.put("serialNo ", selectedMother.getSerialNo());
-                sA.put("enmNo ", selectedMother.getEnmNo());
-                sA.put("hhNo ", selectedMother.getHhNo());
+                sA.put("_UID ", selectedMem.get_UID());
+                sA.put("name ", selectedMem.getName());
+                sA.put("_UUID ", selectedMem.get_UUID());
+                sA.put("serialNo ", selectedMem.getSerialNo());
+                sA.put("enmNo ", selectedMem.getEnmNo());
+                sA.put("hhNo ", selectedMem.getHhNo());
+                sA.put("type ", String.valueOf(type));
+                sA.put("sA2 ", "");
 
-                if (selectedChildrens.size() > 0) {
+
+                // Setting in string
+                ScannedInfo += (type == 1 ? "Mother" : "Child (N/A)") + ":\nSerial:" + selectedMem.getSerialNo() + "\nNAME:" + selectedMem.getName().toUpperCase() + "\nEnumeration No:" + selectedMem.getEnmNo() + "\nHHNo:" + selectedMem.getHhNo();
+
+                if (selectedSubMem.size() > 0) {
                     childJsonSync = new JSONArray();
-                    for (FamilyMembersContract fmc : selectedChildrens) {
+
+                    ScannedInfo += "\nChildrens:\n";
+                    int i = 0;
+                    for (FamilyMembersContract fmc : selectedSubMem) {
                         childJsonSync.put(CreateJSON(fmc));
+
+                        i++;
+
+                        ScannedInfo += i + "):Serial:" + fmc.getSerialNo() + "\nNAME:" + fmc.getName().toUpperCase() + "\n";
+
                     }
                     sA.put("sA2", childJsonSync);
                 }
@@ -210,7 +239,7 @@ public class SectionA2QRgenActivity extends AppCompatActivity {
 
                 bitmap = QRCode.from(String.valueOf(jsonSync)).withCharset("UTF-8").to(ImageType.JPG).withSize(216, 216).bitmap();
 
-                if (selectedChildrens.size() < 20) {
+                if (selectedSubMem.size() < 20) {
                     Thread.sleep(3000);
                 }
 //                }
@@ -228,6 +257,10 @@ public class SectionA2QRgenActivity extends AppCompatActivity {
 
             super.onPostExecute(result);
             binding.imgQRcode.setImageBitmap(bitmap);
+            binding.getData.setText(ScannedInfo);
+
+            binding.fldGrp01.setVisibility(View.VISIBLE);
+
             Asycdialog.dismiss();
             Toast.makeText(mContext, "Copying done!!", Toast.LENGTH_SHORT).show();
         }

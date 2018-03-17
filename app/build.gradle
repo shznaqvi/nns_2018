@@ -65,6 +65,8 @@ dependencies {
 
     // QR-Code
     compile 'com.github.kenglxn.QRGen:android:2.2.0'
+    // QR-Code Scanner
+    implementation 'com.journeyapps:zxing-android-embedded:3.5.0'
 
 }
 

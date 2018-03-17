@@ -333,6 +333,11 @@ public class MainActivity extends Activity {
         startActivity(iB);
     }
 
+    public void openScanner(View v) {
+        Intent iB = new Intent(this, MembersScanningActivity.class);
+        startActivity(iB);
+    }
+
 
     /*public void openD(View v) {
         Intent iD = new Intent(this, SectionDActivity.class);

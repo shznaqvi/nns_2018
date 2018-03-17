@@ -61,7 +61,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
                         android:background="@color/colorPrimary"
-                        android:text="Members"
+                        android:text="MEMBERS"
                         android:textAlignment="center"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@android:color/white" />
@@ -81,6 +81,36 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp" />
+
+                <LinearLayout
+                    android:id="@+id/fldGrp01"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="20"
+                        android:background="@color/colorPrimary"
+                        android:text="INFORMATION"
+                        android:textAlignment="center"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:id="@+id/getData"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@android:color/transparent"
+                        android:text="MEMBERS"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
 
 
                 <!--  = = = = =  END OF FORM FIELDS  = = = = = -->

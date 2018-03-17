@@ -155,7 +155,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
                 respLineNo = "";
 
-                if (MainApp.mwra.size() > 0 || MainApp.childNA.size() > 0) {
+                if (MainApp.membersCount.getMwra() > 0 || MainApp.childNA.size() > 0) {
                     startActivity(new Intent(this, SectionA2QRgenActivity.class));
                 } else {
                     startActivity(new Intent(this, SectionA4Activity.class));
