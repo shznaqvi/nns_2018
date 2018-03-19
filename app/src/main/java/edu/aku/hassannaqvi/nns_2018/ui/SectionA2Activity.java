@@ -82,31 +82,31 @@ public class SectionA2Activity extends AppCompatActivity {
         }
 
 //        Listeners
-        binding.na20598.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        binding.nh20598.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    binding.na2dob.setEnabled(false);
-                    binding.na2dob.setText(null);
-                    binding.na2aged.setEnabled(true);
-                    binding.na2agem.setEnabled(true);
-                    binding.na2agey.setEnabled(true);
+                    binding.nh2dob.setEnabled(false);
+                    binding.nh2dob.setText(null);
+                    binding.nh2aged.setEnabled(true);
+                    binding.nh2agem.setEnabled(true);
+                    binding.nh2agey.setEnabled(true);
 
-                    binding.na2agem.setVisibility(View.VISIBLE);
-                    binding.na2aged.setVisibility(View.VISIBLE);
+                    binding.nh2agem.setVisibility(View.VISIBLE);
+                    binding.nh2aged.setVisibility(View.VISIBLE);
                 } else {
-                    binding.na2dob.setEnabled(true);
-                    binding.na2aged.setEnabled(false);
-                    binding.na2aged.setText(null);
-                    binding.na2agem.setEnabled(false);
-                    binding.na2agem.setText(null);
-                    binding.na2agey.setEnabled(false);
-                    binding.na2agey.setText(null);
+                    binding.nh2dob.setEnabled(true);
+                    binding.nh2aged.setEnabled(false);
+                    binding.nh2aged.setText(null);
+                    binding.nh2agem.setEnabled(false);
+                    binding.nh2agem.setText(null);
+                    binding.nh2agey.setEnabled(false);
+                    binding.nh2agey.setText(null);
                 }
             }
         });
 
-        binding.na2agey.addTextChangedListener(new TextWatcher() {
+        binding.nh2agey.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
@@ -114,90 +114,90 @@ public class SectionA2Activity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if (!binding.na2agey.getText().toString().isEmpty()) {
-                    if (Integer.valueOf(binding.na2agey.getText().toString()) >= 5) {
+                if (!binding.nh2agey.getText().toString().isEmpty()) {
+                    if (Integer.valueOf(binding.nh2agey.getText().toString()) >= 5) {
                         binding.fldGrpmonths.setVisibility(View.GONE);
                         binding.fldGrpdays.setVisibility(View.GONE);
-                        binding.na2agem.setText("0");
-                        binding.na2aged.setText("0");
+                        binding.nh2agem.setText("0");
+                        binding.nh2aged.setText("0");
                     } else {
                         binding.fldGrpmonths.setVisibility(View.VISIBLE);
                         binding.fldGrpdays.setVisibility(View.VISIBLE);
                     }
 
-                    Age = Integer.valueOf(binding.na2agey.getText().toString());
+                    Age = Integer.valueOf(binding.nh2agey.getText().toString());
                     if (Age < 5) {
-                        binding.fldGrpna2edu.setVisibility(View.GONE);
-                        binding.fldGrpna2ms.setVisibility(View.GONE);
-                        binding.fldGrpna2occ.setVisibility(View.GONE);
+                        binding.fldGrpnh2edu.setVisibility(View.GONE);
+                        binding.fldGrpnh2ms.setVisibility(View.GONE);
+                        binding.fldGrpnh2occ.setVisibility(View.GONE);
 
                         binding.fldGrpfid.setVisibility(View.VISIBLE);
                         binding.fldGrpmid.setVisibility(View.VISIBLE);
 
-                        binding.na2edu.clearCheck();
-                        binding.na2ms.clearCheck();
-                        binding.na2occ.clearCheck();
+                        binding.nh2edu.clearCheck();
+                        binding.nh2ms.clearCheck();
+                        binding.nh2occ.clearCheck();
 
-                        binding.na2edua.setChecked(true);
-                        binding.na2occa.setChecked(true);
-                        binding.na2mse.setChecked(true);
+                        binding.nh2edua.setChecked(true);
+                        binding.nh2occa.setChecked(true);
+                        binding.nh2mse.setChecked(true);
                     } else if (Age >= 5 && Age <= 12) {
-                        //  binding.na2edua.setEnabled(false);
-                        binding.fldGrpna2edu.setVisibility(View.VISIBLE);
-                        binding.fldGrpna2ms.setVisibility(View.GONE);
-                        binding.fldGrpna2occ.setVisibility(View.GONE);
+                        //  binding.nh2edua.setEnabled(false);
+                        binding.fldGrpnh2edu.setVisibility(View.VISIBLE);
+                        binding.fldGrpnh2ms.setVisibility(View.GONE);
+                        binding.fldGrpnh2occ.setVisibility(View.GONE);
 
                         binding.fldGrpfid.setVisibility(View.GONE);
                         binding.fldGrpmid.setVisibility(View.GONE);
-                        binding.na211.setSelection(1);
-                        binding.na212.setSelection(1);
+                        binding.nh211.setSelection(1);
+                        binding.nh212.setSelection(1);
 
-                        binding.na2edu.clearCheck();
-                        binding.na2ms.clearCheck();
-                        binding.na2occ.clearCheck();
+                        binding.nh2edu.clearCheck();
+                        binding.nh2ms.clearCheck();
+                        binding.nh2occ.clearCheck();
 
-                        binding.na2occa.setChecked(true);
-                        binding.na2mse.setChecked(true);
+                        binding.nh2occa.setChecked(true);
+                        binding.nh2mse.setChecked(true);
 
-                        binding.na2edua.setEnabled(true);
-                        binding.na2edub.setEnabled(true);
-                        binding.na2educ.setEnabled(true);
-                        binding.na2edud.setEnabled(true);
-                        binding.na2edue.setEnabled(true);
+                        binding.nh2edua.setEnabled(true);
+                        binding.nh2edub.setEnabled(true);
+                        binding.nh2educ.setEnabled(true);
+                        binding.nh2edud.setEnabled(true);
+                        binding.nh2edue.setEnabled(true);
 
-                        binding.na2eduf.setEnabled(false);
-                        binding.na2edug.setEnabled(false);
-                        binding.na2eduh.setEnabled(false);
-                        binding.na2edui.setEnabled(false);
+                        binding.nh2eduf.setEnabled(false);
+                        binding.nh2edug.setEnabled(false);
+                        binding.nh2eduh.setEnabled(false);
+                        binding.nh2edui.setEnabled(false);
                     } else if (Age > 12) {
-                        binding.fldGrpna2edu.setVisibility(View.VISIBLE);
-                        binding.fldGrpna2ms.setVisibility(View.VISIBLE);
-                        binding.fldGrpna2occ.setVisibility(View.VISIBLE);
+                        binding.fldGrpnh2edu.setVisibility(View.VISIBLE);
+                        binding.fldGrpnh2ms.setVisibility(View.VISIBLE);
+                        binding.fldGrpnh2occ.setVisibility(View.VISIBLE);
 
                         binding.fldGrpfid.setVisibility(View.GONE);
                         binding.fldGrpmid.setVisibility(View.GONE);
-                        binding.na211.setSelection(1);
-                        binding.na212.setSelection(1);
+                        binding.nh211.setSelection(1);
+                        binding.nh212.setSelection(1);
 
-                        binding.na2edu.clearCheck();
-                        binding.na2ms.clearCheck();
-                        binding.na2occ.clearCheck();
+                        binding.nh2edu.clearCheck();
+                        binding.nh2ms.clearCheck();
+                        binding.nh2occ.clearCheck();
 
-                        binding.na2msa.setEnabled(true);
-                        binding.na2msb.setEnabled(true);
-                        binding.na2msc.setEnabled(true);
-                        binding.na2msd.setEnabled(true);
-                        binding.na2mse.setEnabled(true);
+                        binding.nh2msa.setEnabled(true);
+                        binding.nh2msb.setEnabled(true);
+                        binding.nh2msc.setEnabled(true);
+                        binding.nh2msd.setEnabled(true);
+                        binding.nh2mse.setEnabled(true);
 
-                        binding.na2edua.setEnabled(true);
-                        binding.na2edub.setEnabled(true);
-                        binding.na2educ.setEnabled(true);
-                        binding.na2edud.setEnabled(true);
-                        binding.na2edue.setEnabled(true);
-                        binding.na2eduf.setEnabled(true);
-                        binding.na2edug.setEnabled(true);
-                        binding.na2eduh.setEnabled(true);
-                        binding.na2edui.setEnabled(true);
+                        binding.nh2edua.setEnabled(true);
+                        binding.nh2edub.setEnabled(true);
+                        binding.nh2educ.setEnabled(true);
+                        binding.nh2edud.setEnabled(true);
+                        binding.nh2edue.setEnabled(true);
+                        binding.nh2eduf.setEnabled(true);
+                        binding.nh2edug.setEnabled(true);
+                        binding.nh2eduh.setEnabled(true);
+                        binding.nh2edui.setEnabled(true);
                     }
 
                 }
@@ -209,11 +209,11 @@ public class SectionA2Activity extends AppCompatActivity {
             }
         });
 
-        binding.na2dob.setManager(getSupportFragmentManager());
+        binding.nh2dob.setManager(getSupportFragmentManager());
 
-        binding.na2dob.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+        binding.nh2dob.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
 
-        binding.na2dob.addTextChangedListener(new TextWatcher() {
+        binding.nh2dob.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -221,81 +221,81 @@ public class SectionA2Activity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (!binding.na2dob.getText().toString().isEmpty()) {
-                    Age = (int) MainApp.ageInYearByDOB(binding.na2dob.getText().toString());
+                if (!binding.nh2dob.getText().toString().isEmpty()) {
+                    Age = (int) MainApp.ageInYearByDOB(binding.nh2dob.getText().toString());
                     //here
 
                     if (Age < 5) {
-                        binding.fldGrpna2edu.setVisibility(View.GONE);
-                        binding.fldGrpna2ms.setVisibility(View.GONE);
-                        binding.fldGrpna2occ.setVisibility(View.GONE);
+                        binding.fldGrpnh2edu.setVisibility(View.GONE);
+                        binding.fldGrpnh2ms.setVisibility(View.GONE);
+                        binding.fldGrpnh2occ.setVisibility(View.GONE);
 
                         binding.fldGrpfid.setVisibility(View.VISIBLE);
                         binding.fldGrpmid.setVisibility(View.VISIBLE);
 
-                        binding.na2edu.clearCheck();
-                        binding.na2ms.clearCheck();
-                        binding.na2occ.clearCheck();
+                        binding.nh2edu.clearCheck();
+                        binding.nh2ms.clearCheck();
+                        binding.nh2occ.clearCheck();
 
-                        binding.na2edua.setChecked(true);
-                        binding.na2occa.setChecked(true);
-                        binding.na2mse.setChecked(true);
+                        binding.nh2edua.setChecked(true);
+                        binding.nh2occa.setChecked(true);
+                        binding.nh2mse.setChecked(true);
                     } else if (Age >= 5 && Age <= 12) {
-                        binding.fldGrpna2edu.setVisibility(View.VISIBLE);
-                        binding.fldGrpna2ms.setVisibility(View.GONE);
-                        binding.fldGrpna2occ.setVisibility(View.GONE);
+                        binding.fldGrpnh2edu.setVisibility(View.VISIBLE);
+                        binding.fldGrpnh2ms.setVisibility(View.GONE);
+                        binding.fldGrpnh2occ.setVisibility(View.GONE);
 
                         binding.fldGrpfid.setVisibility(View.GONE);
                         binding.fldGrpmid.setVisibility(View.GONE);
-                        binding.na211.setSelection(1);
-                        binding.na212.setSelection(1);
+                        binding.nh211.setSelection(1);
+                        binding.nh212.setSelection(1);
 
-                        binding.na2edu.clearCheck();
-                        binding.na2ms.clearCheck();
-                        binding.na2occ.clearCheck();
+                        binding.nh2edu.clearCheck();
+                        binding.nh2ms.clearCheck();
+                        binding.nh2occ.clearCheck();
 
-                        binding.na2occa.setChecked(true);
-                        binding.na2mse.setChecked(true);
+                        binding.nh2occa.setChecked(true);
+                        binding.nh2mse.setChecked(true);
 
-                        binding.na2edua.setEnabled(true);
-                        binding.na2edub.setEnabled(true);
-                        binding.na2educ.setEnabled(true);
-                        binding.na2edud.setEnabled(true);
-                        binding.na2edue.setEnabled(true);
+                        binding.nh2edua.setEnabled(true);
+                        binding.nh2edub.setEnabled(true);
+                        binding.nh2educ.setEnabled(true);
+                        binding.nh2edud.setEnabled(true);
+                        binding.nh2edue.setEnabled(true);
 
-                        binding.na2eduf.setEnabled(false);
-                        binding.na2edug.setEnabled(false);
-                        binding.na2eduh.setEnabled(false);
-                        binding.na2edui.setEnabled(false);
+                        binding.nh2eduf.setEnabled(false);
+                        binding.nh2edug.setEnabled(false);
+                        binding.nh2eduh.setEnabled(false);
+                        binding.nh2edui.setEnabled(false);
                     } else if (Age > 12) {
-                        binding.fldGrpna2edu.setVisibility(View.VISIBLE);
-                        binding.fldGrpna2ms.setVisibility(View.VISIBLE);
-                        binding.fldGrpna2occ.setVisibility(View.VISIBLE);
+                        binding.fldGrpnh2edu.setVisibility(View.VISIBLE);
+                        binding.fldGrpnh2ms.setVisibility(View.VISIBLE);
+                        binding.fldGrpnh2occ.setVisibility(View.VISIBLE);
 
                         binding.fldGrpfid.setVisibility(View.GONE);
                         binding.fldGrpmid.setVisibility(View.GONE);
-                        binding.na211.setSelection(1);
-                        binding.na212.setSelection(1);
+                        binding.nh211.setSelection(1);
+                        binding.nh212.setSelection(1);
 
-                        binding.na2edu.clearCheck();
-                        binding.na2ms.clearCheck();
-                        binding.na2occ.clearCheck();
+                        binding.nh2edu.clearCheck();
+                        binding.nh2ms.clearCheck();
+                        binding.nh2occ.clearCheck();
 
-                        binding.na2msa.setEnabled(true);
-                        binding.na2msb.setEnabled(true);
-                        binding.na2msc.setEnabled(true);
-                        binding.na2msd.setEnabled(true);
-                        binding.na2mse.setEnabled(true);
+                        binding.nh2msa.setEnabled(true);
+                        binding.nh2msb.setEnabled(true);
+                        binding.nh2msc.setEnabled(true);
+                        binding.nh2msd.setEnabled(true);
+                        binding.nh2mse.setEnabled(true);
 
-                        binding.na2edua.setEnabled(true);
-                        binding.na2edub.setEnabled(true);
-                        binding.na2educ.setEnabled(true);
-                        binding.na2edud.setEnabled(true);
-                        binding.na2edue.setEnabled(true);
-                        binding.na2eduf.setEnabled(true);
-                        binding.na2edug.setEnabled(true);
-                        binding.na2eduh.setEnabled(true);
-                        binding.na2edui.setEnabled(true);
+                        binding.nh2edua.setEnabled(true);
+                        binding.nh2edub.setEnabled(true);
+                        binding.nh2educ.setEnabled(true);
+                        binding.nh2edud.setEnabled(true);
+                        binding.nh2edue.setEnabled(true);
+                        binding.nh2eduf.setEnabled(true);
+                        binding.nh2edug.setEnabled(true);
+                        binding.nh2eduh.setEnabled(true);
+                        binding.nh2edui.setEnabled(true);
                     }
 
                 }
@@ -307,14 +307,14 @@ public class SectionA2Activity extends AppCompatActivity {
             }
         });
 
-        binding.na2edu.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        binding.nh2edu.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.na2edua) {
-                    binding.na2occf.setEnabled(false);
-                    binding.na2occf.setChecked(false);
+                if (checkedId == R.id.nh2edua) {
+                    binding.nh2occf.setEnabled(false);
+                    binding.nh2occf.setChecked(false);
                 } else {
-                    binding.na2occf.setEnabled(true);
+                    binding.nh2occf.setEnabled(true);
                 }
             }
         });
@@ -353,8 +353,8 @@ public class SectionA2Activity extends AppCompatActivity {
             }
         }
 
-        binding.na211.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, fathersList));
-        binding.na212.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, mothersList));
+        binding.nh211.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, fathersList));
+        binding.nh212.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, mothersList));
 
 //        Visibility for isHead
         if (MainApp.IsHead) {
@@ -432,88 +432,88 @@ public class SectionA2Activity extends AppCompatActivity {
 
         } else {
 
-            if (binding.na20598.isChecked()) {
+            if (binding.nh20598.isChecked()) {
 
-                if (!validatorClass.EmptyTextBox(this, binding.na2aged, getString(R.string.na2age))) {
+                if (!validatorClass.EmptyTextBox(this, binding.nh2aged, getString(R.string.na2age))) {
                     return false;
                 }
 
-                if (!validatorClass.RangeTextBox(this, binding.na2aged, 0, 29, getString(R.string.na2age), " days")) {
+                if (!validatorClass.RangeTextBox(this, binding.nh2aged, 0, 29, getString(R.string.na2age), " days")) {
                     return false;
                 }
 
-                if (!validatorClass.EmptyTextBox(this, binding.na2agem, getString(R.string.na2age))) {
+                if (!validatorClass.EmptyTextBox(this, binding.nh2agem, getString(R.string.na2age))) {
                     return false;
                 }
 
-                if (!validatorClass.RangeTextBox(this, binding.na2agem, 0, 11, getString(R.string.na2age), " months")) {
+                if (!validatorClass.RangeTextBox(this, binding.nh2agem, 0, 11, getString(R.string.na2age), " months")) {
                     return false;
                 }
 
-                if (!validatorClass.EmptyTextBox(this, binding.na2agey, getString(R.string.na2age))) {
+                if (!validatorClass.EmptyTextBox(this, binding.nh2agey, getString(R.string.na2age))) {
                     return false;
                 }
 
-                if (!validatorClass.RangeTextBox(this, binding.na2agey, 0, 99, getString(R.string.na2age), " years")) {
+                if (!validatorClass.RangeTextBox(this, binding.nh2agey, 0, 99, getString(R.string.na2age), " years")) {
                     return false;
                 }
 
-                if (binding.na2aged.getText().toString().equals("0") && binding.na2agem.getText().toString().equals("0") && binding.na2agey.getText().toString().equals("0")) {
+                if (binding.nh2aged.getText().toString().equals("0") && binding.nh2agem.getText().toString().equals("0") && binding.nh2agey.getText().toString().equals("0")) {
                     Toast.makeText(this, "ERROR(invalid): " + "All can not be zero" + getString(R.string.na2age), Toast.LENGTH_LONG).show();
-                    binding.na2agey.setError("All can not be zero");
-                    binding.na2agem.setError("All can not be zero");
-                    binding.na2aged.setError("All can not be zero");
+                    binding.nh2agey.setError("All can not be zero");
+                    binding.nh2agem.setError("All can not be zero");
+                    binding.nh2aged.setError("All can not be zero");
                     Log.i(SectionA2Activity.class.getSimpleName(), "na2age" + ": This data is Required!");
                 } else {
-                    binding.na2agey.setError(null);
-                    binding.na2agem.setError(null);
-                    binding.na2aged.setError(null);
+                    binding.nh2agey.setError(null);
+                    binding.nh2agem.setError(null);
+                    binding.nh2aged.setError(null);
                 }
 
                 if ((family.getResp().equals("1") || family.getRealtionHH().equals("1")) && Age < 18) {
                     String chk = family.getResp().equals("1") ? "Resp" : "Head";
-                    binding.na2agey.setError("Error(Invalid) Age for " + chk);
+                    binding.nh2agey.setError("Error(Invalid) Age for " + chk);
                     Toast.makeText(this, chk + " Age greater then or equal 18..", Toast.LENGTH_SHORT).show();
                     return false;
                 } else {
-                    binding.na2agey.setError(null);
+                    binding.nh2agey.setError(null);
                 }
 
             } else {
-                if (!validatorClass.EmptyTextBox(this, binding.na2dob, getString(R.string.na2dob))) {
+                if (!validatorClass.EmptyTextBox(this, binding.nh2dob, getString(R.string.nh2dob))) {
                     return false;
                 }
 
                 if ((family.getResp().equals("1") || family.getRealtionHH().equals("1")) && Age < 18) {
                     String chk = family.getResp().equals("1") ? "Resp" : "Head";
-                    binding.na2dob.setError("Error(Invalid) Age for " + chk);
+                    binding.nh2dob.setError("Error(Invalid) Age for " + chk);
                     Toast.makeText(this, chk + " Age greater then or equal 18..", Toast.LENGTH_SHORT).show();
                     return false;
                 } else {
-                    binding.na2dob.setError(null);
+                    binding.nh2dob.setError(null);
                 }
             }
-            if (!validatorClass.EmptyRadioButton(this, binding.na2ms, binding.na2msa, getString(R.string.na2ms))) {
+            if (!validatorClass.EmptyRadioButton(this, binding.nh2ms, binding.nh2msa, getString(R.string.nh2ms))) {
                 return false;
             }
 
-            if (!validatorClass.EmptyRadioButton(this, binding.na2edu, binding.na2edua, getString(R.string.na2edu))) {
+            if (!validatorClass.EmptyRadioButton(this, binding.nh2edu, binding.nh2edua, getString(R.string.nh2edu))) {
                 return false;
             }
 
-            if (!validatorClass.EmptyRadioButton(this, binding.na2occ, binding.na2occ96, binding.na2occ96x, getString(R.string.na2occ))) {
+            if (!validatorClass.EmptyRadioButton(this, binding.nh2occ, binding.nh2occ96, binding.nh2occ96x, getString(R.string.nh2occ))) {
                 return false;
             }
 
-            if (!validatorClass.EmptySpinner(this, binding.na211, getString(R.string.na211))) {
+            if (!validatorClass.EmptySpinner(this, binding.nh211, getString(R.string.nh211))) {
                 return false;
             }
 
-            if (!validatorClass.EmptySpinner(this, binding.na212, getString(R.string.na212))) {
+            if (!validatorClass.EmptySpinner(this, binding.nh212, getString(R.string.nh212))) {
                 return false;
             }
 
-            if (!validatorClass.EmptyRadioButton(this, binding.na210, binding.na210a, getString(R.string.na210))) {
+            if (!validatorClass.EmptyRadioButton(this, binding.nh210, binding.nh210a, getString(R.string.nh210))) {
                 return false;
             }
         }
@@ -562,10 +562,10 @@ public class SectionA2Activity extends AppCompatActivity {
 
         } else {
 
-            family.setDob(binding.na2dob.getText().toString());
-            family.setAge(binding.na2agey.getText().toString() + "/" + binding.na2agem.getText().toString() + "/" + binding.na2aged.getText().toString());
+            family.setDob(binding.nh2dob.getText().toString());
+            family.setAge(binding.nh2agey.getText().toString() + "/" + binding.nh2agem.getText().toString() + "/" + binding.nh2aged.getText().toString());
             if (Age < 5) {
-                family.setMotherId(mothersMap.get(binding.na212.getSelectedItem().toString() + "_" + mothersSerials.get(mothersList.indexOf(binding.na212.getSelectedItem().toString()) - 1)));
+                family.setMotherId(mothersMap.get(binding.nh212.getSelectedItem().toString() + "_" + mothersSerials.get(mothersList.indexOf(binding.nh212.getSelectedItem().toString()) - 1)));
             }
 
 
@@ -577,48 +577,48 @@ public class SectionA2Activity extends AppCompatActivity {
             sA2.put("nh203", family.getRealtionHH());
             sA2.put("nh204", family.getna204());
 
-            sA2.put("nh2dob", binding.na2dob.getText().toString());
-            sA2.put("nh20598", binding.na20598.isChecked() ? "98" : "0");
+            sA2.put("nh2dob", binding.nh2dob.getText().toString());
+            sA2.put("nh20598", binding.nh20598.isChecked() ? "98" : "0");
 
-            sA2.put("nh206y", binding.na2agey.getText().toString());
-            sA2.put("nh206m", binding.na2agem.getText().toString());
-            sA2.put("nh206d", binding.na2aged.getText().toString());
+            sA2.put("nh206y", binding.nh2agey.getText().toString());
+            sA2.put("nh206m", binding.nh2agem.getText().toString());
+            sA2.put("nh206d", binding.nh2aged.getText().toString());
 
-            if (binding.na20598.isChecked()) {
-                Age = Integer.valueOf(binding.na2agey.getText().toString());
+            if (binding.nh20598.isChecked()) {
+                Age = Integer.valueOf(binding.nh2agey.getText().toString());
             } else {
-                Age = (int) MainApp.ageInYearByDOB(binding.na2dob.getText().toString());
+                Age = (int) MainApp.ageInYearByDOB(binding.nh2dob.getText().toString());
             }
 
             sA2.put("age", String.valueOf(Age));
 
 
-            sA2.put("nh207", binding.na2msa.isChecked() ? "1" : binding.na2msb.isChecked() ? "2" : binding.na2msc.isChecked() ? "3" : binding.na2msd.isChecked() ? "4"
-                    : binding.na2mse.isChecked() ? "5" : "0");
+            sA2.put("nh207", binding.nh2msa.isChecked() ? "1" : binding.nh2msb.isChecked() ? "2" : binding.nh2msc.isChecked() ? "3" : binding.nh2msd.isChecked() ? "4"
+                    : binding.nh2mse.isChecked() ? "5" : "0");
 
-            sA2.put("nh208", binding.na2edua.isChecked() ? "1" : binding.na2edub.isChecked() ? "2" : binding.na2educ.isChecked() ? "3" : binding.na2edud.isChecked() ? "4"
-                    : binding.na2edue.isChecked() ? "5" : binding.na2eduf.isChecked() ? "6" : binding.na2edug.isChecked() ? "7" : binding.na2eduh.isChecked() ? "8"
-                    : binding.na2edui.isChecked() ? "9" : "0");
+            sA2.put("nh208", binding.nh2edua.isChecked() ? "1" : binding.nh2edub.isChecked() ? "2" : binding.nh2educ.isChecked() ? "3" : binding.nh2edud.isChecked() ? "4"
+                    : binding.nh2edue.isChecked() ? "5" : binding.nh2eduf.isChecked() ? "6" : binding.nh2edug.isChecked() ? "7" : binding.nh2eduh.isChecked() ? "8"
+                    : binding.nh2edui.isChecked() ? "9" : "0");
 
-            sA2.put("nh209", binding.na2occa.isChecked() ? "1" : binding.na2occb.isChecked() ? "2" : binding.na2occc.isChecked() ? "3" : binding.na2occd.isChecked() ? "4"
-                    : binding.na2occe.isChecked() ? "5" : binding.na2occf.isChecked() ? "6" : binding.na2occg.isChecked() ? "7" : binding.na2occh.isChecked() ? "8"
-                    : binding.na2occ96.isChecked() ? "96" : "0");
+            sA2.put("nh209", binding.nh2occa.isChecked() ? "1" : binding.nh2occb.isChecked() ? "2" : binding.nh2occc.isChecked() ? "3" : binding.nh2occd.isChecked() ? "4"
+                    : binding.nh2occe.isChecked() ? "5" : binding.nh2occf.isChecked() ? "6" : binding.nh2occg.isChecked() ? "7" : binding.nh2occh.isChecked() ? "8"
+                    : binding.nh2occ96.isChecked() ? "96" : "0");
 
-            sA2.put("nh20996x", binding.na2occ96x.getText().toString());
+            sA2.put("nh20996x", binding.nh2occ96x.getText().toString());
 
-            sA2.put("nh210", binding.na210a.isChecked() ? "1" : binding.na210b.isChecked() ? "2" : "0");
+            sA2.put("nh210", binding.nh210a.isChecked() ? "1" : binding.nh210b.isChecked() ? "2" : "0");
 
-            sA2.put("nh211", fathersMap.get(binding.na211.getSelectedItem().toString() + "_" + fathersSerials.get(fathersList.indexOf(binding.na211.getSelectedItem().toString()) - 1)));
-            sA2.put("nh212", mothersMap.get(binding.na212.getSelectedItem().toString() + "_" + mothersSerials.get(mothersList.indexOf(binding.na212.getSelectedItem().toString()) - 1)));
+            sA2.put("nh211", fathersMap.get(binding.nh211.getSelectedItem().toString() + "_" + fathersSerials.get(fathersList.indexOf(binding.nh211.getSelectedItem().toString()) - 1)));
+            sA2.put("nh212", mothersMap.get(binding.nh212.getSelectedItem().toString() + "_" + mothersSerials.get(mothersList.indexOf(binding.nh212.getSelectedItem().toString()) - 1)));
 
 
             family.setsA2(String.valueOf(sA2));
 
             //Setting for FamilyMembers List
-            family.setMaritialStatus(binding.na2msa.isChecked() ? "1" : binding.na2msb.isChecked() ? "2" : binding.na2msc.isChecked() ? "3" : binding.na2msd.isChecked() ? "4"
-                    : binding.na2mse.isChecked() ? "5" : "0");
-            family.setFatherName(binding.na211.getSelectedItem().toString().toUpperCase());
-            family.setMotherName(binding.na212.getSelectedItem().toString().toUpperCase());
+            family.setMaritialStatus(binding.nh2msa.isChecked() ? "1" : binding.nh2msb.isChecked() ? "2" : binding.nh2msc.isChecked() ? "3" : binding.nh2msd.isChecked() ? "4"
+                    : binding.nh2mse.isChecked() ? "5" : "0");
+            family.setFatherName(binding.nh211.getSelectedItem().toString().toUpperCase());
+            family.setMotherName(binding.nh212.getSelectedItem().toString().toUpperCase());
 
         /*Functionality Setting*/
 
@@ -638,7 +638,7 @@ public class SectionA2Activity extends AppCompatActivity {
 
             //MWRA
             if ((Age >= 15 && Age <= 49) && family.getna204().equals("2")) {
-                if (binding.na2mse.isChecked()) {
+                if (binding.nh2mse.isChecked()) {
                     MainApp.membersCount.setWra(MainApp.membersCount.getWra() + 1);
                 } else {
                     MainApp.membersCount.setMwra(MainApp.membersCount.getMwra() + 1);
@@ -647,7 +647,7 @@ public class SectionA2Activity extends AppCompatActivity {
                 //MainApp.adolescents.add(family);
             }
             //Adolescent
-            if ((Age >= 10 && Age <= 19) && binding.na2mse.isChecked()) {
+            if ((Age >= 10 && Age <= 19) && binding.nh2mse.isChecked()) {
                 memType = new HashMap<>();
                 if (family.getna204().equals("1")) {
                     memType.put(1, Integer.valueOf(mem.get(2).get(1).toString()) + 1);
@@ -689,7 +689,7 @@ public class SectionA2Activity extends AppCompatActivity {
 
             if (Age >= 15) {
                 // Add data in list
-                if (!binding.na2mse.isChecked()) {
+                if (!binding.nh2mse.isChecked()) {
                     MainApp.members_f_m.add(family);
                 }
 

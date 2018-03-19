@@ -489,7 +489,7 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
                 }
             }
 
-            if (isAllNo() && bi.nc218a.isChecked()) {
+            if ((isAllNo() || isAlldkn()) && bi.nc218a.isChecked()) {
                 Toast.makeText(this, "ERROR: " + getString(R.string.nc218) + "Atleast one should be Yes", Toast.LENGTH_SHORT).show();
                 bi.nc218a.setError(getString(R.string.nc218));
                 Log.i(SectionC2Activity.class.getSimpleName(), "nc218: This data is Required!");
@@ -498,7 +498,7 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
                 bi.nc218a.setError(null);
             }
 
-            if (isAlldkn() && bi.nc218a.isChecked()) {
+            /*if (isAlldkn() && bi.nc218a.isChecked()) {
                 Toast.makeText(this, "ERROR: " + getString(R.string.nc218) + "Atleast one should be Yes", Toast.LENGTH_SHORT).show();
                 bi.nc218a.setError(getString(R.string.nc218));
                 Log.i(SectionC2Activity.class.getSimpleName(), "nc218: This data is Required!");
@@ -506,7 +506,7 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
             } else {
                 bi.nc218a.setError(null);
             }
-
+*/
             if (isoneYes()) {
                 if (!validatorClass.EmptyRadioButton(this, bi.nc219, bi.nc219a, bi.nc219x, getString(R.string.nc219))) {
                     return false;
@@ -841,6 +841,7 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
             bi.nc218.clearCheck();
         } else {
             bi.fldGrpnc218.setVisibility(View.VISIBLE);
+            bi.fldGrpnc219.setVisibility(View.VISIBLE);
         }
 
 

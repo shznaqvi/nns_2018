@@ -8,7 +8,9 @@
     <color name="colorAccent">#3f51b5</color>
     <color name="pink_100">#9BD8FF</color>
     <color name="colorHeading">#99FFCC</color>
-    <color name="colorRedsub">#d6ff8a80</color>
+    <color name="colorRedsub">
+
+    </color>
     <color name="lightred">#FFEBEE</color>
     <color name="colorPrimaryBeta">#00BCD4</color>
 

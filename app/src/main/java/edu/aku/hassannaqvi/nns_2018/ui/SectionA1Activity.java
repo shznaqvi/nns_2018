@@ -93,7 +93,7 @@ public class SectionA1Activity extends AppCompatActivity {
 
 //        Listener
 
-        binding.na102.addTextChangedListener(new TextWatcher() {
+        binding.nh102.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -101,8 +101,8 @@ public class SectionA1Activity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                binding.na103.setText(null);
-                binding.fldGrpna101.setVisibility(View.GONE);
+                binding.nh108.setText(null);
+                binding.fldGrpnh101.setVisibility(View.GONE);
             }
 
             @Override
@@ -121,16 +121,16 @@ public class SectionA1Activity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    binding.fldGrpna105a.setVisibility(View.GONE);
+                    binding.fldGrpnh110a.setVisibility(View.GONE);
                     binding.newHHheadname.setText(null);
                 } else {
-                    binding.fldGrpna105a.setVisibility(View.VISIBLE);
+                    binding.fldGrpnh110a.setVisibility(View.VISIBLE);
                 }
             }
         });
 
 //        HH listener
-        binding.na103.addTextChangedListener(new TextWatcher() {
+        binding.nh108.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -151,17 +151,17 @@ public class SectionA1Activity extends AppCompatActivity {
     }
 
     public void clearFields() {
-        binding.fldGrpna105.setVisibility(View.GONE);
+        binding.fldGrpnh110.setVisibility(View.GONE);
 
         binding.hhName.setText(null);
         binding.newHHheadname.setText(null);
         binding.checkHHHeadpresent.setChecked(false);
-        binding.na105.setText(null);
-        binding.na107.setText(null);
-        binding.na108.setText(null);
-        binding.na213.setText(null);
-        binding.na11201.clearCheck();
-        binding.na11202.clearCheck();
+        binding.nh110.setText(null);
+        binding.nh113.setText(null);
+        binding.nh115.setText(null);
+        binding.nh213.setText(null);
+        binding.na11801.clearCheck();
+        binding.na11802.clearCheck();
     }
 
     public void BtnContinue() {
@@ -240,27 +240,27 @@ public class SectionA1Activity extends AppCompatActivity {
 
         //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
-//        na101
-        if (!validatorClass.EmptyTextBox(this, binding.na101, getString(R.string.na101))) {
+//        nh101
+        if (!validatorClass.EmptyTextBox(this, binding.nh101, getString(R.string.nh101))) {
             return false;
         }
 
-//        na102
-        if (!validatorClass.EmptyTextBox(this, binding.na102, getString(R.string.na102))) {
+//        nh102
+        if (!validatorClass.EmptyTextBox(this, binding.nh102, getString(R.string.nh102))) {
             return false;
         }
 
-//        na103
+//        nh108
 
-        if (binding.na103.getText().toString().length() == 6) {
-            String[] str = binding.na103.getText().toString().split("-");
-            if (str.length > 2 || binding.na103.getText().toString().charAt(4) != '-' || !str[0].matches("[0-9]+") || !str[1].matches("[a-zA-Z]")) {
-                binding.na103.setError("Wrong presentation!!");
+        if (binding.nh108.getText().toString().length() == 6) {
+            String[] str = binding.nh108.getText().toString().split("-");
+            if (str.length > 2 || binding.nh108.getText().toString().charAt(4) != '-' || !str[0].matches("[0-9]+") || !str[1].matches("[a-zA-Z]")) {
+                binding.nh108.setError("Wrong presentation!!");
                 return false;
             }
         } else {
-            Toast.makeText(this, "Invalid length: " + getString(R.string.na103), Toast.LENGTH_SHORT).show();
-            binding.na103.setError("Invalid length");
+            Toast.makeText(this, "Invalid length: " + getString(R.string.nh108), Toast.LENGTH_SHORT).show();
+            binding.nh108.setError("Invalid length");
             return false;
         }
 
@@ -272,47 +272,47 @@ public class SectionA1Activity extends AppCompatActivity {
             }
         }
 
-//        na105
-        if (!validatorClass.EmptyTextBox(this, binding.na105, getString(R.string.na105))) {
+//        nh110
+        if (!validatorClass.EmptyTextBox(this, binding.nh110, getString(R.string.nh110))) {
             return false;
         }
-//        na107
+//        nh113
         if (!flag) {
-            if (!validatorClass.EmptyTextBox(this, binding.na107, getString(R.string.na107))) {
+            if (!validatorClass.EmptyTextBox(this, binding.nh113, getString(R.string.nh113))) {
                 return false;
             }
-//        na108
-            if (!validatorClass.EmptyTextBox(this, binding.na108, getString(R.string.na108))) {
-                return false;
-            }
-
-            if (!validatorClass.RangeTextBox(this, binding.na108, 18, 99, getString(R.string.na108), "age")) {
+//        nh115
+            if (!validatorClass.EmptyTextBox(this, binding.nh115, getString(R.string.nh115))) {
                 return false;
             }
 
-//        na213
-            if (!validatorClass.EmptyTextBox(this, binding.na213, getString(R.string.na213))) {
+            if (!validatorClass.RangeTextBox(this, binding.nh115, 18, 99, getString(R.string.nh115), "age")) {
                 return false;
             }
 
-//        na11201
-            if (!validatorClass.EmptyRadioButton(this, binding.na11201, binding.na11201b, getString(R.string.na11201))) {
-                return false;
-            }
-//        na11202
-            if (!validatorClass.EmptyRadioButton(this, binding.na11202, binding.na11202b, getString(R.string.na11202))) {
+//        nh213
+            if (!validatorClass.EmptyTextBox(this, binding.nh213, getString(R.string.nh213))) {
                 return false;
             }
 
-            if (MainApp.selectedHead.getSelStructure().equals("1") && !binding.na11202a.isChecked()) {
-                binding.na11202a.setError("Wrong Selection");
+//        na11801
+            if (!validatorClass.EmptyRadioButton(this, binding.na11801, binding.na11801b, getString(R.string.na11801))) {
+                return false;
+            }
+//        na11802
+            if (!validatorClass.EmptyRadioButton(this, binding.na11802, binding.na11802b, getString(R.string.na11802))) {
+                return false;
+            }
+
+            if (MainApp.selectedHead.getSelStructure().equals("1") && !binding.na11802a.isChecked()) {
+                binding.na11802a.setError("Wrong Selection");
                 Toast.makeText(this, "Wrong Selection", Toast.LENGTH_SHORT).show();
                 return false;
             }
 
 //        na113
-            if (binding.na11201b.isChecked()) {
-                if (!validatorClass.EmptyCheckBox(this, binding.fldGrpna113, binding.na11396, binding.na11396x, String.valueOf(R.string.na113))) {
+            if (binding.na11801b.isChecked()) {
+                if (!validatorClass.EmptyCheckBox(this, binding.fldGrpna113, binding.na11996, binding.na11996x, String.valueOf(R.string.na113))) {
                     return false;
                 }
             }
@@ -334,8 +334,8 @@ public class SectionA1Activity extends AppCompatActivity {
                 Settings.Secure.ANDROID_ID));
         MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
         MainApp.fc.setRespLineNo(MainApp.lineNo);
-        MainApp.fc.setEnmNo(binding.na102.getText().toString());
-        MainApp.fc.setHhNo(binding.na103.getText().toString().toUpperCase());
+        MainApp.fc.setEnmNo(binding.nh102.getText().toString());
+        MainApp.fc.setHhNo(binding.nh108.getText().toString().toUpperCase());
 
 
         setGPS(); // Set GPS
@@ -353,40 +353,39 @@ public class SectionA1Activity extends AppCompatActivity {
         sA1.put("hhheadpresent", binding.checkHHHeadpresent.isChecked() ? "1" : "2");
         sA1.put("hhheadpresentnew", binding.newHHheadname.getText().toString());
 
-        sA1.put("nh101", binding.na101.getText().toString());
+        sA1.put("nh101", binding.nh101.getText().toString());
 
-        sA1.put("nh103", binding.na101a.getText().toString());
-        sA1.put("nh104", binding.na101b.getText().toString());
-        sA1.put("nh105", binding.na101c.getText().toString());
-        sA1.put("nh106", binding.na101d.getText().toString());
+        sA1.put("nh103", binding.nh103.getText().toString());
+        sA1.put("nh104", binding.nh104.getText().toString());
+        sA1.put("nh105", binding.nh105.getText().toString());
+        sA1.put("nh106", binding.nh106.getText().toString());
 
-        sA1.put("nh110", binding.na105.getText().toString());
-        sA1.put("nh113", binding.na107.getText().toString());
-        sA1.put("nh115", binding.na108.getText().toString());
+        sA1.put("nh110", binding.nh110.getText().toString());
+        sA1.put("nh113", binding.nh113.getText().toString());
+        sA1.put("nh115", binding.nh115.getText().toString());
 
-        sA1.put("nh213", binding.na213.getText().toString());
+        sA1.put("nh213", binding.nh213.getText().toString());
+
         sA1.put("nh11701blood", MainApp.selectedHead.getSelStructure());
-
         sA1.put("nh11702urine", MainApp.selectedHead.getSelStructure());
-
         sA1.put("nh11703water", MainApp.selectedHead.getSelStructure());
 
-        sA1.put("nh11801", binding.na11201a.isChecked() ? "1"
-                : binding.na11201b.isChecked() ? "2" : "0");
+        sA1.put("nh11801", binding.na11801a.isChecked() ? "1"
+                : binding.na11801b.isChecked() ? "2" : "0");
 
-        sA1.put("nh11802", binding.na11202a.isChecked() ? "1"
-                : binding.na11202b.isChecked() ? "2" : "0");
+        sA1.put("nh11802", binding.na11802a.isChecked() ? "1"
+                : binding.na11802b.isChecked() ? "2" : "0");
 
 //        na117
-        sA1.put("nh119a", binding.na113a.isChecked() ? "1" : "0");
-        sA1.put("nh119b", binding.na113b.isChecked() ? "2" : "0");
-        sA1.put("nh119c", binding.na113c.isChecked() ? "3" : "0");
-        sA1.put("nh119d", binding.na113d.isChecked() ? "4" : "0");
-        sA1.put("nh119e", binding.na113e.isChecked() ? "5" : "0");
-        sA1.put("nh119f", binding.na113f.isChecked() ? "6" : "0");
-        sA1.put("nh119g", binding.na113g.isChecked() ? "7" : "0");
-        sA1.put("nh11996", binding.na11396.isChecked() ? "96" : "0");
-        sA1.put("nh11996x", binding.na11396x.getText().toString());
+        sA1.put("nh119a", binding.na119a.isChecked() ? "1" : "0");
+        sA1.put("nh119b", binding.na119b.isChecked() ? "2" : "0");
+        sA1.put("nh119c", binding.na119c.isChecked() ? "3" : "0");
+        sA1.put("nh119d", binding.na119d.isChecked() ? "4" : "0");
+        sA1.put("nh119e", binding.na119e.isChecked() ? "5" : "0");
+        sA1.put("nh119f", binding.na119f.isChecked() ? "6" : "0");
+        sA1.put("nh119g", binding.na119g.isChecked() ? "7" : "0");
+        sA1.put("nh11996", binding.na11996.isChecked() ? "96" : "0");
+        sA1.put("nh11996x", binding.na11996x.getText().toString());
 
         MainApp.fc.setsA1(String.valueOf(sA1));
 
@@ -445,9 +444,9 @@ public class SectionA1Activity extends AppCompatActivity {
 
     public void BtnCheckHH() {
 
-        if (!binding.na102.getText().toString().trim().isEmpty() && !binding.na103.getText().toString().trim().isEmpty()) {
+        if (!binding.nh102.getText().toString().trim().isEmpty() && !binding.nh108.getText().toString().trim().isEmpty()) {
 
-            selected = db.getAllBLRandom(binding.na102.getText().toString(), binding.na103.getText().toString().toUpperCase());
+            selected = db.getAllBLRandom(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase());
 
             if (selected.size() != 0) {
 
@@ -459,7 +458,7 @@ public class SectionA1Activity extends AppCompatActivity {
 
                 binding.hhName.setText(MainApp.selectedHead.getHhhead().toUpperCase());
 
-                binding.fldGrpna105.setVisibility(View.VISIBLE);
+                binding.fldGrpnh110.setVisibility(View.VISIBLE);
 
             } else {
 
@@ -476,22 +475,22 @@ public class SectionA1Activity extends AppCompatActivity {
 
     public void BtnCheckEnm() {
 
-        if (validatorClass.EmptyTextBox(this, binding.na102, getString(R.string.na102))) {
+        if (validatorClass.EmptyTextBox(this, binding.nh102, getString(R.string.nh102))) {
 
-            String selected = db.getEnumBlock(binding.na102.getText().toString());
+            String selected = db.getEnumBlock(binding.nh102.getText().toString());
             if (!selected.equals("")) {
 
                 String[] selSplit = selected.split("\\|");
 
-                binding.na101a.setText(selSplit[0]);
-                binding.na101b.setText(selSplit[1].equals("") ? "----" : selSplit[1]);
-                binding.na101c.setText(selSplit[2].equals("") ? "----" : selSplit[2]);
-                binding.na101d.setText(selSplit[3]);
+                binding.nh103.setText(selSplit[0]);
+                binding.nh104.setText(selSplit[1].equals("") ? "----" : selSplit[1]);
+                binding.nh105.setText(selSplit[2].equals("") ? "----" : selSplit[2]);
+                binding.nh106.setText(selSplit[3]);
 
-                binding.fldGrpna101.setVisibility(View.VISIBLE);
+                binding.fldGrpnh101.setVisibility(View.VISIBLE);
 
             } else {
-                binding.na103.setText(null);
+                binding.nh108.setText(null);
                 Toast.makeText(this, "Sorry not found any block", Toast.LENGTH_SHORT).show();
             }
 

@@ -69,9 +69,9 @@ public class SectionA8AActivity extends Activity {
 
         }
 
-        bi.na8a02.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, recpNames));
+        bi.nh7a02.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, recpNames));
 
-        bi.na8a02.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        bi.nh7a02.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 position = i;
@@ -137,7 +137,7 @@ public class SectionA8AActivity extends Activity {
                     }
                 } else {
 
-                    recpNames.remove(bi.na8a02.getSelectedItem().toString());
+                    recpNames.remove(bi.nh7a02.getSelectedItem().toString());
                     recpSerial.remove(recpSerial.get(position));
 
                     startActivity(new Intent(this, SectionA8AActivity.class).putExtra("flag", false));
@@ -160,54 +160,54 @@ public class SectionA8AActivity extends Activity {
 
         //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
-        if (!validatorClass.EmptySpinner(this, bi.na8a02, getString(R.string.na8a02))) {
+        if (!validatorClass.EmptySpinner(this, bi.nh7a02, getString(R.string.nh7a02))) {
             return false;
         }
 
-        if (!validatorClass.EmptyTextBox(this, bi.na8a03y, getString(R.string.na8a03y))) {
+        if (!validatorClass.EmptyTextBox(this, bi.nh7a03y, getString(R.string.nh7a03y))) {
             return false;
         }
 
-        if (!validatorClass.EmptyTextBox(this, bi.na8a03m, getString(R.string.na8a03m))) {
+        if (!validatorClass.EmptyTextBox(this, bi.nh7a03m, getString(R.string.nh7a03m))) {
             return false;
         }
 
-        if (!validatorClass.RangeTextBox(this, bi.na8a03m, 0, 11, getString(R.string.na8a03m), " months")) {
+        if (!validatorClass.RangeTextBox(this, bi.nh7a03m, 0, 11, getString(R.string.nh7a03m), " months")) {
             return false;
         }
 
-        if (bi.na8a03m.getText().toString().equals("0") && bi.na8a03m.getText().toString().equals("0")) {
+        if (bi.nh7a03m.getText().toString().equals("0") && bi.nh7a03m.getText().toString().equals("0")) {
             Toast.makeText(this, "ERROR(invalid): " + "All can not be zero" + getString(R.string.na2age), Toast.LENGTH_LONG).show();
-            bi.na8a03m.setError("All can not be zero");
-            bi.na8a03y.setError("All can not be zero");
-            Log.i(SectionA2Activity.class.getSimpleName(), "na803" + ": This data is Required!");
+            bi.nh7a03m.setError("All can not be zero");
+            bi.nh7a03y.setError("All can not be zero");
+            Log.i(SectionA2Activity.class.getSimpleName(), "nh703" + ": This data is Required!");
         } else {
-            bi.na8a03y.setError(null);
-            bi.na8a03m.setError(null);
+            bi.nh7a03y.setError(null);
+            bi.nh7a03m.setError(null);
         }
 
-        if (!validatorClass.EmptyCheckBox(this, bi.fldGrpna08a04check, bi.na8a04a, getString(R.string.na8a04))) {
+        if (!validatorClass.EmptyCheckBox(this, bi.fldGrpna08a04check, bi.nh7a04a, getString(R.string.nh7a04))) {
             return false;
         }
 
-        if (!validatorClass.EmptyCheckBox(this, bi.fldGrpna08a04check, bi.na8a0496, bi.na8a0496x, getString(R.string.na8a04) + " - " + getString(R.string.other))) {
+        if (!validatorClass.EmptyCheckBox(this, bi.fldGrpna08a04check, bi.nh7a0496, bi.nh7a0496x, getString(R.string.nh7a04) + " - " + getString(R.string.other))) {
             return false;
         }
 
 
-        if (!validatorClass.EmptyTextBox(this, bi.na8a05, getString(R.string.na8a05))) {
+        if (!validatorClass.EmptyTextBox(this, bi.nh7a05, getString(R.string.nh7a05))) {
             return false;
         }
 
-        if (!validatorClass.RangeTextBox(this, bi.na8a05, 1000, 99999, getString(R.string.na8a05), " Rupees")) {
+        if (!validatorClass.RangeTextBox(this, bi.nh7a05, 1000, 99999, getString(R.string.nh7a05), " Rupees")) {
             return false;
         }
 
-        if (!validatorClass.EmptyTextBox(this, bi.na8a06, getString(R.string.na8a06))) {
+        if (!validatorClass.EmptyTextBox(this, bi.nh7a06, getString(R.string.nh7a06))) {
             return false;
         }
 
-        return validatorClass.RangeTextBox(this, bi.na8a05, 0, Integer.valueOf(bi.na8a05.getText().toString()), getString(R.string.na8a06), " Rupees");
+        return validatorClass.RangeTextBox(this, bi.nh7a05, 0, Integer.valueOf(bi.nh7a05.getText().toString()), getString(R.string.nh7a06), " Rupees");
     }
 
     private void SaveDraft() throws JSONException {
@@ -225,29 +225,29 @@ public class SectionA8AActivity extends Activity {
 
         JSONObject sA8a = new JSONObject();
 
-        sA8a.put("na7a01", fmcSelected.getName());
-        sA8a.put("na7a01Serial", fmcSelected.getSerialNo());
+        sA8a.put("nh7a01", fmcSelected.getName());
+        sA8a.put("nh7a01Serial", fmcSelected.getSerialNo());
 
-        sA8a.put("na7a02", bi.na8a02.getSelectedItem().toString());
-        //sA8a.put("nh7a02", bi.na8a02.getText().toString());
+        sA8a.put("nh7a02", bi.nh7a02.getSelectedItem().toString());
+        //sA8a.put("nh7a02", bi.nh7a02.getText().toString());
 
-        sA8a.put("nh7a03y", bi.na8a03y.getText().toString());
+        sA8a.put("nh7a03y", bi.nh7a03y.getText().toString());
 
-        sA8a.put("nh7a03m", bi.na8a03m.getText().toString());
+        sA8a.put("nh7a03m", bi.nh7a03m.getText().toString());
 
-        sA8a.put("nh7a04a", bi.na8a04a.isChecked() ? "1" : "0");
-        sA8a.put("nh7a04b", bi.na8a04b.isChecked() ? "2" : "0");
-        sA8a.put("nh7a04c", bi.na8a04c.isChecked() ? "3" : "0");
-        sA8a.put("nh7a04d", bi.na8a04d.isChecked() ? "4" : "0");
-        sA8a.put("nh7a04e", bi.na8a04e.isChecked() ? "5" : "0");
-        sA8a.put("nh7a04f", bi.na8a04f.isChecked() ? "6" : "0");
-        sA8a.put("nh7a04g", bi.na8a04g.isChecked() ? "7" : "0");
-        sA8a.put("nh7a04h", bi.na8a04h.isChecked() ? "8" : "0");
-        sA8a.put("nh7a04i", bi.na8a04i.isChecked() ? "9" : "0");
-        sA8a.put("nh7a0496", bi.na8a0496.isChecked() ? "96" : "0");
-        sA8a.put("nh7a0496x", bi.na8a0496x.getText().toString());
-        sA8a.put("nh7a05", bi.na8a05.getText().toString());
-        sA8a.put("nh7a06", bi.na8a06.getText().toString());
+        sA8a.put("nh7a04a", bi.nh7a04a.isChecked() ? "1" : "0");
+        sA8a.put("nh7a04b", bi.nh7a04b.isChecked() ? "2" : "0");
+        sA8a.put("nh7a04c", bi.nh7a04c.isChecked() ? "3" : "0");
+        sA8a.put("nh7a04d", bi.nh7a04d.isChecked() ? "4" : "0");
+        sA8a.put("nh7a04e", bi.nh7a04e.isChecked() ? "5" : "0");
+        sA8a.put("nh7a04f", bi.nh7a04f.isChecked() ? "6" : "0");
+        sA8a.put("nh7a04g", bi.nh7a04g.isChecked() ? "7" : "0");
+        sA8a.put("nh7a04h", bi.nh7a04h.isChecked() ? "8" : "0");
+        sA8a.put("nh7a04i", bi.nh7a04i.isChecked() ? "9" : "0");
+        sA8a.put("nh7a0496", bi.nh7a0496.isChecked() ? "96" : "0");
+        sA8a.put("nh7a0496x", bi.nh7a0496x.getText().toString());
+        sA8a.put("nh7a05", bi.nh7a05.getText().toString());
+        sA8a.put("nh7a06", bi.nh7a06.getText().toString());
 
 
         MainApp.rc.setsA8A(String.valueOf(sA8a));

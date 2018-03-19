@@ -31,7 +31,7 @@ import edu.aku.hassannaqvi.nns_2018.other.JSONModelClass;
 import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionA3Activity extends AppCompatActivity {
+public class SectionD1Activity extends AppCompatActivity {
 
     static List<String> members;
     static Map<String, SelectedMem> membersMap;
@@ -52,7 +52,7 @@ public class SectionA3Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_section_a3);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_section_d1);
         db = new DatabaseHelper(this);
 
 //        Assigning data to UI binding
@@ -87,16 +87,16 @@ public class SectionA3Activity extends AppCompatActivity {
             familyMembersSetting(MainApp.adolescents, 3);  // 3 for Adolescents
         }
         slecMem = new FamilyMembersContract();
-        binding.na301.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, members));
+        binding.nd101.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, members));
 
 //        Spinner setting
-        binding.na301.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        binding.nd101.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
                 if (i != 0) {
 
-                    SelectedMem mem = membersMap.get(binding.na301.getSelectedItem().toString());
+                    SelectedMem mem = membersMap.get(binding.nd101.getSelectedItem().toString());
                     slc_type = mem.getType();
                     slecMem = mem.getFmc();
 
@@ -176,9 +176,9 @@ public class SectionA3Activity extends AppCompatActivity {
 
                 } else {
 
-                    members.remove(binding.na301.getSelectedItem().toString());
+                    members.remove(binding.nd101.getSelectedItem().toString());
 
-                    startActivity(new Intent(this, SectionA3Activity.class)
+                    startActivity(new Intent(this, SectionD1Activity.class)
                             .putExtra("flag", true));
                 }
 */
@@ -213,38 +213,38 @@ public class SectionA3Activity extends AppCompatActivity {
 
         //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
-        if (!validatorClass.EmptySpinner(this, binding.na301, getString(R.string.na3w))) {
+        if (!validatorClass.EmptySpinner(this, binding.nd101, getString(R.string.nd1w))) {
             return false;
         }
 
-        if (!validatorClass.EmptyTextBox(this, binding.na3w, getString(R.string.na3w))) {
+        if (!validatorClass.EmptyTextBox(this, binding.nd1w, getString(R.string.nd1w))) {
             return false;
         }
 
-        if (!validatorClass.EmptyTextBox(this, binding.na3h, getString(R.string.na3h))) {
+        if (!validatorClass.EmptyTextBox(this, binding.nd1h, getString(R.string.nd1h))) {
             return false;
         }
 
-        if (!validatorClass.EmptyTextBox(this, binding.na3muac, getString(R.string.na3muac))) {
+        if (!validatorClass.EmptyTextBox(this, binding.nd1muac, getString(R.string.nd1muac))) {
             return false;
         }
 
 
         if (slc_type == 2) {
-            if (!validatorClass.EmptyRadioButton(this, binding.na3bcgscar, binding.na3bcgscara, getString(R.string.na3bcgscar))) {
+            if (!validatorClass.EmptyRadioButton(this, binding.nd1bcgscar, binding.nd1bcgscara, getString(R.string.nd1bcgscar))) {
                 return false;
             }
         }
-        if (!validatorClass.EmptyRadioButton(this, binding.na3g, binding.na3ga, getString(R.string.na3g))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nd1g, binding.nd1ga, getString(R.string.nd1g))) {
             return false;
         }
 
-        if (!validatorClass.EmptyRadioButton(this, binding.na3ca, binding.na3caa, getString(R.string.na3ca))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nd1ca, binding.nd1caa, getString(R.string.nd1ca))) {
             return false;
         }
 
         if (slc_type == 2) {
-            if (!validatorClass.EmptyRadioButton(this, binding.na3o, binding.na3oa, getString(R.string.na3o))) {
+            if (!validatorClass.EmptyRadioButton(this, binding.nd1o, binding.nd1oa, getString(R.string.nd1o))) {
                 return false;
             }
         }
@@ -270,29 +270,29 @@ public class SectionA3Activity extends AppCompatActivity {
 
         JSONObject sA3 = new JSONObject();
 
-        name = binding.na301.getSelectedItem().toString();
-        sA3.put("nd101", binding.na301.getSelectedItem().toString());
+        name = binding.nd101.getSelectedItem().toString();
+        sA3.put("nd101", binding.nd101.getSelectedItem().toString());
         sA3.put("nd101Serial", json.getSerialNo());
 
         sA3.put("nd1Serial", String.valueOf(counter));
 
-        sA3.put("nd1w", binding.na3w.getText().toString());
+        sA3.put("nd1w", binding.nd1w.getText().toString());
 
-        sA3.put("nd1h", binding.na3h.getText().toString());
+        sA3.put("nd1h", binding.nd1h.getText().toString());
 
-        sA3.put("nd1muac", binding.na3muac.getText().toString());
+        sA3.put("nd1muac", binding.nd1muac.getText().toString());
 
-        sA3.put("nd1bcgscar", binding.na3bcgscara.isChecked() ? "1"
-                : binding.na3bcgscarb.isChecked() ? "2" : "0");
+        sA3.put("nd1bcgscar", binding.nd1bcgscara.isChecked() ? "1"
+                : binding.nd1bcgscarb.isChecked() ? "2" : "0");
 
-        sA3.put("nd1g", binding.na3ga.isChecked() ? "1"
-                : binding.na3gb.isChecked() ? "2" : "0");
+        sA3.put("nd1g", binding.nd1ga.isChecked() ? "1"
+                : binding.nd1gb.isChecked() ? "2" : "0");
 
-        sA3.put("nd1g", binding.na3caa.isChecked() ? "1"
-                : binding.na3cab.isChecked() ? "2" : "0");
+        sA3.put("nd1g", binding.nd1caa.isChecked() ? "1"
+                : binding.nd1cab.isChecked() ? "2" : "0");
 
-        sA3.put("nd1o", binding.na3oa.isChecked() ? "1"
-                : binding.na3ob.isChecked() ? "2" : "0");
+        sA3.put("nd1o", binding.nd1oa.isChecked() ? "1"
+                : binding.nd1ob.isChecked() ? "2" : "0");
 
 
         MainApp.emc.setsA3(String.valueOf(sA3));

@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/nb601"
+                android:text="@string/nw501"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
@@ -52,7 +52,7 @@
                 style="@style/sub"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/nb601info" />
+                android:text="@string/nw501info" />
 
             <LinearLayout
                 android:id="@+id/fldGrpfoods"

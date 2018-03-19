@@ -294,9 +294,9 @@ public class SectionC3Activity extends AppCompatActivity {
         JSONObject sC3 = new JSONObject();
 
 //        nc301
-        sC3.put("nc301", selectedChild.getName());
+        sC3.put("nc3name", selectedChild.getName());
 //        nc302
-        sC3.put("nc302Serial", selectedChild.getSerialNo());
+        sC3.put("nc300Serial", selectedChild.getSerialNo());
 
 //        nc302
         sC3.put("nc302", binding.nc302a.isChecked() ? "1"

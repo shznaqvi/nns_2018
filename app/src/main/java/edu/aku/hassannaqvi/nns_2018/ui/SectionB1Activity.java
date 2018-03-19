@@ -380,7 +380,7 @@ public class SectionB1Activity extends Activity {
         //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
 
-        /*if (!validatorClass.EmptySpinner(this, bi.resp, getString(R.string.na107))) {
+        /*if (!validatorClass.EmptySpinner(this, bi.resp, getString(R.string.nh113))) {
             return false;
         }*/
 

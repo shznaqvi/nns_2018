@@ -435,7 +435,7 @@ public class SectionC4Activity extends Activity {
         JSONObject sC4 = new JSONObject();
 
 //        nc301
-        sC4.put("nc401", selectedChild.getName());
+        sC4.put("nc4name", selectedChild.getName());
 //        nc302
         sC4.put("nc402Serial", selectedChild.getSerialNo());
 

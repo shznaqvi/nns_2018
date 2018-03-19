@@ -10,7 +10,8 @@ import org.json.JSONObject;
  * Created by hassan.naqvi on 11/30/2016.
  */
 
-public class FormsContract {
+public class
+FormsContract {
 
     private final String projectName = "NNS-2018";
     //private final String surveyType = "SN";

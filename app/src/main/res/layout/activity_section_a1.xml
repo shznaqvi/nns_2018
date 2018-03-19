@@ -50,31 +50,31 @@
                 android:layoutDirection="rtl"
                 android:orientation="vertical">
 
-                <!--na101-->
+                <!--nh101-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/colorPrimary"
-                    android:text="@string/na101"
+                    android:text="@string/nh101"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
 
                 <EditText
-                    android:id="@+id/na101"
+                    android:id="@+id/nh101"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789"
-                    android:hint="@string/na101"
+                    android:hint="@string/nh101"
                     android:maxLength="50" />
 
-                <!--na102-->
+                <!--nh102-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorPrimary"
-                    android:text="@string/na102"
+                    android:text="@string/nh102"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
 
@@ -84,13 +84,13 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/na102"
+                        android:id="@+id/nh102"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
                         android:layout_weight="60"
-                        android:hint="@string/na102"
+                        android:hint="@string/nh102"
                         android:inputType="number"
                         android:maxLength="9" />
 
@@ -110,7 +110,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/fldGrpna101"
+                    android:id="@+id/fldGrpnh101"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -126,7 +126,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
-                            <!--na101a-->
+                            <!--nh103-->
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -135,13 +135,13 @@
                                 android:layout_weight="1"
                                 android:background="@color/colorPrimary"
                                 android:gravity="center_horizontal|center_vertical"
-                                android:text="@string/na101a"
+                                android:text="@string/nh103"
                                 android:textAppearance="?android:attr/textAppearanceLarge"
                                 android:textColor="@android:color/white" />
 
 
                             <TextView
-                                android:id="@+id/na101a"
+                                android:id="@+id/nh103"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="4dp"
@@ -152,7 +152,7 @@
                                 android:textColor="@color/colorPrimaryDark"
                                 android:textSize="16sp" />
 
-                            <!--na101b-->
+                            <!--nh104-->
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -161,13 +161,13 @@
                                 android:layout_weight="1"
                                 android:background="@color/colorPrimary"
                                 android:gravity="center_horizontal|center_vertical"
-                                android:text="@string/na101b"
+                                android:text="@string/nh104"
                                 android:textAppearance="?android:attr/textAppearanceLarge"
                                 android:textColor="@android:color/white" />
 
 
                             <TextView
-                                android:id="@+id/na101b"
+                                android:id="@+id/nh104"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="4dp"
@@ -190,7 +190,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
-                            <!--na101c-->
+                            <!--nh105-->
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -199,13 +199,13 @@
                                 android:layout_weight="1"
                                 android:background="@color/colorPrimary"
                                 android:gravity="center_horizontal|center_vertical"
-                                android:text="@string/na101c"
+                                android:text="@string/nh105"
                                 android:textAppearance="?android:attr/textAppearanceLarge"
                                 android:textColor="@android:color/white" />
 
 
                             <TextView
-                                android:id="@+id/na101c"
+                                android:id="@+id/nh105"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="4dp"
@@ -216,7 +216,7 @@
                                 android:textColor="@color/colorPrimaryDark"
                                 android:textSize="16sp" />
 
-                            <!--na101d-->
+                            <!--nh106-->
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -225,13 +225,13 @@
                                 android:layout_weight="1"
                                 android:background="@color/colorPrimary"
                                 android:gravity="center_horizontal|center_vertical"
-                                android:text="@string/na101d"
+                                android:text="@string/nh106"
                                 android:textAppearance="?android:attr/textAppearanceLarge"
                                 android:textColor="@android:color/white" />
 
 
                             <TextView
-                                android:id="@+id/na101d"
+                                android:id="@+id/nh106"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="8dp"
@@ -245,13 +245,13 @@
 
                     </LinearLayout>
 
-                    <!--na103-->
+                    <!--nh108-->
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:background="@color/colorPrimary"
-                        android:text="@string/na103"
+                        android:text="@string/nh108"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@android:color/white" />
 
@@ -261,7 +261,7 @@
                         android:orientation="horizontal">
 
                         <EditText
-                            android:id="@+id/na103"
+                            android:id="@+id/nh108"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="10dp"
@@ -287,7 +287,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/fldGrpna105"
+                        android:id="@+id/fldGrpnh110"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
@@ -308,7 +308,7 @@
                             android:text="@string/checkHHpresent" />
 
                         <LinearLayout
-                            android:id="@+id/fldGrpna105a"
+                            android:id="@+id/fldGrpnh110a"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
@@ -332,63 +332,63 @@
                         </LinearLayout>
 
 
-                        <!--na105-->
+                        <!--nh110-->
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
                             android:background="@color/colorPrimary"
-                            android:text="@string/na105"
+                            android:text="@string/nh110"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@android:color/white" />
 
                         <EditText
-                            android:id="@+id/na105"
+                            android:id="@+id/nh110"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
                             android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789"
-                            android:hint="@string/na105"
+                            android:hint="@string/nh110"
                             android:maxLength="25"
 
                             />
 
-                        <!--na107-->
+                        <!--nh113-->
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
                             android:background="@color/colorPrimary"
-                            android:text="@string/na107"
+                            android:text="@string/nh113"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@android:color/white" />
 
                         <EditText
-                            android:id="@+id/na107"
+                            android:id="@+id/nh113"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
                             android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
-                            android:hint="@string/na107"
+                            android:hint="@string/nh113"
                             android:maxLength="25" />
 
-                        <!--na108-->
+                        <!--nh115-->
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
                             android:background="@color/colorPrimary"
-                            android:text="@string/na108"
+                            android:text="@string/nh115"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@android:color/white" />
 
                         <EditText
-                            android:id="@+id/na108"
+                            android:id="@+id/nh115"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
                             android:digits="0123456789"
-                            android:hint="@string/na108"
+                            android:hint="@string/nh115"
                             android:inputType="number"
                             android:maxLength="2" />
 
@@ -398,16 +398,16 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
                             android:background="@color/colorPrimary"
-                            android:text="@string/na213"
+                            android:text="@string/nh213"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@android:color/white" />
 
                         <EditText
-                            android:id="@+id/na213"
+                            android:id="@+id/nh213"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
-                            android:hint="@string/na213"
+                            android:hint="@string/nh213"
                             android:inputType="number"
                             android:maxLength="11" />
 
@@ -589,24 +589,24 @@
                                 android:textAppearance="?android:attr/textAppearanceLarge"
                                 android:textColor="@android:color/white" />
 
-                            <!--na11201-->
+                            <!--na11801-->
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="16dp"
                                 android:background="@color/pink_100"
-                                android:text="@string/na11201"
+                                android:text="@string/na11801"
                                 android:textAppearance="?android:attr/textAppearanceLarge"
                                 android:textColor="@color/colorPrimaryDark" />
 
                             <RadioGroup
-                                android:id="@+id/na11201"
+                                android:id="@+id/na11801"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
                                 <RadioButton
-                                    android:id="@+id/na11201a"
+                                    android:id="@+id/na11801a"
                                     style="@style/radiobutton"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -615,7 +615,7 @@
                                     android:text="@string/yes" />
 
                                 <RadioButton
-                                    android:id="@+id/na11201b"
+                                    android:id="@+id/na11801b"
                                     style="@style/radiobutton"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -624,7 +624,7 @@
                                     android:text="@string/no" />
                             </RadioGroup>
 
-                            <!--na11202-->
+                            <!--na11802-->
 
                             <LinearLayout
                                 android:id="@+id/fldGrpna1202"
@@ -637,18 +637,18 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="16dp"
                                     android:background="@color/pink_100"
-                                    android:text="@string/na11202"
+                                    android:text="@string/na11802"
                                     android:textAppearance="?android:attr/textAppearanceLarge"
                                     android:textColor="@color/colorPrimaryDark" />
 
                                 <RadioGroup
-                                    android:id="@+id/na11202"
+                                    android:id="@+id/na11802"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="horizontal">
 
                                     <RadioButton
-                                        android:id="@+id/na11202a"
+                                        android:id="@+id/na11802a"
                                         style="@style/radiobutton"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
@@ -657,7 +657,7 @@
                                         android:text="@string/yes" />
 
                                     <RadioButton
-                                        android:id="@+id/na11202b"
+                                        android:id="@+id/na11802b"
                                         style="@style/radiobutton"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
@@ -673,7 +673,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical"
-                                android:visibility="@{na11201a.checked ? View.GONE : View.VISIBLE}">
+                                android:visibility="@{na11801a.checked ? View.GONE : View.VISIBLE}">
 
                                 <!--na1b-->
                                 <TextView
@@ -700,63 +700,63 @@
                                     android:orientation="vertical">
 
                                     <CheckBox
-                                        android:id="@+id/na113a"
+                                        android:id="@+id/na119a"
                                         style="@style/checkbox"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="1dp"
-                                        android:text="@string/na113a" />
+                                        android:text="@string/na119a" />
 
                                     <CheckBox
-                                        android:id="@+id/na113b"
+                                        android:id="@+id/na119b"
                                         style="@style/checkbox"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="1dp"
-                                        android:text="@string/na113b" />
+                                        android:text="@string/na119b" />
 
                                     <CheckBox
-                                        android:id="@+id/na113c"
+                                        android:id="@+id/na119c"
                                         style="@style/checkbox"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="1dp"
-                                        android:text="@string/na113c" />
+                                        android:text="@string/na119c" />
 
                                     <CheckBox
-                                        android:id="@+id/na113d"
+                                        android:id="@+id/na119d"
                                         style="@style/checkbox"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="1dp"
-                                        android:text="@string/na113d" />
+                                        android:text="@string/na119d" />
 
                                     <CheckBox
-                                        android:id="@+id/na113e"
+                                        android:id="@+id/na119e"
                                         style="@style/checkbox"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="1dp"
-                                        android:text="@string/na113e" />
+                                        android:text="@string/na119e" />
 
                                     <CheckBox
-                                        android:id="@+id/na113f"
+                                        android:id="@+id/na119f"
                                         style="@style/checkbox"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="1dp"
-                                        android:text="@string/na113f" />
+                                        android:text="@string/na119f" />
 
                                     <CheckBox
-                                        android:id="@+id/na113g"
+                                        android:id="@+id/na119g"
                                         style="@style/checkbox"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="1dp"
-                                        android:text="@string/na113g" />
+                                        android:text="@string/na119g" />
 
                                     <CheckBox
-                                        android:id="@+id/na11396"
+                                        android:id="@+id/na11996"
                                         style="@style/checkbox"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
@@ -766,14 +766,14 @@
                                 </LinearLayout>
 
                                 <EditText
-                                    android:id="@+id/na11396x"
+                                    android:id="@+id/na11996x"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="5dp"
                                     android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                                     android:hint="@string/other"
-                                    android:text='@{na11396.checked ? na11396x.getText.toString : ""}'
-                                    android:visibility='@{na11396.checked ? View.VISIBLE : View.GONE}' />
+                                    android:text='@{na11996.checked ? na11996x.getText.toString : ""}'
+                                    android:visibility='@{na11996.checked ? View.VISIBLE : View.GONE}' />
 
                             </LinearLayout>
 
@@ -808,7 +808,7 @@
                                 android:onClick="@{() -> callback.BtnContinue()}"
                                 android:text="@string/nextSection"
                                 android:textColor="@color/white"
-                                android:visibility="@{na11201b.checked ? View.GONE : View.VISIBLE}" />
+                                android:visibility="@{na11801b.checked ? View.GONE : View.VISIBLE}" />
 
                         </LinearLayout>
 

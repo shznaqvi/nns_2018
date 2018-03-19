@@ -49,18 +49,18 @@
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimaryDark" />
 
-            <!--na101-->
+            <!--nh101-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na8a02"
+                android:text="@string/nh7a02"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
             <Spinner
-                android:id="@+id/na8a02"
+                android:id="@+id/nh7a02"
                 style="@style/Widget.AppCompat.Spinner.Underlined"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na8a03"
+                android:text="@string/nh7a03"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
@@ -82,24 +82,24 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/na8a03y"
+                    android:id="@+id/nh7a03y"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
                     android:layout_marginTop="5dp"
                     android:layout_weight="1"
-                    android:hint="@string/na8a03y"
+                    android:hint="@string/nh7a03y"
                     android:inputType="number"
                     android:maxLength="2" />
 
 
                 <EditText
-                    android:id="@+id/na8a03m"
+                    android:id="@+id/nh7a03m"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_weight="1"
-                    android:hint="@string/na8a03m"
+                    android:hint="@string/nh7a03m"
                     android:inputType="number"
                     android:maxLength="2" />
 
@@ -110,7 +110,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na8a04"
+                android:text="@string/nh7a04"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
@@ -121,71 +121,71 @@
                 android:orientation="vertical">
 
                 <CheckBox
-                    android:id="@+id/na8a04a"
+                    android:id="@+id/nh7a04a"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/na8a04a" />
+                    android:text="@string/nh7a04a" />
 
                 <CheckBox
-                    android:id="@+id/na8a04b"
+                    android:id="@+id/nh7a04b"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/na8a04b" />
+                    android:text="@string/nh7a04b" />
 
                 <CheckBox
-                    android:id="@+id/na8a04c"
+                    android:id="@+id/nh7a04c"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/na8a04c" />
+                    android:text="@string/nh7a04c" />
 
                 <CheckBox
-                    android:id="@+id/na8a04d"
+                    android:id="@+id/nh7a04d"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/na8a04d" />
+                    android:text="@string/nh7a04d" />
 
                 <CheckBox
-                    android:id="@+id/na8a04e"
+                    android:id="@+id/nh7a04e"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/na8a04e" />
+                    android:text="@string/nh7a04e" />
 
                 <CheckBox
-                    android:id="@+id/na8a04f"
+                    android:id="@+id/nh7a04f"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/na8a04f" />
+                    android:text="@string/nh7a04f" />
 
                 <CheckBox
-                    android:id="@+id/na8a04g"
+                    android:id="@+id/nh7a04g"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/na8a04g" />
+                    android:text="@string/nh7a04g" />
 
                 <CheckBox
-                    android:id="@+id/na8a04h"
+                    android:id="@+id/nh7a04h"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/na8a04h" />
+                    android:text="@string/nh7a04h" />
 
                 <CheckBox
-                    android:id="@+id/na8a04i"
+                    android:id="@+id/nh7a04i"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/na8a04i" />
+                    android:text="@string/nh7a04i" />
 
 
                 <CheckBox
-                    android:id="@+id/na8a0496"
+                    android:id="@+id/nh7a0496"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
@@ -193,14 +193,14 @@
 
 
                 <EditText
-                    android:id="@+id/na8a0496x"
+                    android:id="@+id/nh7a0496x"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                     android:hint="@string/other"
-                    android:text='@{na8a0496.checked ? na8a0496x.getText.toString : ""}'
-                    android:visibility='@{na8a0496.checked ? View.VISIBLE : View.GONE}' />
+                    android:text='@{nh7a0496.checked ? nh7a0496x.getText.toString : ""}'
+                    android:visibility='@{nh7a0496.checked ? View.VISIBLE : View.GONE}' />
 
 
             </LinearLayout>
@@ -211,12 +211,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na8a05"
+                android:text="@string/nh7a05"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
             <EditText
-                android:id="@+id/na8a05"
+                android:id="@+id/nh7a05"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -229,12 +229,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na8a06"
+                android:text="@string/nh7a06"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
             <EditText
-                android:id="@+id/na8a06"
+                android:id="@+id/nh7a06"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"

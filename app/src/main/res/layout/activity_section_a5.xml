@@ -40,7 +40,7 @@
                 android:background="@color/colorPrimary" />
 
 
-            <!--na501-->
+            <!--nh401-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -53,155 +53,155 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorPrimary"
-                    android:text="@string/na501"
+                    android:text="@string/nh401"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
 
                 <RadioGroup
-                    android:id="@+id/na501"
+                    android:id="@+id/nh401"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <RadioButton
-                        android:id="@+id/na501a"
+                        android:id="@+id/nh401a"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:text="@string/na501a" />
+                        android:text="@string/nh401a" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/pink_100"
-                        android:text="@string/na501info"
+                        android:text="@string/nh401info"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="@color/colorPrimaryDark" />
 
                     <RadioButton
-                        android:id="@+id/na501b"
+                        android:id="@+id/nh401b"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:text="@string/na501b" />
+                        android:text="@string/nh401b" />
 
                     <RadioButton
-                        android:id="@+id/na501c"
+                        android:id="@+id/nh401c"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:text="@string/na501c" />
+                        android:text="@string/nh401c" />
 
                     <RadioButton
-                        android:id="@+id/na501d"
+                        android:id="@+id/nh401d"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:text="@string/na501d" />
+                        android:text="@string/nh401d" />
                 </RadioGroup>
 
             </LinearLayout>
 
 
             <LinearLayout
-                android:id="@+id/fldGrpna502"
+                android:id="@+id/fldGrpnh402"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="@{na501a.checked ? View.VISIBLE : View.GONE}">
-                <!--na502-->
+                android:visibility="@{nh401a.checked ? View.VISIBLE : View.GONE}">
+                <!--nh402-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorPrimary"
-                    android:text="@string/na502"
+                    android:text="@string/nh402"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
 
                 <RadioGroup
-                    android:id="@+id/na502"
+                    android:id="@+id/nh402"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <RadioButton
-                        android:id="@+id/na502a"
+                        android:id="@+id/nh402a"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:text="@string/na502a" />
+                        android:text="@string/nh402a" />
 
                     <RadioButton
-                        android:id="@+id/na502b"
+                        android:id="@+id/nh402b"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:text="@string/na502b" />
+                        android:text="@string/nh402b" />
 
                 </RadioGroup>
 
-                <!--na503-->
+                <!--nh403-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorPrimary"
-                    android:text="@string/na503"
+                    android:text="@string/nh403"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
 
                 <LinearLayout
-                    android:id="@+id/fldGrna503check"
+                    android:id="@+id/fldGrnh403check"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <CheckBox
-                        android:id="@+id/na503a"
+                        android:id="@+id/nh403a"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:text="@string/na503a" />
+                        android:text="@string/nh403a" />
 
                     <CheckBox
-                        android:id="@+id/na503b"
+                        android:id="@+id/nh403b"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:text="@string/na503b" />
+                        android:text="@string/nh403b" />
 
                     <CheckBox
-                        android:id="@+id/na503c"
+                        android:id="@+id/nh403c"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:text="@string/na503c" />
+                        android:text="@string/nh403c" />
 
                     <CheckBox
-                        android:id="@+id/na503d"
+                        android:id="@+id/nh403d"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:text="@string/na503d" />
+                        android:text="@string/nh403d" />
 
                     <CheckBox
-                        android:id="@+id/na503e"
+                        android:id="@+id/nh403e"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:text="@string/na503e" />
+                        android:text="@string/nh403e" />
                 </LinearLayout>
 
             </LinearLayout>
 
-            <!--na504-->
+            <!--nh404-->
             <LinearLayout
-                android:id="@+id/fldGrna504"
+                android:id="@+id/fldGrnh404"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -211,18 +211,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorPrimary"
-                    android:text="@string/na504"
+                    android:text="@string/nh404"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
 
                 <RadioGroup
-                    android:id="@+id/na504"
+                    android:id="@+id/nh404"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/na504a"
+                        android:id="@+id/nh404a"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -231,7 +231,7 @@
                         android:text="@string/yes" />
 
                     <RadioButton
-                        android:id="@+id/na504b"
+                        android:id="@+id/nh404b"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -242,64 +242,64 @@
                 </RadioGroup>
 
             </LinearLayout>
-            <!--na505-->
+            <!--nh405-->
 
             <LinearLayout
-                android:id="@+id/fldGrpna505"
+                android:id="@+id/fldGrpnh405"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="@{na504a.checked ? View.VISIBLE : View.GONE}">
+                android:visibility="@{nh404a.checked ? View.VISIBLE : View.GONE}">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorPrimary"
-                    android:text="@string/na505"
+                    android:text="@string/nh405"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
 
                 <LinearLayout
-                    android:id="@+id/fldGrpna505check"
+                    android:id="@+id/fldGrpnh405check"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <CheckBox
-                        android:id="@+id/na505a"
+                        android:id="@+id/nh405a"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:text="@string/na505a" />
+                        android:text="@string/nh405a" />
 
                     <CheckBox
-                        android:id="@+id/na505b"
+                        android:id="@+id/nh405b"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:text="@string/na505b" />
+                        android:text="@string/nh405b" />
 
                     <CheckBox
-                        android:id="@+id/na505c"
+                        android:id="@+id/nh405c"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:text="@string/na505c" />
+                        android:text="@string/nh405c" />
 
                     <CheckBox
-                        android:id="@+id/na505d"
+                        android:id="@+id/nh405d"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:text="@string/na505d" />
+                        android:text="@string/nh405d" />
 
                     <CheckBox
-                        android:id="@+id/na505e"
+                        android:id="@+id/nh405e"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:text="@string/na505e" />
+                        android:text="@string/nh405e" />
 
                 </LinearLayout>
 
@@ -311,13 +311,13 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bacground_border1"
                 android:orientation="vertical">
-                <!--na506-->
+                <!--nh406-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorPrimary"
-                    android:text="@string/na506"
+                    android:text="@string/nh406"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
 
@@ -326,33 +326,33 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="@string/na506info" />
+                    android:text="@string/nh406info" />
 
                 <TextView
                     style="@style/sub"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/na506info1" />
+                    android:text="@string/nh406info1" />
 
 
-                <!--na50601-->
+                <!--nh40601-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/pink_100"
-                    android:text="@string/na50601"
+                    android:text="@string/nh40601"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/colorPrimaryDark" />
 
                 <RadioGroup
-                    android:id="@+id/na50601"
+                    android:id="@+id/nh40601"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/na50601a"
+                        android:id="@+id/nh40601a"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -361,7 +361,7 @@
                         android:text="@string/yes" />
 
                     <RadioButton
-                        android:id="@+id/na50601b"
+                        android:id="@+id/nh40601b"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -370,24 +370,24 @@
                         android:text="@string/no" />
                 </RadioGroup>
 
-                <!--na50602-->
+                <!--nh40602-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/pink_100"
-                    android:text="@string/na50602"
+                    android:text="@string/nh40602"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/colorPrimaryDark" />
 
                 <RadioGroup
-                    android:id="@+id/na50602"
+                    android:id="@+id/nh40602"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/na50602a"
+                        android:id="@+id/nh40602a"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -396,7 +396,7 @@
                         android:text="@string/yes" />
 
                     <RadioButton
-                        android:id="@+id/na50602b"
+                        android:id="@+id/nh40602b"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -405,24 +405,24 @@
                         android:text="@string/no" />
                 </RadioGroup>
 
-                <!--na50603-->
+                <!--nh40603-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/pink_100"
-                    android:text="@string/na50603"
+                    android:text="@string/nh40603"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/colorPrimaryDark" />
 
                 <RadioGroup
-                    android:id="@+id/na50603"
+                    android:id="@+id/nh40603"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/na50603a"
+                        android:id="@+id/nh40603a"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -431,7 +431,7 @@
                         android:text="@string/yes" />
 
                     <RadioButton
-                        android:id="@+id/na50603b"
+                        android:id="@+id/nh40603b"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -440,24 +440,24 @@
                         android:text="@string/no" />
                 </RadioGroup>
 
-                <!--na50604-->
+                <!--nh40604-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/pink_100"
-                    android:text="@string/na50604"
+                    android:text="@string/nh40604"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/colorPrimaryDark" />
 
                 <RadioGroup
-                    android:id="@+id/na50604"
+                    android:id="@+id/nh40604"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/na50604a"
+                        android:id="@+id/nh40604a"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -466,7 +466,7 @@
                         android:text="@string/yes" />
 
                     <RadioButton
-                        android:id="@+id/na50604b"
+                        android:id="@+id/nh40604b"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -475,24 +475,24 @@
                         android:text="@string/no" />
                 </RadioGroup>
 
-                <!--na50605-->
+                <!--nh40605-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/pink_100"
-                    android:text="@string/na50605"
+                    android:text="@string/nh40605"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/colorPrimaryDark" />
 
                 <RadioGroup
-                    android:id="@+id/na50605"
+                    android:id="@+id/nh40605"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/na50605a"
+                        android:id="@+id/nh40605a"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -501,7 +501,7 @@
                         android:text="@string/yes" />
 
                     <RadioButton
-                        android:id="@+id/na50605b"
+                        android:id="@+id/nh40605b"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -510,7 +510,7 @@
                         android:text="@string/no" />
                 </RadioGroup>
 
-                <!--na50696-->
+                <!--nh40696-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -521,13 +521,13 @@
                     android:textColor="@color/colorPrimaryDark" />
 
                 <RadioGroup
-                    android:id="@+id/na50696"
+                    android:id="@+id/nh40696"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/na50696a"
+                        android:id="@+id/nh40696a"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -536,7 +536,7 @@
                         android:text="@string/yes" />
 
                     <RadioButton
-                        android:id="@+id/na50696b"
+                        android:id="@+id/nh40696b"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -546,14 +546,14 @@
                 </RadioGroup>
 
                 <EditText
-                    android:id="@+id/na50696x"
+                    android:id="@+id/nh40696x"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                     android:hint="@string/other"
-                    android:text='@{na50696a.checked ? na50696x.getText.toString : ""}'
-                    android:visibility='@{na50696a.checked ? View.VISIBLE : View.GONE}' />
+                    android:text='@{nh40696a.checked ? nh40696x.getText.toString : ""}'
+                    android:visibility='@{nh40696a.checked ? View.VISIBLE : View.GONE}' />
 
             </LinearLayout>
 
@@ -574,7 +574,7 @@
                 android:textSize="40sp" />
 
 
-            <!--na601-->
+            <!--nh501-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -587,12 +587,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorPrimary"
-                    android:text="@string/na601"
+                    android:text="@string/nh501"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
 
                 <RadioGroup
-                    android:id="@+id/na601"
+                    android:id="@+id/nh501"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -600,52 +600,52 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/pink_100"
-                        android:text="@string/na601info"
+                        android:text="@string/nh501info"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="@color/colorPrimaryDark" />
 
                     <RadioButton
-                        android:id="@+id/na601a"
+                        android:id="@+id/nh501a"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:text="@string/na601a" />
+                        android:text="@string/nh501a" />
 
                     <RadioButton
-                        android:id="@+id/na601b"
+                        android:id="@+id/nh501b"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:text="@string/na601b" />
+                        android:text="@string/nh501b" />
 
                     <RadioButton
-                        android:id="@+id/na601c"
+                        android:id="@+id/nh501c"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:text="@string/na601c" />
+                        android:text="@string/nh501c" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/pink_100"
-                        android:text="@string/na601info1"
+                        android:text="@string/nh501info1"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="@color/colorPrimaryDark" />
 
                     <RadioButton
-                        android:id="@+id/na601d"
+                        android:id="@+id/nh501d"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:text="@string/na601d" />
+                        android:text="@string/nh501d" />
 
                     <RadioButton
-                        android:id="@+id/na60196"
+                        android:id="@+id/nh50196"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -654,14 +654,14 @@
                 </RadioGroup>
 
                 <EditText
-                    android:id="@+id/na60196x"
+                    android:id="@+id/nh50196x"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                     android:hint="@string/other"
-                    android:text='@{na60196.checked ? na60196x.getText.toString : ""}'
-                    android:visibility='@{na60196.checked ? View.VISIBLE : View.GONE}' />
+                    android:text='@{nh50196.checked ? nh50196x.getText.toString : ""}'
+                    android:visibility='@{nh50196.checked ? View.VISIBLE : View.GONE}' />
 
             </LinearLayout>
 
@@ -677,7 +677,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="@string/na602info" />
+                    android:text="@string/nh502info" />
 
 
                 <LinearLayout
@@ -685,18 +685,18 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/bacground_border1"
                     android:orientation="vertical">
-                    <!--na602-->
+                    <!--nh502-->
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:background="@color/colorPrimary"
-                        android:text="@string/na602"
+                        android:text="@string/nh502"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@android:color/white" />
 
                     <RadioGroup
-                        android:id="@+id/na602"
+                        android:id="@+id/nh502"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
@@ -704,55 +704,55 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@color/pink_100"
-                            android:text="@string/na602info1"
+                            android:text="@string/nh502info1"
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:textColor="@color/colorPrimaryDark" />
 
                         <RadioButton
-                            android:id="@+id/na602a"
+                            android:id="@+id/nh502a"
                             style="@style/radiobutton"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
-                            android:text="@string/na602a" />
+                            android:text="@string/nh502a" />
 
                         <RadioButton
-                            android:id="@+id/na602b"
+                            android:id="@+id/nh502b"
                             style="@style/radiobutton"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
-                            android:text="@string/na602b" />
+                            android:text="@string/nh502b" />
 
                         <RadioButton
-                            android:id="@+id/na602c"
+                            android:id="@+id/nh502c"
                             style="@style/radiobutton"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
-                            android:text="@string/na602c" />
+                            android:text="@string/nh502c" />
 
                     </RadioGroup>
 
                 </LinearLayout>
 
-                <!--na603-->
+                <!--nh503-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorPrimary"
-                    android:text="@string/na603"
+                    android:text="@string/nh503"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
 
                 <RadioGroup
-                    android:id="@+id/na603"
+                    android:id="@+id/nh503"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <RadioButton
-                        android:id="@+id/na603a"
+                        android:id="@+id/nh503a"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -760,7 +760,7 @@
                         android:text="@string/yes" />
 
                     <RadioButton
-                        android:id="@+id/na603b"
+                        android:id="@+id/nh503b"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -768,20 +768,20 @@
                         android:text="@string/no" />
 
                     <RadioButton
-                        android:id="@+id/na603c"
+                        android:id="@+id/nh503c"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:text="@string/na603c" />
+                        android:text="@string/nh503c" />
 
                     <RadioButton
-                        android:id="@+id/na603d"
+                        android:id="@+id/nh503d"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:text="@string/na603d" />
+                        android:text="@string/nh503d" />
 
                 </RadioGroup>
 
@@ -810,39 +810,39 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na701"
+                android:text="@string/nh601"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
 
             <RadioGroup
-                android:id="@+id/na701"
+                android:id="@+id/nh601"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <RadioButton
-                    android:id="@+id/na701a"
+                    android:id="@+id/nh601a"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:text="@string/yes" />
 
                 <RadioButton
-                    android:id="@+id/na701b"
+                    android:id="@+id/nh601b"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:text="@string/no" />
 
                 <RadioButton
-                    android:id="@+id/na70198"
+                    android:id="@+id/nh60198"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:text="@string/dkn" />
 
                 <RadioButton
-                    android:id="@+id/na70199"
+                    android:id="@+id/nh60199"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
@@ -857,39 +857,39 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na702"
+                android:text="@string/nh602"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
 
             <RadioGroup
-                android:id="@+id/na702"
+                android:id="@+id/nh602"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <RadioButton
-                    android:id="@+id/na702a"
+                    android:id="@+id/nh602a"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:text="@string/yes" />
 
                 <RadioButton
-                    android:id="@+id/na702b"
+                    android:id="@+id/nh602b"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:text="@string/no" />
 
                 <RadioButton
-                    android:id="@+id/na70298"
+                    android:id="@+id/nh60298"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:text="@string/dkn" />
 
                 <RadioButton
-                    android:id="@+id/na70299"
+                    android:id="@+id/nh60299"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
@@ -903,39 +903,39 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na703"
+                android:text="@string/nh603"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
 
             <RadioGroup
-                android:id="@+id/na703"
+                android:id="@+id/nh603"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <RadioButton
-                    android:id="@+id/na703a"
+                    android:id="@+id/nh603a"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:text="@string/yes" />
 
                 <RadioButton
-                    android:id="@+id/na703b"
+                    android:id="@+id/nh603b"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:text="@string/no" />
 
                 <RadioButton
-                    android:id="@+id/na70398"
+                    android:id="@+id/nh60398"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:text="@string/dkn" />
 
                 <RadioButton
-                    android:id="@+id/na70399"
+                    android:id="@+id/nh60399"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
@@ -949,39 +949,39 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na704"
+                android:text="@string/nh604"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
 
             <RadioGroup
-                android:id="@+id/na704"
+                android:id="@+id/nh604"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <RadioButton
-                    android:id="@+id/na704a"
+                    android:id="@+id/nh604a"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:text="@string/yes" />
 
                 <RadioButton
-                    android:id="@+id/na704b"
+                    android:id="@+id/nh604b"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:text="@string/no" />
 
                 <RadioButton
-                    android:id="@+id/na70498"
+                    android:id="@+id/nh60498"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:text="@string/dkn" />
 
                 <RadioButton
-                    android:id="@+id/na70499"
+                    android:id="@+id/nh60499"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
@@ -995,39 +995,39 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na705"
+                android:text="@string/nh605"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
 
             <RadioGroup
-                android:id="@+id/na705"
+                android:id="@+id/nh605"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <RadioButton
-                    android:id="@+id/na705a"
+                    android:id="@+id/nh605a"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:text="@string/yes" />
 
                 <RadioButton
-                    android:id="@+id/na705b"
+                    android:id="@+id/nh605b"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:text="@string/no" />
 
                 <RadioButton
-                    android:id="@+id/na70598"
+                    android:id="@+id/nh60598"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:text="@string/dkn" />
 
                 <RadioButton
-                    android:id="@+id/na70599"
+                    android:id="@+id/nh60599"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
@@ -1041,39 +1041,39 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na706"
+                android:text="@string/nh606"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
 
             <RadioGroup
-                android:id="@+id/na706"
+                android:id="@+id/nh606"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <RadioButton
-                    android:id="@+id/na706a"
+                    android:id="@+id/nh606a"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:text="@string/yes" />
 
                 <RadioButton
-                    android:id="@+id/na706b"
+                    android:id="@+id/nh606b"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:text="@string/no" />
 
                 <RadioButton
-                    android:id="@+id/na70698"
+                    android:id="@+id/nh60698"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:text="@string/dkn" />
 
                 <RadioButton
-                    android:id="@+id/na70699"
+                    android:id="@+id/nh60699"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
@@ -1087,39 +1087,39 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na707"
+                android:text="@string/nh607"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
 
             <RadioGroup
-                android:id="@+id/na707"
+                android:id="@+id/nh607"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <RadioButton
-                    android:id="@+id/na707a"
+                    android:id="@+id/nh607a"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:text="@string/yes" />
 
                 <RadioButton
-                    android:id="@+id/na707b"
+                    android:id="@+id/nh607b"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:text="@string/no" />
 
                 <RadioButton
-                    android:id="@+id/na70798"
+                    android:id="@+id/nh60798"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:text="@string/dkn" />
 
                 <RadioButton
-                    android:id="@+id/na70799"
+                    android:id="@+id/nh60799"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
@@ -1133,39 +1133,39 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na708"
+                android:text="@string/nh608"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
 
             <RadioGroup
-                android:id="@+id/na708"
+                android:id="@+id/nh608"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <RadioButton
-                    android:id="@+id/na708a"
+                    android:id="@+id/nh608a"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:text="@string/yes" />
 
                 <RadioButton
-                    android:id="@+id/na708b"
+                    android:id="@+id/nh608b"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:text="@string/no" />
 
                 <RadioButton
-                    android:id="@+id/na70898"
+                    android:id="@+id/nh60898"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:text="@string/dkn" />
 
                 <RadioButton
-                    android:id="@+id/na70899"
+                    android:id="@+id/nh60899"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
@@ -1179,32 +1179,32 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na709"
+                android:text="@string/nh609"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
 
             <RadioGroup
-                android:id="@+id/na709"
+                android:id="@+id/nh609"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <RadioButton
-                    android:id="@+id/na709a"
+                    android:id="@+id/nh609a"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:text="@string/yes" />
 
                 <RadioButton
-                    android:id="@+id/na709b"
+                    android:id="@+id/nh609b"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:text="@string/no" />
 
                 <RadioButton
-                    android:id="@+id/na70998"
+                    android:id="@+id/nh60998"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
@@ -1212,7 +1212,7 @@
                     android:text="@string/dkn" />
 
                 <RadioButton
-                    android:id="@+id/na70999"
+                    android:id="@+id/nh60999"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
@@ -1232,25 +1232,25 @@
                 android:textSize="40sp" />
 
 
-            <!--na801-->
+            <!--nh701-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na801"
+                android:text="@string/nh701"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
             <RadioGroup
-                android:id="@+id/na801"
+                android:id="@+id/nh701"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
 
                 <RadioButton
-                    android:id="@+id/na801a"
+                    android:id="@+id/nh701a"
                     style="@style/radiobutton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -1259,7 +1259,7 @@
                     android:text="@string/yes" />
 
                 <RadioButton
-                    android:id="@+id/na801b"
+                    android:id="@+id/nh701b"
                     style="@style/radiobutton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -1268,32 +1268,32 @@
                     android:text="@string/no" />
             </RadioGroup>
 
-            <!--na802-->
+            <!--nh702-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="@{na801a.checked ? View.VISIBLE : View.GONE}">
+                android:visibility="@{nh701a.checked ? View.VISIBLE : View.GONE}">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorPrimary"
-                    android:text="@string/na802"
+                    android:text="@string/nh702"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
 
                 <EditText
-                    android:id="@+id/na802"
+                    android:id="@+id/nh702"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:digits="0123456789"
-                    android:hint="@string/na802"
+                    android:hint="@string/nh702"
                     android:inputType="number"
                     android:maxLength="2"
-                    android:text='@{na801a.checked ? na802.getText.toString : ""}' />
+                    android:text='@{nh701a.checked ? nh702.getText.toString : ""}' />
             </LinearLayout>
 
             <!--  = = = = =  END OF FORM FIELDS  = = = = = -->

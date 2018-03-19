@@ -34,13 +34,13 @@
                 android:gravity="center"
                 android:text="@string/na1heading"
                 android:textSize="40sp" />
-            <!--na102-->
+            <!--nh102-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/na102"
+                android:text="@string/nh102"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
@@ -50,13 +50,13 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/na102"
+                    android:id="@+id/nh102"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_weight="60"
-                    android:hint="@string/na102"
+                    android:hint="@string/nh102"
                     android:inputType="number"
                     android:maxLength="9" />
 
@@ -75,7 +75,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/fldGrpna101"
+                android:id="@+id/fldGrpnh101"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -91,7 +91,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
-                        <!--na101a-->
+                        <!--nh103-->
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -100,13 +100,13 @@
                             android:layout_weight="1"
                             android:background="@color/colorPrimary"
                             android:gravity="center_horizontal|center_vertical"
-                            android:text="@string/na101a"
+                            android:text="@string/nh103"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@android:color/white" />
 
 
                         <TextView
-                            android:id="@+id/na101a"
+                            android:id="@+id/nh103"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
@@ -117,7 +117,7 @@
                             android:textColor="@color/colorPrimaryDark"
                             android:textSize="16sp" />
 
-                        <!--na101b-->
+                        <!--nh104-->
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -126,13 +126,13 @@
                             android:layout_weight="1"
                             android:background="@color/colorPrimary"
                             android:gravity="center_horizontal|center_vertical"
-                            android:text="@string/na101b"
+                            android:text="@string/nh104"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@android:color/white" />
 
 
                         <TextView
-                            android:id="@+id/na101b"
+                            android:id="@+id/nh104"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
@@ -155,7 +155,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
-                        <!--na101c-->
+                        <!--nh105-->
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -164,13 +164,13 @@
                             android:layout_weight="1"
                             android:background="@color/colorPrimary"
                             android:gravity="center_horizontal|center_vertical"
-                            android:text="@string/na101c"
+                            android:text="@string/nh105"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@android:color/white" />
 
 
                         <TextView
-                            android:id="@+id/na101c"
+                            android:id="@+id/nh105"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
@@ -181,7 +181,7 @@
                             android:textColor="@color/colorPrimaryDark"
                             android:textSize="16sp" />
 
-                        <!--na101d-->
+                        <!--nh106-->
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -190,13 +190,13 @@
                             android:layout_weight="1"
                             android:background="@color/colorPrimary"
                             android:gravity="center_horizontal|center_vertical"
-                            android:text="@string/na101d"
+                            android:text="@string/nh106"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@android:color/white" />
 
 
                         <TextView
-                            android:id="@+id/na101d"
+                            android:id="@+id/nh106"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
@@ -210,13 +210,13 @@
 
                 </LinearLayout>
 
-                <!--na103-->
+                <!--nh108-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorPrimary"
-                    android:text="@string/na103"
+                    android:text="@string/nh108"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
 
@@ -226,7 +226,7 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/na103"
+                        android:id="@+id/nh108"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"

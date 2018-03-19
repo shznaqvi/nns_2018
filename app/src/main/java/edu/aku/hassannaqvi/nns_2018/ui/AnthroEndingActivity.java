@@ -67,19 +67,19 @@ public class AnthroEndingActivity extends AppCompatActivity {
 
                 finish();
 
-                if (SectionA3Activity.counter == MainApp.all_members.size()) {
+                if (SectionD1Activity.counter == MainApp.all_members.size()) {
 
-                    SectionA3Activity.counter = 1;
+                    SectionD1Activity.counter = 1;
                     MainApp.all_members.clear();
-                    SectionA3Activity.members.clear();
-                    SectionA3Activity.membersMap.clear();
+                    SectionD1Activity.members.clear();
+                    SectionD1Activity.membersMap.clear();
                     startActivity(new Intent(this, MainActivity.class));
 
                 } else {
 
 
-                    startActivity(new Intent(this, SectionA3Activity.class)
-                            .putExtra("flag", true).putExtra("name", SectionA3Activity.name));
+                    startActivity(new Intent(this, SectionD1Activity.class)
+                            .putExtra("flag", true).putExtra("name", SectionD1Activity.name));
                 }
 
             } else {

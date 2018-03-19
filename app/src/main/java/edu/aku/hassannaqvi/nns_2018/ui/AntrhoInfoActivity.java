@@ -62,7 +62,7 @@ public class AntrhoInfoActivity extends Activity {
 
 
         //slcMem = new ArrayList<>();
-        binding.na102.addTextChangedListener(new TextWatcher() {
+        binding.nh102.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -70,8 +70,8 @@ public class AntrhoInfoActivity extends Activity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                binding.na103.setText(null);
-                binding.fldGrpna101.setVisibility(View.GONE);
+                binding.nh108.setText(null);
+                binding.fldGrpnh101.setVisibility(View.GONE);
             }
 
             @Override
@@ -85,7 +85,7 @@ public class AntrhoInfoActivity extends Activity {
 
 
 //        HH listener
-        binding.na103.addTextChangedListener(new TextWatcher() {
+        binding.nh108.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -119,7 +119,7 @@ public class AntrhoInfoActivity extends Activity {
                 //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
                 finish();
 
-                startActivity(new Intent(this, SectionA3Activity.class));
+                startActivity(new Intent(this, SectionD1Activity.class));
 
 
             } else {
@@ -154,22 +154,22 @@ public class AntrhoInfoActivity extends Activity {
 
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
-//        na102
-        if (!validatorClass.EmptyTextBox(this, binding.na102, getString(R.string.na102))) {
+//        nh102
+        if (!validatorClass.EmptyTextBox(this, binding.nh102, getString(R.string.nh102))) {
             return false;
         }
 
-//        na103
+//        nh108
 
-        if (binding.na103.getText().toString().length() == 6) {
-            String[] str = binding.na103.getText().toString().split("-");
-            if (str.length > 2 || binding.na103.getText().toString().charAt(4) != '-' || !str[0].matches("[0-9]+") || !str[1].matches("[a-zA-Z]")) {
-                binding.na103.setError("Wrong presentation!!");
+        if (binding.nh108.getText().toString().length() == 6) {
+            String[] str = binding.nh108.getText().toString().split("-");
+            if (str.length > 2 || binding.nh108.getText().toString().charAt(4) != '-' || !str[0].matches("[0-9]+") || !str[1].matches("[a-zA-Z]")) {
+                binding.nh108.setError("Wrong presentation!!");
                 return false;
             }
         } else {
-            Toast.makeText(this, "Invalid length: " + getString(R.string.na103), Toast.LENGTH_SHORT).show();
-            binding.na103.setError("Invalid length");
+            Toast.makeText(this, "Invalid length: " + getString(R.string.nh108), Toast.LENGTH_SHORT).show();
+            binding.nh108.setError("Invalid length");
             return false;
         }
 
@@ -180,8 +180,8 @@ public class AntrhoInfoActivity extends Activity {
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
-        enm_no = binding.na102.getText().toString();
-        hh_no = binding.na103.getText().toString().toUpperCase();
+        enm_no = binding.nh102.getText().toString();
+        hh_no = binding.nh108.getText().toString().toUpperCase();
 
     }
 
@@ -193,9 +193,9 @@ public class AntrhoInfoActivity extends Activity {
 
     public void BtnCheckHH() {
 
-        if (!binding.na102.getText().toString().trim().isEmpty() && !binding.na103.getText().toString().trim().isEmpty()) {
+        if (!binding.nh102.getText().toString().trim().isEmpty() && !binding.nh108.getText().toString().trim().isEmpty()) {
 
-            String uid = db.getUIDByHH(binding.na102.getText().toString(), binding.na103.getText().toString().toUpperCase());
+            String uid = db.getUIDByHH(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase());
             if (uid != null) {
                 members = db.getAllMembersByHH(uid);
 
@@ -245,22 +245,22 @@ public class AntrhoInfoActivity extends Activity {
 
     public void BtnCheckEnm() {
 
-        if (validatorClass.EmptyTextBox(this, binding.na102, getString(R.string.na102))) {
+        if (validatorClass.EmptyTextBox(this, binding.nh102, getString(R.string.nh102))) {
 
-            String selected = db.getEnumBlock(binding.na102.getText().toString());
+            String selected = db.getEnumBlock(binding.nh102.getText().toString());
             if (!selected.equals("")) {
 
                 String[] selSplit = selected.split("\\|");
 
-                binding.na101a.setText(selSplit[0]);
-                binding.na101b.setText(selSplit[1].equals("") ? "----" : selSplit[1]);
-                binding.na101c.setText(selSplit[2].equals("") ? "----" : selSplit[2]);
-                binding.na101d.setText(selSplit[3]);
+                binding.nh103.setText(selSplit[0]);
+                binding.nh104.setText(selSplit[1].equals("") ? "----" : selSplit[1]);
+                binding.nh105.setText(selSplit[2].equals("") ? "----" : selSplit[2]);
+                binding.nh106.setText(selSplit[3]);
 
-                binding.fldGrpna101.setVisibility(View.VISIBLE);
+                binding.fldGrpnh101.setVisibility(View.VISIBLE);
 
             } else {
-                binding.na103.setText(null);
+                binding.nh108.setText(null);
                 Toast.makeText(this, "Sorry not found any block", Toast.LENGTH_SHORT).show();
             }
 

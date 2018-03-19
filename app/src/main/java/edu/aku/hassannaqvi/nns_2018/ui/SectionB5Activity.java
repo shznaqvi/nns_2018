@@ -32,58 +32,58 @@ public class SectionB5Activity extends AppCompatActivity {
 
 //        Skip patterns
 
-        binding.nb501.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        binding.nw414.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (i == R.id.nb501b) {
-                    binding.nb502a.setChecked(false);
-                    binding.nb502b.setChecked(false);
-                    binding.nb502c.setChecked(false);
-                    binding.nb502d.setChecked(false);
-                    binding.nb502e.setChecked(false);
-                    binding.nb502f.setChecked(false);
-                    binding.nb502g.setChecked(false);
-                    binding.nb50296.setChecked(false);
+                if (i == R.id.nw414b) {
+                    binding.nw415a.setChecked(false);
+                    binding.nw415b.setChecked(false);
+                    binding.nw415c.setChecked(false);
+                    binding.nw415d.setChecked(false);
+                    binding.nw415e.setChecked(false);
+                    binding.nw415f.setChecked(false);
+                    binding.nw415g.setChecked(false);
+                    binding.nw41596.setChecked(false);
 
-                    binding.nb503.clearCheck();
-                    binding.nb504.setText(null);
+                    binding.nw416.clearCheck();
+                    binding.nw417.setText(null);
 
-                    binding.nb505a.setChecked(false);
-                    binding.nb505b.setChecked(false);
-                    binding.nb505c.setChecked(false);
-                    binding.nb505d.setChecked(false);
-                    binding.nb505e.setChecked(false);
-                    binding.nb505f.setChecked(false);
-                    binding.nb505g.setChecked(false);
-                    binding.nb505h.setChecked(false);
-                    binding.nb50596.setChecked(false);
+                    binding.nw418a.setChecked(false);
+                    binding.nw418b.setChecked(false);
+                    binding.nw418c.setChecked(false);
+                    binding.nw418d.setChecked(false);
+                    binding.nw418e.setChecked(false);
+                    binding.nw418f.setChecked(false);
+                    binding.nw418g.setChecked(false);
+                    binding.nw418h.setChecked(false);
+                    binding.nw41896.setChecked(false);
 
                 }
             }
         });
 
-        binding.nb506.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        binding.nw419.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (i == R.id.nb506b) {
-                    binding.nb507a.setChecked(false);
-                    binding.nb507b.setChecked(false);
-                    binding.nb507c.setChecked(false);
-                    binding.nb507d.setChecked(false);
-                    binding.nb507e.setChecked(false);
-                    binding.nb507f.setChecked(false);
-                    binding.nb507g.setChecked(false);
-                    binding.nb50796.setChecked(false);
+                if (i == R.id.nw419b) {
+                    binding.nw420a.setChecked(false);
+                    binding.nw420b.setChecked(false);
+                    binding.nw420c.setChecked(false);
+                    binding.nw420d.setChecked(false);
+                    binding.nw420e.setChecked(false);
+                    binding.nw420f.setChecked(false);
+                    binding.nw420g.setChecked(false);
+                    binding.nw42096.setChecked(false);
 
-                    binding.nb508.clearCheck();
-                    binding.nb509.setText(null);
+                    binding.nw421.clearCheck();
+                    binding.nw422.setText(null);
 
-                    binding.nb510a.setChecked(false);
-                    binding.nb510b.setChecked(false);
-                    binding.nb510c.setChecked(false);
-                    binding.nb510d.setChecked(false);
-                    binding.nb510e.setChecked(false);
-                    binding.nb51096.setChecked(false);
+                    binding.nw423a.setChecked(false);
+                    binding.nw423b.setChecked(false);
+                    binding.nw423c.setChecked(false);
+                    binding.nw423d.setChecked(false);
+                    binding.nw423e.setChecked(false);
+                    binding.nw42396.setChecked(false);
                 }
             }
         });
@@ -131,30 +131,30 @@ public class SectionB5Activity extends AppCompatActivity {
 
         //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
-        if (!validatorClass.EmptyRadioButton(this, binding.nb501, binding.nb501a, getString(R.string.nb501))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nw414, binding.nw414a, getString(R.string.nw414))) {
             return false;
         }
 
-        if (binding.nb501a.isChecked()) {
-            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnb502check, binding.nb502a, getString(R.string.nb502))) {
+        if (binding.nw414a.isChecked()) {
+            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnw415check, binding.nw415a, getString(R.string.nw415))) {
                 return false;
             }
 
-            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnb502check, binding.nb50296, binding.nb50296x, getString(R.string.nb502) + " - " + getString(R.string.other))) {
+            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnw415check, binding.nw41596, binding.nw41596x, getString(R.string.nw415) + " - " + getString(R.string.other))) {
                 return false;
             }
 
-            if (!validatorClass.EmptyRadioButton(this, binding.nb503, binding.nb503a, getString(R.string.nb503))) {
+            if (!validatorClass.EmptyRadioButton(this, binding.nw416, binding.nw416a, getString(R.string.nw416))) {
                 return false;
             }
 
-            if (binding.nb503a.isChecked()) {
+            if (binding.nw416a.isChecked()) {
 
-                if (!validatorClass.EmptyTextBox(this, binding.nb503hr, getString(R.string.nb503a))) {
+                if (!validatorClass.EmptyTextBox(this, binding.nw416hr, getString(R.string.nw416a))) {
                     return false;
                 }
 
-                if (!validatorClass.RangeTextBox(this, binding.nb503hr, 1, 23, getString(R.string.nb503a), " hours")) {
+                if (!validatorClass.RangeTextBox(this, binding.nw416hr, 1, 23, getString(R.string.nw416a), " hours")) {
                     return false;
                 }
 
@@ -162,76 +162,76 @@ public class SectionB5Activity extends AppCompatActivity {
             }
 
 
-            if (binding.nb503b.isChecked()) {
+            if (binding.nw416b.isChecked()) {
 
-                if (!validatorClass.EmptyTextBox(this, binding.nb503d, getString(R.string.nb503b))) {
+                if (!validatorClass.EmptyTextBox(this, binding.nw416d, getString(R.string.nw416b))) {
                     return false;
                 }
 
-                if (!validatorClass.RangeTextBox(this, binding.nb503d, 1, 29, getString(R.string.nb503b), " days")) {
-                    return false;
-                }
-
-            }
-
-            if (binding.nb503c.isChecked()) {
-
-                if (!validatorClass.EmptyTextBox(this, binding.nb503w, getString(R.string.nb503c))) {
-                    return false;
-                }
-
-                if (!validatorClass.RangeTextBox(this, binding.nb503w, 1, 29, getString(R.string.nb503c), " weeks")) {
+                if (!validatorClass.RangeTextBox(this, binding.nw416d, 1, 29, getString(R.string.nw416b), " days")) {
                     return false;
                 }
 
             }
 
+            if (binding.nw416c.isChecked()) {
 
-            if (!validatorClass.EmptyTextBox(this, binding.nb504, getString(R.string.nb504))) {
+                if (!validatorClass.EmptyTextBox(this, binding.nw416w, getString(R.string.nw416c))) {
+                    return false;
+                }
+
+                if (!validatorClass.RangeTextBox(this, binding.nw416w, 1, 29, getString(R.string.nw416c), " weeks")) {
+                    return false;
+                }
+
+            }
+
+
+            if (!validatorClass.EmptyTextBox(this, binding.nw417, getString(R.string.nw417))) {
                 return false;
             }
 
-            if (!validatorClass.RangeTextBox(this, binding.nb504, 1, 12, getString(R.string.nb504), " times")) {
+            if (!validatorClass.RangeTextBox(this, binding.nw417, 1, 12, getString(R.string.nw417), " times")) {
                 return false;
             }
 
-            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnb505check, binding.nb505a, getString(R.string.nb505))) {
+            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnw418check, binding.nw418a, getString(R.string.nw418))) {
                 return false;
             }
 
-            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnb505check, binding.nb50596, binding.nb50596x, getString(R.string.nb505) + " - " + getString(R.string.other))) {
+            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnw418check, binding.nw41896, binding.nw41896x, getString(R.string.nw418) + " - " + getString(R.string.other))) {
                 return false;
             }
 
         }
 
 
-        if (!validatorClass.EmptyRadioButton(this, binding.nb506, binding.nb506a, getString(R.string.nb506))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nw419, binding.nw419a, getString(R.string.nw419))) {
             return false;
         }
 
 
-        if (binding.nb506a.isChecked()) {
+        if (binding.nw419a.isChecked()) {
 
-            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnb507check, binding.nb507a, getString(R.string.nb507))) {
+            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnw420check, binding.nw420a, getString(R.string.nw420))) {
                 return false;
             }
 
-            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnb507check, binding.nb50796, binding.nb50796x, getString(R.string.nb505) + " - " + getString(R.string.other))) {
+            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnw420check, binding.nw42096, binding.nw42096x, getString(R.string.nw418) + " - " + getString(R.string.other))) {
                 return false;
             }
 
-            if (!validatorClass.EmptyRadioButton(this, binding.nb508, binding.nb508a, getString(R.string.nb508))) {
+            if (!validatorClass.EmptyRadioButton(this, binding.nw421, binding.nw421a, getString(R.string.nw421))) {
                 return false;
             }
 
-            if (binding.nb508a.isChecked()) {
+            if (binding.nw421a.isChecked()) {
 
-                if (!validatorClass.EmptyTextBox(this, binding.nb508hr, getString(R.string.nb508a))) {
+                if (!validatorClass.EmptyTextBox(this, binding.nw421hr, getString(R.string.nw421a))) {
                     return false;
                 }
 
-                if (!validatorClass.RangeTextBox(this, binding.nb508hr, 1, 23, getString(R.string.nb508a), " hours")) {
+                if (!validatorClass.RangeTextBox(this, binding.nw421hr, 1, 23, getString(R.string.nw421a), " hours")) {
                     return false;
                 }
 
@@ -239,44 +239,44 @@ public class SectionB5Activity extends AppCompatActivity {
             }
 
 
-            if (binding.nb508b.isChecked()) {
+            if (binding.nw421b.isChecked()) {
 
-                if (!validatorClass.EmptyTextBox(this, binding.nb508d, getString(R.string.nb508b))) {
+                if (!validatorClass.EmptyTextBox(this, binding.nw421d, getString(R.string.nw421b))) {
                     return false;
                 }
 
-                if (!validatorClass.RangeTextBox(this, binding.nb508d, 1, 29, getString(R.string.nb508b), " days")) {
-                    return false;
-                }
-
-            }
-
-            if (binding.nb508c.isChecked()) {
-
-                if (!validatorClass.EmptyTextBox(this, binding.nb508w, getString(R.string.nb508c))) {
-                    return false;
-                }
-
-                if (!validatorClass.RangeTextBox(this, binding.nb508w, 1, 29, getString(R.string.nb508c), " weeks")) {
+                if (!validatorClass.RangeTextBox(this, binding.nw421d, 1, 29, getString(R.string.nw421b), " days")) {
                     return false;
                 }
 
             }
 
+            if (binding.nw421c.isChecked()) {
 
-            if (!validatorClass.EmptyTextBox(this, binding.nb509, getString(R.string.nb509))) {
+                if (!validatorClass.EmptyTextBox(this, binding.nw421w, getString(R.string.nw421c))) {
+                    return false;
+                }
+
+                if (!validatorClass.RangeTextBox(this, binding.nw421w, 1, 29, getString(R.string.nw421c), " weeks")) {
+                    return false;
+                }
+
+            }
+
+
+            if (!validatorClass.EmptyTextBox(this, binding.nw422, getString(R.string.nw422))) {
                 return false;
             }
 
-            if (!validatorClass.RangeTextBox(this, binding.nb509, 1, 12, getString(R.string.nb509), " times")) {
+            if (!validatorClass.RangeTextBox(this, binding.nw422, 1, 12, getString(R.string.nw422), " times")) {
                 return false;
             }
 
-            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnb510check, binding.nb510a, getString(R.string.nb510))) {
+            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnw423check, binding.nw423a, getString(R.string.nw423))) {
                 return false;
             }
 
-            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnb510check, binding.nb51096, binding.nb51096x, getString(R.string.nb510) + " - " + getString(R.string.other))) {
+            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnw423check, binding.nw42396, binding.nw42396x, getString(R.string.nw423) + " - " + getString(R.string.other))) {
                 return false;
             }
 
@@ -290,84 +290,84 @@ public class SectionB5Activity extends AppCompatActivity {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
         JSONObject sB5 = new JSONObject();
-        //       nb501
-//        nb501
-        sB5.put("nw414", binding.nb501a.isChecked() ? "1"
-                : binding.nb501b.isChecked() ? "2"
+        //       nw414
+//        nw414
+        sB5.put("nw414", binding.nw414a.isChecked() ? "1"
+                : binding.nw414b.isChecked() ? "2"
                 : "0");
-//      nb502
-        sB5.put("nw415a", binding.nb502a.isChecked() ? "1" : "0");
-        sB5.put("nw415b", binding.nb502b.isChecked() ? "2" : "0");
-        sB5.put("nw415c", binding.nb502c.isChecked() ? "3" : "0");
-        sB5.put("nw415d", binding.nb502d.isChecked() ? "4" : "0");
-        sB5.put("nw415e", binding.nb502e.isChecked() ? "5" : "0");
-        sB5.put("nw415f", binding.nb502f.isChecked() ? "6" : "0");
-        sB5.put("nw415g", binding.nb502g.isChecked() ? "7" : "0");
-        sB5.put("nw41596", binding.nb50296.isChecked() ? "96" : "0");
-        sB5.put("nw41596x", binding.nb50296x.getText().toString());
+//      nw415
+        sB5.put("nw415a", binding.nw415a.isChecked() ? "1" : "0");
+        sB5.put("nw415b", binding.nw415b.isChecked() ? "2" : "0");
+        sB5.put("nw415c", binding.nw415c.isChecked() ? "3" : "0");
+        sB5.put("nw415d", binding.nw415d.isChecked() ? "4" : "0");
+        sB5.put("nw415e", binding.nw415e.isChecked() ? "5" : "0");
+        sB5.put("nw415f", binding.nw415f.isChecked() ? "6" : "0");
+        sB5.put("nw415g", binding.nw415g.isChecked() ? "7" : "0");
+        sB5.put("nw41596", binding.nw41596.isChecked() ? "96" : "0");
+        sB5.put("nw41596x", binding.nw41596x.getText().toString());
 
-//      nb503
-        sB5.put("nw416", binding.nb503a.isChecked() ? "1"
-                : binding.nb503b.isChecked() ? "2"
-                : binding.nb503c.isChecked() ? "3"
-                : binding.nb50398.isChecked() ? "98"
+//      nw416
+        sB5.put("nw416", binding.nw416a.isChecked() ? "1"
+                : binding.nw416b.isChecked() ? "2"
+                : binding.nw416c.isChecked() ? "3"
+                : binding.nw41698.isChecked() ? "98"
                 : "0");
-        sB5.put("nw416hr", binding.nb503hr.getText().toString());
-        sB5.put("nw416d", binding.nb503d.getText().toString());
-        sB5.put("nw416w", binding.nb503w.getText().toString());
+        sB5.put("nw416hr", binding.nw416hr.getText().toString());
+        sB5.put("nw416d", binding.nw416d.getText().toString());
+        sB5.put("nw416w", binding.nw416w.getText().toString());
 
-//        nb504
-        sB5.put("nw417", binding.nb504.getText().toString());
+//        nw417
+        sB5.put("nw417", binding.nw417.getText().toString());
 
-//        nb505
-        sB5.put("nw418a", binding.nb505a.isChecked() ? "1" : "0");
-        sB5.put("nw418b", binding.nb505b.isChecked() ? "2" : "0");
-        sB5.put("nw418c", binding.nb505c.isChecked() ? "3" : "0");
-        sB5.put("nw418d", binding.nb505d.isChecked() ? "4" : "0");
-        sB5.put("nw418e", binding.nb505e.isChecked() ? "5" : "0");
-        sB5.put("nw418f", binding.nb505f.isChecked() ? "6" : "0");
-        sB5.put("nw418g", binding.nb505g.isChecked() ? "7" : "0");
-        sB5.put("nw418h", binding.nb505h.isChecked() ? "8" : "0");
-        sB5.put("nw41896", binding.nb50596.isChecked() ? "96" : "0");
-        sB5.put("nw41896x", binding.nb50596x.getText().toString());
+//        nw418
+        sB5.put("nw418a", binding.nw418a.isChecked() ? "1" : "0");
+        sB5.put("nw418b", binding.nw418b.isChecked() ? "2" : "0");
+        sB5.put("nw418c", binding.nw418c.isChecked() ? "3" : "0");
+        sB5.put("nw418d", binding.nw418d.isChecked() ? "4" : "0");
+        sB5.put("nw418e", binding.nw418e.isChecked() ? "5" : "0");
+        sB5.put("nw418f", binding.nw418f.isChecked() ? "6" : "0");
+        sB5.put("nw418g", binding.nw418g.isChecked() ? "7" : "0");
+        sB5.put("nw418h", binding.nw418h.isChecked() ? "8" : "0");
+        sB5.put("nw41896", binding.nw41896.isChecked() ? "96" : "0");
+        sB5.put("nw41896x", binding.nw41896x.getText().toString());
 
-//        nb506
-        sB5.put("nw419", binding.nb506a.isChecked() ? "1"
-                : binding.nb506b.isChecked() ? "2"
+//        nw419
+        sB5.put("nw419", binding.nw419a.isChecked() ? "1"
+                : binding.nw419b.isChecked() ? "2"
                 : "0");
-//        nb507
-        sB5.put("nw420a", binding.nb507a.isChecked() ? "1" : "0");
-        sB5.put("nw420b", binding.nb507b.isChecked() ? "2" : "0");
-        sB5.put("nw420c", binding.nb507c.isChecked() ? "3" : "0");
-        sB5.put("nw420d", binding.nb507d.isChecked() ? "4" : "0");
-        sB5.put("nw420e", binding.nb507e.isChecked() ? "5" : "0");
-        sB5.put("nw420f", binding.nb507f.isChecked() ? "6" : "0");
-        sB5.put("nw420g", binding.nb507g.isChecked() ? "7" : "0");
-        sB5.put("nw42096", binding.nb50796.isChecked() ? "96" : "0");
-        sB5.put("nw42096x", binding.nb50796x.getText().toString());
+//        nw420
+        sB5.put("nw420a", binding.nw420a.isChecked() ? "1" : "0");
+        sB5.put("nw420b", binding.nw420b.isChecked() ? "2" : "0");
+        sB5.put("nw420c", binding.nw420c.isChecked() ? "3" : "0");
+        sB5.put("nw420d", binding.nw420d.isChecked() ? "4" : "0");
+        sB5.put("nw420e", binding.nw420e.isChecked() ? "5" : "0");
+        sB5.put("nw420f", binding.nw420f.isChecked() ? "6" : "0");
+        sB5.put("nw420g", binding.nw420g.isChecked() ? "7" : "0");
+        sB5.put("nw42096", binding.nw42096.isChecked() ? "96" : "0");
+        sB5.put("nw42096x", binding.nw42096x.getText().toString());
 
 
-//        nb508
-        sB5.put("nw421", binding.nb508a.isChecked() ? "1"
-                : binding.nb508b.isChecked() ? "2"
-                : binding.nb508c.isChecked() ? "3"
-                : binding.nb50898.isChecked() ? "98"
+//        nw421
+        sB5.put("nw421", binding.nw421a.isChecked() ? "1"
+                : binding.nw421b.isChecked() ? "2"
+                : binding.nw421c.isChecked() ? "3"
+                : binding.nw42198.isChecked() ? "98"
                 : "0");
-        sB5.put("nw421hr", binding.nb508hr.getText().toString());
-        sB5.put("nw421d", binding.nb508d.getText().toString());
-        sB5.put("nw421w", binding.nb508w.getText().toString());
+        sB5.put("nw421hr", binding.nw421hr.getText().toString());
+        sB5.put("nw421d", binding.nw421d.getText().toString());
+        sB5.put("nw421w", binding.nw421w.getText().toString());
 
-//        nb509
-        sB5.put("nw422", binding.nb509.getText().toString());
+//        nw422
+        sB5.put("nw422", binding.nw422.getText().toString());
 
-//        nb510
-        sB5.put("nw423a", binding.nb510a.isChecked() ? "1" : "0");
-        sB5.put("nw423b", binding.nb510b.isChecked() ? "2" : "0");
-        sB5.put("nw423c", binding.nb510c.isChecked() ? "3" : "0");
-        sB5.put("nw423d", binding.nb510d.isChecked() ? "4" : "0");
-        sB5.put("nw423e", binding.nb510e.isChecked() ? "5" : "0");
-        sB5.put("nw42396", binding.nb51096.isChecked() ? "96" : "0");
-        sB5.put("nw42396x", binding.nb51096x.getText().toString());
+//        nw423
+        sB5.put("nw423a", binding.nw423a.isChecked() ? "1" : "0");
+        sB5.put("nw423b", binding.nw423b.isChecked() ? "2" : "0");
+        sB5.put("nw423c", binding.nw423c.isChecked() ? "3" : "0");
+        sB5.put("nw423d", binding.nw423d.isChecked() ? "4" : "0");
+        sB5.put("nw423e", binding.nw423e.isChecked() ? "5" : "0");
+        sB5.put("nw42396", binding.nw42396.isChecked() ? "96" : "0");
+        sB5.put("nw42396x", binding.nw42396x.getText().toString());
 
 
         MainApp.mc.setsB5(String.valueOf(sB5));
