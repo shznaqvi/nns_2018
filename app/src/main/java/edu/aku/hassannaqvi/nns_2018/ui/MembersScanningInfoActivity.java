@@ -1,8 +1,13 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
+
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -13,10 +18,12 @@ import java.util.List;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
+import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivityMembersScanningInfoBinding;
 
 public class MembersScanningInfoActivity extends AppCompatActivity {
 
+    private static final String TAG = MembersScanningInfoActivity.class.getName();
     ActivityMembersScanningInfoBinding binding;
     FamilyMembersContract familyMembersContractScannedMembers;
     List<FamilyMembersContract> familyMembersContractScannedSubMembers;
@@ -43,8 +50,7 @@ public class MembersScanningInfoActivity extends AppCompatActivity {
             familyMembersContractScannedMembers = new FamilyMembersContract();
             familyMembersContractScannedSubMembers = new ArrayList<>();
 
-            JSONArray jsonArray = new JSONArray(scanData);
-            JSONObject jsonObjectCC = jsonArray.getJSONObject(0);
+            JSONObject jsonObjectCC = new JSONObject(scanData);
 
             familyMembersContractScannedMembers.set_UID(jsonObjectCC.getString("_UID"));
             familyMembersContractScannedMembers.set_UUID(jsonObjectCC.getString("_UUID"));
@@ -54,13 +60,14 @@ public class MembersScanningInfoActivity extends AppCompatActivity {
             familyMembersContractScannedMembers.setHhNo(jsonObjectCC.getString("hhNo"));
             familyMembersContractScannedMembers.setType(jsonObjectCC.getString("type"));
 
-            if (!jsonObjectCC.getString("sA2").equals(null)) {
+            if (!jsonObjectCC.getString("sA2").equals("")) {
 
                 JSONArray jsonSA2 = new JSONArray(jsonObjectCC.getString("sA2"));
 
-                JSONObject jsonObjectSubCC = jsonSA2.getJSONObject(0);
 
-                for (int i = 0; i < jsonObjectSubCC.length(); i++) {
+                for (int i = 0; i < jsonSA2.length(); i++) {
+
+                    JSONObject jsonObjectSubCC = jsonSA2.getJSONObject(i);
 
                     FamilyMembersContract fmc = new FamilyMembersContract();
 
@@ -73,9 +80,9 @@ public class MembersScanningInfoActivity extends AppCompatActivity {
                     fmc.setType(jsonObjectCC.getString("type"));
 
                     familyMembersContractScannedSubMembers.add(fmc);
-
                 }
 
+                MainApp.scannedMembersSubList.add(familyMembersContractScannedSubMembers);
             }
 
             // Setting in string
@@ -89,15 +96,55 @@ public class MembersScanningInfoActivity extends AppCompatActivity {
 
                 FamilyMembersContract fm = familyMembersContractScannedSubMembers.get(i);
 
-                ScannedInfo += (i + 1) + "):Serial:" + fm.getSerialNo() + "\nNAME:" + fm.getName().toUpperCase() + "\n";
+                ScannedInfo += "\n" + (i + 1) + "):Serial:" + fm.getSerialNo() + "\nNAME:" + fm.getName().toUpperCase() + "\n";
             }
 
-            binding.syncData.setText(ScannedInfo);
+            if (!ScannedInfo.equals("")) {
+                binding.syncData.setText(ScannedInfo);
+
+                MainApp.scannedMembersList.add(familyMembersContractScannedMembers);
+
+                binding.btnContinue.setEnabled(true);
+
+            } else {
+                Toast.makeText(this, "Sorry can't parse QR-Image!!", Toast.LENGTH_SHORT).show();
+            }
 
 
         } catch (JSONException e) {
             e.printStackTrace();
+            Toast.makeText(this, "Sorry can't parse QR-Image!!", Toast.LENGTH_SHORT).show();
+            binding.btnContinue.setEnabled(false);
         }
 
+    }
+
+    public void BtnReScan() {
+        MainApp.openQRScanner(MembersScanningInfoActivity.this);
+    }
+
+    public void BtnContinue() {
+        finish();
+        startActivity(new Intent(this, MembersScanningActivity.class)
+                .putExtra("reBackActivity", false));
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+
+        if (result != null) {
+            if (result.getContents() == null) {
+                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+
+                scanJSON(result.getContents().trim());
+
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 }

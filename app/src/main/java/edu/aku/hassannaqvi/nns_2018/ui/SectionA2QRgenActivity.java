@@ -155,12 +155,12 @@ public class SectionA2QRgenActivity extends AppCompatActivity {
 
     public JSONObject CreateJSON(FamilyMembersContract fmc) throws JSONException {
         JSONObject sA2 = new JSONObject();
-        sA2.put("_UID ", fmc.get_UID());
-        sA2.put("name ", fmc.getName());
-        sA2.put("_UUID ", fmc.get_UUID());
-        sA2.put("serialNo ", fmc.getSerialNo());
-        sA2.put("enmNo ", fmc.getEnmNo());
-        sA2.put("hhNo ", fmc.getHhNo());
+        sA2.put("_UID", fmc.get_UID());
+        sA2.put("name", fmc.getName());
+        sA2.put("_UUID", fmc.get_UUID());
+        sA2.put("serialNo", fmc.getSerialNo());
+        sA2.put("enmNo", fmc.getEnmNo());
+        sA2.put("hhNo", fmc.getHhNo());
         return sA2;
     }
 
@@ -201,20 +201,19 @@ public class SectionA2QRgenActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... arg0) {
 
-            JSONArray jsonSync = new JSONArray();
+            JSONObject sA = new JSONObject();
             JSONArray childJsonSync = null;
             // do the task you want to do. This will be executed in background.
             try {
 
-                JSONObject sA = new JSONObject();
-                sA.put("_UID ", selectedMem.get_UID());
-                sA.put("name ", selectedMem.getName());
-                sA.put("_UUID ", selectedMem.get_UUID());
-                sA.put("serialNo ", selectedMem.getSerialNo());
-                sA.put("enmNo ", selectedMem.getEnmNo());
-                sA.put("hhNo ", selectedMem.getHhNo());
-                sA.put("type ", String.valueOf(type));
-                sA.put("sA2 ", "");
+
+                sA.put("_UID", selectedMem.get_UID());
+                sA.put("name", selectedMem.getName());
+                sA.put("_UUID", selectedMem.get_UUID());
+                sA.put("serialNo", selectedMem.getSerialNo());
+                sA.put("enmNo", selectedMem.getEnmNo());
+                sA.put("hhNo", selectedMem.getHhNo());
+                sA.put("type", String.valueOf(type));
 
 
                 // Setting in string
@@ -234,10 +233,11 @@ public class SectionA2QRgenActivity extends AppCompatActivity {
 
                     }
                     sA.put("sA2", childJsonSync);
+                } else {
+                    sA.put("sA2", "");
                 }
-                jsonSync.put(sA);
 
-                bitmap = QRCode.from(String.valueOf(jsonSync)).withCharset("UTF-8").to(ImageType.JPG).withSize(216, 216).bitmap();
+                bitmap = QRCode.from(String.valueOf(sA)).withCharset("UTF-8").to(ImageType.JPG).withSize(256, 256).bitmap();
 
                 if (selectedSubMem.size() < 20) {
                     Thread.sleep(3000);

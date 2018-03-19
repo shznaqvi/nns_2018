@@ -14,6 +14,8 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.text.format.DateFormat;
 
+import com.google.zxing.integration.android.IntentIntegrator;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -103,6 +105,10 @@ public class MainApp extends Application {
     public static List<FamilyMembersContract> familyMembersList;
     public static List<Integer> hhClicked;
 
+    // Re-Scan members
+    public static List<FamilyMembersContract> scannedMembersList;
+    public static List<List<FamilyMembersContract>> scannedMembersSubList;
+
     // Gul Sanober
     public static Map<String, FamilyMembersContract> mwraMap;
     public static int totalPregnancy = 0;
@@ -137,6 +143,18 @@ public class MainApp extends Application {
         monthsBetween += end.get(Calendar.MONTH) - start.get(Calendar.MONTH);
         monthsBetween += (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * 12;
         return monthsBetween;
+    }
+
+    public static void openQRScanner(Activity activity) {
+        IntentIntegrator integrator = new IntentIntegrator(activity);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+        integrator.setPrompt("Scan QR sticker");
+        integrator.setCameraId(0);  // Use a specific camera of the device
+        integrator.setBeepEnabled(false);
+        integrator.setBarcodeImageEnabled(true);
+        integrator.setOrientationLocked(false);
+
+        integrator.initiateScan();
     }
 
     public static long ageInMonths(String year, String month) {

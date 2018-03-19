@@ -8,7 +8,7 @@
     <RelativeLayout
         style="@style/Widget.AppCompat.ListView"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_73sdp"
+        android:layout_height="@dimen/_80sdp"
         android:layout_marginBottom="@dimen/_5sdp"
         android:background="@drawable/bacground_border2"
         android:clickable="true"
@@ -31,7 +31,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@+id/imgUser"
-            android:paddingTop="@dimen/_2sdp">
+            android:paddingTop="@dimen/_5sdp">
 
             <!-- Family Member Name-->
             <TextView
@@ -50,7 +50,7 @@
 
             <!-- Mother -->
             <TextView
-                android:id="@+id/mmName"
+                android:id="@+id/mmEnum"
                 style="@style/listItems"
                 android:layout_width="fill_parent"
                 android:layout_height="@dimen/_20sdp"
@@ -63,12 +63,12 @@
 
             <!-- Father -->
             <TextView
-                android:id="@+id/ffName"
+                android:id="@+id/mmHHno"
                 style="@style/listItems"
                 android:layout_width="fill_parent"
                 android:layout_height="@dimen/_20sdp"
                 android:layout_alignParentStart="true"
-                android:layout_below="@id/mmName"
+                android:layout_below="@id/mmEnum"
                 android:gravity="clip_horizontal"
                 android:text="ABCDEFG"
                 android:textColor="@color/colorPrimaryDark"
@@ -80,9 +80,9 @@
                 style="@style/listItems"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_20sdp"
-                android:layout_alignEnd="@+id/maritalStatus"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_alignBaseline="@+id/memberName"
+                android:layout_alignBottom="@+id/memberName"
+                android:layout_alignParentEnd="true"
                 android:gravity="right"
                 android:text="Line No"
                 android:textColor="@color/colorAccent"
@@ -95,10 +95,8 @@
                 style="@style/listItems"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_20sdp"
-                android:layout_alignBaseline="@+id/mmName"
-                android:layout_alignBottom="@+id/mmName"
-                android:layout_alignEnd="@+id/maritalStatus"
-                android:layout_alignParentEnd="@id/lineNo"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/lineNo"
                 android:gravity="right"
                 android:text="na204"
                 android:textColor="@color/colorAccent"
@@ -106,20 +104,6 @@
                 android:textStyle="bold" />
 
             <!-- Status -->
-            <TextView
-                android:id="@+id/maritalStatus"
-                style="@style/listItems"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/_20sdp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentStart="false"
-                android:layout_below="@id/na204"
-                android:layout_marginRight="8dp"
-                android:gravity="right"
-                android:text="M.S"
-                android:textColor="@color/colorAccent"
-                android:textSize="18sp"
-                android:textStyle="bold" />
 
         </RelativeLayout>
 
