@@ -133,9 +133,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
+                android:enabled="@{nh30196.checked ? true : false}"
                 android:hint="@string/other"
-                android:text='@{nh30196.checked ? nh30196x.getText.toString : ""}'
-                android:visibility="@{nh30196.checked ? View.VISIBLE : View.GONE}" />
+                android:text='@{nh30196.checked ? nh30196x.getText.toString : ""}' />
 
             <!--2-->
 

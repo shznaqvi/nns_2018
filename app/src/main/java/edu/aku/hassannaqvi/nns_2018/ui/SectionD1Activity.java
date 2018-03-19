@@ -26,7 +26,7 @@ import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
-import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA3Binding;
+import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionD1Binding;
 import edu.aku.hassannaqvi.nns_2018.other.JSONModelClass;
 import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
@@ -37,7 +37,7 @@ public class SectionD1Activity extends AppCompatActivity {
     static Map<String, SelectedMem> membersMap;
     static String name;
     static int counter = 1;
-    ActivitySectionA3Binding binding;
+    ActivitySectionD1Binding binding;
     DatabaseHelper db;
     int slc_type;
     JSONModelClass json;
