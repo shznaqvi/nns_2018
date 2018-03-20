@@ -24,6 +24,7 @@ import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC2Binding;
+import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedChangeListener {
@@ -81,9 +82,12 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (bi.nc205a.isChecked()) {
-                    bi.fldGrpnc206.setVisibility(View.VISIBLE);
+                    //bi.fldGrpnc206.setVisibility(View.VISIBLE);
+                    clearClass.ClearAllFields(bi.fldGrpnc206, true);
+
                 } else {
-                    bi.fldGrpnc206.setVisibility(View.GONE);
+                    clearClass.ClearAllFields(bi.fldGrpnc206, false);
+                    /*bi.fldGrpnc206.setVisibility(View.GONE);
                     bi.nc206.clearCheck();
                     bi.nc207.clearCheck();
                     bi.nc207d.setText(null);
@@ -133,7 +137,7 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
                     bi.nc220.clearCheck();
                     bi.nc221.clearCheck();
                     bi.nc222.clearCheck();
-                    bi.nc223.clearCheck();
+                    bi.nc223.clearCheck();*/
                 }
             }
         });
@@ -142,9 +146,12 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (bi.nc206a.isChecked()) {
-                    bi.fldGrpnc207.setVisibility(View.VISIBLE);
+                    //bi.fldGrpnc207.setVisibility(View.VISIBLE);
+                    clearClass.ClearAllFields(bi.fldGrpnc207, true);
+
                 } else {
-                    bi.fldGrpnc207.setVisibility(View.GONE);
+                    clearClass.ClearAllFields(bi.fldGrpnc207, false);
+                    /*bi.fldGrpnc207.setVisibility(View.GONE);
                     bi.nc207.clearCheck();
                     bi.nc207d.setText(null);
                     bi.nc207h.setText(null);
@@ -155,7 +162,7 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
                     bi.nc211.clearCheck();
                     bi.nc21196x.setText(null);
                     bi.nc212.clearCheck();
-
+*/
                 }
             }
         });
@@ -164,11 +171,13 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (bi.nc208b.isChecked()) {
-                    bi.fldGrpnc209.setVisibility(View.VISIBLE);
+                    //bi.fldGrpnc209.setVisibility(View.VISIBLE);
+                    clearClass.ClearAllFields(bi.fldGrpnc209, true);
                 } else {
-                    bi.fldGrpnc209.setVisibility(View.GONE);
+                    clearClass.ClearAllFields(bi.fldGrpnc209, false);
+                    /*bi.fldGrpnc209.setVisibility(View.GONE);
                     bi.nc209.clearCheck();
-                    bi.nc20996x.setText(null);
+                    bi.nc20996x.setText(null);*/
                 }
             }
         });
@@ -177,11 +186,13 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (bi.nc210a.isChecked()) {
-                    bi.fldGrpnc211.setVisibility(View.VISIBLE);
+                    //bi.fldGrpnc211.setVisibility(View.VISIBLE);
+                    clearClass.ClearAllFields(bi.fldGrpnc211, true);
                 } else {
-                    bi.fldGrpnc211.setVisibility(View.GONE);
+                    clearClass.ClearAllFields(bi.fldGrpnc211, false);
+                    /*bi.fldGrpnc211.setVisibility(View.GONE);
                     bi.nc211.clearCheck();
-                    bi.nc21196x.setText(null);
+                    bi.nc21196x.setText(null);*/
                 }
             }
         });
@@ -190,10 +201,12 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (bi.nc212a.isChecked()) {
-                    bi.fldGrpnc212a.setVisibility(View.GONE);
-                    bi.nc21201.clearCheck();
+                    //bi.fldGrpnc212a.setVisibility(View.GONE);
+                    clearClass.ClearAllFields(bi.fldGrpnc212a, false);
+                    //bi.nc21201.clearCheck();
                 } else {
-                    bi.fldGrpnc212a.setVisibility(View.VISIBLE);
+                    //bi.fldGrpnc212a.setVisibility(View.VISIBLE);
+                    clearClass.ClearAllFields(bi.fldGrpnc212a, true);
                 }
             }
         });
@@ -836,38 +849,50 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
     public void onCheckedChanged(RadioGroup group, int checkedId) {
 
         if (isoneYes()) {
-            bi.fldGrpnc218.setVisibility(View.GONE);
-            bi.fldGrpnc219.setVisibility(View.VISIBLE);
-            bi.nc218.clearCheck();
+            //bi.fldGrpnc218.setVisibility(View.GONE);
+            clearClass.ClearAllFields(bi.fldGrpnc218, false);
+            clearClass.ClearAllFields(bi.fldGrpnc219, true);
+            //bi.fldGrpnc219.setVisibility(View.VISIBLE);
+            //bi.nc218.clearCheck();
         } else {
-            bi.fldGrpnc218.setVisibility(View.VISIBLE);
-            bi.fldGrpnc219.setVisibility(View.VISIBLE);
+            clearClass.ClearAllFields(bi.fldGrpnc218, true);
+            clearClass.ClearAllFields(bi.fldGrpnc219, true);
+            //bi.fldGrpnc218.setVisibility(View.VISIBLE);
+            //bi.fldGrpnc219.setVisibility(View.VISIBLE);
         }
 
 
         if (group == bi.nc215b) {
             if (bi.nc215ba.isChecked()) {
+                //clearClass.ClearAllFields(bi.nc215bx, true);
                 bi.nc215bx.setVisibility(View.VISIBLE);
+                bi.nc215bx.setEnabled(true);
             } else {
-                bi.nc215bx.setVisibility(View.GONE);
+                //bi.nc215bx.setVisibility(View.GONE);
                 bi.nc215bx.setText(null);
+                bi.nc215bx.setEnabled(false);
+
             }
         }
 
         if (group == bi.nc215c) {
             if (bi.nc215ca.isChecked()) {
                 bi.nc215cx.setVisibility(View.VISIBLE);
+                bi.nc215cx.setEnabled(true);
             } else {
-                bi.nc215cx.setVisibility(View.GONE);
+                //bi.nc215cx.setVisibility(View.GONE);
                 bi.nc215cx.setText(null);
+                bi.nc215cx.setEnabled(false);
             }
         }
 
         if (group == bi.nc215f) {
             if (bi.nc215fa.isChecked()) {
                 bi.nc215fx.setVisibility(View.VISIBLE);
+                bi.nc215fx.setEnabled(true);
             } else {
-                bi.nc215fx.setVisibility(View.GONE);
+                //bi.nc215fx.setVisibility(View.GONE);
+                bi.nc215fx.setEnabled(false);
                 bi.nc215fx.setText(null);
             }
         }

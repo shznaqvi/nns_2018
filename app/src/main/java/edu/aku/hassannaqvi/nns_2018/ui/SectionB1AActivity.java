@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -20,6 +19,7 @@ import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB1ABinding;
+import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionB1AActivity extends AppCompatActivity {
@@ -76,18 +76,22 @@ public class SectionB1AActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (bi.nw217a.isChecked()) {
-                    bi.fldGrpnw219.setVisibility(View.VISIBLE);
-                    bi.fldGrpnw220.setVisibility(View.GONE);
+                    clearClass.ClearAllFields(bi.fldGrpnw219, true);
+                    clearClass.ClearAllFields(bi.fldGrpnw220, false);
+                    //bi.fldGrpnw219.setVisibility(View.VISIBLE);
+                    /*bi.fldGrpnw220.setVisibility(View.GONE);
                     bi.nw220d.setText(null);
                     bi.nw220m.setText(null);
-                    bi.nw220y.setText(null);
+                    bi.nw220y.setText(null);*/
 
                 } else {
-                    bi.fldGrpnw219.setVisibility(View.GONE);
+                    clearClass.ClearAllFields(bi.fldGrpnw219, false);
+                    clearClass.ClearAllFields(bi.fldGrpnw220, true);
+                    /*bi.fldGrpnw219.setVisibility(View.GONE);
                     bi.fldGrpnw220.setVisibility(View.VISIBLE);
                     bi.nw219d.setText(null);
                     bi.nw219m.setText(null);
-                    bi.nw219y.setText(null);
+                    bi.nw219y.setText(null);*/
                 }
             }
         });
@@ -96,17 +100,19 @@ public class SectionB1AActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (bi.nw216a.isChecked() || bi.nw216b.isChecked() || bi.nw216e.isChecked()) {
-                    bi.fldGrpnb1a03.setVisibility(View.GONE);
+                    clearClass.ClearAllFields(bi.fldGrpnb1a03, false);
+                    /*bi.fldGrpnb1a03.setVisibility(View.GONE);
                     bi.nw217.clearCheck();
                     bi.nw219d.setText(null);
                     bi.nw219m.setText(null);
                     bi.nw219y.setText(null);
                     bi.nw220d.setText(null);
                     bi.nw220m.setText(null);
-                    bi.nw220y.setText(null);
+                    bi.nw220y.setText(null);*/
 
                 } else {
-                    bi.fldGrpnb1a03.setVisibility(View.VISIBLE);
+                    clearClass.ClearAllFields(bi.fldGrpnb1a03, true);
+                    //bi.fldGrpnb1a03.setVisibility(View.VISIBLE);
                 }
 
             }

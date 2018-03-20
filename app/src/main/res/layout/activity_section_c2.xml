@@ -53,8 +53,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:visibility='@{nc20198.checked ? View.GONE : View.VISIBLE}'>
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -435,11 +434,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="1dp"
+                            android:enabled="@{nc207b.checked ? true : false}"
                             android:hint="@string/nc207b"
                             android:inputType="number"
                             android:maxLength="2"
-                            android:text='@{nc207b.checked ? nc207h.getText.toString : ""}'
-                            android:visibility="@{nc207b.checked ? View.VISIBLE : View.GONE}" />
+                            android:text='@{nc207b.checked ? nc207h.getText.toString : ""}' />
 
                         <RadioButton
                             android:id="@+id/nc207c"
@@ -454,11 +453,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="1dp"
+                            android:enabled="@{nc207c.checked ? true : false}"
                             android:hint="@string/nc207c"
                             android:inputType="number"
                             android:maxLength="2"
-                            android:text='@{nc207c.checked ? nc207d.getText.toString : ""}'
-                            android:visibility="@{nc207c.checked ? View.VISIBLE : View.GONE}" />
+                            android:text='@{nc207c.checked ? nc207d.getText.toString : ""}' />
 
 
                     </RadioGroup>
@@ -568,10 +567,10 @@
                             android:layout_marginBottom="5dp"
                             android:layout_marginTop="1dp"
                             android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
+                            android:enabled="@{nc20996.checked ? true : false}"
                             android:hint="@string/other"
                             android:inputType="text"
-                            android:text='@{nc20996.checked ? nc20996x.getText.toString : ""}'
-                            android:visibility="@{nc20996.checked ? View.VISIBLE : View.GONE}" />
+                            android:text='@{nc20996.checked ? nc20996x.getText.toString : ""}' />
 
 
                     </LinearLayout>
@@ -732,10 +731,10 @@
                             android:layout_marginBottom="5dp"
                             android:layout_marginTop="1dp"
                             android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
+                            android:enabled="@{nc21196.checked ? true : false}"
                             android:hint="@string/other"
                             android:inputType="text"
-                            android:text='@{nc21196.checked ? nc21196x.getText.toString : ""}'
-                            android:visibility="@{nc21196.checked ? View.VISIBLE : View.GONE}" />
+                            android:text='@{nc21196.checked ? nc21196x.getText.toString : ""}' />
 
                     </LinearLayout>
 
@@ -2224,11 +2223,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="1dp"
+                        android:enabled="@{nc219a.checked ? true : false}"
                         android:hint="@string/times"
                         android:inputType="number"
                         android:maxLength="2"
-                        android:text='@{nc219a.checked ? nc219x.getText.toString : ""}'
-                        android:visibility="@{nc219a.checked ? View.VISIBLE : View.GONE}" />
+                        android:text='@{nc219a.checked ? nc219x.getText.toString : ""}' />
 
                 </LinearLayout>
 
@@ -2331,10 +2330,10 @@
                     android:layout_marginBottom="5dp"
                     android:layout_marginTop="1dp"
                     android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
+                    android:enabled="@{nc22196.checked ? true : false}"
                     android:hint="@string/other"
                     android:inputType="text"
-                    android:text='@{nc22196.checked ? nc22196x.getText.toString : ""}'
-                    android:visibility="@{nc22196.checked ? View.VISIBLE : View.GONE}" />
+                    android:text='@{nc22196.checked ? nc22196x.getText.toString : ""}' />
 
 
                 <TextView
@@ -2393,10 +2392,10 @@
                     android:layout_marginBottom="5dp"
                     android:layout_marginTop="1dp"
                     android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
+                    android:enabled="@{nc22296.checked ? true : false}"
                     android:hint="@string/other"
                     android:inputType="text"
-                    android:text='@{nc22296.checked ? nc22296x.getText.toString : ""}'
-                    android:visibility="@{nc22296.checked ? View.VISIBLE : View.GONE}" />
+                    android:text='@{nc22296.checked ? nc22296x.getText.toString : ""}' />
 
 
                 <TextView
