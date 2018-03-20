@@ -65,4 +65,20 @@ public class clearClass {
         }
     }
 
+    public static void ClearAllFields(LinearLayout container, Boolean flag) {
+        for (int i = 0; i < container.getChildCount(); i++) {
+            View v = container.getChildAt(i);
+            if (v instanceof CheckBox) {
+                ((CheckBox) v).setChecked(false);
+                v.setEnabled(flag);
+            } else if (v instanceof RadioButton) {
+                ((RadioButton) v).setChecked(false);
+                v.setEnabled(flag);
+            } else if (v instanceof EditText) {
+                ((EditText) v).setText(null);
+                v.setEnabled(flag);
+            }
+        }
+    }
+
 }

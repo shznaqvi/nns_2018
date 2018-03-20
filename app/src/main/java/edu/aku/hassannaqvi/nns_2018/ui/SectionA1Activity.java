@@ -14,6 +14,7 @@ import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -33,6 +34,7 @@ import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA1Binding;
 import edu.aku.hassannaqvi.nns_2018.other.MembersCount;
+import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionA1Activity extends AppCompatActivity {
@@ -55,6 +57,23 @@ public class SectionA1Activity extends AppCompatActivity {
         binding.setCallback(this);
 
         SetupViewFunctionality();
+
+        SkipPatterns();
+    }
+
+    private void SkipPatterns() {
+
+        binding.na11801.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.na11801a) {
+                    clearClass.ClearAllFields(binding.fldGrpna113, false);
+                } else {
+                    clearClass.ClearAllFields(binding.fldGrpna113, true);
+                }
+            }
+        });
+
     }
 
     public void SetupViewFunctionality() {

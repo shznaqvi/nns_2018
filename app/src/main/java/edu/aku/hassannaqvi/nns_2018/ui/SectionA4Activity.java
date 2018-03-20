@@ -16,7 +16,6 @@ import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA4Binding;
-import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionA4Activity extends AppCompatActivity {
@@ -88,7 +87,7 @@ public class SectionA4Activity extends AppCompatActivity {
 
 
 
-        binding.nh305.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+/*        binding.nh305.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.nh305b) {
@@ -113,7 +112,7 @@ public class SectionA4Activity extends AppCompatActivity {
                     clearClass.ClearRadioButton(binding.nh308, binding.nh309, true);
                 }
             }
-        });
+        });*/
 
 //        nh308
         binding.nh308.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -130,7 +129,7 @@ public class SectionA4Activity extends AppCompatActivity {
             }
         });
 
-
+/*
         binding.nh315.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -156,7 +155,7 @@ public class SectionA4Activity extends AppCompatActivity {
                 }
 
             }
-        });
+        });*/
 
     }
 

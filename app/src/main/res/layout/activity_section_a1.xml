@@ -672,8 +672,8 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:visibility="@{na11801a.checked ? View.GONE : View.VISIBLE}">
+                                android:orientation="vertical">
+                                <!--android:visibility="@{na11801a.checked ? View.GONE : View.VISIBLE}"-->
 
                                 <!--na1b-->
                                 <TextView
