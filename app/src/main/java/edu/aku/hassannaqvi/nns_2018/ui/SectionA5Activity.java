@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -16,6 +15,7 @@ import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA5Binding;
+import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionA5Activity extends AppCompatActivity {
@@ -38,12 +38,16 @@ public class SectionA5Activity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (!(checkedId == R.id.nh401a)) {
-                    binding.nh402.clearCheck();
+
+                    clearClass.ClearAllFields(binding.fldGrpnh402, false);
+                    /*binding.nh402.clearCheck();
                     binding.nh403a.setChecked(false);
                     binding.nh403b.setChecked(false);
                     binding.nh403c.setChecked(false);
                     binding.nh403d.setChecked(false);
-                    binding.nh403e.setChecked(false);
+                    binding.nh403e.setChecked(false);*/
+                } else {
+                    clearClass.ClearAllFields(binding.fldGrpnh402, true);
                 }
             }
         });
@@ -75,11 +79,14 @@ public class SectionA5Activity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.nh404b) {
-                    binding.nh405a.setChecked(false);
+                    clearClass.ClearAllFields(binding.fldGrpnh405, false);
+                    /*binding.nh405a.setChecked(false);
                     binding.nh405b.setChecked(false);
                     binding.nh405c.setChecked(false);
                     binding.nh405d.setChecked(false);
-                    binding.nh405e.setChecked(false);
+                    binding.nh405e.setChecked(false);*/
+                } else {
+                    clearClass.ClearAllFields(binding.fldGrpnh405, true);
                 }
             }
         });
@@ -109,17 +116,18 @@ public class SectionA5Activity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (binding.nh403a.isChecked() || binding.nh403b.isChecked() || binding.nh403c.isChecked()) {
-                    binding.fldGrnh404.setVisibility(View.GONE);
-                    binding.fldGrpnh405.setVisibility(View.GONE);
-                    binding.nh404.clearCheck();
+                    clearClass.ClearAllFields(binding.fldGrnh404, false);
+                    clearClass.ClearAllFields(binding.fldGrpnh405, false);
+                   /* binding.nh404.clearCheck();
                     binding.nh405a.setChecked(false);
                     binding.nh405b.setChecked(false);
                     binding.nh405c.setChecked(false);
                     binding.nh405d.setChecked(false);
-                    binding.nh405e.setChecked(false);
+                    binding.nh405e.setChecked(false);*/
                 } else {
-                    binding.fldGrnh404.setVisibility(View.VISIBLE);
-                    binding.fldGrpnh405.setVisibility(View.VISIBLE);
+                    clearClass.ClearAllFields(binding.fldGrnh404, true);
+                    clearClass.ClearAllFields(binding.fldGrpnh405, true);
+
                 }
             }
         });
@@ -127,17 +135,18 @@ public class SectionA5Activity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (binding.nh403a.isChecked() || binding.nh403b.isChecked() || binding.nh403c.isChecked()) {
-                    binding.fldGrnh404.setVisibility(View.GONE);
-                    binding.fldGrpnh405.setVisibility(View.GONE);
-                    binding.nh404.clearCheck();
+                    clearClass.ClearAllFields(binding.fldGrnh404, false);
+                    clearClass.ClearAllFields(binding.fldGrpnh405, false);
+                    /*binding.nh404.clearCheck();
                     binding.nh405a.setChecked(false);
                     binding.nh405b.setChecked(false);
                     binding.nh405c.setChecked(false);
                     binding.nh405d.setChecked(false);
-                    binding.nh405e.setChecked(false);
+                    binding.nh405e.setChecked(false);*/
                 } else {
-                    binding.fldGrnh404.setVisibility(View.VISIBLE);
-                    binding.fldGrpnh405.setVisibility(View.VISIBLE);
+                    clearClass.ClearAllFields(binding.fldGrnh404, true);
+                    clearClass.ClearAllFields(binding.fldGrpnh405, true);
+
                 }
             }
         });
@@ -145,17 +154,17 @@ public class SectionA5Activity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (binding.nh403a.isChecked() || binding.nh403b.isChecked() || binding.nh403c.isChecked()) {
-                    binding.fldGrnh404.setVisibility(View.GONE);
-                    binding.fldGrpnh405.setVisibility(View.GONE);
-                    binding.nh404.clearCheck();
+                    clearClass.ClearAllFields(binding.fldGrnh404, false);
+                    clearClass.ClearAllFields(binding.fldGrpnh405, false);
+                   /* binding.nh404.clearCheck();
                     binding.nh405a.setChecked(false);
                     binding.nh405b.setChecked(false);
                     binding.nh405c.setChecked(false);
                     binding.nh405d.setChecked(false);
-                    binding.nh405e.setChecked(false);
+                    binding.nh405e.setChecked(false);*/
                 } else {
-                    binding.fldGrnh404.setVisibility(View.VISIBLE);
-                    binding.fldGrpnh405.setVisibility(View.VISIBLE);
+                    clearClass.ClearAllFields(binding.fldGrnh404, true);
+                    clearClass.ClearAllFields(binding.fldGrpnh405, true);
                 }
             }
         });
@@ -164,11 +173,11 @@ public class SectionA5Activity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.nh501d) {
-                    binding.fldGrnh602.setVisibility(View.GONE);
-                    binding.nh502.clearCheck();
-                    binding.nh503.clearCheck();
+                    clearClass.ClearAllFields(binding.fldGrnh602, false);
+
                 } else {
-                    binding.fldGrnh602.setVisibility(View.VISIBLE);
+                    clearClass.ClearAllFields(binding.fldGrnh602, true);
+
                 }
             }
         });

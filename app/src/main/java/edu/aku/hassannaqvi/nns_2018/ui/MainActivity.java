@@ -335,7 +335,7 @@ public class MainActivity extends Activity {
     }
 
     public void openB(View v) {
-        Intent iB = new Intent(this, SectionA4Activity.class);
+        Intent iB = new Intent(this, SectionA5Activity.class);
         startActivity(iB);
     }
 

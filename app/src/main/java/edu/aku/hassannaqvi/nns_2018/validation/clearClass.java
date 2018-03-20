@@ -81,7 +81,7 @@ public class clearClass {
                 v.setEnabled(flag);
             } else if (v instanceof LinearLayout) {
                 for (int k = 0; k < ((LinearLayout) v).getChildCount(); k++) {
-                    View v1 = container.getChildAt(k);
+                    View v1 = ((LinearLayout) v).getChildAt(k);
                     if (v1 instanceof CheckBox) {
                         ((CheckBox) v1).setChecked(false);
                         v1.setEnabled(flag);
