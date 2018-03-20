@@ -1,7 +1,7 @@
 package edu.aku.hassannaqvi.nns_2018.other;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 /**
  * Created by gul.sanober on 3/7/2018.
@@ -9,7 +9,15 @@ import org.json.JSONObject;
 
 public class JSONUtilClass {
 
-    public static JSONModelClass getModelFromJSON(String json) {
+
+    public static <T> T getModelFromJSON(String json, Class<T> type) {
+        Gson gson = new GsonBuilder().create();
+        return gson.fromJson(json, type);
+    }
+
+
+
+   /* public static JSONModelClass getModelFromJSON(String json) {
         try {
             JSONObject jsonObject = new JSONObject(json);
             JSONModelClass demo = new JSONModelClass();
@@ -24,7 +32,9 @@ public class JSONUtilClass {
             e.printStackTrace();
             return null;
         }
-    }
+    }*/
+
+
 
 
 

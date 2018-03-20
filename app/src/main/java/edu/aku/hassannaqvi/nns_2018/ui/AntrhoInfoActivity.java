@@ -203,7 +203,7 @@ public class AntrhoInfoActivity extends Activity {
                     for (FamilyMembersContract fm : members) {
 
                         if (fm.getsA2() != null) {
-                            json = JSONUtilClass.getModelFromJSON(fm.getsA2());
+                            json = JSONUtilClass.getModelFromJSON(fm.getsA2(), JSONModelClass.class);
                             if ((Integer.valueOf(json.getAge()) >= 15 && Integer.valueOf(json.getAge()) <= 49) && json.getGender().equals("2")) {
                                 MainApp.mwra.add(fm);
                                 MainApp.all_members.add(fm);

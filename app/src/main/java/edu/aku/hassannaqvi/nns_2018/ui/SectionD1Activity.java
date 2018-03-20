@@ -120,9 +120,7 @@ public class SectionD1Activity extends AppCompatActivity {
                             binding.fldGrpode.setVisibility(View.GONE);
                             break;
                     }
-
                 }
-
             }
 
             @Override
@@ -139,7 +137,7 @@ public class SectionD1Activity extends AppCompatActivity {
     public void familyMembersSetting(List<FamilyMembersContract> family, int type) {
 
         for (FamilyMembersContract fmc : family) {
-            json = JSONUtilClass.getModelFromJSON(fmc.getsA2());
+            json = JSONUtilClass.getModelFromJSON(fmc.getsA2(), JSONModelClass.class);
             membersMap.put(json.getName() + "_" + json.getSerialNo(), new SelectedMem(type, fmc));
             members.add(json.getName() + "_" + json.getSerialNo());
         }

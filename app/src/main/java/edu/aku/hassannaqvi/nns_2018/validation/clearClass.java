@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 /**
@@ -12,44 +13,46 @@ import android.widget.RadioGroup;
 
 public class clearClass {
 
-    public static void ClearRadioButton(RadioGroup rdGrp, Boolean b) {
+    public static void ClearRadioButton(LinearLayout container, RadioGroup rdGrp) {
         if (rdGrp.getCheckedRadioButtonId() == -1) {
 
-            if (!b) {
-                rdGrp.clearCheck();
-            }
+            rdGrp.clearCheck();
 
-            for (int i = 0; i < rdGrp.getChildCount(); i++) {
-                rdGrp.getChildAt(i).setEnabled(b);
+            for (int i = 0; i < container.getChildCount(); i++) {
+                View v = container.getChildAt(i);
+                if (v instanceof RadioButton) {
+                    v.setEnabled(false);
+                }
             }
         }
     }
 
-    public static void ClearRadioButton(RadioGroup rdGrp, EditText othertxt, Boolean b) {
+    public static void ClearRadioButton(LinearLayout container, RadioGroup rdGrp, EditText othertxt) {
         if (rdGrp.getCheckedRadioButtonId() == -1) {
 
-            if (!b) {
-                rdGrp.clearCheck();
-                othertxt.setText(null);
-            }
+            rdGrp.clearCheck();
+            othertxt.setText(null);
 
-            for (int i = 0; i < rdGrp.getChildCount(); i++) {
-                rdGrp.getChildAt(i).setEnabled(b);
+            for (int i = 0; i < container.getChildCount(); i++) {
+                View v = container.getChildAt(i);
+                if (v instanceof RadioButton) {
+                    v.setEnabled(false);
+                }
             }
         }
     }
 
-    public static void ClearCheckBoxes(LinearLayout container, Boolean b) {
+    public static void ClearCheckBoxes(LinearLayout container) {
         for (int i = 0; i < container.getChildCount(); i++) {
             View v = container.getChildAt(i);
             if (v instanceof CheckBox) {
                 ((CheckBox) v).setChecked(false);
-                v.setEnabled(b);
+                v.setEnabled(false);
             }
         }
     }
 
-    public static void ClearCheckBoxes(LinearLayout container, EditText othertxt, Boolean b) {
+    public static void ClearCheckBoxes(LinearLayout container, EditText othertxt) {
 
         othertxt.setText(null);
 
@@ -57,7 +60,7 @@ public class clearClass {
             View v = container.getChildAt(i);
             if (v instanceof CheckBox) {
                 ((CheckBox) v).setChecked(false);
-                v.setEnabled(b);
+                v.setEnabled(false);
             }
         }
     }
