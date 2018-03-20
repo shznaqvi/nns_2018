@@ -14,6 +14,7 @@ import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB3Binding;
+import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionB3Activity extends AppCompatActivity {
@@ -35,18 +36,9 @@ public class SectionB3Activity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (i == R.id.nw32798) {
-                    binding.nw328.clearCheck();
-                    binding.nw329a.setChecked(false);
-                    binding.nw329b.setChecked(false);
-                    binding.nw329c.setChecked(false);
-                    binding.nw329d.setChecked(false);
-                    binding.nw329e.setChecked(false);
-                    binding.nw329f.setChecked(false);
-                    binding.nw329g.setChecked(false);
-                    binding.nw329h.setChecked(false);
-                    binding.nw330.clearCheck();
-                    binding.nw331.clearCheck();
-                    binding.nw332.clearCheck();
+                    clearClass.ClearAllFields(binding.fldGrnw328, false);
+                } else {
+                    clearClass.ClearAllFields(binding.fldGrnw328, true);
                 }
             }
         });
@@ -55,8 +47,11 @@ public class SectionB3Activity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (i == R.id.nw330d) {
-                    binding.nw331.clearCheck();
-                    binding.nw332.clearCheck();
+                    clearClass.ClearAllFields(binding.fldGrnw331, false);
+//                    binding.nw331.clearCheck();
+//                    binding.nw332.clearCheck();
+                } else {
+                    clearClass.ClearAllFields(binding.fldGrnw331, true);
                 }
             }
         });
@@ -65,7 +60,12 @@ public class SectionB3Activity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (i == R.id.nw331b) {
-                    binding.nw332.clearCheck();
+                    clearClass.ClearAllFields(binding.fldGrnw332, false);
+
+//                    binding.nw332.clearCheck();
+                } else {
+                    clearClass.ClearAllFields(binding.fldGrnw332, true);
+
                 }
             }
         });

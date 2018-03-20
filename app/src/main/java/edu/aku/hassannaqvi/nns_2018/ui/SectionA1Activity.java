@@ -355,7 +355,6 @@ public class SectionA1Activity extends AppCompatActivity {
         MainApp.fc.setEnmNo(binding.nh102.getText().toString());
         MainApp.fc.setHhNo(binding.nh108.getText().toString().toUpperCase());
 
-
         setGPS(); // Set GPS
 
         JSONObject sA1 = new JSONObject();

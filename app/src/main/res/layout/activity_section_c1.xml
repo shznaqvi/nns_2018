@@ -4,9 +4,7 @@
     tools:context=".ui.SectionC1Activity">
 
     <data>
-
         <import type="android.view.View" />
-
         <variable
             name="callback"
             type="edu.aku.hassannaqvi.nns_2018.ui.SectionC1Activity" />
