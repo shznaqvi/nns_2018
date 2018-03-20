@@ -88,9 +88,9 @@ public class SectionA4Activity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.nh305b) {
-                    clearClass.ClearAllFields(binding.fldGrpnh305, true);
-                } else {
                     clearClass.ClearAllFields(binding.fldGrpnh305, false);
+                } else {
+                    clearClass.ClearAllFields(binding.fldGrpnh305, true);
                 }
             }
         });
@@ -148,7 +148,7 @@ public class SectionA4Activity extends AppCompatActivity {
         binding.nh323.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (i == R.id.nh324b) {
+                if (i == R.id.nh323b) {
                     clearClass.ClearAllFields(binding.fldGrpnh324, false);
                 } else {
                     clearClass.ClearAllFields(binding.fldGrpnh324, true);
@@ -226,8 +226,6 @@ public class SectionA4Activity extends AppCompatActivity {
                     return false;
                 }
             }
-
-
         }
         if (!validatorClass.EmptyRadioButton(this, binding.nh305, binding.nh305b, getString(R.string.nh305))) {
             return false;
@@ -237,7 +235,6 @@ public class SectionA4Activity extends AppCompatActivity {
                 return false;
             }
         }
-
 
         if (!validatorClass.EmptyRadioButton(this, binding.nh307, binding.nh30796, binding.nh30796x, getString(R.string.nh307))) {
             return false;
