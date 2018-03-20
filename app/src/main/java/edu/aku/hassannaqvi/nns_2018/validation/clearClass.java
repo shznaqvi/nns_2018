@@ -71,12 +71,30 @@ public class clearClass {
             if (v instanceof CheckBox) {
                 ((CheckBox) v).setChecked(false);
                 v.setEnabled(flag);
-            } else if (v instanceof RadioButton) {
-                ((RadioButton) v).setChecked(false);
-                v.setEnabled(flag);
+            } else if (v instanceof RadioGroup) {
+                ((RadioGroup) v).clearCheck();
+                for (int j = 0; j < ((RadioGroup) v).getChildCount(); j++) {
+                    ((RadioGroup) v).getChildAt(j).setEnabled(flag);
+                }
             } else if (v instanceof EditText) {
                 ((EditText) v).setText(null);
                 v.setEnabled(flag);
+            } else if (v instanceof LinearLayout) {
+                for (int k = 0; k < ((LinearLayout) v).getChildCount(); k++) {
+                    View v1 = container.getChildAt(k);
+                    if (v1 instanceof CheckBox) {
+                        ((CheckBox) v1).setChecked(false);
+                        v1.setEnabled(flag);
+                    } else if (v1 instanceof RadioGroup) {
+                        ((RadioGroup) v1).clearCheck();
+                        for (int j = 0; j < ((RadioGroup) v1).getChildCount(); j++) {
+                            ((RadioGroup) v1).getChildAt(j).setEnabled(flag);
+                        }
+                    } else if (v1 instanceof EditText) {
+                        ((EditText) v1).setText(null);
+                        v1.setEnabled(flag);
+                    }
+                }
             }
         }
     }
