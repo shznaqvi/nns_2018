@@ -14,6 +14,7 @@ import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB5Binding;
+import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionB5Activity extends AppCompatActivity {
@@ -36,7 +37,7 @@ public class SectionB5Activity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (i == R.id.nw414b) {
-                    binding.nw415a.setChecked(false);
+                    /*binding.nw415a.setChecked(false);
                     binding.nw415b.setChecked(false);
                     binding.nw415c.setChecked(false);
                     binding.nw415d.setChecked(false);
@@ -56,8 +57,12 @@ public class SectionB5Activity extends AppCompatActivity {
                     binding.nw418f.setChecked(false);
                     binding.nw418g.setChecked(false);
                     binding.nw418h.setChecked(false);
-                    binding.nw41896.setChecked(false);
+                    binding.nw41896.setChecked(false);*/
 
+                    clearClass.ClearAllFields(binding.fldGrpnw415, false);
+
+                } else {
+                    clearClass.ClearAllFields(binding.fldGrpnw415, true);
                 }
             }
         });
@@ -66,7 +71,7 @@ public class SectionB5Activity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (i == R.id.nw419b) {
-                    binding.nw420a.setChecked(false);
+                    /*binding.nw420a.setChecked(false);
                     binding.nw420b.setChecked(false);
                     binding.nw420c.setChecked(false);
                     binding.nw420d.setChecked(false);
@@ -83,11 +88,14 @@ public class SectionB5Activity extends AppCompatActivity {
                     binding.nw423c.setChecked(false);
                     binding.nw423d.setChecked(false);
                     binding.nw423e.setChecked(false);
-                    binding.nw42396.setChecked(false);
+                    binding.nw42396.setChecked(false);*/
+
+                    clearClass.ClearAllFields(binding.fldGrpnw420, false);
+                } else {
+                    clearClass.ClearAllFields(binding.fldGrpnw420, true);
                 }
             }
         });
-
 
     }
 

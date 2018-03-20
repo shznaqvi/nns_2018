@@ -65,10 +65,11 @@
             </RadioGroup>
 
             <LinearLayout
+                android:id="@+id/fldGrpnw415"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="@{nw414b.checked ? View.GONE : View.VISIBLE}">
+                android:orientation="vertical">
+                <!--android:visibility="@{nw414b.checked ? View.GONE : View.VISIBLE}"-->
                 <!--nw415-->
                 <TextView
                     android:layout_width="match_parent"
@@ -403,10 +404,11 @@
             </RadioGroup>
 
             <LinearLayout
+                android:id="@+id/fldGrpnw420"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="@{nw419b.checked ? View.GONE : View.VISIBLE}">
+                android:orientation="vertical">
+                <!--android:visibility="@{nw419b.checked ? View.GONE : View.VISIBLE}"-->
 
                 <!--nw420-->
                 <TextView

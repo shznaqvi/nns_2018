@@ -29,6 +29,7 @@ import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionD1Binding;
 import edu.aku.hassannaqvi.nns_2018.other.JSONModelClass;
 import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
+import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionD1Activity extends AppCompatActivity {
@@ -44,7 +45,6 @@ public class SectionD1Activity extends AppCompatActivity {
 
 
     FamilyMembersContract slecMem;
-
 
 
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
@@ -102,22 +102,48 @@ public class SectionD1Activity extends AppCompatActivity {
 
                     switch (slc_type) {
                         case 1: // MWRA
-                            binding.fldGrpbcgScar.setVisibility(View.GONE);
-                            binding.fldGrpgoiter.setVisibility(View.VISIBLE);
-                            binding.fldGrpca.setVisibility(View.VISIBLE);
-                            binding.fldGrpode.setVisibility(View.GONE);
+
+//                            binding.fldGrpbcgScar.setVisibility(View.GONE);
+                            clearClass.ClearAllFields(binding.fldGrpbcgScar, false);
+
+//                            binding.fldGrpgoiter.setVisibility(View.VISIBLE);
+                            clearClass.ClearAllFields(binding.fldGrpgoiter, true);
+
+//                            binding.fldGrpca.setVisibility(View.VISIBLE);
+                            clearClass.ClearAllFields(binding.fldGrpca, true);
+
+//                            binding.fldGrpode.setVisibility(View.GONE);
+                            clearClass.ClearAllFields(binding.fldGrpode, false);
                             break;
+
                         case 2: // U5
-                            binding.fldGrpbcgScar.setVisibility(View.VISIBLE);
-                            binding.fldGrpgoiter.setVisibility(View.VISIBLE);
-                            binding.fldGrpca.setVisibility(View.VISIBLE);
-                            binding.fldGrpode.setVisibility(View.VISIBLE);
+
+//                            binding.fldGrpbcgScar.setVisibility(View.VISIBLE);
+                            clearClass.ClearAllFields(binding.fldGrpbcgScar, true);
+
+//                            binding.fldGrpgoiter.setVisibility(View.VISIBLE);
+                            clearClass.ClearAllFields(binding.fldGrpgoiter, true);
+
+//                            binding.fldGrpca.setVisibility(View.VISIBLE);
+                            clearClass.ClearAllFields(binding.fldGrpca, true);
+
+//                            binding.fldGrpode.setVisibility(View.VISIBLE);
+                            clearClass.ClearAllFields(binding.fldGrpode, true);
                             break;
+
                         case 3: // Adolescent
-                            binding.fldGrpbcgScar.setVisibility(View.GONE);
-                            binding.fldGrpgoiter.setVisibility(View.VISIBLE);
-                            binding.fldGrpca.setVisibility(View.VISIBLE);
-                            binding.fldGrpode.setVisibility(View.GONE);
+
+//                            binding.fldGrpbcgScar.setVisibility(View.GONE);
+                            clearClass.ClearAllFields(binding.fldGrpbcgScar, false);
+
+//                            binding.fldGrpgoiter.setVisibility(View.VISIBLE);
+                            clearClass.ClearAllFields(binding.fldGrpgoiter, true);
+
+//                            binding.fldGrpca.setVisibility(View.VISIBLE);
+                            clearClass.ClearAllFields(binding.fldGrpca, true);
+
+//                            binding.fldGrpode.setVisibility(View.GONE);
+                            clearClass.ClearAllFields(binding.fldGrpode, false);
                             break;
                     }
                 }
