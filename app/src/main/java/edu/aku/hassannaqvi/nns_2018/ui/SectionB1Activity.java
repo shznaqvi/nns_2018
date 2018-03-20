@@ -29,9 +29,8 @@ import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB1Binding;
+import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
-
-import static android.view.View.GONE;
 
 public class SectionB1Activity extends Activity {
 
@@ -113,11 +112,10 @@ public class SectionB1Activity extends Activity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (bi.nw203a.isChecked()) {
-                    bi.fldGrpnw204.setVisibility(View.VISIBLE);
+                    clearClass.ClearAllFields(bi.fldGrpnw204, true);
                 } else {
-                    bi.fldGrpnw204.setVisibility(View.GONE);
-                    bi.nw204.clearCheck();
-                    bi.nw205.clearCheck();
+                    clearClass.ClearAllFields(bi.fldGrpnw204, false);
+
                 }
             }
         });
@@ -126,14 +124,12 @@ public class SectionB1Activity extends Activity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (bi.nw204a.isChecked()) {
-                    bi.fldGrpnw205.setVisibility(View.GONE);
-                    bi.nw205.clearCheck();
-                    bi.fldGrpnw206.setVisibility(View.VISIBLE);
+                    clearClass.ClearAllFields(bi.fldGrpnw205, false);
+                    clearClass.ClearAllFields(bi.fldGrpnw206, true);
                 } else {
-                    bi.fldGrpnw205.setVisibility(View.VISIBLE);
-                    bi.fldGrpnw206.setVisibility(View.GONE);
-                    bi.nw206.setText(null);
-                    bi.nw207.clearCheck();
+                    clearClass.ClearAllFields(bi.fldGrpnw205, true);
+                    clearClass.ClearAllFields(bi.fldGrpnw206, false);
+
                 }
             }
         });
@@ -142,9 +138,12 @@ public class SectionB1Activity extends Activity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (bi.nw205a.isChecked()) {
-                    bi.fldGrpnw206.setVisibility(View.VISIBLE);
+
+                    clearClass.ClearAllFields(bi.fldGrpnw206, true);
                 } else {
-                    bi.fldGrpnw206.setVisibility(View.GONE);
+
+                    clearClass.ClearAllFields(bi.fldGrpnw206, false);
+                    /*bi.fldGrpnw206.setVisibility(View.GONE);
                     bi.nw206.setText(null);
                     bi.nw207.clearCheck();
                     bi.nw208.setText(null);
@@ -156,7 +155,7 @@ public class SectionB1Activity extends Activity {
                     bi.nw21302.clearCheck();
                     bi.nw21303.clearCheck();
                     bi.nw21398.clearCheck();
-                    bi.nw21399.clearCheck();
+                    bi.nw21399.clearCheck();*/
                 }
             }
         });
@@ -165,13 +164,15 @@ public class SectionB1Activity extends Activity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.nw207a) {
-                    bi.fldGrpnw208.setVisibility(View.VISIBLE);
+                    //bi.fldGrpnw208.setVisibility(View.VISIBLE);
+                    clearClass.ClearAllFields(bi.fldGrpnw208, true);
                 } else {
-                    bi.fldGrpnw208.setVisibility(View.GONE);
+                    clearClass.ClearAllFields(bi.fldGrpnw208, false);
+                    /*bi.fldGrpnw208.setVisibility(View.GONE);
                     bi.nw208.setText(null);
                     bi.nw209.setText(null);
                     bi.nw210.setText(null);
-                    bi.nw211.clearCheck();
+                    bi.nw211.clearCheck();*/
                 }
             }
         });
@@ -186,12 +187,9 @@ public class SectionB1Activity extends Activity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 if (bi.nw208.getText().toString().equals("0")) {
-                    bi.fldGrpnw209.setVisibility(GONE);
-                    bi.nw209.setText(null);
-                    bi.nw211.clearCheck();
-                    bi.nw210.setText(null);
+                    clearClass.ClearAllFields(bi.fldGrpnw209, false);
                 } else {
-                    bi.fldGrpnw209.setVisibility(View.VISIBLE);
+                    clearClass.ClearAllFields(bi.fldGrpnw209, true);
                 }
 
             }
@@ -207,15 +205,15 @@ public class SectionB1Activity extends Activity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.nw211a) {
-                    bi.fldGrpnw212.setVisibility(View.VISIBLE);
+                    clearClass.ClearAllFields(bi.fldGrpnw212, true);
                 } else {
-                    bi.fldGrpnw212.setVisibility(GONE);
-                    bi.nw212.clearCheck();
+                    clearClass.ClearAllFields(bi.fldGrpnw212, false);
+                    /*bi.nw212.clearCheck();
                     bi.nw21301.clearCheck();
                     bi.nw21302.clearCheck();
                     bi.nw21303.clearCheck();
                     bi.nw21399.clearCheck();
-                    bi.nw21398.clearCheck();
+                    bi.nw21398.clearCheck();*/
                 }
 
             }
@@ -294,14 +292,16 @@ public class SectionB1Activity extends Activity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.nw212b) {
-                    bi.fldGrpnw213.setVisibility(View.GONE);
+                    clearClass.ClearAllFields(bi.fldGrpnw212, false);
+                    /*bi.fldGrpnw213.setVisibility(View.GONE);
                     bi.nw21301.clearCheck();
                     bi.nw21302.clearCheck();
                     bi.nw21303.clearCheck();
                     bi.nw21398.clearCheck();
-                    bi.nw21399.clearCheck();
+                    bi.nw21399.clearCheck();*/
                 } else {
-                    bi.fldGrpnw213.setVisibility(View.VISIBLE);
+                    clearClass.ClearAllFields(bi.fldGrpnw212, true);
+                    //bi.fldGrpnw213.setVisibility(View.VISIBLE);
 
                 }
             }

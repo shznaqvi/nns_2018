@@ -198,8 +198,7 @@
                 android:id="@+id/fldGrpnw204"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="@{nw203a.checked ? View.VISIBLE : View.GONE}">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -344,8 +343,7 @@
                         android:id="@+id/fldGrpnw208"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:visibility="@{nw207a.checked ? View.VISIBLE : View.GONE}">
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="match_parent"

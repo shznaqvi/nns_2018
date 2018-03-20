@@ -158,8 +158,7 @@
                         android:background="@color/colorPrimary"
                         android:text="@string/nc403"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white"
-                        android:visibility='@{nc402a.checked ? View.VISIBLE : View.GONE}' />
+                        android:textColor="@android:color/white" />
 
                     <RadioGroup
                         android:id="@+id/nc403"
@@ -228,10 +227,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
                             android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                            android:enabled="@{nc4039601.checked? true : false}"
                             android:hint="@string/otherpubm"
                             android:inputType="textCapWords"
-                            android:text='@{nc4039601.checked ? nc4039601x.getText.toString : ""}'
-                            android:visibility="@{nc4039601.checked? View.VISIBLE : View.GONE}" />
+                            android:text='@{nc4039601.checked ? nc4039601x.getText.toString : ""}' />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -295,10 +294,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
                             android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                            android:enabled="@{nc4039602.checked ? true : false}"
                             android:hint="@string/otherprim"
                             android:inputType="textCapWords"
-                            android:text='@{nc4039602.checked ? nc4039602x.getText.toString : ""}'
-                            android:visibility="@{nc4039602.checked ? View.VISIBLE : View.GONE}" />
+                            android:text='@{nc4039602.checked ? nc4039602x.getText.toString : ""}' />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -346,10 +345,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
                             android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                            android:enabled="@{nc4039603.checked? true : false}"
                             android:hint="@string/other"
                             android:inputType="textCapWords"
-                            android:text='@{nc4039603.checked ? nc4039603x.getText.toString : ""}'
-                            android:visibility="@{nc4039603.checked? View.VISIBLE : View.GONE}" />
+                            android:text='@{nc4039603.checked ? nc4039603x.getText.toString : ""}' />
 
                     </RadioGroup>
 
@@ -483,10 +482,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
                             android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                            android:enabled="@{nc40496.checked ? true : false}"
                             android:hint="@string/nc4049601"
                             android:inputType="textCapWords"
-                            android:text='@{nc40496.checked ? nc40496x.getText.toString : ""}'
-                            android:visibility="@{nc40496.checked ? View.VISIBLE : View.GONE}" />
+                            android:text='@{nc40496.checked ? nc40496x.getText.toString : ""}' />
 
                     </LinearLayout>
 
@@ -666,10 +665,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
                             android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                            android:enabled="@{nc4079601.checked ? true : false}"
                             android:hint="@string/otherpubm"
                             android:inputType="textCapWords"
-                            android:text='@{nc4079601.checked ? nc4079601x.getText.toString : ""}'
-                            android:visibility="@{nc4079601.checked ? View.VISIBLE : View.GONE}" />
+                            android:text='@{nc4079601.checked ? nc4079601x.getText.toString : ""}' />
 
 
                         <TextView
@@ -741,10 +740,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
                             android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                            android:enabled="@{nc4079602.checked ? true : false}"
                             android:hint="@string/otherprim"
                             android:inputType="textCapWords"
-                            android:text='@{nc4079602.checked ? nc4079602x.getText.toString : ""}'
-                            android:visibility="@{nc4079602.checked ? View.VISIBLE : View.GONE}" />
+                            android:text='@{nc4079602.checked ? nc4079602x.getText.toString : ""}' />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -798,10 +797,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
                         android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                        android:enabled="@{nc4079603.checked ? true : false}"
                         android:hint="@string/other"
                         android:inputType="textCapWords"
-                        android:text='@{nc4079603.checked ? nc4079603x.getText.toString : ""}'
-                        android:visibility="@{nc4079603.checked ? View.VISIBLE : View.GONE}" />
+                        android:text='@{nc4079603.checked ? nc4079603x.getText.toString : ""}' />
 
                     <!--nc408-->
                     <TextView
@@ -923,10 +922,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
                             android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                            android:enabled="@{nc4089601.checked ? true : false}"
                             android:hint="@string/nc4089601"
                             android:inputType="textCapWords"
-                            android:text='@{nc4089601.checked ? nc4089601x.getText.toString : ""}'
-                            android:visibility="@{nc4089601.checked ? View.VISIBLE : View.GONE}" />
+                            android:text='@{nc4089601.checked ? nc4089601x.getText.toString : ""}' />
 
 
                     </LinearLayout>
@@ -1105,10 +1104,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
                             android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                            android:enabled="@{nc4119601.checked ? true : false}"
                             android:hint="@string/otherpubm"
                             android:inputType="textCapWords"
-                            android:text='@{nc4119601.checked ? nc4119601x.getText.toString : ""}'
-                            android:visibility="@{nc4119601.checked? View.VISIBLE : View.GONE}" />
+                            android:text='@{nc4119601.checked ? nc4119601x.getText.toString : ""}' />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -1179,10 +1178,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
                             android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                            android:enabled="@{nc4119602.checked? true : false}"
                             android:hint="@string/otherprim"
                             android:inputType="textCapWords"
-                            android:text='@{nc4119602.checked ? nc4119602x.getText.toString : ""}'
-                            android:visibility="@{nc4119602.checked? View.VISIBLE : View.GONE}" />
+                            android:text='@{nc4119602.checked ? nc4119602x.getText.toString : ""}' />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -1235,10 +1234,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
                             android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                            android:enabled="@{nc4119603.checked? true : false}"
                             android:hint="@string/other"
                             android:inputType="textCapWords"
-                            android:text='@{nc4119603.checked ? nc4119603x.getText.toString : ""}'
-                            android:visibility="@{nc4119603.checked? View.VISIBLE : View.GONE}" />
+                            android:text='@{nc4119603.checked ? nc4119603x.getText.toString : ""}' />
 
                     </RadioGroup>
 
@@ -1353,10 +1352,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
                             android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                            android:enabled="@{nc4129601.checked? true : false}"
                             android:hint="@string/nc4129601"
                             android:inputType="textCapWords"
-                            android:text='@{nc4129601.checked ? nc4129601x.getText.toString : ""}'
-                            android:visibility="@{nc4129601.checked? View.VISIBLE : View.GONE}" />
+                            android:text='@{nc4129601.checked ? nc4129601x.getText.toString : ""}' />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -1502,8 +1501,7 @@
                 android:id="@+id/fldGrpnc416"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility='@{nc415a.checked ? View.VISIBLE : View.GONE}'>
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -1637,8 +1635,7 @@
                 android:id="@+id/fldGrpnc419"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility='@{nc418a.checked ? View.VISIBLE : View.GONE}'>
+                android:orientation="vertical">
 
 
                 <TextView
