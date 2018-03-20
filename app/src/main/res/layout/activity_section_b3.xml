@@ -67,11 +67,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:digits="0123456789"
+                    android:enabled='@{nw327a.checked ? true : false}'
                     android:hint="@string/months"
                     android:inputType="number"
                     android:maxLength="2"
-                    android:text='@{nw327a.checked ? nw327m.getText.toString : ""}'
-                    android:visibility='@{nw327a.checked ? View.VISIBLE : View.GONE}' />
+                    android:text='@{nw327a.checked ? nw327m.getText.toString : ""}' />
 
                 <RadioButton
                     android:id="@+id/nw327b"
@@ -87,11 +87,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:digits="0123456789"
+                    android:enabled='@{nw327b.checked ? true : false}'
                     android:hint="@string/day"
                     android:inputType="number"
                     android:maxLength="2"
-                    android:text='@{nw327b.checked ? nw327d.getText.toString : ""}'
-                    android:visibility='@{nw327b.checked ? View.VISIBLE : View.GONE}' />
+                    android:text='@{nw327b.checked ? nw327d.getText.toString : ""}' />
 
                 <RadioButton
                     android:id="@+id/nw32798"
@@ -106,8 +106,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="@{nw32798.checked ? View.GONE : View.VISIBLE}">
+                android:enabled="@{nw32798.checked ? false :true}"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/fldGrnw328"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                 <!--nw328-->
                 <TextView
@@ -180,9 +186,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
+                    android:enabled='@{nw32896.checked ? true : false}'
                     android:hint="@string/other"
-                    android:text='@{nw32896.checked ? nw32896x.getText.toString : ""}'
-                    android:visibility='@{nw32896.checked ? View.VISIBLE : View.GONE}' />
+                    android:text='@{nw32896.checked ? nw32896x.getText.toString : ""}' />
 
                 <!--nw329-->
                 <TextView
@@ -257,7 +263,7 @@
                         android:text="@string/nw329h" />
 
                 </LinearLayout>
-
+                </LinearLayout>
                 <!--nw330-->
                 <TextView
                     android:layout_width="match_parent"
@@ -308,10 +314,10 @@
                 </RadioGroup>
 
                 <LinearLayout
+                    android:id="@+id/fldGrnw331"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="@{nw330d.checked ? View.GONE : View.VISIBLE}">
+                    android:orientation="vertical">
                     <!--nw331-->
                     <TextView
                         android:layout_width="match_parent"
@@ -349,10 +355,10 @@
                     </RadioGroup>
 
                     <LinearLayout
+                        android:id="@+id/fldGrnw332"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:visibility="@{nw331b.checked ? View.GONE : View.VISIBLE}">
+                        android:orientation="vertical">
                         <!--nw332-->
                         <TextView
                             android:layout_width="match_parent"

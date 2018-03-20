@@ -226,7 +226,7 @@
                     android:orientation="vertical">
 
                     <LinearLayout
-
+                        android:id="@+id/fldGrnh303"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="2dp"
@@ -3028,11 +3028,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:enabled="@{nh322a.checked ? true : false}"
                         android:hint="@string/nh322acr"
                         android:inputType="numberDecimal"
                         android:maxLength="6"
-                        android:text='@{nh322a.checked ? nh322acr.getText.toString : ""}'
-                        android:visibility="@{nh322a.checked ? View.VISIBLE : View.GONE}" />
+                        android:text='@{nh322a.checked ? nh322acr.getText.toString : ""}' />
 
                     <RadioButton
                         android:id="@+id/nh322b"
@@ -3045,11 +3045,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:enabled="@{nh322b.checked ? true : false}"
                         android:hint="@string/nh322can"
                         android:inputType="numberDecimal"
                         android:maxLength="6"
-                        android:text='@{nh322b.checked ? nh322can.getText.toString : ""}'
-                        android:visibility="@{nh322b.checked ? View.VISIBLE : View.GONE}" />
+                        android:text='@{nh322b.checked ? nh322can.getText.toString : ""}' />
 
                     <RadioButton
                         android:id="@+id/nh32298"
@@ -3103,8 +3103,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bacground_border1"
-                android:orientation="vertical"
-                android:visibility="@{nh323a.checked ? View.VISIBLE : View.GONE}">
+                android:enabled="@{nh323a.checked ? true : false}"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
