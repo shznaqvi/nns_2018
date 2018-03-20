@@ -16,6 +16,7 @@ import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA4Binding;
+import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionA4Activity extends AppCompatActivity {
@@ -39,13 +40,19 @@ public class SectionA4Activity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (i == R.id.nh303b || i == R.id.nh303c) {
-                    binding.fldGrnh304.setVisibility(View.GONE);
+                    binding.fldGrnh304.setVisibility(View.VISIBLE);
+                    binding.nh304.setEnabled(false);
                     binding.nh304.setText(null);
                     binding.nh30498.setChecked(false);
+                    binding.nh30498.setEnabled(false);
                     binding.nh30499.setChecked(false);
+                    binding.nh30499.setEnabled(false);
                 } else {
                     binding.fldGrnh304.setVisibility(View.VISIBLE);
                     binding.nh304.setVisibility(View.VISIBLE);
+                    binding.nh304.setEnabled(true);
+                    binding.nh30498.setEnabled(true);
+                    binding.nh30499.setEnabled(true);
                 }
             }
         });
@@ -55,10 +62,12 @@ public class SectionA4Activity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     binding.nh30499.setChecked(false);
-                    binding.nh304.setVisibility(View.GONE);
+                    binding.nh30499.setEnabled(false);
+                    binding.nh304.setVisibility(View.VISIBLE);
                     binding.nh304.setText(null);
                 } else {
                     binding.nh304.setVisibility(View.VISIBLE);
+                    binding.nh30499.setEnabled(true);
                 }
             }
         });
@@ -67,37 +76,27 @@ public class SectionA4Activity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     binding.nh30498.setChecked(false);
-                    binding.nh304.setVisibility(View.GONE);
+                    binding.nh30498.setEnabled(false);
+                    binding.nh304.setVisibility(View.VISIBLE);
                     binding.nh304.setText(null);
                 } else {
                     binding.nh304.setVisibility(View.VISIBLE);
+                    binding.nh30498.setEnabled(false);
                 }
             }
         });
 
 
-       /* binding.nh304rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.nh30498 || checkedId == R.id.nh30499) {
-                    binding.nh304.setVisibility(View.GONE);
-                    binding.nh304.setText(null);
-                } else {
-                    binding.nh304.setVisibility(View.VISIBLE);
-
-                }
-            }
-        });*/
 
         binding.nh305.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.nh305b) {
-                    binding.fldGrpnh305.setVisibility(View.GONE);
-                    binding.nh306.clearCheck();
-                    binding.nh30696x.setText(null);
-                } else {
                     binding.fldGrpnh305.setVisibility(View.VISIBLE);
+                    clearClass.ClearRadioButton(binding.nh306, binding.nh30696x, false);
+                } else {
+                    clearClass.ClearRadioButton(binding.nh306, binding.nh30696x, true);
+
                 }
             }
         });
@@ -107,12 +106,11 @@ public class SectionA4Activity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (i == R.id.nh307h || i == R.id.nh307i) {
-                    binding.fldGrpnh308.setVisibility(View.GONE);
-                    binding.nh308.clearCheck();
-                    binding.nh309.setText(null);
+                    binding.fldGrpnh308.setVisibility(View.VISIBLE);
+                    clearClass.ClearRadioButton(binding.nh308, binding.nh309, false);
                 } else {
                     binding.fldGrpnh308.setVisibility(View.VISIBLE);
-
+                    clearClass.ClearRadioButton(binding.nh308, binding.nh309, true);
                 }
             }
         });
@@ -122,10 +120,12 @@ public class SectionA4Activity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.nh308b) {
-                    binding.fldGrpnh309.setVisibility(View.GONE);
+                    binding.fldGrpnh309.setVisibility(View.VISIBLE);
                     binding.nh309.setText(null);
+                    binding.nh309.setEnabled(false);
                 } else {
                     binding.fldGrpnh309.setVisibility(View.VISIBLE);
+                    binding.nh309.setEnabled(true);
                 }
             }
         });
@@ -136,9 +136,10 @@ public class SectionA4Activity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (binding.nh315a.isChecked()) {
                     binding.fldGrpnh316.setVisibility(View.VISIBLE);
+                    clearClass.ClearRadioButton(binding.nh316, false);
                 } else {
-                    binding.fldGrpnh316.setVisibility(View.GONE);
-                    binding.nh316.clearCheck();
+                    binding.fldGrpnh316.setVisibility(View.VISIBLE);
+                    clearClass.ClearRadioButton(binding.nh316, true);
                 }
             }
         });
@@ -149,7 +150,11 @@ public class SectionA4Activity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (i == R.id.nh321b) {
                     binding.nh322.clearCheck();
+                    clearClass.ClearRadioButton(binding.nh322, false);
+                } else {
+                    clearClass.ClearRadioButton(binding.nh322, true);
                 }
+
             }
         });
 
