@@ -20,6 +20,7 @@ import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC3Binding;
+import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 import io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText;
 
@@ -51,7 +52,7 @@ public class SectionC3Activity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (i == R.id.nc303d) {
-                    binding.nc3bcg.clearCheck();
+                    /*binding.nc3bcg.clearCheck();
                     binding.nc3opv0.clearCheck();
                     binding.nc3opv1.clearCheck();
                     binding.nc3p1.clearCheck();
@@ -64,7 +65,11 @@ public class SectionC3Activity extends AppCompatActivity {
                     binding.nc3pcv3.clearCheck();
                     binding.nc3ipv.clearCheck();
                     binding.nc3m1.clearCheck();
-                    binding.nc3m2.clearCheck();
+                    binding.nc3m2.clearCheck();*/
+
+                    clearClass.ClearAllFields(binding.fldGrpnc303, false);
+                } else {
+                    clearClass.ClearAllFields(binding.fldGrpnc303, true);
                 }
             }
         });
@@ -73,7 +78,10 @@ public class SectionC3Activity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (binding.nc315b.isChecked() || binding.nc31598.isChecked()) {
-                    binding.nc316.clearCheck();
+//                    binding.nc316.clearCheck();
+                    clearClass.ClearAllFields(binding.fldGrpnc315, false);
+                } else {
+                    clearClass.ClearAllFields(binding.fldGrpnc315, true);
                 }
             }
         });

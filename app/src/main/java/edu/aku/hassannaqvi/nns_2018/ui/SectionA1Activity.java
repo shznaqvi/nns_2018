@@ -13,7 +13,6 @@ import android.text.TextWatcher;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -136,7 +135,7 @@ public class SectionA1Activity extends AppCompatActivity {
         MainApp.hhClicked = new ArrayList<>();
 
 //        HH Checkbox validate
-        binding.checkHHHeadpresent.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        /* binding.checkHHHeadpresent.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
@@ -146,7 +145,7 @@ public class SectionA1Activity extends AppCompatActivity {
                     binding.fldGrpnh110a.setVisibility(View.VISIBLE);
                 }
             }
-        });
+        });*/
 
 //        HH listener
         binding.nh108.addTextChangedListener(new TextWatcher() {
