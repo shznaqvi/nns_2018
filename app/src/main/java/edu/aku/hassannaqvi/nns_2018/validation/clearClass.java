@@ -72,7 +72,9 @@ public class clearClass {
                 ((CheckBox) v).setChecked(false);
                 v.setEnabled(flag);
             } else if (v instanceof RadioGroup) {
-                ((RadioGroup) v).clearCheck();
+                if (!flag) {
+                    ((RadioGroup) v).clearCheck();
+                }
                 for (int j = 0; j < ((RadioGroup) v).getChildCount(); j++) {
                     ((RadioGroup) v).getChildAt(j).setEnabled(flag);
                 }
@@ -86,7 +88,9 @@ public class clearClass {
                         ((CheckBox) v1).setChecked(false);
                         v1.setEnabled(flag);
                     } else if (v1 instanceof RadioGroup) {
-                        ((RadioGroup) v1).clearCheck();
+                        if (!flag) {
+                            ((RadioGroup) v1).clearCheck();
+                        }
                         for (int j = 0; j < ((RadioGroup) v1).getChildCount(); j++) {
                             ((RadioGroup) v1).getChildAt(j).setEnabled(flag);
                         }
