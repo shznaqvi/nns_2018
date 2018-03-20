@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -16,6 +15,7 @@ import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB4Binding;
+import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionB4Activity extends Activity {
@@ -72,12 +72,17 @@ public class SectionB4Activity extends Activity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.nw405b || checkedId == R.id.nw40598) {
-                    binding.fldGrpnw406.setVisibility(View.GONE);
+                    /*binding.fldGrpnw406.setVisibility(View.GONE);
                     binding.nw406c.setText(null);
                     binding.nw406r.setText(null);
-                    binding.nw40698.setChecked(false);
+                    binding.nw40698.setChecked(false);*/
+
+                    clearClass.ClearAllFields(binding.fldGrpnw406, false);
+
                 } else {
-                    binding.fldGrpnw406.setVisibility(View.VISIBLE);
+//                    binding.fldGrpnw406.setVisibility(View.VISIBLE);
+
+                    clearClass.ClearAllFields(binding.fldGrpnw406, true);
                 }
             }
         });
@@ -85,7 +90,7 @@ public class SectionB4Activity extends Activity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.nb411b || checkedId == R.id.nb41198) {
-                    binding.fldGrpnb412.setVisibility(View.GONE);
+                    /*binding.fldGrpnb412.setVisibility(View.GONE);
                     binding.nb412a.setChecked(false);
                     binding.nb412b.setChecked(false);
                     binding.nb412c.setChecked(false);
@@ -99,10 +104,13 @@ public class SectionB4Activity extends Activity {
                     binding.nw413.clearCheck();
                     binding.nw413961x.setText(null);
                     binding.nw413962x.setText(null);
-                    binding.nw413963x.setText(null);
+                    binding.nw413963x.setText(null);*/
+
+                    clearClass.ClearAllFields(binding.fldGrpnb412, false);
 
                 } else {
-                    binding.fldGrpnb412.setVisibility(View.VISIBLE);
+//                    binding.fldGrpnb412.setVisibility(View.VISIBLE);
+                    clearClass.ClearAllFields(binding.fldGrpnb412, true);
                 }
             }
         });

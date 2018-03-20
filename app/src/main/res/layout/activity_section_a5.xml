@@ -792,7 +792,7 @@
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimaryDark"
                 android:gravity="center"
-                android:text="@string/na7heading"
+                android:text="@string/nh6heading"
                 android:textSize="40sp" />
 
 
@@ -800,7 +800,7 @@
                 style="@style/sub"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/na7info" />
+                android:text="@string/nh6info" />
 
             <!--01-->
             <TextView
