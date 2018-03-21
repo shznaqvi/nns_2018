@@ -120,7 +120,7 @@
     <string name="nh211"> والد کا لائن نمبر </string>
     <string name="nh212"> والدہ کا لائن نمبر </string>
     <string name="na204"> جنس </string>
-    <string name="nh2dob"> (نام) کی پیدائش کی تاریخ کیا ہے؟ </string>
+  <string name="nh2dob"> پیدائش کی تاریخ کیا ہے؟ </string>
     <string name="na2age"> (نام)کتنی عمر ہے؟ </string>
     <string name="nh2edu"> تعلیم </string>
     <string name="nh2edua"> کوئی نہیں</string>

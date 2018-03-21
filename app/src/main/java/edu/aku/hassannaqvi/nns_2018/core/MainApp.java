@@ -474,6 +474,18 @@ public class MainApp extends Application {
 
     }
 
+    public static class SetNameClass {
+        String check;
+
+        public SetNameClass(String check) {
+            this.check = check;
+        }
+
+        public String getName() {
+            return check;
+        }
+    }
+
     public class GPSLocationListener implements LocationListener {
         public void onLocationChanged(Location location) {
 
@@ -519,6 +531,5 @@ public class MainApp extends Application {
 
         }
     }
-
 
 }

@@ -11,6 +11,10 @@
         <variable
             name="callback"
             type="edu.aku.hassannaqvi.nns_2018.ui.SectionA2Activity" />
+
+        <variable
+            name="name"
+            type="edu.aku.hassannaqvi.nns_2018.core.MainApp.SetNameClass" />
     </data>
 
     <ScrollView
@@ -329,7 +333,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorPrimary"
-                    android:text="@string/nh2dob"
+                    android:text='@{name.getName}'
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
 

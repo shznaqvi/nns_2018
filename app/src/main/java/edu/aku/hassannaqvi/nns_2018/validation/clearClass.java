@@ -70,6 +70,7 @@ public class clearClass {
             View v = container.getChildAt(i);
             if (v instanceof CheckBox) {
                 ((CheckBox) v).setChecked(false);
+                ((CheckBox) v).setError(null);
                 v.setEnabled(flag);
             } else if (v instanceof RadioGroup) {
                 if (!flag) {
@@ -80,15 +81,18 @@ public class clearClass {
                 }
             } else if (v instanceof EditText) {
                 ((EditText) v).setText(null);
+                ((EditText) v).setError(null);
                 v.setEnabled(flag);
             } else if (v instanceof io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText) {
                 ((io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText) v).setText(null);
+                ((io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText) v).setError(null);
                 v.setEnabled(flag);
             } else if (v instanceof LinearLayout) {
                 for (int k = 0; k < ((LinearLayout) v).getChildCount(); k++) {
                     View v1 = ((LinearLayout) v).getChildAt(k);
                     if (v1 instanceof CheckBox) {
                         ((CheckBox) v1).setChecked(false);
+                        ((CheckBox) v1).setError(null);
                         v1.setEnabled(flag);
                     } else if (v1 instanceof RadioGroup) {
                         if (!flag) {
@@ -99,9 +103,11 @@ public class clearClass {
                         }
                     } else if (v1 instanceof EditText) {
                         ((EditText) v1).setText(null);
+                        ((EditText) v1).setError(null);
                         v1.setEnabled(flag);
                     } else if (v1 instanceof io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText) {
                         ((io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText) v1).setText(null);
+                        ((io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText) v1).setError(null);
                         v1.setEnabled(flag);
                     }
                 }

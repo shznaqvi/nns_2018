@@ -75,6 +75,9 @@ public class SectionA2Activity extends AppCompatActivity {
 
             binding.selectedName.setText(family.getName().toUpperCase());
 
+            MainApp.SetNameClass nameSet = new MainApp.SetNameClass(getString(R.string.nh2dob) + " " + family.getName());
+            binding.setName(nameSet);
+
 
             binding.fldGrpA201.setVisibility(View.GONE);
             binding.fldGrpA202.setVisibility(View.VISIBLE);
