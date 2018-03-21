@@ -1,14 +1,20 @@
 package edu.aku.hassannaqvi.nns_2018.other;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by gul.sanober on 3/7/2018.
  */
 
 public class JSONModelClass {
+    @SerializedName("nh202")
     private String name = "";
     private String age = "";
+    @SerializedName("nh2SerialNo")
     private String serialNo = "";
+    @SerializedName("nh207")
     private String maritalStatus = "";
+    @SerializedName("nh204")
     private String gender = "";
 
     public JSONModelClass() {
