@@ -82,7 +82,7 @@ public class clearClass {
                 ((EditText) v).setText(null);
                 v.setEnabled(flag);
             } else if (v instanceof io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText) {
-                ((EditText) v).setText(null);
+                ((io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText) v).setText(null);
                 v.setEnabled(flag);
             } else if (v instanceof LinearLayout) {
                 for (int k = 0; k < ((LinearLayout) v).getChildCount(); k++) {
@@ -101,7 +101,7 @@ public class clearClass {
                         ((EditText) v1).setText(null);
                         v1.setEnabled(flag);
                     } else if (v1 instanceof io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText) {
-                        ((EditText) v1).setText(null);
+                        ((io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText) v1).setText(null);
                         v1.setEnabled(flag);
                     }
                 }

@@ -91,6 +91,7 @@ public class SectionA4Activity extends AppCompatActivity {
                     clearClass.ClearAllFields(binding.fldGrpnh305, false);
                 } else {
                     clearClass.ClearAllFields(binding.fldGrpnh305, true);
+                    binding.nh30696x.setEnabled(false);
                 }
             }
         });
