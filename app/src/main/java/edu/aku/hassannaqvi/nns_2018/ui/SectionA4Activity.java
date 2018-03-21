@@ -101,10 +101,10 @@ public class SectionA4Activity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (i == R.id.nh307h || i == R.id.nh307i) {
-                    clearClass.ClearAllFields(binding.fldGrpnh308, true);
+                    clearClass.ClearAllFields(binding.fldGrpnh308, false);
                     //  clearClass.ClearAllFields(binding.fldGrpnh309,true);
                 } else {
-                    clearClass.ClearAllFields(binding.fldGrpnh308, false);
+                    clearClass.ClearAllFields(binding.fldGrpnh308, true);
                 }
             }
         });
@@ -114,10 +114,10 @@ public class SectionA4Activity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.nh308b) {
-                    clearClass.ClearAllFields(binding.fldGrpnh309, true);
+                    clearClass.ClearAllFields(binding.fldGrpnh309, false);
                 } else {
 //                    binding.fldGrpnh309.setVisibility(View.VISIBLE);
-                    clearClass.ClearAllFields(binding.fldGrpnh309, false);
+                    clearClass.ClearAllFields(binding.fldGrpnh309, true);
 
                 }
             }
@@ -140,8 +140,11 @@ public class SectionA4Activity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (i == R.id.nh321b) {
                     clearClass.ClearAllFields(binding.fldGrpnh322, false);
+
                 } else {
                     clearClass.ClearAllFields(binding.fldGrpnh322, true);
+                    binding.nh322acr.setEnabled(false);
+                    binding.nh322can.setEnabled(false);
                 }
             }
         });
@@ -241,7 +244,7 @@ public class SectionA4Activity extends AppCompatActivity {
             return false;
         }
 
-        if (!binding.nh307h.isChecked() || !binding.nh307i.isChecked()) {
+        if (!binding.nh307h.isChecked() && !binding.nh307i.isChecked()) {
             if (!validatorClass.EmptyRadioButton(this, binding.nh308, binding.nh308b, getString(R.string.nh308))) {
                 return false;
             }
