@@ -244,7 +244,7 @@ public class SectionA4Activity extends AppCompatActivity {
             return false;
         }
 
-        if (!binding.nh307h.isChecked() || !binding.nh307i.isChecked()) {
+        if (!binding.nh307h.isChecked() && !binding.nh307i.isChecked()) {
             if (!validatorClass.EmptyRadioButton(this, binding.nh308, binding.nh308b, getString(R.string.nh308))) {
                 return false;
             }
