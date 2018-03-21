@@ -1,6 +1,8 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
@@ -47,6 +49,8 @@ public class SectionA1Activity extends AppCompatActivity {
     int progressStatus = 0;
     Handler handler = new Handler();
     Boolean flag = false;
+
+    Boolean secFlag = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -463,31 +467,62 @@ public class SectionA1Activity extends AppCompatActivity {
 
         if (!binding.nh102.getText().toString().trim().isEmpty() && !binding.nh108.getText().toString().trim().isEmpty()) {
 
-            selected = db.getAllBLRandom(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase());
+            FormsContract partialMem = db.getPartialForms(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase(), "4");
 
-            if (selected.size() != 0) {
+            if (partialMem != null) {
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                        SectionA1Activity.this);
+                alertDialogBuilder
+                        .setMessage("یہ House Hold پہلے سے 'جزوی مکمل' طور پر موجود ہے۔")
+                        .setCancelable(false)
+                        .setPositiveButton("جزوی فارم شروح کرنا ہے",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
 
-                Toast.makeText(this, "Head found in this HH.", Toast.LENGTH_SHORT).show();
-
-                for (BLRandomContract rnd : selected) {
-                    MainApp.selectedHead = new BLRandomContract(rnd);
-                }
-
-                binding.hhName.setText(MainApp.selectedHead.getHhhead().toUpperCase());
-
-                binding.fldGrpnh110.setVisibility(View.VISIBLE);
-
+                                        binding.btnEnd.setVisibility(View.GONE);
+                                    }
+                                })
+                        .setNegativeButton("دوبارہ فارم شروح کرنا ہے",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                        setupViews2();
+                                    }
+                                });
+                AlertDialog alert = alertDialogBuilder.create();
+                alert.show();
             } else {
-
-                clearFields();
-
-                Toast.makeText(this, "No Head found in this HH.", Toast.LENGTH_SHORT).show();
+                setupViews2();
             }
 
         } else {
             Toast.makeText(this, "Not found.", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    public void setupViews2() {
+        selected = db.getAllBLRandom(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase());
+
+        if (selected.size() != 0) {
+
+            Toast.makeText(this, "Head found in this HH.", Toast.LENGTH_SHORT).show();
+
+            for (BLRandomContract rnd : selected) {
+                MainApp.selectedHead = new BLRandomContract(rnd);
+            }
+
+            binding.hhName.setText(MainApp.selectedHead.getHhhead().toUpperCase());
+
+            binding.fldGrpnh110.setVisibility(View.VISIBLE);
+
+        } else {
+
+            clearFields();
+
+            Toast.makeText(this, "No Head found in this HH.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void BtnCheckEnm() {
@@ -512,5 +547,9 @@ public class SectionA1Activity extends AppCompatActivity {
             }
 
         }
+    }
+
+    public void BtnPartialCheck() {
+
     }
 }

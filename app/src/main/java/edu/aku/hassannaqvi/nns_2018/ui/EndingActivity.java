@@ -89,6 +89,10 @@ public class EndingActivity extends AppCompatActivity {
 
         MainApp.fc.setIstatus88x(binding.istatus96x.getText().toString());
 
+        if (binding.istatusd.isChecked()) {
+            MainApp.fc.setIclassname(getIntent().getStringExtra("class"));
+        }
+
 
         //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }

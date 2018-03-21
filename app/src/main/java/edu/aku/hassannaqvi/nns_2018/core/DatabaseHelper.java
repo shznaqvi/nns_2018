@@ -93,6 +93,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsTable.COLUMN_SB4 + " TEXT," +
             FormsTable.COLUMN_ISTATUS + " TEXT," +
             FormsTable.COLUMN_ISTATUS88x + " TEXT," +
+            FormsTable.COLUMN_ICLASSNAME + " TEXT," +
             FormsTable.COLUMN_COUNT + " TEXT," +
             FormsTable.COLUMN_GPSLAT + " TEXT," +
             FormsTable.COLUMN_GPSLNG + " TEXT," +
@@ -447,6 +448,71 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    public FormsContract getPartialForms(String subAreaCode, String hh, String status) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                FormsTable._ID,
+                FormsTable.COLUMN_UID,
+                FormsTable.COLUMN_FORMDATE,
+                FormsTable.COLUMN_USER,
+                FormsTable.COLUMN_RESP_LNO,
+                FormsTable.COLUMN_ISTATUS,
+                FormsTable.COLUMN_ISTATUS88x,
+                FormsTable.COLUMN_ICLASSNAME,
+                FormsTable.COLUMN_HH_NO,
+                FormsTable.COLUMN_ENM_NO,
+                FormsTable.COLUMN_SA1,
+                FormsTable.COLUMN_SA4,
+                FormsTable.COLUMN_SA5,
+                FormsTable.COLUMN_SB4,
+                FormsTable.COLUMN_COUNT,
+                FormsTable.COLUMN_GPSLAT,
+                FormsTable.COLUMN_GPSLNG,
+                FormsTable.COLUMN_GPSDATE,
+                FormsTable.COLUMN_GPSACC,
+                FormsTable.COLUMN_DEVICETAGID,
+                FormsTable.COLUMN_DEVICEID,
+                FormsTable.COLUMN_SYNCED,
+                FormsTable.COLUMN_SYNCED_DATE,
+                FormsTable.COLUMN_APP_VERSION
+        };
+        String whereClause = FormsTable.COLUMN_ENM_NO + "=? AND " +
+                FormsTable.COLUMN_HH_NO + "=? AND " +
+                FormsTable.COLUMN_ISTATUS + "=?";
+        String[] whereArgs = new String[]{subAreaCode, hh, status};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                FormsTable._ID + " DESC LIMIT 1";
+
+        FormsContract allFC = null;
+        try {
+            c = db.query(
+                    FormsTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                allFC = new FormsContract().Hydrate(c);
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
+
     public Collection<FamilyMembersContract> getAllMembersByHH(String uid) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -502,7 +568,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return allBL;
     }
-
 
 
     public Collection<BLRandomContract> getAllBLRandom(String subAreaCode, String hh) {
@@ -1231,7 +1296,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-
     public void updateSyncedSerial(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -1512,7 +1576,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return allFC;
     }
-
 
 
     public Collection<ChildContract> getUnsyncedChildForms() {
@@ -2229,6 +2292,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(FormsTable.COLUMN_ISTATUS, MainApp.fc.getIstatus());
         values.put(FormsTable.COLUMN_ISTATUS88x, MainApp.fc.getIstatus88x());
+
+        if (MainApp.fc.getIstatus().equals("4")) {
+            values.put(FormsTable.COLUMN_ICLASSNAME, MainApp.fc.getIclassname());
+        }
 
 // Which row to update, based on the ID
         String selection = FormsTable._ID + " =? ";

@@ -281,6 +281,7 @@ public class MainApp extends Application {
                                 activity.finish();
                                 Intent end_intent = new Intent(context, EndingActivity.class);
                                 end_intent.putExtra("complete", false);
+                                end_intent.putExtra("class", activity.getClass().getName());
                                 context.startActivity(end_intent);
                             }
                         });
