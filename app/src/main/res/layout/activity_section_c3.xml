@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="edu.aku.hassannaqvi.nns_2018.ui.SectionC3Activity">
 
@@ -190,7 +189,7 @@
 
                     </RadioGroup>
 
-                    <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                    <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                         android:id="@+id/nc3bcgdt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -201,8 +200,99 @@
                         android:padding="15dp"
                         android:text='@{nc3bcga.checked ? nc3bcgdt.getText.toString : ""}'
                         android:textColor="@android:color/black"
-                        app:dateFormat="dd-MM-yyyy" />
+                        app:dateFormat="dd-MM-yyyy" />-->
 
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/year2"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                            <EditText
+                                android:id="@+id/nc3bcgy"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:hint="@string/year2"
+                                android:inputType="number"
+                                android:maxLength="4"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/month"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                            <EditText
+                                android:id="@+id/nc3bcgm"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:hint="@string/month"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/day"
+                                android:textColor="@color/colorPrimaryDark" />
+
+                            <EditText
+                                android:id="@+id/nc3bcgd"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:digits="0123456789"
+                                android:hint="@string/day"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
                     <!-- opv0 -->
                     <TextView
                         android:layout_width="match_parent"
@@ -236,7 +326,7 @@
 
                     </RadioGroup>
 
-                    <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                    <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                         android:id="@+id/nc3opv0dt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -247,7 +337,98 @@
                         android:padding="15dp"
                         android:text='@{nc3opv0a.checked ? nc3opv0dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
-                        app:dateFormat="dd-MM-yyyy" />
+                        app:dateFormat="dd-MM-yyyy" />-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/year2"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                            <EditText
+                                android:id="@+id/nc3opv0y"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:hint="@string/year2"
+                                android:inputType="number"
+                                android:maxLength="4"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/month"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                            <EditText
+                                android:id="@+id/nc3opv0m"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:hint="@string/month"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/day"
+                                android:textColor="@color/colorPrimaryDark" />
+
+                            <EditText
+                                android:id="@+id/nc3opv0d"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:digits="0123456789"
+                                android:hint="@string/day"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -301,7 +482,7 @@
 
                     </RadioGroup>
 
-                    <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                    <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                         android:id="@+id/nc3opv1dt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -312,7 +493,98 @@
                         android:padding="15dp"
                         android:text='@{nc3opv1a.checked ? nc3opv1dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
-                        app:dateFormat="dd-MM-yyyy" />
+                        app:dateFormat="dd-MM-yyyy" />-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/year2"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                            <EditText
+                                android:id="@+id/nc3opv1y"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:hint="@string/year2"
+                                android:inputType="number"
+                                android:maxLength="4"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/month"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                            <EditText
+                                android:id="@+id/nc3opv1m"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:hint="@string/month"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/day"
+                                android:textColor="@color/colorPrimaryDark" />
+
+                            <EditText
+                                android:id="@+id/nc3opv1d"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:digits="0123456789"
+                                android:hint="@string/day"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
 
                     <!-- Penta - 1 -->
                     <TextView
@@ -347,7 +619,7 @@
 
                     </RadioGroup>
 
-                    <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                    <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                         android:id="@+id/nc3p1dt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -358,7 +630,98 @@
                         android:padding="15dp"
                         android:text='@{nc3p1a.checked ? nc3p1dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
-                        app:dateFormat="dd-MM-yyyy" />
+                        app:dateFormat="dd-MM-yyyy" />-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/year2"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                            <EditText
+                                android:id="@+id/nc3p1y"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:hint="@string/year2"
+                                android:inputType="number"
+                                android:maxLength="4"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/month"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                            <EditText
+                                android:id="@+id/nc3p1m"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:hint="@string/month"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/day"
+                                android:textColor="@color/colorPrimaryDark" />
+
+                            <EditText
+                                android:id="@+id/nc3p1d"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:digits="0123456789"
+                                android:hint="@string/day"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
 
                     <!-- PCV - 1 -->
                     <TextView
@@ -393,7 +756,7 @@
 
                     </RadioGroup>
 
-                    <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                    <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                         android:id="@+id/nc3pcv1dt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -404,7 +767,98 @@
                         android:padding="15dp"
                         android:text='@{nc3pcv1a.checked ? nc3pcv1dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
-                        app:dateFormat="dd-MM-yyyy" />
+                        app:dateFormat="dd-MM-yyyy" />-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/year2"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                            <EditText
+                                android:id="@+id/nc3pcv1y"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:hint="@string/year2"
+                                android:inputType="number"
+                                android:maxLength="4"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/month"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                            <EditText
+                                android:id="@+id/nc3pcv1m"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:hint="@string/month"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/day"
+                                android:textColor="@color/colorPrimaryDark" />
+
+                            <EditText
+                                android:id="@+id/nc3pcv1d"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:digits="0123456789"
+                                android:hint="@string/day"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
                 </LinearLayout>
 
 
@@ -458,7 +912,7 @@
 
                     </RadioGroup>
 
-                    <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                    <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                         android:id="@+id/nc3opv2dt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -469,7 +923,98 @@
                         android:padding="15dp"
                         android:text='@{nc3opv2a.checked ? nc3opv2dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
-                        app:dateFormat="dd-MM-yyyy" />
+                        app:dateFormat="dd-MM-yyyy" />-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/year2"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                            <EditText
+                                android:id="@+id/nc3opv2y"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:hint="@string/year2"
+                                android:inputType="number"
+                                android:maxLength="4"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/month"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                            <EditText
+                                android:id="@+id/nc3opv2m"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:hint="@string/month"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/day"
+                                android:textColor="@color/colorPrimaryDark" />
+
+                            <EditText
+                                android:id="@+id/nc3opv2d"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:digits="0123456789"
+                                android:hint="@string/day"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
 
                     <!-- Penta - 2 -->
                     <TextView
@@ -504,7 +1049,7 @@
 
                     </RadioGroup>
 
-                    <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                    <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                         android:id="@+id/nc3p2dt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -516,7 +1061,98 @@
                         android:text='@{nc3p2a.checked ? nc3p2dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
                         app:dateFormat="dd-MM-yyyy" />
+-->
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/year2"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                            <EditText
+                                android:id="@+id/nc3p2y"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:hint="@string/year2"
+                                android:inputType="number"
+                                android:maxLength="4"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/month"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                            <EditText
+                                android:id="@+id/nc3p2m"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:hint="@string/month"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/day"
+                                android:textColor="@color/colorPrimaryDark" />
+
+                            <EditText
+                                android:id="@+id/nc3p2d"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:digits="0123456789"
+                                android:hint="@string/day"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
                     <!-- PVC - 2 -->
                     <TextView
                         android:layout_width="match_parent"
@@ -550,7 +1186,7 @@
 
                     </RadioGroup>
 
-                    <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                    <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                         android:id="@+id/nc3pcv2dt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -562,8 +1198,98 @@
                         android:text='@{nc3pcv2a.checked ? nc3pcv2dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
                         app:dateFormat="dd-MM-yyyy" />
+-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/year2"
+                                android:textColor="@color/colorPrimaryDark" />
 
 
+                            <EditText
+                                android:id="@+id/nc3pcv2y"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:hint="@string/year2"
+                                android:inputType="number"
+                                android:maxLength="4"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/month"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                            <EditText
+                                android:id="@+id/nc3pcv2m"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:hint="@string/month"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/day"
+                                android:textColor="@color/colorPrimaryDark" />
+
+                            <EditText
+                                android:id="@+id/nc3pcv2d"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:digits="0123456789"
+                                android:hint="@string/day"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
                 </LinearLayout>
 
                 <!-- At age of 14 weeks-->
@@ -616,7 +1342,7 @@
 
                     </RadioGroup>
 
-                    <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                    <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                         android:id="@+id/nc3opv3dt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -627,7 +1353,98 @@
                         android:padding="15dp"
                         android:text='@{nc3opv3a.checked ? nc3opv3dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
-                        app:dateFormat="dd-MM-yyyy" />
+                        app:dateFormat="dd-MM-yyyy" />-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/year2"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                            <EditText
+                                android:id="@+id/nc3opv3y"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:hint="@string/year2"
+                                android:inputType="number"
+                                android:maxLength="4"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/month"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                            <EditText
+                                android:id="@+id/nc3opv3m"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:hint="@string/month"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/day"
+                                android:textColor="@color/colorPrimaryDark" />
+
+                            <EditText
+                                android:id="@+id/nc3opv3d"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:digits="0123456789"
+                                android:hint="@string/day"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
 
                     <!-- Penta - 3 -->
                     <TextView
@@ -662,7 +1479,7 @@
 
                     </RadioGroup>
 
-                    <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                    <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                         android:id="@+id/nc3p3dt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -674,7 +1491,98 @@
                         android:text='@{nc3p3a.checked ? nc3p3dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
                         app:dateFormat="dd-MM-yyyy" />
+-->
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/year2"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                            <EditText
+                                android:id="@+id/nc3p3y"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:hint="@string/year2"
+                                android:inputType="number"
+                                android:maxLength="4"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/month"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                            <EditText
+                                android:id="@+id/nc3p3m"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:hint="@string/month"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/day"
+                                android:textColor="@color/colorPrimaryDark" />
+
+                            <EditText
+                                android:id="@+id/nc3p3d"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:digits="0123456789"
+                                android:hint="@string/day"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
                     <!-- PCV - 3 -->
                     <TextView
                         android:layout_width="match_parent"
@@ -708,7 +1616,7 @@
 
                     </RadioGroup>
 
-                    <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                    <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                         android:id="@+id/nc3pcv3dt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -719,7 +1627,98 @@
                         android:padding="15dp"
                         android:text='@{nc3pcv3a.checked ? nc3pcv3dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
-                        app:dateFormat="dd-MM-yyyy" />
+                        app:dateFormat="dd-MM-yyyy" />-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/year2"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                            <EditText
+                                android:id="@+id/nc3pcv3y"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:hint="@string/year2"
+                                android:inputType="number"
+                                android:maxLength="4"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/month"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                            <EditText
+                                android:id="@+id/nc3pcv3m"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:hint="@string/month"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/day"
+                                android:textColor="@color/colorPrimaryDark" />
+
+                            <EditText
+                                android:id="@+id/nc3pcv3d"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:digits="0123456789"
+                                android:hint="@string/day"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
 
                     <!-- IPV  -->
                     <TextView
@@ -754,7 +1753,7 @@
 
                     </RadioGroup>
 
-                    <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                    <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                         android:id="@+id/nc3ipvdt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -765,7 +1764,98 @@
                         android:padding="15dp"
                         android:text='@{nc3ipva.checked ? nc3ipvdt.getText.toString : ""}'
                         android:textColor="@android:color/black"
-                        app:dateFormat="dd-MM-yyyy" />
+                        app:dateFormat="dd-MM-yyyy" />-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/year2"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                            <EditText
+                                android:id="@+id/nc3ipvy"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:hint="@string/year2"
+                                android:inputType="number"
+                                android:maxLength="4"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/month"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                            <EditText
+                                android:id="@+id/nc3ipvm"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:hint="@string/month"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/day"
+                                android:textColor="@color/colorPrimaryDark" />
+
+                            <EditText
+                                android:id="@+id/nc3ipvd"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:digits="0123456789"
+                                android:hint="@string/day"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
 
 
                 </LinearLayout>
@@ -821,7 +1911,7 @@
 
                     </RadioGroup>
 
-                    <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                    <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                         android:id="@+id/nc3m1dt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -832,7 +1922,98 @@
                         android:padding="15dp"
                         android:text='@{nc3m1a.checked ? nc3m1dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
-                        app:dateFormat="dd-MM-yyyy" />
+                        app:dateFormat="dd-MM-yyyy" />-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/year2"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                            <EditText
+                                android:id="@+id/nc3m1y"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:hint="@string/year2"
+                                android:inputType="number"
+                                android:maxLength="4"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/month"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                            <EditText
+                                android:id="@+id/nw215m"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:hint="@string/month"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/day"
+                                android:textColor="@color/colorPrimaryDark" />
+
+                            <EditText
+                                android:id="@+id/nw215d"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:digits="0123456789"
+                                android:hint="@string/day"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -887,7 +2068,7 @@
 
                     </RadioGroup>
 
-                    <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                    <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                         android:id="@+id/nc3m2dt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -898,7 +2079,98 @@
                         android:padding="15dp"
                         android:text='@{nc3m2a.checked ? nc3m2dt.getText.toString : ""}'
                         android:textColor="@android:color/black"
-                        app:dateFormat="dd-MM-yyyy" />
+                        app:dateFormat="dd-MM-yyyy" />-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/year2"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                            <EditText
+                                android:id="@+id/nw215y"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:hint="@string/year2"
+                                android:inputType="number"
+                                android:maxLength="4"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/month"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                            <EditText
+                                android:id="@+id/nw215m"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:hint="@string/month"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bacground_border_heading"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:gravity="center"
+                                android:text="@string/day"
+                                android:textColor="@color/colorPrimaryDark" />
+
+                            <EditText
+                                android:id="@+id/nw215d"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:digits="0123456789"
+                                android:hint="@string/day"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 

@@ -63,6 +63,8 @@ public class SectionB1Activity extends Activity {
         respName.add("....");
         respMap = new HashMap<>();*/
 
+        MainApp.status = 0;
+
 //      Get intent
         if (getIntent().getBooleanExtra("mwraFlag", false)) {
             lstMwra.remove(getIntent().getStringExtra("wraName"));

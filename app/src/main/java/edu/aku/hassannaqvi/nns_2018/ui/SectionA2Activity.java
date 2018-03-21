@@ -1,5 +1,7 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -10,7 +12,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -19,33 +21,44 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
+import butterknife.BindViews;
+import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA2Binding;
+import edu.aku.hassannaqvi.nns_2018.other.DateUtils;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 
-public class SectionA2Activity extends AppCompatActivity {
+public class SectionA2Activity extends AppCompatActivity implements TextWatcher {
 
+    private final long DELAY = 1000;
     ActivitySectionA2Binding binding;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     Map<Integer, Map<Integer, Integer>> mem;
     List<String> mothersList, fathersList;
     List<String> mothersSerials, fathersSerials;
     Map<String, String> mothersMap, fathersMap;
-
-    int Age = 0, position = 0;
-
+    int position = 0;
+    int Age = 0;
+    long agebyDob = 0;
     Boolean flag = false;
-
     FamilyMembersContract family;
+    String dob;
+    Calendar calDob = Calendar.getInstance();
+    @BindViews({R.id.nh2doby, R.id.nh2dobm, R.id.nh2dobd})
+    List<EditText> grpdob;
+    private Timer timer = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +66,8 @@ public class SectionA2Activity extends AppCompatActivity {
         //setContentView(R.layout.activity_a2);
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_a2);
+        ButterKnife.bind(this);
         binding.setCallback(this);
-
         setupViews();
     }
 
@@ -78,43 +91,26 @@ public class SectionA2Activity extends AppCompatActivity {
 
             binding.fldGrpA201.setVisibility(View.GONE);
             binding.fldGrpA202.setVisibility(View.VISIBLE);
-            //binding.fldGrpA20101.setVisibility(View.VISIBLE);
+
         }
 
-//        Listeners
-        binding.nh20598.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    binding.nh2dob.setEnabled(false);
-                    binding.nh2dob.setText(null);
-                    binding.nh2aged.setEnabled(true);
-                    binding.nh2agem.setEnabled(true);
-                    binding.nh2agey.setEnabled(true);
-
-                    binding.nh2agem.setVisibility(View.VISIBLE);
-                    binding.nh2aged.setVisibility(View.VISIBLE);
-                } else {
-                    binding.nh2dob.setEnabled(true);
-                    binding.nh2aged.setEnabled(false);
-                    binding.nh2aged.setText(null);
-                    binding.nh2agem.setEnabled(false);
-                    binding.nh2agem.setText(null);
-                    binding.nh2agey.setEnabled(false);
-                    binding.nh2agey.setText(null);
-                }
-            }
-        });
+        for (EditText ed : grpdob) {
+            ed.addTextChangedListener(this);
+        }
 
         binding.nh2agey.addTextChangedListener(new TextWatcher() {
+
+
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if (!binding.nh2agey.getText().toString().isEmpty()) {
+                if (!binding.nh2agey.getText().toString().isEmpty() && !binding.nh2agey.getText().toString().equals("98")) {
+
                     if (Integer.valueOf(binding.nh2agey.getText().toString()) >= 5) {
                         binding.fldGrpmonths.setVisibility(View.GONE);
                         binding.fldGrpdays.setVisibility(View.GONE);
@@ -206,103 +202,48 @@ public class SectionA2Activity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-            }
-        });
+                timer.cancel();
+                timer = new Timer();
+                timer.schedule(
+                        new TimerTask() {
+                            @Override
+                            public void run() {
 
-        binding.nh2dob.setManager(getSupportFragmentManager());
+                                SectionA2Activity.this.runOnUiThread(new Runnable() {
+                                    public void run() {
+                                        if (!binding.nh2agey.getText().toString().isEmpty()
+                                                && !binding.nh2agey.getText().toString().equals("9998")) {
 
-        binding.nh2dob.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+                                            if (Age != agebyDob) {
+                                                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(SectionA2Activity.this);
+                                                alertDialogBuilder
+                                                        .setMessage("Age does not match with Year of Birth. Do you want to continue?")
+                                                        .setCancelable(false)
+                                                        .setPositiveButton("OK",
+                                                                new DialogInterface.OnClickListener() {
+                                                                    public void onClick(DialogInterface dialog, int id) {
+                                                                        //secFlag = false;
+                                                                    }
+                                                                })
+                                                        .setNegativeButton("Cancel",
+                                                                new DialogInterface.OnClickListener() {
+                                                                    public void onClick(DialogInterface dialog, int id) {
+                                                                        dialog.cancel();
+                                                                        //secFlag = true;
+                                                                    }
+                                                                });
+                                                AlertDialog alert = alertDialogBuilder.create();
+                                                alert.show();
+                                            }
+                                        }
+                                    }
+                                });
 
-        binding.nh2dob.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                            }
+                        },
+                        DELAY
+                );
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (!binding.nh2dob.getText().toString().isEmpty()) {
-                    Age = (int) MainApp.ageInYearByDOB(binding.nh2dob.getText().toString());
-                    //here
-
-                    if (Age < 5) {
-                        binding.fldGrpnh2edu.setVisibility(View.GONE);
-                        binding.fldGrpnh2ms.setVisibility(View.GONE);
-                        binding.fldGrpnh2occ.setVisibility(View.GONE);
-
-                        binding.fldGrpfid.setVisibility(View.VISIBLE);
-                        binding.fldGrpmid.setVisibility(View.VISIBLE);
-
-                        binding.nh2edu.clearCheck();
-                        binding.nh2ms.clearCheck();
-                        binding.nh2occ.clearCheck();
-
-                        binding.nh2edua.setChecked(true);
-                        binding.nh2occa.setChecked(true);
-                        binding.nh2mse.setChecked(true);
-                    } else if (Age >= 5 && Age <= 12) {
-                        binding.fldGrpnh2edu.setVisibility(View.VISIBLE);
-                        binding.fldGrpnh2ms.setVisibility(View.GONE);
-                        binding.fldGrpnh2occ.setVisibility(View.GONE);
-
-                        binding.fldGrpfid.setVisibility(View.GONE);
-                        binding.fldGrpmid.setVisibility(View.GONE);
-                        binding.nh211.setSelection(1);
-                        binding.nh212.setSelection(1);
-
-                        binding.nh2edu.clearCheck();
-                        binding.nh2ms.clearCheck();
-                        binding.nh2occ.clearCheck();
-
-                        binding.nh2occa.setChecked(true);
-                        binding.nh2mse.setChecked(true);
-
-                        binding.nh2edua.setEnabled(true);
-                        binding.nh2edub.setEnabled(true);
-                        binding.nh2educ.setEnabled(true);
-                        binding.nh2edud.setEnabled(true);
-                        binding.nh2edue.setEnabled(true);
-
-                        binding.nh2eduf.setEnabled(false);
-                        binding.nh2edug.setEnabled(false);
-                        binding.nh2eduh.setEnabled(false);
-                        binding.nh2edui.setEnabled(false);
-                    } else if (Age > 12) {
-                        binding.fldGrpnh2edu.setVisibility(View.VISIBLE);
-                        binding.fldGrpnh2ms.setVisibility(View.VISIBLE);
-                        binding.fldGrpnh2occ.setVisibility(View.VISIBLE);
-
-                        binding.fldGrpfid.setVisibility(View.GONE);
-                        binding.fldGrpmid.setVisibility(View.GONE);
-                        binding.nh211.setSelection(1);
-                        binding.nh212.setSelection(1);
-
-                        binding.nh2edu.clearCheck();
-                        binding.nh2ms.clearCheck();
-                        binding.nh2occ.clearCheck();
-
-                        binding.nh2msa.setEnabled(true);
-                        binding.nh2msb.setEnabled(true);
-                        binding.nh2msc.setEnabled(true);
-                        binding.nh2msd.setEnabled(true);
-                        binding.nh2mse.setEnabled(true);
-
-                        binding.nh2edua.setEnabled(true);
-                        binding.nh2edub.setEnabled(true);
-                        binding.nh2educ.setEnabled(true);
-                        binding.nh2edud.setEnabled(true);
-                        binding.nh2edue.setEnabled(true);
-                        binding.nh2eduf.setEnabled(true);
-                        binding.nh2edug.setEnabled(true);
-                        binding.nh2eduh.setEnabled(true);
-                        binding.nh2edui.setEnabled(true);
-                    }
-
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
 
             }
         });
@@ -432,67 +373,86 @@ public class SectionA2Activity extends AppCompatActivity {
 
         } else {
 
-            if (binding.nh20598.isChecked()) {
-
-                if (!validatorClass.EmptyTextBox(this, binding.nh2aged, getString(R.string.na2age))) {
-                    return false;
-                }
-
-                if (!validatorClass.RangeTextBox(this, binding.nh2aged, 0, 29, getString(R.string.na2age), " days")) {
-                    return false;
-                }
-
-                if (!validatorClass.EmptyTextBox(this, binding.nh2agem, getString(R.string.na2age))) {
-                    return false;
-                }
-
-                if (!validatorClass.RangeTextBox(this, binding.nh2agem, 0, 11, getString(R.string.na2age), " months")) {
-                    return false;
-                }
-
-                if (!validatorClass.EmptyTextBox(this, binding.nh2agey, getString(R.string.na2age))) {
-                    return false;
-                }
-
-                if (!validatorClass.RangeTextBox(this, binding.nh2agey, 0, 99, getString(R.string.na2age), " years")) {
-                    return false;
-                }
-
-                if (binding.nh2aged.getText().toString().equals("0") && binding.nh2agem.getText().toString().equals("0") && binding.nh2agey.getText().toString().equals("0")) {
-                    Toast.makeText(this, "ERROR(invalid): " + "All can not be zero" + getString(R.string.na2age), Toast.LENGTH_LONG).show();
-                    binding.nh2agey.setError("All can not be zero");
-                    binding.nh2agem.setError("All can not be zero");
-                    binding.nh2aged.setError("All can not be zero");
-                    Log.i(SectionA2Activity.class.getSimpleName(), "na2age" + ": This data is Required!");
-                } else {
-                    binding.nh2agey.setError(null);
-                    binding.nh2agem.setError(null);
-                    binding.nh2aged.setError(null);
-                }
-
-                if ((family.getResp().equals("1") || family.getRealtionHH().equals("1")) && Age < 18) {
-                    String chk = family.getResp().equals("1") ? "Resp" : "Head";
-                    binding.nh2agey.setError("Error(Invalid) Age for " + chk);
-                    Toast.makeText(this, chk + " Age greater then or equal 18..", Toast.LENGTH_SHORT).show();
-                    return false;
-                } else {
-                    binding.nh2agey.setError(null);
-                }
-
-            } else {
-                if (!validatorClass.EmptyTextBox(this, binding.nh2dob, getString(R.string.nh2dob))) {
-                    return false;
-                }
-
-                if ((family.getResp().equals("1") || family.getRealtionHH().equals("1")) && Age < 18) {
-                    String chk = family.getResp().equals("1") ? "Resp" : "Head";
-                    binding.nh2dob.setError("Error(Invalid) Age for " + chk);
-                    Toast.makeText(this, chk + " Age greater then or equal 18..", Toast.LENGTH_SHORT).show();
-                    return false;
-                } else {
-                    binding.nh2dob.setError(null);
-                }
+            if (!validatorClass.EmptyTextBox(this, binding.nh2doby, getString(R.string.nh2dob))) {
+                return false;
             }
+
+            if (!validatorClass.EmptyTextBox(this, binding.nh2dobm, getString(R.string.nh2dob))) {
+                return false;
+            }
+
+            if (!validatorClass.EmptyTextBox(this, binding.nh2dobd, getString(R.string.nh2dob))) {
+                return false;
+            }
+
+            if (!validatorClass.RangeTextBox(this, binding.nh2doby, 1918, 2018, 9998, getString(R.string.nh2dob), " year")) {
+                return false;
+            }
+
+            if (!validatorClass.RangeTextBox(this, binding.nh2dobm, 1, 12, 98, getString(R.string.nh2dob), " month")) {
+                return false;
+            }
+
+            if (!validatorClass.RangeTextBox(this, binding.nh2dobd, 1, 31, 98, getString(R.string.nh2dob), " day")) {
+                return false;
+            }
+
+
+            if (!validatorClass.EmptyTextBox(this, binding.nh2aged, getString(R.string.na2age))) {
+                return false;
+            }
+
+            if (!validatorClass.RangeTextBox(this, binding.nh2aged, 0, 29, getString(R.string.na2age), " days")) {
+                return false;
+            }
+
+            if (!validatorClass.EmptyTextBox(this, binding.nh2agem, getString(R.string.na2age))) {
+                return false;
+            }
+
+            if (!validatorClass.RangeTextBox(this, binding.nh2agem, 0, 11, getString(R.string.na2age), " months")) {
+                return false;
+            }
+
+            if (!validatorClass.EmptyTextBox(this, binding.nh2agey, getString(R.string.na2age))) {
+                return false;
+            }
+
+            if (!validatorClass.RangeTextBox(this, binding.nh2agey, 0, 95, 98, getString(R.string.na2age), " years")) {
+                return false;
+            }
+
+            if (binding.nh2aged.getText().toString().equals("0") && binding.nh2agem.getText().toString().equals("0") && binding.nh2agey.getText().toString().equals("0")) {
+                Toast.makeText(this, "ERROR(invalid): " + "All can not be zero" + getString(R.string.na2age), Toast.LENGTH_LONG).show();
+                binding.nh2agey.setError("All can not be zero");
+                binding.nh2agem.setError("All can not be zero");
+                binding.nh2aged.setError("All can not be zero");
+                Log.i(SectionA2Activity.class.getSimpleName(), "na2age" + ": This data is Required!");
+            } else {
+                binding.nh2agey.setError(null);
+                binding.nh2agem.setError(null);
+                binding.nh2aged.setError(null);
+            }
+
+            if ((family.getResp().equals("1") || family.getRealtionHH().equals("1")) && Age < 18) {
+                String chk = family.getResp().equals("1") ? "Resp" : "Head";
+                binding.nh2agey.setError("Error(Invalid) Age for " + chk);
+                Toast.makeText(this, chk + " Age greater then or equal 18..", Toast.LENGTH_SHORT).show();
+                return false;
+            } else {
+                binding.nh2agey.setError(null);
+            }
+
+
+            if ((family.getResp().equals("1") || family.getRealtionHH().equals("1")) && Age < 18) {
+                String chk = family.getResp().equals("1") ? "Resp" : "Head";
+                binding.nh2agey.setError("Error(Invalid) Age for " + chk);
+                Toast.makeText(this, chk + " Age greater then or equal 18..", Toast.LENGTH_SHORT).show();
+                return false;
+            } else {
+                binding.nh2agey.setError(null);
+            }
+            //}
             if (!validatorClass.EmptyRadioButton(this, binding.nh2ms, binding.nh2msa, getString(R.string.nh2ms))) {
                 return false;
             }
@@ -562,7 +522,7 @@ public class SectionA2Activity extends AppCompatActivity {
 
         } else {
 
-            family.setDob(binding.nh2dob.getText().toString());
+            //family.setDob(binding.nh2dob.getText().toString());
             family.setAge(binding.nh2agey.getText().toString() + "/" + binding.nh2agem.getText().toString() + "/" + binding.nh2aged.getText().toString());
             if (Age < 5) {
                 family.setMotherId(mothersMap.get(binding.nh212.getSelectedItem().toString() + "_" + mothersSerials.get(mothersList.indexOf(binding.nh212.getSelectedItem().toString()) - 1)));
@@ -577,18 +537,20 @@ public class SectionA2Activity extends AppCompatActivity {
             sA2.put("nh203", family.getRealtionHH());
             sA2.put("nh204", family.getna204());
 
-            sA2.put("nh2dob", binding.nh2dob.getText().toString());
-            sA2.put("nh20598", binding.nh20598.isChecked() ? "98" : "0");
+            sA2.put("nh2doby", binding.nh2doby.getText().toString());
+            sA2.put("nh2dobm", binding.nh2dobm.getText().toString());
+            sA2.put("nh2dobd", binding.nh2dobd.getText().toString());
+            //sA2.put("nh20598", binding.nh20598.isChecked() ? "98" : "0");
 
             sA2.put("nh206y", binding.nh2agey.getText().toString());
             sA2.put("nh206m", binding.nh2agem.getText().toString());
             sA2.put("nh206d", binding.nh2aged.getText().toString());
 
-            if (binding.nh20598.isChecked()) {
+            //if (binding.nh20598.isChecked()) {
                 Age = Integer.valueOf(binding.nh2agey.getText().toString());
-            } else {
-                Age = (int) MainApp.ageInYearByDOB(binding.nh2dob.getText().toString());
-            }
+            //} else {
+            //Age = (int) MainApp.ageInYearByDOB(binding.nh2dob.getText().toString());
+            //}
 
             sA2.put("age", String.valueOf(Age));
 
@@ -746,5 +708,77 @@ public class SectionA2Activity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        if (!binding.nh2dobd.getText().toString().isEmpty() && !binding.nh2dobm.getText().toString().isEmpty() && !binding.nh2agey.getText().toString().isEmpty()) {
+
+            if (!binding.nh2dobd.getText().toString().equals("98") && !binding.nh2dobm.getText().toString().equals("98")
+                    && !binding.nh2doby.getText().toString().equals("9998")) {
+                dob = "%02d" + binding.nh2dobd.getText().toString() + "-" + "%02d" + binding.nh2dobm.getText().toString()
+                        + "-" + binding.nh2agey.getText().toString();
+
+                agebyDob = DateUtils.ageInYearByDOB(DateUtils.getCalendarDate(dob));
+
+            } else if (!binding.nh2doby.getText().toString().equals("9998")) {
+                dob = binding.nh2agey.getText().toString();
+                agebyDob = DateUtils.ageInYearByDOB(binding.nh2agey.getText().toString());
+            }
+
+
+        }
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+
+        timer.cancel();
+        timer = new Timer();
+        timer.schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+
+                        SectionA2Activity.this.runOnUiThread(new Runnable() {
+                            public void run() {
+                                if (!binding.nh2doby.getText().toString().isEmpty() && !binding.nh2doby.getText().toString().equals("9998")) {
+                                    if (Age != agebyDob) {
+                                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(SectionA2Activity.this);
+                                        alertDialogBuilder
+                                                .setMessage("Age does not match with Year of Birth. Do you want to continue?")
+                                                .setCancelable(false)
+                                                .setPositiveButton("OK",
+                                                        new DialogInterface.OnClickListener() {
+                                                            public void onClick(DialogInterface dialog, int id) {
+                                                                //secFlag = false;
+                                                            }
+                                                        })
+                                                .setNegativeButton("Cancel",
+                                                        new DialogInterface.OnClickListener() {
+                                                            public void onClick(DialogInterface dialog, int id) {
+                                                                dialog.cancel();
+                                                                //secFlag = true;
+                                                            }
+                                                        });
+                                        AlertDialog alert = alertDialogBuilder.create();
+                                        alert.show();
+                                    }
+                                }
+                            }
+                        });
+
+                    }
+                },
+                DELAY
+        );
+
+
     }
 }

@@ -10,10 +10,6 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
-import java.util.List;
-
-import butterknife.BindViews;
 import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
@@ -22,16 +18,15 @@ import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC3Binding;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
-import io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText;
 
 public class SectionC3Activity extends AppCompatActivity {
 
     ActivitySectionC3Binding binding;
     FamilyMembersContract selectedChild;
-
+/*
     @BindViews({R.id.nc3bcgdt, R.id.nc3opv0dt, R.id.nc3opv1dt, R.id.nc3p1dt, R.id.nc3pcv1dt, R.id.nc3opv2dt, R.id.nc3p2dt,
             R.id.nc3pcv2dt, R.id.nc3opv3dt, R.id.nc3p3dt, R.id.nc3pcv3dt, R.id.nc3ipvdt, R.id.nc3m1dt, R.id.nc3m2dt})
-    List<DatePickerInputEditText> grpDate;
+    List<DatePickerInputEditText> grpDate;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +37,10 @@ public class SectionC3Activity extends AppCompatActivity {
         ButterKnife.bind(this);
         binding.setCallback(this);
 
-        for (DatePickerInputEditText dt : grpDate) {
+        /*for (DatePickerInputEditText dt : grpDate) {
             dt.setManager(getSupportFragmentManager());
             dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
-        }
+        }*/
 
 
         binding.nc303.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -85,6 +80,236 @@ public class SectionC3Activity extends AppCompatActivity {
                 }
             }
         });
+
+        binding.nc3bcg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (binding.nc3bcga.isChecked()) {
+                    binding.nc3bcgy.setEnabled(true);
+                    binding.nc3bcgm.setEnabled(true);
+                    binding.nc3bcgd.setEnabled(true);
+
+                } else {
+                    binding.nc3bcgy.setEnabled(false);
+                    binding.nc3bcgm.setEnabled(false);
+                    binding.nc3bcgd.setEnabled(false);
+                    binding.nc3bcgy.setText(null);
+                    binding.nc3bcgm.setText(null);
+                    binding.nc3bcgd.setText(null);
+
+                }
+            }
+        });
+
+        binding.nc3opv0.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (binding.nc3opv0a.isChecked()) {
+                    binding.nc3opv0y.setEnabled(true);
+                    binding.nc3opv0m.setEnabled(true);
+                    binding.nc3opv0d.setEnabled(true);
+
+                } else {
+                    binding.nc3opv0y.setEnabled(false);
+                    binding.nc3opv0m.setEnabled(false);
+                    binding.nc3opv0d.setEnabled(false);
+                    binding.nc3opv0y.setText(null);
+                    binding.nc3opv0m.setText(null);
+                    binding.nc3opv0d.setText(null);
+
+                }
+            }
+        });
+
+        binding.nc3p1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (binding.nc3p1a.isChecked()) {
+                    binding.nc3p1y.setEnabled(true);
+                    binding.nc3p1m.setEnabled(true);
+                    binding.nc3p1d.setEnabled(true);
+
+                } else {
+                    binding.nc3p1y.setEnabled(false);
+                    binding.nc3p1m.setEnabled(false);
+                    binding.nc3p1d.setEnabled(false);
+                    binding.nc3p1y.setText(null);
+                    binding.nc3p1m.setText(null);
+                    binding.nc3p1d.setText(null);
+
+                }
+            }
+        });
+
+        binding.nc3pcv1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (binding.nc3pcv1a.isChecked()) {
+                    binding.nc3pcv1y.setEnabled(true);
+                    binding.nc3pcv1m.setEnabled(true);
+                    binding.nc3pcv1d.setEnabled(true);
+
+                } else {
+                    binding.nc3pcv1y.setEnabled(false);
+                    binding.nc3pcv1m.setEnabled(false);
+                    binding.nc3pcv1d.setEnabled(false);
+                    binding.nc3pcv1y.setText(null);
+                    binding.nc3pcv1m.setText(null);
+                    binding.nc3pcv1d.setText(null);
+
+                }
+            }
+        });
+
+        binding.nc3opv2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (binding.nc3opv2a.isChecked()) {
+                    binding.nc3opv2y.setEnabled(true);
+                    binding.nc3opv2m.setEnabled(true);
+                    binding.nc3opv2d.setEnabled(true);
+
+                } else {
+                    binding.nc3opv2y.setEnabled(false);
+                    binding.nc3opv2m.setEnabled(false);
+                    binding.nc3opv2d.setEnabled(false);
+                    binding.nc3opv2y.setText(null);
+                    binding.nc3opv2m.setText(null);
+                    binding.nc3opv2d.setText(null);
+
+                }
+            }
+        });
+
+        binding.nc3p2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (binding.nc3p2a.isChecked()) {
+                    binding.nc3p2y.setEnabled(true);
+                    binding.nc3p2m.setEnabled(true);
+                    binding.nc3p2d.setEnabled(true);
+
+                } else {
+                    binding.nc3p2y.setEnabled(false);
+                    binding.nc3p2m.setEnabled(false);
+                    binding.nc3p2d.setEnabled(false);
+                    binding.nc3p2y.setText(null);
+                    binding.nc3p2m.setText(null);
+                    binding.nc3p2d.setText(null);
+
+                }
+            }
+        });
+
+
+        binding.nc3opv3.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (binding.nc3opv3a.isChecked()) {
+                    binding.nc3opv3y.setEnabled(true);
+                    binding.nc3opv3m.setEnabled(true);
+                    binding.nc3opv3d.setEnabled(true);
+
+                } else {
+                    binding.nc3opv3y.setEnabled(false);
+                    binding.nc3opv3m.setEnabled(false);
+                    binding.nc3opv3d.setEnabled(false);
+                    binding.nc3opv3y.setText(null);
+                    binding.nc3opv3m.setText(null);
+                    binding.nc3opv3d.setText(null);
+
+                }
+            }
+        });
+
+
+        binding.nc3p3.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (binding.nc3p3a.isChecked()) {
+                    binding.nc3p3y.setEnabled(true);
+                    binding.nc3p3m.setEnabled(true);
+                    binding.nc3p3d.setEnabled(true);
+
+                } else {
+                    binding.nc3p3y.setEnabled(false);
+                    binding.nc3p3m.setEnabled(false);
+                    binding.nc3p3d.setEnabled(false);
+                    binding.nc3p3y.setText(null);
+                    binding.nc3p3m.setText(null);
+                    binding.nc3p3d.setText(null);
+
+                }
+            }
+        });
+
+
+        binding.nc3pcv3.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (binding.nc3pcv3a.isChecked()) {
+                    binding.nc3pcv3y.setEnabled(true);
+                    binding.nc3pcv3m.setEnabled(true);
+                    binding.nc3pcv3d.setEnabled(true);
+
+                } else {
+                    binding.nc3pcv3y.setEnabled(false);
+                    binding.nc3pcv3m.setEnabled(false);
+                    binding.nc3pcv3d.setEnabled(false);
+                    binding.nc3pcv3y.setText(null);
+                    binding.nc3pcv3m.setText(null);
+                    binding.nc3pcv3d.setText(null);
+
+                }
+            }
+        });
+
+        binding.nc3ipv.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (binding.nc3ipva.isChecked()) {
+                    binding.nc3ipvy.setEnabled(true);
+                    binding.nc3ipvm.setEnabled(true);
+                    binding.nc3ipvd.setEnabled(true);
+
+                } else {
+                    binding.nc3ipvy.setEnabled(false);
+                    binding.nc3ipvm.setEnabled(false);
+                    binding.nc3ipvd.setEnabled(false);
+                    binding.nc3ipvy.setText(null);
+                    binding.nc3ipvm.setText(null);
+                    binding.nc3ipvd.setText(null);
+
+                }
+            }
+        });
+
+
+        binding.nc3m1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (binding.nc3m1a.isChecked()) {
+                    binding.nc3m1y.setEnabled(true);
+                    binding.nc3ipvm.setEnabled(true);
+                    binding.nc3ipvd.setEnabled(true);
+
+                } else {
+                    binding.nc3ipvy.setEnabled(false);
+                    binding.nc3ipvm.setEnabled(false);
+                    binding.nc3ipvd.setEnabled(false);
+                    binding.nc3ipvy.setText(null);
+                    binding.nc3ipvm.setText(null);
+                    binding.nc3ipvd.setText(null);
+
+                }
+            }
+        });
+
+
+
+
+
+
 
         //Get Intent
         selectedChild = (FamilyMembersContract) getIntent().getSerializableExtra("selectedChild");
@@ -137,16 +362,16 @@ public class SectionC3Activity extends AppCompatActivity {
 
         if (!binding.nc303d.isChecked()) {
 //        nc3bcg
-            if (!validatorClass.EmptyRadioButton(this, binding.nc3bcg, binding.nc3bcga, binding.nc3bcgdt, getString(R.string.nc3bcg))) {
+            /*if (!validatorClass.EmptyRadioButton(this, binding.nc3bcg, binding.nc3bcga, binding.nc3bcgdt, getString(R.string.nc3bcg))) {
                 return false;
-            }
+            }*/
 //        nc3opv0
-            if (!validatorClass.EmptyRadioButton(this, binding.nc3opv0, binding.nc3opv0a, binding.nc3opv0dt, getString(R.string.nc3opv0))) {
+            /*if (!validatorClass.EmptyRadioButton(this, binding.nc3opv0, binding.nc3opv0a, binding.nc3opv0dt, getString(R.string.nc3opv0))) {
                 return false;
-            }
+            }*/
 
 //        nc3opv1
-            if (!validatorClass.EmptyRadioButton(this, binding.nc3opv1, binding.nc3opv1a, binding.nc3opv1dt, getString(R.string.nc3opv1))) {
+            /*if (!validatorClass.EmptyRadioButton(this, binding.nc3opv1, binding.nc3opv1a, binding.nc3opv1dt, getString(R.string.nc3opv1))) {
                 return false;
             }
 //        nc3p1
@@ -194,11 +419,11 @@ public class SectionC3Activity extends AppCompatActivity {
             if (!validatorClass.EmptyRadioButton(this, binding.nc3m1, binding.nc3m1a, binding.nc3m1dt, getString(R.string.nc3m1))) {
                 return false;
             }
-
+*/
 //        nc3m2dt
-            if (!validatorClass.EmptyRadioButton(this, binding.nc3m2, binding.nc3m2a, binding.nc3m2dt, getString(R.string.nc3m2))) {
+            /*if (!validatorClass.EmptyRadioButton(this, binding.nc3m2, binding.nc3m2a, binding.nc3m2dt, getString(R.string.nc3m2))) {
                 return false;
-            }
+            }*/
 
         }
 
@@ -322,13 +547,13 @@ public class SectionC3Activity extends AppCompatActivity {
         sC3.put("nc3bcg", binding.nc3bcga.isChecked() ? "1"
                 : binding.nc3bcgb.isChecked() ? "2"
                 : "0");
-        sC3.put("nc3bcgdt", binding.nc3bcgdt.getText().toString());
+        //sC3.put("nc3bcgdt", binding.nc3bcgdt.getText().toString());
 
 //          nc3opv0
         sC3.put("nc3opv0", binding.nc3opv0a.isChecked() ? "1"
                 : binding.nc3opv0b.isChecked() ? "2"
                 : "0");
-        sC3.put("nc3opv0dt", binding.nc3opv0dt.getText().toString());
+        //sC3.put("nc3opv0dt", binding.nc3opv0dt.getText().toString());
 
 //       at age of 6
 
@@ -336,19 +561,19 @@ public class SectionC3Activity extends AppCompatActivity {
         sC3.put("nc3opv1", binding.nc3opv1a.isChecked() ? "1"
                 : binding.nc3opv1b.isChecked() ? "2"
                 : "0");
-        sC3.put("nc3opv1dt", binding.nc3opv1dt.getText().toString());
+        //sC3.put("nc3opv1dt", binding.nc3opv1dt.getText().toString());
 
 //          nc3p1
         sC3.put("nc3p1", binding.nc3p1a.isChecked() ? "1"
                 : binding.nc3p1b.isChecked() ? "2"
                 : "0");
-        sC3.put("nc3p1dt", binding.nc3p1dt.getText().toString());
+        //sC3.put("nc3p1dt", binding.nc3p1dt.getText().toString());
 
 //          nc3pcv1
         sC3.put("nc3pcv1", binding.nc3pcv1a.isChecked() ? "1"
                 : binding.nc3pcv1b.isChecked() ? "2"
                 : "0");
-        sC3.put("nc3pcv1dt", binding.nc3pcv1dt.getText().toString());
+        //sC3.put("nc3pcv1dt", binding.nc3pcv1dt.getText().toString());
 
 //       at age of 10 weeks
 
@@ -356,19 +581,19 @@ public class SectionC3Activity extends AppCompatActivity {
         sC3.put("nc3opv2", binding.nc3opv2a.isChecked() ? "1"
                 : binding.nc3opv2b.isChecked() ? "2"
                 : "0");
-        sC3.put("nc3opv2dt", binding.nc3opv2dt.getText().toString());
+        //sC3.put("nc3opv2dt", binding.nc3opv2dt.getText().toString());
 
 //          nc3p2
         sC3.put("nc3p2", binding.nc3p2a.isChecked() ? "1"
                 : binding.nc3p2b.isChecked() ? "2"
                 : "0");
-        sC3.put("nc3p2dt", binding.nc3p2dt.getText().toString());
+        //sC3.put("nc3p2dt", binding.nc3p2dt.getText().toString());
 
 //          nc3pcv2
         sC3.put("nc3pcv2", binding.nc3pcv2a.isChecked() ? "1"
                 : binding.nc3pcv2b.isChecked() ? "2"
                 : "0");
-        sC3.put("nc3pcv2dt", binding.nc3pcv2dt.getText().toString());
+        //sC3.put("nc3pcv2dt", binding.nc3pcv2dt.getText().toString());
 
 
 //       at age of 14 weeks
@@ -377,39 +602,39 @@ public class SectionC3Activity extends AppCompatActivity {
         sC3.put("nc3opv3", binding.nc3opv3a.isChecked() ? "1"
                 : binding.nc3opv3b.isChecked() ? "2"
                 : "0");
-        sC3.put("nc3opv3dt", binding.nc3opv3dt.getText().toString());
+        //sC3.put("nc3opv3dt", binding.nc3opv3dt.getText().toString());
 
 //          nc3p3
         sC3.put("nc3p3", binding.nc3p3a.isChecked() ? "1"
                 : binding.nc3p3b.isChecked() ? "2"
                 : "0");
-        sC3.put("nc3p3dt", binding.nc3p3dt.getText().toString());
+        //sC3.put("nc3p3dt", binding.nc3p3dt.getText().toString());
 
 //          nc3pcv3
         sC3.put("nc3pcv3", binding.nc3pcv3a.isChecked() ? "1"
                 : binding.nc3pcv3b.isChecked() ? "2"
                 : "0");
-        sC3.put("nc3pcv3dt", binding.nc3pcv3dt.getText().toString());
+        //sC3.put("nc3pcv3dt", binding.nc3pcv3dt.getText().toString());
 
 //          nc3ipv
         sC3.put("nc3ipv", binding.nc3ipva.isChecked() ? "1"
                 : binding.nc3ipvb.isChecked() ? "2"
                 : "0");
-        sC3.put("nc3ipvdt", binding.nc3ipvdt.getText().toString());
+        //sC3.put("nc3ipvdt", binding.nc3ipvdt.getText().toString());
 
 //at the age of 9 months
 //          nc3m1
         sC3.put("nc3m1", binding.nc3m1a.isChecked() ? "1"
                 : binding.nc3m1b.isChecked() ? "2"
                 : "0");
-        sC3.put("nc3m1dt", binding.nc3m1dt.getText().toString());
+        //sC3.put("nc3m1dt", binding.nc3m1dt.getText().toString());
 
 //at age of 15 months
 //          nc3m2
         sC3.put("nc3m2", binding.nc3m2a.isChecked() ? "1"
                 : binding.nc3m2b.isChecked() ? "2"
                 : "0");
-        sC3.put("nc3m2dt", binding.nc3m2dt.getText().toString());
+        //sC3.put("nc3m2dt", binding.nc3m2dt.getText().toString());
 
 
 //        nc305
