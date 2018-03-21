@@ -29,6 +29,12 @@ public class SectionA4Activity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_a4);
         db = new DatabaseHelper(this);
 
+        String strEnglish = "LED";
+        String LRM = String.valueOf(((char) 0x200E));  // This is a LRM
+        //getString(R.string.nw301b);
+        binding.nh313c.setText(strEnglish + " " + getString(R.string.nh313c));
+
+
 //        Assigning data to UI binding
         binding.setCallback(this);
 

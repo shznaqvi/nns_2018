@@ -113,9 +113,30 @@ public class SectionB1Activity extends Activity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (bi.nw203a.isChecked()) {
                     clearClass.ClearAllFields(bi.fldGrpnw204, true);
+                    bi.nw21301.clearCheck();
+                    bi.nw21302.clearCheck();
+                    bi.nw21303.clearCheck();
+                    bi.nw21398.clearCheck();
+                    bi.nw21399.clearCheck();
+
+                    bi.nw21301.setEnabled(false);
+                    bi.nw21302.setEnabled(false);
+                    bi.nw21303.setEnabled(false);
+                    bi.nw21398.setEnabled(false);
+                    bi.nw21399.setEnabled(false);
                 } else {
                     clearClass.ClearAllFields(bi.fldGrpnw204, false);
+                    bi.nw21301.clearCheck();
+                    bi.nw21302.clearCheck();
+                    bi.nw21303.clearCheck();
+                    bi.nw21398.clearCheck();
+                    bi.nw21399.clearCheck();
 
+                    bi.nw21301.setEnabled(false);
+                    bi.nw21302.setEnabled(false);
+                    bi.nw21303.setEnabled(false);
+                    bi.nw21398.setEnabled(false);
+                    bi.nw21399.setEnabled(false);
                 }
             }
         });
@@ -140,9 +161,11 @@ public class SectionB1Activity extends Activity {
                 if (bi.nw205a.isChecked()) {
 
                     clearClass.ClearAllFields(bi.fldGrpnw206, true);
+
                 } else {
 
                     clearClass.ClearAllFields(bi.fldGrpnw206, false);
+
                     /*bi.fldGrpnw206.setVisibility(View.GONE);
                     bi.nw206.setText(null);
                     bi.nw207.clearCheck();

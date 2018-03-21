@@ -206,6 +206,24 @@
                         android:text="@string/na203m" />
 
                     <RadioButton
+                        android:id="@+id/na203n"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:text="@string/na203n" />
+
+                    <RadioButton
+                        android:id="@+id/na203o"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:text="@string/na203o" />
+
+                    <RadioButton
                         android:id="@+id/na20398"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"

@@ -17,13 +17,20 @@
     <string name="start_interview"> انٹروہو شروع کریں </string>
     <string name="nextSection"> اگلا سیکشن </string>
     <string name="addMember"> افراد کا اندراج </string>
-    <string name="istatus">انٹروہو کا نتیجہ</string>
+    <string name="istatus">انٹرویو کا نتیجہ</string>
     <string name="istatusa"> مکمل</string>
     <string name="istatusb"> گھر پرموجود نہیں</string>
     <string name="istatusc">انکار </string>
     <string name="istatusd"> جزوی مکمل </string>
     <string name="istatuse">جواب دینے سے قاصر</string>
     <string name="istatusf">گھر نہیں ملا</string>
+
+    <string name="istatusha"> مکمل</string>
+    <string name="istatushb">گھرانے کا کوئی فرد یا باصلاحیت جواب دہندہ گھر پر موجود نہیں تھا</string>
+    <string name="istatushc">گھرانہ کے تمام افراد لمبے عرصے کے لیے گھر سے غیر حاضر تھے </string>
+    <string name="istatushd"> انکار کردی </string>
+    <string name="istatushe">خالی گھر/گھر کا پتہ نہ تھا</string>
+    <string name="istatushf">گھر نہیں ملا</string>
 
     <!-- String related to section headings -->
 
@@ -56,7 +63,7 @@
 
 
     <!-- Strings related to Sections Below -->
-    <string name="na1heading"> HOUSEHOLD INFORMATION </string>
+    <string name="na1heading">گھرانے کی معلومات</string>
     <string name="nh101"> جغرافیائی علاقہ </string>
     <string name="nh102"> اینومریشن بلاک نمبر </string>
     <string name="nh103"> صوبہ </string>
@@ -110,17 +117,19 @@
     <string name="na203i">سالا / سالی / دیور / دیورانی </string>
     <string name="na203j">چچا / چچی / ماموں / ممانی / پھوپھا / پھوپھی </string>
     <string name="na203k">بھانجا / بھانجی / بھتیجا / بھتیجی</string>
-    <string name="na203l">سوتیلے / رضاعی / لے پالک بچے </string>
-    <string name="na203m">ملازم</string>
-    <string name="na20396">دیگر رشتہ دار </string>
-    <string name="na20398"> Dont know relative</string>
+    <string name="na203l">دیگر رشتہ دار </string>
+    <string name="na203m">سوتیلے / رضاعی / لے پالک بچے </string>
+    <string name="na203n"> ملازم</string>
+    <string name="na203o">یتیم </string>
+    <string name="na20396">دیگر (کوئی رشتہ دار نہیں) </string>
+    <string name="na20398">  معلوم نہیں </string>
 
     <string name="resp"> Is he/she a respondent? </string>
 
     <string name="nh211"> والد کا لائن نمبر </string>
     <string name="nh212"> والدہ کا لائن نمبر </string>
     <string name="na204"> جنس </string>
-  <string name="nh2dob"> پیدائش کی تاریخ کیا ہے؟ </string>
+    <string name="nh2dob"> پیدائش کی تاریخ کیا ہے؟ </string>
     <string name="na2age"> (نام)کتنی عمر ہے؟ </string>
     <string name="nh2edu"> تعلیم </string>
     <string name="nh2edua"> کوئی نہیں</string>
@@ -148,7 +157,7 @@
     <string name="nh2msb"> بیوہ </string>
     <string name="nh2msc"> طلاق یافتہ </string>
     <string name="nh2msd">  الگ رہتی ہو </string>
-    <string name="nh2mse"> کنوارہ</string>
+    <string name="nh2mse">غیر شا د ی شدہ</string>
     <string name="nh210"> (نام) کیا موجود ہے </string>
 
     <string name="nh2u5"> Record line No. for child under five years </string>
@@ -195,17 +204,17 @@
 
     <string name="nh302"> آپ کے گھرکی مالکانہ حیثیت کیا ہے ؟ </string>
     <string name="nh302a"> اپنا </string>
-    <string name="nh302b"> کرایہ کا </string>
+    <string name="nh302b"> کرائے کا </string>
 
     <string name="nh303"> آپ کے گھر میں پینے کے پانی کا سب سے اہم ذریعہ کیا ہے ؟ </string>
-    <string name="nh303sub"> میونسپل کمیٹی کا پانی کاکنکشن  </string>
+    <!--<string name="nh303sub"> میونسپل کمیٹی کا پانی کاکنکشن  </string>-->
     <string name="nh303a"> میونسپل کمیٹی کا پانی کاکنکشن </string>
     <string name="nh303b">گھر میں کانلکا </string>
     <string name="nh303c"> صحن میں کا نلکا </string>
     <string name="nh303d"> پڑوسی کے گھر کا نلکا </string>
     <string name="nh303e"> گلی / علاقہ کا نلکا </string>
-    <string name="nh303f"> ٹیوب ویل/ بورنگ کا پانی /پانی کھینچنے کی مشین </string>
-    <string name="nh303g"> ہینڈ پمپ </string>
+    <string name="nh303f">  پانی کھینچنے کی مشین /ٹیوب ویل/ بورنگ کا پانی</string>
+    <string name="nh303g">  ہاتھ والا نلکا  </string>
     <string name="nh303h"> کنواں </string>
     <string name="nh303i"> چشمہ </string>
     <string name="nh303j"> بارش کا پانی </string>
@@ -222,10 +231,10 @@
     <string name="nh305"> پانی کو محفوظ بنانے کے لیے آپ کوئی قدم اٹھاتے ہیں؟ </string>
 
     <string name="nh306">عموماً آپ پانی کو محفوظ کرنے کے لیے کیا کرتے ہیں؟</string>
-    <string name="nh306a"> ابالنا </string>
+    <string name="nh306a">  ابالتے ہیں </string>
     <string name="nh306b"> بلیچ/کلوریں ملاتے ہیں </string>
     <string name="nh306c"> کپڑے کے ذریعہ چھانتے ہیں </string>
-    <string name="nh306d"> پانی کا فلٹر استعمال کرنا </string>
+    <string name="nh306d">  پانی کا فلٹر استعمال کرتے ہیں </string>
     <string name="nh306e"> سورج کی شعاعوں سے /دھوپ میں رکھتے ہیں  </string>
     <string name="nh306f"> برتن میں پانی ڈال کر ٹہرنے کا انتظار کرتے ہیں </string>
 
@@ -242,17 +251,20 @@
     <string name="nh307g"> گڑھے والا کھلاہوا لیٹرین </string>
     <string name="nh307h"> بالٹی والا ٹوائلٹ </string>
     <string name="nh307i"> کوئی سہولت نہیں /جھاڑیوں/زمین پر </string>
+
     <string name="nh308"> کیا اس بیت الخلاء کی سہولت کو   دوسرے   گھرانوں کے افراد بھی استعمال کر تےہیں [جو آپ کے گھرانے کے فرد نہیں ہیں] </string>
     <string name="nh309">  اگر ہاں،تو کتنے گھرانےاس بیت الخلاء کی  سہولت کواستعمال کرتے ہیں ؟ </string>
     <string name="nh309a"> گھرانوں کی تعداد </string>
+
     <string name="nh310"> سب سے چھوٹے بچے کا پاخانہ پھینکنے کے لیے کیاکرتے ہیں؟ </string>
     <string name="nh310a"> بچہ لیٹرین استعمال کرتا ہے </string>
     <string name="nh310b"> پاخانہ لیٹرین سے بہادیتے ہیں </string>
-    <string name="nh310c"> اخانہ نالی /گھڑھے سے بہادیتے ہیں </string>
+    <string name="nh310c"> پاخانہ نالی /گھڑھے سے بہادیتے ہیں  </string>
     <string name="nh310d"> کچرے میں پھنک دیتے ہیں </string>
     <string name="nh310e"> کھلا پڑا رہتا ہے </string>
     <string name="nh310f"> زمین میں گاڑھ دیتے ہیں  </string>
     <string name="nh310g"> No Child Under 5 </string>
+
     <string name="nh311"> کیا  آپ کے گھر میں ان میں سے کچھ موجود ہے؟ </string>
     <string name="nh31101"> بجلی </string>
     <string name="nh31102"> ریڈیو </string>
@@ -286,10 +298,11 @@
     <string name="nh312i">موٹر کے بغیر کشتی </string>
 
 
-    <string name="nh313"> مشاہدہ کریں کہ گھرمیں روشنی کرنے کے لئے کونسا مخصوص ذریعہ استعمال کرتے ہیں </string>
+    <string name="nh313"> مشاہدہ کریں، کہ گھرمیں روشنی کرنے کے لئے کونسے ذرائع استعمال کرتے ہیں </string>
     <string name="nh313a"> بلب </string>
     <string name="nh313b"> ٹیوب لائٹ </string>
-    <string name="nh313c"> بلبLED </string>
+    <string name="nh313ca"> </string>
+    <string name="nh313c"> بلب </string>
     <string name="nh313d"> انرجی سیور </string>
     <string name="nh313e"> موم بتی </string>
     <string name="nh313f"> لالٹین </string>
@@ -324,8 +337,8 @@
     <string name="nh317d"> کھجور  یاناریل کے پتے /بانس </string>
 
     <string name="nh317info2"> تیار فرش </string>
-    <string name="nh317e"> کڑی کا فرش یا پالش والی لکڑی </string>
-    <string name="nh317f"> کڑی کی پلائی یا لکڑی کے ٹائلز  </string>
+    <string name="nh317e">لکڑی کا فرش یا پالش والی لکڑی</string>
+    <string name="nh317f">لکڑی کی پلائی یا لکڑی کے ٹائلز   </string>
     <string name="nh317g"> سرامک ٹائلز </string>
     <string name="nh317h"> سیمنٹ </string>
     <string name="nh317i"> کارپیٹ </string>
@@ -346,7 +359,7 @@
     <string name="nh318i"> لکٹری سے بنی ہوئی چھت</string>
     <string name="nh318j"> کیلا مائن/سیمنٹ فائبر  </string>
     <string name="nh318k"> سرامک ٹائلز </string>
-    <string name="nh318l">  سیمنٹآر سی سی(پکی چھت) </string>
+    <string name="nh318l">  سیمنٹ آر سی سی(پکی چھت) </string>
     <string name="nh318m"> چھت میں استعمال ہونے والے ٹائلز </string>
     <string name="nh318n"> اینٹیں </string>
     <string name="nh319"> گھر کی دیوار وں میں استعمال ہونے والا بنیادی مواد: </string>
@@ -388,10 +401,10 @@
     <string name="nh324g"> اونٹ </string>
     <string name="na5heading"> سیکشن ایچ 4 : ہاتھ دھونے سے متعلق معلومات </string>
     <string name="nh401"> کیا آپ ہمیں وہ جگہ دکھا سکتی/سکتے ہیں جسے گھر والے اکثرہا تھ دھونے کے لیے استعمال کرتے ہیں؟ </string>
-    <string name="nh401a"> مشاہدہ </string>
+    <string name="nh401a"> مشاہدہ کیا  </string>
     <string name="nh401info"> مشاہدہ نہیں کیا </string>
-    <string name="nh401b"> رہائش گاہ پلاٹ /صحن/ موجود نہیں </string>
-    <string name="nh401c"> دیکھنے کیاجازت نہیں ملی </string>
+    <string name="nh401b">رہائش گاہ پلاٹ /صحن میں موجود نہیں </string>
+    <string name="nh401c">  دیکھنے کیاجازت نہیں  ملی  </string>
     <string name="nh401d"> کوئی اور وجہ </string>
     <string name="nh402"> ہاتھ دھونے کی جگہ پر پانی کی موجودگی کا مشاہدہ کریں
   (نلکا،بیسن،بالٹی،پانی ذخیرہ کرنے والے برتن یا ایسی کسی دوسری چیز کا معائنہ کرکے پانی کی موجودگی کی تصدیق کریں) </string>
@@ -457,15 +470,17 @@
     <string name="nh503d"> برنی میں نمک </string>
     <string name="nh6heading">سیکشن ایچ 6: غذائی قلت کےتجربات کی معلومات   </string>
     <string name="nh6info"> میں آپ سے کھانے اور غذا کےبارے میں چند سوالات پوچھوں گا پچھلے 12 مہینوں کے دوران کسی موقع پر جب: </string>
-    <string name="nh601"> کیاآپ اور آپ کے گھر والے پریشان رہتے ہیں کہ پیسوں اور دیگر وسائل کی کمی کی وجہ سے کھانے کے لئے غذا کافی نہیں ہے ؟ </string>
-    <string name="nh602"> پچھلے 12 مہینوں کے دوران سوچ کر بتائیں کہ کیا کبھی ایساوقت آیا کہ جب آپ اور آپ کے گھر والوں نے پیسوں اور دیگر وسائل کی کمی کی وجہ سے صحت مند اور غذائیت سے بھر پور غذا نہیں کھائی تھی؟ </string>
-    <string name="nh603"> کیا کبھی ایسا وقت آیا کہ آپ اور آپ کے گھر والوں نے پیسوں اور وسائل کی کمی کی وجہ سے صرف چند غذائیں کھائی ہوں؟ </string>
-    <string name="nh604"> کیا آپ یا آپ کے گھروالوں پر کبھی ایسا وقت آیاہیں پیسوں یا دیگر وسائل کی کمی کی وجہ سے ایک وقت کا کھانا چھوڑا ہو۔ </string>
-    <string name="nh605"> پچھلے 12 مہینوں کے دوران سوچ کر بتائیں کیا کبھی ایسا وقت آیا ہو کہ آپ اور آپ کے گھروالوں نے اپنی ضرورت سے کم کھانا کھایا ہو؟ </string>
-    <string name="nh606"> کیاکبھی ایسا وقت آیا جب پیسوں اور دیگر وسائل کی کمی کی وجہ سے آپ کے گھر میں کھانا نہ ہو؟ </string>
-    <string name="nh607"> کیا کبھی ایسا وقت آیا کہ جب آپ یا آپ کے گھر کے دوسرے افراد بھوکے تھے اور پیسوں کی کمی اور دیگر وسائل کی کمی کی وجہ سے کچھ نہیں کھاسکتے تھے؟ </string>
-    <string name="nh608"> کیاکبھی ایسا وقت آیا تھا کہ جب آپ یا گھر کے دوسرے افراد نے پیسوں اور دیگر وسائل کی کمی کی وجہ سے پورے دن کھانا نہ کھایا ہو؟ </string>
-    <string name="nh609"> کیا آپ یا آپ کے گھر والوں پر کبھی ایسا وقت آیا ہے کہ آپ کھانا کھانے کہیں باہر گئے ہوں؟ </string>
+    <string name="nh601"> پچھلے 12 مہینوں کے دوران کیا کبھی ایسا وقت آیا جب آپ یا آپ کے گھر کے دوسرے افراد فکرمند تھےکہ پیسوں یا دیگر وسائل کی کمی کی وجہ سے اتنا کھانا نہیں ہوگا کہ آپ کھا سکیں؟ </string>
+    <string name="nh602">پچھلے 12 مہینوں کے دوران کیا کبھی ایسا وقت آیا جب آپ یا آپ کے گھر کے دوسرے افرادپیسوں یا دیگر وسائل کی کمی کی وجہ سے اس قابل نہیں تھے کہ صحت بخش اور غذائیت سے بھر پورکھانا کھاسکیں؟ </string>
+    <string name="nh603"> پچھلے 12 مہینوں کے دوران کیا کبھی ایسا وقت آیا جب آپ یا آپ کے گھر کے دوسرے افراد نے پیسوں یا دیگر وسائل کی کمی کی وجہ سے صرف چند اقسام کے کھانے کھائے ہوں   </string>
+    <string name="nh604">پچھلے 12 مہینوں کے دورانکیا کبھی ایسا وقت آیا جب آپ یا آپ کے گھر کے دوسرے افرادکو پیسوں یا دیگر وسائل کی کمی کی وجہ سے ایک وقت کا کھانا چھوڑنا پڑا؟</string>
+    <string name="nh605"> کیا آپ کو لگتا ہے کہ پچھلے 12 مہینے میں آپ یا آپ کے گھر کے دوسرے افراد نے پیسوں یا دیگر وسائل کی کمی کی وجہ سے کم کھانا کھانا ہو(یعنی اس سے کم مقدارمیں کھانا کھایا جتنا کہ آپ کے خیال میں کھانا چاہتےتھے)؟  </string>
+    <string name="nh606">پچھلے 12 مہینوں کے دوران کیا کبھی ایسا وقت آیا  کہ پیسوں یادیگر وسائل کی کمی کی وجہ سےآپ کے گھر میں کھانے کے لیے کچھ بھی نہ ہو؟ </string>
+    <string name="nh607"> پچھلے 12 مہینوں کے دوران کیا کبھی ایسا وقت آیا کہ آپ یا آپ کے گھر کے دوسرے افراد بھوکے تھےلیکن کھانا نہ کھایا ہو کیونکہ آپ کے پاس کھانے کے لیے پیسے یا دوسرے وسائل نہیں تھے ؟ </string>
+    <string name="nh608"> پچھلے 12 مہینوں کے دوران کیا کبھی ایسا وقت آیا کہ آپ یا آپ کے گھر کے دوسرے افراد نے پیسوں یا دیگر وسائل کی کمی کی وجہ سے پورے دن کچھ بھی نہ کھایا ہو؟</string>
+    <string name="nh609">پچھلے 12 مہینوں کے دوران کیا کبھی ایسا وقت آیا کہ آپ یا آپ کے گھر والوں  نے پیسوں یا دیگر وسائل کی کمی کی وجہ سے باہر کھانا کھایا ہو؟
+(کسی فلاحی ادارے میں،کسی خیرات/لنگر/نیازوغیرہ میں )
+ </string>
     <string name="na8heading"> سیکشن ایچ 7: سوشل سیفٹی نیٹ    </string>
     <string name="na8info"> میں آپ سے مختلف بیرونی معاشی امدادی پروگرام کے بارے میں پوچھوں گا جو گھر کی سطح پرامداد مہیا کرتے ہیں۔بیرونی امداد سے میرا مطلب حکومتی ادارے یا غیر سرکاری ادارے جیسے مذہبی فلاحی یا سماجی ادارے ہیں۔اس میں وہ امداد شامل نہیں ہے جو فیملی دیگر رشتہ دار ،دوست یا پڑوسیوں سے حاصل ہوتی ہے ۔ </string>
     <string name="nh701"> کیاآپ یا آپ کے گھر میں کسی نے 12 مہینے سے امداد حاصل کی ہے؟ </string>
@@ -591,6 +606,7 @@
     <string name="nw306f"> غذا کے باے میں مشورہ ملا</string>
     <string name="nw306g"> ماں کا دودھ پلانے کے بارے میں مشورہ ملا </string>
     <string name="nw306h"> فیملی پلاننگ کے بارے میں مشورہ ملا </string>
+    <string name="nw306i">  کوئی نہیں </string>
     <string name="nw307">کیا آپ کے پاس حفاظتی ٹیکہ جات سے متعلق کوئی کارڈ یا دستیاویزات موجود ہے ؟ اگر ہاں  تو پوچھیں کیا میں دیکھ سکتی ہوں </string>
     <string name="nw307info"> اگر آپ کے پاس موجود ہے تو پوچھیں کیا میں دیکھ سکتی ہوں
     اگر کارڈ موجود ہے تو درج ذیل سوالات کے جوابات کا پتہ کریں </string>
@@ -604,7 +620,7 @@
     <string name="nb21002"> خریدی </string>
     <string name="nb21003"> نہ ملی نہ خریدی </string>
     <string name="nb21004"> جواب نہیں دیا </string>
-    <string name="nw313"> آپ نےعموماً کتنی دفعہ حمل کے دوران اضافی طاقت کی گولیوں کا استعمال کیا؟ </string>
+    <string name="nw313"> آپ حمل کے دوارن فولاد کی گولیاں کتنی مرتبہ استعمال کرتی تھیں؟ </string>
     <string name="nw313a"> روزانہ </string>
     <string name="nw313b"> ہفتے میں ایک مرتبہ </string>
     <string name="nw313c"> ہفتے میں دو مرتبہ </string>
@@ -616,7 +632,7 @@
     <string name="nw315"> کیا آپ نے کبھی دوران حمل اضافی طاقت کی گولیاں استعمال کیاتھا؟ </string>
     <string name="nw316"> آپ کو حمل کے دوران اضافی طاقت  کی گولیا ں استعمال کرنے کا مشورہ کس نے دیا؟</string>
     <string name="nw317">آپ نے حمل کے دوران اضافی طاقت کی گولیاں کہاں سے حاصل کیں؟</string>
-    <string name="nw318"> عموماً کتنی دفعہ حمل کے دوران اضافی طاقت کی گولیوں کا استعمال کیا؟ </string>
+    <string name="nw318"> آپ نےعموماً کتنی دفعہ حمل کے دوران اضافی طاقت کی گولیوں کا استعمال کیا؟ </string>
     <string name="nw318a"> روزانہ </string>
     <string name="nw318b"> ہفتے میں ایک مرتبہ </string>
     <string name="nw318c"> ہفتے میں دو مرتبہ </string>
@@ -638,7 +654,7 @@
     <string name="nw325"> کیاآپ کو حمل کے دوران پیٹ کے کیڑوں کو ختم کرنے والی گولیاں دی گئی تھی؟ </string>
     <string name="nw326"> کیا آپ نے گزشتہ حمل کے دوران محسوس کیا کہ شام کے وقت آپ کو دیکھنے میں مشکل ہورہی تھی؟ </string>
     <string name="nb3heading"> Section B3 LHW Coverage </string>
-    <string name="nw327"> لیڈی ہیلتھ ورکر نے آخری مرتبہ آپ کے گھر کا دورہ کبکیا تھا؟ </string>
+    <string name="nw327"> لیڈی ہیلتھ ورکر نے آخری مرتبہ آپ کے گھر کا دورہ کب کیا تھا؟ </string>
     <string name="nw327m"> مہینوں </string>
     <string name="nw327d"> دنوں </string>
     <string name="nw328"> آپ کو کتنی مرتبہ لیڈی ہیلتھ ورکر ملنے آتی ہے/آپ کے گھر کا کتنی مرتبہ دورہ کرتی ہے؟ </string>
@@ -791,7 +807,7 @@
     <string name="nw418a"> غذا کے بارے میں مشورہ دینا </string>
     <string name="nw418b"> ماں کے دودھ اور آئی وائی سی ایف کا مشورہ دینا </string>
     <string name="nw418c"> فیملی پلاننگ کے بارے میں مشورہ دینا </string>
-    <string name="nw418d"> پیچیدگیوں کو سمجھنا </string>
+    <string name="nw418d">پیچیدگیوں کی جانچ کرنے </string>
     <string name="nw418e"> مرکز صحت بھیجنا </string>
     <string name="nw418f"> ماں کے علاج کے حوالے سے </string>
     <string name="nw418g"> اضافی خوراک کی فراہمی </string>
@@ -869,7 +885,7 @@
     <string name="nc204">  اطمینان کر لیں کہ اوپر کیئے گئے سوالات میں بچے کی عمر یکساں ہے </string>
     <string name="nc204a">A)	IS THE YEAR RECOREDED IN Q1 CONSISTENT WITH AGE IN YEARS RECORDED IN Q2?</string>
     <string name="nc204b">B)	ARE YEAR AND MONTH OF BIRHT RECORDED IN Q1 CONSISTENT WITH AGE IN MONTHS RECORDED IN C203</string>
-  <string name="nc205"> کیا بچہ 24 مہینوں سے کم ہے  </string>
+    <string name="nc205"> کیا بچہ 24 مہینوں سے کم ہے  </string>
     <string name="nc206">کیا بچہ(نام) کو کبھی ماں کا دودھ پلایا گیا ہے ؟</string>
     <string name="nc207"> آپ نے پیدائش کےکتنی دیر بعد پہلی دفعہ (نام) کو اپنا دودھ پلایا؟ </string>
     <string name="nc207a">  فوراً </string>
@@ -975,34 +991,34 @@
     <string name="nc3bcgdt"> DD-MM-YYYY </string>
     <string name="nc3opv0"> پولیو پیدائش کے وقت OPV </string>
     <string name="nc3opv0dt"> DD-MM-YYYY </string>
-    <string name="at6wks"> 6 ہفتوں کی عمر کے وقت </string>
-    <string name="nc3opv1"> ۔OPV 1۔ 6 ہفتوں کی عمر کے وقت </string>
+    <string name="at6wks"> 6(ہفتوں کی عمر کے وقت)</string>
+    <string name="nc3opv1"> ۔OPV 1۔ 6 (ہفتوں کی عمر کے وقت) </string>
     <string name="nc3opv1dt"> DD-MM-YYYY </string>
-    <string name="nc3p1"> ۔Pentavalent 1۔ 6 ہفتوں کی عمر کے وقت </string>
+    <string name="nc3p1"> ۔Pentavalent 1۔ 6 (ہفتوں کی عمر کے وقت) </string>
     <string name="nc3p1dt"> DD-MM-YYYY </string>
-    <string name="nc3pcv1"> ۔Pneumococcal 1۔ 6 ہفتوں کی عمر کے وقت </string>
+    <string name="nc3pcv1"> ۔Pneumococcal 1۔ 6 (ہفتوں کی عمر کے وقت) </string>
     <string name="nc3pcv1dt"> DD-MM-YYYY </string>
-    <string name="at10wks"> ۔10 ہفتوں کی عمر کے وقت </string>
-    <string name="nc3opv2"> ۔OPV 2۔ 10 ہفتوں کی عمر کے وقت </string>
+    <string name="at10wks"> ۔10 (ہفتوں کی عمر کے وقت) </string>
+    <string name="nc3opv2"> ۔OPV 2۔ 10 (ہفتوں کی عمر کے وقت) </string>
     <string name="nc3opv2dt"> DD-MM-YYYY </string>
-    <string name="nc3p2"> ۔Pentavalent 2۔ 10 ہفتوں کی عمر کے وقت </string>
+    <string name="nc3p2"> ۔Pentavalent 2۔ 10( ہفتوں کی عمر کے وقت) </string>
     <string name="nc3p2dt"> DD-MM-YYYY </string>
-    <string name="nc3pcv2"> ۔Pneumococcal 2۔ 10 ہفتوں کی عمر کے وقت </string>
+    <string name="nc3pcv2"> ۔Pneumococcal 2۔ 10 (ہفتوں کی عمر کے وقت) </string>
     <string name="nc3pcv2dt"> DD-MM-YYYY </string>
-    <string name="at14wks"> ۔14 ہفتوں کی عمر کے وقت </string>
-    <string name="nc3opv3"> ۔OPV 3۔ 14 ہفتوں کی عمر کے وقت </string>
+    <string name="at14wks"> ۔14 (ہفتوں کی عمر کے وقت) </string>
+    <string name="nc3opv3"> ۔OPV 3۔ 14 (ہفتوں کی عمر کے وقت) </string>
     <string name="nc3opv3dt"> DD-MM-YYYY </string>
-    <string name="nc3p3"> ۔Pentavalent 3۔ 14 ہفتوں کی عمر کے وقت </string>
+    <string name="nc3p3"> ۔Pentavalent 3۔ 14 (ہفتوں کی عمر کے وقت) </string>
     <string name="nc3p3dt"> DD-MM-YYYY </string>
-    <string name="nc3pcv3"> ۔Pneumococcal 3۔ 14 ہفتوں کی عمر کے وقت </string>
+    <string name="nc3pcv3"> ۔Pneumococcal 3۔ 14 (ہفتوں کی عمر کے وقت) </string>
     <string name="nc3pcv3dt"> DD-MM-YYYY </string>
-    <string name="nc3ipv"> ۔IPV۔ 14 ہفتوں کی عمر کے وقت </string>
+    <string name="nc3ipv"> ۔IPV۔ 14 (ہفتوں کی عمر کے وقت) </string>
     <string name="nc3ipvdt"> DD-MM-YYYY </string>
-    <string name="at9m"> 9مہینے کی عمر کے وقت </string>
-    <string name="nc3m1"> ۔Measles 1۔ 9 مہینے کی عمر کے وقت </string>
+    <string name="at9m"> 9 (مہینے کی عمر کے وقت) </string>
+    <string name="nc3m1"> ۔Measles 1۔ 9 (مہینے کی عمر کے وقت) </string>
     <string name="nc3m1dt"> DD-MM-YYYY </string>
-    <string name="at15m"> 15مہینے کی عمر کے وقت </string>
-    <string name="nc3m2"> ۔Measles 2۔ 15 مہینے کی عمر کے وقت </string>
+    <string name="at15m">   15(مہینے کی عمر کے وقت) </string>
+    <string name="nc3m2"> ۔Measles 2۔ 15 (مہینے کی عمر کے وقت) </string>
     <string name="nc3m2dt"> DD-MM-YYYY </string>
     <string name="nc305"> کیا بچہ(نام) نےکبھی بیماریوں سے بچاؤ کے لیے ویکسین لگوائی ہیں </string>
     <string name="nc306"> کیا بچہ کو ٹی بی سے بچاؤ کے لیے بی سی جی کا ٹیکہ لگایا ،یہ ایک انجکشن ہے جو بازو پرلگایا جاتا ہےا ور عموماً ایک نشان بن جاتا ہے </string>
@@ -1033,7 +1049,7 @@
     <string name="nc403f"> نجی ہسپتال /کلینک </string>
     <string name="nc403g"> نجی ڈاکٹر </string>
     <string name="nc403h"> نجی دواخانہ </string>
-    <string name="nc403i"> غیرسرکاری عوامی صحت کارکن </string>
+    <string name="nc403i">غیر سرکاری عوامی صحت کارکن </string>
     <string name="nc403j"> موبائل کلینک </string>
     <string name="nc4039602"> دوسرے نجی دواخانہ دیگر وضاحت کریں </string>
     <string name="nc403sub3"> دیگر زرائع </string>
@@ -1146,7 +1162,8 @@
     <string name="nc420a"> مہینوں </string>
     <string name="nc420b"> دنوں </string>
 
-    <string name="nc5heading"> (صرف59-24 مہینے کے بچوں کے لیےماں سے پوچھیں ) </string>
+    <string name="nc5heading"> سیکشن سی 5 : بچہ کی معذوری  </string>
+    <string name="nc5info"> (صرف59-24 مہینے کے بچوں کے لیےماں سے پوچھیں ) </string>
     <string name="nc501"> کیا آپ کےبچےکو دیکھنے میں مشکل پیش آتی ہے یہا ں تک کے چشمہ بھی پہنا ہو؟ </string>
     <string name="nc501a"> کوئی مشکل نہیں </string>
     <string name="nc501b"> کچھ مشکل ہے </string>
@@ -1182,7 +1199,7 @@
     <string name="nw311">آپ کو حمل کے دوران فولاد کی گولیا ں استعمال کرنے کا مشورہ کس نے دیا ؟ </string>
 
     <string name="nw311a"> گائنا کولوجسٹ </string>
-    <string name="nw311b"> کوئی اور ڈاکٹر </string>
+    <string name="nw311b">کوئی دوسرا ڈاکٹر </string>
     <string name="nw311c"> نرس </string>
     <string name="nw311d"> کمیونٹی ہیلتھ ورکر </string>
     <string name="nw311e"> لیڈی ہیلتھ ورکر </string>
@@ -1210,13 +1227,23 @@
 
 
     <string name="nw321">آپ کو حمل کے دوران کیلشیم کی گولیا ں استعمال کرنے کا مشورہ کس نے دیا ؟</string>
+    <string name="nw321a"> گائنا کولوجسٹ </string>
+    <string name="nw321b">کوئی دوسرا ڈاکٹر </string>
+    <string name="nw321c"> نرس </string>
+    <string name="nw321d"> کمیونٹی ہیلتھ ورکر </string>
+    <string name="nw321e"> لیڈی ہیلتھ ورکر </string>
+    <string name="nw321f">کیمونٹی مڈوائف </string>
+    <string name="nw321g"> لیڈی ہیلتھ وزیٹر</string>
+    <string name="nw321h"> دائی </string>
+
+
     <string name="nw322">آپ نے حمل کے دوران کیلشیم کی گولیاں کہاں سے حاصل کیں؟</string>
 
 
     <string name="nw209">زچگیوں کی تعداد </string>
     <string name="nw205time"> زچگیوں کی تعداد </string>
     <string name="nw212">موجودہ حمل کے دوران ،کیا آپ کو فولاد کی گولیا ں دی گئی یا آپ نے خریدی؟ </string>
-    <string name="nw213">اگر ہاں ،خریدی یا دی گئی ؟</string>
+    <string name="nw213">اگر ہاں ،خریدی یا فراہم کی گئیں ؟</string>
 
 
     <string name="nw21301">کلینک پر ملی</string>

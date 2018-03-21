@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -77,6 +78,40 @@ public class SectionB2Activity extends Activity {
             }
         });
 
+        bi.nw306i.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (bi.nw306i.isChecked()) {
+
+                    bi.nw306a.setChecked(false);
+                    bi.nw306b.setChecked(false);
+                    bi.nw306c.setChecked(false);
+                    bi.nw306d.setChecked(false);
+                    bi.nw306e.setChecked(false);
+                    bi.nw306f.setChecked(false);
+                    bi.nw306g.setChecked(false);
+                    bi.nw30696.setChecked(false);
+
+                    bi.nw306a.setEnabled(false);
+                    bi.nw306b.setEnabled(false);
+                    bi.nw306c.setEnabled(false);
+                    bi.nw306d.setEnabled(false);
+                    bi.nw306e.setEnabled(false);
+                    bi.nw306f.setEnabled(false);
+                    bi.nw306g.setEnabled(false);
+                    bi.nw30696.setEnabled(false);
+                } else {
+                    bi.nw306a.setEnabled(true);
+                    bi.nw306b.setEnabled(true);
+                    bi.nw306c.setEnabled(true);
+                    bi.nw306d.setEnabled(true);
+                    bi.nw306e.setEnabled(true);
+                    bi.nw306f.setEnabled(true);
+                    bi.nw306g.setEnabled(true);
+                    bi.nw30696.setEnabled(true);
+                }
+            }
+        });
         bi.nw308.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -635,6 +670,7 @@ public class SectionB2Activity extends Activity {
         sB2.put("nw306f", bi.nw306f.isChecked() ? "6" : "0");
         sB2.put("nw306g", bi.nw306g.isChecked() ? "7" : "0");
         sB2.put("nw306h", bi.nw306h.isChecked() ? "8" : "0");
+        sB2.put("nw306i", bi.nw306i.isChecked() ? "9" : "0");
         sB2.put("nw30696", bi.nw30696.isChecked() ? "96" : "0");
         sB2.put("nw30696x", bi.nw30696x.getText().toString());
 

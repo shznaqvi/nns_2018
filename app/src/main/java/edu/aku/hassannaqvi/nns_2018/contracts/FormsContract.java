@@ -59,7 +59,7 @@ FormsContract {
         this.hhNo = jsonObject.getString(FormsTable.COLUMN_HH_NO);
 
         this.istatus = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
-        this.istatus88x = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
+        this.istatus88x = jsonObject.getString(FormsTable.COLUMN_ISTATUS88x);
         this.gpsElev = jsonObject.getString(FormsTable.COLUMN_GPSELEV);
         this.sA1 = jsonObject.getString(FormsTable.COLUMN_SA1);
         this.sA4 = jsonObject.getString(FormsTable.COLUMN_SA4);
@@ -89,7 +89,7 @@ FormsContract {
         this.enmNo = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ENM_NO));
         this.hhNo = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_HH_NO));
         this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
-        this.istatus88x = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
+        this.istatus88x = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS88x));
         //this.gpsElev = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSELEV));
         this.sA1 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA1));
         this.sA4 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA4));

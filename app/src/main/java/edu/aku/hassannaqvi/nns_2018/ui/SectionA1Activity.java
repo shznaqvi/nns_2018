@@ -57,6 +57,11 @@ public class SectionA1Activity extends AppCompatActivity {
 
         SetupViewFunctionality();
 
+        String strEnglish = "LED";
+        String LRM = String.valueOf(((char) 0x200E));  // This is a LRM
+        //getString(R.string.nw301b);
+        // binding.testview.setText(getString(R.string.nh313ca)+ " \\u200E"+strEnglish +" \\u200E"+  getString(R.string.nh313c)  );
+
         SkipPatterns();
     }
 
@@ -467,7 +472,7 @@ public class SectionA1Activity extends AppCompatActivity {
 
             if (selected.size() != 0) {
 
-                Toast.makeText(this, "Head found in this HH.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Household head found!", Toast.LENGTH_SHORT).show();
 
                 for (BLRandomContract rnd : selected) {
                     MainApp.selectedHead = new BLRandomContract(rnd);
@@ -481,7 +486,7 @@ public class SectionA1Activity extends AppCompatActivity {
 
                 clearFields();
 
-                Toast.makeText(this, "No Head found in this HH.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "No Household head found!", Toast.LENGTH_SHORT).show();
             }
 
         } else {
