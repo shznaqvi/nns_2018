@@ -266,6 +266,16 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
             }
         });
 
+        binding.na203.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.na203b) {
+                    binding.nh2mse.setChecked(false);
+                    binding.nh2mse.setEnabled(false);
+                }
+            }
+        });
+
 //        Getting Members with types
         mem = MainApp.membersCount.getMembers();
 

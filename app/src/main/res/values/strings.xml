@@ -28,7 +28,7 @@
     <string name="istatusha"> مکمل</string>
     <string name="istatushb">گھرانے کا کوئی فرد یا باصلاحیت جواب دہندہ گھر پر موجود نہیں تھا</string>
     <string name="istatushc">گھرانہ کے تمام افراد لمبے عرصے کے لیے گھر سے غیر حاضر تھے </string>
-    <string name="istatushd"> انکار کردی </string>
+    <string name="istatushd"> انکار کردیا </string>
     <string name="istatushe">خالی گھر/گھر کا پتہ نہ تھا</string>
     <string name="istatushf">گھر نہیں ملا</string>
 
@@ -302,7 +302,7 @@
     <string name="nh313a"> بلب </string>
     <string name="nh313b"> ٹیوب لائٹ </string>
     <string name="nh313ca"> </string>
-    <string name="nh313c"> بلب </string>
+    <string name="nh313c"> بلب LED</string>
     <string name="nh313d"> انرجی سیور </string>
     <string name="nh313e"> موم بتی </string>
     <string name="nh313f"> لالٹین </string>
@@ -435,7 +435,7 @@
     <string name="nh406info1"> جواب دہندہ کا جواب سننے کے بعد آپ اُس مزید پوچھں کیا کسی اور وجہ سے بھی صابن سے ہاتھ دھوتے ہیں اور سوال پوچھتےرہیں جب تک کہ جوابدہندہ یہ نہ کہے ،کہ اور کچھ نہیں ۔Y لکھیں اس صورت میں کہ جواب دہندہ کوئی خاص وجہ بتائے اور N لکھیں اس صورت میں کہ جواب دہندہ کوئی خاص وجہ نہ بتائے </string>
     <string name="na6heading"> سیکشن 5: نمک میں آیوڈین کی مقدار جاننے کا ٹیسٹ </string>
 
-    <string name="na601"> ہم چیک کرنا چاہتے ہیں کہ کیاآپ کا گھرانا آیوڈین ملا نمک استعمال کرتا ہیں کیا ہم آپ کے نمک کا نمونہ لے سکتے ہیں جو آپ اپنے کھانے پکانے میں استعمال کرتے ہیں </string>
+    <string name="na601"> ہم چیک کرنا چاہتے ہیں کہ کیاآپ کا گھرانہ آیوڈین ملا نمک استعمال کرتا ہے کیا ہم اس نمک کا نمونہ لے سکتے ہیں جو آپ اپنے کھانا پکانے میں استعمال کرتی ہیں؟ </string>
     <string name="na601info"> چیک کیاگیا نمک </string>
     <string name="na601a"> 0 پی پی ایم ک(کوئی ردعمل/کیمیائی تبدیلی نہیں) </string>
     <string name="na601b"> 0 اور 15 پی پی ایم کے درمیان </string>
@@ -454,7 +454,7 @@
     <string name="na7heading">سیکشن ایچ 6: غذائی قلت کےتجربات کی معلومات   </string>
     <string name="nh501"> ہم چیک کرنا چاہتے ہیں کہ کیاآپ کا گھرانا آیوڈین ملا نمک استعمال کرتا ہیں کیا ہم آپ کے نمک کا نمونہ لے سکتے ہیں جو آپ اپنے کھانے پکانے میں استعمال کرتے ہیں </string>
     <string name="nh501info"> چیک کیاگیا نمک </string>
-    <string name="nh501a"> 0 پی پی ایم ک(کوئی ردعمل/کیمیائی تبدیلی نہیں) </string>
+    <string name="nh501a"> 0 پی پی ایم (کوئی ردعمل/کیمیائی تبدیلی نہیں) </string>
     <string name="nh501b"> 0 اور 15 پی پی ایم کے درمیان </string>
     <string name="nh501c"> 15 پی پی سے زیادہ (15 پی پی ایم کم از کم ) </string>
     <string name="nh501info1"> نمک چیک نہیں کیاگیا </string>

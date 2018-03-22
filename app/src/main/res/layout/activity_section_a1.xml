@@ -334,26 +334,26 @@
                         </LinearLayout>
 
 
-                        <!--nh110-->
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:background="@color/colorPrimary"
-                            android:text="@string/nh110"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:textColor="@android:color/white" />
+                        <!--   &lt;!&ndash;nh110&ndash;&gt;
+                           <TextView
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:layout_marginTop="16dp"
+                               android:background="@color/colorPrimary"
+                               android:text="@string/nh110"
+                               android:textAppearance="?android:attr/textAppearanceLarge"
+                               android:textColor="@android:color/white" />
 
-                        <EditText
-                            android:id="@+id/nh110"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="1dp"
-                            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789"
-                            android:hint="@string/nh110"
-                            android:maxLength="25"
+                           <EditText
+                               android:id="@+id/nh110"
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:layout_marginBottom="1dp"
+                               android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789"
+                               android:hint="@string/nh110"
+                               android:maxLength="25"
 
-                            />
+                               />-->
 
                         <!--nh113-->
                         <TextView

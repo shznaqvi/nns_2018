@@ -225,6 +225,30 @@ public class SectionB1Activity extends Activity {
 
             }
         });
+        bi.nw208.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (bi.nw208.getText().toString().equals("0")) {
+                    clearClass.ClearAllFields(bi.fldGrpnw209, false);
+                } else {
+                    clearClass.ClearAllFields(bi.fldGrpnw209, true);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
 
 
         bi.nw211.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -242,6 +266,18 @@ public class SectionB1Activity extends Activity {
                     bi.nw21398.clearCheck();*/
                 }
 
+            }
+        });
+        bi.nw212.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.nw212a) {
+                    clearClass.ClearAllFields(bi.fldGrpnb107, true);
+
+                } else {
+                    clearClass.ClearAllFields(bi.fldGrpnb107, false);
+
+                }
             }
         });
         bi.nw21398.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -314,24 +350,6 @@ public class SectionB1Activity extends Activity {
         });
 
 
-        bi.nw212.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.nw212b) {
-                    clearClass.ClearAllFields(bi.fldGrpnw212, false);
-                    /*bi.fldGrpnw213.setVisibility(View.GONE);
-                    bi.nw21301.clearCheck();
-                    bi.nw21302.clearCheck();
-                    bi.nw21303.clearCheck();
-                    bi.nw21398.clearCheck();
-                    bi.nw21399.clearCheck();*/
-                } else {
-                    clearClass.ClearAllFields(bi.fldGrpnw212, true);
-                    //bi.fldGrpnw213.setVisibility(View.VISIBLE);
-
-                }
-            }
-        });
 
     }
 
