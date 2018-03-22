@@ -17,6 +17,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
@@ -35,11 +36,13 @@ public class SectionC1Activity extends AppCompatActivity {
     public static boolean isNA;
     static List<String> childU5;
     static Map<String, FamilyMembersContract> childMap;
+    private final long DELAY = 1000;
     Map<String, String> respMap;
     ArrayList<String> respName;
     ActivitySectionC1Binding binding;
     DatabaseHelper db;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
+    private Timer timer = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -11,6 +11,8 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Timer;
+
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -20,20 +22,16 @@ import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionA4Activity extends AppCompatActivity {
 
+    private final long DELAY = 1000;
     ActivitySectionA4Binding binding;
     DatabaseHelper db;
+    private Timer timer = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_a4);
         db = new DatabaseHelper(this);
-
-        String strEnglish = "LED";
-        String LRM = String.valueOf(((char) 0x200E));  // This is a LRM
-        //getString(R.string.nw301b);
-        binding.nh313c.setText(strEnglish + " " + getString(R.string.nh313c));
-
 
 //        Assigning data to UI binding
         binding.setCallback(this);
@@ -107,10 +105,10 @@ public class SectionA4Activity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (i == R.id.nh307h || i == R.id.nh307i) {
-                    clearClass.ClearAllFields(binding.fldGrpnh308, false);
+                    clearClass.ClearAllFields(binding.fldGrpnh308, true);
                     //  clearClass.ClearAllFields(binding.fldGrpnh309,true);
                 } else {
-                    clearClass.ClearAllFields(binding.fldGrpnh308, true);
+                    clearClass.ClearAllFields(binding.fldGrpnh308, false);
                 }
             }
         });
@@ -120,10 +118,10 @@ public class SectionA4Activity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.nh308b) {
-                    clearClass.ClearAllFields(binding.fldGrpnh309, false);
+                    clearClass.ClearAllFields(binding.fldGrpnh309, true);
                 } else {
 //                    binding.fldGrpnh309.setVisibility(View.VISIBLE);
-                    clearClass.ClearAllFields(binding.fldGrpnh309, true);
+                    clearClass.ClearAllFields(binding.fldGrpnh309, false);
 
                 }
             }

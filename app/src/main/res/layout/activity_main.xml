@@ -34,6 +34,7 @@
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/lblheader"
                 android:layout_width="match_parent"

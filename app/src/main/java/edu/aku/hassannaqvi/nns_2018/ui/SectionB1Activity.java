@@ -22,6 +22,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
@@ -38,10 +39,12 @@ public class SectionB1Activity extends Activity {
     public static int WRAcounter = 0;
     static Map<String, FamilyMembersContract> wraMap;
     static ArrayList<String> lstMwra;
+    private final long DELAY = 1000;
     ArrayList<String> respName;
     Map<String, String> respMap;
     ActivitySectionB1Binding bi;
     DatabaseHelper db;
+    private Timer timer = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +65,8 @@ public class SectionB1Activity extends Activity {
         /*respName = new ArrayList<>();
         respName.add("....");
         respMap = new HashMap<>();*/
+
+        MainApp.status = 0;
 
 //      Get intent
         if (getIntent().getBooleanExtra("mwraFlag", false)) {
@@ -161,11 +166,9 @@ public class SectionB1Activity extends Activity {
                 if (bi.nw205a.isChecked()) {
 
                     clearClass.ClearAllFields(bi.fldGrpnw206, true);
-
                 } else {
 
                     clearClass.ClearAllFields(bi.fldGrpnw206, false);
-
                     /*bi.fldGrpnw206.setVisibility(View.GONE);
                     bi.nw206.setText(null);
                     bi.nw207.clearCheck();

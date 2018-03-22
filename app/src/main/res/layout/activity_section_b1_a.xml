@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="edu.aku.hassannaqvi.src_preg.ui.SectionB1AActivity">
 
@@ -51,7 +50,98 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
-            <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/bacground_border_heading"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/pink_100"
+                        android:gravity="center"
+                        android:text="@string/year2"
+                        android:textColor="@color/colorPrimaryDark" />
+
+
+                    <EditText
+                        android:id="@+id/nw215y"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:hint="@string/year2"
+                        android:inputType="number"
+                        android:maxLength="4"
+                        android:visibility="visible" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/bacground_border_heading"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/pink_100"
+                        android:gravity="center"
+                        android:text="@string/month"
+                        android:textColor="@color/colorPrimaryDark" />
+
+
+                    <EditText
+                        android:id="@+id/nw215m"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:hint="@string/month"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:visibility="visible" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/bacground_border_heading"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/pink_100"
+                        android:gravity="center"
+                        android:text="@string/day"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <EditText
+                        android:id="@+id/nw215d"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:digits="0123456789"
+                        android:hint="@string/day"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:visibility="visible" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                 android:id="@+id/nw215"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -60,7 +150,7 @@
                 android:hint="@string/nw215"
                 android:padding="15dp"
                 android:textColor="@android:color/black"
-                app:dateFormat="dd-MM-yyyy" />
+                app:dateFormat="dd-MM-yyyy" />-->
 
 
             <TextView

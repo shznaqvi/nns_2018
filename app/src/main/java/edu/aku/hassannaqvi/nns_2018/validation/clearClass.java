@@ -85,7 +85,6 @@ public class clearClass {
                 v.setEnabled(flag);
             } else if (v instanceof io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText) {
                 ((io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText) v).setText(null);
-                ((io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText) v).setError(null);
                 v.setEnabled(flag);
             } else if (v instanceof LinearLayout) {
                 for (int k = 0; k < ((LinearLayout) v).getChildCount(); k++) {
