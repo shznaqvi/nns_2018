@@ -166,8 +166,27 @@ public class SectionA2ListActivity extends AppCompatActivity {
     public void BtnAddMore() {
 
         //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                SectionA2ListActivity.this);
+        alertDialogBuilder
+                .setMessage("Are you sure to add new member?")
+                .setCancelable(false)
+                .setPositiveButton("Ok",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,
+                                                int id) {
+                                startActivity(new Intent(SectionA2ListActivity.this, SectionA2Activity.class).putExtra("flag", true));
+                            }
+                        });
+        alertDialogBuilder.setNegativeButton("Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = alertDialogBuilder.create();
+        alert.show();
 
-        startActivity(new Intent(this, SectionA2Activity.class).putExtra("flag", true));
     }
 
     public void BtnEnd() {

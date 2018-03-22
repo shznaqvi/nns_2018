@@ -77,14 +77,14 @@ public class SectionA8AActivity extends Activity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 position = i;
-                Log.d("For Debug", "Position selected is: "+position);
+                Log.d("For Debug", "Position selected is: " + position);
                 try {
                     if (position != 0) {
 
                         fmcSelected = recpmap.get(recpNames.get(position) + "_" + recpSerial.get(position));
                     }
-                }catch(Exception e){
-                    Log.e("Error","There is an error while selecting name from spinner: "+e);
+                } catch (Exception e) {
+                    Log.e("Error", "There is an error while selecting name from spinner: " + e);
                 }
 
             }
@@ -209,7 +209,7 @@ public class SectionA8AActivity extends Activity {
             return false;
         }
 
-        return validatorClass.RangeTextBox(this, bi.nh7a05, 0, Integer.valueOf(bi.nh7a05.getText().toString()), getString(R.string.nh7a06), " Rupees");
+        return validatorClass.RangeTextBox(this, bi.nh7a06, 0, Integer.valueOf(bi.nh7a05.getText().toString()), getString(R.string.nh7a06), " Rupees");
     }
 
     private void SaveDraft() throws JSONException {

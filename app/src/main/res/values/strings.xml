@@ -63,7 +63,7 @@
 
 
     <!-- Strings related to Sections Below -->
-    <string name="na1heading">گھرانے کی معلومات</string>
+    <string name="na1heading"> گھرانے کی معلومات </string>
     <string name="nh101"> جغرافیائی علاقہ </string>
     <string name="nh102"> اینومریشن بلاک نمبر </string>
     <string name="nh103"> صوبہ </string>
@@ -129,7 +129,7 @@
     <string name="nh211"> والد کا لائن نمبر </string>
     <string name="nh212"> والدہ کا لائن نمبر </string>
     <string name="na204"> جنس </string>
-    <string name="nh2dob"> پیدائش کی تاریخ کیا ہے؟ </string>
+    <string name="nh2dob"> (نام)پیدائش کی تاریخ کیا ہے؟ </string>
     <string name="na2age"> (نام)کتنی عمر ہے؟ </string>
     <string name="nh2edu"> تعلیم </string>
     <string name="nh2edua"> کوئی نہیں</string>
@@ -556,7 +556,7 @@
     <string name="nb2subHeading">یہ حصہ ہر اُس خاتون کا بھرا جائے گا جس کی عمر 49-15 سال ہے اور گذشتہ 2 سال میں زندہ بچے کی پیدائش ہوئی ہو  </string>
     <string name="nb2sub"> یہ حصہ ہر اُس خاتون کا بھرا جائے گا جس کی عمر 49-15 سال ہے اور گذشتہ 2 سال میں زندہ بچے کی پیدائش ہوئی ہو  </string>
     <string name="nw301a"> کیا </string>
-    <string name="nw301b"> نے گزشتہ حمل کےدوران کسی سے اپنا معائنہ کرایاتھا؟ </string>
+    <string name="nw301b"> نے گزشتہ حمل کےدوران کسی سے اپنا طبی معائنہ کرایا تھا؟ </string>
     <string name="nw302"> آپ نے کس سے معائنہ کروایاتھا؟ </string>
     <string name="nw302info"> مزید پوچھیں :کوئی اور
     مزید پوچھیں :معائنہ کرنے والے کے بارے میں مزید پوچھیں اور تمام جوابات کو ریکادڑ کریں </string>
