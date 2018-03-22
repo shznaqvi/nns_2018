@@ -129,18 +129,11 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (bi.nw216a.isChecked() || bi.nw216b.isChecked() || bi.nw216e.isChecked()) {
                     clearClass.ClearAllFields(bi.fldGrpnb1a03, false);
-                    /*bi.fldGrpnb1a03.setVisibility(View.GONE);
-                    bi.nw217.clearCheck();
-                    bi.nw219d.setText(null);
-                    bi.nw219m.setText(null);
-                    bi.nw219y.setText(null);
-                    bi.nw220d.setText(null);
-                    bi.nw220m.setText(null);
-                    bi.nw220y.setText(null);*/
+
 
                 } else {
                     clearClass.ClearAllFields(bi.fldGrpnb1a03, true);
-                    //bi.fldGrpnb1a03.setVisibility(View.VISIBLE);
+
                 }
 
             }

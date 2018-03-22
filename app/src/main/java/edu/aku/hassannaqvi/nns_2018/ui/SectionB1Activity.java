@@ -68,6 +68,7 @@ public class SectionB1Activity extends Activity {
 
         MainApp.status = 0;
 
+
 //      Get intent
         if (getIntent().getBooleanExtra("mwraFlag", false)) {
             lstMwra.remove(getIntent().getStringExtra("wraName"));
@@ -88,13 +89,9 @@ public class SectionB1Activity extends Activity {
 //      Increment WRA COUNTER
         WRAcounter++;
 
-        /*for (FamilyMembersContract fmc : MainApp.respList) {
-            respName.add(fmc.getName() + "-" + fmc.getSerialNo());
-            respMap.put(fmc.getName() + "-" + fmc.getSerialNo(), fmc.getSerialNo());
-        }*/
 
         bi.nb101.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, lstMwra));
-        //bi.resp.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, respName));
+
 
         bi.nb101.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -111,26 +108,60 @@ public class SectionB1Activity extends Activity {
             }
         });
 
+
 //============================================ Skip Patterns =======================================
 
         bi.nw203.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (bi.nw203a.isChecked()) {
-                    clearClass.ClearAllFields(bi.fldGrpnw204, true);
-                    bi.nw21301.clearCheck();
-                    bi.nw21302.clearCheck();
-                    bi.nw21303.clearCheck();
-                    bi.nw21398.clearCheck();
-                    bi.nw21399.clearCheck();
+                    //clearClass.ClearAllFields(bi.fldGrpnw204, true);
 
-                    bi.nw21301.setEnabled(false);
-                    bi.nw21302.setEnabled(false);
-                    bi.nw21303.setEnabled(false);
-                    bi.nw21398.setEnabled(false);
-                    bi.nw21399.setEnabled(false);
+                    bi.nw204a.setEnabled(true);
+                    bi.nw204b.setEnabled(true);
+                    bi.nw205a.setEnabled(true);
+                    bi.nw205b.setEnabled(true);
+                    bi.nw206.setEnabled(true);
+                    bi.nw207a.setEnabled(true);
+                    bi.nw207b.setEnabled(true);
+                    bi.nw208.setEnabled(true);
+                    bi.nw209.setEnabled(true);
+                    bi.nw210.setEnabled(true);
+                    bi.nw211a.setEnabled(true);
+                    bi.nw211b.setEnabled(true);
+                    bi.nw212a.setEnabled(true);
+                    bi.nw212b.setEnabled(true);
+                    bi.nw21301.setEnabled(true);
+                    bi.nw21302.setEnabled(true);
+                    bi.nw21303.setEnabled(true);
+                    bi.nw21398.setEnabled(true);
+                    bi.nw21399.setEnabled(true);
                 } else {
-                    clearClass.ClearAllFields(bi.fldGrpnw204, false);
+                    //clearClass.ClearAllFields(bi.fldGrpnw204, false);
+
+                    bi.nw204a.setEnabled(false);
+                    bi.nw204b.setEnabled(false);
+                    bi.nw204.clearCheck();
+                    bi.nw205a.setEnabled(false);
+                    bi.nw205b.setEnabled(false);
+                    bi.nw205.clearCheck();
+                    bi.nw206.setEnabled(false);
+                    bi.nw206.setText(null);
+                    bi.nw207a.setEnabled(false);
+                    bi.nw207b.setEnabled(false);
+                    bi.nw207.clearCheck();
+                    bi.nw208.setEnabled(false);
+                    bi.nw208.setText(null);
+                    bi.nw209.setEnabled(false);
+                    bi.nw209.setText(null);
+                    bi.nw210.setEnabled(false);
+                    bi.nw210.setText(null);
+                    bi.nw211a.setEnabled(false);
+                    bi.nw211b.setEnabled(false);
+                    bi.nw211.clearCheck();
+                    bi.nw212a.setEnabled(false);
+                    bi.nw212b.setEnabled(false);
+                    bi.nw212.clearCheck();
                     bi.nw21301.clearCheck();
                     bi.nw21302.clearCheck();
                     bi.nw21303.clearCheck();
@@ -150,12 +181,17 @@ public class SectionB1Activity extends Activity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (bi.nw204a.isChecked()) {
-                    clearClass.ClearAllFields(bi.fldGrpnw205, false);
-                    clearClass.ClearAllFields(bi.fldGrpnw206, true);
-                } else {
-                    clearClass.ClearAllFields(bi.fldGrpnw205, true);
-                    clearClass.ClearAllFields(bi.fldGrpnw206, false);
+                    //clearClass.ClearAllFields(bi.fldGrpnw205, false);
+                    //clearClass.ClearAllFields(bi.fldGrpnw206, true);
+                    bi.nw205a.setEnabled(false);
+                    bi.nw205b.setEnabled(false);
+                    bi.nw205.clearCheck();
 
+                } else {
+
+                    bi.nw205a.setEnabled(true);
+                    bi.nw205b.setEnabled(true);
+                    //bi.nw205.clearCheck();
                 }
             }
         });
@@ -165,23 +201,52 @@ public class SectionB1Activity extends Activity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (bi.nw205a.isChecked()) {
 
-                    clearClass.ClearAllFields(bi.fldGrpnw206, true);
+                    bi.nw206.setEnabled(true);
+                    bi.nw207a.setEnabled(true);
+                    bi.nw207b.setEnabled(true);
+                    bi.nw208.setEnabled(true);
+                    bi.nw209.setEnabled(true);
+                    bi.nw210.setEnabled(true);
+                    bi.nw211a.setEnabled(true);
+                    bi.nw211b.setEnabled(true);
+                    bi.nw212a.setEnabled(true);
+                    bi.nw212b.setEnabled(true);
+                    bi.nw21301.setEnabled(true);
+                    bi.nw21302.setEnabled(true);
+                    bi.nw21303.setEnabled(true);
+                    bi.nw21398.setEnabled(true);
+                    bi.nw21399.setEnabled(true);
+
                 } else {
 
-                    clearClass.ClearAllFields(bi.fldGrpnw206, false);
-                    /*bi.fldGrpnw206.setVisibility(View.GONE);
+                    bi.nw206.setEnabled(false);
                     bi.nw206.setText(null);
+                    bi.nw207a.setEnabled(false);
+                    bi.nw207b.setEnabled(false);
                     bi.nw207.clearCheck();
+                    bi.nw208.setEnabled(false);
                     bi.nw208.setText(null);
+                    bi.nw209.setEnabled(false);
                     bi.nw209.setText(null);
+                    bi.nw210.setEnabled(false);
                     bi.nw210.setText(null);
+                    bi.nw211a.setEnabled(false);
+                    bi.nw211b.setEnabled(false);
                     bi.nw211.clearCheck();
+                    bi.nw212a.setEnabled(false);
+                    bi.nw212b.setEnabled(false);
                     bi.nw212.clearCheck();
                     bi.nw21301.clearCheck();
                     bi.nw21302.clearCheck();
                     bi.nw21303.clearCheck();
                     bi.nw21398.clearCheck();
-                    bi.nw21399.clearCheck();*/
+                    bi.nw21399.clearCheck();
+
+                    bi.nw21301.setEnabled(false);
+                    bi.nw21302.setEnabled(false);
+                    bi.nw21303.setEnabled(false);
+                    bi.nw21398.setEnabled(false);
+                    bi.nw21399.setEnabled(false);
                 }
             }
         });
@@ -190,15 +255,44 @@ public class SectionB1Activity extends Activity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.nw207a) {
-                    //bi.fldGrpnw208.setVisibility(View.VISIBLE);
-                    clearClass.ClearAllFields(bi.fldGrpnw208, true);
+
+                    bi.nw208.setEnabled(true);
+                    bi.nw209.setEnabled(true);
+                    bi.nw210.setEnabled(true);
+                    bi.nw211a.setEnabled(true);
+                    bi.nw211b.setEnabled(true);
+                    bi.nw212a.setEnabled(true);
+                    bi.nw212b.setEnabled(true);
+                    bi.nw21301.setEnabled(true);
+                    bi.nw21302.setEnabled(true);
+                    bi.nw21303.setEnabled(true);
+                    bi.nw21398.setEnabled(true);
+                    bi.nw21399.setEnabled(true);
+
                 } else {
-                    clearClass.ClearAllFields(bi.fldGrpnw208, false);
-                    /*bi.fldGrpnw208.setVisibility(View.GONE);
+                    bi.nw208.setEnabled(false);
                     bi.nw208.setText(null);
+                    bi.nw209.setEnabled(false);
                     bi.nw209.setText(null);
+                    bi.nw210.setEnabled(false);
                     bi.nw210.setText(null);
-                    bi.nw211.clearCheck();*/
+                    bi.nw211a.setEnabled(false);
+                    bi.nw211b.setEnabled(false);
+                    bi.nw211.clearCheck();
+                    bi.nw212a.setEnabled(false);
+                    bi.nw212b.setEnabled(false);
+                    bi.nw212.clearCheck();
+                    bi.nw21301.clearCheck();
+                    bi.nw21302.clearCheck();
+                    bi.nw21303.clearCheck();
+                    bi.nw21398.clearCheck();
+                    bi.nw21399.clearCheck();
+
+                    bi.nw21301.setEnabled(false);
+                    bi.nw21302.setEnabled(false);
+                    bi.nw21303.setEnabled(false);
+                    bi.nw21398.setEnabled(false);
+                    bi.nw21399.setEnabled(false);
                 }
             }
         });
@@ -213,9 +307,41 @@ public class SectionB1Activity extends Activity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 if (bi.nw208.getText().toString().equals("0")) {
-                    clearClass.ClearAllFields(bi.fldGrpnw209, false);
+                    //clearClass.ClearAllFields(bi.fldGrpnw209, false);
+                    bi.nw209.setEnabled(false);
+                    bi.nw209.setText(null);
+                    bi.nw210.setEnabled(false);
+                    bi.nw210.setText(null);
+                    bi.nw211a.setEnabled(false);
+                    bi.nw211b.setEnabled(false);
+                    bi.nw211.clearCheck();
+                    bi.nw212a.setEnabled(false);
+                    bi.nw212b.setEnabled(false);
+                    bi.nw212.clearCheck();
+                    bi.nw21301.clearCheck();
+                    bi.nw21302.clearCheck();
+                    bi.nw21303.clearCheck();
+                    bi.nw21398.clearCheck();
+                    bi.nw21399.clearCheck();
+                    bi.nw21301.setEnabled(false);
+                    bi.nw21302.setEnabled(false);
+                    bi.nw21303.setEnabled(false);
+                    bi.nw21398.setEnabled(false);
+                    bi.nw21399.setEnabled(false);
+
                 } else {
-                    clearClass.ClearAllFields(bi.fldGrpnw209, true);
+
+                    bi.nw209.setEnabled(true);
+                    bi.nw210.setEnabled(true);
+                    bi.nw211a.setEnabled(true);
+                    bi.nw211b.setEnabled(true);
+                    bi.nw212a.setEnabled(true);
+                    bi.nw212b.setEnabled(true);
+                    bi.nw21301.setEnabled(true);
+                    bi.nw21302.setEnabled(true);
+                    bi.nw21303.setEnabled(true);
+                    bi.nw21398.setEnabled(true);
+                    bi.nw21399.setEnabled(true);
                 }
 
             }
@@ -225,7 +351,7 @@ public class SectionB1Activity extends Activity {
 
             }
         });
-        bi.nw208.addTextChangedListener(new TextWatcher() {
+        bi.nw209.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -234,10 +360,12 @@ public class SectionB1Activity extends Activity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if (bi.nw208.getText().toString().equals("0")) {
-                    clearClass.ClearAllFields(bi.fldGrpnw209, false);
+                if (bi.nw209.getText().toString().equals("0")) {
+                    clearClass.ClearAllFields(bi.fldGrpnw210, false);
+
+
                 } else {
-                    clearClass.ClearAllFields(bi.fldGrpnw209, true);
+                    clearClass.ClearAllFields(bi.fldGrpnw210, true);
                 }
 
             }
@@ -247,7 +375,6 @@ public class SectionB1Activity extends Activity {
 
             }
         });
-
 
 
 
@@ -255,15 +382,28 @@ public class SectionB1Activity extends Activity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.nw211a) {
-                    clearClass.ClearAllFields(bi.fldGrpnw212, true);
+                    bi.nw212a.setEnabled(true);
+                    bi.nw212b.setEnabled(true);
+                    bi.nw21301.setEnabled(true);
+                    bi.nw21302.setEnabled(true);
+                    bi.nw21303.setEnabled(true);
+                    bi.nw21398.setEnabled(true);
+                    bi.nw21399.setEnabled(true);
                 } else {
-                    clearClass.ClearAllFields(bi.fldGrpnw212, false);
-                    /*bi.nw212.clearCheck();
+                    bi.nw212a.setEnabled(false);
+                    bi.nw212b.setEnabled(false);
+                    bi.nw212.clearCheck();
                     bi.nw21301.clearCheck();
                     bi.nw21302.clearCheck();
                     bi.nw21303.clearCheck();
+                    bi.nw21398.clearCheck();
                     bi.nw21399.clearCheck();
-                    bi.nw21398.clearCheck();*/
+
+                    bi.nw21301.setEnabled(false);
+                    bi.nw21302.setEnabled(false);
+                    bi.nw21303.setEnabled(false);
+                    bi.nw21398.setEnabled(false);
+                    bi.nw21399.setEnabled(false);
                 }
 
             }
@@ -422,33 +562,10 @@ public class SectionB1Activity extends Activity {
 
     private boolean ValidateForm() {
 
-        //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
-
-
-        /*if (!validatorClass.EmptySpinner(this, bi.resp, getString(R.string.nh113))) {
-            return false;
-        }*/
-
         if (!validatorClass.EmptySpinner(this, bi.nb101, getString(R.string.nb101))) {
             return false;
         }
 
-        /*if (!bi.nb101.getSelectedItem().toString().equals(bi.resp.getSelectedItem().toString())) {
-            Toast.makeText(this, "ERROR(invalid): " + "Respondent should be same as Selected Woman" + getString(R.string.nb101), Toast.LENGTH_LONG).show();
-
-            ((TextView) bi.nb101.getSelectedView()).setText("Respondent should be same as Selected Woman");
-            ((TextView) bi.nb101.getSelectedView()).setTextColor(Color.RED);
-
-            ((TextView) bi.resp.getSelectedView()).setText("Respondent should be same as Selected Woman");
-            ((TextView) bi.resp.getSelectedView()).setTextColor(Color.RED);
-
-            Log.i(SectionB2Activity.class.getSimpleName(), "nb203" + ": This data is Required!");
-            return false;
-        } else {
-            ((TextView) bi.resp.getSelectedView()).setError(null);
-            ((TextView) bi.nb101.getSelectedView()).setError(null);
-        }
-*/
         if (!validatorClass.EmptyTextBox(this, bi.nw201days, getString(R.string.day))) {
             return false;
         }
@@ -463,7 +580,7 @@ public class SectionB1Activity extends Activity {
             return false;
         }
 
-        if (!validatorClass.EmptyTextBox(this, bi.nw201years, getString(R.string.year))) {
+        if (!validatorClass.EmptyTextBox(this, bi.nw201years, getString(R.string.year2))) {
             return false;
         }
 
@@ -473,7 +590,7 @@ public class SectionB1Activity extends Activity {
         int year = cal.get(Calendar.YEAR);
 
         if (!validatorClass.RangeTextBox(this, bi.nw201years, year - 49, year - 15, 9998,
-                "Range " + (year - 49) + " - " + (year - 15), getString(R.string.year))) {
+                "Range " + (year - 49) + " - " + (year - 15), getString(R.string.year2))) {
             return false;
         }
 
@@ -502,12 +619,12 @@ public class SectionB1Activity extends Activity {
 
             if (bi.nw204a.isChecked() || bi.nw205a.isChecked()) {
 
-                if (bi.nw204a.isChecked() || bi.nw205a.isChecked()) {
+                //if (bi.nw204a.isChecked() || bi.nw205a.isChecked()) {
                     if (!validatorClass.EmptyTextBox(this, bi.nw206, getString(R.string.nw206))) {
                         return false;
                     }
 
-                    if (!validatorClass.RangeTextBox(this, bi.nw206, 15, Integer.valueOf(wraMap.get(bi.nb101.getSelectedItem().toString()).getAgeInYear()), getString(R.string.nw206), " years")) {
+                if (!validatorClass.RangeTextBox(this, bi.nw206, 15, Integer.valueOf(bi.nw202.getText().toString()), getString(R.string.nw206), " years")) {
                         return false;
                     }
 
@@ -536,7 +653,7 @@ public class SectionB1Activity extends Activity {
                                 return false;
                             }
 
-                            if (!validatorClass.RangeTextBox(this, bi.nw210, Integer.valueOf(bi.nw209.getText().toString()), Integer.valueOf(wraMap.get(bi.nb101.getSelectedItem().toString()).getAgeInYear()), getString(R.string.nw210), " years")) {
+                            if (!validatorClass.RangeTextBox(this, bi.nw210, Integer.valueOf(bi.nw206.getText().toString()), Integer.valueOf(bi.nw202.getText().toString()), getString(R.string.nw210), " years")) {
                                 return false;
                             }
 
@@ -613,7 +730,7 @@ public class SectionB1Activity extends Activity {
                     }
 
 
-                }
+                //}
 
 
             }

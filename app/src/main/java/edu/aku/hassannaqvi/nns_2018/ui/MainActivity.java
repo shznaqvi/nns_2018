@@ -49,6 +49,7 @@ import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.NutritionContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract;
@@ -330,12 +331,12 @@ public class MainActivity extends Activity {
 
 
     public void openA(View v) {
-        Intent iA = new Intent(this, SectionB6Activity.class);
+        Intent iA = new Intent(this, SectionB1Activity.class);
         startActivity(iA);
     }
 
     public void openB(View v) {
-        Intent iB = new Intent(this, SectionA5Activity.class);
+        Intent iB = new Intent(this, AntrhoInfoActivity.class);
         startActivity(iB);
     }
 
@@ -551,6 +552,16 @@ public class MainActivity extends Activity {
                     RecipientsContract.class,
                     MainApp._HOST_URL + RecipientsContract.RecipientsTable._URL,
                     db.getUnsyncedRecipients()
+            ).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing Nutrition", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Nutrition",
+                    "updateSyncedNutrition",
+                    NutritionContract.class,
+                    MainApp._HOST_URL + NutritionContract.NutritionTable._URL,
+                    db.getUnsyncedNutrition()
             ).execute();
 
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);

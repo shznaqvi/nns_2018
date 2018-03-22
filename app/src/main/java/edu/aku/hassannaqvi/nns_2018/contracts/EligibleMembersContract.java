@@ -288,12 +288,12 @@ public class EligibleMembersContract {
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
 
         public static final String COLUMN_PROJECTNAME = "projectname";
-        public static final String COLUMN__ID = "_id ";
-        public static final String COLUMN_UID = "uid ";
+        public static final String COLUMN__ID = "_id";
+        public static final String COLUMN_UID = "uid";
         public static final String COLUMN_UUID = "uuid";
         public static final String COLUMN_FORMDATE = "formdate";
-        public static final String COLUMN_DEVICEID = "deviceid ";
-        public static final String COLUMN_DEVICETAGID = "devicetagid ";
+        public static final String COLUMN_DEVICEID = "deviceid";
+        public static final String COLUMN_DEVICETAGID = "devicetagid";
         public static final String COLUMN_USER = "user";
         public static final String COLUMN_APPVERSION = "appversion";
         public static final String COLUMN_ENM_NO = "enm_no";
