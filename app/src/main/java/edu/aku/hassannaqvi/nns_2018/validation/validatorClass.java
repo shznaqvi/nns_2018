@@ -12,7 +12,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * Created by ali.azaz on 12/04/17.
@@ -22,7 +21,7 @@ public abstract class validatorClass {
 
     public static boolean EmptyTextBox(Context context, EditText txt, String msg) {
         if (TextUtils.isEmpty(txt.getText().toString())) {
-            Toast.makeText(context, "ERROR(empty): " + msg, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "ERROR(empty): " + msg, Toast.LENGTH_SHORT).show();
             txt.setError("This data is Required! ");    // Set Error on last radio button
             txt.requestFocus();
             Log.i(context.getClass().getName(), context.getResources().getResourceEntryName(txt.getId()) + ": This data is Required!");
@@ -36,7 +35,7 @@ public abstract class validatorClass {
     public static boolean RangeTextBox(Context context, EditText txt, int min, int max, String msg, String type) {
 
         if (Integer.valueOf(txt.getText().toString()) < min || Integer.valueOf(txt.getText().toString()) > max) {
-            Toast.makeText(context, "ERROR(invalid): " + msg, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "ERROR(invalid): " + msg, Toast.LENGTH_SHORT).show();
             txt.setError("Range is " + min + " to " + max + type + " ... ");    // Set Error on last radio button
             txt.requestFocus();
             Log.i(context.getClass().getName(), context.getResources().getResourceEntryName(txt.getId()) + ": Range is " + min + " to " + max + " times...  ");
@@ -51,7 +50,7 @@ public abstract class validatorClass {
 
         if (Integer.valueOf(txt.getText().toString()) != defaultVal) {
             if ((Integer.valueOf(txt.getText().toString()) < min || Integer.valueOf(txt.getText().toString()) > max)) {
-                Toast.makeText(context, "ERROR(invalid): " + msg, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "ERROR(invalid): " + msg, Toast.LENGTH_SHORT).show();
                 txt.setError("Range is " + min + " to " + max + " or " + defaultVal + type + " ... ");    // Set Error on last radio button
                 txt.requestFocus();
                 Log.i(context.getClass().getName(), context.getResources().getResourceEntryName(txt.getId()) + ": Range is " + min + " to " + max + " or " + defaultVal + " ...  ");
@@ -69,7 +68,7 @@ public abstract class validatorClass {
     public static boolean RangeTextBox(Context context, EditText txt, double min, double max, String msg, String type) {
 
         if (Double.valueOf(txt.getText().toString()) < min || Double.valueOf(txt.getText().toString()) > max) {
-            Toast.makeText(context, "ERROR(invalid): " + msg, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "ERROR(invalid): " + msg, Toast.LENGTH_SHORT).show();
             txt.setError("Range is " + min + " to " + max + type + " ... ");    // Set Error on last radio button
             txt.requestFocus();
             Log.i(context.getClass().getName(), context.getResources().getResourceEntryName(txt.getId()) + ": Range is " + min + " to " + max + " times...  ");
@@ -82,7 +81,7 @@ public abstract class validatorClass {
 
     public static boolean EmptySpinner(Context context, Spinner spin, String msg) {
         if (spin.getSelectedItem() == "....") {
-            Toast.makeText(context, "ERROR(Empty)" + msg, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "ERROR(Empty)" + msg, Toast.LENGTH_SHORT).show();
             ((TextView) spin.getSelectedView()).setText("This Data is Required");
             ((TextView) spin.getSelectedView()).setTextColor(Color.RED);
             spin.requestFocus();
@@ -96,7 +95,7 @@ public abstract class validatorClass {
 
     public static boolean EmptyRadioButton(Context context, RadioGroup rdGrp, RadioButton rdBtn, String msg) {
         if (rdGrp.getCheckedRadioButtonId() == -1) {
-            Toast.makeText(context, "ERROR(empty): " + msg, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "ERROR(empty): " + msg, Toast.LENGTH_SHORT).show();
             rdBtn.setError("This data is Required!");    // Set Error on last radio button
 
             rdBtn.setFocusable(true);
@@ -112,7 +111,7 @@ public abstract class validatorClass {
 
     public static boolean EmptyRadioButton(Context context, RadioGroup rdGrp, RadioButton rdBtn, EditText txt, String msg) {
         if (rdGrp.getCheckedRadioButtonId() == -1) {
-            Toast.makeText(context, "ERROR(empty): " + msg, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "ERROR(empty): " + msg, Toast.LENGTH_SHORT).show();
             rdBtn.setError("This data is Required!");    // Set Error on last radio button
 
             rdBtn.setFocusable(true);
@@ -146,7 +145,7 @@ public abstract class validatorClass {
         if (flag) {
             return true;
         } else {
-            Toast.makeText(context, "ERROR(empty): " + msg, Toast.LENGTH_LONG).show();
+            //Toast.makeText(context, "ERROR(empty): " + msg, Toast.LENGTH_LONG).show();
             cbx.setError("This data is Required!");    // Set Error on last radio button
 
             Log.i(context.getClass().getName(), context.getResources().getResourceEntryName(cbx.getId()) + ": This data is Required!");
@@ -174,7 +173,7 @@ public abstract class validatorClass {
             }
             return true;
         } else {
-            Toast.makeText(context, "ERROR(empty): " + msg, Toast.LENGTH_LONG).show();
+            //Toast.makeText(context, "ERROR(empty): " + msg, Toast.LENGTH_LONG).show();
             cbx.setError("This data is Required!");    // Set Error on last radio button
 
             Log.i(context.getClass().getName(), context.getResources().getResourceEntryName(cbx.getId()) + ": This data is Required!");

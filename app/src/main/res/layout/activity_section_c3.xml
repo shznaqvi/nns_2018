@@ -1974,7 +1974,7 @@
 
 
                             <EditText
-                                android:id="@+id/nw215m"
+                                android:id="@+id/nc3m1m"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
@@ -2001,7 +2001,7 @@
                                 android:textColor="@color/colorPrimaryDark" />
 
                             <EditText
-                                android:id="@+id/nw215d"
+                                android:id="@+id/nc3m1d"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
@@ -2103,7 +2103,7 @@
 
 
                             <EditText
-                                android:id="@+id/nw215y"
+                                android:id="@+id/nc3m2y"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
@@ -2131,7 +2131,7 @@
 
 
                             <EditText
-                                android:id="@+id/nw215m"
+                                android:id="@+id/nc3m2m"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
@@ -2158,7 +2158,7 @@
                                 android:textColor="@color/colorPrimaryDark" />
 
                             <EditText
-                                android:id="@+id/nw215d"
+                                android:id="@+id/nc3m2d"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
