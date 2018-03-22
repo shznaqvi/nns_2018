@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -11,6 +14,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Timer;
+import java.util.TimerTask;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
@@ -19,7 +23,7 @@ import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB3Binding;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionB3Activity extends AppCompatActivity {
+public class SectionB3Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener, CompoundButton.OnCheckedChangeListener {
 
     private final long DELAY = 1000;
     ActivitySectionB3Binding binding;
@@ -39,6 +43,7 @@ public class SectionB3Activity extends AppCompatActivity {
         binding.nw327.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                formValidation();
                 if (i == R.id.nw32798) {
                     clearClass.ClearAllFields(binding.fldGrnw328, false);
                 } else {
@@ -50,6 +55,7 @@ public class SectionB3Activity extends AppCompatActivity {
         binding.nw330.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                formValidation();
                 if (i == R.id.nw330d) {
                     clearClass.ClearAllFields(binding.fldGrnw331, false);
 //                    binding.nw331.clearCheck();
@@ -63,9 +69,9 @@ public class SectionB3Activity extends AppCompatActivity {
         binding.nw331.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                formValidation();
                 if (i == R.id.nw331b) {
                     clearClass.ClearAllFields(binding.fldGrnw332, false);
-
 //                    binding.nw332.clearCheck();
                 } else {
                     clearClass.ClearAllFields(binding.fldGrnw332, true);
@@ -73,6 +79,12 @@ public class SectionB3Activity extends AppCompatActivity {
                 }
             }
         });
+
+//        Listener
+        binding.nw328.setOnCheckedChangeListener(this);
+        binding.nw329a.setOnCheckedChangeListener(this);
+        binding.nw332.setOnCheckedChangeListener(this);
+
     }
 
     public void BtnContinue() {
@@ -235,5 +247,45 @@ public class SectionB3Activity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+        timer.cancel();
+        timer = new Timer();
+        timer.schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                formValidation();
+                            }
+                        });
+
+                    }
+                },
+                DELAY
+        );
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        formValidation();
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        formValidation();
+    }
 }
 

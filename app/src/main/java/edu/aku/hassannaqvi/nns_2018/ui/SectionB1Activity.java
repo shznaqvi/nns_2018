@@ -10,6 +10,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
+import java.util.TimerTask;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
@@ -33,7 +35,7 @@ import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB1Binding;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionB1Activity extends Activity {
+public class SectionB1Activity extends Activity implements TextWatcher, RadioGroup.OnCheckedChangeListener, CompoundButton.OnCheckedChangeListener {
 
     public static String wraName = "";
     public static int WRAcounter = 0;
@@ -116,6 +118,7 @@ public class SectionB1Activity extends Activity {
         bi.nw203.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (bi.nw203a.isChecked()) {
                     clearClass.ClearAllFields(bi.fldGrpnw204, true);
                 } else {
@@ -128,6 +131,7 @@ public class SectionB1Activity extends Activity {
         bi.nw204.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (bi.nw204a.isChecked()) {
                     clearClass.ClearAllFields(bi.fldGrpnw205, false);
                     clearClass.ClearAllFields(bi.fldGrpnw206, true);
@@ -142,6 +146,7 @@ public class SectionB1Activity extends Activity {
         bi.nw205.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (bi.nw205a.isChecked()) {
 
                     clearClass.ClearAllFields(bi.fldGrpnw206, true);
@@ -168,6 +173,7 @@ public class SectionB1Activity extends Activity {
         bi.nw207.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (checkedId == R.id.nw207a) {
                     //bi.fldGrpnw208.setVisibility(View.VISIBLE);
                     clearClass.ClearAllFields(bi.fldGrpnw208, true);
@@ -209,6 +215,7 @@ public class SectionB1Activity extends Activity {
         bi.nw211.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (checkedId == R.id.nw211a) {
                     clearClass.ClearAllFields(bi.fldGrpnw212, true);
                 } else {
@@ -226,6 +233,7 @@ public class SectionB1Activity extends Activity {
         bi.nw21398.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (checkedId == R.id.nw21398a) {
                     //  bi.nw212.clearCheck();
                     bi.nw21301.clearCheck();
@@ -259,6 +267,7 @@ public class SectionB1Activity extends Activity {
         bi.nw21399.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (checkedId == R.id.nw21399a) {
                     bi.nw21301.clearCheck();
                     bi.nw21302.clearCheck();
@@ -296,6 +305,7 @@ public class SectionB1Activity extends Activity {
         bi.nw212.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (checkedId == R.id.nw212b) {
                     clearClass.ClearAllFields(bi.fldGrpnw212, false);
                     /*bi.fldGrpnw213.setVisibility(View.GONE);
@@ -311,6 +321,18 @@ public class SectionB1Activity extends Activity {
                 }
             }
         });
+
+//        ClickListener
+        bi.nw201days.addTextChangedListener(this);
+        bi.nw201months.addTextChangedListener(this);
+        bi.nw201years.addTextChangedListener(this);
+        bi.nw202.addTextChangedListener(this);
+        bi.nw206.addTextChangedListener(this);
+        bi.nw209.addTextChangedListener(this);
+        bi.nw210.addTextChangedListener(this);
+        bi.nw21301.setOnCheckedChangeListener(this);
+        bi.nw21302.setOnCheckedChangeListener(this);
+        bi.nw21303.setOnCheckedChangeListener(this);
 
     }
 
@@ -686,4 +708,44 @@ public class SectionB1Activity extends Activity {
     }
 
 
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+        timer.cancel();
+        timer = new Timer();
+        timer.schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                ValidateForm();
+                            }
+                        });
+
+                    }
+                },
+                DELAY
+        );
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        ValidateForm();
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        ValidateForm();
+    }
 }
