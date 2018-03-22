@@ -1,6 +1,8 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
@@ -241,21 +243,40 @@ public class SectionA1Activity extends AppCompatActivity {
         flag = true;
         //Toast.makeText(this, "Processing End Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
-            try {
-                SaveDraft();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            if (UpdateDB()) {
-                //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
-                finish();
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                    SectionA1Activity.this);
+            alertDialogBuilder
+                    .setMessage("Do you want to Exit??")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog,
+                                                    int id) {
+                                    try {
+                                        SaveDraft();
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                    if (UpdateDB()) {
 
-                startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
+                                        finish();
 
-            } else {
-                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
-            }
+                                        startActivity(new Intent(SectionA1Activity.this, EndingActivity.class).putExtra("complete", false));
+
+                                    } else {
+                                        Toast.makeText(SectionA1Activity.this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+            alertDialogBuilder.setNegativeButton("No",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert = alertDialogBuilder.create();
+            alert.show();
         }
     }
 
