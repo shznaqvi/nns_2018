@@ -223,6 +223,15 @@ public class SectionC4Activity extends Activity {
                 }
             }
         });
+        binding.nc415.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+             /*   if(checkedId == R.id.nc415a){
+                    clearClass.ClearAllFields(binding.fldGrpnc416,);
+
+                }*/
+            }
+        });
 
 
         //Get Intent
