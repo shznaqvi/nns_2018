@@ -923,7 +923,7 @@ public class SectionC3Activity extends AppCompatActivity {
             if (!validatorClass.EmptyTextBox(this, binding.nc309, getString(R.string.nc309))) {
                 return false;
             }
-            if (!validatorClass.RangeTextBox(this, binding.nc309, 1, 99, getString(R.string.nc309), "DPT/COMBO/PENT")) {
+            if (!validatorClass.RangeTextBox(this, binding.nc309, 1, 4, getString(R.string.nc309), "DPT/COMBO/PENT")) {
                 return false;
             }
         }
@@ -938,7 +938,7 @@ public class SectionC3Activity extends AppCompatActivity {
             if (!validatorClass.EmptyTextBox(this, binding.nc311, getString(R.string.nc311))) {
                 return false;
             }
-            if (!validatorClass.RangeTextBox(this, binding.nc311, 1, 99, getString(R.string.nc311), "PCV")) {
+            if (!validatorClass.RangeTextBox(this, binding.nc311, 1, 4, getString(R.string.nc311), "PCV")) {
                 return false;
             }
         }
@@ -962,7 +962,7 @@ public class SectionC3Activity extends AppCompatActivity {
             if (!validatorClass.EmptyTextBox(this, binding.nc313, getString(R.string.nc313))) {
                 return false;
             }
-            if (!validatorClass.RangeTextBox(this, binding.nc313, 1, 99, getString(R.string.nc313), "Mesasles / MMR")) {
+            if (!validatorClass.RangeTextBox(this, binding.nc313, 1, 4, getString(R.string.nc313), "Mesasles / MMR")) {
                 return false;
             }
 
