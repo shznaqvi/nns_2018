@@ -197,7 +197,7 @@ public class NutritionContract {
 
     public static abstract class NutritionTable implements BaseColumns {
 
-        public static final String TABLE_NAME = "mwra";
+        public static final String TABLE_NAME = "nutrition";
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
 
         public static final String COLUMN_PROJECTNAME = "projectname";

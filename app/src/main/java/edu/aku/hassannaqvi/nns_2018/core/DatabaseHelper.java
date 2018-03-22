@@ -1733,7 +1733,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String having = null;
 
         String orderBy =
-                MWRATable._ID + " ASC";
+                MWRATable.COLUMN__ID + " ASC";
 
         Collection<MWRAContract> allFC = new ArrayList<MWRAContract>();
         try {
@@ -1786,7 +1786,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String having = null;
 
         String orderBy =
-                NutritionTable._ID + " ASC";
+                NutritionTable.COLUMN__ID + " ASC";
 
         Collection<NutritionContract> allFC = new ArrayList<NutritionContract>();
         try {
@@ -1840,7 +1840,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String having = null;
 
         String orderBy =
-                RecipientsTable._ID + " ASC";
+                RecipientsTable.COLUMN__ID + " ASC";
 
         Collection<RecipientsContract> allFC = new ArrayList<RecipientsContract>();
         try {
@@ -1894,7 +1894,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String having = null;
 
         String orderBy =
-                MWRATable._ID + " ASC";
+                outcomeTable.COLUMN__ID + " ASC";
 
         Collection<OutcomeContract> allFC = new ArrayList<OutcomeContract>();
         try {
@@ -2074,7 +2074,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(MWRATable.COLUMN_SB2, MainApp.mc.getsB2());
 
 // Which row to update, based on the ID
-        String selection = MWRATable._ID + " = ?";
+        String selection = MWRATable.COLUMN__ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.mc.get_ID())};
 
         int count = db.update(MWRATable.TABLE_NAME,
@@ -2093,7 +2093,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(MWRATable.COLUMN_SB3, MainApp.mc.getsB3());
 
 // Which row to update, based on the ID
-        String selection = MWRATable._ID + " = ?";
+        String selection = MWRATable.COLUMN__ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.mc.get_ID())};
 
         int count = db.update(MWRATable.TABLE_NAME,
@@ -2112,7 +2112,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(MWRATable.COLUMN_SB4, MainApp.mc.getsB4());
 
 // Which row to update, based on the ID
-        String selection = MWRATable._ID + " = ?";
+        String selection = MWRATable.COLUMN__ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.mc.get_ID())};
 
         int count = db.update(MWRATable.TABLE_NAME,
@@ -2130,7 +2130,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(MWRATable.COLUMN_SB5, MainApp.mc.getsB5());
 
 // Which row to update, based on the ID
-        String selection = MWRATable._ID + " = ?";
+        String selection = MWRATable.COLUMN__ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.mc.get_ID())};
 
         int count = db.update(MWRATable.TABLE_NAME,
@@ -2148,7 +2148,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(MWRATable.COLUMN_SB6, MainApp.mc.getsB6());
 
 // Which row to update, based on the ID
-        String selection = MWRATable._ID + " = ?";
+        String selection = MWRATable.COLUMN__ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.mc.get_ID())};
 
         int count = db.update(MWRATable.TABLE_NAME,
@@ -2223,7 +2223,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(ChildTable.COLUMN_SC1, MainApp.cc.getsC1());
 
 // Which row to update, based on the ID
-        String selection = ChildTable._ID + " = ?";
+        String selection = ChildTable.COLUMN__ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.cc.get_ID())};
 
         int count = db.update(ChildTable.TABLE_NAME,
@@ -2241,7 +2241,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(ChildTable.COLUMN_SC2, MainApp.cc.getsC2());
 
 // Which row to update, based on the ID
-        String selection = ChildTable._ID + " = ?";
+        String selection = ChildTable.COLUMN__ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.cc.get_ID())};
 
         int count = db.update(ChildTable.TABLE_NAME,
@@ -2259,7 +2259,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(ChildTable.COLUMN_SC3, MainApp.cc.getsC3());
 
 // Which row to update, based on the ID
-        String selection = ChildTable._ID + " = ?";
+        String selection = ChildTable.COLUMN__ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.cc.get_ID())};
 
         int count = db.update(ChildTable.TABLE_NAME,
@@ -2277,7 +2277,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(ChildTable.COLUMN_SC4, MainApp.cc.getsC4());
 
 // Which row to update, based on the ID
-        String selection = ChildTable._ID + " = ?";
+        String selection = ChildTable.COLUMN__ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.cc.get_ID())};
 
         int count = db.update(ChildTable.TABLE_NAME,
@@ -2296,7 +2296,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(ChildTable.COLUMN_SC5, MainApp.cc.getsC5());
 
 // Which row to update, based on the ID
-        String selection = ChildTable._ID + " = ?";
+        String selection = ChildTable.COLUMN__ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.cc.get_ID())};
 
         int count = db.update(ChildTable.TABLE_NAME,
@@ -2393,7 +2393,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(ChildTable.COLUMN_CSTATUS88x, MainApp.cc.getCstatus88x());
 
 // Which row to update, based on the ID
-        String selection = ChildTable._ID + " =? ";
+        String selection = ChildTable.COLUMN__ID + " =? ";
         String[] selectionArgs = {String.valueOf(MainApp.cc.get_ID())};
 
         int count = db.update(ChildTable.TABLE_NAME,
@@ -2412,7 +2412,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(MWRATable.COLUMN_MSTATUS88x, MainApp.mc.getMstatus88x());
 
 // Which row to update, based on the ID
-        String selection = MWRATable._ID + " =? ";
+        String selection = MWRATable.COLUMN__ID + " =? ";
         String[] selectionArgs = {String.valueOf(MainApp.mc.get_ID())};
 
         int count = db.update(MWRATable.TABLE_NAME,
