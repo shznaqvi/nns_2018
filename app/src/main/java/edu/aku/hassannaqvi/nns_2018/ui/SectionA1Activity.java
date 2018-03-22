@@ -36,7 +36,7 @@ import edu.aku.hassannaqvi.nns_2018.other.MembersCount;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionA1Activity extends AppCompatActivity {
+public class SectionA1Activity extends AppCompatActivity implements TextWatcher {
 
     private static final String TAG = SectionA1Activity.class.getName();
     static int progress = 0;
@@ -512,5 +512,22 @@ public class SectionA1Activity extends AppCompatActivity {
             }
 
         }
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        formValidation();
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+
     }
 }
