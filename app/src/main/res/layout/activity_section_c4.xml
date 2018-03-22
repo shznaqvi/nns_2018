@@ -435,8 +435,6 @@
                             android:layout_weight="1"
                             android:text="@string/nc404g" />
 
-
-
                         <CheckBox
                             android:id="@+id/nc404h"
                             android:layout_width="match_parent"

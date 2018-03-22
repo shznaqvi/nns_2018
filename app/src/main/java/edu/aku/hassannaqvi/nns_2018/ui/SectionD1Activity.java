@@ -5,10 +5,14 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -21,6 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Timer;
+import java.util.TimerTask;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract;
@@ -33,7 +38,7 @@ import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionD1Activity extends AppCompatActivity {
+public class SectionD1Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener, CompoundButton.OnCheckedChangeListener {
 
     static List<String> members;
     static Map<String, SelectedMem> membersMap;
@@ -156,6 +161,15 @@ public class SectionD1Activity extends AppCompatActivity {
 
         // setup head
         binding.txtCounter.setText("Count " + counter + " out of " + MainApp.all_members.size());
+
+//        Listener
+        binding.nd1w.addTextChangedListener(this);
+        binding.nd1h.addTextChangedListener(this);
+        binding.nd1muac.addTextChangedListener(this);
+        binding.nd1bcgscar.setOnCheckedChangeListener(this);
+        binding.nd1g.setOnCheckedChangeListener(this);
+        binding.nd1ca.setOnCheckedChangeListener(this);
+        binding.nd1o.setOnCheckedChangeListener(this);
 
     }
 
@@ -345,6 +359,47 @@ public class SectionD1Activity extends AppCompatActivity {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
         }
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+        timer.cancel();
+        timer = new Timer();
+        timer.schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                formValidation();
+                            }
+                        });
+
+                    }
+                },
+                DELAY
+        );
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        formValidation();
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        formValidation();
     }
 
     public class SelectedMem {
