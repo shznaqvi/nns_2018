@@ -244,6 +244,18 @@ public class SectionB1Activity extends Activity {
 
             }
         });
+        bi.nw212.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.nw212a) {
+                    clearClass.ClearAllFields(bi.fldGrpnb107, true);
+
+                } else {
+                    clearClass.ClearAllFields(bi.fldGrpnb107, false);
+
+                }
+            }
+        });
         bi.nw21398.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -314,24 +326,6 @@ public class SectionB1Activity extends Activity {
         });
 
 
-        bi.nw212.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.nw212b) {
-                    clearClass.ClearAllFields(bi.fldGrpnw212, false);
-                    /*bi.fldGrpnw213.setVisibility(View.GONE);
-                    bi.nw21301.clearCheck();
-                    bi.nw21302.clearCheck();
-                    bi.nw21303.clearCheck();
-                    bi.nw21398.clearCheck();
-                    bi.nw21399.clearCheck();*/
-                } else {
-                    clearClass.ClearAllFields(bi.fldGrpnw212, true);
-                    //bi.fldGrpnw213.setVisibility(View.VISIBLE);
-
-                }
-            }
-        });
 
     }
 

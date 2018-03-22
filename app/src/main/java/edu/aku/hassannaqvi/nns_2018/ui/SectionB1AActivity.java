@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Timer;
 
 import butterknife.BindViews;
+import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
@@ -48,6 +49,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         //setContentView(R.layout.activity_section_b1_a);
 
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_b1_a);
+        ButterKnife.bind(this);
         db = new DatabaseHelper(this);
         bi.setCallback(this);
         setupViews();

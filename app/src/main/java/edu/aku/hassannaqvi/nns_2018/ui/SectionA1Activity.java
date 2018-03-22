@@ -179,7 +179,7 @@ public class SectionA1Activity extends AppCompatActivity {
         binding.hhName.setText(null);
         binding.newHHheadname.setText(null);
         binding.checkHHHeadpresent.setChecked(false);
-        binding.nh110.setText(null);
+        // binding.nh110.setText(null);
         binding.nh113.setText(null);
         binding.nh115.setText(null);
         binding.nh213.setText(null);
@@ -296,9 +296,9 @@ public class SectionA1Activity extends AppCompatActivity {
         }
 
 //        nh110
-        if (!validatorClass.EmptyTextBox(this, binding.nh110, getString(R.string.nh110))) {
+       /* if (!validatorClass.EmptyTextBox(this, binding.nh110, getString(R.string.nh110))) {
             return false;
-        }
+        }*/
 //        nh113
         if (!flag) {
             if (!validatorClass.EmptyTextBox(this, binding.nh113, getString(R.string.nh113))) {
@@ -382,7 +382,7 @@ public class SectionA1Activity extends AppCompatActivity {
         sA1.put("nh105", binding.nh105.getText().toString());
         sA1.put("nh106", binding.nh106.getText().toString());
 
-        sA1.put("nh110", binding.nh110.getText().toString());
+        // sA1.put("nh110", binding.nh110.getText().toString());
         sA1.put("nh113", binding.nh113.getText().toString());
         sA1.put("nh115", binding.nh115.getText().toString());
 

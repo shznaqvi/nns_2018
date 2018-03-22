@@ -308,6 +308,6 @@ public class EligibleMembersContract {
         public static final String COLUMN_SYNCEDDATE = "synceddate";
 
 
-        public static String _URL = "familymembers.php";
+        public static String _URL = "anthroforms.php";
     }
 }

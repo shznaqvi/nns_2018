@@ -1229,6 +1229,11 @@
                 android:text="@string/na8heading"
                 android:textSize="40sp" />
 
+            <TextView
+                style="@style/sub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/na8info" />
 
             <!--nh701-->
             <TextView
@@ -1239,6 +1244,7 @@
                 android:text="@string/nh701"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
+
 
             <RadioGroup
                 android:id="@+id/nh701"

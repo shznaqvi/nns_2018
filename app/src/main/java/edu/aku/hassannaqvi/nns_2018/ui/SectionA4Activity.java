@@ -105,10 +105,10 @@ public class SectionA4Activity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (i == R.id.nh307h || i == R.id.nh307i) {
-                    clearClass.ClearAllFields(binding.fldGrpnh308, true);
+                    clearClass.ClearAllFields(binding.fldGrpnh308, false);
                     //  clearClass.ClearAllFields(binding.fldGrpnh309,true);
                 } else {
-                    clearClass.ClearAllFields(binding.fldGrpnh308, false);
+                    clearClass.ClearAllFields(binding.fldGrpnh308, true);
                 }
             }
         });
@@ -118,10 +118,10 @@ public class SectionA4Activity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.nh308b) {
-                    clearClass.ClearAllFields(binding.fldGrpnh309, true);
+                    clearClass.ClearAllFields(binding.fldGrpnh309, false);
                 } else {
 //                    binding.fldGrpnh309.setVisibility(View.VISIBLE);
-                    clearClass.ClearAllFields(binding.fldGrpnh309, false);
+                    clearClass.ClearAllFields(binding.fldGrpnh309, true);
 
                 }
             }
