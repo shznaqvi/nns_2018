@@ -36,6 +36,22 @@ public class SectionC3Activity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_c3);
         ButterKnife.bind(this);
         binding.setCallback(this);
+        binding.nc302.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.nc302b) {
+                    clearClass.ClearAllFields(binding.fldGrpnc303parent, false);
+                    clearClass.ClearAllFields(binding.fldGrpnc303, false);
+
+
+                } else {
+                    clearClass.ClearAllFields(binding.fldGrpnc303parent, true);
+                    clearClass.ClearAllFields(binding.fldGrpnc303, true);
+
+                }
+
+            }
+        });
 
 
         binding.nc303.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -362,13 +378,6 @@ public class SectionC3Activity extends AppCompatActivity {
         });
 
 
-
-
-
-
-
-
-
         //Get Intent
         selectedChild = (FamilyMembersContract) getIntent().getSerializableExtra("selectedChild");
 
@@ -411,482 +420,484 @@ public class SectionC3Activity extends AppCompatActivity {
         if (!validatorClass.EmptyRadioButton(this, binding.nc302, binding.nc302b, getString(R.string.nc302))) {
             return false;
         }
+        if (binding.nc302a.isChecked()) {
 
 //        nc303
-        if (!validatorClass.EmptyRadioButton(this, binding.nc303, binding.nc303d, getString(R.string.nc303))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, binding.nc303, binding.nc303d, getString(R.string.nc303))) {
+                return false;
+            }
 
 
-        if (!binding.nc303d.isChecked()) {
+            if (!binding.nc303d.isChecked()) {
 //        nc3bcg
-            if (!validatorClass.EmptyRadioButton(this, binding.nc3bcg, binding.nc3bcga, getString(R.string.nc3bcg))) {
-                return false;
-            }
-
-            if (binding.nc3bcga.isChecked()) {
-                if (!validatorClass.EmptyTextBox(this, binding.nc3bcgd, getString(R.string.nc3bcg) + " - " + getString(R.string.day))) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nc3bcg, binding.nc3bcga, getString(R.string.nc3bcg))) {
                     return false;
                 }
 
-                if (!validatorClass.EmptyTextBox(this, binding.nc3bcgm, getString(R.string.nc3bcg) + " - " + getString(R.string.month))) {
-                    return false;
+                if (binding.nc3bcga.isChecked()) {
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3bcgd, getString(R.string.nc3bcg) + " - " + getString(R.string.day))) {
+                        return false;
+                    }
+
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3bcgm, getString(R.string.nc3bcg) + " - " + getString(R.string.month))) {
+                        return false;
+                    }
+
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3bcgy, getString(R.string.nc3bcg) + " - " + getString(R.string.year2))) {
+                        return false;
+                    }
+
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3bcgd, 1, 31, 98, getString(R.string.nc3bcg), " day")) {
+                        return false;
+                    }
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3bcgm, 1, 31, 98, getString(R.string.nc3bcg), " month")) {
+                        return false;
+                    }
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3bcgy, 2013, 2018, 9998, getString(R.string.nc3bcg), " year")) {
+                        return false;
+                    }
+
                 }
-
-                if (!validatorClass.EmptyTextBox(this, binding.nc3bcgy, getString(R.string.nc3bcg) + " - " + getString(R.string.year2))) {
-                    return false;
-                }
-
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3bcgd, 1, 31, 98, getString(R.string.nc3bcg), " day")) {
-                    return false;
-                }
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3bcgm, 1, 31, 98, getString(R.string.nc3bcg), " month")) {
-                    return false;
-                }
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3bcgy, 2013, 2018, 9998, getString(R.string.nc3bcg), " year")) {
-                    return false;
-                }
-
-            }
 //        nc3opv0
-            if (!validatorClass.EmptyRadioButton(this, binding.nc3opv0, binding.nc3opv0a, getString(R.string.nc3opv0))) {
-                return false;
-            }
-
-            if (binding.nc3opv0a.isChecked()) {
-                if (!validatorClass.EmptyTextBox(this, binding.nc3opv0d, getString(R.string.nc3opv0) + " - " + getString(R.string.day))) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nc3opv0, binding.nc3opv0a, getString(R.string.nc3opv0))) {
                     return false;
                 }
 
-                if (!validatorClass.EmptyTextBox(this, binding.nc3opv0m, getString(R.string.nc3opv0) + " - " + getString(R.string.month))) {
-                    return false;
+                if (binding.nc3opv0a.isChecked()) {
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3opv0d, getString(R.string.nc3opv0) + " - " + getString(R.string.day))) {
+                        return false;
+                    }
+
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3opv0m, getString(R.string.nc3opv0) + " - " + getString(R.string.month))) {
+                        return false;
+                    }
+
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3opv0y, getString(R.string.nc3opv0) + " - " + getString(R.string.year2))) {
+                        return false;
+                    }
+
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3opv0d, 1, 31, 98, getString(R.string.nc3opv0), " day")) {
+                        return false;
+                    }
+
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3opv0m, 1, 31, 98, getString(R.string.nc3opv0), " month")) {
+                        return false;
+                    }
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3opv0y, 2013, 2018, 9998, getString(R.string.nc3opv0), " year")) {
+                        return false;
+                    }
+
                 }
-
-                if (!validatorClass.EmptyTextBox(this, binding.nc3opv0y, getString(R.string.nc3opv0) + " - " + getString(R.string.year2))) {
-                    return false;
-                }
-
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3opv0d, 1, 31, 98, getString(R.string.nc3opv0), " day")) {
-                    return false;
-                }
-
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3opv0m, 1, 31, 98, getString(R.string.nc3opv0), " month")) {
-                    return false;
-                }
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3opv0y, 2013, 2018, 9998, getString(R.string.nc3opv0), " year")) {
-                    return false;
-                }
-
-            }
 
 //        nc3opv1
-            if (!validatorClass.EmptyRadioButton(this, binding.nc3opv1, binding.nc3opv1a, getString(R.string.nc3opv1))) {
-                return false;
-            }
-
-            if (binding.nc3opv1a.isChecked()) {
-                if (!validatorClass.EmptyTextBox(this, binding.nc3opv1d, getString(R.string.nc3opv1) + " - " + getString(R.string.day))) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nc3opv1, binding.nc3opv1a, getString(R.string.nc3opv1))) {
                     return false;
                 }
 
-                if (!validatorClass.EmptyTextBox(this, binding.nc3opv1m, getString(R.string.nc3opv1) + " - " + getString(R.string.month))) {
-                    return false;
+                if (binding.nc3opv1a.isChecked()) {
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3opv1d, getString(R.string.nc3opv1) + " - " + getString(R.string.day))) {
+                        return false;
+                    }
+
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3opv1m, getString(R.string.nc3opv1) + " - " + getString(R.string.month))) {
+                        return false;
+                    }
+
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3opv1y, getString(R.string.nc3opv1) + " - " + getString(R.string.year2))) {
+                        return false;
+                    }
+
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3opv1d, 1, 31, 98, getString(R.string.nc3opv1), " day")) {
+                        return false;
+                    }
+
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3opv1m, 1, 31, 98, getString(R.string.nc3opv1), " month")) {
+                        return false;
+                    }
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3opv1y, 2013, 2018, 9998, getString(R.string.nc3opv1), " year")) {
+                        return false;
+                    }
+
                 }
-
-                if (!validatorClass.EmptyTextBox(this, binding.nc3opv1y, getString(R.string.nc3opv1) + " - " + getString(R.string.year2))) {
-                    return false;
-                }
-
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3opv1d, 1, 31, 98, getString(R.string.nc3opv1), " day")) {
-                    return false;
-                }
-
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3opv1m, 1, 31, 98, getString(R.string.nc3opv1), " month")) {
-                    return false;
-                }
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3opv1y, 2013, 2018, 9998, getString(R.string.nc3opv1), " year")) {
-                    return false;
-                }
-
-            }
 
 //        nc3p1
-            if (!validatorClass.EmptyRadioButton(this, binding.nc3p1, binding.nc3p1a, getString(R.string.nc3p1))) {
-                return false;
-            }
-
-            if (binding.nc3p1a.isChecked()) {
-                if (!validatorClass.EmptyTextBox(this, binding.nc3p1d, getString(R.string.nc3p1) + " - " + getString(R.string.day))) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nc3p1, binding.nc3p1a, getString(R.string.nc3p1))) {
                     return false;
                 }
 
-                if (!validatorClass.EmptyTextBox(this, binding.nc3p1m, getString(R.string.nc3p1) + " - " + getString(R.string.month))) {
-                    return false;
+                if (binding.nc3p1a.isChecked()) {
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3p1d, getString(R.string.nc3p1) + " - " + getString(R.string.day))) {
+                        return false;
+                    }
+
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3p1m, getString(R.string.nc3p1) + " - " + getString(R.string.month))) {
+                        return false;
+                    }
+
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3p1y, getString(R.string.nc3p1) + " - " + getString(R.string.year2))) {
+                        return false;
+                    }
+
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3p1d, 1, 31, 98, getString(R.string.nc3p1), " day")) {
+                        return false;
+                    }
+
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3p1m, 1, 31, 98, getString(R.string.nc3p1), " month")) {
+                        return false;
+                    }
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3p1y, 2013, 2018, 9998, getString(R.string.nc3p1), " year")) {
+                        return false;
+                    }
+
                 }
-
-                if (!validatorClass.EmptyTextBox(this, binding.nc3p1y, getString(R.string.nc3p1) + " - " + getString(R.string.year2))) {
-                    return false;
-                }
-
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3p1d, 1, 31, 98, getString(R.string.nc3p1), " day")) {
-                    return false;
-                }
-
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3p1m, 1, 31, 98, getString(R.string.nc3p1), " month")) {
-                    return false;
-                }
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3p1y, 2013, 2018, 9998, getString(R.string.nc3p1), " year")) {
-                    return false;
-                }
-
-            }
 
 //        nc3pcv1
-            if (!validatorClass.EmptyRadioButton(this, binding.nc3pcv1, binding.nc3pcv1a, getString(R.string.nc3pcv1))) {
-                return false;
-            }
-
-            if (binding.nc3pcv1a.isChecked()) {
-                if (!validatorClass.EmptyTextBox(this, binding.nc3pcv1d, getString(R.string.nc3pcv1) + " - " + getString(R.string.day))) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nc3pcv1, binding.nc3pcv1a, getString(R.string.nc3pcv1))) {
                     return false;
                 }
 
-                if (!validatorClass.EmptyTextBox(this, binding.nc3pcv1m, getString(R.string.nc3pcv1) + " - " + getString(R.string.month))) {
-                    return false;
+                if (binding.nc3pcv1a.isChecked()) {
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3pcv1d, getString(R.string.nc3pcv1) + " - " + getString(R.string.day))) {
+                        return false;
+                    }
+
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3pcv1m, getString(R.string.nc3pcv1) + " - " + getString(R.string.month))) {
+                        return false;
+                    }
+
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3pcv1y, getString(R.string.nc3pcv1) + " - " + getString(R.string.year2))) {
+                        return false;
+                    }
+
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3pcv1d, 1, 31, 98, getString(R.string.nc3pcv1), " day")) {
+                        return false;
+                    }
+
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3pcv1m, 1, 31, 98, getString(R.string.nc3pcv1), " month")) {
+                        return false;
+                    }
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3pcv1y, 2013, 2018, 9998, getString(R.string.nc3pcv1), " year")) {
+                        return false;
+                    }
+
                 }
-
-                if (!validatorClass.EmptyTextBox(this, binding.nc3pcv1y, getString(R.string.nc3pcv1) + " - " + getString(R.string.year2))) {
-                    return false;
-                }
-
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3pcv1d, 1, 31, 98, getString(R.string.nc3pcv1), " day")) {
-                    return false;
-                }
-
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3pcv1m, 1, 31, 98, getString(R.string.nc3pcv1), " month")) {
-                    return false;
-                }
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3pcv1y, 2013, 2018, 9998, getString(R.string.nc3pcv1), " year")) {
-                    return false;
-                }
-
-            }
 
 //        nc3opv2
-            if (!validatorClass.EmptyRadioButton(this, binding.nc3opv2, binding.nc3opv2a, getString(R.string.nc3opv2))) {
-                return false;
-            }
-
-            if (binding.nc3opv2a.isChecked()) {
-                if (!validatorClass.EmptyTextBox(this, binding.nc3opv2d, getString(R.string.nc3opv2) + " - " + getString(R.string.day))) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nc3opv2, binding.nc3opv2a, getString(R.string.nc3opv2))) {
                     return false;
                 }
 
-                if (!validatorClass.EmptyTextBox(this, binding.nc3opv2m, getString(R.string.nc3opv2) + " - " + getString(R.string.month))) {
-                    return false;
+                if (binding.nc3opv2a.isChecked()) {
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3opv2d, getString(R.string.nc3opv2) + " - " + getString(R.string.day))) {
+                        return false;
+                    }
+
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3opv2m, getString(R.string.nc3opv2) + " - " + getString(R.string.month))) {
+                        return false;
+                    }
+
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3opv2y, getString(R.string.nc3opv2) + " - " + getString(R.string.year2))) {
+                        return false;
+                    }
+
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3opv2d, 1, 31, 98, getString(R.string.nc3opv2), " day")) {
+                        return false;
+                    }
+
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3opv2m, 1, 31, 98, getString(R.string.nc3opv2), " month")) {
+                        return false;
+                    }
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3opv2y, 2013, 2018, 9998, getString(R.string.nc3opv2), " year")) {
+                        return false;
+                    }
+
                 }
-
-                if (!validatorClass.EmptyTextBox(this, binding.nc3opv2y, getString(R.string.nc3opv2) + " - " + getString(R.string.year2))) {
-                    return false;
-                }
-
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3opv2d, 1, 31, 98, getString(R.string.nc3opv2), " day")) {
-                    return false;
-                }
-
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3opv2m, 1, 31, 98, getString(R.string.nc3opv2), " month")) {
-                    return false;
-                }
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3opv2y, 2013, 2018, 9998, getString(R.string.nc3opv2), " year")) {
-                    return false;
-                }
-
-            }
 //        nc3p2
-            if (!validatorClass.EmptyRadioButton(this, binding.nc3p2, binding.nc3p2a, getString(R.string.nc3p2))) {
-                return false;
-            }
-
-            if (binding.nc3p2a.isChecked()) {
-                if (!validatorClass.EmptyTextBox(this, binding.nc3p2d, getString(R.string.nc3p2) + " - " + getString(R.string.day))) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nc3p2, binding.nc3p2a, getString(R.string.nc3p2))) {
                     return false;
                 }
 
-                if (!validatorClass.EmptyTextBox(this, binding.nc3p2m, getString(R.string.nc3p2) + " - " + getString(R.string.month))) {
-                    return false;
+                if (binding.nc3p2a.isChecked()) {
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3p2d, getString(R.string.nc3p2) + " - " + getString(R.string.day))) {
+                        return false;
+                    }
+
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3p2m, getString(R.string.nc3p2) + " - " + getString(R.string.month))) {
+                        return false;
+                    }
+
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3p2y, getString(R.string.nc3p2) + " - " + getString(R.string.year2))) {
+                        return false;
+                    }
+
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3p2d, 1, 31, 98, getString(R.string.nc3p2), " day")) {
+                        return false;
+                    }
+
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3p2m, 1, 31, 98, getString(R.string.nc3p2), " month")) {
+                        return false;
+                    }
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3p2y, 2013, 2018, 9998, getString(R.string.nc3p2), " year")) {
+                        return false;
+                    }
                 }
-
-                if (!validatorClass.EmptyTextBox(this, binding.nc3p2y, getString(R.string.nc3p2) + " - " + getString(R.string.year2))) {
-                    return false;
-                }
-
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3p2d, 1, 31, 98, getString(R.string.nc3p2), " day")) {
-                    return false;
-                }
-
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3p2m, 1, 31, 98, getString(R.string.nc3p2), " month")) {
-                    return false;
-                }
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3p2y, 2013, 2018, 9998, getString(R.string.nc3p2), " year")) {
-                    return false;
-                }
-            }
 //        nc3pcv2
-            if (!validatorClass.EmptyRadioButton(this, binding.nc3pcv2, binding.nc3pcv2a, getString(R.string.nc3pcv2))) {
-                return false;
-            }
-
-            if (binding.nc3pcv2a.isChecked()) {
-                if (!validatorClass.EmptyTextBox(this, binding.nc3pcv2d, getString(R.string.nc3pcv2) + " - " + getString(R.string.day))) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nc3pcv2, binding.nc3pcv2a, getString(R.string.nc3pcv2))) {
                     return false;
                 }
 
-                if (!validatorClass.EmptyTextBox(this, binding.nc3pcv2m, getString(R.string.nc3pcv2) + " - " + getString(R.string.month))) {
-                    return false;
+                if (binding.nc3pcv2a.isChecked()) {
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3pcv2d, getString(R.string.nc3pcv2) + " - " + getString(R.string.day))) {
+                        return false;
+                    }
+
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3pcv2m, getString(R.string.nc3pcv2) + " - " + getString(R.string.month))) {
+                        return false;
+                    }
+
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3pcv2y, getString(R.string.nc3pcv2) + " - " + getString(R.string.year2))) {
+                        return false;
+                    }
+
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3pcv2d, 1, 31, 98, getString(R.string.nc3pcv2), " day")) {
+                        return false;
+                    }
+
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3pcv2m, 1, 31, 98, getString(R.string.nc3pcv2), " month")) {
+                        return false;
+                    }
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3pcv2y, 2013, 2018, 9998, getString(R.string.nc3pcv2), " year")) {
+                        return false;
+                    }
                 }
-
-                if (!validatorClass.EmptyTextBox(this, binding.nc3pcv2y, getString(R.string.nc3pcv2) + " - " + getString(R.string.year2))) {
-                    return false;
-                }
-
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3pcv2d, 1, 31, 98, getString(R.string.nc3pcv2), " day")) {
-                    return false;
-                }
-
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3pcv2m, 1, 31, 98, getString(R.string.nc3pcv2), " month")) {
-                    return false;
-                }
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3pcv2y, 2013, 2018, 9998, getString(R.string.nc3pcv2), " year")) {
-                    return false;
-                }
-            }
 
 //        nc3opv3
-            if (!validatorClass.EmptyRadioButton(this, binding.nc3opv3, binding.nc3opv3a, getString(R.string.nc3opv3))) {
-                return false;
-            }
-
-            if (binding.nc3opv3a.isChecked()) {
-                if (!validatorClass.EmptyTextBox(this, binding.nc3opv3d, getString(R.string.nc3opv3) + " - " + getString(R.string.day))) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nc3opv3, binding.nc3opv3a, getString(R.string.nc3opv3))) {
                     return false;
                 }
 
-                if (!validatorClass.EmptyTextBox(this, binding.nc3opv3m, getString(R.string.nc3opv3) + " - " + getString(R.string.month))) {
-                    return false;
+                if (binding.nc3opv3a.isChecked()) {
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3opv3d, getString(R.string.nc3opv3) + " - " + getString(R.string.day))) {
+                        return false;
+                    }
+
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3opv3m, getString(R.string.nc3opv3) + " - " + getString(R.string.month))) {
+                        return false;
+                    }
+
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3opv3y, getString(R.string.nc3opv3) + " - " + getString(R.string.year2))) {
+                        return false;
+                    }
+
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3opv3d, 1, 31, 98, getString(R.string.nc3opv3), " day")) {
+                        return false;
+                    }
+
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3opv3m, 1, 31, 98, getString(R.string.nc3opv3), " month")) {
+                        return false;
+                    }
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3opv3y, 2013, 2018, 9998, getString(R.string.nc3opv3), " year")) {
+                        return false;
+                    }
                 }
-
-                if (!validatorClass.EmptyTextBox(this, binding.nc3opv3y, getString(R.string.nc3opv3) + " - " + getString(R.string.year2))) {
-                    return false;
-                }
-
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3opv3d, 1, 31, 98, getString(R.string.nc3opv3), " day")) {
-                    return false;
-                }
-
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3opv3m, 1, 31, 98, getString(R.string.nc3opv3), " month")) {
-                    return false;
-                }
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3opv3y, 2013, 2018, 9998, getString(R.string.nc3opv3), " year")) {
-                    return false;
-                }
-            }
 
 //        nc3p3
-            if (!validatorClass.EmptyRadioButton(this, binding.nc3p3, binding.nc3p3a, getString(R.string.nc3p3))) {
-                return false;
-            }
-
-            if (binding.nc3p3a.isChecked()) {
-                if (!validatorClass.EmptyTextBox(this, binding.nc3p3d, getString(R.string.nc3opv3) + " - " + getString(R.string.day))) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nc3p3, binding.nc3p3a, getString(R.string.nc3p3))) {
                     return false;
                 }
 
-                if (!validatorClass.EmptyTextBox(this, binding.nc3p3m, getString(R.string.nc3opv3) + " - " + getString(R.string.month))) {
-                    return false;
+                if (binding.nc3p3a.isChecked()) {
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3p3d, getString(R.string.nc3opv3) + " - " + getString(R.string.day))) {
+                        return false;
+                    }
+
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3p3m, getString(R.string.nc3opv3) + " - " + getString(R.string.month))) {
+                        return false;
+                    }
+
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3p3y, getString(R.string.nc3opv3) + " - " + getString(R.string.year2))) {
+                        return false;
+                    }
+
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3p3d, 1, 31, 98, getString(R.string.nc3opv3), " day")) {
+                        return false;
+                    }
+
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3p3m, 1, 31, 98, getString(R.string.nc3opv3), " month")) {
+                        return false;
+                    }
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3p3y, 2013, 2018, 9998, getString(R.string.nc3opv3), " year")) {
+                        return false;
+                    }
                 }
-
-                if (!validatorClass.EmptyTextBox(this, binding.nc3p3y, getString(R.string.nc3opv3) + " - " + getString(R.string.year2))) {
-                    return false;
-                }
-
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3p3d, 1, 31, 98, getString(R.string.nc3opv3), " day")) {
-                    return false;
-                }
-
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3p3m, 1, 31, 98, getString(R.string.nc3opv3), " month")) {
-                    return false;
-                }
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3p3y, 2013, 2018, 9998, getString(R.string.nc3opv3), " year")) {
-                    return false;
-                }
-            }
 
 //        nc3pcv3
-            if (!validatorClass.EmptyRadioButton(this, binding.nc3pcv3, binding.nc3pcv3a, getString(R.string.nc3pcv3))) {
-                return false;
-            }
-
-            if (binding.nc3pcv3a.isChecked()) {
-                if (!validatorClass.EmptyTextBox(this, binding.nc3pcv3d, getString(R.string.nc3pcv3) + " - " + getString(R.string.day))) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nc3pcv3, binding.nc3pcv3a, getString(R.string.nc3pcv3))) {
                     return false;
                 }
 
-                if (!validatorClass.EmptyTextBox(this, binding.nc3pcv3m, getString(R.string.nc3pcv3) + " - " + getString(R.string.month))) {
-                    return false;
+                if (binding.nc3pcv3a.isChecked()) {
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3pcv3d, getString(R.string.nc3pcv3) + " - " + getString(R.string.day))) {
+                        return false;
+                    }
+
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3pcv3m, getString(R.string.nc3pcv3) + " - " + getString(R.string.month))) {
+                        return false;
+                    }
+
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3pcv3y, getString(R.string.nc3pcv3) + " - " + getString(R.string.year2))) {
+                        return false;
+                    }
+
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3pcv3d, 1, 31, 98, getString(R.string.nc3pcv3), " day")) {
+                        return false;
+                    }
+
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3pcv3m, 1, 31, 98, getString(R.string.nc3pcv3), " month")) {
+                        return false;
+                    }
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3pcv3y, 2013, 2018, 9998, getString(R.string.nc3pcv3), " year")) {
+                        return false;
+                    }
+
                 }
-
-                if (!validatorClass.EmptyTextBox(this, binding.nc3pcv3y, getString(R.string.nc3pcv3) + " - " + getString(R.string.year2))) {
-                    return false;
-                }
-
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3pcv3d, 1, 31, 98, getString(R.string.nc3pcv3), " day")) {
-                    return false;
-                }
-
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3pcv3m, 1, 31, 98, getString(R.string.nc3pcv3), " month")) {
-                    return false;
-                }
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3pcv3y, 2013, 2018, 9998, getString(R.string.nc3pcv3), " year")) {
-                    return false;
-                }
-
-            }
 
 //        nc3ipv3
-            if (!validatorClass.EmptyRadioButton(this, binding.nc3ipv, binding.nc3ipva, getString(R.string.nc3ipv))) {
-                return false;
-            }
-
-            if (binding.nc3ipva.isChecked()) {
-                if (!validatorClass.EmptyTextBox(this, binding.nc3ipvd, getString(R.string.nc3ipv) + " - " + getString(R.string.day))) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nc3ipv, binding.nc3ipva, getString(R.string.nc3ipv))) {
                     return false;
                 }
 
-                if (!validatorClass.EmptyTextBox(this, binding.nc3ipvm, getString(R.string.nc3ipv) + " - " + getString(R.string.month))) {
-                    return false;
+                if (binding.nc3ipva.isChecked()) {
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3ipvd, getString(R.string.nc3ipv) + " - " + getString(R.string.day))) {
+                        return false;
+                    }
+
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3ipvm, getString(R.string.nc3ipv) + " - " + getString(R.string.month))) {
+                        return false;
+                    }
+
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3ipvy, getString(R.string.nc3ipv) + " - " + getString(R.string.year2))) {
+                        return false;
+                    }
+
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3ipvd, 1, 31, 98, getString(R.string.nc3ipv), " day")) {
+                        return false;
+                    }
+
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3ipvm, 1, 31, 98, getString(R.string.nc3ipv), " month")) {
+                        return false;
+                    }
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3ipvy, 2013, 2018, 9998, getString(R.string.nc3ipv), " year")) {
+                        return false;
+                    }
                 }
-
-                if (!validatorClass.EmptyTextBox(this, binding.nc3ipvy, getString(R.string.nc3ipv) + " - " + getString(R.string.year2))) {
-                    return false;
-                }
-
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3ipvd, 1, 31, 98, getString(R.string.nc3ipv), " day")) {
-                    return false;
-                }
-
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3ipvm, 1, 31, 98, getString(R.string.nc3ipv), " month")) {
-                    return false;
-                }
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3ipvy, 2013, 2018, 9998, getString(R.string.nc3ipv), " year")) {
-                    return false;
-                }
-            }
 
 //        nc3m1dt
-            if (!validatorClass.EmptyRadioButton(this, binding.nc3m1, binding.nc3m1a, getString(R.string.nc3m1))) {
-                return false;
-            }
-
-            if (binding.nc3m1a.isChecked()) {
-                if (!validatorClass.EmptyTextBox(this, binding.nc3m1d, getString(R.string.nc3m1) + " - " + getString(R.string.day))) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nc3m1, binding.nc3m1a, getString(R.string.nc3m1))) {
                     return false;
                 }
 
-                if (!validatorClass.EmptyTextBox(this, binding.nc3m1m, getString(R.string.nc3m1) + " - " + getString(R.string.month))) {
-                    return false;
+                if (binding.nc3m1a.isChecked()) {
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3m1d, getString(R.string.nc3m1) + " - " + getString(R.string.day))) {
+                        return false;
+                    }
+
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3m1m, getString(R.string.nc3m1) + " - " + getString(R.string.month))) {
+                        return false;
+                    }
+
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3m1y, getString(R.string.nc3m1) + " - " + getString(R.string.year2))) {
+                        return false;
+                    }
+
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3m1d, 1, 31, 98, getString(R.string.nc3m1), " day")) {
+                        return false;
+                    }
+
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3m1m, 1, 31, 98, getString(R.string.nc3m1), " month")) {
+                        return false;
+                    }
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3m1y, 2013, 2018, 9998, getString(R.string.nc3m1), " year")) {
+                        return false;
+                    }
+
                 }
-
-                if (!validatorClass.EmptyTextBox(this, binding.nc3m1y, getString(R.string.nc3m1) + " - " + getString(R.string.year2))) {
-                    return false;
-                }
-
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3m1d, 1, 31, 98, getString(R.string.nc3m1), " day")) {
-                    return false;
-                }
-
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3m1m, 1, 31, 98, getString(R.string.nc3m1), " month")) {
-                    return false;
-                }
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3m1y, 2013, 2018, 9998, getString(R.string.nc3m1), " year")) {
-                    return false;
-                }
-
-            }
 
 //        nc3m2dt
-            if (!validatorClass.EmptyRadioButton(this, binding.nc3m2, binding.nc3m2a, getString(R.string.nc3m2))) {
-                return false;
-            }
-
-            if (binding.nc3m2a.isChecked()) {
-                if (!validatorClass.EmptyTextBox(this, binding.nc3m2d, getString(R.string.nc3m2) + " - " + getString(R.string.day))) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nc3m2, binding.nc3m2a, getString(R.string.nc3m2))) {
                     return false;
                 }
 
-                if (!validatorClass.EmptyTextBox(this, binding.nc3m2m, getString(R.string.nc3m2) + " - " + getString(R.string.month))) {
-                    return false;
+                if (binding.nc3m2a.isChecked()) {
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3m2d, getString(R.string.nc3m2) + " - " + getString(R.string.day))) {
+                        return false;
+                    }
+
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3m2m, getString(R.string.nc3m2) + " - " + getString(R.string.month))) {
+                        return false;
+                    }
+
+                    if (!validatorClass.EmptyTextBox(this, binding.nc3m2y, getString(R.string.nc3m2) + " - " + getString(R.string.year2))) {
+                        return false;
+                    }
+
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3m2d, 1, 31, 98, getString(R.string.nc3m2), " day")) {
+                        return false;
+                    }
+
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3m2m, 1, 31, 98, getString(R.string.nc3m2), " month")) {
+                        return false;
+                    }
+
+                    if (!validatorClass.RangeTextBox(this, binding.nc3m2y, 2013, 2018, 9998, getString(R.string.nc3m2), " year")) {
+                        return false;
+                    }
                 }
 
-                if (!validatorClass.EmptyTextBox(this, binding.nc3m2y, getString(R.string.nc3m2) + " - " + getString(R.string.year2))) {
-                    return false;
-                }
-
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3m2d, 1, 31, 98, getString(R.string.nc3m2), " day")) {
-                    return false;
-                }
-
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3m2m, 1, 31, 98, getString(R.string.nc3m2), " month")) {
-                    return false;
-                }
-
-                if (!validatorClass.RangeTextBox(this, binding.nc3m2y, 2013, 2018, 9998, getString(R.string.nc3m2), " year")) {
-                    return false;
-                }
             }
 
         }
-
 //        nc305
         if (!validatorClass.EmptyRadioButton(this, binding.nc305, binding.nc305c, getString(R.string.nc305))) {
             return false;

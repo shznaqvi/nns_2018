@@ -166,6 +166,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 e.printStackTrace();
             }
             if (UpdateDB()) {
+                MainApp.nuCount = 1;
                 //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
                 finish();
                 if (MainApp.outcome != 4) {

@@ -55,7 +55,7 @@ public class DateUtils {
         //long yearofbirth = Integer.valueOf(year);
         Date dob = cal.getTime();
         Date today = new Date();
-        Long diff = today.getYear() - dob.getTime();
+        Long diff = today.getTime() - dob.getTime();
         long ageInYears = (diff / (24 * 60 * 60 * 1000)) / 365;
         return ageInYears;
     }

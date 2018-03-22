@@ -94,6 +94,7 @@ public class SectionB2Activity extends Activity {
                     bi.nw306e.setChecked(false);
                     bi.nw306f.setChecked(false);
                     bi.nw306g.setChecked(false);
+                    bi.nw306h.setChecked(false);
                     bi.nw30696.setChecked(false);
 
                     bi.nw306a.setEnabled(false);
@@ -103,6 +104,7 @@ public class SectionB2Activity extends Activity {
                     bi.nw306e.setEnabled(false);
                     bi.nw306f.setEnabled(false);
                     bi.nw306g.setEnabled(false);
+                    bi.nw306h.setEnabled(false);
                     bi.nw30696.setEnabled(false);
                 } else {
                     bi.nw306a.setEnabled(true);
@@ -112,6 +114,7 @@ public class SectionB2Activity extends Activity {
                     bi.nw306e.setEnabled(true);
                     bi.nw306f.setEnabled(true);
                     bi.nw306g.setEnabled(true);
+                    bi.nw306h.setEnabled(true);
                     bi.nw30696.setEnabled(true);
                 }
             }

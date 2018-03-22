@@ -80,6 +80,11 @@
 
             </RadioGroup>
 
+            <LinearLayout
+                android:id="@+id/fldGrpnc303parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
             <!-- 3-->
             <TextView
                 android:layout_width="match_parent"
@@ -2176,7 +2181,7 @@
 
                 <!-- end of skip pattern-->
             </LinearLayout>
-
+            </LinearLayout>
             <!-- 5 -->
             <TextView
                 android:layout_width="match_parent"

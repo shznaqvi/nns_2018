@@ -114,6 +114,7 @@ public class SectionB5Activity extends AppCompatActivity {
             }
             if (UpdateDB()) {
                 //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
+                MainApp.nuCount = 1;
 
                 finish();
 

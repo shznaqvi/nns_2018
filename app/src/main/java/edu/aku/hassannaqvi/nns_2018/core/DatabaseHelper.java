@@ -32,6 +32,8 @@ import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract.FormsTable;
 import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract.MWRATable;
+import edu.aku.hassannaqvi.nns_2018.contracts.NutritionContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.NutritionContract.NutritionTable;
 import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract.outcomeTable;
 import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
@@ -251,6 +253,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             RecipientsTable.COLUMN_SYNCEDDATE + " TEXT " +
 
             ");";
+
+    final String SQL_CREATE_NUTRITION = "CREATE TABLE " + NutritionTable.TABLE_NAME + " (" +
+            NutritionTable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            NutritionTable.COLUMN_PROJECTNAME + " TEXT," +
+            NutritionTable.COLUMN_UID + " TEXT," +
+            NutritionTable.COLUMN_UUID + " TEXT," +
+            NutritionTable.COLUMN_FORMDATE + " TEXT," +
+            NutritionTable.COLUMN_DEVICEID + " TEXT," +
+            NutritionTable.COLUMN_DEVICETAGID + " TEXT," +
+            NutritionTable.COLUMN_USER + " TEXT," +
+            NutritionTable.COLUMN_APP_VER + " TEXT," +
+            NutritionTable.COLUMN_SB6 + " TEXT," +
+            NutritionTable.COLUMN_SYNCED + " TEXT," +
+            NutritionTable.COLUMN_SYNCEDDATE + " TEXT " +
+
+            ");";
     final String SQL_CREATE_VERSIONAPP = "CREATE TABLE " + VersionAppTable.TABLE_NAME + " (" +
             VersionAppTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             VersionAppTable.COLUMN_VERSION_CODE + " TEXT, " +
@@ -280,6 +298,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_RECIPIENTS);
         db.execSQL(SQL_CREATE_VERSIONAPP);
         db.execSQL(SQL_CREATE_BL_RANDOM);
+        db.execSQL(SQL_CREATE_NUTRITION);
     }
 
     @Override
@@ -295,6 +314,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_OUTCOME);
         db.execSQL(SQL_DELETE_FAMILYMEMBERS);
         db.execSQL(SQL_DELETE_RECIENPTS);
+        db.execSQL(SQL_CREATE_NUTRITION);
 
     }
 
@@ -1019,6 +1039,37 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return newRowId;
     }
 
+
+    public Long addNutrition(NutritionContract mc) {
+
+        // Gets the data repository in write mode
+        SQLiteDatabase db = this.getWritableDatabase();
+
+// Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(NutritionTable.COLUMN_PROJECTNAME, mc.getProjectName());
+        //values.put(MWRATable.COLUMN__ID, mc.get_ID());
+        values.put(NutritionTable.COLUMN_UID, mc.get_UID());
+        values.put(NutritionTable.COLUMN_UUID, mc.get_UUID());
+        values.put(NutritionTable.COLUMN_FORMDATE, mc.getFormDate());
+        values.put(NutritionTable.COLUMN_DEVICEID, mc.getDeviceId());
+        values.put(NutritionTable.COLUMN_DEVICETAGID, mc.getDevicetagID());
+        values.put(NutritionTable.COLUMN_USER, mc.getUser());
+        values.put(NutritionTable.COLUMN_APP_VER, mc.getApp_ver());
+        values.put(NutritionTable.COLUMN_SB6, mc.getsB6());
+        values.put(NutritionTable.COLUMN_SYNCED, mc.getSynced());
+        values.put(NutritionTable.COLUMN_SYNCEDDATE, mc.getSyncedDate());
+
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId;
+        newRowId = db.insert(
+                NutritionTable.TABLE_NAME,
+                NutritionTable.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
+
     public Long addOutcome(OutcomeContract oc) {
 
         // Gets the data repository in write mode
@@ -1318,6 +1369,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] selectionArgs = {String.valueOf(MainApp.mc.get_ID())};
 
         int count = db.update(MWRATable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
+
+    public int updateNutritionID() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(NutritionTable.COLUMN_UID, MainApp.nc.get_UID());
+
+// Which row to update, based on the ID
+        String selection = NutritionTable.COLUMN__ID + " = ?";
+        String[] selectionArgs = {String.valueOf(MainApp.nc.get_ID())};
+
+        int count = db.update(NutritionTable.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);
@@ -1654,7 +1723,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 MWRATable.COLUMN_SB6,
                 MWRATable.COLUMN_MSTATUS,
                 MWRATable.COLUMN_MSTATUS88x,
-
                 MWRATable.COLUMN_SYNCED,
                 MWRATable.COLUMN_SYNCEDDATE,
 
@@ -1665,7 +1733,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String having = null;
 
         String orderBy =
-                MWRATable._ID + " ASC";
+                MWRATable.COLUMN__ID + " ASC";
 
         Collection<MWRAContract> allFC = new ArrayList<MWRAContract>();
         try {
@@ -1680,6 +1748,59 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 MWRAContract fc = new MWRAContract();
+                allFC.add(fc.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
+
+    public Collection<NutritionContract> getUnsyncedNutrition() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                NutritionTable.COLUMN__ID,
+                NutritionTable.COLUMN_UID,
+                NutritionTable.COLUMN_UUID,
+                NutritionTable.COLUMN_FORMDATE,
+                NutritionTable.COLUMN_DEVICEID,
+                NutritionTable.COLUMN_DEVICETAGID,
+                NutritionTable.COLUMN_USER,
+                NutritionTable.COLUMN_APP_VER,
+                NutritionTable.COLUMN_SB6,
+
+                NutritionTable.COLUMN_SYNCED,
+                NutritionTable.COLUMN_SYNCEDDATE,
+
+        };
+        String whereClause = NutritionTable.COLUMN_SYNCED + " is null OR " + NutritionTable.COLUMN_SYNCED + " = '' ";
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                NutritionTable.COLUMN__ID + " ASC";
+
+        Collection<NutritionContract> allFC = new ArrayList<NutritionContract>();
+        try {
+            c = db.query(
+                    NutritionTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                NutritionContract fc = new NutritionContract();
                 allFC.add(fc.Hydrate(c));
             }
         } finally {
@@ -1719,7 +1840,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String having = null;
 
         String orderBy =
-                RecipientsTable._ID + " ASC";
+                RecipientsTable.COLUMN__ID + " ASC";
 
         Collection<RecipientsContract> allFC = new ArrayList<RecipientsContract>();
         try {
@@ -1773,7 +1894,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String having = null;
 
         String orderBy =
-                MWRATable._ID + " ASC";
+                outcomeTable.COLUMN__ID + " ASC";
 
         Collection<OutcomeContract> allFC = new ArrayList<OutcomeContract>();
         try {
@@ -1953,7 +2074,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(MWRATable.COLUMN_SB2, MainApp.mc.getsB2());
 
 // Which row to update, based on the ID
-        String selection = MWRATable._ID + " = ?";
+        String selection = MWRATable.COLUMN__ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.mc.get_ID())};
 
         int count = db.update(MWRATable.TABLE_NAME,
@@ -1972,7 +2093,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(MWRATable.COLUMN_SB3, MainApp.mc.getsB3());
 
 // Which row to update, based on the ID
-        String selection = MWRATable._ID + " = ?";
+        String selection = MWRATable.COLUMN__ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.mc.get_ID())};
 
         int count = db.update(MWRATable.TABLE_NAME,
@@ -1991,7 +2112,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(MWRATable.COLUMN_SB4, MainApp.mc.getsB4());
 
 // Which row to update, based on the ID
-        String selection = MWRATable._ID + " = ?";
+        String selection = MWRATable.COLUMN__ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.mc.get_ID())};
 
         int count = db.update(MWRATable.TABLE_NAME,
@@ -2009,7 +2130,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(MWRATable.COLUMN_SB5, MainApp.mc.getsB5());
 
 // Which row to update, based on the ID
-        String selection = MWRATable._ID + " = ?";
+        String selection = MWRATable.COLUMN__ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.mc.get_ID())};
 
         int count = db.update(MWRATable.TABLE_NAME,
@@ -2027,7 +2148,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(MWRATable.COLUMN_SB6, MainApp.mc.getsB6());
 
 // Which row to update, based on the ID
-        String selection = MWRATable._ID + " = ?";
+        String selection = MWRATable.COLUMN__ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.mc.get_ID())};
 
         int count = db.update(MWRATable.TABLE_NAME,
@@ -2102,7 +2223,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(ChildTable.COLUMN_SC1, MainApp.cc.getsC1());
 
 // Which row to update, based on the ID
-        String selection = ChildTable._ID + " = ?";
+        String selection = ChildTable.COLUMN__ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.cc.get_ID())};
 
         int count = db.update(ChildTable.TABLE_NAME,
@@ -2120,7 +2241,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(ChildTable.COLUMN_SC2, MainApp.cc.getsC2());
 
 // Which row to update, based on the ID
-        String selection = ChildTable._ID + " = ?";
+        String selection = ChildTable.COLUMN__ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.cc.get_ID())};
 
         int count = db.update(ChildTable.TABLE_NAME,
@@ -2138,7 +2259,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(ChildTable.COLUMN_SC3, MainApp.cc.getsC3());
 
 // Which row to update, based on the ID
-        String selection = ChildTable._ID + " = ?";
+        String selection = ChildTable.COLUMN__ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.cc.get_ID())};
 
         int count = db.update(ChildTable.TABLE_NAME,
@@ -2156,7 +2277,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(ChildTable.COLUMN_SC4, MainApp.cc.getsC4());
 
 // Which row to update, based on the ID
-        String selection = ChildTable._ID + " = ?";
+        String selection = ChildTable.COLUMN__ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.cc.get_ID())};
 
         int count = db.update(ChildTable.TABLE_NAME,
@@ -2175,7 +2296,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(ChildTable.COLUMN_SC5, MainApp.cc.getsC5());
 
 // Which row to update, based on the ID
-        String selection = ChildTable._ID + " = ?";
+        String selection = ChildTable.COLUMN__ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.cc.get_ID())};
 
         int count = db.update(ChildTable.TABLE_NAME,
@@ -2272,7 +2393,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(ChildTable.COLUMN_CSTATUS88x, MainApp.cc.getCstatus88x());
 
 // Which row to update, based on the ID
-        String selection = ChildTable._ID + " =? ";
+        String selection = ChildTable.COLUMN__ID + " =? ";
         String[] selectionArgs = {String.valueOf(MainApp.cc.get_ID())};
 
         int count = db.update(ChildTable.TABLE_NAME,
@@ -2291,7 +2412,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(MWRATable.COLUMN_MSTATUS88x, MainApp.mc.getMstatus88x());
 
 // Which row to update, based on the ID
-        String selection = MWRATable._ID + " =? ";
+        String selection = MWRATable.COLUMN__ID + " =? ";
         String[] selectionArgs = {String.valueOf(MainApp.mc.get_ID())};
 
         int count = db.update(MWRATable.TABLE_NAME,
