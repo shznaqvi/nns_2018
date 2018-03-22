@@ -29,7 +29,7 @@ import edu.aku.hassannaqvi.nns_2018.other.DateUtils;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionB1AActivity extends AppCompatActivity implements TextWatcher {
+public class SectionB1AActivity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
     private final long DELAY = 1000;
     ActivitySectionB1ABinding bi;
@@ -91,6 +91,10 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
             }
         }
 
+        bi.nw216.setOnCheckedChangeListener(this);
+        bi.nw217.setOnCheckedChangeListener(this);
+        bi.nw219y.addTextChangedListener(this);
+
     }
 
     public void setupViews() {
@@ -101,6 +105,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         bi.nw217.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (bi.nw217a.isChecked()) {
                     clearClass.ClearAllFields(bi.fldGrpnw219, true);
                     clearClass.ClearAllFields(bi.fldGrpnw220, false);
@@ -125,6 +130,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         bi.nw216.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (bi.nw216a.isChecked() || bi.nw216b.isChecked() || bi.nw216e.isChecked()) {
                     clearClass.ClearAllFields(bi.fldGrpnb1a03, false);
                     /*bi.fldGrpnb1a03.setVisibility(View.GONE);
@@ -411,6 +417,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
 
+
         if (!bi.nw215y.getText().toString().isEmpty() && !bi.nw215m.getText().toString().isEmpty()
                 && !bi.nw215d.getText().toString().isEmpty()) {
             if (bi.nw215d.getText().toString().equals("98") && !bi.nw215m.getText().toString().equals("98")) {
@@ -432,6 +439,13 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
     @Override
     public void afterTextChanged(Editable s) {
 
+        ValidateForm();
+
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        ValidateForm();
     }
 }
 
