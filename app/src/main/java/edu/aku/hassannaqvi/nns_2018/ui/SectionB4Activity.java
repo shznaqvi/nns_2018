@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -12,6 +14,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Timer;
+import java.util.TimerTask;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
@@ -20,7 +23,7 @@ import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB4Binding;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionB4Activity extends Activity {
+public class SectionB4Activity extends Activity implements TextWatcher, RadioGroup.OnCheckedChangeListener, CompoundButton.OnCheckedChangeListener {
 
     private final long DELAY = 1000;
     ActivitySectionB4Binding binding;
@@ -39,6 +42,7 @@ public class SectionB4Activity extends Activity {
         binding.nw40299.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                formValidation();
                 if (isChecked) {
                     binding.nw402a.setChecked(false);
                     binding.nw402b.setChecked(false);
@@ -75,6 +79,7 @@ public class SectionB4Activity extends Activity {
         binding.nw405.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                formValidation();
                 if (checkedId == R.id.nw405b || checkedId == R.id.nw40598) {
                     /*binding.fldGrpnw406.setVisibility(View.GONE);
                     binding.nw406c.setText(null);
@@ -93,6 +98,7 @@ public class SectionB4Activity extends Activity {
         binding.nb411.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                formValidation();
                 if (checkedId == R.id.nb411b || checkedId == R.id.nb41198) {
                     /*binding.fldGrpnb412.setVisibility(View.GONE);
                     binding.nb412a.setChecked(false);
@@ -121,6 +127,7 @@ public class SectionB4Activity extends Activity {
         binding.nb41298.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                formValidation();
                 if (isChecked) {
                     binding.nb412a.setEnabled(false);
                     binding.nb412b.setEnabled(false);
@@ -150,6 +157,19 @@ public class SectionB4Activity extends Activity {
                 }
             }
         });
+
+//        Listener
+        binding.nw401.setOnCheckedChangeListener(this);
+        binding.nw403.setOnCheckedChangeListener(this);
+        binding.nw404.setOnCheckedChangeListener(this);
+        binding.nw406c.addTextChangedListener(this);
+        binding.nw406r.addTextChangedListener(this);
+        binding.nw407.setOnCheckedChangeListener(this);
+        binding.nw408.setOnCheckedChangeListener(this);
+        binding.nw409.setOnCheckedChangeListener(this);
+        binding.nb410.setOnCheckedChangeListener(this);
+        binding.nw413.setOnCheckedChangeListener(this);
+
     }
 
     public void BtnContinue() {
@@ -306,7 +326,6 @@ public class SectionB4Activity extends Activity {
         }
         return true;
     }
-
 
 
     private void SaveDraft() throws JSONException {
@@ -469,4 +488,44 @@ public class SectionB4Activity extends Activity {
     }
 
 
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+        timer.cancel();
+        timer = new Timer();
+        timer.schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                formValidation();
+                            }
+                        });
+
+                    }
+                },
+                DELAY
+        );
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        formValidation();
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        formValidation();
+    }
 }
