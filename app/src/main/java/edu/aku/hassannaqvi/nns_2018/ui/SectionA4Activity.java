@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -12,6 +14,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Timer;
+import java.util.TimerTask;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
@@ -20,7 +23,7 @@ import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA4Binding;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionA4Activity extends AppCompatActivity {
+public class SectionA4Activity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, TextWatcher, CompoundButton.OnCheckedChangeListener {
 
     private final long DELAY = 1000;
     ActivitySectionA4Binding binding;
@@ -39,16 +42,22 @@ public class SectionA4Activity extends AppCompatActivity {
 //        Skip Pattern;
 
 //        nh303
+
+        binding.nh301.setOnCheckedChangeListener(this);
+        binding.nh302.setOnCheckedChangeListener(this);
         binding.nh303.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (i == R.id.nh303b || i == R.id.nh303c) {
+                    formValidation();
                     clearClass.ClearAllFields(binding.fldGrnh304, false);
                 } else {
                     clearClass.ClearAllFields(binding.fldGrnh304, true);
                 }
             }
         });
+
+        binding.nh304.addTextChangedListener(this);
 
         binding.nh30498.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -65,6 +74,7 @@ public class SectionA4Activity extends AppCompatActivity {
         binding.nh30499.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
                 if (isChecked) {
                     binding.nh30498.setChecked(false);
                     binding.nh304.setEnabled(false);
@@ -76,21 +86,11 @@ public class SectionA4Activity extends AppCompatActivity {
         });
 
 
-       /* binding.nh304rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.nh30498 || checkedId == R.id.nh30499) {
-                    binding.nh304.setVisibility(View.GONE);
-                    binding.nh304.setText(null);
-                } else {
-                    binding.nh304.setVisibility(View.VISIBLE);
 
-                }
-            }
-        });*/
         binding.nh305.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                formValidation();
                 if (checkedId == R.id.nh305b) {
                     clearClass.ClearAllFields(binding.fldGrpnh305, false);
                 } else {
@@ -100,10 +100,13 @@ public class SectionA4Activity extends AppCompatActivity {
             }
         });
 
+        binding.nh306.setOnCheckedChangeListener(this);
+
 //        nh307
         binding.nh307.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                formValidation();
                 if (i == R.id.nh307h || i == R.id.nh307i) {
                     clearClass.ClearAllFields(binding.fldGrpnh308, true);
                     //  clearClass.ClearAllFields(binding.fldGrpnh309,true);
@@ -117,6 +120,7 @@ public class SectionA4Activity extends AppCompatActivity {
         binding.nh308.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                formValidation();
                 if (checkedId == R.id.nh308b) {
                     clearClass.ClearAllFields(binding.fldGrpnh309, true);
                 } else {
@@ -127,9 +131,46 @@ public class SectionA4Activity extends AppCompatActivity {
             }
         });
 
+
+        binding.nh309.addTextChangedListener(this);
+
+        binding.nh310.setOnCheckedChangeListener(this);
+        binding.nh31101.setOnCheckedChangeListener(this);
+        binding.nh31102.setOnCheckedChangeListener(this);
+        binding.nh31103.setOnCheckedChangeListener(this);
+        binding.nh31104.setOnCheckedChangeListener(this);
+        binding.nh31105.setOnCheckedChangeListener(this);
+        binding.nh31106.setOnCheckedChangeListener(this);
+        binding.nh31107.setOnCheckedChangeListener(this);
+        binding.nh31108.setOnCheckedChangeListener(this);
+        binding.nh31109.setOnCheckedChangeListener(this);
+        binding.nh31110.setOnCheckedChangeListener(this);
+        binding.nh31111.setOnCheckedChangeListener(this);
+        binding.nh31112.setOnCheckedChangeListener(this);
+        binding.nh31113.setOnCheckedChangeListener(this);
+        binding.nh31114.setOnCheckedChangeListener(this);
+        binding.nh31115.setOnCheckedChangeListener(this);
+        binding.nh31116.setOnCheckedChangeListener(this);
+        binding.nh31117.setOnCheckedChangeListener(this);
+        binding.nh31118.setOnCheckedChangeListener(this);
+        binding.nh31119.setOnCheckedChangeListener(this);
+        binding.nh312a.setOnCheckedChangeListener(this);
+        binding.nh312b.setOnCheckedChangeListener(this);
+        binding.nh312c.setOnCheckedChangeListener(this);
+        binding.nh312d.setOnCheckedChangeListener(this);
+        binding.nh312e.setOnCheckedChangeListener(this);
+        binding.nh312f.setOnCheckedChangeListener(this);
+        binding.nh312g.setOnCheckedChangeListener(this);
+        binding.nh312h.setOnCheckedChangeListener(this);
+        binding.nh312i.setOnCheckedChangeListener(this);
+        binding.nh313a.setOnCheckedChangeListener(this);
+        binding.nh314.setOnCheckedChangeListener(this);
+
+
         binding.nh315.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                formValidation();
                 if (binding.nh315a.isChecked()) {
                     clearClass.ClearAllFields(binding.fldGrpnh316, true);
                 } else {
@@ -138,10 +179,17 @@ public class SectionA4Activity extends AppCompatActivity {
             }
         });
 
+        binding.nh316.setOnCheckedChangeListener(this);
+        binding.nh317.setOnCheckedChangeListener(this);
+        binding.nh318.setOnCheckedChangeListener(this);
+        binding.nh319.setOnCheckedChangeListener(this);
+        binding.nh320.addTextChangedListener(this);
+
 //        nh321
         binding.nh321.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                formValidation();
                 if (i == R.id.nh321b) {
                     clearClass.ClearAllFields(binding.fldGrpnh322, false);
                 } else {
@@ -149,10 +197,13 @@ public class SectionA4Activity extends AppCompatActivity {
                 }
             }
         });
+        binding.nh322.setOnCheckedChangeListener(this);
+
 //        nh323
         binding.nh323.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                formValidation();
                 if (i == R.id.nh323b) {
                     clearClass.ClearAllFields(binding.fldGrpnh324, false);
                 } else {
@@ -161,6 +212,14 @@ public class SectionA4Activity extends AppCompatActivity {
             }
         });
 
+        binding.nh324a.addTextChangedListener(this);
+        binding.nh324b.addTextChangedListener(this);
+        binding.nh324c.addTextChangedListener(this);
+        binding.nh324d.addTextChangedListener(this);
+        binding.nh324e.addTextChangedListener(this);
+        binding.nh324f.addTextChangedListener(this);
+        binding.nh324g.addTextChangedListener(this);
+        
     }
 
     public void BtnContinue() {
@@ -796,4 +855,48 @@ public class SectionA4Activity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        formValidation();
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+
+        timer.cancel();
+        timer = new Timer();
+        timer.schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                formValidation();
+                            }
+                        });
+
+                    }
+                },
+                DELAY
+        );
+
+
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        formValidation();
+    }
 }

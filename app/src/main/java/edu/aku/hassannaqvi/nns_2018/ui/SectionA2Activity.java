@@ -69,6 +69,12 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
         ButterKnife.bind(this);
         binding.setCallback(this);
         setupViews();
+        skipPattern();
+    }
+
+    public void skipPattern() {
+        //binding.na202.addTextChangedListener(this);
+
     }
 
 
