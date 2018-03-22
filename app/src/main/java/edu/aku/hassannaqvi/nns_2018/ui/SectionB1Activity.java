@@ -225,6 +225,30 @@ public class SectionB1Activity extends Activity {
 
             }
         });
+        bi.nw208.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (bi.nw208.getText().toString().equals("0")) {
+                    clearClass.ClearAllFields(bi.fldGrpnw209, false);
+                } else {
+                    clearClass.ClearAllFields(bi.fldGrpnw209, true);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
 
 
         bi.nw211.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
