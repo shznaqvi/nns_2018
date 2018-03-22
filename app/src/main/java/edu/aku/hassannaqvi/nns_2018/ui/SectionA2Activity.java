@@ -109,7 +109,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if (!binding.nh2agey.getText().toString().isEmpty() && !binding.nh2agey.getText().toString().equals("98")) {
+                if (!binding.nh2agey.getText().toString().isEmpty() && !binding.nh2agey.getText().toString().equals("9998")) {
 
                     if (Integer.valueOf(binding.nh2agey.getText().toString()) >= 5) {
                         binding.fldGrpmonths.setVisibility(View.GONE);
@@ -718,18 +718,18 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-        if (!binding.nh2dobd.getText().toString().isEmpty() && !binding.nh2dobm.getText().toString().isEmpty() && !binding.nh2agey.getText().toString().isEmpty()) {
+        if (!binding.nh2dobd.getText().toString().isEmpty() && !binding.nh2dobm.getText().toString().isEmpty() && !binding.nh2doby.getText().toString().isEmpty()) {
 
             if (!binding.nh2dobd.getText().toString().equals("98") && !binding.nh2dobm.getText().toString().equals("98")
                     && !binding.nh2doby.getText().toString().equals("9998")) {
                 dob = "%02d" + binding.nh2dobd.getText().toString() + "-" + "%02d" + binding.nh2dobm.getText().toString()
-                        + "-" + binding.nh2agey.getText().toString();
+                        + "-" + binding.nh2doby.getText().toString();
 
                 agebyDob = DateUtils.ageInYearByDOB(DateUtils.getCalendarDate(dob));
 
             } else if (!binding.nh2doby.getText().toString().equals("9998")) {
-                dob = binding.nh2agey.getText().toString();
-                agebyDob = DateUtils.ageInYearByDOB(binding.nh2agey.getText().toString());
+                dob = binding.nh2doby.getText().toString();
+                agebyDob = DateUtils.ageInYearByDOB(binding.nh2doby.getText().toString());
             }
 
 

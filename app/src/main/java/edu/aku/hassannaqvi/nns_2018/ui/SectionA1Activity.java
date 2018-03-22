@@ -39,7 +39,7 @@ import edu.aku.hassannaqvi.nns_2018.other.MembersCount;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionA1Activity extends AppCompatActivity implements TextWatcher, CompoundButton.OnCheckedChangeListener {
+public class SectionA1Activity extends AppCompatActivity implements TextWatcher, CompoundButton.OnCheckedChangeListener, RadioGroup.OnCheckedChangeListener {
 
     private static final String TAG = SectionA1Activity.class.getName();
     static int progress = 0;
@@ -70,6 +70,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
         binding.na11801.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                formValidation();
                 if (checkedId == R.id.na11801a) {
                     clearClass.ClearAllFields(binding.fldGrpna113, false);
                 } else {
@@ -84,8 +85,11 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
         binding.nh101.addTextChangedListener(this);
         binding.checkHHHeadpresent.setOnCheckedChangeListener(this);
         binding.newHHheadname.addTextChangedListener(this);
-
-
+        binding.nh103.addTextChangedListener(this);
+        binding.nh115.addTextChangedListener(this);
+        binding.nh213.addTextChangedListener(this);
+        binding.na11802.setOnCheckedChangeListener(this);
+        binding.na119a.addTextChangedListener(this);
 
 
     }
@@ -600,6 +604,11 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        formValidation();
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
         formValidation();
     }
 }
