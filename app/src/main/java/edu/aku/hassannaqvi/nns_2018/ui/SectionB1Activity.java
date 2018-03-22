@@ -347,6 +347,7 @@ public class SectionB1Activity extends Activity {
             if (UpdateDB()) {
                 //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
+                MainApp.nuCount = 1;
                 finish();
 
                 if (bi.nw203a.isChecked()) {
@@ -517,7 +518,7 @@ public class SectionB1Activity extends Activity {
                                 return false;
                             }
 
-                            if (!validatorClass.RangeTextBox(this, bi.nw210, Integer.valueOf(bi.nw210.getText().toString()), Integer.valueOf(wraMap.get(bi.nb101.getSelectedItem().toString()).getAgeInYear()), getString(R.string.nw210), " years")) {
+                            if (!validatorClass.RangeTextBox(this, bi.nw210, Integer.valueOf(bi.nw209.getText().toString()), Integer.valueOf(wraMap.get(bi.nb101.getSelectedItem().toString()).getAgeInYear()), getString(R.string.nw210), " years")) {
                                 return false;
                             }
 

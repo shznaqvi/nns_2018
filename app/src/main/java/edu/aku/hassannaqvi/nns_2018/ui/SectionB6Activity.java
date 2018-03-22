@@ -3,16 +3,19 @@ package edu.aku.hassannaqvi.nns_2018.ui;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.Timer;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.NutritionContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB6Binding;
@@ -24,6 +27,7 @@ public class SectionB6Activity extends AppCompatActivity {
     ActivitySectionB6Binding bi;
     DatabaseHelper db;
     private Timer timer = new Timer();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +42,25 @@ public class SectionB6Activity extends AppCompatActivity {
     }
 
     private void settingTimeToEat() {
-//        int count = 1;
-//        String text = "_"+count;
-//        bi.nw501.setText(getString(R.string.text));
+        if (MainApp.nuCount == 1) {
+            bi.nw501.setText(R.string._1);
+        } else if (MainApp.nuCount == 2) {
+            bi.nw501.setText(R.string._2);
+        } else if (MainApp.nuCount == 3) {
+            bi.nw501.setText(R.string._3);
+        } else if (MainApp.nuCount == 4) {
+            bi.nw501.setText(R.string._4);
+        } else if (MainApp.nuCount == 5) {
+            bi.nw501.setText(R.string._5);
+        } else if (MainApp.nuCount == 6) {
+            bi.nw501.setText(R.string._6);
+        } else if (MainApp.nuCount == 7) {
+            bi.nw501.setText(R.string._7);
+        }
     }
 
     public void BtnContinue() {
 
-        //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (ValidateForm()) {
             try {
                 SaveDraft();
@@ -53,29 +68,37 @@ public class SectionB6Activity extends AppCompatActivity {
                 e.printStackTrace();
             }
             if (UpdateDB()) {
-                //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
                 finish();
-                int childcount = 0;
-                if (MainApp.childUnder5.size() > 0) {
-                    for (FamilyMembersContract fmc : MainApp.childUnder5) {
-                        if (fmc.getMotherId().equals(MainApp.mc.getB1SerialNo())) {
-                            childcount++;
+
+                if (MainApp.nuCount == 7) {
+
+                    int childcount = 0;
+                    if (MainApp.childUnder5.size() > 0) {
+                        for (FamilyMembersContract fmc : MainApp.childUnder5) {
+                            if (fmc.getMotherId().equals(MainApp.mc.getB1SerialNo())) {
+                                childcount++;
+                            }
                         }
-                    }
-                    if (childcount < 1) {
+                        if (childcount < 1) {
+                            startActivity(new Intent(this, MotherEndingActivity.class)
+                                    .putExtra("checkingFlag", true)
+                                    .putExtra("complete", true));
+
+                        } else {
+                            startActivity(new Intent(this, SectionC1Activity.class));
+                        }
+
+                    } else {
                         startActivity(new Intent(this, MotherEndingActivity.class)
                                 .putExtra("checkingFlag", true)
                                 .putExtra("complete", true));
-
-                    } else {
-                        startActivity(new Intent(this, SectionC1Activity.class));
                     }
-
                 } else {
-                    startActivity(new Intent(this, MotherEndingActivity.class)
-                            .putExtra("checkingFlag", true)
-                            .putExtra("complete", true));
+                    MainApp.nuCount++;
+                    finish();
+                    startActivity(new Intent(this, SectionB6Activity.class));
+
                 }
 
             } else {
@@ -101,61 +124,21 @@ public class SectionB6Activity extends AppCompatActivity {
 
         return validatorClass.EmptyCheckBox(this, bi.fldGrpnw501check, bi.nw501a, getString(R.string.nw501a));
 
-        //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
-/*
-        if (!validatorClass.EmptyRadioButton(this, bi.nw50101, bi.nw50101a, getString(R.string.nw501a))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, bi.nw50102, bi.nw50102a, getString(R.string.nw501b))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, bi.nw50103, bi.nw50103a, getString(R.string.nw501c))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, bi.nw50104, bi.nw50104a, getString(R.string.nw501d))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, bi.nw50105, bi.nw50105a, getString(R.string.nw501e))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, bi.nw50106, bi.nw50106a, getString(R.string.nw501f))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, bi.nw50107, bi.nw50107a, getString(R.string.nw501g))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, bi.nw50108, bi.nw50108a, getString(R.string.nw501h))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, bi.nw50108, bi.nw50108a, bi.nw50108x, getString(R.string.nw501h) + " - " + getString(R.string.other))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, bi.nw50109, bi.nw50109a, getString(R.string.nw501i))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, bi.nw50109, bi.nw50109a, bi.nw50109x, getString(R.string.nw501j) + " - " + getString(R.string.other))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, bi.nw50196, bi.nw50196a, getString(R.string.nw501j))) {
-            return false;
-        }
-
-        return validatorClass.EmptyRadioButton(this, bi.nw50196, bi.nw50196a, bi.nw50196x, getString(R.string.nw501j) + " - " + getString(R.string.other));*/
     }
 
     private void SaveDraft() throws JSONException {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
+
+
+        MainApp.nc = new NutritionContract();
+
+        MainApp.nc.setDevicetagID(MainApp.getTagName(this));
+        MainApp.nc.setFormDate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+        MainApp.nc.setUser(MainApp.userName);
+        MainApp.nc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
+                Settings.Secure.ANDROID_ID));
+        MainApp.nc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
+        MainApp.nc.set_UUID(MainApp.mc.get_UID());
 
         JSONObject sB6 = new JSONObject();
         //       nw501
@@ -192,37 +175,20 @@ public class SectionB6Activity extends AppCompatActivity {
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        int updcount = db.updateSB6();
+        Long updcount = db.addNutrition(MainApp.nc);
+        MainApp.nc.set_ID(String.valueOf(updcount));
 
-        if (updcount == 1) {
+        if (updcount != 0) {
             //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+
+            MainApp.nc.set_UID(
+                    (MainApp.nc.getDeviceId() + MainApp.nc.get_ID()));
+            db.updateNutritionID();
+
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
         }
-
-        //return true;
-
     }
-
-    /*public boolean isWomanChild()
-    {
-
-        if(MainApp.childUnder5.size() > 0)
-        {
-            for (FamilyMembersContract fmc : MainApp.childUnder5)
-            {
-                if(fmc.getMotherId().equals(MainApp.mc.getB1SerialNo()))
-                {
-                    return true;
-                    break;
-                }else {
-                    return false;
-
-                }
-            }
-        }
-    }*/
-
 }

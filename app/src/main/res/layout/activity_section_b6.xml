@@ -52,12 +52,15 @@
                 style="@style/sub"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:padding="0dp"
                 android:text="@string/nw501info" />
 
             <TextView
                 style="@style/sub"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="0dp"
                 android:text="@string/nw501info1" />
 
             <TextView
@@ -66,6 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
+                android:text=""
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
@@ -76,15 +80,36 @@
                 android:layout_marginTop="5dp"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/pink_100"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="@string/food1"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textStyle="bold" />
                 <CheckBox
                     android:id="@+id/nw501a"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
+                    android:layout_marginBottom="2dp"
                     android:paddingBottom="5dp"
                     android:paddingTop="5dp"
                     android:text="@string/nw501a" />
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/pink_100"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="@string/food2"
+
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textStyle="bold" />
                 <CheckBox
                     android:id="@+id/nw501b"
                     android:layout_width="match_parent"
@@ -94,6 +119,17 @@
                     android:paddingTop="5dp"
                     android:text="@string/nw501b" />
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/pink_100"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="@string/food3"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textStyle="bold" />
+
                 <CheckBox
                     android:id="@+id/nw501c"
                     android:layout_width="match_parent"
@@ -102,8 +138,18 @@
 
                     android:paddingBottom="5dp"
                     android:paddingTop="5dp"
-                    android:text="@string/nw302c" />
+                    android:text="@string/nw501c" />
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/pink_100"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="@string/food4"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textStyle="bold" />
                 <CheckBox
                     android:id="@+id/nw501d"
                     android:layout_width="match_parent"
@@ -111,6 +157,16 @@
                     android:layout_marginBottom="1dp"
                     android:text="@string/nw501d" />
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/pink_100"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="@string/food5"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textStyle="bold" />
                 <CheckBox
                     android:id="@+id/nw501e"
                     android:layout_width="match_parent"
@@ -118,12 +174,33 @@
                     android:layout_marginBottom="1dp"
                     android:text="@string/nw501e" />
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/pink_100"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="@string/food6"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textStyle="bold" />
                 <CheckBox
                     android:id="@+id/nw501f"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:text="@string/nw501f" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/pink_100"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="@string/food7"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textStyle="bold" />
 
                 <CheckBox
                     android:id="@+id/nw501g"
@@ -132,6 +209,16 @@
                     android:layout_marginBottom="1dp"
                     android:text="@string/nw501g" />
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/pink_100"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="@string/food8"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textStyle="bold" />
                 <CheckBox
                     android:id="@+id/nw501h"
                     android:layout_width="match_parent"
@@ -139,6 +226,16 @@
                     android:layout_marginBottom="1dp"
                     android:text="@string/nw501h" />
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/pink_100"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="@string/food9"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textStyle="bold" />
 
                 <CheckBox
                     android:id="@+id/nw501i"
@@ -147,6 +244,16 @@
                     android:layout_marginBottom="1dp"
                     android:text="@string/nw501i" />
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/pink_100"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="@string/food10"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textStyle="bold" />
                 <CheckBox
                     android:id="@+id/nw501j"
                     android:layout_width="match_parent"
