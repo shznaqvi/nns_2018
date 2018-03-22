@@ -11,6 +11,8 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Timer;
+
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -20,8 +22,10 @@ import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionB2Activity extends Activity {
 
+    private final long DELAY = 1000;
     ActivitySectionB2Binding bi;
     DatabaseHelper db;
+    private Timer timer = new Timer();
 
 
     @Override

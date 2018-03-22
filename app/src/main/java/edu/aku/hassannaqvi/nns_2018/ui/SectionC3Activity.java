@@ -10,6 +10,8 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Timer;
+
 import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
@@ -21,12 +23,10 @@ import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionC3Activity extends AppCompatActivity {
 
+    private final long DELAY = 1000;
     ActivitySectionC3Binding binding;
     FamilyMembersContract selectedChild;
-/*
-    @BindViews({R.id.nc3bcgdt, R.id.nc3opv0dt, R.id.nc3opv1dt, R.id.nc3p1dt, R.id.nc3pcv1dt, R.id.nc3opv2dt, R.id.nc3p2dt,
-            R.id.nc3pcv2dt, R.id.nc3opv3dt, R.id.nc3p3dt, R.id.nc3pcv3dt, R.id.nc3ipvdt, R.id.nc3m1dt, R.id.nc3m2dt})
-    List<DatePickerInputEditText> grpDate;*/
+    private Timer timer = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +36,6 @@ public class SectionC3Activity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_c3);
         ButterKnife.bind(this);
         binding.setCallback(this);
-
-        /*for (DatePickerInputEditText dt : grpDate) {
-            dt.setManager(getSupportFragmentManager());
-            dt.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
-        }*/
 
 
         binding.nc303.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {

@@ -13,6 +13,7 @@ import android.text.TextWatcher;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -25,6 +26,8 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
@@ -36,10 +39,11 @@ import edu.aku.hassannaqvi.nns_2018.other.MembersCount;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionA1Activity extends AppCompatActivity implements TextWatcher {
+public class SectionA1Activity extends AppCompatActivity implements TextWatcher, CompoundButton.OnCheckedChangeListener {
 
     private static final String TAG = SectionA1Activity.class.getName();
     static int progress = 0;
+    private final long DELAY = 1000;
     ActivitySectionA1Binding binding;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     DatabaseHelper db;
@@ -47,6 +51,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher 
     int progressStatus = 0;
     Handler handler = new Handler();
     Boolean flag = false;
+    private Timer timer = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +77,16 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher 
                 }
             }
         });
+
+
+        // Field wise validation
+
+        binding.nh101.addTextChangedListener(this);
+        binding.checkHHHeadpresent.setOnCheckedChangeListener(this);
+        binding.newHHheadname.addTextChangedListener(this);
+
+
+
 
     }
 
@@ -126,6 +141,24 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher 
             @Override
             public void afterTextChanged(Editable editable) {
 
+                timer.cancel();
+                timer = new Timer();
+                timer.schedule(
+                        new TimerTask() {
+                            @Override
+                            public void run() {
+
+                                runOnUiThread(new Runnable() {
+                                    public void run() {
+                                        formValidation();
+                                    }
+                                });
+
+                            }
+                        },
+                        DELAY
+                );
+
             }
         });
 
@@ -163,6 +196,24 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher 
             @Override
             public void afterTextChanged(Editable editable) {
 
+
+                timer.cancel();
+                timer = new Timer();
+                timer.schedule(
+                        new TimerTask() {
+                            @Override
+                            public void run() {
+
+                                runOnUiThread(new Runnable() {
+                                    public void run() {
+                                        formValidation();
+                                    }
+                                });
+
+                            }
+                        },
+                        DELAY
+                );
             }
         });
 
@@ -174,7 +225,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher 
         binding.hhName.setText(null);
         binding.newHHheadname.setText(null);
         binding.checkHHHeadpresent.setChecked(false);
-        binding.nh110.setText(null);
+        //binding.nh110.setText(null);
         binding.nh113.setText(null);
         binding.nh115.setText(null);
         binding.nh213.setText(null);
@@ -291,9 +342,9 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher 
         }
 
 //        nh110
-        if (!validatorClass.EmptyTextBox(this, binding.nh110, getString(R.string.nh110))) {
+        /*if (!validatorClass.EmptyTextBox(this, binding.nh110, getString(R.string.nh110))) {
             return false;
-        }
+        }*/
 //        nh113
         if (!flag) {
             if (!validatorClass.EmptyTextBox(this, binding.nh113, getString(R.string.nh113))) {
@@ -377,7 +428,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher 
         sA1.put("nh105", binding.nh105.getText().toString());
         sA1.put("nh106", binding.nh106.getText().toString());
 
-        sA1.put("nh110", binding.nh110.getText().toString());
+        //sA1.put("nh110", binding.nh110.getText().toString());
         sA1.put("nh113", binding.nh113.getText().toString());
         sA1.put("nh115", binding.nh115.getText().toString());
 
@@ -522,12 +573,33 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-        formValidation();
 
     }
 
     @Override
     public void afterTextChanged(Editable s) {
 
+        timer.cancel();
+        timer = new Timer();
+        timer.schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                formValidation();
+                            }
+                        });
+
+                    }
+                },
+                DELAY
+        );
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        formValidation();
     }
 }

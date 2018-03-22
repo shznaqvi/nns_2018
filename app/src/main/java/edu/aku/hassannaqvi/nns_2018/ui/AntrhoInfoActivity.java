@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Timer;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
@@ -31,11 +32,13 @@ public class AntrhoInfoActivity extends Activity {
     private static final String TAG = SectionA1Activity.class.getName();
     static String enm_no;
     static String hh_no;
+    private final long DELAY = 1000;
     JSONModelClass json;
     ActivityAntrhoInfoBinding binding;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     DatabaseHelper db;
     Collection<FamilyMembersContract> members;
+    private Timer timer = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

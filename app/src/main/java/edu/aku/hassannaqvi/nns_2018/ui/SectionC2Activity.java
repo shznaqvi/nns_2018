@@ -16,6 +16,7 @@ import org.json.JSONObject;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Timer;
 
 import butterknife.BindViews;
 import butterknife.ButterKnife;
@@ -29,38 +30,34 @@ import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedChangeListener {
 
+    private final long DELAY = 1000;
     ActivitySectionC2Binding bi;
     FamilyMembersContract selectedChild;
-
     @BindViews({R.id.nc215a, R.id.nc215b, R.id.nc215c, R.id.nc215d, R.id.nc215e, R.id.nc215f,
             R.id.nc215g, R.id.nc215h, R.id.nc215i, R.id.nc217a, R.id.nc217b, R.id.nc217c,
             R.id.nc217d, R.id.nc217e, R.id.nc217f, R.id.nc217g, R.id.nc217h, R.id.nc217i,
             R.id.nc217j, R.id.nc217k, R.id.nc217l, R.id.nc217m, R.id.nc217n, R.id.nc217o,
             R.id.nc217p, R.id.nc217q})
     List<RadioGroup> grpnc215;
-
     @BindViews({R.id.nc215aa, R.id.nc215ba, R.id.nc215ca, R.id.nc215da, R.id.nc215ea, R.id.nc215fa,
             R.id.nc215ga, R.id.nc215ha, R.id.nc215ia, R.id.nc217aa, R.id.nc217ba, R.id.nc217ca,
             R.id.nc217da, R.id.nc217ea, R.id.nc217fa, R.id.nc217ga, R.id.nc217ha, R.id.nc217ia,
             R.id.nc217ja, R.id.nc217ka, R.id.nc217la, R.id.nc217ma, R.id.nc217na, R.id.nc217oa,
             R.id.nc217pa, R.id.nc217qa})
     List<RadioButton> nc215yes;
-
-
     @BindViews({R.id.nc215ab, R.id.nc215bb, R.id.nc215cb, R.id.nc215db, R.id.nc215eb, R.id.nc215fb,
             R.id.nc215gb, R.id.nc215hb, R.id.nc215ib, R.id.nc217ab, R.id.nc217bb, R.id.nc217cb,
             R.id.nc217db, R.id.nc217eb, R.id.nc217fb, R.id.nc217gb, R.id.nc217hb, R.id.nc217ib,
             R.id.nc217jb, R.id.nc217kb, R.id.nc217lb, R.id.nc217mb, R.id.nc217nb, R.id.nc217ob,
             R.id.nc217pb, R.id.nc217qb})
     List<RadioButton> nc215no;
-
     @BindViews({R.id.nc215a98, R.id.nc215b98, R.id.nc215c98, R.id.nc215d98, R.id.nc215e98, R.id.nc215f98,
             R.id.nc215g98, R.id.nc215h98, R.id.nc215i98, R.id.nc217a98, R.id.nc217b98, R.id.nc217c98,
             R.id.nc217d98, R.id.nc217e98, R.id.nc217f98, R.id.nc217g98, R.id.nc217h98, R.id.nc217i98,
             R.id.nc217j98, R.id.nc217k98, R.id.nc217l98, R.id.nc217m98, R.id.nc217n98, R.id.nc217o98,
             R.id.nc217p98, R.id.nc217q98})
     List<RadioButton> nc215dkn;
-
+    private Timer timer = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -17,6 +17,7 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Timer;
 
 import butterknife.BindViews;
 import edu.aku.hassannaqvi.nns_2018.R;
@@ -30,14 +31,15 @@ import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionB1AActivity extends AppCompatActivity implements TextWatcher {
 
+    private final long DELAY = 1000;
     ActivitySectionB1ABinding bi;
     DatabaseHelper db;
-
     int childSerial = 1;
     @BindViews({R.id.nw215y, R.id.nw215m, R.id.nw215d})
     List<EditText> grpDate;
     String date;
     long yearsBydob;
+    private Timer timer = new Timer();
 
     //static int status;
     @Override

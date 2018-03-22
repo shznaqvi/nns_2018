@@ -22,6 +22,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
@@ -38,10 +39,12 @@ public class SectionB1Activity extends Activity {
     public static int WRAcounter = 0;
     static Map<String, FamilyMembersContract> wraMap;
     static ArrayList<String> lstMwra;
+    private final long DELAY = 1000;
     ArrayList<String> respName;
     Map<String, String> respMap;
     ActivitySectionB1Binding bi;
     DatabaseHelper db;
+    private Timer timer = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

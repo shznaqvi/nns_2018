@@ -335,7 +335,7 @@
 
 
                         <!--nh110-->
-                        <TextView
+                        <!--<TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
@@ -353,7 +353,7 @@
                             android:hint="@string/nh110"
                             android:maxLength="25"
 
-                            />
+                            />-->
 
                         <!--nh113-->
                         <TextView

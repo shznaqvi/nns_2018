@@ -20,6 +20,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract;
@@ -38,16 +39,14 @@ public class SectionD1Activity extends AppCompatActivity {
     static Map<String, SelectedMem> membersMap;
     static String name;
     static int counter = 1;
+    private final long DELAY = 1000;
     ActivitySectionD1Binding binding;
     DatabaseHelper db;
     int slc_type;
     JSONModelClass json;
-
-
     FamilyMembersContract slecMem;
-
-
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
+    private Timer timer = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

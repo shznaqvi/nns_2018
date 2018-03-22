@@ -9,6 +9,8 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Timer;
+
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
@@ -18,9 +20,10 @@ import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionC5Activity extends AppCompatActivity {
 
+    private final long DELAY = 1000;
     ActivitySectionC5Binding bi;
     FamilyMembersContract selectedChild;
-
+    private Timer timer = new Timer();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

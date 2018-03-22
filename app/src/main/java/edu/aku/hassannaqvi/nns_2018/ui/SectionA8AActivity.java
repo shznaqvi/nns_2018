@@ -18,6 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
@@ -34,11 +35,12 @@ public class SectionA8AActivity extends Activity {
     static Map<String, FamilyMembersContract> recpmap;
     static ArrayList<String> recpNames;
     static ArrayList<String> recpSerial;
+    private final long DELAY = 1000;
     ActivitySectionA8ABinding bi;
     DatabaseHelper db;
     FamilyMembersContract fmcSelected;
-
     int position = 0;
+    private Timer timer = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
