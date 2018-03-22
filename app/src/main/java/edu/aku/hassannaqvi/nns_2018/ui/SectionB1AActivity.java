@@ -94,6 +94,12 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         bi.nw216.setOnCheckedChangeListener(this);
         bi.nw217.setOnCheckedChangeListener(this);
         bi.nw219y.addTextChangedListener(this);
+        bi.nw219m.addTextChangedListener(this);
+        bi.nw219d.addTextChangedListener(this);
+        bi.nw220y.addTextChangedListener(this);
+        bi.nw220m.addTextChangedListener(this);
+        bi.nw220d.addTextChangedListener(this);
+
 
     }
 
@@ -417,7 +423,8 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-
+        if (bi.nw215y.getText().hashCode() == s.hashCode() || bi.nw215m.getText().hashCode() == s.hashCode()
+                || bi.nw215d.getText().hashCode() == s.hashCode()) {
         if (!bi.nw215y.getText().toString().isEmpty() && !bi.nw215m.getText().toString().isEmpty()
                 && !bi.nw215d.getText().toString().isEmpty()) {
             if (bi.nw215d.getText().toString().equals("98") && !bi.nw215m.getText().toString().equals("98")) {
@@ -430,7 +437,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 //date = bi.nw215d.getText().toString() + "-" bi.nw21
                 yearsBydob = DateUtils.ageInYearByDOB(bi.nw215y.getText().toString());
             }
-
+        }
 
         }
 
