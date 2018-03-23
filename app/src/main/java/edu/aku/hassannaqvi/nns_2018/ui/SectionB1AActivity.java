@@ -282,6 +282,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                     bi.nw219m.setError("All can not be zero");
                     bi.nw219d.setError("All can not be zero");
                     Log.i(SectionA2Activity.class.getSimpleName(), "nw219" + ": This data is Required!");
+                    return false;
                 } else {
                     bi.nw219y.setError(null);
                     bi.nw219m.setError(null);
@@ -319,6 +320,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                     bi.nw220m.setError("All can not be zero");
                     bi.nw220d.setError("All can not be zero");
                     Log.i(SectionA2Activity.class.getSimpleName(), "nw220" + ": This data is Required!");
+                    return false;
                 } else {
                     bi.nw220y.setError(null);
                     bi.nw220m.setError(null);
