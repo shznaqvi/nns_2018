@@ -75,7 +75,7 @@ public class SectionB4Activity extends Activity {
         binding.nw405.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.nw405b || checkedId == R.id.nw40598) {
+                if (checkedId == R.id.nw405b) {
                     /*binding.fldGrpnw406.setVisibility(View.GONE);
                     binding.nw406c.setText(null);
                     binding.nw406r.setText(null);

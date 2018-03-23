@@ -46,9 +46,11 @@ public class SectionB2Activity extends Activity {
                 if (bi.nw301a.isChecked()) {
                     //bi.fldGrpnw302.setVisibility(View.VISIBLE);
                     clearClass.ClearAllFields(bi.fldGrpnw302, true);
+                    clearClass.ClearAllFields(bi.fldGrpnw302check, true);
                     clearClass.ClearAllFields(bi.fldGrpnw306check, true);
                 } else {
                     clearClass.ClearAllFields(bi.fldGrpnw302, false);
+                    clearClass.ClearAllFields(bi.fldGrpnw302check, false);
                     clearClass.ClearAllFields(bi.fldGrpnw306check, false);
                     /*bi.fldGrpnw302.setVisibility(View.GONE);
                     bi.nw302a.setChecked(false);
@@ -143,9 +145,11 @@ public class SectionB2Activity extends Activity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (bi.nw310a.isChecked()) {
                     clearClass.ClearAllFields(bi.fldGrpnb210, true);
+                    clearClass.ClearAllFields(bi.fldGrpnw312, true);
                     //bi.fldGrpnb210.setVisibility(View.VISIBLE);
                 } else {
                     clearClass.ClearAllFields(bi.fldGrpnb210, false);
+                    clearClass.ClearAllFields(bi.fldGrpnw312, false);
                     /*bi.fldGrpnb210.setVisibility(View.GONE);
                     bi.nw311.clearCheck();
                     bi.nw31196x.setText(null);
@@ -181,8 +185,10 @@ public class SectionB2Activity extends Activity {
                 if (bi.nw315a.isChecked()) {
                     //bi.fldGrpnw318.setVisibility(View.VISIBLE);
                     clearClass.ClearAllFields(bi.fldGrpnw318, true);
+                    clearClass.ClearAllFields(bi.fldGrpnw317, true);
                 } else {
                     clearClass.ClearAllFields(bi.fldGrpnw318, false);
+                    clearClass.ClearAllFields(bi.fldGrpnw317, false);
                     /*bi.fldGrpnw318.setVisibility(View.GONE);
 
                     bi.nw316.clearCheck();
@@ -223,8 +229,10 @@ public class SectionB2Activity extends Activity {
                 if (bi.nw320a.isChecked()) {
                     //bi.fldGrpnw323.setVisibility(View.VISIBLE);
                     clearClass.ClearAllFields(bi.fldGrpnw323, true);
+                    clearClass.ClearAllFields(bi.fldGrpnw322, true);
                 } else {
                     clearClass.ClearAllFields(bi.fldGrpnw323, false);
+                    clearClass.ClearAllFields(bi.fldGrpnw322, false);
 
 /*                    bi.fldGrpnw323.setVisibility(View.GONE);
 

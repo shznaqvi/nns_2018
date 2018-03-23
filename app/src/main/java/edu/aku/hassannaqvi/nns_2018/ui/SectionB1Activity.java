@@ -136,6 +136,12 @@ public class SectionB1Activity extends Activity {
                     bi.nw21303.setEnabled(true);
                     bi.nw21398.setEnabled(true);
                     bi.nw21399.setEnabled(true);
+
+                    clearClass.ClearAllFields(bi.fldGrnc21301, true);
+                    clearClass.ClearAllFields(bi.fldGrnc21302, true);
+                    clearClass.ClearAllFields(bi.fldGrnc21303, true);
+                    clearClass.ClearAllFields(bi.fldGrnc21398, true);
+                    clearClass.ClearAllFields(bi.fldGrnc21399, true);
                 } else {
                     //clearClass.ClearAllFields(bi.fldGrpnw204, false);
 
@@ -173,6 +179,12 @@ public class SectionB1Activity extends Activity {
                     bi.nw21303.setEnabled(false);
                     bi.nw21398.setEnabled(false);
                     bi.nw21399.setEnabled(false);
+
+                    clearClass.ClearAllFields(bi.fldGrnc21301, false);
+                    clearClass.ClearAllFields(bi.fldGrnc21302, false);
+                    clearClass.ClearAllFields(bi.fldGrnc21303, false);
+                    clearClass.ClearAllFields(bi.fldGrnc21398, false);
+                    clearClass.ClearAllFields(bi.fldGrnc21399, false);
                 }
             }
         });
@@ -494,6 +506,11 @@ public class SectionB1Activity extends Activity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.nw212a) {
                     //clearClass.ClearAllFields(bi.fldGrpnb107, true);
+                    clearClass.ClearAllFields(bi.fldGrnc21301, true);
+                    clearClass.ClearAllFields(bi.fldGrnc21302, true);
+                    clearClass.ClearAllFields(bi.fldGrnc21303, true);
+                    clearClass.ClearAllFields(bi.fldGrnc21398, true);
+                    clearClass.ClearAllFields(bi.fldGrnc21399, true);
 
                     bi.nw21301.setEnabled(true);
                     bi.nw21302.setEnabled(true);
@@ -502,11 +519,17 @@ public class SectionB1Activity extends Activity {
                     bi.nw21399.setEnabled(true);
                 } else {
                     //clearClass.ClearAllFields(bi.fldGrpnb107, false);
+                    clearClass.ClearAllFields(bi.fldGrnc21301, false);
+                    clearClass.ClearAllFields(bi.fldGrnc21302, false);
+                    clearClass.ClearAllFields(bi.fldGrnc21303, false);
+                    clearClass.ClearAllFields(bi.fldGrnc21398, false);
+                    clearClass.ClearAllFields(bi.fldGrnc21399, false);
                     bi.nw21301.clearCheck();
                     bi.nw21302.clearCheck();
                     bi.nw21303.clearCheck();
                     bi.nw21398.clearCheck();
                     bi.nw21399.clearCheck();
+
                     bi.nw21301.setEnabled(false);
                     bi.nw21302.setEnabled(false);
                     bi.nw21303.setEnabled(false);
@@ -521,7 +544,7 @@ public class SectionB1Activity extends Activity {
         bi.nw21301.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.nw21301a || bi.nw21302b.isChecked()) {
+                if (checkedId == R.id.nw21301a) {
                     bi.nw21303.clearCheck();
                     bi.nw21398.clearCheck();
                     bi.nw21399.clearCheck();
@@ -532,7 +555,7 @@ public class SectionB1Activity extends Activity {
                     bi.nw21398b.setEnabled(false);
                     bi.nw21399a.setEnabled(false);
                     bi.nw21399b.setEnabled(false);
-                } else if (checkedId == R.id.nw21301b && bi.nw21302b.isChecked()) {
+                } else {
 
                     bi.nw21303a.setEnabled(true);
                     bi.nw21303b.setEnabled(true);
@@ -549,7 +572,7 @@ public class SectionB1Activity extends Activity {
         bi.nw21302.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.nw21302a || bi.nw21301b.isChecked()) {
+                if (checkedId == R.id.nw21302a) {
                     bi.nw21303.clearCheck();
                     bi.nw21398.clearCheck();
                     bi.nw21399.clearCheck();
@@ -560,8 +583,7 @@ public class SectionB1Activity extends Activity {
                     bi.nw21398b.setEnabled(false);
                     bi.nw21399a.setEnabled(false);
                     bi.nw21399b.setEnabled(false);
-                } else if (checkedId == R.id.nw21302b && bi.nw21301b.isChecked()) {
-
+                } else {
 
                     bi.nw21303a.setEnabled(true);
                     bi.nw21303b.setEnabled(true);

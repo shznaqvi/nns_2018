@@ -306,6 +306,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/fldGrnw219alive"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
@@ -401,6 +402,7 @@
 
 
                         <LinearLayout
+                            android:id="@+id/fldGrnw219death"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">

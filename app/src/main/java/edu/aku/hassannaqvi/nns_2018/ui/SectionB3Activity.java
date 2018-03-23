@@ -41,8 +41,10 @@ public class SectionB3Activity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (i == R.id.nw32798) {
                     clearClass.ClearAllFields(binding.fldGrnw328, false);
+                    clearClass.ClearAllFields(binding.fldGrpnw329, false);
                 } else {
                     clearClass.ClearAllFields(binding.fldGrnw328, true);
+                    clearClass.ClearAllFields(binding.fldGrpnw329, true);
                 }
             }
         });

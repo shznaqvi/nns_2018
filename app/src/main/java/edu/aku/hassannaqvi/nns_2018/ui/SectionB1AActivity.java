@@ -106,6 +106,9 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 if (bi.nw217a.isChecked()) {
                     clearClass.ClearAllFields(bi.fldGrpnw219, true);
                     clearClass.ClearAllFields(bi.fldGrpnw220, false);
+
+                    clearClass.ClearAllFields(bi.fldGrnw219alive, true);
+                    clearClass.ClearAllFields(bi.fldGrnw219death, false);
                     //bi.fldGrpnw219.setVisibility(View.VISIBLE);
                     /*bi.fldGrpnw220.setVisibility(View.GONE);
                     bi.nw220d.setText(null);
@@ -115,6 +118,9 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 } else {
                     clearClass.ClearAllFields(bi.fldGrpnw219, false);
                     clearClass.ClearAllFields(bi.fldGrpnw220, true);
+
+                    clearClass.ClearAllFields(bi.fldGrnw219alive, false);
+                    clearClass.ClearAllFields(bi.fldGrnw219death, true);
                     /*bi.fldGrpnw219.setVisibility(View.GONE);
                     bi.fldGrpnw220.setVisibility(View.VISIBLE);
                     bi.nw219d.setText(null);
@@ -129,11 +135,13 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (bi.nw216a.isChecked() || bi.nw216b.isChecked() || bi.nw216e.isChecked()) {
                     clearClass.ClearAllFields(bi.fldGrpnb1a03, false);
-
+                    clearClass.ClearAllFields(bi.fldGrnw219alive, false);
+                    clearClass.ClearAllFields(bi.fldGrnw219death, false);
 
                 } else {
                     clearClass.ClearAllFields(bi.fldGrpnb1a03, true);
-
+                    clearClass.ClearAllFields(bi.fldGrnw219alive, true);
+                    clearClass.ClearAllFields(bi.fldGrnw219death, true);
                 }
 
             }
@@ -255,6 +263,10 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                     return false;
                 }
 
+                if (!validatorClass.RangeTextBox(this, bi.nw219y, 0, 4, getString(R.string.nw219), " years")) {
+                    return false;
+                }
+
                 if (!validatorClass.RangeTextBox(this, bi.nw219m, 0, 11, getString(R.string.nw219), " months")) {
                     return false;
                 }
@@ -285,6 +297,10 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 }
 
                 if (!validatorClass.EmptyTextBox(this, bi.nw220d, getString(R.string.nw220) + " - " + getString(R.string.day))) {
+                    return false;
+                }
+
+                if (!validatorClass.RangeTextBox(this, bi.nw220y, 0, 4, getString(R.string.nw220), " years")) {
                     return false;
                 }
 
