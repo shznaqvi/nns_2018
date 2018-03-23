@@ -87,12 +87,26 @@ public class SectionB4Activity extends Activity implements TextWatcher, RadioGro
                     binding.nw40698.setChecked(false);*/
 
                     clearClass.ClearAllFields(binding.fldGrpnw406, false);
+                    binding.nw406cx.setText(null);
+                    binding.nw406rx.setText(null);
 
                 } else {
 //                    binding.fldGrpnw406.setVisibility(View.VISIBLE);
 
                     clearClass.ClearAllFields(binding.fldGrpnw406, true);
+                    binding.nw406cx.setText(null);
+                    binding.nw406rx.setText(null);
+
+                    binding.nw406cx.setEnabled(false);
+                    binding.nw406rx.setEnabled(false);
                 }
+            }
+        });
+        binding.nw406.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                binding.nw406cx.setText(null);
+                binding.nw406rx.setText(null);
             }
         });
         binding.nb411.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -246,12 +260,18 @@ public class SectionB4Activity extends Activity implements TextWatcher, RadioGro
             // nw406
 
             if (!binding.nw40698.isChecked()) {
-                if (!validatorClass.EmptyTextBox(this, binding.nw406c, getString(R.string.nw406) + " - " + getString(R.string.nw406c))) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nw406, binding.nw406c, getString(R.string.nw406))) {
                     return false;
                 }
-
-                if (!validatorClass.EmptyTextBox(this, binding.nw406r, getString(R.string.nw406) + " - " + getString(R.string.nw406r))) {
-                    return false;
+                if (binding.nw406c.isChecked()) {
+                    if (!validatorClass.EmptyTextBox(this, binding.nw406cx, getString(R.string.nw406) + " - " + getString(R.string.nw406c))) {
+                        return false;
+                    }
+                }
+                if (binding.nw406r.isChecked()) {
+                    if (!validatorClass.EmptyTextBox(this, binding.nw406rx, getString(R.string.nw406) + " - " + getString(R.string.nw406r))) {
+                        return false;
+                    }
                 }
 
             }
@@ -390,8 +410,8 @@ public class SectionB4Activity extends Activity implements TextWatcher, RadioGro
                 : binding.nw40598.isChecked() ? "98"
                 : "0");
 //        nw406
-        sB4.put("nw406c", binding.nw406c.getText().toString());
-        sB4.put("nw406r", binding.nw406r.getText().toString());
+        sB4.put("nw406c", binding.nw406cx.getText().toString());
+        sB4.put("nw406r", binding.nw406rx.getText().toString());
 
         sB4.put("nw40698", binding.nw40698.isChecked() ? "1" : "0");
 

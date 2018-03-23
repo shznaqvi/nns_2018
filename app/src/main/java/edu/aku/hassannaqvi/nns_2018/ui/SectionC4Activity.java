@@ -233,6 +233,26 @@ public class SectionC4Activity extends Activity implements TextWatcher, RadioGro
                 }
             }
         });
+        binding.nc415.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.nc415a) {
+                    clearClass.ClearAllFields(binding.fldGrpnc416, true);
+                } else {
+                    clearClass.ClearAllFields(binding.fldGrpnc416, false);
+                }
+            }
+        });
+        binding.nc418.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.nc418a) {
+                    clearClass.ClearAllFields(binding.fldGrpnc419, true);
+                } else {
+                    clearClass.ClearAllFields(binding.fldGrpnc419, false);
+                }
+            }
+        });
 
 
         //Get Intent

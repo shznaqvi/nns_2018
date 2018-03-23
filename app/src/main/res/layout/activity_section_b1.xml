@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="edu.aku.hassannaqvi.src_preg.ui.SectionB1Activity">
+    tools:context="edu.aku.hassannaqvi.nns_2018.ui.SectionB1Activity">
 
     <data>
 
@@ -387,33 +387,41 @@
                                 android:inputType="number"
                                 android:maxLength="2" />
 
-                            <!--210-->
-                            <TextView
+                            <LinearLayout
+                                android:id="@+id/fldGrpnw210"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="16dp"
-                                android:background="@color/colorPrimary"
-                                android:text="@string/nw210"
-                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:textColor="@android:color/white" />
+                                android:orientation="vertical">
 
-                            <TextView
-                                android:id="@+id/curAge1"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@color/pink_100"
-                                android:padding="2dp"
-                                android:text=""
-                                android:textColor="@color/colorPrimaryDark"
-                                android:textSize="18sp" />
+                                <!--210-->
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="16dp"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/nw210"
+                                    android:textAppearance="?android:attr/textAppearanceLarge"
+                                    android:textColor="@android:color/white" />
 
-                            <EditText
-                                android:id="@+id/nw210"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="@string/nw210"
-                                android:inputType="number"
-                                android:maxLength="2" />
+                                <TextView
+                                    android:id="@+id/curAge1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@color/pink_100"
+                                    android:padding="2dp"
+                                    android:text=""
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textSize="18sp" />
+
+                                <EditText
+                                    android:id="@+id/nw210"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="@string/nw210"
+                                    android:inputType="number"
+                                    android:maxLength="2" />
+
+                            </LinearLayout>
 
 
                             <!--211-->
@@ -736,7 +744,16 @@
                 android:layout_gravity="end"
                 android:layout_marginTop="80dp"
                 android:orientation="horizontal">
-
+                <Button
+                    android:id="@+id/btn_Continue"
+                    style="@style/buttons"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#1ed61e"
+                    android:onClick="@{() -> callback.BtnContinue()}"
+                    android:text="@string/nextSection"
+                    android:textColor="@color/white" />
                 <Button
                     android:id="@+id/btn_End"
                     style="@style/buttons"
@@ -748,16 +765,6 @@
                     android:text="@string/end_interview"
                     android:textColor="@color/white" />
 
-                <Button
-                    android:id="@+id/btn_Continue"
-                    style="@style/buttons"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#1ed61e"
-                    android:onClick="@{() -> callback.BtnContinue()}"
-                    android:text="@string/nextSection"
-                    android:textColor="@color/white" />
 
             </LinearLayout>
 

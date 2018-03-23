@@ -46,7 +46,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/istatusa" />
+                    android:text="@string/istatusha" />
 
                 <RadioButton
                     android:id="@+id/istatusb"
@@ -54,7 +54,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/istatusb" />
+                    android:text="@string/istatushb" />
 
                 <RadioButton
                     android:id="@+id/istatusc"
@@ -62,7 +62,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/istatusc" />
+                    android:text="@string/istatushc" />
 
                 <RadioButton
                     android:id="@+id/istatusd"
@@ -70,7 +70,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/istatusd" />
+                    android:text="@string/istatushd" />
 
                 <RadioButton
                     android:id="@+id/istatuse"
@@ -78,7 +78,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/istatuse" />
+                    android:text="@string/istatushe" />
 
                 <RadioButton
                     android:id="@+id/istatusf"
@@ -86,7 +86,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/istatusf" />
+                    android:text="@string/istatushf" />
 
                 <RadioButton
                     android:id="@+id/istatus96"

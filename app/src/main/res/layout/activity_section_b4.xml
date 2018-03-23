@@ -584,34 +584,55 @@
                     android:layout_marginTop="5dp"
                     android:text="@string/nw406info" />
 
-                <EditText
-                    android:id="@+id/nw406c"
+                <RadioGroup
+                    android:id="@+id/nw406"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:enabled='@{nw40698.checked ? false : true }'
-                    android:hint="@string/kg"
-                    android:inputType="numberDecimal"
-                    android:maxLength="4"
-                    android:text='@{nw40698.checked ? "" : nw406c.getText.toString}' />
+                    android:orientation="vertical">
 
+                    <RadioButton
+                        android:id="@+id/nw406c"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nw406c" />
 
-                <EditText
-                    android:id="@+id/nw406r"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:enabled='@{nw40698.checked ? false : true}'
-                    android:hint="@string/kg"
-                    android:inputType="numberDecimal"
-                    android:maxLength="4"
-                    android:text='@{nw40698.checked ? "" : nw406r.getText.toString}' />
+                    <EditText
+                        android:id="@+id/nw406cx"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:layout_marginTop="1dp"
+                        android:enabled='@{nw406c.checked ? true : false }'
+                        android:hint="@string/kg"
+                        android:inputType="numberDecimal"
+                        android:maxLength="4"
+                        android:text='@{nw40698.checked ? "" : nw406cx.getText.toString}' />
 
-                <CheckBox
-                    android:id="@+id/nw40698"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/dkn" />
+                    <RadioButton
+                        android:id="@+id/nw406r"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nw406r" />
+
+                    <EditText
+                        android:id="@+id/nw406rx"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:layout_marginTop="1dp"
+                        android:enabled='@{nw406r.checked ? true : false}'
+                        android:hint="@string/kg"
+                        android:inputType="numberDecimal"
+                        android:maxLength="4"
+                        android:text='@{nw40698.checked ? "" : nw406rx.getText.toString}' />
+
+                    <RadioButton
+                        android:id="@+id/nw40698"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dkn" />
+
+                </RadioGroup>
 
             </LinearLayout>
 
@@ -1150,7 +1171,16 @@
                 android:layout_gravity="end"
                 android:layout_marginTop="80dp"
                 android:orientation="horizontal">
-
+                <Button
+                    android:id="@+id/btn_Continue"
+                    style="@style/buttons"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#1ed61e"
+                    android:onClick="@{() -> callback.BtnContinue()}"
+                    android:text="@string/nextSection"
+                    android:textColor="@color/white" />
                 <Button
                     android:id="@+id/btn_End"
                     style="@style/buttons"
@@ -1162,16 +1192,6 @@
                     android:text="@string/end_interview"
                     android:textColor="@color/white" />
 
-                <Button
-                    android:id="@+id/btn_Continue"
-                    style="@style/buttons"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#1ed61e"
-                    android:onClick="@{() -> callback.BtnContinue()}"
-                    android:text="@string/nextSection"
-                    android:textColor="@color/white" />
 
             </LinearLayout>
 

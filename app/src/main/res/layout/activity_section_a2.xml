@@ -10,6 +10,10 @@
         <variable
             name="callback"
             type="edu.aku.hassannaqvi.nns_2018.ui.SectionA2Activity" />
+
+        <variable
+            name="name"
+            type="edu.aku.hassannaqvi.nns_2018.core.MainApp.SetNameClass" />
     </data>
 
     <ScrollView
@@ -201,6 +205,24 @@
                         android:text="@string/na203m" />
 
                     <RadioButton
+                        android:id="@+id/na203n"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:text="@string/na203n" />
+
+                    <RadioButton
+                        android:id="@+id/na203o"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:text="@string/na203o" />
+
+                    <RadioButton
                         android:id="@+id/na20398"
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
@@ -328,7 +350,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorPrimary"
-                    android:text="@string/nh2dob"
+                    android:text='@string/nh2dob'
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
 

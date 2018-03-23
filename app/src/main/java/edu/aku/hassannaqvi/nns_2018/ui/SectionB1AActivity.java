@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Timer;
 
 import butterknife.BindViews;
+import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
@@ -48,6 +49,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         //setContentView(R.layout.activity_section_b1_a);
 
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_b1_a);
+        ButterKnife.bind(this);
         db = new DatabaseHelper(this);
         bi.setCallback(this);
         setupViews();
@@ -139,18 +141,11 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 ValidateForm();
                 if (bi.nw216a.isChecked() || bi.nw216b.isChecked() || bi.nw216e.isChecked()) {
                     clearClass.ClearAllFields(bi.fldGrpnb1a03, false);
-                    /*bi.fldGrpnb1a03.setVisibility(View.GONE);
-                    bi.nw217.clearCheck();
-                    bi.nw219d.setText(null);
-                    bi.nw219m.setText(null);
-                    bi.nw219y.setText(null);
-                    bi.nw220d.setText(null);
-                    bi.nw220m.setText(null);
-                    bi.nw220y.setText(null);*/
+
 
                 } else {
                     clearClass.ClearAllFields(bi.fldGrpnb1a03, true);
-                    //bi.fldGrpnb1a03.setVisibility(View.VISIBLE);
+
                 }
 
             }

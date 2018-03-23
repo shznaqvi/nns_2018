@@ -56,6 +56,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/fldGrpyear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -68,7 +69,6 @@
                         android:background="@color/pink_100"
                         android:gravity="center"
                         android:text="@string/year"
-
                         android:textColor="@color/colorPrimaryDark" />
 
 
@@ -2451,16 +2451,6 @@
                 android:layout_marginTop="80dp"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/btn_End"
-                    style="@style/buttons"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/red"
-                    android:onClick="@{() -> callback.BtnEnd()}"
-                    android:text="@string/end_interview"
-                    android:textColor="@color/white" />
 
                 <Button
                     android:id="@+id/btn_Continue"
@@ -2472,6 +2462,17 @@
                     android:onClick="@{() -> callback.BtnContinue()}"
                     android:text="@string/nextSection"
                     android:textColor="@color/white" />
+                <Button
+                    android:id="@+id/btn_End"
+                    style="@style/buttons"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/red"
+                    android:onClick="@{() -> callback.BtnEnd()}"
+                    android:text="@string/end_interview"
+                    android:textColor="@color/white" />
+
 
             </LinearLayout>
 

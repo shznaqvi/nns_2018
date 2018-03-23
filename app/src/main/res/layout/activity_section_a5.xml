@@ -1229,6 +1229,11 @@
                 android:text="@string/na8heading"
                 android:textSize="40sp" />
 
+            <TextView
+                style="@style/sub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/na8info" />
 
             <!--nh701-->
             <TextView
@@ -1239,6 +1244,7 @@
                 android:text="@string/nh701"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
+
 
             <RadioGroup
                 android:id="@+id/nh701"
@@ -1301,7 +1307,16 @@
                 android:layout_gravity="end"
                 android:layout_marginTop="80dp"
                 android:orientation="horizontal">
-
+                <Button
+                    android:id="@+id/btn_Continue"
+                    style="@style/buttons"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#1ed61e"
+                    android:onClick="@{() -> callback.BtnContinue()}"
+                    android:text="@string/nextSection"
+                    android:textColor="@color/white" />
                 <Button
                     android:id="@+id/btn_End"
                     style="@style/buttons"
@@ -1313,16 +1328,6 @@
                     android:text="@string/end_interview"
                     android:textColor="@color/white" />
 
-                <Button
-                    android:id="@+id/btn_Continue"
-                    style="@style/buttons"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#1ed61e"
-                    android:onClick="@{() -> callback.BtnContinue()}"
-                    android:text="@string/nextSection"
-                    android:textColor="@color/white" />
 
             </LinearLayout>
 

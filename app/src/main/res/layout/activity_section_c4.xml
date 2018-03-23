@@ -435,6 +435,7 @@
                             android:layout_weight="1"
                             android:text="@string/nc404g" />
 
+
                         <CheckBox
                             android:id="@+id/nc404h"
                             android:layout_width="match_parent"
@@ -450,6 +451,7 @@
                             android:text="@string/nc404sub2"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@color/colorPrimaryDark" />
+
                         <CheckBox
                             android:id="@+id/nc404i"
                             android:layout_width="match_parent"
@@ -1617,15 +1619,15 @@
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
                     android:text="@string/no" />
-
-                <RadioButton
-                    android:id="@+id/nc41898"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:text="@string/dkn" />
+                <!--
+                                <RadioButton
+                                    android:id="@+id/nc41898"
+                                    style="@style/radiobutton"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/dkn" /> -->
 
             </RadioGroup>
 
@@ -1746,16 +1748,6 @@
                 android:layout_marginTop="80dp"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/btn_End"
-                    style="@style/buttons"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/red"
-                    android:onClick="@{() -> callback.BtnEnd()}"
-                    android:text="@string/end_interview"
-                    android:textColor="@color/white" />
 
                 <Button
                     android:id="@+id/btn_Continue"
@@ -1766,6 +1758,17 @@
                     android:background="#1ed61e"
                     android:onClick="@{() -> callback.BtnContinue()}"
                     android:text="@string/nextSection"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/btn_End"
+                    style="@style/buttons"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/red"
+                    android:onClick="@{() -> callback.BtnEnd()}"
+                    android:text="@string/end_interview"
                     android:textColor="@color/white" />
 
             </LinearLayout>

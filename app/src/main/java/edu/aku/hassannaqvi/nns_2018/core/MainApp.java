@@ -27,6 +27,7 @@ import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.NutritionContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract;
@@ -75,6 +76,7 @@ public class MainApp extends Application {
     public static Boolean admin = false;
     public static FormsContract fc;
     public static MWRAContract mc;
+    public static NutritionContract nc;
     public static OutcomeContract oc;
     public static ChildContract cc;
     public static SerialContract sc;
@@ -112,6 +114,11 @@ public class MainApp extends Application {
     public static String lineNo = "";
     public static int status = 0;
     public static int mwraPosition = 0;
+
+    public static int nuCount = 1;
+
+
+
     protected static LocationManager locationManager;
 
     public static int monthsBetweenDates(Date startDate, Date endDate) {
@@ -473,6 +480,18 @@ public class MainApp extends Application {
             DSSId = id;
         }
 
+    }
+
+    public static class SetNameClass {
+        String check;
+
+        public SetNameClass(String check) {
+            this.check = check;
+        }
+
+        public String getName() {
+            return check;
+        }
     }
 
     public class GPSLocationListener implements LocationListener {

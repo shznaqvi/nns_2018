@@ -322,6 +322,16 @@
                     android:orientation="horizontal">
 
                     <Button
+                        android:id="@+id/btn_AddMore"
+                        style="@style/buttons"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/colorPrimary"
+                        android:onClick="@{() -> callback.BtnAddMore()}"
+                        android:text="@string/addMember"
+                        android:textColor="@color/white" />
+                    <Button
                         android:id="@+id/btn_Continue"
                         style="@style/buttons"
                         android:layout_width="0dp"
@@ -343,16 +353,6 @@
                         android:text="@string/end_interview"
                         android:textColor="@color/white" />
 
-                    <Button
-                        android:id="@+id/btn_AddMore"
-                        style="@style/buttons"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@color/colorPrimary"
-                        android:onClick="@{() -> callback.BtnAddMore()}"
-                        android:text="@string/addMember"
-                        android:textColor="@color/white" />
 
                 </LinearLayout>
 

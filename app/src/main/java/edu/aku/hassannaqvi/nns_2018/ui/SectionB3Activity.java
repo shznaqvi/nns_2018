@@ -72,6 +72,7 @@ public class SectionB3Activity extends AppCompatActivity implements TextWatcher,
                 formValidation();
                 if (i == R.id.nw331b) {
                     clearClass.ClearAllFields(binding.fldGrnw332, false);
+
 //                    binding.nw332.clearCheck();
                 } else {
                     clearClass.ClearAllFields(binding.fldGrnw332, true);
