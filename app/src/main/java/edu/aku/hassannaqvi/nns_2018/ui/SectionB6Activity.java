@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -39,6 +40,173 @@ public class SectionB6Activity extends AppCompatActivity {
         bi.setCallback(this);
 
         settingTimeToEat();
+        setListners();
+    }
+
+    private void setListners() {
+        bi.nw501none.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    bi.nw501a.setChecked(false);
+                    bi.nw501b.setChecked(false);
+                    bi.nw501c.setChecked(false);
+                    bi.nw501d.setChecked(false);
+                    bi.nw501e.setChecked(false);
+                    bi.nw501f.setChecked(false);
+                    bi.nw501g.setChecked(false);
+                    bi.nw501h.setChecked(false);
+                    bi.nw501i.setChecked(false);
+                    bi.nw501j.setChecked(false);
+
+                    bi.nw501a.setEnabled(false);
+                    bi.nw501b.setEnabled(false);
+                    bi.nw501c.setEnabled(false);
+                    bi.nw501d.setEnabled(false);
+                    bi.nw501e.setEnabled(false);
+                    bi.nw501f.setEnabled(false);
+                    bi.nw501g.setEnabled(false);
+                    bi.nw501h.setEnabled(false);
+                    bi.nw501i.setEnabled(false);
+                    bi.nw501j.setEnabled(false);
+                } else {
+                    bi.nw501a.setEnabled(true);
+                    bi.nw501b.setEnabled(true);
+                    bi.nw501c.setEnabled(true);
+                    bi.nw501d.setEnabled(true);
+                    bi.nw501e.setEnabled(true);
+                    bi.nw501f.setEnabled(true);
+                    bi.nw501g.setEnabled(true);
+                    bi.nw501h.setEnabled(true);
+                    bi.nw501i.setEnabled(true);
+                    bi.nw501j.setEnabled(true);
+
+                }
+
+            }
+        });
+
+
+        bi.nw501a.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    bi.nw501none.setChecked(false);
+                    bi.nw501none.setEnabled(false);
+                } else {
+                    bi.nw501none.setEnabled(true);
+                }
+            }
+        });
+
+        bi.nw501b.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    bi.nw501none.setChecked(false);
+                    bi.nw501none.setEnabled(false);
+                } else {
+                    bi.nw501none.setEnabled(true);
+                }
+            }
+        });
+
+        bi.nw501c.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    bi.nw501none.setChecked(false);
+                    bi.nw501none.setEnabled(false);
+                } else {
+                    bi.nw501none.setEnabled(true);
+                }
+            }
+        });
+
+        bi.nw501d.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    bi.nw501none.setChecked(false);
+                    bi.nw501none.setEnabled(false);
+                } else {
+                    bi.nw501none.setEnabled(true);
+                }
+            }
+        });
+
+        bi.nw501e.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    bi.nw501none.setChecked(false);
+                    bi.nw501none.setEnabled(false);
+                } else {
+                    bi.nw501none.setEnabled(true);
+                }
+            }
+        });
+
+        bi.nw501f.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    bi.nw501none.setChecked(false);
+                    bi.nw501none.setEnabled(false);
+                } else {
+                    bi.nw501none.setEnabled(true);
+                }
+            }
+        });
+
+        bi.nw501g.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    bi.nw501none.setChecked(false);
+                    bi.nw501none.setEnabled(false);
+                } else {
+                    bi.nw501none.setEnabled(true);
+                }
+            }
+        });
+
+        bi.nw501h.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    bi.nw501none.setChecked(false);
+                    bi.nw501none.setEnabled(false);
+                } else {
+                    bi.nw501none.setEnabled(true);
+                }
+            }
+        });
+
+        bi.nw501i.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    bi.nw501none.setChecked(false);
+                    bi.nw501none.setEnabled(false);
+                } else {
+                    bi.nw501none.setEnabled(true);
+                }
+            }
+        });
+
+        bi.nw501j.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    bi.nw501none.setChecked(false);
+                    bi.nw501none.setEnabled(false);
+                } else {
+                    bi.nw501none.setEnabled(true);
+                }
+            }
+        });
+
     }
 
     private void settingTimeToEat() {
