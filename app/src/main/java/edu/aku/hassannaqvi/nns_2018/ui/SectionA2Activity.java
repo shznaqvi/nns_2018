@@ -144,7 +144,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
                         //  binding.nh2edua.setEnabled(false);
                         binding.fldGrpnh2edu.setVisibility(View.VISIBLE);
                         binding.fldGrpnh2ms.setVisibility(View.GONE);
-                        binding.fldGrpnh2occ.setVisibility(View.GONE);
+                        binding.fldGrpnh2occ.setVisibility(View.VISIBLE);
 
                         binding.fldGrpfid.setVisibility(View.GONE);
                         binding.fldGrpmid.setVisibility(View.GONE);
@@ -153,9 +153,9 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
 
                         binding.nh2edu.clearCheck();
                         binding.nh2ms.clearCheck();
-                        binding.nh2occ.clearCheck();
+                        //binding.nh2occ.clearCheck();
 
-                        binding.nh2occa.setChecked(true);
+                        // binding.nh2occa.setChecked(true);
                         binding.nh2mse.setChecked(true);
 
                         binding.nh2edua.setEnabled(true);
@@ -168,6 +168,15 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
                         binding.nh2edug.setEnabled(false);
                         binding.nh2eduh.setEnabled(false);
                         binding.nh2edui.setEnabled(false);
+
+                        binding.nh2occc.setChecked(false);
+                        binding.nh2occd.setChecked(false);
+                        binding.nh2occe.setChecked(false);
+                        binding.nh2occf.setChecked(false);
+                        binding.nh2occh.setChecked(false);
+                        binding.nh2occi.setChecked(false);
+                        binding.nh2occj.setChecked(false);
+
                     } else if (Age > 12) {
                         binding.fldGrpnh2edu.setVisibility(View.VISIBLE);
                         binding.fldGrpnh2ms.setVisibility(View.VISIBLE);

@@ -198,11 +198,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
+                    android:enabled='@{nh7a0496.checked ? true : false}'
                     android:hint="@string/other"
-                    android:text='@{nh7a0496.checked ? nh7a0496x.getText.toString : ""}'
-                    android:visibility='@{nh7a0496.checked ? View.VISIBLE : View.GONE}' />
-
-
+                    android:text='@{nh7a0496.checked ? nh7a0496x.getText.toString : ""}' />
             </LinearLayout>
 
 

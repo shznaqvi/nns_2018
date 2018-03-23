@@ -483,6 +483,68 @@ public class SectionB1Activity extends Activity {
                 }
             }
         });
+
+
+        bi.nw21301.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.nw21301a) {
+                    bi.nw21303.clearCheck();
+                    bi.nw21398.clearCheck();
+                    bi.nw21399.clearCheck();
+
+                    bi.nw21303a.setEnabled(false);
+                    bi.nw21303b.setEnabled(false);
+                    bi.nw21398a.setEnabled(false);
+                    bi.nw21398b.setEnabled(false);
+                    bi.nw21399a.setEnabled(false);
+                    bi.nw21399b.setEnabled(false);
+                } else {
+
+
+                    bi.nw21303a.setEnabled(true);
+                    bi.nw21303b.setEnabled(true);
+
+                    bi.nw21398a.setEnabled(true);
+                    bi.nw21398b.setEnabled(true);
+
+                    bi.nw21399a.setEnabled(true);
+                    bi.nw21399b.setEnabled(true);
+                }
+            }
+        });
+
+        bi.nw21302.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.nw21302a) {
+                    bi.nw21303.clearCheck();
+                    bi.nw21398.clearCheck();
+                    bi.nw21399.clearCheck();
+
+                    bi.nw21303a.setEnabled(false);
+                    bi.nw21303b.setEnabled(false);
+                    bi.nw21398a.setEnabled(false);
+                    bi.nw21398b.setEnabled(false);
+                    bi.nw21399a.setEnabled(false);
+                    bi.nw21399b.setEnabled(false);
+                } else {
+
+
+                    bi.nw21303a.setEnabled(true);
+                    bi.nw21303b.setEnabled(true);
+
+                    bi.nw21398a.setEnabled(true);
+                    bi.nw21398b.setEnabled(true);
+
+                    bi.nw21399a.setEnabled(true);
+                    bi.nw21399b.setEnabled(true);
+                }
+            }
+        });
+
+
+
         bi.nw21303.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -782,7 +844,7 @@ public class SectionB1Activity extends Activity {
                                         return false;
                                     }*/
 
-                                    if (!bi.nw21398a.isChecked() || !bi.nw21399a.isChecked() || !bi.nw21303a.isChecked()) {
+                                    if (!bi.nw21398a.isChecked() && !bi.nw21399a.isChecked() && !bi.nw21303a.isChecked()) {
                                         if (!validatorClass.EmptyRadioButton(this, bi.nw21301, bi.nw21301a, getString(R.string.nw21301))) {
                                             return false;
                                         }
@@ -791,7 +853,7 @@ public class SectionB1Activity extends Activity {
                                             return false;
                                         }
 
-                                        if (!validatorClass.EmptyRadioButton(this, bi.nw21303, bi.nw21303a, getString(R.string.nw21303))) {
+                                     /*   if (!validatorClass.EmptyRadioButton(this, bi.nw21303, bi.nw21303a, getString(R.string.nw21303))) {
                                             return false;
                                         }
 
@@ -801,7 +863,7 @@ public class SectionB1Activity extends Activity {
 
                                         if (!validatorClass.EmptyRadioButton(this, bi.nw21399, bi.nw21399a, getString(R.string.nr))) {
                                             return false;
-                                        }
+                                        }*/
                                     }
                                     /*else if(bi.nw21398a.isChecked()){
                                         if (!validatorClass.EmptyRadioButton(this, bi.nw21398, bi.nw21398a, getString(R.string.dkn))) {
@@ -883,19 +945,15 @@ public class SectionB1Activity extends Activity {
         sB1.put("nw212", bi.nw212a.isChecked() ? "1" : bi.nw212b.isChecked() ? "2" : "0");
 
         //        nw21301
-        sB1.put("nw21301", bi.nw21301a.isChecked() ? "1" : bi.nw21301b.isChecked() ? "2" : "0");
+        sB1.put("nw21301", bi.nw21301a.isChecked() ? "1" : "2");
         //        nw21302
-        sB1.put("nw21302", bi.nw21302a.isChecked() ? "1"
-                : bi.nw21302b.isChecked() ? "2" : "0");
+        sB1.put("nw21302", bi.nw21302a.isChecked() ? "1" : "2");
         //        nw21303
-        sB1.put("nw21303", bi.nw21303a.isChecked() ? "1"
-                : bi.nw21303b.isChecked() ? "2" : "0");
+        sB1.put("nw21303", bi.nw21303a.isChecked() ? "1" : "2");
         //        nw21398
-        sB1.put("nw21398", bi.nw21398a.isChecked() ? "1"
-                : bi.nw21398b.isChecked() ? "2" : "0");
+        sB1.put("nw21398", bi.nw21398a.isChecked() ? "1" : "2");
         //        nw21399
-        sB1.put("nw21399", bi.nw21399a.isChecked() ? "1"
-                : bi.nw21399b.isChecked() ? "2" : "0");
+        sB1.put("nw21399", bi.nw21399a.isChecked() ? "1" : "2");
 
 
         if (!bi.nw208.getText().toString().isEmpty()) {
