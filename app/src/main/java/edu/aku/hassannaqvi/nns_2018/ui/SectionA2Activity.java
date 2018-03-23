@@ -108,7 +108,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if (!binding.nh2agey.getText().toString().isEmpty() && binding.nh2doby.getText().toString().equals("9998")) {
+                if (!binding.nh2agey.getText().toString().isEmpty()) {
 
                     /*if (Integer.valueOf(binding.nh2agey.getText().toString()) >= 5) {
                         *//*binding.fldGrpmonths.setVisibility(View.GONE);
@@ -121,7 +121,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
                     }*//*
 */
                     Age = Integer.valueOf(binding.nh2agey.getText().toString());
-                    if (Age <= 5) {
+                    if (Age < 5) {
                         binding.fldGrpnh2edu.setVisibility(View.GONE);
                         binding.fldGrpnh2ms.setVisibility(View.GONE);
                         binding.fldGrpnh2occ.setVisibility(View.GONE);
