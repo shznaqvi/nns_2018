@@ -42,6 +42,8 @@ public class SectionA1Activity extends AppCompatActivity {
 
     private static final String TAG = SectionA1Activity.class.getName();
     static int progress = 0;
+    static Boolean reBackFlag = true;
+    static Boolean reBackChildFlag = true;
     ActivitySectionA1Binding binding;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     DatabaseHelper db;
@@ -172,6 +174,10 @@ public class SectionA1Activity extends AppCompatActivity {
 
             }
         });
+
+//        Initializing Re-Back functionality
+        reBackFlag = true;
+        reBackChildFlag = true;
 
     }
 

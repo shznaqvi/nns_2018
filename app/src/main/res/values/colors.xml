@@ -29,6 +29,7 @@
     <color name="title">#222222</color>
     <color name="green">#4caf50</color>
     <color name="red">#f44336</color>
+    <color name="brown">#795548</color>
 
     <color name="selectedBlue">#2b3581</color>
 </resources>

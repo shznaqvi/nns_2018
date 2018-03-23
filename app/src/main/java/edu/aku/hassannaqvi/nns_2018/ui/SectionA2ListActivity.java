@@ -43,6 +43,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
     DatabaseHelper db;
     FamilyMembersAdapter mAdapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -132,9 +133,17 @@ public class SectionA2ListActivity extends AppCompatActivity {
             binding.btnContinue.setVisibility(View.VISIBLE);
         }
 
-//        Getting resp Line no
-        if (getIntent().getBooleanExtra("respChecking", false)) {
-            respLineNo = getIntent().getStringExtra("respLineNo");
+//        Re-Back
+        if (getIntent().getBooleanExtra("reBack", false)) {
+            SectionA1Activity.reBackFlag = false;
+
+            SectionA1Activity.reBackChildFlag = getIntent().getBooleanExtra("reBackChild", true);
+
+        } else {
+            // Getting resp Line no
+            if (getIntent().getBooleanExtra("respChecking", false)) {
+                respLineNo = getIntent().getStringExtra("respLineNo");
+            }
         }
 
     }
@@ -153,10 +162,34 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
                 finish();
 
-                respLineNo = "";
-                startActivity(new Intent(this, SectionA4Activity.class));
-                //startActivity(new Intent(this, SectionB1Activity.class));
-
+                if (SectionA1Activity.reBackFlag) {
+                    respLineNo = "";
+//                    startActivity(new Intent(this, SectionA4Activity.class));
+                    startActivity(new Intent(this, SectionB1Activity.class));
+                } else {
+                    if (SectionA1Activity.reBackChildFlag) {
+                        if (MainApp.mwra.size() > 0) {
+                            startActivity(new Intent(this, SectionB1Activity.class)
+                                    .putExtra("reBackComing", false));
+                        } else if (MainApp.childUnder5.size() > 0) {
+                            if (MainApp.childUnder5.size() == MainApp.childNA.size()) {
+                                SectionC1Activity.isNA = true;
+                                startActivity(new Intent(this, SectionC1Activity.class)
+                                        .putExtra("reBackComing", false));
+                            } else {
+                                SectionC1Activity.isNA = false;
+                                startActivity(new Intent(this, SectionC1Activity.class)
+                                        .putExtra("reBackComing", false));
+                            }
+                        } else {
+                            startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+                        }
+                    } else {
+                        SectionC1Activity.isNA = false;
+                        startActivity(new Intent(this, SectionC1Activity.class)
+                                .putExtra("reBackComing", false));
+                    }
+                }
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }

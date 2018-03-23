@@ -1,5 +1,7 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -34,6 +36,8 @@ public class SectionC1Activity extends AppCompatActivity {
     public static int counterPerNA = 0;
     public static String selectedChildName = "";
     public static boolean isNA;
+    public static int Childsize = 0;
+    public static int NAChildsize = 0;
     static List<String> childU5;
     static Map<String, FamilyMembersContract> childMap;
     private final long DELAY = 1000;
@@ -59,37 +63,60 @@ public class SectionC1Activity extends AppCompatActivity {
 
 
 //        Setup views
-        if (getIntent().getBooleanExtra("childFlag", false)) {
-            childU5.remove(getIntent().getStringExtra("name"));
-            counter++;
-        } else {
-
-            counter = 1;
-            counterPerMom = 0;
-            counterPerNA = 0;
-
-            childU5 = new ArrayList<>();
-            childMap = new HashMap<>();
-
-            childU5.add("....");
-
-            if (isNA) {
-                for (FamilyMembersContract fmc : MainApp.childNA) {
-                    childMap.put(fmc.getName() + "-" + fmc.getSerialNo(), fmc);
-                    childU5.add(fmc.getName() + "-" + fmc.getSerialNo());
-                    counterPerNA++;
-                }
+        if (getIntent().getBooleanExtra("reBackComing", true)) {
+            if (getIntent().getBooleanExtra("childFlag", false)) {
+                childU5.remove(getIntent().getStringExtra("name"));
+                counter++;
             } else {
-                for (FamilyMembersContract fmc : MainApp.childUnder5) {
-                    if (fmc.getMotherId().equals(MainApp.mc.getB1SerialNo())) {
+
+                counter = 1;
+                counterPerMom = 0;
+                counterPerNA = 0;
+
+                childU5 = new ArrayList<>();
+                childMap = new HashMap<>();
+
+                childU5.add("....");
+
+                if (isNA) {
+                    for (FamilyMembersContract fmc : MainApp.childNA) {
                         childMap.put(fmc.getName() + "-" + fmc.getSerialNo(), fmc);
                         childU5.add(fmc.getName() + "-" + fmc.getSerialNo());
-                        counterPerMom++;
+                        counterPerNA++;
                     }
+
+                    NAChildsize = MainApp.childNA.size();
+
+                } else {
+                    for (FamilyMembersContract fmc : MainApp.childUnder5) {
+                        if (fmc.getMotherId().equals(MainApp.mc.getB1SerialNo())) {
+                            childMap.put(fmc.getName() + "-" + fmc.getSerialNo(), fmc);
+                            childU5.add(fmc.getName() + "-" + fmc.getSerialNo());
+                            counterPerMom++;
+                        }
+                    }
+
+                    Childsize = MainApp.childUnder5.size();
                 }
             }
-        }
+        } else {
 
+            if (isNA) {
+                for (int i = NAChildsize; i < MainApp.childNA.size(); i++) {
+                    childMap.put(MainApp.childNA.get(i).getName() + "-" + MainApp.childNA.get(i).getSerialNo(), MainApp.childNA.get(i));
+                    childU5.add(MainApp.childNA.get(i).getName() + "-" + MainApp.childNA.get(i).getSerialNo());
+                    counterPerNA++;
+                }
+                NAChildsize = MainApp.childNA.size();
+            } else {
+                for (int i = Childsize; i < MainApp.childUnder5.size(); i++) {
+                    childMap.put(MainApp.childUnder5.get(Childsize).getName() + "-" + MainApp.childUnder5.get(Childsize).getSerialNo(), MainApp.childUnder5.get(Childsize));
+                    childU5.add(MainApp.childUnder5.get(Childsize).getName() + "-" + MainApp.childUnder5.get(Childsize).getSerialNo());
+                    counterPerMom++;
+                }
+                Childsize = MainApp.childUnder5.size();
+            }
+        }
 
         for (FamilyMembersContract fmc : MainApp.respList) {
             respName.add(fmc.getName() + "-" + fmc.getSerialNo());
@@ -246,6 +273,32 @@ public class SectionC1Activity extends AppCompatActivity {
             return false;
         }
 
+    }
+
+    public void BtnAddMember() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                SectionC1Activity.this);
+        alertDialogBuilder
+                .setMessage("Are you sure to add missing member?")
+                .setCancelable(false)
+                .setPositiveButton("Ok",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,
+                                                int id) {
+                                startActivity(new Intent(SectionC1Activity.this, SectionA2ListActivity.class)
+                                        .putExtra("reBack", true)
+                                        .putExtra("reBackChild", isNA)
+                                );
+                            }
+                        });
+        alertDialogBuilder.setNegativeButton("Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = alertDialogBuilder.create();
+        alert.show();
     }
 
 }
