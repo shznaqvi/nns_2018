@@ -389,6 +389,13 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
 
         } else {
 
+            Date date = new Date(); // Current date
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            int year = cal.get(Calendar.YEAR);
+            int month = cal.get(Calendar.MONTH);
+            int day = cal.get(Calendar.DAY_OF_MONTH);
+
             if (!validatorClass.EmptyTextBox(this, binding.nh2doby, getString(R.string.nh2dob))) {
                 return false;
             }
@@ -401,15 +408,19 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
                 return false;
             }
 
-            if (!validatorClass.RangeTextBox(this, binding.nh2doby, 1918, 2018, 9998, getString(R.string.nh2dob), " year")) {
+            if (!validatorClass.RangeTextBox(this, binding.nh2doby, 1918, year, 9998, getString(R.string.nh2dob), " year")) {
                 return false;
             }
 
-            if (!validatorClass.RangeTextBox(this, binding.nh2dobm, 1, 12, 98, getString(R.string.nh2dob), " month")) {
+            if (!validatorClass.RangeTextBox(this, binding.nh2dobm, 1,
+                    binding.nh2doby.equals(String.valueOf(year)) ? month : 12,
+                    98, getString(R.string.nh2dob), " month")) {
                 return false;
             }
 
-            if (!validatorClass.RangeTextBox(this, binding.nh2dobd, 1, 31, 98, getString(R.string.nh2dob), " day")) {
+            if (!validatorClass.RangeTextBox(this, binding.nh2dobd, 1,
+                    binding.nh2doby.equals(String.valueOf(year)) ? day : 31,
+                    98, getString(R.string.nh2dob), " day")) {
                 return false;
             }
 
