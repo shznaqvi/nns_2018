@@ -483,6 +483,40 @@ public class SectionB1Activity extends Activity {
                 }
             }
         });
+        bi.nw21303.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.nw21303a) {
+                    //  bi.nw212.clearCheck();
+                    bi.nw21301.clearCheck();
+                    bi.nw21302.clearCheck();
+                    bi.nw21398.clearCheck();
+                    bi.nw21399.clearCheck();
+
+                    bi.nw21301a.setEnabled(false);
+                    bi.nw21301b.setEnabled(false);
+                    bi.nw21302a.setEnabled(false);
+                    bi.nw21302b.setEnabled(false);
+                    bi.nw21398a.setEnabled(false);
+                    bi.nw21398b.setEnabled(false);
+                    bi.nw21399a.setEnabled(false);
+                    bi.nw21399b.setEnabled(false);
+                } else {
+                    bi.nw21301a.setEnabled(true);
+                    bi.nw21301b.setEnabled(true);
+
+                    bi.nw21302a.setEnabled(true);
+                    bi.nw21302b.setEnabled(true);
+
+                    bi.nw21398a.setEnabled(true);
+                    bi.nw21398b.setEnabled(true);
+
+                    bi.nw21399a.setEnabled(true);
+                    bi.nw21399b.setEnabled(true);
+                }
+            }
+        });
+
         bi.nw21398.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -516,6 +550,8 @@ public class SectionB1Activity extends Activity {
                 }
             }
         });
+
+
         bi.nw21399.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -746,7 +782,7 @@ public class SectionB1Activity extends Activity {
                                         return false;
                                     }*/
 
-                                    if (!bi.nw21398a.isChecked() || !bi.nw21399a.isChecked()) {
+                                    if (!bi.nw21398a.isChecked() || !bi.nw21399a.isChecked() || !bi.nw21303a.isChecked()) {
                                         if (!validatorClass.EmptyRadioButton(this, bi.nw21301, bi.nw21301a, getString(R.string.nw21301))) {
                                             return false;
                                         }
