@@ -30,7 +30,6 @@ import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB1Binding;
-import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionB1Activity extends Activity {
@@ -410,11 +409,32 @@ public class SectionB1Activity extends Activity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 if (bi.nw209.getText().toString().equals("0")) {
-                    clearClass.ClearAllFields(bi.fldGrpnw210, false);
+                    //clearClass.ClearAllFields(bi.fldGrpnw210, false);
+                    bi.nw210.setEnabled(false);
+                    bi.nw210.setText(null);
+                    bi.nw211a.setEnabled(true);
+                    bi.nw211b.setEnabled(true);
+                    bi.nw212a.setEnabled(true);
+                    bi.nw212b.setEnabled(true);
+                    bi.nw21301.setEnabled(true);
+                    bi.nw21302.setEnabled(true);
+                    bi.nw21303.setEnabled(true);
+                    bi.nw21398.setEnabled(true);
+                    bi.nw21399.setEnabled(true);
 
 
                 } else {
-                    clearClass.ClearAllFields(bi.fldGrpnw210, true);
+                    //clearClass.ClearAllFields(bi.fldGrpnw210, true);
+                    bi.nw210.setEnabled(true);
+                    bi.nw211a.setEnabled(true);
+                    bi.nw211b.setEnabled(true);
+                    bi.nw212a.setEnabled(true);
+                    bi.nw212b.setEnabled(true);
+                    bi.nw21301.setEnabled(true);
+                    bi.nw21302.setEnabled(true);
+                    bi.nw21303.setEnabled(true);
+                    bi.nw21398.setEnabled(true);
+                    bi.nw21399.setEnabled(true);
                 }
 
             }
