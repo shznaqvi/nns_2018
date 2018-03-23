@@ -110,23 +110,28 @@ public class ChildContract {
         json.put(ChildTable.COLUMN_C1SERIALNO, this.c1SerialNo == null ? JSONObject.NULL : this.c1SerialNo);
 
         if (!this.sC1.equals("")) {
-            json.put(ChildTable.COLUMN_SC1, this.sC1 == null ? JSONObject.NULL : this.sC1);
+            json.put(ChildTable.COLUMN_SC1, this.sC1.equals("") ? JSONObject.NULL : new JSONObject(this.sC1));
+          /*  json.put(ChildTable.COLUMN_SC1, this.sC1 == null ? JSONObject.NULL : this.sC1);*/
         }
 
         if (!this.sC2.equals("")) {
-            json.put(ChildTable.COLUMN_SC2, this.sC2 == null ? JSONObject.NULL : this.sC2);
+            json.put(ChildTable.COLUMN_SC2, this.sC2.equals("") ? JSONObject.NULL : new JSONObject(this.sC2));
+            // json.put(ChildTable.COLUMN_SC2, this.sC2 == null ? JSONObject.NULL : this.sC2);
         }
 
         if (!this.sC3.equals("")) {
-            json.put(ChildTable.COLUMN_SC3, this.sC3 == null ? JSONObject.NULL : this.sC3);
+            json.put(ChildTable.COLUMN_SC3, this.sC3.equals("") ? JSONObject.NULL : new JSONObject(this.sC3));
+//            json.put(ChildTable.COLUMN_SC3, this.sC3 == null ? JSONObject.NULL : this.sC3);
         }
 
         if (!this.sC4.equals("")) {
-            json.put(ChildTable.COLUMN_SC4, this.sC4 == null ? JSONObject.NULL : this.sC4);
+            json.put(ChildTable.COLUMN_SC4, this.sC4.equals("") ? JSONObject.NULL : new JSONObject(this.sC4));
+//            json.put(ChildTable.COLUMN_SC4, this.sC4 == null ? JSONObject.NULL : this.sC4);
         }
 
         if (!this.sC5.equals("")) {
-            json.put(ChildTable.COLUMN_SC5, this.sC5 == null ? JSONObject.NULL : this.sC5);
+            json.put(ChildTable.COLUMN_SC5, this.sC5.equals("") ? JSONObject.NULL : new JSONObject(this.sC5));
+//            json.put(ChildTable.COLUMN_SC5, this.sC5 == null ? JSONObject.NULL : this.sC5);
         }
 
         json.put(ChildTable.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
