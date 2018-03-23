@@ -227,6 +227,6 @@ public class OutcomeContract {
         public static final String COLUMN_SYNCEDDATE = "synceddate";
 
 
-        public static String _URL = "outcomeforms.php";
+        public static String _URL = "outcomes.php";
     }
 }

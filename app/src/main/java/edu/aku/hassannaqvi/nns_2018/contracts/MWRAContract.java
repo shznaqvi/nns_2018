@@ -334,6 +334,6 @@ public class MWRAContract {
         public static final String COLUMN_MSTATUS88x = "mstatus88x";
 
 
-        public static String _URL = "wraforms.php";
+        public static String _URL = "wras.php";
     }
 }

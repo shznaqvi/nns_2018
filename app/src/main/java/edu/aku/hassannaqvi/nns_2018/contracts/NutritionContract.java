@@ -215,6 +215,6 @@ public class NutritionContract {
         public static final String COLUMN_SYNCEDDATE = "synceddate";
 
 
-        public static String _URL = "nutritionforms.php";
+        public static String _URL = "nutritions.php";
     }
 }

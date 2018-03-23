@@ -312,13 +312,13 @@ public class ChildContract {
         public static final String COLUMN_SC5 = "sc5";
         public static final String COLUMN_DEVICEID = "deviceid";
         public static final String COLUMN_DEVICETAGID = "devicetagid";
-        public static final String COLUMN_SYNCED = "synced ";
+        public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNCED_DATE = "synced_date";
         public static final String COLUMN_APPVERSION = "appversion";
         public static final String COLUMN_CSTATUS = "cstatus";
         public static final String COLUMN_CSTATUS88x = "cstatus88x";
 
-        public static String _URL = "childforms.php";
+        public static String _URL = "children.php";
     }
 
 }
