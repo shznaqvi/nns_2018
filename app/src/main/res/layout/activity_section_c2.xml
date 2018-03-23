@@ -56,6 +56,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/fldGrpyear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -68,7 +69,6 @@
                         android:background="@color/pink_100"
                         android:gravity="center"
                         android:text="@string/year"
-
                         android:textColor="@color/colorPrimaryDark" />
 
 

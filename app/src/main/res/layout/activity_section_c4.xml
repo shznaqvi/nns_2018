@@ -436,7 +436,6 @@
                             android:text="@string/nc404g" />
 
 
-
                         <CheckBox
                             android:id="@+id/nc404h"
                             android:layout_width="match_parent"
@@ -452,6 +451,7 @@
                             android:text="@string/nc404sub2"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@color/colorPrimaryDark" />
+
                         <CheckBox
                             android:id="@+id/nc404i"
                             android:layout_width="match_parent"
@@ -1619,15 +1619,15 @@
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
                     android:text="@string/no" />
-
-                <RadioButton
-                    android:id="@+id/nc41898"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:text="@string/dkn" />
+                <!--
+                                <RadioButton
+                                    android:id="@+id/nc41898"
+                                    style="@style/radiobutton"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/dkn" /> -->
 
             </RadioGroup>
 
@@ -1759,6 +1759,7 @@
                     android:onClick="@{() -> callback.BtnContinue()}"
                     android:text="@string/nextSection"
                     android:textColor="@color/white" />
+
                 <Button
                     android:id="@+id/btn_End"
                     style="@style/buttons"
