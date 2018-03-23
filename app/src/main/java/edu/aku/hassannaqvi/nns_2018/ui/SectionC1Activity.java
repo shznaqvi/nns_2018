@@ -42,6 +42,7 @@ public class SectionC1Activity extends AppCompatActivity {
     ActivitySectionC1Binding binding;
     DatabaseHelper db;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
+    Boolean endflag = false;
     private Timer timer = new Timer();
 
     @Override
@@ -146,7 +147,8 @@ public class SectionC1Activity extends AppCompatActivity {
 
     public void BtnEnd() {
 
-        //if (formValidation()) {
+        endflag = true;
+        if (formValidation()) {
         try {
             SaveDraft();
         } catch (JSONException e) {
@@ -162,22 +164,36 @@ public class SectionC1Activity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
         }
-        //}
+        }
     }
 
     private boolean formValidation() {
         //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
 //        nc101
-        if (!validatorClass.EmptySpinner(this, binding.nc101, getString(R.string.nc101))) {
-            return false;
+
+        if (endflag) {
+            if (!validatorClass.EmptySpinner(this, binding.nc101, getString(R.string.nc101))) {
+                return false;
+            }
+        } else {
+
+            if (!validatorClass.EmptySpinner(this, binding.nc101, getString(R.string.nc101))) {
+                return false;
+            }
+
+            if (!validatorClass.EmptyRadioButton(this, binding.nc103, binding.nc10398, getString(R.string.nc103))) {
+                return false;
+            }
+
+            if (!validatorClass.EmptyRadioButton(this, binding.nc104, binding.nc10498, getString(R.string.nc104))) {
+                return false;
+            }
+
         }
-//        nc103
-        if (!validatorClass.EmptyRadioButton(this, binding.nc103, binding.nc10398, getString(R.string.nc103))) {
-            return false;
-        }
-//        nc104
-        return validatorClass.EmptyRadioButton(this, binding.nc104, binding.nc10498, getString(R.string.nc104));
+
+        return true;
+
     }
 
     private void SaveDraft() throws JSONException {

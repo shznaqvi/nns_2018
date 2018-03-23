@@ -41,12 +41,10 @@ public class DateUtils {
     }*/
 
     public static long ageInYearByDOB(String year) {
-        //Calendar cal = getCalendarDate(year);
+        Calendar cal = Calendar.getInstance();
         long yearofbirth = Integer.valueOf(year);
-        //Date dob = cal.gety;
-        Date today = new Date();
-        Long diff = today.getYear() - yearofbirth;
-        long ageInYears = (diff / (24 * 60 * 60 * 1000)) / 365;
+        Long ageInYears = cal.get(Calendar.YEAR) - yearofbirth;
+        //long ageInYears = (diff / (24 * 60 * 60 * 1000)) / 365;
         return ageInYears;
     }
 

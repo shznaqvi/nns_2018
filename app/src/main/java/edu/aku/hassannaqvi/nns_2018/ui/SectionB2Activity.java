@@ -383,7 +383,7 @@ public class SectionB2Activity extends Activity {
                 if (!validatorClass.EmptyTextBox(this, bi.nw305, getString(R.string.nw305) + " - " + getString(R.string.times))) {
                     return false;
                 }
-                if (!validatorClass.RangeTextBox(this, bi.nw305, 1, 9, getString(R.string.nw203), " times")) {
+                if (!validatorClass.RangeTextBox(this, bi.nw305, 1, 15, getString(R.string.nw305), " times")) {
                     return false;
                 }
 

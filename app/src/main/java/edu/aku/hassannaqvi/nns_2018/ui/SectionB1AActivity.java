@@ -54,6 +54,8 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         bi.setCallback(this);
         setupViews();
 
+        bi.count.setText("Pregnancy No " + MainApp.count + " out of " + MainApp.totalPregnancy);
+
         for (EditText ed : grpDate) {
             ed.addTextChangedListener(this);
         }

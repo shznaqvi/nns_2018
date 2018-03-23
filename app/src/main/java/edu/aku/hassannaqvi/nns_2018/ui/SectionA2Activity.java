@@ -1,7 +1,5 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -9,7 +7,6 @@ import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -27,7 +24,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Timer;
-import java.util.TimerTask;
 
 import butterknife.BindViews;
 import butterknife.ButterKnife;
@@ -112,20 +108,20 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if (!binding.nh2agey.getText().toString().isEmpty() && !binding.nh2agey.getText().toString().equals("9998")) {
+                if (!binding.nh2agey.getText().toString().isEmpty() && binding.nh2doby.getText().toString().equals("9998")) {
 
-                    if (Integer.valueOf(binding.nh2agey.getText().toString()) >= 5) {
-                        binding.fldGrpmonths.setVisibility(View.GONE);
+                    /*if (Integer.valueOf(binding.nh2agey.getText().toString()) >= 5) {
+                        *//*binding.fldGrpmonths.setVisibility(View.GONE);
                         binding.fldGrpdays.setVisibility(View.GONE);
                         binding.nh2agem.setText("0");
-                        binding.nh2aged.setText("0");
+                        binding.nh2aged.setText("0");*//*
                     } else {
-                        binding.fldGrpmonths.setVisibility(View.VISIBLE);
+                        *//*binding.fldGrpmonths.setVisibility(View.VISIBLE);
                         binding.fldGrpdays.setVisibility(View.VISIBLE);
-                    }
-
+                    }*//*
+*/
                     Age = Integer.valueOf(binding.nh2agey.getText().toString());
-                    if (Age < 5) {
+                    if (Age <= 5) {
                         binding.fldGrpnh2edu.setVisibility(View.GONE);
                         binding.fldGrpnh2ms.setVisibility(View.GONE);
                         binding.fldGrpnh2occ.setVisibility(View.GONE);
@@ -224,7 +220,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
             @Override
             public void afterTextChanged(Editable s) {
 
-                timer.cancel();
+                /*timer.cancel();
                 timer = new Timer();
 
                 if (!binding.nh2doby.getText().toString().equals("9998")) {
@@ -271,7 +267,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
                     }
 
                 }
-
+*/
             }
         });
 
@@ -410,13 +406,13 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
 
         } else {
 
-            Date date = new Date(); // Current date
+            /*Date date = new Date(); // Current date
             Calendar cal = Calendar.getInstance();
             cal.setTime(date);
             int year = cal.get(Calendar.YEAR);
             int month = cal.get(Calendar.MONTH);
             int day = cal.get(Calendar.DAY_OF_MONTH);
-
+*/
             if (!validatorClass.EmptyTextBox(this, binding.nh2doby, getString(R.string.nh2dob))) {
                 return false;
             }
@@ -429,24 +425,24 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
                 return false;
             }
 
-            if (!validatorClass.RangeTextBox(this, binding.nh2doby, 1918, year, 9998, getString(R.string.nh2dob), " year")) {
+            if (!validatorClass.RangeTextBox(this, binding.nh2doby, 1918, 2018, 9998, getString(R.string.nh2dob), " year")) {
                 return false;
             }
 
-            if (!validatorClass.RangeTextBox(this, binding.nh2dobm, 1,
-                    binding.nh2doby.equals(String.valueOf(year)) ? month : 12,
-                    98, getString(R.string.nh2dob), " month")) {
-                return false;
-            }
+//            if (!validatorClass.RangeTextBox(this, binding.nh2dobm, 1,
+//                    binding.nh2doby.equals(String.valueOf(year)) ? month : 12,
+//                    98, getString(R.string.nh2dob), " month")) {
+//                return false;
+//            }
+//
+//            if (!validatorClass.RangeTextBox(this, binding.nh2dobd, 1,
+//                    binding.nh2doby.equals(String.valueOf(year)) ? day : 31,
+//                    98, getString(R.string.nh2dob), " day")) {
+//                return false;
+//            }
 
-            if (!validatorClass.RangeTextBox(this, binding.nh2dobd, 1,
-                    binding.nh2doby.equals(String.valueOf(year)) ? day : 31,
-                    98, getString(R.string.nh2dob), " day")) {
-                return false;
-            }
 
-
-            if (!validatorClass.EmptyTextBox(this, binding.nh2aged, getString(R.string.na2age))) {
+            /*if (!validatorClass.EmptyTextBox(this, binding.nh2aged, getString(R.string.na2age))) {
                 return false;
             }
 
@@ -460,17 +456,20 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
 
             if (!validatorClass.RangeTextBox(this, binding.nh2agem, 0, 11, getString(R.string.na2age), " months")) {
                 return false;
+            }*/
+
+            if (binding.nh2doby.getText().toString().equals("9998")) {
+
+                if (!validatorClass.EmptyTextBox(this, binding.nh2agey, getString(R.string.na2age))) {
+                    return false;
+                }
+
+                if (!validatorClass.RangeTextBox(this, binding.nh2agey, 0, 95, 98, getString(R.string.na2age), " years")) {
+                    return false;
+                }
             }
 
-            if (!validatorClass.EmptyTextBox(this, binding.nh2agey, getString(R.string.na2age))) {
-                return false;
-            }
-
-            if (!validatorClass.RangeTextBox(this, binding.nh2agey, 0, 95, 98, getString(R.string.na2age), " years")) {
-                return false;
-            }
-
-            if (binding.nh2aged.getText().toString().equals("0") && binding.nh2agem.getText().toString().equals("0") && binding.nh2agey.getText().toString().equals("0")) {
+            /*if (binding.nh2aged.getText().toString().equals("0") && binding.nh2agem.getText().toString().equals("0") && binding.nh2agey.getText().toString().equals("0")) {
                 Toast.makeText(this, "ERROR(invalid): " + "All can not be zero" + getString(R.string.na2age), Toast.LENGTH_LONG).show();
                 binding.nh2agey.setError("All can not be zero");
                 binding.nh2agem.setError("All can not be zero");
@@ -480,7 +479,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
                 binding.nh2agey.setError(null);
                 binding.nh2agem.setError(null);
                 binding.nh2aged.setError(null);
-            }
+            }*/
 
             if ((family.getResp().equals("1") || family.getRealtionHH().equals("1")) && Age < 18) {
                 String chk = family.getResp().equals("1") ? "Resp" : "Head";
@@ -571,8 +570,8 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
         } else {
 
             //family.setDob(binding.nh2dob.getText().toString());
-            family.setAge(binding.nh2agey.getText().toString() + "/" + binding.nh2agem.getText().toString() + "/" + binding.nh2aged.getText().toString());
-            if (Age < 5) {
+            family.setAge(binding.nh2agey.getText().toString()); //+ "/" + binding.nh2agem.getText().toString() + "/" + binding.nh2aged.getText().toString());
+            if (Age <= 5) {
                 family.setMotherId(mothersMap.get(binding.nh212.getSelectedItem().toString() + "_" + mothersSerials.get(mothersList.indexOf(binding.nh212.getSelectedItem().toString()) - 1)));
             }
 
@@ -591,14 +590,14 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
             //sA2.put("nh20598", binding.nh20598.isChecked() ? "98" : "0");
 
             sA2.put("nh206y", binding.nh2agey.getText().toString());
-            sA2.put("nh206m", binding.nh2agem.getText().toString());
+            /*sA2.put("nh206m", binding.nh2agem.getText().toString());
             sA2.put("nh206d", binding.nh2aged.getText().toString());
-
-            //if (binding.nh20598.isChecked()) {
+*/
+            if (binding.nh2doby.getText().toString().equals("9998")) {
             Age = Integer.valueOf(binding.nh2agey.getText().toString());
-            //} else {
-            //Age = (int) MainApp.ageInYearByDOB(binding.nh2dob.getText().toString());
-            //}
+            } else {
+                Age = (int) agebyDob;
+            }
 
             sA2.put("age", String.valueOf(Age));
 
@@ -672,7 +671,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
                 MainApp.adolescents.add(family);
             }
             //Children < 5
-            else if (Age < 5) {
+            else if (Age <= 5) {
                 memType = new HashMap<>();
                 if (family.getna204().equals("1")) {
                     memType.put(1, Integer.valueOf(mem.get(3).get(1).toString()) + 1);
@@ -692,7 +691,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
                     //MainApp.adolescents.add(family);
                 }
 
-                if (Age < 5 && family.getMotherId().equals("00")) {
+                if (Age <= 5 && family.getMotherId().equals("00")) {
                     MainApp.childNA.add(family);
                 }
             }
@@ -775,10 +774,17 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
                         + "-" + binding.nh2doby.getText().toString();
 
                 agebyDob = DateUtils.ageInYearByDOB(DateUtils.getCalendarDate(dob));
+                binding.nh2agey.setEnabled(false);
+                binding.nh2agey.setText(String.valueOf(agebyDob));
 
             } else if (!binding.nh2doby.getText().toString().equals("9998")) {
                 dob = binding.nh2doby.getText().toString();
                 agebyDob = DateUtils.ageInYearByDOB(binding.nh2doby.getText().toString());
+                binding.nh2agey.setEnabled(false);
+                binding.nh2agey.setText(String.valueOf(agebyDob));
+            } else if (binding.nh2doby.getText().toString().equals("9998")) {
+                binding.nh2agey.setEnabled(true);
+                binding.nh2agey.setText(null);
             }
 
 
@@ -788,7 +794,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
     @Override
     public void afterTextChanged(Editable s) {
 
-        timer.cancel();
+        /*timer.cancel();
         timer = new Timer();
         if (!binding.nh2agey.getText().toString().isEmpty() && !binding.nh2doby.getText().toString().equals("9998")) {
 
@@ -831,8 +837,8 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
                         DELAY
                 );
             }
-
-        }
+*/
+        //}
 
 
     }

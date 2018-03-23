@@ -387,6 +387,25 @@
                                 android:inputType="number"
                                 android:maxLength="2" />
 
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:background="@color/colorPrimary"
+                                android:text="@string/nw209a"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="@android:color/white" />
+
+                            <EditText
+                                android:id="@+id/nw209a"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/nw209a"
+                                android:inputType="number"
+                                android:maxLength="2" />
+
+
                             <LinearLayout
                                 android:id="@+id/fldGrpnw210"
                                 android:layout_width="match_parent"

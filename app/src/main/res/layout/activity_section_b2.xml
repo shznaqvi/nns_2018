@@ -431,7 +431,7 @@
                     android:enabled='@{nw30598.checked ? false : true}'
                     android:hint="@string/nw305a"
                     android:inputType="number"
-                    android:maxLength="1"
+                    android:maxLength="2"
                     android:text='@{nw30598.checked ? nw305.getText.toString : ""}' />
 
                 <CheckBox

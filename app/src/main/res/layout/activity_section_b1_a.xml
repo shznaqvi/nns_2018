@@ -39,6 +39,15 @@
                 android:layout_height="2dp"
                 android:background="@color/colorPrimary" />
 
+            <TextView
+                android:id="@+id/count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="@color/pink_100"
+                android:text=""
+                android:textColor="@color/colorPrimaryDark" />
+
 
             <!--nh401-->
             <TextView
