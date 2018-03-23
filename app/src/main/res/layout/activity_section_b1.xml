@@ -522,6 +522,7 @@
                                         android:orientation="vertical">
 
                                         <LinearLayout
+                                            android:id="@+id/fldGrnc21301"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:layout_marginTop="16dp"
@@ -564,6 +565,7 @@
                                         </LinearLayout>
 
                                         <LinearLayout
+                                            android:id="@+id/fldGrnc21302"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:layout_marginTop="16dp"
@@ -604,6 +606,7 @@
                                         </LinearLayout>
 
                                         <LinearLayout
+                                            android:id="@+id/fldGrnc21303"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:layout_marginTop="16dp"
@@ -644,6 +647,7 @@
                                         </LinearLayout>
 
                                         <LinearLayout
+                                            android:id="@+id/fldGrnc21398"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:layout_marginTop="16dp"
@@ -684,6 +688,7 @@
                                         </LinearLayout>
 
                                         <LinearLayout
+                                            android:id="@+id/fldGrnc21399"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:layout_marginTop="16dp"

@@ -140,6 +140,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
                         binding.nh2edua.setChecked(true);
                         binding.nh2occa.setChecked(true);
                         binding.nh2mse.setChecked(true);
+
                     } else if (Age >= 5 && Age <= 12) {
                         //  binding.nh2edua.setEnabled(false);
                         binding.fldGrpnh2edu.setVisibility(View.VISIBLE);
@@ -153,7 +154,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
 
                         binding.nh2edu.clearCheck();
                         binding.nh2ms.clearCheck();
-                        //binding.nh2occ.clearCheck();
+                        binding.nh2occ.clearCheck();
 
                         // binding.nh2occa.setChecked(true);
                         binding.nh2mse.setChecked(true);
@@ -169,13 +170,13 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
                         binding.nh2eduh.setEnabled(false);
                         binding.nh2edui.setEnabled(false);
 
-                        binding.nh2occc.setChecked(false);
-                        binding.nh2occd.setChecked(false);
-                        binding.nh2occe.setChecked(false);
-                        binding.nh2occf.setChecked(false);
-                        binding.nh2occh.setChecked(false);
-                        binding.nh2occi.setChecked(false);
-                        binding.nh2occj.setChecked(false);
+                        binding.nh2occc.setEnabled(false);
+                        binding.nh2occd.setEnabled(false);
+                        binding.nh2occe.setEnabled(false);
+                        binding.nh2occf.setEnabled(false);
+                        binding.nh2occh.setEnabled(false);
+                        binding.nh2occi.setEnabled(false);
+                        binding.nh2occj.setEnabled(false);
 
                     } else if (Age > 12) {
                         binding.fldGrpnh2edu.setVisibility(View.VISIBLE);
@@ -206,6 +207,15 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
                         binding.nh2edug.setEnabled(true);
                         binding.nh2eduh.setEnabled(true);
                         binding.nh2edui.setEnabled(true);
+
+                        binding.nh2occc.setEnabled(true);
+                        binding.nh2occd.setEnabled(true);
+                        binding.nh2occe.setEnabled(true);
+                        binding.nh2occf.setEnabled(true);
+                        binding.nh2occh.setEnabled(true);
+                        binding.nh2occi.setEnabled(true);
+                        binding.nh2occj.setEnabled(true);
+
                     }
 
                 }
