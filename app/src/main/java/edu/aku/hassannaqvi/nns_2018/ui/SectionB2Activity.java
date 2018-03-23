@@ -46,8 +46,10 @@ public class SectionB2Activity extends Activity {
                 if (bi.nw301a.isChecked()) {
                     //bi.fldGrpnw302.setVisibility(View.VISIBLE);
                     clearClass.ClearAllFields(bi.fldGrpnw302, true);
+                    clearClass.ClearAllFields(bi.fldGrpnw306check, true);
                 } else {
                     clearClass.ClearAllFields(bi.fldGrpnw302, false);
+                    clearClass.ClearAllFields(bi.fldGrpnw306check, false);
                     /*bi.fldGrpnw302.setVisibility(View.GONE);
                     bi.nw302a.setChecked(false);
                     bi.nw302b.setChecked(false);

@@ -6,6 +6,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -207,6 +208,22 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
                 }
             }
         });
+        bi.nc20198.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    clearClass.ClearAllFields(bi.fldGrpyear, false);
+                    clearClass.ClearAllFields(bi.fldGrpmonths, false);
+                    clearClass.ClearAllFields(bi.fldGrpdays, false);
+                } else {
+                    clearClass.ClearAllFields(bi.fldGrpyear, true);
+                    clearClass.ClearAllFields(bi.fldGrpmonths, true);
+                    clearClass.ClearAllFields(bi.fldGrpdays, true);
+                }
+            }
+        });
+
+
 
         /*bi.nc218.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
