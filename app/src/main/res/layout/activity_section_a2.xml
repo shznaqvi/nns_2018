@@ -1010,7 +1010,7 @@
                     android:layout_weight="1"
                     android:background="#1ed61e"
                     android:onClick="@{() -> callback.BtnContinue()}"
-                    android:text="@string/addMember"
+                    android:text="@string/saveMember"
                     android:textColor="@color/white" />
 
                 <Button
