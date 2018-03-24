@@ -300,8 +300,8 @@ public class MWRAContract {
 
         json.put(MWRATable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
         json.put(MWRATable.COLUMN_SYNCEDDATE, this.syncedDate == null ? JSONObject.NULL : this.syncedDate);
-        json.put(MWRATable.COLUMN_MSTATUS, this.mstatus == null ? JSONObject.NULL : this.mstatus);
-        json.put(MWRATable.COLUMN_MSTATUS88x, this.mstatus88x == null ? JSONObject.NULL : this.mstatus88x);
+        /*json.put(MWRATable.COLUMN_MSTATUS, this.mstatus == null ? JSONObject.NULL : this.mstatus);
+        json.put(MWRATable.COLUMN_MSTATUS88x, this.mstatus88x == null ? JSONObject.NULL : this.mstatus88x);*/
 
 
         return json;

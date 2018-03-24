@@ -188,8 +188,8 @@ public class NutritionContract {
             json.put(NutritionTable.COLUMN_SB6, this.sB6.equals("") ? JSONObject.NULL : new JSONObject(this.sB6));
         }
 
-        json.put(NutritionTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
-        json.put(NutritionTable.COLUMN_SYNCEDDATE, this.syncedDate == null ? JSONObject.NULL : this.syncedDate);
+        /*json.put(NutritionTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
+        json.put(NutritionTable.COLUMN_SYNCEDDATE, this.syncedDate == null ? JSONObject.NULL : this.syncedDate);*/
 
 
         return json;

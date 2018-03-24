@@ -200,8 +200,8 @@ public class OutcomeContract {
             json.put(outcomeTable.COLUMN_SB1A, this.sB1A.equals("") ? JSONObject.NULL : new JSONObject(this.sB1A));
         }
 
-        json.put(outcomeTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
-        json.put(outcomeTable.COLUMN_SYNCEDDATE, this.syncedDate == null ? JSONObject.NULL : this.syncedDate);
+        /*json.put(outcomeTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
+        json.put(outcomeTable.COLUMN_SYNCEDDATE, this.syncedDate == null ? JSONObject.NULL : this.syncedDate);*/
 
 
         return json;

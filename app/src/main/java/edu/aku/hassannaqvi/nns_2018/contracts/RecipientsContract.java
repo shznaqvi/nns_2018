@@ -201,8 +201,8 @@ public class RecipientsContract {
             json.put(RecipientsTable.COLUMN_SA8A, this.sA8A.equals("") ? JSONObject.NULL : new JSONObject(this.sA8A));
         }
 
-        json.put(RecipientsTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
-        json.put(RecipientsTable.COLUMN_SYNCEDDATE, this.syncedDate == null ? JSONObject.NULL : this.syncedDate);
+        /*json.put(RecipientsTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
+        json.put(RecipientsTable.COLUMN_SYNCEDDATE, this.syncedDate == null ? JSONObject.NULL : this.syncedDate);*/
 
 
         return json;

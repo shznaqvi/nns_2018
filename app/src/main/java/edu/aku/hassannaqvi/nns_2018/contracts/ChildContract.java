@@ -139,8 +139,8 @@ public class ChildContract {
         json.put(ChildTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
         json.put(ChildTable.COLUMN_SYNCED_DATE, this.synced_date == null ? JSONObject.NULL : this.synced_date);
         json.put(ChildTable.COLUMN_APPVERSION, this.appversion == null ? JSONObject.NULL : this.appversion);
-        json.put(ChildTable.COLUMN_CSTATUS, this.cstatus == null ? JSONObject.NULL : this.cstatus);
-        json.put(ChildTable.COLUMN_CSTATUS88x, this.cstatus88x == null ? JSONObject.NULL : this.cstatus88x);
+        /*json.put(ChildTable.COLUMN_CSTATUS, this.cstatus == null ? JSONObject.NULL : this.cstatus);
+        json.put(ChildTable.COLUMN_CSTATUS88x, this.cstatus88x == null ? JSONObject.NULL : this.cstatus88x);*/
 
 
         return json;

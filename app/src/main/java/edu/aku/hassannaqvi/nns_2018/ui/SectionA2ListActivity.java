@@ -155,8 +155,8 @@ public class SectionA2ListActivity extends AppCompatActivity {
                 finish();
 
                 respLineNo = "";
-//                startActivity(new Intent(this, SectionA4Activity.class));
-                startActivity(new Intent(this, SectionB1Activity.class));
+                startActivity(new Intent(this, SectionA4Activity.class));
+//                startActivity(new Intent(this, SectionB1Activity.class));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
