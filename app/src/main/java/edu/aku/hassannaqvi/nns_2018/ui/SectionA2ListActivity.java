@@ -105,6 +105,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
                                                             binding.recyclerNoMembers.getChildAt(item).setBackgroundColor(Color.BLACK);
                                                         }
 
+                                                        finish();
                                                         startActivity(new Intent(getApplicationContext(), SectionA2Activity.class)
                                                                 .putExtra("data", MainApp.familyMembersList.get(position))
                                                                 .putExtra("pos", position));
@@ -154,8 +155,8 @@ public class SectionA2ListActivity extends AppCompatActivity {
                 finish();
 
                 respLineNo = "";
-                startActivity(new Intent(this, SectionA4Activity.class));
-                //startActivity(new Intent(this, SectionB1Activity.class));
+//                startActivity(new Intent(this, SectionA4Activity.class));
+                startActivity(new Intent(this, SectionB1Activity.class));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -175,6 +176,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog,
                                                 int id) {
+                                finish();
                                 startActivity(new Intent(SectionA2ListActivity.this, SectionA2Activity.class).putExtra("flag", true));
                             }
                         });
