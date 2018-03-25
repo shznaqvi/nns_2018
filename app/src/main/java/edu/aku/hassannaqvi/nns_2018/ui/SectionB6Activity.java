@@ -239,6 +239,8 @@ public class SectionB6Activity extends AppCompatActivity {
 
                 finish();
 
+                MainApp.B6Flag = false;
+
                 if (MainApp.nuCount == 7) {
 
                     int childcount = 0;
@@ -278,6 +280,11 @@ public class SectionB6Activity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
+
+        if (MainApp.nuCount == 1) {
+            MainApp.B6Flag = true;
+            MainApp.B2B6Flag = false;
+        }
 
         MainApp.endActivityMother(this, this, false);
 

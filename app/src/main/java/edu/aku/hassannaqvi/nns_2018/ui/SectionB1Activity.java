@@ -804,10 +804,24 @@ public class SectionB1Activity extends Activity {
                             } /*else if (MainApp.totalPregnancy == 1 && bi.nw211a.isChecked()) {
                                 startActivity(new Intent(this, SectionB2Activity.class));*/
                         } else if (MainApp.totalPregnancy == 0) {
-                            startActivity(new Intent(this, SectionB6Activity.class));
+                            if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
+                                    &&
+                                    MainApp.B6Flag) {
+                                startActivity(new Intent(this, SectionB6Activity.class));
+                            } else {
+                                startActivity(new Intent(this, MotherEndingActivity.class)
+                                        .putExtra("complete", true));
+                            }
                         }
                     } else {
-                        startActivity(new Intent(this, SectionB6Activity.class));
+                        if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
+                                &&
+                                MainApp.B6Flag) {
+                            startActivity(new Intent(this, SectionB6Activity.class));
+                        } else {
+                            startActivity(new Intent(this, MotherEndingActivity.class)
+                                    .putExtra("complete", true));
+                        }
                     }
                 } else {
                     //startActivity(new Intent(this, SectionB6Activity.class));

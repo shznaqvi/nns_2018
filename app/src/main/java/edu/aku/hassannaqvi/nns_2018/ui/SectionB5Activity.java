@@ -118,7 +118,16 @@ public class SectionB5Activity extends AppCompatActivity {
 
                 finish();
 
-                startActivity(new Intent(this, SectionB6Activity.class));
+                if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
+                        &&
+                        MainApp.B6Flag) {
+                    startActivity(new Intent(this, SectionB6Activity.class));
+                } else if (MainApp.B2B6Flag) {
+                    startActivity(new Intent(this, SectionB6Activity.class));
+                } else {
+                    startActivity(new Intent(this, MotherEndingActivity.class)
+                            .putExtra("complete", true));
+                }
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();

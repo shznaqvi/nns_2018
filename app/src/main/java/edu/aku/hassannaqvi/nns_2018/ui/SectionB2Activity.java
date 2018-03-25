@@ -28,7 +28,6 @@ public class SectionB2Activity extends Activity {
     DatabaseHelper db;
     private Timer timer = new Timer();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -286,6 +285,10 @@ public class SectionB2Activity extends Activity {
                 //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
                 finish();
+
+                if (!MainApp.B2B6Flag) {
+                    MainApp.B2B6Flag = true;
+                }
 
                 startActivity(new Intent(this, SectionB3Activity.class));
 
