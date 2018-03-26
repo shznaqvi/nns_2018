@@ -1,5 +1,7 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -35,9 +37,12 @@ public class EndingActivity extends AppCompatActivity {
         if (check) {
             binding.istatusa.setEnabled(true);
             binding.istatusb.setEnabled(false);
+
+            binding.btnAddMember.setVisibility(View.VISIBLE);
         } else {
             binding.istatusa.setEnabled(false);
             binding.istatusb.setEnabled(true);
+            binding.btnAddMember.setVisibility(View.GONE);
         }
 
         binding.istatus.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -121,5 +126,28 @@ public class EndingActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "You Can't go back", Toast.LENGTH_LONG).show();
     }
 
+    public void BtnAddMember() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                EndingActivity.this);
+        alertDialogBuilder
+                .setMessage("Are you sure to add missing member?")
+                .setCancelable(false)
+                .setPositiveButton("Ok",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,
+                                                int id) {
+                                startActivity(new Intent(EndingActivity.this, SectionA2ListActivity.class)
+                                        .putExtra("reBack", true));
+                            }
+                        });
+        alertDialogBuilder.setNegativeButton("Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = alertDialogBuilder.create();
+        alert.show();
+    }
 
 }
