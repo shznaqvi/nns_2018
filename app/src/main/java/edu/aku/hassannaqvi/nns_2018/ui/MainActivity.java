@@ -157,8 +157,7 @@ public class MainActivity extends Activity {
 
         DatabaseHelper db = new DatabaseHelper(this);
 
-//        Admin checking
-        if (MainApp.admin) {
+
             mainBinding.adminsec.setVisibility(View.VISIBLE);
 
             Collection<FormsContract> todaysForms = db.getTodayForms();
@@ -174,7 +173,7 @@ public class MainActivity extends Activity {
                 rSumText += "\tFORMS' LIST: \r\n";
                 String iStatus;
                 rSumText += "--------------------------------------------------\r\n";
-                rSumText += "[ DSS_ID ] \t[Form Status] \t[Sync Status]----------\r\n";
+                rSumText += "[Cluster No.] \t[ House No. ] \t[Form Status] \t[Sync Status]----------\r\n";
                 rSumText += "--------------------------------------------------\r\n";
 
                 for (FormsContract fc : todaysForms) {
@@ -220,10 +219,6 @@ public class MainActivity extends Activity {
 
             Log.d(TAG, "onCreate: " + rSumText);
             recordSummary.setText(rSumText);
-
-        } else {
-            mainBinding.adminsec.setVisibility(View.GONE);
-        }
 
 //        Fill spinner
 
