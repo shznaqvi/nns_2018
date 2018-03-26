@@ -101,6 +101,8 @@ public class MainApp extends Application {
     public static List<FamilyMembersContract> adolescents;
     public static BLRandomContract selectedHead;
     public static int serial_no;
+    public static Boolean B6Flag = true;
+    public static Boolean B2B6Flag = false;
     // fro section A2
     public static List<FamilyMembersContract> familyMembersList;
     public static List<Integer> hhClicked;

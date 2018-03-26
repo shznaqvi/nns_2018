@@ -177,10 +177,20 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                     if (MainApp.totalPregnancy >= MainApp.count) {
                         startActivity(new Intent(this, SectionB1AActivity.class).putExtra("type", false));
                     } else {
+
+                        MainApp.count = 1;
+
                         if (yearsBydob <= 2 && MainApp.status > 0) {
                             startActivity(new Intent(this, SectionB2Activity.class));
                         } else {
-                            startActivity(new Intent(this, SectionB6Activity.class));
+                            if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
+                                    &&
+                                    MainApp.B6Flag) {
+                                startActivity(new Intent(this, SectionB6Activity.class));
+                            } else {
+                                startActivity(new Intent(this, MotherEndingActivity.class)
+                                        .putExtra("complete", true));
+                            }
                         }
                     }
                 } else {

@@ -3,8 +3,13 @@ package edu.aku.hassannaqvi.nns_2018.contracts;
 import android.database.Cursor;
 import android.provider.BaseColumns;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import edu.aku.hassannaqvi.nns_2018.contracts.dummy.A1Model;
 
 /**
  * Created by hassan.naqvi on 11/30/2016.
@@ -112,6 +117,10 @@ FormsContract {
 
     }
 
+    public A1Model toA1Model(String jsonStr) {
+        Gson gson = new GsonBuilder().create();
+        return gson.fromJson(jsonStr, A1Model.class);
+    }
 
     public JSONObject toJSONObject() throws JSONException {
 

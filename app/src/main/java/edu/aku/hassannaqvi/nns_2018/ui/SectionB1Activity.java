@@ -793,22 +793,98 @@ public class SectionB1Activity extends Activity {
                 //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
                 MainApp.nuCount = 1;
-                finish();
+                //finish();
 
                 if (bi.nw203a.isChecked()) {
-                    finish();
                     if (bi.nw204a.isChecked() || bi.nw205a.isChecked()) {
                         if (bi.nw207a.isChecked()) {
                             if (MainApp.totalPregnancy > 0) {
                                 startActivity(new Intent(this, SectionB1AActivity.class));
-                            } /*else if (MainApp.totalPregnancy == 1 && bi.nw211a.isChecked()) {
-                                startActivity(new Intent(this, SectionB2Activity.class));*/
-                        } else if (MainApp.totalPregnancy == 0) {
-                            startActivity(new Intent(this, SectionB6Activity.class));
+                            } else {
+                                if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
+                                        &&
+                                        MainApp.B6Flag) {
+                                    startActivity(new Intent(this, SectionB6Activity.class));
+                                } else {
+                                    startActivity(new Intent(this, MotherEndingActivity.class)
+                                            .putExtra("complete", true));
+                                }
+                            }
+                        } else {
+                            if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
+                                    &&
+                                    MainApp.B6Flag) {
+                                startActivity(new Intent(this, SectionB6Activity.class));
+                            } else {
+                                startActivity(new Intent(this, MotherEndingActivity.class)
+                                        .putExtra("complete", true));
+                            }
                         }
                     } else {
-                        startActivity(new Intent(this, SectionB6Activity.class));
+                        if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
+                                &&
+                                MainApp.B6Flag) {
+                            startActivity(new Intent(this, SectionB6Activity.class));
+                        } else {
+                            startActivity(new Intent(this, MotherEndingActivity.class)
+                                    .putExtra("complete", true));
+                        }
                     }
+                } else {
+                    startActivity(new Intent(this, MotherEndingActivity.class)
+                            .putExtra("checkingFlag", true)
+                            .putExtra("complete", true));
+                }
+
+                /*
+                if (bi.nw203a.isChecked())
+                {
+                    //finish();
+                    if (bi.nw204a.isChecked() || bi.nw205a.isChecked())
+                    {
+                        if (bi.nw207a.isChecked())
+                        {
+                            if (MainApp.totalPregnancy > 0)
+                            {
+
+                                startActivity(new Intent(this, SectionB1AActivity.class));
+                            }
+                            else if (MainApp.totalPregnancy == 0)
+                            {
+                                if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
+                                        &&
+                                        MainApp.B6Flag) {
+                                    startActivity(new Intent(this, SectionB6Activity.class));
+                                } else {
+                                    startActivity(new Intent(this, MotherEndingActivity.class)
+                                            .putExtra("complete", true));
+                                }
+                            }
+                        }
+
+                        else
+                        {
+                            // 297a not checked
+
+                            if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
+                                    &&
+                                    MainApp.B6Flag) {
+                                startActivity(new Intent(this, SectionB6Activity.class));
+                            } else {
+                                startActivity(new Intent(this, MotherEndingActivity.class)
+                                        .putExtra("complete", true));
+                            }
+
+                        }
+
+
+                    }
+
+                    else
+                    {
+
+                    }
+
                 } else {
                     //startActivity(new Intent(this, SectionB6Activity.class));
 
@@ -816,6 +892,9 @@ public class SectionB1Activity extends Activity {
                             .putExtra("checkingFlag", true)
                             .putExtra("complete", true));
                 }
+                */
+
+                finish();
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
