@@ -28,6 +28,16 @@
                 android:layout_height="2dp"
                 android:background="@color/colorPrimary" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="2dp"
+                android:background="@color/colorPrimaryDark"
+                android:gravity="center"
+                android:text="@string/nb4heading"
+                android:textSize="40sp" />
+
             <!--nw414-->
             <TextView
                 android:layout_width="match_parent"
@@ -148,9 +158,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789"
+                        android:enabled='@{nw41596.checked ? true : false}'
                         android:hint="@string/other"
-                        android:text='@{nw41596.checked ? nw41596x.getText.toString : ""}'
-                        android:visibility='@{nw41596.checked ? View.VISIBLE : View.GONE}' />
+                        android:text='@{nw41596.checked ? nw41596x.getText.toString : ""}' />
 
                 </LinearLayout>
 
@@ -188,11 +198,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
+                        android:enabled='@{nw416a.checked ? true : false}'
                         android:hint="@string/nw416h"
                         android:inputType="number"
                         android:maxLength="2"
-                        android:text='@{nw416a.checked ? nw416hr.getText.toString : ""}'
-                        android:visibility='@{nw416a.checked ? View.VISIBLE : View.GONE}' />
+                        android:text='@{nw416a.checked ? nw416hr.getText.toString : ""}' />
 
                     <TextView
                         style="@style/sub"
@@ -213,11 +223,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
+                        android:enabled='@{nw416b.checked ? true : false}'
                         android:hint="@string/day"
                         android:inputType="number"
                         android:maxLength="2"
-                        android:text='@{nw416b.checked ? nw416d.getText.toString : ""}'
-                        android:visibility='@{nw416b.checked ? View.VISIBLE : View.GONE}' />
+                        android:text='@{nw416b.checked ? nw416d.getText.toString : ""}' />
 
                     <TextView
                         style="@style/sub"
@@ -238,11 +248,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
+                        android:enabled='@{nw416c.checked ? true : false}'
                         android:hint="@string/week"
                         android:inputType="number"
                         android:maxLength="2"
-                        android:text='@{nw416c.checked ? nw416w.getText.toString : ""}'
-                        android:visibility='@{nw416c.checked ? View.VISIBLE : View.GONE}' />
+                        android:text='@{nw416c.checked ? nw416w.getText.toString : ""}' />
 
                     <RadioButton
                         android:id="@+id/nw41698"
@@ -359,9 +369,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789"
+                        android:enabled='@{nw41896.checked ? true : false}'
                         android:hint="@string/other"
-                        android:text='@{nw41896.checked ? nw41896x.getText.toString : ""}'
-                        android:visibility='@{nw41896.checked ? View.VISIBLE : View.GONE}' />
+                        android:text='@{nw41896.checked ? nw41896x.getText.toString : ""}' />
 
                 </LinearLayout>
 
@@ -488,9 +498,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789"
+                        android:enabled='@{nw42096.checked ? true : false}'
                         android:hint="@string/other"
-                        android:text='@{nw42096.checked ? nw42096x.getText.toString : ""}'
-                        android:visibility='@{nw42096.checked ? View.VISIBLE : View.GONE}' />
+                        android:text='@{nw42096.checked ? nw42096x.getText.toString : ""}' />
 
                 </LinearLayout>
 
@@ -528,11 +538,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
+                        android:enabled='@{nw421a.checked ? true : false}'
                         android:hint="@string/nw421h"
                         android:inputType="number"
                         android:maxLength="2"
-                        android:text='@{nw421a.checked ? nw421hr.getText.toString : ""}'
-                        android:visibility='@{nw421a.checked ? View.VISIBLE : View.GONE}' />
+                        android:text='@{nw421a.checked ? nw421hr.getText.toString : ""}' />
 
                     <TextView
                         style="@style/sub"
@@ -553,11 +563,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
+                        android:enabled='@{nw421b.checked ? true : false}'
                         android:hint="@string/day"
                         android:inputType="number"
                         android:maxLength="2"
-                        android:text='@{nw421b.checked ? nw421d.getText.toString : ""}'
-                        android:visibility='@{nw421b.checked ? View.VISIBLE : View.GONE}' />
+                        android:text='@{nw421b.checked ? nw421d.getText.toString : ""}' />
 
                     <TextView
                         style="@style/sub"
@@ -578,11 +588,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
+                        android:enabled='@{nw421c.checked ? true : false}'
                         android:hint="@string/week"
                         android:inputType="number"
                         android:maxLength="2"
-                        android:text='@{nw421c.checked ? nw421w.getText.toString : ""}'
-                        android:visibility='@{nw421c.checked ? View.VISIBLE : View.GONE}' />
+                        android:text='@{nw421c.checked ? nw421w.getText.toString : ""}' />
 
                     <RadioButton
                         android:id="@+id/nw42198"
@@ -678,9 +688,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789"
+                        android:enabled='@{nw42396.checked ? true : false}'
                         android:hint="@string/other"
-                        android:text='@{nw42396.checked ? nw42396x.getText.toString : ""}'
-                        android:visibility='@{nw42396.checked ? View.VISIBLE : View.GONE}' />
+                        android:text='@{nw42396.checked ? nw42396x.getText.toString : ""}' />
 
                 </LinearLayout>
 

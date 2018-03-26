@@ -339,7 +339,7 @@ public class SectionB6Activity extends AppCompatActivity {
         sB6.put("nw501j", bi.nw501j.isChecked() ? "1"
                 : "2");
 
-        MainApp.mc.setsB6(String.valueOf(sB6));
+        MainApp.nc.setsB6(String.valueOf(sB6));
 
 
         //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
