@@ -66,8 +66,8 @@
 
     <!-- Strings related to Sections Below -->
     <string name="na1heading"> گھرانے کی معلومات </string>
-    <string name="nh101"> جغرافیائی علاقہ </string>
-    <string name="nh102"> اینومریشن بلاک نمبر </string>
+  <string name="nh101">جغرافیائی علاقہ </string>
+  <string name="nh102">اینومریشن بلاک نمبر </string>
     <string name="nh103"> صوبہ </string>
     <string name="nh104"> ضلع </string>
     <string name="nh105"> تحصیل/تعلُقہ </string>
@@ -1499,4 +1499,8 @@
     <string name="nw322">۔W322 - آپ نے حمل کے دوران کیلشیم کی گولیاں کہاں سے حاصل کیں؟</string>
     <string name="nw212">۔W212 - موجودہ حمل کے دوران ،کیا آپ کو فولاد کی گولیا ں دی گئی یا آپ نے خریدی؟</string>
     <string name="nw213">۔W213 - اگر ہاں ،خریدی یا فراہم کی گئیں ؟</string>
+
+  <string name="hc">Scan HemoCue Machine QR Code</string>
+  <string name="ht">Scan Height Machine QR Code</string>
+  <string name="wt">Scan Weight Machine QR Code</string>
 </resources>
