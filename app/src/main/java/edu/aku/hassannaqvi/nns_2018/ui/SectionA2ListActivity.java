@@ -212,17 +212,17 @@ public class SectionA2ListActivity extends AppCompatActivity {
         count.put("nh2u5g", binding.nh2u5g.getText().toString());
         count.put("nh2mw", binding.nh2mw.getText().toString());
 
-        MainApp.fc.setRespLineNo(respLineNo);
+        /*MainApp.fc.setRespLineNo(respLineNo);
 
         MainApp.fc.setCount(String.valueOf(count));
-
+*/
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
 
     }
 
     private boolean UpdateDB() {
 
-        //Long rowId;
+        /*//Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
         int updcount = db.updateSACount();
@@ -233,7 +233,8 @@ public class SectionA2ListActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
-        }
+        }*/
+        return true;
     }
 
     @Override

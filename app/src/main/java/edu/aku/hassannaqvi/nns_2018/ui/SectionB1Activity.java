@@ -1144,7 +1144,7 @@ public class SectionB1Activity extends Activity {
                 Settings.Secure.ANDROID_ID));
         MainApp.mc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
         MainApp.mc.setB1SerialNo(wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
-        MainApp.mc.set_UUID(MainApp.fc.getUID());
+        //MainApp.mc.set_UUID(MainApp.fc.getUID());
 
         wraName = bi.nb101.getSelectedItem().toString();
 

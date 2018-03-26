@@ -28,9 +28,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import edu.aku.hassannaqvi.nns_2018.FormContract;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA1Binding;
@@ -373,7 +373,7 @@ public class SectionA1Activity extends AppCompatActivity {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
 
-        MainApp.fc = new FormsContract();
+        /*MainApp.fc = new FormsContract();
 
         MainApp.fc.setDevicetagID(MainApp.getTagName(this));
         MainApp.fc.setFormDate(dtToday);
@@ -384,6 +384,20 @@ public class SectionA1Activity extends AppCompatActivity {
         MainApp.fc.setRespLineNo(MainApp.lineNo);
         MainApp.fc.setEnmNo(binding.nh102.getText().toString());
         MainApp.fc.setHhNo(binding.nh108.getText().toString().toUpperCase());
+*/
+
+        MainApp.fc = new FormContract();
+
+        MainApp.fc.setDevicetagid(MainApp.getTagName(this));
+        MainApp.fc.setFormdate(dtToday);
+        MainApp.fc.setUser(MainApp.userName);
+        MainApp.fc.setDeviceid(Settings.Secure.getString(getApplicationContext().getContentResolver(),
+                Settings.Secure.ANDROID_ID));
+        MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
+        MainApp.fc.setResp_lno(MainApp.lineNo);
+        MainApp.fc.setEnm_no(binding.nh102.getText().toString());
+        MainApp.fc.setHh_no(binding.nh108.getText().toString().toUpperCase());
+
 
         setGPS(); // Set GPS
 
@@ -434,7 +448,7 @@ public class SectionA1Activity extends AppCompatActivity {
         sA1.put("nh11996", binding.na11996.isChecked() ? "96" : "0");
         sA1.put("nh11996x", binding.na11996x.getText().toString());
 
-        MainApp.fc.setsA1(String.valueOf(sA1));
+        MainApp.fc.setSA1(String.valueOf(sA1));
 
     }
 
@@ -454,12 +468,12 @@ public class SectionA1Activity extends AppCompatActivity {
 
             String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
 
-            MainApp.fc.setGpsLat(lat);
+           /* MainApp.fc.setGpsLat(lat);
             MainApp.fc.setGpsLng(lang);
             MainApp.fc.setGpsAcc(acc);
             MainApp.fc.setGpsDT(date); // Timestamp is converted to date above
             MainApp.fc.setGpsElev(elevation);
-
+*/
             Toast.makeText(this, "GPS set", Toast.LENGTH_SHORT).show();
 
         } catch (Exception e) {
@@ -470,7 +484,21 @@ public class SectionA1Activity extends AppCompatActivity {
 
     private boolean UpdateDB() {
 
-        DatabaseHelper db = new DatabaseHelper(this);
+
+        long updCount = MainApp.fc.insert();
+
+        if (updCount != 0) {
+            Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+            MainApp.fc.set_uid(
+                    (MainApp.fc.getDeviceid() + MainApp.fc.get_id()));
+            return true;
+
+        } else {
+            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        /*DatabaseHelper db = new DatabaseHelper(this);
 
         long updcount = db.addForm(MainApp.fc);
 
@@ -486,7 +514,7 @@ public class SectionA1Activity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
-        }
+        }*/
     }
 
     public void BtnCheckHH() {

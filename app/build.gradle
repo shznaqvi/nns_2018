@@ -1,5 +1,8 @@
 apply plugin: 'com.android.application'
 
+def dbflow_version = "4.1.2"
+
+
 android {
     compileSdkVersion 27
     buildToolsVersion '27.0.3'
@@ -7,6 +10,8 @@ android {
     dataBinding {
         enabled = true
     }
+
+
 
 
     if (versionPropsFile.canRead()) {
@@ -64,6 +69,13 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.2'
 
     //implementation "com.splitwise:tokenautocomplete:2.0.8@aar"
+
+    // DBFlow
+    annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
+    implementation "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
+    implementation "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
+    implementation 'com.wajahatkarim3.DBFlowManager:DBFlowManager:3.1.1-v1'
+
 }
 
 configurations.all {

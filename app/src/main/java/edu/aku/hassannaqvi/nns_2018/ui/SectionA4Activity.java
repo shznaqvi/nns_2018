@@ -8,11 +8,15 @@ import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.raizlabs.android.dbflow.sql.language.SQLite;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Timer;
 
+import edu.aku.hassannaqvi.nns_2018.FormContract;
+import edu.aku.hassannaqvi.nns_2018.FormContract_Table;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -775,7 +779,7 @@ public class SectionA4Activity extends AppCompatActivity {
         sA4.put("nh324g", binding.nh324g.getText().toString());
 
 
-        MainApp.fc.setsA4(String.valueOf(sA4));
+        MainApp.fc.setSA4(String.valueOf(sA4));
 
 
         //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
@@ -785,9 +789,18 @@ public class SectionA4Activity extends AppCompatActivity {
     private boolean UpdateDB() {
 
         //Long rowId;
-        DatabaseHelper db = new DatabaseHelper(this);
+        //DatabaseHelper db = new DatabaseHelper(this);
 
-        int updcount = db.updateSA4();
+        FormContract form = SQLite.select().from(FormContract.class)
+                .where(FormContract_Table._id.is(MainApp.fc.get_id()))
+                .querySingle();
+
+
+        MainApp.fc.update();
+        return true;
+        //form.setS
+
+        /*int updcount = MainApp.fc.update();
 
         if (updcount == 1) {
             //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
@@ -795,7 +808,7 @@ public class SectionA4Activity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
-        }
+        }*/
     }
 
 

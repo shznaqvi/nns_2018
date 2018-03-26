@@ -1324,7 +1324,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public int updateFormID() {
+    /*public int updateFormID() {
         SQLiteDatabase db = this.getReadableDatabase();
 
 // New value for one column
@@ -1341,7 +1341,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
         return count;
     }
-
+*/
     public int updateFamilyMemberID() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2184,7 +2184,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public int updateSACount() {
+    /*public int updateSACount() {
         SQLiteDatabase db = this.getReadableDatabase();
 
 // New value for one column
@@ -2201,10 +2201,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selection,
                 selectionArgs);
         return count;
-    }
+    }*/
 
 
-    public int updateSA4() {
+    /*public int updateSA4() {
         SQLiteDatabase db = this.getReadableDatabase();
 
 // New value for one column
@@ -2221,8 +2221,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
         return count;
     }
-
-    public int updateSA5() {
+*/
+    /*public int updateSA5() {
         SQLiteDatabase db = this.getReadableDatabase();
 
 // New value for one column
@@ -2239,7 +2239,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
         return count;
     }
-
+*/
     public int updateSC1() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2350,7 +2350,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 */
-    public int updateCount() {
+    /*public int updateCount() {
         SQLiteDatabase db = this.getReadableDatabase();
 
 // New value for one column
@@ -2367,9 +2367,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
         return count;
     }
+*/
 
-
-    public int updateEnding() {
+    /*public int updateEnding() {
         SQLiteDatabase db = this.getReadableDatabase();
 
 // New value for one column
@@ -2386,7 +2386,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selection,
                 selectionArgs);
         return count;
-    }
+    }*/
 
 
     public int updateAnthroEnding() {

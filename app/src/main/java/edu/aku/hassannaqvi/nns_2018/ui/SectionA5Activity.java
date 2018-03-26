@@ -519,7 +519,7 @@ public class SectionA5Activity extends AppCompatActivity {
             recipientCounter = Integer.valueOf(binding.nh702.getText().toString());
         }
 
-        MainApp.fc.setsA5(String.valueOf(sA5));
+        //MainApp.fc.setsA5(String.valueOf(sA5));
 
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
@@ -529,7 +529,7 @@ public class SectionA5Activity extends AppCompatActivity {
     private boolean UpdateDB() {
 
         //Long rowId;
-        DatabaseHelper db = new DatabaseHelper(this);
+        /*DatabaseHelper db = new DatabaseHelper(this);
 
         int updcount = db.updateSA5();
 
@@ -539,7 +539,9 @@ public class SectionA5Activity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
-        }
+        }*/
+
+        return true;
 
     }
 

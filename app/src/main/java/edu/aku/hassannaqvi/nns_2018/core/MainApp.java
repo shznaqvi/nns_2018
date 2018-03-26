@@ -14,6 +14,10 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.text.format.DateFormat;
 
+import com.raizlabs.android.dbflow.config.DatabaseConfig;
+import com.raizlabs.android.dbflow.config.FlowConfig;
+import com.raizlabs.android.dbflow.config.FlowManager;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -21,11 +25,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import edu.aku.hassannaqvi.nns_2018.AppDB;
+import edu.aku.hassannaqvi.nns_2018.FormContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.NutritionContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
@@ -74,7 +79,8 @@ public class MainApp extends Application {
     public static String deviceId;
 
     public static Boolean admin = false;
-    public static FormsContract fc;
+    //public static FormsContract fc;
+    public static FormContract fc;
     public static MWRAContract mc;
     public static NutritionContract nc;
     public static OutcomeContract oc;
@@ -369,6 +375,11 @@ public class MainApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        FlowManager.init(FlowConfig.builder(this)
+                .addDatabaseConfig(DatabaseConfig.builder(AppDB.class)
+                        .databaseName(AppDB.NAME)
+                        .build())
+                .build());
         TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/JameelNooriNastaleeq.ttf"); // font from assets: "assets/fonts/Roboto-Regular.ttf
 
         deviceId = Settings.Secure.getString(getApplicationContext().getContentResolver(),

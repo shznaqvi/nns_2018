@@ -463,10 +463,10 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
             MainApp.fmc.setUser(MainApp.userName);
             MainApp.fmc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID));
             MainApp.fmc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
-            MainApp.fmc.set_UUID(MainApp.fc.getUID());
+           /* MainApp.fmc.set_UUID(MainApp.fc.getUID());
             MainApp.fmc.setEnmNo(MainApp.fc.getEnmNo());
             MainApp.fmc.setHhNo(MainApp.fc.getHhNo());
-
+*/
             MainApp.fmc.setSerialNo(String.valueOf(MainApp.serial_no));
             MainApp.fmc.setna204(binding.na204a.isChecked() ? "1" : binding.na204b.isChecked() ? "2" : "0");
             MainApp.fmc.setName(binding.na202.getText().toString());
