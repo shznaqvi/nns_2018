@@ -383,7 +383,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         sB1a.put("nw217", bi.nw217a.isChecked() ? "1"
                 : bi.nw217b.isChecked() ? "2"
                 : "0");
-        if (bi.nw217a.isChecked()) {
+        if (bi.nw216c.isChecked() || bi.nw216d.isChecked() || bi.nw216f.isChecked()) {
             MainApp.status++;
         }
 
