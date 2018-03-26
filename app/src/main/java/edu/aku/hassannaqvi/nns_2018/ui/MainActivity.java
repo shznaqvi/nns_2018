@@ -218,7 +218,7 @@ public class MainActivity extends Activity {
             rSumText += "\r\n";
 
             Log.d(TAG, "onCreate: " + rSumText);
-            recordSummary.setText(rSumText);
+        mainBinding.recordSummary.setText(rSumText);
 
 //        Fill spinner
 
