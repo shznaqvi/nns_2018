@@ -717,15 +717,15 @@
 
     <string name="nw403"> آپ کے بچے(نام) کی پیدائش کس جگہ واقع ہوئی تھی؟ </string>
     <string name="nw403info"> پیدائش  کی جگہ کو شناخت کرنے کے لیے سوالات پوچھیں </string>
-    <string name="nw403info1"> Home </string>
+    <string name="nw403info1"> گھر </string>
     <string name="nw403a"> جواب دہندہ کے گھر پر </string>
     <string name="nw403b"> کسی اور کے گھر پر </string>
-    <string name="nw403info2"> Public medical sector </string>
+    <string name="nw403info2"> بپلک میڈیکل سیکٹ </string>
     <string name="nw403c"> سرکاری ہسپتال </string>
     <string name="nw403d"> سرکاری کلینک </string>
     <string name="nw403e"> ماں اور بچہ کا صحت مرکز</string>
     <string name="nw403f"> دیگر جگہ </string>
-    <string name="nw403info3"> Private medical sector </string>
+    <string name="nw403info3">  نجی ہسپتال/سیکٹر </string>
     <string name="nw403g"> نجی ہسپتال </string>
     <string name="nw403h"> نجی کلینک </string>
     <string name="nw403i"> نجی زچہ و بچہ سینٹر </string>
