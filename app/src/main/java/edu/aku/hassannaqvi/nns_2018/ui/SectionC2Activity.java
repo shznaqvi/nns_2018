@@ -386,10 +386,11 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
                         return false;
                     }
                 }
-            }
 
-            if (!validatorClass.EmptyRadioButton(this, bi.nc212, bi.nc212a, getString(R.string.nc212))) {
-                return false;
+
+                if (!validatorClass.EmptyRadioButton(this, bi.nc212, bi.nc212a, getString(R.string.nc212))) {
+                    return false;
+                }
             }
 
             if (!bi.nc212a.isChecked()) {
@@ -397,6 +398,7 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
                     return false;
                 }
             }
+
 
             if (!validatorClass.EmptyRadioButton(this, bi.nc213, bi.nc213a, getString(R.string.nc213))) {
                 return false;

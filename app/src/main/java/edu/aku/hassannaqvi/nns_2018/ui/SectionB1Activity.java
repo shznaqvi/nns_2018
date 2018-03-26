@@ -132,6 +132,7 @@ public class SectionB1Activity extends Activity {
                     bi.nw212a.setEnabled(true);
                     bi.nw212b.setEnabled(true);
 
+//                    w213
                     bi.nw21301a.setEnabled(true);
                     bi.nw21302a.setEnabled(true);
                     bi.nw21303a.setEnabled(true);
@@ -172,6 +173,10 @@ public class SectionB1Activity extends Activity {
                     bi.nw212a.setEnabled(false);
                     bi.nw212b.setEnabled(false);
                     bi.nw212.clearCheck();
+
+                    //                    w213
+
+
                     bi.nw21301.clearCheck();
                     bi.nw21302.clearCheck();
                     bi.nw21303.clearCheck();
@@ -214,11 +219,19 @@ public class SectionB1Activity extends Activity {
                     bi.nw211b.setEnabled(true);
                     bi.nw212a.setEnabled(true);
                     bi.nw212b.setEnabled(true);
-                    bi.nw21301.setEnabled(true);
-                    bi.nw21302.setEnabled(true);
-                    bi.nw21303.setEnabled(true);
-                    bi.nw21398.setEnabled(true);
-                    bi.nw21399.setEnabled(true);
+
+                    //                    w213
+                    bi.nw21301a.setEnabled(true);
+                    bi.nw21302a.setEnabled(true);
+                    bi.nw21303a.setEnabled(true);
+                    bi.nw21398a.setEnabled(true);
+                    bi.nw21399a.setEnabled(true);
+
+                    bi.nw21301b.setEnabled(true);
+                    bi.nw21302b.setEnabled(true);
+                    bi.nw21303b.setEnabled(true);
+                    bi.nw21398b.setEnabled(true);
+                    bi.nw21399b.setEnabled(true);
 
 
                 } else {
@@ -226,6 +239,7 @@ public class SectionB1Activity extends Activity {
                     bi.nw205a.setEnabled(true);
                     bi.nw205b.setEnabled(true);
                     //bi.nw205.clearCheck();
+
 
                     bi.nw206.setEnabled(false);
                     bi.nw206.setText(null);
@@ -267,7 +281,6 @@ public class SectionB1Activity extends Activity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (bi.nw205a.isChecked()) {
-
                     bi.nw206.setEnabled(true);
                     bi.nw207a.setEnabled(true);
                     bi.nw207b.setEnabled(true);
@@ -279,14 +292,20 @@ public class SectionB1Activity extends Activity {
                     bi.nw211b.setEnabled(true);
                     bi.nw212a.setEnabled(true);
                     bi.nw212b.setEnabled(true);
-                    bi.nw21301.setEnabled(true);
-                    bi.nw21302.setEnabled(true);
-                    bi.nw21303.setEnabled(true);
-                    bi.nw21398.setEnabled(true);
-                    bi.nw21399.setEnabled(true);
+//                    w213
+                    bi.nw21301a.setEnabled(true);
+                    bi.nw21302a.setEnabled(true);
+                    bi.nw21303a.setEnabled(true);
+                    bi.nw21398a.setEnabled(true);
+                    bi.nw21399a.setEnabled(true);
+
+                    bi.nw21301b.setEnabled(true);
+                    bi.nw21302b.setEnabled(true);
+                    bi.nw21303b.setEnabled(true);
+                    bi.nw21398b.setEnabled(true);
+                    bi.nw21399b.setEnabled(true);
 
                 } else {
-
                     bi.nw206.setEnabled(false);
                     bi.nw206.setText(null);
                     bi.nw207a.setEnabled(false);
@@ -306,17 +325,25 @@ public class SectionB1Activity extends Activity {
                     bi.nw212a.setEnabled(false);
                     bi.nw212b.setEnabled(false);
                     bi.nw212.clearCheck();
+
                     bi.nw21301.clearCheck();
                     bi.nw21302.clearCheck();
                     bi.nw21303.clearCheck();
                     bi.nw21398.clearCheck();
                     bi.nw21399.clearCheck();
 
-                    bi.nw21301.setEnabled(false);
-                    bi.nw21302.setEnabled(false);
-                    bi.nw21303.setEnabled(false);
-                    bi.nw21398.setEnabled(false);
-                    bi.nw21399.setEnabled(false);
+                    bi.nw21301a.setEnabled(false);
+                    bi.nw21302a.setEnabled(false);
+                    bi.nw21303a.setEnabled(false);
+                    bi.nw21398a.setEnabled(false);
+                    bi.nw21399a.setEnabled(false);
+
+                    bi.nw21301b.setEnabled(false);
+                    bi.nw21302b.setEnabled(false);
+                    bi.nw21303b.setEnabled(false);
+                    bi.nw21398b.setEnabled(false);
+                    bi.nw21399b.setEnabled(false);
+
                 }
             }
         });
@@ -334,12 +361,19 @@ public class SectionB1Activity extends Activity {
                     bi.nw211b.setEnabled(true);
                     bi.nw212a.setEnabled(true);
                     bi.nw212b.setEnabled(true);
-                    bi.nw21301.setEnabled(true);
-                    bi.nw21302.setEnabled(true);
-                    bi.nw21303.setEnabled(true);
-                    bi.nw21398.setEnabled(true);
-                    bi.nw21399.setEnabled(true);
 
+
+                    bi.nw21301a.setEnabled(true);
+                    bi.nw21302a.setEnabled(true);
+                    bi.nw21303a.setEnabled(true);
+                    bi.nw21398a.setEnabled(true);
+                    bi.nw21399a.setEnabled(true);
+
+                    bi.nw21301b.setEnabled(true);
+                    bi.nw21302b.setEnabled(true);
+                    bi.nw21303b.setEnabled(true);
+                    bi.nw21398b.setEnabled(true);
+                    bi.nw21399b.setEnabled(true);
                 } else {
                     bi.nw208.setEnabled(false);
                     bi.nw208.setText(null);
@@ -361,11 +395,17 @@ public class SectionB1Activity extends Activity {
                     bi.nw21398.clearCheck();
                     bi.nw21399.clearCheck();
 
-                    bi.nw21301.setEnabled(false);
-                    bi.nw21302.setEnabled(false);
-                    bi.nw21303.setEnabled(false);
-                    bi.nw21398.setEnabled(false);
-                    bi.nw21399.setEnabled(false);
+                    bi.nw21301a.setEnabled(false);
+                    bi.nw21302a.setEnabled(false);
+                    bi.nw21303a.setEnabled(false);
+                    bi.nw21398a.setEnabled(false);
+                    bi.nw21399a.setEnabled(false);
+
+                    bi.nw21301b.setEnabled(false);
+                    bi.nw21302b.setEnabled(false);
+                    bi.nw21303b.setEnabled(false);
+                    bi.nw21398b.setEnabled(false);
+                    bi.nw21399b.setEnabled(false);
                 }
             }
         });
@@ -394,16 +434,18 @@ public class SectionB1Activity extends Activity {
                         bi.nw212a.setEnabled(false);
                         bi.nw212b.setEnabled(false);
                         bi.nw212.clearCheck();
-                        bi.nw21301.clearCheck();
-                        bi.nw21302.clearCheck();
-                        bi.nw21303.clearCheck();
-                        bi.nw21398.clearCheck();
-                        bi.nw21399.clearCheck();
-                        bi.nw21301.setEnabled(false);
-                        bi.nw21302.setEnabled(false);
-                        bi.nw21303.setEnabled(false);
-                        bi.nw21398.setEnabled(false);
-                        bi.nw21399.setEnabled(false);
+
+                        bi.nw21301a.setEnabled(true);
+                        bi.nw21302a.setEnabled(true);
+                        bi.nw21303a.setEnabled(true);
+                        bi.nw21398a.setEnabled(true);
+                        bi.nw21399a.setEnabled(true);
+
+                        bi.nw21301b.setEnabled(true);
+                        bi.nw21302b.setEnabled(true);
+                        bi.nw21303b.setEnabled(true);
+                        bi.nw21398b.setEnabled(true);
+                        bi.nw21399b.setEnabled(true);
 
                     } else {
 
@@ -414,11 +456,24 @@ public class SectionB1Activity extends Activity {
                         bi.nw211b.setEnabled(true);
                         bi.nw212a.setEnabled(true);
                         bi.nw212b.setEnabled(true);
-                        bi.nw21301.setEnabled(true);
-                        bi.nw21302.setEnabled(true);
-                        bi.nw21303.setEnabled(true);
-                        bi.nw21398.setEnabled(true);
-                        bi.nw21399.setEnabled(true);
+
+                        bi.nw21301.clearCheck();
+                        bi.nw21302.clearCheck();
+                        bi.nw21303.clearCheck();
+                        bi.nw21398.clearCheck();
+                        bi.nw21399.clearCheck();
+
+                        bi.nw21301a.setEnabled(false);
+                        bi.nw21302a.setEnabled(false);
+                        bi.nw21303a.setEnabled(false);
+                        bi.nw21398a.setEnabled(false);
+                        bi.nw21399a.setEnabled(false);
+
+                        bi.nw21301b.setEnabled(false);
+                        bi.nw21302b.setEnabled(false);
+                        bi.nw21303b.setEnabled(false);
+                        bi.nw21398b.setEnabled(false);
+                        bi.nw21399b.setEnabled(false);
                     }
                 }
 
@@ -445,7 +500,7 @@ public class SectionB1Activity extends Activity {
                         bi.nw209a.setText(null);
                         bi.nw210.setEnabled(false);
                         bi.nw210.setText(null);
-                        bi.nw211a.setEnabled(true);
+                      /*  bi.nw211a.setEnabled(true);
                         bi.nw211b.setEnabled(true);
                         bi.nw212a.setEnabled(true);
                         bi.nw212b.setEnabled(true);
@@ -453,14 +508,14 @@ public class SectionB1Activity extends Activity {
                         bi.nw21302.setEnabled(true);
                         bi.nw21303.setEnabled(true);
                         bi.nw21398.setEnabled(true);
-                        bi.nw21399.setEnabled(true);
+                        bi.nw21399.setEnabled(true);*/
 
 
                     } else {
                         //clearClass.ClearAllFields(bi.fldGrpnw210, true);
                         bi.nw209a.setEnabled(true);
                         bi.nw210.setEnabled(true);
-                        bi.nw211a.setEnabled(true);
+                       /* bi.nw211a.setEnabled(true);
                         bi.nw211b.setEnabled(true);
                         bi.nw212a.setEnabled(true);
                         bi.nw212b.setEnabled(true);
@@ -469,7 +524,7 @@ public class SectionB1Activity extends Activity {
                         bi.nw21302.setEnabled(true);
                         bi.nw21303.setEnabled(true);
                         bi.nw21398.setEnabled(true);
-                        bi.nw21399.setEnabled(true);
+                        bi.nw21399.setEnabled(true);*/
                     }
                 }
 
@@ -543,7 +598,6 @@ public class SectionB1Activity extends Activity {
                     bi.nw21398a.setEnabled(true);
                     bi.nw21399a.setEnabled(true);
 
-
                     bi.nw21301b.setEnabled(true);
                     bi.nw21302b.setEnabled(true);
                     bi.nw21303b.setEnabled(true);
@@ -554,6 +608,11 @@ public class SectionB1Activity extends Activity {
                     bi.nw212b.setEnabled(false);
                     bi.nw212.clearCheck();
 
+                    bi.nw21301.clearCheck();
+                    bi.nw21302.clearCheck();
+                    bi.nw21303.clearCheck();
+                    bi.nw21398.clearCheck();
+                    bi.nw21399.clearCheck();
                     bi.nw21301.clearCheck();
                     bi.nw21302.clearCheck();
                     bi.nw21303.clearCheck();
@@ -571,7 +630,6 @@ public class SectionB1Activity extends Activity {
                     bi.nw21303b.setEnabled(false);
                     bi.nw21398b.setEnabled(false);
                     bi.nw21399b.setEnabled(false);
-
                 }
 
             }
@@ -580,7 +638,6 @@ public class SectionB1Activity extends Activity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.nw212a) {
-
                     bi.nw21301a.setEnabled(true);
                     bi.nw21302a.setEnabled(true);
                     bi.nw21303a.setEnabled(true);
@@ -594,7 +651,6 @@ public class SectionB1Activity extends Activity {
                     bi.nw21399b.setEnabled(true);
 
                 } else {
-
                     bi.nw21301.clearCheck();
                     bi.nw21302.clearCheck();
                     bi.nw21303.clearCheck();
