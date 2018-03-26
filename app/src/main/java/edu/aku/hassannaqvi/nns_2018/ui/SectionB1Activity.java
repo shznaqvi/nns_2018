@@ -836,64 +836,6 @@ public class SectionB1Activity extends Activity {
                             .putExtra("complete", true));
                 }
 
-                /*
-                if (bi.nw203a.isChecked())
-                {
-                    //finish();
-                    if (bi.nw204a.isChecked() || bi.nw205a.isChecked())
-                    {
-                        if (bi.nw207a.isChecked())
-                        {
-                            if (MainApp.totalPregnancy > 0)
-                            {
-
-                                startActivity(new Intent(this, SectionB1AActivity.class));
-                            }
-                            else if (MainApp.totalPregnancy == 0)
-                            {
-                                if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
-                                        &&
-                                        MainApp.B6Flag) {
-                                    startActivity(new Intent(this, SectionB6Activity.class));
-                                } else {
-                                    startActivity(new Intent(this, MotherEndingActivity.class)
-                                            .putExtra("complete", true));
-                                }
-                            }
-                        }
-
-                        else
-                        {
-                            // 297a not checked
-
-                            if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
-                                    &&
-                                    MainApp.B6Flag) {
-                                startActivity(new Intent(this, SectionB6Activity.class));
-                            } else {
-                                startActivity(new Intent(this, MotherEndingActivity.class)
-                                        .putExtra("complete", true));
-                            }
-
-                        }
-
-
-                    }
-
-                    else
-                    {
-
-                    }
-
-                } else {
-                    //startActivity(new Intent(this, SectionB6Activity.class));
-
-                    startActivity(new Intent(this, MotherEndingActivity.class)
-                            .putExtra("checkingFlag", true)
-                            .putExtra("complete", true));
-                }
-                */
-
                 finish();
 
             } else {
@@ -934,14 +876,14 @@ public class SectionB1Activity extends Activity {
         if (!validatorClass.EmptyTextBox(this, bi.nw201days, getString(R.string.day))) {
             return false;
         }
-        if (!validatorClass.RangeTextBox(this, bi.nw201days, 1, 29, 98, "Range 1-29 or 98", getString(R.string.day))) {
+        if (!validatorClass.RangeTextBox(this, bi.nw201days, 1, 31, 98, "Range 1-31 or 98", getString(R.string.day))) {
             return false;
         }
 
         if (!validatorClass.EmptyTextBox(this, bi.nw201months, getString(R.string.months))) {
             return false;
         }
-        if (!validatorClass.RangeTextBox(this, bi.nw201months, 1, 11, 98, "Range 1-11 or 98", getString(R.string.months))) {
+        if (!validatorClass.RangeTextBox(this, bi.nw201months, 1, 12, 98, "Range 1-12 or 98", getString(R.string.months))) {
             return false;
         }
 
