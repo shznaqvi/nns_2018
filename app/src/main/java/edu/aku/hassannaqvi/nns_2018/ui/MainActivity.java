@@ -200,9 +200,11 @@ public class MainActivity extends Activity {
 
                     //rSumText += fc.getDSSID();
 
-                    rSumText += " " + iStatus + " ";
+                    rSumText += fc.getEnmNo() + " \t";
+                    rSumText += " " + fc.getHhNo() + " \t";
+                    rSumText += " " + iStatus + " \t";
 
-                    rSumText += (fc.getSynced() == null ? "\t\tNot Synced" : "\t\tSynced");
+                    rSumText += (fc.getSynced().equals("") ? "\t\tNot Synced" : "\t\tSynced");
                     rSumText += "\r\n";
                     rSumText += "--------------------------------------------------\r\n";
                 }
