@@ -164,7 +164,6 @@
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity android:name=".ui.SectionC4Activity" />
         <activity android:name=".ui.AntrhoInfoActivity" />
-        <activity android:name=".ui.SectionMDD_Activity"></activity>
     </application>
 
 </manifest>

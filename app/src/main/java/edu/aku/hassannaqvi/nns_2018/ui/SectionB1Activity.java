@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -92,21 +90,42 @@ public class SectionB1Activity extends Activity {
         bi.nb101.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, lstMwra));
 
 
-        bi.nb101.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+/*        bi.nb101.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (bi.nb101.getSelectedItemPosition() != 0) {
-                    bi.curAge.setText("Current Age is: " + wraMap.get(bi.nb101.getSelectedItem().toString()).getAgeInYear() + " years");
-                    bi.curAge1.setText("Current Age is: " + wraMap.get(bi.nb101.getSelectedItem().toString()).getAgeInYear() + " years");
+                    //  Log.d("test","Age as in edit text"+bi.nw202.getText().toString());
+//                    Log.d("test","Age as in edit text to string "+bi.nw202.toString());
+
                 }
             }
+
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-        });
+        });*/
+        bi.nw202.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!bi.nw202.getText().toString().isEmpty()) {
+                    bi.curAge.setText("Current Age is: " + bi.nw202.getText().toString() + " years");
+                    bi.curAge1.setText("Current Age is: " + bi.nw202.getText().toString() + " years");
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
 //============================================ Skip Patterns =======================================
 

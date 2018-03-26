@@ -432,7 +432,7 @@
                     android:hint="@string/nw305a"
                     android:inputType="number"
                     android:maxLength="2"
-                    android:text='@{nw30598.checked ? nw305.getText.toString : ""}' />
+                    android:text='@{nw30598.checked ?  "" : nw305.getText.toString}' />
 
                 <CheckBox
                     android:id="@+id/nw30598"
@@ -666,7 +666,7 @@
                     android:hint="@string/times"
                     android:inputType="number"
                     android:maxLength="1"
-                    android:text='@{nw30998.checked ? nw309.getText.toString : ""}' />
+                    android:text='@{nw30998.checked ? "" :  nw309.getText.toString}' />
 
                 <CheckBox
                     android:id="@+id/nw30998"

@@ -196,7 +196,7 @@
                     android:id="@+id/nh7a0496x"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="1dp"
                     android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                     android:enabled='@{nh7a0496.checked ? true : false}'
                     android:hint="@string/other"

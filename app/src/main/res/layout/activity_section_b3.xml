@@ -106,7 +106,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:enabled="@{nw32798.checked ? false :true}"
                 android:orientation="vertical">
 
                 <LinearLayout
