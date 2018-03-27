@@ -452,6 +452,12 @@ public class Child extends BaseModel {
     @Column
     private String nc412h;
     @Column
+    private String nc412i;
+
+    @Column
+    private String nc412j;
+
+    @Column
     private String nc4129601;
     @Column
     private String nc4129601x;
@@ -2137,6 +2143,26 @@ public class Child extends BaseModel {
     public void setNc412h(String nc412h) {
         this.nc412h = nc412h;
     }
+
+
+    public String getNc412i() {
+        return nc412i;
+    }
+
+    public void setNc412i(String nc412i) {
+        this.nc412i = nc412i;
+    }
+
+
+
+    public String getNc412j() {
+        return nc412j;
+    }
+
+    public void setNc412j(String nc412j) {
+        this.nc412j = nc412j;
+    }
+
 
     public String getNc4129601() {
         return nc4129601;

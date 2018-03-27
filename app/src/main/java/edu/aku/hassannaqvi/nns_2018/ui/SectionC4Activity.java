@@ -15,6 +15,7 @@ import java.util.Timer;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Child;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC4Binding;
@@ -469,26 +470,28 @@ public class SectionC4Activity extends Activity {
     private void SaveDraft() throws JSONException {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
-        JSONObject sC4 = new JSONObject();
+        //JSONObject sC4 = new JSONObject();
+
+        MainApp.cc1 = new Child();
 
 //        nc301
-        sC4.put("nc4name", selectedChild.getName());
+        MainApp.cc1.setNc4name(selectedChild.getName());
 //        nc302
-        sC4.put("nc402Serial", selectedChild.getSerialNo());
+        MainApp.cc1.setNc402Serial(selectedChild.getSerialNo());
 
 //        nc401
-        sC4.put("nc401", binding.nc401a.isChecked() ? "1"
+        MainApp.cc1.setNc401(binding.nc401a.isChecked() ? "1"
                 : binding.nc401b.isChecked() ? "2"
                 : "0");
 
 //      nc402
-        sC4.put("nc402", binding.nc402a.isChecked() ? "1"
+        MainApp.cc1.setNc402(binding.nc402a.isChecked() ? "1"
                 : binding.nc402b.isChecked() ? "2"
                 : "0");
 
 
 //        nc403
-        sC4.put("nc403", binding.nc403a.isChecked() ? "1"
+        MainApp.cc1.setNc403(binding.nc403a.isChecked() ? "1"
                 : binding.nc403b.isChecked() ? "2"
                 : binding.nc403c.isChecked() ? "3"
                 : binding.nc403d.isChecked() ? "4"
@@ -507,38 +510,38 @@ public class SectionC4Activity extends Activity {
                 : "0");
 
 
-        sC4.put("nc4039601x", binding.nc4039601x.getText().toString());
-        sC4.put("nc4039602x", binding.nc4039602x.getText().toString());
-        sC4.put("nc4039603x", binding.nc4039603x.getText().toString());
+        MainApp.cc1.setNc4039601x(binding.nc4039601x.getText().toString());
+        MainApp.cc1.setNc4039602x(binding.nc4039602x.getText().toString());
+        MainApp.cc1.setNc4039603x(binding.nc4039603x.getText().toString());
 
 //     nc404
-        sC4.put("nc404a", binding.nc404a.isChecked() ? "1" : "0");
-        sC4.put("nc404b", binding.nc404b.isChecked() ? "2" : "0");
-        sC4.put("nc404c", binding.nc404c.isChecked() ? "3" : "0");
-        sC4.put("nc404d", binding.nc404d.isChecked() ? "4" : "0");
-        sC4.put("nc404e", binding.nc404e.isChecked() ? "5" : "0");
-        sC4.put("nc404f", binding.nc404f.isChecked() ? "6" : "0");
-        sC4.put("nc404g", binding.nc404g.isChecked() ? "7" : "0");
-        sC4.put("nc404h", binding.nc404h.isChecked() ? "8" : "0");
-        sC4.put("nc404i", binding.nc404i.isChecked() ? "9" : "0");
-        sC4.put("nc404j", binding.nc404j.isChecked() ? "10" : "0");
-        sC4.put("nc40496", binding.nc40496.isChecked() ? "96" : "0");
+        MainApp.cc1.setNc404a(binding.nc404a.isChecked() ? "1" : "0");
+        MainApp.cc1.setNc404b(binding.nc404b.isChecked() ? "2" : "0");
+        MainApp.cc1.setNc404c(binding.nc404c.isChecked() ? "3" : "0");
+        MainApp.cc1.setNc404d(binding.nc404d.isChecked() ? "4" : "0");
+        MainApp.cc1.setNc404e(binding.nc404e.isChecked() ? "5" : "0");
+        MainApp.cc1.setNc404f(binding.nc404f.isChecked() ? "6" : "0");
+        MainApp.cc1.setNc404g(binding.nc404g.isChecked() ? "7" : "0");
+        MainApp.cc1.setNc404h(binding.nc404h.isChecked() ? "8" : "0");
+        MainApp.cc1.setNc404i(binding.nc404i.isChecked() ? "9" : "0");
+        MainApp.cc1.setNc404j(binding.nc404j.isChecked() ? "10" : "0");
+        MainApp.cc1.setNc40496(binding.nc40496.isChecked() ? "96" : "0");
 
-        sC4.put("nc40496x", binding.nc40496x.getText().toString());
+        MainApp.cc1.setNc40496x(binding.nc40496x.getText().toString());
 
 //        nc405
-        sC4.put("nc405", binding.nc405a.isChecked() ? "1"
+        MainApp.cc1.setNc405(binding.nc405a.isChecked() ? "1"
                 : binding.nc405b.isChecked() ? "2"
                 : "0");
 
 //      nc406
-        sC4.put("nc406", binding.nc406a.isChecked() ? "1"
+        MainApp.cc1.setNc406(binding.nc406a.isChecked() ? "1"
                 : binding.nc406b.isChecked() ? "2"
                 : "0");
 
 
 //        nc407
-        sC4.put("nc407", binding.nc407a.isChecked() ? "1"
+        MainApp.cc1.setNc407(binding.nc407a.isChecked() ? "1"
                 : binding.nc407b.isChecked() ? "2"
                 : binding.nc407c.isChecked() ? "3"
                 : binding.nc407d.isChecked() ? "4"
@@ -557,38 +560,38 @@ public class SectionC4Activity extends Activity {
                 : "0");
 
 
-        sC4.put("nc4079601x", binding.nc4079601x.getText().toString());
-        sC4.put("nc4079602x", binding.nc4079602x.getText().toString());
-        sC4.put("nc4079603x", binding.nc4079603x.getText().toString());
+        MainApp.cc1.setNc4079601x(binding.nc4079601x.getText().toString());
+        MainApp.cc1.setNc4079602x(binding.nc4079602x.getText().toString());
+        MainApp.cc1.setNc4079603x(binding.nc4079603x.getText().toString());
 
 //     nc408
-        sC4.put("nc408a", binding.nc408a.isChecked() ? "1" : "0");
-        sC4.put("nc408b", binding.nc408b.isChecked() ? "2" : "0");
-        sC4.put("nc408c", binding.nc408c.isChecked() ? "3" : "0");
-        sC4.put("nc408d", binding.nc408d.isChecked() ? "4" : "0");
-        sC4.put("nc408e", binding.nc408e.isChecked() ? "5" : "0");
-        sC4.put("nc408f", binding.nc408f.isChecked() ? "6" : "0");
-        sC4.put("nc408g", binding.nc408g.isChecked() ? "7" : "0");
-        sC4.put("nc408h", binding.nc408h.isChecked() ? "8" : "0");
-        sC4.put("nc408i", binding.nc408i.isChecked() ? "9" : "0");
-        sC4.put("nc4089601", binding.nc4089601.isChecked() ? "96" : "0");
+        MainApp.cc1.setNc408a(binding.nc408a.isChecked() ? "1" : "0");
+        MainApp.cc1.setNc408b(binding.nc408b.isChecked() ? "2" : "0");
+        MainApp.cc1.setNc408c(binding.nc408c.isChecked() ? "3" : "0");
+        MainApp.cc1.setNc408d(binding.nc408d.isChecked() ? "4" : "0");
+        MainApp.cc1.setNc408e(binding.nc408e.isChecked() ? "5" : "0");
+        MainApp.cc1.setNc408f(binding.nc408f.isChecked() ? "6" : "0");
+        MainApp.cc1.setNc408g(binding.nc408g.isChecked() ? "7" : "0");
+        MainApp.cc1.setNc408h(binding.nc408h.isChecked() ? "8" : "0");
+        MainApp.cc1.setNc408i(binding.nc408i.isChecked() ? "9" : "0");
+        MainApp.cc1.setNc4089601(binding.nc4089601.isChecked() ? "96" : "0");
 
-        sC4.put("nc4089601x", binding.nc4089601x.getText().toString());
+        MainApp.cc1.setNc4089601x(binding.nc4089601x.getText().toString());
 
 
 //        nc409
-        sC4.put("nc409", binding.nc409a.isChecked() ? "1"
+        MainApp.cc1.setNc409(binding.nc409a.isChecked() ? "1"
                 : binding.nc409b.isChecked() ? "2"
                 : "0");
 
 //      nc410
-        sC4.put("nc410", binding.nc410a.isChecked() ? "1"
+        MainApp.cc1.setNc410(binding.nc410a.isChecked() ? "1"
                 : binding.nc410b.isChecked() ? "2"
                 : "0");
 
 
 //        nc411
-        sC4.put("nc411", binding.nc411a.isChecked() ? "1"
+        MainApp.cc1.setNc411(binding.nc411a.isChecked() ? "1"
                 : binding.nc411b.isChecked() ? "2"
                 : binding.nc411c.isChecked() ? "3"
                 : binding.nc411d.isChecked() ? "4"
@@ -607,70 +610,72 @@ public class SectionC4Activity extends Activity {
                 : "0");
 
 
-        sC4.put("nc4119601x", binding.nc4119601x.getText().toString());
-        sC4.put("nc4119602x", binding.nc4119602x.getText().toString());
-        sC4.put("nc4119603x", binding.nc4119603x.getText().toString());
+        MainApp.cc1.setNc4119601x(binding.nc4119601x.getText().toString());
+        MainApp.cc1.setNc4119602x(binding.nc4119602x.getText().toString());
+        MainApp.cc1.setNc4119603x(binding.nc4119603x.getText().toString());
 
 //     nc412
-        sC4.put("nc412a", binding.nc412b.isChecked() ? "1" : "0");
-        sC4.put("nc412b", binding.nc412c.isChecked() ? "2" : "0");
+        MainApp.cc1.setNc412b(binding.nc412b.isChecked() ? "1" : "0");
+        MainApp.cc1.setNc412c(binding.nc412c.isChecked() ? "2" : "0");
 //        sC4.put("nc412d", binding.nc412d.isChecked() ? "3" : "0");
-        sC4.put("nc412c", binding.nc412e.isChecked() ? "3" : "0");
-        sC4.put("nc412d", binding.nc412f.isChecked() ? "4" : "0");
-        sC4.put("nc412e", binding.nc412g.isChecked() ? "5" : "0");
-        sC4.put("nc412f", binding.nc412h.isChecked() ? "6" : "0");
-        sC4.put("nc412g", binding.nc412i.isChecked() ? "7" : "0");
-        sC4.put("nc412h", binding.nc412j.isChecked() ? "8" : "0");
-        sC4.put("nc4129601", binding.nc4129601.isChecked() ? "96" : "0");
+        MainApp.cc1.setNc412e(binding.nc412e.isChecked() ? "3" : "0");
+        MainApp.cc1.setNc412f(binding.nc412f.isChecked() ? "4" : "0");
+        MainApp.cc1.setNc412g(binding.nc412g.isChecked() ? "5" : "0");
+        MainApp.cc1.setNc412h(binding.nc412h.isChecked() ? "6" : "0");
+        MainApp.cc1.setNc412i(binding.nc412i.isChecked() ? "7" : "0");
+        MainApp.cc1.setNc412j(binding.nc412j.isChecked() ? "8" : "0");
+        MainApp.cc1.setNc4129601(binding.nc4129601.isChecked() ? "96" : "0");
 
-        sC4.put("nc4129601x", binding.nc4129601x.getText().toString());
+        MainApp.cc1.setNc4129601x(binding.nc4129601x.getText().toString());
 
 
 //        nc413
-        sC4.put("nc413", binding.nc413a.isChecked() ? "1"
+        MainApp.cc1.setNc413(binding.nc413a.isChecked() ? "1"
                 : binding.nc413b.isChecked() ? "2"
                 : binding.nc41498.isChecked() ? "98"
                 : "0");
 
 //      nc414
-        sC4.put("nc414", binding.nc414a.isChecked() ? "1"
+        MainApp.cc1.setNc414(binding.nc414a.isChecked() ? "1"
                 : binding.nc414b.isChecked() ? "2"
                 : binding.nc41498.isChecked() ? "98"
                 : "0");
 //        nc415
-        sC4.put("nc415", binding.nc415a.isChecked() ? "1"
+        MainApp.cc1.setNc415(binding.nc415a.isChecked() ? "1"
                 : binding.nc415b.isChecked() ? "2"
                 : "0");
 
 //        nc416
-        sC4.put("nc416", binding.nc416.getText().toString());
+        MainApp.cc1.setNc416(binding.nc416.getText().toString());
 
 //        nc417
-        sC4.put("nc417", binding.nc417a.isChecked() ? "1"
+        MainApp.cc1.setNc417(binding.nc417a.isChecked() ? "1"
                 : binding.nc417b.isChecked() ? "2"
                 : binding.nc417c.isChecked() ? "3"
                 : binding.nc417d.isChecked() ? "4"
                 : binding.nc417e.isChecked() ? "5"
                 : "0");
 //        nc418
-        sC4.put("nc418", binding.nc418a.isChecked() ? "1"
+        MainApp.cc1.setNc418(binding.nc418a.isChecked() ? "1"
                 : binding.nc418b.isChecked() ? "2"
                 : "0");
 //        nc419
-        sC4.put("nc419", binding.nc419a.isChecked() ? "1"
+        MainApp.cc1.setNc419(binding.nc419a.isChecked() ? "1"
                 : binding.nc419b.isChecked() ? "2"
                 : binding.nc419c.isChecked() ? "3"
                 : binding.nc419d.isChecked() ? "4"
                 : binding.nc419e.isChecked() ? "5"
                 : "0");
 //        nc420m
-        sC4.put("nc420m", binding.nc420m.getText().toString());
+        MainApp.cc1.setNc420m(binding.nc420m.getText().toString());
 
 //        nc420d
 
-        sC4.put("nc420d", binding.nc420d.getText().toString());
+        MainApp.cc1.setNc420d(binding.nc420d.getText().toString());
 
-        MainApp.cc.setsC4(String.valueOf(sC4));
+
+        //MainApp.cc.setsC4(String.valueOf(sC4));
+
 
         //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }
