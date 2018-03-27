@@ -263,15 +263,84 @@ public class FormContract extends BaseModel {
     private String nh324f;
     @Column
     private String nh324g;
+    //a5
+    @Column
+    private String nh401;
+    @Column
+    private String nh402;
+    @Column
+    private String nh403a;
+    @Column
 
-
+    private String nh403b;
+    @Column
+    private String nh403c;
+    @Column
+    private String nh403d;
+    @Column
+    private String nh403e;
+    @Column
+    private String nh404;
+    @Column
+    private String nh405a;
+    @Column
+    private String nh405b;
+    @Column
+    private String nh405c;
+    @Column
+    private String nh405d;
+    @Column
+    private String nh405e;
+    @Column
+    private String nh40601;
+    @Column
+    private String nh40602;
+    @Column
+    private String nh40603;
+    @Column
+    private String nh40604;
+    @Column
+    private String nh40605;
+    @Column
+    private String nh40696;
+    @Column
+    private String nh40696x;
+    @Column
+    private String nh501;
+    @Column
+    private String nh50196x;
+    @Column
+    private String nh502;
+    @Column
+    private String nh503;
+    @Column
+    private String nh601;
+    @Column
+    private String nh602;
+    @Column
+    private String nh603;
+    @Column
+    private String nh604;
+    @Column
+    private String nh605;
+    @Column
+    private String nh606;
+    @Column
+    private String nh607;
+    @Column
+    private String nh608;
+    @Column
+    private String nh609;
+    @Column
+    private String nh701;
+    @Column
+    private String nh702;
     @Column
     private String enm_no;
     @Column
     private String resp_lno;
     @Column
     private String hh_no;
-
     @Column
     private String gpslat;
     @Column
@@ -293,6 +362,286 @@ public class FormContract extends BaseModel {
     @Column
     private String appversion;
 
+    public String getNh401() {
+        return nh401;
+    }
+
+    public void setNh401(String nh401) {
+        this.nh401 = nh401;
+    }
+
+    public String getNh402() {
+        return nh402;
+    }
+
+    public void setNh402(String nh402) {
+        this.nh402 = nh402;
+    }
+
+    public String getNh403a() {
+        return nh403a;
+    }
+
+    public void setNh403a(String nh403a) {
+        this.nh403a = nh403a;
+    }
+
+    public String getNh403b() {
+        return nh403b;
+    }
+
+    public void setNh403b(String nh403b) {
+        this.nh403b = nh403b;
+    }
+
+    public String getNh403c() {
+        return nh403c;
+    }
+
+    public void setNh403c(String nh403c) {
+        this.nh403c = nh403c;
+    }
+
+    public String getNh403d() {
+        return nh403d;
+    }
+
+    public void setNh403d(String nh403d) {
+        this.nh403d = nh403d;
+    }
+
+    public String getNh403e() {
+        return nh403e;
+    }
+
+    public void setNh403e(String nh403e) {
+        this.nh403e = nh403e;
+    }
+
+    public String getNh404() {
+        return nh404;
+    }
+
+    public void setNh404(String nh404) {
+        this.nh404 = nh404;
+    }
+
+    public String getNh405a() {
+        return nh405a;
+    }
+
+    public void setNh405a(String nh405a) {
+        this.nh405a = nh405a;
+    }
+
+    public String getNh405b() {
+        return nh405b;
+    }
+
+    public void setNh405b(String nh405b) {
+        this.nh405b = nh405b;
+    }
+
+    public String getNh405c() {
+        return nh405c;
+    }
+
+    public void setNh405c(String nh405c) {
+        this.nh405c = nh405c;
+    }
+
+    public String getNh405d() {
+        return nh405d;
+    }
+
+    public void setNh405d(String nh405d) {
+        this.nh405d = nh405d;
+    }
+
+    public String getNh405e() {
+        return nh405e;
+    }
+
+    public void setNh405e(String nh405e) {
+        this.nh405e = nh405e;
+    }
+
+    public String getNh40601() {
+        return nh40601;
+    }
+
+    public void setNh40601(String nh40601) {
+        this.nh40601 = nh40601;
+    }
+
+    public String getNh40602() {
+        return nh40602;
+    }
+
+    public void setNh40602(String nh40602) {
+        this.nh40602 = nh40602;
+    }
+
+    public String getNh40603() {
+        return nh40603;
+    }
+
+    public void setNh40603(String nh40603) {
+        this.nh40603 = nh40603;
+    }
+
+    public String getNh40604() {
+        return nh40604;
+    }
+
+    public void setNh40604(String nh40604) {
+        this.nh40604 = nh40604;
+    }
+
+    public String getNh40605() {
+        return nh40605;
+    }
+
+    public void setNh40605(String nh40605) {
+        this.nh40605 = nh40605;
+    }
+
+    public String getNh40696() {
+        return nh40696;
+    }
+
+    public void setNh40696(String nh40696) {
+        this.nh40696 = nh40696;
+    }
+
+    public String getNh40696x() {
+        return nh40696x;
+    }
+
+    public void setNh40696x(String nh40696x) {
+        this.nh40696x = nh40696x;
+    }
+
+    public String getNh501() {
+        return nh501;
+    }
+
+    public void setNh501(String nh501) {
+        this.nh501 = nh501;
+    }
+
+    public String getNh50196x() {
+        return nh50196x;
+    }
+
+    public void setNh50196x(String nh50196x) {
+        this.nh50196x = nh50196x;
+    }
+
+    public String getNh502() {
+        return nh502;
+    }
+
+    public void setNh502(String nh502) {
+        this.nh502 = nh502;
+    }
+
+    public String getNh503() {
+        return nh503;
+    }
+
+    public void setNh503(String nh503) {
+        this.nh503 = nh503;
+    }
+
+    public String getNh601() {
+        return nh601;
+    }
+
+    public void setNh601(String nh601) {
+        this.nh601 = nh601;
+    }
+
+    public String getNh602() {
+        return nh602;
+    }
+
+    public void setNh602(String nh602) {
+        this.nh602 = nh602;
+    }
+
+    public String getNh603() {
+        return nh603;
+    }
+
+    public void setNh603(String nh603) {
+        this.nh603 = nh603;
+    }
+
+    public String getNh604() {
+        return nh604;
+    }
+
+    public void setNh604(String nh604) {
+        this.nh604 = nh604;
+    }
+
+    public String getNh605() {
+        return nh605;
+    }
+
+    public void setNh605(String nh605) {
+        this.nh605 = nh605;
+    }
+
+    public String getNh606() {
+        return nh606;
+    }
+
+    public void setNh606(String nh606) {
+        this.nh606 = nh606;
+    }
+
+    public String getNh607() {
+        return nh607;
+    }
+
+    public void setNh607(String nh607) {
+        this.nh607 = nh607;
+    }
+
+    public String getNh608() {
+        return nh608;
+    }
+
+    public void setNh608(String nh608) {
+        this.nh608 = nh608;
+    }
+
+    public String getNh609() {
+        return nh609;
+    }
+
+    public void setNh609(String nh609) {
+        this.nh609 = nh609;
+    }
+
+    public String getNh701() {
+        return nh701;
+    }
+
+    public void setNh701(String nh701) {
+        this.nh701 = nh701;
+    }
+
+    public String getNh702() {
+        return nh702;
+    }
+
+    public void setNh702(String nh702) {
+        this.nh702 = nh702;
+    }
+
 
     /*public String getSA1() {
         return sA1;
@@ -309,7 +658,6 @@ public class FormContract extends BaseModel {
     public void setSA4(String sA4) {
         this.sA4 = sA4;
     }*/
-
 
     public String getNULLHACK() {
         return NULLHACK;
