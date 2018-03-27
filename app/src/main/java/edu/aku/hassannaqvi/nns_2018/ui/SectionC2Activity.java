@@ -20,6 +20,7 @@ import butterknife.BindViews;
 import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Child;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC2Binding;
@@ -465,7 +466,9 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
     private void SaveDraft() throws JSONException {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
-        JSONObject sC2 = new JSONObject();
+        //JSONObject sC2 = new JSONObject();
+
+        MainApp.cc1 = new Child();
 
 
         sC2.put("nc2_child_name", selectedChild.getName());

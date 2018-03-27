@@ -35,6 +35,7 @@ import edu.aku.hassannaqvi.nns_2018.contracts.NutritionContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Child;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FamilyMembers;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FormContract;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Nutrition;
@@ -88,6 +89,7 @@ public class MainApp extends Application {
     public static Nutrition nc1;
     public static OutcomeContract oc;
     public static ChildContract cc;
+    public static Child cc1;
     public static SerialContract sc;
     public static RecipientsContract rc;
     public static MembersCount membersCount;
