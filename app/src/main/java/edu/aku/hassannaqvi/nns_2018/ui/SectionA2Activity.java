@@ -28,9 +28,7 @@ import java.util.Timer;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.nns_2018.R;
-import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FamilyMembers;
-import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA2Binding;
 import edu.aku.hassannaqvi.nns_2018.other.DateUtils;
@@ -50,7 +48,8 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
     int Age = 0;
     long agebyDob = 0;
     Boolean flag = false;
-    FamilyMembersContract family;
+    //FamilyMembersContract family;
+    FamilyMembers family;
     Calendar dob = Calendar.getInstance();
     //Calendar calDob = Calendar.getInstance();
     @BindViews({R.id.nh2doby, R.id.nh2dobm, R.id.nh2dobd})
@@ -80,7 +79,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
             //family = (FamilyMembers) getIntent().getSerializableExtra("data");
         } else {
 
-            family = (FamilyMembersContract) getIntent().getSerializableExtra("data");
+            family = (FamilyMembers) getIntent().getSerializableExtra("data");
             position = getIntent().getIntExtra("pos", 0);
 
             binding.selectedName.setText(family.getName().toUpperCase());
@@ -269,8 +268,8 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
         fathersSerials.add("0");
         fathersMap.put("N/A_0", "00");
 
-        for (FamilyMembersContract mem : MainApp.members_f_m) {
-            if (mem.getna204().equals("1")) {
+        for (FamilyMembers mem : MainApp.members_f_m) {
+            if (mem.getNa204().equals("1")) {
                 fathersList.add(mem.getName());
                 fathersSerials.add(mem.getSerialNo());
                 fathersMap.put(mem.getName() + "_" + mem.getSerialNo(), mem.getSerialNo());
@@ -404,7 +403,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
                     return false;
                 }
             }
-            if ((family.getResp().equals("1") || family.getRealtionHH().equals("1")) && Age < 18) {
+            if ((family.getResp().equals("1") || family.getRelationHH().equals("1")) && Age < 18) {
                 String chk = family.getResp().equals("1") ? "Resp" : "Head";
                 binding.nh2agey.setError("Error(Invalid) Age for " + chk);
                 Toast.makeText(this, chk + " Age greater then or equal 18..", Toast.LENGTH_SHORT).show();
@@ -414,7 +413,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
             }
 
 
-            if ((family.getResp().equals("1") || family.getRealtionHH().equals("1")) && Age < 18) {
+            if ((family.getResp().equals("1") || family.getRelationHH().equals("1")) && Age < 18) {
                 String chk = family.getResp().equals("1") ? "Resp" : "Head";
                 binding.nh2agey.setError("Error(Invalid) Age for " + chk);
                 Toast.makeText(this, chk + " Age greater then or equal 18..", Toast.LENGTH_SHORT).show();
@@ -459,19 +458,19 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
 
             MainApp.fmc = new FamilyMembers();
 
-            MainApp.fmc.setDevicetagID(MainApp.getTagName(this));
-            MainApp.fmc.setFormDate(dtToday);
+            MainApp.fmc.setDevicetagid(MainApp.getTagName(this));
+            MainApp.fmc.setFormdate(dtToday);
             MainApp.fmc.setUser(MainApp.userName);
-            MainApp.fmc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID));
-            MainApp.fmc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
+            MainApp.fmc.setDeviceid(Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID));
+            MainApp.fmc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
            /* MainApp.fmc.set_UUID(MainApp.fc.getUID());
             MainApp.fmc.setEnmNo(MainApp.fc.getEnmNo());
             MainApp.fmc.setHhNo(MainApp.fc.getHhNo());
 */
             MainApp.fmc.setSerialNo(String.valueOf(MainApp.serial_no));
-            MainApp.fmc.setna204(binding.na204a.isChecked() ? "1" : binding.na204b.isChecked() ? "2" : "0");
+            MainApp.fmc.setNa204(binding.na204a.isChecked() ? "1" : binding.na204b.isChecked() ? "2" : "0");
             MainApp.fmc.setName(binding.na202.getText().toString());
-            MainApp.fmc.setRealtionHH(binding.na203a.isChecked() ? "1" : binding.na203b.isChecked() ? "2" : binding.na203c.isChecked() ? "3" : binding.na203d.isChecked() ? "4"
+            MainApp.fmc.setRelationHH(binding.na203a.isChecked() ? "1" : binding.na203b.isChecked() ? "2" : binding.na203c.isChecked() ? "3" : binding.na203d.isChecked() ? "4"
                     : binding.na203e.isChecked() ? "5" : binding.na203f.isChecked() ? "6" : binding.na203g.isChecked() ? "7" : binding.na203h.isChecked() ? "8"
                     : binding.na203i.isChecked() ? "9" : binding.na203j.isChecked() ? "10" : binding.na203k.isChecked() ? "11" : binding.na203l.isChecked() ? "12"
                     : binding.na203m.isChecked() ? "13" : binding.na20398.isChecked() ? "98" : binding.na20396.isChecked() ? "96" : "0");
@@ -501,18 +500,18 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
 
             JSONObject sA2 = new JSONObject();
 
-            sA2.put("resp", family.getResp().equals("0") ? "" : family.getResp());
-            sA2.put("nh2SerialNo", family.getSerialNo());
-            sA2.put("nh202", family.getName());
-            sA2.put("nh203", family.getRealtionHH());
-            sA2.put("nh204", family.getna204());
+            //MainApp.fmc.setResp(family.getResp().equals("0") ? "" : family.getResp());
+            MainApp.fmc.setNh2SerialNo(family.getSerialNo());
+            MainApp.fmc.setNh202(family.getName());
+            MainApp.fmc.setNh203(family.getRelationHH());
+            MainApp.fmc.setNh204(family.getNh204());
 
-            sA2.put("nh2doby", binding.nh2doby.getText().toString());
-            sA2.put("nh2dobm", binding.nh2dobm.getText().toString());
-            sA2.put("nh2dobd", binding.nh2dobd.getText().toString());
+            MainApp.fmc.setNh2doby(binding.nh2doby.getText().toString());
+            MainApp.fmc.setNh2dobm(binding.nh2dobm.getText().toString());
+            MainApp.fmc.setNh2dobd(binding.nh2dobd.getText().toString());
             //sA2.put("nh20598", binding.nh20598.isChecked() ? "98" : "0");
 
-            sA2.put("nh206y", binding.nh2agey.getText().toString());
+            MainApp.fmc.setNh206y(binding.nh2agey.getText().toString());
             /*sA2.put("nh206m", binding.nh2agem.getText().toString());
             sA2.put("nh206d", binding.nh2aged.getText().toString());
 */
@@ -522,32 +521,32 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
                 Age = (int) agebyDob;
             }
 
-            sA2.put("age", String.valueOf(Age));
+            MainApp.fmc.setAge(String.valueOf(Age));
 
 
-            sA2.put("nh207", binding.nh2msa.isChecked() ? "1" : binding.nh2msb.isChecked() ? "2" : binding.nh2msc.isChecked() ? "3" : binding.nh2msd.isChecked() ? "4"
+            MainApp.fmc.setMartitalStatus(binding.nh2msa.isChecked() ? "1" : binding.nh2msb.isChecked() ? "2" : binding.nh2msc.isChecked() ? "3" : binding.nh2msd.isChecked() ? "4"
                     : binding.nh2mse.isChecked() ? "5" : "0");
 
-            sA2.put("nh208", binding.nh2edua.isChecked() ? "1" : binding.nh2edub.isChecked() ? "2" : binding.nh2educ.isChecked() ? "3" : binding.nh2edud.isChecked() ? "4"
+            MainApp.fmc.setNh208(binding.nh2edua.isChecked() ? "1" : binding.nh2edub.isChecked() ? "2" : binding.nh2educ.isChecked() ? "3" : binding.nh2edud.isChecked() ? "4"
                     : binding.nh2edue.isChecked() ? "5" : binding.nh2eduf.isChecked() ? "6" : binding.nh2edug.isChecked() ? "7" : binding.nh2eduh.isChecked() ? "8"
                     : binding.nh2edui.isChecked() ? "9" : "0");
 
-            sA2.put("nh209", binding.nh2occa.isChecked() ? "1" : binding.nh2occb.isChecked() ? "2" : binding.nh2occc.isChecked() ? "3" : binding.nh2occd.isChecked() ? "4"
+            MainApp.fmc.setNh209(binding.nh2occa.isChecked() ? "1" : binding.nh2occb.isChecked() ? "2" : binding.nh2occc.isChecked() ? "3" : binding.nh2occd.isChecked() ? "4"
                     : binding.nh2occe.isChecked() ? "5" : binding.nh2occf.isChecked() ? "6" : binding.nh2occg.isChecked() ? "7" : binding.nh2occh.isChecked() ? "8"
                     : binding.nh2occ96.isChecked() ? "96" : "0");
 
-            sA2.put("nh20996x", binding.nh2occ96x.getText().toString());
+            MainApp.fmc.setNh20996x(binding.nh2occ96x.getText().toString());
 
-            sA2.put("nh210", binding.nh210a.isChecked() ? "1" : binding.nh210b.isChecked() ? "2" : "0");
+            MainApp.fmc.setNh210(binding.nh210a.isChecked() ? "1" : binding.nh210b.isChecked() ? "2" : "0");
 
-            sA2.put("nh211", fathersMap.get(binding.nh211.getSelectedItem().toString() + "_" + fathersSerials.get(fathersList.indexOf(binding.nh211.getSelectedItem().toString()) - 1)));
-            sA2.put("nh212", mothersMap.get(binding.nh212.getSelectedItem().toString() + "_" + mothersSerials.get(mothersList.indexOf(binding.nh212.getSelectedItem().toString()) - 1)));
+            MainApp.fmc.setNh211(fathersMap.get(binding.nh211.getSelectedItem().toString() + "_" + fathersSerials.get(fathersList.indexOf(binding.nh211.getSelectedItem().toString()) - 1)));
+            MainApp.fmc.setNh212(mothersMap.get(binding.nh212.getSelectedItem().toString() + "_" + mothersSerials.get(mothersList.indexOf(binding.nh212.getSelectedItem().toString()) - 1)));
 
 
-            family.setsA2(String.valueOf(sA2));
+            //family.setsA2(String.valueOf(sA2));
 
             //Setting for FamilyMembers List
-            family.setMaritialStatus(binding.nh2msa.isChecked() ? "1" : binding.nh2msb.isChecked() ? "2" : binding.nh2msc.isChecked() ? "3" : binding.nh2msd.isChecked() ? "4"
+            family.setMartitalStatus(binding.nh2msa.isChecked() ? "1" : binding.nh2msb.isChecked() ? "2" : binding.nh2msc.isChecked() ? "3" : binding.nh2msd.isChecked() ? "4"
                     : binding.nh2mse.isChecked() ? "5" : "0");
             family.setFatherName(binding.nh211.getSelectedItem().toString().toUpperCase());
             family.setMotherName(binding.nh212.getSelectedItem().toString().toUpperCase());
@@ -558,7 +557,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
             Map<Integer, Integer> memType = new HashMap<>();
 
             //Total
-            if (family.getna204().equals("1")) {
+            if (family.getNa204().equals("1")) {
                 memType.put(1, Integer.valueOf(mem.get(1).get(1).toString()) + 1);
                 memType.put(2, Integer.valueOf(mem.get(1).get(2).toString()));
             } else {
@@ -569,7 +568,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
             MainApp.membersCount.setMembers(1, memType);
 
             //MWRA
-            if ((Age >= 15 && Age <= 49) && family.getna204().equals("2")) {
+            if ((Age >= 15 && Age <= 49) && family.getNa204().equals("2")) {
                 if (binding.nh2mse.isChecked()) {
                     MainApp.membersCount.setWra(MainApp.membersCount.getWra() + 1);
                 } else {
@@ -581,7 +580,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
             //Adolescent
             if ((Age >= 10 && Age <= 19) && binding.nh2mse.isChecked()) {
                 memType = new HashMap<>();
-                if (family.getna204().equals("1")) {
+                if (family.getNa204().equals("1")) {
                     memType.put(1, Integer.valueOf(mem.get(2).get(1).toString()) + 1);
                     memType.put(2, Integer.valueOf(mem.get(2).get(2).toString()));
                 } else {
@@ -596,7 +595,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
             //Children < 5
             else if (Age <= 5) {
                 memType = new HashMap<>();
-                if (family.getna204().equals("1")) {
+                if (family.getNa204().equals("1")) {
                     memType.put(1, Integer.valueOf(mem.get(3).get(1).toString()) + 1);
                     memType.put(2, Integer.valueOf(mem.get(3).get(2).toString()));
                 } else {
@@ -643,35 +642,40 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
 
     private boolean UpdateDB() {
 
-        DatabaseHelper db = new DatabaseHelper(this);
+
+        //DatabaseHelper db = new DatabaseHelper(this);
 
         if (flag) {
 
-            long updcount = db.addFamilyMembers(MainApp.fmc);
+            //long updcount = db.addFamilyMembers(MainApp.fmc);
+            long updcount = MainApp.fmc.insert();
 
-            MainApp.fmc.set_ID(String.valueOf(updcount));
+            //MainApp.fmc.set_ID(String.valueOf(updcount));
 
             if (updcount != 0) {
                 //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
 
-                MainApp.fmc.set_UID(
-                        (MainApp.fmc.getDeviceId() + MainApp.fmc.get_ID()));
-                db.updateFamilyMemberID();
+                MainApp.fmc.set_uid(
+                        (MainApp.fmc.getDeviceid() + MainApp.fmc._id));
+                //db.updateFamilyMemberID();
                 return true;
             } else {
                 Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
                 return false;
             }
         } else {
-            int updcount = db.updateFamilyMember(family);
+            //int updcount = db.updateFamilyMember(family);
+            MainApp.fmc.update();
 
-            if (updcount == 1) {
+            /*if (updcount == 1) {
                 //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
                 return true;
             } else {
                 Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
                 return false;
-            }
+            }*/
+
+            return true;
         }
     }
 
