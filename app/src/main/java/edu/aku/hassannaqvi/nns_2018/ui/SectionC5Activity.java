@@ -101,48 +101,48 @@ public class SectionC5Activity extends AppCompatActivity {
         JSONObject sC5 = new JSONObject();
 
 //        nc301
-        sC5.put("nc501name", selectedChild.getName());
+        MainApp.cc1.setNc501name(selectedChild.getName());
 //        nc302
-        sC5.put("nc502Serial", selectedChild.getSerialNo());
+        MainApp.cc1.setNc502Serial(selectedChild.getSerialNo());
 
 //        nc501
-        sC5.put("nc501", bi.nc501a.isChecked() ? "1"
+        MainApp.cc1.setNc501(bi.nc501a.isChecked() ? "1"
                 : bi.nc501b.isChecked() ? "2"
                 : bi.nc501c.isChecked() ? "3"
                 : bi.nc501d.isChecked() ? "4"
                 : "0");
 //        nc502
-        sC5.put("nc502", bi.nc502a.isChecked() ? "1"
+        MainApp.cc1.setNc502(bi.nc502a.isChecked() ? "1"
                 : bi.nc502b.isChecked() ? "2"
                 : bi.nc502c.isChecked() ? "3"
                 : bi.nc502d.isChecked() ? "4"
                 : "0");
 //        nc503
-        sC5.put("nc503", bi.nc503a.isChecked() ? "1"
+        MainApp.cc1.setNc503(bi.nc503a.isChecked() ? "1"
                 : bi.nc503b.isChecked() ? "2"
                 : bi.nc503c.isChecked() ? "3"
                 : bi.nc503d.isChecked() ? "4"
                 : "0");
 //        nc504
-        sC5.put("nc504", bi.nc504a.isChecked() ? "1"
+        MainApp.cc1.setNc504(bi.nc504a.isChecked() ? "1"
                 : bi.nc504b.isChecked() ? "2"
                 : bi.nc504c.isChecked() ? "3"
                 : bi.nc504d.isChecked() ? "4"
                 : "0");
 //        nc505
-        sC5.put("nc505", bi.nc505a.isChecked() ? "1"
+        MainApp.cc1.setNc505(bi.nc505a.isChecked() ? "1"
                 : bi.nc505b.isChecked() ? "2"
                 : bi.nc505c.isChecked() ? "3"
                 : bi.nc505d.isChecked() ? "4"
                 : "0");
 //        nc506
-        sC5.put("nc506", bi.nc506a.isChecked() ? "1"
+        MainApp.cc1.setNc506(bi.nc506a.isChecked() ? "1"
                 : bi.nc506b.isChecked() ? "2"
                 : bi.nc506c.isChecked() ? "3"
                 : bi.nc506d.isChecked() ? "4"
                 : "0");
 
-        MainApp.cc.setsC5(String.valueOf(sC5));
+        // MainApp.cc.setsC5(String.valueOf(sC5));
 
         //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }
