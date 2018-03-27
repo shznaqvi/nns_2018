@@ -320,85 +320,85 @@ public class SectionB5Activity extends AppCompatActivity {
         JSONObject sB5 = new JSONObject();
         //       nw414
 //        nw414
-        sB5.put("nw414", binding.nw414a.isChecked() ? "1"
+        MainApp.mc.setNw414(binding.nw414a.isChecked() ? "1"
                 : binding.nw414b.isChecked() ? "2"
                 : "0");
 //      nw415
-        sB5.put("nw415a", binding.nw415a.isChecked() ? "1" : "0");
-        sB5.put("nw415b", binding.nw415b.isChecked() ? "2" : "0");
-        sB5.put("nw415c", binding.nw415c.isChecked() ? "3" : "0");
-        sB5.put("nw415d", binding.nw415d.isChecked() ? "4" : "0");
-        sB5.put("nw415e", binding.nw415e.isChecked() ? "5" : "0");
-        sB5.put("nw415f", binding.nw415f.isChecked() ? "6" : "0");
-        sB5.put("nw415g", binding.nw415g.isChecked() ? "7" : "0");
-        sB5.put("nw41596", binding.nw41596.isChecked() ? "96" : "0");
-        sB5.put("nw41596x", binding.nw41596x.getText().toString());
+        MainApp.mc.setNw415a(binding.nw415a.isChecked() ? "1" : "0");
+        MainApp.mc.setNw415b(binding.nw415b.isChecked() ? "2" : "0");
+        MainApp.mc.setNw415c(binding.nw415c.isChecked() ? "3" : "0");
+        MainApp.mc.setNw415d(binding.nw415d.isChecked() ? "4" : "0");
+        MainApp.mc.setNw415e(binding.nw415e.isChecked() ? "5" : "0");
+        MainApp.mc.setNw415f(binding.nw415f.isChecked() ? "6" : "0");
+        MainApp.mc.setNw415g(binding.nw415g.isChecked() ? "7" : "0");
+        MainApp.mc.setNw41596(binding.nw41596.isChecked() ? "96" : "0");
+        MainApp.mc.setNw41596x(binding.nw41596x.getText().toString());
 
 //      nw416
-        sB5.put("nw416", binding.nw416a.isChecked() ? "1"
+        MainApp.mc.setNw416(binding.nw416a.isChecked() ? "1"
                 : binding.nw416b.isChecked() ? "2"
                 : binding.nw416c.isChecked() ? "3"
                 : binding.nw41698.isChecked() ? "98"
                 : "0");
-        sB5.put("nw416hr", binding.nw416hr.getText().toString());
-        sB5.put("nw416d", binding.nw416d.getText().toString());
-        sB5.put("nw416w", binding.nw416w.getText().toString());
+        MainApp.mc.setNw416hr(binding.nw416hr.getText().toString());
+        MainApp.mc.setNw416d(binding.nw416d.getText().toString());
+        MainApp.mc.setNw416w(binding.nw416w.getText().toString());
 
 //        nw417
-        sB5.put("nw417", binding.nw417.getText().toString());
+        MainApp.mc.setNw417(binding.nw417.getText().toString());
 
 //        nw418
-        sB5.put("nw418a", binding.nw418a.isChecked() ? "1" : "0");
-        sB5.put("nw418b", binding.nw418b.isChecked() ? "2" : "0");
-        sB5.put("nw418c", binding.nw418c.isChecked() ? "3" : "0");
-        sB5.put("nw418d", binding.nw418d.isChecked() ? "4" : "0");
-        sB5.put("nw418e", binding.nw418e.isChecked() ? "5" : "0");
-        sB5.put("nw418f", binding.nw418f.isChecked() ? "6" : "0");
-        sB5.put("nw418g", binding.nw418g.isChecked() ? "7" : "0");
-        sB5.put("nw418h", binding.nw418h.isChecked() ? "8" : "0");
-        sB5.put("nw41896", binding.nw41896.isChecked() ? "96" : "0");
-        sB5.put("nw41896x", binding.nw41896x.getText().toString());
+        MainApp.mc.setNw418a(binding.nw418a.isChecked() ? "1" : "0");
+        MainApp.mc.setNw418b(binding.nw418b.isChecked() ? "2" : "0");
+        MainApp.mc.setNw418c(binding.nw418c.isChecked() ? "3" : "0");
+        MainApp.mc.setNw418d(binding.nw418d.isChecked() ? "4" : "0");
+        MainApp.mc.setNw418e(binding.nw418e.isChecked() ? "5" : "0");
+        MainApp.mc.setNw418f(binding.nw418f.isChecked() ? "6" : "0");
+        MainApp.mc.setNw418g(binding.nw418g.isChecked() ? "7" : "0");
+        MainApp.mc.setNw418h(binding.nw418h.isChecked() ? "8" : "0");
+        MainApp.mc.setNw41896(binding.nw41896.isChecked() ? "96" : "0");
+        MainApp.mc.setNw41896x(binding.nw41896x.getText().toString());
 
 //        nw419
-        sB5.put("nw419", binding.nw419a.isChecked() ? "1"
+        MainApp.mc.setNw419(binding.nw419a.isChecked() ? "1"
                 : binding.nw419b.isChecked() ? "2"
                 : "0");
 //        nw420
-        sB5.put("nw420a", binding.nw420a.isChecked() ? "1" : "0");
-        sB5.put("nw420b", binding.nw420b.isChecked() ? "2" : "0");
-        sB5.put("nw420c", binding.nw420c.isChecked() ? "3" : "0");
-        sB5.put("nw420d", binding.nw420d.isChecked() ? "4" : "0");
-        sB5.put("nw420e", binding.nw420e.isChecked() ? "5" : "0");
-        sB5.put("nw420f", binding.nw420f.isChecked() ? "6" : "0");
-        sB5.put("nw420g", binding.nw420g.isChecked() ? "7" : "0");
-        sB5.put("nw42096", binding.nw42096.isChecked() ? "96" : "0");
-        sB5.put("nw42096x", binding.nw42096x.getText().toString());
+        MainApp.mc.setNw420a(binding.nw420a.isChecked() ? "1" : "0");
+        MainApp.mc.setNw420b(binding.nw420b.isChecked() ? "2" : "0");
+        MainApp.mc.setNw420c(binding.nw420c.isChecked() ? "3" : "0");
+        MainApp.mc.setNw420d(binding.nw420d.isChecked() ? "4" : "0");
+        MainApp.mc.setNw420e(binding.nw420e.isChecked() ? "5" : "0");
+        MainApp.mc.setNw420f(binding.nw420f.isChecked() ? "6" : "0");
+        MainApp.mc.setNw420g(binding.nw420g.isChecked() ? "7" : "0");
+        MainApp.mc.setNw42096(binding.nw42096.isChecked() ? "96" : "0");
+        MainApp.mc.setNw42096x(binding.nw42096x.getText().toString());
 
 
 //        nw421
-        sB5.put("nw421", binding.nw421a.isChecked() ? "1"
+        MainApp.mc.setNw421(binding.nw421a.isChecked() ? "1"
                 : binding.nw421b.isChecked() ? "2"
                 : binding.nw421c.isChecked() ? "3"
                 : binding.nw42198.isChecked() ? "98"
                 : "0");
-        sB5.put("nw421hr", binding.nw421hr.getText().toString());
-        sB5.put("nw421d", binding.nw421d.getText().toString());
-        sB5.put("nw421w", binding.nw421w.getText().toString());
+        MainApp.mc.setNw421hr(binding.nw421hr.getText().toString());
+        MainApp.mc.setNw421d(binding.nw421d.getText().toString());
+        MainApp.mc.setNw421w(binding.nw421w.getText().toString());
 
 //        nw422
-        sB5.put("nw422", binding.nw422.getText().toString());
+        MainApp.mc.setNw422(binding.nw422.getText().toString());
 
 //        nw423
-        sB5.put("nw423a", binding.nw423a.isChecked() ? "1" : "0");
-        sB5.put("nw423b", binding.nw423b.isChecked() ? "2" : "0");
-        sB5.put("nw423c", binding.nw423c.isChecked() ? "3" : "0");
-        sB5.put("nw423d", binding.nw423d.isChecked() ? "4" : "0");
-        sB5.put("nw423e", binding.nw423e.isChecked() ? "5" : "0");
-        sB5.put("nw42396", binding.nw42396.isChecked() ? "96" : "0");
-        sB5.put("nw42396x", binding.nw42396x.getText().toString());
+        MainApp.mc.setNw423a(binding.nw423a.isChecked() ? "1" : "0");
+        MainApp.mc.setNw423b(binding.nw423b.isChecked() ? "2" : "0");
+        MainApp.mc.setNw423c(binding.nw423c.isChecked() ? "3" : "0");
+        MainApp.mc.setNw423d(binding.nw423d.isChecked() ? "4" : "0");
+        MainApp.mc.setNw423e(binding.nw423e.isChecked() ? "5" : "0");
+        MainApp.mc.setNw42396(binding.nw42396.isChecked() ? "96" : "0");
+        MainApp.mc.setNw42396x(binding.nw42396x.getText().toString());
 
 
-        MainApp.mc.setsB5(String.valueOf(sB5));
+        //  MainApp.mc.setsB5(String.valueOf(sB5));
 
 
         //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
