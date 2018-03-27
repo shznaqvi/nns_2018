@@ -35,6 +35,7 @@ import edu.aku.hassannaqvi.nns_2018.contracts.NutritionContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FamilyMembers;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FormContract;
 import edu.aku.hassannaqvi.nns_2018.other.MembersCount;
 import edu.aku.hassannaqvi.nns_2018.ui.AnthroEndingActivity;
@@ -80,7 +81,7 @@ public class MainApp extends Application {
 
     public static Boolean admin = false;
     //public static FormsContract fc;
-    public static FormContract fc;
+
     public static MWRAContract mc;
     public static NutritionContract nc;
     public static OutcomeContract oc;
@@ -95,7 +96,7 @@ public class MainApp extends Application {
     public static Boolean IsResp;
 
     //    Ali
-    public static FamilyMembersContract fmc;
+    //public static FamilyMembersContract fmc;
     public static EligibleMembersContract emc;
     public static List<FamilyMembersContract> members_f_m;
     public static List<FamilyMembersContract> respList;
@@ -124,6 +125,15 @@ public class MainApp extends Application {
     public static int mwraPosition = 0;
 
     public static int nuCount = 1;
+
+
+    // DB Flow contracts
+
+    public static FormContract fc;
+    public static FamilyMembers fmc;
+    //public static EligibleMembers emc;
+
+
 
 
 

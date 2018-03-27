@@ -12,7 +12,7 @@ import edu.aku.hassannaqvi.nns_2018.AppDB;
  * Created by gul.sanober on 3/27/2018.
  */
 @Table(database = AppDB.class)
-public class ChildContract extends BaseModel {
+public class EligibleMembers extends BaseModel {
     @Column
     @PrimaryKey(autoincrement = true)
     @Unique

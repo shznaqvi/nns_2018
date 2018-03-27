@@ -29,6 +29,7 @@ import butterknife.BindViews;
 import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FamilyMembers;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA2Binding;
@@ -76,7 +77,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
         if (flag) {
             binding.fldGrpA201.setVisibility(View.VISIBLE);
             binding.fldGrpA202.setVisibility(View.GONE);
-            //family = (FamilyMembersContract) getIntent().getSerializableExtra("data");
+            //family = (FamilyMembers) getIntent().getSerializableExtra("data");
         } else {
 
             family = (FamilyMembersContract) getIntent().getSerializableExtra("data");
@@ -456,7 +457,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
         if (flag) {
             MainApp.serial_no++;
 
-            MainApp.fmc = new FamilyMembersContract();
+            MainApp.fmc = new FamilyMembers();
 
             MainApp.fmc.setDevicetagID(MainApp.getTagName(this));
             MainApp.fmc.setFormDate(dtToday);
