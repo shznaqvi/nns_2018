@@ -306,6 +306,7 @@ public class SectionB6Activity extends AppCompatActivity {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
 
+        MainApp.nc = new NutritionContract();
         MainApp.nc1 = new Nutrition();
 
         MainApp.nc.setDevicetagID(MainApp.getTagName(this));
