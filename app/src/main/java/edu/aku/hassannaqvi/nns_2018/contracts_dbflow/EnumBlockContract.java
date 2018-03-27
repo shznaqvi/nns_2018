@@ -15,14 +15,11 @@ import edu.aku.hassannaqvi.nns_2018.AppDB;
 @Table(database = AppDB.class)
 public class EnumBlockContract extends BaseModel {
 
+    public static final String _URI = "enumblock.php";
     @Column
     @PrimaryKey(autoincrement = true)
     @Unique
     public int _id;
-    @Column
-    public String projectname = "NNS-2018";
-    @Column
-    private String NULLHACK;
     @Column
     private String ebcode;
     @Column
@@ -34,22 +31,6 @@ public class EnumBlockContract extends BaseModel {
 
     public void set_id(int _id) {
         this._id = _id;
-    }
-
-    public String getProjectname() {
-        return projectname;
-    }
-
-    public void setProjectname(String projectname) {
-        this.projectname = projectname;
-    }
-
-    public String getNULLHACK() {
-        return NULLHACK;
-    }
-
-    public void setNULLHACK(String NULLHACK) {
-        this.NULLHACK = NULLHACK;
     }
 
     public String getEbcode() {

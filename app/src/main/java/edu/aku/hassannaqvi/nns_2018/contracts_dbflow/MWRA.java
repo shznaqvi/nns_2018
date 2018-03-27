@@ -535,6 +535,8 @@ public class MWRA extends BaseModel {
     private String nw42396;
     @Column
     private String nw42396x;
+    @Column
+    private String B1SerialNo;
 
     public String getNw313() {
         return nw313;
@@ -550,6 +552,14 @@ public class MWRA extends BaseModel {
 
     public void setNw31696x(String nw31696x) {
         this.nw31696x = nw31696x;
+    }
+
+    public String getB1SerialNo() {
+        return B1SerialNo;
+    }
+
+    public void setB1SerialNo(String b1SerialNo) {
+        B1SerialNo = b1SerialNo;
     }
 
     public String get_uid() {

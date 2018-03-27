@@ -12,7 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,8 +20,8 @@ import java.util.Map;
 import java.util.Timer;
 
 import edu.aku.hassannaqvi.nns_2018.R;
-import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FamilyMembers;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Recipients;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA8ABinding;
@@ -32,13 +31,15 @@ public class SectionA8AActivity extends Activity {
 
     static int counter = 1;
     static int reccounter = 0;
-    static Map<String, FamilyMembersContract> recpmap;
+    static Map<String, FamilyMembers> recpmap;
     static ArrayList<String> recpNames;
     static ArrayList<String> recpSerial;
     private final long DELAY = 1000;
     ActivitySectionA8ABinding bi;
     DatabaseHelper db;
-    FamilyMembersContract fmcSelected;
+    //FamilyMembersContract fmcSelected;
+    FamilyMembers fmcSelected;
+
     int position = 0;
     private Timer timer = new Timer();
 
@@ -60,7 +61,7 @@ public class SectionA8AActivity extends Activity {
             recpSerial.add("0");
 
 
-            for (FamilyMembersContract fmc : MainApp.all_members) {
+            for (FamilyMembers fmc : MainApp.all_members) {
                 recpmap.put(fmc.getName() + "_" + fmc.getSerialNo(), fmc);
                 recpNames.add(fmc.getName());
                 recpSerial.add(fmc.getSerialNo());
@@ -215,44 +216,41 @@ public class SectionA8AActivity extends Activity {
     private void SaveDraft() throws JSONException {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
-        MainApp.rc = new RecipientsContract();
+        MainApp.rc = new Recipients();
 
-        MainApp.rc.setDevicetagID(MainApp.getTagName(this));
-        MainApp.rc.setFormDate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+        MainApp.rc.setDevicetagid(MainApp.getTagName(this));
+        MainApp.rc.setFormdate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
         MainApp.rc.setUser(MainApp.userName);
-        MainApp.rc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
+        MainApp.rc.setDeviceid(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
-        MainApp.rc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
-        MainApp.rc.set_UUID(fmcSelected.get_UID());
+        MainApp.rc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
+        MainApp.rc.set_uuid(fmcSelected.get_uid());
 
-        JSONObject sA8a = new JSONObject();
 
-        sA8a.put("nh7a01", fmcSelected.getName());
-        sA8a.put("nh7a01Serial", fmcSelected.getSerialNo());
+        MainApp.rc.setNh7a01(fmcSelected.getName());
+        MainApp.rc.setNh7a01Serial(fmcSelected.getSerialNo());
 
-        sA8a.put("nh7a02", bi.nh7a02.getSelectedItem().toString());
+        MainApp.rc.setNh7a02(bi.nh7a02.getSelectedItem().toString());
         //sA8a.put("nh7a02", bi.nh7a02.getText().toString());
 
-        sA8a.put("nh7a03y", bi.nh7a03y.getText().toString());
+        MainApp.rc.setNh7a03y(bi.nh7a03y.getText().toString());
 
-        sA8a.put("nh7a03m", bi.nh7a03m.getText().toString());
+        MainApp.rc.setNh7a03m(bi.nh7a03m.getText().toString());
 
-        sA8a.put("nh7a04a", bi.nh7a04a.isChecked() ? "1" : "0");
-        sA8a.put("nh7a04b", bi.nh7a04b.isChecked() ? "2" : "0");
-        sA8a.put("nh7a04c", bi.nh7a04c.isChecked() ? "3" : "0");
-        sA8a.put("nh7a04d", bi.nh7a04d.isChecked() ? "4" : "0");
-        sA8a.put("nh7a04e", bi.nh7a04e.isChecked() ? "5" : "0");
-        sA8a.put("nh7a04f", bi.nh7a04f.isChecked() ? "6" : "0");
-        sA8a.put("nh7a04g", bi.nh7a04g.isChecked() ? "7" : "0");
-        sA8a.put("nh7a04h", bi.nh7a04h.isChecked() ? "8" : "0");
-        sA8a.put("nh7a04i", bi.nh7a04i.isChecked() ? "9" : "0");
-        sA8a.put("nh7a0496", bi.nh7a0496.isChecked() ? "96" : "0");
-        sA8a.put("nh7a0496x", bi.nh7a0496x.getText().toString());
-        sA8a.put("nh7a05", bi.nh7a05.getText().toString());
-        sA8a.put("nh7a06", bi.nh7a06.getText().toString());
+        MainApp.rc.setNh7a04a(bi.nh7a04a.isChecked() ? "1" : "0");
+        MainApp.rc.setNh7a04b(bi.nh7a04b.isChecked() ? "2" : "0");
+        MainApp.rc.setNh7a04c(bi.nh7a04c.isChecked() ? "3" : "0");
+        MainApp.rc.setNh7a04d(bi.nh7a04d.isChecked() ? "4" : "0");
+        MainApp.rc.setNh7a04e(bi.nh7a04e.isChecked() ? "5" : "0");
+        MainApp.rc.setNh7a04f(bi.nh7a04f.isChecked() ? "6" : "0");
+        MainApp.rc.setNh7a04g(bi.nh7a04g.isChecked() ? "7" : "0");
+        MainApp.rc.setNh7a04h(bi.nh7a04h.isChecked() ? "8" : "0");
+        MainApp.rc.setNh7a04i(bi.nh7a04i.isChecked() ? "9" : "0");
+        MainApp.rc.setNh7a0496(bi.nh7a0496.isChecked() ? "96" : "0");
+        MainApp.rc.setNh7a0496x(bi.nh7a0496x.getText().toString());
+        MainApp.rc.setNh7a05(bi.nh7a05.getText().toString());
+        MainApp.rc.setNh7a06(bi.nh7a06.getText().toString());
 
-
-        MainApp.rc.setsA8A(String.valueOf(sA8a));
 
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
@@ -264,15 +262,16 @@ public class SectionA8AActivity extends Activity {
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        Long updcount = db.addRecipient(MainApp.rc);
-        MainApp.rc.set_ID(String.valueOf(updcount));
+        //Long updcount = db.addRecipient(MainApp.rc);
+        Long updcount = MainApp.rc.insert();
+        //MainApp.rc.set_ID(String.valueOf(updcount));
 
         if (updcount != 0) {
             //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
 
-            MainApp.rc.set_UID(
-                    (MainApp.rc.getDeviceId() + MainApp.rc.get_ID()));
-            db.updateRecepientID();
+            MainApp.rc.set_uid(
+                    (MainApp.rc.getDeviceid() + MainApp.rc._id));
+            //db.updateRecepientID();
 
             return true;
         } else {

@@ -12,7 +12,6 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -23,8 +22,8 @@ import java.util.Map;
 import java.util.Timer;
 
 import edu.aku.hassannaqvi.nns_2018.R;
-import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FamilyMembers;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.MWRA;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB1Binding;
@@ -34,7 +33,7 @@ public class SectionB1Activity extends Activity {
 
     public static String wraName = "";
     public static int WRAcounter = 0;
-    static Map<String, FamilyMembersContract> wraMap;
+    static Map<String, FamilyMembers> wraMap;
     static ArrayList<String> lstMwra;
     private final long DELAY = 1000;
     ArrayList<String> respName;
@@ -75,7 +74,7 @@ public class SectionB1Activity extends Activity {
 
             lstMwra.add("....");
 
-            for (FamilyMembersContract wra : MainApp.mwra) {
+            for (FamilyMembers wra : MainApp.mwra) {
                 wraMap.put(wra.getName() + "-" + wra.getSerialNo(), wra);
                 lstMwra.add(wra.getName() + "-" + wra.getSerialNo());
             }
@@ -1135,60 +1134,60 @@ public class SectionB1Activity extends Activity {
     private void SaveDraft() throws JSONException {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
-        MainApp.mc = new MWRAContract();
+        MainApp.mc = new MWRA();
 
-        MainApp.mc.setDevicetagID(MainApp.getTagName(this));
-        MainApp.mc.setFormDate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+        MainApp.mc.setDevicetagid(MainApp.getTagName(this));
+        MainApp.mc.setFormdate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
         MainApp.mc.setUser(MainApp.userName);
-        MainApp.mc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
+        MainApp.mc.setDeviceid(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
-        MainApp.mc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
+        MainApp.mc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
         MainApp.mc.setB1SerialNo(wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
         //MainApp.mc.set_UUID(MainApp.fc.getUID());
 
         wraName = bi.nb101.getSelectedItem().toString();
 
 
-        MainApp.mc.set(bi.nb101.getSelectedItem().toString());
-        sB1.put("nw1serialno", wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
+        MainApp.mc.setNw101(bi.nb101.getSelectedItem().toString());
+        MainApp.mc.setNw1serialno(wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
 
         //        nw201
-        sB1.put("nw201days", bi.nw201days.getText().toString());
-        sB1.put("nw201months", bi.nw201months.getText().toString());
-        sB1.put("nw201years", bi.nw201years.getText().toString());
+        MainApp.mc.setNw201days(bi.nw201days.getText().toString());
+        MainApp.mc.setNw201months(bi.nw201months.getText().toString());
+        MainApp.mc.setNw201years(bi.nw201years.getText().toString());
         //        nw202
-        sB1.put("nw202", bi.nw202.getText().toString());
+        MainApp.mc.setNw202(bi.nw202.getText().toString());
         //        nw203
-        sB1.put("nw203", bi.nw203a.isChecked() ? "1" : bi.nw203b.isChecked() ? "2" : "0");
+        MainApp.mc.setNw203(bi.nw203a.isChecked() ? "1" : bi.nw203b.isChecked() ? "2" : "0");
         //        nw204
-        sB1.put("nw204", bi.nw204a.isChecked() ? "1" : bi.nw204b.isChecked() ? "2" : "0");
+        MainApp.mc.setNw204(bi.nw204a.isChecked() ? "1" : bi.nw204b.isChecked() ? "2" : "0");
         //        nw205
-        sB1.put("nw205", bi.nw205a.isChecked() ? "1" : bi.nw205b.isChecked() ? "2" : "0");
+        MainApp.mc.setNw205(bi.nw205a.isChecked() ? "1" : bi.nw205b.isChecked() ? "2" : "0");
         //        nw206
-        sB1.put("nw206", bi.nw206.getText().toString());
+        MainApp.mc.setNw206(bi.nw206.getText().toString());
         //        nw207
-        sB1.put("nw207", bi.nw207a.isChecked() ? "1" : bi.nw207b.isChecked() ? "2" : "0");
+        MainApp.mc.setNw207(bi.nw207a.isChecked() ? "1" : bi.nw207b.isChecked() ? "2" : "0");
 
-        sB1.put("nw208", bi.nw208.getText().toString());
-        sB1.put("nw209", bi.nw209.getText().toString());
-        sB1.put("nw209a", bi.nw209a.getText().toString());
+        MainApp.mc.setNw208(bi.nw208.getText().toString());
+        MainApp.mc.setNw209(bi.nw209.getText().toString());
+        MainApp.mc.setNw209a(bi.nw209a.getText().toString());
 
-        sB1.put("nw210", bi.nw210.getText().toString());
+        MainApp.mc.setNw210(bi.nw210.getText().toString());
 
-        sB1.put("nw211", bi.nw211a.isChecked() ? "1" : bi.nw211b.isChecked() ? "2" : "0");
+        MainApp.mc.setNw211(bi.nw211a.isChecked() ? "1" : bi.nw211b.isChecked() ? "2" : "0");
 
-        sB1.put("nw212", bi.nw212a.isChecked() ? "1" : bi.nw212b.isChecked() ? "2" : "0");
+        MainApp.mc.setNw212(bi.nw212a.isChecked() ? "1" : bi.nw212b.isChecked() ? "2" : "0");
 
         //        nw21301
-        sB1.put("nw21301", bi.nw21301a.isChecked() ? "1" : "2");
+        MainApp.mc.setNw21301(bi.nw21301a.isChecked() ? "1" : "2");
         //        nw21302
-        sB1.put("nw21302", bi.nw21302a.isChecked() ? "1" : "2");
+        MainApp.mc.setNw21302(bi.nw21302a.isChecked() ? "1" : "2");
         //        nw21303
-        sB1.put("nw21303", bi.nw21303a.isChecked() ? "1" : "2");
+        MainApp.mc.setNw21303(bi.nw21303a.isChecked() ? "1" : "2");
         //        nw21398
-        sB1.put("nw21398", bi.nw21398a.isChecked() ? "1" : "2");
+        MainApp.mc.setNw21398(bi.nw21398a.isChecked() ? "1" : "2");
         //        nw21399
-        sB1.put("nw21399", bi.nw21399a.isChecked() ? "1" : "2");
+        MainApp.mc.setNw21399(bi.nw21399a.isChecked() ? "1" : "2");
 
 
         if (!bi.nw209a.getText().toString().isEmpty()) {
@@ -1203,81 +1202,24 @@ public class SectionB1Activity extends Activity {
 
 
 
-        /*JSONObject sB1 = new JSONObject();
-
-        sB1.put("nw101", bi.nb101.getSelectedItem().toString());
-        sB1.put("nw1serialno", wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
-
-        //        nw201
-        sB1.put("nw201days", bi.nw201days.getText().toString());
-        sB1.put("nw201months", bi.nw201months.getText().toString());
-        sB1.put("nw201years", bi.nw201years.getText().toString());
-        //        nw202
-        sB1.put("nw202", bi.nw202.getText().toString());
-        //        nw203
-        sB1.put("nw203", bi.nw203a.isChecked() ? "1" : bi.nw203b.isChecked() ? "2" : "0");
-        //        nw204
-        sB1.put("nw204", bi.nw204a.isChecked() ? "1" : bi.nw204b.isChecked() ? "2" : "0");
-        //        nw205
-        sB1.put("nw205", bi.nw205a.isChecked() ? "1" : bi.nw205b.isChecked() ? "2" : "0");
-        //        nw206
-        sB1.put("nw206", bi.nw206.getText().toString());
-        //        nw207
-        sB1.put("nw207", bi.nw207a.isChecked() ? "1" : bi.nw207b.isChecked() ? "2" : "0");
-
-        sB1.put("nw208", bi.nw208.getText().toString());
-        sB1.put("nw209", bi.nw209.getText().toString());
-        sB1.put("nw209a", bi.nw209a.getText().toString());
-
-        sB1.put("nw210", bi.nw210.getText().toString());
-
-        sB1.put("nw211", bi.nw211a.isChecked() ? "1" : bi.nw211b.isChecked() ? "2" : "0");
-
-        sB1.put("nw212", bi.nw212a.isChecked() ? "1" : bi.nw212b.isChecked() ? "2" : "0");
-
-        //        nw21301
-        sB1.put("nw21301", bi.nw21301a.isChecked() ? "1" : "2");
-        //        nw21302
-        sB1.put("nw21302", bi.nw21302a.isChecked() ? "1" : "2");
-        //        nw21303
-        sB1.put("nw21303", bi.nw21303a.isChecked() ? "1" : "2");
-        //        nw21398
-        sB1.put("nw21398", bi.nw21398a.isChecked() ? "1" : "2");
-        //        nw21399
-        sB1.put("nw21399", bi.nw21399a.isChecked() ? "1" : "2");
-
-
-        if (!bi.nw209a.getText().toString().isEmpty()) {
-            *//*if (bi.nw211a.isChecked()) {
-                MainApp.totalPregnancy = Integer.valueOf(bi.nw208.getText().toString()) - 1;
-            } else {
-                MainApp.totalPregnancy = Integer.valueOf(bi.nw208.getText().toString());
-            }*//*
-
-            MainApp.totalPregnancy = Integer.valueOf(bi.nw209a.getText().toString());
-        }
-
-        MainApp.mc.setsB1(String.valueOf(sB1));*/
-
-
-        //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
 
     }
 
     private boolean UpdateDB() {
 
         //Long rowId;
-        DatabaseHelper db = new DatabaseHelper(this);
+        //DatabaseHelper db = new DatabaseHelper(this);
 
-        Long updcount = db.addMWRA(MainApp.mc);
-        MainApp.mc.set_ID(String.valueOf(updcount));
+        //Long updcount = db.addMWRA(MainApp.mc);
+        Long updcount = MainApp.mc.insert();
+        //MainApp.mc.set_ID(String.valueOf(updcount));
 
         if (updcount != 0) {
             //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
 
-            MainApp.mc.set_UID(
-                    (MainApp.mc.getDeviceId() + MainApp.mc.get_ID()));
-            db.updateMWRAID();
+            MainApp.mc.set_uid(
+                    (MainApp.mc.getDeviceid() + MainApp.mc._id));
+            //db.updateMWRAID();
 
             return true;
         } else {

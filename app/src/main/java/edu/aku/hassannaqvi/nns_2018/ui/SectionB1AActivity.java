@@ -13,7 +13,6 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -23,7 +22,7 @@ import java.util.Timer;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.nns_2018.R;
-import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Outcome;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB1ABinding;
@@ -366,24 +365,22 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
 
-        MainApp.oc = new OutcomeContract();
+        MainApp.oc = new Outcome();
 
-        MainApp.oc.setDevicetagID(MainApp.getTagName(this));
-        MainApp.oc.setFormDate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+        MainApp.oc.setDeviceid(MainApp.getTagName(this));
+        MainApp.oc.setFormdate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
         MainApp.oc.setUser(MainApp.userName);
-        MainApp.oc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
+        MainApp.oc.setDeviceid(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
-        MainApp.oc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
-        MainApp.oc.set_UUID(MainApp.mc.get_UID());
+        MainApp.oc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
+        MainApp.oc.set_uuid(MainApp.mc.get_uid());
 
 
-        JSONObject sB1a = new JSONObject();
+        MainApp.oc.setNw215y(bi.nw215y.getText().toString());
+        MainApp.oc.setNw215m(bi.nw215m.getText().toString());
+        MainApp.oc.setNw215d(bi.nw215d.getText().toString());
 
-        sB1a.put("nw215y", bi.nw215y.getText().toString());
-        sB1a.put("nw215m", bi.nw215m.getText().toString());
-        sB1a.put("nw215d", bi.nw215d.getText().toString());
-
-        sB1a.put("nw216", bi.nw216a.isChecked() ? "1"
+        MainApp.oc.setNw216(bi.nw216a.isChecked() ? "1"
                 : bi.nw216b.isChecked() ? "2"
                 : bi.nw216c.isChecked() ? "3"
                 : bi.nw216d.isChecked() ? "4"
@@ -396,23 +393,23 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         }
 
 
-        sB1a.put("nw217", bi.nw217a.isChecked() ? "1"
+        MainApp.oc.setNw217(bi.nw217a.isChecked() ? "1"
                 : bi.nw217b.isChecked() ? "2"
                 : "0");
         if (bi.nw216c.isChecked() || bi.nw216d.isChecked() || bi.nw216f.isChecked()) {
             MainApp.status++;
         }
 
-        sB1a.put("nw218", String.valueOf(childSerial));
-        sB1a.put("nw219y", bi.nw219y.getText().toString());
-        sB1a.put("nw219m", bi.nw219m.getText().toString());
-        sB1a.put("nw219d", bi.nw219d.getText().toString());
+        MainApp.oc.setNw218(String.valueOf(childSerial));
+        MainApp.oc.setNw219y(bi.nw219y.getText().toString());
+        MainApp.oc.setNw219m(bi.nw219m.getText().toString());
+        MainApp.oc.setNw219d(bi.nw219d.getText().toString());
 
-        sB1a.put("nw220y", bi.nw220y.getText().toString());
-        sB1a.put("nw220m", bi.nw220m.getText().toString());
-        sB1a.put("nw220d", bi.nw220d.getText().toString());
+        MainApp.oc.setNw220y(bi.nw220y.getText().toString());
+        MainApp.oc.setNw220m(bi.nw220m.getText().toString());
+        MainApp.oc.setNw220d(bi.nw220d.getText().toString());
 
-        MainApp.oc.setsB1A(String.valueOf(sB1a));
+        //MainApp.oc.setsB1A(String.valueOf(sB1a));
 
 
         //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
@@ -424,15 +421,16 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        Long updcount = db.addOutcome(MainApp.oc);
-        MainApp.oc.set_ID(String.valueOf(updcount));
+        //Long updcount = db.addOutcome(MainApp.oc);
+        Long updcount = MainApp.oc.insert();
+        //MainApp.oc.set_ID(String.valueOf(updcount));
 
         if (updcount != 0) {
             //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
 
-            MainApp.oc.set_UID(
-                    (MainApp.oc.getDeviceId() + MainApp.oc.get_ID()));
-            db.updateOutcomeID();
+            MainApp.oc.set_uid(
+                    (MainApp.oc.getDeviceid() + MainApp.oc._id));
+            //db.updateOutcomeID();
 
             return true;
         } else {
