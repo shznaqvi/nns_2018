@@ -25,12 +25,15 @@ public class DateUtils {
         return calendar;
     }
 
-    /*public static Calendar getCalendarDate(String mm, String yy) {
-        String value = "01-"+mm+"-"+yy;
+    public static Calendar getCalendarDate(String dd, String mm, String yy) {
+
+        String dob = String.format("%02d", Integer.valueOf(dd)) + "-"
+                + String.format("%02d", Integer.valueOf(mm))
+                + "-" + yy;
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         Calendar calendar = Calendar.getInstance();
         try {
-            Date date = sdf.parse(value);
+            Date date = sdf.parse(dob);
             calendar.setTime(date);
             return calendar;
 
@@ -38,7 +41,27 @@ public class DateUtils {
             e.printStackTrace();
         }
         return calendar;
-    }*/
+    }
+
+    public static Calendar getCalendarDate(String mm, String yy) {
+
+        String dob = String.format("%02d", Integer.valueOf("01")) + "-"
+                + String.format("%02d", Integer.valueOf(mm))
+                + "-" + yy;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        Calendar calendar = Calendar.getInstance();
+        try {
+            Date date = sdf.parse(dob);
+            calendar.setTime(date);
+            return calendar;
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return calendar;
+    }
+
+
 
     public static long ageInYearByDOB(String year) {
         Calendar cal = Calendar.getInstance();
@@ -49,13 +72,46 @@ public class DateUtils {
     }
 
     public static long ageInYearByDOB(Calendar cal) {
-        //Calendar cal = getCalendarDate(year);
-        //long yearofbirth = Integer.valueOf(year);
         Date dob = cal.getTime();
         Date today = new Date();
         Long diff = today.getTime() - dob.getTime();
         long ageInYears = (diff / (24 * 60 * 60 * 1000)) / 365;
         return ageInYears;
+    }
+
+    public static long ageInMonthsByDOB(Calendar cal) {
+        Date dob = cal.getTime();
+        Date today = new Date();
+        Long diff = today.getTime() - dob.getTime();
+        long ageInMonths = (diff / (24 * 60 * 60 * 1000)) / 30;
+        return ageInMonths;
+    }
+
+    public static int getCurrentYear() {
+        Date date = new Date(); // Current date
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        //int year = cal.get(Calendar.YEAR);
+
+        return cal.get(Calendar.YEAR);
+    }
+
+    public static int getCurrentMonth() {
+        Date date = new Date(); // Current date
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        //int year = cal.get(Calendar.MONTH);
+
+        return cal.get(Calendar.MONTH);
+    }
+
+    public static int getCurrentDate() {
+        Date date = new Date(); // Current date
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        //int year = cal.get(Calendar.DAY_OF_MONTH);
+
+        return cal.get(Calendar.DAY_OF_MONTH);
     }
 
 

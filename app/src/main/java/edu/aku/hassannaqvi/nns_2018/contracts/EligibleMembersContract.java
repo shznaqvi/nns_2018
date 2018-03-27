@@ -272,7 +272,6 @@ public class EligibleMembersContract {
         json.put(eligibleMembers.COLUMN_DOB, this.dob == null ? JSONObject.NULL : this.dob);
         json.put(eligibleMembers.COLUMN_AGE, this.age == null ? JSONObject.NULL : this.age);
         json.put(eligibleMembers.COLUMN_na204, this.na204 == null ? JSONObject.NULL : this.na204);
-        json.put(eligibleMembers.COLUMN_SA3, this.sA3 == null ? JSONObject.NULL : this.sA3);
         json.put(eligibleMembers.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
         json.put(eligibleMembers.COLUMN_ISTATUS88x, this.istatus88x == null ? JSONObject.NULL : this.istatus88x);
         /*json.put(eligibleMembers.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);

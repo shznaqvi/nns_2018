@@ -35,6 +35,12 @@ public class SectionB5Activity extends AppCompatActivity {
 //        Assigning data to UI binding
         binding.setCallback(this);
 
+        binding.nw416hr.setEnabled(false);
+        binding.nw416d.setEnabled(false);
+        binding.nw416w.setEnabled(false);
+        binding.nw41596x.setEnabled(false);
+
+
 //        Skip patterns
 
         binding.nw414.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {

@@ -79,6 +79,39 @@ public abstract class validatorClass {
         }
     }
 
+    public static boolean RangeTextBoxforDate(Context context, EditText txt, int min, int max, int defaultVal, String msg) {
+
+        if (Integer.valueOf(txt.getText().toString()) != defaultVal) {
+            if ((Integer.valueOf(txt.getText().toString()) < min || Integer.valueOf(txt.getText().toString()) > max)) {
+                //Toast.makeText(context, "ERROR(invalid): " + msg, Toast.LENGTH_SHORT).show();
+                txt.setError(msg);    // Set Error on last radio button
+                txt.requestFocus();
+                Log.i(context.getClass().getName(), context.getResources().getResourceEntryName(txt.getId()) + ": " + msg + " " + min + " to " + max + " or " + defaultVal + " ...  ");
+                return false;
+            } else {
+                txt.setError(null);
+                return true;
+            }
+        } else {
+            txt.setError(null);
+            return true;
+        }
+    }
+
+    public static boolean RangeTextBoxforDate(Context context, EditText txt, double min, double max, String msg) {
+
+        if (Integer.valueOf(txt.getText().toString()) < min || Integer.valueOf(txt.getText().toString()) > max) {
+            //Toast.makeText(context, "ERROR(invalid): " + msg, Toast.LENGTH_SHORT).show();
+            txt.setError(msg);    // Set Error on last radio button
+            txt.requestFocus();
+            Log.i(context.getClass().getName(), context.getResources().getResourceEntryName(txt.getId()) + ": " + msg + min + " to " + max + " times...  ");
+            return false;
+        } else {
+            txt.setError(null);
+            return true;
+        }
+    }
+
     public static boolean EmptySpinner(Context context, Spinner spin, String msg) {
         if (spin.getSelectedItem() == "....") {
             //Toast.makeText(context, "ERROR(Empty)" + msg, Toast.LENGTH_SHORT).show();

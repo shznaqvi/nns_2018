@@ -50,8 +50,8 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
     long agebyDob = 0;
     Boolean flag = false;
     FamilyMembersContract family;
-    String dob;
-    Calendar calDob = Calendar.getInstance();
+    Calendar dob = Calendar.getInstance();
+    //Calendar calDob = Calendar.getInstance();
     @BindViews({R.id.nh2doby, R.id.nh2dobm, R.id.nh2dobd})
     List<EditText> grpdob;
     private Timer timer = new Timer();
@@ -220,54 +220,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
             @Override
             public void afterTextChanged(Editable s) {
 
-                /*timer.cancel();
-                timer = new Timer();
 
-                if (!binding.nh2doby.getText().toString().equals("9998")) {
-                    if (Age != agebyDob) {
-                        timer.schedule(
-                                new TimerTask() {
-                                    @Override
-                                    public void run() {
-
-                                        SectionA2Activity.this.runOnUiThread(new Runnable() {
-                                            public void run() {
-                                                if (!binding.nh2agey.getText().toString().isEmpty()
-                                                        && !binding.nh2agey.getText().toString().equals("9998")) {
-
-                                                    //if (Age != agebyDob) {
-                                                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(SectionA2Activity.this);
-                                                    alertDialogBuilder
-                                                            .setMessage("Age does not match with Year of Birth. Do you want to continue?")
-                                                            .setCancelable(false)
-                                                            .setPositiveButton("OK",
-                                                                    new DialogInterface.OnClickListener() {
-                                                                        public void onClick(DialogInterface dialog, int id) {
-                                                                            //secFlag = false;
-                                                                        }
-                                                                    })
-                                                            .setNegativeButton("Cancel",
-                                                                    new DialogInterface.OnClickListener() {
-                                                                        public void onClick(DialogInterface dialog, int id) {
-                                                                            dialog.cancel();
-                                                                            //secFlag = true;
-                                                                        }
-                                                                    });
-                                                    AlertDialog alert = alertDialogBuilder.create();
-                                                    alert.show();
-                                                }
-                                                //}
-                                            }
-                                        });
-
-                                    }
-                                },
-                                DELAY
-                        );
-                    }
-
-                }
-*/
             }
         });
 
@@ -406,13 +359,6 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
 
         } else {
 
-            /*Date date = new Date(); // Current date
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(date);
-            int year = cal.get(Calendar.YEAR);
-            int month = cal.get(Calendar.MONTH);
-            int day = cal.get(Calendar.DAY_OF_MONTH);
-*/
             if (!validatorClass.EmptyTextBox(this, binding.nh2doby, getString(R.string.nh2dob))) {
                 return false;
             }
@@ -425,38 +371,27 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
                 return false;
             }
 
-            if (!validatorClass.RangeTextBox(this, binding.nh2doby, 1918, 2018, 9998, getString(R.string.nh2dob), " year")) {
+            if (!validatorClass.RangeTextBox(this, binding.nh2doby, DateUtils.getCurrentYear() - 95, DateUtils.getCurrentYear(), 9998, getString(R.string.nh2dob), " year")) {
                 return false;
             }
 
-//            if (!validatorClass.RangeTextBox(this, binding.nh2dobm, 1,
-//                    binding.nh2doby.equals(String.valueOf(year)) ? month : 12,
-//                    98, getString(R.string.nh2dob), " month")) {
-//                return false;
-//            }
-//
-//            if (!validatorClass.RangeTextBox(this, binding.nh2dobd, 1,
-//                    binding.nh2doby.equals(String.valueOf(year)) ? day : 31,
-//                    98, getString(R.string.nh2dob), " day")) {
-//                return false;
-//            }
+            Calendar today = Calendar.getInstance();
+            if (dob.after(today)) {
+                if (!validatorClass.RangeTextBoxforDate(this, binding.nh2dobd, 1, DateUtils.getCurrentDate(), 98, "Date can not be more than today")) {
+                    return false;
+                }
 
+                if (!validatorClass.RangeTextBoxforDate(this, binding.nh2dobm, 1, DateUtils.getCurrentMonth(), 98, "Month can not be more than current Month")) {
+                    return false;
+                }
 
-            /*if (!validatorClass.EmptyTextBox(this, binding.nh2aged, getString(R.string.na2age))) {
-                return false;
+                if (!validatorClass.RangeTextBoxforDate(this, binding.nh2doby, DateUtils.getCurrentYear() - 95, DateUtils.getCurrentYear(), 9998, "Year can not be more than current year")) {
+                    return false;
+                }
+
             }
 
-            if (!validatorClass.RangeTextBox(this, binding.nh2aged, 0, 29, getString(R.string.na2age), " days")) {
-                return false;
-            }
 
-            if (!validatorClass.EmptyTextBox(this, binding.nh2agem, getString(R.string.na2age))) {
-                return false;
-            }
-
-            if (!validatorClass.RangeTextBox(this, binding.nh2agem, 0, 11, getString(R.string.na2age), " months")) {
-                return false;
-            }*/
 
             if (binding.nh2doby.getText().toString().equals("9998")) {
 
@@ -468,19 +403,6 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
                     return false;
                 }
             }
-
-            /*if (binding.nh2aged.getText().toString().equals("0") && binding.nh2agem.getText().toString().equals("0") && binding.nh2agey.getText().toString().equals("0")) {
-                Toast.makeText(this, "ERROR(invalid): " + "All can not be zero" + getString(R.string.na2age), Toast.LENGTH_LONG).show();
-                binding.nh2agey.setError("All can not be zero");
-                binding.nh2agem.setError("All can not be zero");
-                binding.nh2aged.setError("All can not be zero");
-                Log.i(SectionA2Activity.class.getSimpleName(), "na2age" + ": This data is Required!");
-            } else {
-                binding.nh2agey.setError(null);
-                binding.nh2agem.setError(null);
-                binding.nh2aged.setError(null);
-            }*/
-
             if ((family.getResp().equals("1") || family.getRealtionHH().equals("1")) && Age < 18) {
                 String chk = family.getResp().equals("1") ? "Resp" : "Head";
                 binding.nh2agey.setError("Error(Invalid) Age for " + chk);
@@ -769,16 +691,15 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
 
             if (!binding.nh2dobd.getText().toString().equals("98") && !binding.nh2dobm.getText().toString().equals("98")
                     && !binding.nh2doby.getText().toString().equals("9998")) {
-                dob = String.format("%02d", Integer.valueOf(binding.nh2dobd.getText().toString())) + "-"
-                        + String.format("%02d", Integer.valueOf(binding.nh2dobm.getText().toString()))
-                        + "-" + binding.nh2doby.getText().toString();
 
-                agebyDob = DateUtils.ageInYearByDOB(DateUtils.getCalendarDate(dob));
+                dob = DateUtils.getCalendarDate(binding.nh2dobd.getText().toString(), binding.nh2dobm.getText().toString(),
+                        binding.nh2doby.getText().toString());
+
+                agebyDob = DateUtils.ageInYearByDOB(dob);
                 binding.nh2agey.setEnabled(false);
                 binding.nh2agey.setText(String.valueOf(agebyDob));
 
             } else if (!binding.nh2doby.getText().toString().equals("9998")) {
-                dob = binding.nh2doby.getText().toString();
                 agebyDob = DateUtils.ageInYearByDOB(binding.nh2doby.getText().toString());
                 binding.nh2agey.setEnabled(false);
                 binding.nh2agey.setText(String.valueOf(agebyDob));
@@ -793,52 +714,6 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
 
     @Override
     public void afterTextChanged(Editable s) {
-
-        /*timer.cancel();
-        timer = new Timer();
-        if (!binding.nh2agey.getText().toString().isEmpty() && !binding.nh2doby.getText().toString().equals("9998")) {
-
-            if (Age != agebyDob) {
-                timer.schedule(
-                        new TimerTask() {
-                            @Override
-                            public void run() {
-
-                                SectionA2Activity.this.runOnUiThread(new Runnable() {
-                                    public void run() {
-                                        if (!binding.nh2doby.getText().toString().isEmpty() && !binding.nh2doby.getText().toString().equals("9998")) {
-                                            //if (Age != agebyDob) {
-                                            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(SectionA2Activity.this);
-                                            alertDialogBuilder
-                                                    .setMessage("Age does not match with Year of Birth. Do you want to continue?")
-                                                    .setCancelable(false)
-                                                    .setPositiveButton("OK",
-                                                            new DialogInterface.OnClickListener() {
-                                                                public void onClick(DialogInterface dialog, int id) {
-                                                                    //secFlag = false;
-                                                                }
-                                                            })
-                                                    .setNegativeButton("Cancel",
-                                                            new DialogInterface.OnClickListener() {
-                                                                public void onClick(DialogInterface dialog, int id) {
-                                                                    dialog.cancel();
-                                                                    //secFlag = true;
-                                                                }
-                                                            });
-                                            AlertDialog alert = alertDialogBuilder.create();
-                                            alert.show();
-                                        }
-                                    }
-                                    //}
-                                });
-
-                            }
-                        },
-                        DELAY
-                );
-            }
-*/
-        //}
 
 
     }

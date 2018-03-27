@@ -294,6 +294,10 @@ public class SectionD1Activity extends AppCompatActivity {
         JSONObject sA3 = new JSONObject();
 
         name = binding.nd101.getSelectedItem().toString();
+
+        sA3.put("hccode", AntrhoInfoActivity.hc_code);
+        sA3.put("htcode", AntrhoInfoActivity.ht_code);
+        sA3.put("wtcode", AntrhoInfoActivity.wt_code);
         sA3.put("nd101", binding.nd101.getSelectedItem().toString());
         sA3.put("nd101Serial", json.getSerialNo());
 

@@ -16,6 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Timer;
 
@@ -38,7 +39,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
     int childSerial = 1;
     @BindViews({R.id.nw215y, R.id.nw215m, R.id.nw215d})
     List<EditText> grpDate;
-    String date;
+    Calendar date = Calendar.getInstance();
     long yearsBydob;
     private Timer timer = new Timer();
 
@@ -247,10 +248,25 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         }
 
 
-        if (!validatorClass.RangeTextBox(this, bi.nw215y, 2013, 2018, getString(R.string.nw215), " year")) {
+        if (!validatorClass.RangeTextBox(this, bi.nw215y, DateUtils.getCurrentYear() - 5, DateUtils.getCurrentYear(), getString(R.string.nw215), " years")) {
             return false;
         }
 
+        Calendar today = Calendar.getInstance();
+        if (date.after(today)) {
+            if (!validatorClass.RangeTextBoxforDate(this, bi.nw215d, 1, DateUtils.getCurrentDate(), 98, "Date can not be more than today")) {
+                return false;
+            }
+
+            if (!validatorClass.RangeTextBoxforDate(this, bi.nw215m, 1, DateUtils.getCurrentMonth(), 98, "Month can not be more than current month")) {
+                return false;
+            }
+
+            if (!validatorClass.RangeTextBoxforDate(this, bi.nw215y, DateUtils.getCurrentYear() - 5, DateUtils.getCurrentYear(), "Year can not be more than current year")) {
+                return false;
+            }
+
+        }
 
 
         if (!validatorClass.EmptyRadioButton(this, bi.nw216, bi.nw216a, getString(R.string.nw216))) {
@@ -439,11 +455,10 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
         if (!bi.nw215y.getText().toString().isEmpty() && !bi.nw215m.getText().toString().isEmpty()
                 && !bi.nw215d.getText().toString().isEmpty()) {
-            if (bi.nw215d.getText().toString().equals("98") && !bi.nw215m.getText().toString().equals("98")) {
-                date = "%02d" + bi.nw215d.getText().toString() + "-" + "%02d" + bi.nw215m.getText().toString()
-                        + "-" + bi.nw215y.getText().toString();
+            if (!bi.nw215d.getText().toString().equals("98") && !bi.nw215m.getText().toString().equals("98")) {
+                date = DateUtils.getCalendarDate(bi.nw215d.getText().toString(), bi.nw215m.getText().toString(), bi.nw215y.getText().toString());
 
-                yearsBydob = DateUtils.ageInYearByDOB(DateUtils.getCalendarDate(date));
+                yearsBydob = DateUtils.ageInYearByDOB(date);
 
             } else {
                 //date = bi.nw215d.getText().toString() + "-" bi.nw21
