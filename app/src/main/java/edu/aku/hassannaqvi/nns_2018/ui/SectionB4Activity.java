@@ -436,9 +436,8 @@ public class SectionB4Activity extends Activity {
         sB4.put("nw412c", binding.nb412c.isChecked() ? "3" : "0");
         sB4.put("nw412d", binding.nb412d.isChecked() ? "4" : "0");
         sB4.put("nw412e", binding.nb412e.isChecked() ? "5" : "0");
-        sB4.put("nw412f", binding.nb412e.isChecked() ? "6" : "0");
         sB4.put("nw41298", binding.nb41298.isChecked() ? "98" : "0");
-        sB4.put("nw41296", binding.nb41298.isChecked() ? "96" : "0");
+        sB4.put("nw41296", binding.nb41296.isChecked() ? "96" : "0");
 
         sB4.put("nw41296x", binding.nb41296x.getText().toString());
 
