@@ -10,7 +10,6 @@ import android.widget.Toast;
 import org.json.JSONException;
 
 import edu.aku.hassannaqvi.nns_2018.R;
-import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivityChildEndingBinding;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
@@ -107,7 +106,7 @@ public class ChildEndingActivity extends AppCompatActivity {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
 
-        MainApp.cc.setCstatus(binding.istatusa.isChecked() ? "1"
+        MainApp.cc1.setIstatus(binding.istatusa.isChecked() ? "1"
                 : binding.istatusb.isChecked() ? "2"
                 : binding.istatusc.isChecked() ? "3"
                 : binding.istatusd.isChecked() ? "4"
@@ -115,13 +114,15 @@ public class ChildEndingActivity extends AppCompatActivity {
                 : binding.istatus96.isChecked() ? "96"
                 : "0");
 
-        MainApp.cc.setCstatus88x(binding.istatus96x.getText().toString());
+        MainApp.cc1.setIstatus88x(binding.istatus96x.getText().toString());
 
         //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }
 
     private boolean UpdateDB() {
-        DatabaseHelper db = new DatabaseHelper(this);
+        MainApp.cc1.update();
+        return true;
+       /* DatabaseHelper db = new DatabaseHelper(this);
 
         int updcount = db.updateChildEnding();
         if (updcount == 1) {
@@ -130,7 +131,7 @@ public class ChildEndingActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
-        }
+        }*/
     }
 
     private boolean formValidation() {

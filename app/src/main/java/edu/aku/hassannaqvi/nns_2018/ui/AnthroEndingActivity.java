@@ -12,7 +12,6 @@ import android.widget.Toast;
 import org.json.JSONException;
 
 import edu.aku.hassannaqvi.nns_2018.R;
-import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivityAnthroEndingBinding;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
@@ -107,7 +106,9 @@ public class AnthroEndingActivity extends AppCompatActivity {
     }
 
     private boolean UpdateDB() {
-        DatabaseHelper db = new DatabaseHelper(this);
+
+        MainApp.emc.update();
+        /*DatabaseHelper db = new DatabaseHelper(this);
 
         int updcount = db.updateAnthroEnding();
 
@@ -117,7 +118,9 @@ public class AnthroEndingActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
-        }
+        }*/
+
+        return true;
 
     }
 

@@ -55,9 +55,17 @@ import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.NutritionContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.VersionAppContract;
-import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Child;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.EligibleMembers;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FamilyMembers;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FormContract;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.MWRA;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Nutrition;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Outcome;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Recipients;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Serial;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.VersionApp;
+import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper_DBFlow;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.nns_2018.sync.SyncAllData;
@@ -87,7 +95,7 @@ public class MainActivity extends Activity {
     ProgressDialog mProgressDialog;
     ArrayList<String> lablesAreas;
     Map<String, String> AreasMap;
-    VersionAppContract versionAppContract;
+    VersionApp versionAppContract;
     private ProgressDialog pd;
     private Boolean exit = false;
     private String rSumText = "";
@@ -157,13 +165,13 @@ public class MainActivity extends Activity {
         ActivityMainBinding mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         mainBinding.setCallback(this);
 
-        DatabaseHelper db = new DatabaseHelper(this);
+        DatabaseHelper_DBFlow db = new DatabaseHelper_DBFlow(this);
 
 
             mainBinding.adminsec.setVisibility(View.VISIBLE);
 
-            Collection<FormsContract> todaysForms = db.getTodayForms();
-            Collection<FormsContract> unsyncedForms = db.getUnsyncedForms();
+        Collection<FormContract> todaysForms = db.getTodayForms();
+        Collection<FormContract> unsyncedForms = db.getUnsyncedForms();
 
             rSumText += "TODAY'S RECORDS SUMMARY\r\n";
 
@@ -178,7 +186,7 @@ public class MainActivity extends Activity {
                 rSumText += "[Cluster No.] \t[ House No. ] \t[Form Status] \t[Sync Status]----------\r\n";
                 rSumText += "--------------------------------------------------\r\n";
 
-                for (FormsContract fc : todaysForms) {
+                for (FormContract fc : todaysForms) {
                     if (fc.getIstatus() != null) {
                         switch (fc.getIstatus()) {
                             case "1":
@@ -202,8 +210,8 @@ public class MainActivity extends Activity {
 
                     //rSumText += fc.getDSSID();
 
-                    rSumText += fc.getEnmNo() + " \t";
-                    rSumText += " " + fc.getHhNo() + " \t";
+                    rSumText += fc.getEnm_no() + " \t";
+                    rSumText += " " + fc.getHh_no() + " \t";
                     rSumText += " " + iStatus + " \t";
 
                     rSumText += (fc.getSynced().equals("") ? "\t\tNot Synced" : "\t\tSynced");
@@ -251,18 +259,20 @@ public class MainActivity extends Activity {
         /*Add data in Serial date wrt date*/
         MainApp.sc = db.getSerialWRTDate(new SimpleDateFormat("dd-MM-yy").format(new Date()).toString());
 
-        if (MainApp.sc.getDeviceid() == null) {
-            db.addSerialForm(new SerialContract(Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID),
+        if (MainApp.sc == null || MainApp.sc.getDeviceId() == null) {
+
+            db.addSerialForm(new Serial(Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID),
                     new SimpleDateFormat("dd-MM-yy").format(new Date()).toString(),
-                    "0"));
+                    "0")
+            );
 
             MainApp.sc = db.getSerialWRTDate(new SimpleDateFormat("dd-MM-yy").format(new Date()).toString());
         }
 
 //        Version Checking
         versionAppContract = db.getVersionApp();
-        if (versionAppContract.getVersioncode() != null) {
-            if (MainApp.versionCode < Integer.valueOf(versionAppContract.getVersioncode())) {
+        if (versionAppContract != null || versionAppContract.getVersionCode() != null) {
+            if (MainApp.versionCode < Integer.valueOf(versionAppContract.getVersionCode())) {
                 mainBinding.lblAppVersion.setVisibility(View.VISIBLE);
                 mainBinding.lblAppVersion.setText("New Version Available");
             } else {
@@ -488,7 +498,7 @@ public class MainActivity extends Activity {
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
 
-            DatabaseHelper db = new DatabaseHelper(this);
+            DatabaseHelper_DBFlow db = new DatabaseHelper_DBFlow(this);
 
             Toast.makeText(getApplicationContext(), "Syncing Forms", Toast.LENGTH_SHORT).show();
             new SyncAllData(
@@ -496,7 +506,7 @@ public class MainActivity extends Activity {
                     "Forms",
                     "updateSyncedForms",
                     FormsContract.class,
-                    MainApp._HOST_URL + FormsContract.FormsTable._URL,
+                    MainApp._HOST_URL + FormContract._URI,
                     db.getUnsyncedForms()
             ).execute();
 
@@ -506,7 +516,7 @@ public class MainActivity extends Activity {
                     "Family Members",
                     "updateSyncedFamilyMembers",
                     FamilyMembersContract.class,
-                    MainApp._HOST_URL + FamilyMembersContract.familyMembers._URL,
+                    MainApp._HOST_URL + FamilyMembers._URL,
                     db.getUnsyncedFamilyMembers()
             ).execute();
 
@@ -516,7 +526,7 @@ public class MainActivity extends Activity {
                     "WRAs",
                     "updateSyncedMWRAForm",
                     MWRAContract.class,
-                    MainApp._HOST_URL + MWRAContract.MWRATable._URL,
+                    MainApp._HOST_URL + MWRA._URL,
                     db.getUnsyncedMWRA()
             ).execute();
 
@@ -526,7 +536,7 @@ public class MainActivity extends Activity {
                     "Children",
                     "updateSyncedChildForm",
                     ChildContract.class,
-                    MainApp._HOST_URL + ChildContract.ChildTable._URL,
+                    MainApp._HOST_URL + Child._URL,
                     db.getUnsyncedChildForms()
             ).execute();
 
@@ -536,7 +546,7 @@ public class MainActivity extends Activity {
                     "Eligibles",
                     "updateSyncedEligibles",
                     EligibleMembersContract.class,
-                    MainApp._HOST_URL + EligibleMembersContract.eligibleMembers._URL,
+                    MainApp._HOST_URL + EligibleMembers._URL,
                     db.getUnsyncedEligbleMembers()
             ).execute();
 
@@ -546,7 +556,7 @@ public class MainActivity extends Activity {
                     "Outcomes",
                     "updateSyncedOutcomeForm",
                     OutcomeContract.class,
-                    MainApp._HOST_URL + OutcomeContract.outcomeTable._URL,
+                    MainApp._HOST_URL + Outcome._URL,
                     db.getUnsyncedOutcome()
             ).execute();
 
@@ -556,7 +566,7 @@ public class MainActivity extends Activity {
                     "Recepients",
                     "updateSyncedRecepientsForm",
                     RecipientsContract.class,
-                    MainApp._HOST_URL + RecipientsContract.RecipientsTable._URL,
+                    MainApp._HOST_URL + Recipients._URL,
                     db.getUnsyncedRecipients()
             ).execute();
 
@@ -566,7 +576,7 @@ public class MainActivity extends Activity {
                     "Nutrition",
                     "updateSyncedNutrition",
                     NutritionContract.class,
-                    MainApp._HOST_URL + NutritionContract.NutritionTable._URL,
+                    MainApp._HOST_URL + Nutrition._URL,
                     db.getUnsyncedNutrition()
             ).execute();
 

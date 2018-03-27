@@ -13,7 +13,6 @@ import java.util.Timer;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
-import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC5Binding;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
@@ -150,7 +149,7 @@ public class SectionC5Activity extends AppCompatActivity {
     private boolean UpdateDB() {
 
         //Long rowId;
-        DatabaseHelper db = new DatabaseHelper(this);
+        /*DatabaseHelper_DBFlow db = new DatabaseHelper_DBFlow(this);
 
         int updcount = db.updateSC5();
 
@@ -160,7 +159,10 @@ public class SectionC5Activity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
-        }
+        }*/
+
+        MainApp.cc1.update();
+        return true;
 
     }
 

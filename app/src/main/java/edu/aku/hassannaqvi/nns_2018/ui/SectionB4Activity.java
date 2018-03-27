@@ -9,13 +9,12 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.Timer;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.MWRA;
-import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
+import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper_DBFlow;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB4Binding;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
@@ -25,7 +24,7 @@ public class SectionB4Activity extends Activity {
 
     private final long DELAY = 1000;
     ActivitySectionB4Binding binding;
-    DatabaseHelper db;
+    DatabaseHelper_DBFlow db;
     private Timer timer = new Timer();
 
     @Override
@@ -34,7 +33,7 @@ public class SectionB4Activity extends Activity {
         //setContentView(R.layout.activity_section_b4);
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_b4);
-        db = new DatabaseHelper(this);
+        db = new DatabaseHelper_DBFlow(this);
         binding.setCallback(this);
 
         binding.nw40299.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -479,7 +478,7 @@ public class SectionB4Activity extends Activity {
     private boolean UpdateDB() {
 
         //Long rowId;
-        DatabaseHelper db = new DatabaseHelper(this);
+        /*DatabaseHelper_DBFlow db = new DatabaseHelper_DBFlow(this);
 
         int updcount = db.updateSB4();
 
@@ -489,8 +488,10 @@ public class SectionB4Activity extends Activity {
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
-        }
-        //return true;
+        }*/
+
+        MainApp.mc.update();
+        return true;
 
     }
 

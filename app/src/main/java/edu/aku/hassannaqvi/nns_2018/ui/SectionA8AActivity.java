@@ -22,7 +22,7 @@ import java.util.Timer;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FamilyMembers;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Recipients;
-import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
+import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper_DBFlow;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA8ABinding;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
@@ -36,7 +36,7 @@ public class SectionA8AActivity extends Activity {
     static ArrayList<String> recpSerial;
     private final long DELAY = 1000;
     ActivitySectionA8ABinding bi;
-    DatabaseHelper db;
+    DatabaseHelper_DBFlow db;
     //FamilyMembersContract fmcSelected;
     FamilyMembers fmcSelected;
 
@@ -47,7 +47,7 @@ public class SectionA8AActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_a8_a);
-        db = new DatabaseHelper(this);
+        db = new DatabaseHelper_DBFlow(this);
         bi.setCallback(this);
 
         if (getIntent().getBooleanExtra("flag", true)) {
@@ -260,7 +260,7 @@ public class SectionA8AActivity extends Activity {
     private boolean UpdateDB() {
 
         //Long rowId;
-        DatabaseHelper db = new DatabaseHelper(this);
+        DatabaseHelper_DBFlow db = new DatabaseHelper_DBFlow(this);
 
         //Long updcount = db.addRecipient(MainApp.rc);
         Long updcount = MainApp.rc.insert();

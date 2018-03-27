@@ -1,10 +1,15 @@
 package edu.aku.hassannaqvi.nns_2018.contracts_dbflow;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
 import com.raizlabs.android.dbflow.annotation.Unique;
 import com.raizlabs.android.dbflow.structure.BaseModel;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import edu.aku.hassannaqvi.nns_2018.AppDB;
 
@@ -13,6 +18,8 @@ import edu.aku.hassannaqvi.nns_2018.AppDB;
  */
 @Table(database = AppDB.class)
 public class MWRA extends BaseModel {
+
+    public static String _URL = "wras.php";
     @Column
     @PrimaryKey(autoincrement = true)
     @Unique
@@ -537,6 +544,14 @@ public class MWRA extends BaseModel {
     private String nw42396x;
     @Column
     private String B1SerialNo;
+
+    public static MWRA Sync(JSONObject jsonObject) {
+
+        Gson gson = new GsonBuilder().create();
+        MWRA mwraobj = gson.fromJson(jsonObject.toString(), MWRA.class);
+        return mwraobj;
+
+    }
 
     public String getNw313() {
         return nw313;
@@ -2568,5 +2583,13 @@ public class MWRA extends BaseModel {
 
     public void setNw42396x(String nw42396x) {
         this.nw42396x = nw42396x;
+    }
+
+    // JSON
+    public JSONObject toJSONObject() throws JSONException {
+
+        Gson gson = new GsonBuilder().create();
+        JSONObject json = new JSONObject(gson.toJson(this, MWRA.class));
+        return json;
     }
 }

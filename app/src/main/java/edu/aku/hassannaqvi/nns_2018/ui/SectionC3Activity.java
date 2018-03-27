@@ -15,7 +15,6 @@ import java.util.Timer;
 import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
-import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC3Binding;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
@@ -1215,7 +1214,7 @@ public class SectionC3Activity extends AppCompatActivity {
     private boolean UpdateDB() {
 
         //Long rowId;
-        DatabaseHelper db = new DatabaseHelper(this);
+        /*DatabaseHelper_DBFlow db = new DatabaseHelper_DBFlow(this);
 
         int updcount = db.updateSC3();
 
@@ -1226,7 +1225,10 @@ public class SectionC3Activity extends AppCompatActivity {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
         }
+*/
 
+        MainApp.cc1.update();
+        return true;
     }
 
 

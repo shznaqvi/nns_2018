@@ -25,7 +25,7 @@ import java.util.Timer;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.EligibleMembers;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FamilyMembers;
-import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
+import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper_DBFlow;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionD1Binding;
 import edu.aku.hassannaqvi.nns_2018.other.JSONModelClass;
@@ -40,7 +40,7 @@ public class SectionD1Activity extends AppCompatActivity {
     static int counter = 1;
     private final long DELAY = 1000;
     ActivitySectionD1Binding binding;
-    DatabaseHelper db;
+    DatabaseHelper_DBFlow db;
     int slc_type;
     JSONModelClass json;
     //FamilyMembersContract slecMem;
@@ -52,7 +52,7 @@ public class SectionD1Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_d1);
-        db = new DatabaseHelper(this);
+        db = new DatabaseHelper_DBFlow(this);
 
 //        Assigning data to UI binding
         binding.setCallback(this);
@@ -344,7 +344,7 @@ public class SectionD1Activity extends AppCompatActivity {
     private boolean UpdateDB() {
 
         //Long rowId;
-        //DatabaseHelper db = new DatabaseHelper(this);
+        //DatabaseHelper_DBFlow db = new DatabaseHelper_DBFlow(this);
 
         //Long updcount = db.addEligibleMember(MainApp.emc);
         Long updcount = MainApp.emc.insert();

@@ -1,10 +1,15 @@
 package edu.aku.hassannaqvi.nns_2018.contracts_dbflow;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
 import com.raizlabs.android.dbflow.annotation.Unique;
 import com.raizlabs.android.dbflow.structure.BaseModel;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import edu.aku.hassannaqvi.nns_2018.AppDB;
 
@@ -13,6 +18,8 @@ import edu.aku.hassannaqvi.nns_2018.AppDB;
  */
 @Table(database = AppDB.class)
 public class Nutrition extends BaseModel {
+
+    public static String _URL = "nutritions.php";
     @Column
     @PrimaryKey(autoincrement = true)
     @Unique
@@ -79,6 +86,14 @@ public class Nutrition extends BaseModel {
     private String nw501i;
     @Column
     private String nw501j;
+
+    public static Nutrition Sync(JSONObject jsonObject) {
+
+        Gson gson = new GsonBuilder().create();
+        Nutrition nutrobj = gson.fromJson(jsonObject.toString(), Nutrition.class);
+        return nutrobj;
+
+    }
 
     public String get_uid() {
         return _uid;
@@ -188,11 +203,11 @@ public class Nutrition extends BaseModel {
         return gpselev;
     }
 
+    // JSON
+
     public void setGpselev(String gpselev) {
         this.gpselev = gpselev;
     }
-
-    // JSON
 
     public String getDeviceid() {
         return deviceid;
@@ -312,5 +327,13 @@ public class Nutrition extends BaseModel {
 
     public void setNw501j(String nw501j) {
         this.nw501j = nw501j;
+    }
+
+    // JSON
+    public JSONObject toJSONObject() throws JSONException {
+
+        Gson gson = new GsonBuilder().create();
+        JSONObject json = new JSONObject(gson.toJson(this, Nutrition.class));
+        return json;
     }
 }

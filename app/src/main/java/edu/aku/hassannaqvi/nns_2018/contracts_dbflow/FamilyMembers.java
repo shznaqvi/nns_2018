@@ -1,10 +1,17 @@
 package edu.aku.hassannaqvi.nns_2018.contracts_dbflow;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
 import com.raizlabs.android.dbflow.annotation.Unique;
 import com.raizlabs.android.dbflow.structure.BaseModel;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.Serializable;
 
 import edu.aku.hassannaqvi.nns_2018.AppDB;
 
@@ -12,7 +19,9 @@ import edu.aku.hassannaqvi.nns_2018.AppDB;
  * Created by gul.sanober on 3/27/2018.
  */
 @Table(database = AppDB.class)
-public class FamilyMembers extends BaseModel {
+public class FamilyMembers extends BaseModel implements Serializable {
+
+    public static String _URL = "familymembers.php";
     @Column
     @PrimaryKey(autoincrement = true)
     @Unique
@@ -113,6 +122,14 @@ public class FamilyMembers extends BaseModel {
     private String motherName;
     @Column
     private String ageInYear;
+
+    public static FamilyMembers Sync(JSONObject jsonObject) {
+
+        Gson gson = new GsonBuilder().create();
+        FamilyMembers familyMembersObj = gson.fromJson(jsonObject.toString(), FamilyMembers.class);
+        return familyMembersObj;
+
+    }
 
     public String get_uid() {
         return _uid;
@@ -474,8 +491,12 @@ public class FamilyMembers extends BaseModel {
         this.motherId = motherId;
     }
 
-
     // JSON
+    // JSON
+    public JSONObject toJSONObject() throws JSONException {
 
-
+        Gson gson = new GsonBuilder().create();
+        JSONObject json = new JSONObject(gson.toJson(this, FamilyMembers.class));
+        return json;
+    }
 }

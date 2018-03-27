@@ -14,13 +14,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Collection;
 
 import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
@@ -81,11 +75,11 @@ public class SyncForms extends AsyncTask<Void, Void, String> {
         DatabaseHelper db = new DatabaseHelper(mContext);
         Collection<FormsContract> Forms;
         //if (flag) {
-        Forms = db.getUnsyncedForms();
+        //Forms = db.getUnsyncedForms();
         //} else {
         //Forms = db.getFormsSg();
         //}
-        Log.d(TAG, String.valueOf(Forms.size()));
+        /*Log.d(TAG, String.valueOf(Forms.size()));
 
         if (Forms.size() > 0) {
 
@@ -156,7 +150,7 @@ public class SyncForms extends AsyncTask<Void, Void, String> {
             }
         } else {
             return "No new records to sync";
-        }
+        }*/
         return line;
     }
 

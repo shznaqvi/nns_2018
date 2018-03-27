@@ -57,7 +57,7 @@ import butterknife.OnClick;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.EnumBlockContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.UCsContract;
-import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
+import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper_DBFlow;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.get.GetAllData;
 
@@ -124,7 +124,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
     String DirectoryName;
 
-    DatabaseHelper db;
+    DatabaseHelper_DBFlow db;
 
     private UserLoginTask mAuthTask = null;
     private int clicks;
@@ -191,7 +191,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             }
         });
 
-        db = new DatabaseHelper(this);
+        db = new DatabaseHelper_DBFlow(this);
 
 //        DB backup
 
@@ -221,7 +221,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                 editor.commit();
             }
 
-            File folder = new File(Environment.getExternalStorageDirectory() + File.separator + DatabaseHelper.PROJECT_NAME);
+            File folder = new File(Environment.getExternalStorageDirectory() + File.separator + DatabaseHelper_DBFlow.PROJECT_NAME);
             boolean success = true;
             if (!folder.exists()) {
                 success = folder.mkdirs();
@@ -236,11 +236,11 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                 if (success) {
 
                     try {
-                        File dbFile = new File(this.getDatabasePath(DatabaseHelper.DATABASE_NAME).getPath());
+                        File dbFile = new File(this.getDatabasePath(DatabaseHelper_DBFlow.DATABASE_NAME).getPath());
                         FileInputStream fis = new FileInputStream(dbFile);
 
                         String outFileName = DirectoryName + File.separator +
-                                DatabaseHelper.DB_NAME;
+                                DatabaseHelper_DBFlow.DB_NAME;
 
                         // Open the empty db as the output stream
                         OutputStream output = new FileOutputStream(outFileName);
@@ -516,7 +516,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
             if (mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
 
-                DatabaseHelper db = new DatabaseHelper(LoginActivity.this);
+                DatabaseHelper_DBFlow db = new DatabaseHelper_DBFlow(LoginActivity.this);
                 if ((mEmail.equals("dmu@aku") && mPassword.equals("aku?dmu")) || db.Login(mEmail, mPassword)
                         || (mEmail.equals("test1234") && mPassword.equals("test1234"))) {
                     MainApp.userName = mEmail;

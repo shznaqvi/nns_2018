@@ -13,7 +13,7 @@ import org.json.JSONObject;
 import java.util.Timer;
 
 import edu.aku.hassannaqvi.nns_2018.R;
-import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
+import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper_DBFlow;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB5Binding;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
@@ -23,14 +23,14 @@ public class SectionB5Activity extends AppCompatActivity {
 
     private final long DELAY = 1000;
     ActivitySectionB5Binding binding;
-    DatabaseHelper db;
+    DatabaseHelper_DBFlow db;
     private Timer timer = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_b5);
-        db = new DatabaseHelper(this);
+        db = new DatabaseHelper_DBFlow(this);
 
 //        Assigning data to UI binding
         binding.setCallback(this);
@@ -407,7 +407,7 @@ public class SectionB5Activity extends AppCompatActivity {
     private boolean UpdateDB() {
 
         //Long rowId;
-        DatabaseHelper db = new DatabaseHelper(this);
+        /*DatabaseHelper_DBFlow db = new DatabaseHelper_DBFlow(this);
 
         int updcount = db.updateSB5();
 
@@ -418,8 +418,9 @@ public class SectionB5Activity extends AppCompatActivity {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
         }
-
-        //return true;
+*/
+        MainApp.mc.update();
+        return true;
 
     }
 

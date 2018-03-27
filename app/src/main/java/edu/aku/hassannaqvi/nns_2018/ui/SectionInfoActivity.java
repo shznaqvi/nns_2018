@@ -34,7 +34,7 @@ import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.TehsilsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.UCsContract;
-import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
+import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper_DBFlow;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionInfoBinding;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
@@ -50,7 +50,7 @@ public class SectionInfoActivity extends Activity {
     int check = 0;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
 
-    DatabaseHelper db;
+    DatabaseHelper_DBFlow db;
     Map<String, String> getAllTalukas, getAllUCs;
     List<String> Talukas, UCs;
     String serial;
@@ -59,7 +59,7 @@ public class SectionInfoActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_info);
-        db = new DatabaseHelper(this);
+        db = new DatabaseHelper_DBFlow(this);
 
 //        Assigning data to UI binding
         binding.setCallback(this);
@@ -304,7 +304,7 @@ public class SectionInfoActivity extends Activity {
 
         //        Spinner Fill
 
-        db = new DatabaseHelper(this);
+        db = new DatabaseHelper_DBFlow(this);
 
         Talukas = new ArrayList<>();
         getAllTalukas = new HashMap<>();

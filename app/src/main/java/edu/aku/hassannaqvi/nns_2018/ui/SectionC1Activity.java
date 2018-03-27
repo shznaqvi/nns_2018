@@ -26,9 +26,9 @@ import java.util.Timer;
 
 import butterknife.BindViews;
 import edu.aku.hassannaqvi.nns_2018.R;
-import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
-import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Child;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FamilyMembers;
+import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper_DBFlow;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC1Binding;
 import edu.aku.hassannaqvi.nns_2018.other.DateUtils;
@@ -42,12 +42,12 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
     public static String selectedChildName = "";
     public static boolean isNA;
     static List<String> childU5;
-    static Map<String, FamilyMembersContract> childMap;
+    static Map<String, FamilyMembers> childMap;
     private final long DELAY = 1000;
     Map<String, String> respMap;
     ArrayList<String> respName;
     ActivitySectionC1Binding binding;
-    DatabaseHelper db;
+    DatabaseHelper_DBFlow db;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     Boolean endflag = false;
     long agebyDob = 0;
@@ -61,7 +61,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_c1);
-        db = new DatabaseHelper(this);
+        db = new DatabaseHelper_DBFlow(this);
         respName = new ArrayList<>();
         respName.add("....");
         respMap = new HashMap<>();
@@ -87,13 +87,13 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
             childU5.add("....");
 
             if (isNA) {
-                for (FamilyMembersContract fmc : MainApp.childNA) {
+                for (FamilyMembers fmc : MainApp.childNA) {
                     childMap.put(fmc.getName() + "-" + fmc.getSerialNo(), fmc);
                     childU5.add(fmc.getName() + "-" + fmc.getSerialNo());
                     counterPerNA++;
                 }
             } else {
-                for (FamilyMembersContract fmc : MainApp.childUnder5) {
+                for (FamilyMembers fmc : MainApp.childUnder5) {
                     if (fmc.getMotherId().equals(MainApp.mc.getB1SerialNo())) {
                         childMap.put(fmc.getName() + "-" + fmc.getSerialNo(), fmc);
                         childU5.add(fmc.getName() + "-" + fmc.getSerialNo());
@@ -104,7 +104,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
         }
 
 
-        for (FamilyMembersContract fmc : MainApp.respList) {
+        for (FamilyMembers fmc : MainApp.respList) {
             respName.add(fmc.getName() + "-" + fmc.getSerialNo());
             respMap.put(fmc.getName() + "-" + fmc.getSerialNo(), fmc.getSerialNo());
         }
@@ -305,57 +305,57 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
 
         selectedChildName = binding.nc101.getSelectedItem().toString();
 
-        MainApp.cc = new ChildContract();
+        MainApp.cc1 = new Child();
 
-        MainApp.cc.setDevicetagID(MainApp.getTagName(this));
-        MainApp.cc.setFormDate(dtToday);
-        MainApp.cc.setUser(MainApp.userName);
-        MainApp.cc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
+        MainApp.cc1.setDevicetagid(MainApp.getTagName(this));
+        MainApp.cc1.setFormdate(dtToday);
+        MainApp.cc1.setUser(MainApp.userName);
+        MainApp.cc1.setDeviceid(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
-        MainApp.cc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
+        MainApp.cc1.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
 
         if (childMap.get(binding.nc101.getSelectedItem().toString()).getMotherId().equals("00")) {
-            MainApp.cc.setUUID(MainApp.fmc.get_UID());
+            MainApp.cc1.set_uuid(MainApp.fmc.get_uuid());
         } else {
-            MainApp.cc.setUUID(MainApp.mc.get_UID());
+            MainApp.cc1.set_uuid(MainApp.mc.get_uid());
         }
 
         JSONObject sC1 = new JSONObject();
 
-        sC1.put("respName", binding.resp.getSelectedItem().toString());
-        sC1.put("respSerial", respMap.get(binding.resp.getSelectedItem().toString()));
+        MainApp.cc1.setRespName(binding.resp.getSelectedItem().toString());
+        MainApp.cc1.setRespSerial(respMap.get(binding.resp.getSelectedItem().toString()));
 
 //       nc101
-        sC1.put("nc101", binding.nc101.getSelectedItem().toString());
+        MainApp.cc1.setNc101(binding.nc101.getSelectedItem().toString());
 //        nc103
 
-        sC1.put("nc201d", binding.nc201d.getText().toString());
-        sC1.put("nc201m", binding.nc201m.getText().toString());
-        sC1.put("nc201y", binding.nc201y.getText().toString());
+        MainApp.cc1.setNc201d(binding.nc201d.getText().toString());
+        MainApp.cc1.setNc201m(binding.nc201m.getText().toString());
+        MainApp.cc1.setNc201y(binding.nc201y.getText().toString());
 
 
-        sC1.put("nc202", binding.nc202a.isChecked() ? "1"
+        MainApp.cc1.setNc202(binding.nc202a.isChecked() ? "1"
                 : binding.nc202b.isChecked() ? "2"
                 : binding.nc202c.isChecked() ? "3"
                 : "0");
 
-        sC1.put("nc203", binding.nc203.getText().toString());
+        MainApp.cc1.setNc203(binding.nc203.getText().toString());
 
-        sC1.put("nc204a", binding.nc204aa.isChecked() ? "1"
+        MainApp.cc1.setNc204a(binding.nc204aa.isChecked() ? "1"
                 : binding.nc204ab.isChecked() ? "2"
                 : "0");
 
-        sC1.put("nc204b", binding.nc204ba.isChecked() ? "1"
+        MainApp.cc1.setNc204b(binding.nc204ba.isChecked() ? "1"
                 : binding.nc204bb.isChecked() ? "2"
                 : "0");
 
-        sC1.put("nc205", binding.nc205a.isChecked() ? "1"
+        MainApp.cc1.setNc205(binding.nc205a.isChecked() ? "1"
                 : binding.nc205b.isChecked() ? "2"
                 : binding.nc20598.isChecked() ? "98"
                 : "0");
 
 
-        MainApp.cc.setsC1(String.valueOf(sC1));
+        //MainApp.cc.setsC1(String.valueOf(sC1));
 
 
     }
@@ -363,17 +363,18 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
     private boolean UpdateDB() {
 
         //Long rowId;
-        DatabaseHelper db = new DatabaseHelper(this);
+        //DatabaseHelper_DBFlow db = new DatabaseHelper_DBFlow(this);
 
-        Long updcount = db.addChildForm(MainApp.cc);
-        MainApp.cc.set_ID(String.valueOf(updcount));
+        //Long updcount = db.addChildForm(MainApp.cc);
+        Long updcount = MainApp.cc1.insert();
+        //MainApp.cc.set_ID(String.valueOf(updcount));
 
         if (updcount != 0) {
             //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
 
-            MainApp.cc.setUID(
-                    (MainApp.cc.getDeviceID() + MainApp.cc.get_ID()));
-            db.updateFormChildID();
+            MainApp.cc1.set_uuid(
+                    (MainApp.cc1.getDeviceid() + MainApp.cc1._id));
+            //db.updateFormChildID();
 
             return true;
         } else {

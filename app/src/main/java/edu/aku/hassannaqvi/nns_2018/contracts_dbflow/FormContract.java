@@ -1,10 +1,15 @@
 package edu.aku.hassannaqvi.nns_2018.contracts_dbflow;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
 import com.raizlabs.android.dbflow.annotation.Unique;
 import com.raizlabs.android.dbflow.structure.BaseModel;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import edu.aku.hassannaqvi.nns_2018.AppDB;
 
@@ -13,6 +18,8 @@ import edu.aku.hassannaqvi.nns_2018.AppDB;
  */
 @Table(database = AppDB.class)
 public class FormContract extends BaseModel {
+
+    public static String _URI = "forms.php";
 
     @Column
     @PrimaryKey(autoincrement = true)
@@ -364,6 +371,14 @@ public class FormContract extends BaseModel {
     @Column
     private String appversion;
 
+    public static FormContract Sync(JSONObject jsonObject) {
+
+        Gson gson = new GsonBuilder().create();
+        FormContract formObj = gson.fromJson(jsonObject.toString(), FormContract.class);
+        return formObj;
+
+    }
+
     public String getNh401() {
         return nh401;
     }
@@ -640,10 +655,6 @@ public class FormContract extends BaseModel {
         return nh702;
     }
 
-    public void setNh702(String nh702) {
-        this.nh702 = nh702;
-    }
-
 
     /*public String getSA1() {
         return sA1;
@@ -660,6 +671,10 @@ public class FormContract extends BaseModel {
     public void setSA4(String sA4) {
         this.sA4 = sA4;
     }*/
+
+    public void setNh702(String nh702) {
+        this.nh702 = nh702;
+    }
 
     public String getNULLHACK() {
         return NULLHACK;
@@ -1687,5 +1702,13 @@ public class FormContract extends BaseModel {
 
     public void setAppversion(String appversion) {
         this.appversion = appversion;
+    }
+
+    // JSON
+    public JSONObject toJSONObject() throws JSONException {
+
+        Gson gson = new GsonBuilder().create();
+        JSONObject json = new JSONObject(gson.toJson(this, FormContract.class));
+        return json;
     }
 }

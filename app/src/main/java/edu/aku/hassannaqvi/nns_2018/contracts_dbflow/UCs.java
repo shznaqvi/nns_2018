@@ -9,21 +9,23 @@ import com.raizlabs.android.dbflow.structure.BaseModel;
 import edu.aku.hassannaqvi.nns_2018.AppDB;
 
 /**
- * Created by javed.khan on 3/27/2018.
+ * Created by gul.sanober on 3/27/2018.
  */
 
 @Table(database = AppDB.class)
-public class EnumBlockContract extends BaseModel {
+public class UCs extends BaseModel {
 
-    public static final String _URI = "enumblock.php";
+    public static final String _URI = "ucs.php";
     @Column
     @PrimaryKey(autoincrement = true)
     @Unique
     public int _id;
     @Column
-    private String ebcode;
+    String town_code;
     @Column
-    private String geoarea;
+    private String uc_code;
+    @Column
+    private String uc_name;
 
     public int get_id() {
         return _id;
@@ -33,19 +35,27 @@ public class EnumBlockContract extends BaseModel {
         this._id = _id;
     }
 
-    public String getEbcode() {
-        return ebcode;
+    public String getUc_code() {
+        return uc_code;
     }
 
-    public void setEbcode(String ebcode) {
-        this.ebcode = ebcode;
+    public void setUc_code(String uc_code) {
+        this.uc_code = uc_code;
     }
 
-    public String getGeoarea() {
-        return geoarea;
+    public String getUc_name() {
+        return uc_name;
     }
 
-    public void setGeoarea(String geoarea) {
-        this.geoarea = geoarea;
+    public void setUc_name(String uc_name) {
+        this.uc_name = uc_name;
+    }
+
+    public String getTown_code() {
+        return town_code;
+    }
+
+    public void setTown_code(String town_code) {
+        this.town_code = town_code;
     }
 }

@@ -9,16 +9,14 @@ import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Timer;
 
 import edu.aku.hassannaqvi.nns_2018.R;
-import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.NutritionContract;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FamilyMembers;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Nutrition;
-import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
+import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper_DBFlow;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB6Binding;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
@@ -27,7 +25,7 @@ public class SectionB6Activity extends AppCompatActivity {
 
     private final long DELAY = 1000;
     ActivitySectionB6Binding bi;
-    DatabaseHelper db;
+    DatabaseHelper_DBFlow db;
     private Timer timer = new Timer();
 
 
@@ -37,7 +35,7 @@ public class SectionB6Activity extends AppCompatActivity {
         //setContentView(R.layout.activity_section_b6);
 
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_b6);
-        db = new DatabaseHelper(this);
+        db = new DatabaseHelper_DBFlow(this);
         bi.setCallback(this);
 
         settingTimeToEat();
@@ -246,7 +244,7 @@ public class SectionB6Activity extends AppCompatActivity {
 
                     int childcount = 0;
                     if (MainApp.childUnder5.size() > 0) {
-                        for (FamilyMembersContract fmc : MainApp.childUnder5) {
+                        for (FamilyMembers fmc : MainApp.childUnder5) {
                             if (fmc.getMotherId().equals(MainApp.mc.getB1SerialNo())) {
                                 childcount++;
                             }
@@ -306,16 +304,16 @@ public class SectionB6Activity extends AppCompatActivity {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
 
-        MainApp.nc = new NutritionContract();
+        //MainApp.nc = new NutritionContract();
         MainApp.nc1 = new Nutrition();
 
-        MainApp.nc.setDevicetagID(MainApp.getTagName(this));
-        MainApp.nc.setFormDate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
-        MainApp.nc.setUser(MainApp.userName);
-        MainApp.nc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
+        MainApp.nc1.setDevicetagid(MainApp.getTagName(this));
+        MainApp.nc1.setFormdate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+        MainApp.nc1.setUser(MainApp.userName);
+        MainApp.nc1.setDeviceid(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
-        MainApp.nc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
-        MainApp.nc.set_UUID(MainApp.mc.get_UID());
+        MainApp.nc1.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
+        MainApp.nc1.set_uuid(MainApp.mc.get_uid());
 
         //JSONObject sB6 = new JSONObject();
         //       nw501
@@ -359,17 +357,18 @@ public class SectionB6Activity extends AppCompatActivity {
     private boolean UpdateDB() {
 
         //Long rowId;
-        DatabaseHelper db = new DatabaseHelper(this);
+        //DatabaseHelper_DBFlow db = new DatabaseHelper_DBFlow(this);
 
-        Long updcount = db.addNutrition(MainApp.nc);
-        MainApp.nc.set_ID(String.valueOf(updcount));
+        //Long updcount = db.addNutrition(MainApp.nc);
+        Long updcount = MainApp.nc1.insert();
+        //MainApp.nc.set_ID(String.valueOf(updcount));
 
         if (updcount != 0) {
             //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
 
-            MainApp.nc.set_UID(
-                    (MainApp.nc.getDeviceId() + MainApp.nc.get_ID()));
-            db.updateNutritionID();
+            MainApp.nc1.set_uid(
+                    (MainApp.nc1.getDeviceid() + MainApp.nc1._id));
+            //db.updateNutritionID();
 
             return true;
         } else {

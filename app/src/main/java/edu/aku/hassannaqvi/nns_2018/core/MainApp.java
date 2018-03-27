@@ -20,15 +20,15 @@ import com.raizlabs.android.dbflow.config.FlowManager;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import edu.aku.hassannaqvi.nns_2018.AppDB;
-import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.BLRandom;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Child;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.EligibleMembers;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FamilyMembers;
@@ -37,6 +37,7 @@ import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.MWRA;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Nutrition;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Outcome;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Recipients;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Serial;
 import edu.aku.hassannaqvi.nns_2018.other.MembersCount;
 import edu.aku.hassannaqvi.nns_2018.ui.AnthroEndingActivity;
 import edu.aku.hassannaqvi.nns_2018.ui.ChildEndingActivity;
@@ -88,7 +89,7 @@ public class MainApp extends Application {
     //public static OutcomeContract oc;
     //public static ChildContract cc;
 
-    public static SerialContract sc;
+    //public static SerialContract sc;
     //public static RecipientsContract rc;
     public static MembersCount membersCount;
     public static String userName = "0000";
@@ -108,7 +109,7 @@ public class MainApp extends Application {
     public static List<FamilyMembersContract> childNA;
     public static List<FamilyMembersContract> mwra;
     public static List<FamilyMembersContract> adolescents;*/
-    public static BLRandomContract selectedHead;
+    public static BLRandom selectedHead;
     public static int serial_no;
     public static Boolean B6Flag = true;
     public static Boolean B2B6Flag = false;
@@ -133,7 +134,7 @@ public class MainApp extends Application {
 
     public static FormContract fc;
     public static FamilyMembers fmc;
-    public static List<FamilyMembers> familyMembersList;
+    public static ArrayList<FamilyMembers> familyMembersList;
 
     public static List<FamilyMembers> members_f_m;
     public static List<FamilyMembers> respList;
@@ -151,6 +152,7 @@ public class MainApp extends Application {
     public static Outcome oc;
     //public static ChildContract cc;
     public static Recipients rc;
+    public static Serial sc;
 
 
 

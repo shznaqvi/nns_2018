@@ -27,11 +27,13 @@ import java.util.List;
 import java.util.Map;
 
 import edu.aku.hassannaqvi.nns_2018.R;
-import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
-import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FamilyMembers;
+import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper_DBFlow;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionListA2Binding;
 import edu.aku.hassannaqvi.nns_2018.databinding.FamilymemberslistBinding;
+
+//import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 
 
 public class SectionA2ListActivity extends AppCompatActivity {
@@ -40,7 +42,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
     ActivitySectionListA2Binding binding;
     Map<Integer, Map<Integer, Integer>> mem;
     /*Variables*/
-    DatabaseHelper db;
+    DatabaseHelper_DBFlow db;
     FamilyMembersAdapter mAdapter;
 
     @Override
@@ -106,6 +108,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
                                                         }
 
                                                         finish();
+
                                                         startActivity(new Intent(getApplicationContext(), SectionA2Activity.class)
                                                                 .putExtra("data", MainApp.familyMembersList.get(position))
                                                                 .putExtra("pos", position));
@@ -223,7 +226,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
     private boolean UpdateDB() {
 
         /*//Long rowId;
-        DatabaseHelper db = new DatabaseHelper(this);
+        DatabaseHelper_DBFlow db = new DatabaseHelper_DBFlow(this);
 
         int updcount = db.updateSACount();
 
@@ -284,9 +287,10 @@ public class SectionA2ListActivity extends AppCompatActivity {
     public class FamilyMembersAdapter extends RecyclerView.Adapter<FamilyMembersAdapter.MyViewHolder> {
 
         MyViewHolder holder;
-        private List<FamilyMembersContract> membersList;
+        //private List<FamilyMembersContract> membersList;
+        private List<FamilyMembers> membersList;
 
-        public FamilyMembersAdapter(List<FamilyMembersContract> membersList) {
+        public FamilyMembersAdapter(List<FamilyMembers> membersList) {
             this.membersList = membersList;
         }
 
@@ -369,21 +373,21 @@ public class SectionA2ListActivity extends AppCompatActivity {
                 familyBinding = DataBindingUtil.bind(itemView);
             }
 
-            public void bindUser(FamilyMembersContract mem) {
-                familyBinding.imgUser.setImageDrawable(getDrawable(SetImage(mem.getna204(), mem.getAgeInYear())));
+            public void bindUser(FamilyMembers mem) {
+                familyBinding.imgUser.setImageDrawable(getDrawable(SetImage(mem.getNa204(), mem.getAgeInYear())));
                 familyBinding.memberName.setText(mem.getName().toUpperCase());
-                familyBinding.na204.setText(mem.getna204().equals("1") ? "Male" : "Female");
+                familyBinding.na204.setText(mem.getNa204().equals("1") ? "Male" : "Female");
                 familyBinding.lineNo.setText("Line No:" + mem.getSerialNo());
                 familyBinding.ffName.setText(mem.getFatherName().equals("") ? "..." : mem.getFatherName());
                 familyBinding.mmName.setText(mem.getMotherName().equals("") ? "..." : mem.getMotherName());
-                familyBinding.maritalStatus.setText(MStatusChecking(mem.getMaritialStatus()));
+                familyBinding.maritalStatus.setText(MStatusChecking(mem.getMartitalStatus()));
                 if (mem.getResp().equals("1")) {
                     familyBinding.imgResp.setVisibility(View.VISIBLE);
                 } else {
                     familyBinding.imgResp.setVisibility(View.GONE);
                 }
 
-                if (mem.getRealtionHH().equals("1")) {
+                if (mem.getRelationHH().equals("1")) {
                     familyBinding.imgHead.setVisibility(View.VISIBLE);
                 } else {
                     familyBinding.imgHead.setVisibility(View.GONE);

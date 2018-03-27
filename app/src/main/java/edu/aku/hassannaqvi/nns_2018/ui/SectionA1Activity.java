@@ -28,9 +28,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import edu.aku.hassannaqvi.nns_2018.R;
-import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.BLRandom;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FormContract;
-import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
+import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper_DBFlow;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA1Binding;
 import edu.aku.hassannaqvi.nns_2018.other.MembersCount;
@@ -43,8 +43,8 @@ public class SectionA1Activity extends AppCompatActivity {
     static int progress = 0;
     ActivitySectionA1Binding binding;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
-    DatabaseHelper db;
-    Collection<BLRandomContract> selected;
+    DatabaseHelper_DBFlow db;
+    Collection<BLRandom> selected;
     int progressStatus = 0;
     Handler handler = new Handler();
     Boolean flag = false;
@@ -53,7 +53,7 @@ public class SectionA1Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_a1);
-        db = new DatabaseHelper(this);
+        db = new DatabaseHelper_DBFlow(this);
         binding.setCallback(this);
 
         SetupViewFunctionality();
@@ -351,7 +351,7 @@ public class SectionA1Activity extends AppCompatActivity {
                 return false;
             }
 
-            if (MainApp.selectedHead.getSelStructure().equals("1") && !binding.na11802a.isChecked()) {
+            if (MainApp.selectedHead.getHh_selec_stru().equals("1") && !binding.na11802a.isChecked()) {
                 binding.na11802a.setError("Wrong Selection");
                 Toast.makeText(this, "Wrong Selection", Toast.LENGTH_SHORT).show();
                 return false;
@@ -383,15 +383,15 @@ public class SectionA1Activity extends AppCompatActivity {
         MainApp.fc.setHh_no(binding.nh108.getText().toString().toUpperCase());
 
 
-        MainApp.fc.setRndid(MainApp.selectedHead.get_ID());
+        MainApp.fc.setRndid(MainApp.selectedHead.get_id() + "");
 
         MainApp.fc.setLuid(MainApp.selectedHead.getLUID());
-        MainApp.fc.setRandDT(MainApp.selectedHead.getRandomDT());
-        MainApp.fc.setHh03(MainApp.selectedHead.getStructure());
-        MainApp.fc.setHh07(MainApp.selectedHead.getExtension());
-        MainApp.fc.setHhhead(MainApp.selectedHead.getHhhead());
-        MainApp.fc.setHh09(MainApp.selectedHead.getContact());
-        MainApp.fc.setHhss(MainApp.selectedHead.getSelStructure());
+        MainApp.fc.setRandDT(MainApp.selectedHead.getRandDT());
+        MainApp.fc.setHh03(MainApp.selectedHead.getStruc_no());
+        MainApp.fc.setHh07(MainApp.selectedHead.getFamily_ext());
+        MainApp.fc.setHhhead(MainApp.selectedHead.getHh_head());
+        MainApp.fc.setHh09(MainApp.selectedHead.getContact_no());
+        MainApp.fc.setHhss(MainApp.selectedHead.getHh_selec_stru());
         MainApp.fc.setHhheadpresent(binding.checkHHHeadpresent.isChecked() ? "1" : "2");
         MainApp.fc.setHhheadpresentnew(binding.newHHheadname.getText().toString());
         MainApp.fc.setNh101(binding.nh101.getText().toString());
@@ -405,9 +405,9 @@ public class SectionA1Activity extends AppCompatActivity {
         MainApp.fc.setNh213(binding.nh213.getText().toString());
 
         MainApp.fc.setNh115(binding.nh213.getText().toString());
-        MainApp.fc.setNh11701blood(MainApp.selectedHead.getSelStructure());
-        MainApp.fc.setNh11702urine(MainApp.selectedHead.getSelStructure());
-        MainApp.fc.setNh11703water(MainApp.selectedHead.getSelStructure());
+        MainApp.fc.setNh11701blood(MainApp.selectedHead.getHh_selec_stru());
+        MainApp.fc.setNh11702urine(MainApp.selectedHead.getHh_selec_stru());
+        MainApp.fc.setNh11703water(MainApp.selectedHead.getHh_selec_stru());
         MainApp.fc.setNh11801(binding.na11801a.isChecked() ? "1"
                 : binding.na11801b.isChecked() ? "2" : "0");
         MainApp.fc.setNh11802(binding.na11802a.isChecked() ? "1"
@@ -479,7 +479,7 @@ public class SectionA1Activity extends AppCompatActivity {
             return false;
         }
 
-        /*DatabaseHelper db = new DatabaseHelper(this);
+        /*DatabaseHelper_DBFlow db = new DatabaseHelper_DBFlow(this);
 
         long updcount = db.addForm(MainApp.fc);
 
@@ -508,11 +508,11 @@ public class SectionA1Activity extends AppCompatActivity {
 
                 Toast.makeText(this, "Household head found!", Toast.LENGTH_SHORT).show();
 
-                for (BLRandomContract rnd : selected) {
-                    MainApp.selectedHead = new BLRandomContract(rnd);
+                for (BLRandom rnd : selected) {
+                    MainApp.selectedHead = new BLRandom(rnd);
                 }
 
-                binding.hhName.setText(MainApp.selectedHead.getHhhead().toUpperCase());
+                binding.hhName.setText(MainApp.selectedHead.getHh_head().toUpperCase());
 
                 binding.fldGrpnh110.setVisibility(View.VISIBLE);
 

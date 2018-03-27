@@ -23,7 +23,7 @@ import butterknife.BindViews;
 import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Outcome;
-import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
+import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper_DBFlow;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB1ABinding;
 import edu.aku.hassannaqvi.nns_2018.other.DateUtils;
@@ -34,7 +34,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
     private final long DELAY = 1000;
     ActivitySectionB1ABinding bi;
-    DatabaseHelper db;
+    DatabaseHelper_DBFlow db;
     int childSerial = 1;
     @BindViews({R.id.nw215y, R.id.nw215m, R.id.nw215d})
     List<EditText> grpDate;
@@ -50,7 +50,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_b1_a);
         ButterKnife.bind(this);
-        db = new DatabaseHelper(this);
+        db = new DatabaseHelper_DBFlow(this);
         bi.setCallback(this);
         setupViews();
 
@@ -419,7 +419,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
     private boolean UpdateDB() {
 
         //Long rowId;
-        DatabaseHelper db = new DatabaseHelper(this);
+        DatabaseHelper_DBFlow db = new DatabaseHelper_DBFlow(this);
 
         //Long updcount = db.addOutcome(MainApp.oc);
         Long updcount = MainApp.oc.insert();

@@ -1,10 +1,15 @@
 package edu.aku.hassannaqvi.nns_2018.contracts_dbflow;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
 import com.raizlabs.android.dbflow.annotation.Unique;
 import com.raizlabs.android.dbflow.structure.BaseModel;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import edu.aku.hassannaqvi.nns_2018.AppDB;
 
@@ -13,6 +18,8 @@ import edu.aku.hassannaqvi.nns_2018.AppDB;
  */
 @Table(database = AppDB.class)
 public class Child extends BaseModel {
+
+    public static String _URL = "children.php";
     @Column
     @PrimaryKey(autoincrement = true)
     @Unique
@@ -495,6 +502,14 @@ public class Child extends BaseModel {
     private String nc505;
     @Column
     private String nc506;
+
+    public static Child Sync(JSONObject jsonObject) {
+
+        Gson gson = new GsonBuilder().create();
+        Child chilobj = gson.fromJson(jsonObject.toString(), Child.class);
+        return chilobj;
+
+    }
 
     public String get_uid() {
         return _uid;
@@ -2144,7 +2159,6 @@ public class Child extends BaseModel {
         this.nc412h = nc412h;
     }
 
-
     public String getNc412i() {
         return nc412i;
     }
@@ -2153,8 +2167,6 @@ public class Child extends BaseModel {
         this.nc412i = nc412i;
     }
 
-
-
     public String getNc412j() {
         return nc412j;
     }
@@ -2162,7 +2174,6 @@ public class Child extends BaseModel {
     public void setNc412j(String nc412j) {
         this.nc412j = nc412j;
     }
-
 
     public String getNc4129601() {
         return nc4129601;
@@ -2316,8 +2327,56 @@ public class Child extends BaseModel {
         this.nc506 = nc506;
     }
 
-
     // JSON
+    public JSONObject toJSONObject() throws JSONException {
+
+        Gson gson = new GsonBuilder().create();
+        JSONObject json = new JSONObject(gson.toJson(this, Child.class));
+        return json;
+
+        /*
+        json.put(ChildContract.ChildTable.COLUMN__ID, this._ID == null ? JSONObject.NULL : this._ID);
+        json.put(ChildContract.ChildTable.COLUMN__UID, this._UID == null ? JSONObject.NULL : this._UID);
+        json.put(ChildContract.ChildTable.COLUMN__UUID, this._UUID == null ? JSONObject.NULL : this._UUID);
+        json.put(ChildContract.ChildTable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
+        json.put(ChildContract.ChildTable.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
+        json.put(ChildContract.ChildTable.COLUMN_C1SERIALNO, this.c1SerialNo == null ? JSONObject.NULL : this.c1SerialNo);
+
+        if (!this.sC1.equals("")) {
+            json.put(ChildContract.ChildTable.COLUMN_SC1, this.sC1.equals("") ? JSONObject.NULL : new JSONObject(this.sC1));
+          //  json.put(ChildTable.COLUMN_SC1, this.sC1 == null ? JSONObject.NULL : this.sC1);
+        }
+
+        if (!this.sC2.equals("")) {
+            json.put(ChildContract.ChildTable.COLUMN_SC2, this.sC2.equals("") ? JSONObject.NULL : new JSONObject(this.sC2));
+            // json.put(ChildTable.COLUMN_SC2, this.sC2 == null ? JSONObject.NULL : this.sC2);
+        }
+
+        if (!this.sC3.equals("")) {
+            json.put(ChildContract.ChildTable.COLUMN_SC3, this.sC3.equals("") ? JSONObject.NULL : new JSONObject(this.sC3));
+//            json.put(ChildTable.COLUMN_SC3, this.sC3 == null ? JSONObject.NULL : this.sC3);
+        }
+
+        if (!this.sC4.equals("")) {
+            json.put(ChildContract.ChildTable.COLUMN_SC4, this.sC4.equals("") ? JSONObject.NULL : new JSONObject(this.sC4));
+//            json.put(ChildTable.COLUMN_SC4, this.sC4 == null ? JSONObject.NULL : this.sC4);
+        }
+
+        if (!this.sC5.equals("")) {
+            json.put(ChildContract.ChildTable.COLUMN_SC5, this.sC5.equals("") ? JSONObject.NULL : new JSONObject(this.sC5));
+//            json.put(ChildTable.COLUMN_SC5, this.sC5 == null ? JSONObject.NULL : this.sC5);
+        }
+
+        json.put(ChildContract.ChildTable.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
+        json.put(ChildContract.ChildTable.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
+        //json.put(ChildTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
+        //json.put(ChildTable.COLUMN_SYNCED_DATE, this.synced_date == null ? JSONObject.NULL : this.synced_date);
+        json.put(ChildContract.ChildTable.COLUMN_APPVERSION, this.appversion == null ? JSONObject.NULL : this.appversion);
+        json.put(ChildContract.ChildTable.COLUMN_CSTATUS, this.cstatus == null ? JSONObject.NULL : this.cstatus);
+        json.put(ChildContract.ChildTable.COLUMN_CSTATUS88x, this.cstatus88x == null ? JSONObject.NULL : this.cstatus88x);
 
 
+        return json;
+        */
+    }
 }

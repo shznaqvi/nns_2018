@@ -15,11 +15,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.EnumBlockContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.UsersContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.VersionAppContract;
-import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.BLRandom;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.EnumBlock;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Users;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.VersionApp;
+import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper_DBFlow;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 
 /**
@@ -62,16 +62,16 @@ public class GetAllData extends AsyncTask<String, String, String> {
         try {
             switch (syncClass) {
                 case "EnumBlock":
-                    url = new URL(MainApp._HOST_URL + EnumBlockContract.EnumBlockTable._URI);
+                    url = new URL(MainApp._HOST_URL + EnumBlock._URI);
                     break;
                 case "User":
-                    url = new URL(MainApp._HOST_URL + UsersContract.UsersTable._URI);
+                    url = new URL(MainApp._HOST_URL + Users._URI);
                     break;
                 case "BLRandom":
-                    url = new URL(MainApp._HOST_URL + BLRandomContract.singleRandomHH._URI);
+                    url = new URL(MainApp._HOST_URL + BLRandom._URI);
                     break;
                 case "VersionApp":
-                    url = new URL(MainApp._UPDATE_URL + VersionAppContract.VersionAppTable._URI);
+                    url = new URL(MainApp._UPDATE_URL + VersionApp._URI);
                     break;
             }
 
@@ -109,7 +109,7 @@ public class GetAllData extends AsyncTask<String, String, String> {
         if (result != null) {
             String json = result;
             if (json.length() > 0) {
-                DatabaseHelper db = new DatabaseHelper(mContext);
+                DatabaseHelper_DBFlow db = new DatabaseHelper_DBFlow(mContext);
                 try {
                     JSONArray jsonArray = new JSONArray(json);
 

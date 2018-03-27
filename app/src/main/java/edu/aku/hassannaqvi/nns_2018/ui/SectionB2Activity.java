@@ -10,12 +10,11 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.Timer;
 
 import edu.aku.hassannaqvi.nns_2018.R;
-import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
+import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper_DBFlow;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB2Binding;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
@@ -25,14 +24,14 @@ public class SectionB2Activity extends Activity {
 
     private final long DELAY = 1000;
     ActivitySectionB2Binding bi;
-    DatabaseHelper db;
+    DatabaseHelper_DBFlow db;
     private Timer timer = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_b2);
-        db = new DatabaseHelper(this);
+        db = new DatabaseHelper_DBFlow(this);
         bi.setCallback(this);
 
         setupViews();
@@ -634,7 +633,7 @@ public class SectionB2Activity extends Activity {
 
     private void SaveDraft() throws JSONException {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
-        JSONObject sB2 = new JSONObject();
+        //JSONObject sB2 = new JSONObject();
 
 
         MainApp.mc.setNw301(bi.nw301a.isChecked() ? "1"
@@ -891,7 +890,7 @@ public class SectionB2Activity extends Activity {
     private boolean UpdateDB() {
 
         //Long rowId;
-        DatabaseHelper db = new DatabaseHelper(this);
+        /*DatabaseHelper_DBFlow db = new DatabaseHelper_DBFlow(this);
 
         int updcount = db.updateSB2();
 
@@ -901,9 +900,10 @@ public class SectionB2Activity extends Activity {
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
-        }
+        }*/
 
-        //return true;
+        MainApp.mc.update();
+        return true;
 
     }
 

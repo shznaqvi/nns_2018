@@ -8,13 +8,12 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.Timer;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.MWRA;
-import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
+import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper_DBFlow;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB3Binding;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
@@ -24,14 +23,14 @@ public class SectionB3Activity extends AppCompatActivity {
 
     private final long DELAY = 1000;
     ActivitySectionB3Binding binding;
-    DatabaseHelper db;
+    DatabaseHelper_DBFlow db;
     private Timer timer = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_b3);
-        db = new DatabaseHelper(this);
+        db = new DatabaseHelper_DBFlow(this);
 
 //        Assigning data to UI binding
         binding.setCallback(this);
@@ -225,7 +224,7 @@ public class SectionB3Activity extends AppCompatActivity {
     private boolean UpdateDB() {
 
         //Long rowId;
-        DatabaseHelper db = new DatabaseHelper(this);
+       /* DatabaseHelper_DBFlow db = new DatabaseHelper_DBFlow(this);
 
         int updcount = db.updateSB3();
 
@@ -236,8 +235,9 @@ public class SectionB3Activity extends AppCompatActivity {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
         }
-
-        //return true;
+*/
+        MainApp.mc.update();
+        return true;
 
     }
 

@@ -9,12 +9,11 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.Timer;
 
 import edu.aku.hassannaqvi.nns_2018.R;
-import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
+import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper_DBFlow;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA5Binding;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
@@ -24,7 +23,7 @@ public class SectionA5Activity extends AppCompatActivity {
 
     private final long DELAY = 1000;
     ActivitySectionA5Binding binding;
-    DatabaseHelper db;
+    DatabaseHelper_DBFlow db;
     int recipientCounter = 0;
     private Timer timer = new Timer();
 
@@ -32,7 +31,7 @@ public class SectionA5Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_a5);
-        db = new DatabaseHelper(this);
+        db = new DatabaseHelper_DBFlow(this);
 
 //        Assigning data to UI binding
         binding.setCallback(this);
@@ -528,7 +527,7 @@ public class SectionA5Activity extends AppCompatActivity {
     private boolean UpdateDB() {
 
         //Long rowId;
-        /*DatabaseHelper db = new DatabaseHelper(this);
+        /*DatabaseHelper_DBFlow db = new DatabaseHelper_DBFlow(this);
 
         int updcount = db.updateSA5();
 

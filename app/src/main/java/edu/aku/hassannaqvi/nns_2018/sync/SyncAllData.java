@@ -21,7 +21,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collection;
 
-import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
+import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper_DBFlow;
 
 /**
  * Created by ali.azaz on 3/14/2018.
@@ -170,7 +170,7 @@ public class SyncAllData extends AsyncTask<Void, Void, String> {
         try {
             json = new JSONArray(result);
 
-            DatabaseHelper db = new DatabaseHelper(mContext); // Database Helper
+            DatabaseHelper_DBFlow db = new DatabaseHelper_DBFlow(mContext); // Database Helper
 
             Method method = null;
             for (Method method1 : db.getClass().getDeclaredMethods()) {

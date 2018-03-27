@@ -17,7 +17,7 @@ import java.util.List;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.nns_2018.R;
-import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
+import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper_DBFlow;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB6NewBinding;
 
@@ -28,7 +28,7 @@ public class SectionB6NewActivity extends AppCompatActivity {
     //implements TokenCompleteTextView.TokenListener<String>
 
     ActivitySectionB6NewBinding bi;
-    DatabaseHelper db;
+    DatabaseHelper_DBFlow db;
     @BindViews({R.id.nw601j1, R.id.nw601j2, R.id.nw601j3, R.id.nw601j4, R.id.nw601j5, R.id.nw601j6, R.id.nw601j96})
     List<CheckBox> greenLeafy;
     public CheckBox.OnCheckedChangeListener greenLeafyCheck = new CompoundButton.OnCheckedChangeListener() {
@@ -131,7 +131,7 @@ public class SectionB6NewActivity extends AppCompatActivity {
 
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_b6_new);
         ButterKnife.bind(this);
-        db = new DatabaseHelper(this);
+        db = new DatabaseHelper_DBFlow(this);
         bi.setCallback(this);
 
         /*for (CompletionTextView ct : groupOthers) {
@@ -551,7 +551,7 @@ public class SectionB6NewActivity extends AppCompatActivity {
     private boolean UpdateDB() {
 
         //Long rowId;
-        /*DatabaseHelper db = new DatabaseHelper(this);
+        /*DatabaseHelper_DBFlow db = new DatabaseHelper_DBFlow(this);
 
         int updcount = db.updateSB6();
 

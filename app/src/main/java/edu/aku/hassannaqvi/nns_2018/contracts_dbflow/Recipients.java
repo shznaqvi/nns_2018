@@ -1,10 +1,15 @@
 package edu.aku.hassannaqvi.nns_2018.contracts_dbflow;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
 import com.raizlabs.android.dbflow.annotation.Unique;
 import com.raizlabs.android.dbflow.structure.BaseModel;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import edu.aku.hassannaqvi.nns_2018.AppDB;
 
@@ -13,6 +18,8 @@ import edu.aku.hassannaqvi.nns_2018.AppDB;
  */
 @Table(database = AppDB.class)
 public class Recipients extends BaseModel {
+
+    public static String _URL = "recipients.php";
     @Column
     @PrimaryKey(autoincrement = true)
     @Unique
@@ -97,6 +104,13 @@ public class Recipients extends BaseModel {
     @Column
     private String nh7a06;
 
+    public static Recipients Sync(JSONObject jsonObject) {
+
+        Gson gson = new GsonBuilder().create();
+        Recipients recObj = gson.fromJson(jsonObject.toString(), Recipients.class);
+        return recObj;
+
+    }
 
     public String get_uid() {
         return _uid;
@@ -392,5 +406,13 @@ public class Recipients extends BaseModel {
 
     public void setNh7a06(String nh7a06) {
         this.nh7a06 = nh7a06;
+    }
+
+    // JSON
+    public JSONObject toJSONObject() throws JSONException {
+
+        Gson gson = new GsonBuilder().create();
+        JSONObject json = new JSONObject(gson.toJson(this, Recipients.class));
+        return json;
     }
 }

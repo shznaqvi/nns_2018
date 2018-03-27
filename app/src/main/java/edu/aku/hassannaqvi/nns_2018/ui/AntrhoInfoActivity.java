@@ -22,11 +22,10 @@ import java.util.Date;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
-import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
+import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper_DBFlow;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivityAntrhoInfoBinding;
 import edu.aku.hassannaqvi.nns_2018.other.JSONModelClass;
-import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 
@@ -41,14 +40,14 @@ public class AntrhoInfoActivity extends Activity {
     JSONModelClass json;
     ActivityAntrhoInfoBinding binding;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
-    DatabaseHelper db;
+    DatabaseHelper_DBFlow db;
     Collection<FamilyMembersContract> members;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_antrho_info);
-        db = new DatabaseHelper(this);
+        db = new DatabaseHelper_DBFlow(this);
         binding.setCallback(this);
 
         SetupViewFunctionality();
@@ -273,7 +272,7 @@ public class AntrhoInfoActivity extends Activity {
 
     public void BtnCheckHH() {
 
-        if (!binding.nh102.getText().toString().trim().isEmpty() && !binding.nh108.getText().toString().trim().isEmpty()) {
+       /* if (!binding.nh102.getText().toString().trim().isEmpty() && !binding.nh108.getText().toString().trim().isEmpty()) {
 
             String uid = db.getUIDByHH(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase());
             if (uid != null) {
@@ -320,7 +319,7 @@ public class AntrhoInfoActivity extends Activity {
         } else {
             Toast.makeText(this, "Not found.", Toast.LENGTH_SHORT).show();
         }
-
+*/
     }
 
     public void BtnCheckEnm() {

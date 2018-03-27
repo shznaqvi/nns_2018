@@ -1,10 +1,15 @@
 package edu.aku.hassannaqvi.nns_2018.contracts_dbflow;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
 import com.raizlabs.android.dbflow.annotation.Unique;
 import com.raizlabs.android.dbflow.structure.BaseModel;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import edu.aku.hassannaqvi.nns_2018.AppDB;
 
@@ -13,6 +18,8 @@ import edu.aku.hassannaqvi.nns_2018.AppDB;
  */
 @Table(database = AppDB.class)
 public class EligibleMembers extends BaseModel {
+
+    public static String _URL = "anthros.php";
     @Column
     @PrimaryKey(autoincrement = true)
     @Unique
@@ -85,6 +92,14 @@ public class EligibleMembers extends BaseModel {
     private String nd1ca;
     @Column
     private String nd1o;
+
+    public static EligibleMembers Sync(JSONObject jsonObject) {
+
+        Gson gson = new GsonBuilder().create();
+        EligibleMembers eleobj = gson.fromJson(jsonObject.toString(), EligibleMembers.class);
+        return eleobj;
+
+    }
 
     public String getProjectname() {
         return projectname;
@@ -348,5 +363,13 @@ public class EligibleMembers extends BaseModel {
 
     public void setNd1o(String nd1o) {
         this.nd1o = nd1o;
+    }
+
+    // JSON
+    public JSONObject toJSONObject() throws JSONException {
+
+        Gson gson = new GsonBuilder().create();
+        JSONObject json = new JSONObject(gson.toJson(this, EligibleMembers.class));
+        return json;
     }
 }

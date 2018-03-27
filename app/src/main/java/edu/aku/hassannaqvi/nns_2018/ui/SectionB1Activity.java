@@ -24,7 +24,7 @@ import java.util.Timer;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FamilyMembers;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.MWRA;
-import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
+import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper_DBFlow;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB1Binding;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
@@ -39,7 +39,7 @@ public class SectionB1Activity extends Activity {
     ArrayList<String> respName;
     Map<String, String> respMap;
     ActivitySectionB1Binding bi;
-    DatabaseHelper db;
+    DatabaseHelper_DBFlow db;
     private Timer timer = new Timer();
 
     @Override
@@ -48,7 +48,7 @@ public class SectionB1Activity extends Activity {
         //setContentView(R.layout.activity_section_b1);
 
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_b1);
-        db = new DatabaseHelper(this);
+        db = new DatabaseHelper_DBFlow(this);
 
         //Assigning data to UI binding
         bi.setCallback(this);
@@ -1208,7 +1208,7 @@ public class SectionB1Activity extends Activity {
     private boolean UpdateDB() {
 
         //Long rowId;
-        //DatabaseHelper db = new DatabaseHelper(this);
+        //DatabaseHelper_DBFlow db = new DatabaseHelper_DBFlow(this);
 
         //Long updcount = db.addMWRA(MainApp.mc);
         Long updcount = MainApp.mc.insert();
