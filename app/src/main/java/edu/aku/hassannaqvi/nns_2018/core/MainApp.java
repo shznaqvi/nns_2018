@@ -27,18 +27,16 @@ import java.util.Map;
 
 import edu.aku.hassannaqvi.nns_2018.AppDB;
 import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.NutritionContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Child;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.EligibleMembers;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FamilyMembers;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FormContract;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.MWRA;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Nutrition;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Outcome;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Recipients;
 import edu.aku.hassannaqvi.nns_2018.other.MembersCount;
 import edu.aku.hassannaqvi.nns_2018.ui.AnthroEndingActivity;
 import edu.aku.hassannaqvi.nns_2018.ui.ChildEndingActivity;
@@ -84,14 +82,14 @@ public class MainApp extends Application {
     public static Boolean admin = false;
     //public static FormsContract fc;
 
-    public static MWRAContract mc;
-    public static NutritionContract nc;
-    public static Nutrition nc1;
-    public static OutcomeContract oc;
-    public static ChildContract cc;
-    public static Child cc1;
+    //public static MWRAContract mc;
+    //public static NutritionContract nc;
+
+    //public static OutcomeContract oc;
+    //public static ChildContract cc;
+
     public static SerialContract sc;
-    public static RecipientsContract rc;
+    //public static RecipientsContract rc;
     public static MembersCount membersCount;
     public static String userName = "0000";
     public static int versionCode;
@@ -101,7 +99,7 @@ public class MainApp extends Application {
 
     //    Ali
     //public static FamilyMembersContract fmc;
-    public static EligibleMembersContract emc;
+    //public static EligibleMembersContract emc;
     /*public static List<FamilyMembersContract> members_f_m;
     public static List<FamilyMembersContract> respList;
     public static List<FamilyMembersContract> all_members;
@@ -145,7 +143,16 @@ public class MainApp extends Application {
     public static List<FamilyMembers> childNA;
     public static List<FamilyMembers> mwra;
     public static List<FamilyMembers> adolescents;
-    //public static EligibleMembers emc;
+    public static EligibleMembers emc;
+    public static MWRA mc;
+    public static Nutrition nc1;
+    public static Child cc1;
+
+    public static Outcome oc;
+    //public static ChildContract cc;
+    public static Recipients rc;
+
+
 
 
 

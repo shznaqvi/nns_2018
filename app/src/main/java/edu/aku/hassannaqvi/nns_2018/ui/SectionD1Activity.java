@@ -23,13 +23,12 @@ import java.util.Map;
 import java.util.Timer;
 
 import edu.aku.hassannaqvi.nns_2018.R;
-import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.EligibleMembers;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FamilyMembers;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionD1Binding;
 import edu.aku.hassannaqvi.nns_2018.other.JSONModelClass;
-import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
@@ -44,7 +43,8 @@ public class SectionD1Activity extends AppCompatActivity {
     DatabaseHelper db;
     int slc_type;
     JSONModelClass json;
-    FamilyMembersContract slecMem;
+    //FamilyMembersContract slecMem;
+    FamilyMembers slecMem;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     private Timer timer = new Timer();
 
@@ -85,7 +85,8 @@ public class SectionD1Activity extends AppCompatActivity {
             familyMembersSetting(MainApp.childUnder5, 2);  // 2 for Under 5
             familyMembersSetting(MainApp.adolescents, 3);  // 3 for Adolescents
         }
-        slecMem = new FamilyMembersContract();
+        //slecMem = new FamilyMembersContract();
+        slecMem = new FamilyMembers();
         binding.nd101.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, members));
 
 //        Spinner setting
@@ -159,10 +160,21 @@ public class SectionD1Activity extends AppCompatActivity {
 
     }
 
-    public void familyMembersSetting(List<FamilyMembersContract> family, int type) {
+    /*public void familyMembersSetting(List<FamilyMembersContract> family, int type) {
 
         for (FamilyMembersContract fmc : family) {
             json = JSONUtilClass.getModelFromJSON(fmc.getsA2(), JSONModelClass.class);
+            membersMap.put(json.getName() + "_" + json.getSerialNo(), new SelectedMem(type, fmc));
+            members.add(json.getName() + "_" + json.getSerialNo());
+        }
+
+
+    }*/
+
+    public void familyMembersSetting(List<FamilyMembers> family, int type) {
+
+        for (FamilyMembers fmc : family) {
+            //json = JSONUtilClass.getModelFromJSON(fmc.getsA2(), JSONModelClass.class);
             membersMap.put(json.getName() + "_" + json.getSerialNo(), new SelectedMem(type, fmc));
             members.add(json.getName() + "_" + json.getSerialNo());
         }
@@ -279,15 +291,15 @@ public class SectionD1Activity extends AppCompatActivity {
     private void SaveDraft() throws JSONException {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
-        MainApp.emc = new EligibleMembersContract();
+        MainApp.emc = new EligibleMembers();
 
-        MainApp.emc.setDevicetagID(MainApp.getTagName(this));
-        MainApp.emc.setFormDate(dtToday);
+        MainApp.emc.setDevicetagid(MainApp.getTagName(this));
+        MainApp.emc.setFormdate(dtToday);
         MainApp.emc.setUser(MainApp.userName);
-        MainApp.emc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
+        MainApp.emc.setDeviceid(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
-        MainApp.emc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
-        MainApp.emc.set_UUID(slecMem.get_UID());
+        MainApp.emc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
+        MainApp.emc.set_uuid(slecMem.get_uid());
         MainApp.emc.setEnm_no(AntrhoInfoActivity.enm_no);
         MainApp.emc.setHh_no(AntrhoInfoActivity.hh_no);
 
@@ -295,34 +307,34 @@ public class SectionD1Activity extends AppCompatActivity {
 
         name = binding.nd101.getSelectedItem().toString();
 
-        sA3.put("hccode", AntrhoInfoActivity.hc_code);
-        sA3.put("htcode", AntrhoInfoActivity.ht_code);
-        sA3.put("wtcode", AntrhoInfoActivity.wt_code);
-        sA3.put("nd101", binding.nd101.getSelectedItem().toString());
-        sA3.put("nd101Serial", json.getSerialNo());
+        MainApp.emc.setHccode(AntrhoInfoActivity.hc_code);
+        MainApp.emc.setHtcode(AntrhoInfoActivity.ht_code);
+        MainApp.emc.setWtcode(AntrhoInfoActivity.wt_code);
+        MainApp.emc.setNd101(binding.nd101.getSelectedItem().toString());
+        MainApp.emc.setNd101Serial(json.getSerialNo());
 
-        sA3.put("nd1Serial", String.valueOf(counter));
+        MainApp.emc.setNd1Serial(String.valueOf(counter));
 
-        sA3.put("nd1w", binding.nd1w.getText().toString());
+        MainApp.emc.setNd1w(binding.nd1w.getText().toString());
 
-        sA3.put("nd1h", binding.nd1h.getText().toString());
+        MainApp.emc.setNd1h(binding.nd1h.getText().toString());
 
-        sA3.put("nd1muac", binding.nd1muac.getText().toString());
+        MainApp.emc.setNd1muac(binding.nd1muac.getText().toString());
 
-        sA3.put("nd1bcgscar", binding.nd1bcgscara.isChecked() ? "1"
+        MainApp.emc.setNd1bcgscar(binding.nd1bcgscara.isChecked() ? "1"
                 : binding.nd1bcgscarb.isChecked() ? "2" : "0");
 
-        sA3.put("nd1g", binding.nd1ga.isChecked() ? "1"
+        MainApp.emc.setNd1g(binding.nd1ga.isChecked() ? "1"
                 : binding.nd1gb.isChecked() ? "2" : "0");
 
-        sA3.put("nd1g", binding.nd1caa.isChecked() ? "1"
+        MainApp.emc.setNd1ca(binding.nd1caa.isChecked() ? "1"
                 : binding.nd1cab.isChecked() ? "2" : "0");
 
-        sA3.put("nd1o", binding.nd1oa.isChecked() ? "1"
+        MainApp.emc.setNd1o(binding.nd1oa.isChecked() ? "1"
                 : binding.nd1ob.isChecked() ? "2" : "0");
 
 
-        MainApp.emc.setsA3(String.valueOf(sA3));
+        //MainApp.emc.setsA3(String.valueOf(sA3));
 
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
@@ -332,17 +344,18 @@ public class SectionD1Activity extends AppCompatActivity {
     private boolean UpdateDB() {
 
         //Long rowId;
-        DatabaseHelper db = new DatabaseHelper(this);
+        //DatabaseHelper db = new DatabaseHelper(this);
 
-        Long updcount = db.addEligibleMember(MainApp.emc);
-        MainApp.emc.set_ID(String.valueOf(updcount));
+        //Long updcount = db.addEligibleMember(MainApp.emc);
+        Long updcount = MainApp.emc.insert();
+        //MainApp.emc.set_ID(String.valueOf(updcount));
 
         if (updcount != 0) {
             //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
 
-            MainApp.emc.set_UID(
-                    (MainApp.emc.getDeviceId() + MainApp.emc.get_ID()));
-            db.updateEligibleMemberID();
+            MainApp.emc.set_uid(
+                    (MainApp.emc.getDeviceid() + MainApp.emc._id));
+            //db.updateEligibleMemberID();
 
             return true;
         } else {
@@ -353,10 +366,11 @@ public class SectionD1Activity extends AppCompatActivity {
 
     public class SelectedMem {
         int type;
-        FamilyMembersContract fmc;
+        //FamilyMembersContract fmc;
+        FamilyMembers fmc;
 
 
-        public SelectedMem(int type, FamilyMembersContract fmc) {
+        public SelectedMem(int type, FamilyMembers fmc) {
             this.type = type;
             this.fmc = fmc;
         }
@@ -366,7 +380,7 @@ public class SectionD1Activity extends AppCompatActivity {
         }
 
 
-        public FamilyMembersContract getFmc() {
+        public FamilyMembers getFmc() {
             return fmc;
         }
     }
