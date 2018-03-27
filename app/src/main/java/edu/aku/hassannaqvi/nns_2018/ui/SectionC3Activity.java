@@ -998,215 +998,215 @@ public class SectionC3Activity extends AppCompatActivity {
         JSONObject sC3 = new JSONObject();
 
 //        nc301
-        sC3.put("nc3name", selectedChild.getName());
+        MainApp.cc1.setNc3name(selectedChild.getName());
 //        nc302
-        sC3.put("nc300Serial", selectedChild.getSerialNo());
+        MainApp.cc1.setNc300Serial(selectedChild.getSerialNo());
 
 //        nc302
-        sC3.put("nc302", binding.nc302a.isChecked() ? "1"
+        MainApp.cc1.setNc302(binding.nc302a.isChecked() ? "1"
                 : binding.nc302b.isChecked() ? "2"
                 : "0");
 
 //        nc303
-        sC3.put("nc303", binding.nc303a.isChecked() ? "1"
+        MainApp.cc1.setNc303(binding.nc303a.isChecked() ? "1"
                 : binding.nc303b.isChecked() ? "2"
                 : binding.nc303c.isChecked() ? "3"
                 : binding.nc303d.isChecked() ? "4"
                 : "0");
 //at birth
 //          nc3bcg
-        sC3.put("nc3bcg", binding.nc3bcga.isChecked() ? "1"
+        MainApp.cc1.setNc3bcg(binding.nc3bcga.isChecked() ? "1"
                 : binding.nc3bcgb.isChecked() ? "2"
                 : "0");
-        sC3.put("nc3bcgd", binding.nc3bcgd.getText().toString());
-        sC3.put("nc3bcgm", binding.nc3bcgm.getText().toString());
-        sC3.put("nc3bcgy", binding.nc3bcgy.getText().toString());
+        MainApp.cc1.setNc3bcgd(binding.nc3bcgd.getText().toString());
+        MainApp.cc1.setNc3bcgm(binding.nc3bcgm.getText().toString());
+        MainApp.cc1.setNc3bcgy(binding.nc3bcgy.getText().toString());
 
 
 //          nc3opv0
-        sC3.put("nc3opv0", binding.nc3opv0a.isChecked() ? "1"
+        MainApp.cc1.setNc3opv0(binding.nc3opv0a.isChecked() ? "1"
                 : binding.nc3opv0b.isChecked() ? "2"
                 : "0");
-        sC3.put("nc3opv0d", binding.nc3bcgd.getText().toString());
-        sC3.put("nc3opv0m", binding.nc3bcgm.getText().toString());
-        sC3.put("nc3opv0y", binding.nc3bcgy.getText().toString());
+        MainApp.cc1.setNc3opv0d(binding.nc3bcgd.getText().toString());
+        MainApp.cc1.setNc3opv0m(binding.nc3bcgm.getText().toString());
+        MainApp.cc1.setNc3opv0y(binding.nc3bcgy.getText().toString());
 
 
 //       at age of 6
 
 //          nc3opv1
-        sC3.put("nc3opv1", binding.nc3opv1a.isChecked() ? "1"
+        MainApp.cc1.setNc3opv1(binding.nc3opv1a.isChecked() ? "1"
                 : binding.nc3opv1b.isChecked() ? "2"
                 : "0");
-        sC3.put("nc3opv1d", binding.nc3bcgd.getText().toString());
-        sC3.put("nc3opv1m", binding.nc3bcgm.getText().toString());
-        sC3.put("nc3opv1y", binding.nc3bcgy.getText().toString());
+        MainApp.cc1.setNc3opv1d(binding.nc3bcgd.getText().toString());
+        MainApp.cc1.setNc3opv1m(binding.nc3bcgm.getText().toString());
+        MainApp.cc1.setNc3opv1y(binding.nc3bcgy.getText().toString());
 
 //          nc3p1
-        sC3.put("nc3p1", binding.nc3p1a.isChecked() ? "1"
+        MainApp.cc1.setNc3p1(binding.nc3p1a.isChecked() ? "1"
                 : binding.nc3p1b.isChecked() ? "2"
                 : "0");
-        sC3.put("nc3p1d", binding.nc3bcgd.getText().toString());
-        sC3.put("nc3p1m", binding.nc3bcgm.getText().toString());
-        sC3.put("nc3p1y", binding.nc3bcgy.getText().toString());
+        MainApp.cc1.setNc3p1d(binding.nc3bcgd.getText().toString());
+        MainApp.cc1.setNc3p1m(binding.nc3bcgm.getText().toString());
+        MainApp.cc1.setNc3p1y(binding.nc3bcgy.getText().toString());
 
 
 //          nc3pcv1
-        sC3.put("nc3pcv1", binding.nc3pcv1a.isChecked() ? "1"
+        MainApp.cc1.setNc3pcv1(binding.nc3pcv1a.isChecked() ? "1"
                 : binding.nc3pcv1b.isChecked() ? "2"
                 : "0");
-        sC3.put("nc3pcv1d", binding.nc3bcgd.getText().toString());
-        sC3.put("nc3pcv1m", binding.nc3bcgm.getText().toString());
-        sC3.put("nc3pcv1y", binding.nc3bcgy.getText().toString());
+        MainApp.cc1.setNc3pcv1d(binding.nc3bcgd.getText().toString());
+        MainApp.cc1.setNc3pcv1m(binding.nc3bcgm.getText().toString());
+        MainApp.cc1.setNc3pcv1y(binding.nc3bcgy.getText().toString());
 
 //       at age of 10 weeks
 
 //          nc3opv2
-        sC3.put("nc3opv2", binding.nc3opv2a.isChecked() ? "1"
+        MainApp.cc1.setNc3opv2(binding.nc3opv2a.isChecked() ? "1"
                 : binding.nc3opv2b.isChecked() ? "2"
                 : "0");
-        sC3.put("nc3opv2d", binding.nc3bcgd.getText().toString());
-        sC3.put("nc3opv2m", binding.nc3bcgm.getText().toString());
-        sC3.put("nc3opv2y", binding.nc3bcgy.getText().toString());
+        MainApp.cc1.setNc3opv2d(binding.nc3bcgd.getText().toString());
+        MainApp.cc1.setNc3opv2m(binding.nc3bcgm.getText().toString());
+        MainApp.cc1.setNc3opv2y(binding.nc3bcgy.getText().toString());
 
 //          nc3p2
-        sC3.put("nc3p2", binding.nc3p2a.isChecked() ? "1"
+        MainApp.cc1.setNc3p2(binding.nc3p2a.isChecked() ? "1"
                 : binding.nc3p2b.isChecked() ? "2"
                 : "0");
-        sC3.put("nc3p2d", binding.nc3bcgd.getText().toString());
-        sC3.put("nc3p2m", binding.nc3bcgm.getText().toString());
-        sC3.put("nc3p2y", binding.nc3bcgy.getText().toString());
+        MainApp.cc1.setNc3p2d(binding.nc3bcgd.getText().toString());
+        MainApp.cc1.setNc3p2m(binding.nc3bcgm.getText().toString());
+        MainApp.cc1.setNc3p2y(binding.nc3bcgy.getText().toString());
 
 
 //          nc3pcv2
-        sC3.put("nc3pcv2", binding.nc3pcv2a.isChecked() ? "1"
+        MainApp.cc1.setNc3pcv2(binding.nc3pcv2a.isChecked() ? "1"
                 : binding.nc3pcv2b.isChecked() ? "2"
                 : "0");
-        sC3.put("nc3pcv2d", binding.nc3bcgd.getText().toString());
-        sC3.put("nc3pcv2m", binding.nc3bcgm.getText().toString());
-        sC3.put("nc3pcv2y", binding.nc3bcgy.getText().toString());
+        MainApp.cc1.setNc3pcv2d(binding.nc3bcgd.getText().toString());
+        MainApp.cc1.setNc3pcv2m(binding.nc3bcgm.getText().toString());
+        MainApp.cc1.setNc3pcv2y(binding.nc3bcgy.getText().toString());
 
 
 //       at age of 14 weeks
 
 //          nc3opv3
-        sC3.put("nc3opv3", binding.nc3opv3a.isChecked() ? "1"
+        MainApp.cc1.setNc3opv3(binding.nc3opv3a.isChecked() ? "1"
                 : binding.nc3opv3b.isChecked() ? "2"
                 : "0");
-        sC3.put("nc3opv3d", binding.nc3bcgd.getText().toString());
-        sC3.put("nc3opv3m", binding.nc3bcgm.getText().toString());
-        sC3.put("nc3opv3y", binding.nc3bcgy.getText().toString());
+        MainApp.cc1.setNc3opv3d(binding.nc3bcgd.getText().toString());
+        MainApp.cc1.setNc3opv3m(binding.nc3bcgm.getText().toString());
+        MainApp.cc1.setNc3opv3y(binding.nc3bcgy.getText().toString());
 
 //          nc3p3
-        sC3.put("nc3p3", binding.nc3p3a.isChecked() ? "1"
+        MainApp.cc1.setNc3p3(binding.nc3p3a.isChecked() ? "1"
                 : binding.nc3p3b.isChecked() ? "2"
                 : "0");
 
-        sC3.put("nc3p3d", binding.nc3bcgd.getText().toString());
-        sC3.put("nc3p3m", binding.nc3bcgm.getText().toString());
-        sC3.put("nc3p3y", binding.nc3bcgy.getText().toString());
+        MainApp.cc1.setNc3p3d(binding.nc3bcgd.getText().toString());
+        MainApp.cc1.setNc3p3m(binding.nc3bcgm.getText().toString());
+        MainApp.cc1.setNc3p3y(binding.nc3bcgy.getText().toString());
 
 //          nc3pcv3
-        sC3.put("nc3pcv3", binding.nc3pcv3a.isChecked() ? "1"
+        MainApp.cc1.setNc3pcv3(binding.nc3pcv3a.isChecked() ? "1"
                 : binding.nc3pcv3b.isChecked() ? "2"
                 : "0");
-        sC3.put("nc3pcv3d", binding.nc3bcgd.getText().toString());
-        sC3.put("nc3pcv3m", binding.nc3bcgm.getText().toString());
-        sC3.put("nc3pcv3y", binding.nc3bcgy.getText().toString());
+        MainApp.cc1.setNc3pcv3d(binding.nc3bcgd.getText().toString());
+        MainApp.cc1.setNc3pcv3m(binding.nc3bcgm.getText().toString());
+        MainApp.cc1.setNc3pcv3y(binding.nc3bcgy.getText().toString());
 
 //          nc3ipv
-        sC3.put("nc3ipv", binding.nc3ipva.isChecked() ? "1"
+        MainApp.cc1.setNc3ipv(binding.nc3ipva.isChecked() ? "1"
                 : binding.nc3ipvb.isChecked() ? "2"
                 : "0");
-        sC3.put("nc3ipvd", binding.nc3bcgd.getText().toString());
-        sC3.put("nc3ipvm", binding.nc3bcgm.getText().toString());
-        sC3.put("nc3ipvy", binding.nc3bcgy.getText().toString());
+        MainApp.cc1.setNc3ipvd(binding.nc3bcgd.getText().toString());
+        MainApp.cc1.setNc3ipvm(binding.nc3bcgm.getText().toString());
+        MainApp.cc1.setNc3ipvy(binding.nc3bcgy.getText().toString());
 
 
 //at the age of 9 months
 //          nc3m1
-        sC3.put("nc3m1", binding.nc3m1a.isChecked() ? "1"
+        MainApp.cc1.setNc3m1(binding.nc3m1a.isChecked() ? "1"
                 : binding.nc3m1b.isChecked() ? "2"
                 : "0");
-        sC3.put("nc3m1d", binding.nc3bcgd.getText().toString());
-        sC3.put("nc3m1m", binding.nc3bcgm.getText().toString());
-        sC3.put("nc3m1y", binding.nc3bcgy.getText().toString());
+        MainApp.cc1.setNc3m1d(binding.nc3bcgd.getText().toString());
+        MainApp.cc1.setNc3m1m(binding.nc3bcgm.getText().toString());
+        MainApp.cc1.setNc3m1y(binding.nc3bcgy.getText().toString());
 
 
 //at age of 15 months
 //          nc3m2
-        sC3.put("nc3m2", binding.nc3m2a.isChecked() ? "1"
+        MainApp.cc1.setNc3m2(binding.nc3m2a.isChecked() ? "1"
                 : binding.nc3m2b.isChecked() ? "2"
                 : "0");
-        sC3.put("nc3m2d", binding.nc3bcgd.getText().toString());
-        sC3.put("nc3m2m", binding.nc3bcgm.getText().toString());
-        sC3.put("nc3m2y", binding.nc3bcgy.getText().toString());
+        MainApp.cc1.setNc3m2d(binding.nc3bcgd.getText().toString());
+        MainApp.cc1.setNc3m2m(binding.nc3bcgm.getText().toString());
+        MainApp.cc1.setNc3m2y(binding.nc3bcgy.getText().toString());
 
 
 //        nc305
-        sC3.put("nc305", binding.nc305a.isChecked() ? "1"
+        MainApp.cc1.setNc305(binding.nc305a.isChecked() ? "1"
                 : binding.nc305b.isChecked() ? "2" : binding.nc305c.isChecked() ? "98"
                 : "0");
 
 //        nc306
-        sC3.put("nc306", binding.nc306a.isChecked() ? "1"
+        MainApp.cc1.setNc306(binding.nc306a.isChecked() ? "1"
                 : binding.nc306b.isChecked() ? "2"
                 : binding.nc306c.isChecked() ? "98"
                 : "0");
 
 //        nc307
-        sC3.put("nc307", binding.nc307a.isChecked() ? "1"
+        MainApp.cc1.setNc307(binding.nc307a.isChecked() ? "1"
                 : binding.nc307b.isChecked() ? "2"
                 : binding.nc307c.isChecked() ? "98"
                 : "0");
 
 //        nc308
-        sC3.put("nc308", binding.nc308a.isChecked() ? "1"
+        MainApp.cc1.setNc308(binding.nc308a.isChecked() ? "1"
                 : binding.nc308b.isChecked() ? "2"
                 : binding.nc308c.isChecked() ? "98"
                 : "0");
 
 //        nc309
-        sC3.put("nc309", binding.nc309.getText().toString());
+        MainApp.cc1.setNc309(binding.nc309.getText().toString());
 
 //        nc310
-        sC3.put("nc310", binding.nc310a.isChecked() ? "1"
+        MainApp.cc1.setNc310(binding.nc310a.isChecked() ? "1"
                 : binding.nc310b.isChecked() ? "2"
                 : binding.nc310c.isChecked() ? "98"
                 : "0");
 
 //        nc311
-        sC3.put("nc311", binding.nc311.getText().toString());
+        MainApp.cc1.setNc311(binding.nc311.getText().toString());
 
 
 //        nc312
-        sC3.put("nc312", binding.nc312a.isChecked() ? "1"
+        MainApp.cc1.setNc312(binding.nc312a.isChecked() ? "1"
                 : binding.nc312b.isChecked() ? "2"
                 : binding.nc31298.isChecked() ? "98"
                 : "0");
 
 //        nc313
-        sC3.put("nc313", binding.nc313.getText().toString());
+        MainApp.cc1.setNc313(binding.nc313.getText().toString());
 
 //        nc314
-        sC3.put("nc314", binding.nc314a.isChecked() ? "1"
+        MainApp.cc1.setNc314(binding.nc314a.isChecked() ? "1"
                 : binding.nc314b.isChecked() ? "2"
                 : binding.nc31498.isChecked() ? "98"
                 : "0");
 
 //        nc315
-        sC3.put("nc315", binding.nc315a.isChecked() ? "1"
+        MainApp.cc1.setNc315(binding.nc315a.isChecked() ? "1"
                 : binding.nc315b.isChecked() ? "2"
                 : binding.nc31598.isChecked() ? "98"
                 : "0");
 
 //        nc316
-        sC3.put("nc316", binding.nc316a.isChecked() ? "1"
+        MainApp.cc1.setNc316(binding.nc316a.isChecked() ? "1"
                 : binding.nc316b.isChecked() ? "2"
                 : "0");
 
 
-        MainApp.cc.setsC3(String.valueOf(sC3));
+        //MainApp.cc.setsC3(String.valueOf(sC3));
 
 
         //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();

@@ -1149,7 +1149,6 @@ public class SectionB1Activity extends Activity {
         wraName = bi.nb101.getSelectedItem().toString();
 
 
-
         MainApp.mc.set(bi.nb101.getSelectedItem().toString());
         sB1.put("nw1serialno", wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
 

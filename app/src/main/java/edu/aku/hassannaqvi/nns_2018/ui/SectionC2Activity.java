@@ -20,6 +20,7 @@ import butterknife.BindViews;
 import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Child;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC2Binding;
@@ -191,8 +192,6 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
         }
 
 
-
-
     }
 
     @Override
@@ -237,188 +236,188 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
 
 
         //if (bi.nc205a.isChecked()) {
-            if (!validatorClass.EmptyRadioButton(this, bi.nc206, bi.nc206a, getString(R.string.nc206))) {
+        if (!validatorClass.EmptyRadioButton(this, bi.nc206, bi.nc206a, getString(R.string.nc206))) {
+            return false;
+        }
+
+        if (bi.nc206a.isChecked()) {
+            if (!validatorClass.EmptyRadioButton(this, bi.nc207, bi.nc207a, getString(R.string.nc207))) {
                 return false;
             }
 
-            if (bi.nc206a.isChecked()) {
-                if (!validatorClass.EmptyRadioButton(this, bi.nc207, bi.nc207a, getString(R.string.nc207))) {
+            if (bi.nc207b.isChecked()) {
+                if (!validatorClass.EmptyTextBox(this, bi.nc207h, getString(R.string.nc207b))) {
                     return false;
                 }
 
-                if (bi.nc207b.isChecked()) {
-                    if (!validatorClass.EmptyTextBox(this, bi.nc207h, getString(R.string.nc207b))) {
-                        return false;
-                    }
+            }
 
-                }
-
-                if (bi.nc207c.isChecked()) {
-                    if (!validatorClass.EmptyTextBox(this, bi.nc207d, getString(R.string.nc207c))) {
-                        return false;
-                    }
-
-                }
-
-                if (!validatorClass.EmptyRadioButton(this, bi.nc208, bi.nc208a, getString(R.string.nc208))) {
+            if (bi.nc207c.isChecked()) {
+                if (!validatorClass.EmptyTextBox(this, bi.nc207d, getString(R.string.nc207c))) {
                     return false;
                 }
 
-                if (bi.nc208b.isChecked()) {
-                    if (!validatorClass.EmptyRadioButton(this, bi.nc209, bi.nc20996, bi.nc20996x, getString(R.string.nc209))) {
-                        return false;
-                    }
-                }
+            }
 
-                if (!validatorClass.EmptyRadioButton(this, bi.nc210, bi.nc210a, getString(R.string.nc210))) {
-                    return false;
-                }
+            if (!validatorClass.EmptyRadioButton(this, bi.nc208, bi.nc208a, getString(R.string.nc208))) {
+                return false;
+            }
 
-                if (bi.nc210a.isChecked()) {
-                    if (!validatorClass.EmptyRadioButton(this, bi.nc211, bi.nc21196, bi.nc21196x, getString(R.string.nc211))) {
-                        return false;
-                    }
-                }
-
-
-                if (!validatorClass.EmptyRadioButton(this, bi.nc212, bi.nc212a, getString(R.string.nc212))) {
+            if (bi.nc208b.isChecked()) {
+                if (!validatorClass.EmptyRadioButton(this, bi.nc209, bi.nc20996, bi.nc20996x, getString(R.string.nc209))) {
                     return false;
                 }
             }
 
-            if (!bi.nc212a.isChecked()) {
-                if (!validatorClass.EmptyRadioButton(this, bi.nc21201, bi.nc21201a, getString(R.string.nc212a))) {
+            if (!validatorClass.EmptyRadioButton(this, bi.nc210, bi.nc210a, getString(R.string.nc210))) {
+                return false;
+            }
+
+            if (bi.nc210a.isChecked()) {
+                if (!validatorClass.EmptyRadioButton(this, bi.nc211, bi.nc21196, bi.nc21196x, getString(R.string.nc211))) {
                     return false;
                 }
             }
 
 
-            if (!validatorClass.EmptyRadioButton(this, bi.nc213, bi.nc213a, getString(R.string.nc213))) {
+            if (!validatorClass.EmptyRadioButton(this, bi.nc212, bi.nc212a, getString(R.string.nc212))) {
                 return false;
             }
+        }
 
-            if (!validatorClass.EmptyRadioButton(this, bi.nc214, bi.nc214a, getString(R.string.nc214))) {
+        if (!bi.nc212a.isChecked()) {
+            if (!validatorClass.EmptyRadioButton(this, bi.nc21201, bi.nc21201a, getString(R.string.nc212a))) {
                 return false;
             }
+        }
 
-            if (!validatorClass.EmptyRadioButton(this, bi.nc215a, bi.nc215aa, getString(R.string.nc215a))) {
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc213, bi.nc213a, getString(R.string.nc213))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc214, bi.nc214a, getString(R.string.nc214))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc215a, bi.nc215aa, getString(R.string.nc215a))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc215b, bi.nc215ba, getString(R.string.nc215b))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc215c, bi.nc215ca, getString(R.string.nc215c))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc215d, bi.nc215da, getString(R.string.nc215d))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc215e, bi.nc215ea, getString(R.string.nc215e))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc215f, bi.nc215fa, getString(R.string.nc215f))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc215g, bi.nc215ga, getString(R.string.nc215g))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc215h, bi.nc215ha, getString(R.string.nc215h))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc215i, bi.nc215ia, getString(R.string.nc215i))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc217a, bi.nc217aa, getString(R.string.nc217a))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc217b, bi.nc217ba, getString(R.string.nc217b))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc217c, bi.nc217ca, getString(R.string.nc217c))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc217d, bi.nc217da, getString(R.string.nc217d))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc217e, bi.nc217ea, getString(R.string.nc217e))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc217f, bi.nc217fa, getString(R.string.nc217f))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc217g, bi.nc217ga, getString(R.string.nc217g))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc217h, bi.nc217ha, getString(R.string.nc217h))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc217i, bi.nc217ia, getString(R.string.nc217i))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc217j, bi.nc217ja, getString(R.string.nc217j))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc217k, bi.nc217ka, getString(R.string.nc217k))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc217l, bi.nc217la, getString(R.string.nc217l))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc217m, bi.nc217ma, getString(R.string.nc217m))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc217n, bi.nc217na, getString(R.string.nc217n))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc217o, bi.nc217oa, getString(R.string.nc217o))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc217p, bi.nc217pa, getString(R.string.nc217p))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc217q, bi.nc217qa, getString(R.string.nc217q))) {
+            return false;
+        }
+
+        if (isAllNo() || isAlldkn() || (!isoneYes())) {
+            if (!validatorClass.EmptyRadioButton(this, bi.nc218, bi.nc218a, getString(R.string.nc218))) {
                 return false;
             }
+        }
 
-            if (!validatorClass.EmptyRadioButton(this, bi.nc215b, bi.nc215ba, getString(R.string.nc215b))) {
-                return false;
-            }
-
-            if (!validatorClass.EmptyRadioButton(this, bi.nc215c, bi.nc215ca, getString(R.string.nc215c))) {
-                return false;
-            }
-
-            if (!validatorClass.EmptyRadioButton(this, bi.nc215d, bi.nc215da, getString(R.string.nc215d))) {
-                return false;
-            }
-
-            if (!validatorClass.EmptyRadioButton(this, bi.nc215e, bi.nc215ea, getString(R.string.nc215e))) {
-                return false;
-            }
-
-            if (!validatorClass.EmptyRadioButton(this, bi.nc215f, bi.nc215fa, getString(R.string.nc215f))) {
-                return false;
-            }
-
-            if (!validatorClass.EmptyRadioButton(this, bi.nc215g, bi.nc215ga, getString(R.string.nc215g))) {
-                return false;
-            }
-
-            if (!validatorClass.EmptyRadioButton(this, bi.nc215h, bi.nc215ha, getString(R.string.nc215h))) {
-                return false;
-            }
-
-            if (!validatorClass.EmptyRadioButton(this, bi.nc215i, bi.nc215ia, getString(R.string.nc215i))) {
-                return false;
-            }
-
-            if (!validatorClass.EmptyRadioButton(this, bi.nc217a, bi.nc217aa, getString(R.string.nc217a))) {
-                return false;
-            }
-
-            if (!validatorClass.EmptyRadioButton(this, bi.nc217b, bi.nc217ba, getString(R.string.nc217b))) {
-                return false;
-            }
-
-            if (!validatorClass.EmptyRadioButton(this, bi.nc217c, bi.nc217ca, getString(R.string.nc217c))) {
-                return false;
-            }
-
-            if (!validatorClass.EmptyRadioButton(this, bi.nc217d, bi.nc217da, getString(R.string.nc217d))) {
-                return false;
-            }
-
-            if (!validatorClass.EmptyRadioButton(this, bi.nc217e, bi.nc217ea, getString(R.string.nc217e))) {
-                return false;
-            }
-
-            if (!validatorClass.EmptyRadioButton(this, bi.nc217f, bi.nc217fa, getString(R.string.nc217f))) {
-                return false;
-            }
-
-            if (!validatorClass.EmptyRadioButton(this, bi.nc217g, bi.nc217ga, getString(R.string.nc217g))) {
-                return false;
-            }
-
-            if (!validatorClass.EmptyRadioButton(this, bi.nc217h, bi.nc217ha, getString(R.string.nc217h))) {
-                return false;
-            }
-
-            if (!validatorClass.EmptyRadioButton(this, bi.nc217i, bi.nc217ia, getString(R.string.nc217i))) {
-                return false;
-            }
-
-            if (!validatorClass.EmptyRadioButton(this, bi.nc217j, bi.nc217ja, getString(R.string.nc217j))) {
-                return false;
-            }
-
-            if (!validatorClass.EmptyRadioButton(this, bi.nc217k, bi.nc217ka, getString(R.string.nc217k))) {
-                return false;
-            }
-
-            if (!validatorClass.EmptyRadioButton(this, bi.nc217l, bi.nc217la, getString(R.string.nc217l))) {
-                return false;
-            }
-
-            if (!validatorClass.EmptyRadioButton(this, bi.nc217m, bi.nc217ma, getString(R.string.nc217m))) {
-                return false;
-            }
-
-            if (!validatorClass.EmptyRadioButton(this, bi.nc217n, bi.nc217na, getString(R.string.nc217n))) {
-                return false;
-            }
-
-            if (!validatorClass.EmptyRadioButton(this, bi.nc217o, bi.nc217oa, getString(R.string.nc217o))) {
-                return false;
-            }
-
-            if (!validatorClass.EmptyRadioButton(this, bi.nc217p, bi.nc217pa, getString(R.string.nc217p))) {
-                return false;
-            }
-
-            if (!validatorClass.EmptyRadioButton(this, bi.nc217q, bi.nc217qa, getString(R.string.nc217q))) {
-                return false;
-            }
-
-            if (isAllNo() || isAlldkn() || (!isoneYes())) {
-                if (!validatorClass.EmptyRadioButton(this, bi.nc218, bi.nc218a, getString(R.string.nc218))) {
-                    return false;
-                }
-            }
-
-            if ((isAllNo() || isAlldkn()) && bi.nc218a.isChecked()) {
-                Toast.makeText(this, "ERROR: " + getString(R.string.nc218) + "Atleast one should be Yes", Toast.LENGTH_SHORT).show();
-                bi.nc218a.setError(getString(R.string.nc218));
-                Log.i(SectionC2Activity.class.getSimpleName(), "nc218: This data is Required!");
-                return false;
-            } else {
-                bi.nc218a.setError(null);
-            }
+        if ((isAllNo() || isAlldkn()) && bi.nc218a.isChecked()) {
+            Toast.makeText(this, "ERROR: " + getString(R.string.nc218) + "Atleast one should be Yes", Toast.LENGTH_SHORT).show();
+            bi.nc218a.setError(getString(R.string.nc218));
+            Log.i(SectionC2Activity.class.getSimpleName(), "nc218: This data is Required!");
+            return false;
+        } else {
+            bi.nc218a.setError(null);
+        }
 
             /*if (isAlldkn() && bi.nc218a.isChecked()) {
                 Toast.makeText(this, "ERROR: " + getString(R.string.nc218) + "Atleast one should be Yes", Toast.LENGTH_SHORT).show();
@@ -429,33 +428,33 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
                 bi.nc218a.setError(null);
             }
 */
-            if (isoneYes()) {
-                if (!validatorClass.EmptyRadioButton(this, bi.nc219, bi.nc219a, bi.nc219x, getString(R.string.nc219))) {
-                    return false;
-                }
-            }
-
-            if (bi.nc219a.isChecked()) {
-                if (!validatorClass.RangeTextBox(this, bi.nc219x, 1, 10, getString(R.string.nc219), " times")) {
-                    return false;
-                }
-            }
-
-            if (!validatorClass.EmptyRadioButton(this, bi.nc220, bi.nc220a, getString(R.string.nc220))) {
+        if (isoneYes()) {
+            if (!validatorClass.EmptyRadioButton(this, bi.nc219, bi.nc219a, bi.nc219x, getString(R.string.nc219))) {
                 return false;
             }
+        }
 
-            if (!validatorClass.EmptyRadioButton(this, bi.nc221, bi.nc22196, bi.nc22196x, getString(R.string.nc221))) {
+        if (bi.nc219a.isChecked()) {
+            if (!validatorClass.RangeTextBox(this, bi.nc219x, 1, 10, getString(R.string.nc219), " times")) {
                 return false;
             }
+        }
 
-            if (!validatorClass.EmptyRadioButton(this, bi.nc222, bi.nc22296, bi.nc22296x, getString(R.string.nc222))) {
-                return false;
-            }
+        if (!validatorClass.EmptyRadioButton(this, bi.nc220, bi.nc220a, getString(R.string.nc220))) {
+            return false;
+        }
 
-            if (!validatorClass.EmptyRadioButton(this, bi.nc223, bi.nc223a, getString(R.string.nc223))) {
-                return false;
-            }
+        if (!validatorClass.EmptyRadioButton(this, bi.nc221, bi.nc22196, bi.nc22196x, getString(R.string.nc221))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc222, bi.nc22296, bi.nc22296x, getString(R.string.nc222))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.nc223, bi.nc223a, getString(R.string.nc223))) {
+            return false;
+        }
         //}
 
         return true;
@@ -465,43 +464,47 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
     private void SaveDraft() throws JSONException {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
-        JSONObject sC2 = new JSONObject();
+        //JSONObject sC2 = new JSONObject();
+
+        MainApp.cc1 = new Child();
 
 
-        sC2.put("nc2_child_name", selectedChild.getName());
+        MainApp.cc1.setNc2_child_name(selectedChild.getName());
 
-        sC2.put("nc2_line_noSerial", selectedChild.getSerialNo());
+        MainApp.cc1.setNc2_line_noSerial(selectedChild.getSerialNo());
 
 
-        sC2.put("nc206", bi.nc206a.isChecked() ? "1"
+        MainApp.cc1.setNc206(bi.nc206a.isChecked() ? "1"
                 : bi.nc206b.isChecked() ? "2"
                 : bi.nc20698.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc207", bi.nc207a.isChecked() ? "1"
+        MainApp.cc1.setNc207(bi.nc207a.isChecked() ? "1"
                 : bi.nc207b.isChecked() ? "2"
                 : bi.nc207c.isChecked() ? "3"
                 : "0");
 
-        sC2.put("nc207h", bi.nc207h.getText().toString());
-        sC2.put("nc207d", bi.nc207d.getText().toString());
+        MainApp.cc1.setNc207h(bi.nc207h.getText().toString());
+        MainApp.cc1.setNc207d(bi.nc207d.getText().toString());
 
-        sC2.put("nc208", bi.nc208a.isChecked() ? "1"
+        MainApp.cc1.setNc208(bi.nc208a.isChecked() ? "1"
                 : bi.nc208b.isChecked() ? "2"
                 : bi.nc20898.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc209", bi.nc209a.isChecked() ? "1"
+        MainApp.cc1.setNc209(bi.nc209a.isChecked() ? "1"
                 : bi.nc209b.isChecked() ? "2"
                 : bi.nc209c.isChecked() ? "3"
                 : bi.nc20996.isChecked() ? "96"
                 : "0");
-        sC2.put("nc20996x", bi.nc20996x.getText().toString());
 
-        sC2.put("nc210", bi.nc210a.isChecked() ? "1"
+        MainApp.cc1.setNc20996x(bi.nc20996x.getText().toString());
+
+        MainApp.cc1.setNc210(bi.nc210a.isChecked() ? "1"
                 : bi.nc210b.isChecked() ? "2"
                 : "0");
-        sC2.put("nc211", bi.nc211a.isChecked() ? "1"
+
+        MainApp.cc1.setNc211(bi.nc211a.isChecked() ? "1"
                 : bi.nc211b.isChecked() ? "2"
                 : bi.nc211c.isChecked() ? "3"
                 : bi.nc211d.isChecked() ? "4"
@@ -515,192 +518,196 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
                 : bi.nc21196.isChecked() ? "96"
                 : "0");
 
-        sC2.put("nc21196x", bi.nc21196x.getText().toString());
+        MainApp.cc1.setNc21196x(bi.nc21196x.getText().toString());
 
-        sC2.put("nc212", bi.nc212a.isChecked() ? "1"
+        MainApp.cc1.setNc212(bi.nc212a.isChecked() ? "1"
                 : bi.nc212b.isChecked() ? "2"
                 : bi.nc21298.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc212a", bi.nc21201a.isChecked() ? "1"
+        MainApp.cc1.setNc212a(bi.nc21201a.isChecked() ? "1"
                 : bi.nc21201b.isChecked() ? "2"
                 : bi.nc2120198.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc213", bi.nc213a.isChecked() ? "1"
+        MainApp.cc1.setNc213(bi.nc213a.isChecked() ? "1"
                 : bi.nc213b.isChecked() ? "2"
                 : bi.nc21398.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc214", bi.nc214a.isChecked() ? "1"
+        MainApp.cc1.setNc214(bi.nc214a.isChecked() ? "1"
                 : bi.nc214b.isChecked() ? "2"
                 : bi.nc21498.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc215a", bi.nc215aa.isChecked() ? "1"
+        MainApp.cc1.setNc215a(bi.nc215aa.isChecked() ? "1"
                 : bi.nc215ab.isChecked() ? "2"
                 : bi.nc215a98.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc215b", bi.nc215ba.isChecked() ? "1"
+        MainApp.cc1.setNc215b(bi.nc215ba.isChecked() ? "1"
                 : bi.nc215bb.isChecked() ? "2"
                 : bi.nc215b98.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc215bx", bi.nc215bx.getText().toString());
-        sC2.put("nc215c", bi.nc215ca.isChecked() ? "1"
+        MainApp.cc1.setNc215bx(bi.nc215bx.getText().toString());
+
+        MainApp.cc1.setNc215c(bi.nc215ca.isChecked() ? "1"
                 : bi.nc215cb.isChecked() ? "2"
                 : bi.nc215c98.isChecked() ? "98"
                 : "0");
-        sC2.put("nc215cx", bi.nc215cx.getText().toString());
 
-        sC2.put("nc215d", bi.nc215da.isChecked() ? "1"
+        MainApp.cc1.setNc215cx(bi.nc215cx.getText().toString());
+
+        MainApp.cc1.setNc215d(bi.nc215da.isChecked() ? "1"
                 : bi.nc215db.isChecked() ? "2"
                 : bi.nc215d98.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc215e", bi.nc215ea.isChecked() ? "1"
+        MainApp.cc1.setNc215e(bi.nc215ea.isChecked() ? "1"
                 : bi.nc215eb.isChecked() ? "2"
                 : bi.nc215e98.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc215f", bi.nc215fa.isChecked() ? "1"
+        MainApp.cc1.setNc215f(bi.nc215fa.isChecked() ? "1"
                 : bi.nc215fb.isChecked() ? "2"
                 : bi.nc215f98.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc215g", bi.nc215ga.isChecked() ? "1"
+        MainApp.cc1.setNc215h(bi.nc215ga.isChecked() ? "1"
                 : bi.nc215gb.isChecked() ? "2"
                 : bi.nc215g98.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc215h", bi.nc215ha.isChecked() ? "1"
+        MainApp.cc1.setNc215h(bi.nc215ha.isChecked() ? "1"
                 : bi.nc215hb.isChecked() ? "2"
                 : bi.nc215h98.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc215i", bi.nc215ia.isChecked() ? "1"
+        MainApp.cc1.setNc215i(bi.nc215ia.isChecked() ? "1"
                 : bi.nc215ib.isChecked() ? "2"
                 : bi.nc215i98.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc217a", bi.nc217aa.isChecked() ? "1"
+        MainApp.cc1.setNc217a(bi.nc217aa.isChecked() ? "1"
                 : bi.nc217ab.isChecked() ? "2"
                 : bi.nc217a98.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc217b", bi.nc217ba.isChecked() ? "1"
+        MainApp.cc1.setNc217b(bi.nc217ba.isChecked() ? "1"
                 : bi.nc217bb.isChecked() ? "2"
                 : bi.nc217b98.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc217c", bi.nc217ca.isChecked() ? "1"
+        MainApp.cc1.setNc217c(bi.nc217ca.isChecked() ? "1"
                 : bi.nc217cb.isChecked() ? "2"
                 : bi.nc217c98.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc217d", bi.nc217da.isChecked() ? "1"
+        MainApp.cc1.setNc217d(bi.nc217da.isChecked() ? "1"
                 : bi.nc217db.isChecked() ? "2"
                 : bi.nc217d98.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc217e", bi.nc217ea.isChecked() ? "1"
+        MainApp.cc1.setNc217e(bi.nc217ea.isChecked() ? "1"
                 : bi.nc217eb.isChecked() ? "2"
                 : bi.nc217e98.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc217f", bi.nc217fa.isChecked() ? "1"
+        MainApp.cc1.setNc217f(bi.nc217fa.isChecked() ? "1"
                 : bi.nc217fb.isChecked() ? "2"
                 : bi.nc217f98.isChecked() ? "98"
                 : "0");
-        sC2.put("nc217g", bi.nc217ga.isChecked() ? "1"
+
+        MainApp.cc1.setNc217g(bi.nc217ga.isChecked() ? "1"
                 : bi.nc217gb.isChecked() ? "2"
                 : bi.nc217g98.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc217h", bi.nc217ha.isChecked() ? "1"
+        MainApp.cc1.setNc217h(bi.nc217ha.isChecked() ? "1"
                 : bi.nc217hb.isChecked() ? "2"
                 : bi.nc217h98.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc217i", bi.nc217ia.isChecked() ? "1"
+        MainApp.cc1.setNc217i(bi.nc217ia.isChecked() ? "1"
                 : bi.nc217ib.isChecked() ? "2"
                 : bi.nc217i98.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc217j", bi.nc217ja.isChecked() ? "1"
+        MainApp.cc1.setNc217j(bi.nc217ja.isChecked() ? "1"
                 : bi.nc217jb.isChecked() ? "2"
                 : bi.nc217j98.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc217k", bi.nc217ka.isChecked() ? "1"
+        MainApp.cc1.setNc217k(bi.nc217ka.isChecked() ? "1"
                 : bi.nc217kb.isChecked() ? "2"
                 : bi.nc217k98.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc217l", bi.nc217la.isChecked() ? "1"
+        MainApp.cc1.setNc217l(bi.nc217la.isChecked() ? "1"
                 : bi.nc217lb.isChecked() ? "2"
                 : bi.nc217l98.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc217m", bi.nc217ma.isChecked() ? "1"
+        MainApp.cc1.setNc217m(bi.nc217ma.isChecked() ? "1"
                 : bi.nc217mb.isChecked() ? "2"
                 : bi.nc217m98.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc217n", bi.nc217na.isChecked() ? "1"
+        MainApp.cc1.setNc217n(bi.nc217na.isChecked() ? "1"
                 : bi.nc217nb.isChecked() ? "2"
                 : bi.nc217n98.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc217o", bi.nc217oa.isChecked() ? "1"
+        MainApp.cc1.setNc217o(bi.nc217oa.isChecked() ? "1"
                 : bi.nc217ob.isChecked() ? "2"
                 : bi.nc217o98.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc217p", bi.nc217pa.isChecked() ? "1"
+        MainApp.cc1.setNc217p(bi.nc217pa.isChecked() ? "1"
                 : bi.nc217pb.isChecked() ? "2"
                 : bi.nc217p98.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc217q", bi.nc217qa.isChecked() ? "1"
+        MainApp.cc1.setNc217q(bi.nc217qa.isChecked() ? "1"
                 : bi.nc217qb.isChecked() ? "2"
                 : bi.nc217q98.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc218", bi.nc218a.isChecked() ? "1"
+        MainApp.cc1.setNc218(bi.nc218a.isChecked() ? "1"
                 : bi.nc218b.isChecked() ? "2"
                 : bi.nc21898.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc219", bi.nc21998.isChecked() ? "98" : bi.nc219x.getText().toString());
+        MainApp.cc1.setNc219(bi.nc21998.isChecked() ? "98" : bi.nc219x.getText().toString());
 
-        sC2.put("nc220", bi.nc220a.isChecked() ? "1"
+        MainApp.cc1.setNc220(bi.nc220a.isChecked() ? "1"
                 : bi.nc220b.isChecked() ? "2"
                 : bi.nc22098.isChecked() ? "98"
                 : "0");
 
-        sC2.put("nc221", bi.nc221a.isChecked() ? "1"
+        MainApp.cc1.setNc221(bi.nc221a.isChecked() ? "1"
                 : bi.nc221b.isChecked() ? "2"
                 : bi.nc221c.isChecked() ? "3"
                 : bi.nc22196.isChecked() ? "96"
                 : "0");
-        sC2.put("nc22196x", bi.nc22196x.getText().toString());
 
-        sC2.put("nc222", bi.nc222a.isChecked() ? "1"
+        MainApp.cc1.setNc22196x(bi.nc22196x.getText().toString());
+
+        MainApp.cc1.setNc222(bi.nc222a.isChecked() ? "1"
                 : bi.nc222b.isChecked() ? "2"
                 : bi.nc222c.isChecked() ? "3"
                 : bi.nc22296.isChecked() ? "96"
                 : "0");
-        sC2.put("nc22296x", bi.nc22296x.getText().toString());
 
-        sC2.put("nc223", bi.nc223a.isChecked() ? "1"
+        MainApp.cc1.setNc22296x(bi.nc22296x.getText().toString());
+
+        MainApp.cc1.setNc223(bi.nc223a.isChecked() ? "1"
                 : bi.nc223b.isChecked() ? "2"
                 : bi.nc22398.isChecked() ? "98"
                 : "0");
 
-
-        MainApp.cc.setsC2(String.valueOf(sC2));
+        //MainApp.cc.setsC2(String.valueOf(sC2));
 
 
         //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
