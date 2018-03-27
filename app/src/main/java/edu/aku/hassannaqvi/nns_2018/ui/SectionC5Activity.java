@@ -101,7 +101,7 @@ public class SectionC5Activity extends AppCompatActivity {
         JSONObject sC5 = new JSONObject();
 
 //        nc301
-        sC5.put("nc501", selectedChild.getName());
+        sC5.put("nc501name", selectedChild.getName());
 //        nc302
         sC5.put("nc502Serial", selectedChild.getSerialNo());
 
