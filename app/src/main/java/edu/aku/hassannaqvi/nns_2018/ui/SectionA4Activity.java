@@ -547,7 +547,7 @@ public class SectionA4Activity extends AppCompatActivity {
         sA4.put("nh30696x", binding.nh30696x.getText().toString());
 
 
-        sA4.put("nh307", binding.nh307a.isChecked() ? "1"
+        MainApp.fc.setNh307(binding.nh307a.isChecked() ? "1"
                 : binding.nh307b.isChecked() ? "2"
                 : binding.nh307c.isChecked() ? "3"
                 : binding.nh307d.isChecked() ? "4"
