@@ -83,8 +83,83 @@ public class NutritionContract extends BaseModel {
     private String nw501j;
 
 
+    public String getNw501a() {
+        return nw501a;
+    }
 
+    public void setNw501a(String nw501a) {
+        this.nw501a = nw501a;
+    }
 
+    public String getNw501b() {
+        return nw501b;
+    }
 
+    public void setNw501b(String nw501b) {
+        this.nw501b = nw501b;
+    }
 
+    public String getNw501c() {
+        return nw501c;
+    }
+
+    public void setNw501c(String nw501c) {
+        this.nw501c = nw501c;
+    }
+
+    public String getNw501d() {
+        return nw501d;
+    }
+
+    public void setNw501d(String nw501d) {
+        this.nw501d = nw501d;
+    }
+
+    public String getNw501e() {
+        return nw501e;
+    }
+
+    public void setNw501e(String nw501e) {
+        this.nw501e = nw501e;
+    }
+
+    public String getNw501f() {
+        return nw501f;
+    }
+
+    public void setNw501f(String nw501f) {
+        this.nw501f = nw501f;
+    }
+
+    public String getNw501g() {
+        return nw501g;
+    }
+
+    public void setNw501g(String nw501g) {
+        this.nw501g = nw501g;
+    }
+
+    public String getNw501h() {
+        return nw501h;
+    }
+
+    public void setNw501h(String nw501h) {
+        this.nw501h = nw501h;
+    }
+
+    public String getNw501i() {
+        return nw501i;
+    }
+
+    public void setNw501i(String nw501i) {
+        this.nw501i = nw501i;
+    }
+
+    public String getNw501j() {
+        return nw501j;
+    }
+
+    public void setNw501j(String nw501j) {
+        this.nw501j = nw501j;
+    }
 }
