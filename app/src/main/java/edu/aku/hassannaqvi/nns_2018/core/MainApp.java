@@ -37,6 +37,7 @@ import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FamilyMembers;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FormContract;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Nutrition;
 import edu.aku.hassannaqvi.nns_2018.other.MembersCount;
 import edu.aku.hassannaqvi.nns_2018.ui.AnthroEndingActivity;
 import edu.aku.hassannaqvi.nns_2018.ui.ChildEndingActivity;
@@ -84,6 +85,7 @@ public class MainApp extends Application {
 
     public static MWRAContract mc;
     public static NutritionContract nc;
+    public static Nutrition nc1;
     public static OutcomeContract oc;
     public static ChildContract cc;
     public static SerialContract sc;
@@ -98,20 +100,20 @@ public class MainApp extends Application {
     //    Ali
     //public static FamilyMembersContract fmc;
     public static EligibleMembersContract emc;
-    public static List<FamilyMembersContract> members_f_m;
+    /*public static List<FamilyMembersContract> members_f_m;
     public static List<FamilyMembersContract> respList;
     public static List<FamilyMembersContract> all_members;
     public static List<FamilyMembersContract> childUnder2;
     public static List<FamilyMembersContract> childUnder5;
     public static List<FamilyMembersContract> childNA;
     public static List<FamilyMembersContract> mwra;
-    public static List<FamilyMembersContract> adolescents;
+    public static List<FamilyMembersContract> adolescents;*/
     public static BLRandomContract selectedHead;
     public static int serial_no;
     public static Boolean B6Flag = true;
     public static Boolean B2B6Flag = false;
     // fro section A2
-    public static List<FamilyMembersContract> familyMembersList;
+    //public static List<FamilyMembersContract> familyMembersList;
     public static List<Integer> hhClicked;
 
     // Gul Sanober
@@ -131,6 +133,16 @@ public class MainApp extends Application {
 
     public static FormContract fc;
     public static FamilyMembers fmc;
+    public static List<FamilyMembers> familyMembersList;
+
+    public static List<FamilyMembers> members_f_m;
+    public static List<FamilyMembers> respList;
+    public static List<FamilyMembers> all_members;
+    public static List<FamilyMembers> childUnder2;
+    public static List<FamilyMembers> childUnder5;
+    public static List<FamilyMembers> childNA;
+    public static List<FamilyMembers> mwra;
+    public static List<FamilyMembers> adolescents;
     //public static EligibleMembers emc;
 
 
