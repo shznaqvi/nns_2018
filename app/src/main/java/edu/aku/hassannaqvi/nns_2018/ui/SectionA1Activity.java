@@ -19,7 +19,6 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -28,9 +27,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import edu.aku.hassannaqvi.nns_2018.FormContract;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FormContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA1Binding;
@@ -370,21 +369,6 @@ public class SectionA1Activity extends AppCompatActivity {
     }
 
     private void SaveDraft() throws JSONException {
-        //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
-
-
-        /*MainApp.fc = new FormsContract();
-
-        MainApp.fc.setDevicetagID(MainApp.getTagName(this));
-        MainApp.fc.setFormDate(dtToday);
-        MainApp.fc.setUser(MainApp.userName);
-        MainApp.fc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
-                Settings.Secure.ANDROID_ID));
-        MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
-        MainApp.fc.setRespLineNo(MainApp.lineNo);
-        MainApp.fc.setEnmNo(binding.nh102.getText().toString());
-        MainApp.fc.setHhNo(binding.nh108.getText().toString().toUpperCase());
-*/
 
         MainApp.fc = new FormContract();
 
@@ -399,56 +383,53 @@ public class SectionA1Activity extends AppCompatActivity {
         MainApp.fc.setHh_no(binding.nh108.getText().toString().toUpperCase());
 
 
-        setGPS(); // Set GPS
+        MainApp.fc.setRndid(MainApp.selectedHead.get_ID());
 
-        JSONObject sA1 = new JSONObject();
+        MainApp.fc.setLuid(MainApp.selectedHead.getLUID());
+        MainApp.fc.setRandDT(MainApp.selectedHead.getRandomDT());
+        MainApp.fc.setHh03(MainApp.selectedHead.getStructure());
+        MainApp.fc.setHh07(MainApp.selectedHead.getExtension());
+        MainApp.fc.setHhhead(MainApp.selectedHead.getHhhead());
+        MainApp.fc.setHh09(MainApp.selectedHead.getContact());
+        MainApp.fc.setHhss(MainApp.selectedHead.getSelStructure());
+        MainApp.fc.setHhheadpresent(binding.checkHHHeadpresent.isChecked() ? "1" : "2");
+        MainApp.fc.setHhheadpresentnew(binding.newHHheadname.getText().toString());
+        MainApp.fc.setNh101(binding.nh101.getText().toString());
+        MainApp.fc.setNh103(binding.nh103.getText().toString());
 
-        sA1.put("rndid", MainApp.selectedHead.get_ID());
-        sA1.put("luid", MainApp.selectedHead.getLUID());
-        sA1.put("randDT", MainApp.selectedHead.getRandomDT());
-        sA1.put("hh03", MainApp.selectedHead.getStructure());
-        sA1.put("hh07", MainApp.selectedHead.getExtension());
-        sA1.put("hhhead", MainApp.selectedHead.getHhhead());
-        sA1.put("hh09", MainApp.selectedHead.getContact());
-        sA1.put("hhss", MainApp.selectedHead.getSelStructure());
-        sA1.put("hhheadpresent", binding.checkHHHeadpresent.isChecked() ? "1" : "2");
-        sA1.put("hhheadpresentnew", binding.newHHheadname.getText().toString());
+        MainApp.fc.setNh104(binding.nh104.getText().toString());
+        MainApp.fc.setNh105(binding.nh105.getText().toString());
+        MainApp.fc.setNh106(binding.nh106.getText().toString());
+        MainApp.fc.setNh113(binding.nh113.getText().toString());
+        MainApp.fc.setNh115(binding.nh115.getText().toString());
+        MainApp.fc.setNh213(binding.nh213.getText().toString());
 
-        sA1.put("nh101", binding.nh101.getText().toString());
-
-        sA1.put("nh103", binding.nh103.getText().toString());
-        sA1.put("nh104", binding.nh104.getText().toString());
-        sA1.put("nh105", binding.nh105.getText().toString());
-        sA1.put("nh106", binding.nh106.getText().toString());
-
-        // sA1.put("nh110", binding.nh110.getText().toString());
-        sA1.put("nh113", binding.nh113.getText().toString());
-        sA1.put("nh115", binding.nh115.getText().toString());
-
-        sA1.put("nh213", binding.nh213.getText().toString());
-
-        sA1.put("nh11701blood", MainApp.selectedHead.getSelStructure());
-        sA1.put("nh11702urine", MainApp.selectedHead.getSelStructure());
-        sA1.put("nh11703water", MainApp.selectedHead.getSelStructure());
-
-        sA1.put("nh11801", binding.na11801a.isChecked() ? "1"
+        MainApp.fc.setNh115(binding.nh213.getText().toString());
+        MainApp.fc.setNh11701blood(MainApp.selectedHead.getSelStructure());
+        MainApp.fc.setNh11702urine(MainApp.selectedHead.getSelStructure());
+        MainApp.fc.setNh11703water(MainApp.selectedHead.getSelStructure());
+        MainApp.fc.setNh11801(binding.na11801a.isChecked() ? "1"
                 : binding.na11801b.isChecked() ? "2" : "0");
-
-        sA1.put("nh11802", binding.na11802a.isChecked() ? "1"
+        MainApp.fc.setNh11802(binding.na11802a.isChecked() ? "1"
                 : binding.na11802b.isChecked() ? "2" : "0");
 
-//        na117
-        sA1.put("nh119a", binding.na119a.isChecked() ? "1" : "0");
-        sA1.put("nh119b", binding.na119b.isChecked() ? "2" : "0");
-        sA1.put("nh119c", binding.na119c.isChecked() ? "3" : "0");
-        sA1.put("nh119d", binding.na119d.isChecked() ? "4" : "0");
-        sA1.put("nh119e", binding.na119e.isChecked() ? "5" : "0");
-        sA1.put("nh119f", binding.na119f.isChecked() ? "6" : "0");
-        sA1.put("nh119g", binding.na119g.isChecked() ? "7" : "0");
-        sA1.put("nh11996", binding.na11996.isChecked() ? "96" : "0");
-        sA1.put("nh11996x", binding.na11996x.getText().toString());
+        MainApp.fc.setNh119a(binding.na119a.isChecked() ? "1" : "0");
+        MainApp.fc.setNh119b(binding.na119b.isChecked() ? "1" : "0");
+        MainApp.fc.setNh119c(binding.na119c.isChecked() ? "1" : "0");
+        MainApp.fc.setNh119d(binding.na119d.isChecked() ? "1" : "0");
+        MainApp.fc.setNh119e(binding.na119e.isChecked() ? "1" : "0");
+        MainApp.fc.setNh119f(binding.na119f.isChecked() ? "1" : "0");
+        MainApp.fc.setNh119g(binding.na119g.isChecked() ? "1" : "0");
+        MainApp.fc.setNh11996(binding.na11996.isChecked() ? "1" : "0");
+        MainApp.fc.setNh11996x(binding.na11996x.getText().toString());
 
-        MainApp.fc.setSA1(String.valueOf(sA1));
+
+        setGPS(); // Set GPS
+
+//        JSONObject sA1 = new JSONObject();
+
+
+        //MainApp.fc.setSA1(String.valueOf(sA1));
 
     }
 
@@ -490,7 +471,7 @@ public class SectionA1Activity extends AppCompatActivity {
         if (updCount != 0) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
             MainApp.fc.set_uid(
-                    (MainApp.fc.getDeviceid() + MainApp.fc.get_id()));
+                    (MainApp.fc.getDeviceid() + MainApp.fc._id));
             return true;
 
         } else {

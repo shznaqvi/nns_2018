@@ -8,15 +8,11 @@ import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.raizlabs.android.dbflow.sql.language.SQLite;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Timer;
 
-import edu.aku.hassannaqvi.nns_2018.FormContract;
-import edu.aku.hassannaqvi.nns_2018.FormContract_Table;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -663,7 +659,7 @@ public class SectionA4Activity extends AppCompatActivity {
         sA4.put("nh313e", binding.nh313e.isChecked() ? "5" : "0");
         sA4.put("nh313f", binding.nh313f.isChecked() ? "6" : "0");
         sA4.put("nh31396", binding.nh31396.isChecked() ? "96" : "0");
-        sA4.put("nh31496x", binding.nh31496x.getText().toString());
+        sA4.put("nh31396x", binding.nh31496x.getText().toString());
 
 //        nh314
         sA4.put("nh314", binding.nh314a.isChecked() ? "1"
@@ -779,7 +775,7 @@ public class SectionA4Activity extends AppCompatActivity {
         sA4.put("nh324g", binding.nh324g.getText().toString());
 
 
-        MainApp.fc.setSA4(String.valueOf(sA4));
+        //MainApp.fc.setSA4(String.valueOf(sA4));
 
 
         //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
@@ -791,9 +787,9 @@ public class SectionA4Activity extends AppCompatActivity {
         //Long rowId;
         //DatabaseHelper db = new DatabaseHelper(this);
 
-        FormContract form = SQLite.select().from(FormContract.class)
-                .where(FormContract_Table._id.is(MainApp.fc.get_id()))
-                .querySingle();
+        /*FormContract form = SQLite.select().from(FormContract.class)
+                .where(For._id.is(String.valueOf(MainApp.fc._id)))
+                .querySingle();*/
 
 
         MainApp.fc.update();
