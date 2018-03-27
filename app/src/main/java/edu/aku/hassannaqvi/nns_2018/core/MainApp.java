@@ -28,13 +28,13 @@ import java.util.Map;
 import edu.aku.hassannaqvi.nns_2018.AppDB;
 import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.NutritionContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.EligibleMembers;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FamilyMembers;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FormContract;
 import edu.aku.hassannaqvi.nns_2018.other.MembersCount;
@@ -97,7 +97,7 @@ public class MainApp extends Application {
 
     //    Ali
     //public static FamilyMembersContract fmc;
-    public static EligibleMembersContract emc;
+    //public static EligibleMembersContract emc;
     /*public static List<FamilyMembersContract> members_f_m;
     public static List<FamilyMembersContract> respList;
     public static List<FamilyMembersContract> all_members;
@@ -141,7 +141,7 @@ public class MainApp extends Application {
     public static List<FamilyMembers> childNA;
     public static List<FamilyMembers> mwra;
     public static List<FamilyMembers> adolescents;
-    //public static EligibleMembers emc;
+    public static EligibleMembers emc;
 
 
 
