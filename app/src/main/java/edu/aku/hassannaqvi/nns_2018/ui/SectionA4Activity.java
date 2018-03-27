@@ -490,8 +490,9 @@ public class SectionA4Activity extends AppCompatActivity {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
 
-        JSONObject sA4 = new JSONObject();
-        sA4.put("nh301", binding.nh301a.isChecked() ? "1"
+        //JSONObject sA4 = new JSONObject();
+
+        MainApp.fc.setNh301(binding.nh301a.isChecked() ? "1"
                 : binding.nh301b.isChecked() ? "2"
                 : binding.nh301c.isChecked() ? "3"
                 : binding.nh301d.isChecked() ? "4"
@@ -500,18 +501,20 @@ public class SectionA4Activity extends AppCompatActivity {
                 : binding.nh301g.isChecked() ? "7"
                 : binding.nh30196.isChecked() ? "96"
                 : "0");
-        sA4.put("nh30196x", binding.nh30196x.getText().toString());
 
-        sA4.put("nh302", binding.nh302a.isChecked() ? "1"
+        MainApp.fc.setNh30196x(binding.nh30196x.getText().toString());
+
+        MainApp.fc.setNh302(binding.nh302a.isChecked() ? "1"
                 : binding.nh302b.isChecked() ? "2"
                 : binding.nh30296.isChecked() ? "96" : "0");
-        sA4.put("nh30296x", binding.nh30296x.getText().toString());
 
-        sA4.put("nh303a", binding.nh303a1.isChecked() ? "1"
+        MainApp.fc.setNh30296x(binding.nh30296x.getText().toString());
+
+        MainApp.fc.setNh303a(binding.nh303a1.isChecked() ? "1"
                 : binding.nh303a2.isChecked() ? "2"
                 : "0");
 
-        sA4.put("nh303", binding.nh303b.isChecked() ? "2"
+        MainApp.fc.setNh303(binding.nh303b.isChecked() ? "2"
                 : binding.nh303c.isChecked() ? "3"
                 : binding.nh303d.isChecked() ? "4"
                 : binding.nh303e.isChecked() ? "5"
@@ -528,15 +531,16 @@ public class SectionA4Activity extends AppCompatActivity {
                 : binding.nh303p.isChecked() ? "16"
                 : binding.nh30396.isChecked() ? "96"
                 : "0");
-        sA4.put("nh30396x", binding.nh30396x.getText().toString());
 
-        sA4.put("nh304", binding.nh30498.isChecked() ? "998" : binding.nh30499.isChecked() ? "000" : binding.nh304.getText().toString());
+        MainApp.fc.setNh30396x(binding.nh30396x.getText().toString());
 
-        sA4.put("nh305", binding.nh305a.isChecked() ? "1"
+        MainApp.fc.setNh304(binding.nh30498.isChecked() ? "998" : binding.nh30499.isChecked() ? "000" : binding.nh304.getText().toString());
+
+        MainApp.fc.setNh305(binding.nh305a.isChecked() ? "1"
                 : binding.nh305b.isChecked() ? "2"
                 : "0");
 
-        sA4.put("nh306", binding.nh306a.isChecked() ? "1"
+        MainApp.fc.setNh306(binding.nh306a.isChecked() ? "1"
                 : binding.nh306b.isChecked() ? "2"
                 : binding.nh306c.isChecked() ? "3"
                 : binding.nh306d.isChecked() ? "4"
@@ -544,7 +548,8 @@ public class SectionA4Activity extends AppCompatActivity {
                 : binding.nh306f.isChecked() ? "6"
                 : binding.nh30696.isChecked() ? "96"
                 : "0");
-        sA4.put("nh30696x", binding.nh30696x.getText().toString());
+
+        MainApp.fc.setNh30696x(binding.nh30696x.getText().toString());
 
 
         MainApp.fc.setNh307(binding.nh307a.isChecked() ? "1"
@@ -559,15 +564,15 @@ public class SectionA4Activity extends AppCompatActivity {
                 : binding.nh30796.isChecked() ? "96"
                 : "0");
 
-        sA4.put("nh30796x", binding.nh30796x.getText().toString());
+        MainApp.fc.setNh30796x(binding.nh30796x.getText().toString());
 
-        sA4.put("nh308", binding.nh308a.isChecked() ? "1"
+        MainApp.fc.setNh308(binding.nh308a.isChecked() ? "1"
                 : binding.nh308b.isChecked() ? "2"
                 : "0");
 
-        sA4.put("nh309", binding.nh309.getText().toString());
+        MainApp.fc.setNh309(binding.nh309.getText().toString());
 //        nh310
-        sA4.put("nh310", binding.nh310a.isChecked() ? "1"
+        MainApp.fc.setNh310(binding.nh310a.isChecked() ? "1"
                 : binding.nh310b.isChecked() ? "2"
                 : binding.nh310c.isChecked() ? "3"
                 : binding.nh310d.isChecked() ? "4"
@@ -576,93 +581,109 @@ public class SectionA4Activity extends AppCompatActivity {
                 : binding.nh310g.isChecked() ? "7"
                 : binding.nh31096.isChecked() ? "96"
                 : "0");
-        sA4.put("nh31096x", binding.nh31096x.getText().toString());
+
+        MainApp.fc.setNh31096x(binding.nh31096x.getText().toString());
 //        nh311
-        sA4.put("nh31101", binding.nh31101a.isChecked() ? "1"
+        MainApp.fc.setNh31101(binding.nh31101a.isChecked() ? "1"
                 : binding.nh31101b.isChecked() ? "2"
                 : "0");
 
-        sA4.put("nh31102", binding.nh31102a.isChecked() ? "1"
+        MainApp.fc.setNh31102(binding.nh31102a.isChecked() ? "1"
                 : binding.nh31102b.isChecked() ? "2"
                 : "0");
 
-        sA4.put("nh31103", binding.nh31103a.isChecked() ? "1"
+        MainApp.fc.setNh31103(binding.nh31103a.isChecked() ? "1"
                 : binding.nh31103b.isChecked() ? "2"
                 : "0");
 
-        sA4.put("nh31104", binding.nh31104a.isChecked() ? "1"
+        MainApp.fc.setNh31104(binding.nh31104a.isChecked() ? "1"
                 : binding.nh31104b.isChecked() ? "2"
                 : "0");
 
-        sA4.put("nh31105", binding.nh31105a.isChecked() ? "1"
+        MainApp.fc.setNh31105(binding.nh31105a.isChecked() ? "1"
                 : binding.nh31105b.isChecked() ? "2"
                 : "0");
-        sA4.put("nh31106", binding.nh31106a.isChecked() ? "1"
+
+        MainApp.fc.setNh31106(binding.nh31106a.isChecked() ? "1"
                 : binding.nh31106b.isChecked() ? "2"
                 : "0");
-        sA4.put("nh31107", binding.nh31107a.isChecked() ? "1"
+
+        MainApp.fc.setNh31107(binding.nh31107a.isChecked() ? "1"
                 : binding.nh31107b.isChecked() ? "2"
                 : "0");
-        sA4.put("nh31108", binding.nh31108a.isChecked() ? "1"
+
+        MainApp.fc.setNh31108(binding.nh31108a.isChecked() ? "1"
                 : binding.nh31108b.isChecked() ? "2"
                 : "0");
-        sA4.put("nh31109", binding.nh31109a.isChecked() ? "1"
+
+        MainApp.fc.setNh31109(binding.nh31109a.isChecked() ? "1"
                 : binding.nh31109b.isChecked() ? "2"
                 : "0");
-        sA4.put("nh31110", binding.nh31110a.isChecked() ? "1"
+
+        MainApp.fc.setNh31110(binding.nh31110a.isChecked() ? "1"
                 : binding.nh31110b.isChecked() ? "2"
                 : "0");
-        sA4.put("nh31111", binding.nh31111a.isChecked() ? "1"
+
+        MainApp.fc.setNh31111(binding.nh31111a.isChecked() ? "1"
                 : binding.nh31111b.isChecked() ? "2"
                 : "0");
-        sA4.put("nh31112", binding.nh31112a.isChecked() ? "1"
+
+        MainApp.fc.setNh31112(binding.nh31112a.isChecked() ? "1"
                 : binding.nh31112b.isChecked() ? "2"
                 : "0");
-        sA4.put("nh31113", binding.nh31113a.isChecked() ? "1"
+
+
+        MainApp.fc.setNh31113(binding.nh31113a.isChecked() ? "1"
                 : binding.nh31113b.isChecked() ? "2"
                 : "0");
-        sA4.put("nh31114", binding.nh31114a.isChecked() ? "1"
+
+        MainApp.fc.setNh31114(binding.nh31114a.isChecked() ? "1"
                 : binding.nh31114b.isChecked() ? "2"
                 : "0");
-        sA4.put("nh31115", binding.nh31115a.isChecked() ? "1"
+
+        MainApp.fc.setNh31115(binding.nh31115a.isChecked() ? "1"
                 : binding.nh31115b.isChecked() ? "2"
                 : "0");
-        sA4.put("nh31116", binding.nh31116a.isChecked() ? "1"
+
+        MainApp.fc.setNh31116(binding.nh31116a.isChecked() ? "1"
                 : binding.nh31116b.isChecked() ? "2"
                 : "0");
-        sA4.put("nh31117", binding.nh31117a.isChecked() ? "1"
+
+        MainApp.fc.setNh31117(binding.nh31117a.isChecked() ? "1"
                 : binding.nh31117b.isChecked() ? "2"
                 : "0");
-        sA4.put("nh31118", binding.nh31118a.isChecked() ? "1"
+
+        MainApp.fc.setNh31118(binding.nh31118a.isChecked() ? "1"
                 : binding.nh31118b.isChecked() ? "2"
                 : "0");
-        sA4.put("nh31119", binding.nh31119a.isChecked() ? "1"
+
+        MainApp.fc.setNh31119(binding.nh31119a.isChecked() ? "1"
                 : binding.nh31119b.isChecked() ? "2"
                 : "0");
 
 //        nh312
-        sA4.put("nh312a", binding.nh312a1.isChecked() ? "1" : binding.nh312a2.isChecked() ? "2" : "0");
-        sA4.put("nh312b", binding.nh312b1.isChecked() ? "1" : binding.nh312b2.isChecked() ? "2" : "0");
-        sA4.put("nh312c", binding.nh312c1.isChecked() ? "1" : binding.nh312c2.isChecked() ? "2" : "0");
-        sA4.put("nh312d", binding.nh312d1.isChecked() ? "1" : binding.nh312d2.isChecked() ? "2" : "0");
-        sA4.put("nh312e", binding.nh312e1.isChecked() ? "1" : binding.nh312e2.isChecked() ? "2" : "0");
-        sA4.put("nh312f", binding.nh312f1.isChecked() ? "1" : binding.nh312f2.isChecked() ? "2" : "0");
-        sA4.put("nh312g", binding.nh312g1.isChecked() ? "1" : binding.nh312g2.isChecked() ? "2" : "0");
-        sA4.put("nh312h", binding.nh312h1.isChecked() ? "1" : binding.nh312h2.isChecked() ? "2" : "0");
-        sA4.put("nh312i", binding.nh312i1.isChecked() ? "1" : binding.nh312i2.isChecked() ? "2" : "0");
+        MainApp.fc.setNh312a(binding.nh312a1.isChecked() ? "1" : binding.nh312a2.isChecked() ? "2" : "0");
+        MainApp.fc.setNh312b(binding.nh312b1.isChecked() ? "1" : binding.nh312b2.isChecked() ? "2" : "0");
+        MainApp.fc.setNh312c(binding.nh312c1.isChecked() ? "1" : binding.nh312c2.isChecked() ? "2" : "0");
+        MainApp.fc.setNh312d(binding.nh312d1.isChecked() ? "1" : binding.nh312d2.isChecked() ? "2" : "0");
+        MainApp.fc.setNh312e(binding.nh312e1.isChecked() ? "1" : binding.nh312e2.isChecked() ? "2" : "0");
+        MainApp.fc.setNh312f(binding.nh312f1.isChecked() ? "1" : binding.nh312f2.isChecked() ? "2" : "0");
+        MainApp.fc.setNh312g(binding.nh312g1.isChecked() ? "1" : binding.nh312g2.isChecked() ? "2" : "0");
+        MainApp.fc.setNh312h(binding.nh312h1.isChecked() ? "1" : binding.nh312h2.isChecked() ? "2" : "0");
+        MainApp.fc.setNh312i(binding.nh312i1.isChecked() ? "1" : binding.nh312i2.isChecked() ? "2" : "0");
 
 //        nh313
-        sA4.put("nh313a", binding.nh313a.isChecked() ? "1" : "0");
-        sA4.put("nh313b", binding.nh313b.isChecked() ? "2" : "0");
-        sA4.put("nh313c", binding.nh313c.isChecked() ? "3" : "0");
-        sA4.put("nh313d", binding.nh313d.isChecked() ? "4" : "0");
-        sA4.put("nh313e", binding.nh313e.isChecked() ? "5" : "0");
-        sA4.put("nh313f", binding.nh313f.isChecked() ? "6" : "0");
-        sA4.put("nh31396", binding.nh31396.isChecked() ? "96" : "0");
-        sA4.put("nh31396x", binding.nh31496x.getText().toString());
+        MainApp.fc.setNh313a(binding.nh313a.isChecked() ? "1" : "0");
+        MainApp.fc.setNh313b(binding.nh313b.isChecked() ? "2" : "0");
+        MainApp.fc.setNh313c(binding.nh313c.isChecked() ? "3" : "0");
+        MainApp.fc.setNh313d(binding.nh313d.isChecked() ? "4" : "0");
+        MainApp.fc.setNh313e(binding.nh313e.isChecked() ? "5" : "0");
+        MainApp.fc.setNh313f(binding.nh313f.isChecked() ? "6" : "0");
+        MainApp.fc.setNh31396(binding.nh31396.isChecked() ? "96" : "0");
+        MainApp.fc.setNh31396x(binding.nh31496x.getText().toString());
 
 //        nh314
-        sA4.put("nh314", binding.nh314a.isChecked() ? "1"
+        MainApp.fc.setNh314(binding.nh314a.isChecked() ? "1"
                 : binding.nh314b.isChecked() ? "2"
                 : binding.nh314c.isChecked() ? "3"
                 : binding.nh314d.isChecked() ? "4"
@@ -675,21 +696,23 @@ public class SectionA4Activity extends AppCompatActivity {
                 : binding.nh314k.isChecked() ? "11"
                 : binding.nh31496.isChecked() ? "96"
                 : "0");
-        sA4.put("nh31496x", binding.nh31496x.getText().toString());
+
+        MainApp.fc.setNh31496x(binding.nh31496x.getText().toString());
 //       nh315
-        sA4.put("nh315", binding.nh315a.isChecked() ? "1"
+        MainApp.fc.setNh315(binding.nh315a.isChecked() ? "1"
                 : binding.nh315b.isChecked() ? "2"
                 : binding.nh315c.isChecked() ? "3"
                 : binding.nh31596.isChecked() ? "96"
                 : "0");
-        sA4.put("nh31596x", binding.nh31596x.getText().toString());
+
+        MainApp.fc.setNh31596x(binding.nh31596x.getText().toString());
 //        nh316
-        sA4.put("nh316", binding.nh316a.isChecked() ? "1"
+        MainApp.fc.setNh316(binding.nh316a.isChecked() ? "1"
                 : binding.nh316b.isChecked() ? "2"
                 : "0");
 
 //        nh317
-        sA4.put("nh317", binding.nh317a.isChecked() ? "1"
+        MainApp.fc.setNh317(binding.nh317a.isChecked() ? "1"
                 : binding.nh317b.isChecked() ? "2"
                 : binding.nh317c.isChecked() ? "3"
                 : binding.nh317d.isChecked() ? "4"
@@ -702,11 +725,12 @@ public class SectionA4Activity extends AppCompatActivity {
                 : binding.nh317k.isChecked() ? "11"
                 : binding.nh31796.isChecked() ? "96"
                 : "0");
-        sA4.put("nh31796x", binding.nh31796x.getText().toString());
+
+        MainApp.fc.setNh31796x(binding.nh31796x.getText().toString());
 
 //        nh318
 
-        sA4.put("nh318", binding.nh318a.isChecked() ? "1"
+        MainApp.fc.setNh318(binding.nh318a.isChecked() ? "1"
                 : binding.nh318b.isChecked() ? "2"
                 : binding.nh318c.isChecked() ? "3"
                 : binding.nh318d.isChecked() ? "4"
@@ -722,10 +746,11 @@ public class SectionA4Activity extends AppCompatActivity {
                 : binding.nh318n.isChecked() ? "14"
                 : binding.nh31896.isChecked() ? "96"
                 : "0");
-        sA4.put("nh31896x", binding.nh31896x.getText().toString());
+
+        MainApp.fc.setNh31896x(binding.nh31896x.getText().toString());
 
 //          nh319
-        sA4.put("nh319", binding.nh319a.isChecked() ? "1"
+        MainApp.fc.setNh319(binding.nh319a.isChecked() ? "1"
                 : binding.nh319b.isChecked() ? "2"
                 : binding.nh319c.isChecked() ? "3"
                 : binding.nh319d.isChecked() ? "4"
@@ -743,36 +768,38 @@ public class SectionA4Activity extends AppCompatActivity {
                 : binding.nh319p.isChecked() ? "16"
                 : binding.nh31996.isChecked() ? "96"
                 : "0");
-        sA4.put("nh31996x", binding.nh31996x.getText().toString());
+
+        MainApp.fc.setNh31996x(binding.nh31996x.getText().toString());
 
 //        nh320
-        sA4.put("nh320", binding.nh320.getText().toString());
+        MainApp.fc.setNh320(binding.nh320.getText().toString());
 
 //        nh321
-        sA4.put("nh321", binding.nh321a.isChecked() ? "1"
+        MainApp.fc.setNh321(binding.nh321a.isChecked() ? "1"
                 : binding.nh321b.isChecked() ? "2"
                 : "0");
 
 //        nh322
-        sA4.put("nh322", binding.nh322a.isChecked() ? "1"
+        MainApp.fc.setNh322(binding.nh322a.isChecked() ? "1"
                 : binding.nh322b.isChecked() ? "2"
                 : binding.nh32298.isChecked() ? "3"
                 : "0");
-        sA4.put("nh322acr", binding.nh322acr.getText().toString());
-        sA4.put("nh322can", binding.nh322can.getText().toString());
+
+        MainApp.fc.setNh322acr(binding.nh322acr.getText().toString());
+        MainApp.fc.setNh322can(binding.nh322can.getText().toString());
 
 //        nh323
-        sA4.put("nh323", binding.nh323a.isChecked() ? "1"
+        MainApp.fc.setNh323(binding.nh323a.isChecked() ? "1"
                 : binding.nh323b.isChecked() ? "2"
                 : "0");
 //        nh324
-        sA4.put("nh324a", binding.nh324a.getText().toString());
-        sA4.put("nh324b", binding.nh324b.getText().toString());
-        sA4.put("nh324c", binding.nh324c.getText().toString());
-        sA4.put("nh324d", binding.nh324d.getText().toString());
-        sA4.put("nh324e", binding.nh324e.getText().toString());
-        sA4.put("nh324f", binding.nh324f.getText().toString());
-        sA4.put("nh324g", binding.nh324g.getText().toString());
+        MainApp.fc.setNh324a(binding.nh324a.getText().toString());
+        MainApp.fc.setNh324b(binding.nh324b.getText().toString());
+        MainApp.fc.setNh324c(binding.nh324c.getText().toString());
+        MainApp.fc.setNh324d(binding.nh324d.getText().toString());
+        MainApp.fc.setNh324e(binding.nh324e.getText().toString());
+        MainApp.fc.setNh324f(binding.nh324f.getText().toString());
+        MainApp.fc.setNh324g(binding.nh324g.getText().toString());
 
 
         //MainApp.fc.setSA4(String.valueOf(sA4));
