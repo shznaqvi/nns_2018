@@ -13,6 +13,7 @@ import org.json.JSONObject;
 import java.util.Timer;
 
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.MWRA;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB3Binding;
@@ -166,16 +167,19 @@ public class SectionB3Activity extends AppCompatActivity {
     private void SaveDraft() throws JSONException {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
-        JSONObject sB3 = new JSONObject();
+        //JSONObject sB3 = new JSONObject();
 
-        sB3.put("nw327", binding.nw327a.isChecked() ? "1"
+        MainApp.mc = new MWRA();
+
+        MainApp.mc.setNw327(binding.nw327a.isChecked() ? "1"
                 : binding.nw327b.isChecked() ? "2"
                 : binding.nw32798.isChecked() ? "98"
                 : "0");
-        sB3.put("nw327m", binding.nw327m.getText().toString());
-        sB3.put("nw327d", binding.nw327d.getText().toString());
 
-        sB3.put("nw328", binding.nw328a.isChecked() ? "1"
+        MainApp.mc.setNw327m(binding.nw327m.getText().toString());
+        MainApp.mc.setNw327d(binding.nw327d.getText().toString());
+
+        MainApp.mc.setNw328(binding.nw328a.isChecked() ? "1"
                 : binding.nw328b.isChecked() ? "2"
                 : binding.nw328c.isChecked() ? "3"
                 : binding.nw328d.isChecked() ? "4"
@@ -183,35 +187,35 @@ public class SectionB3Activity extends AppCompatActivity {
                 : binding.nw32896.isChecked() ? "96"
                 : "0");
 
-        sB3.put("nw32896x", binding.nw32896x.getText().toString());
+        MainApp.mc.setNw32896x(binding.nw32896x.getText().toString());
 
-        sB3.put("nw329a", binding.nw329a.isChecked() ? "1" : "0");
-        sB3.put("nw329b", binding.nw329b.isChecked() ? "2" : "0");
-        sB3.put("nw329c", binding.nw329c.isChecked() ? "3" : "0");
-        sB3.put("nw329d", binding.nw329d.isChecked() ? "4" : "0");
-        sB3.put("nw329e", binding.nw329e.isChecked() ? "5" : "0");
-        sB3.put("nw329f", binding.nw329f.isChecked() ? "6" : "0");
-        sB3.put("nw329g", binding.nw329g.isChecked() ? "7" : "0");
-        sB3.put("nw329h", binding.nw329h.isChecked() ? "8" : "0");
+        MainApp.mc.setNw329a(binding.nw329a.isChecked() ? "1" : "0");
+        MainApp.mc.setNw329b(binding.nw329b.isChecked() ? "2" : "0");
+        MainApp.mc.setNw329c(binding.nw329c.isChecked() ? "3" : "0");
+        MainApp.mc.setNw329d(binding.nw329d.isChecked() ? "4" : "0");
+        MainApp.mc.setNw329e(binding.nw329e.isChecked() ? "5" : "0");
+        MainApp.mc.setNw329f(binding.nw329f.isChecked() ? "6" : "0");
+        MainApp.mc.setNw329g(binding.nw329g.isChecked() ? "7" : "0");
+        MainApp.mc.setNw329h(binding.nw329h.isChecked() ? "8" : "0");
 
 
-        sB3.put("nw330", binding.nw330a.isChecked() ? "1"
+        MainApp.mc.setNw330(binding.nw330a.isChecked() ? "1"
                 : binding.nw330b.isChecked() ? "2"
                 : binding.nw330c.isChecked() ? "3"
                 : binding.nw330d.isChecked() ? "4"
                 : "0");
 
-        sB3.put("nw331", binding.nw331a.isChecked() ? "1"
+        MainApp.mc.setNw331(binding.nw331a.isChecked() ? "1"
                 : binding.nw331b.isChecked() ? "2"
                 : "0");
 
-        sB3.put("nw332", binding.nw332a.isChecked() ? "1"
+        MainApp.mc.setNw332(binding.nw332a.isChecked() ? "1"
                 : binding.nw332b.isChecked() ? "2"
                 : binding.nw332c.isChecked() ? "3"
                 : binding.nw332d.isChecked() ? "4"
                 : "0");
 
-        MainApp.mc.setsB3(String.valueOf(sB3));
+        //MainApp.mc.setsB3(String.valueOf(sB3));
 
 
         //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
