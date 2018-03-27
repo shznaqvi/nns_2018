@@ -219,6 +219,8 @@ public class MWRA extends BaseModel {
     @Column
     private String nw312963x;
     @Column
+    private String nw313;
+    @Column
     private String nw314m;
     @Column
     private String nw314d;
@@ -226,6 +228,8 @@ public class MWRA extends BaseModel {
     private String nw315;
     @Column
     private String nw316;
+    @Column
+    private String nw31696x;
     @Column
     private String nw317a;
     @Column
@@ -275,7 +279,7 @@ public class MWRA extends BaseModel {
     @Column
     private String nw321;
     @Column
-    private String nwnw32196x;
+    private String nw32196x;
     @Column
     private String nw322a;
     @Column
@@ -324,7 +328,6 @@ public class MWRA extends BaseModel {
     private String nw325;
     @Column
     private String nw326;
-
     // SB3
     @Column
     private String nw327;
@@ -358,7 +361,6 @@ public class MWRA extends BaseModel {
     private String nw331;
     @Column
     private String nw332;
-
     // SB4
     @Column
     private String nw401;
@@ -438,7 +440,6 @@ public class MWRA extends BaseModel {
     private String nw41296x;
     @Column
     private String nw413;
-
     // SB5
     @Column
     private String nw414;
@@ -535,6 +536,21 @@ public class MWRA extends BaseModel {
     @Column
     private String nw42396x;
 
+    public String getNw313() {
+        return nw313;
+    }
+
+    public void setNw313(String nw313) {
+        this.nw313 = nw313;
+    }
+
+    public String getNw31696x() {
+        return nw31696x;
+    }
+
+    public void setNw31696x(String nw31696x) {
+        this.nw31696x = nw31696x;
+    }
 
     public String get_uid() {
         return _uid;
@@ -1528,12 +1544,12 @@ public class MWRA extends BaseModel {
         this.nw321 = nw321;
     }
 
-    public String getNwnw32196x() {
-        return nwnw32196x;
+    public String getNw32196x() {
+        return nw32196x;
     }
 
-    public void setNwnw32196x(String nwnw32196x) {
-        this.nwnw32196x = nwnw32196x;
+    public void setNw32196x(String nw32196x) {
+        this.nw32196x = nw32196x;
     }
 
     public String getNw322a() {

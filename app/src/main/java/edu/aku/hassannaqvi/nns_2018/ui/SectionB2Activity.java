@@ -634,27 +634,28 @@ public class SectionB2Activity extends Activity {
 
     private void SaveDraft() throws JSONException {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
-//       nw301
         JSONObject sB2 = new JSONObject();
-        sB2.put("nw301", bi.nw301a.isChecked() ? "1"
+
+
+        MainApp.mc.setNw301(bi.nw301a.isChecked() ? "1"
                 : bi.nw301b.isChecked() ? "2"
                 : "0");
 
 //       nw302
-        sB2.put("nw302a", bi.nw302a.isChecked() ? "1" : "0");
-        sB2.put("nw302b", bi.nw302b.isChecked() ? "2" : "0");
-        sB2.put("nw302c", bi.nw302c.isChecked() ? "3" : "0");
-        sB2.put("nw302d", bi.nw302d.isChecked() ? "4" : "0");
-        sB2.put("nw302e", bi.nw302e.isChecked() ? "5" : "0");
-        sB2.put("nw302f", bi.nw302f.isChecked() ? "6" : "0");
-        sB2.put("nw302g", bi.nw302g.isChecked() ? "7" : "0");
-        sB2.put("nw302h", bi.nw302h.isChecked() ? "8" : "0");
-        sB2.put("nw30296", bi.nw30296.isChecked() ? "96" : "0");
+        MainApp.mc.setNw302a(bi.nw302a.isChecked() ? "1" : "0");
+        MainApp.mc.setNw302b(bi.nw302b.isChecked() ? "2" : "0");
+        MainApp.mc.setNw302c(bi.nw302c.isChecked() ? "3" : "0");
+        MainApp.mc.setNw302d(bi.nw302d.isChecked() ? "4" : "0");
+        MainApp.mc.setNw302e(bi.nw302e.isChecked() ? "5" : "0");
+        MainApp.mc.setNw302f(bi.nw302f.isChecked() ? "6" : "0");
+        MainApp.mc.setNw302g(bi.nw302g.isChecked() ? "7" : "0");
+        MainApp.mc.setNw302h(bi.nw302h.isChecked() ? "8" : "0");
+        MainApp.mc.setNw30296(bi.nw30296.isChecked() ? "96" : "0");
 
-        sB2.put("nw30296x", bi.nw30296x.getText().toString());
+        MainApp.mc.setNw30296x(bi.nw30296x.getText().toString());
 
 //      nw303
-        sB2.put("nw303", bi.nw303a.isChecked() ? "1"
+        MainApp.mc.setNw303(bi.nw303a.isChecked() ? "1"
                 : bi.nw303b.isChecked() ? "2"
                 : bi.nw303c.isChecked() ? "3"
                 : bi.nw303d.isChecked() ? "4"
@@ -666,56 +667,56 @@ public class SectionB2Activity extends Activity {
                 : bi.nw303j.isChecked() ? "10"
                 : bi.nw30396.isChecked() ? "96"
                 : "0");
-        sB2.put("nw303961x", bi.nw303961x.getText().toString());
-        sB2.put("nw303962x", bi.nw303962x.getText().toString());
-        sB2.put("nw303963x", bi.nw303963x.getText().toString());
+        MainApp.mc.setNw303961x(bi.nw303961x.getText().toString());
+        MainApp.mc.setNw303962x(bi.nw303962x.getText().toString());
+        MainApp.mc.setNw303963x(bi.nw303963x.getText().toString());
 
 
 //        nw304
-        sB2.put("nw304", bi.nw304w.getText().toString());
-        sB2.put("nw30498", bi.nw30498.isChecked() ? "98" : "0");
+        MainApp.mc.setNw304(bi.nw304w.getText().toString());
+        MainApp.mc.setNw30498(bi.nw30498.isChecked() ? "98" : "0");
 
 
 //        nw204
-        sB2.put("nw305", bi.nw305.getText().toString());
-        sB2.put("nw30598", bi.nw30598.isChecked() ? "98" : "0");
+        MainApp.mc.setNw305(bi.nw305.getText().toString());
+        MainApp.mc.setNw30598(bi.nw30598.isChecked() ? "98" : "0");
 
 //      nw306
-        sB2.put("nw306a", bi.nw306a.isChecked() ? "1" : "0");
-        sB2.put("nw306b", bi.nw306b.isChecked() ? "2" : "0");
-        sB2.put("nw306c", bi.nw306c.isChecked() ? "3" : "0");
-        sB2.put("nw306d", bi.nw306d.isChecked() ? "4" : "0");
-        sB2.put("nw306e", bi.nw306e.isChecked() ? "5" : "0");
-        sB2.put("nw306f", bi.nw306f.isChecked() ? "6" : "0");
-        sB2.put("nw306g", bi.nw306g.isChecked() ? "7" : "0");
-        sB2.put("nw306h", bi.nw306h.isChecked() ? "8" : "0");
-        sB2.put("nw306i", bi.nw306i.isChecked() ? "9" : "0");
-        sB2.put("nw30696", bi.nw30696.isChecked() ? "96" : "0");
-        sB2.put("nw30696x", bi.nw30696x.getText().toString());
+        MainApp.mc.setNw306a(bi.nw306a.isChecked() ? "1" : "0");
+        MainApp.mc.setNw306b(bi.nw306b.isChecked() ? "2" : "0");
+        MainApp.mc.setNw306c(bi.nw306c.isChecked() ? "3" : "0");
+        MainApp.mc.setNw306d(bi.nw306d.isChecked() ? "4" : "0");
+        MainApp.mc.setNw306e(bi.nw306e.isChecked() ? "5" : "0");
+        MainApp.mc.setNw306f(bi.nw306f.isChecked() ? "6" : "0");
+        MainApp.mc.setNw306g(bi.nw306g.isChecked() ? "7" : "0");
+        MainApp.mc.setNw306h(bi.nw306h.isChecked() ? "8" : "0");
+        MainApp.mc.setNw306i(bi.nw306i.isChecked() ? "9" : "0");
+        MainApp.mc.setNw30696(bi.nw30696.isChecked() ? "96" : "0");
+        MainApp.mc.setNw30696x(bi.nw30696x.getText().toString());
 
 //        nw307
-        sB2.put("nw307", bi.nw307a.isChecked() ? "1"
+        MainApp.mc.setNw307(bi.nw307a.isChecked() ? "1"
                 : bi.nw307b.isChecked() ? "2"
                 : bi.nw307c.isChecked() ? "3"
                 : bi.nw30798.isChecked() ? "98"
                 : "0");
 //        nw308
-        sB2.put("nw308", bi.nw308a.isChecked() ? "1"
+        MainApp.mc.setNw308(bi.nw308a.isChecked() ? "1"
                 : bi.nw308b.isChecked() ? "2"
                 : bi.nw30898.isChecked() ? "98"
                 : "0");
 //        nw309
 
-        sB2.put("nw309", bi.nw30998.isChecked() ? "98" : bi.nw309.getText().toString());
+        MainApp.mc.setNw309(bi.nw30998.isChecked() ? "98" : bi.nw309.getText().toString());
 //        sB2.put("nw30998", bi.nw30998.isChecked() ? "98" : "0");
 
 //        nw310
-        sB2.put("nw310", bi.nw310a.isChecked() ? "1"
+        MainApp.mc.setNw310(bi.nw310a.isChecked() ? "1"
                 : bi.nw310b.isChecked() ? "2"
                 : "0");
 
 //          nw311
-        sB2.put("nw311", bi.nw311a.isChecked() ? "1"
+        MainApp.mc.setNw311(bi.nw311a.isChecked() ? "1"
                 : bi.nw311b.isChecked() ? "2"
                 : bi.nw311c.isChecked() ? "3"
                 : bi.nw311d.isChecked() ? "4"
@@ -725,31 +726,31 @@ public class SectionB2Activity extends Activity {
                 : bi.nw311h.isChecked() ? "8"
                 : bi.nw31196.isChecked() ? "96"
                 : "0");
-        sB2.put("nw31196x", bi.nw31196x.getText().toString());
+        MainApp.mc.setNw31196x(bi.nw31196x.getText().toString());
 //        nw312
-        sB2.put("nw312a", bi.nw312a.isChecked() ? "1" : "0");
-        sB2.put("nw312b", bi.nw312b.isChecked() ? "2" : "0");
-        sB2.put("nw312c", bi.nw312c.isChecked() ? "3" : "0");
-        sB2.put("nw312d", bi.nw312d.isChecked() ? "4" : "0");
-        sB2.put("nw312e", bi.nw312e.isChecked() ? "5" : "0");
-        sB2.put("nw312f", bi.nw312f.isChecked() ? "6" : "0");
-        sB2.put("nw312g", bi.nw312g.isChecked() ? "7" : "0");
-        sB2.put("nw312h", bi.nw312h.isChecked() ? "8" : "0");
-        sB2.put("nw312i", bi.nw312i.isChecked() ? "9" : "0");
-        sB2.put("nw312j", bi.nw312j.isChecked() ? "10" : "0");
-        sB2.put("nw312k", bi.nw312k.isChecked() ? "11" : "0");
-        sB2.put("nw312l", bi.nw312l.isChecked() ? "12" : "0");
-        sB2.put("nw312m", bi.nw312m.isChecked() ? "13" : "0");
-        sB2.put("nw312961", bi.nw312961.isChecked() ? "961" : "0");
-        sB2.put("nw312962", bi.nw312962.isChecked() ? "962" : "0");
-        sB2.put("nw312963", bi.nw312963.isChecked() ? "963" : "0");
+        MainApp.mc.setNw312a(bi.nw312a.isChecked() ? "1" : "0");
+        MainApp.mc.setNw312b(bi.nw312b.isChecked() ? "2" : "0");
+        MainApp.mc.setNw312c(bi.nw312c.isChecked() ? "3" : "0");
+        MainApp.mc.setNw312d(bi.nw312d.isChecked() ? "4" : "0");
+        MainApp.mc.setNw312e(bi.nw312e.isChecked() ? "5" : "0");
+        MainApp.mc.setNw312f(bi.nw312f.isChecked() ? "6" : "0");
+        MainApp.mc.setNw312g(bi.nw312g.isChecked() ? "7" : "0");
+        MainApp.mc.setNw312h(bi.nw312h.isChecked() ? "8" : "0");
+        MainApp.mc.setNw312i(bi.nw312i.isChecked() ? "9" : "0");
+        MainApp.mc.setNw312j(bi.nw312j.isChecked() ? "10" : "0");
+        MainApp.mc.setNw312k(bi.nw312k.isChecked() ? "11" : "0");
+        MainApp.mc.setNw312l(bi.nw312l.isChecked() ? "12" : "0");
+        MainApp.mc.setNw312m(bi.nw312m.isChecked() ? "13" : "0");
+        MainApp.mc.setNw312961(bi.nw312961.isChecked() ? "961" : "0");
+        MainApp.mc.setNw312962(bi.nw312962.isChecked() ? "962" : "0");
+        MainApp.mc.setNw312963(bi.nw312963.isChecked() ? "963" : "0");
 
-        sB2.put("nw312961x", bi.nw312961x.getText().toString());
-        sB2.put("nw312962x", bi.nw312962x.getText().toString());
-        sB2.put("nw312963x", bi.nw312963x.getText().toString());
+        MainApp.mc.setNw312961x(bi.nw312961x.getText().toString());
+        MainApp.mc.setNw312962x(bi.nw312962x.getText().toString());
+        MainApp.mc.setNw312963x(bi.nw312963x.getText().toString());
 
 //         nw313
-        sB2.put("nw313", bi.nw313a.isChecked() ? "1"
+        MainApp.mc.setNw313(bi.nw313a.isChecked() ? "1"
                 : bi.nw313b.isChecked() ? "2"
                 : bi.nw313c.isChecked() ? "3"
                 : bi.nw313d.isChecked() ? "4"
@@ -757,17 +758,17 @@ public class SectionB2Activity extends Activity {
                 : "0");
 
 //        nw314
-        sB2.put("nw314m", bi.nw314m.getText().toString());
-        sB2.put("nw314d", bi.nw314d.getText().toString());
+        MainApp.mc.setNw314m(bi.nw314m.getText().toString());
+        MainApp.mc.setNw314d(bi.nw314d.getText().toString());
 
         //        nw315
-        sB2.put("nw315", bi.nw315a.isChecked() ? "1"
+        MainApp.mc.setNw315(bi.nw315a.isChecked() ? "1"
                 : bi.nw315b.isChecked() ? "2"
                 : "0");
 
 //        nw316
 
-        sB2.put("nw316", bi.nw316a.isChecked() ? "1"
+        MainApp.mc.setNw316(bi.nw316a.isChecked() ? "1"
                 : bi.nw316b.isChecked() ? "2"
                 : bi.nw316c.isChecked() ? "3"
                 : bi.nw316d.isChecked() ? "4"
@@ -777,33 +778,33 @@ public class SectionB2Activity extends Activity {
                 : bi.nw316h.isChecked() ? "8"
                 : bi.nw31696.isChecked() ? "96"
                 : "0");
-        sB2.put("nw31696x", bi.nw31696x.getText().toString());
+        MainApp.mc.setNw31696x(bi.nw31696x.getText().toString());
 
 //        nw317
-        sB2.put("nw317a", bi.nw317a.isChecked() ? "1" : "0");
-        sB2.put("nw317b", bi.nw317b.isChecked() ? "2" : "0");
-        sB2.put("nw317c", bi.nw317c.isChecked() ? "3" : "0");
-        sB2.put("nw317d", bi.nw317d.isChecked() ? "4" : "0");
-        sB2.put("nw317e", bi.nw317e.isChecked() ? "5" : "0");
-        sB2.put("nw317f", bi.nw317f.isChecked() ? "6" : "0");
-        sB2.put("nw317g", bi.nw317g.isChecked() ? "7" : "0");
-        sB2.put("nw317h", bi.nw317h.isChecked() ? "8" : "0");
-        sB2.put("nw317i", bi.nw317i.isChecked() ? "9" : "0");
-        sB2.put("nw317j", bi.nw317j.isChecked() ? "10" : "0");
-        sB2.put("nw317k", bi.nw317k.isChecked() ? "11" : "0");
-        sB2.put("nw317l", bi.nw317l.isChecked() ? "12" : "0");
-        sB2.put("nw317m", bi.nw317m.isChecked() ? "13" : "0");
-        sB2.put("nw317961", bi.nw317961.isChecked() ? "961" : "0");
-        sB2.put("nw317962", bi.nw317962.isChecked() ? "962" : "0");
-        sB2.put("nw317963", bi.nw317963.isChecked() ? "963" : "0");
+        MainApp.mc.setNw317a(bi.nw317a.isChecked() ? "1" : "0");
+        MainApp.mc.setNw317b(bi.nw317b.isChecked() ? "2" : "0");
+        MainApp.mc.setNw317c(bi.nw317c.isChecked() ? "3" : "0");
+        MainApp.mc.setNw317d(bi.nw317d.isChecked() ? "4" : "0");
+        MainApp.mc.setNw317e(bi.nw317e.isChecked() ? "5" : "0");
+        MainApp.mc.setNw317f(bi.nw317f.isChecked() ? "6" : "0");
+        MainApp.mc.setNw317g(bi.nw317g.isChecked() ? "7" : "0");
+        MainApp.mc.setNw317h(bi.nw317h.isChecked() ? "8" : "0");
+        MainApp.mc.setNw317i(bi.nw317i.isChecked() ? "9" : "0");
+        MainApp.mc.setNw317j(bi.nw317j.isChecked() ? "10" : "0");
+        MainApp.mc.setNw317k(bi.nw317k.isChecked() ? "11" : "0");
+        MainApp.mc.setNw317l(bi.nw317l.isChecked() ? "12" : "0");
+        MainApp.mc.setNw317m(bi.nw317m.isChecked() ? "13" : "0");
+        MainApp.mc.setNw317961(bi.nw317961.isChecked() ? "961" : "0");
+        MainApp.mc.setNw317962(bi.nw317962.isChecked() ? "962" : "0");
+        MainApp.mc.setNw317963(bi.nw317963.isChecked() ? "963" : "0");
 
-        sB2.put("nw317961x", bi.nw317961x.getText().toString());
-        sB2.put("nw317962x", bi.nw317962x.getText().toString());
-        sB2.put("nw317963x", bi.nw317963x.getText().toString());
+        MainApp.mc.setNw317961x(bi.nw317961x.getText().toString());
+        MainApp.mc.setNw317962x(bi.nw317962x.getText().toString());
+        MainApp.mc.setNw317963x(bi.nw317963x.getText().toString());
 
 
 //        nw318
-        sB2.put("nw318", bi.nw318a.isChecked() ? "1"
+        MainApp.mc.setNw318(bi.nw318a.isChecked() ? "1"
                 : bi.nw318b.isChecked() ? "2"
                 : bi.nw318b.isChecked() ? "3"
                 : bi.nw318b.isChecked() ? "4"
@@ -811,18 +812,18 @@ public class SectionB2Activity extends Activity {
                 : "0");
 
 //        nw319
-        sB2.put("nw319m", bi.nw319m.getText().toString());
-        sB2.put("nw319d", bi.nw319d.getText().toString());
+        MainApp.mc.setNw319m(bi.nw319m.getText().toString());
+        MainApp.mc.setNw319d(bi.nw319d.getText().toString());
 
 //        nw320
-        sB2.put("nw320", bi.nw320a.isChecked() ? "1"
+        MainApp.mc.setNw320(bi.nw320a.isChecked() ? "1"
                 : bi.nw320b.isChecked() ? "2"
                 : "0");
 
 
 //        nw321
 
-        sB2.put("nw321", bi.nw321a.isChecked() ? "1"
+        MainApp.mc.setNw321(bi.nw321a.isChecked() ? "1"
                 : bi.nw321b.isChecked() ? "2"
                 : bi.nw321c.isChecked() ? "3"
                 : bi.nw321d.isChecked() ? "4"
@@ -832,34 +833,34 @@ public class SectionB2Activity extends Activity {
                 : bi.nw321h.isChecked() ? "8"
                 : bi.nw32196.isChecked() ? "96"
                 : "0");
-        sB2.put("nwnw32196x", bi.nw32196x.getText().toString());
+        MainApp.mc.setNw32196x(bi.nw32196x.getText().toString());
 
 //        nw322
-        sB2.put("nw322a", bi.nw322a.isChecked() ? "1" : "0");
-        sB2.put("nw322b", bi.nw322b.isChecked() ? "2" : "0");
-        sB2.put("nw322c", bi.nw322c.isChecked() ? "3" : "0");
-        sB2.put("nw322d", bi.nw322d.isChecked() ? "4" : "0");
-        sB2.put("nw322e", bi.nw322e.isChecked() ? "5" : "0");
-        sB2.put("nw322f", bi.nw322f.isChecked() ? "6" : "0");
-        sB2.put("nw322g", bi.nw322g.isChecked() ? "7" : "0");
-        sB2.put("nw322h", bi.nw322h.isChecked() ? "8" : "0");
-        sB2.put("nw322i", bi.nw322i.isChecked() ? "9" : "0");
-        sB2.put("nw322j", bi.nw322j.isChecked() ? "10" : "0");
-        sB2.put("nw322k", bi.nw322k.isChecked() ? "11" : "0");
-        sB2.put("nw322l", bi.nw322l.isChecked() ? "12" : "0");
-        sB2.put("nw322m", bi.nw322m.isChecked() ? "13" : "0");
-        sB2.put("nw322961", bi.nw322961.isChecked() ? "961" : "0");
-        sB2.put("nw322962", bi.nw322962.isChecked() ? "962" : "0");
-        sB2.put("nw322963", bi.nw322963.isChecked() ? "963" : "0");
+        MainApp.mc.setNw322a(bi.nw322a.isChecked() ? "1" : "0");
+        MainApp.mc.setNw322b(bi.nw322b.isChecked() ? "2" : "0");
+        MainApp.mc.setNw322c(bi.nw322c.isChecked() ? "3" : "0");
+        MainApp.mc.setNw322d(bi.nw322d.isChecked() ? "4" : "0");
+        MainApp.mc.setNw322e(bi.nw322e.isChecked() ? "5" : "0");
+        MainApp.mc.setNw322f(bi.nw322f.isChecked() ? "6" : "0");
+        MainApp.mc.setNw322g(bi.nw322g.isChecked() ? "7" : "0");
+        MainApp.mc.setNw322h(bi.nw322h.isChecked() ? "8" : "0");
+        MainApp.mc.setNw322i(bi.nw322i.isChecked() ? "9" : "0");
+        MainApp.mc.setNw322j(bi.nw322j.isChecked() ? "10" : "0");
+        MainApp.mc.setNw322k(bi.nw322k.isChecked() ? "11" : "0");
+        MainApp.mc.setNw322l(bi.nw322l.isChecked() ? "12" : "0");
+        MainApp.mc.setNw322m(bi.nw322m.isChecked() ? "13" : "0");
+        MainApp.mc.setNw322961(bi.nw322961.isChecked() ? "961" : "0");
+        MainApp.mc.setNw322962(bi.nw322962.isChecked() ? "962" : "0");
+        MainApp.mc.setNw322963(bi.nw322963.isChecked() ? "963" : "0");
 
 
-        sB2.put("nw322961x", bi.nw322961x.getText().toString());
-        sB2.put("nw322962x", bi.nw322962x.getText().toString());
-        sB2.put("nw322963x", bi.nw322963x.getText().toString());
+        MainApp.mc.setNw322961x(bi.nw322961x.getText().toString());
+        MainApp.mc.setNw322962x(bi.nw322962x.getText().toString());
+        MainApp.mc.setNw322963x(bi.nw322963x.getText().toString());
 
 
 //        nw323
-        sB2.put("nw323", bi.nw323a.isChecked() ? "1"
+        MainApp.mc.setNw323(bi.nw323a.isChecked() ? "1"
                 : bi.nw323b.isChecked() ? "2"
                 : bi.nw323c.isChecked() ? "3"
                 : bi.nw323d.isChecked() ? "4"
@@ -867,20 +868,20 @@ public class SectionB2Activity extends Activity {
                 : "0");
 
 //        nw324
-        sB2.put("nw324m", bi.nw324m.getText().toString());
-        sB2.put("nw324d", bi.nw324d.getText().toString());
+        MainApp.mc.setNw324m(bi.nw324m.getText().toString());
+        MainApp.mc.setNw324d(bi.nw324d.getText().toString());
 
 //        nw325
-        sB2.put("nw325", bi.nw325a.isChecked() ? "1"
+        MainApp.mc.setNw325(bi.nw325a.isChecked() ? "1"
                 : bi.nw325b.isChecked() ? "2"
                 : "0");
 //        nw326
-        sB2.put("nw326", bi.nw326a.isChecked() ? "1"
+        MainApp.mc.setNw326(bi.nw326a.isChecked() ? "1"
                 : bi.nw326b.isChecked() ? "2"
                 : bi.nw32698.isChecked() ? "98"
                 : "0");
 
-        MainApp.mc.setsB2(String.valueOf(sB2));
+        // MainApp.mc.setsB2(String.valueOf(sB2));
 
 
         //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
