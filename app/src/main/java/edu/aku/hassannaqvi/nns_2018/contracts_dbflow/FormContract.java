@@ -263,6 +263,8 @@ public class FormContract extends BaseModel {
     private String nh324f;
     @Column
     private String nh324g;
+
+
     //a5
     @Column
     private String nh401;

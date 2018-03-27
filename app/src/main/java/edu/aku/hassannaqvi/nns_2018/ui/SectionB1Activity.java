@@ -1148,9 +1148,9 @@ public class SectionB1Activity extends Activity {
 
         wraName = bi.nb101.getSelectedItem().toString();
 
-        JSONObject sB1 = new JSONObject();
 
-        sB1.put("nw101", bi.nb101.getSelectedItem().toString());
+
+        MainApp.mc.set(bi.nb101.getSelectedItem().toString());
         sB1.put("nw1serialno", wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
 
         //        nw201
@@ -1202,7 +1202,63 @@ public class SectionB1Activity extends Activity {
             MainApp.totalPregnancy = Integer.valueOf(bi.nw209a.getText().toString());
         }
 
-        MainApp.mc.setsB1(String.valueOf(sB1));
+
+
+        /*JSONObject sB1 = new JSONObject();
+
+        sB1.put("nw101", bi.nb101.getSelectedItem().toString());
+        sB1.put("nw1serialno", wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
+
+        //        nw201
+        sB1.put("nw201days", bi.nw201days.getText().toString());
+        sB1.put("nw201months", bi.nw201months.getText().toString());
+        sB1.put("nw201years", bi.nw201years.getText().toString());
+        //        nw202
+        sB1.put("nw202", bi.nw202.getText().toString());
+        //        nw203
+        sB1.put("nw203", bi.nw203a.isChecked() ? "1" : bi.nw203b.isChecked() ? "2" : "0");
+        //        nw204
+        sB1.put("nw204", bi.nw204a.isChecked() ? "1" : bi.nw204b.isChecked() ? "2" : "0");
+        //        nw205
+        sB1.put("nw205", bi.nw205a.isChecked() ? "1" : bi.nw205b.isChecked() ? "2" : "0");
+        //        nw206
+        sB1.put("nw206", bi.nw206.getText().toString());
+        //        nw207
+        sB1.put("nw207", bi.nw207a.isChecked() ? "1" : bi.nw207b.isChecked() ? "2" : "0");
+
+        sB1.put("nw208", bi.nw208.getText().toString());
+        sB1.put("nw209", bi.nw209.getText().toString());
+        sB1.put("nw209a", bi.nw209a.getText().toString());
+
+        sB1.put("nw210", bi.nw210.getText().toString());
+
+        sB1.put("nw211", bi.nw211a.isChecked() ? "1" : bi.nw211b.isChecked() ? "2" : "0");
+
+        sB1.put("nw212", bi.nw212a.isChecked() ? "1" : bi.nw212b.isChecked() ? "2" : "0");
+
+        //        nw21301
+        sB1.put("nw21301", bi.nw21301a.isChecked() ? "1" : "2");
+        //        nw21302
+        sB1.put("nw21302", bi.nw21302a.isChecked() ? "1" : "2");
+        //        nw21303
+        sB1.put("nw21303", bi.nw21303a.isChecked() ? "1" : "2");
+        //        nw21398
+        sB1.put("nw21398", bi.nw21398a.isChecked() ? "1" : "2");
+        //        nw21399
+        sB1.put("nw21399", bi.nw21399a.isChecked() ? "1" : "2");
+
+
+        if (!bi.nw209a.getText().toString().isEmpty()) {
+            *//*if (bi.nw211a.isChecked()) {
+                MainApp.totalPregnancy = Integer.valueOf(bi.nw208.getText().toString()) - 1;
+            } else {
+                MainApp.totalPregnancy = Integer.valueOf(bi.nw208.getText().toString());
+            }*//*
+
+            MainApp.totalPregnancy = Integer.valueOf(bi.nw209a.getText().toString());
+        }
+
+        MainApp.mc.setsB1(String.valueOf(sB1));*/
 
 
         //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
