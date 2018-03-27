@@ -442,7 +442,7 @@ public class SectionB4Activity extends Activity {
         MainApp.mc.setNw412c(binding.nb412c.isChecked() ? "3" : "0");
         MainApp.mc.setNw412d(binding.nb412d.isChecked() ? "4" : "0");
         MainApp.mc.setNw412e(binding.nb412e.isChecked() ? "5" : "0");
-        MainApp.mc.setNw412f(binding.nb412e.isChecked() ? "6" : "0");
+        //MainApp.mc.setNw412f(binding.nb412f.isChecked() ? "6" : "0");
         MainApp.mc.setNw41298(binding.nb41298.isChecked() ? "98" : "0");
         MainApp.mc.setNw41296(binding.nb41296.isChecked() ? "96" : "0");
 
