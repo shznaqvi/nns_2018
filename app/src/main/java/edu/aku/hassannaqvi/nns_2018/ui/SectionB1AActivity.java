@@ -40,6 +40,8 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
     List<EditText> grpDate;
     String date;
     long yearsBydob;
+    Boolean backPressed = false;
+    Boolean frontPressed = false;
     private Timer timer = new Timer();
 
     //static int status;
@@ -347,8 +349,6 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
 
     private void SaveDraft() throws JSONException {
-        //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
-
 
         MainApp.oc = new OutcomeContract();
 
@@ -396,11 +396,11 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         sB1a.put("nw220m", bi.nw220m.getText().toString());
         sB1a.put("nw220d", bi.nw220d.getText().toString());
 
+        if (backPressed) {
+            sB1a.put("backPressed", backPressed);
+        }
+
         MainApp.oc.setsB1A(String.valueOf(sB1a));
-
-
-        //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
-
     }
 
     private boolean UpdateDB() {
@@ -427,7 +427,6 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         //return true;
 
     }
-
 
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -459,5 +458,6 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
     public void afterTextChanged(Editable s) {
 
     }
+
 }
 

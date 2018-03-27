@@ -59,11 +59,6 @@ public class SectionA1Activity extends AppCompatActivity {
 
         SetupViewFunctionality();
 
-        String strEnglish = "LED";
-        String LRM = String.valueOf(((char) 0x200E));  // This is a LRM
-        //getString(R.string.nw301b);
-        // binding.testview.setText(getString(R.string.nh313ca)+ " \\u200E"+strEnglish +" \\u200E"+  getString(R.string.nh313c)  );
-
         SkipPatterns();
     }
 

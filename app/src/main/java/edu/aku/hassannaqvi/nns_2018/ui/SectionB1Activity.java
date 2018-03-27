@@ -61,10 +61,6 @@ public class SectionB1Activity extends Activity {
 
     public void setupViews() {
 
-        /*respName = new ArrayList<>();
-        respName.add("....");
-        respMap = new HashMap<>();*/
-
         MainApp.status = 0;
 
 
@@ -897,6 +893,7 @@ public class SectionB1Activity extends Activity {
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
+
         }
     }
 
@@ -1114,7 +1111,6 @@ public class SectionB1Activity extends Activity {
     }
 
     private void SaveDraft() throws JSONException {
-        //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
         MainApp.mc = new MWRAContract();
 
@@ -1174,24 +1170,14 @@ public class SectionB1Activity extends Activity {
 
 
         if (!bi.nw209a.getText().toString().isEmpty()) {
-            /*if (bi.nw211a.isChecked()) {
-                MainApp.totalPregnancy = Integer.valueOf(bi.nw208.getText().toString()) - 1;
-            } else {
-                MainApp.totalPregnancy = Integer.valueOf(bi.nw208.getText().toString());
-            }*/
-
             MainApp.totalPregnancy = Integer.valueOf(bi.nw209a.getText().toString());
         }
 
         MainApp.mc.setsB1(String.valueOf(sB1));
 
-
-        //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
-
     }
 
     private boolean UpdateDB() {
-
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
@@ -1199,8 +1185,6 @@ public class SectionB1Activity extends Activity {
         MainApp.mc.set_ID(String.valueOf(updcount));
 
         if (updcount != 0) {
-            //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
-
             MainApp.mc.set_UID(
                     (MainApp.mc.getDeviceId() + MainApp.mc.get_ID()));
             db.updateMWRAID();
@@ -1210,9 +1194,6 @@ public class SectionB1Activity extends Activity {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
         }
-
-        //return true;
-
     }
 
 
