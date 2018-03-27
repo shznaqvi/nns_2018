@@ -17,6 +17,7 @@ import java.util.Timer;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.NutritionContract;
+import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Nutrition;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB6Binding;
@@ -305,7 +306,7 @@ public class SectionB6Activity extends AppCompatActivity {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
 
-        MainApp.nc = new NutritionContract();
+        MainApp.nc1 = new Nutrition();
 
         MainApp.nc.setDevicetagID(MainApp.getTagName(this));
         MainApp.nc.setFormDate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
@@ -315,31 +316,40 @@ public class SectionB6Activity extends AppCompatActivity {
         MainApp.nc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
         MainApp.nc.set_UUID(MainApp.mc.get_UID());
 
-        JSONObject sB6 = new JSONObject();
+        //JSONObject sB6 = new JSONObject();
         //       nw501
 
-        sB6.put("nw501a", bi.nw501a.isChecked() ? "1"
-                : "2");
-        sB6.put("nw501b", bi.nw501b.isChecked() ? "1"
-                : "2");
-        sB6.put("nw501c", bi.nw501c.isChecked() ? "1"
-                : "2");
-        sB6.put("nw501d", bi.nw501d.isChecked() ? "1"
-                : "2");
-        sB6.put("nw501e", bi.nw501e.isChecked() ? "1"
-                : "2");
-        sB6.put("nw501f", bi.nw501f.isChecked() ? "1"
-                : "2");
-        sB6.put("nw501g", bi.nw501g.isChecked() ? "1"
-                : "2");
-        sB6.put("nw501h", bi.nw501h.isChecked() ? "1"
-                : "2");
-        sB6.put("nw501i", bi.nw501i.isChecked() ? "1"
-                : "2");
-        sB6.put("nw501j", bi.nw501j.isChecked() ? "1"
+        MainApp.nc1.setNw501a(bi.nw501a.isChecked() ? "1"
                 : "2");
 
-        MainApp.nc.setsB6(String.valueOf(sB6));
+        MainApp.nc1.setNw501b(bi.nw501b.isChecked() ? "1"
+                : "2");
+
+        MainApp.nc1.setNw501c(bi.nw501c.isChecked() ? "1"
+                : "2");
+
+        MainApp.nc1.setNw501d(bi.nw501d.isChecked() ? "1"
+                : "2");
+
+        MainApp.nc1.setNw501e(bi.nw501e.isChecked() ? "1"
+                : "2");
+
+        MainApp.nc1.setNw501f(bi.nw501f.isChecked() ? "1"
+                : "2");
+
+        MainApp.nc1.setNw501g(bi.nw501g.isChecked() ? "1"
+                : "2");
+
+        MainApp.nc1.setNw501h(bi.nw501h.isChecked() ? "1"
+                : "2");
+
+        MainApp.nc1.setNw501i(bi.nw501i.isChecked() ? "1"
+                : "2");
+
+        MainApp.nc1.setNw501j(bi.nw501j.isChecked() ? "1"
+                : "2");
+
+        //MainApp.nc.setsB6(String.valueOf(sB6));
 
 
         //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
