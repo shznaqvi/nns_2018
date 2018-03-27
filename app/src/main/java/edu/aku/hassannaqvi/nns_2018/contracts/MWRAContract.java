@@ -19,6 +19,7 @@ public class MWRAContract {
     private String _UID = "";
     private String _UUID = "";
     private String formDate = "";
+    private String updatedate = "";
     private String deviceId = "";
     private String devicetagID = "";
     private String user = "";
@@ -204,6 +205,14 @@ public class MWRAContract {
         this.mstatus88x = mstatus88x;
     }
 
+    public String getUpdatedate() {
+        return updatedate;
+    }
+
+    public void setUpdatedate(String updatedate) {
+        this.updatedate = updatedate;
+    }
+
     public MWRAContract Sync(JSONObject jsonObject) throws JSONException {
 
         this._ID = jsonObject.getString(MWRATable.COLUMN__ID);
@@ -268,6 +277,9 @@ public class MWRAContract {
         json.put(MWRATable.COLUMN_UID, this._UID == null ? JSONObject.NULL : this._UID);
         json.put(MWRATable.COLUMN_UUID, this._UUID == null ? JSONObject.NULL : this._UUID);
         json.put(MWRATable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
+
+        json.put(MWRATable.COLUMN_UPDATEDATE, this.updatedate == null ? JSONObject.NULL : this.updatedate);
+
         json.put(MWRATable.COLUMN_DEVICEID, this.deviceId == null ? JSONObject.NULL : this.deviceId);
         json.put(MWRATable.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
         json.put(MWRATable.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
@@ -317,6 +329,7 @@ public class MWRAContract {
         public static final String COLUMN_UID = "uid";
         public static final String COLUMN_UUID = "uuid";
         public static final String COLUMN_FORMDATE = "formdate";
+        public static final String COLUMN_UPDATEDATE = "updatedate";
         public static final String COLUMN_DEVICEID = "deviceid";
         public static final String COLUMN_DEVICETAGID = "devicetagid";
         public static final String COLUMN_USER = "user";

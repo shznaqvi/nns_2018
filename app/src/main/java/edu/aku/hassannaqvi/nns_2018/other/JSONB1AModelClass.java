@@ -6,6 +6,7 @@ package edu.aku.hassannaqvi.nns_2018.other;
 
 public class JSONB1AModelClass {
 
+    private String serial = "";
     private String nw215y = "";
     private String nw215m = "";
     private String nw215d = "";
@@ -21,6 +22,14 @@ public class JSONB1AModelClass {
 
     public JSONB1AModelClass() {
 
+    }
+
+    public String getSerial() {
+        return serial;
+    }
+
+    public void setSerial(String serial) {
+        this.serial = serial;
     }
 
     public String getNw215y() {

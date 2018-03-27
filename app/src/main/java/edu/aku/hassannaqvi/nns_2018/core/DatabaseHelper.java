@@ -205,6 +205,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             MWRATable.COLUMN_UID + " TEXT," +
             MWRATable.COLUMN_UUID + " TEXT," +
             MWRATable.COLUMN_FORMDATE + " TEXT," +
+            MWRATable.COLUMN_UPDATEDATE + " TEXT," +
             MWRATable.COLUMN_DEVICEID + " TEXT," +
             MWRATable.COLUMN_DEVICETAGID + " TEXT," +
             MWRATable.COLUMN_USER + " TEXT," +
@@ -228,6 +229,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             outcomeTable.COLUMN_UID + " TEXT," +
             outcomeTable.COLUMN_UUID + " TEXT," +
             outcomeTable.COLUMN_FORMDATE + " TEXT," +
+            outcomeTable.COLUMN_UPDATEDATE + " TEXT," +
             outcomeTable.COLUMN_DEVICEID + " TEXT," +
             outcomeTable.COLUMN_DEVICETAGID + " TEXT," +
             outcomeTable.COLUMN_USER + " TEXT," +
@@ -523,7 +525,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return allBL;
     }
-
 
 
     public Collection<BLRandomContract> getAllBLRandom(String subAreaCode, String hh) {
@@ -1003,41 +1004,58 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public Long addMWRA(MWRAContract mc) {
+    public Long addMWRA(MWRAContract mc, int type) {
 
         // Gets the data repository in write mode
         SQLiteDatabase db = this.getWritableDatabase();
 
 // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
-        values.put(MWRATable.COLUMN_PROJECTNAME, mc.getProjectName());
-        //values.put(MWRATable.COLUMN__ID, mc.get_ID());
-        values.put(MWRATable.COLUMN_UID, mc.get_UID());
-        values.put(MWRATable.COLUMN_UUID, mc.get_UUID());
-        values.put(MWRATable.COLUMN_FORMDATE, mc.getFormDate());
-        values.put(MWRATable.COLUMN_DEVICEID, mc.getDeviceId());
-        values.put(MWRATable.COLUMN_DEVICETAGID, mc.getDevicetagID());
-        values.put(MWRATable.COLUMN_USER, mc.getUser());
-        values.put(MWRATable.COLUMN_APP_VER, mc.getApp_ver());
-        values.put(MWRATable.COLUMN_B1SERIALNO, mc.getB1SerialNo());
+
+        if (type == 0) {
+            values.put(MWRATable.COLUMN_PROJECTNAME, mc.getProjectName());
+            //values.put(MWRATable.COLUMN__ID, mc.get_ID());
+            values.put(MWRATable.COLUMN_UID, mc.get_UID());
+            values.put(MWRATable.COLUMN_UUID, mc.get_UUID());
+            values.put(MWRATable.COLUMN_FORMDATE, mc.getFormDate());
+            values.put(MWRATable.COLUMN_DEVICEID, mc.getDeviceId());
+            values.put(MWRATable.COLUMN_DEVICETAGID, mc.getDevicetagID());
+            values.put(MWRATable.COLUMN_USER, mc.getUser());
+            values.put(MWRATable.COLUMN_APP_VER, mc.getApp_ver());
+            values.put(MWRATable.COLUMN_B1SERIALNO, mc.getB1SerialNo());
+
+            values.put(MWRATable.COLUMN_SB2, mc.getsB2());
+            values.put(MWRATable.COLUMN_SB3, mc.getsB3());
+            values.put(MWRATable.COLUMN_SB4, mc.getsB4());
+            values.put(MWRATable.COLUMN_SB5, mc.getsB5());
+            values.put(MWRATable.COLUMN_SB6, mc.getsB6());
+            values.put(MWRATable.COLUMN_SYNCED, mc.getSynced());
+            values.put(MWRATable.COLUMN_SYNCEDDATE, mc.getSyncedDate());
+            values.put(MWRATable.COLUMN_MSTATUS, mc.getMstatus());
+            values.put(MWRATable.COLUMN_MSTATUS88x, mc.getMstatus88x());
+        }
+
         values.put(MWRATable.COLUMN_SB1, mc.getsB1());
-        values.put(MWRATable.COLUMN_SB2, mc.getsB2());
-        values.put(MWRATable.COLUMN_SB3, mc.getsB3());
-        values.put(MWRATable.COLUMN_SB4, mc.getsB4());
-        values.put(MWRATable.COLUMN_SB5, mc.getsB5());
-        values.put(MWRATable.COLUMN_SB6, mc.getsB6());
-        values.put(MWRATable.COLUMN_SYNCED, mc.getSynced());
-        values.put(MWRATable.COLUMN_SYNCEDDATE, mc.getSyncedDate());
-        values.put(MWRATable.COLUMN_MSTATUS, mc.getMstatus());
-        values.put(MWRATable.COLUMN_MSTATUS88x, mc.getMstatus88x());
+        values.put(MWRATable.COLUMN_UPDATEDATE, mc.getUpdatedate());
 
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
-        newRowId = db.insert(
-                MWRATable.TABLE_NAME,
-                MWRATable.COLUMN_NAME_NULLABLE,
-                values);
+        if (type == 0) {
+            newRowId = db.insert(
+                    MWRATable.TABLE_NAME,
+                    MWRATable.COLUMN_NAME_NULLABLE,
+                    values);
+
+        } else {
+            newRowId = db.update(
+                    MWRATable.TABLE_NAME,
+                    values,
+                    MWRATable.COLUMN_UID + " = ?",
+                    new String[]{mc.get_UID()}
+            );
+        }
+
         return newRowId;
     }
 
@@ -1072,38 +1090,51 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return newRowId;
     }
 
-    public Long addOutcome(OutcomeContract oc) {
+    public Long addOutcome(OutcomeContract oc, int type) {
 
         // Gets the data repository in write mode
         SQLiteDatabase db = this.getWritableDatabase();
 
 // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
-        values.put(outcomeTable.COLUMN_PROJECTNAME, oc.getProjectName());
-        //values.put(outcomeTable.COLUMN__ID, oc.get_ID());
-        values.put(outcomeTable.COLUMN_UID, oc.get_UID());
-        values.put(outcomeTable.COLUMN_UUID, oc.get_UUID());
-        values.put(outcomeTable.COLUMN_FORMDATE, oc.getFormDate());
-        values.put(outcomeTable.COLUMN_DEVICEID, oc.getDeviceId());
-        values.put(outcomeTable.COLUMN_DEVICETAGID, oc.getDevicetagID());
-        values.put(outcomeTable.COLUMN_USER, oc.getUser());
-        values.put(outcomeTable.COLUMN_APP_VER, oc.getApp_ver());
-        values.put(outcomeTable.COLUMN_B1APregSNO, oc.getB1aPregSNo());
-        values.put(outcomeTable.COLUMN_SB1A, oc.getsB1A());
 
-        values.put(outcomeTable.COLUMN_SYNCED, oc.getSynced());
-        values.put(outcomeTable.COLUMN_SYNCEDDATE, oc.getSyncedDate());
-
+        if (type == 0) {
+            values.put(outcomeTable.COLUMN_PROJECTNAME, oc.getProjectName());
+            //values.put(outcomeTable.COLUMN__ID, oc.get_ID());
+            values.put(outcomeTable.COLUMN_UID, oc.get_UID());
+            values.put(outcomeTable.COLUMN_UUID, oc.get_UUID());
+            values.put(outcomeTable.COLUMN_FORMDATE, oc.getFormDate());
+            values.put(outcomeTable.COLUMN_DEVICEID, oc.getDeviceId());
+            values.put(outcomeTable.COLUMN_DEVICETAGID, oc.getDevicetagID());
+            values.put(outcomeTable.COLUMN_USER, oc.getUser());
+            values.put(outcomeTable.COLUMN_APP_VER, oc.getApp_ver());
+            values.put(outcomeTable.COLUMN_B1APregSNO, oc.getB1aPregSNo());
+            values.put(outcomeTable.COLUMN_SB1A, oc.getsB1A());
+            values.put(outcomeTable.COLUMN_SYNCED, oc.getSynced());
+            values.put(outcomeTable.COLUMN_SYNCEDDATE, oc.getSyncedDate());
+        } else {
+            values.put(outcomeTable.COLUMN_SB1A, oc.getsB1A());
+            values.put(outcomeTable.COLUMN_UPDATEDATE, oc.getUpdatedate());
+        }
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
-        newRowId = db.insert(
-                outcomeTable.TABLE_NAME,
-                outcomeTable.COLUMN_NAME_NULLABLE,
-                values);
+        if (type == 0) {
+            newRowId = db.insert(
+                    outcomeTable.TABLE_NAME,
+                    outcomeTable.COLUMN_NAME_NULLABLE,
+                    values);
+        } else {
+            newRowId = db.update(
+                    outcomeTable.TABLE_NAME,
+                    values,
+                    outcomeTable.COLUMN_UID + " = ?",
+                    new String[]{oc.get_UID()}
+            );
+        }
+
         return newRowId;
     }
-
 
     public Long addSerialForm(SerialContract sc) {
 
@@ -1301,7 +1332,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 where,
                 whereArgs);
     }
-
 
 
     public void updateSyncedSerial(String id) {
@@ -1605,7 +1635,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-
     public Collection<ChildContract> getUnsyncedChildForms() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -1905,11 +1934,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 outcomeTable.COLUMN_APP_VER,
                 outcomeTable.COLUMN_B1APregSNO,
                 outcomeTable.COLUMN_SB1A,
-
                 outcomeTable.COLUMN_SYNCED,
                 outcomeTable.COLUMN_SYNCEDDATE,
-
         };
+
         String whereClause = outcomeTable.COLUMN_SYNCED + " is null OR " + outcomeTable.COLUMN_SYNCED + " = '' ";
         String[] whereArgs = null;
         String groupBy = null;
@@ -1931,7 +1959,51 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 OutcomeContract fc = new OutcomeContract();
-                allFC.add(fc.Hydrate(c));
+                allFC.add(fc.Hydrate(c, 0));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
+    public Collection<OutcomeContract> getPressedOutcome() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                outcomeTable.COLUMN__ID,
+                outcomeTable.COLUMN_UID,
+                outcomeTable.COLUMN_UUID,
+                outcomeTable.COLUMN_SB1A
+        };
+
+        String whereClause = outcomeTable.COLUMN_UUID + "=?";
+        String[] whereArgs = new String[]{MainApp.mc.get_UID()};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                outcomeTable.COLUMN__ID + " ASC";
+
+        Collection<OutcomeContract> allFC = new ArrayList<>();
+        try {
+            c = db.query(
+                    outcomeTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                OutcomeContract fc = new OutcomeContract();
+                allFC.add(fc.Hydrate(c, 1));
             }
         } finally {
             if (c != null) {

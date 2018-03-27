@@ -77,6 +77,9 @@ public class MotherEndingActivity extends AppCompatActivity {
 
                 finish();
 
+                MainApp.count = 1;
+                SectionB1AActivity.childSerial = 1;
+
                 if (SectionB1Activity.WRAcounter == MainApp.mwra.size()) {
 
                     if (MainApp.childNA.size() > 0) {
@@ -101,7 +104,6 @@ public class MotherEndingActivity extends AppCompatActivity {
 
     private void SaveDraft() throws JSONException {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
-
 
 
         MainApp.mc.setMstatus(binding.istatusa.isChecked() ? "1"

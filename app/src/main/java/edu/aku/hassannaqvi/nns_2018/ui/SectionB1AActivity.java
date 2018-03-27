@@ -16,6 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.Collection;
 import java.util.List;
 import java.util.Timer;
 
@@ -27,21 +28,26 @@ import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB1ABinding;
 import edu.aku.hassannaqvi.nns_2018.other.DateUtils;
+import edu.aku.hassannaqvi.nns_2018.other.JSONB1AModelClass;
+import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionB1AActivity extends AppCompatActivity implements TextWatcher {
 
+    public static int childSerial = 1;
     private final long DELAY = 1000;
     ActivitySectionB1ABinding bi;
     DatabaseHelper db;
-    int childSerial = 1;
     @BindViews({R.id.nw215y, R.id.nw215m, R.id.nw215d})
     List<EditText> grpDate;
     String date;
     long yearsBydob;
+    Boolean firstTimePressed = false;
     Boolean backPressed = false;
     Boolean frontPressed = false;
+    String uid = "";
+    OutcomeContract outcomeCC;
     private Timer timer = new Timer();
 
     //static int status;
@@ -95,6 +101,53 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 bi.nw216f.setEnabled(true);
 
             }
+        }
+
+        if (getIntent().getBooleanExtra("backPressed", false)) {
+            frontPressed = true;
+
+            Collection<OutcomeContract> outcomeContracts = db.getPressedOutcome();
+
+            for (OutcomeContract outcomeContract : outcomeContracts) {
+                JSONB1AModelClass jsonB1A = JSONUtilClass.getModelFromJSON(outcomeContract.getsB1A(), JSONB1AModelClass.class);
+
+                if (jsonB1A.getSerial().equals(MainApp.count)) {
+
+                    outcomeCC = outcomeContract;
+
+                    bi.nw215y.setText(jsonB1A.getNw215y());
+                    bi.nw215m.setText(jsonB1A.getNw215m());
+                    bi.nw215d.setText(jsonB1A.getNw215d());
+
+                    if (!jsonB1A.getNw216().equals("0")) {
+                        bi.nw216.check(
+                                jsonB1A.getNw216().equals("1") ? bi.nw216a.getId() :
+                                        jsonB1A.getNw216().equals("2") ? bi.nw216b.getId() :
+                                                jsonB1A.getNw216().equals("3") ? bi.nw216c.getId() :
+                                                        jsonB1A.getNw216().equals("4") ? bi.nw216d.getId() :
+                                                                jsonB1A.getNw216().equals("5") ? bi.nw216e.getId() :
+                                                                        bi.nw216f.getId()
+                        );
+                    }
+
+                    if (!jsonB1A.getNw217().equals("0")) {
+                        bi.nw217.check(
+                                jsonB1A.getNw217().equals("1") ? bi.nw217a.getId() :
+                                        bi.nw217b.getId()
+                        );
+                    }
+
+                    bi.nw219y.setText(jsonB1A.getNw219y());
+                    bi.nw219m.setText(jsonB1A.getNw219m());
+                    bi.nw219d.setText(jsonB1A.getNw219d());
+
+                    bi.nw220y.setText(jsonB1A.getNw220y());
+                    bi.nw220m.setText(jsonB1A.getNw220m());
+                    bi.nw220d.setText(jsonB1A.getNw220d());
+                }
+
+            }
+
         }
 
     }
@@ -154,16 +207,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
     }
 
-
-    @Override
-    public void onBackPressed() {
-        Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
-    }
-
-
     public void BtnContinue() {
-
-        //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (ValidateForm()) {
             try {
                 SaveDraft();
@@ -172,15 +216,20 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
             }
             if (UpdateDB()) {
                 MainApp.nuCount = 1;
-                //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
-                finish();
+
+//                finish();
+
                 if (MainApp.outcome != 4) {
                     MainApp.count++;
                     if (MainApp.totalPregnancy >= MainApp.count) {
-                        startActivity(new Intent(this, SectionB1AActivity.class).putExtra("type", false));
+
+                        startActivity(new Intent(this, SectionB1AActivity.class)
+                                .putExtra("type", false)
+                                .putExtra("backPressed", backPressed));
                     } else {
 
-                        MainApp.count = 1;
+//                        MainApp.count = 1;
+//                        childSerial = 1;
 
                         if (yearsBydob <= 2 && MainApp.status > 0) {
                             startActivity(new Intent(this, SectionB2Activity.class));
@@ -206,8 +255,6 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                     i.putExtra("dated", bi.nw215d.getText().toString());
                     i.putExtra("type", true);
                     startActivity(i);
-
-                    //startActivity(new Intent(this, SectionB1Activity.class).putExtra(""));
                 }
 
 
@@ -215,8 +262,6 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
         }
-
-        //startActivity(new Intent(this, SectionB2Activity.class));
     }
 
     public void BtnEnd() {
@@ -252,7 +297,6 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         if (!validatorClass.RangeTextBox(this, bi.nw215y, 2013, 2018, getString(R.string.nw215), " year")) {
             return false;
         }
-
 
 
         if (!validatorClass.EmptyRadioButton(this, bi.nw216, bi.nw216a, getString(R.string.nw216))) {
@@ -352,17 +396,27 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
         MainApp.oc = new OutcomeContract();
 
-        MainApp.oc.setDevicetagID(MainApp.getTagName(this));
-        MainApp.oc.setFormDate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
-        MainApp.oc.setUser(MainApp.userName);
-        MainApp.oc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
-                Settings.Secure.ANDROID_ID));
-        MainApp.oc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
-        MainApp.oc.set_UUID(MainApp.mc.get_UID());
+        if (!backPressed && !frontPressed) {
+            MainApp.oc.setDevicetagID(MainApp.getTagName(this));
+            MainApp.oc.setFormDate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+            MainApp.oc.setUser(MainApp.userName);
+            MainApp.oc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
+                    Settings.Secure.ANDROID_ID));
+            MainApp.oc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
+            MainApp.oc.set_UUID(MainApp.mc.get_UID());
+        } else {
+            MainApp.oc.setUpdatedate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
 
+            if (frontPressed) {
+                MainApp.oc.set_UID(outcomeCC.get_UID());
+            } else if (backPressed) {
+                MainApp.oc.set_UID(uid);
+            }
+        }
 
         JSONObject sB1a = new JSONObject();
 
+        sB1a.put("serial", Integer.valueOf(MainApp.count));
         sB1a.put("nw215y", bi.nw215y.getText().toString());
         sB1a.put("nw215m", bi.nw215m.getText().toString());
         sB1a.put("nw215d", bi.nw215d.getText().toString());
@@ -398,6 +452,8 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
         if (backPressed) {
             sB1a.put("backPressed", backPressed);
+        } else if (frontPressed) {
+            sB1a.put("frontPressed", frontPressed);
         }
 
         MainApp.oc.setsB1A(String.valueOf(sB1a));
@@ -408,24 +464,27 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        Long updcount = db.addOutcome(MainApp.oc);
-        MainApp.oc.set_ID(String.valueOf(updcount));
+        if (!backPressed && !frontPressed) {
+            Long updcount = db.addOutcome(MainApp.oc, 0);
+            MainApp.oc.set_ID(String.valueOf(updcount));
 
-        if (updcount != 0) {
-            //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+            if (updcount != 0) {
+                MainApp.oc.set_UID(
+                        (MainApp.oc.getDeviceId() + MainApp.oc.get_ID()));
+                db.updateOutcomeID();
 
-            MainApp.oc.set_UID(
-                    (MainApp.oc.getDeviceId() + MainApp.oc.get_ID()));
-            db.updateOutcomeID();
+                uid = MainApp.oc.getDeviceId() + MainApp.oc.get_ID();
+
+                return true;
+            } else {
+                Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        } else {
+            db.addOutcome(MainApp.oc, 1);
 
             return true;
-        } else {
-            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
-            return false;
         }
-
-        //return true;
-
     }
 
     @Override
@@ -457,6 +516,37 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
     @Override
     public void afterTextChanged(Editable s) {
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (firstTimePressed) {
+            backPressed = true;
+        }
+
+        firstTimePressed = true;
+    }
+
+
+    @Override
+    public void onBackPressed() {
+
+        try {
+            SaveDraft();
+            UpdateDB();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        if (MainApp.outcome != 4) {
+            MainApp.count--;
+        } else {
+            childSerial--;
+        }
+
+        super.onBackPressed();
     }
 
 }

@@ -43,6 +43,8 @@ public class SectionB1Activity extends Activity {
     Map<String, String> respMap;
     ActivitySectionB1Binding bi;
     DatabaseHelper db;
+    Boolean backPressed = false;
+    String uid = "";
     private Timer timer = new Timer();
 
     @Override
@@ -888,7 +890,7 @@ public class SectionB1Activity extends Activity {
                             .putExtra("complete", true));
                 }
 
-                finish();
+//                finish();
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -1114,14 +1116,19 @@ public class SectionB1Activity extends Activity {
 
         MainApp.mc = new MWRAContract();
 
-        MainApp.mc.setDevicetagID(MainApp.getTagName(this));
-        MainApp.mc.setFormDate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
-        MainApp.mc.setUser(MainApp.userName);
-        MainApp.mc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
-                Settings.Secure.ANDROID_ID));
-        MainApp.mc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
-        MainApp.mc.setB1SerialNo(wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
-        MainApp.mc.set_UUID(MainApp.fc.getUID());
+        if (!backPressed) {
+            MainApp.mc.setDevicetagID(MainApp.getTagName(this));
+            MainApp.mc.setFormDate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+            MainApp.mc.setUser(MainApp.userName);
+            MainApp.mc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
+                    Settings.Secure.ANDROID_ID));
+            MainApp.mc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
+            MainApp.mc.setB1SerialNo(wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
+            MainApp.mc.set_UUID(MainApp.fc.getUID());
+        } else {
+            MainApp.mc.setUpdatedate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+            MainApp.mc.set_UID(uid);
+        }
 
         wraName = bi.nb101.getSelectedItem().toString();
 
@@ -1181,20 +1188,36 @@ public class SectionB1Activity extends Activity {
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        Long updcount = db.addMWRA(MainApp.mc);
-        MainApp.mc.set_ID(String.valueOf(updcount));
+        if (!backPressed) {
+            Long updcount = db.addMWRA(MainApp.mc, 0);
+            MainApp.mc.set_ID(String.valueOf(updcount));
 
-        if (updcount != 0) {
-            MainApp.mc.set_UID(
-                    (MainApp.mc.getDeviceId() + MainApp.mc.get_ID()));
-            db.updateMWRAID();
+            if (updcount != 0) {
+                MainApp.mc.set_UID(
+                        (MainApp.mc.getDeviceId() + MainApp.mc.get_ID()));
+                db.updateMWRAID();
+
+                uid = MainApp.mc.getDeviceId() + MainApp.mc.get_ID();
+
+                return true;
+            } else {
+                Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        } else {
+            Long updcount = db.addMWRA(MainApp.mc, 1);
 
             return true;
-        } else {
-            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
-            return false;
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
 
+        backPressed = true;
+        bi.nb101.setEnabled(false);
+
+
+    }
 }
