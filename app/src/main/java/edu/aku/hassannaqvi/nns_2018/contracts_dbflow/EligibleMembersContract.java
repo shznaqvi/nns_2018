@@ -1,8 +1,21 @@
 package edu.aku.hassannaqvi.nns_2018.contracts_dbflow;
 
+import com.raizlabs.android.dbflow.annotation.Column;
+import com.raizlabs.android.dbflow.annotation.PrimaryKey;
+import com.raizlabs.android.dbflow.annotation.Table;
+import com.raizlabs.android.dbflow.annotation.Unique;
+import com.raizlabs.android.dbflow.structure.BaseModel;
+
+import edu.aku.hassannaqvi.nns_2018.AppDB;
+
 /**
  * Created by gul.sanober on 3/27/2018.
  */
+@Table(database = AppDB.class)
+public class EligibleMembersContract extends BaseModel {
+    @Column
+    @PrimaryKey(autoincrement = true)
+    @Unique
+    public int _id;
 
-public class EligibleMembersContract {
 }
