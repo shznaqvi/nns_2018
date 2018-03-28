@@ -12,12 +12,16 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.Timer;
 
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB2Binding;
+import edu.aku.hassannaqvi.nns_2018.other.JSONB2ModelClass;
+import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
@@ -26,6 +30,7 @@ public class SectionB2Activity extends Activity {
     private final long DELAY = 1000;
     ActivitySectionB2Binding bi;
     DatabaseHelper db;
+    Boolean backPressed = false;
     private Timer timer = new Timer();
 
     @Override
@@ -270,6 +275,404 @@ public class SectionB2Activity extends Activity {
 //        Setting name of women
         bi.nw301Txt.setText(getString(R.string.nw301a) + " " + SectionB1Activity.wraName + " " + getString(R.string.nw301b));
 
+
+        if (getIntent().getBooleanExtra("backPressed", false)) {
+
+            backPressed = true;
+
+            MWRAContract mwraContract = db.getsB2();
+            JSONB2ModelClass jsonB2 = JSONUtilClass.getModelFromJSON(mwraContract.getsB2(), JSONB2ModelClass.class);
+
+            if (!jsonB2.getnw301().equals("0")) {
+                bi.nw301.check(
+                        jsonB2.getnw301().equals("1") ? bi.nw301a.getId() :
+                                bi.nw301b.getId()
+                );
+            }
+            if (!jsonB2.getnw302a().equals("0")) {
+                bi.nw302a.setChecked(true);
+            }
+            if (!jsonB2.getnw302b().equals("0")) {
+                bi.nw302b.setChecked(true);
+            }
+            if (!jsonB2.getnw302c().equals("0")) {
+                bi.nw302c.setChecked(true);
+            }
+            if (!jsonB2.getnw302d().equals("0")) {
+                bi.nw302d.setChecked(true);
+            }
+            if (!jsonB2.getnw302e().equals("0")) {
+                bi.nw302e.setChecked(true);
+            }
+            if (!jsonB2.getnw302f().equals("0")) {
+                bi.nw302f.setChecked(true);
+            }
+            if (!jsonB2.getnw302g().equals("0")) {
+                bi.nw302g.setChecked(true);
+            }
+            if (!jsonB2.getnw302h().equals("0")) {
+                bi.nw302h.setChecked(true);
+            }
+            if (!jsonB2.getnw30296().equals("0")) {
+                bi.nw30296.setChecked(true);
+                bi.nw30296x.setText(jsonB2.getnw30296x());
+            }
+
+            if (!jsonB2.getnw303().equals("0")) {
+                bi.nw303.check(
+                        jsonB2.getnw303().equals("1") ? bi.nw303a.getId() :
+                                jsonB2.getnw303().equals("2") ? bi.nw303b.getId() :
+                                        jsonB2.getnw303().equals("3") ? bi.nw303c.getId() :
+                                                jsonB2.getnw303().equals("4") ? bi.nw303d.getId() :
+                                                        jsonB2.getnw303().equals("5") ? bi.nw303e.getId() :
+                                                                jsonB2.getnw303().equals("6") ? bi.nw303f.getId() :
+                                                                        jsonB2.getnw303().equals("7") ? bi.nw303g.getId() :
+                                                                                jsonB2.getnw303().equals("8") ? bi.nw303h.getId() :
+                                                                                        jsonB2.getnw303().equals("9") ? bi.nw303i.getId() :
+                                                                                                jsonB2.getnw303().equals("10") ? bi.nw303j.getId() :
+                                                                                                        bi.nw30396.getId()
+                );
+
+                bi.nw303961x.setText(jsonB2.getnw303961x());
+                bi.nw303962x.setText(jsonB2.getnw303962x());
+                bi.nw303963x.setText(jsonB2.getnw303963x());
+            }
+
+            bi.nw304w.setText(jsonB2.getnw304());
+            if (!jsonB2.getnw30498().equals("0")) {
+                bi.nw30498.setChecked(true);
+            }
+
+            bi.nw305.setText(jsonB2.getnw304());
+            if (!jsonB2.getnw305().equals("0")) {
+                bi.nw30598.setChecked(true);
+            }
+
+            if (!jsonB2.getnw306a().equals("0")) {
+                bi.nw306a.setChecked(true);
+            }
+            if (!jsonB2.getnw306b().equals("0")) {
+                bi.nw306b.setChecked(true);
+            }
+            if (!jsonB2.getnw306c().equals("0")) {
+                bi.nw306c.setChecked(true);
+            }
+            if (!jsonB2.getnw306d().equals("0")) {
+                bi.nw306d.setChecked(true);
+            }
+            if (!jsonB2.getnw306e().equals("0")) {
+                bi.nw306e.setChecked(true);
+            }
+            if (!jsonB2.getnw306f().equals("0")) {
+                bi.nw306f.setChecked(true);
+            }
+            if (!jsonB2.getnw306g().equals("0")) {
+                bi.nw306g.setChecked(true);
+            }
+            if (!jsonB2.getnw306h().equals("0")) {
+                bi.nw306h.setChecked(true);
+            }
+            if (!jsonB2.getnw306i().equals("0")) {
+                bi.nw306i.setChecked(true);
+            }
+            if (!jsonB2.getnw30696().equals("0")) {
+                bi.nw30696.setChecked(true);
+                bi.nw30696x.setText(jsonB2.getnw30696x());
+            }
+
+            if (!jsonB2.getnw307().equals("0")) {
+                bi.nw307.check(
+                        jsonB2.getnw307().equals("1") ? bi.nw307a.getId() :
+                                jsonB2.getnw307().equals("2") ? bi.nw307b.getId() :
+                                        jsonB2.getnw307().equals("3") ? bi.nw307c.getId() :
+                                                bi.nw30798.getId());
+            }
+
+            if (!jsonB2.getnw308().equals("0")) {
+                bi.nw308.check(
+                        jsonB2.getnw308().equals("1") ? bi.nw308a.getId() :
+                                jsonB2.getnw308().equals("2") ? bi.nw308b.getId() :
+                                        bi.nw30898.getId());
+            }
+
+            if (jsonB2.getnw309().equals("98")) {
+                bi.nw30998.isChecked();
+            } else {
+                bi.nw309.setText(jsonB2.getnw309());
+            }
+
+            if (!jsonB2.getnw310().equals("0")) {
+                bi.nw310.check(
+                        jsonB2.getnw310().equals("1") ? bi.nw310a.getId() :
+                                bi.nw310b.getId());
+            }
+
+            if (!jsonB2.getnw311().equals("0")) {
+                bi.nw311.check(
+                        jsonB2.getnw311().equals("1") ? bi.nw311a.getId() :
+                                jsonB2.getnw311().equals("2") ? bi.nw311b.getId() :
+                                        jsonB2.getnw311().equals("3") ? bi.nw311c.getId() :
+                                                jsonB2.getnw311().equals("4") ? bi.nw311d.getId() :
+                                                        jsonB2.getnw311().equals("5") ? bi.nw311e.getId() :
+                                                                jsonB2.getnw311().equals("6") ? bi.nw311f.getId() :
+                                                                        jsonB2.getnw311().equals("7") ? bi.nw311g.getId() :
+                                                                                jsonB2.getnw311().equals("8") ? bi.nw311h.getId() :
+                                                                                        bi.nw31196.getId()
+                );
+                bi.nw31196x.setText(jsonB2.getnw31196x());
+            }
+
+            if (!jsonB2.getnw312a().equals("0")) {
+                bi.nw312a.setChecked(true);
+            }
+            if (!jsonB2.getnw312b().equals("0")) {
+                bi.nw312b.setChecked(true);
+            }
+            if (!jsonB2.getnw312c().equals("0")) {
+                bi.nw312c.setChecked(true);
+            }
+            if (!jsonB2.getnw312d().equals("0")) {
+                bi.nw312d.setChecked(true);
+            }
+            if (!jsonB2.getnw312e().equals("0")) {
+                bi.nw312e.setChecked(true);
+            }
+            if (!jsonB2.getnw312f().equals("0")) {
+                bi.nw312f.setChecked(true);
+            }
+            if (!jsonB2.getnw312g().equals("0")) {
+                bi.nw312g.setChecked(true);
+            }
+            if (!jsonB2.getnw312h().equals("0")) {
+                bi.nw312h.setChecked(true);
+            }
+            if (!jsonB2.getnw312i().equals("0")) {
+                bi.nw312i.setChecked(true);
+            }
+            if (!jsonB2.getnw312j().equals("0")) {
+                bi.nw312j.setChecked(true);
+            }
+            if (!jsonB2.getnw312k().equals("0")) {
+                bi.nw312k.setChecked(true);
+            }
+            if (!jsonB2.getnw312l().equals("0")) {
+                bi.nw312l.setChecked(true);
+            }
+            if (!jsonB2.getnw312m().equals("0")) {
+                bi.nw312m.setChecked(true);
+            }
+            if (!jsonB2.getnw312961().equals("0")) {
+                bi.nw312961.setChecked(true);
+            }
+            if (!jsonB2.getnw312962().equals("0")) {
+                bi.nw312962.setChecked(true);
+            }
+            if (!jsonB2.getnw312963().equals("0")) {
+                bi.nw312963.setChecked(true);
+            }
+            bi.nw312961x.setText(jsonB2.getnw312961x());
+            bi.nw312962x.setText(jsonB2.getnw312962x());
+            bi.nw312963x.setText(jsonB2.getnw312963x());
+
+            if (!jsonB2.getnw313().equals("0")) {
+                bi.nw313.check(
+                        jsonB2.getnw313().equals("1") ? bi.nw313a.getId() :
+                                jsonB2.getnw313().equals("2") ? bi.nw313b.getId() :
+                                        jsonB2.getnw313().equals("3") ? bi.nw313c.getId() :
+                                                jsonB2.getnw313().equals("4") ? bi.nw313d.getId() :
+                                                        bi.nw313e.getId()
+                );
+            }
+
+            bi.nw314m.setText(jsonB2.getnw314m());
+            bi.nw314d.setText(jsonB2.getnw314d());
+
+            if (!jsonB2.getnw315().equals("0")) {
+                bi.nw315.check(
+                        jsonB2.getnw315().equals("1") ? bi.nw315a.getId() :
+                                bi.nw315b.getId());
+            }
+
+            if (!jsonB2.getnw316().equals("0")) {
+                bi.nw316.check(
+                        jsonB2.getnw316().equals("1") ? bi.nw316a.getId() :
+                                jsonB2.getnw316().equals("2") ? bi.nw316b.getId() :
+                                        jsonB2.getnw316().equals("3") ? bi.nw316c.getId() :
+                                                jsonB2.getnw316().equals("4") ? bi.nw316d.getId() :
+                                                        jsonB2.getnw316().equals("5") ? bi.nw316e.getId() :
+                                                                jsonB2.getnw316().equals("6") ? bi.nw316f.getId() :
+                                                                        jsonB2.getnw316().equals("7") ? bi.nw316g.getId() :
+                                                                                jsonB2.getnw316().equals("8") ? bi.nw316h.getId() :
+                                                                                        bi.nw31696.getId()
+                );
+                bi.nw31696x.setText(jsonB2.getnw31696x());
+            }
+
+            if (!jsonB2.getnw317a().equals("0")) {
+                bi.nw317a.setChecked(true);
+            }
+            if (!jsonB2.getnw317b().equals("0")) {
+                bi.nw317b.setChecked(true);
+            }
+            if (!jsonB2.getnw317c().equals("0")) {
+                bi.nw317c.setChecked(true);
+            }
+            if (!jsonB2.getnw317d().equals("0")) {
+                bi.nw317d.setChecked(true);
+            }
+            if (!jsonB2.getnw317e().equals("0")) {
+                bi.nw317e.setChecked(true);
+            }
+            if (!jsonB2.getnw317f().equals("0")) {
+                bi.nw317f.setChecked(true);
+            }
+            if (!jsonB2.getnw317g().equals("0")) {
+                bi.nw317g.setChecked(true);
+            }
+            if (!jsonB2.getnw317h().equals("0")) {
+                bi.nw317h.setChecked(true);
+            }
+            if (!jsonB2.getnw317i().equals("0")) {
+                bi.nw317i.setChecked(true);
+            }
+            if (!jsonB2.getnw317j().equals("0")) {
+                bi.nw317j.setChecked(true);
+            }
+            if (!jsonB2.getnw317k().equals("0")) {
+                bi.nw317k.setChecked(true);
+            }
+            if (!jsonB2.getnw317l().equals("0")) {
+                bi.nw317l.setChecked(true);
+            }
+            if (!jsonB2.getnw317m().equals("0")) {
+                bi.nw317m.setChecked(true);
+            }
+            if (!jsonB2.getnw317961().equals("0")) {
+                bi.nw317961.setChecked(true);
+            }
+            if (!jsonB2.getnw317962().equals("0")) {
+                bi.nw317962.setChecked(true);
+            }
+            if (!jsonB2.getnw317963().equals("0")) {
+                bi.nw317963.setChecked(true);
+            }
+            bi.nw317961x.setText(jsonB2.getnw317961x());
+            bi.nw317962x.setText(jsonB2.getnw317962x());
+            bi.nw317963x.setText(jsonB2.getnw317963x());
+
+            if (!jsonB2.getnw318().equals("0")) {
+                bi.nw318.check(
+                        jsonB2.getnw318().equals("1") ? bi.nw318a.getId() :
+                                jsonB2.getnw318().equals("2") ? bi.nw318b.getId() :
+                                        jsonB2.getnw318().equals("3") ? bi.nw318c.getId() :
+                                                jsonB2.getnw318().equals("4") ? bi.nw318d.getId() :
+                                                        bi.nw318e.getId()
+                );
+            }
+
+            bi.nw319m.setText(jsonB2.getnw319m());
+            bi.nw319d.setText(jsonB2.getnw319d());
+
+            if (!jsonB2.getnw320().equals("0")) {
+                bi.nw320.check(
+                        jsonB2.getnw320().equals("1") ? bi.nw320a.getId() :
+                                bi.nw320b.getId());
+            }
+
+
+            if (!jsonB2.getnw321().equals("0")) {
+                bi.nw321.check(
+                        jsonB2.getnw321().equals("1") ? bi.nw321a.getId() :
+                                jsonB2.getnw321().equals("2") ? bi.nw321b.getId() :
+                                        jsonB2.getnw321().equals("3") ? bi.nw321c.getId() :
+                                                jsonB2.getnw321().equals("4") ? bi.nw321d.getId() :
+                                                        jsonB2.getnw321().equals("5") ? bi.nw321e.getId() :
+                                                                jsonB2.getnw321().equals("6") ? bi.nw321f.getId() :
+                                                                        jsonB2.getnw321().equals("7") ? bi.nw321g.getId() :
+                                                                                jsonB2.getnw321().equals("8") ? bi.nw321h.getId() :
+                                                                                        bi.nw32196.getId()
+                );
+                bi.nw32196x.setText(jsonB2.getnw32196x());
+            }
+
+            if (!jsonB2.getnw322a().equals("0")) {
+                bi.nw322a.setChecked(true);
+            }
+            if (!jsonB2.getnw322b().equals("0")) {
+                bi.nw322b.setChecked(true);
+            }
+            if (!jsonB2.getnw322c().equals("0")) {
+                bi.nw322c.setChecked(true);
+            }
+            if (!jsonB2.getnw322d().equals("0")) {
+                bi.nw322d.setChecked(true);
+            }
+            if (!jsonB2.getnw322e().equals("0")) {
+                bi.nw322e.setChecked(true);
+            }
+            if (!jsonB2.getnw322f().equals("0")) {
+                bi.nw322f.setChecked(true);
+            }
+            if (!jsonB2.getnw322g().equals("0")) {
+                bi.nw322g.setChecked(true);
+            }
+            if (!jsonB2.getnw322h().equals("0")) {
+                bi.nw322h.setChecked(true);
+            }
+            if (!jsonB2.getnw322i().equals("0")) {
+                bi.nw322i.setChecked(true);
+            }
+            if (!jsonB2.getnw322j().equals("0")) {
+                bi.nw322j.setChecked(true);
+            }
+            if (!jsonB2.getnw322k().equals("0")) {
+                bi.nw322k.setChecked(true);
+            }
+            if (!jsonB2.getnw322l().equals("0")) {
+                bi.nw322l.setChecked(true);
+            }
+            if (!jsonB2.getnw322m().equals("0")) {
+                bi.nw322m.setChecked(true);
+            }
+            if (!jsonB2.getnw322961().equals("0")) {
+                bi.nw322961.setChecked(true);
+            }
+            if (!jsonB2.getnw322962().equals("0")) {
+                bi.nw322962.setChecked(true);
+            }
+            if (!jsonB2.getnw322963().equals("0")) {
+                bi.nw322963.setChecked(true);
+            }
+            bi.nw322961x.setText(jsonB2.getnw322961x());
+            bi.nw322962x.setText(jsonB2.getnw322962x());
+            bi.nw322963x.setText(jsonB2.getnw322963x());
+
+            if (!jsonB2.getnw323().equals("0")) {
+                bi.nw323.check(
+                        jsonB2.getnw323().equals("1") ? bi.nw323a.getId() :
+                                jsonB2.getnw323().equals("2") ? bi.nw323b.getId() :
+                                        jsonB2.getnw323().equals("3") ? bi.nw323c.getId() :
+                                                jsonB2.getnw323().equals("4") ? bi.nw323d.getId() :
+                                                        bi.nw323e.getId()
+                );
+            }
+
+            bi.nw324m.setText(jsonB2.getnw324m());
+            bi.nw324d.setText(jsonB2.getnw324d());
+
+            if (!jsonB2.getnw325().equals("0")) {
+                bi.nw325.check(
+                        jsonB2.getnw325().equals("1") ? bi.nw325a.getId() :
+                                bi.nw325b.getId());
+            }
+            if (!jsonB2.getnw325().equals("0")) {
+                bi.nw325.check(
+                        jsonB2.getnw325().equals("1") ? bi.nw325a.getId() :
+                                jsonB2.getnw325().equals("2") ? bi.nw325b.getId() :
+                                        bi.nw32698.getId());
+            }
+        }
+
     }
 
     public void BtnContinue() {
@@ -303,11 +706,6 @@ public class SectionB2Activity extends Activity {
     public void BtnEnd() {
         MainApp.endActivityMother(this, this, false);
 
-    }
-
-    @Override
-    public void onBackPressed() {
-        Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
     }
 
     private boolean ValidateForm() {
@@ -636,6 +1034,11 @@ public class SectionB2Activity extends Activity {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 //       nw301
         JSONObject sB2 = new JSONObject();
+
+        if (backPressed) {
+            sB2.put("updatedate", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+        }
+
         sB2.put("nw301", bi.nw301a.isChecked() ? "1"
                 : bi.nw301b.isChecked() ? "2"
                 : "0");
@@ -672,7 +1075,6 @@ public class SectionB2Activity extends Activity {
 
 
 //        nw304
-        sB2.put("nw304", bi.nw304w.getText().toString());
         sB2.put("nw304", bi.nw304w.getText().toString());
         sB2.put("nw30498", bi.nw30498.isChecked() ? "98" : "0");
 
@@ -833,7 +1235,7 @@ public class SectionB2Activity extends Activity {
                 : bi.nw321h.isChecked() ? "8"
                 : bi.nw32196.isChecked() ? "96"
                 : "0");
-        sB2.put("nwnw32196x", bi.nw32196x.getText().toString());
+        sB2.put("nw32196x", bi.nw32196x.getText().toString());
 
 //        nw322
         sB2.put("nw322a", bi.nw322a.isChecked() ? "1" : "0");
@@ -852,7 +1254,6 @@ public class SectionB2Activity extends Activity {
         sB2.put("nw322961", bi.nw322961.isChecked() ? "961" : "0");
         sB2.put("nw322962", bi.nw322962.isChecked() ? "962" : "0");
         sB2.put("nw322963", bi.nw322963.isChecked() ? "963" : "0");
-
 
         sB2.put("nw322961x", bi.nw322961x.getText().toString());
         sB2.put("nw322962x", bi.nw322962x.getText().toString());
@@ -907,4 +1308,21 @@ public class SectionB2Activity extends Activity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+
+        try {
+            SaveDraft();
+            UpdateDB();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 }

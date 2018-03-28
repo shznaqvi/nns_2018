@@ -44,7 +44,6 @@ public class SectionB1Activity extends Activity {
     ActivitySectionB1Binding bi;
     DatabaseHelper db;
     Boolean backPressed = false;
-    String uid = "";
     private Timer timer = new Timer();
 
     @Override
@@ -847,13 +846,18 @@ public class SectionB1Activity extends Activity {
                 //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
                 MainApp.nuCount = 1;
+                MainApp.flag = false;
+
+                backPressed = true;
+
                 //finish();
 
                 if (bi.nw203a.isChecked()) {
                     if (bi.nw204a.isChecked() || bi.nw205a.isChecked()) {
                         if (bi.nw207a.isChecked()) {
                             if (MainApp.totalPregnancy > 0) {
-                                startActivity(new Intent(this, SectionB1AActivity.class));
+                                startActivity(new Intent(this, SectionB1AActivity.class)
+                                        .putExtra("backPressed", backPressed));
                             } else {
                                 if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
                                         &&
@@ -1114,9 +1118,8 @@ public class SectionB1Activity extends Activity {
 
     private void SaveDraft() throws JSONException {
 
-        MainApp.mc = new MWRAContract();
-
         if (!backPressed) {
+            MainApp.mc = new MWRAContract();
             MainApp.mc.setDevicetagID(MainApp.getTagName(this));
             MainApp.mc.setFormDate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
             MainApp.mc.setUser(MainApp.userName);
@@ -1127,7 +1130,7 @@ public class SectionB1Activity extends Activity {
             MainApp.mc.set_UUID(MainApp.fc.getUID());
         } else {
             MainApp.mc.setUpdatedate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
-            MainApp.mc.set_UID(uid);
+            MainApp.mc.set_UID(MainApp.mc.get_UID());
         }
 
         wraName = bi.nb101.getSelectedItem().toString();
@@ -1197,8 +1200,6 @@ public class SectionB1Activity extends Activity {
                         (MainApp.mc.getDeviceId() + MainApp.mc.get_ID()));
                 db.updateMWRAID();
 
-                uid = MainApp.mc.getDeviceId() + MainApp.mc.get_ID();
-
                 return true;
             } else {
                 Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
@@ -1215,9 +1216,9 @@ public class SectionB1Activity extends Activity {
     protected void onResume() {
         super.onResume();
 
-        backPressed = true;
-        bi.nb101.setEnabled(false);
-
+        if (backPressed) {
+            bi.nb101.setEnabled(false);
+        }
 
     }
 }

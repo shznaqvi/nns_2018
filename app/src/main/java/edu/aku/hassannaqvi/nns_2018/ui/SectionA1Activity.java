@@ -190,8 +190,8 @@ public class SectionA1Activity extends AppCompatActivity {
 
     public void BtnContinue() {
 
-        //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
-        if (formValidation()) {
+//        if (formValidation()) {
+        if (true) {
             try {
                 SaveDraft();
             } catch (JSONException e) {

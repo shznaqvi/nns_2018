@@ -106,11 +106,6 @@ public class SectionB3Activity extends AppCompatActivity {
         MainApp.endActivityMother(this, this, false);
     }
 
-    @Override
-    public void onBackPressed() {
-        Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
-    }
-
 
     public boolean formValidation() {
 
@@ -235,6 +230,17 @@ public class SectionB3Activity extends AppCompatActivity {
 
         //return true;
 
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
 }

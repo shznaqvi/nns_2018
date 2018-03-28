@@ -111,7 +111,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
             for (OutcomeContract outcomeContract : outcomeContracts) {
                 JSONB1AModelClass jsonB1A = JSONUtilClass.getModelFromJSON(outcomeContract.getsB1A(), JSONB1AModelClass.class);
 
-                if (jsonB1A.getSerial().equals(MainApp.count)) {
+                if (jsonB1A.getSerial().equals(String.valueOf(MainApp.count))) {
 
                     outcomeCC = outcomeContract;
 
@@ -225,14 +225,15 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
                         startActivity(new Intent(this, SectionB1AActivity.class)
                                 .putExtra("type", false)
-                                .putExtra("backPressed", backPressed));
+                                .putExtra("backPressed", backPressed ? true : frontPressed));
                     } else {
 
 //                        MainApp.count = 1;
 //                        childSerial = 1;
 
                         if (yearsBydob <= 2 && MainApp.status > 0) {
-                            startActivity(new Intent(this, SectionB2Activity.class));
+                            startActivity(new Intent(this, SectionB2Activity.class)
+                                    .putExtra("backPressed", backPressed ? true : frontPressed));
                         } else {
                             if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
                                     &&
@@ -254,6 +255,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                     i.putExtra("datem", bi.nw215m.getText().toString());
                     i.putExtra("dated", bi.nw215d.getText().toString());
                     i.putExtra("type", true);
+                    i.putExtra("backPressed", backPressed ? true : frontPressed);
                     startActivity(i);
                 }
 
@@ -541,7 +543,9 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         }
 
         if (MainApp.outcome != 4) {
-            MainApp.count--;
+            if (MainApp.count > 1) {
+                MainApp.count--;
+            }
         } else {
             childSerial--;
         }
