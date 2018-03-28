@@ -276,11 +276,9 @@ public class SectionB2Activity extends Activity {
         bi.nw301Txt.setText(getString(R.string.nw301a) + " " + SectionB1Activity.wraName + " " + getString(R.string.nw301b));
 
 
-        if (getIntent().getBooleanExtra("backPressed", false)) {
+        MWRAContract mwraContract = db.getsB2();
+        if (!mwraContract.getsB2().equals("")) {
 
-            backPressed = true;
-
-            MWRAContract mwraContract = db.getsB2();
             JSONB2ModelClass jsonB2 = JSONUtilClass.getModelFromJSON(mwraContract.getsB2(), JSONB2ModelClass.class);
 
             if (!jsonB2.getnw301().equals("0")) {
@@ -686,6 +684,8 @@ public class SectionB2Activity extends Activity {
             }
             if (UpdateDB()) {
                 //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
+
+                backPressed = true;
 
                 finish();
 

@@ -2062,6 +2062,51 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFC;
     }
 
+    public MWRAContract getsB3() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                MWRATable.COLUMN__ID,
+                MWRATable.COLUMN_UID,
+                MWRATable.COLUMN_UUID,
+                MWRATable.COLUMN_SB3
+        };
+
+
+        String whereClause = MWRATable.COLUMN_UID + "=?";
+        String[] whereArgs = new String[]{MainApp.mc.get_UID()};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                MWRATable.COLUMN__ID + " ASC";
+
+        MWRAContract allFC = new MWRAContract();
+        try {
+            c = db.query(
+                    MWRATable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                MWRAContract fc = new MWRAContract();
+                allFC = fc.Hydrate(c, 3);
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
 
     public Collection<SerialContract> getUnsyncedSerials() {
         SQLiteDatabase db = this.getReadableDatabase();

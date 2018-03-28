@@ -233,7 +233,8 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
                         if (yearsBydob <= 2 && MainApp.status > 0) {
                             startActivity(new Intent(this, SectionB2Activity.class)
-                                    .putExtra("backPressed", backPressed ? true : frontPressed));
+                            );
+//                                    .putExtra("backPressed", frontPressed));
                         } else {
                             if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
                                     &&

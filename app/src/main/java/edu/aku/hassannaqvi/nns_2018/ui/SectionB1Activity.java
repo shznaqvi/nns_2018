@@ -44,6 +44,7 @@ public class SectionB1Activity extends Activity {
     ActivitySectionB1Binding bi;
     DatabaseHelper db;
     Boolean backPressed = false;
+    Boolean frontPressed = false;
     private Timer timer = new Timer();
 
     @Override
@@ -848,7 +849,7 @@ public class SectionB1Activity extends Activity {
                 MainApp.nuCount = 1;
                 MainApp.flag = false;
 
-                backPressed = true;
+                frontPressed = true;
 
                 //finish();
 
@@ -1215,6 +1216,10 @@ public class SectionB1Activity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        if (frontPressed) {
+            backPressed = true;
+        }
 
         if (backPressed) {
             bi.nb101.setEnabled(false);

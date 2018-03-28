@@ -10,12 +10,16 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.Timer;
 
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB3Binding;
+import edu.aku.hassannaqvi.nns_2018.other.JSONB3ModelClass;
+import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
@@ -24,6 +28,7 @@ public class SectionB3Activity extends AppCompatActivity {
     private final long DELAY = 1000;
     ActivitySectionB3Binding binding;
     DatabaseHelper db;
+    Boolean backPressed = false;
     private Timer timer = new Timer();
 
     @Override
@@ -75,11 +80,90 @@ public class SectionB3Activity extends AppCompatActivity {
                 }
             }
         });
+
+
+//        BackPressed event
+
+        MWRAContract mwraContract = db.getsB3();
+        if (!mwraContract.getsB3().equals("")) {
+
+            JSONB3ModelClass jsonB3 = JSONUtilClass.getModelFromJSON(mwraContract.getsB2(), JSONB3ModelClass.class);
+
+            if (!jsonB3.getnw327().equals("0")) {
+                binding.nw327.check(
+                        jsonB3.getnw327().equals("1") ? binding.nw327a.getId() :
+                                jsonB3.getnw327().equals("2") ? binding.nw327b.getId() :
+                                        binding.nw32798.getId());
+            }
+            binding.nw327m.setText(jsonB3.getnw327m());
+            binding.nw327d.setText(jsonB3.getnw327d());
+
+            if (!jsonB3.getnw328().equals("0")) {
+                binding.nw328.check(
+                        jsonB3.getnw328().equals("1") ? binding.nw328a.getId() :
+                                jsonB3.getnw328().equals("2") ? binding.nw328b.getId() :
+                                        jsonB3.getnw328().equals("3") ? binding.nw328c.getId() :
+                                                jsonB3.getnw328().equals("4") ? binding.nw328d.getId() :
+                                                        jsonB3.getnw328().equals("5") ? binding.nw328e.getId() :
+                                                                binding.nw32896.getId()
+                );
+                binding.nw32896x.setText(jsonB3.getnw32896x());
+            }
+
+            if (!jsonB3.getnw329a().equals("0")) {
+                binding.nw329a.setChecked(true);
+            }
+            if (!jsonB3.getnw329b().equals("0")) {
+                binding.nw329b.setChecked(true);
+            }
+            if (!jsonB3.getnw329c().equals("0")) {
+                binding.nw329c.setChecked(true);
+            }
+            if (!jsonB3.getnw329d().equals("0")) {
+                binding.nw329d.setChecked(true);
+            }
+            if (!jsonB3.getnw329e().equals("0")) {
+                binding.nw329e.setChecked(true);
+            }
+            if (!jsonB3.getnw329f().equals("0")) {
+                binding.nw329f.setChecked(true);
+            }
+            if (!jsonB3.getnw329g().equals("0")) {
+                binding.nw329g.setChecked(true);
+            }
+            if (!jsonB3.getnw329h().equals("0")) {
+                binding.nw329h.setChecked(true);
+            }
+
+            if (!jsonB3.getnw330().equals("0")) {
+                binding.nw330.check(
+                        jsonB3.getnw330().equals("1") ? binding.nw330a.getId() :
+                                jsonB3.getnw330().equals("2") ? binding.nw330b.getId() :
+                                        jsonB3.getnw330().equals("3") ? binding.nw330c.getId() :
+                                                binding.nw330d.getId()
+                );
+            }
+
+            if (!jsonB3.getnw331().equals("0")) {
+                binding.nw331.check(
+                        jsonB3.getnw331().equals("1") ? binding.nw331a.getId() :
+                                binding.nw331b.getId());
+            }
+
+            if (!jsonB3.getnw332().equals("0")) {
+                binding.nw332.check(
+                        jsonB3.getnw332().equals("1") ? binding.nw332a.getId() :
+                                jsonB3.getnw332().equals("2") ? binding.nw332b.getId() :
+                                        jsonB3.getnw332().equals("3") ? binding.nw332c.getId() :
+                                                binding.nw332d.getId()
+                );
+            }
+
+        }
     }
 
     public void BtnContinue() {
 
-        //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
             try {
                 SaveDraft();
@@ -87,7 +171,8 @@ public class SectionB3Activity extends AppCompatActivity {
                 e.printStackTrace();
             }
             if (UpdateDB()) {
-                //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
+
+                backPressed = true;
 
                 finish();
 
@@ -98,7 +183,6 @@ public class SectionB3Activity extends AppCompatActivity {
             }
         }
 
-//        startActivity(new Intent(this, SectionB4Activity.class));
     }
 
     public void BtnEnd() {
@@ -163,6 +247,10 @@ public class SectionB3Activity extends AppCompatActivity {
 
         JSONObject sB3 = new JSONObject();
 
+        if (backPressed) {
+            sB3.put("updatedate", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+        }
+
         sB3.put("nw327", binding.nw327a.isChecked() ? "1"
                 : binding.nw327b.isChecked() ? "2"
                 : binding.nw32798.isChecked() ? "98"
@@ -208,9 +296,6 @@ public class SectionB3Activity extends AppCompatActivity {
 
         MainApp.mc.setsB3(String.valueOf(sB3));
 
-
-        //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
-
     }
 
     private boolean UpdateDB() {
@@ -232,9 +317,16 @@ public class SectionB3Activity extends AppCompatActivity {
 
     }
 
-
     @Override
     public void onBackPressed() {
+
+        try {
+            SaveDraft();
+            UpdateDB();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         super.onBackPressed();
     }
 

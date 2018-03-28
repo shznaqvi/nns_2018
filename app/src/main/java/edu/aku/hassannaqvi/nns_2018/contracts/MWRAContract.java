@@ -242,6 +242,10 @@ public class MWRAContract {
 
     public MWRAContract Hydrate(Cursor cursor, int type) {
 
+        this._ID = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN__ID));
+        this._UID = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_UID));
+        this._UUID = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_UUID));
+
         if (type == 1 || type == 2) {
             this.sB2 = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB2));
         }
@@ -249,9 +253,6 @@ public class MWRAContract {
             this.sB3 = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB3));
         }
         if (type == 1) {
-            this._ID = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN__ID));
-            this._UID = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_UID));
-            this._UUID = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_UUID));
             this.formDate = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_FORMDATE));
             this.deviceId = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_DEVICEID));
             this.devicetagID = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_DEVICETAGID));
