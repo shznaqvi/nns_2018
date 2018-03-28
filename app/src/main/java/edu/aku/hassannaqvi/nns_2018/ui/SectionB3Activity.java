@@ -87,7 +87,7 @@ public class SectionB3Activity extends AppCompatActivity {
         MWRAContract mwraContract = db.getsB3();
         if (!mwraContract.getsB3().equals("")) {
 
-            JSONB3ModelClass jsonB3 = JSONUtilClass.getModelFromJSON(mwraContract.getsB2(), JSONB3ModelClass.class);
+            JSONB3ModelClass jsonB3 = JSONUtilClass.getModelFromJSON(mwraContract.getsB3(), JSONB3ModelClass.class);
 
             if (!jsonB3.getnw327().equals("0")) {
                 binding.nw327.check(

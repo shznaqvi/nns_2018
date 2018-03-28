@@ -13,9 +13,12 @@ import org.json.JSONObject;
 import java.util.Timer;
 
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB5Binding;
+import edu.aku.hassannaqvi.nns_2018.other.JSONB5ModelClass;
+import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
@@ -100,6 +103,59 @@ public class SectionB5Activity extends AppCompatActivity {
                 }
             }
         });
+
+        // Back Pressed
+
+        MWRAContract mwraContract = db.getsB5();
+
+        if (!mwraContract.getsB5().equals("")) {
+
+            JSONB5ModelClass jsonB5 = JSONUtilClass.getModelFromJSON(mwraContract.getsB5(), JSONB5ModelClass.class);
+
+            if (!jsonB5.getnw414().equals("0")) {
+                binding.nw414.check(
+                        jsonB5.getnw414().equals("1") ? binding.nw414a.getId() :
+                                binding.nw414b.getId());
+            }
+
+            if (!jsonB5.getnw415a().equals("0")) {
+                binding.nw415a.setChecked(true);
+            }
+            if (!jsonB5.getnw415b().equals("0")) {
+                binding.nw415b.setChecked(true);
+            }
+            if (!jsonB5.getnw415c().equals("0")) {
+                binding.nw415c.setChecked(true);
+            }
+            if (!jsonB5.getnw415d().equals("0")) {
+                binding.nw415d.setChecked(true);
+            }
+            if (!jsonB5.getnw415e().equals("0")) {
+                binding.nw415e.setChecked(true);
+            }
+            if (!jsonB5.getnw415f().equals("0")) {
+                binding.nw415f.setChecked(true);
+            }
+            if (!jsonB5.getnw415g().equals("0")) {
+                binding.nw415g.setChecked(true);
+            }
+            if (!jsonB5.getnw41596().equals("0")) {
+                binding.nw41596.setChecked(true);
+                binding.nw41596x.setText(jsonB5.getnw41596x());
+            }
+
+            if (!jsonB5.getnw416().equals("0")) {
+                binding.nw416.check(
+                        jsonB5.getnw416().equals("1") ? binding.nw416a.getId()
+                                : jsonB5.getnw416().equals("2") ? binding.nw416b.getId()
+                                : jsonB5.getnw416().equals("3") ? binding.nw416c.getId()
+                                : binding.nw41698.getId());
+            }
+
+        }
+
+
+
 
     }
 
