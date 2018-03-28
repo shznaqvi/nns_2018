@@ -372,7 +372,7 @@ public class SectionB4Activity extends Activity {
 
                 backPressed = true;
 
-                finish();
+//                finish();
 
                 startActivity(new Intent(this, SectionB5Activity.class));
 

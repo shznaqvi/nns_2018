@@ -689,7 +689,7 @@ public class SectionB2Activity extends Activity {
 
                 backPressed = true;
 
-                finish();
+//                finish();
 
                 if (!MainApp.B2B6Flag) {
                     MainApp.B2B6Flag = true;

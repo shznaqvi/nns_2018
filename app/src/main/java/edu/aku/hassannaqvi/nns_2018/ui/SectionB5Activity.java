@@ -116,7 +116,7 @@ public class SectionB5Activity extends AppCompatActivity {
                 //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
                 MainApp.nuCount = 1;
 
-                finish();
+//                finish();
 
                 if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
                         &&

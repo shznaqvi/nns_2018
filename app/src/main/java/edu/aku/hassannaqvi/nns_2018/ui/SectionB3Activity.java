@@ -174,7 +174,7 @@ public class SectionB3Activity extends AppCompatActivity {
 
                 backPressed = true;
 
-                finish();
+//                finish();
 
                 startActivity(new Intent(this, SectionB4Activity.class));
 

@@ -237,7 +237,7 @@ public class SectionB6Activity extends AppCompatActivity {
             }
             if (UpdateDB()) {
 
-                finish();
+//                finish();
 
                 MainApp.B6Flag = false;
 
@@ -265,8 +265,11 @@ public class SectionB6Activity extends AppCompatActivity {
                                 .putExtra("complete", true));
                     }
                 } else {
+
                     MainApp.nuCount++;
-                    finish();
+
+//                    finish();
+
                     startActivity(new Intent(this, SectionB6Activity.class));
 
                 }
