@@ -25,6 +25,7 @@ import java.util.Map;
 import java.util.Timer;
 
 import butterknife.BindViews;
+import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
@@ -61,6 +62,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_c1);
+        ButterKnife.bind(this);
         db = new DatabaseHelper(this);
         respName = new ArrayList<>();
         respName.add("....");
@@ -123,6 +125,38 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
         for (EditText ed : grpDate) {
             ed.addTextChangedListener(this);
         }
+
+        //======= Checking Q201, 202 and 203
+        binding.nc203.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                binding.nc204aa.setEnabled(false);
+                binding.nc204ab.setEnabled(false);
+                binding.nc204ba.setEnabled(false);
+                binding.nc204bb.setEnabled(false);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (!binding.nc203.getText().toString().isEmpty()) {
+                    if (ageInMontsbyDob == Integer.valueOf(binding.nc203.getText().toString())) {
+                        binding.nc204aa.setChecked(true);
+                        binding.nc204ba.setChecked(true);
+                    } else {
+                        binding.nc204ab.setChecked(true);
+                        binding.nc204bb.setChecked(true);
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
     }
 
 
@@ -145,10 +179,10 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
 
                 finish();
 
-                if (Integer.valueOf(childMap.get(binding.nc101.getSelectedItem().toString()).getAgeInYear()) < 2) {
+                if (ageInMontsbyDob < 24) {
                     startActivity(new Intent(this, SectionC2Activity.class)
                             .putExtra("selectedChild", childMap.get(binding.nc101.getSelectedItem().toString())));
-                } else {
+                } else if (ageInMontsbyDob >= 24 && ageInMontsbyDob < 59) {
                     startActivity(new Intent(this, SectionC3Activity.class)
                             .putExtra("selectedChild", childMap.get(binding.nc101.getSelectedItem().toString())));
                 }
@@ -242,7 +276,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
                 return false;
             }
 
-            if (agebyDob < 1 && !binding.nc202a.isChecked()) {
+            if (ageInMontsbyDob <= 12 && !binding.nc202a.isChecked()) {
                 Toast.makeText(this, "ERROR(invalid): " + "Select correct option.. Age is less than 1 year" + getString(R.string.nc202), Toast.LENGTH_LONG).show();
                 binding.nc202a.setError("Select correct option.. Age is less than 1 year");
 
@@ -252,7 +286,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
                 binding.nc202a.setError(null);
             }
 
-            if ((agebyDob > 1 && agebyDob < 2) && !binding.nc202b.isChecked()) {
+            if ((ageInMontsbyDob > 12 && agebyDob < 24) && !binding.nc202b.isChecked()) {
                 Toast.makeText(this, "ERROR(invalid): " + "Select correct option.. Age is greater than 1 year" + getString(R.string.nc202), Toast.LENGTH_LONG).show();
                 binding.nc202b.setError("Select correct option.. Age is greater than 1 year");
 
@@ -262,7 +296,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
                 binding.nc202b.setError(null);
             }
 
-            if ((agebyDob >= 2 && agebyDob < 5) && !binding.nc202c.isChecked()) {
+            if ((ageInMontsbyDob >= 24 && ageInMontsbyDob < 59) && !binding.nc202c.isChecked()) {
                 Toast.makeText(this, "ERROR(invalid): " + "Select correct option.. Age is greater than 2 years" + getString(R.string.nc202), Toast.LENGTH_LONG).show();
                 binding.nc202c.setError("Select correct option.. Age is greater than 2 years");
 
@@ -280,16 +314,46 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
                 return false;
             }
 
-            if (!validatorClass.EmptyRadioButton(this, binding.nc204a, binding.nc204aa, getString(R.string.nc204a))) {
+            if (ageInMontsbyDob != Integer.valueOf(binding.nc203.getText().toString())) {
+                Toast.makeText(this, "ERROR(invalid): " + "Check age and dob again" + getString(R.string.nc203), Toast.LENGTH_LONG).show();
+                binding.nc203.setError("Please check age and dob again..");
+
+                Log.i(SectionC1Activity.class.getSimpleName(), "nc203" + ": invalid");
+                return false;
+            } else {
+                binding.nc203.setError(null);
+            }
+
+            /*if (!validatorClass.EmptyRadioButton(this, binding.nc204a, binding.nc204aa, getString(R.string.nc204a))) {
                 return false;
             }
 
             if (!validatorClass.EmptyRadioButton(this, binding.nc204b, binding.nc204ba, getString(R.string.nc204b))) {
                 return false;
-            }
+            }*/
 
             if (!validatorClass.EmptyRadioButton(this, binding.nc205, binding.nc205a, getString(R.string.nc205))) {
                 return false;
+            }
+
+            if (ageInMontsbyDob < 24 && !binding.nc205a.isChecked()) {
+                Toast.makeText(this, "ERROR(invalid): " + "Select correct option according to age in months" + getString(R.string.nc205), Toast.LENGTH_LONG).show();
+                binding.nc205a.setError("Select correct option according to age in months");
+
+                Log.i(SectionC1Activity.class.getSimpleName(), "nc205" + ": invalid");
+                return false;
+            } else {
+                binding.nc205a.setError(null);
+            }
+
+            if (ageInMontsbyDob > 24 && !binding.nc205a.isChecked()) {
+                Toast.makeText(this, "ERROR(invalid): " + "Select correct option according to age in months" + getString(R.string.nc205), Toast.LENGTH_LONG).show();
+                binding.nc205b.setError("Select correct option according to age in months");
+
+                Log.i(SectionC1Activity.class.getSimpleName(), "nc205" + ": invalid");
+                return false;
+            } else {
+                binding.nc205b.setError(null);
             }
 
 
@@ -392,7 +456,8 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-        if (!binding.nc201d.getText().toString().isEmpty()) {
+        if (!binding.nc201d.getText().toString().isEmpty() && !binding.nc201m.getText().toString().isEmpty()
+                && !binding.nc201y.getText().toString().isEmpty()) {
 
             if (!binding.nc201d.getText().toString().equals("98")) {
                 dob = DateUtils.getCalendarDate(binding.nc201d.getText().toString(),
