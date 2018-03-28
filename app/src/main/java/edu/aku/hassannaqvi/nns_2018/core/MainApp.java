@@ -23,6 +23,7 @@ import java.util.Map;
 
 import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.DeceasedContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
@@ -90,6 +91,7 @@ public class MainApp extends Application {
 
     //    Ali
     public static FamilyMembersContract fmc;
+    public static DeceasedContract dc;
     public static EligibleMembersContract emc;
     public static List<FamilyMembersContract> members_f_m;
     public static List<FamilyMembersContract> respList;

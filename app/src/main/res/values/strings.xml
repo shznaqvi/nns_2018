@@ -1505,15 +1505,16 @@
   <string name="wt">Scan Weight Machine QR Code</string>
 
 
-  <string name="nh8heading"></string>
-  <string name="nh801"></string>
-  <string name="nh802"></string>
-  <string name="nh803"></string>
-  <string name="nh804"></string>
-  <string name="nh805"></string>
-  <string name="nh806"></string>
-  <string name="nh807"></string>
-  <string name="nh808"></string>
-  <string name="nh809"></string>
+    <string name="nh8heading">: اموات کے بارے میں معلومات</string>
+    <string name="nh801">گذشتہ 5 سالوں کے دوران کیا اس گھر میں کسی گھر کے فرد کی موت واقع ہوئی</string>
+    <string name="nh802"> وفات پانے والوں کی تعداد</string>
+    <string name="nh802sub">اگر ہاں تو برائے مہربانی وفات پانے والے کی تفصیل بتائیں</string>
+    <string name="nh803">وفات پانے والے کانام</string>
+    <string name="nh804">وفات پانے والے کی والدہ کا نام</string>
+    <string name="nh805">وفات پانے والے کی والد کا نام</string>
+    <string name="nh806">وفات پانے والے کی جنس</string>
+    <string name="nh807">وفات کے وقت عمر</string>
+    <string name="nh808">وفات کی تاریخ</string>
+    <string name="nh809">وفات کی جگہ</string>
 
 </resources>
