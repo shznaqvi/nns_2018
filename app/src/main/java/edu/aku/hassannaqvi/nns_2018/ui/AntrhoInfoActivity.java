@@ -60,7 +60,6 @@ public class AntrhoInfoActivity extends Activity {
         MainApp.all_members = new ArrayList<>();
         MainApp.childUnder2 = new ArrayList<>();
         MainApp.childUnder5 = new ArrayList<>();
-        MainApp.childUnder5 = new ArrayList<>();
         MainApp.childNA = new ArrayList<>();
         MainApp.mwra = new ArrayList<>();
         MainApp.adolescents = new ArrayList<>();

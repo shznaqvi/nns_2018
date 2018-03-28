@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingBottom="10dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="10dp">
+
+    <LinearLayout
+        style="@style/Widget.AppCompat.ListView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_53sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:background="@drawable/bacground_border2"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal">
+
+
+        <RelativeLayout
+            android:id="@+id/info"
+            android:layout_width="@dimen/_65sdp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            android:layout_weight="9"
+            android:paddingTop="@dimen/_2sdp">
+            <!-- Child Name-->
+            <TextView
+                android:id="@+id/childName"
+                style="@style/listItems"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_24sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:text="Child Name"
+                android:textColor="#efefef"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:typeface="sans" />
+
+
+            <!-- Age -->
+
+            <TextView
+                android:id="@+id/Age"
+                style="@style/listItems"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_alignEnd="@+id/childName"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:gravity="right"
+                android:text="Age"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <!-- Mother -->
+            <TextView
+                android:id="@+id/childmName"
+                style="@style/listItems"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/childName"
+                android:gravity="clip_horizontal"
+                android:text="Mother Name"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp" />
+
+            <!-- na204 -->
+            <TextView
+                android:id="@+id/na204"
+                style="@style/listItems"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_alignBaseline="@+id/childmName"
+                android:layout_alignBottom="@+id/childmName"
+                android:layout_alignEnd="@+id/childmName"
+                android:gravity="right"
+                android:text="Gender"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/editChild"
+            android:layout_width="@dimen/_10sdp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/editbutton" />
+
+    </LinearLayout>
+
+</layout>

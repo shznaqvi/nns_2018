@@ -105,6 +105,7 @@ public class MainApp extends Application {
     public static Boolean B2B6Flag = false;
     // fro section A2
     public static List<FamilyMembersContract> familyMembersList;
+    //public static List<FamilyMembersContract> familyMembersList;
     public static List<Integer> hhClicked;
 
     // Gul Sanober
