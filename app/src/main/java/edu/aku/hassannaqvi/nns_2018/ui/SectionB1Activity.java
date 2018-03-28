@@ -863,7 +863,8 @@ public class SectionB1Activity extends Activity {
                                 if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
                                         &&
                                         MainApp.B6Flag) {
-                                    startActivity(new Intent(this, SectionB6Activity.class));
+                                    startActivity(new Intent(this, SectionB6Activity.class)
+                                            .putExtra("backPressed", backPressed));
                                 } else {
                                     startActivity(new Intent(this, MotherEndingActivity.class)
                                             .putExtra("complete", true));
@@ -873,7 +874,8 @@ public class SectionB1Activity extends Activity {
                             if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
                                     &&
                                     MainApp.B6Flag) {
-                                startActivity(new Intent(this, SectionB6Activity.class));
+                                startActivity(new Intent(this, SectionB6Activity.class)
+                                        .putExtra("backPressed", backPressed));
                             } else {
                                 startActivity(new Intent(this, MotherEndingActivity.class)
                                         .putExtra("complete", true));
@@ -883,7 +885,8 @@ public class SectionB1Activity extends Activity {
                         if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
                                 &&
                                 MainApp.B6Flag) {
-                            startActivity(new Intent(this, SectionB6Activity.class));
+                            startActivity(new Intent(this, SectionB6Activity.class)
+                                    .putExtra("backPressed", backPressed));
                         } else {
                             startActivity(new Intent(this, MotherEndingActivity.class)
                                     .putExtra("complete", true));

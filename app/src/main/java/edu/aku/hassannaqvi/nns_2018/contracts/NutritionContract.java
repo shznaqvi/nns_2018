@@ -30,6 +30,8 @@ public class NutritionContract {
     private String synced = "";
     private String syncedDate = "";
 
+    private String updatedate = "";
+
     public NutritionContract() {
     }
 
@@ -129,6 +131,13 @@ public class NutritionContract {
         this.sB6 = sB6;
     }
 
+    public String getUpdatedate() {
+        return updatedate;
+    }
+
+    public void setUpdatedate(String updatedate) {
+        this.updatedate = updatedate;
+    }
 
     public NutritionContract Sync(JSONObject jsonObject) throws JSONException {
 
@@ -149,20 +158,22 @@ public class NutritionContract {
 
     }
 
-    public NutritionContract Hydrate(Cursor cursor) {
+    public NutritionContract Hydrate(Cursor cursor, int type) {
 
         this._ID = cursor.getString(cursor.getColumnIndex(NutritionTable.COLUMN__ID));
         this._UID = cursor.getString(cursor.getColumnIndex(NutritionTable.COLUMN_UID));
         this._UUID = cursor.getString(cursor.getColumnIndex(NutritionTable.COLUMN_UUID));
-        this.formDate = cursor.getString(cursor.getColumnIndex(NutritionTable.COLUMN_FORMDATE));
-        this.deviceId = cursor.getString(cursor.getColumnIndex(NutritionTable.COLUMN_DEVICEID));
-        this.devicetagID = cursor.getString(cursor.getColumnIndex(NutritionTable.COLUMN_DEVICETAGID));
-        this.user = cursor.getString(cursor.getColumnIndex(NutritionTable.COLUMN_USER));
-        this.app_ver = cursor.getString(cursor.getColumnIndex(NutritionTable.COLUMN_APP_VER));
         this.sB6 = cursor.getString(cursor.getColumnIndex(NutritionTable.COLUMN_SB6));
-        this.synced = cursor.getString(cursor.getColumnIndex(NutritionTable.COLUMN_SYNCED));
-        this.syncedDate = cursor.getString(cursor.getColumnIndex(NutritionTable.COLUMN_SYNCEDDATE));
 
+        if (type == 0) {
+            this.formDate = cursor.getString(cursor.getColumnIndex(NutritionTable.COLUMN_FORMDATE));
+            this.deviceId = cursor.getString(cursor.getColumnIndex(NutritionTable.COLUMN_DEVICEID));
+            this.devicetagID = cursor.getString(cursor.getColumnIndex(NutritionTable.COLUMN_DEVICETAGID));
+            this.user = cursor.getString(cursor.getColumnIndex(NutritionTable.COLUMN_USER));
+            this.app_ver = cursor.getString(cursor.getColumnIndex(NutritionTable.COLUMN_APP_VER));
+            this.synced = cursor.getString(cursor.getColumnIndex(NutritionTable.COLUMN_SYNCED));
+            this.syncedDate = cursor.getString(cursor.getColumnIndex(NutritionTable.COLUMN_SYNCEDDATE));
+        }
 
         return this;
 
@@ -178,6 +189,9 @@ public class NutritionContract {
         json.put(NutritionTable.COLUMN_UID, this._UID == null ? JSONObject.NULL : this._UID);
         json.put(NutritionTable.COLUMN_UUID, this._UUID == null ? JSONObject.NULL : this._UUID);
         json.put(NutritionTable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
+
+        json.put(NutritionTable.COLUMN_UPDATEDATE, this.updatedate == null ? JSONObject.NULL : this.updatedate);
+
         json.put(NutritionTable.COLUMN_DEVICEID, this.deviceId == null ? JSONObject.NULL : this.deviceId);
         json.put(NutritionTable.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
         json.put(NutritionTable.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
@@ -214,6 +228,7 @@ public class NutritionContract {
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNCEDDATE = "synceddate";
 
+        public static final String COLUMN_UPDATEDATE = "updatedate";
 
         public static String _URL = "nutritions.php";
     }

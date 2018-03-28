@@ -263,6 +263,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             NutritionTable.COLUMN_UID + " TEXT," +
             NutritionTable.COLUMN_UUID + " TEXT," +
             NutritionTable.COLUMN_FORMDATE + " TEXT," +
+            NutritionTable.COLUMN_UPDATEDATE + " TEXT," +
             NutritionTable.COLUMN_DEVICEID + " TEXT," +
             NutritionTable.COLUMN_DEVICETAGID + " TEXT," +
             NutritionTable.COLUMN_USER + " TEXT," +
@@ -1061,33 +1062,46 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public Long addNutrition(NutritionContract mc) {
+    public Long addNutrition(NutritionContract mc, int type) {
 
         // Gets the data repository in write mode
         SQLiteDatabase db = this.getWritableDatabase();
 
 // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
-        values.put(NutritionTable.COLUMN_PROJECTNAME, mc.getProjectName());
-        //values.put(MWRATable.COLUMN__ID, mc.get_ID());
-        values.put(NutritionTable.COLUMN_UID, mc.get_UID());
-        values.put(NutritionTable.COLUMN_UUID, mc.get_UUID());
-        values.put(NutritionTable.COLUMN_FORMDATE, mc.getFormDate());
-        values.put(NutritionTable.COLUMN_DEVICEID, mc.getDeviceId());
-        values.put(NutritionTable.COLUMN_DEVICETAGID, mc.getDevicetagID());
-        values.put(NutritionTable.COLUMN_USER, mc.getUser());
-        values.put(NutritionTable.COLUMN_APP_VER, mc.getApp_ver());
         values.put(NutritionTable.COLUMN_SB6, mc.getsB6());
-        values.put(NutritionTable.COLUMN_SYNCED, mc.getSynced());
-        values.put(NutritionTable.COLUMN_SYNCEDDATE, mc.getSyncedDate());
 
-
+        if (type == 0) {
+            values.put(NutritionTable.COLUMN_PROJECTNAME, mc.getProjectName());
+            //values.put(MWRATable.COLUMN__ID, mc.get_ID());
+            values.put(NutritionTable.COLUMN_UID, mc.get_UID());
+            values.put(NutritionTable.COLUMN_UUID, mc.get_UUID());
+            values.put(NutritionTable.COLUMN_FORMDATE, mc.getFormDate());
+            values.put(NutritionTable.COLUMN_DEVICEID, mc.getDeviceId());
+            values.put(NutritionTable.COLUMN_DEVICETAGID, mc.getDevicetagID());
+            values.put(NutritionTable.COLUMN_USER, mc.getUser());
+            values.put(NutritionTable.COLUMN_APP_VER, mc.getApp_ver());
+            values.put(NutritionTable.COLUMN_SYNCED, mc.getSynced());
+            values.put(NutritionTable.COLUMN_SYNCEDDATE, mc.getSyncedDate());
+        } else {
+            values.put(NutritionTable.COLUMN_UPDATEDATE, mc.getUpdatedate());
+        }
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
-        newRowId = db.insert(
-                NutritionTable.TABLE_NAME,
-                NutritionTable.COLUMN_NAME_NULLABLE,
-                values);
+        if (type == 0) {
+            newRowId = db.insert(
+                    NutritionTable.TABLE_NAME,
+                    NutritionTable.COLUMN_NAME_NULLABLE,
+                    values);
+        } else {
+            newRowId = db.update(
+                    NutritionTable.TABLE_NAME,
+                    values,
+                    NutritionTable.COLUMN_UID + " = ?",
+                    new String[]{mc.get_UID()}
+            );
+        }
+
         return newRowId;
     }
 
@@ -1853,7 +1867,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 NutritionContract fc = new NutritionContract();
-                allFC.add(fc.Hydrate(c));
+                allFC.add(fc.Hydrate(c, 0));
             }
         } finally {
             if (c != null) {
@@ -2004,6 +2018,50 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 OutcomeContract fc = new OutcomeContract();
+                allFC.add(fc.Hydrate(c, 1));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
+    public Collection<NutritionContract> getPressedNutrition() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                NutritionTable.COLUMN__ID,
+                NutritionTable.COLUMN_UID,
+                NutritionTable.COLUMN_UUID,
+                NutritionTable.COLUMN_SB6
+        };
+
+        String whereClause = NutritionTable.COLUMN_UUID + "=?";
+        String[] whereArgs = new String[]{MainApp.mc.get_UID()};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                NutritionTable.COLUMN__ID + " ASC";
+
+        Collection<NutritionContract> allFC = new ArrayList<>();
+        try {
+            c = db.query(
+                    NutritionTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                NutritionContract fc = new NutritionContract();
                 allFC.add(fc.Hydrate(c, 1));
             }
         } finally {

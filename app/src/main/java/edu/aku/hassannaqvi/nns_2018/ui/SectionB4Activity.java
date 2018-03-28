@@ -174,7 +174,7 @@ public class SectionB4Activity extends Activity {
         MWRAContract mwraContract = db.getsB4();
         if (!mwraContract.getsB4().equals("")) {
 
-            JSONB4ModelClass jsonB4 = JSONUtilClass.getModelFromJSON(mwraContract.getsB2(), JSONB4ModelClass.class);
+            JSONB4ModelClass jsonB4 = JSONUtilClass.getModelFromJSON(mwraContract.getsB4(), JSONB4ModelClass.class);
 
             if (!jsonB4.getnw401().equals("0")) {
                 binding.nw401.check(
@@ -388,13 +388,6 @@ public class SectionB4Activity extends Activity {
         MainApp.endActivityMother(this, this, false);
 
     }
-
-
-    @Override
-    public void onBackPressed() {
-        Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
-    }
-
 
     public boolean formValidation() {
 
@@ -683,6 +676,24 @@ public class SectionB4Activity extends Activity {
         }
         //return true;
 
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        try {
+            SaveDraft();
+            UpdateDB();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
 

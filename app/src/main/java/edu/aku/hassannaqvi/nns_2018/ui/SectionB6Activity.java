@@ -12,6 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.Collection;
 import java.util.Timer;
 
 import edu.aku.hassannaqvi.nns_2018.R;
@@ -20,6 +21,8 @@ import edu.aku.hassannaqvi.nns_2018.contracts.NutritionContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB6Binding;
+import edu.aku.hassannaqvi.nns_2018.other.JSONB6ModelClass;
+import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionB6Activity extends AppCompatActivity {
@@ -27,6 +30,11 @@ public class SectionB6Activity extends AppCompatActivity {
     private final long DELAY = 1000;
     ActivitySectionB6Binding bi;
     DatabaseHelper db;
+    Boolean firstTimePressed = false;
+    Boolean backPressed = false;
+    Boolean frontPressed = false;
+    NutritionContract nutritionCC;
+    String uid = "";
     private Timer timer = new Timer();
 
 
@@ -41,6 +49,56 @@ public class SectionB6Activity extends AppCompatActivity {
 
         settingTimeToEat();
         setListners();
+
+        if (getIntent().getBooleanExtra("backPressed", false)) {
+            frontPressed = true;
+
+            Collection<NutritionContract> nutritionContracts = db.getPressedNutrition();
+
+            for (NutritionContract nutritionContract : nutritionContracts) {
+                JSONB6ModelClass jsonB6 = JSONUtilClass.getModelFromJSON(nutritionContract.getsB6(), JSONB6ModelClass.class);
+
+                if (jsonB6.getSerial().equals(String.valueOf(MainApp.nuCount))) {
+
+                    nutritionCC = nutritionContract;
+
+                    if (!jsonB6.getnw501a().equals("2")) {
+                        bi.nw501a.setChecked(true);
+                    }
+                    if (!jsonB6.getnw501b().equals("2")) {
+                        bi.nw501b.setChecked(true);
+                    }
+                    if (!jsonB6.getnw501c().equals("2")) {
+                        bi.nw501c.setChecked(true);
+                    }
+                    if (!jsonB6.getnw501d().equals("2")) {
+                        bi.nw501d.setChecked(true);
+                    }
+                    if (!jsonB6.getnw501e().equals("2")) {
+                        bi.nw501e.setChecked(true);
+                    }
+                    if (!jsonB6.getnw501f().equals("2")) {
+                        bi.nw501f.setChecked(true);
+                    }
+                    if (!jsonB6.getnw501g().equals("2")) {
+                        bi.nw501g.setChecked(true);
+                    }
+                    if (!jsonB6.getnw501h().equals("2")) {
+                        bi.nw501h.setChecked(true);
+                    }
+                    if (!jsonB6.getnw501i().equals("2")) {
+                        bi.nw501i.setChecked(true);
+                    }
+                    if (!jsonB6.getnw501j().equals("2")) {
+                        bi.nw501j.setChecked(true);
+                    }
+
+                }
+            }
+
+
+        }
+
     }
 
     private void setListners() {
@@ -270,7 +328,8 @@ public class SectionB6Activity extends AppCompatActivity {
 
 //                    finish();
 
-                    startActivity(new Intent(this, SectionB6Activity.class));
+                    startActivity(new Intent(this, SectionB6Activity.class)
+                            .putExtra("backPressed", backPressed ? true : frontPressed));
 
                 }
 
@@ -293,11 +352,6 @@ public class SectionB6Activity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
-        Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
-    }
-
     private boolean ValidateForm() {
 
         return validatorClass.EmptyCheckBox(this, bi.fldGrpnw501check, bi.nw501a, getString(R.string.nw501a));
@@ -309,18 +363,27 @@ public class SectionB6Activity extends AppCompatActivity {
 
 
         MainApp.nc = new NutritionContract();
+        if (!backPressed && !frontPressed) {
+            MainApp.nc.setDevicetagID(MainApp.getTagName(this));
+            MainApp.nc.setFormDate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+            MainApp.nc.setUser(MainApp.userName);
+            MainApp.nc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
+                    Settings.Secure.ANDROID_ID));
+            MainApp.nc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
+            MainApp.nc.set_UUID(MainApp.mc.get_UID());
+        } else {
+            MainApp.nc.setUpdatedate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
 
-        MainApp.nc.setDevicetagID(MainApp.getTagName(this));
-        MainApp.nc.setFormDate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
-        MainApp.nc.setUser(MainApp.userName);
-        MainApp.nc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
-                Settings.Secure.ANDROID_ID));
-        MainApp.nc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
-        MainApp.nc.set_UUID(MainApp.mc.get_UID());
-
+            if (frontPressed) {
+                MainApp.nc.set_UID(nutritionCC.get_UID());
+            } else if (backPressed) {
+                MainApp.nc.set_UID(uid);
+            }
+        }
         JSONObject sB6 = new JSONObject();
-        //       nw501
 
+        sB6.put("serial", String.valueOf(MainApp.nuCount));
+        //       nw501
         sB6.put("nw501a", bi.nw501a.isChecked() ? "1"
                 : "2");
         sB6.put("nw501b", bi.nw501b.isChecked() ? "1"
@@ -342,10 +405,14 @@ public class SectionB6Activity extends AppCompatActivity {
         sB6.put("nw501j", bi.nw501j.isChecked() ? "1"
                 : "2");
 
+        if (backPressed) {
+            sB6.put("backPressed", backPressed);
+        } else if (frontPressed) {
+            sB6.put("frontPressed", frontPressed);
+        }
+
         MainApp.nc.setsB6(String.valueOf(sB6));
 
-
-        //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }
 
     private boolean UpdateDB() {
@@ -353,20 +420,58 @@ public class SectionB6Activity extends AppCompatActivity {
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        Long updcount = db.addNutrition(MainApp.nc);
-        MainApp.nc.set_ID(String.valueOf(updcount));
+        if (!backPressed && !frontPressed) {
+            Long updcount = db.addNutrition(MainApp.nc, 0);
+            MainApp.nc.set_ID(String.valueOf(updcount));
 
-        if (updcount != 0) {
-            //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+            if (updcount != 0) {
+                //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
 
-            MainApp.nc.set_UID(
-                    (MainApp.nc.getDeviceId() + MainApp.nc.get_ID()));
-            db.updateNutritionID();
+                MainApp.nc.set_UID(
+                        (MainApp.nc.getDeviceId() + MainApp.nc.get_ID()));
+                db.updateNutritionID();
+
+                uid = MainApp.nc.getDeviceId() + MainApp.nc.get_ID();
+
+                return true;
+            } else {
+                Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        } else {
+            db.addNutrition(MainApp.nc, 1);
 
             return true;
-        } else {
-            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
-            return false;
         }
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (firstTimePressed) {
+            backPressed = true;
+        }
+
+        firstTimePressed = true;
+    }
+
+
+    @Override
+    public void onBackPressed() {
+
+        try {
+            SaveDraft();
+            UpdateDB();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        if (MainApp.nuCount != 7) {
+            MainApp.nuCount--;
+        }
+
+        super.onBackPressed();
+    }
+
 }
