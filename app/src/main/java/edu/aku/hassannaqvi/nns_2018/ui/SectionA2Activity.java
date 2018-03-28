@@ -531,8 +531,10 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
                     : binding.nh2edue.isChecked() ? "5" : binding.nh2eduf.isChecked() ? "6" : binding.nh2edug.isChecked() ? "7" : binding.nh2eduh.isChecked() ? "8"
                     : binding.nh2edui.isChecked() ? "9" : "0");
 
-            sA2.put("nh209", binding.nh2occa.isChecked() ? "1" : binding.nh2occb.isChecked() ? "2" : binding.nh2occc.isChecked() ? "3" : binding.nh2occd.isChecked() ? "4"
-                    : binding.nh2occe.isChecked() ? "5" : binding.nh2occf.isChecked() ? "6" : binding.nh2occg.isChecked() ? "7" : binding.nh2occh.isChecked() ? "8"
+            sA2.put("nh209", binding.nh2occa.isChecked() ? "1" : binding.nh2occb.isChecked() ? "2"
+                    : binding.nh2occc.isChecked() ? "3" : binding.nh2occd.isChecked() ? "4"
+                    : binding.nh2occe.isChecked() ? "5" : binding.nh2occf.isChecked() ? "6"
+                    : binding.nh2occg.isChecked() ? "7" : binding.nh2occh.isChecked() ? "8"
                     : binding.nh2occ96.isChecked() ? "96" : "0");
 
             sA2.put("nh20996x", binding.nh2occ96x.getText().toString());

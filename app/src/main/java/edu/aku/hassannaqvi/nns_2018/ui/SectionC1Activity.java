@@ -185,6 +185,9 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
                 } else if (ageInMontsbyDob >= 24 && ageInMontsbyDob < 59) {
                     startActivity(new Intent(this, SectionC3Activity.class)
                             .putExtra("selectedChild", childMap.get(binding.nc101.getSelectedItem().toString())));
+                } else if (ageInMontsbyDob > 59 && ageInMontsbyDob > 72) {
+                    startActivity(new Intent(this, MotherEndingActivity.class)
+                            .putExtra("selectedChild", childMap.get(binding.nc101.getSelectedItem().toString())));
                 }
 
                /* startActivity(new Intent(this, SectionC5Activity.class)
@@ -252,7 +255,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
                 return false;
             }
 
-            if (!validatorClass.RangeTextBox(this, binding.nc201y, DateUtils.getCurrentYear() - 5, DateUtils.getCurrentYear(), getString(R.string.nc201), " years")) {
+            if (!validatorClass.RangeTextBox(this, binding.nc201y, DateUtils.getCurrentYear() - 6, DateUtils.getCurrentYear(), getString(R.string.nc201), " years")) {
                 return false;
             }
 
@@ -266,7 +269,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
                     return false;
                 }
 
-                if (!validatorClass.RangeTextBoxforDate(this, binding.nc201y, DateUtils.getCurrentYear() - 5, DateUtils.getCurrentYear(), "Year can not be more than current year")) {
+                if (!validatorClass.RangeTextBoxforDate(this, binding.nc201y, DateUtils.getCurrentYear() - 6, DateUtils.getCurrentYear(), "Year can not be more than current year")) {
                     return false;
                 }
 
@@ -286,7 +289,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
                 binding.nc202a.setError(null);
             }
 
-            if ((ageInMontsbyDob > 12 && agebyDob < 24) && !binding.nc202b.isChecked()) {
+            if ((ageInMontsbyDob > 12 && ageInMontsbyDob < 24) && !binding.nc202b.isChecked()) {
                 Toast.makeText(this, "ERROR(invalid): " + "Select correct option.. Age is greater than 1 year" + getString(R.string.nc202), Toast.LENGTH_LONG).show();
                 binding.nc202b.setError("Select correct option.. Age is greater than 1 year");
 
@@ -296,7 +299,8 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
                 binding.nc202b.setError(null);
             }
 
-            if ((ageInMontsbyDob >= 24 && ageInMontsbyDob < 59) && !binding.nc202c.isChecked()) {
+            if ((ageInMontsbyDob >= 24 &&
+                    ageInMontsbyDob < 72) && !binding.nc202c.isChecked()) {
                 Toast.makeText(this, "ERROR(invalid): " + "Select correct option.. Age is greater than 2 years" + getString(R.string.nc202), Toast.LENGTH_LONG).show();
                 binding.nc202c.setError("Select correct option.. Age is greater than 2 years");
 
@@ -310,7 +314,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
                 return false;
             }
 
-            if (!validatorClass.RangeTextBox(this, binding.nc203, 0, 59, getString(R.string.nc203), " months")) {
+            if (!validatorClass.RangeTextBox(this, binding.nc203, 0, 72, getString(R.string.nc203), " months")) {
                 return false;
             }
 
@@ -346,7 +350,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
                 binding.nc205a.setError(null);
             }
 
-            if (ageInMontsbyDob > 24 && !binding.nc205a.isChecked()) {
+            if (ageInMontsbyDob > 24 && !binding.nc205b.isChecked()) {
                 Toast.makeText(this, "ERROR(invalid): " + "Select correct option according to age in months" + getString(R.string.nc205), Toast.LENGTH_LONG).show();
                 binding.nc205b.setError("Select correct option according to age in months");
 
