@@ -271,7 +271,7 @@ public class MainActivity extends Activity {
 
 //        Version Checking
         versionAppContract = db.getVersionApp();
-        if (versionAppContract != null || versionAppContract.getVersionCode() != null) {
+        if (versionAppContract.getVersionCode() != null) {
             if (MainApp.versionCode < Integer.valueOf(versionAppContract.getVersionCode())) {
                 mainBinding.lblAppVersion.setVisibility(View.VISIBLE);
                 mainBinding.lblAppVersion.setText("New Version Available");

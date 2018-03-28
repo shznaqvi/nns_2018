@@ -10,7 +10,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.raizlabs.android.dbflow.sql.language.Delete;
-import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -46,31 +45,9 @@ import edu.aku.hassannaqvi.nns_2018.contracts.UsersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.UsersContract.UsersTable;
 import edu.aku.hassannaqvi.nns_2018.contracts.VersionAppContract.VersionAppTable;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.BLRandom;
-import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.BLRandom_Table;
-import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Child;
-import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Child_Table;
-import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.EligibleMembers;
-import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.EligibleMembers_Table;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.EnumBlock;
-import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.EnumBlock_Table;
-import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FamilyMembers;
-import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FamilyMembers_Table;
-import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FormContract;
-import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FormContract_Table;
-import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.MWRA;
-import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.MWRA_Table;
-import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Nutrition;
-import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Nutrition_Table;
-import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Outcome;
-import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Outcome_Table;
-import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Recipients;
-import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Recipients_Table;
-import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Serial;
-import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Serial_Table;
 import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Users;
-import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.Users_Table;
-import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.VersionApp;
-import edu.aku.hassannaqvi.nns_2018.contracts_dbflow.VersionApp_Table;
+
 
 
 /**
@@ -414,7 +391,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public void syncVersionApp(JSONArray Versionlist) {
+    /*public void syncVersionApp(JSONArray Versionlist) {
 
         Delete.table(VersionApp.class);
         try {
@@ -428,7 +405,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         } catch (Exception e) {
         }
 
-        /*
+        *//*
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(VersionAppTable.TABLE_NAME, null, null);
         try {
@@ -448,8 +425,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         } finally {
             db.close();
         }
-        */
-    }
+        *//*
+    }*/
 
     public void syncBLRandom(JSONArray BLlist) {
 
@@ -499,7 +476,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public String getUIDByHH(String subAreaCode, String hh) {
+    /*public String getUIDByHH(String subAreaCode, String hh) {
 
         String uid = null;
 
@@ -518,7 +495,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return uid;
 
-        /*
+        *//*
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -560,11 +537,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return null;
-        */
-    }
+        *//*
+    }*/
 
 
-    public Collection<FamilyMembers> getAllMembersByHH(String uid) {
+    /*public Collection<FamilyMembers> getAllMembersByHH(String uid) {
 
         List<FamilyMembers> familyMembersList = SQLite.select().from(FamilyMembers.class)
                 .where(FamilyMembers_Table._uuid.is(uid))
@@ -573,7 +550,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return familyMembersList;
 
-        /*
+        *//*
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -627,11 +604,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allBL;
-        */
-    }
+        *//*
+    }*/
 
 
-    public Collection<BLRandom> getAllBLRandom(String subAreaCode, String hh) {
+    /*public Collection<BLRandom> getAllBLRandom(String subAreaCode, String hh) {
 
         List<BLRandom> blRandomList = SQLite.select().from(BLRandom.class)
                 .where(BLRandom_Table.enum_Block_code.is(subAreaCode))
@@ -642,7 +619,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return blRandomList;
 
 
-        /*
+        *//*
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -691,10 +668,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allBL;
-        */
-    }
+        *//*
+    }*/
 
-    public String getEnumBlock(String enumBlock) {
+    /*public String getEnumBlock(String enumBlock) {
 
         List<EnumBlock> enmList = SQLite.select().from(EnumBlock.class)
                 .where(EnumBlock_Table.ebcode.is(enumBlock))
@@ -709,7 +686,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return allEB;
 
-        /*SQLiteDatabase db = this.getReadableDatabase();
+        *//*SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
                 EnumBlockTable._ID,
@@ -746,11 +723,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             if (db != null) {
                 db.close();
             }
-        }*/
+        }*//*
         // return allEB;
-    }
+    }*/
 
-    public VersionApp getVersionApp() {
+    /*public VersionApp getVersionApp() {
 
         VersionApp versionApp = SQLite.select().from(VersionApp.class)
                 .orderBy(VersionApp_Table._id, true)
@@ -758,7 +735,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return versionApp;
 
-        /*
+        *//*
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -797,10 +774,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allVC;
-        */
-    }
+        *//*
+    }*/
 
-    public Serial getSerialWRTDate(String date) {
+    /*public Serial getSerialWRTDate(String date) {
 
         Serial serial = SQLite.select().from(Serial.class)
                 .where(Serial_Table.date.is(date))
@@ -809,7 +786,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return serial;
 
-        /*
+        *//*
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -850,8 +827,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allDC;
-        */
-    }
+        *//*
+    }*/
 
     public Collection<UCsContract> getAllUCsByTalukas(String taluka_code) {
 
@@ -947,7 +924,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         */
     }
 
-    public boolean Login(String username, String password) throws SQLException {
+    /*public boolean Login(String username, String password) throws SQLException {
 
         List<Users> usersList = SQLite.select().from(Users.class)
                 .where(Users_Table.username.is(username))
@@ -956,7 +933,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return usersList.size() > 0;
 
-        /*
+        *//*
         SQLiteDatabase db = this.getReadableDatabase();
 
 // New value for one column
@@ -980,8 +957,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return cursorCount > 0;
-        */
-    }
+        *//*
+    }*/
 
     public List<FormsContract> getFormsByDSS(String dssID) {
         List<FormsContract> formList = new ArrayList<>();
@@ -1284,11 +1261,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public Long addSerialForm(Serial sc) {
+   /* public Long addSerialForm(Serial sc) {
 
         return sc.insert();
 
-        /*
+        *//*
         // Gets the data repository in write mode
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -1305,8 +1282,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 singleSerial.COLUMN_NAME_NULLABLE,
                 values);
         return newRowId;
-        */
-    }
+        *//*
+    }*/
 
     public int updateSerialWRTDate(String date, String serial) {
 
@@ -1487,7 +1464,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 
-    public void updateSyncedSerial(String id) {
+    /*public void updateSyncedSerial(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
 // New value for one column
@@ -1504,7 +1481,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values,
                 where,
                 whereArgs);
-    }
+    }*/
 
 
     /*public int updateFormID() {
@@ -1672,7 +1649,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
          return count;
      }
  */
-    public Collection<FormContract> getUnsyncedForms() {
+    /*public Collection<FormContract> getUnsyncedForms() {
 
         List<FormContract> formsList = SQLite.select().from(FormContract.class)
                 .where(FormContract_Table.synced.is("null"))
@@ -1682,7 +1659,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return formsList;
 
-        /*
+        *//*
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -1743,11 +1720,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allFC;
-        */
-    }
+        *//*
+    }*/
 
 
-    public Collection<FamilyMembers> getUnsyncedFamilyMembers() {
+    /*public Collection<FamilyMembers> getUnsyncedFamilyMembers() {
 
         List<FamilyMembers> familList = SQLite.select().from(FamilyMembers.class)
                 .where(FamilyMembers_Table.synced.is("null"))
@@ -1757,7 +1734,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return familList;
 
-        /*
+        *//*
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -1808,11 +1785,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allFC;
-        */
-    }
+        *//*
+    }*/
 
 
-    public Collection<Child> getUnsyncedChildForms() {
+    /*public Collection<Child> getUnsyncedChildForms() {
 
         List<Child> childList = SQLite.select().from(Child.class)
                 .where(Child_Table.synced.is("null"))
@@ -1822,7 +1799,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return childList;
 
-        /*
+        *//*
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -1878,11 +1855,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allFC;
-        */
-    }
+        *//*
+    }*/
 
 
-    public Collection<EligibleMembers> getUnsyncedEligbleMembers() {
+    /*public Collection<EligibleMembers> getUnsyncedEligbleMembers() {
 
         List<EligibleMembers> eliList = SQLite.select().from(EligibleMembers.class)
                 .where(EligibleMembers_Table.synced.is("null"))
@@ -1893,7 +1870,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return eliList;
 
 
-        /*
+        *//*
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -1949,11 +1926,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allFC;
-        */
-    }
+        *//*
+    }*/
 
 
-    public Collection<MWRA> getUnsyncedMWRA() {
+    /*public Collection<MWRA> getUnsyncedMWRA() {
 
         List<MWRA> mwraList = SQLite.select().from(MWRA.class)
                 .where(MWRA_Table.synced.is("null"))
@@ -1963,7 +1940,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return mwraList;
 
-        /*
+        *//*
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -2020,11 +1997,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allFC;
-        */
-    }
+        *//*
+    }*/
 
 
-    public Collection<Nutrition> getUnsyncedNutrition() {
+    /*public Collection<Nutrition> getUnsyncedNutrition() {
 
         List<Nutrition> nutritionList = SQLite.select().from(Nutrition.class)
                 .where(Nutrition_Table.synced.is("null"))
@@ -2034,7 +2011,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return nutritionList;
 
-        /*
+        *//*
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -2084,11 +2061,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allFC;
-        */
-    }
+        *//*
+    }*/
 
 
-    public Collection<Recipients> getUnsyncedRecipients() {
+    /*public Collection<Recipients> getUnsyncedRecipients() {
 
         List<Recipients> recipientsList = SQLite.select().from(Recipients.class)
                 .where(Recipients_Table.synced.is("null"))
@@ -2098,7 +2075,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return recipientsList;
 
-        /*
+        *//*
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -2149,11 +2126,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allFC;
-        */
-    }
+        *//*
+    }*/
 
 
-    public Collection<Outcome> getUnsyncedOutcome() {
+    /*public Collection<Outcome> getUnsyncedOutcome() {
 
         List<Outcome> outcomList = SQLite.select().from(Outcome.class)
                 .where(Outcome_Table.synced.is("null"))
@@ -2163,7 +2140,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return outcomList;
 
-        /*
+        *//*
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -2215,11 +2192,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allFC;
-        */
-    }
+        *//*
+    }*/
 
 
-    public Collection<Serial> getUnsyncedSerials() {
+    /*public Collection<Serial> getUnsyncedSerials() {
 
         List<Serial> seriaslist = SQLite.select().from(Serial.class)
                 .where(Serial_Table.synced.is("null"))
@@ -2230,7 +2207,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return seriaslist;
 
 
-        /*
+        *//*
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -2274,11 +2251,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allFC;
-        */
-    }
+        *//*
+    }*/
 
 
-    public Collection<FormContract> getTodayForms() {
+    /*public Collection<FormContract> getTodayForms() {
 
         List<FormContract> formContractList = SQLite.select().from(FormContract.class)
                 .where(FormContract_Table.formdate.like("%" + spDateT.substring(0, 8).trim() + "%"))
@@ -2288,7 +2265,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return formContractList;
 
 
-        /*
+        *//*
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -2338,8 +2315,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allFC;
-        */
-    }
+        *//*
+    }*/
 
     // ANDROID DATABASE MANAGER
     public ArrayList<Cursor> getData(String Query) {

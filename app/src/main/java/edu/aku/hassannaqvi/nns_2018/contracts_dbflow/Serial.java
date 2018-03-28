@@ -78,12 +78,12 @@ public class Serial extends BaseModel {
         this.date = date;
     }
 
-    public String getSerialNo() {
+    public String getSerialno() {
         return serialno;
     }
 
-    public void setSerialNo(String serialNo) {
-        this.serialno = serialNo;
+    public void setSerialno(String serialno) {
+        this.serialno = serialno;
     }
 
     public String getSynced() {

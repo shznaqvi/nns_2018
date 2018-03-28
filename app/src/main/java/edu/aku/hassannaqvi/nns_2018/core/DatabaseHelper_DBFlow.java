@@ -108,9 +108,11 @@ public class DatabaseHelper_DBFlow {
                 JSONObject jsonObjectCC = jsonArray.getJSONObject(i);
 
                 VersionApp vapp = VersionApp.Sync(jsonObjectCC);
+                //vapp.Sync(jsonObjectCC);
                 vapp.insert();
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
 
         /*
@@ -188,7 +190,7 @@ public class DatabaseHelper_DBFlow {
 
         String uid = null;
 
-        List<FormContract> formContractList = SQLite.select(edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FormContract_Table._id,
+        List<FormContract> formContractList = SQLite.select(FormContract_Table._id,
                 edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FormContract_Table._uid)
                 .from(FormContract.class)
                 .where(edu.aku.hassannaqvi.nns_2018.contracts_dbflow.FormContract_Table.enm_no.is(subAreaCode))

@@ -1,7 +1,6 @@
 package edu.aku.hassannaqvi.nns_2018.contracts_dbflow;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.SerializedName;
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
@@ -26,18 +25,28 @@ public class VersionApp extends BaseModel {
     @Unique
     public int _id;
     @Column
+    @SerializedName("apkInfo")
     private String apkInfo;
     @Column
-    private String versionCode;
+    @SerializedName("versionCode")
+    private int versionCode;
     @Column
+    @SerializedName("path")
     private String path;
 
-    public static VersionApp Sync(JSONObject jsonObject) {
+    /*public static VersionApp Sync(JSONObject jsonObject) {
 
         Gson gson = new GsonBuilder().create();
         VersionApp verObj = gson.fromJson(jsonObject.toString(), VersionApp.class);
         return verObj;
 
+    }*/
+
+    public static VersionApp Sync(JSONObject jsonObject) throws JSONException {
+        VersionApp vapp = new VersionApp();
+        //vapp.setVersionCode(jsonObject.getJSONObject(vapp.getApkInfo()).getString(vapp.getApkInfo()));
+        vapp.setPath(jsonObject.getString(vapp.path));
+        return vapp;
     }
 
     public int get_id() {
@@ -56,11 +65,11 @@ public class VersionApp extends BaseModel {
         this.apkInfo = apkInfo;
     }
 
-    public String getVersionCode() {
+    public int getVersionCode() {
         return versionCode;
     }
 
-    public void setVersionCode(String versionCode) {
+    public void setVersionCode(int versionCode) {
         this.versionCode = versionCode;
     }
 
@@ -68,15 +77,21 @@ public class VersionApp extends BaseModel {
         return path;
     }
 
-    public void setPath(String path) {
-        this.path = path;
-    }
-
     // JSON
-    public JSONObject toJSONObject() throws JSONException {
+   /* public JSONObject toJSONObject() throws JSONException {
 
         Gson gson = new GsonBuilder().create();
         JSONObject json = new JSONObject(gson.toJson(this, VersionApp.class));
         return json;
+    }*/
+
+    /*public VersionApp Sync(JSONObject jsonObject) throws JSONException {
+        this.versionCode = jsonObject.getJSONObject(apkInfo).getString(versionCode);
+        this.path = jsonObject.getString(path);
+        return this;
+    }*/
+
+    public void setPath(String path) {
+        this.path = path;
     }
 }
