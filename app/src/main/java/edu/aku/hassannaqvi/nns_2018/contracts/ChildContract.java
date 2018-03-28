@@ -111,33 +111,33 @@ public class ChildContract {
 
         if (!this.sC1.equals("")) {
             json.put(ChildTable.COLUMN_SC1, this.sC1.equals("") ? JSONObject.NULL : new JSONObject(this.sC1));
-          /*  json.put(ChildTable.COLUMN_SC1, this.sC1 == null ? JSONObject.NULL : this.sC1);*/
+          /*  json.put(DeceasedTable.COLUMN_SH8, this.sC1 == null ? JSONObject.NULL : this.sC1);*/
         }
 
         if (!this.sC2.equals("")) {
             json.put(ChildTable.COLUMN_SC2, this.sC2.equals("") ? JSONObject.NULL : new JSONObject(this.sC2));
-            // json.put(ChildTable.COLUMN_SC2, this.sC2 == null ? JSONObject.NULL : this.sC2);
+            // json.put(DeceasedTable.COLUMN_SC2, this.sC2 == null ? JSONObject.NULL : this.sC2);
         }
 
         if (!this.sC3.equals("")) {
             json.put(ChildTable.COLUMN_SC3, this.sC3.equals("") ? JSONObject.NULL : new JSONObject(this.sC3));
-//            json.put(ChildTable.COLUMN_SC3, this.sC3 == null ? JSONObject.NULL : this.sC3);
+//            json.put(DeceasedTable.COLUMN_SC3, this.sC3 == null ? JSONObject.NULL : this.sC3);
         }
 
         if (!this.sC4.equals("")) {
             json.put(ChildTable.COLUMN_SC4, this.sC4.equals("") ? JSONObject.NULL : new JSONObject(this.sC4));
-//            json.put(ChildTable.COLUMN_SC4, this.sC4 == null ? JSONObject.NULL : this.sC4);
+//            json.put(DeceasedTable.COLUMN_SC4, this.sC4 == null ? JSONObject.NULL : this.sC4);
         }
 
         if (!this.sC5.equals("")) {
             json.put(ChildTable.COLUMN_SC5, this.sC5.equals("") ? JSONObject.NULL : new JSONObject(this.sC5));
-//            json.put(ChildTable.COLUMN_SC5, this.sC5 == null ? JSONObject.NULL : this.sC5);
+//            json.put(DeceasedTable.COLUMN_SC5, this.sC5 == null ? JSONObject.NULL : this.sC5);
         }
 
         json.put(ChildTable.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
         json.put(ChildTable.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
-        /*json.put(ChildTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
-        json.put(ChildTable.COLUMN_SYNCED_DATE, this.synced_date == null ? JSONObject.NULL : this.synced_date);*/
+        /*json.put(DeceasedTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
+        json.put(DeceasedTable.COLUMN_SYNCED_DATE, this.synced_date == null ? JSONObject.NULL : this.synced_date);*/
         json.put(ChildTable.COLUMN_APPVERSION, this.appversion == null ? JSONObject.NULL : this.appversion);
         json.put(ChildTable.COLUMN_CSTATUS, this.cstatus == null ? JSONObject.NULL : this.cstatus);
         json.put(ChildTable.COLUMN_CSTATUS88x, this.cstatus88x == null ? JSONObject.NULL : this.cstatus88x);
