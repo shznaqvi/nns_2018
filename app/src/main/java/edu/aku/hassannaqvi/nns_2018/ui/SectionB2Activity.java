@@ -276,6 +276,8 @@ public class SectionB2Activity extends Activity {
         bi.nw301Txt.setText(getString(R.string.nw301a) + " " + SectionB1Activity.wraName + " " + getString(R.string.nw301b));
 
 
+//        BackPressed event
+
         MWRAContract mwraContract = db.getsB2();
         if (!mwraContract.getsB2().equals("")) {
 

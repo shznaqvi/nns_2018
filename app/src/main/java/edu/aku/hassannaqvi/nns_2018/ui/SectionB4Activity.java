@@ -11,12 +11,16 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.Timer;
 
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB4Binding;
+import edu.aku.hassannaqvi.nns_2018.other.JSONB4ModelClass;
+import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
@@ -25,6 +29,7 @@ public class SectionB4Activity extends Activity {
     private final long DELAY = 1000;
     ActivitySectionB4Binding binding;
     DatabaseHelper db;
+    Boolean backPressed = false;
     private Timer timer = new Timer();
 
     @Override
@@ -164,6 +169,194 @@ public class SectionB4Activity extends Activity {
                 }
             }
         });
+
+//        BackPressed
+        MWRAContract mwraContract = db.getsB4();
+        if (!mwraContract.getsB4().equals("")) {
+
+            JSONB4ModelClass jsonB4 = JSONUtilClass.getModelFromJSON(mwraContract.getsB2(), JSONB4ModelClass.class);
+
+            if (!jsonB4.getnw401().equals("0")) {
+                binding.nw401.check(
+                        jsonB4.getnw401().equals("1") ? binding.nw401a.getId() :
+                                jsonB4.getnw401().equals("2") ? binding.nw401b.getId() :
+                                        jsonB4.getnw401().equals("3") ? binding.nw401c.getId() :
+                                                jsonB4.getnw401().equals("4") ? binding.nw401d.getId() :
+                                                        jsonB4.getnw401().equals("5") ? binding.nw401e.getId() :
+                                                                jsonB4.getnw401().equals("6") ? binding.nw401f.getId() :
+                                                                        jsonB4.getnw401().equals("7") ? binding.nw401g.getId() :
+                                                                                jsonB4.getnw401().equals("8") ? binding.nw401h.getId() :
+                                                                                        binding.nw40196.getId()
+                );
+                binding.nw40196x.setText(jsonB4.getnw40196x());
+            }
+
+            if (!jsonB4.getnw402a().equals("0")) {
+                binding.nw402a.setChecked(true);
+            }
+            if (!jsonB4.getnw402b().equals("0")) {
+                binding.nw402b.setChecked(true);
+            }
+            if (!jsonB4.getnw402c().equals("0")) {
+                binding.nw402c.setChecked(true);
+            }
+            if (!jsonB4.getnw402d().equals("0")) {
+                binding.nw402d.setChecked(true);
+            }
+            if (!jsonB4.getnw402e().equals("0")) {
+                binding.nw402e.setChecked(true);
+            }
+            if (!jsonB4.getnw402f().equals("0")) {
+                binding.nw402f.setChecked(true);
+            }
+            if (!jsonB4.getnw402g().equals("0")) {
+                binding.nw402g.setChecked(true);
+            }
+            if (!jsonB4.getnw402h().equals("0")) {
+                binding.nw402h.setChecked(true);
+            }
+            if (!jsonB4.getnw40299().equals("0")) {
+                binding.nw40299.setChecked(true);
+            }
+            if (!jsonB4.getnw40296().equals("0")) {
+                binding.nw40296.setChecked(true);
+                binding.nw40296x.setText(jsonB4.getnw40296x());
+            }
+
+            if (!jsonB4.getnw403().equals("0")) {
+                binding.nw403.check(
+                        jsonB4.getnw403().equals("1") ? binding.nw403a.getId() :
+                                jsonB4.getnw403().equals("2") ? binding.nw403b.getId() :
+                                        jsonB4.getnw403().equals("3") ? binding.nw403c.getId() :
+                                                jsonB4.getnw403().equals("4") ? binding.nw403d.getId() :
+                                                        jsonB4.getnw403().equals("5") ? binding.nw403e.getId() :
+                                                                jsonB4.getnw403().equals("6") ? binding.nw403f.getId() :
+                                                                        jsonB4.getnw403().equals("7") ? binding.nw403g.getId() :
+                                                                                jsonB4.getnw403().equals("8") ? binding.nw403h.getId() :
+                                                                                        jsonB4.getnw403().equals("9") ? binding.nw403i.getId() :
+                                                                                                jsonB4.getnw403().equals("10") ? binding.nw403j.getId() :
+                                                                                                        binding.nw40396.getId()
+                );
+                binding.nw403fx.setText(jsonB4.getnw403fx());
+                binding.nw403jx.setText(jsonB4.getnw403jx());
+                binding.nw40396x.setText(jsonB4.getnw40396x());
+            }
+
+            if (!jsonB4.getnw404().equals("0")) {
+                binding.nw404.check(
+                        jsonB4.getnw404().equals("1") ? binding.nw404a.getId() :
+                                jsonB4.getnw404().equals("2") ? binding.nw404b.getId() :
+                                        jsonB4.getnw404().equals("3") ? binding.nw404c.getId() :
+                                                jsonB4.getnw404().equals("4") ? binding.nw404d.getId() :
+                                                        binding.nw404e.getId()
+                );
+            }
+
+            if (!jsonB4.getnw405().equals("0")) {
+                binding.nw405.check(
+                        jsonB4.getnw405().equals("1") ? binding.nw405a.getId() :
+                                jsonB4.getnw405().equals("2") ? binding.nw405b.getId() :
+                                        binding.nw40598.getId()
+                );
+            }
+
+            binding.nw406cx.setText(jsonB4.getnw406c());
+            binding.nw406rx.setText(jsonB4.getnw406r());
+
+            if (!jsonB4.getnw40698().equals("0")) {
+                binding.nw40698.setChecked(true);
+            }
+
+            if (!jsonB4.getnw407().equals("0")) {
+                binding.nw407.check(
+                        jsonB4.getnw407().equals("1") ? binding.nw407a.getId() :
+                                jsonB4.getnw407().equals("2") ? binding.nw407b.getId() :
+                                        binding.nw40798.getId()
+                );
+            }
+
+            if (!jsonB4.getnw408().equals("0")) {
+                binding.nw408.check(
+                        jsonB4.getnw408().equals("1") ? binding.nw408a.getId() :
+                                jsonB4.getnw408().equals("2") ? binding.nw408b.getId() :
+                                        binding.nw40898.getId()
+                );
+            }
+
+            if (!jsonB4.getnw409().equals("0")) {
+                binding.nw409.check(
+                        jsonB4.getnw409().equals("1") ? binding.nw409a.getId() :
+                                jsonB4.getnw409().equals("2") ? binding.nw409b.getId() :
+                                        binding.nw40998.getId()
+                );
+            }
+
+            binding.nb410h.setText(jsonB4.getnw410h());
+            binding.nb410d.setText(jsonB4.getnw410d());
+
+            if (!jsonB4.getnw410().equals("0")) {
+                binding.nb410.check(
+                        jsonB4.getnw410().equals("1") ? binding.nb410a.getId() :
+                                jsonB4.getnw410().equals("2") ? binding.nb410b.getId() :
+                                        jsonB4.getnw410().equals("2") ? binding.nb41097.getId() :
+                                                binding.nb41098.getId()
+                );
+            }
+
+            if (!jsonB4.getnw411().equals("0")) {
+                binding.nb411.check(
+                        jsonB4.getnw411().equals("1") ? binding.nb411a.getId() :
+                                jsonB4.getnw411().equals("2") ? binding.nb411b.getId() :
+                                        binding.nb41198.getId()
+                );
+            }
+
+            if (!jsonB4.getnw412a().equals("0")) {
+                binding.nb412a.setChecked(true);
+            }
+            if (!jsonB4.getnw412b().equals("0")) {
+                binding.nb412b.setChecked(true);
+            }
+            if (!jsonB4.getnw412c().equals("0")) {
+                binding.nb412c.setChecked(true);
+            }
+            if (!jsonB4.getnw412d().equals("0")) {
+                binding.nb412d.setChecked(true);
+            }
+            if (!jsonB4.getnw412e().equals("0")) {
+                binding.nb412e.setChecked(true);
+            }
+            if (!jsonB4.getnw41298().equals("0")) {
+                binding.nb41298.setChecked(true);
+            }
+            if (!jsonB4.getnw41296().equals("0")) {
+                binding.nb41296.setChecked(true);
+                binding.nb41296x.setText(jsonB4.getnw41296x());
+            }
+
+            if (!jsonB4.getnw413().equals("0")) {
+                binding.nw413.check(
+                        jsonB4.getnw413().equals("1") ? binding.nw413a.getId() :
+                                jsonB4.getnw413().equals("2") ? binding.nw413b.getId() :
+                                        jsonB4.getnw413().equals("3") ? binding.nw413c.getId() :
+                                                jsonB4.getnw413().equals("4") ? binding.nw413d.getId() :
+                                                        jsonB4.getnw413().equals("5") ? binding.nw413e.getId() :
+                                                                jsonB4.getnw413().equals("6") ? binding.nw413f.getId() :
+                                                                        jsonB4.getnw413().equals("7") ? binding.nw413g.getId() :
+                                                                                jsonB4.getnw413().equals("8") ? binding.nw413h.getId() :
+                                                                                        jsonB4.getnw413().equals("9") ? binding.nw413i.getId() :
+                                                                                                jsonB4.getnw413().equals("10") ? binding.nw413j.getId() :
+                                                                                                        jsonB4.getnw413().equals("11") ? binding.nw413k.getId() :
+                                                                                                                jsonB4.getnw413().equals("12") ? binding.nw413l.getId() :
+                                                                                                                        jsonB4.getnw413().equals("13") ? binding.nw413m.getId() :
+                                                                                                                                jsonB4.getnw413().equals("961") ? binding.nw413961.getId() :
+                                                                                                                                        jsonB4.getnw413().equals("962") ? binding.nw413962.getId() :
+                                                                                                                                                binding.nw413963.getId()
+                );
+            }
+
+        }
+
     }
 
     public void BtnContinue() {
@@ -176,7 +369,8 @@ public class SectionB4Activity extends Activity {
                 e.printStackTrace();
             }
             if (UpdateDB()) {
-                //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
+
+                backPressed = true;
 
                 finish();
 
@@ -328,11 +522,15 @@ public class SectionB4Activity extends Activity {
     }
 
 
-
     private void SaveDraft() throws JSONException {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
         JSONObject sB4 = new JSONObject();
+
+        if (backPressed) {
+            sB4.put("updatedate", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+        }
+
         //       nw401
         sB4.put("nw401", binding.nw401a.isChecked() ? "1"
                 : binding.nw401b.isChecked() ? "2"
@@ -436,9 +634,8 @@ public class SectionB4Activity extends Activity {
         sB4.put("nw412c", binding.nb412c.isChecked() ? "3" : "0");
         sB4.put("nw412d", binding.nb412d.isChecked() ? "4" : "0");
         sB4.put("nw412e", binding.nb412e.isChecked() ? "5" : "0");
-        sB4.put("nw412f", binding.nb412e.isChecked() ? "6" : "0");
         sB4.put("nw41298", binding.nb41298.isChecked() ? "98" : "0");
-        sB4.put("nw41296", binding.nb41298.isChecked() ? "96" : "0");
+        sB4.put("nw41296", binding.nb41296.isChecked() ? "96" : "0");
 
         sB4.put("nw41296x", binding.nb41296x.getText().toString());
 
