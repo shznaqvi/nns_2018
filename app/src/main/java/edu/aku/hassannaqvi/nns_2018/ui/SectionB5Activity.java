@@ -10,6 +10,7 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.Timer;
 
 import edu.aku.hassannaqvi.nns_2018.R;
@@ -27,6 +28,8 @@ public class SectionB5Activity extends AppCompatActivity {
     private final long DELAY = 1000;
     ActivitySectionB5Binding binding;
     DatabaseHelper db;
+    Boolean backPressed = false;
+    Boolean frontPressed = false;
     private Timer timer = new Timer();
 
     @Override
@@ -152,16 +155,109 @@ public class SectionB5Activity extends AppCompatActivity {
                                 : binding.nw41698.getId());
             }
 
+            binding.nw416hr.setText(jsonB5.getnw416hr());
+            binding.nw416d.setText(jsonB5.getnw416d());
+            binding.nw416w.setText(jsonB5.getnw416w());
+
+            binding.nw417.setText(jsonB5.getnw417());
+
+            if (!jsonB5.getnw418a().equals("0")) {
+                binding.nw418a.setChecked(true);
+            }
+            if (!jsonB5.getnw418b().equals("0")) {
+                binding.nw418b.setChecked(true);
+            }
+            if (!jsonB5.getnw418c().equals("0")) {
+                binding.nw418c.setChecked(true);
+            }
+            if (!jsonB5.getnw418d().equals("0")) {
+                binding.nw418d.setChecked(true);
+            }
+            if (!jsonB5.getnw418e().equals("0")) {
+                binding.nw418e.setChecked(true);
+            }
+            if (!jsonB5.getnw418f().equals("0")) {
+                binding.nw418f.setChecked(true);
+            }
+            if (!jsonB5.getnw418g().equals("0")) {
+                binding.nw418g.setChecked(true);
+            }
+            if (!jsonB5.getnw41896().equals("0")) {
+                binding.nw41896.setChecked(true);
+                binding.nw41896x.setText(jsonB5.getnw41896x());
+            }
+
+            if (!jsonB5.getnw419().equals("0")) {
+                binding.nw419.check(
+                        jsonB5.getnw419().equals("1") ? binding.nw419a.getId() :
+                                binding.nw419b.getId());
+            }
+
+            if (!jsonB5.getnw420a().equals("0")) {
+                binding.nw420a.setChecked(true);
+            }
+            if (!jsonB5.getnw420b().equals("0")) {
+                binding.nw420b.setChecked(true);
+            }
+            if (!jsonB5.getnw420c().equals("0")) {
+                binding.nw420c.setChecked(true);
+            }
+            if (!jsonB5.getnw420d().equals("0")) {
+                binding.nw420d.setChecked(true);
+            }
+            if (!jsonB5.getnw420e().equals("0")) {
+                binding.nw420e.setChecked(true);
+            }
+            if (!jsonB5.getnw420f().equals("0")) {
+                binding.nw420f.setChecked(true);
+            }
+            if (!jsonB5.getnw420g().equals("0")) {
+                binding.nw420g.setChecked(true);
+            }
+            if (!jsonB5.getnw42096().equals("0")) {
+                binding.nw42096.setChecked(true);
+                binding.nw42096x.setText(jsonB5.getnw42096x());
+            }
+
+            if (!jsonB5.getnw421().equals("0")) {
+                binding.nw421.check(
+                        jsonB5.getnw421().equals("1") ? binding.nw421a.getId()
+                                : jsonB5.getnw421().equals("2") ? binding.nw421b.getId()
+                                : jsonB5.getnw421().equals("3") ? binding.nw421c.getId()
+                                : binding.nw42198.getId());
+            }
+
+            binding.nw421hr.setText(jsonB5.getnw421hr());
+            binding.nw421d.setText(jsonB5.getnw421d());
+            binding.nw421w.setText(jsonB5.getnw421w());
+
+            binding.nw422.setText(jsonB5.getnw422());
+
+            if (!jsonB5.getnw423a().equals("0")) {
+                binding.nw423a.setChecked(true);
+            }
+            if (!jsonB5.getnw423b().equals("0")) {
+                binding.nw423b.setChecked(true);
+            }
+            if (!jsonB5.getnw423c().equals("0")) {
+                binding.nw423c.setChecked(true);
+            }
+            if (!jsonB5.getnw423d().equals("0")) {
+                binding.nw423d.setChecked(true);
+            }
+            if (!jsonB5.getnw423e().equals("0")) {
+                binding.nw423e.setChecked(true);
+            }
+            if (!jsonB5.getnw42396().equals("0")) {
+                binding.nw42396.setChecked(true);
+                binding.nw42396x.setText(jsonB5.getnw42396x());
+            }
+
         }
-
-
-
-
     }
 
     public void BtnContinue() {
 
-        //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (ValidateForm()) {
             try {
                 SaveDraft();
@@ -169,17 +265,21 @@ public class SectionB5Activity extends AppCompatActivity {
                 e.printStackTrace();
             }
             if (UpdateDB()) {
-                //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
+
                 MainApp.nuCount = 1;
+
+                frontPressed = true;
 
 //                finish();
 
                 if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
                         &&
                         MainApp.B6Flag) {
-                    startActivity(new Intent(this, SectionB6Activity.class));
+                    startActivity(new Intent(this, SectionB6Activity.class)
+                            .putExtra("backPressed", backPressed));
                 } else if (MainApp.B2B6Flag) {
-                    startActivity(new Intent(this, SectionB6Activity.class));
+                    startActivity(new Intent(this, SectionB6Activity.class)
+                            .putExtra("backPressed", backPressed));
                 } else {
                     startActivity(new Intent(this, MotherEndingActivity.class)
                             .putExtra("complete", true));
@@ -197,13 +297,6 @@ public class SectionB5Activity extends AppCompatActivity {
 
         MainApp.endActivityMother(this, this, false);
     }
-
-
-    @Override
-    public void onBackPressed() {
-        Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
-    }
-
 
     private boolean ValidateForm() {
 
@@ -354,9 +447,7 @@ public class SectionB5Activity extends AppCompatActivity {
                 return false;
             }
 
-            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnw423check, binding.nw42396, binding.nw42396x, getString(R.string.nw423) + " - " + getString(R.string.other))) {
-                return false;
-            }
+            return validatorClass.EmptyCheckBox(this, binding.fldGrpnw423check, binding.nw42396, binding.nw42396x, getString(R.string.nw423) + " - " + getString(R.string.other));
 
 
         }
@@ -368,7 +459,11 @@ public class SectionB5Activity extends AppCompatActivity {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
         JSONObject sB5 = new JSONObject();
-        //       nw414
+
+        if (backPressed) {
+            sB5.put("updatedate", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+        }
+
 //        nw414
         sB5.put("nw414", binding.nw414a.isChecked() ? "1"
                 : binding.nw414b.isChecked() ? "2"
@@ -447,11 +542,8 @@ public class SectionB5Activity extends AppCompatActivity {
         sB5.put("nw42396", binding.nw42396.isChecked() ? "96" : "0");
         sB5.put("nw42396x", binding.nw42396x.getText().toString());
 
-
         MainApp.mc.setsB5(String.valueOf(sB5));
 
-
-        //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }
 
     private boolean UpdateDB() {
@@ -471,6 +563,28 @@ public class SectionB5Activity extends AppCompatActivity {
 
         //return true;
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (frontPressed) {
+            backPressed = true;
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        try {
+            SaveDraft();
+            UpdateDB();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        super.onBackPressed();
     }
 
 }

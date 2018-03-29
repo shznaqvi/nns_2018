@@ -2197,7 +2197,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 MWRAContract fc = new MWRAContract();
-                allFC = fc.Hydrate(c, 3);
+                allFC = fc.Hydrate(c, 4);
             }
         } finally {
             if (c != null) {
@@ -2242,7 +2242,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 MWRAContract fc = new MWRAContract();
-                allFC = fc.Hydrate(c, 3);
+                allFC = fc.Hydrate(c, 5);
             }
         } finally {
             if (c != null) {
