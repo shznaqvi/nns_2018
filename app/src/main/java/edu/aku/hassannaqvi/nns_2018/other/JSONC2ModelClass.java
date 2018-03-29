@@ -37,6 +37,7 @@ public class JSONC2ModelClass {
     private String nc215d = "";
     private String nc215e = "";
     private String nc215f = "";
+    private String nc215fx = "";
     private String nc215g = "";
     private String nc215h = "";
     private String nc215i = "";
@@ -316,6 +317,14 @@ public class JSONC2ModelClass {
 
     public void setnc215f(String nc215f) {
         this.nc215f = nc215f;
+    }
+
+    public String getnc215fx() {
+        return nc215fx;
+    }
+
+    public void setnc215fx(String nc215fx) {
+        this.nc215fx = nc215fx;
     }
 
     public String getnc215g() {

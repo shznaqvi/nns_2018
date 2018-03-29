@@ -27,6 +27,8 @@ import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC2Binding;
+import edu.aku.hassannaqvi.nns_2018.other.JSONC2ModelClass;
+import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
@@ -83,146 +85,387 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
 
         if (!childContract.getsC2().equals("")) {
 
-           /* JSONC2ModelClass jsonC2 = JSONUtilClass.getModelFromJSON(childContract.getsC2(), JSONC2ModelClass.class);
+            JSONC2ModelClass jsonC2 = JSONUtilClass.getModelFromJSON(childContract.getsC2(), JSONC2ModelClass.class);
 
-            if (!jsonC2.getnw414().equals("0")) {
-                bi.nw414.check(
-                        jsonC2.getnw414().equals("1") ? bi.nw414a.getId() :
-                                bi.nw414b.getId());
+            if (!jsonC2.getnc20198().equals("0")) {
+                bi.nc20198.setChecked(true);
             }
+            bi.nc201d.setText(jsonC2.getnc201d());
+            bi.nc201m.setText(jsonC2.getnc201m());
+            bi.nc201y.setText(jsonC2.getnc201y());
+            bi.nc20198.setText(jsonC2.getnc20198());
+            if (!jsonC2.getnc202().equals("0")) {
+                bi.nc202.check(
+                        jsonC2.getnc202().equals("1") ? bi.nc202a.getId()
+                                : jsonC2.getnc202().equals("2") ? bi.nc202b.getId()
+                                : bi.nc202c.getId());
+            }
+            bi.nc203.setText(jsonC2.getnc203());
 
-            if (!jsonC2.getnw415a().equals("0")) {
-                binding.nw415a.setChecked(true);
+            if (!jsonC2.getnc204a().equals("0")) {
+                bi.nc204a.check(
+                        jsonC2.getnc204a().equals("1") ? bi.nc204aa.getId()
+                                : bi.nc204ab.getId()
+                );
             }
-            if (!jsonC2.getnw415b().equals("0")) {
-                binding.nw415b.setChecked(true);
+            if (!jsonC2.getnc204b().equals("0")) {
+                bi.nc204b.check(
+                        jsonC2.getnc204b().equals("1") ? bi.nc204ba.getId()
+                                : bi.nc204bb.getId()
+                );
             }
-            if (!jsonC2.getnw415c().equals("0")) {
-                binding.nw415c.setChecked(true);
+            if (!jsonC2.getnc205().equals("0")) {
+                bi.nc205.check(
+                        jsonC2.getnc205().equals("1") ? bi.nc205a.getId()
+                                : jsonC2.getnc205().equals("2") ? bi.nc205b.getId()
+                                : bi.nc20598.getId()
+                );
             }
-            if (!jsonC2.getnw415d().equals("0")) {
-                binding.nw415d.setChecked(true);
-            }
-            if (!jsonB5.getnw415e().equals("0")) {
-                binding.nw415e.setChecked(true);
-            }
-            if (!jsonB5.getnw415f().equals("0")) {
-                binding.nw415f.setChecked(true);
-            }
-            if (!jsonB5.getnw415g().equals("0")) {
-                binding.nw415g.setChecked(true);
-            }
-            if (!jsonB5.getnw41596().equals("0")) {
-                binding.nw41596.setChecked(true);
-                binding.nw41596x.setText(jsonB5.getnw41596x());
-            }
-
-            if (!jsonB5.getnw416().equals("0")) {
-                binding.nw416.check(
-                        jsonB5.getnw416().equals("1") ? binding.nw416a.getId()
-                                : jsonB5.getnw416().equals("2") ? binding.nw416b.getId()
-                                : jsonB5.getnw416().equals("3") ? binding.nw416c.getId()
-                                : binding.nw41698.getId());
-            }
-
-            binding.nw416hr.setText(jsonB5.getnw416hr());
-            binding.nw416d.setText(jsonB5.getnw416d());
-            binding.nw416w.setText(jsonB5.getnw416w());
-
-            binding.nw417.setText(jsonB5.getnw417());
-
-            if (!jsonB5.getnw418a().equals("0")) {
-                binding.nw418a.setChecked(true);
-            }
-            if (!jsonB5.getnw418b().equals("0")) {
-                binding.nw418b.setChecked(true);
-            }
-            if (!jsonB5.getnw418c().equals("0")) {
-                binding.nw418c.setChecked(true);
-            }
-            if (!jsonB5.getnw418d().equals("0")) {
-                binding.nw418d.setChecked(true);
-            }
-            if (!jsonB5.getnw418e().equals("0")) {
-                binding.nw418e.setChecked(true);
-            }
-            if (!jsonB5.getnw418f().equals("0")) {
-                binding.nw418f.setChecked(true);
-            }
-            if (!jsonB5.getnw418g().equals("0")) {
-                binding.nw418g.setChecked(true);
-            }
-            if (!jsonB5.getnw41896().equals("0")) {
-                binding.nw41896.setChecked(true);
-                binding.nw41896x.setText(jsonB5.getnw41896x());
+            if (!jsonC2.getnc206().equals("0")) {
+                bi.nc206.check(
+                        jsonC2.getnc206().equals("1") ? bi.nc206a.getId()
+                                : jsonC2.getnc206().equals("2") ? bi.nc206b.getId()
+                                : bi.nc20698.getId()
+                );
             }
 
-            if (!jsonB5.getnw419().equals("0")) {
-                binding.nw419.check(
-                        jsonB5.getnw419().equals("1") ? binding.nw419a.getId() :
-                                binding.nw419b.getId());
+
+            bi.nc207h.setText(jsonC2.getnc207h());
+            bi.nc207d.setText(jsonC2.getnc207d());
+
+
+            if (!jsonC2.getnc207().equals("0")) {
+                bi.nc207.check(
+                        jsonC2.getnc207().equals("1") ? bi.nc207a.getId()
+                                : jsonC2.getnc207().equals("2") ? bi.nc207b.getId()
+                                : bi.nc207c.getId()
+                );
+            }
+            if (!jsonC2.getnc208().equals("0")) {
+                bi.nc208.check(
+                        jsonC2.getnc208().equals("1") ? bi.nc208a.getId()
+                                : jsonC2.getnc208().equals("2") ? bi.nc208b.getId()
+                                : bi.nc20898.getId()
+                );
+            }
+            if (!jsonC2.getnc209().equals("0")) {
+                bi.nc209.check(
+                        jsonC2.getnc209().equals("1") ? bi.nc209a.getId()
+                                : jsonC2.getnc209().equals("2") ? bi.nc209b.getId()
+                                : jsonC2.getnc209().equals("3") ? bi.nc209c.getId()
+                                : bi.nc20996.getId()
+                );
             }
 
-            if (!jsonB5.getnw420a().equals("0")) {
-                binding.nw420a.setChecked(true);
+            bi.nc20996x.setText(jsonC2.getnc20996x());
+
+
+            if (!jsonC2.getnc210().equals("0")) {
+                bi.nc210.check(
+                        jsonC2.getnc210().equals("1") ? bi.nc210a.getId()
+                                : bi.nc210b.getId()
+                );
             }
-            if (!jsonB5.getnw420b().equals("0")) {
-                binding.nw420b.setChecked(true);
+            if (!jsonC2.getnc211().equals("0")) {
+                bi.nc211.check(
+                        jsonC2.getnc211().equals("1") ? bi.nc211a.getId()
+                                : jsonC2.getnc211().equals("2") ? bi.nc211b.getId()
+                                : jsonC2.getnc211().equals("3") ? bi.nc211c.getId()
+                                : jsonC2.getnc211().equals("4") ? bi.nc211d.getId()
+                                : jsonC2.getnc211().equals("5") ? bi.nc211e.getId()
+                                : jsonC2.getnc211().equals("6") ? bi.nc211f.getId()
+                                : jsonC2.getnc211().equals("7") ? bi.nc211g.getId()
+                                : jsonC2.getnc211().equals("8") ? bi.nc211h.getId()
+                                : jsonC2.getnc211().equals("9") ? bi.nc211i.getId()
+                                : jsonC2.getnc211().equals("10") ? bi.nc211j.getId()
+                                : jsonC2.getnc211().equals("99") ? bi.nc21199.getId()
+                                : bi.nc21196.getId()
+                );
             }
-            if (!jsonB5.getnw420c().equals("0")) {
-                binding.nw420c.setChecked(true);
+            bi.nc21196x.setText(jsonC2.getnc21196x());
+
+            if (!jsonC2.getnc212().equals("0")) {
+                bi.nc212.check(
+                        jsonC2.getnc212().equals("1") ? bi.nc212a.getId()
+                                : jsonC2.getnc212().equals("2") ? bi.nc212b.getId()
+                                : bi.nc21298.getId()
+                );
             }
-            if (!jsonB5.getnw420d().equals("0")) {
-                binding.nw420d.setChecked(true);
-            }
-            if (!jsonB5.getnw420e().equals("0")) {
-                binding.nw420e.setChecked(true);
-            }
-            if (!jsonB5.getnw420f().equals("0")) {
-                binding.nw420f.setChecked(true);
-            }
-            if (!jsonB5.getnw420g().equals("0")) {
-                binding.nw420g.setChecked(true);
-            }
-            if (!jsonB5.getnw42096().equals("0")) {
-                binding.nw42096.setChecked(true);
-                binding.nw42096x.setText(jsonB5.getnw42096x());
+//            here
+            if (!jsonC2.getnc212a().equals("0")) {
+                bi.nc21201.check(
+                        jsonC2.getnc212a().equals("1") ? bi.nc21201a.getId()
+                                : jsonC2.getnc212a().equals("2") ? bi.nc21201b.getId()
+                                : bi.nc2120198.getId()
+                );
             }
 
-            if (!jsonB5.getnw421().equals("0")) {
-                binding.nw421.check(
-                        jsonB5.getnw421().equals("1") ? binding.nw421a.getId()
-                                : jsonB5.getnw421().equals("2") ? binding.nw421b.getId()
-                                : jsonB5.getnw421().equals("3") ? binding.nw421c.getId()
-                                : binding.nw42198.getId());
+            if (!jsonC2.getnc213().equals("0")) {
+                bi.nc213.check(
+                        jsonC2.getnc213().equals("1") ? bi.nc213a.getId()
+                                : jsonC2.getnc213().equals("2") ? bi.nc213b.getId()
+                                : bi.nc21398.getId()
+                );
+            }
+            if (!jsonC2.getnc214().equals("0")) {
+                bi.nc214.check(
+                        jsonC2.getnc214().equals("1") ? bi.nc214a.getId()
+                                : jsonC2.getnc214().equals("2") ? bi.nc214b.getId()
+                                : bi.nc21498.getId()
+                );
+            }
+            if (!jsonC2.getnc215a().equals("0")) {
+                bi.nc215a.check(
+                        jsonC2.getnc215a().equals("1") ? bi.nc215aa.getId()
+                                : jsonC2.getnc215a().equals("2") ? bi.nc215ab.getId()
+                                : bi.nc215a98.getId()
+                );
+            }
+            if (!jsonC2.getnc215b().equals("0")) {
+                bi.nc215b.check(
+                        jsonC2.getnc215b().equals("1") ? bi.nc215ba.getId()
+                                : jsonC2.getnc215b().equals("2") ? bi.nc215bb.getId()
+                                : bi.nc215b98.getId()
+                );
+            }
+            bi.nc215bx.setText(jsonC2.getnc215bx());
+
+            if (!jsonC2.getnc215c().equals("0")) {
+                bi.nc215c.check(
+                        jsonC2.getnc215c().equals("1") ? bi.nc215ca.getId()
+                                : jsonC2.getnc215c().equals("2") ? bi.nc215cb.getId()
+                                : bi.nc215c98.getId()
+                );
+            }
+            bi.nc215cx.setText(jsonC2.getnc215cx());
+
+
+            if (!jsonC2.getnc215d().equals("0")) {
+                bi.nc215d.check(
+                        jsonC2.getnc215d().equals("1") ? bi.nc215da.getId()
+                                : jsonC2.getnc215d().equals("2") ? bi.nc215db.getId()
+                                : bi.nc215d98.getId()
+                );
+            }
+            if (!jsonC2.getnc215e().equals("0")) {
+                bi.nc215e.check(
+                        jsonC2.getnc215e().equals("1") ? bi.nc215ea.getId()
+                                : jsonC2.getnc215e().equals("2") ? bi.nc215eb.getId()
+                                : bi.nc215e98.getId()
+                );
+            }
+            if (!jsonC2.getnc215f().equals("0")) {
+                bi.nc215f.check(
+                        jsonC2.getnc215f().equals("1") ? bi.nc215fa.getId()
+                                : jsonC2.getnc215f().equals("2") ? bi.nc215fb.getId()
+                                : bi.nc215f98.getId()
+                );
+            }
+            bi.nc215fx.setText(jsonC2.getnc215fx());
+
+            if (!jsonC2.getnc215g().equals("0")) {
+                bi.nc215g.check(
+                        jsonC2.getnc215g().equals("1") ? bi.nc215ga.getId()
+                                : jsonC2.getnc215g().equals("2") ? bi.nc215gb.getId()
+                                : bi.nc215g98.getId()
+                );
+            }
+            if (!jsonC2.getnc215h().equals("0")) {
+                bi.nc215h.check(
+                        jsonC2.getnc215h().equals("1") ? bi.nc215ha.getId()
+                                : jsonC2.getnc215h().equals("2") ? bi.nc215hb.getId()
+                                : bi.nc215h98.getId()
+                );
+            }
+            if (!jsonC2.getnc215i().equals("0")) {
+                bi.nc215i.check(
+                        jsonC2.getnc215i().equals("1") ? bi.nc215ia.getId()
+                                : jsonC2.getnc215i().equals("2") ? bi.nc215ib.getId()
+                                : bi.nc215i98.getId()
+                );
             }
 
-            binding.nw421hr.setText(jsonB5.getnw421hr());
-            binding.nw421d.setText(jsonB5.getnw421d());
-            binding.nw421w.setText(jsonB5.getnw421w());
 
-            binding.nw422.setText(jsonB5.getnw422());
+            if (!jsonC2.getnc217a().equals("0")) {
+                bi.nc217a.check(
+                        jsonC2.getnc217a().equals("1") ? bi.nc217aa.getId()
+                                : jsonC2.getnc217a().equals("2") ? bi.nc217ab.getId()
+                                : bi.nc217a98.getId()
+                );
+            }
+            if (!jsonC2.getnc217b().equals("0")) {
+                bi.nc217b.check(
+                        jsonC2.getnc217b().equals("1") ? bi.nc217ba.getId()
+                                : jsonC2.getnc217b().equals("2") ? bi.nc217bb.getId()
+                                : bi.nc217b98.getId()
+                );
+            }
+            if (!jsonC2.getnc217c().equals("0")) {
+                bi.nc217c.check(
+                        jsonC2.getnc217c().equals("1") ? bi.nc217ca.getId()
+                                : jsonC2.getnc217c().equals("2") ? bi.nc217cb.getId()
+                                : bi.nc217c98.getId()
+                );
+            }
+            if (!jsonC2.getnc217d().equals("0")) {
+                bi.nc217d.check(
+                        jsonC2.getnc217d().equals("1") ? bi.nc217da.getId()
+                                : jsonC2.getnc217d().equals("2") ? bi.nc217db.getId()
+                                : bi.nc217d98.getId()
+                );
+            }
+            if (!jsonC2.getnc217e().equals("0")) {
+                bi.nc217e.check(
+                        jsonC2.getnc217e().equals("1") ? bi.nc217ea.getId()
+                                : jsonC2.getnc217e().equals("2") ? bi.nc217eb.getId()
+                                : bi.nc217e98.getId()
+                );
+            }
+            if (!jsonC2.getnc217f().equals("0")) {
+                bi.nc217f.check(
+                        jsonC2.getnc217f().equals("1") ? bi.nc217fa.getId()
+                                : jsonC2.getnc217f().equals("2") ? bi.nc217fb.getId()
+                                : bi.nc217f98.getId()
+                );
+            }
+            if (!jsonC2.getnc217g().equals("0")) {
+                bi.nc217g.check(
+                        jsonC2.getnc217g().equals("1") ? bi.nc217ga.getId()
+                                : jsonC2.getnc217a().equals("2") ? bi.nc217gb.getId()
+                                : bi.nc217g98.getId()
+                );
+            }
+            if (!jsonC2.getnc217h().equals("0")) {
+                bi.nc217h.check(
+                        jsonC2.getnc217h().equals("1") ? bi.nc217ha.getId()
+                                : jsonC2.getnc217h().equals("2") ? bi.nc217hb.getId()
+                                : bi.nc217h98.getId()
+                );
+            }
+            if (!jsonC2.getnc217i().equals("0")) {
+                bi.nc217i.check(
+                        jsonC2.getnc217i().equals("1") ? bi.nc217ia.getId()
+                                : jsonC2.getnc217i().equals("2") ? bi.nc217ib.getId()
+                                : bi.nc217i98.getId()
+                );
+            }
+            if (!jsonC2.getnc217j().equals("0")) {
+                bi.nc217j.check(
+                        jsonC2.getnc217j().equals("1") ? bi.nc217ja.getId()
+                                : jsonC2.getnc217j().equals("2") ? bi.nc217jb.getId()
+                                : bi.nc217j98.getId()
+                );
+            }
+            if (!jsonC2.getnc217k().equals("0")) {
+                bi.nc217k.check(
+                        jsonC2.getnc217k().equals("1") ? bi.nc217ka.getId()
+                                : jsonC2.getnc217k().equals("2") ? bi.nc217kb.getId()
+                                : bi.nc217k98.getId()
+                );
+            }
+            if (!jsonC2.getnc217l().equals("0")) {
+                bi.nc217l.check(
+                        jsonC2.getnc217l().equals("1") ? bi.nc217la.getId()
+                                : jsonC2.getnc217l().equals("2") ? bi.nc217lb.getId()
+                                : bi.nc217l98.getId()
+                );
+            }
+            if (!jsonC2.getnc217m().equals("0")) {
+                bi.nc217m.check(
+                        jsonC2.getnc217m().equals("1") ? bi.nc217ma.getId()
+                                : jsonC2.getnc217m().equals("2") ? bi.nc217mb.getId()
+                                : bi.nc217m98.getId()
+                );
+            }
+            if (!jsonC2.getnc217a().equals("0")) {
+                bi.nc217a.check(
+                        jsonC2.getnc217a().equals("1") ? bi.nc217aa.getId()
+                                : jsonC2.getnc217a().equals("2") ? bi.nc217ab.getId()
+                                : bi.nc217a98.getId()
+                );
+            }
+            if (!jsonC2.getnc217n().equals("0")) {
+                bi.nc217n.check(
+                        jsonC2.getnc217n().equals("1") ? bi.nc217na.getId()
+                                : jsonC2.getnc217n().equals("2") ? bi.nc217nb.getId()
+                                : bi.nc217n98.getId()
+                );
+            }
+            if (!jsonC2.getnc217o().equals("0")) {
+                bi.nc217o.check(
+                        jsonC2.getnc217o().equals("1") ? bi.nc217oa.getId()
+                                : jsonC2.getnc217o().equals("2") ? bi.nc217ob.getId()
+                                : bi.nc217o98.getId()
+                );
+            }
+            if (!jsonC2.getnc217p().equals("0")) {
+                bi.nc217p.check(
+                        jsonC2.getnc217p().equals("1") ? bi.nc217pa.getId()
+                                : jsonC2.getnc217p().equals("2") ? bi.nc217pb.getId()
+                                : bi.nc217p98.getId()
+                );
+            }
+            if (!jsonC2.getnc217q().equals("0")) {
+                bi.nc217q.check(
+                        jsonC2.getnc217q().equals("1") ? bi.nc217qa.getId()
+                                : jsonC2.getnc217q().equals("2") ? bi.nc217qb.getId()
+                                : bi.nc217q98.getId()
+                );
+            }
+            if (!jsonC2.getnc218().equals("0")) {
+                bi.nc218.check(
+                        jsonC2.getnc218().equals("1") ? bi.nc218a.getId()
+                                : jsonC2.getnc218().equals("2") ? bi.nc218b.getId()
+                                : bi.nc21898.getId()
+                );
+            }
+            bi.nc219x.setText(jsonC2.getnc219x());
+            if (!jsonC2.getnc219().equals("0")) {
+                bi.nc219x.setText(jsonC2.getnc219x());
+            }
 
-            if (!jsonB5.getnw423a().equals("0")) {
-                binding.nw423a.setChecked(true);
+
+            if (!jsonC2.getnc219().equals("0")) {
+                bi.nc219.check(
+                        jsonC2.getnc219().equals("1") ? bi.nc219a.getId()
+                                : bi.nc21998.getId()
+                );
             }
-            if (!jsonB5.getnw423b().equals("0")) {
-                binding.nw423b.setChecked(true);
+
+            if (!jsonC2.getnc220().equals("0")) {
+                bi.nc220.check(
+                        jsonC2.getnc220().equals("1") ? bi.nc220a.getId()
+                                : jsonC2.getnc220().equals("2") ? bi.nc220b.getId()
+                                : bi.nc22098.getId()
+                );
             }
-            if (!jsonB5.getnw423c().equals("0")) {
-                binding.nw423c.setChecked(true);
+            if (!jsonC2.getnc221().equals("0")) {
+                bi.nc221.check(
+                        jsonC2.getnc221().equals("1") ? bi.nc221a.getId()
+                                : jsonC2.getnc221().equals("2") ? bi.nc221b.getId()
+                                : jsonC2.getnc221().equals("3") ? bi.nc221c.getId()
+                                : bi.nc22196.getId()
+                );
             }
-            if (!jsonB5.getnw423d().equals("0")) {
-                binding.nw423d.setChecked(true);
+            bi.nc22196x.setText(jsonC2.getnc22196x());
+            if (!jsonC2.getnc222().equals("0")) {
+                bi.nc222.check(
+                        jsonC2.getnc222().equals("1") ? bi.nc222a.getId()
+                                : jsonC2.getnc222().equals("2") ? bi.nc222b.getId()
+                                : jsonC2.getnc222().equals("3") ? bi.nc222c.getId()
+                                : bi.nc22296.getId()
+                );
             }
-            if (!jsonB5.getnw423e().equals("0")) {
-                binding.nw423e.setChecked(true);
+            bi.nc22296x.setText(jsonC2.getnc22296x());
+
+            if (!jsonC2.getnc223().equals("0")) {
+                bi.nc223.check(
+                        jsonC2.getnc223().equals("1") ? bi.nc223a.getId()
+                                : jsonC2.getnc223().equals("2") ? bi.nc223b.getId()
+                                : bi.nc22398.getId()
+                );
             }
-            if (!jsonB5.getnw42396().equals("0")) {
-                binding.nw42396.setChecked(true);
-                binding.nw42396x.setText(jsonB5.getnw42396x());
-            }
-*/
+
         }
 
     }
@@ -858,6 +1101,8 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
                 : bi.nc215fb.isChecked() ? "2"
                 : bi.nc215f98.isChecked() ? "98"
                 : "0");
+        sC2.put("nc215fx", bi.nc215fx.getText().toString());
+
 
         sC2.put("nc215g", bi.nc215ga.isChecked() ? "1"
                 : bi.nc215gb.isChecked() ? "2"
