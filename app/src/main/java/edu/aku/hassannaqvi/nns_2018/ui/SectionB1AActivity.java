@@ -7,9 +7,7 @@ import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.widget.EditText;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -28,7 +26,6 @@ import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB1ABinding;
 import edu.aku.hassannaqvi.nns_2018.other.DateUtils;
-import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionB1AActivity extends AppCompatActivity implements TextWatcher {
@@ -37,7 +34,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
     ActivitySectionB1ABinding bi;
     DatabaseHelper db;
     int childSerial = 1;
-    @BindViews({R.id.nw215y, R.id.nw215m, R.id.nw215d})
+    @BindViews({R.id.nw21702y, R.id.nw21702m, R.id.nw21702d})
     List<EditText> grpDate;
     Calendar date = Calendar.getInstance();
     long yearsBydob;
@@ -53,105 +50,16 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         ButterKnife.bind(this);
         db = new DatabaseHelper(this);
         bi.setCallback(this);
-        setupViews();
+        //setupViews();
 
         bi.count.setText("Pregnancy No " + MainApp.count + " out of " + MainApp.totalPregnancy);
 
         for (EditText ed : grpDate) {
             ed.addTextChangedListener(this);
         }
-        if (MainApp.flag) {
-            Boolean type = getIntent().getExtras().getBoolean("type");
-            String datey = getIntent().getExtras().getString("datey");
-            String datem = getIntent().getExtras().getString("datem");
-            String dated = getIntent().getExtras().getString("dated");
-
-            if (type) {
-                bi.nw215y.setText(datey);
-                bi.nw215m.setText(datem);
-                bi.nw215d.setText(dated);
-                bi.nw216d.setChecked(true);
-                bi.nw215y.setEnabled(false);
-                bi.nw215d.setEnabled(false);
-                bi.nw215m.setEnabled(false);
-                bi.nw216a.setEnabled(false);
-                bi.nw216b.setEnabled(false);
-                bi.nw216c.setEnabled(false);
-                bi.nw216e.setEnabled(false);
-                bi.nw216f.setEnabled(false);
-            } else {
-                bi.nw215y.setText(null);
-                bi.nw215d.setText(null);
-                bi.nw215m.setText(null);
-                bi.nw216d.setChecked(false);
-                bi.nw215y.setEnabled(true);
-                bi.nw215d.setText(null);
-                bi.nw215m.setText(null);
-                bi.nw216a.setEnabled(true);
-                bi.nw216b.setEnabled(true);
-                bi.nw216c.setEnabled(true);
-                bi.nw216e.setEnabled(true);
-                bi.nw216f.setEnabled(true);
-
-            }
-        }
 
     }
 
-    public void setupViews() {
-
-        //bi.nw215.setManager(getSupportFragmentManager());
-        //bi.nw215.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
-
-        bi.nw217.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (bi.nw217a.isChecked()) {
-                    clearClass.ClearAllFields(bi.fldGrpnw219, true);
-                    clearClass.ClearAllFields(bi.fldGrpnw220, false);
-
-                    clearClass.ClearAllFields(bi.fldGrnw219alive, true);
-                    clearClass.ClearAllFields(bi.fldGrnw219death, false);
-                    //bi.fldGrpnw219.setVisibility(View.VISIBLE);
-                    /*bi.fldGrpnw220.setVisibility(View.GONE);
-                    bi.nw220d.setText(null);
-                    bi.nw220m.setText(null);
-                    bi.nw220y.setText(null);*/
-
-                } else {
-                    clearClass.ClearAllFields(bi.fldGrpnw219, false);
-                    clearClass.ClearAllFields(bi.fldGrpnw220, true);
-
-                    clearClass.ClearAllFields(bi.fldGrnw219alive, false);
-                    clearClass.ClearAllFields(bi.fldGrnw219death, true);
-                    /*bi.fldGrpnw219.setVisibility(View.GONE);
-                    bi.fldGrpnw220.setVisibility(View.VISIBLE);
-                    bi.nw219d.setText(null);
-                    bi.nw219m.setText(null);
-                    bi.nw219y.setText(null);*/
-                }
-            }
-        });
-
-        bi.nw216.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (bi.nw216a.isChecked() || bi.nw216b.isChecked() || bi.nw216e.isChecked()) {
-                    clearClass.ClearAllFields(bi.fldGrpnb1a03, false);
-                    clearClass.ClearAllFields(bi.fldGrnw219alive, false);
-                    clearClass.ClearAllFields(bi.fldGrnw219death, false);
-
-                } else {
-                    clearClass.ClearAllFields(bi.fldGrpnb1a03, true);
-                    clearClass.ClearAllFields(bi.fldGrnw219alive, true);
-                    clearClass.ClearAllFields(bi.fldGrnw219death, true);
-                }
-
-            }
-        });
-
-
-    }
 
 
     @Override
@@ -200,10 +108,6 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                     MainApp.flag = true;
                     childSerial++;
                     Intent i = new Intent(this, SectionB1AActivity.class);
-                    i.putExtra("datey", bi.nw215y.getText().toString());
-                    i.putExtra("datem", bi.nw215m.getText().toString());
-                    i.putExtra("dated", bi.nw215d.getText().toString());
-                    i.putExtra("type", true);
                     startActivity(i);
 
                     //startActivity(new Intent(this, SectionB1Activity.class).putExtra(""));
@@ -225,137 +129,50 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
     private boolean ValidateForm() {
 
-        //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
-        if (!validatorClass.EmptyTextBox(this, bi.nw215d, getString(R.string.nw215))) {
+        if (!validatorClass.EmptyRadioButton(this, bi.nw21701, bi.nw21701a, getString(R.string.nw217))) {
             return false;
         }
 
-        if (!validatorClass.EmptyTextBox(this, bi.nw215m, getString(R.string.nw215))) {
+        if (!validatorClass.EmptyTextBox(this, bi.nw21702y, getString(R.string.nw21702))) {
             return false;
         }
 
-        if (!validatorClass.EmptyTextBox(this, bi.nw215y, getString(R.string.nw215))) {
+        if (!validatorClass.EmptyTextBox(this, bi.nw21702m, getString(R.string.nw21702))) {
             return false;
         }
 
-        if (!validatorClass.RangeTextBox(this, bi.nw215d, 1, 31, 98, getString(R.string.nw215), " day")) {
+        if (!validatorClass.EmptyTextBox(this, bi.nw21702d, getString(R.string.nw21702))) {
             return false;
         }
 
-        if (!validatorClass.RangeTextBox(this, bi.nw215m, 1, 12, 98, getString(R.string.nw215), " month")) {
+        if (!validatorClass.RangeTextBox(this, bi.nw21702d, 1, 31, 98, getString(R.string.nw21702), " day")) {
+            return false;
+        }
+
+        if (!validatorClass.RangeTextBox(this, bi.nw21702m, 1, 12, 98, getString(R.string.nw21702), " month")) {
             return false;
         }
 
 
-        if (!validatorClass.RangeTextBox(this, bi.nw215y, DateUtils.getCurrentYear() - 5, DateUtils.getCurrentYear(), getString(R.string.nw215), " years")) {
+        if (!validatorClass.RangeTextBox(this, bi.nw21702y, DateUtils.getCurrentYear() - 5, DateUtils.getCurrentYear(), getString(R.string.nw21702), " years")) {
             return false;
         }
 
         Calendar today = Calendar.getInstance();
         if (date.after(today)) {
-            if (!validatorClass.RangeTextBoxforDate(this, bi.nw215d, 1, DateUtils.getCurrentDate(), 98, "Date can not be more than today")) {
+            if (!validatorClass.RangeTextBoxforDate(this, bi.nw21702d, 1, DateUtils.getCurrentDate(), 98, "Date can not be more than today")) {
                 return false;
             }
 
-            if (!validatorClass.RangeTextBoxforDate(this, bi.nw215m, 1, DateUtils.getCurrentMonth(), 98, "Month can not be more than current month")) {
+            if (!validatorClass.RangeTextBoxforDate(this, bi.nw21702m, 1, DateUtils.getCurrentMonth(), 98, "Month can not be more than current month")) {
                 return false;
             }
 
-            if (!validatorClass.RangeTextBoxforDate(this, bi.nw215y, DateUtils.getCurrentYear() - 5, DateUtils.getCurrentYear(), "Year can not be more than current year")) {
-                return false;
-            }
+            return validatorClass.RangeTextBoxforDate(this, bi.nw21702y, DateUtils.getCurrentYear() - 5, DateUtils.getCurrentYear(), "Year can not be more than current year");
 
         }
 
-
-        if (!validatorClass.EmptyRadioButton(this, bi.nw216, bi.nw216a, getString(R.string.nw216))) {
-            return false;
-        }
-
-        if (bi.nw216c.isChecked() || bi.nw216f.isChecked()) {
-            if (!validatorClass.EmptyRadioButton(this, bi.nw217, bi.nw217a, getString(R.string.nw217))) {
-                return false;
-            }
-
-            if (bi.nw217a.isChecked()) {
-                if (!validatorClass.EmptyTextBox(this, bi.nw219y, getString(R.string.nw219) + " - " + getString(R.string.year))) {
-                    return false;
-                }
-
-                if (!validatorClass.EmptyTextBox(this, bi.nw219m, getString(R.string.nw219) + " - " + getString(R.string.month))) {
-                    return false;
-                }
-
-                if (!validatorClass.EmptyTextBox(this, bi.nw219d, getString(R.string.nw219) + " - " + getString(R.string.day))) {
-                    return false;
-                }
-
-                if (!validatorClass.RangeTextBox(this, bi.nw219y, 0, 4, getString(R.string.nw219), " years")) {
-                    return false;
-                }
-
-                if (!validatorClass.RangeTextBox(this, bi.nw219m, 0, 11, getString(R.string.nw219), " months")) {
-                    return false;
-                }
-
-
-                if (!validatorClass.RangeTextBox(this, bi.nw219d, 0, 29, getString(R.string.nw219), " days")) {
-                    return false;
-                }
-
-                if (bi.nw219y.getText().toString().equals("0") && bi.nw219m.getText().toString().equals("0") && bi.nw219d.getText().toString().equals("0")) {
-                    Toast.makeText(this, "ERROR(invalid): " + "All can not be zero" + getString(R.string.nw219), Toast.LENGTH_LONG).show();
-                    bi.nw219y.setError("All can not be zero");
-                    bi.nw219m.setError("All can not be zero");
-                    bi.nw219d.setError("All can not be zero");
-                    Log.i(SectionA2Activity.class.getSimpleName(), "nw219" + ": This data is Required!");
-                    return false;
-                } else {
-                    bi.nw219y.setError(null);
-                    bi.nw219m.setError(null);
-                    bi.nw219d.setError(null);
-                }
-            } else if (bi.nw217b.isChecked()) {
-                if (!validatorClass.EmptyTextBox(this, bi.nw220y, getString(R.string.nw220) + " - " + getString(R.string.year))) {
-                    return false;
-                }
-
-                if (!validatorClass.EmptyTextBox(this, bi.nw220m, getString(R.string.nw220) + " - " + getString(R.string.month))) {
-                    return false;
-                }
-
-                if (!validatorClass.EmptyTextBox(this, bi.nw220d, getString(R.string.nw220) + " - " + getString(R.string.day))) {
-                    return false;
-                }
-
-                if (!validatorClass.RangeTextBox(this, bi.nw220y, 0, 4, getString(R.string.nw220), " years")) {
-                    return false;
-                }
-
-                if (!validatorClass.RangeTextBox(this, bi.nw220m, 0, 11, getString(R.string.nw220), " months")) {
-                    return false;
-                }
-
-
-                if (!validatorClass.RangeTextBox(this, bi.nw220d, 0, 29, getString(R.string.nw220), " days")) {
-                    return false;
-                }
-
-                if (bi.nw220y.getText().toString().equals("0") && bi.nw220m.getText().toString().equals("0") && bi.nw220d.getText().toString().equals("0")) {
-                    Toast.makeText(this, "ERROR(invalid): " + "All can not be zero" + getString(R.string.nw220), Toast.LENGTH_LONG).show();
-                    bi.nw220y.setError("All can not be zero");
-                    bi.nw220m.setError("All can not be zero");
-                    bi.nw220d.setError("All can not be zero");
-                    Log.i(SectionA2Activity.class.getSimpleName(), "nw220" + ": This data is Required!");
-                    return false;
-                } else {
-                    bi.nw220y.setError(null);
-                    bi.nw220m.setError(null);
-                    bi.nw220d.setError(null);
-                }
-            }
-        }
 
 
         return true;
@@ -379,38 +196,10 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
         JSONObject sB1a = new JSONObject();
 
-        sB1a.put("nw215y", bi.nw215y.getText().toString());
-        sB1a.put("nw215m", bi.nw215m.getText().toString());
-        sB1a.put("nw215d", bi.nw215d.getText().toString());
-
-        sB1a.put("nw216", bi.nw216a.isChecked() ? "1"
-                : bi.nw216b.isChecked() ? "2"
-                : bi.nw216c.isChecked() ? "3"
-                : bi.nw216d.isChecked() ? "4"
-                : bi.nw216e.isChecked() ? "5"
-                : bi.nw216f.isChecked() ? "6"
-                : "0");
-
-        if (!MainApp.flag) {
-            MainApp.outcome = bi.nw216.indexOfChild(findViewById(bi.nw216.getCheckedRadioButtonId())) + 1;
-        }
-
-
-        sB1a.put("nw217", bi.nw217a.isChecked() ? "1"
-                : bi.nw217b.isChecked() ? "2"
-                : "0");
-        if (bi.nw216c.isChecked() || bi.nw216d.isChecked() || bi.nw216f.isChecked()) {
-            MainApp.status++;
-        }
-
-        sB1a.put("nw218", String.valueOf(childSerial));
-        sB1a.put("nw219y", bi.nw219y.getText().toString());
-        sB1a.put("nw219m", bi.nw219m.getText().toString());
-        sB1a.put("nw219d", bi.nw219d.getText().toString());
-
-        sB1a.put("nw220y", bi.nw220y.getText().toString());
-        sB1a.put("nw220m", bi.nw220m.getText().toString());
-        sB1a.put("nw220d", bi.nw220d.getText().toString());
+        sB1a.put("nw21701", bi.nw21701a.isChecked() ? "1" : bi.nw21701b.isChecked() ? "2" : "0");
+        sB1a.put("nw21702y", bi.nw21702y.getText().toString());
+        sB1a.put("nw21702m", bi.nw21702m.getText().toString());
+        sB1a.put("nw21702d", bi.nw21702d.getText().toString());
 
         MainApp.oc.setsB1A(String.valueOf(sB1a));
 
@@ -453,16 +242,17 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-        if (!bi.nw215y.getText().toString().isEmpty() && !bi.nw215m.getText().toString().isEmpty()
-                && !bi.nw215d.getText().toString().isEmpty()) {
-            if (!bi.nw215d.getText().toString().equals("98") && !bi.nw215m.getText().toString().equals("98")) {
-                date = DateUtils.getCalendarDate(bi.nw215d.getText().toString(), bi.nw215m.getText().toString(), bi.nw215y.getText().toString());
+        if (!bi.nw21702d.getText().toString().isEmpty() && !bi.nw21702m.getText().toString().isEmpty()
+                && !bi.nw21702y.getText().toString().isEmpty()) {
+            if (!bi.nw21702d.getText().toString().equals("98") && !bi.nw21702m.getText().toString().equals("98")) {
+                date = DateUtils.getCalendarDate(bi.nw21702d.getText().toString(),
+                        bi.nw21702m.getText().toString(), bi.nw21702y.getText().toString());
 
                 yearsBydob = DateUtils.ageInYearByDOB(date);
 
             } else {
-                //date = bi.nw215d.getText().toString() + "-" bi.nw21
-                yearsBydob = DateUtils.ageInYearByDOB(bi.nw215y.getText().toString());
+
+                yearsBydob = DateUtils.ageInYearByDOB(bi.nw21702y.getText().toString());
             }
 
 

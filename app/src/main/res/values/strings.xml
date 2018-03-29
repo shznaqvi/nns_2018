@@ -503,36 +503,32 @@
   <string name="nw205"> کیا کبھی آپ کی شادی ہوئی ؟</string>
   <string name="nw206"> شادی کے وقت آپ کی عمر کیا تھی؟ </string>
   <string name="nw207"> کیا آپ کبھی حاملہ ہوئی ہیں؟ </string>-->
-  <string name="nw208">۔W208 - کل حمل کی تعداد </string>
+  <string name="nw211">۔W211 - کل حمل کی تعداد </string>
     <string name="nw204info"> (بشمول موجودہ حمل) </string>
     <string name="nw204a"> حمل کی تعداد </string>
-  <!--<string name="nw211"> کیا آپ ابھی حاملہ ہیں؟ </string>-->
+  <!--<string name="nw208"> کیا آپ ابھی حاملہ ہیں؟ </string>-->
     <string name="nw206info"> IF FIRST PREGNANCY AFTER MARRIAGE THEN GO TO SECTION B2 </string>
-  <!--<string name="nw210"> پہلے بچے کی پیدائش کے وقت آپ کی عمر کیاتھی؟ </string>-->
+  <!--<string name="nw213"> پہلے بچے کی پیدائش کے وقت آپ کی عمر کیاتھی؟ </string>-->
     <string name="nw206a"> عمر سالوں میں </string>
 
     <string name="nb1aheading"> پچھلے پانچ سالوں میں تمام حمل کی معلومات  </string>
-    <string name="nw215"> حمل کے نتیجے کی تاریخ </string>
-    <string name="nw216"> نتیجہ </string>
-    <string name="nw216a"> حمل ضائع </string>
-    <string name="nw216b"> مردہ بچے کی پیدائش </string>
-    <string name="nw216c"> زندہ بچے کی پیدائش </string>
-    <string name="nw216d"> جڑواں بچوں کی پیدائش </string>
-    <string name="nw216e"> جڑواں مردہ بچوں کی پیدائش </string>
-    <string name="nw216f"> ایک زندہ ایک مردہ بچوں کی پیدائش </string>
+  <!--<string name="nw216"> حمل کے نتیجے کی تاریخ </string>-->
+
+  <string name="nw217c"> زندہ بچے کی پیدائش </string>
+  <string name="nw217d"> جڑواں بچوں کی پیدائش </string>
+  <string name="nw217e"> جڑواں مردہ بچوں کی پیدائش </string>
+  <string name="nw217f"> ایک زندہ ایک مردہ بچوں کی پیدائش </string>
     <string name="nb1a03"> بچے کا نمبر </string>
-    <string name="nw217"> بچے کی موجودہ صورت حال </string>
-    <string name="nw217a"> حیات </string>
-    <string name="nw217b"> فوت </string>
-    <string name="nw219"> زندہ بچے کی عمر </string>
-    <string name="year">سال </string>
+  <!--<string name="nw213"> بچے کی موجودہ صورت حال </string>-->
+
+  <string name="year">سال </string>
     <string name="year2">سنہ </string>
     <string name="month"> ماہ </string>
     <string name="day"> دن </string>
     <string name="nw220"> وفات کے وقت بچے کی عمر </string>
     <string name="nw220y"> سال </string>
     <string name="nw220m"> ماہ </string>
-    <string name="nw220d"> دن </string>
+  <string name="nw220d"> دن </string>-->
     <string name="nb2heading"> سیکشن ڈبلیو 3: حمل کے دوران کیے گئے طبی معانئے کی معلومات </string>
     <string name="nb2subHeading">یہ حصہ ہر اُس خاتون کا بھرا جائے گا جس کی عمر 49-15 سال ہے اور گذشتہ 2 سال میں زندہ بچے کی پیدائش ہوئی ہو  </string>
     <string name="nb2sub"> یہ حصہ ہر اُس خاتون کا بھرا جائے گا جس کی عمر 49-15 سال ہے اور گذشتہ 2 سال میں زندہ بچے کی پیدائش ہوئی ہو  </string>
@@ -1223,16 +1219,27 @@
   <!--<string name="nw322">آپ نے حمل کے دوران کیلشیم کی گولیاں کہاں سے حاصل کیں؟</string>-->
 
 
-  <string name="nw209">۔W209 - زچگیوں کی تعداد </string>
-  <string name="nw209a">۔W209a - پانچ سال کے اندر ہونے والی زچگیوں کی تعداد</string>
+  <string name="nw212">۔W212 - زچگیوں کی تعداد </string>
+  <string name="nw214">۔W214 - گذشتہ پانچ سالوں کے دوران ہونے والے حمل کی تعداد (بشمول موجودہ حمل)</string>
+  <string name="nw215">۔W215 - پانچ سال کے اندر ہونے والی زچگیوں کی تعداد</string>
     <string name="nw205time"> زچگیوں کی تعداد </string>
-  <!--<string name="nw212">موجودہ حمل کے دوران ،کیا آپ کو فولاد کی گولیا ں دی گئی یا آپ نے خریدی؟ </string>-->
-  <!--<string name="nw213">اگر ہاں ،خریدی یا فراہم کی گئیں ؟</string>-->
+  <string name="nw216">۔W216 - کیا  کسی بھی حمل کا نتیجہ مردہ بچے کی پیدائش /اسقاط حمل  ہوا</string>
+  <string name="nw216a"> اگر ہاں تو ان کی تعداد کتنی ہے؟</string>
+  <string name="nw217">۔W217 -  گذشتہ پانچ سالوں کے دوران ہونے والے حمل کی معلومات جن کا نتیجہ  مردہ بچے کی پیدائش /اسقاط حمل ہے  </string>
+
+  <string name="nw21701"> حمل کا نتیجہ </string>
+  <string name="nw21702"> حمل کے نتیجہ کی تاریخ </string>
+  <string name="nw21701a"> حمل ضائع </string>
+  <string name="nw21701b"> مردہ بچے کی پیدائش </string>
 
 
-    <string name="nw21301">کلینک پر ملی</string>
-    <string name="nw21302">خریدی</string>
-    <string name="nw21303">نہ ملی نہ خریدی</string>
+  <!--<string name="nw210">موجودہ حمل کے دوران ،کیا آپ کو فولاد کی گولیا ں دی گئی یا آپ نے خریدی؟ </string>-->
+  <!--<string name="nw210">اگر ہاں ،خریدی یا فراہم کی گئیں ؟</string>-->
+
+
+  <string name="nw21001">کلینک پر ملی</string>
+  <string name="nw21002">خریدی</string>
+  <string name="nw21003">نہ ملی نہ خریدی</string>
 
 
     <string name="nw601">Yesterday during the day or night, did you eat or drink:</string>
@@ -1401,8 +1408,8 @@
     <string name="nw205">۔W205 - کیا کبھی آپ کی شادی ہوئی ؟</string>
     <string name="nw206">۔W206 - شادی کے وقت آپ کی عمر کیا تھی؟</string>
     <string name="nw207">۔W207 - کیا آپ کبھی حاملہ ہوئی ہیں؟</string>
-    <string name="nw211">۔W211 - کیا آپ ابھی حاملہ ہیں؟</string>
-    <string name="nw210">۔W210 - پہلے بچے کی پیدائش کے وقت آپ کی عمر کیاتھی؟</string>
+  <string name="nw208">۔W208 - کیا آپ ابھی حاملہ ہیں؟</string>
+  <string name="nw213">۔W213 - پہلے بچے کی پیدائش کے وقت آپ کی عمر کیاتھی؟</string>
   <string name="nw301b"> نے گزشتہ حمل کےدوران کسی سے اپنا طبی معائنہ کرایا تھا؟</string>
     <string name="nw302">۔W302 - آپ نے کس سے معائنہ کروایاتھا؟</string>
     <string name="nw303">۔W303 - آپ نے یہ معائنہ کہاں کروایا تھا؟</string>
@@ -1497,8 +1504,8 @@
     <string name="nw312">۔W312 - آپ نے حمل کے دوران فولاد کی گولیاں کہاں سے حاصل کیں؟</string>
     <string name="nw321">۔W321 - آپ کو حمل کے دوران کیلشیم کی گولیا ں استعمال کرنے کا مشورہ کس نے دیا ؟</string>
     <string name="nw322">۔W322 - آپ نے حمل کے دوران کیلشیم کی گولیاں کہاں سے حاصل کیں؟</string>
-    <string name="nw212">۔W212 - موجودہ حمل کے دوران ،کیا آپ کو فولاد کی گولیا ں دی گئی یا آپ نے خریدی؟</string>
-    <string name="nw213">۔W213 - اگر ہاں ،خریدی یا فراہم کی گئیں ؟</string>
+  <string name="nw209">۔W209 - موجودہ حمل کے دوران ،کیا آپ کو فولاد کی گولیا ں دی گئی یا آپ نے خریدی؟</string>
+  <string name="nw210">۔W210 - اگر ہاں ،خریدی یا فراہم کی گئیں ؟</string>
 
   <string name="hc">Scan HemoCue Machine QR Code</string>
   <string name="ht">Scan Height Machine QR Code</string>
