@@ -14,6 +14,7 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -38,6 +39,8 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
     ActivitySectionC2Binding bi;
     FamilyMembersContract selectedChild;
     DatabaseHelper db;
+    Boolean backPressed = false;
+
 
     @BindViews({R.id.nc215a, R.id.nc215b, R.id.nc215c, R.id.nc215d, R.id.nc215e, R.id.nc215f,
             R.id.nc215g, R.id.nc215h, R.id.nc215i, R.id.nc217a, R.id.nc217b, R.id.nc217c,
@@ -648,7 +651,16 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
 
     @Override
     public void onBackPressed() {
-        Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
+        // Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
+        try {
+            SaveDraft();
+            UpdateDB();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        super.onBackPressed();
+
     }
 
     public void BtnContinue() {
@@ -663,6 +675,7 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
             if (UpdateDB()) {
 
 //                finish();
+                backPressed = true;
 
                 startActivity(new Intent(this, SectionC3Activity.class)
                         .putExtra("selectedChild", selectedChild));
@@ -968,7 +981,9 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
         JSONObject sC2 = new JSONObject();
-
+        if (backPressed) {
+            sC2.put("updatedate", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+        }
 //        nc2_child_name
         sC2.put("nc2_child_name", selectedChild.getName());
 //        nc2_line_no
