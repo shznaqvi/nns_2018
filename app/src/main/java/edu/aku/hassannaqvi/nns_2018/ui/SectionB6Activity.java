@@ -62,35 +62,38 @@ public class SectionB6Activity extends AppCompatActivity {
 
                     nutritionCC = nutritionContract;
 
-                    if (!jsonB6.getnw501a().equals("2")) {
+                    if (jsonB6.getnw501a().equals("1")) {
                         bi.nw501a.setChecked(true);
                     }
-                    if (!jsonB6.getnw501b().equals("2")) {
+                    if (jsonB6.getnw501b().equals("1")) {
                         bi.nw501b.setChecked(true);
                     }
-                    if (!jsonB6.getnw501c().equals("2")) {
+                    if (jsonB6.getnw501c().equals("1")) {
                         bi.nw501c.setChecked(true);
                     }
-                    if (!jsonB6.getnw501d().equals("2")) {
+                    if (jsonB6.getnw501d().equals("1")) {
                         bi.nw501d.setChecked(true);
                     }
-                    if (!jsonB6.getnw501e().equals("2")) {
+                    if (jsonB6.getnw501e().equals("1")) {
                         bi.nw501e.setChecked(true);
                     }
-                    if (!jsonB6.getnw501f().equals("2")) {
+                    if (jsonB6.getnw501f().equals("1")) {
                         bi.nw501f.setChecked(true);
                     }
-                    if (!jsonB6.getnw501g().equals("2")) {
+                    if (jsonB6.getnw501g().equals("1")) {
                         bi.nw501g.setChecked(true);
                     }
-                    if (!jsonB6.getnw501h().equals("2")) {
+                    if (jsonB6.getnw501h().equals("1")) {
                         bi.nw501h.setChecked(true);
                     }
-                    if (!jsonB6.getnw501i().equals("2")) {
+                    if (jsonB6.getnw501i().equals("1")) {
                         bi.nw501i.setChecked(true);
                     }
-                    if (!jsonB6.getnw501j().equals("2")) {
+                    if (jsonB6.getnw501j().equals("1")) {
                         bi.nw501j.setChecked(true);
+                    }
+                    if (jsonB6.getnw501none().equals("1")) {
+                        bi.nw501none.setChecked(true);
                     }
 
                 }
@@ -403,6 +406,8 @@ public class SectionB6Activity extends AppCompatActivity {
         sB6.put("nw501i", bi.nw501i.isChecked() ? "1"
                 : "2");
         sB6.put("nw501j", bi.nw501j.isChecked() ? "1"
+                : "2");
+        sB6.put("nw501none", bi.nw501none.isChecked() ? "1"
                 : "2");
 
         if (backPressed) {

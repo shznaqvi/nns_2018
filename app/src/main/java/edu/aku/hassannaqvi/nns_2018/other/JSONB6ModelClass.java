@@ -17,6 +17,7 @@ public class JSONB6ModelClass {
     private String nw501h = "";
     private String nw501i = "";
     private String nw501j = "";
+    private String nw501none = "";
 
     public JSONB6ModelClass() {
 
@@ -108,5 +109,13 @@ public class JSONB6ModelClass {
 
     public void setnw501j(String nw501j) {
         this.nw501j = nw501j;
+    }
+
+    public String getnw501none() {
+        return nw501none;
+    }
+
+    public void setnw501none(String nw501none) {
+        this.nw501none = nw501none;
     }
 }
