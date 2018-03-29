@@ -984,7 +984,7 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
 
         JSONObject sC2 = new JSONObject();
         if (backPressed) {
-            sC2.put("updatedate", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+            sC2.put("updatedate_nc2", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
         }
 //        nc2_child_name
         sC2.put("nc2_child_name", selectedChild.getName());

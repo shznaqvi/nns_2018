@@ -1038,7 +1038,7 @@ public class SectionB2Activity extends Activity {
         JSONObject sB2 = new JSONObject();
 
         if (backPressed) {
-            sB2.put("updatedate", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+            sB2.put("updatedate_nw3", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
         }
 
         sB2.put("nw301", bi.nw301a.isChecked() ? "1"

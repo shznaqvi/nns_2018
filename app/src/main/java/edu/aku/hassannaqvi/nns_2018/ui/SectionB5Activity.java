@@ -460,7 +460,7 @@ public class SectionB5Activity extends AppCompatActivity {
         JSONObject sB5 = new JSONObject();
 
         if (backPressed) {
-            sB5.put("updatedate", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+            sB5.put("updatedate_nw4b", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
         }
 
 //        nw414

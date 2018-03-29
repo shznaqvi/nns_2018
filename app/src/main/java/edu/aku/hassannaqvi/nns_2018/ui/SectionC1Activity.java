@@ -220,7 +220,7 @@ public class SectionC1Activity extends AppCompatActivity {
             }
 
         } else {
-            sC1.put("updatedate", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+            sC1.put("updatedate_nc1", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
             MainApp.cc.setUID(MainApp.cc.getUID());
         }
 

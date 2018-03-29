@@ -230,9 +230,7 @@ public class SectionB3Activity extends AppCompatActivity {
 
                 if (binding.nw331a.isChecked()) {
                     // nw332
-                    if (!validatorClass.EmptyRadioButton(this, binding.nw332, binding.nw332d, getString(R.string.nw332))) {
-                        return false;
-                    }
+                    return validatorClass.EmptyRadioButton(this, binding.nw332, binding.nw332d, getString(R.string.nw332));
                 }
             }
 
@@ -248,7 +246,7 @@ public class SectionB3Activity extends AppCompatActivity {
         JSONObject sB3 = new JSONObject();
 
         if (backPressed) {
-            sB3.put("updatedate", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+            sB3.put("updatedate_nw3b", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
         }
 
         sB3.put("nw327", binding.nw327a.isChecked() ? "1"

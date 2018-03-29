@@ -289,7 +289,7 @@ public class MWRAContract {
         json.put(MWRATable.COLUMN_UUID, this._UUID == null ? JSONObject.NULL : this._UUID);
         json.put(MWRATable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
 
-        json.put(MWRATable.COLUMN_UPDATEDATE, this.updatedate == null ? JSONObject.NULL : this.updatedate);
+//        json.put(MWRATable.COLUMN_UPDATEDATE, this.updatedate == null ? JSONObject.NULL : this.updatedate);
 
         json.put(MWRATable.COLUMN_DEVICEID, this.deviceId == null ? JSONObject.NULL : this.deviceId);
         json.put(MWRATable.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
