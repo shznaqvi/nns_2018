@@ -28,7 +28,7 @@ import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 public class SectionH8Activity extends Activity implements TextWatcher {
 
     ActivitySectionH8Binding bi;
-    @BindViews({R.id.nh808d, R.id.nh808m, R.id.nh808m})
+    @BindViews({R.id.nh808d, R.id.nh808m, R.id.nh808y})
     List<EditText> grpdob;
 
     Calendar dob = Calendar.getInstance();

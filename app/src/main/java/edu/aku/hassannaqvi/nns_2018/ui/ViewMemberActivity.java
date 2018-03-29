@@ -48,7 +48,7 @@ public class ViewMemberActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_view_member);
         db = new DatabaseHelper(this);
         binding.setCallback(this);
-        initializingLists();
+
     }
 
     private void initializingLists() {
@@ -58,18 +58,16 @@ public class ViewMemberActivity extends AppCompatActivity {
         MainApp.mwra = new ArrayList<>();
         members = new ArrayList<>();
         json = new JSONModelClass();
-        viewWraList();
-        viewChildList();
 
     }
 
-    private void notifywrachange(WraAdapter wraAdapter) {
+ /*   private void notifywrachange(WraAdapter wraAdapter) {
         wraAdapter.notifyDataSetChanged();
     }
 
     private void notifychildchange(ChildAdapter childAdapter) {
         childAdapter.notifyDataSetChanged();
-    }
+    }*/
 
     public void clearFields() {
         binding.fldGrpviewlist.setVisibility(View.GONE);
@@ -82,6 +80,9 @@ public class ViewMemberActivity extends AppCompatActivity {
 
             String uid = db.getUIDByHH(binding.chckenumblock.getText().toString(), binding.chckhouse.getText().toString().toUpperCase());
             if (uid != null) {
+
+                initializingLists();
+
                 members = db.getAllMembersByHH(uid);
 
                 if (members.size() != 0) {
@@ -90,6 +91,7 @@ public class ViewMemberActivity extends AppCompatActivity {
                         if (fm.getsA2() != null) {
                             json = JSONUtilClass.getModelFromJSON(fm.getsA2(), JSONModelClass.class);
                             if ((Integer.valueOf(json.getAge()) >= 15 && Integer.valueOf(json.getAge()) <= 49) && json.getGender().equals("2")) {
+                                //  Log.d("Test",fm.getName());
                                 MainApp.mwra.add(fm);
                                 MainApp.all_members.add(fm);
 
@@ -99,6 +101,7 @@ public class ViewMemberActivity extends AppCompatActivity {
                                 MainApp.all_members.add(fm);
                             }*/
                             if (Integer.valueOf(json.getAge()) < 5) {
+                                // Log.d("Test",fm.getName());
                                 MainApp.childUnder5.add(fm);
                                 MainApp.all_members.add(fm);
 
@@ -106,12 +109,15 @@ public class ViewMemberActivity extends AppCompatActivity {
                         }
 
                     }
+
                     if (MainApp.all_members.size() > 0) {
                         Toast.makeText(this, "Members Found..", Toast.LENGTH_SHORT).show();
                         binding.btnContinue.setVisibility(View.VISIBLE);
                         binding.btnEnd.setVisibility(View.GONE);
-                        notifywrachange(wraAdapter);
-                        notifychildchange(childAdapter);
+                       /* notifywrachange(wraAdapter);
+                        notifychildchange(childAdapter);*/
+                        viewWraList();
+                        viewChildList();
 
                     } else {
 
@@ -231,7 +237,8 @@ public class ViewMemberActivity extends AppCompatActivity {
                         binding.recyclerMwra.setLayoutManager(mLayoutManager);
                         binding.recyclerMwra.setItemAnimator(new DefaultItemAnimator());
                         binding.recyclerMwra.setAdapter(wraAdapter);
-                        notifywrachange(wraAdapter);
+                        wraAdapter.notifyDataSetChanged();
+                        //notifywrachange(wraAdapter);
 
                     }
                 }
@@ -282,7 +289,8 @@ public class ViewMemberActivity extends AppCompatActivity {
                         binding.recyclerChild.setLayoutManager(mLayoutManager);
                         binding.recyclerChild.setItemAnimator(new DefaultItemAnimator());
                         binding.recyclerChild.setAdapter(childAdapter);
-                        notifychildchange(childAdapter);
+                        childAdapter.notifyDataSetChanged();
+                        // notifychildchange(childAdapter);
                     }
                 }
             });
@@ -296,7 +304,7 @@ public class ViewMemberActivity extends AppCompatActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    notifychildchange(childAdapter);
+                    // notifychildchange(childAdapter);
 //                   Background black for those that's data filled
                   /*  for (int item : MainApp.hhClicked) {
                         binding.recyclerChild.getChildAt(item).setBackgroundColor(Color.BLACK);

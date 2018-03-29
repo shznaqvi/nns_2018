@@ -12,6 +12,8 @@ import java.util.List;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.databinding.ChildAdapterBinding;
+import edu.aku.hassannaqvi.nns_2018.other.JSONModelClass;
+import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 
 /**
  * Created by ramsha.ahmed on 3/28/2018.
@@ -20,9 +22,10 @@ import edu.aku.hassannaqvi.nns_2018.databinding.ChildAdapterBinding;
 public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHolder> {
 
     ChildAdapter.ChildViewHolder holder;
+    JSONModelClass json;
     private List<FamilyMembersContract> childList;
-
     public ChildAdapter(List<FamilyMembersContract> childList) {
+        json = new JSONModelClass();
         this.childList = childList;
     }
 
@@ -64,10 +67,11 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHol
 
 
         public void bindUser(FamilyMembersContract child) {
-            childBinding.childName.setText(child.getName().toUpperCase());
-            childBinding.Age.setText("Age: " + child.getAge());
-            childBinding.na204.setText(child.getna204().equals("1") ? "Male" : "Female");
-            childBinding.childmName.setText(child.getMotherName().equals("") ? "..." : child.getMotherName());
+            json = JSONUtilClass.getModelFromJSON(child.getsA2(), JSONModelClass.class);
+            childBinding.childName.setText(json.getName().toUpperCase());
+            childBinding.Age.setText("Age: " + json.getAge());
+            childBinding.na204.setText(json.getGender().equals("1") ? "Male" : "Female");
+            //childBinding.childmName.setText(child.getMotherName().equals("") ? "..." : child.getMotherName());
 
            /* wraBinding.wraName.setText(mem.getName().toUpperCase());
             wraBinding.ms.setText("Marital Status: "+MStatusChecking(mem.getMaritialStatus()));

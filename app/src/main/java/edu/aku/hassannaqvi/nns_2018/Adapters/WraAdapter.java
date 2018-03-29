@@ -3,6 +3,7 @@ package edu.aku.hassannaqvi.nns_2018.Adapters;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,17 +13,21 @@ import java.util.List;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.databinding.WraAdapterBinding;
+import edu.aku.hassannaqvi.nns_2018.other.JSONModelClass;
+import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 
 /**
  * Created by ramsha.ahmed on 3/28/2018.
  */
 
 public class WraAdapter extends RecyclerView.Adapter<WraAdapter.WraViewHolder> {
+    JSONModelClass json;
 
     WraViewHolder holder;
     private List<FamilyMembersContract> wraList;
 
     public WraAdapter(List<FamilyMembersContract> wraList) {
+        json = new JSONModelClass();
         this.wraList = wraList;
     }
 
@@ -60,6 +65,7 @@ public class WraAdapter extends RecyclerView.Adapter<WraAdapter.WraViewHolder> {
         public WraViewHolder(View itemView) {
             super(itemView);
             wraBinding = DataBindingUtil.bind(itemView);
+
         }
 
         public String MStatusChecking(String ms) {
@@ -85,9 +91,17 @@ public class WraAdapter extends RecyclerView.Adapter<WraAdapter.WraViewHolder> {
         }
 
         public void bindUser(FamilyMembersContract women) {
-            wraBinding.wraName.setText(women.getName().toUpperCase());
-            wraBinding.ms.setText("Marital Status: " + MStatusChecking(women.getMaritialStatus()));
-            wraBinding.Age.setText("Age: " + women.getAge());
+
+            json = JSONUtilClass.getModelFromJSON(women.getsA2(), JSONModelClass.class);
+            // membersMap.put(json.getName() + "_" + women.getSerialNo(), new SectionD1Activity.SelectedMem(type, women));
+            // members.add(json.getName() + "_" + women.getSerialNo());
+
+
+            wraBinding.wraName.setText(json.getName().toUpperCase());
+            wraBinding.ms.setText("Marital Status: " + MStatusChecking(json.getMaritalStatus()));
+            wraBinding.Age.setText("Age: " + json.getAge());
+            Log.d("Test", "name: " + json.getName().toUpperCase());
+            Log.d("Test", "Marital Status: " + MStatusChecking(women.getMaritialStatus()));
 
         }
     }
