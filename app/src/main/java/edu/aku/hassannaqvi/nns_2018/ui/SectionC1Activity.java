@@ -43,6 +43,10 @@ public class SectionC1Activity extends AppCompatActivity {
     DatabaseHelper db;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     Boolean endflag = false;
+
+    Boolean backPressed = false;
+    Boolean frontPressed = false;
+
     private Timer timer = new Timer();
 
     @Override
@@ -125,16 +129,19 @@ public class SectionC1Activity extends AppCompatActivity {
                 e.printStackTrace();
             }
             if (UpdateDB()) {
-                //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
-                finish();
+//                finish();
+
+                frontPressed = true;
 
                 if (Integer.valueOf(childMap.get(binding.nc101.getSelectedItem().toString()).getAgeInYear()) < 2) {
                     startActivity(new Intent(this, SectionC2Activity.class)
-                            .putExtra("selectedChild", childMap.get(binding.nc101.getSelectedItem().toString())));
+                            .putExtra("selectedChild", childMap.get(binding.nc101.getSelectedItem().toString()))
+                            .putExtra("backPressed", backPressed));
                 } else {
                     startActivity(new Intent(this, SectionC3Activity.class)
-                            .putExtra("selectedChild", childMap.get(binding.nc101.getSelectedItem().toString())));
+                            .putExtra("selectedChild", childMap.get(binding.nc101.getSelectedItem().toString()))
+                            .putExtra("backPressed", backPressed));
                 }
 
                /* startActivity(new Intent(this, SectionC5Activity.class)
@@ -149,21 +156,21 @@ public class SectionC1Activity extends AppCompatActivity {
 
         endflag = true;
         if (formValidation()) {
-        try {
-            SaveDraft();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        if (UpdateDB()) {
-            //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
+            try {
+                SaveDraft();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            if (UpdateDB()) {
+                //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
-            //finish();
+                //finish();
 
-            MainApp.endChildActivity(this, this, false);
+                MainApp.endChildActivity(this, this, false);
 
-        } else {
-            Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
-        }
+            } else {
+                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -173,9 +180,7 @@ public class SectionC1Activity extends AppCompatActivity {
 //        nc101
 
         if (endflag) {
-            if (!validatorClass.EmptySpinner(this, binding.nc101, getString(R.string.nc101))) {
-                return false;
-            }
+            return validatorClass.EmptySpinner(this, binding.nc101, getString(R.string.nc101));
         } else {
 
             if (!validatorClass.EmptySpinner(this, binding.nc101, getString(R.string.nc101))) {
@@ -186,13 +191,9 @@ public class SectionC1Activity extends AppCompatActivity {
                 return false;
             }
 
-            if (!validatorClass.EmptyRadioButton(this, binding.nc104, binding.nc10498, getString(R.string.nc104))) {
-                return false;
-            }
+            return validatorClass.EmptyRadioButton(this, binding.nc104, binding.nc10498, getString(R.string.nc104));
 
         }
-
-        return true;
 
     }
 
@@ -201,22 +202,27 @@ public class SectionC1Activity extends AppCompatActivity {
 
         selectedChildName = binding.nc101.getSelectedItem().toString();
 
-        MainApp.cc = new ChildContract();
-
-        MainApp.cc.setDevicetagID(MainApp.getTagName(this));
-        MainApp.cc.setFormDate(dtToday);
-        MainApp.cc.setUser(MainApp.userName);
-        MainApp.cc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
-                Settings.Secure.ANDROID_ID));
-        MainApp.cc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
-
-        if (childMap.get(binding.nc101.getSelectedItem().toString()).getMotherId().equals("00")) {
-            MainApp.cc.setUUID(MainApp.fmc.get_UID());
-        } else {
-            MainApp.cc.setUUID(MainApp.mc.get_UID());
-        }
-
         JSONObject sC1 = new JSONObject();
+
+        if (!backPressed) {
+            MainApp.cc = new ChildContract();
+            MainApp.cc.setDevicetagID(MainApp.getTagName(this));
+            MainApp.cc.setFormDate(dtToday);
+            MainApp.cc.setUser(MainApp.userName);
+            MainApp.cc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
+                    Settings.Secure.ANDROID_ID));
+            MainApp.cc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
+
+            if (childMap.get(binding.nc101.getSelectedItem().toString()).getMotherId().equals("00")) {
+                MainApp.cc.setUUID(MainApp.fmc.get_UID());
+            } else {
+                MainApp.cc.setUUID(MainApp.mc.get_UID());
+            }
+
+        } else {
+            sC1.put("updatedate", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+            MainApp.cc.setUID(MainApp.cc.getUID());
+        }
 
         sC1.put("respName", binding.resp.getSelectedItem().toString());
         sC1.put("respSerial", respMap.get(binding.resp.getSelectedItem().toString()));
@@ -246,20 +252,40 @@ public class SectionC1Activity extends AppCompatActivity {
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        Long updcount = db.addChildForm(MainApp.cc);
-        MainApp.cc.set_ID(String.valueOf(updcount));
+        if (!backPressed) {
+            Long updcount = db.addChildForm(MainApp.cc, 0);
+            MainApp.cc.set_ID(String.valueOf(updcount));
 
-        if (updcount != 0) {
-            //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+            if (updcount != 0) {
+                //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
 
-            MainApp.cc.setUID(
-                    (MainApp.cc.getDeviceID() + MainApp.cc.get_ID()));
-            db.updateFormChildID();
+                MainApp.cc.setUID(
+                        (MainApp.cc.getDeviceID() + MainApp.cc.get_ID()));
+                db.updateFormChildID();
+
+                return true;
+            } else {
+                Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        } else {
+            Long updcount = db.addChildForm(MainApp.cc, 1);
 
             return true;
-        } else {
-            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
-            return false;
+        }
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (frontPressed) {
+            backPressed = true;
+        }
+
+        if (backPressed) {
+            binding.nc101.setEnabled(false);
         }
 
     }

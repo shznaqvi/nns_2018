@@ -929,40 +929,53 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return newRowId;
     }
 
-    public Long addChildForm(ChildContract cc) {
+    public Long addChildForm(ChildContract cc, int type) {
 
         // Gets the data repository in write mode
         SQLiteDatabase db = this.getWritableDatabase();
 
 // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
-        values.put(ChildTable.COLUMN_PROJECTNAME, cc.getProjectName());
-        //values.put(ChildTable.COLUMN__ID, cc.get_ID());
-        values.put(ChildTable.COLUMN__UID, cc.getUID());
-        values.put(ChildTable.COLUMN__UUID, cc.getUUID());
-        values.put(ChildTable.COLUMN_FORMDATE, cc.getFormDate());
-        values.put(ChildTable.COLUMN_USER, cc.getUser());
-        values.put(ChildTable.COLUMN_C1SERIALNO, cc.getC1SerialNo());
-        values.put(ChildTable.COLUMN_SC1, cc.getsC1());
-        values.put(ChildTable.COLUMN_SC2, cc.getsC2());
-        values.put(ChildTable.COLUMN_SC3, cc.getsC3());
-        values.put(ChildTable.COLUMN_SC4, cc.getsC4());
-        values.put(ChildTable.COLUMN_SC5, cc.getsC5());
-        values.put(ChildTable.COLUMN_DEVICEID, cc.getDeviceID());
-        values.put(ChildTable.COLUMN_DEVICETAGID, cc.getDevicetagID());
-        values.put(ChildTable.COLUMN_SYNCED, cc.getSynced());
-        values.put(ChildTable.COLUMN_SYNCED_DATE, cc.getSynced_date());
-        values.put(ChildTable.COLUMN_APPVERSION, cc.getAppversion());
-        values.put(ChildTable.COLUMN_CSTATUS, cc.getCstatus());
-        values.put(ChildTable.COLUMN_CSTATUS88x, cc.getCstatus88x());
 
+        if (type == 0) {
+            values.put(ChildTable.COLUMN_PROJECTNAME, cc.getProjectName());
+            //values.put(ChildTable.COLUMN__ID, cc.get_ID());
+            values.put(ChildTable.COLUMN__UID, cc.getUID());
+            values.put(ChildTable.COLUMN__UUID, cc.getUUID());
+            values.put(ChildTable.COLUMN_FORMDATE, cc.getFormDate());
+            values.put(ChildTable.COLUMN_USER, cc.getUser());
+            values.put(ChildTable.COLUMN_C1SERIALNO, cc.getC1SerialNo());
+
+            values.put(ChildTable.COLUMN_SC2, cc.getsC2());
+            values.put(ChildTable.COLUMN_SC3, cc.getsC3());
+            values.put(ChildTable.COLUMN_SC4, cc.getsC4());
+            values.put(ChildTable.COLUMN_SC5, cc.getsC5());
+            values.put(ChildTable.COLUMN_DEVICEID, cc.getDeviceID());
+            values.put(ChildTable.COLUMN_DEVICETAGID, cc.getDevicetagID());
+            values.put(ChildTable.COLUMN_SYNCED, cc.getSynced());
+            values.put(ChildTable.COLUMN_SYNCED_DATE, cc.getSynced_date());
+            values.put(ChildTable.COLUMN_APPVERSION, cc.getAppversion());
+            values.put(ChildTable.COLUMN_CSTATUS, cc.getCstatus());
+            values.put(ChildTable.COLUMN_CSTATUS88x, cc.getCstatus88x());
+        }
+
+        values.put(ChildTable.COLUMN_SC1, cc.getsC1());
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
-        newRowId = db.insert(
-                ChildTable.TABLE_NAME,
-                ChildTable.COLUMN_NAME_NULLABLE,
-                values);
+        if (type == 0) {
+            newRowId = db.insert(
+                    ChildTable.TABLE_NAME,
+                    ChildTable.COLUMN_NAME_NULLABLE,
+                    values);
+        } else {
+            newRowId = db.update(
+                    ChildTable.TABLE_NAME,
+                    values,
+                    ChildTable.COLUMN__UID + " = ?",
+                    new String[]{cc.getUID()}
+            );
+        }
         return newRowId;
     }
 

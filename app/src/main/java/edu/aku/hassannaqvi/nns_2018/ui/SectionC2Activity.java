@@ -263,9 +263,8 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
                 e.printStackTrace();
             }
             if (UpdateDB()) {
-                //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
-                finish();
+//                finish();
 
                 startActivity(new Intent(this, SectionC3Activity.class)
                         .putExtra("selectedChild", selectedChild));
@@ -560,9 +559,7 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
                 return false;
             }
 
-            if (!validatorClass.EmptyRadioButton(this, bi.nc223, bi.nc223a, getString(R.string.nc223))) {
-                return false;
-            }
+            return validatorClass.EmptyRadioButton(this, bi.nc223, bi.nc223a, getString(R.string.nc223));
         }
 
         return true;
@@ -841,7 +838,6 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
         MainApp.cc.setsC2(String.valueOf(sC2));
 
 
-        //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }
 
     private boolean UpdateDB() {
