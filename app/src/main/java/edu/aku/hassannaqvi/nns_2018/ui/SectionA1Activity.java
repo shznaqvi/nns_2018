@@ -355,9 +355,7 @@ public class SectionA1Activity extends AppCompatActivity {
 
 //        na113
             if (binding.na11801b.isChecked()) {
-                if (!validatorClass.EmptyCheckBox(this, binding.fldGrpna113, binding.na11996, binding.na11996x, String.valueOf(R.string.na113))) {
-                    return false;
-                }
+                return validatorClass.EmptyCheckBox(this, binding.fldGrpna113, binding.na11996, binding.na11996x, String.valueOf(R.string.na113));
             }
         }
 
@@ -537,5 +535,38 @@ public class SectionA1Activity extends AppCompatActivity {
             }
 
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Toast.makeText(this, "On resume", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Toast.makeText(this, "On pause", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        Toast.makeText(this, "On stop", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+
+        Toast.makeText(this, "On post resume", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        Toast.makeText(this, "On back", Toast.LENGTH_SHORT).show();
     }
 }
