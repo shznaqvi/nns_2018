@@ -114,20 +114,20 @@ public class ViewMemberActivity extends AppCompatActivity {
                         Toast.makeText(this, "Members Found..", Toast.LENGTH_SHORT).show();
                         binding.btnContinue.setVisibility(View.VISIBLE);
                         binding.btnEnd.setVisibility(View.GONE);
-                       /* notifywrachange(wraAdapter);
-                        notifychildchange(childAdapter);*/
+                        binding.fldGrpviewlist.setVisibility(View.VISIBLE);
                         viewWraList();
                         viewChildList();
 
                     } else {
-
+                        binding.fldGrpviewlist.setVisibility(View.GONE);
                         binding.btnContinue.setVisibility(View.GONE);
                         binding.btnEnd.setVisibility(View.GONE);
-                        Toast.makeText(this, "No Eligible member found for anthropometry, Check another HH.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "No members found, Check another HH.", Toast.LENGTH_SHORT).show();
                     }
 
                 }
             } else {
+                binding.fldGrpviewlist.setVisibility(View.GONE);
                 Toast.makeText(this, "No members found for the HH.", Toast.LENGTH_SHORT).show();
             }
 
