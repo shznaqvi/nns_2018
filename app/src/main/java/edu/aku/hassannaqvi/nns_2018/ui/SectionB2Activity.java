@@ -396,7 +396,7 @@ public class SectionB2Activity extends Activity {
             }
 
             if (jsonB2.getnw309().equals("98")) {
-                bi.nw30998.isChecked();
+                bi.nw30998.setChecked(true);
             } else {
                 bi.nw309.setText(jsonB2.getnw309());
             }
