@@ -14,7 +14,6 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -218,7 +217,7 @@ public class SectionA8AActivity extends Activity {
         MainApp.rc = new RecipientsContract();
 
         MainApp.rc.setDevicetagID(MainApp.getTagName(this));
-        MainApp.rc.setFormDate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+        MainApp.rc.setFormDate(MainApp.fc.getFormDate());
         MainApp.rc.setUser(MainApp.userName);
         MainApp.rc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));

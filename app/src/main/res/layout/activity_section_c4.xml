@@ -1297,7 +1297,6 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-
                             android:background="@color/pink_100"
                             android:text="@string/nc412sub2"
                             android:textAppearance="?android:attr/textAppearanceLarge"

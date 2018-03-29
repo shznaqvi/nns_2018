@@ -402,7 +402,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
         if (!backPressed && !frontPressed) {
             MainApp.oc.setDevicetagID(MainApp.getTagName(this));
-            MainApp.oc.setFormDate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+            MainApp.oc.setFormDate(MainApp.fc.getFormDate());
             MainApp.oc.setUser(MainApp.userName);
             MainApp.oc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                     Settings.Secure.ANDROID_ID));

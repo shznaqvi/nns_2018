@@ -368,7 +368,7 @@ public class SectionB6Activity extends AppCompatActivity {
         MainApp.nc = new NutritionContract();
         if (!backPressed && !frontPressed) {
             MainApp.nc.setDevicetagID(MainApp.getTagName(this));
-            MainApp.nc.setFormDate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+            MainApp.nc.setFormDate(MainApp.fc.getFormDate());
             MainApp.nc.setUser(MainApp.userName);
             MainApp.nc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                     Settings.Secure.ANDROID_ID));
