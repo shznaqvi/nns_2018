@@ -422,9 +422,11 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
                                 : bi.nc21898.getId()
                 );
             }
-            bi.nc219x.setText(jsonC2.getnc219x());
-            if (!jsonC2.getnc219().equals("0")) {
-                bi.nc219x.setText(jsonC2.getnc219x());
+
+            if (jsonC2.getnc219().equals("98")) {
+                bi.nc21998.setChecked(true);
+            } else {
+                bi.nc219x.setText(jsonC2.getnc219());
             }
 
 
