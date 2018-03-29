@@ -1072,9 +1072,7 @@ public class SectionB1Activity extends Activity {
                                         return false;
                                     }
 
-                                    if (!validatorClass.EmptyRadioButton(this, bi.nw21302, bi.nw21302a, getString(R.string.nw21302))) {
-                                        return false;
-                                    }
+                                    return validatorClass.EmptyRadioButton(this, bi.nw21302, bi.nw21302a, getString(R.string.nw21302));
 
                                      /*   if (!validatorClass.EmptyRadioButton(this, bi.nw21303, bi.nw21303a, getString(R.string.nw21303))) {
                                             return false;
@@ -1122,6 +1120,8 @@ public class SectionB1Activity extends Activity {
 
     private void SaveDraft() throws JSONException {
 
+        JSONObject sB1 = new JSONObject();
+
         if (!backPressed) {
             MainApp.mc = new MWRAContract();
             MainApp.mc.setDevicetagID(MainApp.getTagName(this));
@@ -1133,13 +1133,11 @@ public class SectionB1Activity extends Activity {
             MainApp.mc.setB1SerialNo(wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
             MainApp.mc.set_UUID(MainApp.fc.getUID());
         } else {
-            MainApp.mc.setUpdatedate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+            sB1.put("updatedate_nw1", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
             MainApp.mc.set_UID(MainApp.mc.get_UID());
         }
 
         wraName = bi.nb101.getSelectedItem().toString();
-
-        JSONObject sB1 = new JSONObject();
 
         sB1.put("nw101", bi.nb101.getSelectedItem().toString());
         sB1.put("nw1serialno", wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());

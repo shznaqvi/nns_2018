@@ -9,13 +9,17 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.Timer;
 
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC5Binding;
+import edu.aku.hassannaqvi.nns_2018.other.JSONC5ModelClass;
+import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionC5Activity extends AppCompatActivity {
@@ -24,6 +28,9 @@ public class SectionC5Activity extends AppCompatActivity {
     ActivitySectionC5Binding bi;
     FamilyMembersContract selectedChild;
     private Timer timer = new Timer();
+    DatabaseHelper db;
+    Boolean backPressed = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,8 +39,73 @@ public class SectionC5Activity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_c5);
         bi.setCallback(this);
 
+        db = new DatabaseHelper(this);
+
         //Get Intent
         selectedChild = (FamilyMembersContract) getIntent().getSerializableExtra("selectedChild");
+
+        autoPopulateFields();
+    }
+
+    private void autoPopulateFields() {
+
+        ChildContract childContract = db.getsC5();
+
+        if (!childContract.getsC5().equals("")) {
+
+            JSONC5ModelClass jsonC5 = JSONUtilClass.getModelFromJSON(childContract.getsC5(), JSONC5ModelClass.class);
+
+            if (!jsonC5.getnc501().equals("0")) {
+                bi.nc501.check(
+                        jsonC5.getnc501().equals("1") ? bi.nc501a.getId()
+                                : jsonC5.getnc501().equals("2") ? bi.nc501b.getId()
+                                : jsonC5.getnc501().equals("3") ? bi.nc501c.getId()
+                                : bi.nc501d.getId()
+                );
+            }
+            if (!jsonC5.getnc502().equals("0")) {
+                bi.nc502.check(
+                        jsonC5.getnc502().equals("1") ? bi.nc502a.getId()
+                                : jsonC5.getnc502().equals("2") ? bi.nc502b.getId()
+                                : jsonC5.getnc502().equals("3") ? bi.nc502c.getId()
+                                : bi.nc502d.getId()
+                );
+            }
+            if (!jsonC5.getnc503().equals("0")) {
+                bi.nc503.check(
+                        jsonC5.getnc503().equals("1") ? bi.nc503a.getId()
+                                : jsonC5.getnc503().equals("2") ? bi.nc503b.getId()
+                                : jsonC5.getnc503().equals("3") ? bi.nc503c.getId()
+                                : bi.nc503d.getId()
+                );
+            }
+            if (!jsonC5.getnc504().equals("0")) {
+                bi.nc504.check(
+                        jsonC5.getnc504().equals("1") ? bi.nc504a.getId()
+                                : jsonC5.getnc504().equals("2") ? bi.nc504b.getId()
+                                : jsonC5.getnc504().equals("3") ? bi.nc504c.getId()
+                                : bi.nc504d.getId()
+                );
+            }
+            if (!jsonC5.getnc505().equals("0")) {
+                bi.nc505.check(
+                        jsonC5.getnc505().equals("1") ? bi.nc505a.getId()
+                                : jsonC5.getnc505().equals("2") ? bi.nc505b.getId()
+                                : jsonC5.getnc505().equals("3") ? bi.nc505c.getId()
+                                : bi.nc505d.getId()
+                );
+            }
+            if (!jsonC5.getnc506().equals("0")) {
+                bi.nc506.check(
+                        jsonC5.getnc506().equals("1") ? bi.nc506a.getId()
+                                : jsonC5.getnc506().equals("2") ? bi.nc506b.getId()
+                                : jsonC5.getnc506().equals("3") ? bi.nc506c.getId()
+                                : bi.nc506d.getId()
+                );
+            }
+
+        }
+
     }
 
     public void BtnContinue() {
@@ -48,7 +120,8 @@ public class SectionC5Activity extends AppCompatActivity {
             if (UpdateDB()) {
                 //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
-                finish();
+//                finish();
+                backPressed = true;
 
                 //MainApp.endActivityMotherChild(this, this, false, true);
                 startActivity(new Intent(this, ChildEndingActivity.class)
@@ -60,12 +133,6 @@ public class SectionC5Activity extends AppCompatActivity {
             }
         }
 
-    }
-
-
-    @Override
-    public void onBackPressed() {
-        Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
     }
 
     public void BtnEnd() {
@@ -100,6 +167,9 @@ public class SectionC5Activity extends AppCompatActivity {
 
         JSONObject sC5 = new JSONObject();
 
+        if (backPressed) {
+            sC5.put("updatedate_nc5", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+        }
 //        nc301
         sC5.put("nc501", selectedChild.getName());
 //        nc302
@@ -150,7 +220,6 @@ public class SectionC5Activity extends AppCompatActivity {
     private boolean UpdateDB() {
 
         //Long rowId;
-        DatabaseHelper db = new DatabaseHelper(this);
 
         int updcount = db.updateSC5();
 
@@ -161,6 +230,20 @@ public class SectionC5Activity extends AppCompatActivity {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
         }
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        // Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
+        try {
+            SaveDraft();
+            UpdateDB();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        super.onBackPressed();
 
     }
 

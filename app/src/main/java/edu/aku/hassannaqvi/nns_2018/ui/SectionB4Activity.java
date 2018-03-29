@@ -506,9 +506,7 @@ public class SectionB4Activity extends Activity {
                 return false;
             }
 //        nw4139603
-            if (!validatorClass.EmptyRadioButton(this, binding.nw413, binding.nw413963, binding.nw413963x, getString(R.string.nw413) + " - " + getString(R.string.other))) {
-                return false;
-            }
+            return validatorClass.EmptyRadioButton(this, binding.nw413, binding.nw413963, binding.nw413963x, getString(R.string.nw413) + " - " + getString(R.string.other));
 
         }
         return true;
@@ -521,7 +519,7 @@ public class SectionB4Activity extends Activity {
         JSONObject sB4 = new JSONObject();
 
         if (backPressed) {
-            sB4.put("updatedate", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+            sB4.put("updatedate_nw4", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
         }
 
         //       nw401
