@@ -665,10 +665,10 @@ public class SectionB2Activity extends Activity {
                         jsonB2.getnw325().equals("1") ? bi.nw325a.getId() :
                                 bi.nw325b.getId());
             }
-            if (!jsonB2.getnw325().equals("0")) {
-                bi.nw325.check(
-                        jsonB2.getnw325().equals("1") ? bi.nw325a.getId() :
-                                jsonB2.getnw325().equals("2") ? bi.nw325b.getId() :
+            if (!jsonB2.getnw326().equals("0")) {
+                bi.nw326.check(
+                        jsonB2.getnw326().equals("1") ? bi.nw326a.getId() :
+                                jsonB2.getnw326().equals("2") ? bi.nw326b.getId() :
                                         bi.nw32698.getId());
             }
         }

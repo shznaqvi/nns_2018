@@ -25,6 +25,7 @@
     <string name="istatusd"> جزوی مکمل </string>
     <string name="istatuse">جواب دینے سے قاصر</string>
     <string name="istatusf">گھر نہیں ملا</string>
+  <string name="istatusg"> عمر کی وجہ سے نااہل </string>
 
     <string name="istatusha"> مکمل</string>
     <string name="istatushb">گھرانے کا کوئی فرد یا باصلاحیت جواب دہندہ گھر پر موجود نہیں تھا</string>
