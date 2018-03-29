@@ -537,7 +537,7 @@ public class SectionA1Activity extends AppCompatActivity {
         }
     }
 
-    @Override
+/*    @Override
     protected void onResume() {
         super.onResume();
         Toast.makeText(this, "On resume", Toast.LENGTH_SHORT).show();
@@ -568,5 +568,5 @@ public class SectionA1Activity extends AppCompatActivity {
         super.onBackPressed();
 
         Toast.makeText(this, "On back", Toast.LENGTH_SHORT).show();
-    }
+    }*/
 }
