@@ -22,6 +22,7 @@ import java.util.Timer;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -34,6 +35,8 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
     private final long DELAY = 1000;
     ActivitySectionC2Binding bi;
     FamilyMembersContract selectedChild;
+    DatabaseHelper db;
+
     @BindViews({R.id.nc215a, R.id.nc215b, R.id.nc215c, R.id.nc215d, R.id.nc215e, R.id.nc215f,
             R.id.nc215g, R.id.nc215h, R.id.nc215i, R.id.nc217a, R.id.nc217b, R.id.nc217c,
             R.id.nc217d, R.id.nc217e, R.id.nc217f, R.id.nc217g, R.id.nc217h, R.id.nc217i,
@@ -67,9 +70,161 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
 
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_c2);
         ButterKnife.bind(this);
+        db = new DatabaseHelper(this);
         bi.setCallback(this);
 
+
         setupViews();
+        autoPopulateFields();
+    }
+
+    private void autoPopulateFields() {
+        ChildContract childContract = db.getsC2();
+
+        if (!childContract.getsC2().equals("")) {
+
+           /* JSONC2ModelClass jsonC2 = JSONUtilClass.getModelFromJSON(childContract.getsC2(), JSONC2ModelClass.class);
+
+            if (!jsonC2.getnw414().equals("0")) {
+                bi.nw414.check(
+                        jsonC2.getnw414().equals("1") ? bi.nw414a.getId() :
+                                bi.nw414b.getId());
+            }
+
+            if (!jsonC2.getnw415a().equals("0")) {
+                binding.nw415a.setChecked(true);
+            }
+            if (!jsonC2.getnw415b().equals("0")) {
+                binding.nw415b.setChecked(true);
+            }
+            if (!jsonC2.getnw415c().equals("0")) {
+                binding.nw415c.setChecked(true);
+            }
+            if (!jsonC2.getnw415d().equals("0")) {
+                binding.nw415d.setChecked(true);
+            }
+            if (!jsonB5.getnw415e().equals("0")) {
+                binding.nw415e.setChecked(true);
+            }
+            if (!jsonB5.getnw415f().equals("0")) {
+                binding.nw415f.setChecked(true);
+            }
+            if (!jsonB5.getnw415g().equals("0")) {
+                binding.nw415g.setChecked(true);
+            }
+            if (!jsonB5.getnw41596().equals("0")) {
+                binding.nw41596.setChecked(true);
+                binding.nw41596x.setText(jsonB5.getnw41596x());
+            }
+
+            if (!jsonB5.getnw416().equals("0")) {
+                binding.nw416.check(
+                        jsonB5.getnw416().equals("1") ? binding.nw416a.getId()
+                                : jsonB5.getnw416().equals("2") ? binding.nw416b.getId()
+                                : jsonB5.getnw416().equals("3") ? binding.nw416c.getId()
+                                : binding.nw41698.getId());
+            }
+
+            binding.nw416hr.setText(jsonB5.getnw416hr());
+            binding.nw416d.setText(jsonB5.getnw416d());
+            binding.nw416w.setText(jsonB5.getnw416w());
+
+            binding.nw417.setText(jsonB5.getnw417());
+
+            if (!jsonB5.getnw418a().equals("0")) {
+                binding.nw418a.setChecked(true);
+            }
+            if (!jsonB5.getnw418b().equals("0")) {
+                binding.nw418b.setChecked(true);
+            }
+            if (!jsonB5.getnw418c().equals("0")) {
+                binding.nw418c.setChecked(true);
+            }
+            if (!jsonB5.getnw418d().equals("0")) {
+                binding.nw418d.setChecked(true);
+            }
+            if (!jsonB5.getnw418e().equals("0")) {
+                binding.nw418e.setChecked(true);
+            }
+            if (!jsonB5.getnw418f().equals("0")) {
+                binding.nw418f.setChecked(true);
+            }
+            if (!jsonB5.getnw418g().equals("0")) {
+                binding.nw418g.setChecked(true);
+            }
+            if (!jsonB5.getnw41896().equals("0")) {
+                binding.nw41896.setChecked(true);
+                binding.nw41896x.setText(jsonB5.getnw41896x());
+            }
+
+            if (!jsonB5.getnw419().equals("0")) {
+                binding.nw419.check(
+                        jsonB5.getnw419().equals("1") ? binding.nw419a.getId() :
+                                binding.nw419b.getId());
+            }
+
+            if (!jsonB5.getnw420a().equals("0")) {
+                binding.nw420a.setChecked(true);
+            }
+            if (!jsonB5.getnw420b().equals("0")) {
+                binding.nw420b.setChecked(true);
+            }
+            if (!jsonB5.getnw420c().equals("0")) {
+                binding.nw420c.setChecked(true);
+            }
+            if (!jsonB5.getnw420d().equals("0")) {
+                binding.nw420d.setChecked(true);
+            }
+            if (!jsonB5.getnw420e().equals("0")) {
+                binding.nw420e.setChecked(true);
+            }
+            if (!jsonB5.getnw420f().equals("0")) {
+                binding.nw420f.setChecked(true);
+            }
+            if (!jsonB5.getnw420g().equals("0")) {
+                binding.nw420g.setChecked(true);
+            }
+            if (!jsonB5.getnw42096().equals("0")) {
+                binding.nw42096.setChecked(true);
+                binding.nw42096x.setText(jsonB5.getnw42096x());
+            }
+
+            if (!jsonB5.getnw421().equals("0")) {
+                binding.nw421.check(
+                        jsonB5.getnw421().equals("1") ? binding.nw421a.getId()
+                                : jsonB5.getnw421().equals("2") ? binding.nw421b.getId()
+                                : jsonB5.getnw421().equals("3") ? binding.nw421c.getId()
+                                : binding.nw42198.getId());
+            }
+
+            binding.nw421hr.setText(jsonB5.getnw421hr());
+            binding.nw421d.setText(jsonB5.getnw421d());
+            binding.nw421w.setText(jsonB5.getnw421w());
+
+            binding.nw422.setText(jsonB5.getnw422());
+
+            if (!jsonB5.getnw423a().equals("0")) {
+                binding.nw423a.setChecked(true);
+            }
+            if (!jsonB5.getnw423b().equals("0")) {
+                binding.nw423b.setChecked(true);
+            }
+            if (!jsonB5.getnw423c().equals("0")) {
+                binding.nw423c.setChecked(true);
+            }
+            if (!jsonB5.getnw423d().equals("0")) {
+                binding.nw423d.setChecked(true);
+            }
+            if (!jsonB5.getnw423e().equals("0")) {
+                binding.nw423e.setChecked(true);
+            }
+            if (!jsonB5.getnw42396().equals("0")) {
+                binding.nw42396.setChecked(true);
+                binding.nw42396x.setText(jsonB5.getnw42396x());
+            }
+*/
+        }
+
     }
 
     public void setupViews() {

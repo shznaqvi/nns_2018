@@ -1708,7 +1708,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 ChildContract fc = new ChildContract();
-                allFC.add(fc.Hydrate(c));
+                allFC.add(fc.Hydrate(c, 1));
             }
         } finally {
             if (c != null) {
@@ -2256,6 +2256,51 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (c.moveToNext()) {
                 MWRAContract fc = new MWRAContract();
                 allFC = fc.Hydrate(c, 5);
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
+    public ChildContract getsC2() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                ChildTable.COLUMN__ID,
+                ChildTable.COLUMN__UID,
+                ChildTable.COLUMN__UUID,
+                ChildTable.COLUMN_SC2
+        };
+
+
+        String whereClause = ChildTable.COLUMN__UID + "=?";
+        String[] whereArgs = new String[]{MainApp.cc.getUID()};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                ChildTable.COLUMN__ID + " ASC";
+
+        ChildContract allFC = new ChildContract();
+        try {
+            c = db.query(
+                    ChildTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                ChildContract fc = new ChildContract();
+                allFC = fc.Hydrate(c, 2);
             }
         } finally {
             if (c != null) {
