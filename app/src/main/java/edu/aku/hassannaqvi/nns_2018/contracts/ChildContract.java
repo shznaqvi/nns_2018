@@ -71,26 +71,39 @@ public class ChildContract {
 
     }
 
-    public ChildContract Hydrate(Cursor cursor) {
+    public ChildContract Hydrate(Cursor cursor, int type) {
+
+
         this._ID = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN__ID));
         this._UID = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN__UID));
         this._UUID = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN__UUID));
-        this.formDate = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_FORMDATE));
-        this.user = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_USER));
-        this.c1SerialNo = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_C1SERIALNO));
-        this.sC1 = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_SC1));
-        this.sC2 = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_SC2));
-        this.sC3 = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_SC3));
-        this.sC4 = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_SC4));
-        this.sC5 = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_SC5));
-        this.deviceID = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_DEVICEID));
-        this.devicetagID = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_DEVICETAGID));
-        this.synced = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_SYNCED));
-        this.synced_date = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_SYNCED_DATE));
-        this.appversion = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_APPVERSION));
-        this.cstatus = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_CSTATUS));
-        this.cstatus88x = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_CSTATUS88x));
 
+        if (type == 1 || type == 2) {
+            this.sC2 = cursor.getString(cursor.getColumnIndex(ChildContract.ChildTable.COLUMN_SC2));
+        }
+        if (type == 1 || type == 3) {
+            this.sC3 = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_SC3));
+        }
+        if (type == 1 || type == 4) {
+            this.sC4 = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_SC4));
+        }
+        if (type == 1 || type == 5) {
+            this.sC5 = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_SC5));
+        }
+
+        if (type == 1) {
+            this.formDate = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_FORMDATE));
+            this.user = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_USER));
+            this.c1SerialNo = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_C1SERIALNO));
+            this.sC1 = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_SC1));
+            this.deviceID = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_DEVICEID));
+            this.devicetagID = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_DEVICETAGID));
+            this.synced = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_SYNCED));
+            this.synced_date = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_SYNCED_DATE));
+            this.appversion = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_APPVERSION));
+            this.cstatus = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_CSTATUS));
+            this.cstatus88x = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_CSTATUS88x));
+        }
         // TODO:
 
         return this;
