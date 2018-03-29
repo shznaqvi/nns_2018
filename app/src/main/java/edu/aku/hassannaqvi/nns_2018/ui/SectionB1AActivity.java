@@ -239,7 +239,8 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                             if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
                                     &&
                                     MainApp.B6Flag) {
-                                startActivity(new Intent(this, SectionB6Activity.class));
+                                startActivity(new Intent(this, SectionB6Activity.class)
+                                        .putExtra("backPressed", backPressed ? true : frontPressed));
                             } else {
                                 startActivity(new Intent(this, MotherEndingActivity.class)
                                         .putExtra("complete", true));
@@ -530,6 +531,16 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         }
 
         firstTimePressed = true;
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if (!backPressed) {
+            firstTimePressed = false;
+        }
     }
 
 

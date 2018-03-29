@@ -461,6 +461,14 @@ public class SectionB6Activity extends AppCompatActivity {
         firstTimePressed = true;
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if (!backPressed) {
+            firstTimePressed = false;
+        }
+    }
 
     @Override
     public void onBackPressed() {

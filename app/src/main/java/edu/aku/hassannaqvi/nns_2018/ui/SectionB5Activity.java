@@ -107,8 +107,7 @@ public class SectionB5Activity extends AppCompatActivity {
             }
         });
 
-        // Back Pressed
-
+//         Back Pressed
         MWRAContract mwraContract = db.getsB5();
 
         if (!mwraContract.getsB5().equals("")) {
