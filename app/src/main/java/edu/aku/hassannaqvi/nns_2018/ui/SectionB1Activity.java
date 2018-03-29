@@ -1,6 +1,8 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -35,7 +37,8 @@ import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 public class SectionB1Activity extends Activity {
 
     public static String wraName = "";
-    public static int WRAcounter = 0;
+    public static int WRAcounter = 1;
+    public static int WRAsize = 0;
     static Map<String, FamilyMembersContract> wraMap;
     static ArrayList<String> lstMwra;
     private final long DELAY = 1000;
@@ -67,24 +70,34 @@ public class SectionB1Activity extends Activity {
 
 
 //      Get intent
-        if (getIntent().getBooleanExtra("mwraFlag", false)) {
-            lstMwra.remove(getIntent().getStringExtra("wraName"));
+        if (getIntent().getBooleanExtra("reBackComing", true)) {
+            if (getIntent().getBooleanExtra("mwraFlag", false)) {
+                lstMwra.remove(getIntent().getStringExtra("wraName"));
+                //      Increment WRA COUNTER
+                WRAcounter++;
+            } else {
+                wraMap = new HashMap<>();
+                lstMwra = new ArrayList<>();
+
+                lstMwra.add("....");
+
+                for (FamilyMembersContract wra : MainApp.mwra) {
+                    wraMap.put(wra.getName() + "-" + wra.getSerialNo(), wra);
+                    lstMwra.add(wra.getName() + "-" + wra.getSerialNo());
+                }
+
+                WRAcounter = 1;
+
+                WRAsize = MainApp.mwra.size();
+            }
         } else {
-            wraMap = new HashMap<>();
-            lstMwra = new ArrayList<>();
-
-            lstMwra.add("....");
-
-            for (FamilyMembersContract wra : MainApp.mwra) {
-                wraMap.put(wra.getName() + "-" + wra.getSerialNo(), wra);
-                lstMwra.add(wra.getName() + "-" + wra.getSerialNo());
+            for (int i = WRAsize; i < MainApp.mwra.size(); i++) {
+                wraMap.put(MainApp.mwra.get(i).getName() + "-" + MainApp.mwra.get(i).getSerialNo(), MainApp.mwra.get(i));
+                lstMwra.add(MainApp.mwra.get(i).getName() + "-" + MainApp.mwra.get(i).getSerialNo());
             }
 
-            WRAcounter = 0;
+            WRAsize = MainApp.mwra.size();
         }
-
-//      Increment WRA COUNTER
-        WRAcounter++;
 
 
         bi.nb101.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, lstMwra));
@@ -1226,5 +1239,29 @@ public class SectionB1Activity extends Activity {
             bi.nb101.setEnabled(false);
         }
 
+    }
+
+    public void BtnAddMember() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                SectionB1Activity.this);
+        alertDialogBuilder
+                .setMessage("Are you sure to add missing member?")
+                .setCancelable(false)
+                .setPositiveButton("Ok",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,
+                                                int id) {
+                                startActivity(new Intent(SectionB1Activity.this, SectionA2ListActivity.class)
+                                        .putExtra("reBack", true));
+                            }
+                        });
+        alertDialogBuilder.setNegativeButton("Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = alertDialogBuilder.create();
+        alert.show();
     }
 }

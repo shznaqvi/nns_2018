@@ -45,11 +45,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/brown"
-
+            android:onClick="@{() -> callback.BtnAddMember()}"
             android:text="ADD NEW MEMBER"
             android:textColor="@color/white" />
-
-        <!--android:onClick="@{() -> callback.BtnAddMember()}"-->
 
         <ScrollView
             android:layout_width="match_parent"
