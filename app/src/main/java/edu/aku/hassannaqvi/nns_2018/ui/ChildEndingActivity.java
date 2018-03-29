@@ -42,14 +42,27 @@ public class ChildEndingActivity extends AppCompatActivity {
             binding.istatusc.setEnabled(false);
             binding.istatusd.setEnabled(false);
             binding.istatuse.setEnabled(false);
+            binding.istatusf.setEnabled(false);
             binding.istatus96.setEnabled(false);
         } else {
-            binding.istatusa.setEnabled(false);
-            binding.istatusb.setEnabled(true);
-            binding.istatusc.setEnabled(true);
-            binding.istatusd.setEnabled(true);
-            binding.istatuse.setEnabled(true);
-            binding.istatus96.setEnabled(true);
+
+            if (getIntent().getBooleanExtra("childINEligibile", false)) {
+                binding.istatusa.setEnabled(false);
+                binding.istatusb.setEnabled(false);
+                binding.istatusc.setEnabled(false);
+                binding.istatusd.setEnabled(false);
+                binding.istatuse.setEnabled(false);
+                binding.istatusf.setEnabled(true);
+                binding.istatus96.setEnabled(false);
+            } else {
+                binding.istatusa.setEnabled(false);
+                binding.istatusb.setEnabled(true);
+                binding.istatusc.setEnabled(true);
+                binding.istatusd.setEnabled(true);
+                binding.istatuse.setEnabled(true);
+                binding.istatusf.setEnabled(false);
+                binding.istatus96.setEnabled(true);
+            }
         }
 
         flagNAChild = SectionC1Activity.counterPerMom <= 0;
@@ -103,7 +116,7 @@ public class ChildEndingActivity extends AppCompatActivity {
         }
     }
 
-    private void SaveDraft() throws JSONException {
+    private void SaveDraft() {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
 

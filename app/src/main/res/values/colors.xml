@@ -31,4 +31,5 @@
     <color name="red">#f44336</color>
 
     <color name="selectedBlue">#2b3581</color>
+    <color name="blue">#0277BD</color>
 </resources>
