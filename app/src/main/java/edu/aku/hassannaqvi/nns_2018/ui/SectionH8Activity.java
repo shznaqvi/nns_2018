@@ -1,7 +1,6 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;

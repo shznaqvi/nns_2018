@@ -13,7 +13,6 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -1058,7 +1057,7 @@ public class SectionB1Activity extends Activity {
         MainApp.mc = new MWRAContract();
 
         MainApp.mc.setDevicetagID(MainApp.getTagName(this));
-        MainApp.mc.setFormDate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+        MainApp.mc.setFormDate(MainApp.fc.getFormDate());
         MainApp.mc.setUser(MainApp.userName);
         MainApp.mc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
