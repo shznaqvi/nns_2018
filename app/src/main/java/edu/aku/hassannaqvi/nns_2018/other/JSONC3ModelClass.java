@@ -74,8 +74,8 @@ public class JSONC3ModelClass {
     private String nc312 = "";
     private String nc313 = "";
     private String nc314 = "";
-    private String nc315 = "";
-    private String nc316 = "";
+    private String nc305 = "";
+    private String nc306 = "";
 
     public JSONC3ModelClass() {
 
@@ -625,19 +625,19 @@ public class JSONC3ModelClass {
         this.nc314 = nc314;
     }
 
-    public String getnc315() {
-        return nc315;
+    public String getnc305() {
+        return nc305;
     }
 
-    public void setnc315(String nc315) {
-        this.nc315 = nc315;
+    public void setnc305(String nc305) {
+        this.nc305 = nc305;
     }
 
-    public String getnc316() {
-        return nc316;
+    public String getnc306() {
+        return nc306;
     }
 
-    public void setnc316(String nc316) {
-        this.nc316 = nc316;
+    public void setnc306(String nc306) {
+        this.nc306 = nc306;
     }
 }

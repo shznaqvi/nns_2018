@@ -135,7 +135,7 @@
                             android:layout_marginBottom="1dp"
                             android:text="@string/nc303d" />
                     </RadioGroup>
-
+                </LinearLayout>
                     <!-- skip pattern layout-->
 
                     <LinearLayout
@@ -163,6 +163,7 @@
                             android:layout_height="wrap_content"
                             android:background="@drawable/bacground_border1"
                             android:orientation="vertical">
+
                             <!-- bcg -->
 
                             <TextView
@@ -179,9 +180,17 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/nc3response"
+                                    android:textColor="@color/white" />
+
                                 <RadioButton
                                     android:id="@+id/nc3bcga"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
@@ -189,7 +198,40 @@
 
                                 <RadioButton
                                     android:id="@+id/nc3bcgb"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/no" />
+
+                            </RadioGroup>
+
+                            <RadioGroup
+                                android:id="@+id/nc3bcgsrc"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_2sdp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/nc3src"
+                                    android:textColor="@color/white" />
+
+                                <RadioButton
+                                    android:id="@+id/nc3bcgsrca"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/yes" />
+
+                                <RadioButton
+                                    android:id="@+id/nc3bcgsrcb"
+                                    android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
@@ -211,96 +253,7 @@
                                 app:dateFormat="dd-MM-yyyy" />-->
 
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
 
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/year2"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-
-                                    <EditText
-                                        android:id="@+id/nc3bcgy"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:hint="@string/year2"
-                                        android:inputType="number"
-                                        android:maxLength="4"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/month"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-
-                                    <EditText
-                                        android:id="@+id/nc3bcgm"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:hint="@string/month"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/day"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-                                    <EditText
-                                        android:id="@+id/nc3bcgd"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:digits="0123456789"
-                                        android:hint="@string/day"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                            </LinearLayout>
                             <!-- opv0 -->
                             <TextView
                                 android:layout_width="match_parent"
@@ -316,9 +269,16 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/nc3response"
+                                    android:textColor="@color/white" />
                                 <RadioButton
                                     android:id="@+id/nc3opv0a"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
@@ -326,13 +286,47 @@
 
                                 <RadioButton
                                     android:id="@+id/nc3opv0b"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
                                     android:text="@string/no" />
 
                             </RadioGroup>
+
+                            <RadioGroup
+                                android:id="@+id/nc3opv0src"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_2sdp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/nc3src"
+                                    android:textColor="@color/white" />
+
+                                <RadioButton
+                                    android:id="@+id/nc3opv0srca"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/yes" />
+
+                                <RadioButton
+                                    android:id="@+id/nc3opv0srcb"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/no" />
+
+                            </RadioGroup>
+
 
                             <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                                 android:id="@+id/nc3opv0dt"
@@ -347,96 +341,7 @@
                                 android:textColor="@android:color/black"
                                 app:dateFormat="dd-MM-yyyy" />-->
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
 
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/year2"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-
-                                    <EditText
-                                        android:id="@+id/nc3opv0y"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:hint="@string/year2"
-                                        android:inputType="number"
-                                        android:maxLength="4"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/month"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-
-                                    <EditText
-                                        android:id="@+id/nc3opv0m"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:hint="@string/month"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/day"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-                                    <EditText
-                                        android:id="@+id/nc3opv0d"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:digits="0123456789"
-                                        android:hint="@string/day"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                            </LinearLayout>
 
                         </LinearLayout>
 
@@ -472,9 +377,16 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/nc3response"
+                                    android:textColor="@color/white" />
                                 <RadioButton
                                     android:id="@+id/nc3opv1a"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
@@ -482,7 +394,40 @@
 
                                 <RadioButton
                                     android:id="@+id/nc3opv1b"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/no" />
+
+                            </RadioGroup>
+
+                            <RadioGroup
+                                android:id="@+id/nc3opv1src"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_2sdp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/nc3src"
+                                    android:textColor="@color/white" />
+
+                                <RadioButton
+                                    android:id="@+id/nc3opv1srca"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/yes" />
+
+                                <RadioButton
+                                    android:id="@+id/nc3opv1srcb"
+                                    android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
@@ -503,96 +448,7 @@
                                 android:textColor="@android:color/black"
                                 app:dateFormat="dd-MM-yyyy" />-->
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
 
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/year2"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-
-                                    <EditText
-                                        android:id="@+id/nc3opv1y"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:hint="@string/year2"
-                                        android:inputType="number"
-                                        android:maxLength="4"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/month"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-
-                                    <EditText
-                                        android:id="@+id/nc3opv1m"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:hint="@string/month"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/day"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-                                    <EditText
-                                        android:id="@+id/nc3opv1d"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:digits="0123456789"
-                                        android:hint="@string/day"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                            </LinearLayout>
 
                             <!-- Penta - 1 -->
                             <TextView
@@ -609,9 +465,16 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/nc3response"
+                                    android:textColor="@color/white" />
                                 <RadioButton
                                     android:id="@+id/nc3p1a"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
@@ -619,7 +482,40 @@
 
                                 <RadioButton
                                     android:id="@+id/nc3p1b"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/no" />
+
+                            </RadioGroup>
+
+                            <RadioGroup
+                                android:id="@+id/nc3p1src"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_2sdp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/nc3src"
+                                    android:textColor="@color/white" />
+
+                                <RadioButton
+                                    android:id="@+id/nc3p1srca"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/yes" />
+
+                                <RadioButton
+                                    android:id="@+id/nc3p1srcb"
+                                    android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
@@ -640,96 +536,7 @@
                                 android:textColor="@android:color/black"
                                 app:dateFormat="dd-MM-yyyy" />-->
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
 
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/year2"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-
-                                    <EditText
-                                        android:id="@+id/nc3p1y"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:hint="@string/year2"
-                                        android:inputType="number"
-                                        android:maxLength="4"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/month"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-
-                                    <EditText
-                                        android:id="@+id/nc3p1m"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:hint="@string/month"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/day"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-                                    <EditText
-                                        android:id="@+id/nc3p1d"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:digits="0123456789"
-                                        android:hint="@string/day"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                            </LinearLayout>
 
                             <!-- PCV - 1 -->
                             <TextView
@@ -746,9 +553,16 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/nc3response"
+                                    android:textColor="@color/white" />
                                 <RadioButton
                                     android:id="@+id/nc3pcv1a"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
@@ -756,7 +570,40 @@
 
                                 <RadioButton
                                     android:id="@+id/nc3pcv1b"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/no" />
+
+                            </RadioGroup>
+
+                            <RadioGroup
+                                android:id="@+id/nc3pcv1src"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_2sdp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/nc3src"
+                                    android:textColor="@color/white" />
+
+                                <RadioButton
+                                    android:id="@+id/nc3pcv1srca"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/yes" />
+
+                                <RadioButton
+                                    android:id="@+id/nc3pcv1srcb"
+                                    android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
@@ -777,96 +624,7 @@
                                 android:textColor="@android:color/black"
                                 app:dateFormat="dd-MM-yyyy" />-->
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
 
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/year2"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-
-                                    <EditText
-                                        android:id="@+id/nc3pcv1y"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:hint="@string/year2"
-                                        android:inputType="number"
-                                        android:maxLength="4"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/month"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-
-                                    <EditText
-                                        android:id="@+id/nc3pcv1m"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:hint="@string/month"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/day"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-                                    <EditText
-                                        android:id="@+id/nc3pcv1d"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:digits="0123456789"
-                                        android:hint="@string/day"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                            </LinearLayout>
                         </LinearLayout>
 
 
@@ -902,9 +660,16 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/nc3response"
+                                    android:textColor="@color/white" />
                                 <RadioButton
                                     android:id="@+id/nc3opv2a"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
@@ -912,7 +677,40 @@
 
                                 <RadioButton
                                     android:id="@+id/nc3opv2b"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/no" />
+
+                            </RadioGroup>
+
+                            <RadioGroup
+                                android:id="@+id/nc3opv2src"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_2sdp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/nc3src"
+                                    android:textColor="@color/white" />
+
+                                <RadioButton
+                                    android:id="@+id/nc3opv2srca"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/yes" />
+
+                                <RadioButton
+                                    android:id="@+id/nc3opv2srcb"
+                                    android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
@@ -933,96 +731,7 @@
                                 android:textColor="@android:color/black"
                                 app:dateFormat="dd-MM-yyyy" />-->
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
 
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/year2"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-
-                                    <EditText
-                                        android:id="@+id/nc3opv2y"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:hint="@string/year2"
-                                        android:inputType="number"
-                                        android:maxLength="4"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/month"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-
-                                    <EditText
-                                        android:id="@+id/nc3opv2m"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:hint="@string/month"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/day"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-                                    <EditText
-                                        android:id="@+id/nc3opv2d"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:digits="0123456789"
-                                        android:hint="@string/day"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                            </LinearLayout>
 
                             <!-- Penta - 2 -->
                             <TextView
@@ -1039,9 +748,16 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/nc3response"
+                                    android:textColor="@color/white" />
                                 <RadioButton
                                     android:id="@+id/nc3p2a"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
@@ -1049,13 +765,47 @@
 
                                 <RadioButton
                                     android:id="@+id/nc3p2b"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
                                     android:text="@string/no" />
 
                             </RadioGroup>
+
+                            <RadioGroup
+                                android:id="@+id/nc3p2src"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_2sdp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/nc3src"
+                                    android:textColor="@color/white" />
+
+                                <RadioButton
+                                    android:id="@+id/nc3p2srca"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/yes" />
+
+                                <RadioButton
+                                    android:id="@+id/nc3p2srcb"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/no" />
+
+                            </RadioGroup>
+
 
                             <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                                 android:id="@+id/nc3p2dt"
@@ -1071,96 +821,7 @@
                                 app:dateFormat="dd-MM-yyyy" />
         -->
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
 
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/year2"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-
-                                    <EditText
-                                        android:id="@+id/nc3p2y"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:hint="@string/year2"
-                                        android:inputType="number"
-                                        android:maxLength="4"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/month"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-
-                                    <EditText
-                                        android:id="@+id/nc3p2m"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:hint="@string/month"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/day"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-                                    <EditText
-                                        android:id="@+id/nc3p2d"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:digits="0123456789"
-                                        android:hint="@string/day"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                            </LinearLayout>
                             <!-- PVC - 2 -->
                             <TextView
                                 android:layout_width="match_parent"
@@ -1176,9 +837,16 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/nc3response"
+                                    android:textColor="@color/white" />
                                 <RadioButton
                                     android:id="@+id/nc3pcv2a"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
@@ -1186,7 +854,40 @@
 
                                 <RadioButton
                                     android:id="@+id/nc3pcv2b"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/no" />
+
+                            </RadioGroup>
+
+                            <RadioGroup
+                                android:id="@+id/nc3pcv2src"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_2sdp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/nc3src"
+                                    android:textColor="@color/white" />
+
+                                <RadioButton
+                                    android:id="@+id/nc3pcv2srca"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/yes" />
+
+                                <RadioButton
+                                    android:id="@+id/nc3pcv2srcb"
+                                    android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
@@ -1208,96 +909,7 @@
                                 app:dateFormat="dd-MM-yyyy" />
         -->
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
 
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/year2"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-
-                                    <EditText
-                                        android:id="@+id/nc3pcv2y"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:hint="@string/year2"
-                                        android:inputType="number"
-                                        android:maxLength="4"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/month"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-
-                                    <EditText
-                                        android:id="@+id/nc3pcv2m"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:hint="@string/month"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/day"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-                                    <EditText
-                                        android:id="@+id/nc3pcv2d"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:digits="0123456789"
-                                        android:hint="@string/day"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                            </LinearLayout>
                         </LinearLayout>
 
                         <!-- At age of 14 weeks-->
@@ -1326,15 +938,23 @@
                                 android:text="@string/nc3opv3"
                                 android:textColor="@color/colorPrimaryDark" />
 
+
                             <RadioGroup
                                 android:id="@+id/nc3opv3"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/nc3response"
+                                    android:textColor="@color/white" />
                                 <RadioButton
                                     android:id="@+id/nc3opv3a"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
@@ -1342,7 +962,40 @@
 
                                 <RadioButton
                                     android:id="@+id/nc3opv3b"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/no" />
+
+                            </RadioGroup>
+
+                            <RadioGroup
+                                android:id="@+id/nc3opv3src"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_2sdp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/nc3src"
+                                    android:textColor="@color/white" />
+
+                                <RadioButton
+                                    android:id="@+id/nc3opv3srca"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/yes" />
+
+                                <RadioButton
+                                    android:id="@+id/nc3opv3srcb"
+                                    android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
@@ -1363,96 +1016,7 @@
                                 android:textColor="@android:color/black"
                                 app:dateFormat="dd-MM-yyyy" />-->
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
 
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/year2"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-
-                                    <EditText
-                                        android:id="@+id/nc3opv3y"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:hint="@string/year2"
-                                        android:inputType="number"
-                                        android:maxLength="4"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/month"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-
-                                    <EditText
-                                        android:id="@+id/nc3opv3m"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:hint="@string/month"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/day"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-                                    <EditText
-                                        android:id="@+id/nc3opv3d"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:digits="0123456789"
-                                        android:hint="@string/day"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                            </LinearLayout>
 
                             <!-- Penta - 3 -->
                             <TextView
@@ -1469,9 +1033,16 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/nc3response"
+                                    android:textColor="@color/white" />
                                 <RadioButton
                                     android:id="@+id/nc3p3a"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
@@ -1479,7 +1050,40 @@
 
                                 <RadioButton
                                     android:id="@+id/nc3p3b"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/no" />
+
+                            </RadioGroup>
+
+                            <RadioGroup
+                                android:id="@+id/nc3p3src"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_2sdp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/nc3src"
+                                    android:textColor="@color/white" />
+
+                                <RadioButton
+                                    android:id="@+id/nc3p3srca"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/yes" />
+
+                                <RadioButton
+                                    android:id="@+id/nc3p3srcb"
+                                    android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
@@ -1501,96 +1105,7 @@
                                 app:dateFormat="dd-MM-yyyy" />
         -->
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
 
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/year2"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-
-                                    <EditText
-                                        android:id="@+id/nc3p3y"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:hint="@string/year2"
-                                        android:inputType="number"
-                                        android:maxLength="4"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/month"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-
-                                    <EditText
-                                        android:id="@+id/nc3p3m"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:hint="@string/month"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/day"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-                                    <EditText
-                                        android:id="@+id/nc3p3d"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:digits="0123456789"
-                                        android:hint="@string/day"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                            </LinearLayout>
                             <!-- PCV - 3 -->
                             <TextView
                                 android:layout_width="match_parent"
@@ -1606,9 +1121,16 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/nc3response"
+                                    android:textColor="@color/white" />
                                 <RadioButton
                                     android:id="@+id/nc3pcv3a"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
@@ -1616,7 +1138,40 @@
 
                                 <RadioButton
                                     android:id="@+id/nc3pcv3b"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/no" />
+
+                            </RadioGroup>
+
+                            <RadioGroup
+                                android:id="@+id/nc3pcv3src"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_2sdp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/nc3src"
+                                    android:textColor="@color/white" />
+
+                                <RadioButton
+                                    android:id="@+id/nc3pcv3srca"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/yes" />
+
+                                <RadioButton
+                                    android:id="@+id/nc3pcv3srcb"
+                                    android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
@@ -1637,96 +1192,7 @@
                                 android:textColor="@android:color/black"
                                 app:dateFormat="dd-MM-yyyy" />-->
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
 
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/year2"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-
-                                    <EditText
-                                        android:id="@+id/nc3pcv3y"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:hint="@string/year2"
-                                        android:inputType="number"
-                                        android:maxLength="4"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/month"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-
-                                    <EditText
-                                        android:id="@+id/nc3pcv3m"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:hint="@string/month"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/day"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-                                    <EditText
-                                        android:id="@+id/nc3pcv3d"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:digits="0123456789"
-                                        android:hint="@string/day"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                            </LinearLayout>
 
                             <!-- IPV  -->
                             <TextView
@@ -1743,9 +1209,16 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/nc3response"
+                                    android:textColor="@color/white" />
                                 <RadioButton
                                     android:id="@+id/nc3ipva"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
@@ -1753,13 +1226,47 @@
 
                                 <RadioButton
                                     android:id="@+id/nc3ipvb"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
                                     android:text="@string/no" />
 
                             </RadioGroup>
+
+                            <RadioGroup
+                                android:id="@+id/nc3ipvsrc"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_2sdp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/nc3src"
+                                    android:textColor="@color/white" />
+
+                                <RadioButton
+                                    android:id="@+id/nc3ipvsrca"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/yes" />
+
+                                <RadioButton
+                                    android:id="@+id/nc3ipvsrcb"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/no" />
+
+                            </RadioGroup>
+
 
                             <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                                 android:id="@+id/nc3ipvdt"
@@ -1774,96 +1281,6 @@
                                 android:textColor="@android:color/black"
                                 app:dateFormat="dd-MM-yyyy" />-->
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/year2"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-
-                                    <EditText
-                                        android:id="@+id/nc3ipvy"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:hint="@string/year2"
-                                        android:inputType="number"
-                                        android:maxLength="4"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/month"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-
-                                    <EditText
-                                        android:id="@+id/nc3ipvm"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:hint="@string/month"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/day"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-                                    <EditText
-                                        android:id="@+id/nc3ipvd"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:digits="0123456789"
-                                        android:hint="@string/day"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                            </LinearLayout>
 
 
                         </LinearLayout>
@@ -1901,9 +1318,16 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/nc3response"
+                                    android:textColor="@color/white" />
                                 <RadioButton
                                     android:id="@+id/nc3m1a"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
@@ -1911,7 +1335,40 @@
 
                                 <RadioButton
                                     android:id="@+id/nc3m1b"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/no" />
+
+                            </RadioGroup>
+
+                            <RadioGroup
+                                android:id="@+id/nc3m1src"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_2sdp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/nc3src"
+                                    android:textColor="@color/white" />
+
+                                <RadioButton
+                                    android:id="@+id/nc3m1srca"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/yes" />
+
+                                <RadioButton
+                                    android:id="@+id/nc3m1srcb"
+                                    android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
@@ -1931,97 +1388,6 @@
                                 android:text='@{nc3m1a.checked ? nc3m1dt.getText.toString : ""}'
                                 android:textColor="@android:color/black"
                                 app:dateFormat="dd-MM-yyyy" />-->
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/year2"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-
-                                    <EditText
-                                        android:id="@+id/nc3m1y"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:hint="@string/year2"
-                                        android:inputType="number"
-                                        android:maxLength="4"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/month"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-
-                                    <EditText
-                                        android:id="@+id/nc3m1m"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:hint="@string/month"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/day"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-                                    <EditText
-                                        android:id="@+id/nc3m1d"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:digits="0123456789"
-                                        android:hint="@string/day"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                            </LinearLayout>
 
                         </LinearLayout>
 
@@ -2051,16 +1417,22 @@
                                 android:background="@color/pink_100"
                                 android:text="@string/nc3m2"
                                 android:textColor="@color/colorPrimaryDark" />
-
                             <RadioGroup
                                 android:id="@+id/nc3m2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/nc3response"
+                                    android:textColor="@color/white" />
                                 <RadioButton
                                     android:id="@+id/nc3m2a"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
@@ -2068,7 +1440,7 @@
 
                                 <RadioButton
                                     android:id="@+id/nc3m2b"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
@@ -2076,6 +1448,38 @@
 
                             </RadioGroup>
 
+                            <RadioGroup
+                                android:id="@+id/nc3m2src"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_2sdp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/nc3src"
+                                    android:textColor="@color/white" />
+
+                                <RadioButton
+                                    android:id="@+id/nc3m2srca"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/yes" />
+
+                                <RadioButton
+                                    android:id="@+id/nc3m2srcb"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/no" />
+
+                            </RadioGroup>
                             <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                                 android:id="@+id/nc3m2dt"
                                 android:layout_width="match_parent"
@@ -2089,103 +1493,16 @@
                                 android:textColor="@android:color/black"
                                 app:dateFormat="dd-MM-yyyy" />-->
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
 
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/year2"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-
-                                    <EditText
-                                        android:id="@+id/nc3m2y"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:hint="@string/year2"
-                                        android:inputType="number"
-                                        android:maxLength="4"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/month"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-
-                                    <EditText
-                                        android:id="@+id/nc3m2m"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:hint="@string/month"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/bacground_border_heading"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@color/pink_100"
-                                        android:gravity="center"
-                                        android:text="@string/day"
-                                        android:textColor="@color/colorPrimaryDark" />
-
-                                    <EditText
-                                        android:id="@+id/nc3m2d"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="1dp"
-                                        android:digits="0123456789"
-                                        android:hint="@string/day"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        android:visibility="visible" />
-
-                                </LinearLayout>
-
-                            </LinearLayout>
 
                         </LinearLayout>
 
                         <!-- end of skip pattern-->
                     </LinearLayout>
-                </LinearLayout>
-                <!-- 5 -->
+
+
+
+                <!-- 15 -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -2193,7 +1510,7 @@
                     android:background="@color/colorPrimary"
                     android:text="@string/nc305"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@color/white" />
 
                 <RadioGroup
                     android:id="@+id/nc305"
@@ -2218,395 +1535,7 @@
                         android:text="@string/no" />
 
                     <RadioButton
-                        android:id="@+id/nc305c"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:text="@string/dkn" />
-
-                </RadioGroup>
-
-                <!-- 6 -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/nc306"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
-
-                <RadioGroup
-                    android:id="@+id/nc306"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/nc306a"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:text="@string/yes" />
-
-                    <RadioButton
-                        android:id="@+id/nc306b"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:text="@string/no" />
-
-                    <RadioButton
-                        android:id="@+id/nc306c"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:text="@string/dkn" />
-
-                </RadioGroup>
-
-                <!--8 is missing-->
-                <!-- 7 -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/nc307"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
-
-                <RadioGroup
-                    android:id="@+id/nc307"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/nc307a"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:text="@string/nc307a" />
-
-                    <RadioButton
-                        android:id="@+id/nc307b"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:text="@string/nc307b" />
-
-                    <RadioButton
-                        android:id="@+id/nc307c"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:text="@string/dkn" />
-
-                </RadioGroup>
-
-                <!-- 8 -->
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/nc308"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
-
-                <RadioGroup
-                    android:id="@+id/nc308"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/nc308a"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:text="@string/yes" />
-
-                    <RadioButton
-                        android:id="@+id/nc308b"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:text="@string/no" />
-
-                    <RadioButton
-                        android:id="@+id/nc308c"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:text="@string/dkn" />
-
-                </RadioGroup>
-
-                <LinearLayout
-                    android:id="@+id/fldGrpnc310"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <!--android:visibility="@{nc308a.checked? View.VISIBLE : View.GONE}"-->
-
-                    <!-- 09 -->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/colorPrimary"
-                        android:text="@string/nc309"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white" />
-
-                    <EditText
-                        android:id="@+id/nc309"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:digits="0123456789"
-                        android:enabled='@{nc308a.checked ? true : false }'
-                        android:hint="@string/times"
-                        android:inputType="number"
-                        android:maxLength="2"
-                        android:text='@{nc308a.checked ? nc309.getText.toString : ""}' />
-                </LinearLayout>
-
-                <!-- 10 -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/nc310"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
-
-                <RadioGroup
-                    android:id="@+id/nc310"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/nc310a"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:text="@string/yes" />
-
-                    <RadioButton
-                        android:id="@+id/nc310b"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:text="@string/no" />
-
-                    <RadioButton
-                        android:id="@+id/nc310c"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:text="@string/dkn" />
-
-                </RadioGroup>
-
-
-                <!-- 11 -->
-                <LinearLayout
-                    android:id="@+id/fldGrpnc311"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <!--android:visibility="@{nc310a.checked ? View.VISIBLE : View.GONE}"-->
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/colorPrimary"
-                        android:text="@string/nc311"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white" />
-
-                    <EditText
-                        android:id="@+id/nc311"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:digits="0123456789"
-                        android:enabled='@{nc310a.checked ? true : false }'
-                        android:hint="@string/times"
-                        android:inputType="number"
-                        android:maxLength="2"
-                        android:text='@{nc310a.checked ? nc311.getText.toString : "" }' />
-                </LinearLayout>
-
-                <!-- 12 -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/nc312"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
-
-                <RadioGroup
-                    android:id="@+id/nc312"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/nc312a"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:text="@string/yes" />
-
-                    <RadioButton
-                        android:id="@+id/nc312b"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:text="@string/no" />
-
-                    <RadioButton
-                        android:id="@+id/nc31298"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:text="@string/dkn" />
-
-                </RadioGroup>
-
-                <LinearLayout
-                    android:id="@+id/fldGrpnc313"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <!--android:visibility="@{nc312a.checked ? View.VISIBLE : View.GONE}"-->
-
-                    <!-- 14 -->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/colorPrimary"
-                        android:text="@string/nc313"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@color/white" />
-
-                    <EditText
-                        android:id="@+id/nc313"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:digits="0123456789"
-                        android:enabled='@{nc312a.checked ? true : false }'
-                        android:hint="@string/times"
-                        android:inputType="number"
-                        android:maxLength="2"
-                        android:text='@{nc312a.checked ? nc313.getText.toString : "" }' />
-
-                </LinearLayout>
-
-                <!-- 14 -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/nc314"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/white" />
-
-                <RadioGroup
-                    android:id="@+id/nc314"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/nc314a"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:text="@string/yes" />
-
-                    <RadioButton
-                        android:id="@+id/nc314b"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:text="@string/no" />
-
-                    <RadioButton
-                        android:id="@+id/nc31498"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:text="@string/dkn" />
-
-                </RadioGroup>
-
-                <!-- 15 -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/nc315"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/white" />
-
-                <RadioGroup
-                    android:id="@+id/nc315"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/nc315a"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:text="@string/yes" />
-
-                    <RadioButton
-                        android:id="@+id/nc315b"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:text="@string/no" />
-
-                    <RadioButton
-                        android:id="@+id/nc31598"
+                        android:id="@+id/nc30598"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
@@ -2617,29 +1546,29 @@
 
                 <!-- 16 -->
                 <LinearLayout
-                    android:id="@+id/fldGrpnc315"
+                    android:id="@+id/fldGrpnc305"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-                    <!--android:visibility="@{nc315a.checked ? View.VISIBLE : View.GONE}"-->
+                    <!--android:visibility="@{nc305a.checked ? View.VISIBLE : View.GONE}"-->
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:background="@color/colorPrimary"
-                        android:text="@string/nc316"
+                        android:text="@string/nc306"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@color/white" />
 
                     <RadioGroup
-                        android:id="@+id/nc316"
+                        android:id="@+id/nc306"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <RadioButton
-                            android:id="@+id/nc316a"
+                            android:id="@+id/nc306a"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
@@ -2647,7 +1576,7 @@
                             android:text="@string/yes" />
 
                         <RadioButton
-                            android:id="@+id/nc316b"
+                            android:id="@+id/nc306b"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
@@ -2655,7 +1584,7 @@
                             android:text="@string/no" />
 
                         <RadioButton
-                            android:id="@+id/nc31698"
+                            android:id="@+id/nc30698"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
