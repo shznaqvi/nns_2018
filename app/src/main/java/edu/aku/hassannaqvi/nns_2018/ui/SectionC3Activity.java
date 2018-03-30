@@ -10,14 +10,18 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.Timer;
 
 import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC3Binding;
+import edu.aku.hassannaqvi.nns_2018.other.JSONC3ModelClass;
+import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
@@ -26,6 +30,8 @@ public class SectionC3Activity extends AppCompatActivity {
     private final long DELAY = 1000;
     ActivitySectionC3Binding binding;
     FamilyMembersContract selectedChild;
+    DatabaseHelper db;
+    Boolean backPressed = false;
     private Timer timer = new Timer();
 
     @Override
@@ -35,6 +41,7 @@ public class SectionC3Activity extends AppCompatActivity {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_c3);
         ButterKnife.bind(this);
+        db = new DatabaseHelper(this);
         binding.setCallback(this);
         binding.nc302.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -64,12 +71,255 @@ public class SectionC3Activity extends AppCompatActivity {
         });
 
 
-
-
-
+        autoPopulateFields();
         //Get Intent
         selectedChild = (FamilyMembersContract) getIntent().getSerializableExtra("selectedChild");
 
+    }
+
+    private void autoPopulateFields() {
+        ChildContract childContract = db.getsC3();
+
+        if (!childContract.getsC3().equals("")) {
+
+            JSONC3ModelClass jsonC3 = JSONUtilClass.getModelFromJSON(childContract.getsC3(), JSONC3ModelClass.class);
+
+            if (!jsonC3.getnc302().equals("0")) {
+                binding.nc302.check(
+                        jsonC3.getnc302().equals("1") ? binding.nc302a.getId()
+                                : binding.nc302b.getId()
+                );
+            }
+
+            if (!jsonC3.getnc303().equals("0")) {
+                binding.nc303.check(
+                        jsonC3.getnc303().equals("1") ? binding.nc303a.getId()
+                                : jsonC3.getnc303().equals("2") ? binding.nc303b.getId()
+                                : jsonC3.getnc303().equals("3") ? binding.nc303c.getId()
+                                : binding.nc303d.getId()
+                );
+            }
+//            bcg
+
+            if (!jsonC3.getnc3bcg().equals("0")) {
+                binding.nc3bcg.check(
+                        jsonC3.getnc3bcg().equals("1") ? binding.nc3bcga.getId()
+                                : binding.nc3bcgb.getId()
+                );
+            }
+            if (!jsonC3.getnc3bcgsrc().equals("0")) {
+                binding.nc3bcgsrc.check(
+                        jsonC3.getnc3bcgsrc().equals("1") ? binding.nc3bcgsrca.getId()
+                                : binding.nc3bcgsrcb.getId()
+                );
+            }
+            //            opv
+
+            if (!jsonC3.getnc3opv0().equals("0")) {
+                binding.nc3opv0.check(
+                        jsonC3.getnc3opv0().equals("1") ? binding.nc3opv0a.getId()
+                                : binding.nc3opv0b.getId()
+                );
+            }
+            if (!jsonC3.getnc3opv0src().equals("0")) {
+                binding.nc3opv0src.check(
+                        jsonC3.getnc3opv0src().equals("1") ? binding.nc3opv0srca.getId()
+                                : binding.nc3opv0srcb.getId()
+                );
+            }
+            //            opv1
+
+            if (!jsonC3.getnc3opv1().equals("0")) {
+                binding.nc3opv1.check(
+                        jsonC3.getnc3opv1().equals("1") ? binding.nc3opv1a.getId()
+                                : binding.nc3opv1b.getId()
+                );
+            }
+            if (!jsonC3.getnc3opv1src().equals("0")) {
+                binding.nc3opv1src.check(
+                        jsonC3.getnc3opv1src().equals("1") ? binding.nc3opv1srca.getId()
+                                : binding.nc3opv1srcb.getId()
+                );
+            }
+
+            //            p1
+
+            if (!jsonC3.getnc3p1().equals("0")) {
+                binding.nc3p1.check(
+                        jsonC3.getnc3p1().equals("1") ? binding.nc3p1a.getId()
+                                : binding.nc3p1b.getId()
+                );
+            }
+            if (!jsonC3.getnc3p1src().equals("0")) {
+                binding.nc3p1src.check(
+                        jsonC3.getnc3p1src().equals("1") ? binding.nc3p1srca.getId()
+                                : binding.nc3p1srcb.getId()
+                );
+            }
+
+            //            pcv1
+
+            if (!jsonC3.getnc3pcv1().equals("0")) {
+                binding.nc3pcv1.check(
+                        jsonC3.getnc3pcv1().equals("1") ? binding.nc3pcv1a.getId()
+                                : binding.nc3pcv1b.getId()
+                );
+            }
+            if (!jsonC3.getnc3pcv1src().equals("0")) {
+                binding.nc3pcv1src.check(
+                        jsonC3.getnc3pcv1src().equals("1") ? binding.nc3pcv1srca.getId()
+                                : binding.nc3pcv1srcb.getId()
+                );
+            }
+            //            opv2
+
+            if (!jsonC3.getnc3opv2().equals("0")) {
+                binding.nc3opv2.check(
+                        jsonC3.getnc3opv2().equals("1") ? binding.nc3opv2a.getId()
+                                : binding.nc3opv2b.getId()
+                );
+            }
+            if (!jsonC3.getnc3opv2src().equals("0")) {
+                binding.nc3opv2src.check(
+                        jsonC3.getnc3opv2src().equals("1") ? binding.nc3opv2srca.getId()
+                                : binding.nc3opv2srcb.getId()
+                );
+            }
+
+            //            p2
+
+            if (!jsonC3.getnc3p2().equals("0")) {
+                binding.nc3p2.check(
+                        jsonC3.getnc3p2().equals("1") ? binding.nc3p2a.getId()
+                                : binding.nc3p2b.getId()
+                );
+            }
+            if (!jsonC3.getnc3p2src().equals("0")) {
+                binding.nc3p2src.check(
+                        jsonC3.getnc3p2src().equals("1") ? binding.nc3p2srca.getId()
+                                : binding.nc3p2srcb.getId()
+                );
+            }
+
+            //            pcv2
+
+            if (!jsonC3.getnc3pcv2().equals("0")) {
+                binding.nc3pcv2.check(
+                        jsonC3.getnc3pcv2().equals("1") ? binding.nc3pcv2a.getId()
+                                : binding.nc3pcv2b.getId()
+                );
+            }
+            if (!jsonC3.getnc3pcv2src().equals("0")) {
+                binding.nc3pcv2src.check(
+                        jsonC3.getnc3pcv2src().equals("1") ? binding.nc3pcv2srca.getId()
+                                : binding.nc3pcv2srcb.getId()
+                );
+            }
+
+            //            opv3
+
+            if (!jsonC3.getnc3opv3().equals("0")) {
+                binding.nc3opv3.check(
+                        jsonC3.getnc3opv3().equals("1") ? binding.nc3opv3a.getId()
+                                : binding.nc3opv3b.getId()
+                );
+            }
+            if (!jsonC3.getnc3opv3src().equals("0")) {
+                binding.nc3opv3src.check(
+                        jsonC3.getnc3opv3src().equals("1") ? binding.nc3opv3srca.getId()
+                                : binding.nc3opv3srcb.getId()
+                );
+            }
+
+            //            p3
+
+            if (!jsonC3.getnc3p3().equals("0")) {
+                binding.nc3p3.check(
+                        jsonC3.getnc3p3().equals("1") ? binding.nc3p3a.getId()
+                                : binding.nc3p3b.getId()
+                );
+            }
+            if (!jsonC3.getnc3p3src().equals("0")) {
+                binding.nc3p3src.check(
+                        jsonC3.getnc3p3src().equals("1") ? binding.nc3p3srca.getId()
+                                : binding.nc3p3srcb.getId()
+                );
+            }
+
+            //            pcv3
+
+            if (!jsonC3.getnc3pcv3().equals("0")) {
+                binding.nc3pcv3.check(
+                        jsonC3.getnc3pcv3().equals("1") ? binding.nc3pcv3a.getId()
+                                : binding.nc3pcv3b.getId()
+                );
+            }
+            if (!jsonC3.getnc3pcv3src().equals("0")) {
+                binding.nc3pcv3src.check(
+                        jsonC3.getnc3pcv3src().equals("1") ? binding.nc3pcv3srca.getId()
+                                : binding.nc3pcv3srcb.getId()
+                );
+            }
+            //            ipv
+
+            if (!jsonC3.getnc3ipv().equals("0")) {
+                binding.nc3ipv.check(
+                        jsonC3.getnc3ipv().equals("1") ? binding.nc3ipva.getId()
+                                : binding.nc3ipvb.getId()
+                );
+            }
+            if (!jsonC3.getnc3ipvsrc().equals("0")) {
+                binding.nc3ipvsrc.check(
+                        jsonC3.getnc3ipvsrc().equals("1") ? binding.nc3ipvsrca.getId()
+                                : binding.nc3ipvsrcb.getId()
+                );
+            }
+            //            m1
+
+            if (!jsonC3.getnc3m1().equals("0")) {
+                binding.nc3m1.check(
+                        jsonC3.getnc3m1().equals("1") ? binding.nc3m1a.getId()
+                                : binding.nc3m1b.getId()
+                );
+            }
+            if (!jsonC3.getnc3m1src().equals("0")) {
+                binding.nc3m1src.check(
+                        jsonC3.getnc3m1src().equals("1") ? binding.nc3m1srca.getId()
+                                : binding.nc3m1srcb.getId()
+                );
+            }
+            //            m2
+
+            if (!jsonC3.getnc3m2().equals("0")) {
+                binding.nc3m2.check(
+                        jsonC3.getnc3m2().equals("1") ? binding.nc3m2a.getId()
+                                : binding.nc3m2b.getId()
+                );
+            }
+            if (!jsonC3.getnc3m2src().equals("0")) {
+                binding.nc3m2src.check(
+                        jsonC3.getnc3m2src().equals("1") ? binding.nc3m2srca.getId()
+                                : binding.nc3m2srcb.getId()
+                );
+            }
+
+//           nc305
+
+            if (!jsonC3.getnc305().equals("0")) {
+                binding.nc305.check(
+                        jsonC3.getnc305().equals("1") ? binding.nc305a.getId()
+                                : jsonC3.getnc305().equals("2") ? binding.nc305b.getId()
+                                : binding.nc30598.getId()
+                );
+            }
+            if (!jsonC3.getnc306().equals("0")) {
+                binding.nc306.check(
+                        jsonC3.getnc306().equals("1") ? binding.nc306a.getId()
+                                : binding.nc306b.getId()
+                );
+            }
+
+        }
     }
 
     public void BtnContinue() {
@@ -85,7 +335,7 @@ public class SectionC3Activity extends AppCompatActivity {
                 //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
 //                finish();
-
+                backPressed = true;
                 startActivity(new Intent(this, SectionC4Activity.class)
                         .putExtra("selectedChild", selectedChild));
 
@@ -271,14 +521,25 @@ public class SectionC3Activity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
+        //  Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
+
+        try {
+            SaveDraft();
+            UpdateDB();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        super.onBackPressed();
     }
 
     private void SaveDraft() throws JSONException {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
         JSONObject sC3 = new JSONObject();
-
+        if (backPressed) {
+            sC3.put("updatedate_nc3", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+        }
 //        nc301
         sC3.put("nc3name", selectedChild.getName());
 //        nc302

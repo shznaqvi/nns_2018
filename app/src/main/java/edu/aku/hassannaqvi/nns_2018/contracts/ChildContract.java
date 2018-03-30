@@ -79,7 +79,7 @@ public class ChildContract {
         this._UUID = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN__UUID));
 
         if (type == 1 || type == 2) {
-            this.sC2 = cursor.getString(cursor.getColumnIndex(ChildContract.ChildTable.COLUMN_SC2));
+            this.sC2 = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_SC2));
         }
         if (type == 1 || type == 3) {
             this.sC3 = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_SC3));
