@@ -51,6 +51,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
     String classPassName = "";
 
+
     //static int status;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,51 +136,32 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
             if (UpdateDB()) {
                 MainApp.nuCount = 1;
 
-//                finish();
+                MainApp.count++;
+                if (MainApp.count > MainApp.totalPregnancy) {
 
-                /*if (MainApp.outcome != 4) {
-                    MainApp.count++;
-                    if (MainApp.totalPregnancy >= MainApp.count) {
+                    MainApp.count = 1;
 
-                        startActivityForResult(new Intent(this, SectionB1AActivity.class)
-                                .putExtra("type", false)
-                                .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
+                    if (SectionB1Activity.childCheck) {
+                        startActivity(new Intent(this, SectionB2Activity.class));
                     } else {
-
-//                        MainApp.count = 1;
-//                        childSerial = 1;
-
-                        if (yearsBydob <= 2 && MainApp.status > 0) {
-                            startActivity(new Intent(this, SectionB2Activity.class)
-                            );
-
+                        if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
+                                &&
+                                MainApp.B6Flag) {
+                            startActivity(new Intent(this, SectionB6Activity.class));
                         } else {
-                            if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
-                                    &&
-                                    MainApp.B6Flag) {
-                                startActivityForResult(new Intent(this, SectionB6Activity.class)
-                                        .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
-                            } else {
-                                startActivity(new Intent(this, MotherEndingActivity.class)
-                                        .putExtra("complete", true));
-                            }
+                            startActivity(new Intent(this, MotherEndingActivity.class)
+                                    .putExtra("complete", true));
                         }
                     }
+
                 } else {
 
-                    MainApp.outcome = 0;
-                    MainApp.flag = true;
-                    childSerial++;
-                    Intent i = new Intent(this, SectionB1AActivity.class);
-                    i.putExtra("datey", bi.nw215y.getText().toString());
-                    i.putExtra("datem", bi.nw215m.getText().toString());
-                    i.putExtra("dated", bi.nw215d.getText().toString());
-                    i.putExtra("type", true);
-                    i.putExtra("backPressed", backPressed ? true : frontPressed);
-                    startActivity(i);
-                }*/
+                    //MainApp.count ++;
+                    startActivity(new Intent(this, SectionB1AActivity.class));
+                }
 
-                if (MainApp.totalPregnancy >= MainApp.count) {
+
+                /*if (MainApp.totalPregnancy >= MainApp.count) {
                     startActivityForResult(new Intent(this, SectionB1AActivity.class)
                             .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
                 } else {
@@ -198,7 +180,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                         }
                     }
                 }
-
+*/
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
