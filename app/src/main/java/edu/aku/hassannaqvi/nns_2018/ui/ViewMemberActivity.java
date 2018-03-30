@@ -238,7 +238,6 @@ public class ViewMemberActivity extends AppCompatActivity {
                         binding.recyclerMwra.setItemAnimator(new DefaultItemAnimator());
                         binding.recyclerMwra.setAdapter(wraAdapter);
                         wraAdapter.notifyDataSetChanged();
-                        //notifywrachange(wraAdapter);
 
                     }
                 }
@@ -256,10 +255,7 @@ public class ViewMemberActivity extends AppCompatActivity {
                 public void run() {
 
                     wraAdapter.notifyDataSetChanged();
-//                   Background black for those that's data filled
-                   /* for (int item : MainApp.hhClicked) {
-                        binding.recyclerMwra.getChildAt(item).setBackgroundColor(Color.BLACK);
-                    }*/
+//
                 }
             }, 800);
         }
