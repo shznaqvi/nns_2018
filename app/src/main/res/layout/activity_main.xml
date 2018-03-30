@@ -161,6 +161,12 @@
                 android:onClick="syncServer"
                 android:text="Upload Data" />
 
+            <TextView
+                android:id="@+id/syncStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sync Status" />
+
             <LinearLayout
                 android:id="@+id/adminsec"
                 android:layout_width="match_parent"

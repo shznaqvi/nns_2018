@@ -455,8 +455,8 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
             MainApp.fmc = new FamilyMembersContract();
 
             MainApp.fmc.setDevicetagID(MainApp.getTagName(this));
-            MainApp.fmc.setFormDate(dtToday);
-            MainApp.fmc.setUser(MainApp.userName);
+            MainApp.fmc.setFormDate(MainApp.fc.getFormDate());
+            MainApp.fmc.setUser(MainApp.fc.getUser());
             MainApp.fmc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID));
             MainApp.fmc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
             MainApp.fmc.set_UUID(MainApp.fc.getUID());
