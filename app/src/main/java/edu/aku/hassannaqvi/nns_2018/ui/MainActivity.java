@@ -71,6 +71,8 @@ public class MainActivity extends Activity {
     TextView lblheader;
     @BindView(R.id.recordSummary)
     TextView recordSummary;
+    @BindView(R.id.syncStatus)
+    TextView syncStatus;
 
     @BindView(R.id.syncDevice)
     Button syncDevice;
@@ -482,7 +484,7 @@ public class MainActivity extends Activity {
         if (networkInfo != null && networkInfo.isConnected()) {
 
             DatabaseHelper db = new DatabaseHelper(this);
-
+            syncStatus.setText(null);
             Toast.makeText(getApplicationContext(), "Syncing Forms", Toast.LENGTH_SHORT).show();
             new SyncAllData(
                     this,
@@ -490,7 +492,7 @@ public class MainActivity extends Activity {
                     "updateSyncedForms",
                     FormsContract.class,
                     MainApp._HOST_URL + FormsContract.FormsTable._URL,
-                    db.getUnsyncedForms()
+                    db.getUnsyncedForms(), this.findViewById(R.id.syncStatus)
             ).execute();
 
             Toast.makeText(getApplicationContext(), "Syncing Family Members", Toast.LENGTH_SHORT).show();
@@ -500,7 +502,7 @@ public class MainActivity extends Activity {
                     "updateSyncedFamilyMembers",
                     FamilyMembersContract.class,
                     MainApp._HOST_URL + FamilyMembersContract.familyMembers._URL,
-                    db.getUnsyncedFamilyMembers()
+                    db.getUnsyncedFamilyMembers(), this.findViewById(R.id.syncStatus)
             ).execute();
 
             Toast.makeText(getApplicationContext(), "Syncing WRAs", Toast.LENGTH_SHORT).show();
@@ -510,7 +512,7 @@ public class MainActivity extends Activity {
                     "updateSyncedMWRAForm",
                     MWRAContract.class,
                     MainApp._HOST_URL + MWRAContract.MWRATable._URL,
-                    db.getUnsyncedMWRA()
+                    db.getUnsyncedMWRA(), this.findViewById(R.id.syncStatus)
             ).execute();
 
             Toast.makeText(getApplicationContext(), "Syncing Children", Toast.LENGTH_SHORT).show();
@@ -520,7 +522,7 @@ public class MainActivity extends Activity {
                     "updateSyncedChildForm",
                     ChildContract.class,
                     MainApp._HOST_URL + ChildContract.ChildTable._URL,
-                    db.getUnsyncedChildForms()
+                    db.getUnsyncedChildForms(), this.findViewById(R.id.syncStatus)
             ).execute();
 
             Toast.makeText(getApplicationContext(), "Syncing Eligibles", Toast.LENGTH_SHORT).show();
@@ -530,7 +532,7 @@ public class MainActivity extends Activity {
                     "updateSyncedEligibles",
                     EligibleMembersContract.class,
                     MainApp._HOST_URL + EligibleMembersContract.eligibleMembers._URL,
-                    db.getUnsyncedEligbleMembers()
+                    db.getUnsyncedEligbleMembers(), this.findViewById(R.id.syncStatus)
             ).execute();
 
             Toast.makeText(getApplicationContext(), "Syncing Outcomes", Toast.LENGTH_SHORT).show();
@@ -540,7 +542,7 @@ public class MainActivity extends Activity {
                     "updateSyncedOutcomeForm",
                     OutcomeContract.class,
                     MainApp._HOST_URL + OutcomeContract.outcomeTable._URL,
-                    db.getUnsyncedOutcome()
+                    db.getUnsyncedOutcome(), this.findViewById(R.id.syncStatus)
             ).execute();
 
             Toast.makeText(getApplicationContext(), "Syncing Recepients", Toast.LENGTH_SHORT).show();
@@ -550,7 +552,7 @@ public class MainActivity extends Activity {
                     "updateSyncedRecepientsForm",
                     RecipientsContract.class,
                     MainApp._HOST_URL + RecipientsContract.RecipientsTable._URL,
-                    db.getUnsyncedRecipients()
+                    db.getUnsyncedRecipients(), this.findViewById(R.id.syncStatus)
             ).execute();
 
             Toast.makeText(getApplicationContext(), "Syncing Nutrition", Toast.LENGTH_SHORT).show();
@@ -560,7 +562,7 @@ public class MainActivity extends Activity {
                     "updateSyncedNutrition",
                     NutritionContract.class,
                     MainApp._HOST_URL + NutritionContract.NutritionTable._URL,
-                    db.getUnsyncedNutrition()
+                    db.getUnsyncedNutrition(), this.findViewById(R.id.syncStatus)
             ).execute();
 
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);

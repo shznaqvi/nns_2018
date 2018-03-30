@@ -1672,6 +1672,64 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFC;
     }
 
+    public Collection<FamilyMembersContract> getAnthroFamilyMembers() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                familyMembers._ID,
+                familyMembers.COLUMN_UID,
+                familyMembers.COLUMN_UUID,
+                familyMembers.COLUMN_FORMDATE,
+                familyMembers.COLUMN_USER,
+                //FormsTable.COLUMN_GPSELEV,
+                familyMembers.COLUMN_HH_NO,
+                familyMembers.COLUMN_ENM_NO,
+                familyMembers.COLUMN_SA2,
+                familyMembers.COLUMN_DEVICETAGID,
+                familyMembers.COLUMN_DEVICEID,
+                familyMembers.COLUMN_SYNCED,
+                familyMembers.COLUMN_SYNCED_DATE,
+                familyMembers.COLUMN_APP_VERSION
+        };
+
+        /*String selection = ChildTable.COLUMN__ID + " = ?";
+        String[] selectionArgs = {String.valueOf(MainApp.cc.get_ID())};*/
+
+        String whereClause = familyMembers.COLUMN_UUID + " = ?  ";
+        String[] whereArgs = {String.valueOf(MainApp.fc.getUID())};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                familyMembers._ID + " ASC";
+
+        Collection<FamilyMembersContract> allFC = new ArrayList<FamilyMembersContract>();
+        try {
+            c = db.query(
+                    familyMembers.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                FamilyMembersContract fc = new FamilyMembersContract();
+                allFC.add(fc.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
+
 
     public Collection<DeceasedContract> getUnsyncedDeceasedMembers() {
         SQLiteDatabase db = this.getReadableDatabase();

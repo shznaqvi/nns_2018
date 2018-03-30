@@ -13,8 +13,6 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-import org.json.JSONException;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -117,11 +115,9 @@ public class AntrhoInfoActivity extends Activity {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
-            try {
-                SaveDraft();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+
+            SaveDraft();
+
             if (UpdateDB()) {
                 //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
                 finish();
@@ -139,11 +135,9 @@ public class AntrhoInfoActivity extends Activity {
 
         Toast.makeText(this, "Processing End Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
-            try {
-                SaveDraft();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+
+            SaveDraft();
+
             if (UpdateDB()) {
                 Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 

@@ -211,7 +211,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
         MainApp.oc.setDevicetagID(MainApp.getTagName(this));
         MainApp.oc.setFormDate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
-        MainApp.oc.setUser(MainApp.userName);
+        MainApp.oc.setUser(MainApp.fc.getUser());
         MainApp.oc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
         MainApp.oc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
