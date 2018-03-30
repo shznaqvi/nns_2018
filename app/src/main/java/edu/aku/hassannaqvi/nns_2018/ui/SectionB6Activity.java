@@ -16,7 +16,6 @@ import java.util.Collection;
 import java.util.Timer;
 
 import edu.aku.hassannaqvi.nns_2018.R;
-import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.NutritionContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -51,8 +50,8 @@ public class SectionB6Activity extends AppCompatActivity {
         settingTimeToEat();
         setListners();
 
-        if (getIntent().getBooleanExtra("backPressed", false)) {
-            frontPressed = true;
+//        if (getIntent().getBooleanExtra("backPressed", false)) {
+//            frontPressed = true;
 
             Collection<NutritionContract> nutritionContracts = db.getPressedNutrition();
 
@@ -60,6 +59,8 @@ public class SectionB6Activity extends AppCompatActivity {
                 JSONB6ModelClass jsonB6 = JSONUtilClass.getModelFromJSON(nutritionContract.getsB6(), JSONB6ModelClass.class);
 
                 if (jsonB6.getSerial().equals(String.valueOf(MainApp.nuCount))) {
+
+                    frontPressed = true;
 
                     nutritionCC = nutritionContract;
 
@@ -101,7 +102,7 @@ public class SectionB6Activity extends AppCompatActivity {
             }
 
 
-        }
+//        }
 
     }
 
@@ -305,7 +306,7 @@ public class SectionB6Activity extends AppCompatActivity {
 
                 if (MainApp.nuCount == 7) {
 
-                    int childcount = 0;
+                    /*int childcount = 0;
                     if (MainApp.childUnder5.size() > 0) {
                         for (FamilyMembersContract fmc : MainApp.childUnder5) {
                             if (fmc.getMotherId().equals(MainApp.mc.getB1SerialNo())) {
@@ -321,7 +322,8 @@ public class SectionB6Activity extends AppCompatActivity {
                             startActivity(new Intent(this, SectionC1Activity.class));
                         }
 
-                    } else {
+                    } else*/
+                    {
                         startActivity(new Intent(this, MotherEndingActivity.class)
                                 .putExtra("checkingFlag", true)
                                 .putExtra("complete", true));

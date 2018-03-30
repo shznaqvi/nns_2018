@@ -70,8 +70,8 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
             ed.addTextChangedListener(this);
         }
 
-        if (getIntent().getBooleanExtra("backPressed", false)) {
-            frontPressed = true;
+/*        if (getIntent().getBooleanExtra("backPressed", false)) {
+            frontPressed = true;*/
 
             Collection<OutcomeContract> outcomeContracts = db.getPressedOutcome();
 
@@ -79,6 +79,8 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 JSONB1AModelClass jsonB1A = JSONUtilClass.getModelFromJSON(outcomeContract.getsB1A(), JSONB1AModelClass.class);
 
                 if (jsonB1A.getSerial().equals(String.valueOf(MainApp.count))) {
+
+                    frontPressed = true;
 
                     outcomeCC = outcomeContract;
 
@@ -121,7 +123,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
             }
 
-        }
+//        }
 
     }
 

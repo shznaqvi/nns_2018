@@ -34,6 +34,7 @@ public class FamilyMembersContract implements Serializable {
     private String na204 = "";
     private String motherId = "";
     private String sA2 = "";
+    private String av = "";
 
     private String enmNo = "";
     private String hhNo = "";
@@ -58,6 +59,7 @@ public class FamilyMembersContract implements Serializable {
         this.motherName = fmc.motherName;
         this.fatherName = fmc.fatherName;
         this.maritialStatus = fmc.maritialStatus;
+
     }
 
     public String getResp() {
@@ -264,6 +266,14 @@ public class FamilyMembersContract implements Serializable {
         this.hhNo = hhNo;
     }
 
+    public String getAv() {
+        return av;
+    }
+
+    public void setAv(String av) {
+        this.av = av;
+    }
+
     public FamilyMembersContract Sync(JSONObject jsonObject) throws JSONException {
 
         this._ID = jsonObject.getString(familyMembers.COLUMN_ID);
@@ -274,9 +284,11 @@ public class FamilyMembersContract implements Serializable {
         this.user = jsonObject.getString(familyMembers.COLUMN_USER);
         this.app_ver = jsonObject.getString(familyMembers.COLUMN_APP_VERSION);
         this.sA2 = jsonObject.getString(familyMembers.COLUMN_SA2);
+        this.av = jsonObject.getString(familyMembers.COLUMN_AV);
         this.hhNo = jsonObject.getString(familyMembers.COLUMN_HH_NO);
         this.enmNo = jsonObject.getString(familyMembers.COLUMN_ENM_NO);
         this.synced = jsonObject.getString(familyMembers.COLUMN_SYNCED);
+
         this.syncedDate = jsonObject.getString(familyMembers.COLUMN_SYNCED_DATE);
         this.devicetagID = jsonObject.getString(familyMembers.COLUMN_DEVICETAGID);
 
@@ -294,6 +306,7 @@ public class FamilyMembersContract implements Serializable {
         this.user = cursor.getString(cursor.getColumnIndex(familyMembers.COLUMN_USER));
         this.app_ver = cursor.getString(cursor.getColumnIndex(familyMembers.COLUMN_APP_VERSION));
         this.sA2 = cursor.getString(cursor.getColumnIndex(familyMembers.COLUMN_SA2));
+        this.av = cursor.getString(cursor.getColumnIndex(familyMembers.COLUMN_AV));
         this.enmNo = cursor.getString(cursor.getColumnIndex(familyMembers.COLUMN_ENM_NO));
         this.hhNo = cursor.getString(cursor.getColumnIndex(familyMembers.COLUMN_HH_NO));
         this.devicetagID = cursor.getString(cursor.getColumnIndex(familyMembers.COLUMN_DEVICETAGID));
@@ -316,9 +329,11 @@ public class FamilyMembersContract implements Serializable {
         json.put(familyMembers.COLUMN_ENM_NO, this.enmNo == null ? JSONObject.NULL : this.enmNo);
         json.put(familyMembers.COLUMN_HH_NO, this.hhNo == null ? JSONObject.NULL : this.hhNo);
         json.put(familyMembers.COLUMN_APP_VERSION, this.app_ver == null ? JSONObject.NULL : this.app_ver);
+        json.put(familyMembers.COLUMN_AV, this.av == null ? JSONObject.NULL : this.av);
         if (!this.sA2.equals("")) {
             json.put(familyMembers.COLUMN_SA2, this.sA2.equals("") ? JSONObject.NULL : new JSONObject(this.sA2));
         }
+
         json.put(familyMembers.COLUMN_PROJECT_NAME, this.projectName == null ? JSONObject.NULL : this.projectName);
         json.put(familyMembers.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
 
@@ -344,6 +359,8 @@ public class FamilyMembersContract implements Serializable {
         public static final String COLUMN_SA2 = "sA2";
         public static final String COLUMN_ENM_NO = "enm_no";
         public static final String COLUMN_HH_NO = "hh_no";
+        public static final String COLUMN_AV = "av";
+
 
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNCED_DATE = "sync_date";
