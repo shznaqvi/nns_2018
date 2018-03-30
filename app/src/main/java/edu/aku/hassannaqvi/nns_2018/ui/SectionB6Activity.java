@@ -485,6 +485,11 @@ public class SectionB6Activity extends AppCompatActivity {
             MainApp.nuCount--;
         }
 
+        if (MainApp.nuCount == 1) {
+            MainApp.B6Flag = true;
+            MainApp.B2B6Flag = false;
+        }
+
         Intent intent = new Intent();
         intent.putExtra("backPressedClass", SectionB6Activity.class.getName());
         setResult(RESULT_OK, intent);
