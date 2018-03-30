@@ -15,6 +15,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import edu.aku.hassannaqvi.nns_2018.Adapters.AdolescentsAdapter;
 import edu.aku.hassannaqvi.nns_2018.Adapters.ChildAdapter;
 import edu.aku.hassannaqvi.nns_2018.Adapters.WraAdapter;
 import edu.aku.hassannaqvi.nns_2018.R;
@@ -32,6 +33,7 @@ public class ViewMemberActivity extends AppCompatActivity {
 
     WraAdapter wraAdapter;
     ChildAdapter childAdapter;
+    AdolescentsAdapter adolescentsAdapter;
 
 
     ActivityViewMemberBinding binding;
@@ -55,6 +57,7 @@ public class ViewMemberActivity extends AppCompatActivity {
 
         MainApp.all_members = new ArrayList<>();
         MainApp.childUnder5 = new ArrayList<>();
+        MainApp.adolescents = new ArrayList<>();
         MainApp.mwra = new ArrayList<>();
         members = new ArrayList<>();
         json = new JSONModelClass();
@@ -91,17 +94,15 @@ public class ViewMemberActivity extends AppCompatActivity {
                         if (fm.getsA2() != null) {
                             json = JSONUtilClass.getModelFromJSON(fm.getsA2(), JSONModelClass.class);
                             if ((Integer.valueOf(json.getAge()) >= 15 && Integer.valueOf(json.getAge()) <= 49) && json.getGender().equals("2")) {
-                                //  Log.d("Test",fm.getName());
                                 MainApp.mwra.add(fm);
                                 MainApp.all_members.add(fm);
 
                             }
-                           /* if ((Integer.valueOf(json.getAge()) >= 10 && (Integer.valueOf(json.getAge()) <= 19)) && json.getMaritalStatus().equals("5")) {
+                            if ((Integer.valueOf(json.getAge()) >= 10 && (Integer.valueOf(json.getAge()) <= 19)) && json.getMaritalStatus().equals("5")) {
                                 MainApp.adolescents.add(fm);
                                 MainApp.all_members.add(fm);
-                            }*/
+                            }
                             if (Integer.valueOf(json.getAge()) < 5) {
-                                // Log.d("Test",fm.getName());
                                 MainApp.childUnder5.add(fm);
                                 MainApp.all_members.add(fm);
 
@@ -117,6 +118,7 @@ public class ViewMemberActivity extends AppCompatActivity {
                         binding.fldGrpviewlist.setVisibility(View.VISIBLE);
                         viewWraList();
                         viewChildList();
+                        viewAdolList();
 
                     } else {
                         binding.fldGrpviewlist.setVisibility(View.GONE);
@@ -145,6 +147,13 @@ public class ViewMemberActivity extends AppCompatActivity {
     private void viewWraList() {
 
         new populateWraRecyclerView(this).execute();
+
+
+    }
+
+    private void viewAdolList() {
+
+        new populateAdolRecyclerView(this).execute();
 
 
     }
@@ -233,12 +242,16 @@ public class ViewMemberActivity extends AppCompatActivity {
 //              Set Recycler View
                     wraAdapter = new WraAdapter(MainApp.mwra);
                     if (wraAdapter.getItemCount() != 0) {
+                        binding.nowrafound.setVisibility(View.GONE);
                         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                         binding.recyclerMwra.setLayoutManager(mLayoutManager);
                         binding.recyclerMwra.setItemAnimator(new DefaultItemAnimator());
                         binding.recyclerMwra.setAdapter(wraAdapter);
                         wraAdapter.notifyDataSetChanged();
 
+
+                    } else if (wraAdapter.getItemCount() == 0) {
+                        binding.nowrafound.setVisibility(View.VISIBLE);
                     }
                 }
             });
@@ -256,6 +269,53 @@ public class ViewMemberActivity extends AppCompatActivity {
 
                     wraAdapter.notifyDataSetChanged();
 //
+                }
+            }, 800);
+        }
+    }
+
+    public class populateAdolRecyclerView extends AsyncTask<String, String, String> {
+        private Context mContext;
+
+        public populateAdolRecyclerView(Context mContext) {
+            this.mContext = mContext;
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            runOnUiThread(new Runnable() {
+
+                @Override
+                public void run() {
+
+//              Set Recycler View
+                    adolescentsAdapter = new AdolescentsAdapter(MainApp.adolescents);
+                    if (adolescentsAdapter.getItemCount() != 0) {
+                        binding.noadolfound.setVisibility(View.GONE);
+                        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+                        binding.recyclerAdol.setLayoutManager(mLayoutManager);
+                        binding.recyclerAdol.setItemAnimator(new DefaultItemAnimator());
+                        binding.recyclerAdol.setAdapter(adolescentsAdapter);
+                        adolescentsAdapter.notifyDataSetChanged();
+
+                    } else if (adolescentsAdapter.getItemCount() == 0) {
+                        binding.noadolfound.setVisibility(View.VISIBLE);
+                    }
+                }
+            });
+
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    // wraAdapter.notifyDataSetChanged();
                 }
             }, 800);
         }
@@ -280,13 +340,16 @@ public class ViewMemberActivity extends AppCompatActivity {
 
 
                     if (childAdapter.getItemCount() != 0) {
-
+                        binding.nochildfound.setVisibility(View.GONE);
                         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                         binding.recyclerChild.setLayoutManager(mLayoutManager);
                         binding.recyclerChild.setItemAnimator(new DefaultItemAnimator());
                         binding.recyclerChild.setAdapter(childAdapter);
                         childAdapter.notifyDataSetChanged();
+
                         // notifychildchange(childAdapter);
+                    } else if (childAdapter.getItemCount() == 0) {
+                        binding.nochildfound.setVisibility(View.VISIBLE);
                     }
                 }
             });
