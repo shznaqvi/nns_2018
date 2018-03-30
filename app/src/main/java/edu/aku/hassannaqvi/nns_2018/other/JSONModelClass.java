@@ -16,9 +16,18 @@ public class JSONModelClass {
     private String maritalStatus = "";
     @SerializedName("nh204")
     private String gender = "";
+    private String mothername = "";
 
     public JSONModelClass() {
 
+    }
+
+    public String getMothername() {
+        return mothername;
+    }
+
+    public void setMothername(String mothername) {
+        this.mothername = mothername;
     }
 
     public String getName() {
