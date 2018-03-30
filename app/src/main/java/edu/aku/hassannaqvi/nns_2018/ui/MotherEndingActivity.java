@@ -73,9 +73,6 @@ public class MotherEndingActivity extends AppCompatActivity {
 
                 finish();
 
-                MainApp.count = 1;
-                SectionB1AActivity.childSerial = 1;
-
                 if (SectionB1Activity.WRAcounter == MainApp.mwra.size()) {
 
                     if (MainApp.childNA.size() > 0) {

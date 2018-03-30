@@ -293,6 +293,25 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
             }
 
             Calendar today = Calendar.getInstance();
+
+            Calendar sixYears = Calendar.getInstance();
+            sixYears.add(Calendar.DATE, -2190);
+
+            if (dob.before(sixYears)) {
+                if (!validatorClass.RangeTextBoxforDate(this, binding.nc201d, 1, DateUtils.getCurrentDate(), 98, "Date can not be more than today")) {
+                    return false;
+                }
+
+                if (!validatorClass.RangeTextBoxforDate(this, binding.nc201m, 1, DateUtils.getCurrentMonth(), "Month can not be more than current month")) {
+                    return false;
+                }
+
+                if (!validatorClass.RangeTextBoxforDate(this, binding.nc201y, DateUtils.getCurrentYear() - 6, DateUtils.getCurrentYear(), "Year can not be more than current year")) {
+                    return false;
+                }
+            }
+
+
             if (dob.after(today)) {
                 if (!validatorClass.RangeTextBoxforDate(this, binding.nc201d, 1, DateUtils.getCurrentDate(), 98, "Date can not be more than today")) {
                     return false;

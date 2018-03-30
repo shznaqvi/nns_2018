@@ -7,18 +7,11 @@ package edu.aku.hassannaqvi.nns_2018.other;
 public class JSONB1AModelClass {
 
     private String serial = "";
-    private String nw215y = "";
-    private String nw215m = "";
-    private String nw215d = "";
-    private String nw216 = "";
-    private String nw217 = "";
-    private String nw218 = "";
-    private String nw219y = "";
-    private String nw219m = "";
-    private String nw219d = "";
-    private String nw220y = "";
-    private String nw220m = "";
-    private String nw220d = "";
+    private String nw21701 = "";
+
+    private String nw21702y = "";
+    private String nw21702m = "";
+    private String nw21702d = "";
 
     public JSONB1AModelClass() {
 
@@ -32,99 +25,35 @@ public class JSONB1AModelClass {
         this.serial = serial;
     }
 
-    public String getNw215y() {
-        return nw215y;
+    public String getnw21701() {
+        return nw21701;
     }
 
-    public void setNw215y(String nw215y) {
-        this.nw215y = nw215y;
+    public void setnw21701(String nw21701) {
+        this.nw21701 = nw21701;
     }
 
-    public String getNw215m() {
-        return nw215m;
+    public String getnw21702y() {
+        return nw21702y;
     }
 
-    public void setNw215m(String nw215m) {
-        this.nw215m = nw215m;
+    public void setnw21702y(String nw21702y) {
+        this.nw21702y = nw21702y;
     }
 
-    public String getNw215d() {
-        return nw215d;
+    public String getnw21702m() {
+        return nw21702m;
     }
 
-    public void setNw215d(String nw215d) {
-        this.nw215d = nw215d;
+    public void setnw21702m(String nw21702m) {
+        this.nw21702m = nw21702m;
     }
 
-    public String getNw216() {
-        return nw216;
+    public String getnw21702d() {
+        return nw21702d;
     }
 
-    public void setNw216(String nw216) {
-        this.nw216 = nw216;
-    }
-
-    public String getNw217() {
-        return nw217;
-    }
-
-    public void setNw217(String nw217) {
-        this.nw217 = nw217;
-    }
-
-    public String getNw218() {
-        return nw218;
-    }
-
-    public void setNw218(String nw218) {
-        this.nw218 = nw218;
-    }
-
-    public String getNw219y() {
-        return nw219y;
-    }
-
-    public void setNw219y(String nw219y) {
-        this.nw219y = nw219y;
-    }
-
-    public String getNw219m() {
-        return nw219m;
-    }
-
-    public void setNw219m(String nw219m) {
-        this.nw219m = nw219m;
-    }
-
-    public String getNw219d() {
-        return nw219d;
-    }
-
-    public void setNw219d(String nw219d) {
-        this.nw219d = nw219d;
-    }
-
-    public String getNw220y() {
-        return nw220y;
-    }
-
-    public void setNw220y(String nw220y) {
-        this.nw220y = nw220y;
-    }
-
-    public String getNw220m() {
-        return nw220m;
-    }
-
-    public void setNw220m(String nw220m) {
-        this.nw220m = nw220m;
-    }
-
-    public String getNw220d() {
-        return nw220d;
-    }
-
-    public void setNw220d(String nw220d) {
-        this.nw220d = nw220d;
+    public void setnw21702d(String nw21702d) {
+        this.nw21702d = nw21702d;
     }
 }
