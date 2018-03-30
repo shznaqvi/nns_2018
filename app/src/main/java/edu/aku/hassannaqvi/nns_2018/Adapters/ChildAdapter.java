@@ -24,7 +24,6 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHol
     ChildAdapter.ChildViewHolder holder;
     JSONModelClass json;
     private List<FamilyMembersContract> childList;
-
     public ChildAdapter(List<FamilyMembersContract> childList) {
         json = new JSONModelClass();
         this.childList = childList;

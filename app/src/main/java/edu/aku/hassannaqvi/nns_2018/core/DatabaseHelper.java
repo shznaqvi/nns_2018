@@ -22,6 +22,7 @@ import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract.singleRandomHH;
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract.ChildTable;
+import edu.aku.hassannaqvi.nns_2018.contracts.DeceasedContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract.eligibleMembers;
 import edu.aku.hassannaqvi.nns_2018.contracts.EnumBlockContract;
@@ -273,6 +274,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             NutritionTable.COLUMN_SYNCEDDATE + " TEXT " +
 
             ");";
+
+    final String SQL_CREATE_DECEASED = "CREATE TABLE " + DeceasedContract.DeceasedTable.TABLE_NAME + " (" +
+            DeceasedContract.DeceasedTable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            DeceasedContract.DeceasedTable.COLUMN_PROJECTNAME + " TEXT," +
+            DeceasedContract.DeceasedTable.COLUMN__UID + " TEXT," +
+            DeceasedContract.DeceasedTable.COLUMN__UUID + " TEXT," +
+            DeceasedContract.DeceasedTable.COLUMN_FORMDATE + " TEXT," +
+            DeceasedContract.DeceasedTable.COLUMN_DEVICEID + " TEXT," +
+            DeceasedContract.DeceasedTable.COLUMN_DEVICETAGID + " TEXT," +
+            DeceasedContract.DeceasedTable.COLUMN_USER + " TEXT," +
+            DeceasedContract.DeceasedTable.COLUMN_APPVERSION + " TEXT," +
+            DeceasedContract.DeceasedTable.COLUMN_SH8 + " TEXT," +
+            DeceasedContract.DeceasedTable.COLUMN_SYNCED + " TEXT," +
+            DeceasedContract.DeceasedTable.COLUMN_SYNCED_DATE + " TEXT " +
+
+            ");";
+
+
     final String SQL_CREATE_VERSIONAPP = "CREATE TABLE " + VersionAppTable.TABLE_NAME + " (" +
             VersionAppTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             VersionAppTable.COLUMN_VERSION_CODE + " TEXT, " +
@@ -526,6 +545,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return allBL;
     }
+
 
 
     public Collection<BLRandomContract> getAllBLRandom(String subAreaCode, String hh) {
@@ -894,6 +914,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         newRowId = db.insert(
                 familyMembers.TABLE_NAME,
                 familyMembers.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
+
+
+    public Long addDeceasedMembers(DeceasedContract dc) {
+
+        // Gets the data repository in write mode
+        SQLiteDatabase db = this.getWritableDatabase();
+
+// Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(DeceasedContract.DeceasedTable.COLUMN_PROJECTNAME, dc.getProjectName());
+        values.put(DeceasedContract.DeceasedTable.COLUMN__UID, dc.getUID());
+        values.put(DeceasedContract.DeceasedTable.COLUMN__UUID, dc.getUUID());
+        values.put(DeceasedContract.DeceasedTable.COLUMN_FORMDATE, dc.getFormDate());
+        values.put(DeceasedContract.DeceasedTable.COLUMN_USER, dc.getUser());
+        values.put(DeceasedContract.DeceasedTable.COLUMN_SH8, dc.getsH8());
+        values.put(DeceasedContract.DeceasedTable.COLUMN_DEVICETAGID, dc.getDevicetagID());
+        values.put(DeceasedContract.DeceasedTable.COLUMN_DEVICEID, dc.getDeviceID());
+        values.put(DeceasedContract.DeceasedTable.COLUMN_SYNCED, dc.getSynced());
+        values.put(DeceasedContract.DeceasedTable.COLUMN_SYNCED_DATE, dc.getSynced_date());
+        values.put(DeceasedContract.DeceasedTable.COLUMN_APPVERSION, dc.getAppversion());
+
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId;
+        newRowId = db.insert(
+                DeceasedContract.DeceasedTable.TABLE_NAME,
+                DeceasedContract.DeceasedTable.COLUMN_NAME_NULLABLE,
                 values);
         return newRowId;
     }
@@ -1418,6 +1468,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
+    public int updateDeceasedMemberID() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(DeceasedContract.DeceasedTable.COLUMN__UID, MainApp.dc.getUID());
+
+// Which row to update, based on the ID
+        String selection = DeceasedContract.DeceasedTable.COLUMN__ID + " = ?";
+        String[] selectionArgs = {String.valueOf(MainApp.dc.get_ID())};
+
+        int count = db.update(DeceasedContract.DeceasedTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
+
     public int updateFamilyMember(FamilyMembersContract fmc) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -1435,6 +1503,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
         return count;
     }
+
 
     public int updateMWRAID() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -1661,6 +1730,116 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return allFC;
     }
+
+    public Collection<FamilyMembersContract> getAnthroFamilyMembers() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                familyMembers._ID,
+                familyMembers.COLUMN_UID,
+                familyMembers.COLUMN_UUID,
+                familyMembers.COLUMN_FORMDATE,
+                familyMembers.COLUMN_USER,
+                //FormsTable.COLUMN_GPSELEV,
+                familyMembers.COLUMN_HH_NO,
+                familyMembers.COLUMN_ENM_NO,
+                familyMembers.COLUMN_SA2,
+                familyMembers.COLUMN_DEVICETAGID,
+                familyMembers.COLUMN_DEVICEID,
+                familyMembers.COLUMN_SYNCED,
+                familyMembers.COLUMN_SYNCED_DATE,
+                familyMembers.COLUMN_APP_VERSION
+        };
+
+        /*String selection = ChildTable.COLUMN__ID + " = ?";
+        String[] selectionArgs = {String.valueOf(MainApp.cc.get_ID())};*/
+
+        String whereClause = familyMembers.COLUMN_UUID + " = ?  ";
+        String[] whereArgs = {String.valueOf(MainApp.fc.getUID())};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                familyMembers._ID + " ASC";
+
+        Collection<FamilyMembersContract> allFC = new ArrayList<FamilyMembersContract>();
+        try {
+            c = db.query(
+                    familyMembers.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                FamilyMembersContract fc = new FamilyMembersContract();
+                allFC.add(fc.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
+
+    public Collection<DeceasedContract> getUnsyncedDeceasedMembers() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                DeceasedContract.DeceasedTable._ID,
+                DeceasedContract.DeceasedTable.COLUMN__UID,
+                DeceasedContract.DeceasedTable.COLUMN__UUID,
+                DeceasedContract.DeceasedTable.COLUMN_FORMDATE,
+                DeceasedContract.DeceasedTable.COLUMN_USER,
+                //FormsTable.COLUMN_GPSELEV,
+                DeceasedContract.DeceasedTable.COLUMN_SH8,
+                DeceasedContract.DeceasedTable.COLUMN_DEVICETAGID,
+                DeceasedContract.DeceasedTable.COLUMN_DEVICEID,
+                DeceasedContract.DeceasedTable.COLUMN_SYNCED,
+                DeceasedContract.DeceasedTable.COLUMN_SYNCED_DATE,
+                DeceasedContract.DeceasedTable.COLUMN_APPVERSION
+        };
+        String whereClause = DeceasedContract.DeceasedTable.COLUMN_SYNCED + " is null OR " + DeceasedContract.DeceasedTable.COLUMN_SYNCED + " = '' ";
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                DeceasedContract.DeceasedTable._ID + " ASC";
+
+        Collection<DeceasedContract> allFC = new ArrayList<DeceasedContract>();
+        try {
+            c = db.query(
+                    familyMembers.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                DeceasedContract fc = new DeceasedContract();
+                allFC.add(fc.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
 
 
     public Collection<ChildContract> getUnsyncedChildForms() {
@@ -1962,10 +2141,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 outcomeTable.COLUMN_APP_VER,
                 outcomeTable.COLUMN_B1APregSNO,
                 outcomeTable.COLUMN_SB1A,
+
                 outcomeTable.COLUMN_SYNCED,
                 outcomeTable.COLUMN_SYNCEDDATE,
-        };
 
+        };
         String whereClause = outcomeTable.COLUMN_SYNCED + " is null OR " + outcomeTable.COLUMN_SYNCED + " = '' ";
         String[] whereArgs = null;
         String groupBy = null;
@@ -2502,7 +2682,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor c = null;
         String[] columns = {
                 FormsTable._ID,
-                //ChildTable.COLUMN_DSSID,
+                FormsTable.COLUMN_HH_NO,
+                FormsTable.COLUMN_ENM_NO,
                 FormsTable.COLUMN_FORMDATE,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_SYNCED,
@@ -2530,6 +2711,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (c.moveToNext()) {
                 FormsContract fc = new FormsContract();
                 fc.set_ID(c.getString(c.getColumnIndex(FormsTable._ID)));
+                fc.setEnmNo(c.getString(c.getColumnIndex(FormsTable.COLUMN_ENM_NO)));
+                fc.setHhNo(c.getString(c.getColumnIndex(FormsTable.COLUMN_HH_NO)));
                 fc.setFormDate(c.getString(c.getColumnIndex(FormsTable.COLUMN_FORMDATE)));
                 fc.setIstatus(c.getString(c.getColumnIndex(FormsTable.COLUMN_ISTATUS)));
                 fc.setSynced(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYNCED)));

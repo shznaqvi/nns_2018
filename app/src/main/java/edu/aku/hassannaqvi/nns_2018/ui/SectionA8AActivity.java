@@ -123,7 +123,9 @@ public class SectionA8AActivity extends Activity {
 
                     counter = 1;
 
-                    if (MainApp.mwra.size() > 0) {
+                    if (SectionA5Activity.deceasedCounter > 0) {
+                        startActivity(new Intent(this, SectionH8Activity.class));
+                    } else if (MainApp.mwra.size() > 0) {
                         startActivity(new Intent(this, SectionB1Activity.class));
                     } else if (MainApp.childUnder5.size() > 0) {
                         if (MainApp.childUnder5.size() == MainApp.childNA.size()) {
@@ -208,7 +210,12 @@ public class SectionA8AActivity extends Activity {
             return false;
         }
 
-        return validatorClass.RangeTextBox(this, bi.nh7a06, 0, Integer.valueOf(bi.nh7a05.getText().toString()), getString(R.string.nh7a06), " Rupees");
+        if (!validatorClass.RangeTextBox(this, bi.nh7a06, 0, Integer.valueOf(bi.nh7a05.getText().toString()), getString(R.string.nh7a06), " Rupees"))
+            ;
+
+
+        return true;
+
     }
 
     private void SaveDraft() throws JSONException {

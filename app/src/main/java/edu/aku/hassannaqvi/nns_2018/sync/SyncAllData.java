@@ -1,9 +1,10 @@
 package edu.aku.hassannaqvi.nns_2018.sync;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -31,31 +32,35 @@ public class SyncAllData extends AsyncTask<Void, Void, String> {
 
     private String TAG = "";
     private Context mContext;
+/*
     private ProgressDialog pd;
+*/
 
     private String syncClass, url, updateSyncClass;
     private Class contractClass;
     private Collection dbData;
+    private TextView syncStatus;
 
 
-    public SyncAllData(Context context, String syncClass, String updateSyncClass, Class contractClass, String url, Collection dbData) {
+    public SyncAllData(Context context, String syncClass, String updateSyncClass, Class contractClass, String url, Collection dbData, View syncStatus) {
         mContext = context;
         this.syncClass = syncClass;
         this.updateSyncClass = updateSyncClass;
         this.contractClass = contractClass;
         this.url = url;
         this.dbData = dbData;
-
+        this.syncStatus = (TextView) syncStatus;
         TAG = "Get" + syncClass;
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        pd = new ProgressDialog(mContext);
+     /*   pd = new ProgressDialog(mContext);
         pd.setTitle("Syncing " + syncClass);
         pd.setMessage("Getting connected to server...");
-        pd.show();
+        pd.show();*/
+        syncStatus.setText(syncStatus.getText() + "\r\nSyncing " + syncClass);
     }
 
 
@@ -69,7 +74,7 @@ public class SyncAllData extends AsyncTask<Void, Void, String> {
         }
     }
 
-    private String downloadUrl(Class<?> contractClass) throws IOException {
+    private String downloadUrl(Class<?> contractClass) {
         String line = "No Response";
 
         Collection<?> DBData = dbData; // pass data that's coming from db
@@ -200,19 +205,22 @@ public class SyncAllData extends AsyncTask<Void, Void, String> {
                     sSyncedError += "\nError: " + jsonObject.getString("message");
                 }
             }
-            Toast.makeText(mContext, syncClass + " synced: " + sSynced + "\r\n\r\n Errors: " + sSyncedError, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(mContext, syncClass + " synced: " + sSynced + "\r\n\r\n Errors: " + sSyncedError, Toast.LENGTH_SHORT).show();
 
 
-            pd.setMessage(syncClass + " synced: " + sSynced + "\r\n\r\n Duplicates: " + sDuplicate + "\r\n\r\n Errors: " + sSyncedError);
+           /* pd.setMessage(syncClass + " synced: " + sSynced + "\r\n\r\n Duplicates: " + sDuplicate + "\r\n\r\n Errors: " + sSyncedError);
             pd.setTitle("Done uploading +" + syncClass + " data");
-            pd.show();
+            pd.show();*/
+            syncStatus.setText(syncStatus.getText() + "\r\nDone uploading +" + syncClass + " data");
+
         } catch (JSONException e) {
             e.printStackTrace();
             Toast.makeText(mContext, "Failed Sync " + result, Toast.LENGTH_SHORT).show();
 
-            pd.setMessage(result);
+           /* pd.setMessage(result);
             pd.setTitle(syncClass + " Sync Failed");
-            pd.show();
+            pd.show();*/
+            syncStatus.setText(syncStatus.getText() + "\r\n" + syncClass + " Sync Failed");
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {

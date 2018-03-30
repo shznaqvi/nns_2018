@@ -9,8 +9,6 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Toast;
 
-import org.json.JSONException;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -28,9 +26,12 @@ import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class AntrhoInfoActivity extends Activity {
 
-    private static final String TAG = SectionA1Activity.class.getName();
+    private static final String TAG = AntrhoInfoActivity.class.getName();
     static String enm_no;
     static String hh_no;
+    static String hc_code;
+    static String ht_code;
+    static String wt_code;
     JSONModelClass json;
     ActivityAntrhoInfoBinding binding;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
@@ -53,10 +54,10 @@ public class AntrhoInfoActivity extends Activity {
         MainApp.all_members = new ArrayList<>();
         MainApp.childUnder2 = new ArrayList<>();
         MainApp.childUnder5 = new ArrayList<>();
-        MainApp.childUnder5 = new ArrayList<>();
         MainApp.childNA = new ArrayList<>();
         MainApp.mwra = new ArrayList<>();
         MainApp.adolescents = new ArrayList<>();
+        MainApp.childUnder2Check = new ArrayList<>();
         members = new ArrayList<>();
         json = new JSONModelClass();
 
@@ -110,11 +111,9 @@ public class AntrhoInfoActivity extends Activity {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
-            try {
-                SaveDraft();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+
+            SaveDraft();
+
             if (UpdateDB()) {
                 //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
                 finish();
@@ -132,11 +131,9 @@ public class AntrhoInfoActivity extends Activity {
 
         Toast.makeText(this, "Processing End Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
-            try {
-                SaveDraft();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+
+            SaveDraft();
+
             if (UpdateDB()) {
                 Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
@@ -174,14 +171,87 @@ public class AntrhoInfoActivity extends Activity {
         }
 
 
+        if (!validatorClass.EmptyTextBox(this, binding.hcCode, getString(R.string.hc))) {
+            return false;
+        }
+
+        int scanChar;
+        if (binding.hcCode.getText().toString().contains("§")) {
+            scanChar = 7;
+        } else {
+            scanChar = 6;
+        }
+
+        if (binding.hcCode.getText().length() != scanChar || !binding.hcCode.getText().toString().contains("-")
+                || !binding.hcCode.getText().toString().contains("HC")) {
+            Toast.makeText(this, "ERROR(invalid)" + getString(R.string.hc), Toast.LENGTH_SHORT).show();
+            binding.hcCode.setError("Invalid Number..");
+
+            Log.i(TAG, "hcCode: Invalid number");
+            return false;
+        } else {
+            binding.hcCode.setError(null);
+        }
+
+
+        if (!validatorClass.EmptyTextBox(this, binding.htCode, getString(R.string.ht))) {
+            return false;
+        }
+
+        if (binding.htCode.getText().toString().contains("§")) {
+            scanChar = 7;
+        } else {
+            scanChar = 6;
+        }
+
+        if (binding.htCode.getText().length() != scanChar || !binding.htCode.getText().toString().contains("-")
+                || !binding.htCode.getText().toString().contains("HT")) {
+            Toast.makeText(this, "ERROR(invalid)" + getString(R.string.ht), Toast.LENGTH_SHORT).show();
+            binding.htCode.setError("Invalid Number..");
+
+            Log.i(TAG, "htCode: Invalid number");
+            return false;
+        } else {
+            binding.htCode.setError(null);
+        }
+
+        if (!validatorClass.EmptyTextBox(this, binding.wtCode, getString(R.string.wt))) {
+            return false;
+        }
+
+        if (binding.wtCode.getText().toString().contains("§")) {
+            scanChar = 7;
+        } else {
+            scanChar = 6;
+        }
+
+        if (binding.wtCode.getText().length() != scanChar || !binding.wtCode.getText().toString().contains("-")
+                || !binding.wtCode.getText().toString().contains("WT")) {
+            Toast.makeText(this, "ERROR(invalid)" + getString(R.string.wt), Toast.LENGTH_SHORT).show();
+            binding.wtCode.setError("Invalid Number..");
+
+            Log.i(TAG, "wtCode: Invalid number");
+            return false;
+        } else {
+            binding.wtCode.setError(null);
+        }
+
+
+
+
+
         return true;
     }
 
-    private void SaveDraft() throws JSONException {
+    private void SaveDraft() {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
         enm_no = binding.nh102.getText().toString();
         hh_no = binding.nh108.getText().toString().toUpperCase();
+        hc_code = binding.hcCode.getText().toString();
+        ht_code = binding.htCode.getText().toString();
+        wt_code = binding.wtCode.getText().toString();
+
 
     }
 
@@ -266,4 +336,50 @@ public class AntrhoInfoActivity extends Activity {
 
         }
     }
+
+    public void BtnScan() {
+        //binding.hcCode.setText(null);
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+        integrator.setPrompt("Scan the QR code of Machine");
+        integrator.setCameraId(0);  // Use a specific camera of the device
+        integrator.setBeepEnabled(false);
+        integrator.setBarcodeImageEnabled(true);
+        integrator.setOrientationLocked(false);
+
+        integrator.initiateScan();
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+
+        if (result != null) {
+            if (result.getContents() == null) {
+                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
+            } else {
+
+                if (result.getContents().contains("HC")) {
+                    Toast.makeText(this, "HC Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                    binding.hcCode.setText("§" + result.getContents().trim());
+                    binding.hcCode.setEnabled(false);
+                } else if (result.getContents().contains("HT")) {
+                    Toast.makeText(this, "HT Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                    binding.htCode.setText("§" + result.getContents().trim());
+                    binding.htCode.setEnabled(false);
+                } else if (result.getContents().contains("WT")) {
+                    Toast.makeText(this, "WT Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                    binding.wtCode.setText("§" + result.getContents().trim());
+                    binding.wtCode.setEnabled(false);
+                }
+
+
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+
 }

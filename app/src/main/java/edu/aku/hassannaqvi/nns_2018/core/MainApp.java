@@ -23,6 +23,7 @@ import java.util.Map;
 
 import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.DeceasedContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
@@ -90,6 +91,7 @@ public class MainApp extends Application {
 
     //    Ali
     public static FamilyMembersContract fmc;
+    public static DeceasedContract dc;
     public static EligibleMembersContract emc;
     public static List<FamilyMembersContract> members_f_m;
     public static List<FamilyMembersContract> respList;
@@ -97,6 +99,7 @@ public class MainApp extends Application {
     public static List<FamilyMembersContract> childUnder2;
     public static List<FamilyMembersContract> childUnder5;
     public static List<FamilyMembersContract> childNA;
+    public static List<FamilyMembersContract> childUnder2Check;
     public static List<FamilyMembersContract> mwra;
     public static List<FamilyMembersContract> adolescents;
     public static BLRandomContract selectedHead;
@@ -105,6 +108,7 @@ public class MainApp extends Application {
     public static Boolean B2B6Flag = false;
     // fro section A2
     public static List<FamilyMembersContract> familyMembersList;
+    //public static List<FamilyMembersContract> familyMembersList;
     public static List<Integer> hhClicked;
 
     // Gul Sanober
@@ -444,10 +448,7 @@ public class MainApp extends Application {
             return true;
         } else if (isNewer && !isLessAccurate) {
             return true;
-        } else if (isNewer && !isSignificantlyLessAccurate && isFromSameProvider) {
-            return true;
-        }
-        return false;
+        } else return isNewer && !isSignificantlyLessAccurate && isFromSameProvider;
     }
 
     /**
