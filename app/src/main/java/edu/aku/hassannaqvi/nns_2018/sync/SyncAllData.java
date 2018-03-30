@@ -66,12 +66,9 @@ public class SyncAllData extends AsyncTask<Void, Void, String> {
 
     @Override
     protected String doInBackground(Void... params) {
-        try {
-            Log.d(TAG, "doInBackground: URL " + url);
+        Log.d(TAG, "doInBackground: URL " + url);
             return downloadUrl(contractClass);
-        } catch (IOException e) {
-            return "Unable to upload data. Server may be down.";
-        }
+
     }
 
     private String downloadUrl(Class<?> contractClass) {
