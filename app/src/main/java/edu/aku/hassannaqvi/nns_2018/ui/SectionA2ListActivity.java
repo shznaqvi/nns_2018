@@ -271,7 +271,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+//        super.onBackPressed();
     }
 
     public static class RecyclerItemClickListener implements RecyclerView.OnItemTouchListener {

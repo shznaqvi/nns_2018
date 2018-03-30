@@ -1,5 +1,7 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -24,6 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindViews;
 import butterknife.ButterKnife;
@@ -65,6 +68,12 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
         ButterKnife.bind(this);
         binding.setCallback(this);
         setupViews();
+        skipPattern();
+    }
+
+    public void skipPattern() {
+        //binding.na202.addTextChangedListener(this);
+
     }
 
 
@@ -220,6 +229,53 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
             @Override
             public void afterTextChanged(Editable s) {
 
+                timer.cancel();
+                timer = new Timer();
+
+                if (!binding.nh2doby.getText().toString().equals("9998")) {
+                    if (Age != agebyDob) {
+                        timer.schedule(
+                                new TimerTask() {
+                                    @Override
+                                    public void run() {
+
+                                        SectionA2Activity.this.runOnUiThread(new Runnable() {
+                                            public void run() {
+                                                if (!binding.nh2agey.getText().toString().isEmpty()
+                                                        && !binding.nh2agey.getText().toString().equals("9998")) {
+
+                                                    //if (Age != agebyDob) {
+                                                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(SectionA2Activity.this);
+                                                    alertDialogBuilder
+                                                            .setMessage("Age does not match with Year of Birth. Do you want to continue?")
+                                                            .setCancelable(false)
+                                                            .setPositiveButton("OK",
+                                                                    new DialogInterface.OnClickListener() {
+                                                                        public void onClick(DialogInterface dialog, int id) {
+                                                                            //secFlag = false;
+                                                                        }
+                                                                    })
+                                                            .setNegativeButton("Cancel",
+                                                                    new DialogInterface.OnClickListener() {
+                                                                        public void onClick(DialogInterface dialog, int id) {
+                                                                            dialog.cancel();
+                                                                            //secFlag = true;
+                                                                        }
+                                                                    });
+                                                    AlertDialog alert = alertDialogBuilder.create();
+                                                    alert.show();
+                                                }
+                                                //}
+                                            }
+                                        });
+
+                                    }
+                                },
+                                DELAY
+                        );
+                    }
+
+                }
 
             }
         });
@@ -711,6 +767,52 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
 
     @Override
     public void afterTextChanged(Editable s) {
+
+        timer.cancel();
+        timer = new Timer();
+        if (!binding.nh2agey.getText().toString().isEmpty() && !binding.nh2doby.getText().toString().equals("9998")) {
+
+            if (Age != agebyDob) {
+                timer.schedule(
+                        new TimerTask() {
+                            @Override
+                            public void run() {
+
+                                SectionA2Activity.this.runOnUiThread(new Runnable() {
+                                    public void run() {
+                                        if (!binding.nh2doby.getText().toString().isEmpty() && !binding.nh2doby.getText().toString().equals("9998")) {
+                                            //if (Age != agebyDob) {
+                                            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(SectionA2Activity.this);
+                                            alertDialogBuilder
+                                                    .setMessage("Age does not match with Year of Birth. Do you want to continue?")
+                                                    .setCancelable(false)
+                                                    .setPositiveButton("OK",
+                                                            new DialogInterface.OnClickListener() {
+                                                                public void onClick(DialogInterface dialog, int id) {
+                                                                    //secFlag = false;
+                                                                }
+                                                            })
+                                                    .setNegativeButton("Cancel",
+                                                            new DialogInterface.OnClickListener() {
+                                                                public void onClick(DialogInterface dialog, int id) {
+                                                                    dialog.cancel();
+                                                                    //secFlag = true;
+                                                                }
+                                                            });
+                                            AlertDialog alert = alertDialogBuilder.create();
+                                            alert.show();
+                                        }
+                                    }
+                                    //}
+                                });
+
+                            }
+                        },
+                        DELAY
+                );
+            }
+
+        }
 
 
     }

@@ -210,11 +210,7 @@ public class SectionA8AActivity extends Activity {
             return false;
         }
 
-        if (!validatorClass.RangeTextBox(this, bi.nh7a06, 0, Integer.valueOf(bi.nh7a05.getText().toString()), getString(R.string.nh7a06), " Rupees"))
-            ;
-
-
-        return true;
+        return validatorClass.RangeTextBox(this, bi.nh7a06, 0, Integer.valueOf(bi.nh7a05.getText().toString()), getString(R.string.nh7a06), " Rupees");
 
     }
 

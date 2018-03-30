@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -12,6 +14,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Timer;
+import java.util.TimerTask;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
@@ -20,7 +23,7 @@ import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA5Binding;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionA5Activity extends AppCompatActivity {
+public class SectionA5Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener, CompoundButton.OnCheckedChangeListener {
 
     private final long DELAY = 1000;
     ActivitySectionA5Binding binding;
@@ -41,6 +44,7 @@ public class SectionA5Activity extends AppCompatActivity {
         binding.nh401.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                formValidation();
                 if (!(checkedId == R.id.nh401a)) {
 
                     clearClass.ClearAllFields(binding.fldGrpnh402, false);
@@ -59,6 +63,7 @@ public class SectionA5Activity extends AppCompatActivity {
         binding.nh403e.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                formValidation();
                 if (isChecked) {
                     binding.nh403a.setEnabled(false);
                     binding.nh403b.setEnabled(false);
@@ -82,6 +87,7 @@ public class SectionA5Activity extends AppCompatActivity {
         binding.nh404.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                formValidation();
                 if (checkedId == R.id.nh404b) {
                     clearClass.ClearAllFields(binding.fldGrpnh405, false);
                     /*binding.nh405a.setChecked(false);
@@ -97,6 +103,7 @@ public class SectionA5Activity extends AppCompatActivity {
         binding.nh405e.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                formValidation();
                 if (isChecked) {
                     binding.nh405a.setEnabled(false);
                     binding.nh405b.setEnabled(false);
@@ -119,6 +126,7 @@ public class SectionA5Activity extends AppCompatActivity {
         binding.nh403a.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                formValidation();
                 if (binding.nh403a.isChecked() || binding.nh403b.isChecked() || binding.nh403c.isChecked()) {
                     clearClass.ClearAllFields(binding.fldGrnh404, false);
                     clearClass.ClearAllFields(binding.fldGrpnh405, false);
@@ -138,6 +146,7 @@ public class SectionA5Activity extends AppCompatActivity {
         binding.nh403b.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                formValidation();
                 if (binding.nh403a.isChecked() || binding.nh403b.isChecked() || binding.nh403c.isChecked()) {
                     clearClass.ClearAllFields(binding.fldGrnh404, false);
                     clearClass.ClearAllFields(binding.fldGrpnh405, false);
@@ -157,6 +166,7 @@ public class SectionA5Activity extends AppCompatActivity {
         binding.nh403c.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                formValidation();
                 if (binding.nh403a.isChecked() || binding.nh403b.isChecked() || binding.nh403c.isChecked()) {
                     clearClass.ClearAllFields(binding.fldGrnh404, false);
                     clearClass.ClearAllFields(binding.fldGrpnh405, false);
@@ -176,6 +186,7 @@ public class SectionA5Activity extends AppCompatActivity {
         binding.nh501.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                formValidation();
                 if (checkedId == R.id.nh501d) {
                     clearClass.ClearAllFields(binding.fldGrnh602, false);
 
@@ -185,6 +196,30 @@ public class SectionA5Activity extends AppCompatActivity {
                 }
             }
         });
+
+//        Listeners
+        binding.nh402.setOnCheckedChangeListener(this);
+        binding.nh40601.setOnCheckedChangeListener(this);
+        binding.nh40602.setOnCheckedChangeListener(this);
+        binding.nh40603.setOnCheckedChangeListener(this);
+        binding.nh40604.setOnCheckedChangeListener(this);
+        binding.nh40605.setOnCheckedChangeListener(this);
+        binding.nh40696.setOnCheckedChangeListener(this);
+        binding.nh501.setOnCheckedChangeListener(this);
+        binding.nh502.setOnCheckedChangeListener(this);
+        binding.nh503.setOnCheckedChangeListener(this);
+        binding.nh601.setOnCheckedChangeListener(this);
+        binding.nh602.setOnCheckedChangeListener(this);
+        binding.nh603.setOnCheckedChangeListener(this);
+        binding.nh604.setOnCheckedChangeListener(this);
+        binding.nh605.setOnCheckedChangeListener(this);
+        binding.nh606.setOnCheckedChangeListener(this);
+        binding.nh607.setOnCheckedChangeListener(this);
+        binding.nh608.setOnCheckedChangeListener(this);
+        binding.nh609.setOnCheckedChangeListener(this);
+        binding.nh701.setOnCheckedChangeListener(this);
+
+        binding.nh702.addTextChangedListener(this);
 
     }
 
@@ -559,8 +594,46 @@ public class SectionA5Activity extends AppCompatActivity {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
         }
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
     }
 
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
 
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+        timer.cancel();
+        timer = new Timer();
+        timer.schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                formValidation();
+                            }
+                        });
+
+                    }
+                },
+                DELAY
+        );
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        formValidation();
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        formValidation();
+    }
 }

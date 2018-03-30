@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -13,6 +16,7 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Timer;
+import java.util.TimerTask;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
@@ -25,7 +29,7 @@ import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionC4Activity extends Activity {
+public class SectionC4Activity extends Activity implements TextWatcher, RadioGroup.OnCheckedChangeListener, CompoundButton.OnCheckedChangeListener {
 
     private final long DELAY = 1000;
     ActivitySectionC4Binding binding;
@@ -52,6 +56,7 @@ public class SectionC4Activity extends Activity {
         binding.nc401.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                formValidation();
                 if (binding.nc401a.isChecked()) {
                     //binding.fldGrnc402.setVisibility(View.VISIBLE);
                     clearClass.ClearAllFields(binding.fldGrnc402, true);
@@ -82,6 +87,7 @@ public class SectionC4Activity extends Activity {
         binding.nc402.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                formValidation();
                 if (binding.nc402a.isChecked()) {
                     //binding.fldGrnc403.setVisibility(View.VISIBLE);
                     clearClass.ClearAllFields(binding.fldGrnc403, true);
@@ -115,6 +121,7 @@ public class SectionC4Activity extends Activity {
         binding.nc405.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                formValidation();
                 if (binding.nc405a.isChecked()) {
                     //binding.fldGrnc406.setVisibility(View.VISIBLE);
                     clearClass.ClearAllFields(binding.fldGrnc406, true);
@@ -144,6 +151,7 @@ public class SectionC4Activity extends Activity {
         binding.nc406.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                formValidation();
                 if (binding.nc406a.isChecked()) {
                     //binding.fldGrnc407.setVisibility(View.VISIBLE);
                     clearClass.ClearAllFields(binding.fldGrnc407, true);
@@ -173,6 +181,7 @@ public class SectionC4Activity extends Activity {
         binding.nc409.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                formValidation();
                 if (binding.nc409a.isChecked()) {
                     //binding.fldGrnc410.setVisibility(View.VISIBLE);
                     clearClass.ClearAllFields(binding.fldGrnc410, true);
@@ -204,6 +213,7 @@ public class SectionC4Activity extends Activity {
         binding.nc410.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                formValidation();
                 if (binding.nc410a.isChecked()) {
                     //binding.fldGrnc411.setVisibility(View.VISIBLE);
                     clearClass.ClearAllFields(binding.fldGrnc411, true);
@@ -252,6 +262,22 @@ public class SectionC4Activity extends Activity {
 
         //Get Intent
         selectedChild = (FamilyMembersContract) getIntent().getSerializableExtra("selectedChild");
+
+        binding.nc403.setOnCheckedChangeListener(this);
+        binding.nc404a.setOnCheckedChangeListener(this);
+        binding.nc407.setOnCheckedChangeListener(this);
+        binding.nc408a.setOnCheckedChangeListener(this);
+        binding.nc411.setOnCheckedChangeListener(this);
+        binding.nc412b.setOnCheckedChangeListener(this);
+        binding.nc413.setOnCheckedChangeListener(this);
+        binding.nc414.setOnCheckedChangeListener(this);
+        binding.nc415.setOnCheckedChangeListener(this);
+        binding.nc416.addTextChangedListener(this);
+        binding.nc417.setOnCheckedChangeListener(this);
+        binding.nc418.setOnCheckedChangeListener(this);
+        binding.nc419.setOnCheckedChangeListener(this);
+        binding.nc420m.addTextChangedListener(this);
+        binding.nc420d.addTextChangedListener(this);
         autoPopulateFields();
     }
 
@@ -1039,4 +1065,44 @@ public class SectionC4Activity extends Activity {
     }
 
 
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+        timer.cancel();
+        timer = new Timer();
+        timer.schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                formValidation();
+                            }
+                        });
+
+                    }
+                },
+                DELAY
+        );
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        formValidation();
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        formValidation();
+    }
 }

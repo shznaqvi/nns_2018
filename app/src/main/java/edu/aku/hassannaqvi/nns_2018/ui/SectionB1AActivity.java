@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -31,7 +32,7 @@ import edu.aku.hassannaqvi.nns_2018.other.JSONB1AModelClass;
 import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionB1AActivity extends AppCompatActivity implements TextWatcher {
+public class SectionB1AActivity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
     private final long DELAY = 1000;
     ActivitySectionB1ABinding bi;
@@ -412,5 +413,9 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         }
     }
 
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+    }
 }
 

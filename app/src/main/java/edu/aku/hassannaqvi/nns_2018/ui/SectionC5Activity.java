@@ -4,6 +4,10 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.CompoundButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -11,6 +15,7 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Timer;
+import java.util.TimerTask;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
@@ -22,7 +27,7 @@ import edu.aku.hassannaqvi.nns_2018.other.JSONC5ModelClass;
 import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionC5Activity extends AppCompatActivity {
+public class SectionC5Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener, CompoundButton.OnCheckedChangeListener {
 
     private final long DELAY = 1000;
     ActivitySectionC5Binding bi;
@@ -44,6 +49,13 @@ public class SectionC5Activity extends AppCompatActivity {
         //Get Intent
         selectedChild = (FamilyMembersContract) getIntent().getSerializableExtra("selectedChild");
 
+
+        bi.nc501.setOnCheckedChangeListener(this);
+        bi.nc502.setOnCheckedChangeListener(this);
+        bi.nc503.setOnCheckedChangeListener(this);
+        bi.nc504.setOnCheckedChangeListener(this);
+        bi.nc505.setOnCheckedChangeListener(this);
+        bi.nc506.setOnCheckedChangeListener(this);
         autoPopulateFields();
     }
 
@@ -247,5 +259,46 @@ public class SectionC5Activity extends AppCompatActivity {
 
     }
 
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+        timer.cancel();
+        timer = new Timer();
+        timer.schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                formValidation();
+                            }
+                        });
+
+                    }
+                },
+                DELAY
+        );
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        formValidation();
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        formValidation();
+    }
 
 }

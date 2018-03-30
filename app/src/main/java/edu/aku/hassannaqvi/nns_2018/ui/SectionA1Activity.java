@@ -15,6 +15,7 @@ import android.text.TextWatcher;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -27,6 +28,8 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
@@ -38,10 +41,11 @@ import edu.aku.hassannaqvi.nns_2018.other.MembersCount;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionA1Activity extends AppCompatActivity {
+public class SectionA1Activity extends AppCompatActivity implements TextWatcher, CompoundButton.OnCheckedChangeListener, RadioGroup.OnCheckedChangeListener {
 
     private static final String TAG = SectionA1Activity.class.getName();
     static int progress = 0;
+    private final long DELAY = 1000;
     ActivitySectionA1Binding binding;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     DatabaseHelper db;
@@ -49,7 +53,7 @@ public class SectionA1Activity extends AppCompatActivity {
     int progressStatus = 0;
     Handler handler = new Handler();
     Boolean flag = false;
-
+    private Timer timer = new Timer();
     static Boolean reBackFlag = true;
     static Boolean reBackChildFlag = true;
 
@@ -70,6 +74,7 @@ public class SectionA1Activity extends AppCompatActivity {
         binding.na11801.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                formValidation();
                 if (checkedId == R.id.na11801a) {
                     clearClass.ClearAllFields(binding.fldGrpna113, false);
                 } else {
@@ -77,6 +82,19 @@ public class SectionA1Activity extends AppCompatActivity {
                 }
             }
         });
+
+
+        // Field wise validation
+
+        binding.nh101.addTextChangedListener(this);
+        binding.checkHHHeadpresent.setOnCheckedChangeListener(this);
+        binding.newHHheadname.addTextChangedListener(this);
+        binding.nh103.addTextChangedListener(this);
+        binding.nh115.addTextChangedListener(this);
+        binding.nh213.addTextChangedListener(this);
+        binding.na11802.setOnCheckedChangeListener(this);
+        binding.na119a.addTextChangedListener(this);
+
 
     }
 
@@ -135,6 +153,24 @@ public class SectionA1Activity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
 
+                timer.cancel();
+                timer = new Timer();
+                timer.schedule(
+                        new TimerTask() {
+                            @Override
+                            public void run() {
+
+                                runOnUiThread(new Runnable() {
+                                    public void run() {
+                                        formValidation();
+                                    }
+                                });
+
+                            }
+                        },
+                        DELAY
+                );
+
             }
         });
 
@@ -172,11 +208,36 @@ public class SectionA1Activity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
 
+                timer.cancel();
+                timer = new Timer();
+                timer.schedule(
+                        new TimerTask() {
+                            @Override
+                            public void run() {
+
+                                runOnUiThread(new Runnable() {
+                                    public void run() {
+                                        formValidation();
+                                    }
+                                });
+
+                            }
+                        },
+                        DELAY
+                );
+
             }
         });
 
 
-//        Initializing Re-Back functionality
+//
+//
+//
+//
+//
+//
+//
+// Initializing Re-Back functionality
         reBackFlag = true;
         reBackChildFlag = true;
 
@@ -545,36 +606,46 @@ public class SectionA1Activity extends AppCompatActivity {
         }
     }
 
-/*    @Override
-    protected void onResume() {
-        super.onResume();
-        Toast.makeText(this, "On resume", Toast.LENGTH_SHORT).show();
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        Toast.makeText(this, "On pause", Toast.LENGTH_SHORT).show();
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    public void afterTextChanged(Editable s) {
 
-        Toast.makeText(this, "On stop", Toast.LENGTH_SHORT).show();
+        timer.cancel();
+        timer = new Timer();
+        timer.schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                formValidation();
+                            }
+                        });
+
+                    }
+                },
+                DELAY
+        );
     }
 
     @Override
-    protected void onPostResume() {
-        super.onPostResume();
-
-        Toast.makeText(this, "On post resume", Toast.LENGTH_SHORT).show();
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        formValidation();
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-
-        Toast.makeText(this, "On back", Toast.LENGTH_SHORT).show();
-    }*/
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        formValidation();
+    }
 }

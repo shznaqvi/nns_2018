@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -30,7 +33,7 @@ import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedChangeListener {
+public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedChangeListener, TextWatcher, CompoundButton.OnCheckedChangeListener {
 
     private final long DELAY = 1000;
     ActivitySectionC2Binding bi;
@@ -493,6 +496,7 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
         bi.nc206.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (bi.nc206a.isChecked()) {
                     //bi.fldGrpnc207.setVisibility(View.VISIBLE);
                     clearClass.ClearAllFields(bi.fldGrpnc207, true);
@@ -518,6 +522,7 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
         bi.nc208.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (bi.nc208b.isChecked()) {
                     //bi.fldGrpnc209.setVisibility(View.VISIBLE);
                     clearClass.ClearAllFields(bi.fldGrpnc209, true);
@@ -533,6 +538,7 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
         bi.nc210.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (bi.nc210a.isChecked()) {
                     //bi.fldGrpnc211.setVisibility(View.VISIBLE);
                     clearClass.ClearAllFields(bi.fldGrpnc211, true);
@@ -548,6 +554,7 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
         bi.nc212.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (bi.nc212a.isChecked()) {
                     //bi.fldGrpnc212a.setVisibility(View.GONE);
                     clearClass.ClearAllFields(bi.fldGrpnc212a, false);
@@ -593,6 +600,46 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
             rg.setOnCheckedChangeListener(this);
         }
 
+//        Listener
+
+        bi.nc207.setOnCheckedChangeListener(this);
+        bi.nc209.setOnCheckedChangeListener(this);
+        bi.nc211.setOnCheckedChangeListener(this);
+        bi.nc21201.setOnCheckedChangeListener(this);
+        bi.nc213.setOnCheckedChangeListener(this);
+        bi.nc214.setOnCheckedChangeListener(this);
+        bi.nc215a.setOnCheckedChangeListener(this);
+        bi.nc215b.setOnCheckedChangeListener(this);
+        bi.nc215c.setOnCheckedChangeListener(this);
+        bi.nc215d.setOnCheckedChangeListener(this);
+        bi.nc215e.setOnCheckedChangeListener(this);
+        bi.nc215f.setOnCheckedChangeListener(this);
+        bi.nc215g.setOnCheckedChangeListener(this);
+        bi.nc215h.setOnCheckedChangeListener(this);
+        bi.nc215i.setOnCheckedChangeListener(this);
+        bi.nc217a.setOnCheckedChangeListener(this);
+        bi.nc217b.setOnCheckedChangeListener(this);
+        bi.nc217c.setOnCheckedChangeListener(this);
+        bi.nc217d.setOnCheckedChangeListener(this);
+        bi.nc217e.setOnCheckedChangeListener(this);
+        bi.nc217f.setOnCheckedChangeListener(this);
+        bi.nc217g.setOnCheckedChangeListener(this);
+        bi.nc217h.setOnCheckedChangeListener(this);
+        bi.nc217i.setOnCheckedChangeListener(this);
+        bi.nc217j.setOnCheckedChangeListener(this);
+        bi.nc217k.setOnCheckedChangeListener(this);
+        bi.nc217l.setOnCheckedChangeListener(this);
+        bi.nc217m.setOnCheckedChangeListener(this);
+        bi.nc217n.setOnCheckedChangeListener(this);
+        bi.nc217o.setOnCheckedChangeListener(this);
+        bi.nc217p.setOnCheckedChangeListener(this);
+        bi.nc217q.setOnCheckedChangeListener(this);
+        bi.nc218.setOnCheckedChangeListener(this);
+        bi.nc219.setOnCheckedChangeListener(this);
+        bi.nc220.setOnCheckedChangeListener(this);
+        bi.nc221.setOnCheckedChangeListener(this);
+        bi.nc222.setOnCheckedChangeListener(this);
+        bi.nc223.setOnCheckedChangeListener(this);
 
     }
 
@@ -1132,6 +1179,8 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
 
+        ValidateForm();
+
         if (isoneYes()) {
             //bi.fldGrpnc218.setVisibility(View.GONE);
             clearClass.ClearAllFields(bi.fldGrpnc218, false);
@@ -1183,6 +1232,11 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
 
     }
 
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        ValidateForm();
+    }
+
     public boolean isoneYes() {
 
         int i = 0;
@@ -1221,4 +1275,18 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
     }
 
 
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+
+    }
 }
