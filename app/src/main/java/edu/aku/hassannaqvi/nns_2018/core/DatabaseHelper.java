@@ -118,6 +118,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             familyMembers.COLUMN_SA2 + " TEXT," +
             familyMembers.COLUMN_ENM_NO + " TEXT," +
             familyMembers.COLUMN_HH_NO + " TEXT," +
+            familyMembers.COLUMN_AV + " TEXT," +
             familyMembers.COLUMN_DEVICEID + " TEXT," +
             familyMembers.COLUMN_DEVICETAGID + " TEXT," +
             familyMembers.COLUMN_APP_VERSION + " TEXT," +
@@ -1492,6 +1493,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 // New value for one column
         ContentValues values = new ContentValues();
         values.put(familyMembers.COLUMN_SA2, fmc.getsA2());
+        values.put(familyMembers.COLUMN_AV, fmc.getAv());
 
 // Which row to update, based on the ID
         String selection = familyMembers.COLUMN_UID + " = ?";
@@ -1693,6 +1695,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 familyMembers.COLUMN_SA2,
                 familyMembers.COLUMN_DEVICETAGID,
                 familyMembers.COLUMN_DEVICEID,
+                familyMembers.COLUMN_AV,
                 familyMembers.COLUMN_SYNCED,
                 familyMembers.COLUMN_SYNCED_DATE,
                 familyMembers.COLUMN_APP_VERSION

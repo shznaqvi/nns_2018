@@ -623,8 +623,15 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
             if ((Age >= 15 && Age <= 49) && family.getna204().equals("2")) {
                 if (binding.nh2mse.isChecked()) {
                     MainApp.membersCount.setWra(MainApp.membersCount.getWra() + 1);
+                    if (binding.nh210a.isChecked()) {
+                        family.setAv("1");
+                    }
                 } else {
                     MainApp.membersCount.setMwra(MainApp.membersCount.getMwra() + 1);
+                    if (binding.nh210a.isChecked()) {
+                        family.setAv("1");
+                    }
+
                 }
                 MainApp.mwra.add(family);
                 //MainApp.adolescents.add(family);
@@ -643,6 +650,9 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
 
                 // Add data in list
                 MainApp.adolescents.add(family);
+                if (binding.nh210a.isChecked()) {
+                    family.setAv("1");
+                }
             }
             //Children < 5
             else if (Age <= 5) {
@@ -655,6 +665,9 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
                     memType.put(1, Integer.valueOf(mem.get(3).get(1).toString()));
                 }
                 MainApp.membersCount.setMembers(3, memType);
+                if (binding.nh210a.isChecked()) {
+                    family.setAv("1");
+                }
 
                 // Add data in list
                 if (Age < 2) {
@@ -688,6 +701,8 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
             family.setAgeInYear(String.valueOf(Age));
 
             MainApp.familyMembersList.set(position, family);
+
+
         }
 
         //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
