@@ -35,11 +35,22 @@ public class EndingActivity extends AppCompatActivity {
         if (check) {
             binding.istatusa.setEnabled(true);
             binding.istatusb.setEnabled(false);
+            binding.istatusb.setEnabled(false);
+            binding.istatusc.setEnabled(false);
+            binding.istatusd.setEnabled(false);
+            binding.istatuse.setEnabled(false);
+            binding.istatusf.setEnabled(false);
+            binding.istatus96.setEnabled(false);
 
             binding.btnAddMember.setVisibility(View.VISIBLE);
         } else {
             binding.istatusa.setEnabled(false);
             binding.istatusb.setEnabled(true);
+            binding.istatusc.setEnabled(true);
+            binding.istatusd.setEnabled(true);
+            binding.istatuse.setEnabled(true);
+            binding.istatusf.setEnabled(true);
+            binding.istatus96.setEnabled(true);
             binding.btnAddMember.setVisibility(View.GONE);
         }
 

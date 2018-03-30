@@ -164,8 +164,8 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
                 if (SectionA1Activity.reBackFlag) {
                     respLineNo = "";
-                    startActivity(new Intent(this, SectionA4Activity.class));
-//                    startActivity(new Intent(this, SectionB1Activity.class));
+//                    startActivity(new Intent(this, SectionA4Activity.class));
+                    startActivity(new Intent(this, SectionB1Activity.class));
                 } else {
                     if (SectionA1Activity.reBackChildFlag) {
                         if (MainApp.mwra.size() > 0) {
@@ -271,7 +271,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-//        super.onBackPressed();
+        Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
     }
 
     public static class RecyclerItemClickListener implements RecyclerView.OnItemTouchListener {

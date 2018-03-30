@@ -76,14 +76,13 @@ public class ChildEndingActivity extends AppCompatActivity {
             SaveDraft();
             if (UpdateDB()) {
 
-                finish();
+//                finish();
 
                 if (!flagNAChild) {
 
                     if (SectionC1Activity.counter == SectionC1Activity.counterPerMom) {
 
-                        startActivity(new Intent(this, MotherEndingActivity.class)
-                                .putExtra("checkingFlag", true)
+                        startActivity(new Intent(this, EndingActivity.class)
                                 .putExtra("complete", true));
 
                     } else {
@@ -95,7 +94,8 @@ public class ChildEndingActivity extends AppCompatActivity {
 
                     if (SectionC1Activity.counter == SectionC1Activity.counterPerNA) {
                         SectionC1Activity.isNA = false;
-                        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+                        startActivity(new Intent(this, EndingActivity.class).
+                                putExtra("complete", true));
 
                     } else {
 
