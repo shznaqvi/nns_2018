@@ -64,7 +64,7 @@ public class EndingActivity extends AppCompatActivity {
             SaveDraft();
             if (UpdateDB()) {
 
-                finish();
+//                finish();
 
                 Intent endSec = new Intent(this, MainActivity.class);
                 startActivity(endSec);

@@ -71,11 +71,8 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHol
             childBinding.childName.setText(json.getName().toUpperCase());
             childBinding.Age.setText("Age: " + json.getAge());
             childBinding.na204.setText(json.getGender().equals("1") ? "Male" : "Female");
-            //childBinding.childmName.setText(child.getMotherName().equals("") ? "..." : child.getMotherName());
+            //childBinding.childmName.setText(json.getMotherName().equals("") ? "..." : json.getMotherName());
 
-           /* wraBinding.wraName.setText(mem.getName().toUpperCase());
-            wraBinding.ms.setText("Marital Status: "+MStatusChecking(mem.getMaritialStatus()));
-            wraBinding.Age.setText("Age: "+mem.getAge());*/
 
         }
     }

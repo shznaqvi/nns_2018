@@ -71,7 +71,7 @@ public class MotherEndingActivity extends AppCompatActivity {
             SaveDraft();
             if (UpdateDB()) {
 
-                finish();
+//                finish();
 
                 if (SectionB1Activity.WRAcounter == MainApp.mwra.size()) {
 
