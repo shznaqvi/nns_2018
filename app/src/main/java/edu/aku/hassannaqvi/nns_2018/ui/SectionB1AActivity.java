@@ -50,6 +50,8 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
     OutcomeContract outcomeCC;
     private Timer timer = new Timer();
 
+    String classPassName = "";
+
     //static int status;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -223,9 +225,9 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                     MainApp.count++;
                     if (MainApp.totalPregnancy >= MainApp.count) {
 
-                        startActivity(new Intent(this, SectionB1AActivity.class)
+                        startActivityForResult(new Intent(this, SectionB1AActivity.class)
                                 .putExtra("type", false)
-                                .putExtra("backPressed", backPressed ? true : frontPressed));
+                                .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
                     } else {
 
 //                        MainApp.count = 1;
@@ -239,8 +241,8 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                             if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
                                     &&
                                     MainApp.B6Flag) {
-                                startActivity(new Intent(this, SectionB6Activity.class)
-                                        .putExtra("backPressed", backPressed ? true : frontPressed));
+                                startActivityForResult(new Intent(this, SectionB6Activity.class)
+                                        .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
                             } else {
                                 startActivity(new Intent(this, MotherEndingActivity.class)
                                         .putExtra("complete", true));
@@ -562,7 +564,23 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
             childSerial--;
         }
 
+        Intent intent = new Intent();
+        intent.putExtra("backPressedClass", SectionB1AActivity.class.getName());
+        setResult(RESULT_OK, intent);
+
         super.onBackPressed();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                classPassName = data.getStringExtra("backPressedClass");
+            } else {
+                classPassName = "";
+            }
+        }
     }
 
 }

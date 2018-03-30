@@ -50,6 +50,9 @@ public class SectionB1Activity extends Activity {
     Boolean frontPressed = false;
     private Timer timer = new Timer();
 
+    String classPassName = "";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -870,14 +873,14 @@ public class SectionB1Activity extends Activity {
                     if (bi.nw204a.isChecked() || bi.nw205a.isChecked()) {
                         if (bi.nw207a.isChecked()) {
                             if (MainApp.totalPregnancy > 0) {
-                                startActivity(new Intent(this, SectionB1AActivity.class)
-                                        .putExtra("backPressed", backPressed));
+                                startActivityForResult(new Intent(this, SectionB1AActivity.class)
+                                        .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
                             } else {
                                 if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
                                         &&
                                         MainApp.B6Flag) {
-                                    startActivity(new Intent(this, SectionB6Activity.class)
-                                            .putExtra("backPressed", backPressed));
+                                    startActivityForResult(new Intent(this, SectionB6Activity.class)
+                                            .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
                                 } else {
                                     startActivity(new Intent(this, MotherEndingActivity.class)
                                             .putExtra("complete", true));
@@ -887,8 +890,8 @@ public class SectionB1Activity extends Activity {
                             if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
                                     &&
                                     MainApp.B6Flag) {
-                                startActivity(new Intent(this, SectionB6Activity.class)
-                                        .putExtra("backPressed", backPressed));
+                                startActivityForResult(new Intent(this, SectionB6Activity.class)
+                                        .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
                             } else {
                                 startActivity(new Intent(this, MotherEndingActivity.class)
                                         .putExtra("complete", true));
@@ -898,8 +901,8 @@ public class SectionB1Activity extends Activity {
                         if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
                                 &&
                                 MainApp.B6Flag) {
-                            startActivity(new Intent(this, SectionB6Activity.class)
-                                    .putExtra("backPressed", backPressed));
+                            startActivityForResult(new Intent(this, SectionB6Activity.class)
+                                    .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
                         } else {
                             startActivity(new Intent(this, MotherEndingActivity.class)
                                     .putExtra("complete", true));
@@ -1239,6 +1242,18 @@ public class SectionB1Activity extends Activity {
             bi.nb101.setEnabled(false);
         }
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                classPassName = data.getStringExtra("backPressedClass");
+            } else {
+                classPassName = "";
+            }
+        }
     }
 
     public void BtnAddMember() {

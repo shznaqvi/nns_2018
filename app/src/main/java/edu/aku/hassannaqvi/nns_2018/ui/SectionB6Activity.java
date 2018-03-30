@@ -37,6 +37,7 @@ public class SectionB6Activity extends AppCompatActivity {
     String uid = "";
     private Timer timer = new Timer();
 
+    String classPassName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -331,8 +332,8 @@ public class SectionB6Activity extends AppCompatActivity {
 
 //                    finish();
 
-                    startActivity(new Intent(this, SectionB6Activity.class)
-                            .putExtra("backPressed", backPressed ? true : frontPressed));
+                    startActivityForResult(new Intent(this, SectionB6Activity.class)
+                            .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
 
                 }
 
@@ -484,7 +485,24 @@ public class SectionB6Activity extends AppCompatActivity {
             MainApp.nuCount--;
         }
 
+        Intent intent = new Intent();
+        intent.putExtra("backPressedClass", SectionB6Activity.class.getName());
+        setResult(RESULT_OK, intent);
+
         super.onBackPressed();
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                classPassName = data.getStringExtra("backPressedClass");
+            } else {
+                classPassName = "";
+            }
+        }
+    }
+
 
 }
