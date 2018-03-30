@@ -352,9 +352,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
             }
 
             if (!MainApp.IsResp) {
-                if (!validatorClass.EmptyRadioButton(this, binding.resp, binding.respb, getString(R.string.resp))) {
-                    return false;
-                }
+                return validatorClass.EmptyRadioButton(this, binding.resp, binding.respb, getString(R.string.resp));
             }
 
         } else {
@@ -442,9 +440,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
                 return false;
             }
 
-            if (!validatorClass.EmptyRadioButton(this, binding.nh210, binding.nh210a, getString(R.string.nh210))) {
-                return false;
-            }
+            return validatorClass.EmptyRadioButton(this, binding.nh210, binding.nh210a, getString(R.string.nh210));
         }
 
         return true;
@@ -607,6 +603,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
                 // Add data in list
                 if (Age < 2) {
                     MainApp.childUnder2.add(family);
+                    MainApp.childUnder2Check.add(family);
                     MainApp.childUnder5.add(family);
                 } else {
                     MainApp.childUnder5.add(family);

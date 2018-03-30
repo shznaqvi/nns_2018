@@ -1,6 +1,7 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -39,6 +40,8 @@ public class SectionH8Activity extends Activity implements TextWatcher {
     static int deccounter = 0;
     @BindViews({R.id.nh808d, R.id.nh808m, R.id.nh808y})
     List<EditText> grpdob;
+    FamilyMembersContract family;
+    long ageInYears = 0;
 
     Calendar dob = Calendar.getInstance();
     List<String> mothersList, fathersList;
@@ -62,6 +65,7 @@ public class SectionH8Activity extends Activity implements TextWatcher {
         mothersList = new ArrayList<>();
         mothersSerials = new ArrayList<>();
         mothersMap = new HashMap<>();
+        family = new FamilyMembersContract();
 
         mothersList.add("....");
         mothersList.add("N/A");
@@ -123,6 +127,12 @@ public class SectionH8Activity extends Activity implements TextWatcher {
 
         bi.txtCounter.setText("Count " + counter + " out of " + SectionA5Activity.deceasedCounter);
 
+
+        if (!bi.nh807y.getText().toString().isEmpty()) {
+            if (Integer.valueOf(bi.nh807y.getText().toString()) < 2 && ageInYears < 2) {
+                MainApp.childUnder2Check.add(family);
+            }
+        }
 
 
     }
@@ -341,10 +351,13 @@ public class SectionH8Activity extends Activity implements TextWatcher {
                 dob = DateUtils.getCalendarDate(bi.nh808d.getText().toString(), bi.nh808m.getText().toString(),
                         bi.nh808y.getText().toString());
 
+                ageInYears = DateUtils.ageInYearByDOB(dob);
+
 
             } else if (!bi.nh808d.getText().toString().equals("98")) {
                 dob = DateUtils.getCalendarDate(bi.nh808m.getText().toString(),
                         bi.nh808y.getText().toString());
+                ageInYears = DateUtils.ageInYearByDOB(dob);
             }
 
         }

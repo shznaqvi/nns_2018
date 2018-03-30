@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -16,6 +19,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
 
@@ -39,6 +43,7 @@ public class SectionB1Activity extends Activity {
     ActivitySectionB1Binding bi;
     DatabaseHelper db;
     private Timer timer = new Timer();
+    static Boolean childCheck = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +66,7 @@ public class SectionB1Activity extends Activity {
 
 
 //      Get intent
-        /*if (getIntent().getBooleanExtra("mwraFlag", false)) {
+        if (getIntent().getBooleanExtra("mwraFlag", false)) {
             lstMwra.remove(getIntent().getStringExtra("wraName"));
         } else {
             wraMap = new HashMap<>();
@@ -72,6 +77,8 @@ public class SectionB1Activity extends Activity {
             for (FamilyMembersContract wra : MainApp.mwra) {
                 wraMap.put(wra.getName() + "-" + wra.getSerialNo(), wra);
                 lstMwra.add(wra.getName() + "-" + wra.getSerialNo());
+
+
             }
 
             WRAcounter = 0;
@@ -83,7 +90,23 @@ public class SectionB1Activity extends Activity {
 
         bi.nb101.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, lstMwra));
 
-*/
+        bi.nb101.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (bi.nb101.getSelectedItemPosition() != 0) {
+                    for (FamilyMembersContract fmc : MainApp.childUnder2Check) {
+                        childCheck = fmc.getMotherId().equals(wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
         bi.nw202.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -529,7 +552,7 @@ public class SectionB1Activity extends Activity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if (bi.nw214.getText().toString().equals("0")) {
+                if (bi.nw214.getText().toString().equals("0") || bi.nw214.getText().toString().isEmpty()) {
                     bi.nw215.setEnabled(false);
                     bi.nw215.setText(null);
                     bi.nw216a.setEnabled(false);
@@ -823,6 +846,8 @@ public class SectionB1Activity extends Activity {
                         if (bi.nw207a.isChecked()) {
                             if (MainApp.totalPregnancy > 0) {
                                 startActivity(new Intent(this, SectionB1AActivity.class));
+                            } else if (childCheck) {
+                                startActivity(new Intent(this, SectionB2Activity.class));
                             } else {
                                 if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
                                         &&
@@ -1011,33 +1036,43 @@ public class SectionB1Activity extends Activity {
                         return false;
                     }
 
-                    if (!validatorClass.EmptyTextBox(this, bi.nw213, getString(R.string.nw213))) {
-                        return false;
+                    if (!bi.nw212.getText().toString().equals("0")) {
+                        if (!validatorClass.EmptyTextBox(this, bi.nw213, getString(R.string.nw213))) {
+                            return false;
+                        }
+
+                        if (!validatorClass.EmptyTextBox(this, bi.nw213, getString(R.string.nw213))) {
+                            return false;
+                        }
+
+                        if (!validatorClass.RangeTextBox(this, bi.nw213, Integer.valueOf(bi.nw206.getText().toString()), Integer.valueOf(bi.nw202.getText().toString()), getString(R.string.nw213), " years")) {
+                            return false;
+                        }
+
+
+                        if (!validatorClass.EmptyTextBox(this, bi.nw214, getString(R.string.nw214))) {
+                            return false;
+                        }
+
+                        if (!validatorClass.RangeTextBox(this, bi.nw214, 0, Integer.valueOf(bi.nw211.getText().toString()), getString(R.string.nw211), " Deliveries")) {
+                            return false;
+                        }
+
+                        if (!validatorClass.EmptyTextBox(this, bi.nw215, getString(R.string.nw215))) {
+                            return false;
+                        }
+                        if (!validatorClass.RangeTextBox(this, bi.nw215, 0, Integer.valueOf(bi.nw212.getText().toString()), getString(R.string.nw212), " Deliveries")) {
+                            return false;
+                        }
+
+                        if (!validatorClass.EmptyRadioButton(this, bi.nw216, bi.nw216a, getString(R.string.nw216))) {
+                            return false;
+                        }
+
+                        if (bi.nw216a.isChecked()) {
+                            return validatorClass.EmptyTextBox(this, bi.nw216aa, getString(R.string.nw216a));
+                        }
                     }
-
-                    if (!validatorClass.EmptyTextBox(this, bi.nw213, getString(R.string.nw213))) {
-                        return false;
-                    }
-
-                    if (!validatorClass.RangeTextBox(this, bi.nw213, Integer.valueOf(bi.nw206.getText().toString()), Integer.valueOf(bi.nw202.getText().toString()), getString(R.string.nw213), " years")) {
-                        return false;
-                    }
-
-
-                    if (!validatorClass.EmptyTextBox(this, bi.nw214, getString(R.string.nw214))) {
-                        return false;
-                    }
-
-                    if (!validatorClass.RangeTextBox(this, bi.nw214, 0, Integer.valueOf(bi.nw211.getText().toString()), getString(R.string.nw211), " Deliveries")) {
-                        return false;
-                    }
-
-                    if (!validatorClass.EmptyTextBox(this, bi.nw215, getString(R.string.nw215))) {
-                        return false;
-                    }
-
-                    return validatorClass.RangeTextBox(this, bi.nw215, 0, Integer.valueOf(bi.nw212.getText().toString()), getString(R.string.nw212), " Deliveries");
-
 
                 }
 
@@ -1088,16 +1123,9 @@ public class SectionB1Activity extends Activity {
         sB1.put("nw206", bi.nw206.getText().toString());
         //        nw207
         sB1.put("nw207", bi.nw207a.isChecked() ? "1" : bi.nw207b.isChecked() ? "2" : "0");
-
-        sB1.put("nw211", bi.nw211.getText().toString());
-        sB1.put("nw212", bi.nw212.getText().toString());
-        sB1.put("nw215", bi.nw215.getText().toString());
-
-        sB1.put("nw213", bi.nw213.getText().toString());
-
         sB1.put("nw208", bi.nw208a.isChecked() ? "1" : bi.nw208b.isChecked() ? "2" : "0");
 
-        sB1.put("nw210", bi.nw209a.isChecked() ? "1" : bi.nw209b.isChecked() ? "2" : "0");
+        sB1.put("nw209", bi.nw209a.isChecked() ? "1" : bi.nw209b.isChecked() ? "2" : "0");
 
         //        nw21001
         sB1.put("nw21001", bi.nw21001a.isChecked() ? "1" : "2");
@@ -1110,16 +1138,20 @@ public class SectionB1Activity extends Activity {
         //        nw21099
         sB1.put("nw21099", bi.nw21099a.isChecked() ? "1" : "2");
 
+        sB1.put("nw211", bi.nw211.getText().toString());
+        sB1.put("nw212", bi.nw212.getText().toString());
+        sB1.put("nw213", bi.nw213.getText().toString());
+        sB1.put("nw214", bi.nw214.getText().toString());
+        sB1.put("nw215", bi.nw215.getText().toString());
+        sB1.put("nw216", bi.nw216a.isChecked() ? "1" : bi.nw216b.isChecked() ? "2" : "0");
+        sB1.put("nw216aa", bi.nw216aa.getText().toString());
 
-        if (!bi.nw215.getText().toString().isEmpty()) {
-            /*if (bi.nw208a.isChecked()) {
-                MainApp.totalPregnancy = Integer.valueOf(bi.nw211.getText().toString()) - 1;
-            } else {
-                MainApp.totalPregnancy = Integer.valueOf(bi.nw211.getText().toString());
-            }*/
-
-            MainApp.totalPregnancy = Integer.valueOf(bi.nw215.getText().toString());
+        if (bi.nw216a.isChecked() && !bi.nw216aa.getText().toString().isEmpty()) {
+            MainApp.totalPregnancy = Integer.valueOf(bi.nw216aa.getText().toString());
         }
+
+
+
 
         MainApp.mc.setsB1(String.valueOf(sB1));
 

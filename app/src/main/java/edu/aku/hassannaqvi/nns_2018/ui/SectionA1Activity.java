@@ -106,7 +106,7 @@ public class SectionA1Activity extends AppCompatActivity {
         MainApp.all_members = new ArrayList<>();
         MainApp.childUnder2 = new ArrayList<>();
         MainApp.childUnder5 = new ArrayList<>();
-        MainApp.childUnder5 = new ArrayList<>();
+        MainApp.childUnder2Check = new ArrayList<>();
         MainApp.childNA = new ArrayList<>();
         MainApp.mwra = new ArrayList<>();
         MainApp.adolescents = new ArrayList<>();
@@ -360,9 +360,7 @@ public class SectionA1Activity extends AppCompatActivity {
 
 //        na113
             if (binding.na11801b.isChecked()) {
-                if (!validatorClass.EmptyCheckBox(this, binding.fldGrpna113, binding.na11996, binding.na11996x, String.valueOf(R.string.na113))) {
-                    return false;
-                }
+                return validatorClass.EmptyCheckBox(this, binding.fldGrpna113, binding.na11996, binding.na11996x, String.valueOf(R.string.na113));
             }
         }
 

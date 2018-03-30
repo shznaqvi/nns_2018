@@ -169,7 +169,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme1"
             android:windowSoftInputMode="adjustResize|stateHidden" />
-        <activity android:name=".ui.SectionH8Actvitiy"></activity>
+        <activity
+            android:name=".ui.SectionH8Activity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
     </application>
 
 </manifest>

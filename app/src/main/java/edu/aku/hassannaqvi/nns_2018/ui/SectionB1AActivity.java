@@ -81,6 +81,29 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 MainApp.nuCount = 1;
                 //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
                 finish();
+
+
+                if (MainApp.totalPregnancy >= MainApp.count) {
+                    startActivity(new Intent(this, SectionB1AActivity.class));
+                } else {
+
+                    MainApp.count = 1;
+
+                    if (SectionB1Activity.childCheck) {
+                        startActivity(new Intent(this, SectionB2Activity.class));
+                    } else {
+                        if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
+                                &&
+                                MainApp.B6Flag) {
+                            startActivity(new Intent(this, SectionB6Activity.class));
+                        } else {
+                            startActivity(new Intent(this, MotherEndingActivity.class)
+                                    .putExtra("complete", true));
+                        }
+                    }
+                }
+
+/*
                 if (MainApp.outcome != 4) {
                     MainApp.count++;
                     if (MainApp.totalPregnancy >= MainApp.count) {
@@ -113,6 +136,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                     //startActivity(new Intent(this, SectionB1Activity.class).putExtra(""));
                 }
 
+*/
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();

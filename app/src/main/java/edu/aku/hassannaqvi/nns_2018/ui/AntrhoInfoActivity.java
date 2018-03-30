@@ -63,6 +63,7 @@ public class AntrhoInfoActivity extends Activity {
         MainApp.childNA = new ArrayList<>();
         MainApp.mwra = new ArrayList<>();
         MainApp.adolescents = new ArrayList<>();
+        MainApp.childUnder2Check = new ArrayList<>();
         members = new ArrayList<>();
         json = new JSONModelClass();
 
@@ -252,7 +253,7 @@ public class AntrhoInfoActivity extends Activity {
         return true;
     }
 
-    private void SaveDraft() throws JSONException {
+    private void SaveDraft() {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
         enm_no = binding.nh102.getText().toString();

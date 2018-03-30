@@ -99,6 +99,7 @@ public class MainApp extends Application {
     public static List<FamilyMembersContract> childUnder2;
     public static List<FamilyMembersContract> childUnder5;
     public static List<FamilyMembersContract> childNA;
+    public static List<FamilyMembersContract> childUnder2Check;
     public static List<FamilyMembersContract> mwra;
     public static List<FamilyMembersContract> adolescents;
     public static BLRandomContract selectedHead;
@@ -447,10 +448,7 @@ public class MainApp extends Application {
             return true;
         } else if (isNewer && !isLessAccurate) {
             return true;
-        } else if (isNewer && !isSignificantlyLessAccurate && isFromSameProvider) {
-            return true;
-        }
-        return false;
+        } else return isNewer && !isSignificantlyLessAccurate && isFromSameProvider;
     }
 
     /**
