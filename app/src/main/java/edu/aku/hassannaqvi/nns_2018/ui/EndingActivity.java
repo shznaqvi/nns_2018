@@ -74,7 +74,7 @@ public class EndingActivity extends AppCompatActivity {
         }
     }
 
-    private void SaveDraft() {
+    private void SaveDraft() throws JSONException {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
         MainApp.fc.setIstatus(binding.istatusa.isChecked() ? "1"
