@@ -27,6 +27,7 @@ public class SectionA5Activity extends AppCompatActivity {
     DatabaseHelper db;
     int recipientCounter = 0;
     private Timer timer = new Timer();
+    static int deceasedCounter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -203,6 +204,8 @@ public class SectionA5Activity extends AppCompatActivity {
 
                 if (recipientCounter > 0) {
                     startActivity(new Intent(this, SectionA8AActivity.class).putExtra("recCounter", recipientCounter));
+                } else if (deceasedCounter > 0) {
+                    startActivity(new Intent(this, SectionH8Activity.class));
                 } else if (MainApp.mwra.size() > 0) {
                     startActivity(new Intent(this, SectionB1Activity.class));
                 } else if (MainApp.childUnder5.size() > 0) {
@@ -357,6 +360,14 @@ public class SectionA5Activity extends AppCompatActivity {
                 return false;
             }
 
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, binding.nh801, binding.nh801a, getString(R.string.nh801))) {
+            return false;
+        }
+
+        if (binding.nh801a.isChecked()) {
+            return validatorClass.EmptyTextBox(this, binding.nh802, getString(R.string.nh802));
         }
 
         return true;
@@ -518,6 +529,14 @@ public class SectionA5Activity extends AppCompatActivity {
         if (binding.nh701a.isChecked()) {
             recipientCounter = Integer.valueOf(binding.nh702.getText().toString());
         }
+
+        sA5.put("nh801", binding.nh801a.isChecked() ? "1" : binding.nh801b.isChecked() ? "2" : "0");
+        sA5.put("nh802", binding.nh802.getText().toString());
+
+        if (binding.nh801a.isChecked()) {
+            deceasedCounter = Integer.valueOf(binding.nh802.getText().toString());
+        }
+
 
         MainApp.fc.setsA5(String.valueOf(sA5));
 

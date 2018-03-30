@@ -6,19 +6,26 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindViews;
 import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.DeceasedContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionH8Binding;
@@ -28,10 +35,15 @@ import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 public class SectionH8Activity extends Activity implements TextWatcher {
 
     ActivitySectionH8Binding bi;
+    static int counter = 1;
+    static int deccounter = 0;
     @BindViews({R.id.nh808d, R.id.nh808m, R.id.nh808y})
     List<EditText> grpdob;
 
     Calendar dob = Calendar.getInstance();
+    List<String> mothersList, fathersList;
+    List<String> mothersSerials, fathersSerials;
+    Map<String, String> mothersMap, fathersMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +56,75 @@ public class SectionH8Activity extends Activity implements TextWatcher {
         for (EditText ed : grpdob) {
             ed.addTextChangedListener(this);
         }
+
+        // Setting dropdowns
+
+        mothersList = new ArrayList<>();
+        mothersSerials = new ArrayList<>();
+        mothersMap = new HashMap<>();
+
+        mothersList.add("....");
+        mothersList.add("N/A");
+        mothersSerials.add("0");
+        mothersMap.put("N/A_0", "00");
+
+        fathersList = new ArrayList<>();
+        fathersSerials = new ArrayList<>();
+        fathersMap = new HashMap<>();
+
+        fathersList.add("....");
+        fathersList.add("N/A");
+        fathersSerials.add("0");
+        fathersMap.put("N/A_0", "00");
+
+        for (FamilyMembersContract mem : MainApp.members_f_m) {
+            if (mem.getna204().equals("1")) {
+                fathersList.add(mem.getName());
+                fathersSerials.add(mem.getSerialNo());
+                fathersMap.put(mem.getName() + "_" + mem.getSerialNo(), mem.getSerialNo());
+            } else {
+                mothersList.add(mem.getName());
+                mothersSerials.add(mem.getSerialNo());
+                mothersMap.put(mem.getName() + "_" + mem.getSerialNo(), mem.getSerialNo());
+            }
+        }
+
+        bi.nh804.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, mothersList));
+        bi.nh805.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, fathersList));
+
+
+        bi.nh807y.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (!bi.nh807y.getText().toString().isEmpty()) {
+                    if (Integer.valueOf(bi.nh807y.getText().toString()) < 5) {
+                        bi.fldGrpfid.setVisibility(View.VISIBLE);
+                        bi.fldGrpmid.setVisibility(View.VISIBLE);
+                    } else {
+                        bi.fldGrpfid.setVisibility(View.GONE);
+                        bi.fldGrpmid.setVisibility(View.GONE);
+                        bi.nh804.setSelection(1);
+                        bi.nh805.setSelection(1);
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        bi.txtCounter.setText("Count " + counter + " out of " + SectionA5Activity.deceasedCounter);
+
+
+
     }
 
     public void BtnContinue() {
@@ -60,14 +141,24 @@ public class SectionH8Activity extends Activity implements TextWatcher {
 
                 finish();
 
-                //if (flag) {
-                //  startActivity(new Intent(this, SectionA2ListActivity.class));
-                //} else {
-                /*startActivity(new Intent(this, SectionA2ListActivity.class)
-                        .putExtra("respChecking", binding.respa.isChecked())
-                        .putExtra("respLineNo", MainApp.fmc.getSerialNo()));*/
-                //}
+                if (counter == SectionA5Activity.deceasedCounter) {
+                    counter = 1;
 
+                    if (MainApp.mwra.size() > 0) {
+                        startActivity(new Intent(this, SectionB1Activity.class));
+                    } else if (MainApp.childUnder5.size() > 0) {
+                        if (MainApp.childUnder5.size() == MainApp.childNA.size()) {
+                            SectionC1Activity.isNA = true;
+                            startActivity(new Intent(this, SectionC1Activity.class));
+                        } else {
+                            SectionC1Activity.isNA = false;
+                            startActivity(new Intent(this, SectionC1Activity.class));
+                        }
+                    }
+                } else {
+                    counter++;
+                    startActivity(new Intent(this, SectionH8Activity.class));
+                }
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -83,24 +174,7 @@ public class SectionH8Activity extends Activity implements TextWatcher {
 
         //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
-        if (!validatorClass.EmptyRadioButton(this, bi.nh801, bi.nh801a, getString(R.string.nh801))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyTextBox(this, bi.nh802, getString(R.string.nh802))) {
-            return false;
-        }
-
         if (!validatorClass.EmptyTextBox(this, bi.nh803, getString(R.string.nh803))) {
-            return false;
-        }
-
-
-        if (!validatorClass.EmptySpinner(this, bi.nh804, getString(R.string.nh804))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptySpinner(this, bi.nh805, getString(R.string.nh805))) {
             return false;
         }
 
@@ -108,10 +182,55 @@ public class SectionH8Activity extends Activity implements TextWatcher {
             return false;
         }
 
-        if (!validatorClass.EmptyTextBox(this, bi.nh807, getString(R.string.nh807))) {
+        if (!validatorClass.EmptyTextBox(this, bi.nh807d, getString(R.string.nh807))) {
             return false;
         }
 
+        if (!validatorClass.RangeTextBox(this, bi.nh807d, 0, 29, getString(R.string.nh807), " days")) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyTextBox(this, bi.nh807m, getString(R.string.nh807))) {
+            return false;
+        }
+
+        if (!validatorClass.RangeTextBox(this, bi.nh807d, 0, 11, getString(R.string.nh807), " months")) {
+            return false;
+        }
+
+
+        if (!validatorClass.EmptyTextBox(this, bi.nh807y, getString(R.string.nh807))) {
+            return false;
+        }
+
+        if (!validatorClass.RangeTextBox(this, bi.nh807y, 0, 95, getString(R.string.nh807), " years")) {
+            return false;
+        }
+
+
+        if (bi.nh807y.getText().toString().equals("0") && bi.nh807m.getText().toString().equals("0")
+                && bi.nh807d.getText().toString().equals("0")) {
+            Toast.makeText(this, "ERROR(invalid): " + "All can not be zero" + getString(R.string.na2age), Toast.LENGTH_LONG).show();
+            bi.nh807y.setError("All can not be zero");
+            bi.nh807m.setError("All can not be zero");
+            bi.nh807d.setError("All can not be zero");
+            Log.i(SectionH8Activity.class.getSimpleName(), "nh807" + ": This data is Required!");
+        } else {
+            bi.nh807y.setError(null);
+            bi.nh807m.setError(null);
+            bi.nh807d.setError(null);
+        }
+
+
+        if (Integer.valueOf(bi.nh807y.getText().toString()) < 5) {
+            if (!validatorClass.EmptySpinner(this, bi.nh804, getString(R.string.nh804))) {
+                return false;
+            }
+
+            if (!validatorClass.EmptySpinner(this, bi.nh805, getString(R.string.nh805))) {
+                return false;
+            }
+        }
 
         if (!validatorClass.EmptyTextBox(this, bi.nh808y, getString(R.string.nh808))) {
             return false;
@@ -162,13 +281,14 @@ public class SectionH8Activity extends Activity implements TextWatcher {
 
         JSONObject sA2 = new JSONObject();
 
-        sA2.put("nh801", bi.nh801a.isChecked() ? "1" : bi.nh801b.isChecked() ? "2" : "0");
-        sA2.put("nh802", bi.nh802.getText().toString());
+
         sA2.put("nh803", bi.nh803.getText().toString());
         sA2.put("nh804", bi.nh804.getSelectedItem().toString());
         sA2.put("nh805", bi.nh805.getSelectedItem().toString());
         sA2.put("nh806", bi.nh806a.isChecked() ? "1" : bi.nh806b.isChecked() ? "2" : "0");
-        sA2.put("nh807", bi.nh807.getText().toString());
+        sA2.put("nh807y", bi.nh807y.getText().toString());
+        sA2.put("nh807m", bi.nh807m.getText().toString());
+        sA2.put("nh807d", bi.nh807d.getText().toString());
         sA2.put("nh808d", bi.nh808d.getText().toString());
         sA2.put("nh808m", bi.nh808m.getText().toString());
         sA2.put("nh808y", bi.nh808y.getText().toString());

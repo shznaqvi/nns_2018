@@ -335,7 +335,7 @@ public class MainActivity extends Activity {
 
 
     public void openB(View v) {
-        Intent iB = new Intent(this, AntrhoInfoActivity.class);
+        Intent iB = new Intent(this, SectionB1Activity.class);
         startActivity(iB);
     }
 
@@ -408,7 +408,7 @@ public class MainActivity extends Activity {
 
     }
 
-    public void updateApp(View v) throws IOException {
+    public void updateApp(View v) {
         v.setBackgroundColor(Color.GREEN);
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
