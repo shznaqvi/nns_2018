@@ -175,6 +175,7 @@ public class SectionA1Activity extends AppCompatActivity {
             }
         });
 
+
 //        Initializing Re-Back functionality
         reBackFlag = true;
         reBackChildFlag = true;
