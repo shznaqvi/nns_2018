@@ -160,68 +160,68 @@ public class MainActivity extends Activity {
         DatabaseHelper db = new DatabaseHelper(this);
 
 
-            mainBinding.adminsec.setVisibility(View.VISIBLE);
+        mainBinding.adminsec.setVisibility(View.VISIBLE);
 
-            Collection<FormsContract> todaysForms = db.getTodayForms();
-            Collection<FormsContract> unsyncedForms = db.getUnsyncedForms();
+        Collection<FormsContract> todaysForms = db.getTodayForms();
+        Collection<FormsContract> unsyncedForms = db.getUnsyncedForms();
 
-            rSumText += "TODAY'S RECORDS SUMMARY\r\n";
+        rSumText += "TODAY'S RECORDS SUMMARY\r\n";
 
-            rSumText += "=======================\r\n";
-            rSumText += "\r\n";
-            rSumText += "Total Forms Today: " + todaysForms.size() + "\r\n";
-            rSumText += "\r\n";
-            if (todaysForms.size() > 0) {
-                rSumText += "\tFORMS' LIST: \r\n";
-                String iStatus;
-                rSumText += "--------------------------------------------------\r\n";
-                rSumText += "[Cluster No.] \t[ House No. ] \t[Form Status] \t[Sync Status]----------\r\n";
-                rSumText += "--------------------------------------------------\r\n";
+        rSumText += "=======================\r\n";
+        rSumText += "\r\n";
+        rSumText += "Total Forms Today: " + todaysForms.size() + "\r\n";
+        rSumText += "\r\n";
+        if (todaysForms.size() > 0) {
+            rSumText += "\tFORMS' LIST: \r\n";
+            String iStatus;
+            rSumText += "--------------------------------------------------\r\n";
+            rSumText += "[Cluster No.] \t[ House No. ] \t[Form Status] \t[Sync Status]----------\r\n";
+            rSumText += "--------------------------------------------------\r\n";
 
-                for (FormsContract fc : todaysForms) {
-                    if (fc.getIstatus() != null) {
-                        switch (fc.getIstatus()) {
-                            case "1":
-                                iStatus = "\tComplete";
-                                break;
-                            case "2":
-                                iStatus = "\tIncomplete";
-                                break;
-                            case "3":
-                                iStatus = "\tRefused";
-                                break;
-                            case "4":
-                                iStatus = "\tRefused";
-                                break;
-                            default:
-                                iStatus = "\tN/A";
-                        }
-                    } else {
-                        iStatus = "\tN/A";
+            for (FormsContract fc : todaysForms) {
+                if (fc.getIstatus() != null) {
+                    switch (fc.getIstatus()) {
+                        case "1":
+                            iStatus = "\tComplete";
+                            break;
+                        case "2":
+                            iStatus = "\tIncomplete";
+                            break;
+                        case "3":
+                            iStatus = "\tRefused";
+                            break;
+                        case "4":
+                            iStatus = "\tRefused";
+                            break;
+                        default:
+                            iStatus = "\tN/A";
                     }
-
-                    //rSumText += fc.getDSSID();
-
-                    rSumText += fc.getEnmNo() + " \t";
-                    rSumText += " " + fc.getHhNo() + " \t";
-                    rSumText += " " + iStatus + " \t";
-
-                    rSumText += (fc.getSynced().equals("") ? "\t\tNot Synced" : "\t\tSynced");
-                    rSumText += "\r\n";
-                    rSumText += "--------------------------------------------------\r\n";
+                } else {
+                    iStatus = "\tN/A";
                 }
+
+                //rSumText += fc.getDSSID();
+
+                rSumText += fc.getEnmNo() + " \t";
+                rSumText += " " + fc.getHhNo() + " \t";
+                rSumText += " " + iStatus + " \t";
+
+                rSumText += (fc.getSynced().equals("") ? "\t\tNot Synced" : "\t\tSynced");
+                rSumText += "\r\n";
+                rSumText += "--------------------------------------------------\r\n";
             }
+        }
 
-            SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
-            rSumText += "Last Data Download: \t" + syncPref.getString("LastDownSyncServer", "Never Updated");
-            rSumText += "\r\n";
-            rSumText += "Last Data Upload: \t" + syncPref.getString("LastUpSyncServer", "Never Synced");
-            rSumText += "\r\n";
-            rSumText += "\r\n";
-            rSumText += "Unsynced Forms: \t" + unsyncedForms.size();
-            rSumText += "\r\n";
+        SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
+        rSumText += "Last Data Download: \t" + syncPref.getString("LastDownSyncServer", "Never Updated");
+        rSumText += "\r\n";
+        rSumText += "Last Data Upload: \t" + syncPref.getString("LastUpSyncServer", "Never Synced");
+        rSumText += "\r\n";
+        rSumText += "\r\n";
+        rSumText += "Unsynced Forms: \t" + unsyncedForms.size();
+        rSumText += "\r\n";
 
-            Log.d(TAG, "onCreate: " + rSumText);
+        Log.d(TAG, "onCreate: " + rSumText);
         mainBinding.recordSummary.setText(rSumText);
 
 //        Fill spinner
@@ -329,9 +329,9 @@ public class MainActivity extends Activity {
     }
 
 
-
-    public void openA(View v) {
+    public void openViewMember(Boolean flag) {
         Intent iA = new Intent(this, ViewMemberActivity.class);
+        iA.putExtra("flagEdit", false);
         startActivity(iA);
     }
 
