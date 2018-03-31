@@ -422,6 +422,9 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
         if (!validatorClass.EmptyRadioButton(this, binding.nh312f, binding.nh312f1, getString(R.string.nh312f))) {
             return false;
         }
+        if (!validatorClass.EmptyRadioButton(this, binding.nh312g, binding.nh312g1, getString(R.string.nh312g))) {
+            return false;
+        }
 
         if (!validatorClass.EmptyRadioButton(this, binding.nh312h, binding.nh312h1, getString(R.string.nh312h))) {
             return false;
