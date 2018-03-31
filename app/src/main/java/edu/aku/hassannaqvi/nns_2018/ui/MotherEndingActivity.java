@@ -10,7 +10,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 import edu.aku.hassannaqvi.nns_2018.R;
-import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivityMotherEndingBinding;
@@ -74,32 +73,7 @@ public class MotherEndingActivity extends AppCompatActivity {
 
 //                finish();
 
-                if (MainApp.childUnder5.size() > 0) {
-                    int childcount = 0;
-                    for (FamilyMembersContract fmc : MainApp.childUnder5) {
-                        if (fmc.getMotherId().equals(MainApp.mc.getB1SerialNo())) {
-                            childcount++;
-                        }
-                    }
-                    if (childcount > 0) {
-                        startActivity(new Intent(this, SectionC1Activity.class));
-                    } else if (MainApp.childNA.size() > 0) {
-                        SectionC1Activity.isNA = true;
-                        startActivity(new Intent(this, SectionC1Activity.class));
-                    } else if (SectionB1Activity.WRAcounter == MainApp.mwra.size()) {
-                        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
-                    } else {
-                        startActivity(new Intent(this, SectionB1Activity.class)
-                                .putExtra("mwraFlag", true)
-                                .putExtra("wraName", SectionB1Activity.wraName));
-                    }
-                } else if (SectionB1Activity.WRAcounter == MainApp.mwra.size()) {
-                    startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
-                } else {
-                    startActivity(new Intent(this, SectionB1Activity.class)
-                            .putExtra("mwraFlag", true)
-                            .putExtra("wraName", SectionB1Activity.wraName));
-                }
+                startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 5));
 
 
                 /*if (SectionB1Activity.WRAcounter == MainApp.mwra.size()) {

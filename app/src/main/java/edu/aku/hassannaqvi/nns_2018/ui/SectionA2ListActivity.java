@@ -167,28 +167,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
                     startActivity(new Intent(this, SectionA4Activity.class));
                     //startActivity(new Intent(this, SectionB1Activity.class));
                 } else {
-                    if (SectionA1Activity.reBackChildFlag) {
-                        if (MainApp.mwra.size() > 0 && SectionB1Activity.WRAsize != MainApp.mwra.size()) {
-                            startActivity(new Intent(this, SectionB1Activity.class)
-                                    .putExtra("reBackComing", false));
-                        } else if (MainApp.childUnder5.size() > 0) {
-                            if (MainApp.childUnder5.size() == MainApp.childNA.size()) {
-                                SectionC1Activity.isNA = true;
-                                startActivity(new Intent(this, SectionC1Activity.class)
-                                        .putExtra("reBackComing", false));
-                            } else {
-                                SectionC1Activity.isNA = false;
-                                startActivity(new Intent(this, SectionC1Activity.class)
-                                        .putExtra("reBackComing", false));
-                            }
-                        } else {
-                            startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
-                        }
-                    } else {
-                        SectionC1Activity.isNA = false;
-                        startActivity(new Intent(this, SectionC1Activity.class)
-                                .putExtra("reBackComing", false));
-                    }
+                    startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 6));
                 }
 
             } else {

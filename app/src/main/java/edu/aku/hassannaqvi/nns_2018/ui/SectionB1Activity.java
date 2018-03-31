@@ -79,6 +79,9 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
                 lstMwra.remove(getIntent().getStringExtra("wraName"));
                 //      Increment WRA COUNTER
                 WRAcounter++;
+
+                WRAsize = MainApp.mwra.size();
+
             } else {
                 wraMap = new HashMap<>();
                 lstMwra = new ArrayList<>();
@@ -92,11 +95,11 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
 
                 WRAcounter = 1;
 
-                WRAsize = MainApp.mwra.size();
+
             }
         } else {
 
-            if (WRAcounter == 0) {
+            if (WRAcounter == 0 || WRAcounter == 1) {
                 wraMap = new HashMap<>();
                 lstMwra = new ArrayList<>();
 
@@ -1283,8 +1286,10 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog,
                                                 int id) {
+                                finish();
                                 startActivity(new Intent(SectionB1Activity.this, SectionA2ListActivity.class)
-                                        .putExtra("reBack", true));
+                                        .putExtra("reBack", true)
+                                        .putExtra("reBackChild", true));
                             }
                         });
         alertDialogBuilder.setNegativeButton("Cancel",

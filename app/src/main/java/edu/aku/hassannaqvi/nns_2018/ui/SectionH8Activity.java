@@ -154,17 +154,8 @@ public class SectionH8Activity extends Activity implements TextWatcher {
                 if (counter == SectionA5Activity.deceasedCounter) {
                     counter = 1;
 
-                    if (MainApp.mwra.size() > 0) {
-                        startActivity(new Intent(this, SectionB1Activity.class));
-                    } else if (MainApp.childUnder5.size() > 0) {
-                        if (MainApp.childUnder5.size() == MainApp.childNA.size()) {
-                            SectionC1Activity.isNA = true;
-                            startActivity(new Intent(this, SectionC1Activity.class));
-                        } else {
-                            SectionC1Activity.isNA = false;
-                            startActivity(new Intent(this, SectionC1Activity.class));
-                        }
-                    }
+                    startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 2));
+
                 } else {
                     counter++;
                     startActivity(new Intent(this, SectionH8Activity.class));

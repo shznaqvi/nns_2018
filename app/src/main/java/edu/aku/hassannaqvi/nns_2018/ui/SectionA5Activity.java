@@ -241,20 +241,9 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
                     startActivity(new Intent(this, SectionA8AActivity.class).putExtra("recCounter", recipientCounter));
                 } else if (deceasedCounter > 0) {
                     startActivity(new Intent(this, SectionH8Activity.class));
-                } else if (MainApp.mwra.size() > 0) {
-                    startActivity(new Intent(this, SectionB1Activity.class));
-                } else if (MainApp.childUnder5.size() > 0) {
-                    if (MainApp.childUnder5.size() == MainApp.childNA.size()) {
-                        SectionC1Activity.isNA = true;
-                        startActivity(new Intent(this, SectionC1Activity.class));
-                    } else {
-                        SectionC1Activity.isNA = false;
-                        startActivity(new Intent(this, SectionC1Activity.class));
-                    }
                 } else {
-                    startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+                    startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 1));
                 }
-
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -472,7 +461,6 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
                 : "0");
 
         sA5.put("nh40696x", binding.nh40696x.getText().toString());
-
 
 
         // Section A6

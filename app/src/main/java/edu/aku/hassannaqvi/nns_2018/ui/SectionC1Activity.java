@@ -589,6 +589,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog,
                                                 int id) {
+                                finish();
                                 startActivity(new Intent(SectionC1Activity.this, SectionA2ListActivity.class)
                                         .putExtra("reBack", true)
                                         .putExtra("reBackChild", isNA)

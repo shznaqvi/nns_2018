@@ -1,6 +1,7 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import java.util.Collection;
 
 import edu.aku.hassannaqvi.nns_2018.Adapters.AdolescentsAdapter;
 import edu.aku.hassannaqvi.nns_2018.Adapters.ChildAdapter;
+import edu.aku.hassannaqvi.nns_2018.Adapters.OthersAdapter;
 import edu.aku.hassannaqvi.nns_2018.Adapters.WraAdapter;
 import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
@@ -34,6 +36,7 @@ public class ViewMemberActivity extends AppCompatActivity {
     WraAdapter wraAdapter;
     ChildAdapter childAdapter;
     AdolescentsAdapter adolescentsAdapter;
+    OthersAdapter othersAdapter;
 
 
     ActivityViewMemberBinding binding;
@@ -51,26 +54,41 @@ public class ViewMemberActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
         binding.setCallback(this);
 
+        if (getIntent().getBooleanExtra("flagEdit", true)) {
+
+            binding.fldGrpEditHH.setVisibility(View.GONE);
+            binding.fldGrpVisA.setVisibility(View.GONE);
+            binding.fldGrpVisB.setVisibility(View.GONE);
+
+            binding.chckenumblock.setText(MainApp.fc.getEnmNo());
+            binding.chckhouse.setText(MainApp.fc.getHhNo());
+
+            initializingLists(false);
+
+            BtnCheckEnm();
+            BtnCheckHH();
+
+        } else {
+            binding.fldGrpEditHH.setVisibility(View.VISIBLE);
+            binding.fldGrpVisA.setVisibility(View.VISIBLE);
+            binding.fldGrpVisB.setVisibility(View.VISIBLE);
+
+            initializingLists(true);
+        }
+
     }
 
-    private void initializingLists() {
+    private void initializingLists(Boolean flag) {
 
-        MainApp.all_members = new ArrayList<>();
-        MainApp.childUnder5 = new ArrayList<>();
-        MainApp.adolescents = new ArrayList<>();
-        MainApp.mwra = new ArrayList<>();
+        MainApp.all_members_1 = new ArrayList<>();
+        MainApp.otherMembers_1 = new ArrayList<>();
+        MainApp.childUnder5_1 = new ArrayList<>();
+        MainApp.adolescents_1 = new ArrayList<>();
+        MainApp.mwra_1 = new ArrayList<>();
         members = new ArrayList<>();
         json = new JSONModelClass();
 
     }
-
- /*   private void notifywrachange(WraAdapter wraAdapter) {
-        wraAdapter.notifyDataSetChanged();
-    }
-
-    private void notifychildchange(ChildAdapter childAdapter) {
-        childAdapter.notifyDataSetChanged();
-    }*/
 
     public void clearFields() {
         binding.fldGrpviewlist.setVisibility(View.GONE);
@@ -81,10 +99,8 @@ public class ViewMemberActivity extends AppCompatActivity {
 
         if (!binding.chckenumblock.getText().toString().trim().isEmpty() && !binding.chckhouse.getText().toString().trim().isEmpty()) {
 
-            String uid = db.getUIDByHH(binding.chckenumblock.getText().toString(), binding.chckhouse.getText().toString().toUpperCase());
+            String uid = db.getUIDByHH(binding.chckenumblock.getText().toString(), binding.chckhouse.getText().toString().toUpperCase(), "");
             if (uid != null) {
-
-                initializingLists();
 
                 members = db.getAllMembersByHH(uid);
 
@@ -94,24 +110,24 @@ public class ViewMemberActivity extends AppCompatActivity {
                         if (fm.getsA2() != null) {
                             json = JSONUtilClass.getModelFromJSON(fm.getsA2(), JSONModelClass.class);
                             if ((Integer.valueOf(json.getAge()) >= 15 && Integer.valueOf(json.getAge()) <= 49) && json.getGender().equals("2")) {
-                                MainApp.mwra.add(fm);
-                                MainApp.all_members.add(fm);
+                                MainApp.mwra_1.add(fm);
+                                MainApp.all_members_1.add(fm);
+                            } else if ((Integer.valueOf(json.getAge()) >= 10 && (Integer.valueOf(json.getAge()) <= 19)) && json.getMaritalStatus().equals("5")) {
+                                MainApp.adolescents_1.add(fm);
+                                MainApp.all_members_1.add(fm);
+                            } else if (Integer.valueOf(json.getAge()) < 5) {
+                                MainApp.childUnder5_1.add(fm);
+                                MainApp.all_members_1.add(fm);
+                            } else {
+                                MainApp.otherMembers_1.add(fm);
+                                MainApp.all_members_1.add(fm);
+                            }
 
-                            }
-                            if ((Integer.valueOf(json.getAge()) >= 10 && (Integer.valueOf(json.getAge()) <= 19)) && json.getMaritalStatus().equals("5")) {
-                                MainApp.adolescents.add(fm);
-                                MainApp.all_members.add(fm);
-                            }
-                            if (Integer.valueOf(json.getAge()) < 5) {
-                                MainApp.childUnder5.add(fm);
-                                MainApp.all_members.add(fm);
-
-                            }
                         }
 
                     }
 
-                    if (MainApp.all_members.size() > 0) {
+                    if (MainApp.all_members_1.size() > 0) {
                         Toast.makeText(this, "Members Found..", Toast.LENGTH_SHORT).show();
                         binding.btnContinue.setVisibility(View.VISIBLE);
                         binding.btnEnd.setVisibility(View.GONE);
@@ -119,6 +135,7 @@ public class ViewMemberActivity extends AppCompatActivity {
                         viewWraList();
                         viewChildList();
                         viewAdolList();
+                        viewOthList();
 
                     } else {
                         binding.fldGrpviewlist.setVisibility(View.GONE);
@@ -145,17 +162,15 @@ public class ViewMemberActivity extends AppCompatActivity {
     }
 
     private void viewWraList() {
-
         new populateWraRecyclerView(this).execute();
-
-
     }
 
     private void viewAdolList() {
-
         new populateAdolRecyclerView(this).execute();
+    }
 
-
+    private void viewOthList() {
+        new populateOtherRecyclerView(this).execute();
     }
 
     public void BtnCheckEnm() {
@@ -183,46 +198,149 @@ public class ViewMemberActivity extends AppCompatActivity {
 
     public void BtnContinue() {
 
-/*        Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
-        if (formValidation()) {
-            try {
-                SaveDraft();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            if (UpdateDB()) {
-                //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
-                finish();
+        Intent GetIntent = null;
+        switch (getIntent().getIntExtra("activity", 0)) {
+            case 1:
+                if (MainApp.mwra.size() > 0) {
+                    GetIntent = new Intent(this, SectionB1Activity.class);
+                } else if (MainApp.childUnder5.size() > 0) {
+                    if (MainApp.childUnder5.size() == MainApp.childNA.size()) {
+                        SectionC1Activity.isNA = true;
+                        GetIntent = new Intent(this, SectionC1Activity.class);
+                    } else {
+                        SectionC1Activity.isNA = false;
+                        GetIntent = new Intent(this, SectionC1Activity.class);
+                    }
+                } else {
+                    GetIntent = new Intent(this, EndingActivity.class).putExtra("complete", true);
+                }
+                break;
 
-                startActivity(new Intent(this, SectionD1Activity.class));
+            case 2:
+                if (MainApp.mwra.size() > 0) {
+                    GetIntent = new Intent(this, SectionB1Activity.class);
+                } else if (MainApp.childUnder5.size() > 0) {
+                    if (MainApp.childUnder5.size() == MainApp.childNA.size()) {
+                        SectionC1Activity.isNA = true;
+                        GetIntent = new Intent(this, SectionC1Activity.class);
+                    } else {
+                        SectionC1Activity.isNA = false;
+                        GetIntent = new Intent(this, SectionC1Activity.class);
+                    }
+                }
+                break;
 
+            case 3:
+                if (MainApp.mwra.size() > 0) {
+                    GetIntent = new Intent(this, SectionB1Activity.class);
+                } else if (MainApp.childUnder5.size() > 0) {
+                    if (MainApp.childUnder5.size() == MainApp.childNA.size()) {
+                        SectionC1Activity.isNA = true;
+                        GetIntent = new Intent(this, SectionC1Activity.class);
+                    } else {
+                        SectionC1Activity.isNA = false;
+                        GetIntent = new Intent(this, SectionC1Activity.class);
+                    }
+                } else {
+                    GetIntent = new Intent(this, EndingActivity.class).putExtra("complete", true);
+                }
+                break;
 
-            } else {
-                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
-            }
-        }*/
+            case 4:
+                if (!(SectionC1Activity.counterPerMom <= 0)) {
+
+                    if (SectionC1Activity.counter == SectionC1Activity.counterPerMom) {
+
+                        GetIntent = new Intent(this, EndingActivity.class)
+                                .putExtra("complete", true);
+
+                    } else {
+                        GetIntent = new Intent(this, SectionC1Activity.class)
+                                .putExtra("childFlag", true)
+                                .putExtra("name", SectionC1Activity.selectedChildName);
+                    }
+                } else {
+
+                    if (SectionC1Activity.counter == SectionC1Activity.counterPerNA) {
+                        SectionC1Activity.isNA = false;
+                        GetIntent = new Intent(this, EndingActivity.class).
+                                putExtra("complete", true);
+
+                    } else {
+
+                        GetIntent = new Intent(this, SectionC1Activity.class)
+                                .putExtra("childFlag", true)
+                                .putExtra("name", SectionC1Activity.selectedChildName);
+                    }
+                }
+                break;
+
+            case 5:
+                if (MainApp.childUnder5.size() > 0) {
+                    int childcount = 0;
+                    for (FamilyMembersContract fmc : MainApp.childUnder5) {
+                        if (fmc.getMotherId().equals(MainApp.mc.getB1SerialNo())) {
+                            childcount++;
+                        }
+                    }
+                    if (childcount > 0) {
+                        GetIntent = new Intent(this, SectionC1Activity.class);
+                    } else if (MainApp.childNA.size() > 0) {
+                        SectionC1Activity.isNA = true;
+                        GetIntent = new Intent(this, SectionC1Activity.class);
+                    } else if (SectionB1Activity.WRAcounter == MainApp.mwra.size()) {
+                        GetIntent = new Intent(this, EndingActivity.class).putExtra("complete", true);
+                    } else {
+                        GetIntent = new Intent(this, SectionB1Activity.class)
+                                .putExtra("mwraFlag", true)
+                                .putExtra("wraName", SectionB1Activity.wraName);
+                    }
+                } else if (SectionB1Activity.WRAcounter == MainApp.mwra.size()) {
+                    GetIntent = new Intent(this, EndingActivity.class).putExtra("complete", true);
+                } else {
+                    GetIntent = new Intent(this, SectionB1Activity.class)
+                            .putExtra("mwraFlag", true)
+                            .putExtra("wraName", SectionB1Activity.wraName);
+                }
+                break;
+            case 6:
+                if (SectionA1Activity.reBackChildFlag) {
+                    if (MainApp.mwra.size() > 0 && SectionB1Activity.WRAsize != MainApp.mwra.size()) {
+                        GetIntent = new Intent(this, SectionB1Activity.class)
+                                .putExtra("reBackComing", false);
+                    } else if (MainApp.childUnder5.size() > 0) {
+                        if (MainApp.childUnder5.size() == MainApp.childNA.size()) {
+                            SectionC1Activity.isNA = true;
+                            GetIntent = new Intent(this, SectionC1Activity.class)
+                                    .putExtra("reBackComing", false);
+                        } else {
+                            SectionC1Activity.isNA = false;
+                            GetIntent = new Intent(this, SectionC1Activity.class)
+                                    .putExtra("reBackComing", false);
+                        }
+                    } else {
+                        GetIntent = new Intent(this, EndingActivity.class).putExtra("complete", true);
+                    }
+                } else {
+                    SectionC1Activity.isNA = false;
+                    GetIntent = new Intent(this, SectionC1Activity.class)
+                            .putExtra("reBackComing", false);
+                }
+                break;
+            default:
+                GetIntent = new Intent(this, EndingActivity.class).putExtra("complete", true);
+                break;
+        }
+
+        finish();
+        startActivity(GetIntent);
+
     }
 
     public void BtnEnd() {
-/*
-        Toast.makeText(this, "Processing End Section", Toast.LENGTH_SHORT).show();
-        if (formValidation()) {
-            try {
-                SaveDraft();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            if (UpdateDB()) {
-                Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
+    }
 
-                finish();
-
-                startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
-
-            } else {
-                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
-            }
-        }*/
+    public void BtnEditHH() {
     }
 
     public class populateWraRecyclerView extends AsyncTask<String, String, String> {
@@ -240,18 +358,18 @@ public class ViewMemberActivity extends AppCompatActivity {
                 public void run() {
 
 //              Set Recycler View
-                    wraAdapter = new WraAdapter(MainApp.mwra);
-                    if (wraAdapter.getItemCount() != 0) {
-                        binding.nowrafound.setVisibility(View.INVISIBLE);
+                    wraAdapter = new WraAdapter(MainApp.mwra_1);
+                    if (wraAdapter.getItemCount() > 0) {
+                        binding.nowrafound.setVisibility(View.VISIBLE);
+                        binding.nowrafound.setText("WRA's found!!");
                         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                         binding.recyclerMwra.setLayoutManager(mLayoutManager);
                         binding.recyclerMwra.setItemAnimator(new DefaultItemAnimator());
                         binding.recyclerMwra.setAdapter(wraAdapter);
                         wraAdapter.notifyDataSetChanged();
-
-
-                    } else if (wraAdapter.getItemCount() == 0) {
+                    } else {
                         binding.nowrafound.setVisibility(View.VISIBLE);
+                        binding.nowrafound.setText("NO WRA's found!!");
                     }
                 }
             });
@@ -289,17 +407,18 @@ public class ViewMemberActivity extends AppCompatActivity {
                 public void run() {
 
 //              Set Recycler View
-                    adolescentsAdapter = new AdolescentsAdapter(MainApp.adolescents);
-                    if (adolescentsAdapter.getItemCount() != 0) {
-                        binding.noadolfound.setVisibility(View.GONE);
+                    adolescentsAdapter = new AdolescentsAdapter(MainApp.adolescents_1);
+                    if (adolescentsAdapter.getItemCount() > 0) {
+                        binding.noadolfound.setVisibility(View.VISIBLE);
+                        binding.noadolfound.setText("Adolescent found!!");
                         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                         binding.recyclerAdol.setLayoutManager(mLayoutManager);
                         binding.recyclerAdol.setItemAnimator(new DefaultItemAnimator());
                         binding.recyclerAdol.setAdapter(adolescentsAdapter);
                         adolescentsAdapter.notifyDataSetChanged();
-
-                    } else if (adolescentsAdapter.getItemCount() == 0) {
+                    } else {
                         binding.noadolfound.setVisibility(View.VISIBLE);
+                        binding.noadolfound.setText("No Adolescent found!!");
                     }
                 }
             });
@@ -336,20 +455,21 @@ public class ViewMemberActivity extends AppCompatActivity {
                 public void run() {
 
 //              Set Recycler View
-                    childAdapter = new ChildAdapter(MainApp.childUnder5);
+                    childAdapter = new ChildAdapter(MainApp.childUnder5_1);
 
 
-                    if (childAdapter.getItemCount() != 0) {
-                        binding.nochildfound.setVisibility(View.INVISIBLE);
+                    if (childAdapter.getItemCount() > 0) {
+                        binding.nochildfound.setVisibility(View.VISIBLE);
+                        binding.nochildfound.setText("Children's found!!");
                         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                         binding.recyclerChild.setLayoutManager(mLayoutManager);
                         binding.recyclerChild.setItemAnimator(new DefaultItemAnimator());
                         binding.recyclerChild.setAdapter(childAdapter);
                         childAdapter.notifyDataSetChanged();
 
-                        // notifychildchange(childAdapter);
-                    } else if (childAdapter.getItemCount() == 0) {
+                    } else {
                         binding.nochildfound.setVisibility(View.VISIBLE);
+                        binding.nochildfound.setText("No Children found!!");
                     }
                 }
             });
@@ -373,5 +493,45 @@ public class ViewMemberActivity extends AppCompatActivity {
         }
     }
 
+    public class populateOtherRecyclerView extends AsyncTask<String, String, String> {
+        private Context mContext;
+
+        public populateOtherRecyclerView(Context mContext) {
+            this.mContext = mContext;
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            runOnUiThread(new Runnable() {
+
+                @Override
+                public void run() {
+
+//              Set Recycler View
+                    othersAdapter = new OthersAdapter(MainApp.otherMembers_1);
+
+                    if (othersAdapter.getItemCount() > 0) {
+                        binding.othersfound.setVisibility(View.VISIBLE);
+                        binding.othersfound.setText("Other Members found!!");
+                        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+                        binding.recyclerOthers.setLayoutManager(mLayoutManager);
+                        binding.recyclerOthers.setItemAnimator(new DefaultItemAnimator());
+                        binding.recyclerOthers.setAdapter(othersAdapter);
+                        othersAdapter.notifyDataSetChanged();
+
+                    } else {
+                        binding.othersfound.setVisibility(View.VISIBLE);
+                        binding.othersfound.setText("No Other Members found!!");
+                    }
+                }
+            });
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+        }
+    }
 
 }

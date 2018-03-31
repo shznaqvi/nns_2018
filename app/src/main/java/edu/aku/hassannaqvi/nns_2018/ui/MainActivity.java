@@ -329,9 +329,9 @@ public class MainActivity extends Activity {
     }
 
 
-
-    public void openA(View v) {
+    public void openViewMember(Boolean flag) {
         Intent iA = new Intent(this, ViewMemberActivity.class);
+        iA.putExtra("flagEdit", false);
         startActivity(iA);
     }
 

@@ -446,7 +446,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public String getUIDByHH(String subAreaCode, String hh) {
+    public String getUIDByHH(String subAreaCode, String hh, String status) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -459,7 +459,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String whereClause = FormsTable.COLUMN_ENM_NO + "=? AND " +
                 FormsTable.COLUMN_HH_NO + "=? AND " +
                 FormsTable.COLUMN_ISTATUS + "=?";
-        String[] whereArgs = new String[]{subAreaCode, hh, "1"};
+        String[] whereArgs = new String[]{subAreaCode, hh, status};
         String groupBy = null;
         String having = null;
 
@@ -547,7 +547,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return allBL;
     }
-
 
 
     public Collection<BLRandomContract> getAllBLRandom(String subAreaCode, String hh) {
@@ -1843,7 +1842,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return allFC;
     }
-
 
 
     public Collection<ChildContract> getUnsyncedChildForms() {

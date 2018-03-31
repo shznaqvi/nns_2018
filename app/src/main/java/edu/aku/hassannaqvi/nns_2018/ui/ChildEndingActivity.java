@@ -65,7 +65,7 @@ public class ChildEndingActivity extends AppCompatActivity {
             }
         }
 
-        flagNAChild = SectionC1Activity.counterPerMom <= 0;
+//        flagNAChild = SectionC1Activity.counterPerMom <= 0;
 
     }
 
@@ -78,32 +78,7 @@ public class ChildEndingActivity extends AppCompatActivity {
 
 //                finish();
 
-                if (!flagNAChild) {
-
-                    if (SectionC1Activity.counter == SectionC1Activity.counterPerMom) {
-
-                        startActivity(new Intent(this, EndingActivity.class)
-                                .putExtra("complete", true));
-
-                    } else {
-                        startActivity(new Intent(this, SectionC1Activity.class)
-                                .putExtra("childFlag", true)
-                                .putExtra("name", SectionC1Activity.selectedChildName));
-                    }
-                } else {
-
-                    if (SectionC1Activity.counter == SectionC1Activity.counterPerNA) {
-                        SectionC1Activity.isNA = false;
-                        startActivity(new Intent(this, EndingActivity.class).
-                                putExtra("complete", true));
-
-                    } else {
-
-                        startActivity(new Intent(this, SectionC1Activity.class)
-                                .putExtra("childFlag", true)
-                                .putExtra("name", SectionC1Activity.selectedChildName));
-                    }
-                }
+                startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 4));
 
 
             } else {

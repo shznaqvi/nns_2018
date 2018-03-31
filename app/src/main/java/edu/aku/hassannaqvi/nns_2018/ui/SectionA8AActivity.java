@@ -125,18 +125,8 @@ public class SectionA8AActivity extends Activity {
 
                     if (SectionA5Activity.deceasedCounter > 0) {
                         startActivity(new Intent(this, SectionH8Activity.class));
-                    } else if (MainApp.mwra.size() > 0) {
-                        startActivity(new Intent(this, SectionB1Activity.class));
-                    } else if (MainApp.childUnder5.size() > 0) {
-                        if (MainApp.childUnder5.size() == MainApp.childNA.size()) {
-                            SectionC1Activity.isNA = true;
-                            startActivity(new Intent(this, SectionC1Activity.class));
-                        } else {
-                            SectionC1Activity.isNA = false;
-                            startActivity(new Intent(this, SectionC1Activity.class));
-                        }
                     } else {
-                        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+                        startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 3));
                     }
                 } else {
 

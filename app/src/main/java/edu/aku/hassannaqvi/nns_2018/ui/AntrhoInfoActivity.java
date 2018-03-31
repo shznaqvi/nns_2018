@@ -269,7 +269,7 @@ public class AntrhoInfoActivity extends Activity {
 
         if (!binding.nh102.getText().toString().trim().isEmpty() && !binding.nh108.getText().toString().trim().isEmpty()) {
 
-            String uid = db.getUIDByHH(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase());
+            String uid = db.getUIDByHH(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase(), "1");
             if (uid != null) {
                 members = db.getAllMembersByHH(uid);
 
