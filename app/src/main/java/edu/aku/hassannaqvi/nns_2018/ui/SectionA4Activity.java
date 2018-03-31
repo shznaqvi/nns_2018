@@ -725,7 +725,7 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
         sA4.put("nh313e", binding.nh313e.isChecked() ? "5" : "0");
         sA4.put("nh313f", binding.nh313f.isChecked() ? "6" : "0");
         sA4.put("nh31396", binding.nh31396.isChecked() ? "96" : "0");
-        sA4.put("nh31496x", binding.nh31496x.getText().toString());
+        sA4.put("nh31396x", binding.nh31496x.getText().toString());
 
 //        nh314
         sA4.put("nh314", binding.nh314a.isChecked() ? "1"

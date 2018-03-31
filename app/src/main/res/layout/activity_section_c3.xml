@@ -170,9 +170,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="16dp"
-                                android:background="@color/pink_100"
+                                android:background="@color/colorPrimary"
                                 android:text="@string/nc3bcg"
-                                android:textColor="@color/colorPrimaryDark" />
+                                android:textColor="@color/white" />
 
                             <RadioGroup
                                 android:id="@+id/nc3bcg"
@@ -183,10 +183,10 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimary"
+                                    android:layout_weight="0.65"
+                                    android:background="@color/pink_100"
                                     android:text="@string/nc3response"
-                                    android:textColor="@color/white" />
+                                    android:textColor="@color/colorPrimaryDark" />
 
                                 <RadioButton
                                     android:id="@+id/nc3bcga"
@@ -216,10 +216,10 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimary"
+                                    android:layout_weight="0.65"
+                                    android:background="@color/pink_100"
                                     android:text="@string/nc3src"
-                                    android:textColor="@color/white" />
+                                    android:textColor="@color/colorPrimaryDark" />
 
                                 <RadioButton
                                     android:id="@+id/nc3bcgsrca"
@@ -227,7 +227,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
-                                    android:text="@string/yes" />
+                                    android:text="@string/card" />
 
                                 <RadioButton
                                     android:id="@+id/nc3bcgsrcb"
@@ -235,7 +235,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
-                                    android:text="@string/no" />
+                                    android:text="@string/recall" />
 
                             </RadioGroup>
 
@@ -259,9 +259,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="16dp"
-                                android:background="@color/pink_100"
+                                android:background="@color/colorPrimary"
                                 android:text="@string/nc3opv0"
-                                android:textColor="@color/colorPrimaryDark" />
+                                android:textColor="@color/white" />
 
                             <RadioGroup
                                 android:id="@+id/nc3opv0"
@@ -272,10 +272,10 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimary"
+                                    android:layout_weight="0.65"
+                                    android:background="@color/pink_100"
                                     android:text="@string/nc3response"
-                                    android:textColor="@color/white" />
+                                    android:textColor="@color/colorPrimaryDark" />
                                 <RadioButton
                                     android:id="@+id/nc3opv0a"
                                     android:layout_width="0dp"
@@ -304,10 +304,10 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimary"
+                                    android:layout_weight="0.65"
+                                    android:background="@color/pink_100"
                                     android:text="@string/nc3src"
-                                    android:textColor="@color/white" />
+                                    android:textColor="@color/colorPrimaryDark" />
 
                                 <RadioButton
                                     android:id="@+id/nc3opv0srca"
@@ -315,7 +315,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
-                                    android:text="@string/yes" />
+                                    android:text="@string/card" />
 
                                 <RadioButton
                                     android:id="@+id/nc3opv0srcb"
@@ -323,7 +323,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
-                                    android:text="@string/no" />
+                                    android:text="@string/recall" />
 
                             </RadioGroup>
 
@@ -367,9 +367,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="16dp"
-                                android:background="@color/pink_100"
+                                android:background="@color/colorPrimary"
                                 android:text="@string/nc3opv1"
-                                android:textColor="@color/colorPrimaryDark" />
+                                android:textColor="@color/white" />
 
                             <RadioGroup
                                 android:id="@+id/nc3opv1"
@@ -380,10 +380,10 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimary"
+                                    android:layout_weight="0.65"
+                                    android:background="@color/pink_100"
                                     android:text="@string/nc3response"
-                                    android:textColor="@color/white" />
+                                    android:textColor="@color/colorPrimaryDark" />
                                 <RadioButton
                                     android:id="@+id/nc3opv1a"
                                     android:layout_width="0dp"
@@ -408,14 +408,13 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_2sdp"
                                 android:orientation="horizontal">
-
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimary"
+                                    android:layout_weight="0.65"
+                                    android:background="@color/pink_100"
                                     android:text="@string/nc3src"
-                                    android:textColor="@color/white" />
+                                    android:textColor="@color/colorPrimaryDark" />
 
                                 <RadioButton
                                     android:id="@+id/nc3opv1srca"
@@ -423,7 +422,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
-                                    android:text="@string/yes" />
+                                    android:text="@string/card" />
 
                                 <RadioButton
                                     android:id="@+id/nc3opv1srcb"
@@ -431,7 +430,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
-                                    android:text="@string/no" />
+                                    android:text="@string/recall" />
 
                             </RadioGroup>
 
@@ -455,9 +454,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="16dp"
-                                android:background="@color/pink_100"
+                                android:background="@color/colorPrimary"
                                 android:text="@string/nc3p1"
-                                android:textColor="@color/colorPrimaryDark" />
+                                android:textColor="@color/white" />
 
                             <RadioGroup
                                 android:id="@+id/nc3p1"
@@ -468,10 +467,10 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimary"
+                                    android:layout_weight="0.65"
+                                    android:background="@color/pink_100"
                                     android:text="@string/nc3response"
-                                    android:textColor="@color/white" />
+                                    android:textColor="@color/colorPrimaryDark" />
                                 <RadioButton
                                     android:id="@+id/nc3p1a"
                                     android:layout_width="0dp"
@@ -500,10 +499,10 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimary"
+                                    android:layout_weight="0.65"
+                                    android:background="@color/pink_100"
                                     android:text="@string/nc3src"
-                                    android:textColor="@color/white" />
+                                    android:textColor="@color/colorPrimaryDark" />
 
                                 <RadioButton
                                     android:id="@+id/nc3p1srca"
@@ -511,7 +510,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
-                                    android:text="@string/yes" />
+                                    android:text="@string/card" />
 
                                 <RadioButton
                                     android:id="@+id/nc3p1srcb"
@@ -519,7 +518,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
-                                    android:text="@string/no" />
+                                    android:text="@string/recall" />
 
                             </RadioGroup>
 
@@ -543,9 +542,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="16dp"
-                                android:background="@color/pink_100"
+                                android:background="@color/colorPrimary"
                                 android:text="@string/nc3pcv1"
-                                android:textColor="@color/colorPrimaryDark" />
+                                android:textColor="@color/white" />
 
                             <RadioGroup
                                 android:id="@+id/nc3pcv1"
@@ -556,10 +555,10 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimary"
+                                    android:layout_weight="0.65"
+                                    android:background="@color/pink_100"
                                     android:text="@string/nc3response"
-                                    android:textColor="@color/white" />
+                                    android:textColor="@color/colorPrimaryDark" />
                                 <RadioButton
                                     android:id="@+id/nc3pcv1a"
                                     android:layout_width="0dp"
@@ -584,14 +583,13 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_2sdp"
                                 android:orientation="horizontal">
-
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimary"
+                                    android:layout_weight="0.65"
+                                    android:background="@color/pink_100"
                                     android:text="@string/nc3src"
-                                    android:textColor="@color/white" />
+                                    android:textColor="@color/colorPrimaryDark" />
 
                                 <RadioButton
                                     android:id="@+id/nc3pcv1srca"
@@ -599,7 +597,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
-                                    android:text="@string/yes" />
+                                    android:text="@string/card" />
 
                                 <RadioButton
                                     android:id="@+id/nc3pcv1srcb"
@@ -607,7 +605,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
-                                    android:text="@string/no" />
+                                    android:text="@string/recall" />
 
                             </RadioGroup>
 
@@ -650,9 +648,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="16dp"
-                                android:background="@color/pink_100"
+                                android:background="@color/colorPrimary"
                                 android:text="@string/nc3opv2"
-                                android:textColor="@color/colorPrimaryDark" />
+                                android:textColor="@color/white" />
 
                             <RadioGroup
                                 android:id="@+id/nc3opv2"
@@ -663,10 +661,10 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimary"
+                                    android:layout_weight="0.65"
+                                    android:background="@color/pink_100"
                                     android:text="@string/nc3response"
-                                    android:textColor="@color/white" />
+                                    android:textColor="@color/colorPrimaryDark" />
                                 <RadioButton
                                     android:id="@+id/nc3opv2a"
                                     android:layout_width="0dp"
@@ -695,10 +693,10 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimary"
+                                    android:layout_weight="0.65"
+                                    android:background="@color/pink_100"
                                     android:text="@string/nc3src"
-                                    android:textColor="@color/white" />
+                                    android:textColor="@color/colorPrimaryDark" />
 
                                 <RadioButton
                                     android:id="@+id/nc3opv2srca"
@@ -706,7 +704,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
-                                    android:text="@string/yes" />
+                                    android:text="@string/card" />
 
                                 <RadioButton
                                     android:id="@+id/nc3opv2srcb"
@@ -714,7 +712,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
-                                    android:text="@string/no" />
+                                    android:text="@string/recall" />
 
                             </RadioGroup>
 
@@ -738,9 +736,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="16dp"
-                                android:background="@color/pink_100"
+                                android:background="@color/colorPrimary"
                                 android:text="@string/nc3p2"
-                                android:textColor="@color/colorPrimaryDark" />
+                                android:textColor="@color/white" />
 
                             <RadioGroup
                                 android:id="@+id/nc3p2"
@@ -751,10 +749,10 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimary"
+                                    android:layout_weight="0.65"
+                                    android:background="@color/pink_100"
                                     android:text="@string/nc3response"
-                                    android:textColor="@color/white" />
+                                    android:textColor="@color/colorPrimaryDark" />
                                 <RadioButton
                                     android:id="@+id/nc3p2a"
                                     android:layout_width="0dp"
@@ -783,10 +781,10 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimary"
+                                    android:layout_weight="0.65"
+                                    android:background="@color/pink_100"
                                     android:text="@string/nc3src"
-                                    android:textColor="@color/white" />
+                                    android:textColor="@color/colorPrimaryDark" />
 
                                 <RadioButton
                                     android:id="@+id/nc3p2srca"
@@ -794,7 +792,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
-                                    android:text="@string/yes" />
+                                    android:text="@string/card" />
 
                                 <RadioButton
                                     android:id="@+id/nc3p2srcb"
@@ -802,7 +800,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
-                                    android:text="@string/no" />
+                                    android:text="@string/recall" />
 
                             </RadioGroup>
 
@@ -827,9 +825,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="16dp"
-                                android:background="@color/pink_100"
+                                android:background="@color/colorPrimary"
                                 android:text="@string/nc3pcv2"
-                                android:textColor="@color/colorPrimaryDark" />
+                                android:textColor="@color/white" />
 
                             <RadioGroup
                                 android:id="@+id/nc3pcv2"
@@ -840,10 +838,10 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimary"
+                                    android:layout_weight="0.65"
+                                    android:background="@color/pink_100"
                                     android:text="@string/nc3response"
-                                    android:textColor="@color/white" />
+                                    android:textColor="@color/colorPrimaryDark" />
                                 <RadioButton
                                     android:id="@+id/nc3pcv2a"
                                     android:layout_width="0dp"
@@ -872,18 +870,17 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimary"
+                                    android:layout_weight="0.65"
+                                    android:background="@color/pink_100"
                                     android:text="@string/nc3src"
-                                    android:textColor="@color/white" />
-
+                                    android:textColor="@color/colorPrimaryDark" />
                                 <RadioButton
                                     android:id="@+id/nc3pcv2srca"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
-                                    android:text="@string/yes" />
+                                    android:text="@string/card" />
 
                                 <RadioButton
                                     android:id="@+id/nc3pcv2srcb"
@@ -891,7 +888,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
-                                    android:text="@string/no" />
+                                    android:text="@string/recall" />
 
                             </RadioGroup>
 
@@ -934,9 +931,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="16dp"
-                                android:background="@color/pink_100"
+                                android:background="@color/colorPrimary"
                                 android:text="@string/nc3opv3"
-                                android:textColor="@color/colorPrimaryDark" />
+                                android:textColor="@color/white" />
 
 
                             <RadioGroup
@@ -948,10 +945,10 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimary"
+                                    android:layout_weight="0.65"
+                                    android:background="@color/pink_100"
                                     android:text="@string/nc3response"
-                                    android:textColor="@color/white" />
+                                    android:textColor="@color/colorPrimaryDark" />
                                 <RadioButton
                                     android:id="@+id/nc3opv3a"
                                     android:layout_width="0dp"
@@ -980,10 +977,10 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimary"
+                                    android:layout_weight="0.65"
+                                    android:background="@color/pink_100"
                                     android:text="@string/nc3src"
-                                    android:textColor="@color/white" />
+                                    android:textColor="@color/colorPrimaryDark" />
 
                                 <RadioButton
                                     android:id="@+id/nc3opv3srca"
@@ -991,7 +988,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
-                                    android:text="@string/yes" />
+                                    android:text="@string/card" />
 
                                 <RadioButton
                                     android:id="@+id/nc3opv3srcb"
@@ -999,7 +996,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
-                                    android:text="@string/no" />
+                                    android:text="@string/recall" />
 
                             </RadioGroup>
 
@@ -1023,9 +1020,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="16dp"
-                                android:background="@color/pink_100"
+                                android:background="@color/colorPrimary"
                                 android:text="@string/nc3p3"
-                                android:textColor="@color/colorPrimaryDark" />
+                                android:textColor="@color/white" />
 
                             <RadioGroup
                                 android:id="@+id/nc3p3"
@@ -1036,10 +1033,10 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimary"
+                                    android:layout_weight="0.65"
+                                    android:background="@color/pink_100"
                                     android:text="@string/nc3response"
-                                    android:textColor="@color/white" />
+                                    android:textColor="@color/colorPrimaryDark" />
                                 <RadioButton
                                     android:id="@+id/nc3p3a"
                                     android:layout_width="0dp"
@@ -1068,18 +1065,17 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimary"
+                                    android:layout_weight="0.65"
+                                    android:background="@color/pink_100"
                                     android:text="@string/nc3src"
-                                    android:textColor="@color/white" />
-
+                                    android:textColor="@color/colorPrimaryDark" />
                                 <RadioButton
                                     android:id="@+id/nc3p3srca"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
-                                    android:text="@string/yes" />
+                                    android:text="@string/card" />
 
                                 <RadioButton
                                     android:id="@+id/nc3p3srcb"
@@ -1087,7 +1083,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
-                                    android:text="@string/no" />
+                                    android:text="@string/recall" />
 
                             </RadioGroup>
 
@@ -1111,9 +1107,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="16dp"
-                                android:background="@color/pink_100"
+                                android:background="@color/colorPrimary"
                                 android:text="@string/nc3pcv3"
-                                android:textColor="@color/colorPrimaryDark" />
+                                android:textColor="@color/white" />
 
                             <RadioGroup
                                 android:id="@+id/nc3pcv3"
@@ -1124,10 +1120,10 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimary"
+                                    android:layout_weight="0.65"
+                                    android:background="@color/pink_100"
                                     android:text="@string/nc3response"
-                                    android:textColor="@color/white" />
+                                    android:textColor="@color/colorPrimaryDark" />
                                 <RadioButton
                                     android:id="@+id/nc3pcv3a"
                                     android:layout_width="0dp"
@@ -1152,14 +1148,13 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_2sdp"
                                 android:orientation="horizontal">
-
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimary"
+                                    android:layout_weight="0.65"
+                                    android:background="@color/pink_100"
                                     android:text="@string/nc3src"
-                                    android:textColor="@color/white" />
+                                    android:textColor="@color/colorPrimaryDark" />
 
                                 <RadioButton
                                     android:id="@+id/nc3pcv3srca"
@@ -1167,7 +1162,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
-                                    android:text="@string/yes" />
+                                    android:text="@string/card" />
 
                                 <RadioButton
                                     android:id="@+id/nc3pcv3srcb"
@@ -1175,7 +1170,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
-                                    android:text="@string/no" />
+                                    android:text="@string/recall" />
 
                             </RadioGroup>
 
@@ -1199,23 +1194,22 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="16dp"
-                                android:background="@color/pink_100"
+                                android:background="@color/colorPrimary"
                                 android:text="@string/nc3ipv"
-                                android:textColor="@color/colorPrimaryDark" />
+                                android:textColor="@color/white" />
 
                             <RadioGroup
                                 android:id="@+id/nc3ipv"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
-
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimary"
+                                    android:layout_weight="0.65"
+                                    android:background="@color/pink_100"
                                     android:text="@string/nc3response"
-                                    android:textColor="@color/white" />
+                                    android:textColor="@color/colorPrimaryDark" />
                                 <RadioButton
                                     android:id="@+id/nc3ipva"
                                     android:layout_width="0dp"
@@ -1240,14 +1234,13 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_2sdp"
                                 android:orientation="horizontal">
-
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimary"
+                                    android:layout_weight="0.65"
+                                    android:background="@color/pink_100"
                                     android:text="@string/nc3src"
-                                    android:textColor="@color/white" />
+                                    android:textColor="@color/colorPrimaryDark" />
 
                                 <RadioButton
                                     android:id="@+id/nc3ipvsrca"
@@ -1255,7 +1248,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
-                                    android:text="@string/yes" />
+                                    android:text="@string/card" />
 
                                 <RadioButton
                                     android:id="@+id/nc3ipvsrcb"
@@ -1263,7 +1256,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
-                                    android:text="@string/no" />
+                                    android:text="@string/recall" />
 
                             </RadioGroup>
 
@@ -1308,9 +1301,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="16dp"
-                                android:background="@color/pink_100"
+                                android:background="@color/colorPrimary"
                                 android:text="@string/nc3m1"
-                                android:textColor="@color/colorPrimaryDark" />
+                                android:textColor="@color/white" />
 
                             <RadioGroup
                                 android:id="@+id/nc3m1"
@@ -1321,10 +1314,10 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimary"
+                                    android:layout_weight="0.65"
+                                    android:background="@color/pink_100"
                                     android:text="@string/nc3response"
-                                    android:textColor="@color/white" />
+                                    android:textColor="@color/colorPrimaryDark" />
                                 <RadioButton
                                     android:id="@+id/nc3m1a"
                                     android:layout_width="0dp"
@@ -1353,18 +1346,17 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimary"
+                                    android:layout_weight="0.65"
+                                    android:background="@color/pink_100"
                                     android:text="@string/nc3src"
-                                    android:textColor="@color/white" />
-
+                                    android:textColor="@color/colorPrimaryDark" />
                                 <RadioButton
                                     android:id="@+id/nc3m1srca"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
-                                    android:text="@string/yes" />
+                                    android:text="@string/card" />
 
                                 <RadioButton
                                     android:id="@+id/nc3m1srcb"
@@ -1372,7 +1364,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
-                                    android:text="@string/no" />
+                                    android:text="@string/recall" />
 
                             </RadioGroup>
 
@@ -1414,9 +1406,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="16dp"
-                                android:background="@color/pink_100"
+                                android:background="@color/colorPrimary"
                                 android:text="@string/nc3m2"
-                                android:textColor="@color/colorPrimaryDark" />
+                                android:textColor="@color/white" />
                             <RadioGroup
                                 android:id="@+id/nc3m2"
                                 android:layout_width="match_parent"
@@ -1426,10 +1418,10 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimary"
+                                    android:layout_weight="0.65"
+                                    android:background="@color/pink_100"
                                     android:text="@string/nc3response"
-                                    android:textColor="@color/white" />
+                                    android:textColor="@color/colorPrimaryDark" />
                                 <RadioButton
                                     android:id="@+id/nc3m2a"
                                     android:layout_width="0dp"
@@ -1458,18 +1450,17 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimary"
+                                    android:layout_weight="0.65"
+                                    android:background="@color/pink_100"
                                     android:text="@string/nc3src"
-                                    android:textColor="@color/white" />
-
+                                    android:textColor="@color/colorPrimaryDark" />
                                 <RadioButton
                                     android:id="@+id/nc3m2srca"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
-                                    android:text="@string/yes" />
+                                    android:text="@string/card" />
 
                                 <RadioButton
                                     android:id="@+id/nc3m2srcb"
@@ -1477,7 +1468,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="1dp"
                                     android:layout_weight="1"
-                                    android:text="@string/no" />
+                                    android:text="@string/recall" />
 
                             </RadioGroup>
                             <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText

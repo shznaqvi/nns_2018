@@ -9,10 +9,10 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.databinding.ChildAdapterBinding;
-import edu.aku.hassannaqvi.nns_2018.other.JSONModelClass;
 import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 
 /**

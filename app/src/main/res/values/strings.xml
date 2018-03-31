@@ -47,6 +47,8 @@
     <string name="female"> عورت </string>
     <string name="yes"> ہاں </string>
     <string name="no"> نہیں </string>
+  <string name="card">کارڈ کے مطابق</string>
+  <string name="recall">ماں کے مطابق</string>
     <string name="dkn"> معلوم نہیں </string>
     <string name="none">On premises or delivered to home</string>
     <string name="nofood">ان میں سے کچھ بھی نہیں کھایا</string>
