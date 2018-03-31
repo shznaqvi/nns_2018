@@ -18,12 +18,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
+import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivityAntrhoInfoBinding;
-import edu.aku.hassannaqvi.nns_2018.other.JSONModelClass;
 import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 

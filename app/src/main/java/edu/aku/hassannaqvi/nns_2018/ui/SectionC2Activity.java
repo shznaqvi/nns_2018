@@ -22,13 +22,13 @@ import java.util.Timer;
 
 import butterknife.BindViews;
 import butterknife.ButterKnife;
+import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONC2ModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC2Binding;
-import edu.aku.hassannaqvi.nns_2018.other.JSONC2ModelClass;
 import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;

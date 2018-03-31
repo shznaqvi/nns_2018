@@ -14,13 +14,13 @@ import java.text.SimpleDateFormat;
 import java.util.Timer;
 
 import butterknife.ButterKnife;
+import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONC3ModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC3Binding;
-import edu.aku.hassannaqvi.nns_2018.other.JSONC3ModelClass;
 import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
@@ -511,9 +511,7 @@ public class SectionC3Activity extends AppCompatActivity {
 
         if (binding.nc305a.isChecked()) {
 //        nc306
-            if (!validatorClass.EmptyRadioButton(this, binding.nc306, binding.nc30698, getString(R.string.nc306))) {
-                return false;
-            }
+            return validatorClass.EmptyRadioButton(this, binding.nc306, binding.nc30698, getString(R.string.nc306));
         }
         return true;
     }

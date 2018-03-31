@@ -18,13 +18,13 @@ import java.util.Collection;
 import edu.aku.hassannaqvi.nns_2018.Adapters.AdolescentsAdapter;
 import edu.aku.hassannaqvi.nns_2018.Adapters.ChildAdapter;
 import edu.aku.hassannaqvi.nns_2018.Adapters.WraAdapter;
+import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivityViewMemberBinding;
-import edu.aku.hassannaqvi.nns_2018.other.JSONModelClass;
 import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
