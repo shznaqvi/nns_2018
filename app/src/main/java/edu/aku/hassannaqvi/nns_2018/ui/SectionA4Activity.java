@@ -16,10 +16,13 @@ import org.json.JSONObject;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONA4ModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA4Binding;
+import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
@@ -29,6 +32,7 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
     ActivitySectionA4Binding binding;
     DatabaseHelper db;
     private Timer timer = new Timer();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -233,6 +237,457 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
         binding.nh324f.addTextChangedListener(this);
         binding.nh324g.addTextChangedListener(this);
 
+
+        autoPopulate();
+
+    }
+
+    private void autoPopulate() {
+        FormsContract formContract = db.getsA4();
+
+        if (!formContract.getsA4().equals("")) {
+
+            JSONA4ModelClass jsonA4 = JSONUtilClass.getModelFromJSON(formContract.getsA4(), JSONA4ModelClass.class);
+
+            if (!jsonA4.getnh301().equals("0")) {
+                binding.nh301.check(
+                        jsonA4.getnh301().equals("1") ? binding.nh301a.getId() :
+                                jsonA4.getnh301().equals("2") ? binding.nh301b.getId() :
+                                        jsonA4.getnh301().equals("3") ? binding.nh301c.getId() :
+                                                jsonA4.getnh301().equals("4") ? binding.nh301d.getId() :
+                                                        jsonA4.getnh301().equals("5") ? binding.nh301e.getId() :
+                                                                jsonA4.getnh301().equals("6") ? binding.nh301f.getId() :
+                                                                        jsonA4.getnh301().equals("7") ? binding.nh301g.getId() :
+                                                                                binding.nh30196.getId()
+                );
+            }
+            binding.nh30196x.setText(jsonA4.getnh30196x());
+            if (!jsonA4.getnh302().equals("0")) {
+                binding.nh302.check(
+                        jsonA4.getnh302().equals("1") ? binding.nh302a.getId() :
+                                jsonA4.getnh302().equals("2") ? binding.nh302b.getId() :
+                                        binding.nh30296.getId()
+                );
+            }
+            binding.nh30296x.setText(jsonA4.getnh30296x());
+            if (!jsonA4.getnh303a().equals("0")) {
+                binding.nh303a.check(
+                        jsonA4.getnh303a().equals("1") ? binding.nh303a2.getId() :
+                                binding.nh303a2.getId()
+                );
+            }
+            if (!jsonA4.getnh303().equals("0")) {
+                binding.nh303.check(
+                        jsonA4.getnh303().equals("1") ? binding.nh303b.getId() :
+                                jsonA4.getnh303().equals("2") ? binding.nh303c.getId() :
+                                        jsonA4.getnh303().equals("3") ? binding.nh303d.getId() :
+                                                jsonA4.getnh303().equals("4") ? binding.nh303e.getId() :
+                                                        jsonA4.getnh303().equals("5") ? binding.nh303f.getId() :
+                                                                jsonA4.getnh303().equals("6") ? binding.nh303g.getId() :
+                                                                        jsonA4.getnh303().equals("7") ? binding.nh303h.getId() :
+                                                                                jsonA4.getnh303().equals("8") ? binding.nh303i.getId() :
+                                                                                        jsonA4.getnh303().equals("9") ? binding.nh303j.getId() :
+                                                                                                jsonA4.getnh303().equals("10") ? binding.nh303k.getId() :
+                                                                                                        jsonA4.getnh303().equals("11") ? binding.nh303l.getId() :
+                                                                                                                jsonA4.getnh303().equals("12") ? binding.nh303m.getId() :
+                                                                                                                        jsonA4.getnh303().equals("13") ? binding.nh303n.getId() :
+                                                                                                                                jsonA4.getnh303().equals("14") ? binding.nh303o.getId() :
+                                                                                                                                        jsonA4.getnh303().equals("15") ? binding.nh303p.getId() :
+                                                                                                                                                binding.nh30396.getId()
+                );
+            }
+            binding.nh30396x.setText(jsonA4.getnh30396x());
+
+            if (!jsonA4.getnh304().equals("0")) {
+                binding.nh30499.setChecked(false);
+                binding.nh30498.setChecked(false);
+                binding.nh304.setText(jsonA4.getnh304());
+            }
+
+
+          /*  if (!jsonA4.getnh30499().equals("0")) {
+                binding.nh30499.setChecked(true);
+            }
+            if (!jsonA4.getnh30498().equals("0")) {
+                binding.nh30498.setChecked(true);
+            }*/
+            if (!jsonA4.getnh305().equals("0")) {
+                binding.nh305.check(
+                        jsonA4.getnh305().equals("1") ? binding.nh305a.getId() :
+                                binding.nh305b.getId()
+                );
+            }
+            if (!jsonA4.getnh306().equals("0")) {
+                binding.nh306.check(
+                        jsonA4.getnh306().equals("1") ? binding.nh306a.getId() :
+                                jsonA4.getnh306().equals("2") ? binding.nh306b.getId() :
+                                        jsonA4.getnh306().equals("3") ? binding.nh306c.getId() :
+                                                jsonA4.getnh306().equals("4") ? binding.nh306d.getId() :
+                                                        jsonA4.getnh306().equals("5") ? binding.nh306e.getId() :
+                                                                jsonA4.getnh306().equals("6") ? binding.nh306f.getId() :
+                                                                        binding.nh30696.getId()
+                );
+            }
+            binding.nh30696x.setText(jsonA4.getnh30696x());
+            if (!jsonA4.getnh307().equals("0")) {
+                binding.nh307.check(
+                        jsonA4.getnh307().equals("1") ? binding.nh307a.getId() :
+                                jsonA4.getnh307().equals("2") ? binding.nh307b.getId() :
+                                        jsonA4.getnh307().equals("3") ? binding.nh307c.getId() :
+                                                jsonA4.getnh307().equals("4") ? binding.nh307d.getId() :
+                                                        jsonA4.getnh307().equals("5") ? binding.nh307e.getId() :
+                                                                jsonA4.getnh307().equals("6") ? binding.nh307f.getId() :
+                                                                        jsonA4.getnh307().equals("7") ? binding.nh307g.getId() :
+                                                                                jsonA4.getnh307().equals("8") ? binding.nh307h.getId() :
+                                                                                        jsonA4.getnh307().equals("9") ? binding.nh307i.getId() :
+                                                                                                binding.nh30796.getId()
+                );
+            }
+            binding.nh30796x.setText(jsonA4.getnh30796x());
+            if (!jsonA4.getnh308().equals("0")) {
+                binding.nh308.check(
+                        jsonA4.getnh308().equals("1") ? binding.nh308a.getId() :
+                                binding.nh308b.getId()
+                );
+            }
+            binding.nh309.setText(jsonA4.getnh309());
+
+            if (!jsonA4.getnh310().equals("0")) {
+                binding.nh310.check(
+                        jsonA4.getnh310().equals("1") ? binding.nh310a.getId() :
+                                jsonA4.getnh310().equals("2") ? binding.nh310b.getId() :
+                                        jsonA4.getnh310().equals("3") ? binding.nh310c.getId() :
+                                                jsonA4.getnh310().equals("4") ? binding.nh310d.getId() :
+                                                        jsonA4.getnh310().equals("5") ? binding.nh310e.getId() :
+                                                                jsonA4.getnh310().equals("6") ? binding.nh310f.getId() :
+                                                                        jsonA4.getnh310().equals("7") ? binding.nh310g.getId() :
+                                                                                binding.nh31096.getId()
+                );
+            }
+            binding.nh31096x.setText(jsonA4.getnh31096x());
+            if (!jsonA4.getnh31101().equals("0")) {
+                binding.nh31101.check(
+                        jsonA4.getnh31101().equals("1") ? binding.nh31101a.getId() :
+                                binding.nh31101b.getId()
+                );
+            }
+            if (!jsonA4.getnh31101().equals("0")) {
+                binding.nh31101.check(
+                        jsonA4.getnh31101().equals("1") ? binding.nh31101a.getId() :
+                                binding.nh31101b.getId()
+                );
+            }
+            if (!jsonA4.getnh31102().equals("0")) {
+                binding.nh31102.check(
+                        jsonA4.getnh31102().equals("1") ? binding.nh31102a.getId() :
+                                binding.nh31102b.getId()
+                );
+            }
+            if (!jsonA4.getnh31103().equals("0")) {
+                binding.nh31103.check(
+                        jsonA4.getnh31103().equals("1") ? binding.nh31103a.getId() :
+                                binding.nh31103b.getId()
+                );
+            }
+            if (!jsonA4.getnh31104().equals("0")) {
+                binding.nh31104.check(
+                        jsonA4.getnh31104().equals("1") ? binding.nh31104a.getId() :
+                                binding.nh31104b.getId()
+                );
+            }
+            if (!jsonA4.getnh31105().equals("0")) {
+                binding.nh31105.check(
+                        jsonA4.getnh31105().equals("1") ? binding.nh31105a.getId() :
+                                binding.nh31105b.getId()
+                );
+            }
+            if (!jsonA4.getnh31106().equals("0")) {
+                binding.nh31106.check(
+                        jsonA4.getnh31106().equals("1") ? binding.nh31106a.getId() :
+                                binding.nh31106b.getId()
+                );
+            }
+            if (!jsonA4.getnh31107().equals("0")) {
+                binding.nh31107.check(
+                        jsonA4.getnh31107().equals("1") ? binding.nh31107a.getId() :
+                                binding.nh31107b.getId()
+                );
+            }
+            if (!jsonA4.getnh31108().equals("0")) {
+                binding.nh31108.check(
+                        jsonA4.getnh31108().equals("1") ? binding.nh31108a.getId() :
+                                binding.nh31108b.getId()
+                );
+            }
+            if (!jsonA4.getnh31109().equals("0")) {
+                binding.nh31109.check(
+                        jsonA4.getnh31109().equals("1") ? binding.nh31109a.getId() :
+                                binding.nh31109b.getId()
+                );
+            }
+            if (!jsonA4.getnh31110().equals("0")) {
+                binding.nh31110.check(
+                        jsonA4.getnh31110().equals("1") ? binding.nh31110a.getId() :
+                                binding.nh31110b.getId()
+                );
+            }
+            if (!jsonA4.getnh31111().equals("0")) {
+                binding.nh31111.check(
+                        jsonA4.getnh31111().equals("1") ? binding.nh31111a.getId() :
+                                binding.nh31111b.getId()
+                );
+            }
+            if (!jsonA4.getnh31112().equals("0")) {
+                binding.nh31112.check(
+                        jsonA4.getnh31112().equals("1") ? binding.nh31112a.getId() :
+                                binding.nh31112b.getId()
+                );
+            }
+            if (!jsonA4.getnh31113().equals("0")) {
+                binding.nh31113.check(
+                        jsonA4.getnh31113().equals("1") ? binding.nh31113a.getId() :
+                                binding.nh31113b.getId()
+                );
+            }
+            if (!jsonA4.getnh31114().equals("0")) {
+                binding.nh31114.check(
+                        jsonA4.getnh31114().equals("1") ? binding.nh31114a.getId() :
+                                binding.nh31114b.getId()
+                );
+            }
+            if (!jsonA4.getnh31115().equals("0")) {
+                binding.nh31115.check(
+                        jsonA4.getnh31115().equals("1") ? binding.nh31115a.getId() :
+                                binding.nh31115b.getId()
+                );
+            }
+            if (!jsonA4.getnh31116().equals("0")) {
+                binding.nh31116.check(
+                        jsonA4.getnh31116().equals("1") ? binding.nh31116a.getId() :
+                                binding.nh31116b.getId()
+                );
+            }
+            if (!jsonA4.getnh31117().equals("0")) {
+                binding.nh31117.check(
+                        jsonA4.getnh31117().equals("1") ? binding.nh31117a.getId() :
+                                binding.nh31117b.getId()
+                );
+            }
+            if (!jsonA4.getnh31118().equals("0")) {
+                binding.nh31118.check(
+                        jsonA4.getnh31118().equals("1") ? binding.nh31118a.getId() :
+                                binding.nh31118b.getId()
+                );
+            }
+            if (!jsonA4.getnh31119().equals("0")) {
+                binding.nh31119.check(
+                        jsonA4.getnh31119().equals("1") ? binding.nh31119a.getId() :
+                                binding.nh31119b.getId()
+                );
+            }
+
+
+            if (!jsonA4.getnh312a().equals("0")) {
+                binding.nh312a.check(
+                        jsonA4.getnh312a().equals("1") ? binding.nh312a1.getId() :
+                                binding.nh312a2.getId()
+                );
+            }
+
+            if (!jsonA4.getnh312b().equals("0")) {
+                binding.nh312b.check(
+                        jsonA4.getnh312b().equals("1") ? binding.nh312b1.getId() :
+                                binding.nh312b2.getId()
+                );
+            }
+            if (!jsonA4.getnh312c().equals("0")) {
+                binding.nh312c.check(
+                        jsonA4.getnh312c().equals("1") ? binding.nh312c1.getId() :
+                                binding.nh312c2.getId()
+                );
+            }
+            if (!jsonA4.getnh312d().equals("0")) {
+                binding.nh312d.check(
+                        jsonA4.getnh312d().equals("1") ? binding.nh312d1.getId() :
+                                binding.nh312d2.getId()
+                );
+            }
+            if (!jsonA4.getnh312e().equals("0")) {
+                binding.nh312e.check(
+                        jsonA4.getnh312e().equals("1") ? binding.nh312e1.getId() :
+                                binding.nh312e2.getId()
+                );
+            }
+            if (!jsonA4.getnh312f().equals("0")) {
+                binding.nh312f.check(
+                        jsonA4.getnh312f().equals("1") ? binding.nh312f1.getId() :
+                                binding.nh312f2.getId()
+                );
+            }
+            if (!jsonA4.getnh312g().equals("0")) {
+                binding.nh312g.check(
+                        jsonA4.getnh312g().equals("1") ? binding.nh312g1.getId() :
+                                binding.nh312g2.getId()
+                );
+            }
+            if (!jsonA4.getnh312h().equals("0")) {
+                binding.nh312h.check(
+                        jsonA4.getnh312h().equals("1") ? binding.nh312h1.getId() :
+                                binding.nh312h2.getId()
+                );
+            }
+            if (!jsonA4.getnh312i().equals("0")) {
+                binding.nh312i.check(
+                        jsonA4.getnh312i().equals("1") ? binding.nh312i1.getId() :
+                                binding.nh312i2.getId()
+                );
+            }
+            if (!jsonA4.getnh313a().equals("0")) {
+                binding.nh313a.setChecked(true);
+            }
+            if (!jsonA4.getnh313b().equals("0")) {
+                binding.nh313b.setChecked(true);
+            }
+            if (!jsonA4.getnh313c().equals("0")) {
+                binding.nh313c.setChecked(true);
+            }
+            if (!jsonA4.getnh313d().equals("0")) {
+                binding.nh313d.setChecked(true);
+            }
+            if (!jsonA4.getnh313e().equals("0")) {
+                binding.nh313e.setChecked(true);
+            }
+            if (!jsonA4.getnh313f().equals("0")) {
+                binding.nh313f.setChecked(true);
+            }
+            if (!jsonA4.getnh31396().equals("0")) {
+                binding.nh31396.setChecked(true);
+            }
+            binding.nh31396x.setText(jsonA4.getnh31396x());
+
+
+            if (!jsonA4.getnh314().equals("0")) {
+                binding.nh314.check(
+                        jsonA4.getnh314().equals("1") ? binding.nh314a.getId() :
+                                jsonA4.getnh314().equals("2") ? binding.nh314b.getId() :
+                                        jsonA4.getnh314().equals("3") ? binding.nh314c.getId() :
+                                                jsonA4.getnh314().equals("4") ? binding.nh314d.getId() :
+                                                        jsonA4.getnh314().equals("5") ? binding.nh314e.getId() :
+                                                                jsonA4.getnh314().equals("6") ? binding.nh314f.getId() :
+                                                                        jsonA4.getnh314().equals("7") ? binding.nh314g.getId() :
+                                                                                jsonA4.getnh314().equals("8") ? binding.nh314h.getId() :
+                                                                                        jsonA4.getnh314().equals("9") ? binding.nh314i.getId() :
+                                                                                                jsonA4.getnh314().equals("10") ? binding.nh314j.getId() :
+                                                                                                        jsonA4.getnh314().equals("11") ? binding.nh314k.getId() :
+
+                                                                                                                binding.nh31496.getId()
+                );
+            }
+            binding.nh31496x.setText(jsonA4.getnh31496x());
+            if (!jsonA4.getnh315().equals("0")) {
+                binding.nh315.check(
+                        jsonA4.getnh315().equals("1") ? binding.nh315a.getId() :
+                                jsonA4.getnh315().equals("2") ? binding.nh315b.getId() :
+                                        jsonA4.getnh315().equals("3") ? binding.nh315c.getId() :
+                                                binding.nh31496.getId()
+                );
+            }
+            binding.nh31596x.setText(jsonA4.getnh31596x());
+            if (!jsonA4.getnh316().equals("0")) {
+                binding.nh316.check(
+                        jsonA4.getnh316().equals("1") ? binding.nh316a.getId() : binding.nh316b.getId()
+                );
+            }
+            if (!jsonA4.getnh317().equals("0")) {
+                binding.nh317.check(
+                        jsonA4.getnh317().equals("1") ? binding.nh317a.getId() :
+                                jsonA4.getnh317().equals("2") ? binding.nh317b.getId() :
+                                        jsonA4.getnh317().equals("3") ? binding.nh317c.getId() :
+                                                jsonA4.getnh317().equals("4") ? binding.nh317c.getId() :
+                                                        jsonA4.getnh317().equals("5") ? binding.nh317c.getId() :
+                                                                jsonA4.getnh317().equals("6") ? binding.nh317c.getId() :
+                                                                        jsonA4.getnh317().equals("7") ? binding.nh317c.getId() :
+                                                                                jsonA4.getnh317().equals("8") ? binding.nh317c.getId() :
+                                                                                        jsonA4.getnh317().equals("9") ? binding.nh317c.getId() :
+                                                                                                jsonA4.getnh317().equals("10") ? binding.nh317c.getId() :
+                                                                                                        jsonA4.getnh317().equals("11") ? binding.nh317c.getId() :
+                                                                                                                binding.nh31796.getId()
+                );
+            }
+            binding.nh31796x.setText(jsonA4.getnh31796x());
+            if (!jsonA4.getnh318().equals("0")) {
+                binding.nh318.check(
+                        jsonA4.getnh318().equals("1") ? binding.nh318a.getId() :
+                                jsonA4.getnh318().equals("2") ? binding.nh318b.getId() :
+                                        jsonA4.getnh318().equals("3") ? binding.nh318c.getId() :
+                                                jsonA4.getnh318().equals("4") ? binding.nh318d.getId() :
+                                                        jsonA4.getnh318().equals("5") ? binding.nh318e.getId() :
+                                                                jsonA4.getnh318().equals("6") ? binding.nh318f.getId() :
+                                                                        jsonA4.getnh318().equals("7") ? binding.nh318g.getId() :
+                                                                                jsonA4.getnh318().equals("8") ? binding.nh318h.getId() :
+                                                                                        jsonA4.getnh318().equals("9") ? binding.nh318i.getId() :
+                                                                                                jsonA4.getnh318().equals("10") ? binding.nh318j.getId() :
+                                                                                                        jsonA4.getnh318().equals("11") ? binding.nh318k.getId() :
+                                                                                                                jsonA4.getnh318().equals("12") ? binding.nh318l.getId() :
+                                                                                                                        binding.nh31896.getId()
+                );
+            }
+            binding.nh31896x.setText(jsonA4.getnh31896x());
+            if (!jsonA4.getnh319().equals("0")) {
+                binding.nh319.check(
+                        jsonA4.getnh319().equals("1") ? binding.nh319a.getId() :
+                                jsonA4.getnh319().equals("2") ? binding.nh319b.getId() :
+                                        jsonA4.getnh319().equals("3") ? binding.nh319c.getId() :
+                                                jsonA4.getnh319().equals("4") ? binding.nh319d.getId() :
+                                                        jsonA4.getnh319().equals("5") ? binding.nh319e.getId() :
+                                                                jsonA4.getnh319().equals("6") ? binding.nh319f.getId() :
+                                                                        jsonA4.getnh319().equals("7") ? binding.nh319g.getId() :
+                                                                                jsonA4.getnh319().equals("8") ? binding.nh319h.getId() :
+                                                                                        jsonA4.getnh319().equals("9") ? binding.nh319i.getId() :
+                                                                                                jsonA4.getnh319().equals("10") ? binding.nh319j.getId() :
+                                                                                                        jsonA4.getnh319().equals("11") ? binding.nh319k.getId() :
+                                                                                                                jsonA4.getnh319().equals("12") ? binding.nh319l.getId() :
+                                                                                                                        jsonA4.getnh319().equals("13") ? binding.nh319m.getId() :
+                                                                                                                                jsonA4.getnh319().equals("14") ? binding.nh319n.getId() :
+                                                                                                                                        jsonA4.getnh319().equals("15") ? binding.nh319o.getId() :
+                                                                                                                                                jsonA4.getnh319().equals("16") ? binding.nh319p.getId() :
+                                                                                                                                                        binding.nh31996.getId()
+                );
+            }
+            binding.nh31996x.setText(jsonA4.getnh31996x());
+            binding.nh320.setText(jsonA4.getnh320());
+            if (!jsonA4.getnh321().equals("0")) {
+                binding.nh321.check(
+                        jsonA4.getnh321().equals("1") ? binding.nh321a.getId() : binding.nh321b.getId()
+                );
+            }
+            if (!jsonA4.getnh322().equals("0")) {
+                binding.nh322.check(
+                        jsonA4.getnh322().equals("1") ? binding.nh322a.getId() :
+                                jsonA4.getnh322().equals("2") ? binding.nh322b.getId() :
+                                        binding.nh32298.getId()
+                );
+            }
+            binding.nh322acr.setText(jsonA4.getnh322acr());
+            binding.nh322can.setText(jsonA4.getnh322can());
+
+
+            if (!jsonA4.getnh323().equals("0")) {
+                binding.nh323.check(
+                        jsonA4.getnh323().equals("1") ? binding.nh323a.getId() :
+                                binding.nh323b.getId()
+                );
+            }
+
+            binding.nh324a.setText(jsonA4.getnh324a());
+            binding.nh324b.setText(jsonA4.getnh324b());
+            binding.nh324c.setText(jsonA4.getnh324c());
+            binding.nh324d.setText(jsonA4.getnh324d());
+            binding.nh324e.setText(jsonA4.getnh324e());
+            binding.nh324f.setText(jsonA4.getnh324f());
+            binding.nh324g.setText(jsonA4.getnh324g());
+
+        }
     }
 
     public void BtnContinue() {
@@ -248,6 +703,7 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
                 //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
                 finish();
+//                backPressed = true;
 
                 startActivity(new Intent(this, SectionA5Activity.class));
 
@@ -268,6 +724,14 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
     @Override
     public void onBackPressed() {
         Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
+      /*  try {
+            SaveDraft();
+            UpdateDB();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        super.onBackPressed();*/
     }
 
 
@@ -423,6 +887,9 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
             return false;
         }
 
+        if (!validatorClass.EmptyRadioButton(this, binding.nh312g, binding.nh312g1, getString(R.string.nh312g))) {
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, binding.nh312h, binding.nh312h1, getString(R.string.nh312h))) {
             return false;
         }
@@ -555,9 +1022,8 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
 
     private void SaveDraft() throws JSONException {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
-
-
         JSONObject sA4 = new JSONObject();
+
         sA4.put("nh301", binding.nh301a.isChecked() ? "1"
                 : binding.nh301b.isChecked() ? "2"
                 : binding.nh301c.isChecked() ? "3"

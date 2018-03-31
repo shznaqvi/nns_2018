@@ -19,12 +19,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
 
+import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONA8AModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA8ABinding;
+import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionA8AActivity extends Activity {
@@ -39,6 +41,7 @@ public class SectionA8AActivity extends Activity {
     DatabaseHelper db;
     FamilyMembersContract fmcSelected;
     int position = 0;
+    Boolean backPressed = false;
     private Timer timer = new Timer();
 
     @Override
@@ -97,12 +100,79 @@ public class SectionA8AActivity extends Activity {
         // setup head
         bi.txtCounter.setText("Count " + counter + " out of " + reccounter);
 
+        autoPopulate();
+
+
+    }
+
+    private void autoPopulate() {
+        RecipientsContract recipientsContract = db.getsA8A();
+        if (!recipientsContract.getsA8A().equals("")) {
+            JSONA8AModelClass jsonA8A = JSONUtilClass.getModelFromJSON(recipientsContract.getsA8A(), JSONA8AModelClass.class);
+            //  bi.
+            bi.nh7a03y.setText(jsonA8A.getnh7a03y());
+            bi.nh7a03m.setText(jsonA8A.getnh7a03m());
+
+            if (!jsonA8A.getnh7a04a().equals("0")) {
+                bi.nh7a04a.setChecked(true);
+
+            }
+            if (!jsonA8A.getnh7a04b().equals("0")) {
+                bi.nh7a04b.setChecked(true);
+
+            }
+            if (!jsonA8A.getnh7a04c().equals("0")) {
+                bi.nh7a04c.setChecked(true);
+
+            }
+            if (!jsonA8A.getnh7a04d().equals("0")) {
+                bi.nh7a04d.setChecked(true);
+
+            }
+            if (!jsonA8A.getnh7a04e().equals("0")) {
+                bi.nh7a04e.setChecked(true);
+
+            }
+            if (!jsonA8A.getnh7a04f().equals("0")) {
+                bi.nh7a04f.setChecked(true);
+
+            }
+            if (!jsonA8A.getnh7a04g().equals("0")) {
+                bi.nh7a04g.setChecked(true);
+
+            }
+            if (!jsonA8A.getnh7a04h().equals("0")) {
+                bi.nh7a04h.setChecked(true);
+
+            }
+            if (!jsonA8A.getnh7a04i().equals("0")) {
+                bi.nh7a04i.setChecked(true);
+
+            }
+            if (!jsonA8A.getnh7a0496().equals("0")) {
+                bi.nh7a0496.setChecked(true);
+                bi.nh7a0496x.setText(jsonA8A.getnh7a0496x());
+            }
+            bi.nh7a05.setText(jsonA8A.getnh7a05());
+
+            bi.nh7a06.setText(jsonA8A.getnh7a06());
+
+        }
+
     }
 
 
     @Override
     public void onBackPressed() {
         Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
+       /* try {
+            SaveDraft();
+            UpdateDB();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        super.onBackPressed();*/
     }
 
     public void BtnContinue() {
@@ -117,7 +187,8 @@ public class SectionA8AActivity extends Activity {
             if (UpdateDB()) {
                 //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
-                finish();
+                //  finish();
+
 
                 if (counter == reccounter) {
 
@@ -228,7 +299,9 @@ public class SectionA8AActivity extends Activity {
         MainApp.rc.set_UUID(fmcSelected.get_UID());
 
         JSONObject sA8a = new JSONObject();
-
+       /* if (backPressed) {
+            sA8a.put("updatedate_na8a", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+        }*/
         sA8a.put("enmno", MainApp.fc.getEnmNo());
         sA8a.put("hhno", MainApp.fc.getHhNo());
 

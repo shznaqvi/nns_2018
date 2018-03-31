@@ -45,6 +45,8 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
     private static final String TAG = SectionA1Activity.class.getName();
     static int progress = 0;
+    static Boolean reBackFlag = true;
+    static Boolean reBackChildFlag = true;
     private final long DELAY = 2000;
     ActivitySectionA1Binding binding;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
@@ -54,8 +56,6 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
     Handler handler = new Handler();
     Boolean flag = false;
     private Timer timer = new Timer();
-    static Boolean reBackFlag = true;
-    static Boolean reBackChildFlag = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -229,14 +229,6 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
             }
         });
 
-
-//
-//
-//
-//
-//
-//
-//
 // Initializing Re-Back functionality
         reBackFlag = true;
         reBackChildFlag = true;

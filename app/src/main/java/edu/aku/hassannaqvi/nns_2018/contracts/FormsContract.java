@@ -113,6 +113,46 @@ public class FormsContract {
 
     }
 
+    public FormsContract Hydrate1(Cursor cursor, int type) {
+        this._ID = cursor.getString(cursor.getColumnIndex(FormsTable._ID));
+        this._UID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_UID));
+
+        //this.gpsElev = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSELEV));
+        if (type == 1 || type == 3) {
+            this.sA4 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA4));
+        }
+        if (type == 1 || type == 4) {
+            this.sA5 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA5));
+        }
+        if (type == 1) {
+            this.formDate = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FORMDATE));
+            this.user = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_USER));
+            this.respLineNo = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_RESP_LNO));
+            this.enmNo = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ENM_NO));
+            this.hhNo = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_HH_NO));
+            this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
+            this.istatus88x = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS88x));
+            this.sB4 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SB4));
+            this.count = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_COUNT));
+            this.gpsLat = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSLAT));
+            this.gpsLng = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSLNG));
+            this.gpsDT = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSDATE));
+            this.gpsAcc = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSACC));
+            this.deviceID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DEVICEID));
+            this.devicetagID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DEVICETAGID));
+            this.synced = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SYNCED));
+            this.synced_date = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SYNCED_DATE));
+            this.appversion = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_APP_VERSION));
+            this.sA1 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA1));
+        }
+
+
+        // TODO:
+
+        return this;
+
+    }
+
     /*public A1Model toA1Model(String jsonStr) {
         Gson gson = new GsonBuilder().create();
         return gson.fromJson(jsonStr, A1Model.class);
