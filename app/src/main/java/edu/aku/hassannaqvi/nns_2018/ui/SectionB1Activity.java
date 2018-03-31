@@ -12,7 +12,6 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -26,6 +25,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
+import java.util.TimerTask;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
@@ -35,7 +35,7 @@ import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB1Binding;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionB1Activity extends Activity implements TextWatcher, RadioGroup.OnCheckedChangeListener, CompoundButton.OnCheckedChangeListener {
+public class SectionB1Activity extends Activity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
     public static String wraName = "";
     public static int WRAcounter = 0;
@@ -157,12 +157,17 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
 
 //============================================ Skip Patterns =======================================
 
+
+        bi.nw201days.addTextChangedListener(this);
+        bi.nw201months.addTextChangedListener(this);
+        bi.nw201years.addTextChangedListener(this);
+        bi.nw202.addTextChangedListener(this);
+
         bi.nw203.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (bi.nw203a.isChecked()) {
-                    //clearClass.ClearAllFields(bi.fldGrpnw204, true);
-
                     bi.nw204a.setEnabled(true);
                     bi.nw204b.setEnabled(true);
                     bi.nw205a.setEnabled(true);
@@ -254,6 +259,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
         bi.nw204.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (bi.nw204a.isChecked()) {
                     bi.nw205a.setEnabled(false);
                     bi.nw205b.setEnabled(false);
@@ -333,6 +339,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
         bi.nw205.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (bi.nw205a.isChecked()) {
                     bi.nw206.setEnabled(true);
                     bi.nw207a.setEnabled(true);
@@ -412,9 +419,12 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
             }
         });
 
+        bi.nw206.addTextChangedListener(this);
+
         bi.nw207.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (checkedId == R.id.nw207a) {
 
                     bi.nw211.setEnabled(true);
@@ -525,6 +535,24 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
             @Override
             public void afterTextChanged(Editable s) {
 
+                timer.cancel();
+                timer = new Timer();
+                timer.schedule(
+                        new TimerTask() {
+                            @Override
+                            public void run() {
+
+                                SectionB1Activity.this.runOnUiThread(new Runnable() {
+                                    public void run() {
+                                        ValidateForm();
+                                    }
+                                    //}
+                                });
+
+                            }
+                        },
+                        DELAY
+                );
             }
         });
 
@@ -592,6 +620,25 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
             @Override
             public void afterTextChanged(Editable s) {
 
+                timer.cancel();
+                timer = new Timer();
+                timer.schedule(
+                        new TimerTask() {
+                            @Override
+                            public void run() {
+
+                                SectionB1Activity.this.runOnUiThread(new Runnable() {
+                                    public void run() {
+                                        ValidateForm();
+                                    }
+                                    //}
+                                });
+
+                            }
+                        },
+                        DELAY
+                );
+
             }
         });
 
@@ -625,12 +672,32 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
             @Override
             public void afterTextChanged(Editable s) {
 
+                timer.cancel();
+                timer = new Timer();
+                timer.schedule(
+                        new TimerTask() {
+                            @Override
+                            public void run() {
+
+                                SectionB1Activity.this.runOnUiThread(new Runnable() {
+                                    public void run() {
+                                        ValidateForm();
+                                    }
+                                    //}
+                                });
+
+                            }
+                        },
+                        DELAY
+                );
+
             }
         });
 
         bi.nw208.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (checkedId == R.id.nw208a) {
                     bi.nw209a.setEnabled(true);
                     bi.nw209b.setEnabled(true);
@@ -680,6 +747,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
         bi.nw209.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (checkedId == R.id.nw209a) {
                     bi.nw21001a.setEnabled(true);
                     bi.nw21002a.setEnabled(true);
@@ -720,6 +788,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
         bi.nw21001.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (checkedId == R.id.nw21001a) {
                     bi.nw21003.clearCheck();
                     bi.nw21098.clearCheck();
@@ -748,6 +817,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
         bi.nw21002.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (checkedId == R.id.nw21002a) {
                     bi.nw21003.clearCheck();
                     bi.nw21098.clearCheck();
@@ -777,6 +847,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
         bi.nw21003.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (checkedId == R.id.nw21003a) {
                     //  bi.nw209.clearCheck();
                     bi.nw21001.clearCheck();
@@ -811,6 +882,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
         bi.nw21098.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (checkedId == R.id.nw21098a) {
                     //  bi.nw209.clearCheck();
                     bi.nw21001.clearCheck();
@@ -846,6 +918,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
         bi.nw21099.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (checkedId == R.id.nw21099a) {
                     bi.nw21001.clearCheck();
                     bi.nw21002.clearCheck();
@@ -875,6 +948,13 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
                 }
             }
         });
+
+        bi.nw213.addTextChangedListener(this);
+        bi.nw214.addTextChangedListener(this);
+        bi.nw215.addTextChangedListener(this);
+        bi.nw216aa.addTextChangedListener(this);
+
+
 
 
     }
@@ -1059,15 +1139,6 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
 
                     if (bi.nw208a.isChecked()) {
 
-                        /*String Errormsg = " If you are curently pregnant then total number of pregnancies and deliveries cannot be equal!";
-                        Boolean condition = bi.nw211.getText().toString().equals(bi.nw212.getText().toString());
-                        Boolean condit = Integer.valueOf(bi.nw211.getText().toString()) == Integer.valueOf(bi.nw212.getText().toString());
-                        if (condition) {
-                            validatorClass.setErrorOnMultTextFields(this, Errormsg, condition, bi.nw211, bi.nw212);
-                            validatorClass.setErrorOnMultRadioFields(this, Errormsg, condition, bi.nw208a);
-                            return false;
-                        }
-*/
                         if (!validatorClass.EmptyRadioButton(this, bi.nw209, bi.nw209a, getString(R.string.nw210))) {
                             return false;
                         }
@@ -1315,15 +1386,31 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
     @Override
     public void afterTextChanged(Editable s) {
 
+        timer.cancel();
+        timer = new Timer();
+        timer.schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+
+                        SectionB1Activity.this.runOnUiThread(new Runnable() {
+                            public void run() {
+                                ValidateForm();
+                            }
+                            //}
+                        });
+
+                    }
+                },
+                DELAY
+        );
+
     }
 
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-    }
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
 
+        ValidateForm();
     }
 }

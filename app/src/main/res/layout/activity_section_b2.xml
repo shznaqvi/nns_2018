@@ -96,7 +96,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="1dp"
-                        android:background="@drawable/bacground_border3"
+
                         android:orientation="vertical">
 
                         <TextView
@@ -819,7 +819,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bacground_border1"
+
                         android:orientation="vertical">
 
                         <TextView
@@ -1253,7 +1253,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bacground_border1"
+
                         android:orientation="vertical">
 
                         <TextView
@@ -1672,7 +1672,6 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bacground_border1"
                         android:orientation="vertical">
 
                         <TextView

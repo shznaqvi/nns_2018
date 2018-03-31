@@ -51,27 +51,6 @@ public class SectionB5Activity extends AppCompatActivity implements TextWatcher,
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 ValidateForm();
                 if (i == R.id.nw414b) {
-                    /*binding.nw415a.setChecked(false);
-                    binding.nw415b.setChecked(false);
-                    binding.nw415c.setChecked(false);
-                    binding.nw415d.setChecked(false);
-                    binding.nw415e.setChecked(false);
-                    binding.nw415f.setChecked(false);
-                    binding.nw415g.setChecked(false);
-                    binding.nw41596.setChecked(false);
-
-                    binding.nw416.clearCheck();
-                    binding.nw417.setText(null);
-
-                    binding.nw418a.setChecked(false);
-                    binding.nw418b.setChecked(false);
-                    binding.nw418c.setChecked(false);
-                    binding.nw418d.setChecked(false);
-                    binding.nw418e.setChecked(false);
-                    binding.nw418f.setChecked(false);
-                    binding.nw418g.setChecked(false);
-                    binding.nw418h.setChecked(false);
-                    binding.nw41896.setChecked(false);*/
 
                     clearClass.ClearAllFields(binding.fldGrpnw415, false);
 
@@ -86,24 +65,6 @@ public class SectionB5Activity extends AppCompatActivity implements TextWatcher,
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 ValidateForm();
                 if (i == R.id.nw419b) {
-                    /*binding.nw420a.setChecked(false);
-                    binding.nw420b.setChecked(false);
-                    binding.nw420c.setChecked(false);
-                    binding.nw420d.setChecked(false);
-                    binding.nw420e.setChecked(false);
-                    binding.nw420f.setChecked(false);
-                    binding.nw420g.setChecked(false);
-                    binding.nw42096.setChecked(false);
-
-                    binding.nw421.clearCheck();
-                    binding.nw422.setText(null);
-
-                    binding.nw423a.setChecked(false);
-                    binding.nw423b.setChecked(false);
-                    binding.nw423c.setChecked(false);
-                    binding.nw423d.setChecked(false);
-                    binding.nw423e.setChecked(false);
-                    binding.nw42396.setChecked(false);*/
 
                     clearClass.ClearAllFields(binding.fldGrpnw420, false);
                 } else {
@@ -339,9 +300,7 @@ public class SectionB5Activity extends AppCompatActivity implements TextWatcher,
                     return false;
                 }
 
-
             }
-
 
             if (binding.nw416b.isChecked()) {
 

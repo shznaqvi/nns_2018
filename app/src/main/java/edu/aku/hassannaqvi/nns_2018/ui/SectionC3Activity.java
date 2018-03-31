@@ -25,7 +25,7 @@ import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionC3Activity extends AppCompatActivity {
+public class SectionC3Activity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
 
     private final long DELAY = 1000;
     ActivitySectionC3Binding binding;
@@ -46,6 +46,7 @@ public class SectionC3Activity extends AppCompatActivity {
         binding.nc302.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                formValidation();
                 if (checkedId == R.id.nc302b) {
                     clearClass.ClearAllFields(binding.fldGrpnc303parent, false);
 
@@ -58,9 +59,54 @@ public class SectionC3Activity extends AppCompatActivity {
             }
         });
 
+        binding.nc303.setOnCheckedChangeListener(this);
+        binding.nc3bcg.setOnCheckedChangeListener(this);
+        binding.nc3bcgsrc.setOnCheckedChangeListener(this);
+        binding.nc3opv0.setOnCheckedChangeListener(this);
+        binding.nc3opv0src.setOnCheckedChangeListener(this);
+
+        binding.nc3opv1.setOnCheckedChangeListener(this);
+        binding.nc3opv1src.setOnCheckedChangeListener(this);
+
+        binding.nc3p1.setOnCheckedChangeListener(this);
+        binding.nc3p1src.setOnCheckedChangeListener(this);
+
+        binding.nc3pcv1.setOnCheckedChangeListener(this);
+        binding.nc3pcv1src.setOnCheckedChangeListener(this);
+
+        binding.nc3opv2.setOnCheckedChangeListener(this);
+        binding.nc3opv2src.setOnCheckedChangeListener(this);
+
+        binding.nc3p2.setOnCheckedChangeListener(this);
+        binding.nc3p2src.setOnCheckedChangeListener(this);
+
+        binding.nc3pcv2.setOnCheckedChangeListener(this);
+        binding.nc3pcv2src.setOnCheckedChangeListener(this);
+
+        binding.nc3opv3.setOnCheckedChangeListener(this);
+        binding.nc3opv3src.setOnCheckedChangeListener(this);
+
+        binding.nc3p3.setOnCheckedChangeListener(this);
+        binding.nc3p3src.setOnCheckedChangeListener(this);
+
+        binding.nc3pcv3.setOnCheckedChangeListener(this);
+        binding.nc3pcv3src.setOnCheckedChangeListener(this);
+
+        binding.nc3ipv.setOnCheckedChangeListener(this);
+        binding.nc3ipvsrc.setOnCheckedChangeListener(this);
+
+        binding.nc3m1.setOnCheckedChangeListener(this);
+        binding.nc3m1src.setOnCheckedChangeListener(this);
+
+        binding.nc3m2.setOnCheckedChangeListener(this);
+        binding.nc3m2src.setOnCheckedChangeListener(this);
+        binding.nc306.setOnCheckedChangeListener(this);
+
+
         binding.nc305.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                formValidation();
                 if (binding.nc305b.isChecked() || binding.nc30598.isChecked()) {
 //                    binding.nc306.clearCheck();
                     clearClass.ClearAllFields(binding.fldGrpnc305, false);
@@ -505,13 +551,13 @@ public class SectionC3Activity extends AppCompatActivity {
 
 
 //        nc305
-        if (!validatorClass.EmptyRadioButton(this, binding.nc305, binding.nc30598, getString(R.string.nc305))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nc305, binding.nc305a, getString(R.string.nc305))) {
             return false;
         }
 
         if (binding.nc305a.isChecked()) {
 //        nc306
-            return validatorClass.EmptyRadioButton(this, binding.nc306, binding.nc30698, getString(R.string.nc306));
+            return validatorClass.EmptyRadioButton(this, binding.nc306, binding.nc306a, getString(R.string.nc306));
         }
         return true;
     }
@@ -719,5 +765,9 @@ public class SectionC3Activity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        formValidation();
+    }
 }
 

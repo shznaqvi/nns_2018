@@ -16,13 +16,10 @@ import java.text.SimpleDateFormat;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONB3ModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
-import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB3Binding;
-import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
@@ -44,6 +41,7 @@ public class SectionB3Activity extends AppCompatActivity implements TextWatcher,
         binding.setCallback(this);
 
 //        Skip Patterns
+
         binding.nw327.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
@@ -64,8 +62,7 @@ public class SectionB3Activity extends AppCompatActivity implements TextWatcher,
                 formValidation();
                 if (i == R.id.nw330d) {
                     clearClass.ClearAllFields(binding.fldGrnw331, false);
-//                    binding.nw331.clearCheck();
-//                    binding.nw332.clearCheck();
+
                 } else {
                     clearClass.ClearAllFields(binding.fldGrnw331, true);
                 }
@@ -88,10 +85,10 @@ public class SectionB3Activity extends AppCompatActivity implements TextWatcher,
         });
 
 //        Listener
-        binding.nw328.setOnCheckedChangeListener(this);
+        //binding.nw328.setOnCheckedChangeListener(this);
         binding.nw332.setOnCheckedChangeListener(this);
 
-        MWRAContract mwraContract = db.getsB3();
+        /*MWRAContract mwraContract = db.getsB3();
         if (!mwraContract.getsB3().equals("")) {
 
             JSONB3ModelClass jsonB3 = JSONUtilClass.getModelFromJSON(mwraContract.getsB3(), JSONB3ModelClass.class);
@@ -166,7 +163,7 @@ public class SectionB3Activity extends AppCompatActivity implements TextWatcher,
                 );
             }
 
-        }
+        }*/
     }
 
     public void BtnContinue() {
@@ -203,29 +200,36 @@ public class SectionB3Activity extends AppCompatActivity implements TextWatcher,
         //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
 //        nw327
-        if (!validatorClass.EmptyRadioButton(this, binding.nw327, binding.nw32798, getString(R.string.nw327))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, binding.nw327, binding.nw327a, binding.nw327m, getString(R.string.nw327))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, binding.nw327, binding.nw327b, binding.nw327d, getString(R.string.nw327))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nw327, binding.nw327a, getString(R.string.nw327))) {
             return false;
         }
 
         if (!binding.nw32798.isChecked()) {
+
+            if (binding.nw327a.isChecked()) {
+                if (!validatorClass.EmptyTextBox(this, binding.nw327m, getString(R.string.nw327))) {
+                    return false;
+                }
+            } else if (binding.nw327b.isChecked()) {
+                if (!validatorClass.EmptyTextBox(this, binding.nw327d, getString(R.string.nw327))) {
+                    return false;
+                }
+            }
+
+            //if (!binding.nw32798.isChecked()) {
             // nw328
+            if (!validatorClass.EmptyRadioButton(this, binding.nw328, binding.nw328a, getString(R.string.nw328))) {
+                return false;
+            }
             if (!validatorClass.EmptyRadioButton(this, binding.nw328, binding.nw32896, binding.nw32896x, getString(R.string.nw328))) {
                 return false;
             }
             // nw329
-            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnw329, binding.nw329h, getString(R.string.nw329))) {
+            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnw329, binding.nw329a, getString(R.string.nw329))) {
                 return false;
             }
             // nw330
-            if (!validatorClass.EmptyRadioButton(this, binding.nw330, binding.nw330d, getString(R.string.nw330))) {
+            if (!validatorClass.EmptyRadioButton(this, binding.nw330, binding.nw330a, getString(R.string.nw330))) {
                 return false;
             }
 
@@ -237,11 +241,12 @@ public class SectionB3Activity extends AppCompatActivity implements TextWatcher,
 
                 if (binding.nw331a.isChecked()) {
                     // nw332
-                    return validatorClass.EmptyRadioButton(this, binding.nw332, binding.nw332d, getString(R.string.nw332));
+                    return validatorClass.EmptyRadioButton(this, binding.nw332, binding.nw332a, getString(R.string.nw332));
                 }
             }
-
         }
+
+        //}
 
         return true;
     }

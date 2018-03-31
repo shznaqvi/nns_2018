@@ -123,15 +123,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/bacground_border_heading"
+
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="90dp"
+                        android:layout_height="wrap_content"
                         android:background="@color/pink_100"
                         android:gravity="center"
-                        android:text="@string/year2"
+                        android:text="@string/year"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="22sp" />
 
@@ -141,9 +141,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:hint="@string/year2"
+                        android:hint="@string/year"
                         android:inputType="number"
-                        android:maxLength="4"
+                        android:maxLength="2"
                         android:visibility="visible" />
 
                 </LinearLayout>
@@ -152,7 +152,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/bacground_border_heading"
                     android:orientation="vertical">
 
                     <TextView
@@ -160,7 +159,7 @@
                         android:layout_height="wrap_content"
                         android:background="@color/pink_100"
                         android:gravity="center"
-                        android:text="@string/nw201sub2"
+                        android:text="@string/months"
                         android:textSize="22sp"
                         android:textColor="@color/colorPrimaryDark" />
 
@@ -181,7 +180,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/bacground_border_heading"
+
                     android:orientation="vertical">
 
                     <TextView
@@ -189,7 +188,7 @@
                         android:layout_height="wrap_content"
                         android:background="@color/pink_100"
                         android:gravity="center"
-                        android:text="@string/nw201sub1"
+                        android:text="@string/day"
                         android:textSize="22sp"
                         android:textColor="@color/colorPrimaryDark" />
 
@@ -285,12 +284,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/bacground_border_heading"
+
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="108dp"
                         android:background="@color/pink_100"
                         android:gravity="center"
                         android:text="@string/year2"
@@ -313,7 +312,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/bacground_border_heading"
+
                     android:orientation="vertical">
 
                     <TextView
@@ -321,7 +320,8 @@
                         android:layout_height="wrap_content"
                         android:background="@color/pink_100"
                         android:gravity="center"
-                        android:text="@string/month"
+                        android:text="@string/nw201sub2"
+                        android:textSize="22sp"
                         android:textColor="@color/colorPrimaryDark" />
 
 
@@ -341,7 +341,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/bacground_border_heading"
                     android:orientation="vertical">
 
                     <TextView
@@ -349,7 +348,8 @@
                         android:layout_height="wrap_content"
                         android:background="@color/pink_100"
                         android:gravity="center"
-                        android:text="@string/day"
+                        android:text="@string/nw201sub1"
+                        android:textSize="22sp"
                         android:textColor="@color/colorPrimaryDark" />
 
                     <EditText
