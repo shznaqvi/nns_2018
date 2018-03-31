@@ -4,6 +4,7 @@
     tools:context="edu.aku.hassannaqvi.nns_2018.edu.aku.hassannaqvi.nns_2018.MainActivity">
 
     <data>
+
         <variable
             name="callback"
             type="edu.aku.hassannaqvi.nns_2018.ui.MainActivity" />
@@ -138,16 +139,14 @@
                 android:text="OPEN Anthropometry Section" />
 
             <Button
-                   android:id="@+id/openA"
-                   style="@style/Widget.AppCompat.Button.Colored"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:layout_marginBottom="8dp"
-                   android:layout_marginTop="16dp"
-                   android:background="#1565C0"
-                   android:onClick="openA"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="16dp"
+                android:background="#1565C0"
+                android:onClick="@{(v) -> callback.openViewMember(true)}"
                 android:text="View Members" />
-
 
 
             <Button

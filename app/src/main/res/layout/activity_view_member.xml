@@ -242,7 +242,6 @@
 
                 </LinearLayout>
 
-
                 <LinearLayout
                     android:id="@+id/fldGrpviewlist"
                     android:layout_width="match_parent"
@@ -253,9 +252,41 @@
                     tools:visibility="visible">
 
                     <LinearLayout
+                        android:id="@+id/fldGrpEditHH"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:layout_weight="1"
+                            android:background="@color/colorPrimary"
+                            android:gravity="center"
+                            android:text="Household Sections"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@android:color/white" />
+
+                        <Button
+                            style="@style/Widget.AppCompat.Button.Colored"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:background="@drawable/button_bg1"
+                            android:elevation="5dp"
+                            android:onClick="@{() -> callback.BtnEditHH()}"
+                            android:text="CLICK HERE"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <TextView
@@ -292,30 +323,33 @@
                             android:id="@+id/nochildfound"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="-3dp"
                             android:layout_weight="1"
                             android:background="@color/pink_100"
                             android:gravity="center_horizontal|center_vertical"
+                            android:paddingTop="-2dp"
                             android:text="No Children Found"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@color/colorPrimaryDark"
                             android:textSize="16sp"
-                            android:visibility="gone" />
+                            android:visibility="invisible" />
 
                         <TextView
                             android:id="@+id/nowrafound"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/_2sdp"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="-3dp"
                             android:layout_weight="1"
                             android:background="@color/pink_100"
                             android:gravity="center_horizontal|center_vertical"
+                            android:paddingTop="-2dp"
                             android:text="No WRAs Found"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@color/colorPrimaryDark"
                             android:textSize="16sp"
-                            android:visibility="gone" />
+                            android:visibility="invisible" />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -387,7 +421,6 @@
 
                     </LinearLayout>
 
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -419,6 +452,7 @@
                             android:textColor="@color/white"
                             android:visibility="gone" />
                     </LinearLayout>
+
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
