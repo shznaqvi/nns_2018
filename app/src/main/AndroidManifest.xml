@@ -162,8 +162,16 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme1"
             android:windowSoftInputMode="adjustResize|stateHidden" />
-        <activity android:name=".ui.SectionC4Activity" />
-        <activity android:name=".ui.AntrhoInfoActivity" />
+        <activity
+            android:name=".ui.SectionC4Activity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme1"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".ui.AntrhoInfoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme1"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
             android:name=".ui.ViewMemberActivity"
             android:screenOrientation="portrait"
@@ -173,7 +181,6 @@
             android:name=".ui.SectionH8Activity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden" />
-
     </application>
 
 </manifest>
