@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -27,7 +26,7 @@ import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionB5Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener, CompoundButton.OnCheckedChangeListener {
+public class SectionB5Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
     private final long DELAY = 1000;
     ActivitySectionB5Binding binding;
@@ -113,14 +112,11 @@ public class SectionB5Activity extends AppCompatActivity implements TextWatcher,
             }
         });
 
-        binding.nw415a.setOnCheckedChangeListener(this);
         binding.nw416.setOnCheckedChangeListener(this);
         binding.nw417.addTextChangedListener(this);
-        binding.nw418a.setOnCheckedChangeListener(this);
-        binding.nw420a.setOnCheckedChangeListener(this);
         binding.nw421.setOnCheckedChangeListener(this);
         binding.nw422.addTextChangedListener(this);
-        binding.nw423a.setOnCheckedChangeListener(this);
+
 
 //         Back Pressed
         MWRAContract mwraContract = db.getsB5();
@@ -637,9 +633,5 @@ public class SectionB5Activity extends AppCompatActivity implements TextWatcher,
         ValidateForm();
     }
 
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        ValidateForm();
-    }
 
 }

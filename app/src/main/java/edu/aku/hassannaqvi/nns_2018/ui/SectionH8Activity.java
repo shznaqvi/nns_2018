@@ -258,6 +258,17 @@ public class SectionH8Activity extends Activity implements TextWatcher {
             return false;
         }
 
+        if (!validatorClass.RangeTextBox(this, bi.nh808m, 1, 12, 98, getString(R.string.nh808), " month")) {
+            return false;
+        }
+
+        if (!validatorClass.RangeTextBox(this, bi.nh808d, 1, 31, 98, getString(R.string.nh808), " day")) {
+            return false;
+        }
+
+
+
+
         Calendar today = Calendar.getInstance();
         if (dob.after(today)) {
             if (!validatorClass.RangeTextBoxforDate(this, bi.nh808d, 1, DateUtils.getCurrentDate(), 98, "Date can not be more than today")) {

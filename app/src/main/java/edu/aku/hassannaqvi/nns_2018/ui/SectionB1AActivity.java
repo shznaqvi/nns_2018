@@ -214,7 +214,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
             return false;
         }
 
-        if (!validatorClass.RangeTextBox(this, bi.nw21702d, 1, 31, 98, getString(R.string.nw21702), " day")) {
+        if (!validatorClass.RangeTextBox(this, bi.nw21702y, DateUtils.getCurrentYear() - 5, DateUtils.getCurrentYear(), getString(R.string.nw21702), " years")) {
             return false;
         }
 
@@ -222,10 +222,10 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
             return false;
         }
 
-
-        if (!validatorClass.RangeTextBox(this, bi.nw21702y, DateUtils.getCurrentYear() - 5, DateUtils.getCurrentYear(), getString(R.string.nw21702), " years")) {
+        if (!validatorClass.RangeTextBox(this, bi.nw21702d, 1, 31, 98, getString(R.string.nw21702), " day")) {
             return false;
         }
+
 
         Calendar today = Calendar.getInstance();
         if (date.after(today)) {

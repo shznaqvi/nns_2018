@@ -123,7 +123,7 @@
 
                         <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="90dp"
                             android:background="@color/pink_100"
                             android:gravity="center"
                             android:text="@string/year"
@@ -152,9 +152,10 @@
 
                         <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="90dp"
                             android:background="@color/pink_100"
                             android:text="@string/months"
+                            android:gravity="center"
                             android:textColor="@color/colorPrimaryDark" />
 
 
@@ -182,8 +183,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@color/pink_100"
-
-                            android:text="@string/day"
+                            android:gravity="center"
+                            android:text="@string/nw201sub1"
+                            android:textSize="22sp"
                             android:textColor="@color/colorPrimaryDark" />
 
                         <EditText
