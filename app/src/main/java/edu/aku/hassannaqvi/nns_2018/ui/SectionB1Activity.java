@@ -42,6 +42,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
     public static int WRAsize = 0;
     static Map<String, FamilyMembersContract> wraMap;
     static ArrayList<String> lstMwra;
+    static Boolean childCheck = false;
     private final long DELAY = 1000;
     ArrayList<String> respName;
     Map<String, String> respMap;
@@ -49,11 +50,8 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
     DatabaseHelper db;
     Boolean backPressed = false;
     Boolean frontPressed = false;
-    private Timer timer = new Timer();
-    static Boolean childCheck = false;
-
     String classPassName = "";
-
+    private Timer timer = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -1015,7 +1013,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
                     return false;
                 }
 
-                if (!validatorClass.RangeTextBox(this, bi.nw206, 15, Integer.valueOf(bi.nw202.getText().toString()), getString(R.string.nw206), " years")) {
+                if (!validatorClass.RangeTextBox(this, bi.nw206, 10, Integer.valueOf(bi.nw202.getText().toString()), getString(R.string.nw206), " years")) {
                     return false;
                 }
 

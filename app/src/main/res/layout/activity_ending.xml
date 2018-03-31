@@ -25,7 +25,8 @@
             android:background="@color/brown"
             android:onClick="@{() -> callback.BtnAddMember()}"
             android:text="ADD NEW MEMBER"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:visibility="gone" />
 
         <ScrollView
             android:layout_width="match_parent"

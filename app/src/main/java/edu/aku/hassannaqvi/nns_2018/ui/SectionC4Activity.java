@@ -19,13 +19,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import edu.aku.hassannaqvi.nns_2018.R;
-import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC4Binding;
-import edu.aku.hassannaqvi.nns_2018.other.JSONC4ModelClass;
-import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
@@ -62,6 +59,7 @@ public class SectionC4Activity extends Activity implements TextWatcher, RadioGro
                     clearClass.ClearAllFields(binding.fldGrnc402, true);
                 } else {
                     clearClass.ClearAllFields(binding.fldGrnc402, false);
+
                     /*binding.fldGrnc402.setVisibility(View.GONE);
                     binding.nc402.clearCheck();
                     binding.nc403.clearCheck();
@@ -241,6 +239,7 @@ public class SectionC4Activity extends Activity implements TextWatcher, RadioGro
         binding.nc415.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                formValidation();
                 if (checkedId == R.id.nc415a) {
                     clearClass.ClearAllFields(binding.fldGrpnc416, true);
                 } else {
@@ -251,6 +250,7 @@ public class SectionC4Activity extends Activity implements TextWatcher, RadioGro
         binding.nc418.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                formValidation();
                 if (checkedId == R.id.nc418a) {
                     clearClass.ClearAllFields(binding.fldGrpnc419, true);
                 } else {
@@ -271,17 +271,17 @@ public class SectionC4Activity extends Activity implements TextWatcher, RadioGro
         binding.nc412b.setOnCheckedChangeListener(this);
         binding.nc413.setOnCheckedChangeListener(this);
         binding.nc414.setOnCheckedChangeListener(this);
-        binding.nc415.setOnCheckedChangeListener(this);
+        //binding.nc415.setOnCheckedChangeListener(this);
         binding.nc416.addTextChangedListener(this);
         binding.nc417.setOnCheckedChangeListener(this);
-        binding.nc418.setOnCheckedChangeListener(this);
+        //binding.nc418.setOnCheckedChangeListener(this);
         binding.nc419.setOnCheckedChangeListener(this);
         binding.nc420m.addTextChangedListener(this);
         binding.nc420d.addTextChangedListener(this);
-        autoPopulateFields();
+        //autoPopulateFields();
     }
 
-    private void autoPopulateFields() {
+    /*private void autoPopulateFields() {
         ChildContract childContract = db.getsC4();
 
         if (!childContract.getsC4().equals("")) {
@@ -609,7 +609,7 @@ public class SectionC4Activity extends Activity implements TextWatcher, RadioGro
 
 
         }
-    }
+    }*/
 
 
     @Override

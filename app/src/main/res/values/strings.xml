@@ -859,8 +859,8 @@
 (مکمل عمر سالوں میں ریکارڈ کریں )
  </string>
     <string name="nc202a"> ایک سال سے کم </string>
-    <string name="nc202b"> ایک سال  </string>
-    <string name="nc202c"> دو سال  </string>
+    <string name="nc202b"> ایک سال سے زیادہ یا دو سال سے کم  </string>
+    <string name="nc202c"> دو سال سے پانچ سال کے درمیان  </string>
 
     <!--<string name="nc203">  (نام) کتنے مہینے کا ہے ؟-->
     <!--(مکمل عمر مہینوں میں ریکارڈ کریں )-->
