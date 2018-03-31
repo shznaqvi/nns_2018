@@ -38,7 +38,7 @@ import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 public class SectionB1Activity extends Activity implements TextWatcher, RadioGroup.OnCheckedChangeListener, CompoundButton.OnCheckedChangeListener {
 
     public static String wraName = "";
-    public static int WRAcounter = 1;
+    public static int WRAcounter = 0;
     public static int WRAsize = 0;
     static Map<String, FamilyMembersContract> wraMap;
     static ArrayList<String> lstMwra;
@@ -97,6 +97,14 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
                 WRAsize = MainApp.mwra.size();
             }
         } else {
+
+            if (WRAcounter == 0) {
+                wraMap = new HashMap<>();
+                lstMwra = new ArrayList<>();
+
+                lstMwra.add("....");
+            }
+
             for (int i = WRAsize; i < MainApp.mwra.size(); i++) {
                 wraMap.put(MainApp.mwra.get(i).getName() + "-" + MainApp.mwra.get(i).getSerialNo(), MainApp.mwra.get(i));
                 lstMwra.add(MainApp.mwra.get(i).getName() + "-" + MainApp.mwra.get(i).getSerialNo());

@@ -121,6 +121,17 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
             }
         } else {
 
+            if (counterPerMom == 0 && counterPerNA == 0) {
+                counter = 1;
+                counterPerMom = 0;
+                counterPerNA = 0;
+
+                childU5 = new ArrayList<>();
+                childMap = new HashMap<>();
+
+                childU5.add("....");
+            }
+
             if (isNA) {
                 for (int i = NAChildsize; i < MainApp.childNA.size(); i++) {
                     childMap.put(MainApp.childNA.get(i).getName() + "-" + MainApp.childNA.get(i).getSerialNo(), MainApp.childNA.get(i));
