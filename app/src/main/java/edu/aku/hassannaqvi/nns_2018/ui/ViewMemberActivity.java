@@ -242,7 +242,7 @@ public class ViewMemberActivity extends AppCompatActivity {
 //              Set Recycler View
                     wraAdapter = new WraAdapter(MainApp.mwra);
                     if (wraAdapter.getItemCount() != 0) {
-                        binding.nowrafound.setVisibility(View.GONE);
+                        binding.nowrafound.setVisibility(View.INVISIBLE);
                         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                         binding.recyclerMwra.setLayoutManager(mLayoutManager);
                         binding.recyclerMwra.setItemAnimator(new DefaultItemAnimator());
@@ -340,7 +340,7 @@ public class ViewMemberActivity extends AppCompatActivity {
 
 
                     if (childAdapter.getItemCount() != 0) {
-                        binding.nochildfound.setVisibility(View.GONE);
+                        binding.nochildfound.setVisibility(View.INVISIBLE);
                         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                         binding.recyclerChild.setLayoutManager(mLayoutManager);
                         binding.recyclerChild.setItemAnimator(new DefaultItemAnimator());
