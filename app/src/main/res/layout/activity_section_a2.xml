@@ -374,8 +374,9 @@
                                 android:layout_height="wrap_content"
                                 android:background="@color/pink_100"
                                 android:gravity="center"
-                                android:text="@string/year2"
-                                android:textColor="@color/colorPrimaryDark" />
+                                android:text="@string/nw201sub3"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="22sp" />
 
 
                             <EditText
@@ -402,8 +403,9 @@
                                 android:layout_height="wrap_content"
                                 android:background="@color/pink_100"
                                 android:gravity="center"
-                                android:text="@string/month"
-                                android:textColor="@color/colorPrimaryDark" />
+                                android:text="@string/nw201sub2"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="22sp" />
 
 
                             <EditText
@@ -430,8 +432,9 @@
                                 android:layout_height="wrap_content"
                                 android:background="@color/pink_100"
                                 android:gravity="center"
-                                android:text="@string/day"
-                                android:textColor="@color/colorPrimaryDark" />
+                                android:text="@string/nw201sub1"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="22sp" />
 
                             <EditText
                                 android:id="@+id/nh2dobd"
