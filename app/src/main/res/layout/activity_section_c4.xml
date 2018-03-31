@@ -153,7 +153,7 @@
                         android:id="@+id/fldGrnc403"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bacground_border1"
+
                         android:orientation="vertical">
 
                         <TextView
@@ -583,7 +583,7 @@
                         android:id="@+id/fldGrnc407"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bacground_border1"
+
                         android:orientation="vertical">
                         <!--nc407-->
                         <TextView
@@ -1022,7 +1022,7 @@
                         android:id="@+id/fldGrnc411"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bacground_border1"
+
                         android:orientation="vertical">
                         <!--11-->
                         <TextView

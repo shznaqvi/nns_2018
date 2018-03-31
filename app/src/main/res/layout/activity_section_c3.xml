@@ -142,7 +142,7 @@
                         android:id="@+id/fldGrpnc303"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bacground_border"
+
                         android:orientation="vertical"
                         android:padding="8px">
                         <!--android:visibility="@{nc303d.checked ? View.GONE : View.VISIBLE}"-->
@@ -161,7 +161,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/bacground_border1"
+
                             android:orientation="vertical">
 
                             <!-- bcg -->
@@ -359,7 +359,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/bacground_border1"
+
                             android:orientation="vertical">
 
                             <!-- OPV-1 -->
@@ -522,20 +522,6 @@
 
                             </RadioGroup>
 
-                            <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
-                                android:id="@+id/nc3p1dt"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="1dp"
-                                android:enabled='@{nc3p1a.checked ? true : false }'
-                                android:focusable="true"
-                                android:hint="@string/nc3p1dt"
-                                android:padding="15dp"
-                                android:text='@{nc3p1a.checked ? nc3p1dt.getText.toString : ""}'
-                                android:textColor="@android:color/black"
-                                app:dateFormat="dd-MM-yyyy" />-->
-
-
 
                             <!-- PCV - 1 -->
                             <TextView
@@ -609,19 +595,6 @@
 
                             </RadioGroup>
 
-                            <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
-                                android:id="@+id/nc3pcv1dt"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="1dp"
-                                android:enabled='@{nc3pcv1a.checked ? true : false }'
-                                android:focusable="true"
-                                android:hint="@string/nc3pcv1dt"
-                                android:padding="15dp"
-                                android:text='@{nc3pcv1a.checked ? nc3pcv1dt.getText.toString : ""}'
-                                android:textColor="@android:color/black"
-                                app:dateFormat="dd-MM-yyyy" />-->
-
 
                         </LinearLayout>
 
@@ -640,7 +613,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/bacground_border1"
+
                             android:orientation="vertical">
 
                             <!-- OPV-2 -->
@@ -715,19 +688,6 @@
                                     android:text="@string/recall" />
 
                             </RadioGroup>
-
-                            <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
-                                android:id="@+id/nc3opv2dt"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="1dp"
-                                android:enabled='@{nc3opv2a.checked ? true : false }'
-                                android:focusable="true"
-                                android:hint="@string/nc3opv2dt"
-                                android:padding="15dp"
-                                android:text='@{nc3opv2a.checked ? nc3opv2dt.getText.toString : ""}'
-                                android:textColor="@android:color/black"
-                                app:dateFormat="dd-MM-yyyy" />-->
 
 
 
@@ -805,20 +765,6 @@
                             </RadioGroup>
 
 
-                            <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
-                                android:id="@+id/nc3p2dt"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="1dp"
-                                android:enabled='@{nc3p2a.checked ? true : false }'
-                                android:focusable="true"
-                                android:hint="@string/nc3p2dt"
-                                android:padding="15dp"
-                                android:text='@{nc3p2a.checked ? nc3p2dt.getText.toString : ""}'
-                                android:textColor="@android:color/black"
-                                app:dateFormat="dd-MM-yyyy" />
-        -->
-
 
                             <!-- PVC - 2 -->
                             <TextView
@@ -892,20 +838,6 @@
 
                             </RadioGroup>
 
-                            <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
-                                android:id="@+id/nc3pcv2dt"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="1dp"
-                                android:enabled='@{nc3pcv2a.checked ? true : false }'
-                                android:focusable="true"
-                                android:hint="@string/nc3pcv2dt"
-                                android:padding="15dp"
-                                android:text='@{nc3pcv2a.checked ? nc3pcv2dt.getText.toString : ""}'
-                                android:textColor="@android:color/black"
-                                app:dateFormat="dd-MM-yyyy" />
-        -->
-
 
                         </LinearLayout>
 
@@ -923,7 +855,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/bacground_border1"
+
                             android:orientation="vertical">
 
                             <!-- OPV-3 -->
@@ -1000,20 +932,6 @@
 
                             </RadioGroup>
 
-                            <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
-                                android:id="@+id/nc3opv3dt"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="1dp"
-                                android:enabled='@{nc3opv3a.checked ? true : false }'
-                                android:focusable="true"
-                                android:hint="@string/nc3opv3dt"
-                                android:padding="15dp"
-                                android:text='@{nc3opv3a.checked ? nc3opv3dt.getText.toString : ""}'
-                                android:textColor="@android:color/black"
-                                app:dateFormat="dd-MM-yyyy" />-->
-
-
 
                             <!-- Penta - 3 -->
                             <TextView
@@ -1086,20 +1004,6 @@
                                     android:text="@string/recall" />
 
                             </RadioGroup>
-
-                            <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
-                                android:id="@+id/nc3p3dt"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="1dp"
-                                android:enabled='@{nc3p3a.checked ? true : false }'
-                                android:focusable="true"
-                                android:hint="@string/nc3p3dt"
-                                android:padding="15dp"
-                                android:text='@{nc3p3a.checked ? nc3p3dt.getText.toString : ""}'
-                                android:textColor="@android:color/black"
-                                app:dateFormat="dd-MM-yyyy" />
-        -->
 
 
                             <!-- PCV - 3 -->
@@ -1174,20 +1078,6 @@
 
                             </RadioGroup>
 
-                            <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
-                                android:id="@+id/nc3pcv3dt"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="1dp"
-                                android:enabled='@{nc3pcv3a.checked ? true : false }'
-                                android:focusable="true"
-                                android:hint="@string/nc3pcv3dt"
-                                android:padding="15dp"
-                                android:text='@{nc3pcv3a.checked ? nc3pcv3dt.getText.toString : ""}'
-                                android:textColor="@android:color/black"
-                                app:dateFormat="dd-MM-yyyy" />-->
-
-
 
                             <!-- IPV  -->
                             <TextView
@@ -1261,19 +1151,6 @@
                             </RadioGroup>
 
 
-                            <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
-                                android:id="@+id/nc3ipvdt"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="1dp"
-                                android:enabled='@{nc3ipva.checked ? true : false }'
-                                android:focusable="true"
-                                android:hint="@string/nc3ipvdt"
-                                android:padding="15dp"
-                                android:text='@{nc3ipva.checked ? nc3ipvdt.getText.toString : ""}'
-                                android:textColor="@android:color/black"
-                                app:dateFormat="dd-MM-yyyy" />-->
-
 
 
                         </LinearLayout>
@@ -1293,7 +1170,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/bacground_border1"
+
                             android:orientation="vertical">
 
                             <!-- Measles-1 -->
@@ -1368,18 +1245,6 @@
 
                             </RadioGroup>
 
-                            <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
-                                android:id="@+id/nc3m1dt"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="1dp"
-                                android:enabled='@{nc3m1a.checked ? true : false }'
-                                android:focusable="true"
-                                android:hint="@string/nc3m1dt"
-                                android:padding="15dp"
-                                android:text='@{nc3m1a.checked ? nc3m1dt.getText.toString : ""}'
-                                android:textColor="@android:color/black"
-                                app:dateFormat="dd-MM-yyyy" />-->
 
                         </LinearLayout>
 
@@ -1398,7 +1263,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/bacground_border1"
+
                             android:orientation="vertical">
 
                             <!-- Measles-2 -->
@@ -1471,20 +1336,6 @@
                                     android:text="@string/recall" />
 
                             </RadioGroup>
-                            <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
-                                android:id="@+id/nc3m2dt"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="1dp"
-                                android:enabled='@{nc3m2a.checked ? true : false }'
-                                android:focusable="true"
-                                android:hint="@string/nc3m2dt"
-                                android:padding="15dp"
-                                android:text='@{nc3m2a.checked ? nc3m2dt.getText.toString : ""}'
-                                android:textColor="@android:color/black"
-                                app:dateFormat="dd-MM-yyyy" />-->
-
-
 
                         </LinearLayout>
 

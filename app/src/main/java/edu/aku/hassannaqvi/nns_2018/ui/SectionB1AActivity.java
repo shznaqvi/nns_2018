@@ -19,6 +19,7 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindViews;
 import butterknife.ButterKnife;
@@ -73,57 +74,35 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 /*        if (getIntent().getBooleanExtra("backPressed", false)) {
             frontPressed = true;*/
 
-            Collection<OutcomeContract> outcomeContracts = db.getPressedOutcome();
+        Collection<OutcomeContract> outcomeContracts = db.getPressedOutcome();
 
-            for (OutcomeContract outcomeContract : outcomeContracts) {
-                JSONB1AModelClass jsonB1A = JSONUtilClass.getModelFromJSON(outcomeContract.getsB1A(), JSONB1AModelClass.class);
+        for (OutcomeContract outcomeContract : outcomeContracts) {
+            JSONB1AModelClass jsonB1A = JSONUtilClass.getModelFromJSON(outcomeContract.getsB1A(), JSONB1AModelClass.class);
 
-                if (jsonB1A.getSerial().equals(String.valueOf(MainApp.count))) {
+            if (jsonB1A.getSerial().equals(String.valueOf(MainApp.count))) {
 
-                    frontPressed = true;
+                frontPressed = true;
 
-                    outcomeCC = outcomeContract;
+                outcomeCC = outcomeContract;
 
-                    /*bi.nw215y.setText(jsonB1A.getNw215y());
-                    bi.nw215m.setText(jsonB1A.getNw215m());
-                    bi.nw215d.setText(jsonB1A.getNw215d());
 
-                    if (!jsonB1A.getNw216().equals("0")) {
-                        bi.nw216.check(
-                                jsonB1A.getNw216().equals("1") ? bi.nw216a.getId() :
-                                        jsonB1A.getNw216().equals("2") ? bi.nw216b.getId() :
-                                                jsonB1A.getNw216().equals("3") ? bi.nw216c.getId() :
-                                                        jsonB1A.getNw216().equals("4") ? bi.nw216d.getId() :
-                                                                jsonB1A.getNw216().equals("5") ? bi.nw216e.getId() :
-                                                                        bi.nw216f.getId()
-                        );
-                    }
-
-                    if (!jsonB1A.getNw217().equals("0")) {
-                        bi.nw217.check(
-                                jsonB1A.getNw217().equals("1") ? bi.nw217a.getId() :
-                                        bi.nw217b.getId()
-                        );
-                    }
-
-                    bi.nw219y.setText(jsonB1A.getNw219y());
-                    bi.nw219m.setText(jsonB1A.getNw219m());*/
-
-                    if (!jsonB1A.getnw21701().equals("0")) {
-                        bi.nw21701.check(
-                                jsonB1A.getnw21701().equals("1") ? bi.nw21701a.getId() :
-                                        bi.nw21701b.getId()
-                        );
-                    }
-
-                    bi.nw21702y.setText(jsonB1A.getnw21702y());
-                    bi.nw21702m.setText(jsonB1A.getnw21702m());
-                    bi.nw21702d.setText(jsonB1A.getnw21702d());
+                if (!jsonB1A.getnw21701().equals("0")) {
+                    bi.nw21701.check(
+                            jsonB1A.getnw21701().equals("1") ? bi.nw21701a.getId() :
+                                    bi.nw21701b.getId()
+                    );
                 }
 
+                bi.nw21702y.setText(jsonB1A.getnw21702y());
+                bi.nw21702m.setText(jsonB1A.getnw21702m());
+                bi.nw21702d.setText(jsonB1A.getnw21702d());
             }
 
-//        }
+        }
+
+        bi.nw21701.setOnCheckedChangeListener(this);
+
+
 
     }
 
@@ -149,7 +128,8 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                         if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
                                 &&
                                 MainApp.B6Flag) {
-                            startActivity(new Intent(this, SectionB6Activity.class));
+                            startActivityForResult(new Intent(this, SectionB6Activity.class)
+                                    .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
                         } else {
                             startActivity(new Intent(this, MotherEndingActivity.class)
                                     .putExtra("complete", true));
@@ -159,30 +139,11 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 } else {
 
                     //MainApp.count ++;
-                    startActivity(new Intent(this, SectionB1AActivity.class));
-                }
-
-
-                /*if (MainApp.totalPregnancy >= MainApp.count) {
                     startActivityForResult(new Intent(this, SectionB1AActivity.class)
                             .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
-                } else {
-
-                    if (SectionB1Activity.childCheck) {
-                        startActivity(new Intent(this, SectionB2Activity.class));
-                    } else {
-                        if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
-                                &&
-                                MainApp.B6Flag) {
-                            startActivityForResult(new Intent(this, SectionB6Activity.class)
-                                    .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
-                        } else {
-                            startActivity(new Intent(this, MotherEndingActivity.class)
-                                    .putExtra("complete", true));
-                        }
-                    }
                 }
-*/
+
+
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -345,6 +306,26 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
     @Override
     public void afterTextChanged(Editable s) {
 
+        timer.cancel();
+        timer = new Timer();
+        timer.schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+
+                        SectionB1AActivity.this.runOnUiThread(new Runnable() {
+                            public void run() {
+                                ValidateForm();
+                            }
+                            //}
+                        });
+
+                    }
+                },
+                DELAY
+        );
+
+
     }
 
     @Override
@@ -402,6 +383,8 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+        ValidateForm();
 
     }
 }

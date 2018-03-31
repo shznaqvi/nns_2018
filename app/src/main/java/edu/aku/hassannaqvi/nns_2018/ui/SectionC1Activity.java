@@ -12,6 +12,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -25,6 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindViews;
 import butterknife.ButterKnife;
@@ -37,7 +39,7 @@ import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC1Binding;
 import edu.aku.hassannaqvi.nns_2018.other.DateUtils;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionC1Activity extends AppCompatActivity implements TextWatcher {
+public class SectionC1Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
     public static int counter = 1;
     public static int counterPerMom = 0;
@@ -164,7 +166,6 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
         // setup spinner
         binding.nc101.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, childU5));
         binding.resp.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, respName));
-
         for (EditText ed : grpDate) {
             ed.addTextChangedListener(this);
         }
@@ -196,8 +197,31 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
             @Override
             public void afterTextChanged(Editable s) {
 
+                timer.cancel();
+                timer = new Timer();
+                timer.schedule(
+                        new TimerTask() {
+                            @Override
+                            public void run() {
+
+                                runOnUiThread(new Runnable() {
+                                    public void run() {
+                                        formValidation();
+                                    }
+                                    //}
+                                });
+
+                            }
+                        },
+                        DELAY
+                );
+
+
             }
         });
+
+        binding.nc202.setOnCheckedChangeListener(this);
+        binding.nc205.setOnCheckedChangeListener(this);
 
 
     }
@@ -577,6 +601,26 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
 
     @Override
     public void afterTextChanged(Editable s) {
+
+        timer.cancel();
+        timer = new Timer();
+        timer.schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                formValidation();
+                            }
+                            //}
+                        });
+
+                    }
+                },
+                DELAY
+        );
+
     }
 
     public void BtnAddMember() {
@@ -605,4 +649,8 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
         alert.show();
     }
 
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        formValidation();
+    }
 }

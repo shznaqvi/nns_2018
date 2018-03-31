@@ -118,12 +118,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/bacground_border_heading"
+
                         android:orientation="vertical">
 
                         <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="90dp"
+                            android:layout_height="108dp"
                             android:background="@color/pink_100"
                             android:gravity="center"
                             android:text="@string/year"
@@ -147,12 +147,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/bacground_border_heading"
+
                         android:orientation="vertical">
 
                         <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="90dp"
+                            android:layout_height="108dp"
                             android:background="@color/pink_100"
                             android:text="@string/months"
                             android:gravity="center"
@@ -176,7 +176,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/bacground_border_heading"
+
                         android:orientation="vertical">
 
                         <TextView
@@ -410,101 +410,6 @@
                 </RadioGroup>
 
 
-                <!--nc103-->
-                <!-- <TextView
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:layout_marginTop="16dp"
-                     android:background="@color/colorPrimary"
-                     android:text="@string/nc103"
-                     android:textAppearance="?android:attr/textAppearanceLarge"
-                     android:textColor="@android:color/white" />
-
-
-                 <RadioGroup
-                     android:id="@+id/nc103"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content">
-
-                     <RadioButton
-                         android:id="@+id/nc103a"
-                         style="@style/radiobutton"
-                         android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
-                         android:layout_marginBottom="1dp"
-                         android:text="@string/nc103a" />
-
-                     <RadioButton
-                         android:id="@+id/nc103b"
-                         style="@style/radiobutton"
-                         android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
-                         android:layout_marginBottom="1dp"
-                         android:text="@string/nc103b" />
-
-                     <RadioButton
-                         android:id="@+id/nc103c"
-                         style="@style/radiobutton"
-                         android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
-                         android:layout_marginBottom="1dp"
-                         android:text="@string/no" />
-
-                     <RadioButton
-                         android:id="@+id/nc10398"
-                         style="@style/radiobutton"
-                         android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
-                         android:layout_marginBottom="1dp"
-                         android:text="@string/dkn" />
-
-                 </RadioGroup>
-
-                 &lt;!&ndash;nc104&ndash;&gt;
-                 <TextView
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:layout_marginTop="16dp"
-                     android:background="@color/colorPrimary"
-                     android:text="@string/nc104"
-                     android:textAppearance="?android:attr/textAppearanceLarge"
-                     android:textColor="@android:color/white" />
-
-                 <RadioGroup
-                     android:id="@+id/nc104"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:orientation="horizontal">
-
-                     <RadioButton
-                         android:id="@+id/nc104a"
-                         style="@style/radiobutton"
-                         android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
-                         android:layout_marginBottom="1dp"
-                         android:layout_weight="1"
-                         android:text="@string/yes" />
-
-                     <RadioButton
-                         android:id="@+id/nc104b"
-                         style="@style/radiobutton"
-                         android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
-                         android:layout_marginBottom="1dp"
-                         android:layout_weight="1"
-                         android:text="@string/no" />
-
-                     <RadioButton
-                         android:id="@+id/nc10498"
-                         style="@style/radiobutton"
-                         android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
-                         android:layout_marginBottom="1dp"
-                         android:layout_weight="1"
-                         android:text="@string/dkn" />
-
-                 </RadioGroup>
-     -->
                 <!--  = = = = =  END OF FORM FIELDS  = = = = = -->
                 <LinearLayout
                     android:layout_width="match_parent"

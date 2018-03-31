@@ -102,12 +102,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/bacground_border_heading"
+
                         android:orientation="vertical">
 
                         <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="90dp"
+                            android:layout_height="108dp"
                             android:background="@color/pink_100"
                             android:gravity="center"
                             android:text="@string/year2"
@@ -130,7 +130,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/bacground_border_heading"
+
                         android:orientation="vertical">
 
                         <TextView
@@ -159,7 +159,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/bacground_border_heading"
+
                         android:orientation="vertical">
 
                         <TextView

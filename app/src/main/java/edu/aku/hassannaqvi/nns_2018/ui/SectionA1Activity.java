@@ -45,7 +45,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
     private static final String TAG = SectionA1Activity.class.getName();
     static int progress = 0;
-    private final long DELAY = 2000;
+    private final long DELAY = 1000;
     ActivitySectionA1Binding binding;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     DatabaseHelper db;

@@ -59,25 +59,6 @@
                 android:layoutDirection="rtl"
                 android:orientation="vertical">
 
-                <!-- <TextView
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:layout_marginTop="16dp"
-                     android:background="@color/colorPrimary"
-                     android:text="@string/nh113"
-                     android:textAppearance="?android:attr/textAppearanceLarge"
-                     android:textColor="@android:color/white" />
-
-
-                 <Spinner
-                     android:id="@+id/resp"
-                     style="@style/Widget.AppCompat.Spinner.Underlined"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:layout_marginTop="10dp"
-                     android:gravity="center" />
-     -->
-
                 <!--nw414-->
                 <TextView
                     android:layout_width="match_parent"
@@ -114,7 +95,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/bacground_border_heading"
                         android:orientation="vertical">
 
                         <TextView
@@ -135,7 +115,10 @@
                             android:hint="@string/year2"
                             android:inputType="number"
                             android:maxLength="4"
-                            android:visibility="visible" />
+                            android:visibility="visible">
+
+                            <requestFocus />
+                        </EditText>
 
                     </LinearLayout>
 
@@ -143,7 +126,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/bacground_border_heading"
                         android:orientation="vertical">
 
                         <TextView
@@ -172,7 +154,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/bacground_border_heading"
                         android:orientation="vertical">
 
                         <TextView
@@ -477,7 +458,7 @@
                                     android:id="@+id/fldGrpnw210"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:background="@drawable/bacground_border1"
+
                                     android:orientation="vertical">
 
                                     <TextView
