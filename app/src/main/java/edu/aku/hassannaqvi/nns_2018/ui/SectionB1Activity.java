@@ -1141,6 +1141,8 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
 
         wraName = bi.nb101.getSelectedItem().toString();
 
+        sB1.put("enmno", MainApp.fc.getEnmNo());
+        sB1.put("hhno", MainApp.fc.getHhNo());
         sB1.put("nw101", bi.nb101.getSelectedItem().toString());
         sB1.put("nw1serialno", wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
 

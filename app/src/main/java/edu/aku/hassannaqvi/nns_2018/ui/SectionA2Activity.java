@@ -552,6 +552,8 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher 
 
             JSONObject sA2 = new JSONObject();
 
+            sA2.put("enmno", MainApp.fc.getEnmNo());
+            sA2.put("hhno", MainApp.fc.getHhNo());
             sA2.put("resp", family.getResp().equals("0") ? "" : family.getResp());
             sA2.put("nh2SerialNo", family.getSerialNo());
             sA2.put("nh202", family.getName());

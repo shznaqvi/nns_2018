@@ -229,6 +229,9 @@ public class SectionA8AActivity extends Activity {
 
         JSONObject sA8a = new JSONObject();
 
+        sA8a.put("enmno", MainApp.fc.getEnmNo());
+        sA8a.put("hhno", MainApp.fc.getHhNo());
+
         sA8a.put("nh7a01", fmcSelected.getName());
         sA8a.put("nh7a01Serial", fmcSelected.getSerialNo());
 

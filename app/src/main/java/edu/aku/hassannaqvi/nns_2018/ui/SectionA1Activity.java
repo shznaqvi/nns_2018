@@ -45,7 +45,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
     private static final String TAG = SectionA1Activity.class.getName();
     static int progress = 0;
-    private final long DELAY = 1000;
+    private final long DELAY = 2000;
     ActivitySectionA1Binding binding;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     DatabaseHelper db;
@@ -366,12 +366,13 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
         if (binding.nh108.getText().toString().length() == 6) {
             String[] str = binding.nh108.getText().toString().split("-");
-            if (str.length > 2 || binding.nh108.getText().toString().charAt(4) != '-' || !str[0].matches("[0-9]+") || !str[1].matches("[a-zA-Z]")) {
+            if (str.length > 2 || binding.nh108.getText().toString().charAt(4) != '-' || !str[0].matches("[0-9]+")
+                    || !str[1].matches("[a-zA-Z]")) {
                 binding.nh108.setError("Wrong presentation!!");
                 return false;
             }
         } else {
-            Toast.makeText(this, "Invalid length: " + getString(R.string.nh108), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Invalid length: " + getString(R.string.nh108), Toast.LENGTH_SHORT).show();
             binding.nh108.setError("Invalid length");
             return false;
         }
@@ -418,7 +419,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
             if (MainApp.selectedHead.getSelStructure().equals("1") && !binding.na11802a.isChecked()) {
                 binding.na11802a.setError("Wrong Selection");
-                Toast.makeText(this, "Wrong Selection", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Wrong Selection", Toast.LENGTH_SHORT).show();
                 return false;
             }
 

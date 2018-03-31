@@ -131,7 +131,8 @@
                         android:layout_height="wrap_content"
                         android:background="@color/pink_100"
                         android:gravity="center"
-                        android:text="@string/year"
+                        android:text="@string/nw201sub3"
+                        android:textSize="22sp"
                         android:textColor="@color/colorPrimaryDark" />
 
 
