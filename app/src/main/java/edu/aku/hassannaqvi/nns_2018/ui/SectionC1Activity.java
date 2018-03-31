@@ -279,11 +279,11 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
                 return false;
             }
 
-            if (!validatorClass.EmptyTextBox(this, binding.nc201d, getString(R.string.nc201))) {
+            if (!validatorClass.EmptyTextBox(this, binding.nc201y, getString(R.string.nc201))) {
                 return false;
             }
 
-            if (!validatorClass.RangeTextBox(this, binding.nc201d, 1, 31, 98, getString(R.string.nc201), " days")) {
+            if (!validatorClass.RangeTextBox(this, binding.nc201y, DateUtils.getCurrentYear() - 6, DateUtils.getCurrentYear(), getString(R.string.nc201), " years")) {
                 return false;
             }
 
@@ -295,18 +295,20 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
                 return false;
             }
 
-            if (!validatorClass.EmptyTextBox(this, binding.nc201y, getString(R.string.nc201))) {
+
+            if (!validatorClass.EmptyTextBox(this, binding.nc201d, getString(R.string.nc201))) {
                 return false;
             }
 
-            if (!validatorClass.RangeTextBox(this, binding.nc201y, DateUtils.getCurrentYear() - 6, DateUtils.getCurrentYear(), getString(R.string.nc201), " years")) {
+            if (!validatorClass.RangeTextBox(this, binding.nc201d, 1, 31, 98, getString(R.string.nc201), " days")) {
                 return false;
             }
+
 
             Calendar today = Calendar.getInstance();
 
             Calendar sixYears = Calendar.getInstance();
-            sixYears.add(Calendar.DATE, -2190);
+            sixYears.add(Calendar.DAY_OF_YEAR, -2190);
 
             if (dob.before(sixYears)) {
                 if (!validatorClass.RangeTextBoxforDate(this, binding.nc201d, 1, DateUtils.getCurrentDate(), 98, "Date can not be more than today")) {

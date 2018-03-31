@@ -165,7 +165,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
                 if (SectionA1Activity.reBackFlag) {
                     respLineNo = "";
                     startActivity(new Intent(this, SectionA4Activity.class));
-//                    startActivity(new Intent(this, SectionB1Activity.class));
+                    //startActivity(new Intent(this, SectionB1Activity.class));
                 } else {
                     if (SectionA1Activity.reBackChildFlag) {
                         if (MainApp.mwra.size() > 0 && SectionB1Activity.WRAsize != MainApp.mwra.size()) {

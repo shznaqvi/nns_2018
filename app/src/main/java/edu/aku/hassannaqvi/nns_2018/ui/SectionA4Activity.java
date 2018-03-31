@@ -23,7 +23,7 @@ import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA4Binding;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionA4Activity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, TextWatcher, CompoundButton.OnCheckedChangeListener {
+public class SectionA4Activity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, TextWatcher {
 
     private final long DELAY = 1000;
     ActivitySectionA4Binding binding;
@@ -173,7 +173,6 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
         binding.nh312g.setOnCheckedChangeListener(this);
         binding.nh312h.setOnCheckedChangeListener(this);
         binding.nh312i.setOnCheckedChangeListener(this);
-        binding.nh313a.setOnCheckedChangeListener(this);
         binding.nh314.setOnCheckedChangeListener(this);
 
 
@@ -909,8 +908,8 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
 
     }
 
-    @Override
+   /* @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         formValidation();
-    }
+    }*/
 }

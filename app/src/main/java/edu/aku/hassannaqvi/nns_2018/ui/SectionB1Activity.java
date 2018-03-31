@@ -535,7 +535,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if (bi.nw207a.isChecked() && bi.nw208a.isChecked() && bi.nw211.getText().toString().equals("1"))
+                if (bi.nw207a.isChecked() && bi.nw208a.isChecked() && bi.nw211.getText().toString().equals("1")) {
                     if (bi.nw212.getText().toString().equals("0")) {
                         bi.nw213.setEnabled(false);
                         bi.nw213.setText(null);
@@ -559,6 +559,31 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
                         bi.nw216aa.setEnabled(true);
 
                     }
+                } else if (bi.nw207a.isChecked() && bi.nw211.getText().toString().equals("1")) {
+                    if (bi.nw212.getText().toString().equals("0")) {
+                        bi.nw213.setEnabled(false);
+                        bi.nw213.setText(null);
+                        bi.nw214.setEnabled(false);
+                        bi.nw214.setText(null);
+                        bi.nw215.setEnabled(false);
+                        bi.nw215.setText(null);
+                        bi.nw216a.setEnabled(false);
+                        bi.nw216b.setEnabled(false);
+                        bi.nw216.clearCheck();
+                        bi.nw216aa.setEnabled(false);
+                        bi.nw216aa.setText(null);
+
+                    } else {
+
+                        bi.nw213.setEnabled(true);
+                        bi.nw214.setEnabled(true);
+                        bi.nw215.setEnabled(true);
+                        bi.nw216a.setEnabled(true);
+                        bi.nw216b.setEnabled(true);
+                        bi.nw216aa.setEnabled(true);
+
+                    }
+                }
             }
 
             @Override
@@ -916,6 +941,8 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
                             .putExtra("checkingFlag", true)
                             .putExtra("complete", true));
                 }
+
+                //startActivity(new Intent(this, SectionC1Activity.class));
 
 //                finish();
 

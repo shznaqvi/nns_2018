@@ -56,36 +56,7 @@ public class SectionB2Activity extends Activity {
                     clearClass.ClearAllFields(bi.fldGrpnw302, false);
                     clearClass.ClearAllFields(bi.fldGrpnw302check, false);
                     clearClass.ClearAllFields(bi.fldGrpnw306check, false);
-                    /*bi.fldGrpnw302.setVisibility(View.GONE);
-                    bi.nw302a.setChecked(false);
-                    bi.nw302b.setChecked(false);
-                    bi.nw302c.setChecked(false);
-                    bi.nw302d.setChecked(false);
-                    bi.nw302e.setChecked(false);
-                    bi.nw302f.setChecked(false);
-                    bi.nw302g.setChecked(false);
-                    bi.nw302h.setChecked(false);
-                    bi.nw30296.setChecked(false);
-                    bi.nw30296x.setText(null);
-                    bi.nw303.clearCheck();
-                    bi.nw303961x.setText(null);
-                    bi.nw303962x.setText(null);
-                    bi.nw303963x.setText(null);
-                    bi.nw304m.setText(null);
-                    bi.nw304w.setText(null);
-                    bi.nw30498.setChecked(false);
-                    bi.nw305.setText(null);
-                    bi.nw30598.setChecked(false);
-                    bi.nw306a.setChecked(false);
-                    bi.nw306b.setChecked(false);
-                    bi.nw306c.setChecked(false);
-                    bi.nw306d.setChecked(false);
-                    bi.nw306e.setChecked(false);
-                    bi.nw306f.setChecked(false);
-                    bi.nw306g.setChecked(false);
-                    bi.nw306h.setChecked(false);
-                    bi.nw30696.setChecked(false);
-                    bi.nw30696x.setText(null);*/
+
                 }
             }
         });
@@ -137,9 +108,7 @@ public class SectionB2Activity extends Activity {
                 } else {
 
                     clearClass.ClearAllFields(bi.fldGrpnw309, false);
-                    /*bi.fldGrpnw309.setVisibility(View.GONE);
-                    bi.nw309.setText(null);
-                    bi.nw30998.setChecked(false);*/
+
                 }
             }
         });
@@ -154,31 +123,7 @@ public class SectionB2Activity extends Activity {
                 } else {
                     clearClass.ClearAllFields(bi.fldGrpnb210, false);
                     clearClass.ClearAllFields(bi.fldGrpnw312, false);
-                    /*bi.fldGrpnb210.setVisibility(View.GONE);
-                    bi.nw311.clearCheck();
-                    bi.nw31196x.setText(null);
-                    bi.nw312a.setChecked(false);
-                    bi.nw312b.setChecked(false);
-                    bi.nw312c.setChecked(false);
-                    bi.nw312d.setChecked(false);
-                    bi.nw312e.setChecked(false);
-                    bi.nw312f.setChecked(false);
-                    bi.nw312g.setChecked(false);
-                    bi.nw312h.setChecked(false);
-                    bi.nw312i.setChecked(false);
-                    bi.nw312j.setChecked(false);
-                    bi.nw312k.setChecked(false);
-                    bi.nw312l.setChecked(false);
-                    bi.nw312m.setChecked(false);
-                    bi.nw312961.setChecked(false);
-                    bi.nw312962.setChecked(false);
-                    bi.nw312963.setChecked(false);
-                    bi.nw312961x.setText(null);
-                    bi.nw312962x.setText(null);
-                    bi.nw312963x.setText(null);
-                    bi.nw313.clearCheck();
-                    bi.nw314m.setText(null);
-                    bi.nw314d.setText(null);*/
+
                 }
             }
         });
@@ -193,35 +138,7 @@ public class SectionB2Activity extends Activity {
                 } else {
                     clearClass.ClearAllFields(bi.fldGrpnw318, false);
                     clearClass.ClearAllFields(bi.fldGrpnw317, false);
-                    /*bi.fldGrpnw318.setVisibility(View.GONE);
 
-                    bi.nw316.clearCheck();
-                    bi.nw31696x.setText(null);
-
-                    bi.nw317a.setChecked(false);
-                    bi.nw317b.setChecked(false);
-                    bi.nw317c.setChecked(false);
-                    bi.nw317d.setChecked(false);
-                    bi.nw317e.setChecked(false);
-                    bi.nw317f.setChecked(false);
-                    bi.nw317g.setChecked(false);
-                    bi.nw317h.setChecked(false);
-                    bi.nw317i.setChecked(false);
-                    bi.nw317j.setChecked(false);
-                    bi.nw317k.setChecked(false);
-                    bi.nw317l.setChecked(false);
-                    bi.nw317m.setChecked(false);
-                    bi.nw317961.setChecked(false);
-                    bi.nw317962.setChecked(false);
-                    bi.nw317963.setChecked(false);
-                    bi.nw317961x.setText(null);
-                    bi.nw317962x.setText(null);
-                    bi.nw317963x.setText(null);
-
-                    bi.nw318.clearCheck();
-
-                    bi.nw319m.setText(null);
-                    bi.nw319d.setText(null);*/
                 }
             }
         });
@@ -238,36 +155,6 @@ public class SectionB2Activity extends Activity {
                     clearClass.ClearAllFields(bi.fldGrpnw323, false);
                     clearClass.ClearAllFields(bi.fldGrpnw322, false);
 
-/*                    bi.fldGrpnw323.setVisibility(View.GONE);
-
-                    bi.nw321.clearCheck();
-                    bi.nw32196x.setText(null);
-
-                    bi.nw322a.setChecked(false);
-                    bi.nw322b.setChecked(false);
-                    bi.nw322c.setChecked(false);
-                    bi.nw322d.setChecked(false);
-                    bi.nw322e.setChecked(false);
-                    bi.nw322f.setChecked(false);
-                    bi.nw322g.setChecked(false);
-                    bi.nw322h.setChecked(false);
-                    bi.nw322i.setChecked(false);
-                    bi.nw322j.setChecked(false);
-                    bi.nw322k.setChecked(false);
-                    bi.nw322l.setChecked(false);
-                    bi.nw322m.setChecked(false);
-                    bi.nw322961.setChecked(false);
-                    bi.nw322962.setChecked(false);
-                    bi.nw322963.setChecked(false);
-
-                    bi.nw322961x.setText(null);
-                    bi.nw322962x.setText(null);
-                    bi.nw322963x.setText(null);
-
-                    bi.nw323.clearCheck();
-
-                    bi.nw324d.setText(null);
-                    bi.nw324m.setText(null);*/
                 }
             }
         });
