@@ -104,6 +104,8 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
                 lstMwra = new ArrayList<>();
 
                 lstMwra.add("....");
+
+                WRAsize = 0;
             }
 
             for (int i = WRAsize; i < MainApp.mwra.size(); i++) {
@@ -111,7 +113,8 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
                 lstMwra.add(MainApp.mwra.get(i).getName() + "-" + MainApp.mwra.get(i).getSerialNo());
             }
 
-            WRAsize = MainApp.mwra.size();
+//            WRAsize = MainApp.mwra.size();
+
         }
 
 
@@ -953,8 +956,6 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
         bi.nw214.addTextChangedListener(this);
         bi.nw215.addTextChangedListener(this);
         bi.nw216aa.addTextChangedListener(this);
-
-
 
 
     }

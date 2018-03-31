@@ -251,8 +251,13 @@ public class ViewMemberActivity extends AppCompatActivity {
 
                     if (SectionC1Activity.counter == SectionC1Activity.counterPerMom) {
 
-                        GetIntent = new Intent(this, EndingActivity.class)
-                                .putExtra("complete", true);
+                        if (SectionB1Activity.WRAcounter == MainApp.mwra.size()) {
+                            GetIntent = new Intent(this, EndingActivity.class).putExtra("complete", true);
+                        } else {
+                            GetIntent = new Intent(this, SectionB1Activity.class)
+                                    .putExtra("mwraFlag", true)
+                                    .putExtra("wraName", SectionB1Activity.wraName);
+                        }
 
                     } else {
                         GetIntent = new Intent(this, SectionC1Activity.class)
@@ -308,7 +313,9 @@ public class ViewMemberActivity extends AppCompatActivity {
                     if (MainApp.mwra.size() > 0 && SectionB1Activity.WRAsize != MainApp.mwra.size()) {
                         GetIntent = new Intent(this, SectionB1Activity.class)
                                 .putExtra("reBackComing", false);
-                    } else if (MainApp.childUnder5.size() > 0) {
+                    } else if (MainApp.childUnder5.size() > 0 &&
+                            (SectionC1Activity.NAChildsize != MainApp.childNA.size() ||
+                                    SectionC1Activity.Childsize != MainApp.childUnder5.size())) {
                         if (MainApp.childUnder5.size() == MainApp.childNA.size()) {
                             SectionC1Activity.isNA = true;
                             GetIntent = new Intent(this, SectionC1Activity.class)

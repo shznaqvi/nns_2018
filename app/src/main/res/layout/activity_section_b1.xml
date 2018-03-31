@@ -868,9 +868,11 @@
                                                 android:id="@+id/nw216aa"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
+                                                android:enabled='@{nw216a.checked ? true : false}'
                                                 android:hint="@string/nw216a"
                                                 android:inputType="number"
-                                                android:maxLength="2" />
+                                                android:maxLength="2"
+                                                android:text='@{nw216a.checked ? nw216aa.getText.toString : ""}' />
 
                                         </LinearLayout>
 
