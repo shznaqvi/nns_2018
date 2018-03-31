@@ -23,17 +23,17 @@ public class AdolescentsAdapter extends RecyclerView.Adapter<AdolescentsAdapter.
 
     AdolescentsAdapter.AdolViewHolder holder;
     JSONModelClass json;
-    private List<FamilyMembersContract> childList;
+    private List<FamilyMembersContract> adolList;
 
-    public AdolescentsAdapter(List<FamilyMembersContract> childList) {
+    public AdolescentsAdapter(List<FamilyMembersContract> adolList) {
         json = new JSONModelClass();
-        this.childList = childList;
+        this.adolList = adolList;
     }
 
     @Override
     public AdolViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.child_adapter, parent, false);
+                .inflate(R.layout.adol_adapter, parent, false);
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,12 +49,12 @@ public class AdolescentsAdapter extends RecyclerView.Adapter<AdolescentsAdapter.
     @Override
     public void onBindViewHolder(@NonNull AdolViewHolder holder, int position) {
         this.holder = holder;
-        this.holder.bindUser(this.childList.get(position));
+        this.holder.bindUser(this.adolList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return childList.size() > 0 ? childList.size() : 0;
+        return adolList.size() > 0 ? adolList.size() : 0;
     }
 
     private String MStatusChecking(String ms) {
