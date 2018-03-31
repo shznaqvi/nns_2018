@@ -15,12 +15,12 @@ import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Timer;
 
+import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONB6ModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.NutritionContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB6Binding;
-import edu.aku.hassannaqvi.nns_2018.other.JSONB6ModelClass;
 import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 

@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.nns_2018.other;
+package edu.aku.hassannaqvi.nns_2018.JSONModels;
 
 import com.google.gson.annotations.SerializedName;
 

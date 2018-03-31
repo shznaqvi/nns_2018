@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.nns_2018.other;
+package edu.aku.hassannaqvi.nns_2018.JSONModels;
 
 /**
  * Created by ali.azaz on 3/27/2018.
