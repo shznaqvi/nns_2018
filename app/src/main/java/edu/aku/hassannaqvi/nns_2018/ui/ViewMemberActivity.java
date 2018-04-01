@@ -112,13 +112,14 @@ public class ViewMemberActivity extends AppCompatActivity {
                             if ((Integer.valueOf(json.getAge()) >= 15 && Integer.valueOf(json.getAge()) <= 49) && json.getGender().equals("2")) {
                                 MainApp.mwra_1.add(fm);
                                 MainApp.all_members_1.add(fm);
-                            } else if ((Integer.valueOf(json.getAge()) >= 10 && (Integer.valueOf(json.getAge()) <= 19)) && json.getMaritalStatus().equals("5")) {
+                            }
+                            if ((Integer.valueOf(json.getAge()) >= 10 && (Integer.valueOf(json.getAge()) <= 19)) && json.getMaritalStatus().equals("5")) {
                                 MainApp.adolescents_1.add(fm);
                                 MainApp.all_members_1.add(fm);
                             } else if (Integer.valueOf(json.getAge()) < 5) {
                                 MainApp.childUnder5_1.add(fm);
                                 MainApp.all_members_1.add(fm);
-                            } else {
+                            } else if (!((Integer.valueOf(json.getAge()) >= 15 && Integer.valueOf(json.getAge()) <= 49) && json.getGender().equals("2"))) {
                                 MainApp.otherMembers_1.add(fm);
                                 MainApp.all_members_1.add(fm);
                             }
@@ -251,9 +252,27 @@ public class ViewMemberActivity extends AppCompatActivity {
 
                     if (SectionC1Activity.counter == SectionC1Activity.counterPerMom) {
 
-                        if (SectionB1Activity.WRAcounter == MainApp.mwra.size()) {
+                        if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
+                                ||
+                                SectionB1Activity.lstMwra.size() == 1) {
+                            SectionB1Activity.WRAcounter++;
+                            SectionB1Activity.lstMwra.remove(SectionB1Activity.wraName);
+
+                            /*if (SectionC1Activity.isNA){
+                                SectionC1Activity.NAChildsize++;
+                            }else {
+                                SectionC1Activity.Childsize++;
+                            }*/
+
+                            SectionC1Activity.isNA = false;
+                            SectionC1Activity.childMap.remove(SectionC1Activity.selectedChildName);
+
                             GetIntent = new Intent(this, EndingActivity.class).putExtra("complete", true);
                         } else {
+
+                            SectionC1Activity.isNA = false;
+                            SectionC1Activity.childMap.remove(SectionC1Activity.selectedChildName);
+
                             GetIntent = new Intent(this, SectionB1Activity.class)
                                     .putExtra("mwraFlag", true)
                                     .putExtra("wraName", SectionB1Activity.wraName);
@@ -267,7 +286,16 @@ public class ViewMemberActivity extends AppCompatActivity {
                 } else {
 
                     if (SectionC1Activity.counter == SectionC1Activity.counterPerNA) {
+
+                        /*if (SectionC1Activity.isNA){
+                            SectionC1Activity.NAChildsize++;
+                        }else {
+                            SectionC1Activity.Childsize++;
+                        }*/
+
                         SectionC1Activity.isNA = false;
+                        SectionC1Activity.childMap.remove(SectionC1Activity.selectedChildName);
+
                         GetIntent = new Intent(this, EndingActivity.class).
                                 putExtra("complete", true);
 
@@ -294,6 +322,8 @@ public class ViewMemberActivity extends AppCompatActivity {
                         SectionC1Activity.isNA = true;
                         GetIntent = new Intent(this, SectionC1Activity.class);
                     } else if (SectionB1Activity.WRAcounter == MainApp.mwra.size()) {
+                        SectionB1Activity.WRAcounter++;
+                        SectionB1Activity.lstMwra.remove(SectionB1Activity.wraName);
                         GetIntent = new Intent(this, EndingActivity.class).putExtra("complete", true);
                     } else {
                         GetIntent = new Intent(this, SectionB1Activity.class)
@@ -301,6 +331,8 @@ public class ViewMemberActivity extends AppCompatActivity {
                                 .putExtra("wraName", SectionB1Activity.wraName);
                     }
                 } else if (SectionB1Activity.WRAcounter == MainApp.mwra.size()) {
+                    SectionB1Activity.WRAcounter++;
+                    SectionB1Activity.lstMwra.remove(SectionB1Activity.wraName);
                     GetIntent = new Intent(this, EndingActivity.class).putExtra("complete", true);
                 } else {
                     GetIntent = new Intent(this, SectionB1Activity.class)
@@ -316,7 +348,7 @@ public class ViewMemberActivity extends AppCompatActivity {
                     } else if (MainApp.childUnder5.size() > 0 &&
                             (SectionC1Activity.NAChildsize != MainApp.childNA.size() ||
                                     SectionC1Activity.Childsize != MainApp.childUnder5.size())) {
-                        if (MainApp.childUnder5.size() == MainApp.childNA.size()) {
+                        if (MainApp.childNA.size() > SectionC1Activity.NAChildsize) {
                             SectionC1Activity.isNA = true;
                             GetIntent = new Intent(this, SectionC1Activity.class)
                                     .putExtra("reBackComing", false);
@@ -440,8 +472,11 @@ public class ViewMemberActivity extends AppCompatActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-
-                    // wraAdapter.notifyDataSetChanged();
+                    // notifychildchange(childAdapter);
+//                   Background black for those that's data filled
+                  /*  for (int item : MainApp.hhClicked) {
+                        binding.recyclerAdol.getChildAt(item).setBackgroundColor(Color.BLACK);
+                    }*/
                 }
             }, 800);
         }

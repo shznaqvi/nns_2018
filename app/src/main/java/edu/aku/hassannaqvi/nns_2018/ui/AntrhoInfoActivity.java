@@ -175,7 +175,7 @@ public class AntrhoInfoActivity extends Activity {
         }
 
 
-        if (!validatorClass.EmptyTextBox(this, binding.hcCode, getString(R.string.hc))) {
+        /*if (!validatorClass.EmptyTextBox(this, binding.hcCode, getString(R.string.hc))) {
             return false;
         }
 
@@ -239,7 +239,7 @@ public class AntrhoInfoActivity extends Activity {
         } else {
             binding.wtCode.setError(null);
         }
-
+*/
 
 
 

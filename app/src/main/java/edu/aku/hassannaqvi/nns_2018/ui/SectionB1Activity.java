@@ -977,6 +977,8 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
 
                 frontPressed = true;
 
+                WRAsize = MainApp.mwra.size();
+
                 //finish();
 
                 if (bi.nw203a.isChecked()) {
@@ -1332,6 +1334,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
 
         if (backPressed) {
             bi.nb101.setEnabled(false);
+            bi.btnAddMember.setVisibility(View.GONE);
         }
 
     }

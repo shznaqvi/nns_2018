@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RadioGroup;
@@ -89,6 +90,13 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
             if (getIntent().getBooleanExtra("childFlag", false)) {
                 childU5.remove(getIntent().getStringExtra("name"));
                 counter++;
+
+                if (isNA) {
+                    NAChildsize = MainApp.childNA.size();
+                } else {
+                    Childsize = MainApp.childUnder5.size();
+                }
+
             } else {
 
                 counter = 1;
@@ -140,14 +148,14 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
                     childU5.add(MainApp.childNA.get(i).getName() + "-" + MainApp.childNA.get(i).getSerialNo());
                     counterPerNA++;
                 }
-                NAChildsize = MainApp.childNA.size();
+//                NAChildsize = MainApp.childNA.size();
             } else {
                 for (int i = Childsize; i < MainApp.childUnder5.size(); i++) {
                     childMap.put(MainApp.childUnder5.get(Childsize).getName() + "-" + MainApp.childUnder5.get(Childsize).getSerialNo(), MainApp.childUnder5.get(Childsize));
                     childU5.add(MainApp.childUnder5.get(Childsize).getName() + "-" + MainApp.childUnder5.get(Childsize).getSerialNo());
                     counterPerMom++;
                 }
-                Childsize = MainApp.childUnder5.size();
+//                Childsize = MainApp.childUnder5.size();
             }
         }
 
@@ -247,6 +255,12 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
 
                 frontPressed = true;
 
+                if (isNA) {
+                    NAChildsize = MainApp.childNA.size();
+                } else {
+                    Childsize = MainApp.childUnder5.size();
+                }
+
                 if (ageInMontsbyDob < 24) {
                     startActivity(new Intent(this, SectionC2Activity.class)
                             .putExtra("selectedChild", childMap.get(binding.nc101.getSelectedItem().toString()))
@@ -255,7 +269,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
                     startActivity(new Intent(this, SectionC3Activity.class)
                             .putExtra("selectedChild", childMap.get(binding.nc101.getSelectedItem().toString()))
                             .putExtra("backPressed", backPressed));
-                } else if (ageInMontsbyDob > 59 && ageInMontsbyDob > 72) {
+                } else if (ageInMontsbyDob > 59 || ageInMontsbyDob > 72) {
                     startActivity(new Intent(this, ChildEndingActivity.class)
                             .putExtra("childINEligibile", true));
                 }
@@ -307,7 +321,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
                 return false;
             }
 
-            if (!validatorClass.RangeTextBox(this, binding.nc201y, DateUtils.getCurrentYear() - 6, DateUtils.getCurrentYear(), getString(R.string.nc201), " years")) {
+            if (!validatorClass.RangeTextBox(this, binding.nc201y, DateUtils.getCurrentYear() - 5, DateUtils.getCurrentYear(), getString(R.string.nc201), " years")) {
                 return false;
             }
 
@@ -563,6 +577,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
 
         if (backPressed) {
             binding.nc101.setEnabled(false);
+            binding.btnAddMember.setVisibility(View.GONE);
         }
 
     }
