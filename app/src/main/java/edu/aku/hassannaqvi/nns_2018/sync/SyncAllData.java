@@ -1,5 +1,6 @@
 package edu.aku.hassannaqvi.nns_2018.sync;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -32,9 +33,8 @@ public class SyncAllData extends AsyncTask<Void, Void, String> {
 
     private String TAG = "";
     private Context mContext;
-/*
     private ProgressDialog pd;
-*/
+
 
     private String syncClass, url, updateSyncClass;
     private Class contractClass;
@@ -49,18 +49,18 @@ public class SyncAllData extends AsyncTask<Void, Void, String> {
         this.contractClass = contractClass;
         this.url = url;
         this.dbData = dbData;
-        this.syncStatus = (TextView) syncStatus;
+        //this.syncStatus = (TextView) syncStatus;
         TAG = "Get" + syncClass;
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-     /*   pd = new ProgressDialog(mContext);
+        pd = new ProgressDialog(mContext);
         pd.setTitle("Syncing " + syncClass);
         pd.setMessage("Getting connected to server...");
-        pd.show();*/
-        syncStatus.setText(syncStatus.getText() + "\r\nSyncing " + syncClass);
+        pd.show();
+        //syncStatus.setText(syncStatus.getText() + "\r\nSyncing " + syncClass);
     }
 
 
@@ -186,13 +186,13 @@ public class SyncAllData extends AsyncTask<Void, Void, String> {
 
                 if (jsonObject.getString("status").equals("1") && jsonObject.getString("error").equals("0")) {
 
-//                    db.updateSyncedChildForm(jsonObject.getString("id"));  // UPDATE SYNCED
+                    db.updateSyncedChildForm(jsonObject.getString("id"));  // UPDATE SYNCED
 
                     method.invoke(db, jsonObject.getString("id"));
 
                     sSynced++;
                 } else if (jsonObject.getString("status").equals("2") && jsonObject.getString("error").equals("0")) {
-//                    db.updateSyncedChildForm(jsonObject.getString("id")); // UPDATE DUPLICATES
+                    db.updateSyncedChildForm(jsonObject.getString("id")); // UPDATE DUPLICATES
 
                     method.invoke(db, jsonObject.getString("id"));
 
@@ -201,22 +201,22 @@ public class SyncAllData extends AsyncTask<Void, Void, String> {
                     sSyncedError += "\nError: " + jsonObject.getString("message");
                 }
             }
-            //Toast.makeText(mContext, syncClass + " synced: " + sSynced + "\r\n\r\n Errors: " + sSyncedError, Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, syncClass + " synced: " + sSynced + "\r\n\r\n Errors: " + sSyncedError, Toast.LENGTH_SHORT).show();
 
 
-           /* pd.setMessage(syncClass + " synced: " + sSynced + "\r\n\r\n Duplicates: " + sDuplicate + "\r\n\r\n Errors: " + sSyncedError);
+            pd.setMessage(syncClass + " synced: " + sSynced + "\r\n\r\n Duplicates: " + sDuplicate + "\r\n\r\n Errors: " + sSyncedError);
             pd.setTitle("Done uploading +" + syncClass + " data");
-            pd.show();*/
-            syncStatus.setText(syncStatus.getText() + "\r\nDone uploading +" + syncClass + " data");
+            pd.show();
+            //syncStatus.setText(syncStatus.getText() + "\r\nDone uploading +" + syncClass + " data");
 
         } catch (JSONException e) {
             e.printStackTrace();
             Toast.makeText(mContext, "Failed Sync " + result, Toast.LENGTH_SHORT).show();
 
-           /* pd.setMessage(result);
+            pd.setMessage(result);
             pd.setTitle(syncClass + " Sync Failed");
-            pd.show();*/
-            syncStatus.setText(syncStatus.getText() + "\r\n" + syncClass + " Sync Failed");
+            pd.show();
+            //syncStatus.setText(syncStatus.getText() + "\r\n" + syncClass + " Sync Failed");
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {

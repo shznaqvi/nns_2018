@@ -144,6 +144,7 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="16dp"
                 android:background="#1565C0"
+                android:visibility="gone"
                 android:onClick="@{(v) -> callback.openViewMember(true)}"
                 android:text="View Members" />
 
@@ -158,13 +159,15 @@
                 android:layout_marginTop="16dp"
                 android:background="#1565C0"
                 android:onClick="syncServer"
-                android:text="Upload Data" />
+                android:text="Upload Data"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/syncStatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sync Status" />
+                android:text="Sync Status"
+                android:visibility="gone" />
 
             <LinearLayout
                 android:id="@+id/adminsec"
@@ -181,7 +184,8 @@
                     android:layout_marginTop="16dp"
                     android:background="#1565C0"
                     android:onClick="syncDevice"
-                    android:text="Download Data" />
+                    android:text="Download Data"
+                    android:visibility="gone" />
 
                 <Button
                     android:id="@+id/downloadApp"
