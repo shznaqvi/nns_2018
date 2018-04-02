@@ -442,14 +442,11 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
                     bi.nw208b.setEnabled(true);
                     bi.nw209a.setEnabled(true);
                     bi.nw209b.setEnabled(true);
-
-
                     bi.nw21001a.setEnabled(true);
                     bi.nw21002a.setEnabled(true);
                     bi.nw21003a.setEnabled(true);
                     bi.nw21098a.setEnabled(true);
                     bi.nw21099a.setEnabled(true);
-
                     bi.nw21001b.setEnabled(true);
                     bi.nw21002b.setEnabled(true);
                     bi.nw21003b.setEnabled(true);
