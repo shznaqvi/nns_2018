@@ -80,7 +80,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
                 //      Increment WRA COUNTER
                 WRAcounter++;
 
-                WRAsize = MainApp.mwra.size();
+//                WRAsize = MainApp.mwra.size();
 
             } else {
                 wraMap = new HashMap<>();

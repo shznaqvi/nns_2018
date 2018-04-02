@@ -261,7 +261,7 @@ public class ViewMemberActivity extends AppCompatActivity {
                             SectionB1Activity.lstMwra.remove(SectionB1Activity.wraName);
 
                             SectionC1Activity.isNA = false;
-//                            SectionC1Activity.childU5.remove(SectionC1Activity.selectedChildName);
+                            SectionC1Activity.childU5.remove(SectionC1Activity.selectedChildName);
                             SectionC1Activity.counter = 1;
                             SectionC1Activity.counterPerMom = 0;
                             SectionC1Activity.counterPerNA = 0;
@@ -270,7 +270,7 @@ public class ViewMemberActivity extends AppCompatActivity {
                         } else {
 
                             SectionC1Activity.isNA = false;
-//                            SectionC1Activity.childU5.remove(SectionC1Activity.selectedChildName);
+                            SectionC1Activity.childU5.remove(SectionC1Activity.selectedChildName);
 
                             GetIntent = new Intent(this, SectionB1Activity.class)
                                     .putExtra("mwraFlag", true)
@@ -287,7 +287,7 @@ public class ViewMemberActivity extends AppCompatActivity {
                     if (SectionC1Activity.counter == SectionC1Activity.counterPerNA) {
 
                         SectionC1Activity.isNA = false;
-//                        SectionC1Activity.childU5.remove(SectionC1Activity.selectedChildName);
+                        SectionC1Activity.childU5.remove(SectionC1Activity.selectedChildName);
                         SectionC1Activity.counter = 1;
                         SectionC1Activity.counterPerMom = 0;
                         SectionC1Activity.counterPerNA = 0;
@@ -320,6 +320,11 @@ public class ViewMemberActivity extends AppCompatActivity {
                     } else if (SectionB1Activity.WRAcounter == MainApp.mwra.size()) {
                         SectionB1Activity.WRAcounter++;
                         SectionB1Activity.lstMwra.remove(SectionB1Activity.wraName);
+
+                        SectionC1Activity.counter = 1;
+                        SectionC1Activity.counterPerMom = 0;
+                        SectionC1Activity.counterPerNA = 0;
+
                         GetIntent = new Intent(this, EndingActivity.class).putExtra("complete", true);
                     } else {
                         GetIntent = new Intent(this, SectionB1Activity.class)
@@ -329,6 +334,11 @@ public class ViewMemberActivity extends AppCompatActivity {
                 } else if (SectionB1Activity.WRAcounter == MainApp.mwra.size()) {
                     SectionB1Activity.WRAcounter++;
                     SectionB1Activity.lstMwra.remove(SectionB1Activity.wraName);
+
+                    SectionC1Activity.counter = 1;
+                    SectionC1Activity.counterPerMom = 0;
+                    SectionC1Activity.counterPerNA = 0;
+
                     GetIntent = new Intent(this, EndingActivity.class).putExtra("complete", true);
                 } else {
                     GetIntent = new Intent(this, SectionB1Activity.class)

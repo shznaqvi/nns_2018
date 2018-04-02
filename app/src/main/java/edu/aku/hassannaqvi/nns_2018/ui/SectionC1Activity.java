@@ -91,11 +91,11 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
                 childU5.remove(getIntent().getStringExtra("name"));
                 counter++;
 
-                if (isNA) {
+                /*if (isNA) {
                     NAChildsize = MainApp.childNA.size();
                 } else {
                     Childsize = MainApp.childUnder5.size();
-                }
+                }*/
 
             } else {
 
