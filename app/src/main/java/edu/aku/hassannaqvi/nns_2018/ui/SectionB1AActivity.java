@@ -231,7 +231,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
         JSONObject sB1a = new JSONObject();
 
-        sB1a.put("enmno", MainApp.fc.getEnmNo());
+        sB1a.put("enmno", MainApp.fc.getClusterNo());
         sB1a.put("hhno", MainApp.fc.getHhNo());
 
         sB1a.put("serial", Integer.valueOf(MainApp.count));

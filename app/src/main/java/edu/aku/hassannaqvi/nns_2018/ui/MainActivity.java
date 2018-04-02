@@ -201,7 +201,7 @@ public class MainActivity extends MenuActivity {
 
                     //rSumText += fc.getDSSID();
 
-                    rSumText += fc.getEnmNo() + " \t";
+                    rSumText += fc.getClusterNo() + " \t";
                     rSumText += " " + fc.getHhNo() + " \t";
                     rSumText += " " + iStatus + " \t";
 

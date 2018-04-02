@@ -424,7 +424,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
             MainApp.fmc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID));
             MainApp.fmc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
             MainApp.fmc.set_UUID(MainApp.fc.getUID());
-            MainApp.fmc.setEnmNo(MainApp.fc.getEnmNo());
+            MainApp.fmc.setEnmNo(MainApp.fc.getClusterNo());
             MainApp.fmc.setHhNo(MainApp.fc.getHhNo());
 
             MainApp.fmc.setSerialNo(String.valueOf(MainApp.serial_no));
@@ -460,7 +460,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
 
             JSONObject sA2 = new JSONObject();
 
-            sA2.put("enmno", MainApp.fc.getEnmNo());
+            sA2.put("enmno", MainApp.fc.getClusterNo());
             sA2.put("hhno", MainApp.fc.getHhNo());
             sA2.put("resp", family.getResp().equals("0") ? "" : family.getResp());
             sA2.put("nh2SerialNo", family.getSerialNo());

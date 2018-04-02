@@ -23,6 +23,7 @@ import edu.aku.hassannaqvi.nns_2018.Adapters.WraAdapter;
 import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.EnumBlockContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -60,10 +61,10 @@ public class ViewMemberActivity extends AppCompatActivity {
             binding.fldGrpVisA.setVisibility(View.GONE);
             binding.fldGrpVisB.setVisibility(View.GONE);
 
-            binding.chckenumblock.setText(MainApp.fc.getEnmNo());
+            binding.chckenumblock.setText(MainApp.fc.getClusterNo());
             binding.chckhouse.setText(MainApp.fc.getHhNo());
 
-            initializingLists(false);
+            initializingLists();
 
             BtnCheckEnm();
             BtnCheckHH();
@@ -73,12 +74,12 @@ public class ViewMemberActivity extends AppCompatActivity {
             binding.fldGrpVisA.setVisibility(View.VISIBLE);
             binding.fldGrpVisB.setVisibility(View.VISIBLE);
 
-            initializingLists(true);
+            initializingLists();
         }
 
     }
 
-    private void initializingLists(Boolean flag) {
+    private void initializingLists() {
 
         MainApp.all_members_1 = new ArrayList<>();
         MainApp.otherMembers_1 = new ArrayList<>();
@@ -178,7 +179,8 @@ public class ViewMemberActivity extends AppCompatActivity {
 
         if (validatorClass.EmptyTextBox(this, binding.chckenumblock, getString(R.string.nh102))) {
 
-            String selected = db.getEnumBlock(binding.chckenumblock.getText().toString());
+            EnumBlockContract enumBlockContract = db.getEnumBlock(binding.chckenumblock.getText().toString());
+            String selected = enumBlockContract.getGeoarea();
             if (!selected.equals("")) {
 
                 String[] selSplit = selected.split("\\|");
@@ -258,20 +260,17 @@ public class ViewMemberActivity extends AppCompatActivity {
                             SectionB1Activity.WRAcounter++;
                             SectionB1Activity.lstMwra.remove(SectionB1Activity.wraName);
 
-                            /*if (SectionC1Activity.isNA){
-                                SectionC1Activity.NAChildsize++;
-                            }else {
-                                SectionC1Activity.Childsize++;
-                            }*/
-
                             SectionC1Activity.isNA = false;
-                            SectionC1Activity.childMap.remove(SectionC1Activity.selectedChildName);
+//                            SectionC1Activity.childU5.remove(SectionC1Activity.selectedChildName);
+                            SectionC1Activity.counter = 1;
+                            SectionC1Activity.counterPerMom = 0;
+                            SectionC1Activity.counterPerNA = 0;
 
                             GetIntent = new Intent(this, EndingActivity.class).putExtra("complete", true);
                         } else {
 
                             SectionC1Activity.isNA = false;
-                            SectionC1Activity.childMap.remove(SectionC1Activity.selectedChildName);
+//                            SectionC1Activity.childU5.remove(SectionC1Activity.selectedChildName);
 
                             GetIntent = new Intent(this, SectionB1Activity.class)
                                     .putExtra("mwraFlag", true)
@@ -287,14 +286,11 @@ public class ViewMemberActivity extends AppCompatActivity {
 
                     if (SectionC1Activity.counter == SectionC1Activity.counterPerNA) {
 
-                        /*if (SectionC1Activity.isNA){
-                            SectionC1Activity.NAChildsize++;
-                        }else {
-                            SectionC1Activity.Childsize++;
-                        }*/
-
                         SectionC1Activity.isNA = false;
-                        SectionC1Activity.childMap.remove(SectionC1Activity.selectedChildName);
+//                        SectionC1Activity.childU5.remove(SectionC1Activity.selectedChildName);
+                        SectionC1Activity.counter = 1;
+                        SectionC1Activity.counterPerMom = 0;
+                        SectionC1Activity.counterPerNA = 0;
 
                         GetIntent = new Intent(this, EndingActivity.class).
                                 putExtra("complete", true);
@@ -347,7 +343,7 @@ public class ViewMemberActivity extends AppCompatActivity {
                                 .putExtra("reBackComing", false);
                     } else if (MainApp.childUnder5.size() > 0 &&
                             (SectionC1Activity.NAChildsize != MainApp.childNA.size() ||
-                                    SectionC1Activity.Childsize != MainApp.childUnder5.size())) {
+                                    SectionC1Activity.Childsize != (MainApp.childUnder5.size() - MainApp.childNA.size()))) {
                         if (MainApp.childNA.size() > SectionC1Activity.NAChildsize) {
                             SectionC1Activity.isNA = true;
                             GetIntent = new Intent(this, SectionC1Activity.class)

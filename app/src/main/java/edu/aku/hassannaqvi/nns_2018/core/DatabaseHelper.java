@@ -171,7 +171,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     final String SQL_CREATE_TALUKA = "CREATE TABLE " + EnumBlockTable.TABLE_NAME + " (" +
             EnumBlockTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             EnumBlockTable.COLUMN_EB_CODE + " TEXT, " +
-            EnumBlockTable.COLUMN_GEO_AREA + " TEXT " +
+            EnumBlockTable.COLUMN_GEO_AREA + " TEXT, " +
+            EnumBlockTable.COLUMN_CLUSTER_AREA + " TEXT " +
             ");";
     final String SQL_CREATE_UC = "CREATE TABLE " + UCsTable.TABLE_NAME + " (" +
             UCsTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -356,7 +357,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ContentValues values = new ContentValues();
 
                 values.put(EnumBlockTable.COLUMN_EB_CODE, Vc.getEbcode());
-                values.put(EnumBlockTable.COLUMN_GEO_AREA, Vc.getTalukaName());
+                values.put(EnumBlockTable.COLUMN_GEO_AREA, Vc.getGeoarea());
+                values.put(EnumBlockTable.COLUMN_CLUSTER_AREA, Vc.getCluster());
 
                 db.insert(EnumBlockTable.TABLE_NAME, null, values);
             }
@@ -600,25 +602,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allBL;
     }
 
-    public String getEnumBlock(String enumBlock) {
+    public EnumBlockContract getEnumBlock(String cluster) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
                 EnumBlockTable._ID,
                 EnumBlockTable.COLUMN_EB_CODE,
-                EnumBlockTable.COLUMN_GEO_AREA
+                EnumBlockTable.COLUMN_GEO_AREA,
+                EnumBlockTable.COLUMN_CLUSTER_AREA
         };
 
-        String whereClause = EnumBlockTable.COLUMN_EB_CODE + " =?";
-        String[] whereArgs = new String[]{enumBlock};
+        String whereClause = EnumBlockTable.COLUMN_CLUSTER_AREA + " =?";
+        String[] whereArgs = new String[]{cluster};
         String groupBy = null;
         String having = null;
 
         String orderBy =
                 EnumBlockTable._ID + " ASC";
 
-        String allEB = "";
+        EnumBlockContract allEB = null;
         try {
             c = db.query(
                     EnumBlockTable.TABLE_NAME,  // The table to query
@@ -630,7 +633,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                allEB = c.getString(c.getColumnIndex(EnumBlockTable.COLUMN_GEO_AREA));
+                allEB = new EnumBlockContract().HydrateEnum(c);
             }
         } finally {
             if (c != null) {
@@ -859,7 +862,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_FORMDATE, fc.getFormDate());
         values.put(FormsTable.COLUMN_USER, fc.getUser());
         values.put(FormsTable.COLUMN_RESP_LNO, fc.getRespLineNo());
-        values.put(FormsTable.COLUMN_ENM_NO, fc.getEnmNo());
+        values.put(FormsTable.COLUMN_ENM_NO, fc.getClusterNo());
         values.put(FormsTable.COLUMN_HH_NO, fc.getHhNo());
         values.put(FormsTable.COLUMN_GPSELEV, fc.getGpsElev());
         values.put(FormsTable.COLUMN_ISTATUS, fc.getIstatus());
@@ -2713,7 +2716,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (c.moveToNext()) {
                 FormsContract fc = new FormsContract();
                 fc.set_ID(c.getString(c.getColumnIndex(FormsTable._ID)));
-                fc.setEnmNo(c.getString(c.getColumnIndex(FormsTable.COLUMN_ENM_NO)));
+                fc.setClusterNo(c.getString(c.getColumnIndex(FormsTable.COLUMN_ENM_NO)));
                 fc.setHhNo(c.getString(c.getColumnIndex(FormsTable.COLUMN_HH_NO)));
                 fc.setFormDate(c.getString(c.getColumnIndex(FormsTable.COLUMN_FORMDATE)));
                 fc.setIstatus(c.getString(c.getColumnIndex(FormsTable.COLUMN_ISTATUS)));

@@ -33,6 +33,7 @@ import java.util.TimerTask;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.EnumBlockContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -259,8 +260,8 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
     public void BtnContinue() {
 
-        if (formValidation()) {
-//        if (true) {
+//        if (formValidation()) {
+        if (true) {
             try {
                 SaveDraft();
             } catch (JSONException e) {
@@ -445,7 +446,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
                 Settings.Secure.ANDROID_ID));
         MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
         MainApp.fc.setRespLineNo(MainApp.lineNo);
-        MainApp.fc.setEnmNo(binding.nh102.getText().toString());
+        MainApp.fc.setClusterNo(binding.nh102.getText().toString());
         MainApp.fc.setHhNo(binding.nh108.getText().toString().toUpperCase());
 
         setGPS(); // Set GPS
@@ -462,6 +463,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
         sA1.put("hhss", MainApp.selectedHead.getSelStructure());
         sA1.put("hhheadpresent", binding.checkHHHeadpresent.isChecked() ? "1" : "2");
         sA1.put("hhheadpresentnew", binding.newHHheadname.getText().toString());
+        sA1.put("enumNo", binding.nh107.getText().toString());
 
         sA1.put("nh101", binding.nh101.getText().toString());
 
@@ -587,21 +589,25 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
         if (validatorClass.EmptyTextBox(this, binding.nh102, getString(R.string.nh102))) {
 
-            String selected = db.getEnumBlock(binding.nh102.getText().toString());
-            if (!selected.equals("")) {
+            EnumBlockContract enumBlockContract = db.getEnumBlock(binding.nh102.getText().toString());
+            if (enumBlockContract != null) {
+                String selected = enumBlockContract.getGeoarea();
+                if (!selected.equals("")) {
 
-                String[] selSplit = selected.split("\\|");
+                    String[] selSplit = selected.split("\\|");
 
-                binding.nh103.setText(selSplit[0]);
-                binding.nh104.setText(selSplit[1].equals("") ? "----" : selSplit[1]);
-                binding.nh105.setText(selSplit[2].equals("") ? "----" : selSplit[2]);
-                binding.nh106.setText(selSplit[3]);
+                    binding.nh103.setText(selSplit[0]);
+                    binding.nh104.setText(selSplit[1].equals("") ? "----" : selSplit[1]);
+                    binding.nh105.setText(selSplit[2].equals("") ? "----" : selSplit[2]);
+                    binding.nh106.setText(selSplit[3]);
+                    binding.nh107.setText(enumBlockContract.getEbcode());
 
-                binding.fldGrpnh101.setVisibility(View.VISIBLE);
+                    binding.fldGrpnh101.setVisibility(View.VISIBLE);
 
+                }
             } else {
                 binding.nh108.setText(null);
-                Toast.makeText(this, "Sorry not found any block", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Sorry cluster not found!!", Toast.LENGTH_SHORT).show();
             }
 
         }
