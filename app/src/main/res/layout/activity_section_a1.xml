@@ -90,7 +90,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
                         android:layout_weight="60"
-                        android:hint="@string/nh102"
+                        android:hint="@string/nh102a"
                         android:inputType="number"
                         android:maxLength="4" />
 
