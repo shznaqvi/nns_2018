@@ -497,7 +497,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
             MainApp.cc.setUID(MainApp.cc.getUID());
         }
 
-        sC1.put("enmno", MainApp.fc.getEnmNo());
+        sC1.put("enmno", MainApp.fc.getClusterNo());
         sC1.put("hhno", MainApp.fc.getHhNo());
 
         sC1.put("respName", binding.resp.getSelectedItem().toString());

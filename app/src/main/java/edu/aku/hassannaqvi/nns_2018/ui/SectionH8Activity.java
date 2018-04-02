@@ -267,7 +267,7 @@ public class SectionH8Activity extends Activity implements TextWatcher, RadioGro
 
         JSONObject sA2 = new JSONObject();
 
-        sA2.put("enmno", MainApp.fc.getEnmNo());
+        sA2.put("enmno", MainApp.fc.getClusterNo());
         sA2.put("hhno", MainApp.fc.getHhNo());
 
         sA2.put("nh803", bi.nh803.getText().toString());

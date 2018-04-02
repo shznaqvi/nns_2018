@@ -388,7 +388,7 @@ public class SectionB6Activity extends AppCompatActivity {
         }
         JSONObject sB6 = new JSONObject();
 
-        sB6.put("enmno", MainApp.fc.getEnmNo());
+        sB6.put("enmno", MainApp.fc.getClusterNo());
         sB6.put("hhno", MainApp.fc.getHhNo());
 
         sB6.put("serial", String.valueOf(MainApp.nuCount));

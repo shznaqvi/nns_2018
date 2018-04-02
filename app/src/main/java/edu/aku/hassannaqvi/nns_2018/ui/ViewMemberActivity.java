@@ -23,6 +23,7 @@ import edu.aku.hassannaqvi.nns_2018.Adapters.WraAdapter;
 import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.EnumBlockContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -60,7 +61,7 @@ public class ViewMemberActivity extends AppCompatActivity {
             binding.fldGrpVisA.setVisibility(View.GONE);
             binding.fldGrpVisB.setVisibility(View.GONE);
 
-            binding.chckenumblock.setText(MainApp.fc.getEnmNo());
+            binding.chckenumblock.setText(MainApp.fc.getClusterNo());
             binding.chckhouse.setText(MainApp.fc.getHhNo());
 
             initializingLists();
@@ -178,7 +179,8 @@ public class ViewMemberActivity extends AppCompatActivity {
 
         if (validatorClass.EmptyTextBox(this, binding.chckenumblock, getString(R.string.nh102))) {
 
-            String selected = db.getEnumBlock(binding.chckenumblock.getText().toString());
+            EnumBlockContract enumBlockContract = db.getEnumBlock(binding.chckenumblock.getText().toString());
+            String selected = enumBlockContract.getGeoarea();
             if (!selected.equals("")) {
 
                 String[] selSplit = selected.split("\\|");
