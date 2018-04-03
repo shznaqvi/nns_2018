@@ -1760,8 +1760,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         /*String selection = ChildTable.COLUMN__ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.cc.get_ID())};*/
 
-        String whereClause = familyMembers.COLUMN_UUID + " = ?  ";
-        String[] whereArgs = {String.valueOf(MainApp.fc.getUID())};
+        String whereClause = familyMembers.COLUMN_UUID + " = ?  and " + familyMembers.COLUMN_AV + " = ?";
+        String[] whereArgs = {String.valueOf(MainApp.fc.getUID()), "1"};
         String groupBy = null;
         String having = null;
 
