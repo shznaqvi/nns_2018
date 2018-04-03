@@ -53,6 +53,8 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
     String classPassName = "";
     private Timer timer = new Timer();
 
+    static int size = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,7 +103,7 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
             }
         } else {
 
-            if (WRAcounter == 0 || WRAcounter == 1) {
+            if (WRAcounter == 1) {
                 wraMap = new HashMap<>();
                 lstMwra = new ArrayList<>();
 
@@ -1363,6 +1365,9 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog,
                                                 int id) {
+
+                                WRAsize = MainApp.mwra.size();
+
                                 finish();
                                 startActivity(new Intent(SectionB1Activity.this, SectionA2ListActivity.class)
                                         .putExtra("reBack", true)
