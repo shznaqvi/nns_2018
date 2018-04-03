@@ -287,9 +287,6 @@ public class FamilyMembersContract implements Serializable {
         this.av = jsonObject.getString(familyMembers.COLUMN_AV);
         this.hhNo = jsonObject.getString(familyMembers.COLUMN_HH_NO);
         this.enmNo = jsonObject.getString(familyMembers.COLUMN_ENM_NO);
-        this.synced = jsonObject.getString(familyMembers.COLUMN_SYNCED);
-
-        this.syncedDate = jsonObject.getString(familyMembers.COLUMN_SYNCED_DATE);
         this.devicetagID = jsonObject.getString(familyMembers.COLUMN_DEVICETAGID);
 
         return this;

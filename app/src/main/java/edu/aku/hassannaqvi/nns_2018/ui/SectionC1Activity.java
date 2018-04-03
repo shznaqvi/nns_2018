@@ -359,7 +359,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
                     return false;
                 }
 
-                if (!validatorClass.RangeTextBoxforDate(this, binding.nc201y, DateUtils.getCurrentYear() - 6, DateUtils.getCurrentYear(), "Year can not be more than current year")) {
+                if (!validatorClass.RangeTextBoxforDate(this, binding.nc201y, DateUtils.getCurrentYear() - 5, DateUtils.getCurrentYear(), "Year can not be more than current year")) {
                     return false;
                 }
             }
@@ -374,7 +374,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
                     return false;
                 }
 
-                if (!validatorClass.RangeTextBoxforDate(this, binding.nc201y, DateUtils.getCurrentYear() - 6, DateUtils.getCurrentYear(), "Year can not be more than current year")) {
+                if (!validatorClass.RangeTextBoxforDate(this, binding.nc201y, DateUtils.getCurrentYear() - 5, DateUtils.getCurrentYear(), "Year can not be more than current year")) {
                     return false;
                 }
 

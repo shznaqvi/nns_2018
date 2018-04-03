@@ -17,6 +17,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -79,6 +83,8 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
             public void onClick(View v) {
                 WifiP2pConfig config = new WifiP2pConfig();
                 config.deviceAddress = device.deviceAddress;
+                config.groupOwnerIntent = 0;
+
                 config.wps.setup = WpsInfo.PBC;
                 config.groupOwnerIntent = 0;
                 if (progressDialog != null && progressDialog.isShowing()) {
@@ -263,6 +269,17 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
         protected void onPostExecute(String result) {
             if (result != null) {
                 statusText.setText("Message - " + result);
+                Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+                String json = result;
+                if (json.length() > 0) {
+                    DatabaseHelper db = new DatabaseHelper(context);
+                    try {
+                        JSONArray jsonArray = new JSONArray(json);
+                        db.syncAnthroFromDevice(jsonArray);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
 
             }
 
