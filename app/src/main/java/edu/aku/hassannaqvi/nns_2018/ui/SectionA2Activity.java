@@ -384,7 +384,13 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
     }
 
     public void BtnEnd() {
-        MainApp.endActivity(this, this);
+        if (flag) {
+            MainApp.endActivityAll(this, this, SectionA2ListActivity.class, true);
+        } else {
+            MainApp.hhClicked.remove(position);
+            MainApp.endActivityAll(this, this, SectionA2ListActivity.class, true);
+        }
+//        MainApp.endActivity(this, this);
     }
 
     public void BtnContinue() {
@@ -481,7 +487,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
             sA2.put("nh206d", binding.nh2aged.getText().toString());
 */
             if (binding.nh2doby.getText().toString().equals("9998")) {
-            Age = Integer.valueOf(binding.nh2agey.getText().toString());
+                Age = Integer.valueOf(binding.nh2agey.getText().toString());
             } else {
                 Age = (int) agebyDob;
             }
@@ -516,7 +522,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
             family.setFatherName(binding.nh211.getSelectedItem().toString().toUpperCase());
             family.setMotherName(binding.nh212.getSelectedItem().toString().toUpperCase());
 
-        /*Functionality Setting*/
+            /*Functionality Setting*/
 
 //        Calculation
             Map<Integer, Integer> memType = new HashMap<>();
@@ -609,7 +615,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
             // Add data in list for all members
             MainApp.all_members.add(family);
 
-        /*End*/
+            /*End*/
 
             family.setAgeInYear(String.valueOf(Age));
 
@@ -694,10 +700,6 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
             }
 
             if (!validatorClass.RangeTextBox(this, binding.nh2dobm, 1, 12, getString(R.string.nh2dob), " month")) {
-                return false;
-            }
-
-            if (!validatorClass.RangeTextBox(this, binding.nh2doby, 1, 31, getString(R.string.nh2dob), "day")) {
                 return false;
             }
 
@@ -824,7 +826,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                         },
                         DELAY
                 );*/
-            }
+    }
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {

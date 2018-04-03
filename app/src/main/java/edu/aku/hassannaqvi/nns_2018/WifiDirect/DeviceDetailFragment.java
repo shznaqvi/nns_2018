@@ -28,6 +28,7 @@ import java.net.Socket;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.WifiDirect.DeviceListFragment.DeviceActionListener;
+import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 
 /**
  * A fragment that manages a particular peer and allows interaction with device
@@ -41,6 +42,7 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
     private View mContentView = null;
     private WifiP2pDevice device;
     private WifiP2pInfo info;
+    DatabaseHelper db;
 
     public static boolean copyFile(InputStream inputStream, OutputStream out) {
         byte buf[] = new byte[1024];
@@ -66,6 +68,8 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        db = new DatabaseHelper(getActivity());
 
         mContentView = inflater.inflate(R.layout.device_detail, null);
         msgBox = mContentView.findViewById(R.id.msgBox);
@@ -109,7 +113,7 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
             public void onClick(View view) {
                 Intent serviceIntent = new Intent(getActivity(), DataTransferService.class);
                 serviceIntent.setAction(DataTransferService.ACTION_SEND_DATA);
-                serviceIntent.putExtra(Intent.EXTRA_TEXT, getAnthroFM());
+                serviceIntent.putExtra(Intent.EXTRA_TEXT, String.valueOf(db.getAnthroFamilyMembers()));
                 serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_ADDRESS,
                         info.groupOwnerAddress.getHostAddress());
                 serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_PORT, 8988);

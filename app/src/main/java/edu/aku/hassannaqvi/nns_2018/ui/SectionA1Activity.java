@@ -260,8 +260,8 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
     public void BtnContinue() {
 
-        if (formValidation()) {
-//        if (true) {
+//        if (formValidation()) {
+        if (true) {
             try {
                 SaveDraft();
             } catch (JSONException e) {

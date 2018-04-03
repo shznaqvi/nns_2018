@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
@@ -1737,11 +1738,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFC;
     }
 
-    public Collection<FamilyMembersContract> getAnthroFamilyMembers() {
+    public JSONArray getAnthroFamilyMembers() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                familyMembers._ID,
+                familyMembers.COLUMN_ID,
                 familyMembers.COLUMN_UID,
                 familyMembers.COLUMN_UUID,
                 familyMembers.COLUMN_FORMDATE,
@@ -1766,9 +1767,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String having = null;
 
         String orderBy =
-                familyMembers._ID + " ASC";
+                familyMembers.COLUMN_ID + " ASC";
 
         Collection<FamilyMembersContract> allFC = new ArrayList<FamilyMembersContract>();
+        JSONArray jsonArray = new JSONArray();
         try {
             c = db.query(
                     familyMembers.TABLE_NAME,  // The table to query
@@ -1783,6 +1785,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FamilyMembersContract fc = new FamilyMembersContract();
                 allFC.add(fc.Hydrate(c));
             }
+            for (FamilyMembersContract fc : allFC) {
+                //if (fc.getIstatus().equals("1")) {
+                jsonArray.put(fc.toJSONObject());
+                //}
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
         } finally {
             if (c != null) {
                 c.close();
@@ -1791,7 +1800,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.close();
             }
         }
-        return allFC;
+        return jsonArray;
     }
 
 
