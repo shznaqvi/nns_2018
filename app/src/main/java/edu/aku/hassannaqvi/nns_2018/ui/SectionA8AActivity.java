@@ -48,6 +48,8 @@ public class SectionA8AActivity extends Activity {
         db = new DatabaseHelper(this);
         bi.setCallback(this);
 
+        this.setTitle(getResources().getString(R.string.na8aheading));
+
         if (getIntent().getBooleanExtra("flag", true)) {
             reccounter = getIntent().getIntExtra("recCounter", 0);
 

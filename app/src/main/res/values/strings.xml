@@ -50,7 +50,7 @@
     <string name="card">کارڈ کے مطابق</string>
     <string name="recall">ماں کے مطابق</string>
     <string name="dkn"> معلوم نہیں </string>
-    <string name="none">On premises or delivered to home</string>
+  <string name="none">گھر کے احاطے میں / گھر پہ پہنچایا جاتا ہے</string>
     <string name="nofood">ان میں سے کچھ بھی نہیں کھایا</string>
 
     <string name="count"> تعداد </string>
@@ -261,7 +261,7 @@
     <string name="nh310d"> کچرے میں پھنک دیتے ہیں </string>
     <string name="nh310e"> کھلا پڑا رہتا ہے </string>
     <string name="nh310f"> زمین میں گاڑھ دیتے ہیں  </string>
-  <string name="nh310g"> `No Child Under 5 </string>
+  <string name="nh310g"> پانچ سال سے کم عمر کوئی بچہ نہیں ہے </string>
 
     <string name="nh31101"> بجلی </string>
     <string name="nh31102"> ریڈیو </string>
@@ -1429,7 +1429,7 @@
     <string name="nw310">۔W310 - کیا آپ نے کبھی حمل کے دوارن فولاد کی گولیاں استعمال کیں؟</string>
     <string name="nw313">۔W313 - آپ حمل کے دوارن فولاد کی گولیاں کتنی مرتبہ استعمال کرتی تھیں؟</string>
     <string name="nw314">۔W314 - کتنے مہینے یا کتنے دنوں تک آپ (آئرن فولک )گولیوں کا استعمال کرتی رہی تھی؟</string>
-    <string name="nw315">۔W315 - کیا آپ نے کبھی دوران حمل اضافی طاقت کی گولیاں استعمال کیاتھا؟</string>
+  <string name="nw315">۔W315 - کیا آپ نے کبھی دوران حمل اضافی طاقت کی گولیوں کا استعمال کیاتھا؟</string>
     <string name="nw316">۔W316 - آپ کو حمل کے دوران اضافی طاقت  کی گولیا ں استعمال کرنے کا مشورہ کس نے دیا؟</string>
     <string name="nw317">۔W317 - آپ نے حمل کے دوران اضافی طاقت کی گولیاں کہاں سے حاصل کیں؟</string>
     <string name="nw318">۔W318 - آپ نےعموماً کتنی دفعہ حمل کے دوران اضافی طاقت کی گولیوں کا استعمال کیا؟</string>

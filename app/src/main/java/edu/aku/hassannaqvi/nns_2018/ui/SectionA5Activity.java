@@ -55,6 +55,8 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
 //        Assigning data to UI binding
         binding.setCallback(this);
 
+        this.setTitle(getResources().getString(R.string.na5heading));
+
         binding.nh401.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {

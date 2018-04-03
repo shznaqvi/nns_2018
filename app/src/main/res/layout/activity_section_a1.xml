@@ -26,7 +26,8 @@
             android:background="@color/colorPrimaryDark"
             android:gravity="center"
             android:text="@string/na1heading"
-            android:textSize="40sp" />
+            android:textSize="40sp"
+            android:visibility="gone" />
 
         <ProgressBar
             android:id="@+id/progress"

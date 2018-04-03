@@ -66,6 +66,8 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
         SetupViewFunctionality();
 
         SkipPatterns();
+
+        this.setTitle(getResources().getString(R.string.na1heading));
     }
 
     private void SkipPatterns() {

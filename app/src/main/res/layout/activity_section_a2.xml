@@ -27,6 +27,7 @@
             android:layout_gravity="center_horizontal"
             android:background="@color/colorPrimaryDark"
             android:gravity="center"
+            android:visibility="gone"
             android:text="@string/na2subHeading" />
 
         <ScrollView
