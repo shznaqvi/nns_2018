@@ -348,7 +348,8 @@ public class ViewMemberActivity extends AppCompatActivity {
                 break;
             case 6:
                 if (SectionA1Activity.reBackChildFlag) {
-                    if (MainApp.mwra.size() > 0 && SectionB1Activity.WRAsize != MainApp.mwra.size()) {
+                    if (MainApp.mwra.size() > 0 && SectionB1Activity.WRAsize != MainApp.mwra.size()
+                            || (SectionB1Activity.WRAcounter - 1) != MainApp.mwra.size()) {
                         GetIntent = new Intent(this, SectionB1Activity.class)
                                 .putExtra("reBackComing", false);
                     } else if (MainApp.childUnder5.size() > 0 &&
