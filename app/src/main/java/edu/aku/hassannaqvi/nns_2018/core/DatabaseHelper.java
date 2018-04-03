@@ -804,6 +804,41 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public void syncAnthroFromDevice(JSONArray fmlist) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        //db.delete(UsersTable.TABLE_NAME, null, null);
+        try {
+            JSONArray jsonArray = fmlist;
+            for (int i = 0; i < jsonArray.length(); i++) {
+
+                JSONObject jsonObjectUser = jsonArray.getJSONObject(i);
+
+                FamilyMembersContract fmc = new FamilyMembersContract();
+                fmc.Sync(jsonObjectUser);
+                ContentValues values = new ContentValues();
+
+                values.put(familyMembers.COLUMN_UID, fmc.get_UID());
+                values.put(familyMembers.COLUMN_UUID, fmc.get_UUID());
+                values.put(familyMembers.COLUMN_FORMDATE, fmc.getFormDate());
+                values.put(familyMembers.COLUMN_USER, fmc.getUser());
+                //FormsTable.COLUMN_GPSELEV,
+                values.put(familyMembers.COLUMN_HH_NO, fmc.getHhNo());
+                values.put(familyMembers.COLUMN_ENM_NO, fmc.getEnmNo());
+                values.put(familyMembers.COLUMN_SA2, fmc.getsA2());
+                values.put(familyMembers.COLUMN_AV, fmc.getAv());
+                values.put(familyMembers.COLUMN_DEVICETAGID, fmc.getDeviceId());
+                values.put(familyMembers.COLUMN_DEVICEID, fmc.getDeviceId());
+                db.insert(familyMembers.TABLE_NAME, null, values);
+            }
+
+
+        } catch (Exception e) {
+            Log.d(TAG, "syncAnthro(e): " + e);
+        } finally {
+            db.close();
+        }
+    }
+
     public boolean Login(String username, String password) throws SQLException {
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -1742,7 +1777,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                familyMembers.COLUMN_ID,
                 familyMembers.COLUMN_UID,
                 familyMembers.COLUMN_UUID,
                 familyMembers.COLUMN_FORMDATE,
@@ -1751,11 +1785,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 familyMembers.COLUMN_HH_NO,
                 familyMembers.COLUMN_ENM_NO,
                 familyMembers.COLUMN_SA2,
+                familyMembers.COLUMN_AV,
                 familyMembers.COLUMN_DEVICETAGID,
                 familyMembers.COLUMN_DEVICEID,
-                familyMembers.COLUMN_SYNCED,
-                familyMembers.COLUMN_SYNCED_DATE,
-                familyMembers.COLUMN_APP_VERSION
         };
 
         /*String selection = ChildTable.COLUMN__ID + " = ?";
