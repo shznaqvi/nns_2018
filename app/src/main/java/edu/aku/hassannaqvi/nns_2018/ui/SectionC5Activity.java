@@ -43,6 +43,8 @@ public class SectionC5Activity extends AppCompatActivity implements TextWatcher,
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_c5);
         bi.setCallback(this);
 
+        this.setTitle(getResources().getString(R.string.nc5heading));
+
         db = new DatabaseHelper(this);
 
         //Get Intent

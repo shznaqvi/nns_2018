@@ -40,6 +40,8 @@ public class SectionB3Activity extends AppCompatActivity implements TextWatcher,
 //        Assigning data to UI binding
         binding.setCallback(this);
 
+        this.setTitle(getResources().getString(R.string.nb3heading));
+
 //        Skip Patterns
 
         binding.nw327.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {

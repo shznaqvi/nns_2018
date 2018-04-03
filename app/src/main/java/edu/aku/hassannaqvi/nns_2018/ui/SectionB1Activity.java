@@ -1,12 +1,12 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -35,7 +35,7 @@ import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB1Binding;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionB1Activity extends Activity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
+public class SectionB1Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
     public static String wraName = "";
     public static int WRAcounter = 0;
@@ -63,6 +63,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
 
         //Assigning data to UI binding
         bi.setCallback(this);
+
         this.setTitle(getResources().getString(R.string.nbheading));
 
         setupViews();
@@ -1194,11 +1195,14 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
                             return false;
                         }
 
-                        if (!validatorClass.EmptyTextBox(this, bi.nw215, getString(R.string.nw215))) {
-                            return false;
-                        }
-                        if (!validatorClass.RangeTextBox(this, bi.nw215, 0, Integer.valueOf(bi.nw212.getText().toString()), getString(R.string.nw212), " Deliveries")) {
-                            return false;
+                        if (!bi.nw214.getText().toString().equals("0")) {
+
+                            if (!validatorClass.EmptyTextBox(this, bi.nw215, getString(R.string.nw215))) {
+                                return false;
+                            }
+                            if (!validatorClass.RangeTextBox(this, bi.nw215, 0, Integer.valueOf(bi.nw212.getText().toString()), getString(R.string.nw212), " Deliveries")) {
+                                return false;
+                            }
                         }
 
                         if (!validatorClass.EmptyRadioButton(this, bi.nw216, bi.nw216a, getString(R.string.nw216))) {
