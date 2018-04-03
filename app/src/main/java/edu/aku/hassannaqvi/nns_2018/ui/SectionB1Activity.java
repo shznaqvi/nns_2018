@@ -52,8 +52,6 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
     String classPassName = "";
     private Timer timer = new Timer();
 
-    static int size = 0;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
