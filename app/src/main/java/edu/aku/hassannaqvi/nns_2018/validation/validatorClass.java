@@ -1,9 +1,7 @@
 package edu.aku.hassannaqvi.nns_2018.validation;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
-import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -13,7 +11,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -132,9 +129,8 @@ public abstract class validatorClass {
 
     public static boolean EmptyRadioButton(Context context, RadioGroup rdGrp, final RadioButton rdBtn, String msg) {
         if (rdGrp.getCheckedRadioButtonId() == -1) {
-            //Toast.makeText(context, "ERROR(empty): " + msg, Toast.LENGTH_SHORT).show();
-            //final LinearLayout linearLayout = (LinearLayout) rdGrp.getParent();
-            ScrollView scrollView = null;
+
+            /*ScrollView scrollView = null;
 
             Activity myact = (Activity) context;
             final ViewGroup viewGroup = (ViewGroup) ((ViewGroup) myact.findViewById(android.R.id.content)).getChildAt(0);
@@ -152,20 +148,20 @@ public abstract class validatorClass {
                 @Override
                 public void run() {
                     int ypos = findYPositionInView(myScrollView, rdBtn, 0);
-                    myScrollView.smoothScrollTo(0, ypos - 50);
+                    myScrollView.smoothScrollTo(0, ypos - 200);
 
                     rdBtn.setError("This data is Required!");
                 }
             }, 200);
+*/
 
+            rdBtn.setError("This data is Required!");    // Set Error on last radio button
 
-            //rdBtn.setError("This data is Required!");    // Set Error on last radio button
-
-            /*rdBtn.setFocusable(true);
-            rdBtn.setFocusableInTouchMode(true);
+            rdBtn.setFocusable(true);
+            //rdBtn.setFocusableInTouchMode(true);
             rdBtn.requestFocus();
 
-            rdBtn.clearFocus();
+            /*rdBtn.clearFocus();
 
              rdGrp.requestFocus();
             rdGrp.requestFocusFromTouch();
@@ -203,29 +199,40 @@ public abstract class validatorClass {
     public static boolean EmptyRadioButton(Context context, RadioGroup rdGrp, final RadioButton rdBtn, EditText txt, final String msg) {
         if (rdGrp.getCheckedRadioButtonId() == -1) {
 
-            final LinearLayout linearLayout = (LinearLayout) rdGrp.getParent();
-            final ScrollView scrollView = (ScrollView) linearLayout.getParent();
+            /*ScrollView scrollView = null;
+
+            Activity myact = (Activity) context;
+            final ViewGroup viewGroup = (ViewGroup) ((ViewGroup) myact.findViewById(android.R.id.content)).getChildAt(0);
+
+            for (int i = 0; i < viewGroup.getChildCount(); i++) {
+                if (viewGroup.getChildAt(i) instanceof ScrollView) {
+                    scrollView = (ScrollView) viewGroup.getChildAt(i);
+                    break;
+                }
+            }
+
+            final ScrollView myScrollView = scrollView;
 
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    int ypos = findYPositionInView(scrollView, rdBtn, 0);
-                    scrollView.smoothScrollTo(0, ypos);
+                    int ypos = findYPositionInView(myScrollView, rdBtn, 0);
+                    myScrollView.smoothScrollTo(0, ypos - 200);
 
                     rdBtn.setError("This data is Required!");
                 }
             }, 200);
+*/
 
 
             //Toast.makeText(context, "ERROR(empty): " + msg, Toast.LENGTH_SHORT).show();
             //rdBtn.setError("This data is Required!");    // Set Error on last radio button
 
-            /*rdBtn.setFocusable(true);
-            rdBtn.setFocusableInTouchMode(true);
-            rdBtn.requestFocus();
-            rdBtn.clearFocus();
+            rdBtn.setFocusable(true);
+            //rdBtn.setFocusableInTouchMode(true);
             rdGrp.requestFocus();
-            rdGrp.requestFocusFromTouch();
+
+            /*rdGrp.requestFocusFromTouch();
             rdGrp.clearFocus();
             rdGrp.clearChildFocus(rdBtn);*/
             //((LinearLayout)rdGrp.getParent()).scrollTo(rdGrp.getScrollX(), rdGrp.getScrollY());

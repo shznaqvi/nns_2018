@@ -680,7 +680,21 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                 return false;
             }
 
+
+            if (!validatorClass.RangeTextBox(this, binding.nh2doby, DateUtils.getCurrentYear() - 95, DateUtils.getCurrentYear(), getString(R.string.nh2dob), " year")) {
+                return false;
+            }
+
+
             if (!validatorClass.EmptyTextBox(this, binding.nh2dobm, getString(R.string.nh2dob))) {
+                return false;
+            }
+
+            if (!validatorClass.RangeTextBox(this, binding.nh2dobm, 1, 12, getString(R.string.nh2dob), " month")) {
+                return false;
+            }
+
+            if (!validatorClass.RangeTextBox(this, binding.nh2doby, 1, 31, getString(R.string.nh2dob), "day")) {
                 return false;
             }
 
@@ -688,9 +702,10 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                 return false;
             }
 
-            if (!validatorClass.RangeTextBox(this, binding.nh2doby, DateUtils.getCurrentYear() - 95, DateUtils.getCurrentYear(), 9998, getString(R.string.nh2dob), " year")) {
+            if (!validatorClass.RangeTextBox(this, binding.nh2dobd, 1, 31, getString(R.string.nh2dob), " day")) {
                 return false;
             }
+
 
             Calendar today = Calendar.getInstance();
             if (dob.after(today)) {

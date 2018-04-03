@@ -45,13 +45,6 @@
                 android:orientation="vertical">
 
                 <!--nh401-->
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:orientation="vertical">
-
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -106,7 +99,6 @@
                             android:text="@string/nh401d" />
                     </RadioGroup>
 
-                </LinearLayout>
 
 
                 <LinearLayout

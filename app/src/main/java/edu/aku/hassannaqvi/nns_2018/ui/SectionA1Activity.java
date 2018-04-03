@@ -154,7 +154,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
             @Override
             public void afterTextChanged(Editable editable) {
 
-                timer.cancel();
+/*                timer.cancel();
                 timer = new Timer();
                 timer.schedule(
                         new TimerTask() {
@@ -170,7 +170,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
                             }
                         },
                         DELAY
-                );
+                );*/
 
             }
         });
@@ -209,7 +209,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
             @Override
             public void afterTextChanged(Editable editable) {
 
-                timer.cancel();
+                /*timer.cancel();
                 timer = new Timer();
                 timer.schedule(
                         new TimerTask() {
@@ -226,7 +226,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
                         },
                         DELAY
                 );
-
+*/
             }
         });
 
