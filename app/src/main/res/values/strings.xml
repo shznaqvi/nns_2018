@@ -96,7 +96,7 @@
     <string name="na112info"> سوال کنندہ اجازت نامہ جواب دہندہ سمجھانے کے لیے پڑھ کر سنائے گا اور مطالعہ کا مقصد اور انٹرویو کے لیے درکار وقت کے متعلق آگا ہ کرےگا ۔ (سوال کنندہ کو علیحدہ سے اجازت نامہ کی شیٹ مہیا کی جائےگی) </string>
     <string name="na11801"> زبانی اجازت نامہ </string>
     <string name="na11802"> تحریری اجازت نامہ </string>
-    <string name="na113info"> اگر زبانی /تحریری اجازت نامہ نہ ملے تو انٹرویو کو روک دیں اور اس سیکشن کے آخر میں جائے سوال کےنتائج ریکارڈ کریں </string>
+  <string name="na113info"> اگر زبانی اجازت  نہ ملے تو انٹرویو کو روک دیں اور اس سیکشن کے آخر میں سوال کے نتائج ریکارڈ کریں </string>
     <string name="na113"> انکار کی وجہ (متعلقہ جوابات کو منتخب کریں) </string>
     <string name="na119a"> نامناسب وقت </string>
     <string name="na119b"> دلچسپی نہیں </string>
@@ -129,9 +129,9 @@
     <string name="na20396">دیگر (کوئی رشتہ دار نہیں) </string>
     <string name="na20398">  معلوم نہیں </string>
 
-    <string name="resp"> Is he/she a respondent? </string>
 
-    <string name="nh211"> والد کا لائن نمبر </string>
+  <string name="resp"> کیا یہ جواب دہندہ ہے؟</string>
+  <string name="nh211"> والد کا لائن نمبر </string>
     <string name="nh212"> والدہ کا لائن نمبر </string>
     <string name="na204"> جنس </string>
 
@@ -226,7 +226,7 @@
     <string name="nh303o"> آبپاشی </string>
     <string name="nh303p"> بوتل کا پانی </string>
 
-    <string name="nh304"> آپکوپانی کے اہم ذریعے تک پہنچنے میں اور وہاں سے پانی لے کر گھر آنے تک کتنا وقت لگتا ہے  </string>
+  <string name="nh304"> ۔H304 - آپکوپانی کے اہم ذریعے تک پہنچنے میں اور وہاں سے پانی لے کر گھر آنے تک کتنا وقت لگتا ہے  </string>
     <string name="nh304min">وقت منٹوں میں لکھیں</string>
 
 
@@ -261,7 +261,7 @@
     <string name="nh310d"> کچرے میں پھنک دیتے ہیں </string>
     <string name="nh310e"> کھلا پڑا رہتا ہے </string>
     <string name="nh310f"> زمین میں گاڑھ دیتے ہیں  </string>
-    <string name="nh310g"> No Child Under 5 </string>
+  <string name="nh310g"> `No Child Under 5 </string>
 
     <string name="nh31101"> بجلی </string>
     <string name="nh31102"> ریڈیو </string>
@@ -355,7 +355,7 @@
     <string name="nh318l">  سیمنٹ آر سی سی(پکی چھت) </string>
     <string name="nh318m"> چھت میں استعمال ہونے والے ٹائلز </string>
     <string name="nh318n"> اینٹیں </string>
-    <string name="nh319"> گھر کی دیوار وں میں استعمال ہونے والا بنیادی مواد: </string>
+  <string name="nh319">۔H319 -  گھر کی دیوار وں میں استعمال ہونے والا بنیادی مواد: </string>
     <string name="nh319sub">قدرتی دیواریں    </string>
     <string name="nh319a"> کوئی دیوار نہیں </string>
     <string name="nh319b"> کھجور کے درخت  /بانس </string>

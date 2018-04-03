@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -98,6 +100,7 @@ public class EndingActivity extends AppCompatActivity {
                 : "0");
 
         MainApp.fc.setIstatus88x(binding.istatus96x.getText().toString());
+        MainApp.fc.setEndtime(new SimpleDateFormat("HH:mm").format(System.currentTimeMillis()));
 
 
         //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();

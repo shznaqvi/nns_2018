@@ -93,7 +93,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsTable.COLUMN_SA1 + " TEXT," +
             FormsTable.COLUMN_SA4 + " TEXT," +
             FormsTable.COLUMN_SA5 + " TEXT," +
-            FormsTable.COLUMN_SB4 + " TEXT," +
+            FormsTable.COLUMN_END_TIME + " TEXT," +
             FormsTable.COLUMN_ISTATUS + " TEXT," +
             FormsTable.COLUMN_ISTATUS88x + " TEXT," +
             FormsTable.COLUMN_COUNT + " TEXT," +
@@ -870,7 +870,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_SA1, fc.getsA1());
         values.put(FormsTable.COLUMN_SA4, fc.getsA4());
         values.put(FormsTable.COLUMN_SA5, fc.getsA5());
-        values.put(FormsTable.COLUMN_SB4, fc.getsB4());
+        //values.put(FormsTable.COLUMN_END_TIME, fc.getEndtime());
         values.put(FormsTable.COLUMN_COUNT, fc.getCount());
         values.put(FormsTable.COLUMN_GPSLAT, fc.getGpsLat());
         values.put(FormsTable.COLUMN_GPSLNG, fc.getGpsLng());
@@ -1636,7 +1636,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_SA1,
                 FormsTable.COLUMN_SA4,
                 FormsTable.COLUMN_SA5,
-                FormsTable.COLUMN_SB4,
+                FormsTable.COLUMN_END_TIME,
                 FormsTable.COLUMN_COUNT,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
@@ -3026,7 +3026,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 // New value for one column
         ContentValues values = new ContentValues();
-        values.put(FormsTable.COLUMN_SB4, MainApp.fc.getsB4());
+        values.put(FormsTable.COLUMN_END_TIME, MainApp.fc.getEndtime());
 
 // Which row to update, based on the ID
         String selection = FormsTable._ID + " = ?";
@@ -3066,6 +3066,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(FormsTable.COLUMN_ISTATUS, MainApp.fc.getIstatus());
         values.put(FormsTable.COLUMN_ISTATUS88x, MainApp.fc.getIstatus88x());
+        values.put(FormsTable.COLUMN_END_TIME, MainApp.fc.getEndtime());
 
 // Which row to update, based on the ID
         String selection = FormsTable._ID + " =? ";

@@ -43,6 +43,7 @@
                 android:layout_marginTop="2dp"
                 android:background="@color/dullWhile"
                 android:text="Main Menu"
+                android:visibility="gone"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
 

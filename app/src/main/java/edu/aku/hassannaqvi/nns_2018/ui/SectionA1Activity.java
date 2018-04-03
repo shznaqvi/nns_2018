@@ -15,7 +15,6 @@ import android.text.TextWatcher;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -29,7 +28,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
-import java.util.TimerTask;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
@@ -42,7 +40,7 @@ import edu.aku.hassannaqvi.nns_2018.other.MembersCount;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionA1Activity extends AppCompatActivity implements TextWatcher, CompoundButton.OnCheckedChangeListener, RadioGroup.OnCheckedChangeListener {
+public class SectionA1Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
     private static final String TAG = SectionA1Activity.class.getName();
     static int progress = 0;
@@ -75,7 +73,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
         binding.na11801.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                formValidation();
+                //formValidation();
                 if (checkedId == R.id.na11801a) {
                     clearClass.ClearAllFields(binding.fldGrpna113, false);
                 } else {
@@ -87,12 +85,12 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
         // Field wise validation
 
-        binding.nh101.addTextChangedListener(this);
-        binding.checkHHHeadpresent.setOnCheckedChangeListener(this);
-        binding.newHHheadname.addTextChangedListener(this);
-        binding.nh103.addTextChangedListener(this);
-        binding.nh115.addTextChangedListener(this);
-        binding.nh213.addTextChangedListener(this);
+        //binding.nh101.addTextChangedListener(this);
+        //binding.checkHHHeadpresent.setOnCheckedChangeListener(this);
+        //binding.newHHheadname.addTextChangedListener(this);
+        //binding.nh103.addTextChangedListener(this);
+        //binding.nh115.addTextChangedListener(this);
+        //binding.nh213.addTextChangedListener(this);
         binding.na11802.setOnCheckedChangeListener(this);
         binding.na119a.addTextChangedListener(this);
 
@@ -365,17 +363,20 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
 //        nh108
 
-        if (binding.nh108.getText().toString().length() == 6) {
-            String[] str = binding.nh108.getText().toString().split("-");
-            if (str.length > 2 || binding.nh108.getText().toString().charAt(4) != '-' || !str[0].matches("[0-9]+")
-                    || !str[1].matches("[a-zA-Z]")) {
-                binding.nh108.setError("Wrong presentation!!");
+        if (!binding.nh102.getText().toString().isEmpty()) {
+
+            if (binding.nh108.getText().toString().length() == 6) {
+                String[] str = binding.nh108.getText().toString().split("-");
+                if (str.length > 2 || binding.nh108.getText().toString().charAt(4) != '-' || !str[0].matches("[0-9]+")
+                        || !str[1].matches("[a-zA-Z]")) {
+                    binding.nh108.setError("Wrong presentation!!");
+                    return false;
+                }
+            } else {
+                //Toast.makeText(this, "Invalid length: " + getString(R.string.nh108), Toast.LENGTH_SHORT).show();
+                binding.nh108.setError("Invalid length");
                 return false;
             }
-        } else {
-            //Toast.makeText(this, "Invalid length: " + getString(R.string.nh108), Toast.LENGTH_SHORT).show();
-            binding.nh108.setError("Invalid length");
-            return false;
         }
 
 //        New HHHead
@@ -384,6 +385,8 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
             if (!validatorClass.EmptyTextBox(this, binding.newHHheadname, "New head name.")) {
                 return false;
             }
+        } else {
+            binding.newHHheadname.setError(null);
         }
 
 //        nh110
@@ -627,7 +630,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
     @Override
     public void afterTextChanged(Editable s) {
 
-        timer.cancel();
+        /*timer.cancel();
         timer = new Timer();
         timer.schedule(
                 new TimerTask() {
@@ -643,16 +646,12 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
                     }
                 },
                 DELAY
-        );
+        );*/
     }
 
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        formValidation();
-    }
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
-        formValidation();
+        //formValidation();
     }
 }

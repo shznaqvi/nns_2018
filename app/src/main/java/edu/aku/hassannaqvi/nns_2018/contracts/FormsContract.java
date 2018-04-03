@@ -28,7 +28,7 @@ public class FormsContract {
     private String sA1 = "";     // Info Section
     private String sA4 = ""; // sA4
     private String sA5 = ""; //
-    private String sB4 = "";
+    private String endtime = "";
     private String count = "";
     private String respLineNo = "";
 
@@ -65,7 +65,7 @@ public class FormsContract {
         this.sA1 = jsonObject.getString(FormsTable.COLUMN_SA1);
         this.sA4 = jsonObject.getString(FormsTable.COLUMN_SA4);
         this.sA5 = jsonObject.getString(FormsTable.COLUMN_SA5);
-        this.sB4 = jsonObject.getString(FormsTable.COLUMN_SB4);
+        this.endtime = jsonObject.getString(FormsTable.COLUMN_END_TIME);
         this.count = jsonObject.getString(FormsTable.COLUMN_COUNT);
         this.gpsLat = jsonObject.getString(FormsTable.COLUMN_GPSLAT);
         this.gpsLng = jsonObject.getString(FormsTable.COLUMN_GPSLNG);
@@ -95,7 +95,7 @@ public class FormsContract {
         this.sA1 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA1));
         this.sA4 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA4));
         this.sA5 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA5));
-        this.sB4 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SB4));
+        this.endtime = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_END_TIME));
         this.count = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_COUNT));
         this.gpsLat = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSLAT));
         this.gpsLng = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSLNG));
@@ -155,9 +155,9 @@ public class FormsContract {
 
             json.put(FormsTable.COLUMN_SA5, this.sA5.equals("") ? JSONObject.NULL : new JSONObject(this.sA5));
         }
-        if (!this.sB4.equals("")) {
+        if (!this.endtime.equals("")) {
 
-            json.put(FormsTable.COLUMN_SB4, this.sB4.equals("") ? JSONObject.NULL : new JSONObject(this.sB4));
+            json.put(FormsTable.COLUMN_END_TIME, this.endtime.equals("") ? JSONObject.NULL : new JSONObject(this.endtime));
         }
         json.put(FormsTable.COLUMN_GPSLAT, this.gpsLat == null ? JSONObject.NULL : this.gpsLat);
         json.put(FormsTable.COLUMN_GPSLNG, this.gpsLng == null ? JSONObject.NULL : this.gpsLng);
@@ -260,12 +260,12 @@ public class FormsContract {
         this.gpsElev = gpsElev;
     }
 
-    public String getsB4() {
-        return sB4;
+    public String getEndtime() {
+        return endtime;
     }
 
-    public void setsB4(String sB4) {
-        this.sB4 = sB4;
+    public void setEndtime(String endtime) {
+        this.endtime = endtime;
     }
 
     public String getsA4() {
@@ -388,7 +388,7 @@ public class FormsContract {
         public static final String COLUMN_SA1 = "sa1";
         public static final String COLUMN_SA4 = "sa4";
         public static final String COLUMN_SA5 = "sa5";
-        public static final String COLUMN_SB4 = "sb4";
+        public static final String COLUMN_END_TIME = "endtime";
         public static final String COLUMN_COUNT = "count";
         public static final String COLUMN_RESP_LNO = "resp_lno";
         public static final String COLUMN_ENM_NO = "cluster_no";
