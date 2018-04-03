@@ -69,6 +69,10 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
         skipPattern();
         //setHeading();
         this.setTitle(getResources().getString(R.string.na2subHeading));
+
+//        Validation Boolean
+        MainApp.validateFlag = false;
+
     }
 
 
@@ -395,6 +399,9 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
 
     public void BtnContinue() {
 
+//        Validation Boolean
+        MainApp.validateFlag = true;
+
         //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
             try {
@@ -469,7 +476,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
 
             JSONObject sA2 = new JSONObject();
 
-            sA2.put("enmno", MainApp.fc.getClusterNo());
+            sA2.put("cluster_no", MainApp.fc.getClusterNo());
             sA2.put("hhno", MainApp.fc.getHhNo());
             sA2.put("resp", family.getResp().equals("0") ? "" : family.getResp());
             sA2.put("nh2SerialNo", family.getSerialNo());
@@ -667,7 +674,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
 
         if (flag) {
 
-            if (!validatorClass.EmptyTextBox(this, binding.na202, getString(R.string.na202Info))) {
+            if (!validatorClass.EmptyTextBox(this, binding.na202, getString(R.string.na202))) {
                 return false;
             }
 

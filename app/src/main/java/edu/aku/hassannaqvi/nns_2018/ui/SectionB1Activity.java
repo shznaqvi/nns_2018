@@ -66,6 +66,11 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
         this.setTitle(getResources().getString(R.string.nbheading));
 
         setupViews();
+
+
+//        Validation Boolean
+        MainApp.validateFlag = false;
+
     }
 
     public void setupViews() {
@@ -916,6 +921,9 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
 
     public void BtnContinue() {
 
+//        Validation Boolean
+        MainApp.validateFlag = true;
+
         //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (ValidateForm()) {
             try {
@@ -1205,7 +1213,7 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
 
         wraName = bi.nb101.getSelectedItem().toString();
 
-        sB1.put("enmno", MainApp.fc.getClusterNo());
+        sB1.put("cluster_no", MainApp.fc.getClusterNo());
         sB1.put("hhno", MainApp.fc.getHhNo());
         sB1.put("nw101", bi.nb101.getSelectedItem().toString());
         sB1.put("nw1serialno", wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());

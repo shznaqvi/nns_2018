@@ -58,6 +58,11 @@ public class SectionC5Activity extends AppCompatActivity implements TextWatcher,
         bi.nc505.setOnCheckedChangeListener(this);
         bi.nc506.setOnCheckedChangeListener(this);
         autoPopulateFields();
+
+
+//        Validation Boolean
+        MainApp.validateFlag = false;
+
     }
 
     private void autoPopulateFields() {
@@ -122,6 +127,9 @@ public class SectionC5Activity extends AppCompatActivity implements TextWatcher,
     }
 
     public void BtnContinue() {
+
+//        Validation Boolean
+        MainApp.validateFlag = true;
 
         //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {

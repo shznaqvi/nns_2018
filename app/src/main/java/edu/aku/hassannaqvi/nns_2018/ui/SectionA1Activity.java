@@ -68,6 +68,10 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
         SkipPatterns();
 
         this.setTitle(getResources().getString(R.string.na1heading));
+
+//        Validation Boolean
+        MainApp.validateFlag = false;
+
     }
 
     private void SkipPatterns() {
@@ -260,6 +264,9 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
     public void BtnContinue() {
 
+//        Validation Boolean
+        MainApp.validateFlag = true;
+
         if (formValidation()) {
 //        if (true) {
             try {
@@ -308,6 +315,9 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
     }
 
     public void BtnEnd() {
+
+//        Validation Boolean
+        MainApp.validateFlag = true;
 
         flag = true;
         //Toast.makeText(this, "Processing End Section", Toast.LENGTH_SHORT).show();

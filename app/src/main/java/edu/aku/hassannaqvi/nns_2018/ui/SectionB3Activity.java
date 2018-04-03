@@ -166,9 +166,17 @@ public class SectionB3Activity extends AppCompatActivity implements TextWatcher,
             }
 
         }*/
+
+
+//        Validation Boolean
+        MainApp.validateFlag = false;
+
     }
 
     public void BtnContinue() {
+
+//        Validation Boolean
+        MainApp.validateFlag = true;
 
         if (formValidation()) {
             try {

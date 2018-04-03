@@ -252,6 +252,9 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
         }
 
 
+//        Validation Boolean
+        MainApp.validateFlag = false;
+
     }
 
     private void SaveDraft() throws JSONException {
@@ -269,7 +272,7 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
 
         JSONObject sA2 = new JSONObject();
 
-        sA2.put("enmno", MainApp.fc.getClusterNo());
+        sA2.put("cluster_no", MainApp.fc.getClusterNo());
         sA2.put("hhno", MainApp.fc.getHhNo());
 
         sA2.put("nh803", bi.nh803.getText().toString());
@@ -319,6 +322,9 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
     private boolean formValidation() {
 
         //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
+
+//        Validation Boolean
+        MainApp.validateFlag = true;
 
         if (!validatorClass.EmptyTextBox(this, bi.nh803, getString(R.string.nh803))) {
             return false;

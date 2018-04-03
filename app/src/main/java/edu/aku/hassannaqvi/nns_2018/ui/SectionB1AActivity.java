@@ -105,6 +105,8 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         bi.nw21701.setOnCheckedChangeListener(this);
 
 
+//        Validation Boolean
+        MainApp.validateFlag = false;
 
     }
 
@@ -160,6 +162,8 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
     private boolean ValidateForm() {
 
+//        Validation Boolean
+        MainApp.validateFlag = true;
 
         if (!validatorClass.EmptyRadioButton(this, bi.nw21701, bi.nw21701a, getString(R.string.nw217))) {
             return false;
@@ -233,7 +237,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
         JSONObject sB1a = new JSONObject();
 
-        sB1a.put("enmno", MainApp.fc.getClusterNo());
+        sB1a.put("cluster_no", MainApp.fc.getClusterNo());
         sB1a.put("hhno", MainApp.fc.getHhNo());
 
         sB1a.put("serial", Integer.valueOf(MainApp.count));

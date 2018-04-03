@@ -106,6 +106,10 @@ public class SectionB6Activity extends AppCompatActivity {
 
 //        }
 
+
+//        Validation Boolean
+        MainApp.validateFlag = false;
+
     }
 
     private void setListners() {
@@ -294,6 +298,9 @@ public class SectionB6Activity extends AppCompatActivity {
 
     public void BtnContinue() {
 
+//        Validation Boolean
+        MainApp.validateFlag = true;
+
         if (ValidateForm()) {
             try {
                 SaveDraft();
@@ -390,7 +397,7 @@ public class SectionB6Activity extends AppCompatActivity {
         }
         JSONObject sB6 = new JSONObject();
 
-        sB6.put("enmno", MainApp.fc.getClusterNo());
+        sB6.put("cluster_no", MainApp.fc.getClusterNo());
         sB6.put("hhno", MainApp.fc.getHhNo());
 
         sB6.put("serial", String.valueOf(MainApp.nuCount));

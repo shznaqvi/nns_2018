@@ -234,6 +234,9 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
         binding.nc205.setOnCheckedChangeListener(this);
 
 
+//        Validation Boolean
+        MainApp.validateFlag = false;
+
     }
 
 
@@ -243,6 +246,9 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
     }
 
     public void BtnContinue() {
+
+//        Validation Boolean
+        MainApp.validateFlag = true;
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
@@ -267,11 +273,11 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
                     startActivity(new Intent(this, SectionC2Activity.class)
                             .putExtra("selectedChild", childMap.get(binding.nc101.getSelectedItem().toString()))
                             .putExtra("backPressed", backPressed));
-                } else if (ageInMontsbyDob >= 24 && ageInMontsbyDob < 59) {
+                } else if (ageInMontsbyDob >= 24 && ageInMontsbyDob < 60) {
                     startActivity(new Intent(this, SectionC3Activity.class)
                             .putExtra("selectedChild", childMap.get(binding.nc101.getSelectedItem().toString()))
                             .putExtra("backPressed", backPressed));
-                } else if (ageInMontsbyDob > 59 || ageInMontsbyDob > 72) {
+                } else if (ageInMontsbyDob >= 60) {
                     startActivity(new Intent(this, ChildEndingActivity.class)
                             .putExtra("childINEligibile", true));
                 }
@@ -285,6 +291,9 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
     }
 
     public void BtnEnd() {
+
+//        Validation Boolean
+        MainApp.validateFlag = true;
 
         endflag = true;
         if (formValidation()) {
@@ -499,7 +508,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
             MainApp.cc.setUID(MainApp.cc.getUID());
         }
 
-        sC1.put("enmno", MainApp.fc.getClusterNo());
+        sC1.put("cluster_no", MainApp.fc.getClusterNo());
         sC1.put("hhno", MainApp.fc.getHhNo());
 
         sC1.put("respName", binding.resp.getSelectedItem().toString());

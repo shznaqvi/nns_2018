@@ -363,9 +363,16 @@ public class SectionB4Activity extends AppCompatActivity implements TextWatcher,
 
         }
 
+
+//        Validation Boolean
+        MainApp.validateFlag = false;
+
     }
 
     public void BtnContinue() {
+
+//        Validation Boolean
+        MainApp.validateFlag = true;
 
         //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {

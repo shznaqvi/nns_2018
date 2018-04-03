@@ -6,6 +6,8 @@ import android.provider.BaseColumns;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import edu.aku.hassannaqvi.nns_2018.R;
+
 //import edu.aku.hassannaqvi.nns_2018.contracts.dummy.A1Model;
 
 /**
@@ -14,7 +16,7 @@ import org.json.JSONObject;
 
 public class FormsContract {
 
-    private final String projectName = "NNS-2018";
+    private final String projectName = String.valueOf(R.string.app_name);
     //private final String surveyType = "SN";
     private String _ID = "";
     private String _UID = "";
@@ -91,7 +93,7 @@ public class FormsContract {
         this.hhNo = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_HH_NO));
         this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
         this.istatus88x = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS88x));
-        //this.gpsElev = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSELEV));
+        this.gpsElev = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSELEV));
         this.sA1 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA1));
         this.sA4 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA4));
         this.sA5 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA5));
@@ -155,10 +157,7 @@ public class FormsContract {
 
             json.put(FormsTable.COLUMN_SA5, this.sA5.equals("") ? JSONObject.NULL : new JSONObject(this.sA5));
         }
-        if (!this.endtime.equals("")) {
-
-            json.put(FormsTable.COLUMN_END_TIME, this.endtime.equals("") ? JSONObject.NULL : new JSONObject(this.endtime));
-        }
+        json.put(FormsTable.COLUMN_END_TIME, this.endtime == null ? JSONObject.NULL : this.endtime);
         json.put(FormsTable.COLUMN_GPSLAT, this.gpsLat == null ? JSONObject.NULL : this.gpsLat);
         json.put(FormsTable.COLUMN_GPSLNG, this.gpsLng == null ? JSONObject.NULL : this.gpsLng);
         json.put(FormsTable.COLUMN_GPSDATE, this.gpsDT == null ? JSONObject.NULL : this.gpsDT);

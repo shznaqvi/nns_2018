@@ -72,6 +72,10 @@ public class SectionD1Activity extends AppCompatActivity implements TextWatcher,
         Log.d("Mem", String.valueOf(MainApp.childUnder2));
         Log.d("Mem", String.valueOf(MainApp.childUnder5));
         Log.d("Mem", String.valueOf(MainApp.mwra));
+
+//        Validation Boolean
+        MainApp.validateFlag = false;
+
     }
 
     public void setupViews() {
@@ -193,6 +197,9 @@ public class SectionD1Activity extends AppCompatActivity implements TextWatcher,
 
 
     public void BtnContinue() {
+
+//        Validation Boolean
+        MainApp.validateFlag = true;
 
         //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {

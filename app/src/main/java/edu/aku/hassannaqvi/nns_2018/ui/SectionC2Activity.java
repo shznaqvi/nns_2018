@@ -82,6 +82,10 @@ public class SectionC2Activity extends AppCompatActivity implements RadioGroup.O
         setupViews();
         autoPopulateFields();
 
+
+//        Validation Boolean
+        MainApp.validateFlag = false;
+
     }
 
     private void autoPopulateFields() {
@@ -517,6 +521,9 @@ public class SectionC2Activity extends AppCompatActivity implements RadioGroup.O
 
     public void BtnContinue() {
 
+//        Validation Boolean
+        MainApp.validateFlag = true;
+
         //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (ValidateForm()) {
             try {
@@ -548,8 +555,10 @@ public class SectionC2Activity extends AppCompatActivity implements RadioGroup.O
 
         //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
-        //if (!bi.nc20198.isChecked()) {
+//        Validation Boolean
+        MainApp.validateFlag = true;
 
+        //if (!bi.nc20198.isChecked()) {
 
         //if (bi.nc205a.isChecked()) {
         if (!validatorClass.EmptyRadioButton(this, bi.nc206, bi.nc206a, getString(R.string.nc206))) {

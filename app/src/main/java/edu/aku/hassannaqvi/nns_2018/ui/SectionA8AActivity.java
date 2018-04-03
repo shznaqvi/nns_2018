@@ -99,6 +99,9 @@ public class SectionA8AActivity extends Activity {
         // setup head
         bi.txtCounter.setText("Count " + counter + " out of " + reccounter);
 
+
+//        Validation Boolean
+        MainApp.validateFlag = false;
     }
 
 
@@ -108,6 +111,9 @@ public class SectionA8AActivity extends Activity {
     }
 
     public void BtnContinue() {
+
+//        Validation Boolean
+        MainApp.validateFlag = true;
 
         //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (ValidateForm()) {
@@ -221,7 +227,7 @@ public class SectionA8AActivity extends Activity {
 
         JSONObject sA8a = new JSONObject();
 
-        sA8a.put("enmno", MainApp.fc.getClusterNo());
+        sA8a.put("cluster_no", MainApp.fc.getClusterNo());
         sA8a.put("hhno", MainApp.fc.getHhNo());
 
         sA8a.put("nh7a01", fmcSelected.getName());

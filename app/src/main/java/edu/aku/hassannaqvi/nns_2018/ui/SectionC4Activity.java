@@ -174,6 +174,11 @@ public class SectionC4Activity extends AppCompatActivity implements TextWatcher,
         binding.nc420m.addTextChangedListener(this);
         binding.nc420d.addTextChangedListener(this);
         autoPopulateFields();
+
+
+//        Validation Boolean
+        MainApp.validateFlag = false;
+
     }
 
     private void autoPopulateFields() {
@@ -523,6 +528,9 @@ public class SectionC4Activity extends AppCompatActivity implements TextWatcher,
 
 
     public void BtnContinue() {
+
+//        Validation Boolean
+        MainApp.validateFlag = true;
 
         //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {

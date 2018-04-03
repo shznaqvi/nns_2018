@@ -46,6 +46,11 @@ public class SectionB2Activity extends AppCompatActivity implements RadioGroup.O
         setupViews();
 
         this.setTitle(getResources().getString(R.string.nb2heading));
+
+
+//        Validation Boolean
+        MainApp.validateFlag = false;
+
     }
 
     public void setupViews() {
@@ -600,6 +605,9 @@ public class SectionB2Activity extends AppCompatActivity implements RadioGroup.O
     }
 
     public void BtnContinue() {
+
+//        Validation Boolean
+        MainApp.validateFlag = true;
 
         //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (ValidateForm()) {

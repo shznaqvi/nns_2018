@@ -174,9 +174,15 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
 
         binding.nh702.addTextChangedListener(this);
 
+//        Validation Boolean
+        MainApp.validateFlag = false;
+
     }
 
     public void BtnContinue() {
+
+//        Validation Boolean
+        MainApp.validateFlag = true;
 
         //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {

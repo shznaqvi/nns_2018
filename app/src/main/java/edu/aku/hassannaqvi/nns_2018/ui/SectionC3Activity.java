@@ -124,6 +124,9 @@ public class SectionC3Activity extends AppCompatActivity implements RadioGroup.O
         //Get Intent
         selectedChild = (FamilyMembersContract) getIntent().getSerializableExtra("selectedChild");
 
+//        Validation Boolean
+        MainApp.validateFlag = false;
+
     }
 
     private void autoPopulateFields() {
@@ -372,6 +375,9 @@ public class SectionC3Activity extends AppCompatActivity implements RadioGroup.O
     }
 
     public void BtnContinue() {
+
+//        Validation Boolean
+        MainApp.validateFlag = true;
 
         //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {

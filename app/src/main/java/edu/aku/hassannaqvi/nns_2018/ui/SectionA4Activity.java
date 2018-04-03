@@ -233,9 +233,16 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
         binding.nh324f.addTextChangedListener(this);
         binding.nh324g.addTextChangedListener(this);
 
+
+//        Validation Boolean
+        MainApp.validateFlag = false;
+
     }
 
     public void BtnContinue() {
+
+//        Validation Boolean
+        MainApp.validateFlag = true;
 
         //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
