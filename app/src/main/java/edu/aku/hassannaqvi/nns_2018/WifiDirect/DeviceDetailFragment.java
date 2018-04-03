@@ -109,7 +109,7 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
             public void onClick(View view) {
                 Intent serviceIntent = new Intent(getActivity(), DataTransferService.class);
                 serviceIntent.setAction(DataTransferService.ACTION_SEND_DATA);
-                serviceIntent.putExtra(Intent.EXTRA_TEXT, msgBox.getText().toString());
+                serviceIntent.putExtra(Intent.EXTRA_TEXT, getAnthroFM());
                 serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_ADDRESS,
                         info.groupOwnerAddress.getHostAddress());
                 serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_PORT, 8988);

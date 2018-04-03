@@ -12,9 +12,5 @@
         android:icon="@drawable/ic_action_discover"
         android:title="@string/discover_peers_button"
         app:showAsAction="ifRoom|withText" />
-    <item
-        android:id="@+id/menu_item_share"
-        android:title="Share"
-        app:actionProviderClass="android.widget.ShareActionProvider"
-        app:showAsAction="ifRoom" />
+
 </menu>

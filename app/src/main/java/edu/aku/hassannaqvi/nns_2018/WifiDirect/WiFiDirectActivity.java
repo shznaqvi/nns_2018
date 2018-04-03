@@ -1,6 +1,5 @@
 package edu.aku.hassannaqvi.nns_2018.WifiDirect;
 
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +13,7 @@ import android.net.wifi.p2p.WifiP2pManager.Channel;
 import android.net.wifi.p2p.WifiP2pManager.ChannelListener;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -32,7 +32,7 @@ import edu.aku.hassannaqvi.nns_2018.WifiDirect.DeviceListFragment.DeviceActionLi
  * The application should also register a BroadcastReceiver for notification of
  * WiFi state related events.
  */
-public class WiFiDirectActivity extends Activity implements ChannelListener, DeviceActionListener {
+public class WiFiDirectActivity extends AppCompatActivity implements ChannelListener, DeviceActionListener {
 
     public static final String TAG = "wifidirectdemo";
     public static final String ACTION_SEND_DATA = "edu.aku.hassannaqvi.nns_2018.WifiDirect.SEND";
