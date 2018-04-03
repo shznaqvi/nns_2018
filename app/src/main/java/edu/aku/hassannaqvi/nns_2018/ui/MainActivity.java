@@ -1,5 +1,6 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -18,6 +19,8 @@ import android.os.StrictMode;
 import android.provider.Settings;
 import android.text.InputType;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -59,7 +62,7 @@ import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.nns_2018.sync.SyncAllData;
 
-public class MainActivity extends MenuActivity {
+public class MainActivity extends Activity {
 
     private final String TAG = "MainActivity";
 
@@ -277,6 +280,13 @@ public class MainActivity extends MenuActivity {
             mainBinding.testing.setVisibility(View.VISIBLE);
         }
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.activity_menu_example, menu);
+        return true;
     }
 
     public void openForm() {

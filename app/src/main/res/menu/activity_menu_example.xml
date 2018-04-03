@@ -25,6 +25,10 @@
         android:orderInCategory="1"
         android:title="Open Database Manager"
         app:showAsAction="never" />
-
+    <item
+        android:id="@+id/menu_wifiDirect"
+        android:orderInCategory="1"
+        android:title="Connect to device"
+        app:showAsAction="never" />
 
 </menu>
