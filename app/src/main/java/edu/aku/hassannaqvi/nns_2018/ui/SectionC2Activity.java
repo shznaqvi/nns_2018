@@ -1,9 +1,9 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -32,7 +32,7 @@ import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedChangeListener, TextWatcher {
+public class SectionC2Activity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, TextWatcher {
 
     private final long DELAY = 1000;
     ActivitySectionC2Binding bi;
@@ -77,8 +77,11 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
         db = new DatabaseHelper(this);
         bi.setCallback(this);
 
+        this.setTitle(getResources().getString(R.string.nc2heading));
+
         setupViews();
         autoPopulateFields();
+
     }
 
     private void autoPopulateFields() {
@@ -628,13 +631,29 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
             return false;
         }
 
+        if (bi.nc215ba.isChecked()) {
+            if (!validatorClass.EmptyTextBox(this, bi.nc215bx, getString(R.string.nc215b))) {
+                return false;
+            }
+
+
+        }
         if (!validatorClass.EmptyRadioButton(this, bi.nc215c, bi.nc215ca, getString(R.string.nc215c))) {
             return false;
+        }
+
+        if (bi.nc215ca.isChecked()) {
+            if (!validatorClass.EmptyTextBox(this, bi.nc215cx, getString(R.string.nc215c))) {
+                return false;
+            }
+
+
         }
 
         if (!validatorClass.EmptyRadioButton(this, bi.nc215d, bi.nc215da, getString(R.string.nc215d))) {
             return false;
         }
+
 
         if (!validatorClass.EmptyRadioButton(this, bi.nc215e, bi.nc215ea, getString(R.string.nc215e))) {
             return false;
@@ -642,6 +661,14 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
 
         if (!validatorClass.EmptyRadioButton(this, bi.nc215f, bi.nc215fa, getString(R.string.nc215f))) {
             return false;
+        }
+
+        if (bi.nc215fa.isChecked()) {
+            if (!validatorClass.EmptyTextBox(this, bi.nc215fx, getString(R.string.nc215f))) {
+                return false;
+            }
+
+
         }
 
         if (!validatorClass.EmptyRadioButton(this, bi.nc215g, bi.nc215ga, getString(R.string.nc215g))) {
@@ -1136,7 +1163,7 @@ public class SectionC2Activity extends Activity implements RadioGroup.OnCheckedC
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 ValidateForm();
-                if (bi.nc208b.isChecked()) {
+                if (bi.nc208a.isChecked()) {
                     //bi.fldGrpnc209.setVisibility(View.VISIBLE);
                     clearClass.ClearAllFields(bi.fldGrpnc209, true);
                 } else {

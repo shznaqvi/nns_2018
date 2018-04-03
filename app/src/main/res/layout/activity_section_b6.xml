@@ -24,7 +24,8 @@
             android:background="@color/colorPrimaryDark"
             android:gravity="center"
             android:text="@string/nw5heading"
-            android:textSize="40sp" />
+            android:textSize="40sp"
+            android:visibility="gone" />
 
         <View
             android:layout_width="match_parent"

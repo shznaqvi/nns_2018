@@ -75,6 +75,8 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_c1);
         ButterKnife.bind(this);
+
+        this.setTitle(getResources().getString(R.string.nc1heading));
         db = new DatabaseHelper(this);
         respName = new ArrayList<>();
         respName.add("....");
@@ -357,7 +359,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
                     return false;
                 }
 
-                if (!validatorClass.RangeTextBoxforDate(this, binding.nc201y, DateUtils.getCurrentYear() - 6, DateUtils.getCurrentYear(), "Year can not be more than current year")) {
+                if (!validatorClass.RangeTextBoxforDate(this, binding.nc201y, DateUtils.getCurrentYear() - 5, DateUtils.getCurrentYear(), "Year can not be more than current year")) {
                     return false;
                 }
             }
@@ -372,7 +374,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
                     return false;
                 }
 
-                if (!validatorClass.RangeTextBoxforDate(this, binding.nc201y, DateUtils.getCurrentYear() - 6, DateUtils.getCurrentYear(), "Year can not be more than current year")) {
+                if (!validatorClass.RangeTextBoxforDate(this, binding.nc201y, DateUtils.getCurrentYear() - 5, DateUtils.getCurrentYear(), "Year can not be more than current year")) {
                     return false;
                 }
 
@@ -648,6 +650,13 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog,
                                                 int id) {
+
+                                if (isNA) {
+                                    NAChildsize = MainApp.childNA.size();
+                                } else {
+                                    Childsize = MainApp.childUnder5.size();
+                                }
+
                                 finish();
                                 startActivity(new Intent(SectionC1Activity.this, SectionA2ListActivity.class)
                                         .putExtra("reBack", true)

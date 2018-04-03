@@ -1,9 +1,9 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -29,7 +29,7 @@ import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionC4Activity extends Activity implements TextWatcher, RadioGroup.OnCheckedChangeListener, CompoundButton.OnCheckedChangeListener {
+public class SectionC4Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener, CompoundButton.OnCheckedChangeListener {
 
     private final long DELAY = 1000;
     ActivitySectionC4Binding binding;
@@ -45,6 +45,8 @@ public class SectionC4Activity extends Activity implements TextWatcher, RadioGro
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_c4);
         db = new DatabaseHelper(this);
+
+        this.setTitle(getResources().getString(R.string.nc4heading));
 
         //        Assigning data to UI binding
         binding.setCallback(this);

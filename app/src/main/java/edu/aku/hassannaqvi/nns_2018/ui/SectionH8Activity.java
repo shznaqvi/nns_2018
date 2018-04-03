@@ -1,10 +1,10 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -36,7 +36,7 @@ import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionH8Binding;
 import edu.aku.hassannaqvi.nns_2018.other.DateUtils;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionH8Activity extends Activity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
+public class SectionH8Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
     static int counter = 1;
     static int deccounter = 0;
@@ -146,6 +146,8 @@ public class SectionH8Activity extends Activity implements TextWatcher, RadioGro
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_h8);
         ButterKnife.bind(this);
         bi.setCallback(this);
+
+        this.setTitle(getResources().getString(R.string.nh8heading));
 
         for (EditText ed : grpdob) {
             ed.addTextChangedListener(age);

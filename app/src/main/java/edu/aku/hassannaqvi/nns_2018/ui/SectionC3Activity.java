@@ -41,6 +41,9 @@ public class SectionC3Activity extends AppCompatActivity implements RadioGroup.O
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_c3);
         ButterKnife.bind(this);
+
+        this.setTitle(getResources().getString(R.string.nc3heading));
+
         db = new DatabaseHelper(this);
         binding.setCallback(this);
         binding.nc302.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {

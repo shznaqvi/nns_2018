@@ -44,6 +44,8 @@ public class SectionB5Activity extends AppCompatActivity implements TextWatcher,
 //        Assigning data to UI binding
         binding.setCallback(this);
 
+        this.setTitle(getResources().getString(R.string.nb4heading));
+
 //        Skip patterns
 
         binding.nw414.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {

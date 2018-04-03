@@ -1,12 +1,12 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -25,7 +25,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
-import java.util.TimerTask;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
@@ -35,7 +34,7 @@ import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB1Binding;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionB1Activity extends Activity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
+public class SectionB1Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
     public static String wraName = "";
     public static int WRAcounter = 0;
@@ -53,8 +52,6 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
     String classPassName = "";
     private Timer timer = new Timer();
 
-    static int size = 0;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +62,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
 
         //Assigning data to UI binding
         bi.setCallback(this);
+
         this.setTitle(getResources().getString(R.string.nbheading));
 
         setupViews();
@@ -258,6 +256,18 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
                     bi.nw213.setEnabled(false);
                     bi.nw213.setText(null);
 
+                }
+            }
+        });
+
+        bi.nw216.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if (bi.nw216a.isChecked()) {
+                    bi.nw216aa.setEnabled(true);
+                } else {
+                    bi.nw216aa.setEnabled(false);
+                    bi.nw216aa.setText(null);
                 }
             }
         });
@@ -537,25 +547,6 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
 
             @Override
             public void afterTextChanged(Editable s) {
-
-                timer.cancel();
-                timer = new Timer();
-                timer.schedule(
-                        new TimerTask() {
-                            @Override
-                            public void run() {
-
-                                SectionB1Activity.this.runOnUiThread(new Runnable() {
-                                    public void run() {
-                                        ValidateForm();
-                                    }
-                                    //}
-                                });
-
-                            }
-                        },
-                        DELAY
-                );
             }
         });
 
@@ -593,7 +584,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
                         bi.nw216aa.setEnabled(true);
 
                     }
-                } else if (bi.nw207a.isChecked() && bi.nw211.getText().toString().equals("1")) {
+                } else if (bi.nw207a.isChecked() && !bi.nw208a.isChecked() && bi.nw211.getText().toString().equals("1")) {
                     if (bi.nw212.getText().toString().equals("0")) {
                         bi.nw213.setEnabled(false);
                         bi.nw213.setText(null);
@@ -601,12 +592,12 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
                         bi.nw214.setText(null);
                         bi.nw215.setEnabled(false);
                         bi.nw215.setText(null);
-                        bi.nw216a.setEnabled(false);
+                        /*bi.nw216a.setEnabled(false);
                         bi.nw216b.setEnabled(false);
                         bi.nw216.clearCheck();
                         bi.nw216aa.setEnabled(false);
                         bi.nw216aa.setText(null);
-
+*/
                     } else {
 
                         bi.nw213.setEnabled(true);
@@ -623,25 +614,6 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
             @Override
             public void afterTextChanged(Editable s) {
 
-                timer.cancel();
-                timer = new Timer();
-                timer.schedule(
-                        new TimerTask() {
-                            @Override
-                            public void run() {
-
-                                SectionB1Activity.this.runOnUiThread(new Runnable() {
-                                    public void run() {
-                                        ValidateForm();
-                                    }
-                                    //}
-                                });
-
-                            }
-                        },
-                        DELAY
-                );
-
             }
         });
 
@@ -655,14 +627,14 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if (bi.nw214.getText().toString().equals("0") || bi.nw214.getText().toString().isEmpty()) {
+                if (bi.nw214.getText().toString().equals("0")) {
                     bi.nw215.setEnabled(false);
                     bi.nw215.setText(null);
-                    bi.nw216a.setEnabled(false);
+                    /*bi.nw216a.setEnabled(false);
                     bi.nw216b.setEnabled(false);
                     bi.nw216.clearCheck();
                     bi.nw216aa.setEnabled(false);
-                    bi.nw216aa.setText(null);
+                    bi.nw216aa.setText(null);*/
                 } else {
                     bi.nw215.setEnabled(true);
                     bi.nw216a.setEnabled(true);
@@ -675,24 +647,6 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
             @Override
             public void afterTextChanged(Editable s) {
 
-                timer.cancel();
-                timer = new Timer();
-                timer.schedule(
-                        new TimerTask() {
-                            @Override
-                            public void run() {
-
-                                SectionB1Activity.this.runOnUiThread(new Runnable() {
-                                    public void run() {
-                                        ValidateForm();
-                                    }
-                                    //}
-                                });
-
-                            }
-                        },
-                        DELAY
-                );
 
             }
         });
@@ -1167,9 +1121,11 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
                         return false;
                     }
 
-                    if (!validatorClass.EmptyTextBox(this, bi.nw212, getString(R.string.nw212))) {
-                        return false;
-                    }
+                    if (!validatorClass.RangeTextBox(this, bi.nw211, 1, 20, getString(R.string.nw211), " pregnancies"))
+
+                        if (!validatorClass.EmptyTextBox(this, bi.nw212, getString(R.string.nw212))) {
+                            return false;
+                        }
                     if (!validatorClass.RangeTextBox(this, bi.nw212, 0, Integer.valueOf(bi.nw211.getText().toString()), getString(R.string.nw212), " Deliveries")) {
                         return false;
                     }
@@ -1196,12 +1152,16 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
                             return false;
                         }
 
-                        if (!validatorClass.EmptyTextBox(this, bi.nw215, getString(R.string.nw215))) {
-                            return false;
+                        if (!bi.nw214.getText().toString().equals("0")) {
+
+                            if (!validatorClass.EmptyTextBox(this, bi.nw215, getString(R.string.nw215))) {
+                                return false;
+                            }
+                            if (!validatorClass.RangeTextBox(this, bi.nw215, 0, Integer.valueOf(bi.nw212.getText().toString()), getString(R.string.nw212), " Deliveries")) {
+                                return false;
+                            }
                         }
-                        if (!validatorClass.RangeTextBox(this, bi.nw215, 0, Integer.valueOf(bi.nw212.getText().toString()), getString(R.string.nw212), " Deliveries")) {
-                            return false;
-                        }
+                    }
 
                         if (!validatorClass.EmptyRadioButton(this, bi.nw216, bi.nw216a, getString(R.string.nw216))) {
                             return false;
@@ -1210,7 +1170,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
                         if (bi.nw216a.isChecked()) {
                             return validatorClass.EmptyTextBox(this, bi.nw216aa, getString(R.string.nw216a));
                         }
-                    }
+
 
                 }
 
@@ -1393,6 +1353,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
     @Override
     public void afterTextChanged(Editable s) {
 
+/*
         timer.cancel();
         timer = new Timer();
         timer.schedule(
@@ -1411,6 +1372,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
                 },
                 DELAY
         );
+*/
 
     }
 

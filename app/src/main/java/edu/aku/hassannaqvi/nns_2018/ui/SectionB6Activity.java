@@ -47,6 +47,8 @@ public class SectionB6Activity extends AppCompatActivity {
         db = new DatabaseHelper(this);
         bi.setCallback(this);
 
+        this.setTitle(getResources().getString(R.string.nw5heading));
+
         settingTimeToEat();
         setListners();
 
