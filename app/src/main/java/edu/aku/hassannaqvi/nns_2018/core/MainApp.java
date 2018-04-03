@@ -129,6 +129,7 @@ public class MainApp extends Application {
 
     public static int nuCount = 1;
 
+    public static Boolean validateFlag = false;
 
 
     protected static LocationManager locationManager;

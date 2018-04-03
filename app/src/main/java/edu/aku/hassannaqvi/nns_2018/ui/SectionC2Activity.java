@@ -631,8 +631,20 @@ public class SectionC2Activity extends AppCompatActivity implements RadioGroup.O
             return false;
         }
 
+        if (bi.nc215ba.isChecked()) {
+            if (!validatorClass.RangeTextBox(this, bi.nc215bx, 1, 99, getString(R.string.nc215b), "")) {
+                return false;
+            }
+        }
+
         if (!validatorClass.EmptyRadioButton(this, bi.nc215c, bi.nc215ca, getString(R.string.nc215c))) {
             return false;
+        }
+
+        if (bi.nc215ca.isChecked()) {
+            if (!validatorClass.RangeTextBox(this, bi.nc215cx, 1, 99, getString(R.string.nc215c), "")) {
+                return false;
+            }
         }
 
         if (!validatorClass.EmptyRadioButton(this, bi.nc215d, bi.nc215da, getString(R.string.nc215d))) {
@@ -645,6 +657,12 @@ public class SectionC2Activity extends AppCompatActivity implements RadioGroup.O
 
         if (!validatorClass.EmptyRadioButton(this, bi.nc215f, bi.nc215fa, getString(R.string.nc215f))) {
             return false;
+        }
+
+        if (bi.nc215fa.isChecked()) {
+            if (!validatorClass.RangeTextBox(this, bi.nc215fx, 1, 99, getString(R.string.nc215f), "")) {
+                return false;
+            }
         }
 
         if (!validatorClass.EmptyRadioButton(this, bi.nc215g, bi.nc215ga, getString(R.string.nc215g))) {
