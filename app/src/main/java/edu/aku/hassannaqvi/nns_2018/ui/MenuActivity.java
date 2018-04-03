@@ -24,6 +24,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.WifiDirect.WiFiDirectActivity;
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
@@ -79,6 +80,11 @@ public class MenuActivity extends Activity {
             case R.id.menu_openDB:
                 Intent dbmanager = new Intent(getApplicationContext(), AndroidDatabaseManager.class);
                 startActivity(dbmanager);
+                return true;
+
+            case R.id.menu_wifiDirect:
+                Intent wifidirect = new Intent(getApplicationContext(), WiFiDirectActivity.class);
+                startActivity(wifidirect);
                 return true;
 
             default:
