@@ -260,6 +260,18 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
             }
         });
 
+        bi.nw216.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if (bi.nw216a.isChecked()) {
+                    bi.nw216aa.setEnabled(true);
+                } else {
+                    bi.nw216aa.setEnabled(false);
+                    bi.nw216aa.setText(null);
+                }
+            }
+        });
+
         bi.nw204.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
