@@ -67,7 +67,10 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
         binding.setCallback(this);
         setupViews();
         skipPattern();
+        //setHeading();
+        this.setTitle(getResources().getString(R.string.na2subHeading));
     }
+
 
     public TextWatcher age = new TextWatcher() {
         @Override

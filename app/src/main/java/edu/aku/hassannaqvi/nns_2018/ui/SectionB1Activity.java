@@ -63,6 +63,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
 
         //Assigning data to UI binding
         bi.setCallback(this);
+        this.setTitle(getResources().getString(R.string.nbheading));
 
         setupViews();
     }

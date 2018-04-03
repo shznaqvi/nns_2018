@@ -51,6 +51,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
         binding.setCallback(this);
 
         setupViews();
+        this.setTitle(getResources().getString(R.string.na2heading));
     }
 
     public void setupViews() {

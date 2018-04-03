@@ -38,6 +38,7 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
 
 //        Assigning data to UI binding
         binding.setCallback(this);
+        this.setTitle(getResources().getString(R.string.nh3heading));
 
 //        Skip Pattern;
 
