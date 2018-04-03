@@ -242,8 +242,6 @@ public class AntrhoInfoActivity extends Activity {
 */
 
 
-
-
         return true;
     }
 
@@ -322,18 +320,19 @@ public class AntrhoInfoActivity extends Activity {
         if (validatorClass.EmptyTextBox(this, binding.nh102, getString(R.string.nh102))) {
 
             EnumBlockContract enumBlockContract = db.getEnumBlock(binding.nh102.getText().toString());
-            String selected = enumBlockContract.getGeoarea();
-            if (!selected.equals("")) {
+            if (enumBlockContract != null) {
+                String selected = enumBlockContract.getGeoarea();
+                if (!selected.equals("")) {
 
-                String[] selSplit = selected.split("\\|");
+                    String[] selSplit = selected.split("\\|");
 
-                binding.nh103.setText(selSplit[0]);
-                binding.nh104.setText(selSplit[1].equals("") ? "----" : selSplit[1]);
-                binding.nh105.setText(selSplit[2].equals("") ? "----" : selSplit[2]);
-                binding.nh106.setText(selSplit[3]);
+                    binding.nh103.setText(selSplit[0]);
+                    binding.nh104.setText(selSplit[1].equals("") ? "----" : selSplit[1]);
+                    binding.nh105.setText(selSplit[2].equals("") ? "----" : selSplit[2]);
+                    binding.nh106.setText(selSplit[3]);
 
-                binding.fldGrpnh101.setVisibility(View.VISIBLE);
-
+                    binding.fldGrpnh101.setVisibility(View.VISIBLE);
+                }
             } else {
                 binding.nh108.setText(null);
                 Toast.makeText(this, "Sorry not found any block", Toast.LENGTH_SHORT).show();

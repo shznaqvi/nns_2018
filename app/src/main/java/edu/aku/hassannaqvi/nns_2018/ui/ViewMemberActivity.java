@@ -6,7 +6,6 @@ import android.databinding.DataBindingUtil;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,6 +21,7 @@ import edu.aku.hassannaqvi.nns_2018.Adapters.OthersAdapter;
 import edu.aku.hassannaqvi.nns_2018.Adapters.WraAdapter;
 import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.WifiDirect.WiFiDirectActivity;
 import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.EnumBlockContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
@@ -32,7 +32,7 @@ import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 
-public class ViewMemberActivity extends AppCompatActivity {
+public class ViewMemberActivity extends MenuActivity {
 
     WraAdapter wraAdapter;
     ChildAdapter childAdapter;
@@ -78,6 +78,7 @@ public class ViewMemberActivity extends AppCompatActivity {
         }
 
     }
+
 
     private void initializingLists() {
 
@@ -389,6 +390,11 @@ public class ViewMemberActivity extends AppCompatActivity {
     public void BtnEditHH() {
     }
 
+    public void intentWifi(View view) {
+        Intent wifidirect = new Intent(getApplicationContext(), WiFiDirectActivity.class);
+        startActivity(wifidirect);
+    }
+
     public class populateWraRecyclerView extends AsyncTask<String, String, String> {
         private Context mContext;
 
@@ -406,8 +412,8 @@ public class ViewMemberActivity extends AppCompatActivity {
 //              Set Recycler View
                     wraAdapter = new WraAdapter(MainApp.mwra_1);
                     if (wraAdapter.getItemCount() > 0) {
-                        binding.nowrafound.setVisibility(View.VISIBLE);
-                        binding.nowrafound.setText("WRA's found!!");
+                        binding.nowrafound.setVisibility(View.GONE);
+                        //binding.nowrafound.setText("WRA's found!!");
                         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                         binding.recyclerMwra.setLayoutManager(mLayoutManager);
                         binding.recyclerMwra.setItemAnimator(new DefaultItemAnimator());
@@ -455,8 +461,8 @@ public class ViewMemberActivity extends AppCompatActivity {
 //              Set Recycler View
                     adolescentsAdapter = new AdolescentsAdapter(MainApp.adolescents_1);
                     if (adolescentsAdapter.getItemCount() > 0) {
-                        binding.noadolfound.setVisibility(View.VISIBLE);
-                        binding.noadolfound.setText("Adolescent found!!");
+                        binding.noadolfound.setVisibility(View.GONE);
+                        //binding.noadolfound.setText("Adolescent found!!");
                         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                         binding.recyclerAdol.setLayoutManager(mLayoutManager);
                         binding.recyclerAdol.setItemAnimator(new DefaultItemAnimator());
@@ -508,8 +514,8 @@ public class ViewMemberActivity extends AppCompatActivity {
 
 
                     if (childAdapter.getItemCount() > 0) {
-                        binding.nochildfound.setVisibility(View.VISIBLE);
-                        binding.nochildfound.setText("Children's found!!");
+                        binding.nochildfound.setVisibility(View.GONE);
+                        //binding.nochildfound.setText("Children's found!!");
                         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                         binding.recyclerChild.setLayoutManager(mLayoutManager);
                         binding.recyclerChild.setItemAnimator(new DefaultItemAnimator());
@@ -560,8 +566,8 @@ public class ViewMemberActivity extends AppCompatActivity {
                     othersAdapter = new OthersAdapter(MainApp.otherMembers_1);
 
                     if (othersAdapter.getItemCount() > 0) {
-                        binding.othersfound.setVisibility(View.VISIBLE);
-                        binding.othersfound.setText("Other Members found!!");
+                        binding.othersfound.setVisibility(View.GONE);
+                        //binding.othersfound.setText("Other Members found!!");
                         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                         binding.recyclerOthers.setLayoutManager(mLayoutManager);
                         binding.recyclerOthers.setItemAnimator(new DefaultItemAnimator());

@@ -375,12 +375,12 @@
                                 android:layout_marginRight="@dimen/_2sdp"
                                 android:layout_marginTop="-3dp"
                                 android:layout_weight="1"
-                                android:background="@color/pink_100"
+                                android:background="@color/colorRedsub"
                                 android:gravity="center_horizontal|center_vertical"
                                 android:paddingTop="-2dp"
-                                android:text="No Adolescents Found"
+                                android:text="No Adolescents"
                                 android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:textColor="@color/colorPrimaryDark"
+                                android:textColor="@color/red"
                                 android:textSize="16sp"
                                 android:visibility="invisible" />
 
@@ -542,6 +542,17 @@
                                 android:text="@string/nextSection"
                                 android:textColor="@color/white"
                                 android:visibility="gone" />
+
+                            <Button
+                                style="@style/buttons"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="#1ed61e"
+                                android:onClick="intentWifi"
+                                android:text="@string/nextSection"
+                                android:textColor="@color/white"
+                                android:visibility="visible" />
                         </LinearLayout>
 
                     </LinearLayout>

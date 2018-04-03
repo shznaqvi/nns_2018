@@ -112,7 +112,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + familyMembers.TABLE_NAME + "("
             + familyMembers.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + familyMembers.COLUMN_PROJECT_NAME + " TEXT,"
-            + familyMembers.COLUMN_UID + " TEXT," +
+            + familyMembers.COLUMN_UID + " TEXT UNIQUE," +
             familyMembers.COLUMN_UUID + " TEXT," +
             familyMembers.COLUMN_FORMDATE + " TEXT," +
             familyMembers.COLUMN_USER + " TEXT," +
