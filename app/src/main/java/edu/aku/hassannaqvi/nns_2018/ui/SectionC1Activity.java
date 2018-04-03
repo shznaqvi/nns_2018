@@ -75,6 +75,8 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_c1);
         ButterKnife.bind(this);
+
+        this.setTitle(getResources().getString(R.string.nc1heading));
         db = new DatabaseHelper(this);
         respName = new ArrayList<>();
         respName.add("....");
