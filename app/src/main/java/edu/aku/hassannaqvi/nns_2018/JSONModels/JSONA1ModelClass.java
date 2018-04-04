@@ -6,6 +6,8 @@ package edu.aku.hassannaqvi.nns_2018.JSONModels;
 
 public class JSONA1ModelClass {
 
+    private String hhheadpresent = "";
+    private String hhheadpresentnew = "";
     private String nh101 = "";
     private String nh103 = "";
     private String nh104 = "";
@@ -30,6 +32,22 @@ public class JSONA1ModelClass {
     private String nh11996x = "";
 
     public JSONA1ModelClass() {
+    }
+
+    public String getHhheadpresent() {
+        return hhheadpresent;
+    }
+
+    public void setHhheadpresent(String hhheadpresent) {
+        this.hhheadpresent = hhheadpresent;
+    }
+
+    public String getHhheadpresentnew() {
+        return hhheadpresentnew;
+    }
+
+    public void setHhheadpresentnew(String hhheadpresentnew) {
+        this.hhheadpresentnew = hhheadpresentnew;
     }
 
     public String getnh101() {

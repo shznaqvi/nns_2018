@@ -66,9 +66,9 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
         binding.setCallback(this);
 
 //        Edit form intent
-        MainApp.editFormFlag = getIntent().getBooleanExtra("editForm", false);
+//        MainApp.editFormFlag = getIntent().getBooleanExtra("editForm", false);
 
-        if (MainApp.editFormFlag) {
+        /*if (MainApp.editFormFlag) {
 
             binding.nh102.setText(getIntent().getStringExtra("clusterNo"));
             binding.nh102.setEnabled(false);
@@ -81,7 +81,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
             binding.checkHHBtn.setEnabled(false);
             binding.checkHHBtn.setBackgroundColor(getResources().getColor(R.color.red));
 
-        }
+        }*/
 
         SetupViewFunctionality();
 
@@ -92,7 +92,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 //        Validation Boolean
         MainApp.validateFlag = false;
 
-        AutoCompleteFields();
+//        AutoCompleteFields();
 
     }
 
@@ -106,6 +106,73 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
             JSONA1ModelClass jsonA1 = JSONUtilClass.getModelFromJSON(MainApp.editFormContract.getsA1(), JSONA1ModelClass.class);
 
+            if (jsonA1.getHhheadpresent().equals("1")) {
+                binding.checkHHHeadpresent.setChecked(true);
+                binding.newHHheadname.setText(jsonA1.getHhheadpresentnew());
+            }
+
+            binding.nh101.setText(jsonA1.getnh101());
+            binding.nh103.setText(jsonA1.getnh103());
+            binding.nh104.setText(jsonA1.getnh104());
+            binding.nh105.setText(jsonA1.getnh105());
+            binding.nh106.setText(jsonA1.getnh106());
+
+            binding.nh113.setText(jsonA1.getnh113());
+            binding.nh115.setText(jsonA1.getnh115());
+            binding.nh213.setText(jsonA1.getnh213());
+
+            if (!jsonA1.getnh11801().equals("0")) {
+                binding.na11801.check(
+                        jsonA1.getnh11801().equals("1") ? binding.na11801a.getId() :
+                                binding.na11801b.getId()
+                );
+
+                binding.na11801.setEnabled(false);
+            }
+
+            if (!jsonA1.getnh11802().equals("0")) {
+                binding.na11802.check(
+                        jsonA1.getnh11802().equals("1") ? binding.na11802a.getId() :
+                                binding.na11802b.getId()
+                );
+
+                binding.na11802.setEnabled(false);
+            }
+
+//            na119
+            // na119a
+            if (jsonA1.getnh119a().equals("1")) {
+                binding.na119a.setChecked(true);
+            }
+            // na119b
+            if (jsonA1.getnh119b().equals("1")) {
+                binding.na119b.setChecked(true);
+            }
+            // na119c
+            if (jsonA1.getnh119c().equals("1")) {
+                binding.na119c.setChecked(true);
+            }
+            // na119d
+            if (jsonA1.getnh119d().equals("1")) {
+                binding.na119d.setChecked(true);
+            }
+            // na119e
+            if (jsonA1.getnh119e().equals("1")) {
+                binding.na119e.setChecked(true);
+            }
+            // na119f
+            if (jsonA1.getnh119f().equals("1")) {
+                binding.na119f.setChecked(true);
+            }
+            // na119g
+            if (jsonA1.getnh119g().equals("1")) {
+                binding.na119g.setChecked(true);
+            }
+            // na11996
+            if (jsonA1.getnh11996().equals("1")) {
+                binding.na11996.setChecked(true);
+                binding.na11996x.setText(jsonA1.getnh11996x());
+            }
 
         }
 
