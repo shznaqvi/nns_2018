@@ -146,9 +146,11 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
                 formValidation();
                 if (checkedId == R.id.nh501d) {
                     clearClass.ClearAllFields(binding.fldGrnh602, false);
+                    clearClass.ClearAllFields(binding.fldGrnc502, false);
 
                 } else {
                     clearClass.ClearAllFields(binding.fldGrnh602, true);
+                    clearClass.ClearAllFields(binding.fldGrnc502, true);
 
                 }
             }

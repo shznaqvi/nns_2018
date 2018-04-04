@@ -185,6 +185,12 @@
                         android:layout_marginBottom="1dp"
                         android:text="@string/nh7a04i" />
 
+                    <CheckBox
+                        android:id="@+id/nh7a04j"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nh7a04j" />
 
                     <CheckBox
                         android:id="@+id/nh7a0496"

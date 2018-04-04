@@ -268,7 +268,7 @@
     <string name="nh31101"> بجلی </string>
     <string name="nh31102"> ریڈیو </string>
     <string name="nh31103">ٹیلی وژن </string>
-    <string name="nh31104"> ٹیلوفون  </string>
+    <string name="nh31104"> ٹیلیفون  </string>
     <string name="nh31105"> فریج  </string>
     <string name="nh31106">الماری </string>
     <string name="nh31107">کرسی </string>
@@ -393,7 +393,7 @@
     <string name="nh401a"> مشاہدہ کیا  </string>
     <string name="nh401info"> مشاہدہ نہیں کیا </string>
     <string name="nh401b">رہائش گاہ پلاٹ /صحن میں موجود نہیں </string>
-    <string name="nh401c">  دیکھنے کیاجازت نہیں  ملی  </string>
+    <string name="nh401c">دیکھنے کی اجازت نہیں  ملی</string>
     <string name="nh401d"> کوئی اور وجہ </string>
     <string name="nh402"> ہاتھ دھونے کی جگہ پر پانی کی موجودگی کا مشاہدہ کریں
   (نلکا،بیسن،بالٹی،پانی ذخیرہ کرنے والے برتن یا ایسی کسی دوسری چیز کا معائنہ کرکے پانی کی موجودگی کی تصدیق کریں) </string>
@@ -493,8 +493,9 @@
     <string name="nh7a04e"> وسیلہ صحت </string>
     <string name="nh7a04f"> بیت المال </string>
     <string name="nh7a04g"> ای اوبی ائی </string>
-    <string name="nh7a04h"> کارکن فلاح بہبود کے فنڈ </string>
-    <string name="nh7a04i"> نیشنل انکم سپورٹ پروگرام </string>
+    <string name="nh7a04h"> بے نظیر انکم سپورٹ پروگرام </string>
+    <string name="nh7a04i"> کارکن فلاح بہبود کے فنڈ </string>
+    <string name="nh7a04j"> نیشنل انکم سپورٹ پروگرام </string>
     <!--  <string name="nh7a05"> گزشتہ 12 مہینوں کے درمیان آپ نے کتنے پیسے وصل کئے؟ </string>
     <string name="nh7a06"> گزشتہ مہیا کی گئی سہولت میں سے کتنے پیسوں سے آپ نے کھانا خریدا تھا؟ </string>-->
     <string name="nbinfo"> ماڈیول بی: خاتون کا سوالنامہ جس کی عمر 49-15 سال ہو </string>
