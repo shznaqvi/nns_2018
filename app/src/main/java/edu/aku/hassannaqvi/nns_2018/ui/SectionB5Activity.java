@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -27,7 +26,7 @@ import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionB5Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener, CompoundButton.OnCheckedChangeListener {
+public class SectionB5Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
     private final long DELAY = 1000;
     ActivitySectionB5Binding binding;
@@ -45,6 +44,8 @@ public class SectionB5Activity extends AppCompatActivity implements TextWatcher,
 //        Assigning data to UI binding
         binding.setCallback(this);
 
+        this.setTitle(getResources().getString(R.string.nb4heading));
+
 //        Skip patterns
 
         binding.nw414.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -52,27 +53,6 @@ public class SectionB5Activity extends AppCompatActivity implements TextWatcher,
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 ValidateForm();
                 if (i == R.id.nw414b) {
-                    /*binding.nw415a.setChecked(false);
-                    binding.nw415b.setChecked(false);
-                    binding.nw415c.setChecked(false);
-                    binding.nw415d.setChecked(false);
-                    binding.nw415e.setChecked(false);
-                    binding.nw415f.setChecked(false);
-                    binding.nw415g.setChecked(false);
-                    binding.nw41596.setChecked(false);
-
-                    binding.nw416.clearCheck();
-                    binding.nw417.setText(null);
-
-                    binding.nw418a.setChecked(false);
-                    binding.nw418b.setChecked(false);
-                    binding.nw418c.setChecked(false);
-                    binding.nw418d.setChecked(false);
-                    binding.nw418e.setChecked(false);
-                    binding.nw418f.setChecked(false);
-                    binding.nw418g.setChecked(false);
-                    binding.nw418h.setChecked(false);
-                    binding.nw41896.setChecked(false);*/
 
                     clearClass.ClearAllFields(binding.fldGrpnw415, false);
 
@@ -87,24 +67,6 @@ public class SectionB5Activity extends AppCompatActivity implements TextWatcher,
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 ValidateForm();
                 if (i == R.id.nw419b) {
-                    /*binding.nw420a.setChecked(false);
-                    binding.nw420b.setChecked(false);
-                    binding.nw420c.setChecked(false);
-                    binding.nw420d.setChecked(false);
-                    binding.nw420e.setChecked(false);
-                    binding.nw420f.setChecked(false);
-                    binding.nw420g.setChecked(false);
-                    binding.nw42096.setChecked(false);
-
-                    binding.nw421.clearCheck();
-                    binding.nw422.setText(null);
-
-                    binding.nw423a.setChecked(false);
-                    binding.nw423b.setChecked(false);
-                    binding.nw423c.setChecked(false);
-                    binding.nw423d.setChecked(false);
-                    binding.nw423e.setChecked(false);
-                    binding.nw42396.setChecked(false);*/
 
                     clearClass.ClearAllFields(binding.fldGrpnw420, false);
                 } else {
@@ -113,14 +75,20 @@ public class SectionB5Activity extends AppCompatActivity implements TextWatcher,
             }
         });
 
-        binding.nw415a.setOnCheckedChangeListener(this);
         binding.nw416.setOnCheckedChangeListener(this);
         binding.nw417.addTextChangedListener(this);
-        binding.nw418a.setOnCheckedChangeListener(this);
-        binding.nw420a.setOnCheckedChangeListener(this);
         binding.nw421.setOnCheckedChangeListener(this);
         binding.nw422.addTextChangedListener(this);
-        binding.nw423a.setOnCheckedChangeListener(this);
+
+
+//        Validation Boolean
+        MainApp.validateFlag = false;
+
+        AutoCompleteFields();
+
+    }
+
+    public void AutoCompleteFields() {
 
 //         Back Pressed
         MWRAContract mwraContract = db.getsB5();
@@ -272,6 +240,9 @@ public class SectionB5Activity extends AppCompatActivity implements TextWatcher,
 
     public void BtnContinue() {
 
+//        Validation Boolean
+        MainApp.validateFlag = true;
+
         if (ValidateForm()) {
             try {
                 SaveDraft();
@@ -343,9 +314,7 @@ public class SectionB5Activity extends AppCompatActivity implements TextWatcher,
                     return false;
                 }
 
-
             }
-
 
             if (binding.nw416b.isChecked()) {
 
@@ -637,9 +606,5 @@ public class SectionB5Activity extends AppCompatActivity implements TextWatcher,
         ValidateForm();
     }
 
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        ValidateForm();
-    }
 
 }

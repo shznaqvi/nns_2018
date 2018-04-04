@@ -3,7 +3,6 @@ package edu.aku.hassannaqvi.nns_2018.Adapters;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -100,8 +99,6 @@ public class WraAdapter extends RecyclerView.Adapter<WraAdapter.WraViewHolder> {
             wraBinding.wraName.setText(json.getName().toUpperCase());
             wraBinding.ms.setText("Marital Status: " + MStatusChecking(json.getMaritalStatus()));
             wraBinding.Age.setText("Age: " + json.getAge());
-            Log.d("Test", "name: " + json.getName().toUpperCase());
-            Log.d("Test", "Marital Status: " + MStatusChecking(women.getMaritialStatus()));
 
         }
     }

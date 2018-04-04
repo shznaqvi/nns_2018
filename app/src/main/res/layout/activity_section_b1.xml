@@ -25,7 +25,8 @@
             android:background="@color/colorPrimaryDark"
             android:gravity="center"
             android:text="@string/nbheading"
-            android:textSize="40sp" />
+            android:textSize="40sp"
+            android:visibility="gone" />
 
         <View
             android:layout_width="match_parent"
@@ -43,9 +44,13 @@
             style="@style/buttons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/brown"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/button_bg2"
             android:onClick="@{() -> callback.BtnAddMember()}"
             android:text="ADD NEW MEMBER"
+
             android:textColor="@color/white" />
 
         <ScrollView
@@ -58,25 +63,6 @@
                 android:animateLayoutChanges="true"
                 android:layoutDirection="rtl"
                 android:orientation="vertical">
-
-                <!-- <TextView
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:layout_marginTop="16dp"
-                     android:background="@color/colorPrimary"
-                     android:text="@string/nh113"
-                     android:textAppearance="?android:attr/textAppearanceLarge"
-                     android:textColor="@android:color/white" />
-
-
-                 <Spinner
-                     android:id="@+id/resp"
-                     style="@style/Widget.AppCompat.Spinner.Underlined"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:layout_marginTop="10dp"
-                     android:gravity="center" />
-     -->
 
                 <!--nw414-->
                 <TextView
@@ -114,7 +100,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/bacground_border_heading"
                         android:orientation="vertical">
 
                         <TextView
@@ -135,7 +120,10 @@
                             android:hint="@string/year2"
                             android:inputType="number"
                             android:maxLength="4"
-                            android:visibility="visible" />
+                            android:visibility="visible">
+
+                            <requestFocus />
+                        </EditText>
 
                     </LinearLayout>
 
@@ -143,7 +131,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/bacground_border_heading"
                         android:orientation="vertical">
 
                         <TextView
@@ -172,7 +159,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/bacground_border_heading"
                         android:orientation="vertical">
 
                         <TextView
@@ -477,7 +463,7 @@
                                     android:id="@+id/fldGrpnw210"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:background="@drawable/bacground_border1"
+
                                     android:orientation="vertical">
 
                                     <TextView
@@ -887,9 +873,11 @@
                                                 android:id="@+id/nw216aa"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
+                                                android:enabled='@{nw216a.checked ? true : false}'
                                                 android:hint="@string/nw216a"
                                                 android:inputType="number"
-                                                android:maxLength="2" />
+                                                android:maxLength="2"
+                                                android:text='@{nw216a.checked ? nw216aa.getText.toString : ""}' />
 
                                         </LinearLayout>
 

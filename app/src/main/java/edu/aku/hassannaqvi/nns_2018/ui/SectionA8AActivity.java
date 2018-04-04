@@ -51,6 +51,8 @@ public class SectionA8AActivity extends Activity {
         db = new DatabaseHelper(this);
         bi.setCallback(this);
 
+        this.setTitle(getResources().getString(R.string.na8aheading));
+
         if (getIntent().getBooleanExtra("flag", true)) {
             reccounter = getIntent().getIntExtra("recCounter", 0);
 
@@ -102,6 +104,8 @@ public class SectionA8AActivity extends Activity {
 
         autoPopulate();
 
+//        Validation Boolean
+        MainApp.validateFlag = false;
 
     }
 
@@ -177,6 +181,9 @@ public class SectionA8AActivity extends Activity {
 
     public void BtnContinue() {
 
+//        Validation Boolean
+        MainApp.validateFlag = true;
+
         //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (ValidateForm()) {
             try {
@@ -187,8 +194,7 @@ public class SectionA8AActivity extends Activity {
             if (UpdateDB()) {
                 //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
-                //  finish();
-
+                finish();
 
                 if (counter == reccounter) {
 
@@ -196,18 +202,8 @@ public class SectionA8AActivity extends Activity {
 
                     if (SectionA5Activity.deceasedCounter > 0) {
                         startActivity(new Intent(this, SectionH8Activity.class));
-                    } else if (MainApp.mwra.size() > 0) {
-                        startActivity(new Intent(this, SectionB1Activity.class));
-                    } else if (MainApp.childUnder5.size() > 0) {
-                        if (MainApp.childUnder5.size() == MainApp.childNA.size()) {
-                            SectionC1Activity.isNA = true;
-                            startActivity(new Intent(this, SectionC1Activity.class));
-                        } else {
-                            SectionC1Activity.isNA = false;
-                            startActivity(new Intent(this, SectionC1Activity.class));
-                        }
                     } else {
-                        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+                        startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 3));
                     }
                 } else {
 
@@ -302,7 +298,7 @@ public class SectionA8AActivity extends Activity {
        /* if (backPressed) {
             sA8a.put("updatedate_na8a", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
         }*/
-        sA8a.put("enmno", MainApp.fc.getEnmNo());
+        sA8a.put("cluster_no", MainApp.fc.getClusterNo());
         sA8a.put("hhno", MainApp.fc.getHhNo());
 
         sA8a.put("nh7a01", fmcSelected.getName());

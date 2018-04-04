@@ -47,6 +47,8 @@ public class SectionB6Activity extends AppCompatActivity {
         db = new DatabaseHelper(this);
         bi.setCallback(this);
 
+        this.setTitle(getResources().getString(R.string.nw5heading));
+
         settingTimeToEat();
         setListners();
 
@@ -103,6 +105,10 @@ public class SectionB6Activity extends AppCompatActivity {
 
 
 //        }
+
+
+//        Validation Boolean
+        MainApp.validateFlag = false;
 
     }
 
@@ -292,6 +298,9 @@ public class SectionB6Activity extends AppCompatActivity {
 
     public void BtnContinue() {
 
+//        Validation Boolean
+        MainApp.validateFlag = true;
+
         if (ValidateForm()) {
             try {
                 SaveDraft();
@@ -388,7 +397,7 @@ public class SectionB6Activity extends AppCompatActivity {
         }
         JSONObject sB6 = new JSONObject();
 
-        sB6.put("enmno", MainApp.fc.getEnmNo());
+        sB6.put("cluster_no", MainApp.fc.getClusterNo());
         sB6.put("hhno", MainApp.fc.getHhNo());
 
         sB6.put("serial", String.valueOf(MainApp.nuCount));

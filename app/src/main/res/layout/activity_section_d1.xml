@@ -29,7 +29,8 @@
                 android:background="@color/colorPrimaryDark"
                 android:gravity="center"
                 android:text="@string/nd1heading"
-                android:textSize="40sp" />
+                android:textSize="40sp"
+                android:visibility="gone" />
 
             <TextView
                 style="@style/sub"

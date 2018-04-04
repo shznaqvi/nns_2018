@@ -96,12 +96,18 @@ public class MainApp extends Application {
     public static List<FamilyMembersContract> members_f_m;
     public static List<FamilyMembersContract> respList;
     public static List<FamilyMembersContract> all_members;
+    public static List<FamilyMembersContract> all_members_1;
+    public static List<FamilyMembersContract> otherMembers_1;
     public static List<FamilyMembersContract> childUnder2;
+    public static List<FamilyMembersContract> childUnder2_1;
     public static List<FamilyMembersContract> childUnder5;
+    public static List<FamilyMembersContract> childUnder5_1;
     public static List<FamilyMembersContract> childNA;
     public static List<FamilyMembersContract> childUnder2Check;
     public static List<FamilyMembersContract> mwra;
+    public static List<FamilyMembersContract> mwra_1;
     public static List<FamilyMembersContract> adolescents;
+    public static List<FamilyMembersContract> adolescents_1;
     public static BLRandomContract selectedHead;
     public static int serial_no;
     public static Boolean B6Flag = true;
@@ -123,6 +129,9 @@ public class MainApp extends Application {
 
     public static int nuCount = 1;
 
+    public static Boolean validateFlag = false;
+    public static FormsContract editFormContract;
+    public static Boolean editFormFlag;
 
 
     protected static LocationManager locationManager;
@@ -268,6 +277,33 @@ public class MainApp extends Application {
 
                                 activity.finish();
                                 Intent end_intent = new Intent(context, ChildEndingActivity.class);
+                                end_intent.putExtra("complete", completeFlag);
+                                context.startActivity(end_intent);
+                            }
+                        });
+        alertDialogBuilder.setNegativeButton("No",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = alertDialogBuilder.create();
+        alert.show();
+    }
+
+    public static void endActivityAll(final Context context, final Activity activity, final Class<?> destinationClass, final Boolean completeFlag) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                context);
+        alertDialogBuilder
+                .setMessage("Do you want to Exit??")
+                .setCancelable(false)
+                .setPositiveButton("Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,
+                                                int id) {
+
+                                activity.finish();
+                                Intent end_intent = new Intent(context, destinationClass);
                                 end_intent.putExtra("complete", completeFlag);
                                 context.startActivity(end_intent);
                             }

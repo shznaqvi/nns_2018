@@ -15,7 +15,6 @@ import android.text.TextWatcher;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -29,25 +28,25 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
-import java.util.TimerTask;
 
+import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONA1ModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.EnumBlockContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA1Binding;
+import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.other.MembersCount;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionA1Activity extends AppCompatActivity implements TextWatcher, CompoundButton.OnCheckedChangeListener, RadioGroup.OnCheckedChangeListener {
+public class SectionA1Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
     private static final String TAG = SectionA1Activity.class.getName();
     static int progress = 0;
     static Boolean reBackFlag = true;
-    static Boolean reBackChildFlag = true;
-    private final long DELAY = 2000;
     ActivitySectionA1Binding binding;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     DatabaseHelper db;
@@ -56,6 +55,8 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
     Handler handler = new Handler();
     Boolean flag = false;
     private Timer timer = new Timer();
+    static Boolean reBackChildFlag = true;
+    private final long DELAY = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +65,50 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
         db = new DatabaseHelper(this);
         binding.setCallback(this);
 
+//        Edit form intent
+        MainApp.editFormFlag = getIntent().getBooleanExtra("editForm", false);
+
+        if (MainApp.editFormFlag) {
+
+            binding.nh102.setText(getIntent().getStringExtra("clusterNo"));
+            binding.nh102.setEnabled(false);
+            binding.checkClusterBtn.setEnabled(false);
+            binding.checkClusterBtn.setBackgroundColor(getResources().getColor(R.color.red));
+            BtnCheckEnm();
+            binding.nh108.setText(getIntent().getStringExtra("hhNo"));
+            binding.nh108.setEnabled(false);
+            BtnCheckHH();
+            binding.checkHHBtn.setEnabled(false);
+            binding.checkHHBtn.setBackgroundColor(getResources().getColor(R.color.red));
+
+        }
+
         SetupViewFunctionality();
 
         SkipPatterns();
+
+        this.setTitle(getResources().getString(R.string.na1heading));
+
+//        Validation Boolean
+        MainApp.validateFlag = false;
+
+        AutoCompleteFields();
+
+    }
+
+    public void AutoCompleteFields() {
+
+        MainApp.editFormContract = db.getPressedForms(binding.nh102.getText().toString()
+                , binding.nh108.getText().toString());
+
+        if (MainApp.editFormContract != null) {
+            Toast.makeText(this, "Data Get", Toast.LENGTH_SHORT).show();
+
+            JSONA1ModelClass jsonA1 = JSONUtilClass.getModelFromJSON(MainApp.editFormContract.getsA1(), JSONA1ModelClass.class);
+
+
+        }
+
     }
 
     private void SkipPatterns() {
@@ -74,7 +116,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
         binding.na11801.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                formValidation();
+                //formValidation();
                 if (checkedId == R.id.na11801a) {
                     clearClass.ClearAllFields(binding.fldGrpna113, false);
                 } else {
@@ -85,13 +127,6 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
 
         // Field wise validation
-
-        binding.nh101.addTextChangedListener(this);
-        binding.checkHHHeadpresent.setOnCheckedChangeListener(this);
-        binding.newHHheadname.addTextChangedListener(this);
-        binding.nh103.addTextChangedListener(this);
-        binding.nh115.addTextChangedListener(this);
-        binding.nh213.addTextChangedListener(this);
         binding.na11802.setOnCheckedChangeListener(this);
         binding.na119a.addTextChangedListener(this);
 
@@ -153,7 +188,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
             @Override
             public void afterTextChanged(Editable editable) {
 
-                timer.cancel();
+/*                timer.cancel();
                 timer = new Timer();
                 timer.schedule(
                         new TimerTask() {
@@ -169,7 +204,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
                             }
                         },
                         DELAY
-                );
+                );*/
 
             }
         });
@@ -208,7 +243,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
             @Override
             public void afterTextChanged(Editable editable) {
 
-                timer.cancel();
+                /*timer.cancel();
                 timer = new Timer();
                 timer.schedule(
                         new TimerTask() {
@@ -225,10 +260,18 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
                         },
                         DELAY
                 );
-
+*/
             }
         });
 
+
+//
+//
+//
+//
+//
+//
+//
 // Initializing Re-Back functionality
         reBackFlag = true;
         reBackChildFlag = true;
@@ -250,6 +293,9 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
     }
 
     public void BtnContinue() {
+
+//        Validation Boolean
+        MainApp.validateFlag = true;
 
         if (formValidation()) {
 //        if (true) {
@@ -299,6 +345,9 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
     }
 
     public void BtnEnd() {
+
+//        Validation Boolean
+        MainApp.validateFlag = true;
 
         flag = true;
         //Toast.makeText(this, "Processing End Section", Toast.LENGTH_SHORT).show();
@@ -356,17 +405,20 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
 //        nh108
 
-        if (binding.nh108.getText().toString().length() == 6) {
-            String[] str = binding.nh108.getText().toString().split("-");
-            if (str.length > 2 || binding.nh108.getText().toString().charAt(4) != '-' || !str[0].matches("[0-9]+")
-                    || !str[1].matches("[a-zA-Z]")) {
-                binding.nh108.setError("Wrong presentation!!");
+        if (!binding.nh102.getText().toString().isEmpty()) {
+
+            if (binding.nh108.getText().toString().length() == 6) {
+                String[] str = binding.nh108.getText().toString().split("-");
+                if (str.length > 2 || binding.nh108.getText().toString().charAt(4) != '-' || !str[0].matches("[0-9]+")
+                        || !str[1].matches("[a-zA-Z]")) {
+                    binding.nh108.setError("Wrong presentation!!");
+                    return false;
+                }
+            } else {
+                //Toast.makeText(this, "Invalid length: " + getString(R.string.nh108), Toast.LENGTH_SHORT).show();
+                binding.nh108.setError("Invalid length");
                 return false;
             }
-        } else {
-            //Toast.makeText(this, "Invalid length: " + getString(R.string.nh108), Toast.LENGTH_SHORT).show();
-            binding.nh108.setError("Invalid length");
-            return false;
         }
 
 //        New HHHead
@@ -375,6 +427,8 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
             if (!validatorClass.EmptyTextBox(this, binding.newHHheadname, "New head name.")) {
                 return false;
             }
+        } else {
+            binding.newHHheadname.setError(null);
         }
 
 //        nh110
@@ -437,7 +491,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
                 Settings.Secure.ANDROID_ID));
         MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
         MainApp.fc.setRespLineNo(MainApp.lineNo);
-        MainApp.fc.setEnmNo(binding.nh102.getText().toString());
+        MainApp.fc.setClusterNo(binding.nh102.getText().toString());
         MainApp.fc.setHhNo(binding.nh108.getText().toString().toUpperCase());
 
         setGPS(); // Set GPS
@@ -454,6 +508,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
         sA1.put("hhss", MainApp.selectedHead.getSelStructure());
         sA1.put("hhheadpresent", binding.checkHHHeadpresent.isChecked() ? "1" : "2");
         sA1.put("hhheadpresentnew", binding.newHHheadname.getText().toString());
+        sA1.put("enumNo", binding.nh107.getText().toString());
 
         sA1.put("nh101", binding.nh101.getText().toString());
 
@@ -579,21 +634,25 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
         if (validatorClass.EmptyTextBox(this, binding.nh102, getString(R.string.nh102))) {
 
-            String selected = db.getEnumBlock(binding.nh102.getText().toString());
-            if (!selected.equals("")) {
+            EnumBlockContract enumBlockContract = db.getEnumBlock(binding.nh102.getText().toString());
+            if (enumBlockContract != null) {
+                String selected = enumBlockContract.getGeoarea();
+                if (!selected.equals("")) {
 
-                String[] selSplit = selected.split("\\|");
+                    String[] selSplit = selected.split("\\|");
 
-                binding.nh103.setText(selSplit[0]);
-                binding.nh104.setText(selSplit[1].equals("") ? "----" : selSplit[1]);
-                binding.nh105.setText(selSplit[2].equals("") ? "----" : selSplit[2]);
-                binding.nh106.setText(selSplit[3]);
+                    binding.nh103.setText(selSplit[0]);
+                    binding.nh104.setText(selSplit[1].equals("") ? "----" : selSplit[1]);
+                    binding.nh105.setText(selSplit[2].equals("") ? "----" : selSplit[2]);
+                    binding.nh106.setText(selSplit[3]);
+                    binding.nh107.setText(enumBlockContract.getEbcode());
 
-                binding.fldGrpnh101.setVisibility(View.VISIBLE);
+                    binding.fldGrpnh101.setVisibility(View.VISIBLE);
 
+                }
             } else {
                 binding.nh108.setText(null);
-                Toast.makeText(this, "Sorry not found any block", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Sorry cluster not found!!", Toast.LENGTH_SHORT).show();
             }
 
         }
@@ -613,7 +672,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
     @Override
     public void afterTextChanged(Editable s) {
 
-        timer.cancel();
+        /*timer.cancel();
         timer = new Timer();
         timer.schedule(
                 new TimerTask() {
@@ -629,16 +688,12 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
                     }
                 },
                 DELAY
-        );
+        );*/
     }
 
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        formValidation();
-    }
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
-        formValidation();
+        //formValidation();
     }
 }

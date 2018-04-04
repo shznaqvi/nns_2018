@@ -25,6 +25,7 @@
             android:layout_gravity="center_horizontal"
             android:background="@color/colorPrimaryDark"
             android:gravity="center"
+            android:visibility="gone"
             android:text="@string/na5heading"
             android:textSize="40sp" />
 
@@ -45,68 +46,60 @@
                 android:orientation="vertical">
 
                 <!--nh401-->
-
-                <LinearLayout
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bacground_border1"
-                    android:orientation="vertical">
+                    android:background="@color/colorPrimary"
+                    android:text="@string/nh401"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@android:color/white" />
+
+                <RadioGroup
+                    android:id="@+id/nh401"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/nh401a"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nh401a" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/colorPrimary"
-                        android:text="@string/nh401"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white" />
+                        android:background="@color/pink_100"
+                        android:text="@string/nh401info"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/colorPrimaryDark" />
 
-                    <RadioGroup
-                        android:id="@+id/nh401"
+                    <RadioButton
+                        android:id="@+id/nh401b"
+                        style="@style/radiobutton"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nh401b" />
 
-                        <RadioButton
-                            android:id="@+id/nh401a"
-                            style="@style/radiobutton"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="1dp"
-                            android:text="@string/nh401a" />
+                    <RadioButton
+                        android:id="@+id/nh401c"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nh401c" />
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@color/pink_100"
-                            android:text="@string/nh401info"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:textColor="@color/colorPrimaryDark" />
+                    <RadioButton
+                        android:id="@+id/nh401d"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nh401d" />
+                </RadioGroup>
 
-                        <RadioButton
-                            android:id="@+id/nh401b"
-                            style="@style/radiobutton"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="1dp"
-                            android:text="@string/nh401b" />
-
-                        <RadioButton
-                            android:id="@+id/nh401c"
-                            style="@style/radiobutton"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="1dp"
-                            android:text="@string/nh401c" />
-
-                        <RadioButton
-                            android:id="@+id/nh401d"
-                            style="@style/radiobutton"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="1dp"
-                            android:text="@string/nh401d" />
-                    </RadioGroup>
-
-                </LinearLayout>
 
 
                 <LinearLayout
@@ -310,7 +303,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bacground_border1"
+
                     android:orientation="vertical">
                     <!--nh406-->
                     <TextView
@@ -580,7 +573,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bacground_border1"
+
                     android:orientation="vertical">
 
                     <TextView
@@ -684,7 +677,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bacground_border1"
+
                         android:orientation="vertical">
                         <!--nh502-->
                         <TextView

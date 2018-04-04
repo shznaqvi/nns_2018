@@ -6,7 +6,6 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -20,6 +19,7 @@ import java.util.Date;
 
 import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.EnumBlockContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -175,7 +175,7 @@ public class AntrhoInfoActivity extends Activity {
         }
 
 
-        if (!validatorClass.EmptyTextBox(this, binding.hcCode, getString(R.string.hc))) {
+        /*if (!validatorClass.EmptyTextBox(this, binding.hcCode, getString(R.string.hc))) {
             return false;
         }
 
@@ -239,9 +239,7 @@ public class AntrhoInfoActivity extends Activity {
         } else {
             binding.wtCode.setError(null);
         }
-
-
-
+*/
 
 
         return true;
@@ -269,7 +267,7 @@ public class AntrhoInfoActivity extends Activity {
 
         if (!binding.nh102.getText().toString().trim().isEmpty() && !binding.nh108.getText().toString().trim().isEmpty()) {
 
-            String uid = db.getUIDByHH(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase());
+            String uid = db.getUIDByHH(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase(), "1");
             if (uid != null) {
                 members = db.getAllMembersByHH(uid);
 
@@ -321,18 +319,20 @@ public class AntrhoInfoActivity extends Activity {
 
         if (validatorClass.EmptyTextBox(this, binding.nh102, getString(R.string.nh102))) {
 
-            String selected = db.getEnumBlock(binding.nh102.getText().toString());
-            if (!selected.equals("")) {
+            EnumBlockContract enumBlockContract = db.getEnumBlock(binding.nh102.getText().toString());
+            if (enumBlockContract != null) {
+                String selected = enumBlockContract.getGeoarea();
+                if (!selected.equals("")) {
 
-                String[] selSplit = selected.split("\\|");
+                    String[] selSplit = selected.split("\\|");
 
-                binding.nh103.setText(selSplit[0]);
-                binding.nh104.setText(selSplit[1].equals("") ? "----" : selSplit[1]);
-                binding.nh105.setText(selSplit[2].equals("") ? "----" : selSplit[2]);
-                binding.nh106.setText(selSplit[3]);
+                    binding.nh103.setText(selSplit[0]);
+                    binding.nh104.setText(selSplit[1].equals("") ? "----" : selSplit[1]);
+                    binding.nh105.setText(selSplit[2].equals("") ? "----" : selSplit[2]);
+                    binding.nh106.setText(selSplit[3]);
 
-                binding.fldGrpnh101.setVisibility(View.VISIBLE);
-
+                    binding.fldGrpnh101.setVisibility(View.VISIBLE);
+                }
             } else {
                 binding.nh108.setText(null);
                 Toast.makeText(this, "Sorry not found any block", Toast.LENGTH_SHORT).show();

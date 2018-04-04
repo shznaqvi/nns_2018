@@ -26,13 +26,12 @@ import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionA4Activity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, TextWatcher, CompoundButton.OnCheckedChangeListener {
+public class SectionA4Activity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, TextWatcher {
 
     private final long DELAY = 1000;
     ActivitySectionA4Binding binding;
     DatabaseHelper db;
     private Timer timer = new Timer();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +41,7 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
 
 //        Assigning data to UI binding
         binding.setCallback(this);
+        this.setTitle(getResources().getString(R.string.nh3heading));
 
 //        Skip Pattern;
 
@@ -177,7 +177,6 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
         binding.nh312g.setOnCheckedChangeListener(this);
         binding.nh312h.setOnCheckedChangeListener(this);
         binding.nh312i.setOnCheckedChangeListener(this);
-        binding.nh313a.setOnCheckedChangeListener(this);
         binding.nh314.setOnCheckedChangeListener(this);
 
 
@@ -237,6 +236,9 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
         binding.nh324f.addTextChangedListener(this);
         binding.nh324g.addTextChangedListener(this);
 
+
+//        Validation Boolean
+        MainApp.validateFlag = false;
 
         autoPopulate();
 
@@ -692,6 +694,9 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
 
     public void BtnContinue() {
 
+//        Validation Boolean
+        MainApp.validateFlag = true;
+
         //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
             try {
@@ -737,7 +742,15 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
 
     private boolean formValidation() {
         //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
+
+        if (!validatorClass.EmptyRadioButton(this, binding.nh301, binding.nh301a, getString(R.string.nh301))) {
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, binding.nh301, binding.nh30196, binding.nh30196x, getString(R.string.nh301))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, binding.nh302, binding.nh302a, getString(R.string.nh302))) {
             return false;
         }
 
@@ -747,6 +760,10 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
 
 
         if (!validatorClass.EmptyRadioButton(this, binding.nh303a, binding.nh303a1, getString(R.string.nh303a))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, binding.nh303, binding.nh303b, getString(R.string.nh303))) {
             return false;
         }
         if (!validatorClass.EmptyRadioButton(this, binding.nh303, binding.nh30396, binding.nh30396x, getString(R.string.nh303))) {
@@ -772,9 +789,16 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
             return false;
         }
         if (binding.nh305a.isChecked()) {
+            if (!validatorClass.EmptyRadioButton(this, binding.nh306, binding.nh306a, getString(R.string.nh306))) {
+                return false;
+            }
             if (!validatorClass.EmptyRadioButton(this, binding.nh306, binding.nh30696, binding.nh30696x, getString(R.string.nh306))) {
                 return false;
             }
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, binding.nh307, binding.nh307a, getString(R.string.nh307))) {
+            return false;
         }
 
         if (!validatorClass.EmptyRadioButton(this, binding.nh307, binding.nh30796, binding.nh30796x, getString(R.string.nh307))) {
@@ -796,6 +820,10 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
             }
         }
 
+
+        if (!validatorClass.EmptyRadioButton(this, binding.nh310, binding.nh310a, getString(R.string.nh310))) {
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, binding.nh310, binding.nh31096, binding.nh31096x, getString(R.string.nh310))) {
             return false;
         }
@@ -886,10 +914,10 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
         if (!validatorClass.EmptyRadioButton(this, binding.nh312f, binding.nh312f1, getString(R.string.nh312f))) {
             return false;
         }
-
         if (!validatorClass.EmptyRadioButton(this, binding.nh312g, binding.nh312g1, getString(R.string.nh312g))) {
             return false;
         }
+
         if (!validatorClass.EmptyRadioButton(this, binding.nh312h, binding.nh312h1, getString(R.string.nh312h))) {
             return false;
         }
@@ -898,11 +926,22 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
             return false;
         }
 
+        if (!validatorClass.EmptyCheckBox(this, binding.fldGrpna0413check, binding.nh313a, getString(R.string.nh313))) {
+            return false;
+        }
         if (!validatorClass.EmptyCheckBox(this, binding.fldGrpna0413check, binding.nh31396, binding.nh31396x, getString(R.string.nh313))) {
             return false;
         }
 
+
+        if (!validatorClass.EmptyRadioButton(this, binding.nh314, binding.nh314a, getString(R.string.nh314))) {
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, binding.nh314, binding.nh31496, binding.nh31496x, getString(R.string.nh314))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, binding.nh315, binding.nh315a, getString(R.string.nh315))) {
             return false;
         }
 
@@ -916,7 +955,7 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
         }
         // 315
 
-        if (!validatorClass.EmptyRadioButton(this, binding.nh317, binding.nh317b, getString(R.string.nh317))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nh317, binding.nh317a, getString(R.string.nh317))) {
             return false;
         }
 
@@ -925,7 +964,15 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
             return false;
         }
 
+        if (!validatorClass.EmptyRadioButton(this, binding.nh318, binding.nh318a, getString(R.string.nh318))) {
+            return false;
+        }
+
         if (!validatorClass.EmptyRadioButton(this, binding.nh318, binding.nh31896, binding.nh31896x, getString(R.string.nh318))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, binding.nh319, binding.nh319a, getString(R.string.nh319))) {
             return false;
         }
         if (!validatorClass.EmptyRadioButton(this, binding.nh319, binding.nh31996, binding.nh31996x, getString(R.string.nh319))) {
@@ -953,16 +1000,16 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
                 if (!validatorClass.EmptyTextBox(this, binding.nh322acr, getString(R.string.nh322acr))) {
                     return false;
                 }
-                /*if (!validatorClass.RangeTextBox(this, binding.nh322acr, 1, 999, getString(R.string.nh322acr), "acre")) {
+                if (!validatorClass.RangeTextBox(this, binding.nh322acr, 1, 999, getString(R.string.nh322acr), "acre")) {
                     return false;
-                }*/
+                }
             } else if (binding.nh322b.isChecked()) {
                 if (!validatorClass.EmptyTextBox(this, binding.nh322can, getString(R.string.nh322can))) {
                     return false;
                 }
-                /*if (!validatorClass.RangeTextBox(this, binding.nh322can, 1, 999, getString(R.string.nh322can), "kanal")) {
+                if (!validatorClass.RangeTextBox(this, binding.nh322can, 1, 999, getString(R.string.nh322can), "kanal")) {
                     return false;
-                }*/
+                }
             }
         }
 
@@ -1022,8 +1069,9 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
 
     private void SaveDraft() throws JSONException {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
-        JSONObject sA4 = new JSONObject();
 
+
+        JSONObject sA4 = new JSONObject();
         sA4.put("nh301", binding.nh301a.isChecked() ? "1"
                 : binding.nh301b.isChecked() ? "2"
                 : binding.nh301c.isChecked() ? "3"
@@ -1372,8 +1420,8 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
 
     }
 
-    @Override
+   /* @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         formValidation();
-    }
+    }*/
 }

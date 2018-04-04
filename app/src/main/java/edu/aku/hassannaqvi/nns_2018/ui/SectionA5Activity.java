@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -26,15 +27,28 @@ import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionA5Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener, CompoundButton.OnCheckedChangeListener {
+public class SectionA5Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
-    static int deceasedCounter = 0;
     private final long DELAY = 1000;
     ActivitySectionA5Binding binding;
     DatabaseHelper db;
     int recipientCounter = 0;
     Boolean backPressed = false;
     private Timer timer = new Timer();
+    static int deceasedCounter = 0;
+
+    public CheckBox.OnCheckedChangeListener check = new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            if (isChecked) {
+                clearClass.ClearAllFields(binding.fldGrnh404, false);
+                clearClass.ClearAllFields(binding.fldGrpnh405, false);
+            } else {
+                clearClass.ClearAllFields(binding.fldGrnh404, true);
+                clearClass.ClearAllFields(binding.fldGrpnh405, true);
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +59,8 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
 //        Assigning data to UI binding
         binding.setCallback(this);
 
+        this.setTitle(getResources().getString(R.string.na5heading));
+
         binding.nh401.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -52,23 +68,22 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
                 if (!(checkedId == R.id.nh401a)) {
 
                     clearClass.ClearAllFields(binding.fldGrpnh402, false);
-                    /*binding.nh402.clearCheck();
-                    binding.nh403a.setChecked(false);
-                    binding.nh403b.setChecked(false);
-                    binding.nh403c.setChecked(false);
-                    binding.nh403d.setChecked(false);
-                    binding.nh403e.setChecked(false);*/
+
                 } else {
                     clearClass.ClearAllFields(binding.fldGrpnh402, true);
                 }
             }
         });
 
+        binding.nh403a.setOnCheckedChangeListener(check);
+        binding.nh403b.setOnCheckedChangeListener(check);
+        binding.nh403c.setOnCheckedChangeListener(check);
+
         binding.nh403e.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                formValidation();
                 if (isChecked) {
+
                     binding.nh403a.setEnabled(false);
                     binding.nh403b.setEnabled(false);
                     binding.nh403c.setEnabled(false);
@@ -80,6 +95,8 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
                     binding.nh403d.setChecked(false);
 
                 } else {
+
+
                     binding.nh403a.setEnabled(true);
                     binding.nh403b.setEnabled(true);
                     binding.nh403c.setEnabled(true);
@@ -94,11 +111,7 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
                 formValidation();
                 if (checkedId == R.id.nh404b) {
                     clearClass.ClearAllFields(binding.fldGrpnh405, false);
-                    /*binding.nh405a.setChecked(false);
-                    binding.nh405b.setChecked(false);
-                    binding.nh405c.setChecked(false);
-                    binding.nh405d.setChecked(false);
-                    binding.nh405e.setChecked(false);*/
+
                 } else {
                     clearClass.ClearAllFields(binding.fldGrpnh405, true);
                 }
@@ -107,7 +120,6 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
         binding.nh405e.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                formValidation();
                 if (isChecked) {
                     binding.nh405a.setEnabled(false);
                     binding.nh405b.setEnabled(false);
@@ -124,65 +136,6 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
                     binding.nh405b.setEnabled(true);
                     binding.nh405c.setEnabled(true);
                     binding.nh405d.setEnabled(true);
-                }
-            }
-        });
-        binding.nh403a.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                formValidation();
-                if (binding.nh403a.isChecked() || binding.nh403b.isChecked() || binding.nh403c.isChecked()) {
-                    clearClass.ClearAllFields(binding.fldGrnh404, false);
-                    clearClass.ClearAllFields(binding.fldGrpnh405, false);
-                   /* binding.nh404.clearCheck();
-                    binding.nh405a.setChecked(false);
-                    binding.nh405b.setChecked(false);
-                    binding.nh405c.setChecked(false);
-                    binding.nh405d.setChecked(false);
-                    binding.nh405e.setChecked(false);*/
-                } else {
-                    clearClass.ClearAllFields(binding.fldGrnh404, true);
-                    clearClass.ClearAllFields(binding.fldGrpnh405, true);
-
-                }
-            }
-        });
-        binding.nh403b.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                formValidation();
-                if (binding.nh403a.isChecked() || binding.nh403b.isChecked() || binding.nh403c.isChecked()) {
-                    clearClass.ClearAllFields(binding.fldGrnh404, false);
-                    clearClass.ClearAllFields(binding.fldGrpnh405, false);
-                    /*binding.nh404.clearCheck();
-                    binding.nh405a.setChecked(false);
-                    binding.nh405b.setChecked(false);
-                    binding.nh405c.setChecked(false);
-                    binding.nh405d.setChecked(false);
-                    binding.nh405e.setChecked(false);*/
-                } else {
-                    clearClass.ClearAllFields(binding.fldGrnh404, true);
-                    clearClass.ClearAllFields(binding.fldGrpnh405, true);
-
-                }
-            }
-        });
-        binding.nh403c.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                formValidation();
-                if (binding.nh403a.isChecked() || binding.nh403b.isChecked() || binding.nh403c.isChecked()) {
-                    clearClass.ClearAllFields(binding.fldGrnh404, false);
-                    clearClass.ClearAllFields(binding.fldGrpnh405, false);
-                   /* binding.nh404.clearCheck();
-                    binding.nh405a.setChecked(false);
-                    binding.nh405b.setChecked(false);
-                    binding.nh405c.setChecked(false);
-                    binding.nh405d.setChecked(false);
-                    binding.nh405e.setChecked(false);*/
-                } else {
-                    clearClass.ClearAllFields(binding.fldGrnh404, true);
-                    clearClass.ClearAllFields(binding.fldGrpnh405, true);
                 }
             }
         });
@@ -225,8 +178,10 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
 
         binding.nh702.addTextChangedListener(this);
 
-        autoPopulate();
+//        Validation Boolean
+        MainApp.validateFlag = false;
 
+        autoPopulate();
     }
 
     private void autoPopulate() {
@@ -445,6 +400,9 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
 
     public void BtnContinue() {
 
+//        Validation Boolean
+        MainApp.validateFlag = true;
+
         //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
             try {
@@ -462,20 +420,9 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
                     startActivity(new Intent(this, SectionA8AActivity.class).putExtra("recCounter", recipientCounter));
                 } else if (deceasedCounter > 0) {
                     startActivity(new Intent(this, SectionH8Activity.class));
-                } else if (MainApp.mwra.size() > 0) {
-                    startActivity(new Intent(this, SectionB1Activity.class));
-                } else if (MainApp.childUnder5.size() > 0) {
-                    if (MainApp.childUnder5.size() == MainApp.childNA.size()) {
-                        SectionC1Activity.isNA = true;
-                        startActivity(new Intent(this, SectionC1Activity.class));
-                    } else {
-                        SectionC1Activity.isNA = false;
-                        startActivity(new Intent(this, SectionC1Activity.class));
-                    }
                 } else {
-                    startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+                    startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 1));
                 }
-
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -502,13 +449,14 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
         //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
 //        nh401
-        if (!validatorClass.EmptyRadioButton(this, binding.nh401, binding.nh401d, getString(R.string.nh401))) {
+
+        if (!validatorClass.EmptyRadioButton(this, binding.nh401, binding.nh401a, getString(R.string.nh401))) {
             return false;
         }
 
 //        nh402
         if (binding.nh401a.isChecked()) {
-            if (!validatorClass.EmptyRadioButton(this, binding.nh402, binding.nh402b, getString(R.string.nh402b))) {
+            if (!validatorClass.EmptyRadioButton(this, binding.nh402, binding.nh402a, getString(R.string.nh402b))) {
                 return false;
             }
             // nh403
@@ -524,7 +472,7 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
 
 //        nh405
             if (binding.nh404a.isChecked()) {
-                if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnh405check, binding.nh405e, getString(R.string.nh405))) {
+                if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnh405check, binding.nh405a, getString(R.string.nh405))) {
                     return false;
                 }
             }
@@ -565,49 +513,49 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
 
 
 //        nh502
-            if (!validatorClass.EmptyRadioButton(this, binding.nh502, binding.nh502c, getString(R.string.nh502))) {
+            if (!validatorClass.EmptyRadioButton(this, binding.nh502, binding.nh502a, getString(R.string.nh502))) {
                 return false;
             }
 //        nh503
-            if (!validatorClass.EmptyRadioButton(this, binding.nh503, binding.nh503d, getString(R.string.nh503))) {
+            if (!validatorClass.EmptyRadioButton(this, binding.nh503, binding.nh503a, getString(R.string.nh503))) {
                 return false;
             }
         }
 
 //        nh601
-        if (!validatorClass.EmptyRadioButton(this, binding.nh601, binding.nh60199, getString(R.string.nh601))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nh601, binding.nh601a, getString(R.string.nh601))) {
             return false;
         }
 //        nh602
-        if (!validatorClass.EmptyRadioButton(this, binding.nh602, binding.nh60299, getString(R.string.nh602))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nh602, binding.nh602a, getString(R.string.nh602))) {
             return false;
         }
 //        nh603
-        if (!validatorClass.EmptyRadioButton(this, binding.nh603, binding.nh60399, getString(R.string.nh603))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nh603, binding.nh603a, getString(R.string.nh603))) {
             return false;
         }
 //        nh604
-        if (!validatorClass.EmptyRadioButton(this, binding.nh604, binding.nh60499, getString(R.string.nh604))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nh604, binding.nh604a, getString(R.string.nh604))) {
             return false;
         }
 //        nh605
-        if (!validatorClass.EmptyRadioButton(this, binding.nh605, binding.nh60599, getString(R.string.nh605))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nh605, binding.nh605a, getString(R.string.nh605))) {
             return false;
         }
 //        nh606
-        if (!validatorClass.EmptyRadioButton(this, binding.nh606, binding.nh60699, getString(R.string.nh606))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nh606, binding.nh606a, getString(R.string.nh606))) {
             return false;
         }
 //        nh607
-        if (!validatorClass.EmptyRadioButton(this, binding.nh607, binding.nh60799, getString(R.string.nh607))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nh607, binding.nh607a, getString(R.string.nh607))) {
             return false;
         }
 //        nh608
-        if (!validatorClass.EmptyRadioButton(this, binding.nh608, binding.nh60899, getString(R.string.nh608))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nh608, binding.nh608a, getString(R.string.nh608))) {
             return false;
         }
 //        nh609
-        if (!validatorClass.EmptyRadioButton(this, binding.nh609, binding.nh60999, getString(R.string.nh609))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nh609, binding.nh609a, getString(R.string.nh609))) {
             return false;
         }
 //        nh701
@@ -862,8 +810,5 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
         formValidation();
     }
 
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        formValidation();
-    }
+
 }

@@ -6,13 +6,14 @@
     "apkInfo": {
       "type": "MAIN",
       "splits": [],
-      "versionCode": 5566
+      "versionCode": 5858,
+      "versionName": "1.1",
+      "enabled": true,
+      "outputFile": "app-debug.apk",
+      "fullName": "debug",
+      "baseName": "debug"
     },
     "path": "app-debug.apk",
-    "properties": {
-      "packageId": "edu.aku.hassannaqvi.nns_2018",
-      "split": "",
-      "minSdkVersion": "22"
-    }
+    "properties": {}
   }
 ]

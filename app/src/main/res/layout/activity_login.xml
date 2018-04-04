@@ -219,6 +219,7 @@
                     android:drawableStart="@drawable/ic_cloud_download_black_24dp"
                     android:elevation="2dp"
                     android:padding="15dp"
+                    android:visibility="gone"
                     android:text="Sync Data"
                     android:textStyle="bold" />
 

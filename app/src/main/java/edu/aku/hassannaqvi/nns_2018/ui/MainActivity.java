@@ -1,6 +1,5 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -60,7 +59,7 @@ import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.nns_2018.sync.SyncAllData;
 
-public class MainActivity extends Activity {
+public class MainActivity extends MenuActivity {
 
     private final String TAG = "MainActivity";
 
@@ -202,7 +201,7 @@ public class MainActivity extends Activity {
 
                 //rSumText += fc.getDSSID();
 
-                rSumText += fc.getEnmNo() + " \t";
+                rSumText += fc.getClusterNo() + " \t";
                 rSumText += " " + fc.getHhNo() + " \t";
                 rSumText += " " + iStatus + " \t";
 
@@ -337,6 +336,7 @@ public class MainActivity extends Activity {
 
 
     public void openB(View v) {
+        //Intent iB = new Intent(this, SectionB3Activity.class);
         Intent iB = new Intent(this, AntrhoInfoActivity.class);
         startActivity(iB);
     }

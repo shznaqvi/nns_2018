@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -12,6 +13,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 
 /**
  * Created by ali.azaz on 12/04/17.
@@ -21,9 +25,11 @@ public abstract class validatorClass {
 
     public static boolean EmptyTextBox(Context context, EditText txt, String msg) {
         if (TextUtils.isEmpty(txt.getText().toString())) {
-            //Toast.makeText(context, "ERROR(empty): " + msg, Toast.LENGTH_SHORT).show();
+            if (MainApp.validateFlag) {
+                Toast.makeText(context, "ERROR(empty): " + msg, Toast.LENGTH_SHORT).show();
+            }
             txt.setError("This data is Required! ");    // Set Error on last radio button
-            txt.requestFocus();
+//            txt.requestFocus();
             Log.i(context.getClass().getName(), context.getResources().getResourceEntryName(txt.getId()) + ": This data is Required!");
             return false;
         } else {
@@ -35,9 +41,11 @@ public abstract class validatorClass {
     public static boolean RangeTextBox(Context context, EditText txt, int min, int max, String msg, String type) {
 
         if (Integer.valueOf(txt.getText().toString()) < min || Integer.valueOf(txt.getText().toString()) > max) {
-            //Toast.makeText(context, "ERROR(invalid): " + msg, Toast.LENGTH_SHORT).show();
+            if (MainApp.validateFlag) {
+                Toast.makeText(context, "ERROR(invalid): " + msg, Toast.LENGTH_SHORT).show();
+            }
             txt.setError("Range is " + min + " to " + max + type + " ... ");    // Set Error on last radio button
-            txt.requestFocus();
+//            txt.requestFocus();
             Log.i(context.getClass().getName(), context.getResources().getResourceEntryName(txt.getId()) + ": Range is " + min + " to " + max + " times...  ");
             return false;
         } else {
@@ -50,9 +58,11 @@ public abstract class validatorClass {
 
         if (Integer.valueOf(txt.getText().toString()) != defaultVal) {
             if ((Integer.valueOf(txt.getText().toString()) < min || Integer.valueOf(txt.getText().toString()) > max)) {
-                //Toast.makeText(context, "ERROR(invalid): " + msg, Toast.LENGTH_SHORT).show();
+                if (MainApp.validateFlag) {
+                    Toast.makeText(context, "ERROR(invalid): " + msg, Toast.LENGTH_SHORT).show();
+                }
                 txt.setError("Range is " + min + " to " + max + " or " + defaultVal + type + " ... ");    // Set Error on last radio button
-                txt.requestFocus();
+//                txt.requestFocus();
                 Log.i(context.getClass().getName(), context.getResources().getResourceEntryName(txt.getId()) + ": Range is " + min + " to " + max + " or " + defaultVal + " ...  ");
                 return false;
             } else {
@@ -68,9 +78,11 @@ public abstract class validatorClass {
     public static boolean RangeTextBox(Context context, EditText txt, double min, double max, String msg, String type) {
 
         if (Double.valueOf(txt.getText().toString()) < min || Double.valueOf(txt.getText().toString()) > max) {
-            //Toast.makeText(context, "ERROR(invalid): " + msg, Toast.LENGTH_SHORT).show();
+            if (MainApp.validateFlag) {
+                Toast.makeText(context, "ERROR(invalid): " + msg, Toast.LENGTH_SHORT).show();
+            }
             txt.setError("Range is " + min + " to " + max + type + " ... ");    // Set Error on last radio button
-            txt.requestFocus();
+//            txt.requestFocus();
             Log.i(context.getClass().getName(), context.getResources().getResourceEntryName(txt.getId()) + ": Range is " + min + " to " + max + " times...  ");
             return false;
         } else {
@@ -83,9 +95,11 @@ public abstract class validatorClass {
 
         if (Integer.valueOf(txt.getText().toString()) != defaultVal) {
             if ((Integer.valueOf(txt.getText().toString()) < min || Integer.valueOf(txt.getText().toString()) > max)) {
-                //Toast.makeText(context, "ERROR(invalid): " + msg, Toast.LENGTH_SHORT).show();
+                if (MainApp.validateFlag) {
+                    Toast.makeText(context, "ERROR(invalid): " + msg, Toast.LENGTH_SHORT).show();
+                }
                 txt.setError(msg);    // Set Error on last radio button
-                txt.requestFocus();
+//                txt.requestFocus();
                 Log.i(context.getClass().getName(), context.getResources().getResourceEntryName(txt.getId()) + ": " + msg + " " + min + " to " + max + " or " + defaultVal + " ...  ");
                 return false;
             } else {
@@ -101,9 +115,11 @@ public abstract class validatorClass {
     public static boolean RangeTextBoxforDate(Context context, EditText txt, double min, double max, String msg) {
 
         if (Integer.valueOf(txt.getText().toString()) < min || Integer.valueOf(txt.getText().toString()) > max) {
-            //Toast.makeText(context, "ERROR(invalid): " + msg, Toast.LENGTH_SHORT).show();
+            if (MainApp.validateFlag) {
+                Toast.makeText(context, "ERROR(invalid): " + msg, Toast.LENGTH_SHORT).show();
+            }
             txt.setError(msg);    // Set Error on last radio button
-            txt.requestFocus();
+//            txt.requestFocus();
             Log.i(context.getClass().getName(), context.getResources().getResourceEntryName(txt.getId()) + ": " + msg + min + " to " + max + " times...  ");
             return false;
         } else {
@@ -114,10 +130,12 @@ public abstract class validatorClass {
 
     public static boolean EmptySpinner(Context context, Spinner spin, String msg) {
         if (spin.getSelectedItem() == "....") {
-            //Toast.makeText(context, "ERROR(Empty)" + msg, Toast.LENGTH_SHORT).show();
+            if (MainApp.validateFlag) {
+                Toast.makeText(context, "ERROR(Empty)" + msg, Toast.LENGTH_SHORT).show();
+            }
             ((TextView) spin.getSelectedView()).setText("This Data is Required");
             ((TextView) spin.getSelectedView()).setTextColor(Color.RED);
-            spin.requestFocus();
+//            spin.requestFocus();
             Log.i(context.getClass().getName(), context.getResources().getResourceEntryName(spin.getId()) + ": This data is Required!");
             return false;
         } else {
@@ -126,14 +144,51 @@ public abstract class validatorClass {
         }
     }
 
-    public static boolean EmptyRadioButton(Context context, RadioGroup rdGrp, RadioButton rdBtn, String msg) {
+    public static boolean EmptyRadioButton(Context context, RadioGroup rdGrp, final RadioButton rdBtn, String msg) {
         if (rdGrp.getCheckedRadioButtonId() == -1) {
-            //Toast.makeText(context, "ERROR(empty): " + msg, Toast.LENGTH_SHORT).show();
+
+            /*ScrollView scrollView = null;
+
+            Activity myact = (Activity) context;
+            final ViewGroup viewGroup = (ViewGroup) ((ViewGroup) myact.findViewById(android.R.id.content)).getChildAt(0);
+
+            for (int i = 0; i < viewGroup.getChildCount(); i++) {
+                if (viewGroup.getChildAt(i) instanceof ScrollView) {
+                    scrollView = (ScrollView) viewGroup.getChildAt(i);
+                    break;
+                }
+            }
+
+            final ScrollView myScrollView = scrollView;
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    int ypos = findYPositionInView(myScrollView, rdBtn, 0);
+                    myScrollView.smoothScrollTo(0, ypos - 200);
+
+                    rdBtn.setError("This data is Required!");
+                }
+            }, 200);
+*/
+            if (MainApp.validateFlag) {
+                Toast.makeText(context, "ERROR(Empty)" + msg, Toast.LENGTH_SHORT).show();
+            }
+
             rdBtn.setError("This data is Required!");    // Set Error on last radio button
 
             rdBtn.setFocusable(true);
-            rdBtn.setFocusableInTouchMode(true);
+            //rdBtn.setFocusableInTouchMode(true);
             rdBtn.requestFocus();
+
+            /*rdBtn.clearFocus();
+
+             rdGrp.requestFocus();
+            rdGrp.requestFocusFromTouch();
+            rdGrp.clearFocus();
+            rdGrp.clearChildFocus(rdBtn);
+            */
+            //((LinearLayout)rdGrp.getParent()).scrollTo(rdGrp.getScrollX(), rdGrp.getScrollY());
             Log.i(context.getClass().getName(), context.getResources().getResourceEntryName(rdGrp.getId()) + ": This data is Required!");
             return false;
         } else {
@@ -142,14 +197,67 @@ public abstract class validatorClass {
         }
     }
 
-    public static boolean EmptyRadioButton(Context context, RadioGroup rdGrp, RadioButton rdBtn, EditText txt, String msg) {
+    private static int findYPositionInView(View rootView, View targetView, int yCumulative) {
+        if (rootView == targetView)
+            return yCumulative;
+
+        if (rootView instanceof ViewGroup) {
+            ViewGroup parentView = (ViewGroup) rootView;
+            for (int i = 0; i < parentView.getChildCount(); i++) {
+                View child = parentView.getChildAt(i);
+                int yChild = yCumulative + (int) child.getY();
+
+                int yNested = findYPositionInView(child, targetView, yChild);
+                if (yNested != -1)
+                    return yNested;
+            }
+        }
+
+        return -1; // not found
+    }
+
+    public static boolean EmptyRadioButton(Context context, RadioGroup rdGrp, final RadioButton rdBtn, EditText txt, final String msg) {
         if (rdGrp.getCheckedRadioButtonId() == -1) {
-            //Toast.makeText(context, "ERROR(empty): " + msg, Toast.LENGTH_SHORT).show();
-            rdBtn.setError("This data is Required!");    // Set Error on last radio button
+
+            /*ScrollView scrollView = null;
+
+            Activity myact = (Activity) context;
+            final ViewGroup viewGroup = (ViewGroup) ((ViewGroup) myact.findViewById(android.R.id.content)).getChildAt(0);
+
+            for (int i = 0; i < viewGroup.getChildCount(); i++) {
+                if (viewGroup.getChildAt(i) instanceof ScrollView) {
+                    scrollView = (ScrollView) viewGroup.getChildAt(i);
+                    break;
+                }
+            }
+
+            final ScrollView myScrollView = scrollView;
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    int ypos = findYPositionInView(myScrollView, rdBtn, 0);
+                    myScrollView.smoothScrollTo(0, ypos - 200);
+
+                    rdBtn.setError("This data is Required!");
+                }
+            }, 200);
+*/
+
+            if (MainApp.validateFlag) {
+                Toast.makeText(context, "ERROR(Empty)" + msg, Toast.LENGTH_SHORT).show();
+            }
+            //rdBtn.setError("This data is Required!");    // Set Error on last radio button
 
             rdBtn.setFocusable(true);
-            rdBtn.setFocusableInTouchMode(true);
-            rdBtn.requestFocus();
+            //rdBtn.setFocusableInTouchMode(true);
+            rdGrp.requestFocus();
+
+            /*rdGrp.requestFocusFromTouch();
+            rdGrp.clearFocus();
+            rdGrp.clearChildFocus(rdBtn);*/
+            //((LinearLayout)rdGrp.getParent()).scrollTo(rdGrp.getScrollX(), rdGrp.getScrollY());
+
             Log.i(context.getClass().getName(), context.getResources().getResourceEntryName(rdGrp.getId()) + ": This data is Required!");
             return false;
         } else {
@@ -176,9 +284,13 @@ public abstract class validatorClass {
             }
         }
         if (flag) {
+            cbx.setError(null);
             return true;
         } else {
-            //Toast.makeText(context, "ERROR(empty): " + msg, Toast.LENGTH_LONG).show();
+
+            if (MainApp.validateFlag) {
+                Toast.makeText(context, "ERROR(Empty)" + msg, Toast.LENGTH_SHORT).show();
+            }
             cbx.setError("This data is Required!");    // Set Error on last radio button
 
             Log.i(context.getClass().getName(), context.getResources().getResourceEntryName(cbx.getId()) + ": This data is Required!");
@@ -206,7 +318,10 @@ public abstract class validatorClass {
             }
             return true;
         } else {
-            //Toast.makeText(context, "ERROR(empty): " + msg, Toast.LENGTH_LONG).show();
+
+            if (MainApp.validateFlag) {
+                Toast.makeText(context, "ERROR(Empty)" + msg, Toast.LENGTH_SHORT).show();
+            }
             cbx.setError("This data is Required!");    // Set Error on last radio button
 
             Log.i(context.getClass().getName(), context.getResources().getResourceEntryName(cbx.getId()) + ": This data is Required!");
@@ -218,7 +333,11 @@ public abstract class validatorClass {
         Boolean firstIterationFlag = true;
         for (EditText textField : textFields) {
             if (condition) {
-                // Toast.makeText(context, "ERROR(MultipleTxt): " + msg, Toast.LENGTH_SHORT).show();
+
+                if (MainApp.validateFlag) {
+                    Toast.makeText(context, "ERROR(MultipleTxt): " + msg, Toast.LENGTH_SHORT).show();
+                }
+
                 textField.setError(msg);
                 if (firstIterationFlag) {
                     textField.requestFocus();

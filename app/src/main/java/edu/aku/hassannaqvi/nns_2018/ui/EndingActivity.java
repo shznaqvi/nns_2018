@@ -11,6 +11,9 @@ import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -88,16 +91,19 @@ public class EndingActivity extends AppCompatActivity {
     private void SaveDraft() {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
-        MainApp.fc.setIstatus(binding.istatusa.isChecked() ? "1"
+        MainApp.fc.setIstatus(
+                binding.istatusa.isChecked() ? "1"
                 : binding.istatusb.isChecked() ? "2"
                 : binding.istatusc.isChecked() ? "3"
                 : binding.istatusd.isChecked() ? "4"
                 : binding.istatuse.isChecked() ? "5"
                 : binding.istatusf.isChecked() ? "6"
-                : binding.istatus96.isChecked() ? "96"
-                : "0");
+                        : binding.istatusg.isChecked() ? "7"
+                        : binding.istatus96.isChecked() ? "96"
+                        : "0");
 
         MainApp.fc.setIstatus88x(binding.istatus96x.getText().toString());
+        MainApp.fc.setEndtime(new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime()));
 
 
         //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();

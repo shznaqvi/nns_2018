@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="edu.aku.hassannaqvi.nns_2018.edu.aku.hassannaqvi.nns_2018.MainActivity">
+    tools:context="edu.aku.hassannaqvi.nns_2018.MainActivity">
 
     <data>
-
         <variable
             name="callback"
             type="edu.aku.hassannaqvi.nns_2018.ui.MainActivity" />
@@ -44,6 +43,7 @@
                 android:layout_marginTop="2dp"
                 android:background="@color/dullWhile"
                 android:text="Main Menu"
+                android:visibility="gone"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
 
@@ -145,8 +145,10 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="16dp"
                 android:background="#1565C0"
+                android:visibility="gone"
                 android:onClick="@{(v) -> callback.openViewMember(true)}"
                 android:text="View Members" />
+
 
 
             <Button
@@ -158,13 +160,15 @@
                 android:layout_marginTop="16dp"
                 android:background="#1565C0"
                 android:onClick="syncServer"
-                android:text="Upload Data" />
+                android:text="Upload Data"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/syncStatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sync Status" />
+                android:text="Sync Status"
+                android:visibility="gone" />
 
             <LinearLayout
                 android:id="@+id/adminsec"
@@ -181,7 +185,8 @@
                     android:layout_marginTop="16dp"
                     android:background="#1565C0"
                     android:onClick="syncDevice"
-                    android:text="Download Data" />
+                    android:text="Download Data"
+                    android:visibility="gone" />
 
                 <Button
                     android:id="@+id/downloadApp"

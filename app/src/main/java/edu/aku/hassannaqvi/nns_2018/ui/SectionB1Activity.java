@@ -1,18 +1,17 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -35,7 +34,7 @@ import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB1Binding;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionB1Activity extends Activity implements TextWatcher, RadioGroup.OnCheckedChangeListener, CompoundButton.OnCheckedChangeListener {
+public class SectionB1Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
     public static String wraName = "";
     public static int WRAcounter = 0;
@@ -64,7 +63,14 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
         //Assigning data to UI binding
         bi.setCallback(this);
 
+        this.setTitle(getResources().getString(R.string.nbheading));
+
         setupViews();
+
+
+//        Validation Boolean
+        MainApp.validateFlag = false;
+
     }
 
     public void setupViews() {
@@ -79,6 +85,9 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
                 lstMwra.remove(getIntent().getStringExtra("wraName"));
                 //      Increment WRA COUNTER
                 WRAcounter++;
+
+//                WRAsize = MainApp.mwra.size();
+
             } else {
                 wraMap = new HashMap<>();
                 lstMwra = new ArrayList<>();
@@ -92,15 +101,17 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
 
                 WRAcounter = 1;
 
-                WRAsize = MainApp.mwra.size();
+
             }
         } else {
 
-            if (WRAcounter == 0) {
+            if (WRAcounter == 1) {
                 wraMap = new HashMap<>();
                 lstMwra = new ArrayList<>();
 
                 lstMwra.add("....");
+
+                WRAsize = 0;
             }
 
             for (int i = WRAsize; i < MainApp.mwra.size(); i++) {
@@ -108,7 +119,8 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
                 lstMwra.add(MainApp.mwra.get(i).getName() + "-" + MainApp.mwra.get(i).getSerialNo());
             }
 
-            WRAsize = MainApp.mwra.size();
+//            WRAsize = MainApp.mwra.size();
+
         }
 
 
@@ -154,12 +166,17 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
 
 //============================================ Skip Patterns =======================================
 
+
+        bi.nw201days.addTextChangedListener(this);
+        bi.nw201months.addTextChangedListener(this);
+        bi.nw201years.addTextChangedListener(this);
+        bi.nw202.addTextChangedListener(this);
+
         bi.nw203.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (bi.nw203a.isChecked()) {
-                    //clearClass.ClearAllFields(bi.fldGrpnw204, true);
-
                     bi.nw204a.setEnabled(true);
                     bi.nw204b.setEnabled(true);
                     bi.nw205a.setEnabled(true);
@@ -248,9 +265,22 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
             }
         });
 
+        bi.nw216.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if (bi.nw216a.isChecked()) {
+                    bi.nw216aa.setEnabled(true);
+                } else {
+                    bi.nw216aa.setEnabled(false);
+                    bi.nw216aa.setText(null);
+                }
+            }
+        });
+
         bi.nw204.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (bi.nw204a.isChecked()) {
                     bi.nw205a.setEnabled(false);
                     bi.nw205b.setEnabled(false);
@@ -330,6 +360,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
         bi.nw205.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (bi.nw205a.isChecked()) {
                     bi.nw206.setEnabled(true);
                     bi.nw207a.setEnabled(true);
@@ -409,9 +440,12 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
             }
         });
 
+        bi.nw206.addTextChangedListener(this);
+
         bi.nw207.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (checkedId == R.id.nw207a) {
 
                     bi.nw211.setEnabled(true);
@@ -426,14 +460,11 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
                     bi.nw208b.setEnabled(true);
                     bi.nw209a.setEnabled(true);
                     bi.nw209b.setEnabled(true);
-
-
                     bi.nw21001a.setEnabled(true);
                     bi.nw21002a.setEnabled(true);
                     bi.nw21003a.setEnabled(true);
                     bi.nw21098a.setEnabled(true);
                     bi.nw21099a.setEnabled(true);
-
                     bi.nw21001b.setEnabled(true);
                     bi.nw21002b.setEnabled(true);
                     bi.nw21003b.setEnabled(true);
@@ -521,7 +552,6 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
 
             @Override
             public void afterTextChanged(Editable s) {
-
             }
         });
 
@@ -535,7 +565,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if (bi.nw207a.isChecked() && bi.nw208a.isChecked() && bi.nw211.getText().toString().equals("1"))
+                if (bi.nw207a.isChecked() && bi.nw208a.isChecked() && bi.nw211.getText().toString().equals("1")) {
                     if (bi.nw212.getText().toString().equals("0")) {
                         bi.nw213.setEnabled(false);
                         bi.nw213.setText(null);
@@ -559,6 +589,31 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
                         bi.nw216aa.setEnabled(true);
 
                     }
+                } else if (bi.nw207a.isChecked() && !bi.nw208a.isChecked() && bi.nw211.getText().toString().equals("1")) {
+                    if (bi.nw212.getText().toString().equals("0")) {
+                        bi.nw213.setEnabled(false);
+                        bi.nw213.setText(null);
+                        bi.nw214.setEnabled(false);
+                        bi.nw214.setText(null);
+                        bi.nw215.setEnabled(false);
+                        bi.nw215.setText(null);
+                        /*bi.nw216a.setEnabled(false);
+                        bi.nw216b.setEnabled(false);
+                        bi.nw216.clearCheck();
+                        bi.nw216aa.setEnabled(false);
+                        bi.nw216aa.setText(null);
+*/
+                    } else {
+
+                        bi.nw213.setEnabled(true);
+                        bi.nw214.setEnabled(true);
+                        bi.nw215.setEnabled(true);
+                        bi.nw216a.setEnabled(true);
+                        bi.nw216b.setEnabled(true);
+                        bi.nw216aa.setEnabled(true);
+
+                    }
+                }
             }
 
             @Override
@@ -577,14 +632,14 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if (bi.nw214.getText().toString().equals("0") || bi.nw214.getText().toString().isEmpty()) {
+                if (bi.nw214.getText().toString().equals("0")) {
                     bi.nw215.setEnabled(false);
                     bi.nw215.setText(null);
-                    bi.nw216a.setEnabled(false);
+                    /*bi.nw216a.setEnabled(false);
                     bi.nw216b.setEnabled(false);
                     bi.nw216.clearCheck();
                     bi.nw216aa.setEnabled(false);
-                    bi.nw216aa.setText(null);
+                    bi.nw216aa.setText(null);*/
                 } else {
                     bi.nw215.setEnabled(true);
                     bi.nw216a.setEnabled(true);
@@ -597,12 +652,14 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
             @Override
             public void afterTextChanged(Editable s) {
 
+
             }
         });
 
         bi.nw208.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (checkedId == R.id.nw208a) {
                     bi.nw209a.setEnabled(true);
                     bi.nw209b.setEnabled(true);
@@ -652,6 +709,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
         bi.nw209.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (checkedId == R.id.nw209a) {
                     bi.nw21001a.setEnabled(true);
                     bi.nw21002a.setEnabled(true);
@@ -692,6 +750,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
         bi.nw21001.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (checkedId == R.id.nw21001a) {
                     bi.nw21003.clearCheck();
                     bi.nw21098.clearCheck();
@@ -720,6 +779,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
         bi.nw21002.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (checkedId == R.id.nw21002a) {
                     bi.nw21003.clearCheck();
                     bi.nw21098.clearCheck();
@@ -749,6 +809,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
         bi.nw21003.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (checkedId == R.id.nw21003a) {
                     //  bi.nw209.clearCheck();
                     bi.nw21001.clearCheck();
@@ -783,6 +844,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
         bi.nw21098.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (checkedId == R.id.nw21098a) {
                     //  bi.nw209.clearCheck();
                     bi.nw21001.clearCheck();
@@ -818,6 +880,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
         bi.nw21099.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
                 if (checkedId == R.id.nw21099a) {
                     bi.nw21001.clearCheck();
                     bi.nw21002.clearCheck();
@@ -848,10 +911,18 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
             }
         });
 
+        bi.nw213.addTextChangedListener(this);
+        bi.nw214.addTextChangedListener(this);
+        bi.nw215.addTextChangedListener(this);
+        bi.nw216aa.addTextChangedListener(this);
+
 
     }
 
     public void BtnContinue() {
+
+//        Validation Boolean
+        MainApp.validateFlag = true;
 
         //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (ValidateForm()) {
@@ -867,6 +938,8 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
                 MainApp.count = 1;
 
                 frontPressed = true;
+
+                WRAsize = MainApp.mwra.size();
 
                 //finish();
 
@@ -916,6 +989,8 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
                             .putExtra("checkingFlag", true)
                             .putExtra("complete", true));
                 }
+
+                //startActivity(new Intent(this, SectionC1Activity.class));
 
 //                finish();
 
@@ -1029,15 +1104,6 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
 
                     if (bi.nw208a.isChecked()) {
 
-                        /*String Errormsg = " If you are curently pregnant then total number of pregnancies and deliveries cannot be equal!";
-                        Boolean condition = bi.nw211.getText().toString().equals(bi.nw212.getText().toString());
-                        Boolean condit = Integer.valueOf(bi.nw211.getText().toString()) == Integer.valueOf(bi.nw212.getText().toString());
-                        if (condition) {
-                            validatorClass.setErrorOnMultTextFields(this, Errormsg, condition, bi.nw211, bi.nw212);
-                            validatorClass.setErrorOnMultRadioFields(this, Errormsg, condition, bi.nw208a);
-                            return false;
-                        }
-*/
                         if (!validatorClass.EmptyRadioButton(this, bi.nw209, bi.nw209a, getString(R.string.nw210))) {
                             return false;
                         }
@@ -1063,9 +1129,11 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
                         return false;
                     }
 
-                    if (!validatorClass.EmptyTextBox(this, bi.nw212, getString(R.string.nw212))) {
-                        return false;
-                    }
+                    if (!validatorClass.RangeTextBox(this, bi.nw211, 1, 20, getString(R.string.nw211), " pregnancies"))
+
+                        if (!validatorClass.EmptyTextBox(this, bi.nw212, getString(R.string.nw212))) {
+                            return false;
+                        }
                     if (!validatorClass.RangeTextBox(this, bi.nw212, 0, Integer.valueOf(bi.nw211.getText().toString()), getString(R.string.nw212), " Deliveries")) {
                         return false;
                     }
@@ -1092,12 +1160,16 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
                             return false;
                         }
 
-                        if (!validatorClass.EmptyTextBox(this, bi.nw215, getString(R.string.nw215))) {
-                            return false;
+                        if (!bi.nw214.getText().toString().equals("0")) {
+
+                            if (!validatorClass.EmptyTextBox(this, bi.nw215, getString(R.string.nw215))) {
+                                return false;
+                            }
+                            if (!validatorClass.RangeTextBox(this, bi.nw215, 0, Integer.valueOf(bi.nw212.getText().toString()), getString(R.string.nw212), " Deliveries")) {
+                                return false;
+                            }
                         }
-                        if (!validatorClass.RangeTextBox(this, bi.nw215, 0, Integer.valueOf(bi.nw212.getText().toString()), getString(R.string.nw212), " Deliveries")) {
-                            return false;
-                        }
+                    }
 
                         if (!validatorClass.EmptyRadioButton(this, bi.nw216, bi.nw216a, getString(R.string.nw216))) {
                             return false;
@@ -1106,7 +1178,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
                         if (bi.nw216a.isChecked()) {
                             return validatorClass.EmptyTextBox(this, bi.nw216aa, getString(R.string.nw216a));
                         }
-                    }
+
 
                 }
 
@@ -1141,7 +1213,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
 
         wraName = bi.nb101.getSelectedItem().toString();
 
-        sB1.put("enmno", MainApp.fc.getEnmNo());
+        sB1.put("cluster_no", MainApp.fc.getClusterNo());
         sB1.put("hhno", MainApp.fc.getHhNo());
         sB1.put("nw101", bi.nb101.getSelectedItem().toString());
         sB1.put("nw1serialno", wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
@@ -1230,6 +1302,7 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
 
         if (backPressed) {
             bi.nb101.setEnabled(false);
+            bi.btnAddMember.setVisibility(View.GONE);
         }
 
     }
@@ -1256,8 +1329,13 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog,
                                                 int id) {
+
+                                WRAsize = MainApp.mwra.size();
+
+                                finish();
                                 startActivity(new Intent(SectionB1Activity.this, SectionA2ListActivity.class)
-                                        .putExtra("reBack", true));
+                                        .putExtra("reBack", true)
+                                        .putExtra("reBackChild", true));
                             }
                         });
         alertDialogBuilder.setNegativeButton("Cancel",
@@ -1283,15 +1361,33 @@ public class SectionB1Activity extends Activity implements TextWatcher, RadioGro
     @Override
     public void afterTextChanged(Editable s) {
 
+/*
+        timer.cancel();
+        timer = new Timer();
+        timer.schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+
+                        SectionB1Activity.this.runOnUiThread(new Runnable() {
+                            public void run() {
+                                ValidateForm();
+                            }
+                            //}
+                        });
+
+                    }
+                },
+                DELAY
+        );
+*/
+
     }
 
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-    }
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
 
+        ValidateForm();
     }
 }

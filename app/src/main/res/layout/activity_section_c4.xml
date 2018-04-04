@@ -24,7 +24,8 @@
             android:background="@color/colorPrimaryDark"
             android:gravity="center"
             android:text="@string/nc4heading"
-            android:textSize="40sp" />
+            android:textSize="40sp"
+            android:visibility="gone" />
 
         <View
             android:layout_width="match_parent"
@@ -153,7 +154,7 @@
                         android:id="@+id/fldGrnc403"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bacground_border1"
+
                         android:orientation="vertical">
 
                         <TextView
@@ -583,7 +584,7 @@
                         android:id="@+id/fldGrnc407"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bacground_border1"
+
                         android:orientation="vertical">
                         <!--nc407-->
                         <TextView
@@ -1022,7 +1023,7 @@
                         android:id="@+id/fldGrnc411"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bacground_border1"
+
                         android:orientation="vertical">
                         <!--11-->
                         <TextView

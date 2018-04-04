@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -27,7 +26,7 @@ import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC5Binding;
 import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionC5Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener, CompoundButton.OnCheckedChangeListener {
+public class SectionC5Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
     private final long DELAY = 1000;
     ActivitySectionC5Binding bi;
@@ -44,6 +43,8 @@ public class SectionC5Activity extends AppCompatActivity implements TextWatcher,
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_c5);
         bi.setCallback(this);
 
+        this.setTitle(getResources().getString(R.string.nc5heading));
+
         db = new DatabaseHelper(this);
 
         //Get Intent
@@ -56,7 +57,12 @@ public class SectionC5Activity extends AppCompatActivity implements TextWatcher,
         bi.nc504.setOnCheckedChangeListener(this);
         bi.nc505.setOnCheckedChangeListener(this);
         bi.nc506.setOnCheckedChangeListener(this);
+
+//        Validation Boolean
+        MainApp.validateFlag = false;
+
         autoPopulateFields();
+
     }
 
     private void autoPopulateFields() {
@@ -121,6 +127,9 @@ public class SectionC5Activity extends AppCompatActivity implements TextWatcher,
     }
 
     public void BtnContinue() {
+
+//        Validation Boolean
+        MainApp.validateFlag = true;
 
         //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
@@ -296,9 +305,5 @@ public class SectionC5Activity extends AppCompatActivity implements TextWatcher,
         formValidation();
     }
 
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        formValidation();
-    }
 
 }

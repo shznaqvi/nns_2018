@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -27,7 +26,7 @@ import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionB3Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener, CompoundButton.OnCheckedChangeListener {
+public class SectionB3Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
     private final long DELAY = 1000;
     ActivitySectionB3Binding binding;
@@ -44,7 +43,10 @@ public class SectionB3Activity extends AppCompatActivity implements TextWatcher,
 //        Assigning data to UI binding
         binding.setCallback(this);
 
+        this.setTitle(getResources().getString(R.string.nb3heading));
+
 //        Skip Patterns
+
         binding.nw327.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
@@ -65,8 +67,7 @@ public class SectionB3Activity extends AppCompatActivity implements TextWatcher,
                 formValidation();
                 if (i == R.id.nw330d) {
                     clearClass.ClearAllFields(binding.fldGrnw331, false);
-//                    binding.nw331.clearCheck();
-//                    binding.nw332.clearCheck();
+
                 } else {
                     clearClass.ClearAllFields(binding.fldGrnw331, true);
                 }
@@ -89,10 +90,17 @@ public class SectionB3Activity extends AppCompatActivity implements TextWatcher,
         });
 
 //        Listener
-        binding.nw328.setOnCheckedChangeListener(this);
-        binding.nw329a.setOnCheckedChangeListener(this);
+        //binding.nw328.setOnCheckedChangeListener(this);
         binding.nw332.setOnCheckedChangeListener(this);
 
+//        Validation Boolean
+        MainApp.validateFlag = false;
+
+        AutoCompleteFields();
+
+    }
+
+    public void AutoCompleteFields() {
         MWRAContract mwraContract = db.getsB3();
         if (!mwraContract.getsB3().equals("")) {
 
@@ -173,6 +181,9 @@ public class SectionB3Activity extends AppCompatActivity implements TextWatcher,
 
     public void BtnContinue() {
 
+//        Validation Boolean
+        MainApp.validateFlag = true;
+
         if (formValidation()) {
             try {
                 SaveDraft();
@@ -205,29 +216,36 @@ public class SectionB3Activity extends AppCompatActivity implements TextWatcher,
         //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
 //        nw327
-        if (!validatorClass.EmptyRadioButton(this, binding.nw327, binding.nw32798, getString(R.string.nw327))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, binding.nw327, binding.nw327a, binding.nw327m, getString(R.string.nw327))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, binding.nw327, binding.nw327b, binding.nw327d, getString(R.string.nw327))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nw327, binding.nw327a, getString(R.string.nw327))) {
             return false;
         }
 
         if (!binding.nw32798.isChecked()) {
+
+            if (binding.nw327a.isChecked()) {
+                if (!validatorClass.EmptyTextBox(this, binding.nw327m, getString(R.string.nw327))) {
+                    return false;
+                }
+            } else if (binding.nw327b.isChecked()) {
+                if (!validatorClass.EmptyTextBox(this, binding.nw327d, getString(R.string.nw327))) {
+                    return false;
+                }
+            }
+
+            //if (!binding.nw32798.isChecked()) {
             // nw328
+            if (!validatorClass.EmptyRadioButton(this, binding.nw328, binding.nw328a, getString(R.string.nw328))) {
+                return false;
+            }
             if (!validatorClass.EmptyRadioButton(this, binding.nw328, binding.nw32896, binding.nw32896x, getString(R.string.nw328))) {
                 return false;
             }
             // nw329
-            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnw329, binding.nw329h, getString(R.string.nw329))) {
+            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnw329, binding.nw329a, getString(R.string.nw329))) {
                 return false;
             }
             // nw330
-            if (!validatorClass.EmptyRadioButton(this, binding.nw330, binding.nw330d, getString(R.string.nw330))) {
+            if (!validatorClass.EmptyRadioButton(this, binding.nw330, binding.nw330a, getString(R.string.nw330))) {
                 return false;
             }
 
@@ -239,11 +257,12 @@ public class SectionB3Activity extends AppCompatActivity implements TextWatcher,
 
                 if (binding.nw331a.isChecked()) {
                     // nw332
-                    return validatorClass.EmptyRadioButton(this, binding.nw332, binding.nw332d, getString(R.string.nw332));
+                    return validatorClass.EmptyRadioButton(this, binding.nw332, binding.nw332a, getString(R.string.nw332));
                 }
             }
-
         }
+
+        //}
 
         return true;
     }
@@ -371,11 +390,6 @@ public class SectionB3Activity extends AppCompatActivity implements TextWatcher,
                 },
                 DELAY
         );
-    }
-
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        formValidation();
     }
 
     @Override

@@ -1,9 +1,9 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -18,15 +18,18 @@ import java.text.SimpleDateFormat;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONC4ModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC4Binding;
+import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionC4Activity extends Activity implements TextWatcher, RadioGroup.OnCheckedChangeListener, CompoundButton.OnCheckedChangeListener {
+public class SectionC4Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener, CompoundButton.OnCheckedChangeListener {
 
     private final long DELAY = 1000;
     ActivitySectionC4Binding binding;
@@ -43,6 +46,8 @@ public class SectionC4Activity extends Activity implements TextWatcher, RadioGro
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_c4);
         db = new DatabaseHelper(this);
 
+        this.setTitle(getResources().getString(R.string.nc4heading));
+
         //        Assigning data to UI binding
         binding.setCallback(this);
 
@@ -55,30 +60,10 @@ public class SectionC4Activity extends Activity implements TextWatcher, RadioGro
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 formValidation();
                 if (binding.nc401a.isChecked()) {
-                    //binding.fldGrnc402.setVisibility(View.VISIBLE);
                     clearClass.ClearAllFields(binding.fldGrnc402, true);
                 } else {
                     clearClass.ClearAllFields(binding.fldGrnc402, false);
 
-                    /*binding.fldGrnc402.setVisibility(View.GONE);
-                    binding.nc402.clearCheck();
-                    binding.nc403.clearCheck();
-
-                    binding.nc404a.setChecked(false);
-                    binding.nc404b.setChecked(false);
-                    binding.nc404c.setChecked(false);
-                    binding.nc404d.setChecked(false);
-                    binding.nc404e.setChecked(false);
-                    binding.nc404f.setChecked(false);
-                    binding.nc404g.setChecked(false);
-                    binding.nc404h.setChecked(false);
-                    binding.nc404i.setChecked(false);
-                    binding.nc404j.setChecked(false);
-                    binding.nc40496x.setText(null);
-
-                    binding.nc4039601x.setText(null);
-                    binding.nc4039602x.setText(null);
-                    binding.nc4039603x.setText(null);*/
                 }
             }
         });
@@ -87,31 +72,11 @@ public class SectionC4Activity extends Activity implements TextWatcher, RadioGro
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 formValidation();
                 if (binding.nc402a.isChecked()) {
-                    //binding.fldGrnc403.setVisibility(View.VISIBLE);
                     clearClass.ClearAllFields(binding.fldGrnc403, true);
                 } else {
 
                     clearClass.ClearAllFields(binding.fldGrnc403, false);
-                    /*binding.fldGrnc403.setVisibility(View.GONE);
-                    binding.nc403.clearCheck();
 
-                    binding.nc4039601x.setText(null);
-                    binding.nc4039602x.setText(null);
-                    binding.nc4039603x.setText(null);
-
-                    binding.nc404a.setChecked(false);
-                    binding.nc404b.setChecked(false);
-                    binding.nc404c.setChecked(false);
-                    binding.nc404d.setChecked(false);
-                    binding.nc404e.setChecked(false);
-                    binding.nc404f.setChecked(false);
-                    binding.nc404g.setChecked(false);
-                    binding.nc404h.setChecked(false);
-                    binding.nc404i.setChecked(false);
-                    binding.nc404j.setChecked(false);
-                    binding.nc40496.setChecked(false);
-
-                    binding.nc40496x.setText(null);*/
                 }
             }
         });
@@ -121,28 +86,10 @@ public class SectionC4Activity extends Activity implements TextWatcher, RadioGro
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 formValidation();
                 if (binding.nc405a.isChecked()) {
-                    //binding.fldGrnc406.setVisibility(View.VISIBLE);
                     clearClass.ClearAllFields(binding.fldGrnc406, true);
                 } else {
                     clearClass.ClearAllFields(binding.fldGrnc406, false);
-                    /*binding.fldGrnc406.setVisibility(View.GONE);
-                    binding.nc406.clearCheck();
-                    binding.nc407.clearCheck();
 
-                    binding.nc4079601x.setText(null);
-                    binding.nc4079602x.setText(null);
-                    binding.nc4079603x.setText(null);
-
-                    binding.nc408a.setChecked(false);
-                    binding.nc408b.setChecked(false);
-                    binding.nc408c.setChecked(false);
-                    binding.nc408d.setChecked(false);
-                    binding.nc408e.setChecked(false);
-                    binding.nc408f.setChecked(false);
-                    binding.nc408g.setChecked(false);
-                    binding.nc408h.setChecked(false);
-                    binding.nc408i.setChecked(false);
-                    binding.nc4089601x.setText(null);*/
                 }
             }
         });
@@ -151,27 +98,10 @@ public class SectionC4Activity extends Activity implements TextWatcher, RadioGro
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 formValidation();
                 if (binding.nc406a.isChecked()) {
-                    //binding.fldGrnc407.setVisibility(View.VISIBLE);
                     clearClass.ClearAllFields(binding.fldGrnc407, true);
                 } else {
                     clearClass.ClearAllFields(binding.fldGrnc407, false);
-                    /*binding.fldGrnc407.setVisibility(View.GONE);
-                    binding.nc407.clearCheck();
 
-                    binding.nc4079601x.setText(null);
-                    binding.nc4079602x.setText(null);
-                    binding.nc4079603x.setText(null);
-
-                    binding.nc408a.setChecked(false);
-                    binding.nc408b.setChecked(false);
-                    binding.nc408c.setChecked(false);
-                    binding.nc408d.setChecked(false);
-                    binding.nc408e.setChecked(false);
-                    binding.nc408f.setChecked(false);
-                    binding.nc408g.setChecked(false);
-                    binding.nc408h.setChecked(false);
-                    binding.nc408i.setChecked(false);
-                    binding.nc4089601x.setText(null);*/
                 }
             }
         });
@@ -185,26 +115,7 @@ public class SectionC4Activity extends Activity implements TextWatcher, RadioGro
                     clearClass.ClearAllFields(binding.fldGrnc410, true);
                 } else {
                     clearClass.ClearAllFields(binding.fldGrnc410, false);
-                    /*binding.fldGrnc410.setVisibility(View.GONE);
-                    binding.nc410.clearCheck();
-                    binding.nc411.clearCheck();
 
-                    binding.nc4119601x.setText(null);
-                    binding.nc4119602x.setText(null);
-                    binding.nc4119603x.setText(null);
-
-
-                    binding.nc412b.setChecked(false);
-                    binding.nc412c.setChecked(false);
-//                    binding.nc412d.setChecked(false);
-                    binding.nc412e.setChecked(false);
-                    binding.nc412f.setChecked(false);
-                    binding.nc412g.setChecked(false);
-                    binding.nc412h.setChecked(false);
-                    binding.nc412i.setChecked(false);
-                    binding.nc4129601x.setText(null);
-
-*/
                 }
             }
         });
@@ -213,26 +124,10 @@ public class SectionC4Activity extends Activity implements TextWatcher, RadioGro
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 formValidation();
                 if (binding.nc410a.isChecked()) {
-                    //binding.fldGrnc411.setVisibility(View.VISIBLE);
                     clearClass.ClearAllFields(binding.fldGrnc411, true);
                 } else {
                     clearClass.ClearAllFields(binding.fldGrnc411, false);
-                    /*binding.fldGrnc411.setVisibility(View.GONE);
-                    binding.nc411.clearCheck();
 
-                    binding.nc4119601x.setText(null);
-                    binding.nc4119602x.setText(null);
-                    binding.nc4119603x.setText(null);
-
-                    binding.nc412b.setChecked(false);
-                    binding.nc412c.setChecked(false);
-//                    binding.nc412d.setChecked(false);
-                    binding.nc412e.setChecked(false);
-                    binding.nc412f.setChecked(false);
-                    binding.nc412g.setChecked(false);
-                    binding.nc412h.setChecked(false);
-                    binding.nc412i.setChecked(false);
-                    binding.nc4129601x.setText(null);*/
                 }
             }
         });
@@ -278,10 +173,14 @@ public class SectionC4Activity extends Activity implements TextWatcher, RadioGro
         binding.nc419.setOnCheckedChangeListener(this);
         binding.nc420m.addTextChangedListener(this);
         binding.nc420d.addTextChangedListener(this);
-        //autoPopulateFields();
+
+//        Validation Boolean
+        MainApp.validateFlag = false;
+
+        autoPopulateFields();
     }
 
-    /*private void autoPopulateFields() {
+    private void autoPopulateFields() {
         ChildContract childContract = db.getsC4();
 
         if (!childContract.getsC4().equals("")) {
@@ -609,7 +508,7 @@ public class SectionC4Activity extends Activity implements TextWatcher, RadioGro
 
 
         }
-    }*/
+    }
 
 
     @Override
@@ -629,6 +528,9 @@ public class SectionC4Activity extends Activity implements TextWatcher, RadioGro
 
     public void BtnContinue() {
 
+//        Validation Boolean
+        MainApp.validateFlag = true;
+
         //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
             try {
@@ -637,9 +539,6 @@ public class SectionC4Activity extends Activity implements TextWatcher, RadioGro
                 e.printStackTrace();
             }
             if (UpdateDB()) {
-                //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
-
-                // finish();
                 backPressed = true;
 
                 if (Integer.valueOf(selectedChild.getAgeInYear()) >= 2) {
@@ -647,7 +546,6 @@ public class SectionC4Activity extends Activity implements TextWatcher, RadioGro
                             .putExtra("selectedChild", selectedChild));
                 } else {
 
-                    /*MainApp.endActivityMotherChild(this, this, false, true);*/
 
                     startActivity(new Intent(this, ChildEndingActivity.class)
                             //.putExtra("checkingFlag", false)
@@ -698,6 +596,10 @@ public class SectionC4Activity extends Activity implements TextWatcher, RadioGro
                 }
 
 //        fldGrpnc404
+
+                if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnc404, binding.nc404a, getString(R.string.nc404))) {
+                    return false;
+                }
                 if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnc404, binding.nc40496, binding.nc40496x, getString(R.string.nc404))) {
                     return false;
                 }
@@ -720,7 +622,7 @@ public class SectionC4Activity extends Activity implements TextWatcher, RadioGro
             if (binding.nc406a.isChecked()) {
 
                 // nc407
-                if (!validatorClass.EmptyRadioButton(this, binding.nc407, binding.nc4079603, getString(R.string.nc407))) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nc407, binding.nc407a, getString(R.string.nc407))) {
                     return false;
                 }
 
@@ -738,6 +640,9 @@ public class SectionC4Activity extends Activity implements TextWatcher, RadioGro
                 }
 
                 //    fldGrnc408check
+                if (!validatorClass.EmptyCheckBox(this, binding.fldGrnc408check, binding.nc408a, getString(R.string.nc408))) {
+                    return false;
+                }
                 if (!validatorClass.EmptyCheckBox(this, binding.fldGrnc408check, binding.nc4089601, binding.nc4089601x, getString(R.string.nc408))) {
                     return false;
                 }
@@ -755,7 +660,8 @@ public class SectionC4Activity extends Activity implements TextWatcher, RadioGro
             }
             if (binding.nc410a.isChecked()) {
                 // nc411
-                if (!validatorClass.EmptyRadioButton(this, binding.nc411, binding.nc4119603, getString(R.string.nc411))) {
+
+                if (!validatorClass.EmptyRadioButton(this, binding.nc411, binding.nc411a, getString(R.string.nc411))) {
                     return false;
                 }
 
@@ -772,6 +678,9 @@ public class SectionC4Activity extends Activity implements TextWatcher, RadioGro
                     return false;
                 }
                 // fldGrnc412check
+                if (!validatorClass.EmptyCheckBox(this, binding.fldGrnc412check, binding.nc412b, getString(R.string.nc412))) {
+                    return false;
+                }
                 if (!validatorClass.EmptyCheckBox(this, binding.fldGrnc412check, binding.nc4129601, binding.nc4129601x, getString(R.string.nc412))) {
                     return false;
                 }
@@ -779,16 +688,16 @@ public class SectionC4Activity extends Activity implements TextWatcher, RadioGro
         }
 
 //       nc413
-        if (!validatorClass.EmptyRadioButton(this, binding.nc413, binding.nc41398, getString(R.string.nc413))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nc413, binding.nc413a, getString(R.string.nc413))) {
             return false;
         }
 
 //        nc414
-        if (!validatorClass.EmptyRadioButton(this, binding.nc414, binding.nc41498, getString(R.string.nc414))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nc414, binding.nc414a, getString(R.string.nc414))) {
             return false;
         }
 //    nc415
-        if (!validatorClass.EmptyRadioButton(this, binding.nc415, binding.nc41598, getString(R.string.nc415))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nc415, binding.nc415a, getString(R.string.nc415))) {
             return false;
         }
 

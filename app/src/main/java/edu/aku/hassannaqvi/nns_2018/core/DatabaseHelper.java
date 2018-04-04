@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
@@ -87,13 +88,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsTable.COLUMN_USER + " TEXT," +
             FormsTable.COLUMN_RESP_LNO + " TEXT," +
             FormsTable.COLUMN_HH_NO + " TEXT," +
-            FormsTable.COLUMN_ENM_NO + " TEXT," +
+            FormsTable.COLUMN_CLUSTER_NO + " TEXT," +
 
             FormsTable.COLUMN_GPSELEV + " TEXT," +
             FormsTable.COLUMN_SA1 + " TEXT," +
             FormsTable.COLUMN_SA4 + " TEXT," +
             FormsTable.COLUMN_SA5 + " TEXT," +
-            FormsTable.COLUMN_SB4 + " TEXT," +
+            FormsTable.COLUMN_END_TIME + " TEXT," +
             FormsTable.COLUMN_ISTATUS + " TEXT," +
             FormsTable.COLUMN_ISTATUS88x + " TEXT," +
             FormsTable.COLUMN_COUNT + " TEXT," +
@@ -111,7 +112,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + familyMembers.TABLE_NAME + "("
             + familyMembers.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + familyMembers.COLUMN_PROJECT_NAME + " TEXT,"
-            + familyMembers.COLUMN_UID + " TEXT," +
+            + familyMembers.COLUMN_UID + " TEXT UNIQUE," +
             familyMembers.COLUMN_UUID + " TEXT," +
             familyMembers.COLUMN_FORMDATE + " TEXT," +
             familyMembers.COLUMN_USER + " TEXT," +
@@ -171,7 +172,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     final String SQL_CREATE_TALUKA = "CREATE TABLE " + EnumBlockTable.TABLE_NAME + " (" +
             EnumBlockTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             EnumBlockTable.COLUMN_EB_CODE + " TEXT, " +
-            EnumBlockTable.COLUMN_GEO_AREA + " TEXT " +
+            EnumBlockTable.COLUMN_GEO_AREA + " TEXT, " +
+            EnumBlockTable.COLUMN_CLUSTER_AREA + " TEXT " +
             ");";
     final String SQL_CREATE_UC = "CREATE TABLE " + UCsTable.TABLE_NAME + " (" +
             UCsTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -356,7 +358,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ContentValues values = new ContentValues();
 
                 values.put(EnumBlockTable.COLUMN_EB_CODE, Vc.getEbcode());
-                values.put(EnumBlockTable.COLUMN_GEO_AREA, Vc.getTalukaName());
+                values.put(EnumBlockTable.COLUMN_GEO_AREA, Vc.getGeoarea());
+                values.put(EnumBlockTable.COLUMN_CLUSTER_AREA, Vc.getCluster());
 
                 db.insert(EnumBlockTable.TABLE_NAME, null, values);
             }
@@ -446,7 +449,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public String getUIDByHH(String subAreaCode, String hh) {
+    public String getUIDByHH(String subAreaCode, String hh, String status) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -456,10 +459,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         };
 
-        String whereClause = FormsTable.COLUMN_ENM_NO + "=? AND " +
+        String whereClause = FormsTable.COLUMN_CLUSTER_NO + "=? AND " +
                 FormsTable.COLUMN_HH_NO + "=? AND " +
                 FormsTable.COLUMN_ISTATUS + "=?";
-        String[] whereArgs = new String[]{subAreaCode, hh, "1"};
+        String[] whereArgs = new String[]{subAreaCode, hh, status};
         String groupBy = null;
         String having = null;
 
@@ -549,7 +552,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-
     public Collection<BLRandomContract> getAllBLRandom(String subAreaCode, String hh) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -601,25 +603,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allBL;
     }
 
-    public String getEnumBlock(String enumBlock) {
+    public EnumBlockContract getEnumBlock(String cluster) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
                 EnumBlockTable._ID,
                 EnumBlockTable.COLUMN_EB_CODE,
-                EnumBlockTable.COLUMN_GEO_AREA
+                EnumBlockTable.COLUMN_GEO_AREA,
+                EnumBlockTable.COLUMN_CLUSTER_AREA
         };
 
-        String whereClause = EnumBlockTable.COLUMN_EB_CODE + " =?";
-        String[] whereArgs = new String[]{enumBlock};
+        String whereClause = EnumBlockTable.COLUMN_CLUSTER_AREA + " =?";
+        String[] whereArgs = new String[]{cluster};
         String groupBy = null;
         String having = null;
 
         String orderBy =
                 EnumBlockTable._ID + " ASC";
 
-        String allEB = "";
+        EnumBlockContract allEB = null;
         try {
             c = db.query(
                     EnumBlockTable.TABLE_NAME,  // The table to query
@@ -631,7 +634,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                allEB = c.getString(c.getColumnIndex(EnumBlockTable.COLUMN_GEO_AREA));
+                allEB = new EnumBlockContract().HydrateEnum(c);
             }
         } finally {
             if (c != null) {
@@ -801,6 +804,41 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public void syncAnthroFromDevice(JSONArray fmlist) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        //db.delete(UsersTable.TABLE_NAME, null, null);
+        try {
+            JSONArray jsonArray = fmlist;
+            for (int i = 0; i < jsonArray.length(); i++) {
+
+                JSONObject jsonObjectUser = jsonArray.getJSONObject(i);
+
+                FamilyMembersContract fmc = new FamilyMembersContract();
+                fmc.Sync(jsonObjectUser);
+                ContentValues values = new ContentValues();
+
+                values.put(familyMembers.COLUMN_UID, fmc.get_UID());
+                values.put(familyMembers.COLUMN_UUID, fmc.get_UUID());
+                values.put(familyMembers.COLUMN_FORMDATE, fmc.getFormDate());
+                values.put(familyMembers.COLUMN_USER, fmc.getUser());
+                //FormsTable.COLUMN_GPSELEV,
+                values.put(familyMembers.COLUMN_HH_NO, fmc.getHhNo());
+                values.put(familyMembers.COLUMN_ENM_NO, fmc.getEnmNo());
+                values.put(familyMembers.COLUMN_SA2, fmc.getsA2());
+                values.put(familyMembers.COLUMN_AV, fmc.getAv());
+                values.put(familyMembers.COLUMN_DEVICETAGID, fmc.getDeviceId());
+                values.put(familyMembers.COLUMN_DEVICEID, fmc.getDeviceId());
+                db.insert(familyMembers.TABLE_NAME, null, values);
+            }
+
+
+        } catch (Exception e) {
+            Log.d(TAG, "syncAnthro(e): " + e);
+        } finally {
+            db.close();
+        }
+    }
+
     public boolean Login(String username, String password) throws SQLException {
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -860,7 +898,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_FORMDATE, fc.getFormDate());
         values.put(FormsTable.COLUMN_USER, fc.getUser());
         values.put(FormsTable.COLUMN_RESP_LNO, fc.getRespLineNo());
-        values.put(FormsTable.COLUMN_ENM_NO, fc.getEnmNo());
+        values.put(FormsTable.COLUMN_CLUSTER_NO, fc.getClusterNo());
         values.put(FormsTable.COLUMN_HH_NO, fc.getHhNo());
         values.put(FormsTable.COLUMN_GPSELEV, fc.getGpsElev());
         values.put(FormsTable.COLUMN_ISTATUS, fc.getIstatus());
@@ -868,7 +906,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_SA1, fc.getsA1());
         values.put(FormsTable.COLUMN_SA4, fc.getsA4());
         values.put(FormsTable.COLUMN_SA5, fc.getsA5());
-        values.put(FormsTable.COLUMN_SB4, fc.getsB4());
+        //values.put(FormsTable.COLUMN_END_TIME, fc.getEndtime());
         values.put(FormsTable.COLUMN_COUNT, fc.getCount());
         values.put(FormsTable.COLUMN_GPSLAT, fc.getGpsLat());
         values.put(FormsTable.COLUMN_GPSLNG, fc.getGpsLng());
@@ -1628,13 +1666,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_RESP_LNO,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_ISTATUS88x,
-                //FormsTable.COLUMN_GPSELEV,
+                FormsTable.COLUMN_GPSELEV,
                 FormsTable.COLUMN_HH_NO,
-                FormsTable.COLUMN_ENM_NO,
+                FormsTable.COLUMN_CLUSTER_NO,
                 FormsTable.COLUMN_SA1,
                 FormsTable.COLUMN_SA4,
                 FormsTable.COLUMN_SA5,
-                FormsTable.COLUMN_SB4,
+                FormsTable.COLUMN_END_TIME,
                 FormsTable.COLUMN_COUNT,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
@@ -1668,6 +1706,69 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (c.moveToNext()) {
                 FormsContract fc = new FormsContract();
                 allFC.add(fc.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
+    public FormsContract getPressedForms(String cluster, String hhno) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                FormsTable._ID,
+                FormsTable.COLUMN_UID,
+                FormsTable.COLUMN_FORMDATE,
+                FormsTable.COLUMN_USER,
+                FormsTable.COLUMN_RESP_LNO,
+                FormsTable.COLUMN_ISTATUS,
+                FormsTable.COLUMN_ISTATUS88x,
+                FormsTable.COLUMN_GPSELEV,
+                FormsTable.COLUMN_HH_NO,
+                FormsTable.COLUMN_CLUSTER_NO,
+                FormsTable.COLUMN_SA1,
+                FormsTable.COLUMN_SA4,
+                FormsTable.COLUMN_SA5,
+                FormsTable.COLUMN_END_TIME,
+                FormsTable.COLUMN_COUNT,
+                FormsTable.COLUMN_GPSLAT,
+                FormsTable.COLUMN_GPSLNG,
+                FormsTable.COLUMN_GPSDATE,
+                FormsTable.COLUMN_GPSACC,
+                FormsTable.COLUMN_DEVICETAGID,
+                FormsTable.COLUMN_DEVICEID,
+                FormsTable.COLUMN_SYNCED,
+                FormsTable.COLUMN_SYNCED_DATE,
+                FormsTable.COLUMN_APP_VERSION
+        };
+        String whereClause = FormsTable.COLUMN_CLUSTER_NO + " =? AND " + FormsTable.COLUMN_HH_NO + " =? AND "
+                + FormsTable.COLUMN_ISTATUS + " =? AND (" + FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + " = '')";
+        String[] whereArgs = new String[]{cluster, hhno, "1 OR 7"};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                FormsTable._ID + " DESC LIMIT 1";
+
+        FormsContract allFC = null;
+        try {
+            c = db.query(
+                    FormsTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                allFC = new FormsContract().Hydrate(c);
             }
         } finally {
             if (c != null) {
@@ -1735,11 +1836,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFC;
     }
 
-    public Collection<FamilyMembersContract> getAnthroFamilyMembers() {
+    public JSONArray getAnthroFamilyMembers() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                familyMembers._ID,
                 familyMembers.COLUMN_UID,
                 familyMembers.COLUMN_UUID,
                 familyMembers.COLUMN_FORMDATE,
@@ -1748,25 +1848,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 familyMembers.COLUMN_HH_NO,
                 familyMembers.COLUMN_ENM_NO,
                 familyMembers.COLUMN_SA2,
+                familyMembers.COLUMN_AV,
                 familyMembers.COLUMN_DEVICETAGID,
                 familyMembers.COLUMN_DEVICEID,
-                familyMembers.COLUMN_SYNCED,
-                familyMembers.COLUMN_SYNCED_DATE,
-                familyMembers.COLUMN_APP_VERSION
         };
 
         /*String selection = ChildTable.COLUMN__ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.cc.get_ID())};*/
 
-        String whereClause = familyMembers.COLUMN_UUID + " = ?  ";
-        String[] whereArgs = {String.valueOf(MainApp.fc.getUID())};
+        String whereClause = familyMembers.COLUMN_UUID + " = ?  and " + familyMembers.COLUMN_AV + " = ?";
+        String[] whereArgs = {String.valueOf(MainApp.fc.getUID()), "1"};
         String groupBy = null;
         String having = null;
 
         String orderBy =
-                familyMembers._ID + " ASC";
+                familyMembers.COLUMN_ID + " ASC";
 
         Collection<FamilyMembersContract> allFC = new ArrayList<FamilyMembersContract>();
+        JSONArray jsonArray = new JSONArray();
         try {
             c = db.query(
                     familyMembers.TABLE_NAME,  // The table to query
@@ -1781,6 +1880,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FamilyMembersContract fc = new FamilyMembersContract();
                 allFC.add(fc.Hydrate(c));
             }
+            for (FamilyMembersContract fc : allFC) {
+                //if (fc.getIstatus().equals("1")) {
+                jsonArray.put(fc.toJSONObject());
+                //}
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
         } finally {
             if (c != null) {
                 c.close();
@@ -1789,7 +1895,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.close();
             }
         }
-        return allFC;
+        return jsonArray;
     }
 
 
@@ -1843,7 +1949,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return allFC;
     }
-
 
 
     public Collection<ChildContract> getUnsyncedChildForms() {
@@ -2821,7 +2926,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] columns = {
                 FormsTable._ID,
                 FormsTable.COLUMN_HH_NO,
-                FormsTable.COLUMN_ENM_NO,
+                FormsTable.COLUMN_CLUSTER_NO,
                 FormsTable.COLUMN_FORMDATE,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_SYNCED,
@@ -2849,7 +2954,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (c.moveToNext()) {
                 FormsContract fc = new FormsContract();
                 fc.set_ID(c.getString(c.getColumnIndex(FormsTable._ID)));
-                fc.setEnmNo(c.getString(c.getColumnIndex(FormsTable.COLUMN_ENM_NO)));
+                fc.setClusterNo(c.getString(c.getColumnIndex(FormsTable.COLUMN_CLUSTER_NO)));
                 fc.setHhNo(c.getString(c.getColumnIndex(FormsTable.COLUMN_HH_NO)));
                 fc.setFormDate(c.getString(c.getColumnIndex(FormsTable.COLUMN_FORMDATE)));
                 fc.setIstatus(c.getString(c.getColumnIndex(FormsTable.COLUMN_ISTATUS)));
@@ -3159,7 +3264,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 // New value for one column
         ContentValues values = new ContentValues();
-        values.put(FormsTable.COLUMN_SB4, MainApp.fc.getsB4());
+        values.put(FormsTable.COLUMN_END_TIME, MainApp.fc.getEndtime());
 
 // Which row to update, based on the ID
         String selection = FormsTable._ID + " = ?";
@@ -3199,6 +3304,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(FormsTable.COLUMN_ISTATUS, MainApp.fc.getIstatus());
         values.put(FormsTable.COLUMN_ISTATUS88x, MainApp.fc.getIstatus88x());
+        values.put(FormsTable.COLUMN_END_TIME, MainApp.fc.getEndtime());
 
 // Which row to update, based on the ID
         String selection = FormsTable._ID + " =? ";

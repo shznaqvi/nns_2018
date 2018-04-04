@@ -10,8 +10,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -25,6 +27,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindViews;
 import butterknife.ButterKnife;
@@ -37,7 +40,7 @@ import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC1Binding;
 import edu.aku.hassannaqvi.nns_2018.other.DateUtils;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionC1Activity extends AppCompatActivity implements TextWatcher {
+public class SectionC1Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
     public static int counter = 1;
     public static int counterPerMom = 0;
@@ -72,6 +75,8 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_c1);
         ButterKnife.bind(this);
+
+        this.setTitle(getResources().getString(R.string.nc1heading));
         db = new DatabaseHelper(this);
         respName = new ArrayList<>();
         respName.add("....");
@@ -87,6 +92,13 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
             if (getIntent().getBooleanExtra("childFlag", false)) {
                 childU5.remove(getIntent().getStringExtra("name"));
                 counter++;
+
+                /*if (isNA) {
+                    NAChildsize = MainApp.childNA.size();
+                } else {
+                    Childsize = MainApp.childUnder5.size();
+                }*/
+
             } else {
 
                 counter = 1;
@@ -138,14 +150,14 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
                     childU5.add(MainApp.childNA.get(i).getName() + "-" + MainApp.childNA.get(i).getSerialNo());
                     counterPerNA++;
                 }
-                NAChildsize = MainApp.childNA.size();
+//                NAChildsize = MainApp.childNA.size();
             } else {
                 for (int i = Childsize; i < MainApp.childUnder5.size(); i++) {
                     childMap.put(MainApp.childUnder5.get(Childsize).getName() + "-" + MainApp.childUnder5.get(Childsize).getSerialNo(), MainApp.childUnder5.get(Childsize));
                     childU5.add(MainApp.childUnder5.get(Childsize).getName() + "-" + MainApp.childUnder5.get(Childsize).getSerialNo());
                     counterPerMom++;
                 }
-                Childsize = MainApp.childUnder5.size();
+//                Childsize = MainApp.childUnder5.size();
             }
         }
 
@@ -164,7 +176,6 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
         // setup spinner
         binding.nc101.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, childU5));
         binding.resp.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, respName));
-
         for (EditText ed : grpDate) {
             ed.addTextChangedListener(this);
         }
@@ -196,9 +207,35 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
             @Override
             public void afterTextChanged(Editable s) {
 
+                timer.cancel();
+                timer = new Timer();
+                timer.schedule(
+                        new TimerTask() {
+                            @Override
+                            public void run() {
+
+                                runOnUiThread(new Runnable() {
+                                    public void run() {
+                                        formValidation();
+                                    }
+                                    //}
+                                });
+
+                            }
+                        },
+                        DELAY
+                );
+
+
             }
         });
 
+        binding.nc202.setOnCheckedChangeListener(this);
+        binding.nc205.setOnCheckedChangeListener(this);
+
+
+//        Validation Boolean
+        MainApp.validateFlag = false;
 
     }
 
@@ -209,6 +246,9 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
     }
 
     public void BtnContinue() {
+
+//        Validation Boolean
+        MainApp.validateFlag = true;
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
@@ -223,15 +263,21 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
 
                 frontPressed = true;
 
+                if (isNA) {
+                    NAChildsize = MainApp.childNA.size();
+                } else {
+                    Childsize = MainApp.childUnder5.size();
+                }
+
                 if (ageInMontsbyDob < 24) {
                     startActivity(new Intent(this, SectionC2Activity.class)
                             .putExtra("selectedChild", childMap.get(binding.nc101.getSelectedItem().toString()))
                             .putExtra("backPressed", backPressed));
-                } else if (ageInMontsbyDob >= 24 && ageInMontsbyDob < 59) {
+                } else if (ageInMontsbyDob >= 24 && ageInMontsbyDob < 60) {
                     startActivity(new Intent(this, SectionC3Activity.class)
                             .putExtra("selectedChild", childMap.get(binding.nc101.getSelectedItem().toString()))
                             .putExtra("backPressed", backPressed));
-                } else if (ageInMontsbyDob > 59 && ageInMontsbyDob > 72) {
+                } else if (ageInMontsbyDob >= 60) {
                     startActivity(new Intent(this, ChildEndingActivity.class)
                             .putExtra("childINEligibile", true));
                 }
@@ -245,6 +291,9 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
     }
 
     public void BtnEnd() {
+
+//        Validation Boolean
+        MainApp.validateFlag = true;
 
         endflag = true;
         if (formValidation()) {
@@ -279,11 +328,11 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
                 return false;
             }
 
-            if (!validatorClass.EmptyTextBox(this, binding.nc201d, getString(R.string.nc201))) {
+            if (!validatorClass.EmptyTextBox(this, binding.nc201y, getString(R.string.nc201))) {
                 return false;
             }
 
-            if (!validatorClass.RangeTextBox(this, binding.nc201d, 1, 31, 98, getString(R.string.nc201), " days")) {
+            if (!validatorClass.RangeTextBox(this, binding.nc201y, DateUtils.getCurrentYear() - 5, DateUtils.getCurrentYear(), getString(R.string.nc201), " years")) {
                 return false;
             }
 
@@ -295,18 +344,20 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
                 return false;
             }
 
-            if (!validatorClass.EmptyTextBox(this, binding.nc201y, getString(R.string.nc201))) {
+
+            if (!validatorClass.EmptyTextBox(this, binding.nc201d, getString(R.string.nc201))) {
                 return false;
             }
 
-            if (!validatorClass.RangeTextBox(this, binding.nc201y, DateUtils.getCurrentYear() - 6, DateUtils.getCurrentYear(), getString(R.string.nc201), " years")) {
+            if (!validatorClass.RangeTextBox(this, binding.nc201d, 1, 31, 98, getString(R.string.nc201), " days")) {
                 return false;
             }
+
 
             Calendar today = Calendar.getInstance();
 
             Calendar sixYears = Calendar.getInstance();
-            sixYears.add(Calendar.DATE, -2190);
+            sixYears.add(Calendar.DAY_OF_YEAR, -2190);
 
             if (dob.before(sixYears)) {
                 if (!validatorClass.RangeTextBoxforDate(this, binding.nc201d, 1, DateUtils.getCurrentDate(), 98, "Date can not be more than today")) {
@@ -317,7 +368,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
                     return false;
                 }
 
-                if (!validatorClass.RangeTextBoxforDate(this, binding.nc201y, DateUtils.getCurrentYear() - 6, DateUtils.getCurrentYear(), "Year can not be more than current year")) {
+                if (!validatorClass.RangeTextBoxforDate(this, binding.nc201y, DateUtils.getCurrentYear() - 5, DateUtils.getCurrentYear(), "Year can not be more than current year")) {
                     return false;
                 }
             }
@@ -332,7 +383,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
                     return false;
                 }
 
-                if (!validatorClass.RangeTextBoxforDate(this, binding.nc201y, DateUtils.getCurrentYear() - 6, DateUtils.getCurrentYear(), "Year can not be more than current year")) {
+                if (!validatorClass.RangeTextBoxforDate(this, binding.nc201y, DateUtils.getCurrentYear() - 5, DateUtils.getCurrentYear(), "Year can not be more than current year")) {
                     return false;
                 }
 
@@ -457,7 +508,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
             MainApp.cc.setUID(MainApp.cc.getUID());
         }
 
-        sC1.put("enmno", MainApp.fc.getEnmNo());
+        sC1.put("cluster_no", MainApp.fc.getClusterNo());
         sC1.put("hhno", MainApp.fc.getHhNo());
 
         sC1.put("respName", binding.resp.getSelectedItem().toString());
@@ -537,6 +588,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
 
         if (backPressed) {
             binding.nc101.setEnabled(false);
+            binding.btnAddMember.setVisibility(View.GONE);
         }
 
     }
@@ -575,6 +627,26 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
 
     @Override
     public void afterTextChanged(Editable s) {
+
+        timer.cancel();
+        timer = new Timer();
+        timer.schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                formValidation();
+                            }
+                            //}
+                        });
+
+                    }
+                },
+                DELAY
+        );
+
     }
 
     public void BtnAddMember() {
@@ -587,6 +659,14 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog,
                                                 int id) {
+
+                                if (isNA) {
+                                    NAChildsize = MainApp.childNA.size();
+                                } else {
+                                    Childsize = MainApp.childUnder5.size();
+                                }
+
+                                finish();
                                 startActivity(new Intent(SectionC1Activity.this, SectionA2ListActivity.class)
                                         .putExtra("reBack", true)
                                         .putExtra("reBackChild", isNA)
@@ -603,4 +683,8 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher 
         alert.show();
     }
 
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        formValidation();
+    }
 }

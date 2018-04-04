@@ -3,7 +3,6 @@ package edu.aku.hassannaqvi.nns_2018.ui;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
@@ -15,18 +14,13 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.location.LocationManager;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.Handler;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.text.method.PasswordTransformationMethod;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -39,11 +33,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -59,7 +48,6 @@ import edu.aku.hassannaqvi.nns_2018.contracts.EnumBlockContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.UCsContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
-import edu.aku.hassannaqvi.nns_2018.get.GetAllData;
 
 import static java.lang.Thread.sleep;
 
@@ -71,7 +59,7 @@ import static java.lang.Thread.sleep;
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
+public class LoginActivity extends MenuActivity implements LoaderCallbacks<Cursor> {
 
     /**
      * A dummy authentication store containing known user names and passwords.
@@ -128,6 +116,8 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
     private UserLoginTask mAuthTask = null;
     private int clicks;
+
+    String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -206,7 +196,9 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         }
     }
 
-    public void dbBackup() {
+
+
+    /*public void dbBackup() {
 
         sharedPref = getSharedPreferences("src", MODE_PRIVATE);
         editor = sharedPref.edit();
@@ -266,14 +258,13 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             }
         }
 
-    }
+    }*/
 
-    @OnClick(R.id.syncData)
-    void onSyncDataClick() {
-        //TODO implement
+
+    /*public void onSyncDataClick() {
 
         // Require permissions INTERNET & ACCESS_NETWORK_STATE
-        ConnectivityManager connMgr = (ConnectivityManager)
+        *//*ConnectivityManager connMgr = (ConnectivityManager)
                 getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
@@ -282,8 +273,8 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
         } else {
             Toast.makeText(this, "No network connection available.", Toast.LENGTH_SHORT).show();
-        }
-    }
+        }*//*
+    }*/
 
     private void populateAutoComplete() {
         getLoaderManager().initLoader(0, null, this);
@@ -566,7 +557,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         }
     }
 
-    public class syncData extends AsyncTask<String, String, String> {
+    /*public class syncData extends AsyncTask<String, String, String> {
 
         private Context mContext;
 
@@ -612,7 +603,110 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                 }
             }, 1200);
         }
-    }
+    }*/
+
+    /*public void syncServer() {
+
+        // Require permissions INTERNET & ACCESS_NETWORK_STATE
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+
+            DatabaseHelper db = new DatabaseHelper(this);
+            //syncStatus.setText(null);
+            Toast.makeText(getApplicationContext(), "Syncing Forms", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Forms",
+                    "updateSyncedForms",
+                    FormsContract.class,
+                    MainApp._HOST_URL + FormsContract.FormsTable._URL,
+                    db.getUnsyncedForms(), this.findViewById(R.id.syncStatus)
+            ).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing Family Members", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Family Members",
+                    "updateSyncedFamilyMembers",
+                    FamilyMembersContract.class,
+                    MainApp._HOST_URL + FamilyMembersContract.familyMembers._URL,
+                    db.getUnsyncedFamilyMembers(), this.findViewById(R.id.syncStatus)
+            ).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing WRAs", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "WRAs",
+                    "updateSyncedMWRAForm",
+                    MWRAContract.class,
+                    MainApp._HOST_URL + MWRAContract.MWRATable._URL,
+                    db.getUnsyncedMWRA(), this.findViewById(R.id.syncStatus)
+            ).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing Children", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Children",
+                    "updateSyncedChildForm",
+                    ChildContract.class,
+                    MainApp._HOST_URL + ChildContract.ChildTable._URL,
+                    db.getUnsyncedChildForms(), this.findViewById(R.id.syncStatus)
+            ).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing Eligibles", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Eligibles",
+                    "updateSyncedEligibles",
+                    EligibleMembersContract.class,
+                    MainApp._HOST_URL + EligibleMembersContract.eligibleMembers._URL,
+                    db.getUnsyncedEligbleMembers(), this.findViewById(R.id.syncStatus)
+            ).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing Outcomes", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Outcomes",
+                    "updateSyncedOutcomeForm",
+                    OutcomeContract.class,
+                    MainApp._HOST_URL + OutcomeContract.outcomeTable._URL,
+                    db.getUnsyncedOutcome(), this.findViewById(R.id.syncStatus)
+            ).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing Recepients", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Recepients",
+                    "updateSyncedRecepientsForm",
+                    RecipientsContract.class,
+                    MainApp._HOST_URL + RecipientsContract.RecipientsTable._URL,
+                    db.getUnsyncedRecipients(), this.findViewById(R.id.syncStatus)
+            ).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing Nutrition", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Nutrition",
+                    "updateSyncedNutrition",
+                    NutritionContract.class,
+                    MainApp._HOST_URL + NutritionContract.NutritionTable._URL,
+                    db.getUnsyncedNutrition(), this.findViewById(R.id.syncStatus)
+            ).execute();
+
+            SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = syncPref.edit();
+
+            editor.putString("LastUpSyncServer", dtToday);
+
+            editor.apply();
+
+        } else {
+            Toast.makeText(this, "No network connection available.", Toast.LENGTH_SHORT).show();
+        }
+
+    }*/
 
 }
 

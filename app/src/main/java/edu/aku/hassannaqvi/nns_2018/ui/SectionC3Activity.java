@@ -25,7 +25,7 @@ import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionC3Activity extends AppCompatActivity {
+public class SectionC3Activity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
 
     private final long DELAY = 1000;
     ActivitySectionC3Binding binding;
@@ -41,11 +41,15 @@ public class SectionC3Activity extends AppCompatActivity {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_c3);
         ButterKnife.bind(this);
+
+        this.setTitle(getResources().getString(R.string.nc3heading));
+
         db = new DatabaseHelper(this);
         binding.setCallback(this);
         binding.nc302.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                formValidation();
                 if (checkedId == R.id.nc302b) {
                     clearClass.ClearAllFields(binding.fldGrpnc303parent, false);
 
@@ -58,9 +62,54 @@ public class SectionC3Activity extends AppCompatActivity {
             }
         });
 
+        binding.nc303.setOnCheckedChangeListener(this);
+        binding.nc3bcg.setOnCheckedChangeListener(this);
+        binding.nc3bcgsrc.setOnCheckedChangeListener(this);
+        binding.nc3opv0.setOnCheckedChangeListener(this);
+        binding.nc3opv0src.setOnCheckedChangeListener(this);
+
+        binding.nc3opv1.setOnCheckedChangeListener(this);
+        binding.nc3opv1src.setOnCheckedChangeListener(this);
+
+        binding.nc3p1.setOnCheckedChangeListener(this);
+        binding.nc3p1src.setOnCheckedChangeListener(this);
+
+        binding.nc3pcv1.setOnCheckedChangeListener(this);
+        binding.nc3pcv1src.setOnCheckedChangeListener(this);
+
+        binding.nc3opv2.setOnCheckedChangeListener(this);
+        binding.nc3opv2src.setOnCheckedChangeListener(this);
+
+        binding.nc3p2.setOnCheckedChangeListener(this);
+        binding.nc3p2src.setOnCheckedChangeListener(this);
+
+        binding.nc3pcv2.setOnCheckedChangeListener(this);
+        binding.nc3pcv2src.setOnCheckedChangeListener(this);
+
+        binding.nc3opv3.setOnCheckedChangeListener(this);
+        binding.nc3opv3src.setOnCheckedChangeListener(this);
+
+        binding.nc3p3.setOnCheckedChangeListener(this);
+        binding.nc3p3src.setOnCheckedChangeListener(this);
+
+        binding.nc3pcv3.setOnCheckedChangeListener(this);
+        binding.nc3pcv3src.setOnCheckedChangeListener(this);
+
+        binding.nc3ipv.setOnCheckedChangeListener(this);
+        binding.nc3ipvsrc.setOnCheckedChangeListener(this);
+
+        binding.nc3m1.setOnCheckedChangeListener(this);
+        binding.nc3m1src.setOnCheckedChangeListener(this);
+
+        binding.nc3m2.setOnCheckedChangeListener(this);
+        binding.nc3m2src.setOnCheckedChangeListener(this);
+        binding.nc306.setOnCheckedChangeListener(this);
+
+
         binding.nc305.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                formValidation();
                 if (binding.nc305b.isChecked() || binding.nc30598.isChecked()) {
 //                    binding.nc306.clearCheck();
                     clearClass.ClearAllFields(binding.fldGrpnc305, false);
@@ -71,10 +120,13 @@ public class SectionC3Activity extends AppCompatActivity {
         });
 
 
-        autoPopulateFields();
         //Get Intent
         selectedChild = (FamilyMembersContract) getIntent().getSerializableExtra("selectedChild");
 
+//        Validation Boolean
+        MainApp.validateFlag = false;
+
+        autoPopulateFields();
     }
 
     private void autoPopulateFields() {
@@ -324,6 +376,9 @@ public class SectionC3Activity extends AppCompatActivity {
 
     public void BtnContinue() {
 
+//        Validation Boolean
+        MainApp.validateFlag = true;
+
         //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
             try {
@@ -369,8 +424,8 @@ public class SectionC3Activity extends AppCompatActivity {
 
 //        nc3bcg
         if (!validatorClass.EmptyRadioButton(this, binding.nc3bcg, binding.nc3bcga, getString(R.string.nc3bcg) + getString(R.string.nc3response))) {
-                    return false;
-                }
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, binding.nc3bcgsrc, binding.nc3bcgsrca, getString(R.string.nc3bcg) + getString(R.string.nc3src))) {
             return false;
         }
@@ -378,8 +433,8 @@ public class SectionC3Activity extends AppCompatActivity {
 
 //        nc3opv0
         if (!validatorClass.EmptyRadioButton(this, binding.nc3opv0, binding.nc3opv0a, getString(R.string.nc3opv0) + getString(R.string.nc3response))) {
-                    return false;
-                }
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, binding.nc3opv0src, binding.nc3opv0srca, getString(R.string.nc3opv0) + getString(R.string.nc3src))) {
             return false;
         }
@@ -388,8 +443,8 @@ public class SectionC3Activity extends AppCompatActivity {
 
 //        nc3opv1
         if (!validatorClass.EmptyRadioButton(this, binding.nc3opv1, binding.nc3opv1a, getString(R.string.nc3opv1) + getString(R.string.nc3response))) {
-                    return false;
-                }
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, binding.nc3opv1src, binding.nc3opv1srca, getString(R.string.nc3opv1) + getString(R.string.nc3src))) {
             return false;
         }
@@ -398,8 +453,8 @@ public class SectionC3Activity extends AppCompatActivity {
 
 //        nc3p1
         if (!validatorClass.EmptyRadioButton(this, binding.nc3p1, binding.nc3p1a, getString(R.string.nc3p1) + getString(R.string.nc3response))) {
-                    return false;
-                }
+            return false;
+        }
 
         if (!validatorClass.EmptyRadioButton(this, binding.nc3p1src, binding.nc3p1srca, getString(R.string.nc3p1) + getString(R.string.nc3src))) {
             return false;
@@ -409,8 +464,8 @@ public class SectionC3Activity extends AppCompatActivity {
 
 //        nc3pcv1
         if (!validatorClass.EmptyRadioButton(this, binding.nc3pcv1, binding.nc3pcv1a, getString(R.string.nc3pcv1) + getString(R.string.nc3response))) {
-                    return false;
-                }
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, binding.nc3pcv1src, binding.nc3pcv1srca, getString(R.string.nc3pcv1) + getString(R.string.nc3src))) {
             return false;
         }
@@ -419,8 +474,8 @@ public class SectionC3Activity extends AppCompatActivity {
 
 //        nc3opv2
         if (!validatorClass.EmptyRadioButton(this, binding.nc3opv2, binding.nc3opv2a, getString(R.string.nc3opv2) + getString(R.string.nc3response))) {
-                    return false;
-                }
+            return false;
+        }
 
         if (!validatorClass.EmptyRadioButton(this, binding.nc3opv2src, binding.nc3opv2srca, getString(R.string.nc3opv2) + getString(R.string.nc3src))) {
             return false;
@@ -429,8 +484,8 @@ public class SectionC3Activity extends AppCompatActivity {
 
 //        nc3p2
         if (!validatorClass.EmptyRadioButton(this, binding.nc3p2, binding.nc3p2a, getString(R.string.nc3p2) + getString(R.string.nc3response))) {
-                    return false;
-                }
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, binding.nc3p2src, binding.nc3p2srca, getString(R.string.nc3p2) + getString(R.string.nc3src))) {
             return false;
         }
@@ -438,8 +493,8 @@ public class SectionC3Activity extends AppCompatActivity {
 
 //        nc3pcv2
         if (!validatorClass.EmptyRadioButton(this, binding.nc3pcv2, binding.nc3pcv2a, getString(R.string.nc3pcv2) + getString(R.string.nc3response))) {
-                    return false;
-                }
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, binding.nc3pcv2src, binding.nc3pcv2srca, getString(R.string.nc3pcv2) + getString(R.string.nc3src))) {
             return false;
         }
@@ -448,8 +503,8 @@ public class SectionC3Activity extends AppCompatActivity {
 
 //        nc3opv3
         if (!validatorClass.EmptyRadioButton(this, binding.nc3opv3, binding.nc3opv3a, getString(R.string.nc3opv3) + getString(R.string.nc3response))) {
-                    return false;
-                }
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, binding.nc3opv3src, binding.nc3opv3srca, getString(R.string.nc3opv3) + getString(R.string.nc3src))) {
             return false;
         }
@@ -458,8 +513,8 @@ public class SectionC3Activity extends AppCompatActivity {
 
 //        nc3p3
         if (!validatorClass.EmptyRadioButton(this, binding.nc3p3, binding.nc3p3a, getString(R.string.nc3p3) + getString(R.string.nc3response))) {
-                    return false;
-                }
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, binding.nc3p3src, binding.nc3p3srca, getString(R.string.nc3p3) + getString(R.string.nc3src))) {
             return false;
         }
@@ -468,8 +523,8 @@ public class SectionC3Activity extends AppCompatActivity {
 
 //        nc3pcv3
         if (!validatorClass.EmptyRadioButton(this, binding.nc3pcv3, binding.nc3pcv3a, getString(R.string.nc3pcv3) + getString(R.string.nc3response))) {
-                    return false;
-                }
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, binding.nc3pcv3src, binding.nc3pcv3srca, getString(R.string.nc3pcv3) + getString(R.string.nc3src))) {
             return false;
         }
@@ -478,8 +533,8 @@ public class SectionC3Activity extends AppCompatActivity {
 
 //        nc3ipv3
         if (!validatorClass.EmptyRadioButton(this, binding.nc3ipv, binding.nc3ipva, getString(R.string.nc3ipv) + getString(R.string.nc3response))) {
-                    return false;
-                }
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, binding.nc3ipvsrc, binding.nc3ipvsrca, getString(R.string.nc3ipv) + getString(R.string.nc3src))) {
             return false;
         }
@@ -487,8 +542,8 @@ public class SectionC3Activity extends AppCompatActivity {
 
 //        nc3m1dt
         if (!validatorClass.EmptyRadioButton(this, binding.nc3m1, binding.nc3m1a, getString(R.string.nc3m1) + getString(R.string.nc3response))) {
-                    return false;
-                }
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, binding.nc3m1src, binding.nc3m1srca, getString(R.string.nc3m1) + getString(R.string.nc3src))) {
             return false;
         }
@@ -497,21 +552,21 @@ public class SectionC3Activity extends AppCompatActivity {
 
 //        nc3m2dt
         if (!validatorClass.EmptyRadioButton(this, binding.nc3m2, binding.nc3m2a, getString(R.string.nc3m2) + getString(R.string.nc3response))) {
-                    return false;
-                }
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, binding.nc3m2src, binding.nc3m2srca, getString(R.string.nc3m2) + getString(R.string.nc3src))) {
             return false;
-                }
+        }
 
 
 //        nc305
-        if (!validatorClass.EmptyRadioButton(this, binding.nc305, binding.nc30598, getString(R.string.nc305))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.nc305, binding.nc305a, getString(R.string.nc305))) {
             return false;
         }
 
         if (binding.nc305a.isChecked()) {
 //        nc306
-            return validatorClass.EmptyRadioButton(this, binding.nc306, binding.nc30698, getString(R.string.nc306));
+            return validatorClass.EmptyRadioButton(this, binding.nc306, binding.nc306a, getString(R.string.nc306));
         }
         return true;
     }
@@ -719,5 +774,9 @@ public class SectionC3Activity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        formValidation();
+    }
 }
 

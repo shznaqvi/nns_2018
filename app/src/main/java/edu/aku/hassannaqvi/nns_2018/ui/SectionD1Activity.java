@@ -59,6 +59,8 @@ public class SectionD1Activity extends AppCompatActivity implements TextWatcher,
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_d1);
         db = new DatabaseHelper(this);
 
+        this.setTitle(getResources().getString(R.string.nd1heading));
+
 //        Assigning data to UI binding
         binding.setCallback(this);
         json = new JSONModelClass();
@@ -70,6 +72,10 @@ public class SectionD1Activity extends AppCompatActivity implements TextWatcher,
         Log.d("Mem", String.valueOf(MainApp.childUnder2));
         Log.d("Mem", String.valueOf(MainApp.childUnder5));
         Log.d("Mem", String.valueOf(MainApp.mwra));
+
+//        Validation Boolean
+        MainApp.validateFlag = false;
+
     }
 
     public void setupViews() {
@@ -191,6 +197,9 @@ public class SectionD1Activity extends AppCompatActivity implements TextWatcher,
 
 
     public void BtnContinue() {
+
+//        Validation Boolean
+        MainApp.validateFlag = true;
 
         //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {

@@ -22,7 +22,10 @@
             style="@style/buttons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/brown"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/button_bg2"
             android:onClick="@{() -> callback.BtnAddMember()}"
             android:text="ADD NEW MEMBER"
             android:textColor="@color/white"
@@ -102,6 +105,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
                         android:text="@string/istatushf" />
+
+                    <RadioButton
+                        android:id="@+id/istatusg"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/istatushg" />
 
                     <RadioButton
                         android:id="@+id/istatus96"

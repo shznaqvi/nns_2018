@@ -115,6 +115,7 @@ public class ChildContract {
 
         JSONObject json = new JSONObject();
 
+        json.put(ChildTable.COLUMN_PROJECTNAME, this.projectName == null ? JSONObject.NULL : this.projectName);
         json.put(ChildTable.COLUMN__ID, this._ID == null ? JSONObject.NULL : this._ID);
         json.put(ChildTable.COLUMN__UID, this._UID == null ? JSONObject.NULL : this._UID);
         json.put(ChildTable.COLUMN__UUID, this._UUID == null ? JSONObject.NULL : this._UUID);
