@@ -26,13 +26,9 @@ import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionA5Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
+    static int deceasedCounter = 0;
     private final long DELAY = 1000;
     ActivitySectionA5Binding binding;
-    DatabaseHelper db;
-    int recipientCounter = 0;
-    private Timer timer = new Timer();
-    static int deceasedCounter = 0;
-
     public CheckBox.OnCheckedChangeListener check = new CompoundButton.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -45,6 +41,9 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
             }
         }
     };
+    DatabaseHelper db;
+    int recipientCounter = 0;
+    private Timer timer = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,9 +141,11 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
                 formValidation();
                 if (checkedId == R.id.nh501d) {
                     clearClass.ClearAllFields(binding.fldGrnh602, false);
+                    clearClass.ClearAllFields(binding.fldGrnc502, false);
 
                 } else {
                     clearClass.ClearAllFields(binding.fldGrnh602, true);
+                    clearClass.ClearAllFields(binding.fldGrnc502, true);
 
                 }
             }

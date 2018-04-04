@@ -249,6 +249,7 @@ public class SectionA8AActivity extends Activity {
         sA8a.put("nh7a04g", bi.nh7a04g.isChecked() ? "7" : "0");
         sA8a.put("nh7a04h", bi.nh7a04h.isChecked() ? "8" : "0");
         sA8a.put("nh7a04i", bi.nh7a04i.isChecked() ? "9" : "0");
+        sA8a.put("nh7a04j", bi.nh7a04j.isChecked() ? "10" : "0");
         sA8a.put("nh7a0496", bi.nh7a0496.isChecked() ? "96" : "0");
         sA8a.put("nh7a0496x", bi.nh7a0496x.getText().toString());
         sA8a.put("nh7a05", bi.nh7a05.getText().toString());
