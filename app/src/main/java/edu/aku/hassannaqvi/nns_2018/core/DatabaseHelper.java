@@ -1777,6 +1777,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
+                familyMembers._ID,
                 familyMembers.COLUMN_UID,
                 familyMembers.COLUMN_UUID,
                 familyMembers.COLUMN_FORMDATE,
@@ -1785,9 +1786,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 familyMembers.COLUMN_HH_NO,
                 familyMembers.COLUMN_ENM_NO,
                 familyMembers.COLUMN_SA2,
-                familyMembers.COLUMN_AV,
                 familyMembers.COLUMN_DEVICETAGID,
                 familyMembers.COLUMN_DEVICEID,
+                familyMembers.COLUMN_AV,
+                familyMembers.COLUMN_SYNCED,
+                familyMembers.COLUMN_SYNCED_DATE,
+                familyMembers.COLUMN_APP_VERSION
         };
 
         /*String selection = ChildTable.COLUMN__ID + " = ?";

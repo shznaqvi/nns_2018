@@ -218,13 +218,13 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         MainApp.oc = new OutcomeContract();
 
         if (!backPressed && !frontPressed) {
-            MainApp.oc.setDevicetagID(MainApp.getTagName(this));
+            MainApp.oc.setDevicetagID(MainApp.fc.getDevicetagID());
             MainApp.oc.setFormDate(MainApp.fc.getFormDate());
-            MainApp.oc.setUser(MainApp.userName);
+            MainApp.oc.setUser(MainApp.fc.getUser());
             MainApp.oc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                     Settings.Secure.ANDROID_ID));
-            MainApp.oc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
-            MainApp.oc.set_UUID(MainApp.mc.get_UID());
+            MainApp.oc.setApp_ver(MainApp.fc.getAppversion());
+            MainApp.oc.set_UUID(MainApp.fc.getUID());
         } else {
             MainApp.oc.setUpdatedate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
 
@@ -239,6 +239,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
         sB1a.put("cluster_no", MainApp.fc.getClusterNo());
         sB1a.put("hhno", MainApp.fc.getHhNo());
+        sB1a.put("MUID", MainApp.mc.get_UID());
 
         sB1a.put("serial", Integer.valueOf(MainApp.count));
         sB1a.put("nw21701", bi.nw21701a.isChecked() ? "1" : bi.nw21701b.isChecked() ? "2" : "0");

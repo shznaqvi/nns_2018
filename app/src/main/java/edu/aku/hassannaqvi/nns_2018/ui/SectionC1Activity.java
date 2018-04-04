@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -490,18 +489,13 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
 
         if (!backPressed) {
             MainApp.cc = new ChildContract();
-            MainApp.cc.setDevicetagID(MainApp.getTagName(this));
-            MainApp.cc.setFormDate(dtToday);
-            MainApp.cc.setUser(MainApp.userName);
-            MainApp.cc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
-                    Settings.Secure.ANDROID_ID));
-            MainApp.cc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
+            MainApp.cc.setDevicetagID(MainApp.fc.getDevicetagID());
+            MainApp.cc.setFormDate(MainApp.fc.getFormDate());
+            MainApp.cc.setUser(MainApp.fc.getUser());
+            MainApp.cc.setDeviceID(MainApp.fc.getDeviceID());
+            MainApp.cc.setAppversion(MainApp.fc.getAppversion());
+            MainApp.cc.setUUID(MainApp.fc.getUID());
 
-            if (childMap.get(binding.nc101.getSelectedItem().toString()).getMotherId().equals("00")) {
-                MainApp.cc.setUUID(MainApp.fmc.get_UID());
-            } else {
-                MainApp.cc.setUUID(MainApp.mc.get_UID());
-            }
 
         } else {
             sC1.put("updatedate_nc1", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
@@ -509,6 +503,15 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
         }
 
         sC1.put("cluster_no", MainApp.fc.getClusterNo());
+
+        if (childMap.get(binding.nc101.getSelectedItem().toString()).getMotherId().equals("00")) {
+            sC1.put("MUID", "");
+
+        } else {
+
+            sC1.put("MUID", MainApp.mc.get_UID());
+
+        }
         sC1.put("hhno", MainApp.fc.getHhNo());
 
         sC1.put("respName", binding.resp.getSelectedItem().toString());
