@@ -89,6 +89,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
         this.setTitle(getResources().getString(R.string.na1heading));
 
+
 //        Validation Boolean
         MainApp.validateFlag = false;
 
