@@ -3,7 +3,6 @@ package edu.aku.hassannaqvi.nns_2018.ui;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -221,8 +220,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
             MainApp.oc.setDevicetagID(MainApp.fc.getDevicetagID());
             MainApp.oc.setFormDate(MainApp.fc.getFormDate());
             MainApp.oc.setUser(MainApp.fc.getUser());
-            MainApp.oc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
-                    Settings.Secure.ANDROID_ID));
+            MainApp.oc.setDeviceId(MainApp.fc.getDeviceID());
             MainApp.oc.setApp_ver(MainApp.fc.getAppversion());
             MainApp.oc.set_UUID(MainApp.fc.getUID());
         } else {

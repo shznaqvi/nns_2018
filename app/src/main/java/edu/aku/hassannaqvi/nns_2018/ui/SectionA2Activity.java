@@ -468,7 +468,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
 
             //family.setDob(binding.nh2dob.getText().toString());
             family.setAge(binding.nh2agey.getText().toString()); //+ "/" + binding.nh2agem.getText().toString() + "/" + binding.nh2aged.getText().toString());
-            if (Age <= 5) {
+            if (Age < 5) {
                 family.setMotherId(mothersMap.get(binding.nh212.getSelectedItem().toString() + "_" + mothersSerials.get(mothersList.indexOf(binding.nh212.getSelectedItem().toString()) - 1)));
             }
 
@@ -545,7 +545,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
             MainApp.membersCount.setMembers(1, memType);
 
             //MWRA
-            if ((Age >= 15 && Age <= 49) && family.getna204().equals("2")) {
+            if ((Age >= 15 && Age < 50) && family.getna204().equals("2")) {
                 if (binding.nh2mse.isChecked()) {
                     MainApp.membersCount.setWra(MainApp.membersCount.getWra() + 1);
                     if (binding.nh210a.isChecked()) {
@@ -562,7 +562,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                 //MainApp.adolescents.add(family);
             }
             //Adolescent
-            if ((Age >= 10 && Age <= 19) && binding.nh2mse.isChecked()) {
+            if ((Age >= 10 && Age < 20) && binding.nh2mse.isChecked()) {
                 memType = new HashMap<>();
                 if (family.getna204().equals("1")) {
                     memType.put(1, Integer.valueOf(mem.get(2).get(1).toString()) + 1);
@@ -580,7 +580,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                 }
             }
             //Children < 5
-            else if (Age <= 5) {
+            else if (Age < 5) {
                 memType = new HashMap<>();
                 if (family.getna204().equals("1")) {
                     memType.put(1, Integer.valueOf(mem.get(3).get(1).toString()) + 1);
@@ -604,7 +604,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                     //MainApp.adolescents.add(family);
                 }
 
-                if (Age <= 5 && family.getMotherId().equals("00")) {
+                if (Age < 5 && family.getMotherId().equals("00")) {
                     MainApp.childNA.add(family);
                 }
             }

@@ -111,17 +111,17 @@ public class ViewMemberActivity extends MenuActivity {
 
                         if (fm.getsA2() != null) {
                             json = JSONUtilClass.getModelFromJSON(fm.getsA2(), JSONModelClass.class);
-                            if ((Integer.valueOf(json.getAge()) >= 15 && Integer.valueOf(json.getAge()) <= 49) && json.getGender().equals("2")) {
+                            if ((Integer.valueOf(json.getAge()) >= 15 && Integer.valueOf(json.getAge()) < 50) && json.getGender().equals("2")) {
                                 MainApp.mwra_1.add(fm);
                                 MainApp.all_members_1.add(fm);
                             }
-                            if ((Integer.valueOf(json.getAge()) >= 10 && (Integer.valueOf(json.getAge()) <= 19)) && json.getMaritalStatus().equals("5")) {
+                            if ((Integer.valueOf(json.getAge()) >= 10 && (Integer.valueOf(json.getAge()) < 20)) && json.getMaritalStatus().equals("5")) {
                                 MainApp.adolescents_1.add(fm);
                                 MainApp.all_members_1.add(fm);
                             } else if (Integer.valueOf(json.getAge()) < 5) {
                                 MainApp.childUnder5_1.add(fm);
                                 MainApp.all_members_1.add(fm);
-                            } else if (!((Integer.valueOf(json.getAge()) >= 15 && Integer.valueOf(json.getAge()) <= 49) && json.getGender().equals("2"))) {
+                            } else if (!((Integer.valueOf(json.getAge()) >= 15 && Integer.valueOf(json.getAge()) < 50) && json.getGender().equals("2"))) {
                                 MainApp.otherMembers_1.add(fm);
                                 MainApp.all_members_1.add(fm);
                             }

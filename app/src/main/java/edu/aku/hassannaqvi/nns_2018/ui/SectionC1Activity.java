@@ -392,7 +392,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
                 return false;
             }
 
-            if (ageInMontsbyDob <= 12 && !binding.nc202a.isChecked()) {
+            if (ageInMontsbyDob < 12 && !binding.nc202a.isChecked()) {
                 Toast.makeText(this, "ERROR(invalid): " + "Select correct option.. Age is less than 1 year" + getString(R.string.nc202), Toast.LENGTH_LONG).show();
                 binding.nc202a.setError("Select correct option.. Age is less than 1 year");
 
@@ -412,7 +412,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
                 binding.nc202b.setError(null);
             }
 
-            if ((ageInMontsbyDob >= 24 &&
+            if ((ageInMontsbyDob > 24 &&
                     ageInMontsbyDob < 72) && !binding.nc202c.isChecked()) {
                 Toast.makeText(this, "ERROR(invalid): " + "Select correct option.. Age is greater than 2 years" + getString(R.string.nc202), Toast.LENGTH_LONG).show();
                 binding.nc202c.setError("Select correct option.. Age is greater than 2 years");
@@ -463,7 +463,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
                 binding.nc205a.setError(null);
             }
 
-            if (ageInMontsbyDob > 24 && !binding.nc205b.isChecked()) {
+            if (ageInMontsbyDob >= 24 && !binding.nc205b.isChecked()) {
                 Toast.makeText(this, "ERROR(invalid): " + "Select correct option according to age in months" + getString(R.string.nc205), Toast.LENGTH_LONG).show();
                 binding.nc205b.setError("Select correct option according to age in months");
 
