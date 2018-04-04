@@ -186,13 +186,13 @@ public class SyncAllData extends AsyncTask<Void, Void, String> {
 
                 if (jsonObject.getString("status").equals("1") && jsonObject.getString("error").equals("0")) {
 
-                    db.updateSyncedChildForm(jsonObject.getString("id"));  // UPDATE SYNCED
+                    //  db.updateSyncedChildForm(jsonObject.getString("id"));  // UPDATE SYNCED
 
                     method.invoke(db, jsonObject.getString("id"));
 
                     sSynced++;
                 } else if (jsonObject.getString("status").equals("2") && jsonObject.getString("error").equals("0")) {
-                    db.updateSyncedChildForm(jsonObject.getString("id")); // UPDATE DUPLICATES
+                    //db.updateSyncedChildForm(jsonObject.getString("id")); // UPDATE DUPLICATES
 
                     method.invoke(db, jsonObject.getString("id"));
 

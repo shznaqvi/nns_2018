@@ -16,10 +16,13 @@ import java.text.SimpleDateFormat;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONB3ModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB3Binding;
+import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
@@ -90,7 +93,7 @@ public class SectionB3Activity extends AppCompatActivity implements TextWatcher,
         //binding.nw328.setOnCheckedChangeListener(this);
         binding.nw332.setOnCheckedChangeListener(this);
 
-        /*MWRAContract mwraContract = db.getsB3();
+        MWRAContract mwraContract = db.getsB3();
         if (!mwraContract.getsB3().equals("")) {
 
             JSONB3ModelClass jsonB3 = JSONUtilClass.getModelFromJSON(mwraContract.getsB3(), JSONB3ModelClass.class);
@@ -165,7 +168,7 @@ public class SectionB3Activity extends AppCompatActivity implements TextWatcher,
                 );
             }
 
-        }*/
+        }
 
 
 //        Validation Boolean
