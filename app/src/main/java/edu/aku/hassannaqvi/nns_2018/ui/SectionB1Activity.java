@@ -54,6 +54,8 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
     String classPassName = "";
     private Timer timer = new Timer();
 
+    public static Boolean editWRAFlag;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,16 +69,27 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
 
         this.setTitle(getResources().getString(R.string.nbheading));
 
-        setupViews();
-        autoPopulate();
-
 //        Validation Boolean
         MainApp.validateFlag = false;
 
+        editWRAFlag = getIntent().getBooleanExtra("editForm", false);
+
+        if (editWRAFlag) {
+            AutoPopulate(getIntent().getStringExtra("formUid"));
+            backPressed = true;
+        } else {
+            setupViews();
+        }
+
+
     }
 
-    private void autoPopulate() {
-        MWRAContract mwraContract = db.getsB1();
+    private void AutoPopulate(String uuid) {
+        MWRAContract mwraContract = db.getsB1(uuid);
+
+        MainApp.mc = new MWRAContract();
+        MainApp.mc.set_UID(mwraContract.get_UID());
+
         if (!mwraContract.getsB1().equals("")) {
 
             JSONB1ModelClass jsonB1 = JSONUtilClass.getModelFromJSON(mwraContract.getsB1(), JSONB1ModelClass.class);
@@ -1277,13 +1290,13 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
                         }
                     }
 
-                        if (!validatorClass.EmptyRadioButton(this, bi.nw216, bi.nw216a, getString(R.string.nw216))) {
-                            return false;
-                        }
+                    if (!validatorClass.EmptyRadioButton(this, bi.nw216, bi.nw216a, getString(R.string.nw216))) {
+                        return false;
+                    }
 
-                        if (bi.nw216a.isChecked()) {
-                            return validatorClass.EmptyTextBox(this, bi.nw216aa, getString(R.string.nw216a));
-                        }
+                    if (bi.nw216a.isChecked()) {
+                        return validatorClass.EmptyTextBox(this, bi.nw216aa, getString(R.string.nw216a));
+                    }
 
 
                 }
@@ -1313,8 +1326,11 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
             MainApp.mc.setB1SerialNo(wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
             MainApp.mc.set_UUID(MainApp.fc.getUID());
         } else {
+            if (editWRAFlag && !frontPressed) {
+                sB1.put("edit_updatedate_nw1", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+            }
             sB1.put("updatedate_nw1", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
-            MainApp.mc.set_UID(MainApp.mc.get_UID());
+//            MainApp.mc.set_UID(MainApp.mc.get_UID());
         }
 
         wraName = bi.nb101.getSelectedItem().toString();

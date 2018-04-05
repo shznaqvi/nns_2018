@@ -449,25 +449,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public String getUIDByHH(String subAreaCode, String hh, String status) {
+    public String getUIDByHH(String cluster, String hhno) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-
                 FormsTable._ID,
                 FormsTable.COLUMN_UID,
-
         };
 
-        String whereClause = FormsTable.COLUMN_CLUSTER_NO + "=? AND " +
-                FormsTable.COLUMN_HH_NO + "=? AND " +
-                FormsTable.COLUMN_ISTATUS + "=?";
-        String[] whereArgs = new String[]{subAreaCode, hh, status};
+        String whereClause = FormsTable.COLUMN_CLUSTER_NO + " =? AND " + FormsTable.COLUMN_HH_NO + " =? AND ("
+                + FormsTable.COLUMN_ISTATUS + " =? OR " + FormsTable.COLUMN_ISTATUS + " =?)";
+        String[] whereArgs = new String[]{cluster, hhno, "1", "7"};
+
         String groupBy = null;
         String having = null;
 
         String orderBy =
-                FormsTable._ID + " DESC LIMIT 1";
+                FormsTable._ID + "  DESC LIMIT 1";
 
         try {
             c = db.query(
@@ -1174,7 +1172,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     MWRATable.TABLE_NAME,
                     values,
                     MWRATable.COLUMN_UID + " = ?",
-                    new String[]{mc.get_UID()}
+                    new String[]{MainApp.mc.get_UID()}
             );
         }
 
@@ -2027,6 +2025,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFC;
     }
 
+    public Boolean getChildExistanceByUid(String uuid) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                ChildTable.COLUMN__ID,
+                ChildTable.COLUMN__UID,
+                ChildTable.COLUMN__UUID
+        };
+        String whereClause = ChildTable.COLUMN__UUID + " =?";
+        String[] whereArgs = {uuid};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = null;
+
+        Cursor cursor = db.query(ChildTable.TABLE_NAME, //Table to query
+                columns,                    //columns to return
+                whereClause,                  //columns for the WHERE clause
+                whereArgs,              //The values for the WHERE clause
+                groupBy,                       //group the rows
+                having,                       //filter by row groups
+                orderBy
+        );                      //The sort order
+
+        int cursorCount = cursor.getCount();
+
+        cursor.close();
+        db.close();
+        return cursorCount > 0;
+    }
 
     public Collection<EligibleMembersContract> getUnsyncedEligbleMembers() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -2085,7 +2113,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return allFC;
     }
-
 
     public Collection<MWRAContract> getUnsyncedMWRA() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -2146,6 +2173,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFC;
     }
 
+    public Boolean getWRAExistanceByUid(String uuid) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                MWRATable.COLUMN__ID,
+                MWRATable.COLUMN_UID,
+                MWRATable.COLUMN_UUID,
+
+        };
+        String whereClause = MWRATable.COLUMN_UUID + " =?";
+        String[] whereArgs = {uuid};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = null;
+
+        Cursor cursor = db.query(MWRATable.TABLE_NAME, //Table to query
+                columns,                    //columns to return
+                whereClause,                  //columns for the WHERE clause
+                whereArgs,              //The values for the WHERE clause
+                groupBy,                       //group the rows
+                having,                       //filter by row groups
+                orderBy
+        );                      //The sort order
+
+        int cursorCount = cursor.getCount();
+
+        cursor.close();
+        db.close();
+        return cursorCount > 0;
+    }
+
 
     public Collection<NutritionContract> getUnsyncedNutrition() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -2199,7 +2258,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFC;
     }
 
-
     public Collection<RecipientsContract> getUnsyncedRecipients() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -2252,7 +2310,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return allFC;
     }
-
 
     public Collection<OutcomeContract> getUnsyncedOutcome() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -2574,7 +2631,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public MWRAContract getsB1() {
+    public MWRAContract getsB1(String formUid) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -2585,8 +2642,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         };
 
 
-        String whereClause = MWRATable.COLUMN_UID + "=?";
-        String[] whereArgs = new String[]{MainApp.mc.get_UID()};
+        String whereClause = MWRATable.COLUMN_UUID + "=?";
+        String[] whereArgs = {formUid};
         String groupBy = null;
         String having = null;
 
@@ -2618,6 +2675,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return allFC;
     }
+
     public MWRAContract getsB2() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -3248,7 +3306,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 // Which row to update, based on the ID
         String selection = FormsTable._ID + " = ?";
-        String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};
+        String[] selectionArgs = {MainApp.fc.get_ID()};
 
         int count = db.update(FormsTable.TABLE_NAME,
                 values,
@@ -3266,7 +3324,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 // Which row to update, based on the ID
         String selection = FormsTable._ID + " = ?";
-        String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};
+        String[] selectionArgs = {MainApp.fc.get_ID()};
 
         int count = db.update(FormsTable.TABLE_NAME,
                 values,

@@ -257,11 +257,12 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
 
 //        Validation Boolean
         MainApp.validateFlag = false;
-        autoPopulateFields();
+
+//        AutoPopulateFields();
 
     }
 
-    private void autoPopulateFields() {
+    private void AutoPopulateFields() {
         DeceasedContract deceasedContract = db.getsH8();
 
         if (!deceasedContract.getsH8().equals("")) {

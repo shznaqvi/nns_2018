@@ -390,8 +390,8 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
                                 progress = 0;
                                 finish();
-//                                startActivity(new Intent(SectionA1Activity.this, SectionA2ListActivity.class));
-                                startActivity(new Intent(SectionA1Activity.this, SectionA4Activity.class));
+                                startActivity(new Intent(SectionA1Activity.this, SectionA2ListActivity.class));
+//                                startActivity(new Intent(SectionA1Activity.this, SectionA4Activity.class));
                             }
                         });
                     }
@@ -569,8 +569,9 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
             setGPS(); // Set GPS
         } else {
-            sA1.put("updatedate_sa1", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+            sA1.put("edit_updatedate_sa1", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
             MainApp.fc.setUID(editFormContract.getUID());
+            MainApp.fc.set_ID(editFormContract.get_ID());
         }
 
         sA1.put("rndid", MainApp.selectedHead.get_ID());

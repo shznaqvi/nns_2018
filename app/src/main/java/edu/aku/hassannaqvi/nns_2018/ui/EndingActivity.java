@@ -43,6 +43,7 @@ public class EndingActivity extends AppCompatActivity {
             binding.istatusd.setEnabled(false);
             binding.istatuse.setEnabled(false);
             binding.istatusf.setEnabled(false);
+            binding.istatusg.setEnabled(false);
             binding.istatus96.setEnabled(false);
 
             binding.btnAddMember.setVisibility(View.VISIBLE);

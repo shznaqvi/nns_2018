@@ -102,14 +102,14 @@ public class SectionA8AActivity extends Activity {
         // setup head
         bi.txtCounter.setText("Count " + counter + " out of " + reccounter);
 
-        autoPopulate();
-
 //        Validation Boolean
         MainApp.validateFlag = false;
 
+//        AutoPopulate();
+
     }
 
-    private void autoPopulate() {
+    private void AutoPopulate() {
         RecipientsContract recipientsContract = db.getsA8A();
         if (!recipientsContract.getsA8A().equals("")) {
             JSONA8AModelClass jsonA8A = JSONUtilClass.getModelFromJSON(recipientsContract.getsA8A(), JSONA8AModelClass.class);

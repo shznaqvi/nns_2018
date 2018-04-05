@@ -1,6 +1,7 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,6 +12,8 @@ import android.os.Handler;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 
@@ -48,6 +51,13 @@ public class ViewMemberActivity extends MenuActivity {
     JSONModelClass json;
     Collection<FamilyMembersContract> members;
 
+    ProgressDialog progressDialog;
+
+    Boolean flag = true;
+    boolean checkflag;
+
+    String formUid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +65,12 @@ public class ViewMemberActivity extends MenuActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_view_member);
         db = new DatabaseHelper(this);
         binding.setCallback(this);
+
+//        Setting ProgressDialog
+        progressDialog = new ProgressDialog(ViewMemberActivity.this,
+                R.style.AppTheme_Dark_Dialog);
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Populating...");
 
         if (getIntent().getBooleanExtra("flagEdit", true)) {
 
@@ -65,19 +81,19 @@ public class ViewMemberActivity extends MenuActivity {
             binding.chckenumblock.setText(MainApp.fc.getClusterNo());
             binding.chckhouse.setText(MainApp.fc.getHhNo());
 
-            initializingLists();
-
             BtnCheckEnm();
             BtnCheckHH();
+
+            flag = true;
 
         } else {
             binding.fldGrpEditHH.setVisibility(View.VISIBLE);
             binding.fldGrpVisA.setVisibility(View.VISIBLE);
             binding.fldGrpVisB.setVisibility(View.VISIBLE);
 
-            initializingLists();
-
             binding.btnContinue.setVisibility(View.GONE);
+
+            flag = false;
         }
 
     }
@@ -89,7 +105,6 @@ public class ViewMemberActivity extends MenuActivity {
         MainApp.childUnder5_1 = new ArrayList<>();
         MainApp.adolescents_1 = new ArrayList<>();
         MainApp.mwra_1 = new ArrayList<>();
-        members = new ArrayList<>();
         json = new JSONModelClass();
 
     }
@@ -98,51 +113,20 @@ public class ViewMemberActivity extends MenuActivity {
 
         if (!binding.chckenumblock.getText().toString().trim().isEmpty() && !binding.chckhouse.getText().toString().trim().isEmpty()) {
 
-            String uid = db.getUIDByHH(binding.chckenumblock.getText().toString(), binding.chckhouse.getText().toString().toUpperCase(), "");
-            if (uid != null) {
+            formUid = flag ? MainApp.fc.getUID() :
+                    db.getUIDByHH(binding.chckenumblock.getText().toString(), binding.chckhouse.getText().toString().toUpperCase());
 
-                members = db.getAllMembersByHH(uid);
+            if (formUid != null) {
+
+                members = db.getAllMembersByHH(formUid);
 
                 if (members.size() != 0) {
-                    for (FamilyMembersContract fm : members) {
 
-                        if (fm.getsA2() != null) {
-                            json = JSONUtilClass.getModelFromJSON(fm.getsA2(), JSONModelClass.class);
-                            if ((Integer.valueOf(json.getAge()) >= 15 && Integer.valueOf(json.getAge()) <= 49) && json.getGender().equals("2")) {
-                                MainApp.mwra_1.add(fm);
-                                MainApp.all_members_1.add(fm);
-                            }
-                            if ((Integer.valueOf(json.getAge()) >= 10 && (Integer.valueOf(json.getAge()) <= 19)) && json.getMaritalStatus().equals("5")) {
-                                MainApp.adolescents_1.add(fm);
-                                MainApp.all_members_1.add(fm);
-                            } else if (Integer.valueOf(json.getAge()) < 5) {
-                                MainApp.childUnder5_1.add(fm);
-                                MainApp.all_members_1.add(fm);
-                            } else if (!((Integer.valueOf(json.getAge()) >= 15 && Integer.valueOf(json.getAge()) <= 49) && json.getGender().equals("2"))) {
-                                MainApp.otherMembers_1.add(fm);
-                                MainApp.all_members_1.add(fm);
-                            }
+                    initializingLists();
 
-                        }
+                    progressDialog.show();
 
-                    }
-
-                    if (MainApp.all_members_1.size() > 0) {
-                        Toast.makeText(this, "Members Found..", Toast.LENGTH_SHORT).show();
-                        binding.btnContinue.setVisibility(View.VISIBLE);
-                        binding.btnEnd.setVisibility(View.GONE);
-                        binding.fldGrpviewlist.setVisibility(View.VISIBLE);
-                        viewWraList();
-                        viewChildList();
-                        viewAdolList();
-                        viewOthList();
-
-                    } else {
-                        binding.fldGrpviewlist.setVisibility(View.GONE);
-                        binding.btnContinue.setVisibility(View.GONE);
-                        binding.btnEnd.setVisibility(View.GONE);
-                        Toast.makeText(this, "No members found, Check another HH.", Toast.LENGTH_SHORT).show();
-                    }
+                    new PopulatingData(this).execute();
 
                 }
             } else {
@@ -163,6 +147,54 @@ public class ViewMemberActivity extends MenuActivity {
 
     private void viewWraList() {
         new populateWraRecyclerView(this).execute();
+
+        binding.recyclerMwra.addOnItemTouchListener(
+                new ViewMemRecyclerItemClickListener(getApplicationContext(), new ViewMemRecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, final int position) {
+                        // TODO Handle item click
+
+                        if (position != -1) {
+
+                            if (!flag) {
+
+                                checkflag = false;
+                                for (int hh : WraAdapter.wraExistList) {
+                                    if (hh == position) {
+                                        checkflag = true;
+                                        break;
+                                    }
+                                }
+
+                                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                                        ViewMemberActivity.this);
+                                alertDialogBuilder
+                                        .setMessage("Are you sure to update this member?")
+                                        .setCancelable(false)
+                                        .setPositiveButton("Ok",
+                                                new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int id) {
+
+                                                        startActivity(new Intent(ViewMemberActivity.this, SectionB1Activity.class)
+                                                                .putExtra("editForm", checkflag)
+                                                                .putExtra("formUid", formUid));
+
+                                                    }
+                                                });
+                                alertDialogBuilder.setNegativeButton("Cancel",
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                dialog.cancel();
+                                            }
+                                        });
+                                AlertDialog alert = alertDialogBuilder.create();
+                                alert.show();
+                            }
+                        }
+                    }
+                })
+        );
+
     }
 
     private void viewAdolList() {
@@ -419,55 +451,48 @@ public class ViewMemberActivity extends MenuActivity {
 
     @Override
     public void onBackPressed() {
-        Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
+        if (flag) {
+            Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
+        } else {
+            super.onBackPressed();
+        }
     }
 
-    public class populateWraRecyclerView extends AsyncTask<String, String, String> {
-        private Context mContext;
+    public static class ViewMemRecyclerItemClickListener implements RecyclerView.OnItemTouchListener {
+        GestureDetector mGestureDetector;
+        private OnItemClickListener mListener;
 
-        public populateWraRecyclerView(Context mContext) {
-            this.mContext = mContext;
-        }
+        public ViewMemRecyclerItemClickListener(Context context, OnItemClickListener listener) {
+            mListener = listener;
 
-        @Override
-        protected String doInBackground(String... strings) {
-            runOnUiThread(new Runnable() {
-
+            mGestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
                 @Override
-                public void run() {
-
-//              Set Recycler View
-                    wraAdapter = new WraAdapter(MainApp.mwra_1);
-                    if (wraAdapter.getItemCount() > 0) {
-                        binding.nowrafound.setVisibility(View.VISIBLE);
-                        binding.nowrafound.setText("WRA's found!!");
-                        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-                        binding.recyclerMwra.setLayoutManager(mLayoutManager);
-                        binding.recyclerMwra.setItemAnimator(new DefaultItemAnimator());
-                        binding.recyclerMwra.setAdapter(wraAdapter);
-                        wraAdapter.notifyDataSetChanged();
-                    } else {
-                        binding.nowrafound.setVisibility(View.VISIBLE);
-                        binding.nowrafound.setText("NO WRA's found!!");
-                    }
+                public boolean onSingleTapUp(MotionEvent e) {
+                    return true;
                 }
             });
-
-
-            return null;
         }
 
         @Override
-        protected void onPostExecute(String s) {
+        public boolean onInterceptTouchEvent(RecyclerView view, MotionEvent e) {
+            View childView = view.findChildViewUnder(e.getX(), e.getY());
+            if (childView != null && mListener != null && mGestureDetector.onTouchEvent(e)) {
+                mListener.onItemClick(childView, view.getChildAdapterPosition(childView));
+            }
+            return false;
+        }
 
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
+        @Override
+        public void onTouchEvent(RecyclerView view, MotionEvent motionEvent) {
+        }
 
-                    wraAdapter.notifyDataSetChanged();
-//
-                }
-            }, 800);
+        @Override
+        public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+        }
+
+        public interface OnItemClickListener {
+            void onItemClick(View view, int position);
         }
     }
 
@@ -522,10 +547,10 @@ public class ViewMemberActivity extends MenuActivity {
         }
     }
 
-    public class populateChildRecyclerView extends AsyncTask<String, String, String> {
+    public class populateWraRecyclerView extends AsyncTask<String, String, String> {
         private Context mContext;
 
-        public populateChildRecyclerView(Context mContext) {
+        public populateWraRecyclerView(Context mContext) {
             this.mContext = mContext;
         }
 
@@ -537,24 +562,22 @@ public class ViewMemberActivity extends MenuActivity {
                 public void run() {
 
 //              Set Recycler View
-                    childAdapter = new ChildAdapter(MainApp.childUnder5_1);
-
-
-                    if (childAdapter.getItemCount() > 0) {
-                        binding.nochildfound.setVisibility(View.VISIBLE);
-                        binding.nochildfound.setText("Children's found!!");
+                    wraAdapter = new WraAdapter(mContext, MainApp.mwra_1);
+                    if (wraAdapter.getItemCount() > 0) {
+                        binding.nowrafound.setVisibility(View.VISIBLE);
+                        binding.nowrafound.setText("WRA's found!!");
                         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-                        binding.recyclerChild.setLayoutManager(mLayoutManager);
-                        binding.recyclerChild.setItemAnimator(new DefaultItemAnimator());
-                        binding.recyclerChild.setAdapter(childAdapter);
-                        childAdapter.notifyDataSetChanged();
-
+                        binding.recyclerMwra.setLayoutManager(mLayoutManager);
+                        binding.recyclerMwra.setItemAnimator(new DefaultItemAnimator());
+                        binding.recyclerMwra.setAdapter(wraAdapter);
+                        wraAdapter.notifyDataSetChanged();
                     } else {
-                        binding.nochildfound.setVisibility(View.VISIBLE);
-                        binding.nochildfound.setText("No Children found!!");
+                        binding.nowrafound.setVisibility(View.VISIBLE);
+                        binding.nowrafound.setText("NO WRA's found!!");
                     }
                 }
             });
+
 
             return null;
         }
@@ -565,11 +588,14 @@ public class ViewMemberActivity extends MenuActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    // notifychildchange(childAdapter);
-//                   Background black for those that's data filled
-                  /*  for (int item : MainApp.hhClicked) {
-                        binding.recyclerChild.getChildAt(item).setBackgroundColor(Color.BLACK);
-                    }*/
+
+//                   Change background color for those whose data already filled
+                    for (int item : WraAdapter.wraExistList) {
+                        binding.recyclerMwra.getChildAt(item).setBackgroundColor(getResources().getColor(R.color.brown));
+                    }
+
+                    wraAdapter.notifyDataSetChanged();
+
                 }
             }, 800);
         }
@@ -613,6 +639,127 @@ public class ViewMemberActivity extends MenuActivity {
 
         @Override
         protected void onPostExecute(String s) {
+        }
+    }
+
+    public class populateChildRecyclerView extends AsyncTask<String, String, String> {
+        private Context mContext;
+
+        public populateChildRecyclerView(Context mContext) {
+            this.mContext = mContext;
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            runOnUiThread(new Runnable() {
+
+                @Override
+                public void run() {
+
+//              Set Recycler View
+                    childAdapter = new ChildAdapter(mContext, MainApp.childUnder5_1);
+
+
+                    if (childAdapter.getItemCount() > 0) {
+                        binding.nochildfound.setVisibility(View.VISIBLE);
+                        binding.nochildfound.setText("Children's found!!");
+                        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+                        binding.recyclerChild.setLayoutManager(mLayoutManager);
+                        binding.recyclerChild.setItemAnimator(new DefaultItemAnimator());
+                        binding.recyclerChild.setAdapter(childAdapter);
+                        childAdapter.notifyDataSetChanged();
+
+                    } else {
+                        binding.nochildfound.setVisibility(View.VISIBLE);
+                        binding.nochildfound.setText("No Children found!!");
+                    }
+                }
+            });
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+//                   Change background color for those whose data already filled
+                    for (int item : ChildAdapter.childExistList) {
+                        binding.recyclerChild.getChildAt(item).setBackgroundColor(getResources().getColor(R.color.brown));
+                    }
+
+                }
+            }, 800);
+        }
+    }
+
+    public class PopulatingData extends AsyncTask<Void, Void, Void> {
+
+        private Context mContext;
+
+        public PopulatingData(Context mContext) {
+            this.mContext = mContext;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            for (FamilyMembersContract fm : members) {
+
+                if (fm.getsA2() != null) {
+                    json = JSONUtilClass.getModelFromJSON(fm.getsA2(), JSONModelClass.class);
+                    if ((Integer.valueOf(json.getAge()) >= 15 && Integer.valueOf(json.getAge()) <= 49) && json.getGender().equals("2")) {
+                        MainApp.mwra_1.add(fm);
+                        MainApp.all_members_1.add(fm);
+                    }
+                    if ((Integer.valueOf(json.getAge()) >= 10 && (Integer.valueOf(json.getAge()) <= 19)) && json.getMaritalStatus().equals("5")) {
+                        MainApp.adolescents_1.add(fm);
+                        MainApp.all_members_1.add(fm);
+                    } else if (Integer.valueOf(json.getAge()) < 5) {
+                        MainApp.childUnder5_1.add(fm);
+                        MainApp.all_members_1.add(fm);
+                    } else if (!((Integer.valueOf(json.getAge()) >= 15 && Integer.valueOf(json.getAge()) <= 49) && json.getGender().equals("2"))) {
+                        MainApp.otherMembers_1.add(fm);
+                        MainApp.all_members_1.add(fm);
+                    }
+
+                }
+
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            new android.os.Handler().postDelayed(
+                    new Runnable() {
+                        public void run() {
+
+                            if (MainApp.all_members_1.size() > 0) {
+                                Toast.makeText(mContext, "Members Found..", Toast.LENGTH_SHORT).show();
+                                binding.btnContinue.setVisibility(View.VISIBLE);
+                                binding.btnEnd.setVisibility(View.GONE);
+                                binding.fldGrpviewlist.setVisibility(View.VISIBLE);
+                                viewWraList();
+                                viewChildList();
+                                viewAdolList();
+                                viewOthList();
+
+                            } else {
+                                binding.fldGrpviewlist.setVisibility(View.GONE);
+                                binding.btnContinue.setVisibility(View.GONE);
+                                binding.btnEnd.setVisibility(View.GONE);
+                                Toast.makeText(mContext, "No members found, Check another HH.", Toast.LENGTH_SHORT).show();
+                            }
+
+                            // onLoginFailed();
+                            progressDialog.dismiss();
+                        }
+                    }, 3000);
         }
     }
 
