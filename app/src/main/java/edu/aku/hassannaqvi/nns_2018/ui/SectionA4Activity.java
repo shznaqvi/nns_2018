@@ -240,7 +240,9 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
 //        Validation Boolean
         MainApp.validateFlag = false;
 
-        autoPopulate();
+        if (SectionA1Activity.editFormFlag) {
+            autoPopulate();
+        }
 
     }
 
