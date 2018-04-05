@@ -267,9 +267,8 @@ public class AntrhoInfoActivity extends Activity {
 
         if (!binding.nh102.getText().toString().trim().isEmpty() && !binding.nh108.getText().toString().trim().isEmpty()) {
 
-            String uid = db.getUIDByHH(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase(), "1");
-            if (uid != null) {
-                members = db.getAllMembersByHH(uid);
+            //String uid = db.getUIDByHH(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase(), "1");
+            members = db.getAllMembersByHH(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase());
 
                 if (members.size() != 0) {
                     for (FamilyMembersContract fm : members) {
@@ -304,10 +303,10 @@ public class AntrhoInfoActivity extends Activity {
                     }
 
 
+                } else {
+                    Toast.makeText(this, "No members found for the HH.", Toast.LENGTH_SHORT).show();
                 }
-            } else {
-                Toast.makeText(this, "No members found for the HH.", Toast.LENGTH_SHORT).show();
-            }
+
 
         } else {
             Toast.makeText(this, "Not found.", Toast.LENGTH_SHORT).show();

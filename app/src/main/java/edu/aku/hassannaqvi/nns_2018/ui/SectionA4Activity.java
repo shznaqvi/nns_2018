@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -17,6 +18,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.WifiDirect.WiFiDirectActivity;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA4Binding;
@@ -238,6 +240,12 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
         MainApp.validateFlag = false;
 
     }
+
+    public void intentWifi(View view) {
+        Intent wifidirect = new Intent(getApplicationContext(), WiFiDirectActivity.class);
+        startActivity(wifidirect);
+    }
+
 
     public void BtnContinue() {
 
