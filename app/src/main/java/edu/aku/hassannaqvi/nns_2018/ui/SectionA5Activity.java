@@ -183,10 +183,12 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
 //        Validation Boolean
         MainApp.validateFlag = false;
 
-        autoPopulate();
+        if (SectionA1Activity.editFormFlag) {
+            AutoPopulate();
+        }
     }
 
-    private void autoPopulate() {
+    private void AutoPopulate() {
         FormsContract formContract = db.getsA5();
         if (!formContract.getsA5().equals("")) {
 
@@ -423,7 +425,7 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
                 } else if (deceasedCounter > 0) {
                     startActivity(new Intent(this, SectionH8Activity.class));
                 } else {
-                    startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 1));
+                    startActivity(new Intent(this, ViewMemberActivity.class).putExtra(SectionA1Activity.editFormFlag ? "flagEdit" : "activity", SectionA1Activity.editFormFlag ? false : 1));
                 }
 
             } else {

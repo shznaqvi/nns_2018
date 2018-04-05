@@ -913,8 +913,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put(FormsTable.COLUMN_GPSACC, fc.getGpsAcc());
             values.put(FormsTable.COLUMN_DEVICETAGID, fc.getDevicetagID());
             values.put(FormsTable.COLUMN_DEVICEID, fc.getDeviceID());
-            values.put(FormsTable.COLUMN_SYNCED, fc.getSynced());
-            values.put(FormsTable.COLUMN_SYNCED_DATE, fc.getSynced_date());
             values.put(FormsTable.COLUMN_APP_VERSION, fc.getAppversion());
         }
         if (type == 0 || type == 1) {
@@ -927,6 +925,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put(FormsTable.COLUMN_SA5, fc.getsA5());
         }
 
+        values.put(FormsTable.COLUMN_SYNCED, fc.getSynced());
+        values.put(FormsTable.COLUMN_SYNCED_DATE, fc.getSynced_date());
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
@@ -1765,9 +1765,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_SYNCED_DATE,
                 FormsTable.COLUMN_APP_VERSION
         };
-        String whereClause = FormsTable.COLUMN_CLUSTER_NO + " =? AND " + FormsTable.COLUMN_HH_NO + " =? AND "
-                + FormsTable.COLUMN_ISTATUS + " =? AND (" + FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + " = '')";
-        String[] whereArgs = new String[]{cluster, hhno, "1 OR 7"};
+        String whereClause = FormsTable.COLUMN_CLUSTER_NO + " =? AND " + FormsTable.COLUMN_HH_NO + " =? AND ("
+                + FormsTable.COLUMN_ISTATUS + " =? OR " + FormsTable.COLUMN_ISTATUS + " =?)";
+        String[] whereArgs = new String[]{cluster, hhno.toUpperCase(), "1", "7"};
         String groupBy = null;
         String having = null;
 
@@ -2426,7 +2426,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 FormsContract fc = new FormsContract();
-                allFC = fc.Hydrate1(c, 3);
+                allFC = fc.Hydrate1(c, 4);
             }
         } finally {
             if (c != null) {

@@ -68,6 +68,10 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
         db = new DatabaseHelper(this);
         binding.setCallback(this);
 
+        SetupViewFunctionality();
+
+        SkipPatterns();
+
 //        Edit form intent
         editFormFlag = getIntent().getBooleanExtra("editForm", false);
 
@@ -86,10 +90,6 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
             AutoCompleteFields();
         }
-
-        SetupViewFunctionality();
-
-        SkipPatterns();
 
         this.setTitle(getResources().getString(R.string.na1heading));
 
@@ -129,7 +129,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
                                 binding.na11801b.getId()
                 );
 
-                binding.na11801.setEnabled(false);
+                binding.na11801b.setEnabled(false);
             }
 
             if (!jsonA1.getnh11802().equals("0")) {
@@ -138,7 +138,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
                                 binding.na11802b.getId()
                 );
 
-                binding.na11802.setEnabled(false);
+                binding.na11802b.setEnabled(false);
             }
 
 //            na119
@@ -390,7 +390,8 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
                                 progress = 0;
                                 finish();
-                                startActivity(new Intent(SectionA1Activity.this, SectionA2ListActivity.class));
+//                                startActivity(new Intent(SectionA1Activity.this, SectionA2ListActivity.class));
+                                startActivity(new Intent(SectionA1Activity.this, SectionA4Activity.class));
                             }
                         });
                     }

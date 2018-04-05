@@ -120,10 +120,10 @@ public class FormsContract {
         this._UID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_UID));
 
         //this.gpsElev = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSELEV));
-        if (type == 1 || type == 3) {
+        if (type == 1 || type == 4) {
             this.sA4 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA4));
         }
-        if (type == 1 || type == 4) {
+        if (type == 1 || type == 5) {
             this.sA5 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA5));
         }
         if (type == 1) {
