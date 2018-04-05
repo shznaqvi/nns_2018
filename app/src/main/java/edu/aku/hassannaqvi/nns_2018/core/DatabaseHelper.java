@@ -497,8 +497,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Collection<FamilyMembersContract> getAllMembersByHH(String cluster, String hh) {
         Collection<FamilyMembersContract> fmList = new ArrayList<>();
         // Select All Query
-        String selectQuery = "SELECT fm.* FROM " + familyMembers.TABLE_NAME + " fm Left Join " + eligibleMembers.TABLE_NAME + " e on fm."
-                + familyMembers.COLUMN_UUID + " =  e." + eligibleMembers.COLUMN_UUID
+        String selectQuery = "SELECT fm.* FROM " + familyMembers.TABLE_NAME + " fm Left Join " + eligibleMembers.TABLE_NAME + " e on "
+                + "fm." + familyMembers.COLUMN_UUID + " =  e." + eligibleMembers.COLUMN_UUID
+                + " and fm." + familyMembers.COLUMN_UID + " =  e." + eligibleMembers.COLUMN_UUID
                 + " where fm." + familyMembers.COLUMN_ENM_NO + " = '" + cluster + "'"
                 + " and fm." + familyMembers.COLUMN_HH_NO + " = '" + hh + "'"
                 + " and e." + eligibleMembers.COLUMN_ISTATUS + " != '1'"
