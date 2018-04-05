@@ -198,7 +198,7 @@ public class DeceasedContract {
 
     public static abstract class DeceasedTable implements BaseColumns {
 
-        public static final String TABLE_NAME = "child";
+        public static final String TABLE_NAME = "deceased";
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
 
         public static final String COLUMN_PROJECTNAME = "projectname";

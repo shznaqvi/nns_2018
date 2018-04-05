@@ -77,7 +77,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + singleRandomHH.COLUMN_CONTACT + " TEXT,"
             + singleRandomHH.COLUMN_HH_SELECTED_STRUCT + " TEXT,"
             + singleRandomHH.COLUMN_RANDOMDT + " TEXT );";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     private static final String SQL_CREATE_FORMS = "CREATE TABLE "
             + FormsTable.TABLE_NAME + "("
@@ -147,20 +147,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             ChildTable.COLUMN_CSTATUS + " TEXT," +
             ChildTable.COLUMN_CSTATUS88x + " TEXT," +
             ChildTable.COLUMN_APPVERSION + " TEXT " + " );";
-    private static final String SQL_DELETE_USERS =
-            "DROP TABLE IF EXISTS " + UsersContract.UsersTable.TABLE_NAME;
-    private static final String SQL_DELETE_FORMS =
-            "DROP TABLE IF EXISTS " + FormsTable.TABLE_NAME;
-    private static final String SQL_DELETE_CHILD_FORMS =
-            "DROP TABLE IF EXISTS " + ChildContract.ChildTable.TABLE_NAME;
-    private static final String SQL_DELETE_SINGLE = "DROP TABLE IF EXISTS " + singleSerial.TABLE_NAME;
-    private static final String SQL_DELETE_TALUKAS = "DROP TABLE IF EXISTS " + EnumBlockTable.TABLE_NAME;
-    private static final String SQL_DELETE_UCS = "DROP TABLE IF EXISTS " + UCsTable.TABLE_NAME;
-    private static final String SQL_DELETE_ELIGIBLE_MEMBERS = "DROP TABLE IF EXISTS " + eligibleMembers.TABLE_NAME;
-    private static final String SQL_DELETE_MWRAS = "DROP TABLE IF EXISTS " + MWRATable.TABLE_NAME;
-    private static final String SQL_DELETE_OUTCOME = "DROP TABLE IF EXISTS " + outcomeTable.TABLE_NAME;
-    private static final String SQL_DELETE_FAMILYMEMBERS = "DROP TABLE IF EXISTS " + familyMembers.TABLE_NAME;
-    private static final String SQL_DELETE_RECIENPTS = "DROP TABLE IF EXISTS " + RecipientsTable.TABLE_NAME;
+
     final String SQL_CREATE_SERIAL = "CREATE TABLE " + singleSerial.TABLE_NAME + " (" +
             singleSerial._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             singleSerial.COLUMN_DEVICE_ID + " TEXT, " +
@@ -181,28 +168,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             UCsTable.COLUMN_UCS_NAME + " TEXT, " +
             UCsTable.COLUMN_TALUKA_CODE + " TEXT " +
             ");";
-    final String SQL_CREATE_ELIGIBLE_MEMBERS = "CREATE TABLE " + eligibleMembers.TABLE_NAME + " (" +
-            eligibleMembers.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            eligibleMembers.COLUMN_UID + " TEXT," +
-            eligibleMembers.COLUMN_UUID + " TEXT," +
-            eligibleMembers.COLUMN_PROJECTNAME + " TEXT," +
-            eligibleMembers.COLUMN_FORMDATE + " TEXT," +
-            eligibleMembers.COLUMN_DEVICEID + " TEXT," +
-            eligibleMembers.COLUMN_DEVICETAGID + " TEXT," +
-            eligibleMembers.COLUMN_USER + " TEXT," +
-            eligibleMembers.COLUMN_APPVERSION + " TEXT," +
-            eligibleMembers.COLUMN_ENM_NO + " TEXT," +
-            eligibleMembers.COLUMN_HH_NO + " TEXT," +
-            eligibleMembers.COLUMN_DOB + " TEXT," +
-            eligibleMembers.COLUMN_AGE + " TEXT," +
-            eligibleMembers.COLUMN_na204 + " TEXT," +
-            eligibleMembers.COLUMN_SA3 + " TEXT," +
-            eligibleMembers.COLUMN_ISTATUS + " TEXT," +
-            eligibleMembers.COLUMN_ISTATUS88x + " TEXT," +
-            eligibleMembers.COLUMN_SYNCED + " TEXT," +
-            eligibleMembers.COLUMN_SYNCEDDATE + " TEXT" +
+    private static final String SQL_DELETE_USERS =
+            "DROP TABLE IF EXISTS " + UsersContract.UsersTable.TABLE_NAME;
 
-            ");";
+
     final String SQL_CREATE_MWRAS = "CREATE TABLE " + MWRATable.TABLE_NAME + " (" +
             MWRATable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             MWRATable.COLUMN_PROJECTNAME + " TEXT," +
@@ -300,6 +269,46 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             VersionAppTable.COLUMN_VERSION_CODE + " TEXT, " +
             VersionAppTable.COLUMN_PATH_NAME + " TEXT " +
             ");";
+    private static final String SQL_DELETE_FORMS =
+            "DROP TABLE IF EXISTS " + FormsTable.TABLE_NAME;
+    private static final String SQL_DELETE_CHILD_FORMS =
+            "DROP TABLE IF EXISTS " + ChildContract.ChildTable.TABLE_NAME;
+    private static final String SQL_DELETE_SINGLE = "DROP TABLE IF EXISTS " + singleSerial.TABLE_NAME;
+    private static final String SQL_DELETE_TALUKAS = "DROP TABLE IF EXISTS " + EnumBlockTable.TABLE_NAME;
+    private static final String SQL_DELETE_UCS = "DROP TABLE IF EXISTS " + UCsTable.TABLE_NAME;
+    private static final String SQL_DELETE_ELIGIBLE_MEMBERS = "DROP TABLE IF EXISTS " + eligibleMembers.TABLE_NAME;
+    private static final String SQL_DELETE_MWRAS = "DROP TABLE IF EXISTS " + MWRATable.TABLE_NAME;
+    private static final String SQL_DELETE_OUTCOME = "DROP TABLE IF EXISTS " + outcomeTable.TABLE_NAME;
+    private static final String SQL_DELETE_FAMILYMEMBERS = "DROP TABLE IF EXISTS " + familyMembers.TABLE_NAME;
+    private static final String SQL_DELETE_RECIENPTS = "DROP TABLE IF EXISTS " + RecipientsTable.TABLE_NAME;
+    private static final String SQL_DELETE_NUTRITION = "DROP TABLE IF EXISTS " + NutritionTable.TABLE_NAME;
+    private static final String SQL_DELETE_DECEASED = "DROP TABLE IF EXISTS " + DeceasedContract.DeceasedTable.TABLE_NAME;
+    private static final String SQL_DELETE_BLRANDOM = "DROP TABLE IF EXISTS " + BLRandomContract.singleRandomHH.TABLE_NAME;
+    private static final String SQL_DELETE_VERSIONAPP = "DROP TABLE IF EXISTS " + VersionAppTable.TABLE_NAME;
+    final String SQL_CREATE_ELIGIBLE_MEMBERS = "CREATE TABLE " + eligibleMembers.TABLE_NAME + " (" +
+            eligibleMembers.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            eligibleMembers.COLUMN_UID + " TEXT," +
+            eligibleMembers.COLUMN_UUID + " TEXT," +
+            eligibleMembers.COLUMN_FM_UID + " TEXT," +
+            eligibleMembers.COLUMN_PROJECTNAME + " TEXT," +
+            eligibleMembers.COLUMN_FORMDATE + " TEXT," +
+            eligibleMembers.COLUMN_DEVICEID + " TEXT," +
+            eligibleMembers.COLUMN_DEVICETAGID + " TEXT," +
+            eligibleMembers.COLUMN_USER + " TEXT," +
+            eligibleMembers.COLUMN_APPVERSION + " TEXT," +
+            eligibleMembers.COLUMN_ENM_NO + " TEXT," +
+            eligibleMembers.COLUMN_HH_NO + " TEXT," +
+            eligibleMembers.COLUMN_DOB + " TEXT," +
+            eligibleMembers.COLUMN_AGE + " TEXT," +
+            eligibleMembers.COLUMN_na204 + " TEXT," +
+            eligibleMembers.COLUMN_SA3 + " TEXT," +
+            eligibleMembers.COLUMN_ISTATUS + " TEXT," +
+            eligibleMembers.COLUMN_ISTATUS88x + " TEXT," +
+            eligibleMembers.COLUMN_SYNCED + " TEXT," +
+            eligibleMembers.COLUMN_SYNCEDDATE + " TEXT" +
+
+            ");";
+
 
     private final String TAG = "DatabaseHelper";
     public String spDateT = new SimpleDateFormat("dd-MM-yy").format(new Date().getTime());
@@ -325,10 +334,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_VERSIONAPP);
         db.execSQL(SQL_CREATE_BL_RANDOM);
         db.execSQL(SQL_CREATE_NUTRITION);
+        db.execSQL(SQL_CREATE_DECEASED);
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+
         db.execSQL(SQL_DELETE_USERS);
         db.execSQL(SQL_DELETE_FORMS);
         db.execSQL(SQL_DELETE_CHILD_FORMS);
@@ -340,7 +352,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_OUTCOME);
         db.execSQL(SQL_DELETE_FAMILYMEMBERS);
         db.execSQL(SQL_DELETE_RECIENPTS);
-        db.execSQL(SQL_CREATE_NUTRITION);
+        db.execSQL(SQL_DELETE_VERSIONAPP);
+        db.execSQL(SQL_DELETE_BLRANDOM);
+        db.execSQL(SQL_DELETE_NUTRITION);
+        db.execSQL(SQL_DELETE_DECEASED);
+
+
 
     }
 
@@ -494,7 +511,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public Collection<FamilyMembersContract> getAllMembersByHH(String cluster, String hh) {
+    /*public Collection<FamilyMembersContract> getAllMembersByHH(String cluster, String hh) {
         Collection<FamilyMembersContract> fmList = new ArrayList<>();
         // Select All Query
         String selectQuery = "SELECT fm.* FROM " + familyMembers.TABLE_NAME + " fm Left Join " + eligibleMembers.TABLE_NAME + " e on "
@@ -503,7 +520,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + " where fm." + familyMembers.COLUMN_ENM_NO + " = '" + cluster + "'"
                 + " and fm." + familyMembers.COLUMN_HH_NO + " = '" + hh + "'"
                 + " and e." + eligibleMembers.COLUMN_ISTATUS + " != '1'"
-                + " or e." + eligibleMembers.COLUMN_ISTATUS + " IS NULL";
+                + " or e." + eligibleMembers.COLUMN_ISTATUS + " IS NULL"
+
+                ;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor c = db.rawQuery(selectQuery, null);
@@ -518,7 +537,65 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // return contact list
         return fmList;
+        }*/
+
+
+    public Collection<FamilyMembersContract> getAllMembersByHHforAnthro(String cluster, String hh) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+
+                familyMembers.COLUMN_ID,
+                familyMembers.COLUMN_UID,
+                familyMembers.COLUMN_UUID,
+                familyMembers.COLUMN_FORMDATE,
+                familyMembers.COLUMN_USER,
+                familyMembers.COLUMN_HH_NO,
+                familyMembers.COLUMN_ENM_NO,
+                familyMembers.COLUMN_SA2,
+                familyMembers.COLUMN_AV,
+                familyMembers.COLUMN_DEVICETAGID,
+                familyMembers.COLUMN_DEVICEID,
+                familyMembers.COLUMN_SYNCED,
+                familyMembers.COLUMN_SYNCED_DATE,
+                familyMembers.COLUMN_APP_VERSION
+
+        };
+
+        String whereClause = familyMembers.COLUMN_UUID + "=? "
+                + familyMembers.COLUMN_HH_NO + "=?";
+        String[] whereArgs = new String[]{cluster, hh};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                familyMembers.COLUMN_ID + " ASC";
+
+        Collection<FamilyMembersContract> allBL = new ArrayList<>();
+        try {
+            c = db.query(
+                    familyMembers.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                FamilyMembersContract dc = new FamilyMembersContract();
+                allBL.add(dc.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
         }
+        return allBL;
+    }
 
 
     public Collection<FamilyMembersContract> getAllMembersByHH(String uid) {
@@ -1108,6 +1185,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //values.put(eligibleMembers.COLUMN__ID, ec.get_ID());
         values.put(eligibleMembers.COLUMN_UID, ec.get_UID());
         values.put(eligibleMembers.COLUMN_UUID, ec.get_UUID());
+        values.put(eligibleMembers.COLUMN_FM_UID, ec.getFmuid());
         values.put(eligibleMembers.COLUMN_FORMDATE, ec.getFormDate());
         values.put(eligibleMembers.COLUMN_DEVICEID, ec.getDeviceId());
         values.put(eligibleMembers.COLUMN_DEVICETAGID, ec.getDevicetagID());
@@ -1985,6 +2063,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 eligibleMembers.COLUMN__ID,
                 eligibleMembers.COLUMN_UID,
                 eligibleMembers.COLUMN_UUID,
+                eligibleMembers.COLUMN_FM_UID,
                 eligibleMembers.COLUMN_FORMDATE,
                 eligibleMembers.COLUMN_DEVICEID,
                 eligibleMembers.COLUMN_DEVICETAGID,

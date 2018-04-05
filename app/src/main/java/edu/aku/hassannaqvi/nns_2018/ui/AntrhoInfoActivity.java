@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Toast;
@@ -100,6 +101,15 @@ public class AntrhoInfoActivity extends Activity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
                 //clearFields();
+
+                if (!binding.nh108.getText().toString().isEmpty() && binding.nh108.getText().toString().length() == 4) {
+                    if (binding.nh108.getText().toString().substring(0, 3).matches("[0-9]+")) {
+                        binding.nh108.setText(binding.nh108.getText().toString() + "-");
+                        binding.nh108.setSelection(binding.nh108.getText().length());
+                        binding.nh108.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+
+                    }
+                }
             }
 
             @Override
@@ -268,7 +278,7 @@ public class AntrhoInfoActivity extends Activity {
         if (!binding.nh102.getText().toString().trim().isEmpty() && !binding.nh108.getText().toString().trim().isEmpty()) {
 
             //String uid = db.getUIDByHH(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase(), "1");
-            members = db.getAllMembersByHH(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase());
+            members = db.getAllMembersByHHforAnthro(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase());
 
                 if (members.size() != 0) {
                     for (FamilyMembersContract fm : members) {
