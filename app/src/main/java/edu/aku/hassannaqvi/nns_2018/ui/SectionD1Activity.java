@@ -303,12 +303,12 @@ public class SectionD1Activity extends AppCompatActivity implements TextWatcher,
         MainApp.emc = new EligibleMembersContract();
 
         MainApp.emc.setDevicetagID(MainApp.getTagName(this));
-        MainApp.emc.setFormDate(dtToday);
+        MainApp.emc.setFormDate(slecMem.getFormDate());
         MainApp.emc.setUser(MainApp.userName);
         MainApp.emc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
         MainApp.emc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
-        MainApp.emc.set_UUID(slecMem.get_UID());
+        MainApp.emc.set_UUID(slecMem.get_UUID());
         MainApp.emc.setEnm_no(AntrhoInfoActivity.enm_no);
         MainApp.emc.setHh_no(AntrhoInfoActivity.hh_no);
 
