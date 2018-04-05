@@ -886,45 +886,63 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return formList;
     }
 
-    public Long addForm(FormsContract fc) {
+    public Long addForm(FormsContract fc, int type) {
 
         // Gets the data repository in write mode
         SQLiteDatabase db = this.getWritableDatabase();
 
 // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
-        values.put(FormsTable.COLUMN_PROJECT_NAME, fc.getProjectName());
-        values.put(FormsTable.COLUMN_UID, fc.getUID());
-        values.put(FormsTable.COLUMN_FORMDATE, fc.getFormDate());
-        values.put(FormsTable.COLUMN_USER, fc.getUser());
-        values.put(FormsTable.COLUMN_RESP_LNO, fc.getRespLineNo());
-        values.put(FormsTable.COLUMN_CLUSTER_NO, fc.getClusterNo());
-        values.put(FormsTable.COLUMN_HH_NO, fc.getHhNo());
-        values.put(FormsTable.COLUMN_GPSELEV, fc.getGpsElev());
-        values.put(FormsTable.COLUMN_ISTATUS, fc.getIstatus());
-        values.put(FormsTable.COLUMN_ISTATUS88x, fc.getIstatus88x());
-        values.put(FormsTable.COLUMN_SA1, fc.getsA1());
-        values.put(FormsTable.COLUMN_SA4, fc.getsA4());
-        values.put(FormsTable.COLUMN_SA5, fc.getsA5());
-        //values.put(FormsTable.COLUMN_END_TIME, fc.getEndtime());
-        values.put(FormsTable.COLUMN_COUNT, fc.getCount());
-        values.put(FormsTable.COLUMN_GPSLAT, fc.getGpsLat());
-        values.put(FormsTable.COLUMN_GPSLNG, fc.getGpsLng());
-        values.put(FormsTable.COLUMN_GPSDATE, fc.getGpsDT());
-        values.put(FormsTable.COLUMN_GPSACC, fc.getGpsAcc());
-        values.put(FormsTable.COLUMN_DEVICETAGID, fc.getDevicetagID());
-        values.put(FormsTable.COLUMN_DEVICEID, fc.getDeviceID());
-        values.put(FormsTable.COLUMN_SYNCED, fc.getSynced());
-        values.put(FormsTable.COLUMN_SYNCED_DATE, fc.getSynced_date());
-        values.put(FormsTable.COLUMN_APP_VERSION, fc.getAppversion());
+        if (type == 0) {
+            values.put(FormsTable.COLUMN_PROJECT_NAME, fc.getProjectName());
+            values.put(FormsTable.COLUMN_UID, fc.getUID());
+            values.put(FormsTable.COLUMN_FORMDATE, fc.getFormDate());
+            values.put(FormsTable.COLUMN_USER, fc.getUser());
+            values.put(FormsTable.COLUMN_RESP_LNO, fc.getRespLineNo());
+            values.put(FormsTable.COLUMN_CLUSTER_NO, fc.getClusterNo());
+            values.put(FormsTable.COLUMN_HH_NO, fc.getHhNo());
+            values.put(FormsTable.COLUMN_GPSELEV, fc.getGpsElev());
+            values.put(FormsTable.COLUMN_ISTATUS, fc.getIstatus());
+            values.put(FormsTable.COLUMN_ISTATUS88x, fc.getIstatus88x());
+
+            //values.put(FormsTable.COLUMN_END_TIME, fc.getEndtime());
+            values.put(FormsTable.COLUMN_COUNT, fc.getCount());
+            values.put(FormsTable.COLUMN_GPSLAT, fc.getGpsLat());
+            values.put(FormsTable.COLUMN_GPSLNG, fc.getGpsLng());
+            values.put(FormsTable.COLUMN_GPSDATE, fc.getGpsDT());
+            values.put(FormsTable.COLUMN_GPSACC, fc.getGpsAcc());
+            values.put(FormsTable.COLUMN_DEVICETAGID, fc.getDevicetagID());
+            values.put(FormsTable.COLUMN_DEVICEID, fc.getDeviceID());
+            values.put(FormsTable.COLUMN_SYNCED, fc.getSynced());
+            values.put(FormsTable.COLUMN_SYNCED_DATE, fc.getSynced_date());
+            values.put(FormsTable.COLUMN_APP_VERSION, fc.getAppversion());
+        }
+        if (type == 0 || type == 1) {
+            values.put(FormsTable.COLUMN_SA1, fc.getsA1());
+        }
+        if (type == 0 || type == 4) {
+            values.put(FormsTable.COLUMN_SA4, fc.getsA4());
+        }
+        if (type == 0 || type == 5) {
+            values.put(FormsTable.COLUMN_SA5, fc.getsA5());
+        }
 
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
-        newRowId = db.insert(
-                FormsTable.TABLE_NAME,
-                FormsTable.COLUMN_NAME_NULLABLE,
-                values);
+        if (type == 0) {
+            newRowId = db.insert(
+                    FormsTable.TABLE_NAME,
+                    FormsTable.COLUMN_NAME_NULLABLE,
+                    values);
+        } else {
+            newRowId = db.update(
+                    FormsTable.TABLE_NAME,
+                    values,
+                    FormsTable.COLUMN_UID + " = ?",
+                    new String[]{fc.getUID()}
+            );
+        }
         return newRowId;
     }
 

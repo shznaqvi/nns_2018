@@ -130,8 +130,6 @@ public class MainApp extends Application {
     public static int nuCount = 1;
 
     public static Boolean validateFlag = false;
-    public static FormsContract editFormContract;
-    public static Boolean editFormFlag;
 
 
     protected static LocationManager locationManager;

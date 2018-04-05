@@ -58,6 +58,9 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
     static Boolean reBackChildFlag = true;
     private final long DELAY = 1000;
 
+    public static Boolean editFormFlag;
+    public static FormsContract editFormContract;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,9 +69,9 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
         binding.setCallback(this);
 
 //        Edit form intent
-//        MainApp.editFormFlag = getIntent().getBooleanExtra("editForm", false);
+        editFormFlag = getIntent().getBooleanExtra("editForm", false);
 
-        /*if (MainApp.editFormFlag) {
+        if (editFormFlag) {
 
             binding.nh102.setText(getIntent().getStringExtra("clusterNo"));
             binding.nh102.setEnabled(false);
@@ -81,7 +84,8 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
             binding.checkHHBtn.setEnabled(false);
             binding.checkHHBtn.setBackgroundColor(getResources().getColor(R.color.red));
 
-        }*/
+            AutoCompleteFields();
+        }
 
         SetupViewFunctionality();
 
@@ -92,19 +96,17 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 //        Validation Boolean
         MainApp.validateFlag = false;
 
-//        AutoCompleteFields();
-
     }
 
     public void AutoCompleteFields() {
 
-        MainApp.editFormContract = db.getPressedForms(binding.nh102.getText().toString()
+        editFormContract = db.getPressedForms(binding.nh102.getText().toString()
                 , binding.nh108.getText().toString());
 
-        if (MainApp.editFormContract != null) {
+        if (editFormContract != null) {
             Toast.makeText(this, "Data Get", Toast.LENGTH_SHORT).show();
 
-            JSONA1ModelClass jsonA1 = JSONUtilClass.getModelFromJSON(MainApp.editFormContract.getsA1(), JSONA1ModelClass.class);
+            JSONA1ModelClass jsonA1 = JSONUtilClass.getModelFromJSON(editFormContract.getsA1(), JSONA1ModelClass.class);
 
             if (jsonA1.getHhheadpresent().equals("1")) {
                 binding.checkHHHeadpresent.setChecked(true);
@@ -551,19 +553,24 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
         MainApp.fc = new FormsContract();
 
-        MainApp.fc.setDevicetagID(MainApp.getTagName(this));
-        MainApp.fc.setFormDate(dtToday);
-        MainApp.fc.setUser(MainApp.userName);
-        MainApp.fc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
-                Settings.Secure.ANDROID_ID));
-        MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
-        MainApp.fc.setRespLineNo(MainApp.lineNo);
-        MainApp.fc.setClusterNo(binding.nh102.getText().toString());
-        MainApp.fc.setHhNo(binding.nh108.getText().toString().toUpperCase());
-
-        setGPS(); // Set GPS
-
         JSONObject sA1 = new JSONObject();
+
+        if (!editFormFlag) {
+            MainApp.fc.setDevicetagID(MainApp.getTagName(this));
+            MainApp.fc.setFormDate(dtToday);
+            MainApp.fc.setUser(MainApp.userName);
+            MainApp.fc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
+                    Settings.Secure.ANDROID_ID));
+            MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
+            MainApp.fc.setRespLineNo(MainApp.lineNo);
+            MainApp.fc.setClusterNo(binding.nh102.getText().toString());
+            MainApp.fc.setHhNo(binding.nh108.getText().toString().toUpperCase());
+
+            setGPS(); // Set GPS
+        } else {
+            sA1.put("updatedate_sa1", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+            MainApp.fc.setUID(editFormContract.getUID());
+        }
 
         sA1.put("rndid", MainApp.selectedHead.get_ID());
         sA1.put("luid", MainApp.selectedHead.getLUID());
@@ -649,20 +656,26 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
         DatabaseHelper db = new DatabaseHelper(this);
 
-        long updcount = db.addForm(MainApp.fc);
+        if (!editFormFlag) {
+            long updcount = db.addForm(MainApp.fc, 0);
 
-        MainApp.fc.set_ID(String.valueOf(updcount));
+            MainApp.fc.set_ID(String.valueOf(updcount));
 
-        if (updcount != 0) {
-            //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+            if (updcount != 0) {
+                //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
 
-            MainApp.fc.setUID(
-                    (MainApp.fc.getDeviceID() + MainApp.fc.get_ID()));
-            db.updateFormID();
-            return true;
+                MainApp.fc.setUID(
+                        (MainApp.fc.getDeviceID() + MainApp.fc.get_ID()));
+                db.updateFormID();
+                return true;
+            } else {
+                Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         } else {
-            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
-            return false;
+            long updcount = db.addForm(MainApp.fc, 1);
+
+            return true;
         }
     }
 
