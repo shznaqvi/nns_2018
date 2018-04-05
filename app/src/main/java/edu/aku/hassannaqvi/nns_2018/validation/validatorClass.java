@@ -178,7 +178,9 @@ public abstract class validatorClass {
             rdBtn.setError("This data is Required!");    // Set Error on last radio button
 
             rdBtn.setFocusable(true);
+
             //rdBtn.setFocusableInTouchMode(true);
+
             rdBtn.requestFocus();
 
             /*rdBtn.clearFocus();

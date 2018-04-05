@@ -292,6 +292,7 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
         if (!validatorClass.EmptyRadioButton(this, binding.nh301, binding.nh301a, getString(R.string.nh301))) {
             return false;
         }
+
         if (!validatorClass.EmptyRadioButton(this, binding.nh301, binding.nh30196, binding.nh30196x, getString(R.string.nh301))) {
             return false;
         }
@@ -312,9 +313,11 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
         if (!validatorClass.EmptyRadioButton(this, binding.nh303, binding.nh303b, getString(R.string.nh303))) {
             return false;
         }
+
         if (!validatorClass.EmptyRadioButton(this, binding.nh303, binding.nh30396, binding.nh30396x, getString(R.string.nh303))) {
             return false;
         }
+
         if (!binding.nh303b.isChecked() && !binding.nh303c.isChecked()) {
 
             if (!binding.nh30498.isChecked() && !binding.nh30499.isChecked()) {
@@ -331,9 +334,11 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
                 }
             }
         }
+
         if (!validatorClass.EmptyRadioButton(this, binding.nh305, binding.nh305b, getString(R.string.nh305))) {
             return false;
         }
+
         if (binding.nh305a.isChecked()) {
             if (!validatorClass.EmptyRadioButton(this, binding.nh306, binding.nh306a, getString(R.string.nh306))) {
                 return false;
