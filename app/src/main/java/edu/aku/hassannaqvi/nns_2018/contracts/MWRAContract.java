@@ -266,7 +266,6 @@ public class MWRAContract {
             this.app_ver = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_APP_VER));
             this.b1SerialNo = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_B1SERIALNO));
             this.sB1 = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB1));
-
             this.sB6 = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB6));
             this.synced = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SYNCED));
             this.syncedDate = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SYNCEDDATE));

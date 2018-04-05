@@ -53,19 +53,22 @@ public class DeceasedContract {
 
     }
 
-    public DeceasedContract Hydrate(Cursor cursor) {
+    public DeceasedContract Hydrate(Cursor cursor, int type) {
         this._ID = cursor.getString(cursor.getColumnIndex(DeceasedTable.COLUMN__ID));
         this._UID = cursor.getString(cursor.getColumnIndex(DeceasedTable.COLUMN__UID));
         this._UUID = cursor.getString(cursor.getColumnIndex(DeceasedTable.COLUMN__UUID));
-        this.formDate = cursor.getString(cursor.getColumnIndex(DeceasedTable.COLUMN_FORMDATE));
-        this.user = cursor.getString(cursor.getColumnIndex(DeceasedTable.COLUMN_USER));
-        this.sH8 = cursor.getString(cursor.getColumnIndex(DeceasedTable.COLUMN_SH8));
-        this.deviceID = cursor.getString(cursor.getColumnIndex(DeceasedTable.COLUMN_DEVICEID));
-        this.devicetagID = cursor.getString(cursor.getColumnIndex(DeceasedTable.COLUMN_DEVICETAGID));
-        this.synced = cursor.getString(cursor.getColumnIndex(DeceasedTable.COLUMN_SYNCED));
-        this.synced_date = cursor.getString(cursor.getColumnIndex(DeceasedTable.COLUMN_SYNCED_DATE));
-        this.appversion = cursor.getString(cursor.getColumnIndex(DeceasedTable.COLUMN_APPVERSION));
-
+        if (type == 1) {
+            this.formDate = cursor.getString(cursor.getColumnIndex(DeceasedTable.COLUMN_FORMDATE));
+            this.user = cursor.getString(cursor.getColumnIndex(DeceasedTable.COLUMN_USER));
+            this.deviceID = cursor.getString(cursor.getColumnIndex(DeceasedTable.COLUMN_DEVICEID));
+            this.devicetagID = cursor.getString(cursor.getColumnIndex(DeceasedTable.COLUMN_DEVICETAGID));
+            this.synced = cursor.getString(cursor.getColumnIndex(DeceasedTable.COLUMN_SYNCED));
+            this.synced_date = cursor.getString(cursor.getColumnIndex(DeceasedTable.COLUMN_SYNCED_DATE));
+            this.appversion = cursor.getString(cursor.getColumnIndex(DeceasedTable.COLUMN_APPVERSION));
+        }
+        if (type == 1 || type == 8) {
+            this.sH8 = cursor.getString(cursor.getColumnIndex(DeceasedTable.COLUMN_SH8));
+        }
 
         // TODO:
 

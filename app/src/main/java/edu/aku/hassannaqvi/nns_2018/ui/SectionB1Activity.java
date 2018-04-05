@@ -26,12 +26,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
 
+import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONB1ModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB1Binding;
+import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionB1Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
@@ -66,10 +68,114 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
         this.setTitle(getResources().getString(R.string.nbheading));
 
         setupViews();
-
+        autoPopulate();
 
 //        Validation Boolean
         MainApp.validateFlag = false;
+
+    }
+
+    private void autoPopulate() {
+        MWRAContract mwraContract = db.getsB1();
+        if (!mwraContract.getsB1().equals("")) {
+
+            JSONB1ModelClass jsonB1 = JSONUtilClass.getModelFromJSON(mwraContract.getsB1(), JSONB1ModelClass.class);
+            bi.nw201years.setText(jsonB1.getnw201years());
+            bi.nw201months.setText(jsonB1.getnw201months());
+            bi.nw201days.setText(jsonB1.getnw201days());
+            bi.nw202.setText(jsonB1.getnw202());
+
+            if (!jsonB1.getnw203().equals("0")) {
+                bi.nw203.check(
+                        jsonB1.getnw203().equals("1") ? bi.nw203a.getId() :
+                                bi.nw203b.getId()
+                );
+            }
+            if (!jsonB1.getnw204().equals("0")) {
+                bi.nw204.check(
+                        jsonB1.getnw204().equals("1") ? bi.nw204a.getId() :
+                                bi.nw204b.getId()
+                );
+            }
+            if (!jsonB1.getnw205().equals("0")) {
+                bi.nw205.check(
+                        jsonB1.getnw205().equals("1") ? bi.nw205a.getId() :
+                                bi.nw205b.getId()
+                );
+            }
+
+            bi.nw206.setText(jsonB1.getnw206());
+
+            if (!jsonB1.getnw205().equals("0")) {
+                bi.nw205.check(
+                        jsonB1.getnw205().equals("1") ? bi.nw205a.getId() :
+                                bi.nw205b.getId()
+                );
+            }
+            if (!jsonB1.getnw207().equals("0")) {
+                bi.nw207.check(
+                        jsonB1.getnw207().equals("1") ? bi.nw207a.getId() :
+                                bi.nw207b.getId()
+                );
+            }
+            if (!jsonB1.getnw208().equals("0")) {
+                bi.nw208.check(
+                        jsonB1.getnw208().equals("1") ? bi.nw208a.getId() :
+                                bi.nw208b.getId()
+                );
+            }
+            if (!jsonB1.getnw209().equals("0")) {
+                bi.nw209.check(
+                        jsonB1.getnw209().equals("1") ? bi.nw209a.getId() :
+                                bi.nw209b.getId()
+                );
+            }
+            if (!jsonB1.getnw21001().equals("0")) {
+                bi.nw21001.check(
+                        jsonB1.getnw21001().equals("1") ? bi.nw21001a.getId() :
+                                bi.nw21001b.getId()
+                );
+            }
+            if (!jsonB1.getnw21002().equals("0")) {
+                bi.nw21002.check(
+                        jsonB1.getnw21002().equals("1") ? bi.nw21002a.getId() :
+                                bi.nw21002b.getId()
+                );
+            }
+            if (!jsonB1.getnw21003().equals("0")) {
+                bi.nw21003.check(
+                        jsonB1.getnw21003().equals("1") ? bi.nw21003a.getId() :
+                                bi.nw21003b.getId()
+                );
+            }
+            if (!jsonB1.getnw21098().equals("0")) {
+                bi.nw21098.check(
+                        jsonB1.getnw21098().equals("1") ? bi.nw21098a.getId() :
+                                bi.nw21098b.getId()
+                );
+            }
+            if (!jsonB1.getnw21099().equals("0")) {
+                bi.nw21099.check(
+                        jsonB1.getnw21099().equals("1") ? bi.nw21099a.getId() :
+                                bi.nw21099b.getId()
+                );
+            }
+            bi.nw211.setText(jsonB1.getnw211());
+            bi.nw212.setText(jsonB1.getnw212());
+            bi.nw213.setText(jsonB1.getnw213());
+            bi.nw214.setText(jsonB1.getnw214());
+            bi.nw215.setText(jsonB1.getnw215());
+
+
+            if (!jsonB1.getnw216().equals("0")) {
+                bi.nw216.check(
+                        jsonB1.getnw216().equals("1") ? bi.nw216a.getId() :
+                                bi.nw216b.getId()
+                );
+            }
+            bi.nw216aa.setText(jsonB1.getnw216aa());
+
+        }
 
     }
 

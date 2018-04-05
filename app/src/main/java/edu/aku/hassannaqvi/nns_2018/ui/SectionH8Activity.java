@@ -27,6 +27,7 @@ import java.util.TimerTask;
 
 import butterknife.BindViews;
 import butterknife.ButterKnife;
+import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONH8ModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.DeceasedContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
@@ -34,23 +35,24 @@ import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionH8Binding;
 import edu.aku.hassannaqvi.nns_2018.other.DateUtils;
+import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionH8Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
     static int counter = 1;
     static int deccounter = 0;
+    private final long DELAY = 1000;
     ActivitySectionH8Binding bi;
     @BindViews({R.id.nh808d, R.id.nh808m, R.id.nh808y})
     List<EditText> grpdob;
     FamilyMembersContract family;
     long ageInYears = 0;
-
+    DatabaseHelper db;
     Calendar dob = Calendar.getInstance();
     List<String> mothersList, fathersList;
     List<String> mothersSerials, fathersSerials;
     Map<String, String> mothersMap, fathersMap;
-    private final long DELAY = 1000;
     private Timer timer = new Timer();
     public TextWatcher age = new TextWatcher() {
         @Override
@@ -251,9 +253,38 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
             }
         }
 
+        db = new DatabaseHelper(this);
 
 //        Validation Boolean
         MainApp.validateFlag = false;
+        autoPopulateFields();
+
+    }
+
+    private void autoPopulateFields() {
+        DeceasedContract deceasedContract = db.getsH8();
+
+        if (!deceasedContract.getsH8().equals("")) {
+
+            JSONH8ModelClass jsonH8 = JSONUtilClass.getModelFromJSON(deceasedContract.getsH8(), JSONH8ModelClass.class);
+            bi.nh803.setText(jsonH8.getNh803());
+
+            if (!jsonH8.getNh806().equals("0")) {
+                bi.nh806.check(
+                        jsonH8.getNh806().equals("1") ? bi.nh806a.getId()
+                                : bi.nh806b.getId());
+            }
+
+            bi.nh807y.setText(jsonH8.getNh807y());
+            bi.nh807m.setText(jsonH8.getNh807m());
+            bi.nh807d.setText(jsonH8.getNh807d());
+            bi.nh808y.setText(jsonH8.getNh808y());
+            bi.nh808m.setText(jsonH8.getNh808m());
+            bi.nh808d.setText(jsonH8.getNh808d());
+            bi.nh809.setText(jsonH8.getNh809());
+
+        }
+
 
     }
 
@@ -357,7 +388,6 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
         if (!validatorClass.RangeTextBox(this, bi.nh807d, 0, 29, getString(R.string.nh807), " days")) {
             return false;
         }
-
 
 
         if (bi.nh807y.getText().toString().equals("0") && bi.nh807m.getText().toString().equals("0")
