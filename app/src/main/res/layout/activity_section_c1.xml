@@ -288,7 +288,6 @@
                         android:inputType="number"
                         android:maxLength="2" />
 
-
                 </LinearLayout>
 
 
