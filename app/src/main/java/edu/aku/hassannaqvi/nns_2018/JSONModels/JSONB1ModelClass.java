@@ -6,6 +6,10 @@ package edu.aku.hassannaqvi.nns_2018.JSONModels;
 
 public class JSONB1ModelClass {
 
+    private String nw101 = "";
+    private String nw1serialno = "";
+    private String hhno = "";
+    private String cluster_no = "";
     private String nw201days = "";
     private String nw201months = "";
     private String nw201years = "";
@@ -32,6 +36,38 @@ public class JSONB1ModelClass {
 
     public JSONB1ModelClass() {
 
+    }
+
+    public String getnw101() {
+        return nw101;
+    }
+
+    public void setnw101(String nw101) {
+        this.nw101 = nw101;
+    }
+
+    public String getnw1serialno() {
+        return nw1serialno;
+    }
+
+    public void setnw1serialno(String nw1serialno) {
+        this.nw1serialno = nw1serialno;
+    }
+
+    public String getHhno() {
+        return hhno;
+    }
+
+    public void setHhno(String hhno) {
+        this.hhno = hhno;
+    }
+
+    public String getCluster_no() {
+        return cluster_no;
+    }
+
+    public void setCluster_no(String cluster_no) {
+        this.cluster_no = cluster_no;
     }
 
     public String getnw201days() {

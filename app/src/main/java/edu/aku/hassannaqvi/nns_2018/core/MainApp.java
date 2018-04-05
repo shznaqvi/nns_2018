@@ -124,7 +124,6 @@ public class MainApp extends Application {
     public static boolean flag = false;
     public static int outcome = 0;
     public static String lineNo = "";
-    public static int status = 0;
     public static int mwraPosition = 0;
 
     public static int nuCount = 1;

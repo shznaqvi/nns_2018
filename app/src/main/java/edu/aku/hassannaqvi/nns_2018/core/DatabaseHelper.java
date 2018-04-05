@@ -2160,7 +2160,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 MWRAContract fc = new MWRAContract();
-                allFC.add(fc.Hydrate(c, 1));
+                allFC.add(fc.Hydrate(c, 0));
             }
         } finally {
             if (c != null) {
@@ -2638,7 +2638,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 MWRATable.COLUMN__ID,
                 MWRATable.COLUMN_UID,
                 MWRATable.COLUMN_UUID,
-                MWRATable.COLUMN_SB1
+                MWRATable.COLUMN_SB1,
+                MWRATable.COLUMN_SB6
         };
 
 
@@ -2683,7 +2684,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 MWRATable.COLUMN__ID,
                 MWRATable.COLUMN_UID,
                 MWRATable.COLUMN_UUID,
-                MWRATable.COLUMN_SB2
+                MWRATable.COLUMN_SB2,
+                MWRATable.COLUMN_SB6
         };
 
 

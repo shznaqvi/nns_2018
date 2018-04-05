@@ -158,13 +158,13 @@ public class ViewMemberActivity extends MenuActivity {
 
                             if (!flag) {
 
-                                checkflag = false;
+                                /*checkflag = false;
                                 for (int hh : WraAdapter.wraExistList) {
                                     if (hh == position) {
                                         checkflag = true;
                                         break;
                                     }
-                                }
+                                }*/
 
                                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                                         ViewMemberActivity.this);
@@ -176,7 +176,8 @@ public class ViewMemberActivity extends MenuActivity {
                                                     public void onClick(DialogInterface dialog, int id) {
 
                                                         startActivity(new Intent(ViewMemberActivity.this, SectionB1Activity.class)
-                                                                .putExtra("editForm", checkflag)
+                                                                .putExtra("editForm", true)
+                                                                .putExtra("checkflag", true)
                                                                 .putExtra("formUid", formUid));
 
                                                     }

@@ -51,6 +51,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
     private Timer timer = new Timer();
 
     String classPassName = "";
+    JSONB1AModelClass jsonB1A;
 
 
     //static int status;
@@ -79,7 +80,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         Collection<OutcomeContract> outcomeContracts = db.getPressedOutcome();
 
         for (OutcomeContract outcomeContract : outcomeContracts) {
-            JSONB1AModelClass jsonB1A = JSONUtilClass.getModelFromJSON(outcomeContract.getsB1A(), JSONB1AModelClass.class);
+            jsonB1A = JSONUtilClass.getModelFromJSON(outcomeContract.getsB1A(), JSONB1AModelClass.class);
 
             if (jsonB1A.getSerial().equals(String.valueOf(MainApp.count))) {
 
@@ -146,7 +147,6 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                     startActivityForResult(new Intent(this, SectionB1AActivity.class)
                             .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
                 }
-
 
 
             } else {
@@ -217,6 +217,8 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
         MainApp.oc = new OutcomeContract();
 
+        JSONObject sB1a = new JSONObject();
+
         if (!backPressed && !frontPressed) {
             MainApp.oc.setDevicetagID(MainApp.getTagName(this));
             MainApp.oc.setFormDate(MainApp.fc.getFormDate());
@@ -225,6 +227,10 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                     Settings.Secure.ANDROID_ID));
             MainApp.oc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
             MainApp.oc.set_UUID(MainApp.mc.get_UID());
+
+            sB1a.put("cluster_no", MainApp.fc.getClusterNo());
+            sB1a.put("hhno", MainApp.fc.getHhNo());
+
         } else {
             MainApp.oc.setUpdatedate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
 
@@ -233,14 +239,28 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
             } else if (backPressed) {
                 MainApp.oc.set_UID(uid);
             }
+
+            if (SectionB1Activity.editWRAFlag && !frontPressed) {
+                sB1a.put("edit_updatedate_nw1", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+
+                sB1a.put("cluster_no", jsonB1A.getCluster_no());
+                sB1a.put("hhno", jsonB1A.getHhno());
+
+            } else if (SectionB1Activity.editWRAFlag) {
+
+                sB1a.put("cluster_no", jsonB1A.getCluster_no());
+                sB1a.put("hhno", jsonB1A.getHhno());
+
+            } else {
+
+                sB1a.put("cluster_no", MainApp.fc.getClusterNo());
+                sB1a.put("hhno", MainApp.fc.getHhNo());
+
+            }
         }
 
-        JSONObject sB1a = new JSONObject();
-
-        sB1a.put("cluster_no", MainApp.fc.getClusterNo());
-        sB1a.put("hhno", MainApp.fc.getHhNo());
-
         sB1a.put("serial", Integer.valueOf(MainApp.count));
+
         sB1a.put("nw21701", bi.nw21701a.isChecked() ? "1" : bi.nw21701b.isChecked() ? "2" : "0");
         sB1a.put("nw21702y", bi.nw21702y.getText().toString());
         sB1a.put("nw21702m", bi.nw21702m.getText().toString());
