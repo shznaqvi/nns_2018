@@ -580,7 +580,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                 }
             }
             //Children < 5
-            else if (Age < 5) {
+            else if (Age < 6) {
                 memType = new HashMap<>();
                 if (family.getna204().equals("1")) {
                     memType.put(1, Integer.valueOf(mem.get(3).get(1).toString()) + 1);
@@ -604,7 +604,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                     //MainApp.adolescents.add(family);
                 }
 
-                if (Age < 5 && family.getMotherId().equals("00")) {
+                if (Age < 6 && family.getMotherId().equals("00")) {
                     MainApp.childNA.add(family);
                 }
             }

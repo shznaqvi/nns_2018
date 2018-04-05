@@ -43,6 +43,7 @@ public class EndingActivity extends AppCompatActivity {
             binding.istatusd.setEnabled(false);
             binding.istatuse.setEnabled(false);
             binding.istatusf.setEnabled(false);
+            binding.istatusg.setEnabled(false);
             binding.istatus96.setEnabled(false);
 
             binding.btnAddMember.setVisibility(View.VISIBLE);
@@ -53,6 +54,7 @@ public class EndingActivity extends AppCompatActivity {
             binding.istatusd.setEnabled(true);
             binding.istatuse.setEnabled(true);
             binding.istatusf.setEnabled(true);
+            binding.istatusg.setEnabled(true);
             binding.istatus96.setEnabled(true);
             binding.btnAddMember.setVisibility(View.GONE);
         }
@@ -91,14 +93,16 @@ public class EndingActivity extends AppCompatActivity {
     private void SaveDraft() {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
-        MainApp.fc.setIstatus(binding.istatusa.isChecked() ? "1"
+        MainApp.fc.setIstatus(
+                binding.istatusa.isChecked() ? "1"
                 : binding.istatusb.isChecked() ? "2"
                 : binding.istatusc.isChecked() ? "3"
                 : binding.istatusd.isChecked() ? "4"
                 : binding.istatuse.isChecked() ? "5"
                 : binding.istatusf.isChecked() ? "6"
-                : binding.istatus96.isChecked() ? "96"
-                : "0");
+                        : binding.istatusg.isChecked() ? "7"
+                        : binding.istatus96.isChecked() ? "96"
+                        : "0");
 
         MainApp.fc.setIstatus88x(binding.istatus96x.getText().toString());
         MainApp.fc.setEndtime(new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime()));
