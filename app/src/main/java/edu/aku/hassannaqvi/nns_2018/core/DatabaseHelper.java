@@ -132,6 +132,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + ChildTable.COLUMN_PROJECTNAME + " TEXT," +
             ChildTable.COLUMN__UID + " TEXT," +
             ChildTable.COLUMN__UUID + " TEXT," +
+            ChildTable.COLUMN_FM_UID + " TEXT," +
+            ChildTable.COLUMN_MUID + " TEXT," +
             ChildTable.COLUMN_FORMDATE + " TEXT," +
             ChildTable.COLUMN_USER + " TEXT," +
             ChildTable.COLUMN_C1SERIALNO + " TEXT," +
@@ -177,6 +179,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             MWRATable.COLUMN_PROJECTNAME + " TEXT," +
             MWRATable.COLUMN_UID + " TEXT," +
             MWRATable.COLUMN_UUID + " TEXT," +
+            MWRATable.COLUMN_FM_UID + " TEXT," +
             MWRATable.COLUMN_FORMDATE + " TEXT," +
             MWRATable.COLUMN_UPDATEDATE + " TEXT," +
             MWRATable.COLUMN_DEVICEID + " TEXT," +
@@ -201,6 +204,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             outcomeTable.COLUMN_PROJECTNAME + " TEXT," +
             outcomeTable.COLUMN_UID + " TEXT," +
             outcomeTable.COLUMN_UUID + " TEXT," +
+            outcomeTable.COLUMN_FM_UID + " TEXT," +
+            outcomeTable.COLUMN_MUID + " TEXT," +
             outcomeTable.COLUMN_FORMDATE + " TEXT," +
             outcomeTable.COLUMN_UPDATEDATE + " TEXT," +
             outcomeTable.COLUMN_DEVICEID + " TEXT," +
@@ -218,6 +223,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             RecipientsTable.COLUMN_PROJECTNAME + " TEXT," +
             RecipientsTable.COLUMN_UID + " TEXT," +
             RecipientsTable.COLUMN_UUID + " TEXT," +
+            RecipientsTable.COLUMN_FM_UID + " TEXT," +
             RecipientsTable.COLUMN_FORMDATE + " TEXT," +
             RecipientsTable.COLUMN_DEVICEID + " TEXT," +
             RecipientsTable.COLUMN_DEVICETAGID + " TEXT," +
@@ -235,6 +241,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             NutritionTable.COLUMN_PROJECTNAME + " TEXT," +
             NutritionTable.COLUMN_UID + " TEXT," +
             NutritionTable.COLUMN_UUID + " TEXT," +
+            NutritionTable.COLUMN_FM_UID + " TEXT," +
+            NutritionTable.COLUMN_MUID + " TEXT," +
             NutritionTable.COLUMN_FORMDATE + " TEXT," +
             NutritionTable.COLUMN_UPDATEDATE + " TEXT," +
             NutritionTable.COLUMN_DEVICEID + " TEXT," +
@@ -1103,6 +1111,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(RecipientsTable.COLUMN_PROJECTNAME, rc.getProjectName());
         values.put(RecipientsTable.COLUMN_UID, rc.get_UID());
         values.put(RecipientsTable.COLUMN_UUID, rc.get_UUID());
+        values.put(RecipientsTable.COLUMN_FM_UID, rc.getFMUID());
         values.put(RecipientsTable.COLUMN_FORMDATE, rc.getFormDate());
         values.put(RecipientsTable.COLUMN_USER, rc.getUser());
         values.put(RecipientsTable.COLUMN_A8ASNO, rc.getA8aSNo());
@@ -1136,6 +1145,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             //values.put(ChildTable.COLUMN__ID, cc.get_ID());
             values.put(ChildTable.COLUMN__UID, cc.getUID());
             values.put(ChildTable.COLUMN__UUID, cc.getUUID());
+            values.put(ChildTable.COLUMN_FM_UID, cc.getFMUID());
+            values.put(ChildTable.COLUMN_MUID, cc.getMUID());
             values.put(ChildTable.COLUMN_FORMDATE, cc.getFormDate());
             values.put(ChildTable.COLUMN_USER, cc.getUser());
             values.put(ChildTable.COLUMN_C1SERIALNO, cc.getC1SerialNo());
@@ -1226,6 +1237,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             //values.put(MWRATable.COLUMN__ID, mc.get_ID());
             values.put(MWRATable.COLUMN_UID, mc.get_UID());
             values.put(MWRATable.COLUMN_UUID, mc.get_UUID());
+            values.put(MWRATable.COLUMN_FM_UID, mc.getFMUID());
             values.put(MWRATable.COLUMN_FORMDATE, mc.getFormDate());
             values.put(MWRATable.COLUMN_DEVICEID, mc.getDeviceId());
             values.put(MWRATable.COLUMN_DEVICETAGID, mc.getDevicetagID());
@@ -1284,6 +1296,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             //values.put(MWRATable.COLUMN__ID, mc.get_ID());
             values.put(NutritionTable.COLUMN_UID, mc.get_UID());
             values.put(NutritionTable.COLUMN_UUID, mc.get_UUID());
+            values.put(NutritionTable.COLUMN_FM_UID, mc.getFMUID());
+            values.put(NutritionTable.COLUMN_MUID, mc.getMUID());
             values.put(NutritionTable.COLUMN_FORMDATE, mc.getFormDate());
             values.put(NutritionTable.COLUMN_DEVICEID, mc.getDeviceId());
             values.put(NutritionTable.COLUMN_DEVICETAGID, mc.getDevicetagID());
@@ -1326,6 +1340,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             //values.put(outcomeTable.COLUMN__ID, oc.get_ID());
             values.put(outcomeTable.COLUMN_UID, oc.get_UID());
             values.put(outcomeTable.COLUMN_UUID, oc.get_UUID());
+            values.put(outcomeTable.COLUMN_FM_UID, oc.getFMUID());
+            values.put(outcomeTable.COLUMN_MUID, oc.getMUID());
             values.put(outcomeTable.COLUMN_FORMDATE, oc.getFormDate());
             values.put(outcomeTable.COLUMN_DEVICEID, oc.getDeviceId());
             values.put(outcomeTable.COLUMN_DEVICETAGID, oc.getDevicetagID());
@@ -2004,6 +2020,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ChildTable.COLUMN__ID,
                 ChildTable.COLUMN__UID,
                 ChildTable.COLUMN__UUID,
+                ChildTable.COLUMN_FM_UID,
+                ChildTable.COLUMN_MUID,
                 ChildTable.COLUMN_FORMDATE,
                 ChildTable.COLUMN_USER,
                 ChildTable.COLUMN_C1SERIALNO,
@@ -2123,6 +2141,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 MWRATable.COLUMN__ID,
                 MWRATable.COLUMN_UID,
                 MWRATable.COLUMN_UUID,
+                MWRATable.COLUMN_FM_UID,
                 MWRATable.COLUMN_FORMDATE,
                 MWRATable.COLUMN_DEVICEID,
                 MWRATable.COLUMN_DEVICETAGID,
@@ -2183,6 +2202,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 NutritionTable.COLUMN__ID,
                 NutritionTable.COLUMN_UID,
                 NutritionTable.COLUMN_UUID,
+                NutritionTable.COLUMN_FM_UID,
+                NutritionTable.COLUMN_MUID,
                 NutritionTable.COLUMN_FORMDATE,
                 NutritionTable.COLUMN_DEVICEID,
                 NutritionTable.COLUMN_DEVICETAGID,
@@ -2236,6 +2257,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 RecipientsTable.COLUMN__ID,
                 RecipientsTable.COLUMN_UID,
                 RecipientsTable.COLUMN_UUID,
+                RecipientsTable.COLUMN_FM_UID,
                 RecipientsTable.COLUMN_FORMDATE,
                 RecipientsTable.COLUMN_DEVICEID,
                 RecipientsTable.COLUMN_DEVICETAGID,
@@ -2290,6 +2312,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 outcomeTable.COLUMN__ID,
                 outcomeTable.COLUMN_UID,
                 outcomeTable.COLUMN_UUID,
+                outcomeTable.COLUMN_MUID,
+                outcomeTable.COLUMN_FM_UID,
                 outcomeTable.COLUMN_FORMDATE,
                 outcomeTable.COLUMN_DEVICEID,
                 outcomeTable.COLUMN_DEVICETAGID,
@@ -2343,6 +2367,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 outcomeTable.COLUMN__ID,
                 outcomeTable.COLUMN_UID,
                 outcomeTable.COLUMN_UUID,
+                outcomeTable.COLUMN_MUID,
+                outcomeTable.COLUMN_FM_UID,
                 outcomeTable.COLUMN_SB1A
         };
 
@@ -2387,6 +2413,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 NutritionTable.COLUMN__ID,
                 NutritionTable.COLUMN_UID,
                 NutritionTable.COLUMN_UUID,
+                NutritionTable.COLUMN_FM_UID,
+                NutritionTable.COLUMN_MUID,
                 NutritionTable.COLUMN_SB6
         };
 
@@ -2431,6 +2459,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 MWRATable.COLUMN__ID,
                 MWRATable.COLUMN_UID,
                 MWRATable.COLUMN_UUID,
+                MWRATable.COLUMN_FM_UID,
                 MWRATable.COLUMN_SB2
         };
 
@@ -2476,6 +2505,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 MWRATable.COLUMN__ID,
                 MWRATable.COLUMN_UID,
                 MWRATable.COLUMN_UUID,
+                MWRATable.COLUMN_FM_UID,
                 MWRATable.COLUMN_SB3
         };
 
@@ -2521,6 +2551,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 MWRATable.COLUMN__ID,
                 MWRATable.COLUMN_UID,
                 MWRATable.COLUMN_UUID,
+                MWRATable.COLUMN_FM_UID,
                 MWRATable.COLUMN_SB4
         };
 
@@ -2566,6 +2597,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 MWRATable.COLUMN__ID,
                 MWRATable.COLUMN_UID,
                 MWRATable.COLUMN_UUID,
+                MWRATable.COLUMN_FM_UID,
                 MWRATable.COLUMN_SB5
         };
 
@@ -2611,6 +2643,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ChildTable.COLUMN__ID,
                 ChildTable.COLUMN__UID,
                 ChildTable.COLUMN__UUID,
+                ChildTable.COLUMN_FM_UID,
+                ChildTable.COLUMN_MUID,
                 ChildTable.COLUMN_SC2
         };
 
@@ -2656,6 +2690,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ChildTable.COLUMN__ID,
                 ChildTable.COLUMN__UID,
                 ChildTable.COLUMN__UUID,
+                ChildTable.COLUMN_MUID,
+                ChildTable.COLUMN_FM_UID,
                 ChildTable.COLUMN_SC3
         };
 
@@ -2702,6 +2738,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ChildTable.COLUMN__ID,
                 ChildTable.COLUMN__UID,
                 ChildTable.COLUMN__UUID,
+                ChildTable.COLUMN_FM_UID,
+                ChildTable.COLUMN_MUID,
                 ChildTable.COLUMN_SC4
         };
 
@@ -2747,6 +2785,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ChildTable.COLUMN__ID,
                 ChildTable.COLUMN__UID,
                 ChildTable.COLUMN__UUID,
+                ChildTable.COLUMN_MUID,
+                ChildTable.COLUMN_FM_UID,
                 ChildTable.COLUMN_SC5
         };
 

@@ -1204,6 +1204,7 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
             MainApp.mc.setApp_ver(MainApp.fc.getAppversion());
             MainApp.mc.setB1SerialNo(wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
             MainApp.mc.set_UUID(MainApp.fc.getUID());
+            MainApp.mc.setFMUID(wraMap.get(bi.nb101.getSelectedItem().toString()).get_UID());
         } else {
             sB1.put("updatedate_nw1", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
             MainApp.mc.set_UID(MainApp.mc.get_UID());

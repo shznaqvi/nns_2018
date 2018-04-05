@@ -96,6 +96,13 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                     binding.nh2agey.setEnabled(false);
                     binding.nh2agey.setText(String.valueOf(agebyDob));
 
+                } else if (!binding.nh2doby.getText().toString().equals("9998") && !binding.nh2dobm.getText().toString().equals("98")) {
+
+                    dob = DateUtils.getCalendarDate(binding.nh2dobm.getText().toString(),
+                            binding.nh2doby.getText().toString());
+                    agebyDob = DateUtils.ageInYearByDOB(dob);
+                    binding.nh2agey.setEnabled(false);
+                    binding.nh2agey.setText(String.valueOf(agebyDob));
                 } else if (!binding.nh2doby.getText().toString().equals("9998")) {
                     agebyDob = DateUtils.ageInYearByDOB(binding.nh2doby.getText().toString());
                     binding.nh2agey.setEnabled(false);
@@ -112,24 +119,6 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
         @Override
         public void afterTextChanged(Editable s) {
 
-//            timer.cancel();
-//            timer = new Timer();
-//            timer.schedule(
-//                    new TimerTask() {
-//                        @Override
-//                        public void run() {
-//
-//                            SectionA2Activity.this.runOnUiThread(new Runnable() {
-//                                public void run() {
-//                                    formValidation();
-//                                }
-//                                //}
-//                            });
-//
-//                        }
-//                    },
-//                    DELAY1
-//            );
         }
 
     };

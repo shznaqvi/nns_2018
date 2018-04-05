@@ -223,6 +223,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
             MainApp.oc.setDeviceId(MainApp.fc.getDeviceID());
             MainApp.oc.setApp_ver(MainApp.fc.getAppversion());
             MainApp.oc.set_UUID(MainApp.fc.getUID());
+            MainApp.oc.setMUID(MainApp.mc.get_UID());
         } else {
             MainApp.oc.setUpdatedate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
 

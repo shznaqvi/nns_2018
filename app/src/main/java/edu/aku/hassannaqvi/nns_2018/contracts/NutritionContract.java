@@ -18,6 +18,8 @@ public class NutritionContract {
     private String _ID = "";
     private String _UID = "";
     private String _UUID = "";
+    private String FMUID = "";
+    private String MUID = "";
     private String formDate = "";
     private String deviceId = "";
     private String devicetagID = "";
@@ -35,6 +37,22 @@ public class NutritionContract {
     public NutritionContract() {
     }
 
+
+    public String getFMUID() {
+        return FMUID;
+    }
+
+    public void setFMUID(String FMUID) {
+        this.FMUID = FMUID;
+    }
+
+    public String getMUID() {
+        return MUID;
+    }
+
+    public void setMUID(String MUID) {
+        this.MUID = MUID;
+    }
 
     public String getProjectName() {
         return projectName;
@@ -144,6 +162,8 @@ public class NutritionContract {
         this._ID = jsonObject.getString(NutritionTable.COLUMN__ID);
         this._UID = jsonObject.getString(NutritionTable.COLUMN_UID);
         this._UUID = jsonObject.getString(NutritionTable.COLUMN_UUID);
+        this.MUID = jsonObject.getString(NutritionTable.COLUMN_MUID);
+        this.FMUID = jsonObject.getString(NutritionTable.COLUMN_FM_UID);
         this.formDate = jsonObject.getString(NutritionTable.COLUMN_FORMDATE);
         this.deviceId = jsonObject.getString(NutritionTable.COLUMN_DEVICEID);
         this.devicetagID = jsonObject.getString(NutritionTable.COLUMN_DEVICETAGID);
@@ -163,6 +183,8 @@ public class NutritionContract {
         this._ID = cursor.getString(cursor.getColumnIndex(NutritionTable.COLUMN__ID));
         this._UID = cursor.getString(cursor.getColumnIndex(NutritionTable.COLUMN_UID));
         this._UUID = cursor.getString(cursor.getColumnIndex(NutritionTable.COLUMN_UUID));
+        this.MUID = cursor.getString(cursor.getColumnIndex(NutritionTable.COLUMN_MUID));
+        this.FMUID = cursor.getString(cursor.getColumnIndex(NutritionTable.COLUMN_FM_UID));
         this.sB6 = cursor.getString(cursor.getColumnIndex(NutritionTable.COLUMN_SB6));
 
         if (type == 0) {
@@ -188,6 +210,8 @@ public class NutritionContract {
         json.put(NutritionTable.COLUMN__ID, this._ID == null ? JSONObject.NULL : this._ID);
         json.put(NutritionTable.COLUMN_UID, this._UID == null ? JSONObject.NULL : this._UID);
         json.put(NutritionTable.COLUMN_UUID, this._UUID == null ? JSONObject.NULL : this._UUID);
+        json.put(NutritionTable.COLUMN_MUID, this.MUID == null ? JSONObject.NULL : this.MUID);
+        json.put(NutritionTable.COLUMN_FM_UID, this.FMUID == null ? JSONObject.NULL : this.FMUID);
         json.put(NutritionTable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
 
         json.put(NutritionTable.COLUMN_UPDATEDATE, this.updatedate == null ? JSONObject.NULL : this.updatedate);
@@ -218,6 +242,8 @@ public class NutritionContract {
         public static final String COLUMN__ID = "_id";
         public static final String COLUMN_UID = "uid";
         public static final String COLUMN_UUID = "uuid";
+        public static final String COLUMN_FM_UID = "fmuid";
+        public static final String COLUMN_MUID = "muid";
         public static final String COLUMN_FORMDATE = "formdate";
         public static final String COLUMN_DEVICEID = "deviceid";
         public static final String COLUMN_DEVICETAGID = "devicetagid";

@@ -3317,7 +3317,7 @@
                         android:onClick="intentWifi"
                         android:text="Connect to Device"
                         android:textColor="@color/white"
-                        android:visibility="visible" />
+                        android:visibility="gone" />
 
 
                 </LinearLayout>

@@ -65,23 +65,32 @@
                 android:layoutDirection="rtl"
                 android:orientation="vertical">
 
-                <TextView
+
+                <LinearLayout
+                    android:id="@+id/fldGrpresp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/nh113"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/colorPrimary"
+                        android:text="@string/nh113"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@android:color/white" />
 
 
-                <Spinner
-                    android:id="@+id/resp"
-                    style="@style/Widget.AppCompat.Spinner.Underlined"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center" />
+                    <Spinner
+                        android:id="@+id/resp"
+                        style="@style/Widget.AppCompat.Spinner.Underlined"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center" />
+
+                </LinearLayout>
 
 
                 <!--nc101-->

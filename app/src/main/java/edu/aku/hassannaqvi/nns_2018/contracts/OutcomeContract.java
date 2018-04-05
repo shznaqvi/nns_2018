@@ -18,6 +18,8 @@ public class OutcomeContract {
     private String _ID = "";
     private String _UID = "";
     private String _UUID = "";
+    private String MUID = "";
+    private String FMUID = "";
     private String formDate = "";
     private String updatedate = "";
     private String deviceId = "";
@@ -40,6 +42,21 @@ public class OutcomeContract {
 
     }
 
+    public String getMUID() {
+        return MUID;
+    }
+
+    public void setMUID(String MUID) {
+        this.MUID = MUID;
+    }
+
+    public String getFMUID() {
+        return FMUID;
+    }
+
+    public void setFMUID(String FMUID) {
+        this.FMUID = FMUID;
+    }
 
     public String getProjectName() {
         return projectName;
@@ -154,6 +171,8 @@ public class OutcomeContract {
         this._ID = jsonObject.getString(outcomeTable.COLUMN__ID);
         this._UID = jsonObject.getString(outcomeTable.COLUMN_UID);
         this._UUID = jsonObject.getString(outcomeTable.COLUMN_UUID);
+        this.MUID = jsonObject.getString(outcomeTable.COLUMN_MUID);
+        //this.FMUID = jsonObject.getString(outcomeTable.COLUMN_FM_UID);
         this.formDate = jsonObject.getString(outcomeTable.COLUMN_FORMDATE);
         this.deviceId = jsonObject.getString(outcomeTable.COLUMN_DEVICEID);
         this.devicetagID = jsonObject.getString(outcomeTable.COLUMN_DEVICETAGID);
@@ -174,6 +193,9 @@ public class OutcomeContract {
         this._ID = cursor.getString(cursor.getColumnIndex(outcomeTable.COLUMN__ID));
         this._UID = cursor.getString(cursor.getColumnIndex(outcomeTable.COLUMN_UID));
         this._UUID = cursor.getString(cursor.getColumnIndex(outcomeTable.COLUMN_UUID));
+        //this.FMUID = cursor.getString(cursor.getColumnIndex(outcomeTable.COLUMN_FM_UID));
+        this.MUID = cursor.getString(cursor.getColumnIndex(outcomeTable.COLUMN_MUID));
+
         this.sB1A = cursor.getString(cursor.getColumnIndex(outcomeTable.COLUMN_SB1A));
 
         if (type == 0) {
@@ -200,6 +222,9 @@ public class OutcomeContract {
         json.put(outcomeTable.COLUMN__ID, this._ID == null ? JSONObject.NULL : this._ID);
         json.put(outcomeTable.COLUMN_UID, this._UID == null ? JSONObject.NULL : this._UID);
         json.put(outcomeTable.COLUMN_UUID, this._UUID == null ? JSONObject.NULL : this._UUID);
+        //json.put(outcomeTable.COLUMN_FM_UID, this.FMUID == null ? JSONObject.NULL : this.FMUID);
+        json.put(outcomeTable.COLUMN_MUID, this.MUID == null ? JSONObject.NULL : this.MUID);
+
         json.put(outcomeTable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
 
         json.put(outcomeTable.COLUMN_UPDATEDATE, this.updatedate == null ? JSONObject.NULL : this.updatedate);
@@ -230,6 +255,8 @@ public class OutcomeContract {
         public static final String COLUMN__ID = "_id";
         public static final String COLUMN_UID = "uid";
         public static final String COLUMN_UUID = "uuid";
+        public static final String COLUMN_MUID = "muid";
+        public static final String COLUMN_FM_UID = "fmuid";
         public static final String COLUMN_FORMDATE = "formdate";
         public static final String COLUMN_UPDATEDATE = "updatedate";
         public static final String COLUMN_DEVICEID = "deviceid";

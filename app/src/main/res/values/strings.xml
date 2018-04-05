@@ -13,7 +13,7 @@
     completions."
   </string>
 
-  <string name="end_interview"> بغیر محفوظ کئے اختتام </string>
+  <string name="end_interview">اختتام </string>
     <string name="start_interview"> انٹروہو شروع کریں </string>
     <string name="nextSection"> اگلا سیکشن </string>
   <string name="dataShare"> ڈیٹا تقسیم </string>
@@ -135,6 +135,8 @@
   <string name="resp"> کیا یہ جواب دہندہ ہے؟</string>
   <string name="nh211"> والد کا لائن نمبر </string>
     <string name="nh212"> والدہ کا لائن نمبر </string>
+  <string name="nh212a"> ماں کا نام</string>
+  <string name="childname"> بچے کا نام</string>
     <string name="na204"> جنس </string>
 
     <string name="nh2edu"> تعلیم </string>
@@ -1531,6 +1533,7 @@
     <string name="nh804">وفات پانے والے کی والدہ کا نام</string>
     <string name="nh805">وفات پانے والے کی والد کا نام</string>
     <string name="nh806">وفات پانے والے کی جنس</string>
+  <string name="nh806a">وفات پانے والے کی ازدواجی حیثیت</string>
     <string name="nh807">وفات کے وقت عمر</string>
     <string name="nh808">وفات کی تاریخ</string>
     <string name="nh809">وفات کی جگہ</string>

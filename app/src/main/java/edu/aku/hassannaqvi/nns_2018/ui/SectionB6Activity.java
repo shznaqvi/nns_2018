@@ -384,6 +384,8 @@ public class SectionB6Activity extends AppCompatActivity {
             MainApp.nc.setDeviceId(MainApp.fc.getDeviceID());
             MainApp.nc.setApp_ver(MainApp.fc.getAppversion());
             MainApp.nc.set_UUID(MainApp.fc.getUID());
+            MainApp.nc.setMUID(MainApp.mc.get_UID());
+            MainApp.nc.setFMUID(MainApp.mc.getFMUID());
         } else {
             MainApp.nc.setUpdatedate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
 
@@ -397,7 +399,7 @@ public class SectionB6Activity extends AppCompatActivity {
 
         sB6.put("cluster_no", MainApp.fc.getClusterNo());
         sB6.put("hhno", MainApp.fc.getHhNo());
-        sB6.put("MUID", MainApp.mc.get_UID());
+        //sB6.put("MUID", MainApp.mc.get_UID());
 
         sB6.put("serial", String.valueOf(MainApp.nuCount));
         //       nw501

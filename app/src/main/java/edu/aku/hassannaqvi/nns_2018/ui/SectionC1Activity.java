@@ -117,6 +117,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
                     }
 
                     NAChildsize = MainApp.childNA.size();
+                    binding.fldGrpresp.setVisibility(View.VISIBLE);
 
                 } else {
                     for (FamilyMembersContract fmc : MainApp.childUnder5) {
@@ -128,6 +129,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
                     }
 
                     Childsize = MainApp.childUnder5.size();
+                    binding.fldGrpresp.setVisibility(View.GONE);
                 }
             }
         } else {
@@ -149,6 +151,14 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
                     childU5.add(MainApp.childNA.get(i).getName() + "-" + MainApp.childNA.get(i).getSerialNo());
                     counterPerNA++;
                 }
+
+                for (FamilyMembersContract fmc : MainApp.respList) {
+                    respName.add(fmc.getName() + "-" + fmc.getSerialNo());
+                    respMap.put(fmc.getName() + "-" + fmc.getSerialNo(), fmc.getSerialNo());
+                }
+
+                binding.resp.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, respName));
+                binding.fldGrpresp.setVisibility(View.VISIBLE);
 //                NAChildsize = MainApp.childNA.size();
             } else {
                 for (int i = Childsize; i < MainApp.childUnder5.size(); i++) {
@@ -156,25 +166,29 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
                     childU5.add(MainApp.childUnder5.get(Childsize).getName() + "-" + MainApp.childUnder5.get(Childsize).getSerialNo());
                     counterPerMom++;
                 }
+
+                binding.fldGrpresp.setVisibility(View.GONE);
+
+
+
 //                Childsize = MainApp.childUnder5.size();
             }
         }
 
-        for (FamilyMembersContract fmc : MainApp.respList) {
-            respName.add(fmc.getName() + "-" + fmc.getSerialNo());
-            respMap.put(fmc.getName() + "-" + fmc.getSerialNo(), fmc.getSerialNo());
-        }
+
 
         // setup head
         if (!isNA) {
-            binding.txtCounter.setText("Count " + counter + " out of " + counterPerMom);
+            binding.txtCounter.setText("Child " + counter + " out of " + counterPerMom +
+                    "\n\n " + SectionB1Activity.wraName + " : " + getString(R.string.nh212a));
         } else {
-            binding.txtCounter.setText("Count " + counter + " out of " + counterPerNA);
+            binding.txtCounter.setText("Child " + counter + " out of " + counterPerNA
+                    + "\n\n " + "Not Available : " + getString(R.string.nh212a));
         }
 
         // setup spinner
         binding.nc101.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, childU5));
-        binding.resp.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, respName));
+
         for (EditText ed : grpDate) {
             ed.addTextChangedListener(this);
         }
@@ -495,6 +509,15 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
             MainApp.cc.setDeviceID(MainApp.fc.getDeviceID());
             MainApp.cc.setAppversion(MainApp.fc.getAppversion());
             MainApp.cc.setUUID(MainApp.fc.getUID());
+            MainApp.cc.setFMUID(childMap.get(binding.nc101.getSelectedItem().toString()).get_UID());
+            if (childMap.get(binding.nc101.getSelectedItem().toString()).getMotherId().equals("00")) {
+                MainApp.cc.setMUID("00");
+
+            } else {
+
+                MainApp.cc.setMUID(MainApp.mc.get_UID());
+
+            }
 
 
         } else {
@@ -504,18 +527,13 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
 
         sC1.put("cluster_no", MainApp.fc.getClusterNo());
 
-        if (childMap.get(binding.nc101.getSelectedItem().toString()).getMotherId().equals("00")) {
-            sC1.put("MUID", "");
 
-        } else {
-
-            sC1.put("MUID", MainApp.mc.get_UID());
-
-        }
         sC1.put("hhno", MainApp.fc.getHhNo());
 
-        sC1.put("respName", binding.resp.getSelectedItem().toString());
-        sC1.put("respSerial", respMap.get(binding.resp.getSelectedItem().toString()));
+        if (isNA) {
+            sC1.put("respName", binding.resp.getSelectedItem().toString());
+            sC1.put("respSerial", respMap.get(binding.resp.getSelectedItem().toString()));
+        }
 
 //       nc101
         sC1.put("nc101", binding.nc101.getSelectedItem().toString());
