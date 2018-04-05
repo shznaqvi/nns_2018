@@ -497,11 +497,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Collection<FamilyMembersContract> getAllMembersByHH(String cluster, String hh) {
         Collection<FamilyMembersContract> fmList = new ArrayList<>();
         // Select All Query
-        String selectQuery = "SELECT  * FROM " + familyMembers.TABLE_NAME + " fm Left Join " + eligibleMembers.TABLE_NAME + " e on "
-                + familyMembers.COLUMN_UUID + " = " + eligibleMembers.COLUMN_UUID
-                + " where " + familyMembers.COLUMN_ENM_NO + " = " + cluster
-                + " and " + familyMembers.COLUMN_HH_NO + " = " + hh
-                + " and " + eligibleMembers.COLUMN_ISTATUS + " != 1";
+        String selectQuery = "SELECT fm.* FROM " + familyMembers.TABLE_NAME + " fm Left Join " + eligibleMembers.TABLE_NAME + " e on fm."
+                + familyMembers.COLUMN_UUID + " =  e." + eligibleMembers.COLUMN_UUID
+                + " where fm." + familyMembers.COLUMN_ENM_NO + " = '" + cluster + "'"
+                + " and fm." + familyMembers.COLUMN_HH_NO + " = '" + hh + "'"
+                + " and e." + eligibleMembers.COLUMN_ISTATUS + " != '1'"
+                + " or e." + eligibleMembers.COLUMN_ISTATUS + " IS NULL";
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor c = db.rawQuery(selectQuery, null);
