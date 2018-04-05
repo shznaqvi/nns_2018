@@ -177,9 +177,9 @@ public abstract class validatorClass {
 
             rdBtn.setError("This data is Required!");    // Set Error on last radio button
 
-            rdBtn.setFocusable(true);
+            //rdBtn.setFocusable(true);
             //rdBtn.setFocusableInTouchMode(true);
-            rdBtn.requestFocus();
+            //rdBtn.requestFocus();
 
             /*rdBtn.clearFocus();
 
@@ -249,9 +249,9 @@ public abstract class validatorClass {
             }
             //rdBtn.setError("This data is Required!");    // Set Error on last radio button
 
-            rdBtn.setFocusable(true);
+            //rdBtn.setFocusable(true);
             //rdBtn.setFocusableInTouchMode(true);
-            rdGrp.requestFocus();
+            //rdGrp.requestFocus();
 
             /*rdGrp.requestFocusFromTouch();
             rdGrp.clearFocus();
@@ -340,7 +340,7 @@ public abstract class validatorClass {
 
                 textField.setError(msg);
                 if (firstIterationFlag) {
-                    textField.requestFocus();
+                    //textField.requestFocus();
                     firstIterationFlag = false;
                 } else {
                 }
