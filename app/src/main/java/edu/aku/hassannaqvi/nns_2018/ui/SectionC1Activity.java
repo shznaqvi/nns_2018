@@ -31,6 +31,7 @@ import java.util.TimerTask;
 
 import butterknife.BindViews;
 import butterknife.ButterKnife;
+import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONC1ModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
@@ -38,6 +39,7 @@ import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC1Binding;
 import edu.aku.hassannaqvi.nns_2018.other.DateUtils;
+import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionC1Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
@@ -47,6 +49,8 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
     public static int counterPerNA = 0;
     public static String selectedChildName = "";
     public static boolean isNA;
+    public static int Childsize = 0;
+    public static int NAChildsize = 0;
     static List<String> childU5;
     static Map<String, FamilyMembersContract> childMap;
     private final long DELAY = 1000;
@@ -56,7 +60,6 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
     DatabaseHelper db;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     Boolean endflag = false;
-
     long agebyDob = 0;
     long ageInMontsbyDob = 0;
     Calendar dob = Calendar.getInstance();
@@ -64,10 +67,6 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
     List<EditText> grpDate;
     Boolean backPressed = false;
     Boolean frontPressed = false;
-
-    public static int Childsize = 0;
-    public static int NAChildsize = 0;
-
     private Timer timer = new Timer();
 
     @Override
@@ -236,6 +235,49 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
 
 //        Validation Boolean
         MainApp.validateFlag = false;
+        autoPopulateFields();
+    }
+
+    private void autoPopulateFields() {
+        ChildContract childContract = db.getsC1();
+
+        if (!childContract.getsC1().equals("")) {
+
+            JSONC1ModelClass jsonC1 = JSONUtilClass.getModelFromJSON(childContract.getsC1(), JSONC1ModelClass.class);
+            binding.nc201y.setText(jsonC1.getnc201y());
+            binding.nc201m.setText(jsonC1.getnc201m());
+            binding.nc201d.setText(jsonC1.getnc201d());
+            binding.nc203.setText(jsonC1.getnc203());
+
+            if (!jsonC1.getnc202().equals("0")) {
+                binding.nc202.check(
+                        jsonC1.getnc202().equals("1") ? binding.nc202a.getId() :
+                                jsonC1.getnc202().equals("2") ? binding.nc202b.getId()
+                                        : binding.nc202c.getId()
+                );
+            }
+            if (!jsonC1.getnc204a().equals("0")) {
+                binding.nc204a.check(
+                        jsonC1.getnc204a().equals("1") ? binding.nc204aa.getId() :
+                                binding.nc204ab.getId()
+                );
+            }
+
+            if (!jsonC1.getnc204b().equals("0")) {
+                binding.nc204b.check(
+                        jsonC1.getnc204a().equals("1") ? binding.nc204ba.getId() :
+                                binding.nc204bb.getId()
+                );
+            }
+
+            if (!jsonC1.getnc205().equals("0")) {
+                binding.nc205.check(
+                        jsonC1.getnc205().equals("1") ? binding.nc205a.getId() :
+                                jsonC1.getnc205().equals("2") ? binding.nc205b.getId() :
+                                        binding.nc20598.getId()
+                );
+            }
+        }
 
     }
 
