@@ -495,62 +495,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     public Collection<FamilyMembersContract> getAllMembersByHH(String cluster, String hh) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-        String[] columns = {
+        Collection<FamilyMembersContract> fmList = new ArrayList<>();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + familyMembers.TABLE_NAME + " fm Left Join " + eligibleMembers.TABLE_NAME + " e on "
+                + familyMembers.COLUMN_UUID + " = " + eligibleMembers.COLUMN_UUID
+                + " where " + familyMembers.COLUMN_ENM_NO + " = " + cluster
+                + " and " + familyMembers.COLUMN_HH_NO + " = " + hh
+                + " and " + eligibleMembers.COLUMN_ISTATUS + " != 1";
 
-                familyMembers.COLUMN_ID,
-                familyMembers.COLUMN_UID,
-                familyMembers.COLUMN_UUID,
-                familyMembers.COLUMN_FORMDATE,
-                familyMembers.COLUMN_USER,
-                familyMembers.COLUMN_HH_NO,
-                familyMembers.COLUMN_ENM_NO,
-                familyMembers.COLUMN_SA2,
-                familyMembers.COLUMN_AV,
-                familyMembers.COLUMN_DEVICETAGID,
-                familyMembers.COLUMN_DEVICEID,
-                familyMembers.COLUMN_SYNCED,
-                familyMembers.COLUMN_SYNCED_DATE,
-                familyMembers.COLUMN_APP_VERSION
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
 
-        };
-
-        String whereClause = familyMembers.COLUMN_ENM_NO + "=? AND " +
-                familyMembers.COLUMN_HH_NO + "=?";
-        //+ familyMembers.COLUMN_HH_NO + "=?";
-        String[] whereArgs = new String[]{cluster, hh};
-        String groupBy = null;
-        String having = null;
-
-        String orderBy =
-                familyMembers.COLUMN_ID + " ASC";
-
-        Collection<FamilyMembersContract> allBL = new ArrayList<>();
-        try {
-            c = db.query(
-                    familyMembers.TABLE_NAME,  // The table to query
-                    columns,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                FamilyMembersContract dc = new FamilyMembersContract();
-                allBL.add(dc.Hydrate(c));
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                FamilyMembersContract fc = new FamilyMembersContract();
+                fmList.add(fc.Hydrate(c));
+            } while (c.moveToNext());
             }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
+
+        // return contact list
+        return fmList;
         }
-        return allBL;
-    }
+
 
     public Collection<FamilyMembersContract> getAllMembersByHH(String uid) {
         SQLiteDatabase db = this.getReadableDatabase();
