@@ -26,12 +26,14 @@ import org.json.JSONObject;
 import java.util.List;
 import java.util.Map;
 
+import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionListA2Binding;
 import edu.aku.hassannaqvi.nns_2018.databinding.FamilymemberslistBinding;
+import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 
 
 public class SectionA2ListActivity extends AppCompatActivity {
@@ -42,6 +44,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
     /*Variables*/
     DatabaseHelper db;
     FamilyMembersAdapter mAdapter;
+    JSONModelClass json;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +55,12 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
         setupViews();
         this.setTitle(getResources().getString(R.string.na2heading));
+
+        if (SectionA1Activity.editFormFlag) {
+//         binding.btn_AddMore.setVisibility(View.GONE);
+        } else {
+//            binding.btn_AddMore.setVisibility(View.VISIBLE);
+        }
     }
 
     public void setupViews() {
@@ -70,6 +79,8 @@ public class SectionA2ListActivity extends AppCompatActivity {
         binding.nh2u5g.setText(mem.get(3).get(2).toString());
         //  Mwra
         binding.nh2mw.setText(String.valueOf(MainApp.membersCount.getMwra()));
+
+        autoPopulateFields();
 
 //        Populate RecyclerView
         new populateRecyclerView(this).execute();
@@ -124,6 +135,52 @@ public class SectionA2ListActivity extends AppCompatActivity {
                             }
                         }
                     }
+
+                    @Override
+                    public void onItemLongClick(final View view, final int position) {
+
+                        if (position != -1) {
+                            boolean flag = true;
+                            for (int hh : MainApp.hhClicked) {
+                                if (hh == position) {
+                                    flag = false;
+                                    break;
+                                }
+                            }
+                            if (!flag) {
+                                AlertDialog.Builder editAlert = new AlertDialog.Builder(
+                                        SectionA2ListActivity.this);
+                                editAlert
+                                        .setMessage("Do you want to edit this member?")
+                                        .setCancelable(false)
+                                        .setPositiveButton("Edit",
+                                                new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog,
+                                                                        int id) {
+                                                        finish();
+                                                        startActivity(new Intent(getApplicationContext(), SectionA2Activity.class)
+                                                                .putExtra("data", MainApp.familyMembersList.get(position))
+                                                                .putExtra("flag", true)
+                                                                .putExtra("pos", position));
+                                                    }
+                                                });
+                                editAlert.setNeutralButton("flag", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+
+                                    }
+                                });
+                                editAlert.setNegativeButton("Cancel",
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                dialog.cancel();
+                                            }
+                                        });
+                                AlertDialog alert = editAlert.create();
+                                alert.show();
+                            }
+                        }
+                    }
                 })
         );
 
@@ -147,6 +204,65 @@ public class SectionA2ListActivity extends AppCompatActivity {
             }
         }
 
+    }
+
+    private void autoPopulateFields() {
+
+        if (SectionA1Activity.editFormFlag) {
+
+
+            for (FamilyMembersContract fm : MainApp.all_members_1) {
+
+
+                json = JSONUtilClass.getModelFromJSON(fm.getsA2(), JSONModelClass.class);
+                int Age = Integer.valueOf(json.getAge());
+                int gender = Integer.valueOf(json.getGender());
+
+                if ((Age >= 15 && Age <= 49) && json.getGender().equals("2")) {
+                    MainApp.mwra.add(fm);
+                    MainApp.all_members.add(fm);
+                }
+                if ((Age >= 10 && (Age <= 19)) && MStatusChecking(json.getMaritalStatus()).equals("5")) {
+                    MainApp.adolescents.add(fm);
+                    MainApp.all_members.add(fm);
+                }
+                if (Integer.valueOf(json.getAge()) < 5) {
+                    MainApp.childUnder5.add(fm);
+                    MainApp.all_members.add(fm);
+                }
+
+                MainApp.all_members.add(fm);
+
+            }
+            mAdapter = new FamilyMembersAdapter(MainApp.all_members);
+
+        } else {
+            mAdapter = new FamilyMembersAdapter(MainApp.familyMembersList);
+
+        }
+
+    }
+
+    public String MStatusChecking(String ms) {
+        String result = "";
+        switch (ms) {
+            case "1":
+                result = "Married";
+                break;
+            case "2":
+                result = "Widowed";
+                break;
+            case "3":
+                result = "Divorced";
+                break;
+            case "4":
+                result = "Seperated";
+                break;
+            case "5":
+                result = "Never Married";
+                break;
+        }
+        return result;
     }
 
     public void BtnContinue() {
@@ -257,6 +373,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
     public static class RecyclerItemClickListener implements RecyclerView.OnItemTouchListener {
         GestureDetector mGestureDetector;
         private OnItemClickListener mListener;
+        private RecyclerView viewRecycle;
 
         public RecyclerItemClickListener(Context context, OnItemClickListener listener) {
             mListener = listener;
@@ -266,11 +383,21 @@ public class SectionA2ListActivity extends AppCompatActivity {
                 public boolean onSingleTapUp(MotionEvent e) {
                     return true;
                 }
+
+                @Override
+                public void onLongPress(MotionEvent e) {
+                    View child = viewRecycle.findChildViewUnder(e.getX(), e.getY());
+                    if (child != null && mListener != null) {
+                        mListener.onItemLongClick(child, viewRecycle.getChildAdapterPosition(child));
+                    }
+
+                }
             });
         }
 
         @Override
         public boolean onInterceptTouchEvent(RecyclerView view, MotionEvent e) {
+            viewRecycle = view;
             View childView = view.findChildViewUnder(e.getX(), e.getY());
             if (childView != null && mListener != null && mGestureDetector.onTouchEvent(e)) {
                 mListener.onItemClick(childView, view.getChildAdapterPosition(childView));
@@ -289,7 +416,11 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
         public interface OnItemClickListener {
             void onItemClick(View view, int position);
+
+            void onItemLongClick(View view, int position);
         }
+
+
     }
 
     //    Recycler classes
@@ -303,10 +434,9 @@ public class SectionA2ListActivity extends AppCompatActivity {
         }
 
         @Override
-        public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public MyViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
             View itemView = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.familymemberslist, parent, false);
-
             return new MyViewHolder(itemView);
         }
 
@@ -382,6 +512,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
             }
 
             public void bindUser(FamilyMembersContract mem) {
+
                 familyBinding.imgUser.setImageDrawable(getDrawable(SetImage(mem.getna204(), mem.getAgeInYear())));
                 familyBinding.memberName.setText(mem.getName().toUpperCase());
                 familyBinding.na204.setText(mem.getna204().equals("1") ? "Male" : "Female");
@@ -400,6 +531,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
                 } else {
                     familyBinding.imgHead.setVisibility(View.GONE);
                 }
+
             }
         }
     }
@@ -419,7 +551,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
                 public void run() {
 
 //              Set Recycler View
-                    mAdapter = new FamilyMembersAdapter(MainApp.familyMembersList);
+                    //  mAdapter = new FamilyMembersAdapter(MainApp.familyMembersList);
                     RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                     binding.recyclerNoMembers.setLayoutManager(mLayoutManager);
                     binding.recyclerNoMembers.setItemAnimator(new DefaultItemAnimator());
