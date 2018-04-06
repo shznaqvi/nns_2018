@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.SectionA2ListActivity">
+    tools:context="edu.aku.hassannaqvi.nns_2018.ui.SectionA2ListActivity">
 
     <data>
 
@@ -23,9 +23,9 @@
             android:layout_gravity="center_horizontal"
             android:background="@color/colorPrimaryDark"
             android:gravity="center"
-            android:visibility="gone"
             android:text="@string/na2heading"
-            android:textSize="40sp" />
+            android:textSize="40sp"
+            android:visibility="gone" />
 
         <ScrollView
             android:layout_width="match_parent"

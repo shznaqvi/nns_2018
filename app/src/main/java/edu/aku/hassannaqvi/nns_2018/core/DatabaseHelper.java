@@ -124,7 +124,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             familyMembers.COLUMN_DEVICETAGID + " TEXT," +
             familyMembers.COLUMN_APP_VERSION + " TEXT," +
             familyMembers.COLUMN_SYNCED + " TEXT," +
-            familyMembers.COLUMN_SYNCED_DATE + " TEXT"
+            familyMembers.COLUMN_SYNCED_DATE + " TEXT," +
+            familyMembers.COLUMN_FLAG + " TEXT"
             + " );";
     private static final String SQL_CREATE_CHILD_FORMS = "CREATE TABLE "
             + ChildTable.TABLE_NAME + "("
@@ -149,7 +150,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             ChildTable.COLUMN_CSTATUS + " TEXT," +
             ChildTable.COLUMN_CSTATUS88x + " TEXT," +
             ChildTable.COLUMN_APPVERSION + " TEXT " + " );";
-
+    private static final String SQL_DELETE_USERS =
+            "DROP TABLE IF EXISTS " + UsersContract.UsersTable.TABLE_NAME;
+    private static final String SQL_DELETE_FORMS =
+            "DROP TABLE IF EXISTS " + FormsTable.TABLE_NAME;
+    private static final String SQL_DELETE_CHILD_FORMS =
+            "DROP TABLE IF EXISTS " + ChildContract.ChildTable.TABLE_NAME;
+    private static final String SQL_DELETE_SINGLE = "DROP TABLE IF EXISTS " + singleSerial.TABLE_NAME;
+    private static final String SQL_DELETE_TALUKAS = "DROP TABLE IF EXISTS " + EnumBlockTable.TABLE_NAME;
+    private static final String SQL_DELETE_UCS = "DROP TABLE IF EXISTS " + UCsTable.TABLE_NAME;
+    private static final String SQL_DELETE_ELIGIBLE_MEMBERS = "DROP TABLE IF EXISTS " + eligibleMembers.TABLE_NAME;
+    private static final String SQL_DELETE_MWRAS = "DROP TABLE IF EXISTS " + MWRATable.TABLE_NAME;
+    private static final String SQL_DELETE_OUTCOME = "DROP TABLE IF EXISTS " + outcomeTable.TABLE_NAME;
+    private static final String SQL_DELETE_FAMILYMEMBERS = "DROP TABLE IF EXISTS " + familyMembers.TABLE_NAME;
+    private static final String SQL_DELETE_RECIENPTS = "DROP TABLE IF EXISTS " + RecipientsTable.TABLE_NAME;
+    private static final String SQL_DELETE_NUTRITION = "DROP TABLE IF EXISTS " + NutritionTable.TABLE_NAME;
+    private static final String SQL_DELETE_DECEASED = "DROP TABLE IF EXISTS " + DeceasedContract.DeceasedTable.TABLE_NAME;
+    private static final String SQL_DELETE_BLRANDOM = "DROP TABLE IF EXISTS " + BLRandomContract.singleRandomHH.TABLE_NAME;
+    private static final String SQL_DELETE_VERSIONAPP = "DROP TABLE IF EXISTS " + VersionAppTable.TABLE_NAME;
     final String SQL_CREATE_SERIAL = "CREATE TABLE " + singleSerial.TABLE_NAME + " (" +
             singleSerial._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             singleSerial.COLUMN_DEVICE_ID + " TEXT, " +
@@ -170,10 +188,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             UCsTable.COLUMN_UCS_NAME + " TEXT, " +
             UCsTable.COLUMN_TALUKA_CODE + " TEXT " +
             ");";
-    private static final String SQL_DELETE_USERS =
-            "DROP TABLE IF EXISTS " + UsersContract.UsersTable.TABLE_NAME;
-
-
     final String SQL_CREATE_MWRAS = "CREATE TABLE " + MWRATable.TABLE_NAME + " (" +
             MWRATable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             MWRATable.COLUMN_PROJECTNAME + " TEXT," +
@@ -216,9 +230,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             outcomeTable.COLUMN_SYNCEDDATE + " TEXT " +
 
             ");";
-    private static final String SQL_DELETE_FORMS =
-            "DROP TABLE IF EXISTS " + FormsTable.TABLE_NAME;
-
     final String SQL_CREATE_NUTRITION = "CREATE TABLE " + NutritionTable.TABLE_NAME + " (" +
             NutritionTable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             NutritionTable.COLUMN_PROJECTNAME + " TEXT," +
@@ -235,7 +246,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             NutritionTable.COLUMN_SYNCEDDATE + " TEXT " +
 
             ");";
-
     final String SQL_CREATE_DECEASED = "CREATE TABLE " + DeceasedContract.DeceasedTable.TABLE_NAME + " (" +
             DeceasedContract.DeceasedTable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             DeceasedContract.DeceasedTable.COLUMN_PROJECTNAME + " TEXT," +
@@ -251,27 +261,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             DeceasedContract.DeceasedTable.COLUMN_SYNCED_DATE + " TEXT " +
 
             ");";
-
-
     final String SQL_CREATE_VERSIONAPP = "CREATE TABLE " + VersionAppTable.TABLE_NAME + " (" +
             VersionAppTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             VersionAppTable.COLUMN_VERSION_CODE + " TEXT, " +
             VersionAppTable.COLUMN_PATH_NAME + " TEXT " +
             ");";
-    private static final String SQL_DELETE_CHILD_FORMS =
-            "DROP TABLE IF EXISTS " + ChildContract.ChildTable.TABLE_NAME;
-    private static final String SQL_DELETE_SINGLE = "DROP TABLE IF EXISTS " + singleSerial.TABLE_NAME;
-    private static final String SQL_DELETE_TALUKAS = "DROP TABLE IF EXISTS " + EnumBlockTable.TABLE_NAME;
-    private static final String SQL_DELETE_UCS = "DROP TABLE IF EXISTS " + UCsTable.TABLE_NAME;
-    private static final String SQL_DELETE_ELIGIBLE_MEMBERS = "DROP TABLE IF EXISTS " + eligibleMembers.TABLE_NAME;
-    private static final String SQL_DELETE_MWRAS = "DROP TABLE IF EXISTS " + MWRATable.TABLE_NAME;
-    private static final String SQL_DELETE_OUTCOME = "DROP TABLE IF EXISTS " + outcomeTable.TABLE_NAME;
-    private static final String SQL_DELETE_FAMILYMEMBERS = "DROP TABLE IF EXISTS " + familyMembers.TABLE_NAME;
-    private static final String SQL_DELETE_RECIENPTS = "DROP TABLE IF EXISTS " + RecipientsTable.TABLE_NAME;
-    private static final String SQL_DELETE_NUTRITION = "DROP TABLE IF EXISTS " + NutritionTable.TABLE_NAME;
-    private static final String SQL_DELETE_DECEASED = "DROP TABLE IF EXISTS " + DeceasedContract.DeceasedTable.TABLE_NAME;
-    private static final String SQL_DELETE_BLRANDOM = "DROP TABLE IF EXISTS " + BLRandomContract.singleRandomHH.TABLE_NAME;
-    private static final String SQL_DELETE_VERSIONAPP = "DROP TABLE IF EXISTS " + VersionAppTable.TABLE_NAME;
     final String SQL_CREATE_RECIPIENTS = "CREATE TABLE " + RecipientsTable.TABLE_NAME + " (" +
             RecipientsTable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             RecipientsTable.COLUMN_PROJECTNAME + " TEXT," +
@@ -616,7 +610,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 familyMembers.COLUMN_DEVICEID,
                 familyMembers.COLUMN_SYNCED,
                 familyMembers.COLUMN_SYNCED_DATE,
-                familyMembers.COLUMN_APP_VERSION
+                familyMembers.COLUMN_APP_VERSION,
+                familyMembers.COLUMN_FLAG
 
         };
 
@@ -1638,6 +1633,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
+    public int updateFamilyMemberFLAG(String flag, String fmID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(familyMembers.COLUMN_FLAG, flag);
+
+// Which row to update, based on the ID
+        String selection = familyMembers.COLUMN_ID + " = ?";
+        String[] selectionArgs = {fmID};
+
+        int count = db.update(familyMembers.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
+
     public int updateDeceasedMemberID() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -1948,7 +1961,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 familyMembers.COLUMN_AV,
                 familyMembers.COLUMN_SYNCED,
                 familyMembers.COLUMN_SYNCED_DATE,
-                familyMembers.COLUMN_APP_VERSION
+                familyMembers.COLUMN_APP_VERSION,
+                familyMembers.COLUMN_FLAG
         };
         String whereClause = familyMembers.COLUMN_SYNCED + " is null OR " + familyMembers.COLUMN_SYNCED + " = '' ";
         String[] whereArgs = null;
