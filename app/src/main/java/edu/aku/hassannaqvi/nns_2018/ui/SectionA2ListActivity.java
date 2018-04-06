@@ -23,9 +23,11 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONACountModelClass;
 import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
@@ -34,6 +36,8 @@ import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionListA2Binding;
 import edu.aku.hassannaqvi.nns_2018.databinding.FamilymemberslistBinding;
 import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
+
+import static edu.aku.hassannaqvi.nns_2018.ui.SectionA1Activity.editFormContract;
 
 
 public class SectionA2ListActivity extends AppCompatActivity {
@@ -45,6 +49,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
     DatabaseHelper db;
     FamilyMembersAdapter mAdapter;
     JSONModelClass json;
+    JSONACountModelClass countJSON;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +61,11 @@ public class SectionA2ListActivity extends AppCompatActivity {
         setupViews();
         this.setTitle(getResources().getString(R.string.na2heading));
 
+
         if (SectionA1Activity.editFormFlag) {
-//         binding.btn_AddMore.setVisibility(View.GONE);
+//        binding.btn_AddMore.setVisibility(View.GONE);
         } else {
-//            binding.btn_AddMore.setVisibility(View.VISIBLE);
+//        binding.btn_AddMore.setVisibility(View.VISIBLE);
         }
     }
 
@@ -91,47 +97,49 @@ public class SectionA2ListActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(View view, final int position) {
                         // TODO Handle item click
+                        if (!SectionA1Activity.editFormFlag) {
 
-                        if (position != -1) {
-                            boolean flag = true;
-                            for (int hh : MainApp.hhClicked) {
-                                if (hh == position) {
-                                    flag = false;
-                                    break;
+                            if (position != -1) {
+                                boolean flag = true;
+                                for (int hh : MainApp.hhClicked) {
+                                    if (hh == position) {
+                                        flag = false;
+                                        break;
+                                    }
                                 }
-                            }
 
-                            if (flag) {
-                                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                                        SectionA2ListActivity.this);
-                                alertDialogBuilder
-                                        .setMessage("Are you sure to update this member?")
-                                        .setCancelable(false)
-                                        .setPositiveButton("Ok",
-                                                new DialogInterface.OnClickListener() {
-                                                    public void onClick(DialogInterface dialog,
-                                                                        int id) {
+                                if (flag) {
+                                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                                            SectionA2ListActivity.this);
+                                    alertDialogBuilder
+                                            .setMessage("Are you sure to update this member?")
+                                            .setCancelable(false)
+                                            .setPositiveButton("Ok",
+                                                    new DialogInterface.OnClickListener() {
+                                                        public void onClick(DialogInterface dialog,
+                                                                            int id) {
 
-                                                        MainApp.hhClicked.add(position);
-                                                        for (int item : MainApp.hhClicked) {
-                                                            binding.recyclerNoMembers.getChildAt(item).setBackgroundColor(Color.BLACK);
+                                                            MainApp.hhClicked.add(position);
+                                                            for (int item : MainApp.hhClicked) {
+                                                                binding.recyclerNoMembers.getChildAt(item).setBackgroundColor(Color.BLACK);
+                                                            }
+
+                                                            finish();
+                                                            startActivity(new Intent(getApplicationContext(), SectionA2Activity.class)
+                                                                    .putExtra("data", MainApp.familyMembersList.get(position))
+                                                                    .putExtra("pos", position));
+
                                                         }
-
-                                                        finish();
-                                                        startActivity(new Intent(getApplicationContext(), SectionA2Activity.class)
-                                                                .putExtra("data", MainApp.familyMembersList.get(position))
-                                                                .putExtra("pos", position));
-
-                                                    }
-                                                });
-                                alertDialogBuilder.setNegativeButton("Cancel",
-                                        new DialogInterface.OnClickListener() {
-                                            public void onClick(DialogInterface dialog, int id) {
-                                                dialog.cancel();
-                                            }
-                                        });
-                                AlertDialog alert = alertDialogBuilder.create();
-                                alert.show();
+                                                    });
+                                    alertDialogBuilder.setNegativeButton("Cancel",
+                                            new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int id) {
+                                                    dialog.cancel();
+                                                }
+                                            });
+                                    AlertDialog alert = alertDialogBuilder.create();
+                                    alert.show();
+                                }
                             }
                         }
                     }
@@ -151,19 +159,22 @@ public class SectionA2ListActivity extends AppCompatActivity {
                                 AlertDialog.Builder editAlert = new AlertDialog.Builder(
                                         SectionA2ListActivity.this);
                                 editAlert
-                                        .setMessage("Do you want to edit this member?")
-                                        .setCancelable(false)
-                                        .setPositiveButton("Edit",
-                                                new DialogInterface.OnClickListener() {
-                                                    public void onClick(DialogInterface dialog,
-                                                                        int id) {
-                                                        finish();
-                                                        startActivity(new Intent(getApplicationContext(), SectionA2Activity.class)
-                                                                .putExtra("data", MainApp.familyMembersList.get(position))
-                                                                .putExtra("flag", true)
-                                                                .putExtra("pos", position));
-                                                    }
-                                                });
+                                        .setMessage("Do you want to edit this member?");
+                                if (!SectionA1Activity.editFormFlag) {
+                                    editAlert
+                                            .setCancelable(false)
+                                            .setPositiveButton("Edit",
+                                                    new DialogInterface.OnClickListener() {
+                                                        public void onClick(DialogInterface dialog,
+                                                                            int id) {
+                                                            finish();
+                                                            startActivity(new Intent(getApplicationContext(), SectionA2Activity.class)
+                                                                    .putExtra("data", MainApp.familyMembersList.get(position))
+                                                                    .putExtra("flag", true)
+                                                                    .putExtra("pos", position));
+                                                        }
+                                                    });
+                                }
                                 editAlert.setNeutralButton("flag", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
@@ -211,12 +222,20 @@ public class SectionA2ListActivity extends AppCompatActivity {
         if (SectionA1Activity.editFormFlag) {
 
 
-            for (FamilyMembersContract fm : MainApp.all_members_1) {
+            MainApp.editfathersList = new ArrayList<>();
+            MainApp.editfathersSerials = new ArrayList<>();
+            MainApp.editmothersList = new ArrayList<>();
+            MainApp.editmothersSerials = new ArrayList<>();
 
+            for (FamilyMembersContract fm : MainApp.all_members_1) {
 
                 json = JSONUtilClass.getModelFromJSON(fm.getsA2(), JSONModelClass.class);
                 int Age = Integer.valueOf(json.getAge());
                 int gender = Integer.valueOf(json.getGender());
+                fm.setAgeInYear(json.getAge());
+                fm.setna204(json.getGender());
+                fm.setSerialNo(json.getSerialNo());
+                fm.setName(json.getName());
 
                 if ((Age >= 15 && Age <= 49) && json.getGender().equals("2")) {
                     MainApp.mwra.add(fm);
@@ -230,17 +249,35 @@ public class SectionA2ListActivity extends AppCompatActivity {
                     MainApp.childUnder5.add(fm);
                     MainApp.all_members.add(fm);
                 }
-
-                MainApp.all_members.add(fm);
-
+                MainApp.familyMembersList.add(fm);
+                if (Age >= 15 && json.getGender().equals("2") && !MStatusChecking(json.getMaritalStatus()).equals("5")) {
+                    MainApp.editmothersList.add(json.getName());
+                    MainApp.editmothersSerials.add(json.getSerialNo());
+                } else if (Age >= 15 && json.getGender().equals("1") && !MStatusChecking(json.getMaritalStatus()).equals("5")) {
+                    MainApp.editfathersList.add(json.getName());
+                    MainApp.editfathersSerials.add(json.getSerialNo());
+                }
             }
-            mAdapter = new FamilyMembersAdapter(MainApp.all_members);
-
-        } else {
-            mAdapter = new FamilyMembersAdapter(MainApp.familyMembersList);
+            setCount();
 
         }
 
+    }
+
+    private void setCount() {
+        editFormContract.getCount();
+        countJSON = JSONUtilClass.getModelFromJSON(editFormContract.getCount(), JSONACountModelClass.class);
+        // Total
+        binding.nh2tm.setText(countJSON.getnh2tm());
+        binding.nh2tf.setText(countJSON.getnh2tf());
+        // Adolescents
+        binding.nh2adm.setText(countJSON.getnh2adm());
+        binding.nh2adf.setText(countJSON.getnh2adf());
+        // Children < 5
+        binding.nh2u5b.setText(countJSON.getnh2u5b());
+        binding.nh2u5g.setText(countJSON.getnh2u5g());
+        //  Mwra
+        binding.nh2mw.setText(countJSON.getnh2mw());
     }
 
     public String MStatusChecking(String ms) {
@@ -551,7 +588,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
                 public void run() {
 
 //              Set Recycler View
-                    //  mAdapter = new FamilyMembersAdapter(MainApp.familyMembersList);
+                    mAdapter = new FamilyMembersAdapter(MainApp.familyMembersList);
                     RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                     binding.recyclerNoMembers.setLayoutManager(mLayoutManager);
                     binding.recyclerNoMembers.setItemAnimator(new DefaultItemAnimator());

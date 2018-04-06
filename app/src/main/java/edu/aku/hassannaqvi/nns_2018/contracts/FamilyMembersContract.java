@@ -48,6 +48,9 @@ public class FamilyMembersContract implements Serializable {
     private String realtionHH = "";
     private String resp = "";
 
+
+    private String flag = "0";
+
     public FamilyMembersContract() {
     }
 
@@ -274,6 +277,14 @@ public class FamilyMembersContract implements Serializable {
         this.av = av;
     }
 
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
+    }
+
     public FamilyMembersContract Sync(JSONObject jsonObject) throws JSONException {
 
         this._ID = jsonObject.getString(familyMembers.COLUMN_ID);
@@ -288,6 +299,7 @@ public class FamilyMembersContract implements Serializable {
         this.hhNo = jsonObject.getString(familyMembers.COLUMN_HH_NO);
         this.enmNo = jsonObject.getString(familyMembers.COLUMN_ENM_NO);
         this.devicetagID = jsonObject.getString(familyMembers.COLUMN_DEVICETAGID);
+        this.flag = jsonObject.getString(familyMembers.COLUMN_FLAG);
 
         return this;
 
@@ -307,7 +319,7 @@ public class FamilyMembersContract implements Serializable {
         this.enmNo = cursor.getString(cursor.getColumnIndex(familyMembers.COLUMN_ENM_NO));
         this.hhNo = cursor.getString(cursor.getColumnIndex(familyMembers.COLUMN_HH_NO));
         this.devicetagID = cursor.getString(cursor.getColumnIndex(familyMembers.COLUMN_DEVICETAGID));
-
+        this.flag = cursor.getString(cursor.getColumnIndex(familyMembers.COLUMN_FLAG));
         return this;
 
     }
@@ -333,6 +345,7 @@ public class FamilyMembersContract implements Serializable {
 
         json.put(familyMembers.COLUMN_PROJECT_NAME, this.projectName == null ? JSONObject.NULL : this.projectName);
         json.put(familyMembers.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
+        json.put(familyMembers.COLUMN_FLAG, this.flag == null ? JSONObject.NULL : this.flag);
 
 
         return json;
@@ -357,10 +370,9 @@ public class FamilyMembersContract implements Serializable {
         public static final String COLUMN_ENM_NO = "enm_no";
         public static final String COLUMN_HH_NO = "hh_no";
         public static final String COLUMN_AV = "av";
-
-
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNCED_DATE = "sync_date";
+        public static final String COLUMN_FLAG = "flag";
 
         public static String _URL = "familymembers.php";
     }
