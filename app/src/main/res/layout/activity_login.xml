@@ -25,7 +25,8 @@
         android:layout_marginTop="@dimen/_50sdp"
         android:paddingLeft="@dimen/_35sdp"
         android:paddingRight="@dimen/_35sdp"
-        android:paddingTop="@dimen/_12sdp">
+        android:paddingTop="@dimen/_12sdp"
+        android:scrollbars="none">
 
         <LinearLayout
             android:id="@+id/email_login_form"
@@ -219,9 +220,9 @@
                     android:drawableStart="@drawable/ic_cloud_download_black_24dp"
                     android:elevation="2dp"
                     android:padding="15dp"
-                    android:visibility="gone"
                     android:text="Sync Data"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:visibility="gone" />
 
                 <Button
                     android:id="@+id/email_sign_in_button"
