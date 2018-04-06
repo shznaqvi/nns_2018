@@ -963,6 +963,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(familyMembers.COLUMN_SYNCED, fmc.getSynced());
         values.put(familyMembers.COLUMN_SYNCED_DATE, fmc.getSyncedDate());
         values.put(familyMembers.COLUMN_APP_VERSION, fmc.getApp_ver());
+        values.put(familyMembers.COLUMN_FLAG, fmc.getFlag());
 
 
         // Insert the new row, returning the primary key value of the new row
