@@ -34,6 +34,7 @@ public abstract class validatorClass {
             return false;
         } else {
             txt.setError(null);
+            txt.clearFocus();
             return true;
         }
     }
