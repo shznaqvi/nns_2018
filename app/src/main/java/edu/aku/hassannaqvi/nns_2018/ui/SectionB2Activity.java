@@ -46,6 +46,7 @@ public class SectionB2Activity extends AppCompatActivity implements RadioGroup.O
         setupViews();
 
         this.setTitle(getResources().getString(R.string.nb2heading));
+        bi.textName.setText("Selected Woman : " + SectionB1Activity.wraName);
 
 
 //        Validation Boolean

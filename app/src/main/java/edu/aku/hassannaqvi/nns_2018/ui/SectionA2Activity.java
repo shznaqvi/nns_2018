@@ -155,6 +155,10 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
             MainApp.SetNameClass nameSet = new MainApp.SetNameClass(getString(R.string.nh2dob) + " " + family.getName());
             binding.setName(nameSet);
 
+            binding.txtnh2dob.setText(binding.txtnh2dob.getText().toString().replace("Name", binding.selectedName.getText().toString()));
+            binding.txtna2age.setText(binding.txtna2age.getText().toString().replace("Name", binding.selectedName.getText().toString()));
+            binding.txtnh210.setText(binding.txtnh210.getText().toString().replace("Name", binding.selectedName.getText().toString()));
+
 
             binding.fldGrpA201.setVisibility(View.GONE);
             binding.fldGrpA202.setVisibility(View.VISIBLE);

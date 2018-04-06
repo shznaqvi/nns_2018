@@ -116,6 +116,13 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
                         counterPerNA++;
                     }
 
+                    for (FamilyMembersContract fmc : MainApp.respList) {
+                        respName.add(fmc.getName() + "-" + fmc.getSerialNo());
+                        respMap.put(fmc.getName() + "-" + fmc.getSerialNo(), fmc.getSerialNo());
+                    }
+
+                    binding.resp.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, respName));
+
                     NAChildsize = MainApp.childNA.size();
                     binding.fldGrpresp.setVisibility(View.VISIBLE);
 
@@ -152,12 +159,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
                     counterPerNA++;
                 }
 
-                for (FamilyMembersContract fmc : MainApp.respList) {
-                    respName.add(fmc.getName() + "-" + fmc.getSerialNo());
-                    respMap.put(fmc.getName() + "-" + fmc.getSerialNo(), fmc.getSerialNo());
-                }
 
-                binding.resp.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, respName));
                 binding.fldGrpresp.setVisibility(View.VISIBLE);
 //                NAChildsize = MainApp.childNA.size();
             } else {
@@ -169,9 +171,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
 
                 binding.fldGrpresp.setVisibility(View.GONE);
 
-
-
-//                Childsize = MainApp.childUnder5.size();
+//              Childsize = MainApp.childUnder5.size();
             }
         }
 
@@ -192,6 +192,9 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
         for (EditText ed : grpDate) {
             ed.addTextChangedListener(this);
         }
+
+        binding.txtnc202.setText(binding.txtnc202.getText().toString().replace("Name", binding.nc101.getSelectedItem().toString()));
+        binding.txtnc203.setText(binding.txtnc203.getText().toString().replace("Name", binding.nc101.getSelectedItem().toString()));
 
         //======= Checking Q201, 202 and 203
         binding.nc203.addTextChangedListener(new TextWatcher() {
@@ -334,8 +337,22 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
 //        nc101
 
         if (endflag) {
-            return validatorClass.EmptySpinner(this, binding.nc101, getString(R.string.nc101));
+            if (!isNA) {
+                return validatorClass.EmptySpinner(this, binding.nc101, getString(R.string.nc101));
+            } else {
+
+                if (!validatorClass.EmptySpinner(this, binding.resp, getString(R.string.resp))) {
+                    return false;
+                }
+                return validatorClass.EmptySpinner(this, binding.nc101, getString(R.string.nc101));
+            }
         } else {
+
+            if (isNA) {
+                if (!validatorClass.EmptySpinner(this, binding.resp, getString(R.string.resp))) {
+                    return false;
+                }
+            }
 
             if (!validatorClass.EmptySpinner(this, binding.nc101, getString(R.string.nc101))) {
                 return false;

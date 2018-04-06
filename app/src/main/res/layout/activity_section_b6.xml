@@ -33,6 +33,14 @@
             android:background="@color/colorPrimary" />
 
         <TextView
+            android:id="@+id/textName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/pink_100"
+            android:gravity="center"
+            android:textColor="@color/colorPrimaryDark" />
+
+        <TextView
             style="@style/sub"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

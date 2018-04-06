@@ -50,6 +50,27 @@ public class SectionC4Activity extends AppCompatActivity implements TextWatcher,
 
         binding.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
                 + "\n\n" + SectionB1Activity.wraName + " : " + getString(R.string.nh212a));
+        binding.txtnc401.setText(binding.txtnc401.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        binding.txtnc402.setText(binding.txtnc402.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        binding.txtnc403.setText(binding.txtnc403.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        binding.txtnc404.setText(binding.txtnc404.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        binding.txtnc405.setText(binding.txtnc405.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        binding.txtnc406.setText(binding.txtnc406.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        binding.txtnc407.setText(binding.txtnc407.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        binding.txtnc408.setText(binding.txtnc408.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        binding.txtnc409.setText(binding.txtnc409.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        binding.txtnc410.setText(binding.txtnc410.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        binding.txtnc411.setText(binding.txtnc411.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        binding.txtnc412.setText(binding.txtnc412.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        binding.txtnc413.setText(binding.txtnc413.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        binding.txtnc414.setText(binding.txtnc414.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        binding.txtnc415.setText(binding.txtnc415.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        binding.txtnc416.setText(binding.txtnc416.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        binding.txtnc417.setText(binding.txtnc417.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        binding.txtnc418.setText(binding.txtnc418.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        binding.txtnc419.setText(binding.txtnc419.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        binding.txtnc420.setText(binding.txtnc420.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+
 
         //        Assigning data to UI binding
         binding.setCallback(this);

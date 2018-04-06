@@ -47,6 +47,7 @@ public class SectionB6Activity extends AppCompatActivity {
         bi.setCallback(this);
 
         this.setTitle(getResources().getString(R.string.nw5heading));
+        bi.textName.setText("Selected Woman : " + SectionB1Activity.wraName);
 
         settingTimeToEat();
         setListners();
@@ -451,6 +452,9 @@ public class SectionB6Activity extends AppCompatActivity {
                 MainApp.nc.set_UID(
                         (MainApp.nc.getDeviceId() + MainApp.nc.get_ID()));
                 db.updateNutritionID();
+
+                MainApp.mc.setsB6("1");
+                db.updateWRAB6();
 
                 uid = MainApp.nc.getDeviceId() + MainApp.nc.get_ID();
 

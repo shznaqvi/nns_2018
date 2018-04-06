@@ -1703,6 +1703,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
+    public int updateWRAB6() {
+        SQLiteDatabase db = this.getReadableDatabase();
+//      New value for one column
+        ContentValues values = new ContentValues();
+        values.put(MWRATable.COLUMN_SB6, MainApp.mc.getsB6());
+
+//      Which row to update, based on the ID
+        String selection = MWRATable.COLUMN_UID + " = ?";
+        String[] selectionArgs = new String[]{String.valueOf(MainApp.mc.get_ID())};
+
+        int count = db.update(MWRATable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+
+        return count;
+    }
+
     public int updateOutcomeID() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2418,7 +2436,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 NutritionTable.COLUMN_SB6
         };
 
-        String whereClause = NutritionTable.COLUMN_UUID + "=?";
+        String whereClause = NutritionTable.COLUMN_MUID + "=?";
         String[] whereArgs = new String[]{MainApp.mc.get_UID()};
         String groupBy = null;
         String having = null;

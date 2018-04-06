@@ -89,6 +89,25 @@ public class SectionC2Activity extends AppCompatActivity implements RadioGroup.O
         bi.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
                 + "\n\n" + SectionB1Activity.wraName + " : " + getString(R.string.nh212a));
 
+        bi.txtnc206.setText(bi.txtnc206.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        bi.txtnc207.setText(bi.txtnc207.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        bi.txtnc209.setText(bi.txtnc209.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        bi.txtnc210.setText(bi.txtnc210.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        bi.txtnc211.setText(bi.txtnc211.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        bi.txtnc212.setText(bi.txtnc212.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        bi.txtnc212a.setText(bi.txtnc212a.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        bi.txtnc213.setText(bi.txtnc213.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        bi.txtnc214.setText(bi.txtnc214.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        bi.txtnc215.setText(bi.txtnc215.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        bi.txtnc217.setText(bi.txtnc217.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        bi.txtnc218.setText(bi.txtnc218.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        bi.txtnc219.setText(bi.txtnc219.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        bi.txtnc220.setText(bi.txtnc220.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        bi.txtnc221.setText(bi.txtnc221.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        bi.txtnc223.setText(bi.txtnc223.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        bi.txtnc212.setText(bi.txtnc212.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+
+
 
     }
 
@@ -760,6 +779,9 @@ public class SectionC2Activity extends AppCompatActivity implements RadioGroup.O
         }
 
         if (bi.nc219a.isChecked()) {
+            if (!validatorClass.EmptyTextBox(this, bi.nc219x, getString(R.string.nc219))) {
+                return false;
+            }
             if (!validatorClass.RangeTextBox(this, bi.nc219x, 1, 10, getString(R.string.nc219), " times")) {
                 return false;
             }
