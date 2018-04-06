@@ -116,6 +116,13 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
                         counterPerNA++;
                     }
 
+                    for (FamilyMembersContract fmc : MainApp.respList) {
+                        respName.add(fmc.getName() + "-" + fmc.getSerialNo());
+                        respMap.put(fmc.getName() + "-" + fmc.getSerialNo(), fmc.getSerialNo());
+                    }
+
+                    binding.resp.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, respName));
+
                     NAChildsize = MainApp.childNA.size();
                     binding.fldGrpresp.setVisibility(View.VISIBLE);
 
@@ -152,12 +159,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
                     counterPerNA++;
                 }
 
-                for (FamilyMembersContract fmc : MainApp.respList) {
-                    respName.add(fmc.getName() + "-" + fmc.getSerialNo());
-                    respMap.put(fmc.getName() + "-" + fmc.getSerialNo(), fmc.getSerialNo());
-                }
 
-                binding.resp.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, respName));
                 binding.fldGrpresp.setVisibility(View.VISIBLE);
 //                NAChildsize = MainApp.childNA.size();
             } else {

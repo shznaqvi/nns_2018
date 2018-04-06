@@ -602,6 +602,7 @@
                         android:orientation="vertical">
                         <!--nc407-->
                         <TextView
+                            android:id="@+id/txtnc407"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
@@ -824,6 +825,7 @@
 
                         <!--nc408-->
                         <TextView
+                            android:id="@+id/txtnc408"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
@@ -954,6 +956,7 @@
 
                 <!--09-->
                 <TextView
+                    android:id="@+id/txtnc409"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -998,6 +1001,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/txtnc410"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
@@ -1037,10 +1041,10 @@
                         android:id="@+id/fldGrnc411"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
                         android:orientation="vertical">
                         <!--11-->
                         <TextView
+                            android:id="@+id/txtnc411"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
@@ -1264,6 +1268,7 @@
 
                         <!--12-->
                         <TextView
+                            android:id="@+id/txtnc412"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
