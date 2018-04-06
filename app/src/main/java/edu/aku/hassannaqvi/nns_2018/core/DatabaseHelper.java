@@ -77,7 +77,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + singleRandomHH.COLUMN_CONTACT + " TEXT,"
             + singleRandomHH.COLUMN_HH_SELECTED_STRUCT + " TEXT,"
             + singleRandomHH.COLUMN_RANDOMDT + " TEXT );";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     private static final String SQL_CREATE_FORMS = "CREATE TABLE "
             + FormsTable.TABLE_NAME + "("
@@ -132,6 +132,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + ChildTable.COLUMN_PROJECTNAME + " TEXT," +
             ChildTable.COLUMN__UID + " TEXT," +
             ChildTable.COLUMN__UUID + " TEXT," +
+            ChildTable.COLUMN_FM_UID + " TEXT," +
+            ChildTable.COLUMN_MUID + " TEXT," +
             ChildTable.COLUMN_FORMDATE + " TEXT," +
             ChildTable.COLUMN_USER + " TEXT," +
             ChildTable.COLUMN_C1SERIALNO + " TEXT," +
@@ -147,20 +149,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             ChildTable.COLUMN_CSTATUS + " TEXT," +
             ChildTable.COLUMN_CSTATUS88x + " TEXT," +
             ChildTable.COLUMN_APPVERSION + " TEXT " + " );";
-    private static final String SQL_DELETE_USERS =
-            "DROP TABLE IF EXISTS " + UsersContract.UsersTable.TABLE_NAME;
-    private static final String SQL_DELETE_FORMS =
-            "DROP TABLE IF EXISTS " + FormsTable.TABLE_NAME;
-    private static final String SQL_DELETE_CHILD_FORMS =
-            "DROP TABLE IF EXISTS " + ChildContract.ChildTable.TABLE_NAME;
-    private static final String SQL_DELETE_SINGLE = "DROP TABLE IF EXISTS " + singleSerial.TABLE_NAME;
-    private static final String SQL_DELETE_TALUKAS = "DROP TABLE IF EXISTS " + EnumBlockTable.TABLE_NAME;
-    private static final String SQL_DELETE_UCS = "DROP TABLE IF EXISTS " + UCsTable.TABLE_NAME;
-    private static final String SQL_DELETE_ELIGIBLE_MEMBERS = "DROP TABLE IF EXISTS " + eligibleMembers.TABLE_NAME;
-    private static final String SQL_DELETE_MWRAS = "DROP TABLE IF EXISTS " + MWRATable.TABLE_NAME;
-    private static final String SQL_DELETE_OUTCOME = "DROP TABLE IF EXISTS " + outcomeTable.TABLE_NAME;
-    private static final String SQL_DELETE_FAMILYMEMBERS = "DROP TABLE IF EXISTS " + familyMembers.TABLE_NAME;
-    private static final String SQL_DELETE_RECIENPTS = "DROP TABLE IF EXISTS " + RecipientsTable.TABLE_NAME;
+
     final String SQL_CREATE_SERIAL = "CREATE TABLE " + singleSerial.TABLE_NAME + " (" +
             singleSerial._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             singleSerial.COLUMN_DEVICE_ID + " TEXT, " +
@@ -181,33 +170,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             UCsTable.COLUMN_UCS_NAME + " TEXT, " +
             UCsTable.COLUMN_TALUKA_CODE + " TEXT " +
             ");";
-    final String SQL_CREATE_ELIGIBLE_MEMBERS = "CREATE TABLE " + eligibleMembers.TABLE_NAME + " (" +
-            eligibleMembers.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            eligibleMembers.COLUMN_UID + " TEXT," +
-            eligibleMembers.COLUMN_UUID + " TEXT," +
-            eligibleMembers.COLUMN_PROJECTNAME + " TEXT," +
-            eligibleMembers.COLUMN_FORMDATE + " TEXT," +
-            eligibleMembers.COLUMN_DEVICEID + " TEXT," +
-            eligibleMembers.COLUMN_DEVICETAGID + " TEXT," +
-            eligibleMembers.COLUMN_USER + " TEXT," +
-            eligibleMembers.COLUMN_APPVERSION + " TEXT," +
-            eligibleMembers.COLUMN_ENM_NO + " TEXT," +
-            eligibleMembers.COLUMN_HH_NO + " TEXT," +
-            eligibleMembers.COLUMN_DOB + " TEXT," +
-            eligibleMembers.COLUMN_AGE + " TEXT," +
-            eligibleMembers.COLUMN_na204 + " TEXT," +
-            eligibleMembers.COLUMN_SA3 + " TEXT," +
-            eligibleMembers.COLUMN_ISTATUS + " TEXT," +
-            eligibleMembers.COLUMN_ISTATUS88x + " TEXT," +
-            eligibleMembers.COLUMN_SYNCED + " TEXT," +
-            eligibleMembers.COLUMN_SYNCEDDATE + " TEXT" +
+    private static final String SQL_DELETE_USERS =
+            "DROP TABLE IF EXISTS " + UsersContract.UsersTable.TABLE_NAME;
 
-            ");";
+
     final String SQL_CREATE_MWRAS = "CREATE TABLE " + MWRATable.TABLE_NAME + " (" +
             MWRATable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             MWRATable.COLUMN_PROJECTNAME + " TEXT," +
             MWRATable.COLUMN_UID + " TEXT," +
             MWRATable.COLUMN_UUID + " TEXT," +
+            MWRATable.COLUMN_FM_UID + " TEXT," +
             MWRATable.COLUMN_FORMDATE + " TEXT," +
             MWRATable.COLUMN_UPDATEDATE + " TEXT," +
             MWRATable.COLUMN_DEVICEID + " TEXT," +
@@ -232,6 +204,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             outcomeTable.COLUMN_PROJECTNAME + " TEXT," +
             outcomeTable.COLUMN_UID + " TEXT," +
             outcomeTable.COLUMN_UUID + " TEXT," +
+            outcomeTable.COLUMN_FM_UID + " TEXT," +
+            outcomeTable.COLUMN_MUID + " TEXT," +
             outcomeTable.COLUMN_FORMDATE + " TEXT," +
             outcomeTable.COLUMN_UPDATEDATE + " TEXT," +
             outcomeTable.COLUMN_DEVICEID + " TEXT," +
@@ -249,6 +223,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             RecipientsTable.COLUMN_PROJECTNAME + " TEXT," +
             RecipientsTable.COLUMN_UID + " TEXT," +
             RecipientsTable.COLUMN_UUID + " TEXT," +
+            RecipientsTable.COLUMN_FM_UID + " TEXT," +
             RecipientsTable.COLUMN_FORMDATE + " TEXT," +
             RecipientsTable.COLUMN_DEVICEID + " TEXT," +
             RecipientsTable.COLUMN_DEVICETAGID + " TEXT," +
@@ -266,6 +241,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             NutritionTable.COLUMN_PROJECTNAME + " TEXT," +
             NutritionTable.COLUMN_UID + " TEXT," +
             NutritionTable.COLUMN_UUID + " TEXT," +
+            NutritionTable.COLUMN_FM_UID + " TEXT," +
+            NutritionTable.COLUMN_MUID + " TEXT," +
             NutritionTable.COLUMN_FORMDATE + " TEXT," +
             NutritionTable.COLUMN_UPDATEDATE + " TEXT," +
             NutritionTable.COLUMN_DEVICEID + " TEXT," +
@@ -300,6 +277,46 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             VersionAppTable.COLUMN_VERSION_CODE + " TEXT, " +
             VersionAppTable.COLUMN_PATH_NAME + " TEXT " +
             ");";
+    private static final String SQL_DELETE_FORMS =
+            "DROP TABLE IF EXISTS " + FormsTable.TABLE_NAME;
+    private static final String SQL_DELETE_CHILD_FORMS =
+            "DROP TABLE IF EXISTS " + ChildContract.ChildTable.TABLE_NAME;
+    private static final String SQL_DELETE_SINGLE = "DROP TABLE IF EXISTS " + singleSerial.TABLE_NAME;
+    private static final String SQL_DELETE_TALUKAS = "DROP TABLE IF EXISTS " + EnumBlockTable.TABLE_NAME;
+    private static final String SQL_DELETE_UCS = "DROP TABLE IF EXISTS " + UCsTable.TABLE_NAME;
+    private static final String SQL_DELETE_ELIGIBLE_MEMBERS = "DROP TABLE IF EXISTS " + eligibleMembers.TABLE_NAME;
+    private static final String SQL_DELETE_MWRAS = "DROP TABLE IF EXISTS " + MWRATable.TABLE_NAME;
+    private static final String SQL_DELETE_OUTCOME = "DROP TABLE IF EXISTS " + outcomeTable.TABLE_NAME;
+    private static final String SQL_DELETE_FAMILYMEMBERS = "DROP TABLE IF EXISTS " + familyMembers.TABLE_NAME;
+    private static final String SQL_DELETE_RECIENPTS = "DROP TABLE IF EXISTS " + RecipientsTable.TABLE_NAME;
+    private static final String SQL_DELETE_NUTRITION = "DROP TABLE IF EXISTS " + NutritionTable.TABLE_NAME;
+    private static final String SQL_DELETE_DECEASED = "DROP TABLE IF EXISTS " + DeceasedContract.DeceasedTable.TABLE_NAME;
+    private static final String SQL_DELETE_BLRANDOM = "DROP TABLE IF EXISTS " + BLRandomContract.singleRandomHH.TABLE_NAME;
+    private static final String SQL_DELETE_VERSIONAPP = "DROP TABLE IF EXISTS " + VersionAppTable.TABLE_NAME;
+    final String SQL_CREATE_ELIGIBLE_MEMBERS = "CREATE TABLE " + eligibleMembers.TABLE_NAME + " (" +
+            eligibleMembers.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            eligibleMembers.COLUMN_UID + " TEXT," +
+            eligibleMembers.COLUMN_UUID + " TEXT," +
+            eligibleMembers.COLUMN_FM_UID + " TEXT," +
+            eligibleMembers.COLUMN_PROJECTNAME + " TEXT," +
+            eligibleMembers.COLUMN_FORMDATE + " TEXT," +
+            eligibleMembers.COLUMN_DEVICEID + " TEXT," +
+            eligibleMembers.COLUMN_DEVICETAGID + " TEXT," +
+            eligibleMembers.COLUMN_USER + " TEXT," +
+            eligibleMembers.COLUMN_APPVERSION + " TEXT," +
+            eligibleMembers.COLUMN_ENM_NO + " TEXT," +
+            eligibleMembers.COLUMN_HH_NO + " TEXT," +
+            eligibleMembers.COLUMN_DOB + " TEXT," +
+            eligibleMembers.COLUMN_AGE + " TEXT," +
+            eligibleMembers.COLUMN_na204 + " TEXT," +
+            eligibleMembers.COLUMN_SA3 + " TEXT," +
+            eligibleMembers.COLUMN_ISTATUS + " TEXT," +
+            eligibleMembers.COLUMN_ISTATUS88x + " TEXT," +
+            eligibleMembers.COLUMN_SYNCED + " TEXT," +
+            eligibleMembers.COLUMN_SYNCEDDATE + " TEXT" +
+
+            ");";
+
 
     private final String TAG = "DatabaseHelper";
     public String spDateT = new SimpleDateFormat("dd-MM-yy").format(new Date().getTime());
@@ -325,10 +342,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_VERSIONAPP);
         db.execSQL(SQL_CREATE_BL_RANDOM);
         db.execSQL(SQL_CREATE_NUTRITION);
+        db.execSQL(SQL_CREATE_DECEASED);
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+
         db.execSQL(SQL_DELETE_USERS);
         db.execSQL(SQL_DELETE_FORMS);
         db.execSQL(SQL_DELETE_CHILD_FORMS);
@@ -340,7 +360,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_OUTCOME);
         db.execSQL(SQL_DELETE_FAMILYMEMBERS);
         db.execSQL(SQL_DELETE_RECIENPTS);
-        db.execSQL(SQL_CREATE_NUTRITION);
+        db.execSQL(SQL_DELETE_VERSIONAPP);
+        db.execSQL(SQL_DELETE_BLRANDOM);
+        db.execSQL(SQL_DELETE_NUTRITION);
+        db.execSQL(SQL_DELETE_DECEASED);
+
+
 
     }
 
@@ -491,6 +516,93 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return null;
+    }
+
+
+    /*public Collection<FamilyMembersContract> getAllMembersByHH(String cluster, String hh) {
+        Collection<FamilyMembersContract> fmList = new ArrayList<>();
+        // Select All Query
+        String selectQuery = "SELECT fm.* FROM " + familyMembers.TABLE_NAME + " fm Left Join " + eligibleMembers.TABLE_NAME + " e on "
+                + "fm." + familyMembers.COLUMN_UUID + " =  e." + eligibleMembers.COLUMN_UUID
+                + " and fm." + familyMembers.COLUMN_UID + " =  e." + eligibleMembers.COLUMN_UUID
+                + " where fm." + familyMembers.COLUMN_ENM_NO + " = '" + cluster + "'"
+                + " and fm." + familyMembers.COLUMN_HH_NO + " = '" + hh + "'"
+                + " and e." + eligibleMembers.COLUMN_ISTATUS + " != '1'"
+                + " or e." + eligibleMembers.COLUMN_ISTATUS + " IS NULL"
+
+                ;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                FamilyMembersContract fc = new FamilyMembersContract();
+                fmList.add(fc.Hydrate(c));
+            } while (c.moveToNext());
+            }
+
+        // return contact list
+        return fmList;
+        }*/
+
+
+    public Collection<FamilyMembersContract> getAllMembersByHHforAnthro(String cluster, String hh) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+
+                familyMembers.COLUMN_ID,
+                familyMembers.COLUMN_UID,
+                familyMembers.COLUMN_UUID,
+                familyMembers.COLUMN_FORMDATE,
+                familyMembers.COLUMN_USER,
+                familyMembers.COLUMN_HH_NO,
+                familyMembers.COLUMN_ENM_NO,
+                familyMembers.COLUMN_SA2,
+                familyMembers.COLUMN_AV,
+                familyMembers.COLUMN_DEVICETAGID,
+                familyMembers.COLUMN_DEVICEID,
+                familyMembers.COLUMN_SYNCED,
+                familyMembers.COLUMN_SYNCED_DATE,
+                familyMembers.COLUMN_APP_VERSION
+
+        };
+
+        String whereClause = familyMembers.COLUMN_UUID + "=? "
+                + familyMembers.COLUMN_HH_NO + "=?";
+        String[] whereArgs = new String[]{cluster, hh};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                familyMembers.COLUMN_ID + " ASC";
+
+        Collection<FamilyMembersContract> allBL = new ArrayList<>();
+        try {
+            c = db.query(
+                    familyMembers.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                FamilyMembersContract dc = new FamilyMembersContract();
+                allBL.add(dc.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allBL;
     }
 
 
@@ -999,6 +1111,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(RecipientsTable.COLUMN_PROJECTNAME, rc.getProjectName());
         values.put(RecipientsTable.COLUMN_UID, rc.get_UID());
         values.put(RecipientsTable.COLUMN_UUID, rc.get_UUID());
+        values.put(RecipientsTable.COLUMN_FM_UID, rc.getFMUID());
         values.put(RecipientsTable.COLUMN_FORMDATE, rc.getFormDate());
         values.put(RecipientsTable.COLUMN_USER, rc.getUser());
         values.put(RecipientsTable.COLUMN_A8ASNO, rc.getA8aSNo());
@@ -1032,6 +1145,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             //values.put(ChildTable.COLUMN__ID, cc.get_ID());
             values.put(ChildTable.COLUMN__UID, cc.getUID());
             values.put(ChildTable.COLUMN__UUID, cc.getUUID());
+            values.put(ChildTable.COLUMN_FM_UID, cc.getFMUID());
+            values.put(ChildTable.COLUMN_MUID, cc.getMUID());
             values.put(ChildTable.COLUMN_FORMDATE, cc.getFormDate());
             values.put(ChildTable.COLUMN_USER, cc.getUser());
             values.put(ChildTable.COLUMN_C1SERIALNO, cc.getC1SerialNo());
@@ -1081,6 +1196,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //values.put(eligibleMembers.COLUMN__ID, ec.get_ID());
         values.put(eligibleMembers.COLUMN_UID, ec.get_UID());
         values.put(eligibleMembers.COLUMN_UUID, ec.get_UUID());
+        values.put(eligibleMembers.COLUMN_FM_UID, ec.getFmuid());
         values.put(eligibleMembers.COLUMN_FORMDATE, ec.getFormDate());
         values.put(eligibleMembers.COLUMN_DEVICEID, ec.getDeviceId());
         values.put(eligibleMembers.COLUMN_DEVICETAGID, ec.getDevicetagID());
@@ -1121,6 +1237,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             //values.put(MWRATable.COLUMN__ID, mc.get_ID());
             values.put(MWRATable.COLUMN_UID, mc.get_UID());
             values.put(MWRATable.COLUMN_UUID, mc.get_UUID());
+            values.put(MWRATable.COLUMN_FM_UID, mc.getFMUID());
             values.put(MWRATable.COLUMN_FORMDATE, mc.getFormDate());
             values.put(MWRATable.COLUMN_DEVICEID, mc.getDeviceId());
             values.put(MWRATable.COLUMN_DEVICETAGID, mc.getDevicetagID());
@@ -1179,6 +1296,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             //values.put(MWRATable.COLUMN__ID, mc.get_ID());
             values.put(NutritionTable.COLUMN_UID, mc.get_UID());
             values.put(NutritionTable.COLUMN_UUID, mc.get_UUID());
+            values.put(NutritionTable.COLUMN_FM_UID, mc.getFMUID());
+            values.put(NutritionTable.COLUMN_MUID, mc.getMUID());
             values.put(NutritionTable.COLUMN_FORMDATE, mc.getFormDate());
             values.put(NutritionTable.COLUMN_DEVICEID, mc.getDeviceId());
             values.put(NutritionTable.COLUMN_DEVICETAGID, mc.getDevicetagID());
@@ -1221,6 +1340,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             //values.put(outcomeTable.COLUMN__ID, oc.get_ID());
             values.put(outcomeTable.COLUMN_UID, oc.get_UID());
             values.put(outcomeTable.COLUMN_UUID, oc.get_UUID());
+            values.put(outcomeTable.COLUMN_FM_UID, oc.getFMUID());
+            values.put(outcomeTable.COLUMN_MUID, oc.getMUID());
             values.put(outcomeTable.COLUMN_FORMDATE, oc.getFormDate());
             values.put(outcomeTable.COLUMN_DEVICEID, oc.getDeviceId());
             values.put(outcomeTable.COLUMN_DEVICETAGID, oc.getDevicetagID());
@@ -1777,6 +1898,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
+                familyMembers._ID,
                 familyMembers.COLUMN_UID,
                 familyMembers.COLUMN_UUID,
                 familyMembers.COLUMN_FORMDATE,
@@ -1785,9 +1907,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 familyMembers.COLUMN_HH_NO,
                 familyMembers.COLUMN_ENM_NO,
                 familyMembers.COLUMN_SA2,
-                familyMembers.COLUMN_AV,
                 familyMembers.COLUMN_DEVICETAGID,
                 familyMembers.COLUMN_DEVICEID,
+                familyMembers.COLUMN_AV,
+                familyMembers.COLUMN_SYNCED,
+                familyMembers.COLUMN_SYNCED_DATE,
+                familyMembers.COLUMN_APP_VERSION
         };
 
         /*String selection = ChildTable.COLUMN__ID + " = ?";
@@ -1895,6 +2020,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ChildTable.COLUMN__ID,
                 ChildTable.COLUMN__UID,
                 ChildTable.COLUMN__UUID,
+                ChildTable.COLUMN_FM_UID,
+                ChildTable.COLUMN_MUID,
                 ChildTable.COLUMN_FORMDATE,
                 ChildTable.COLUMN_USER,
                 ChildTable.COLUMN_C1SERIALNO,
@@ -1954,6 +2081,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 eligibleMembers.COLUMN__ID,
                 eligibleMembers.COLUMN_UID,
                 eligibleMembers.COLUMN_UUID,
+                eligibleMembers.COLUMN_FM_UID,
                 eligibleMembers.COLUMN_FORMDATE,
                 eligibleMembers.COLUMN_DEVICEID,
                 eligibleMembers.COLUMN_DEVICETAGID,
@@ -2013,6 +2141,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 MWRATable.COLUMN__ID,
                 MWRATable.COLUMN_UID,
                 MWRATable.COLUMN_UUID,
+                MWRATable.COLUMN_FM_UID,
                 MWRATable.COLUMN_FORMDATE,
                 MWRATable.COLUMN_DEVICEID,
                 MWRATable.COLUMN_DEVICETAGID,
@@ -2073,6 +2202,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 NutritionTable.COLUMN__ID,
                 NutritionTable.COLUMN_UID,
                 NutritionTable.COLUMN_UUID,
+                NutritionTable.COLUMN_FM_UID,
+                NutritionTable.COLUMN_MUID,
                 NutritionTable.COLUMN_FORMDATE,
                 NutritionTable.COLUMN_DEVICEID,
                 NutritionTable.COLUMN_DEVICETAGID,
@@ -2126,6 +2257,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 RecipientsTable.COLUMN__ID,
                 RecipientsTable.COLUMN_UID,
                 RecipientsTable.COLUMN_UUID,
+                RecipientsTable.COLUMN_FM_UID,
                 RecipientsTable.COLUMN_FORMDATE,
                 RecipientsTable.COLUMN_DEVICEID,
                 RecipientsTable.COLUMN_DEVICETAGID,
@@ -2180,6 +2312,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 outcomeTable.COLUMN__ID,
                 outcomeTable.COLUMN_UID,
                 outcomeTable.COLUMN_UUID,
+                outcomeTable.COLUMN_MUID,
+                outcomeTable.COLUMN_FM_UID,
                 outcomeTable.COLUMN_FORMDATE,
                 outcomeTable.COLUMN_DEVICEID,
                 outcomeTable.COLUMN_DEVICETAGID,
@@ -2233,6 +2367,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 outcomeTable.COLUMN__ID,
                 outcomeTable.COLUMN_UID,
                 outcomeTable.COLUMN_UUID,
+                outcomeTable.COLUMN_MUID,
+                outcomeTable.COLUMN_FM_UID,
                 outcomeTable.COLUMN_SB1A
         };
 
@@ -2277,6 +2413,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 NutritionTable.COLUMN__ID,
                 NutritionTable.COLUMN_UID,
                 NutritionTable.COLUMN_UUID,
+                NutritionTable.COLUMN_FM_UID,
+                NutritionTable.COLUMN_MUID,
                 NutritionTable.COLUMN_SB6
         };
 
@@ -2321,6 +2459,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 MWRATable.COLUMN__ID,
                 MWRATable.COLUMN_UID,
                 MWRATable.COLUMN_UUID,
+                MWRATable.COLUMN_FM_UID,
                 MWRATable.COLUMN_SB2
         };
 
@@ -2366,6 +2505,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 MWRATable.COLUMN__ID,
                 MWRATable.COLUMN_UID,
                 MWRATable.COLUMN_UUID,
+                MWRATable.COLUMN_FM_UID,
                 MWRATable.COLUMN_SB3
         };
 
@@ -2411,6 +2551,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 MWRATable.COLUMN__ID,
                 MWRATable.COLUMN_UID,
                 MWRATable.COLUMN_UUID,
+                MWRATable.COLUMN_FM_UID,
                 MWRATable.COLUMN_SB4
         };
 
@@ -2456,6 +2597,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 MWRATable.COLUMN__ID,
                 MWRATable.COLUMN_UID,
                 MWRATable.COLUMN_UUID,
+                MWRATable.COLUMN_FM_UID,
                 MWRATable.COLUMN_SB5
         };
 
@@ -2501,6 +2643,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ChildTable.COLUMN__ID,
                 ChildTable.COLUMN__UID,
                 ChildTable.COLUMN__UUID,
+                ChildTable.COLUMN_FM_UID,
+                ChildTable.COLUMN_MUID,
                 ChildTable.COLUMN_SC2
         };
 
@@ -2546,6 +2690,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ChildTable.COLUMN__ID,
                 ChildTable.COLUMN__UID,
                 ChildTable.COLUMN__UUID,
+                ChildTable.COLUMN_MUID,
+                ChildTable.COLUMN_FM_UID,
                 ChildTable.COLUMN_SC3
         };
 
@@ -2592,6 +2738,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ChildTable.COLUMN__ID,
                 ChildTable.COLUMN__UID,
                 ChildTable.COLUMN__UUID,
+                ChildTable.COLUMN_FM_UID,
+                ChildTable.COLUMN_MUID,
                 ChildTable.COLUMN_SC4
         };
 
@@ -2637,6 +2785,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ChildTable.COLUMN__ID,
                 ChildTable.COLUMN__UID,
                 ChildTable.COLUMN__UUID,
+                ChildTable.COLUMN_MUID,
+                ChildTable.COLUMN_FM_UID,
                 ChildTable.COLUMN_SC5
         };
 

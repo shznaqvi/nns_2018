@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -1198,14 +1197,14 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
 
         if (!backPressed) {
             MainApp.mc = new MWRAContract();
-            MainApp.mc.setDevicetagID(MainApp.getTagName(this));
+            MainApp.mc.setDevicetagID(MainApp.fc.getDevicetagID());
             MainApp.mc.setFormDate(MainApp.fc.getFormDate());
-            MainApp.mc.setUser(MainApp.userName);
-            MainApp.mc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
-                    Settings.Secure.ANDROID_ID));
-            MainApp.mc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
+            MainApp.mc.setUser(MainApp.fc.getUser());
+            MainApp.mc.setDeviceId(MainApp.fc.getDeviceID());
+            MainApp.mc.setApp_ver(MainApp.fc.getAppversion());
             MainApp.mc.setB1SerialNo(wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
             MainApp.mc.set_UUID(MainApp.fc.getUID());
+            MainApp.mc.setFMUID(wraMap.get(bi.nb101.getSelectedItem().toString()).get_UID());
         } else {
             sB1.put("updatedate_nw1", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
             MainApp.mc.set_UID(MainApp.mc.get_UID());

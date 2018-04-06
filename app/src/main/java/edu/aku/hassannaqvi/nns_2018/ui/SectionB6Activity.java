@@ -3,7 +3,6 @@ package edu.aku.hassannaqvi.nns_2018.ui;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.CompoundButton;
 import android.widget.Toast;
@@ -379,13 +378,14 @@ public class SectionB6Activity extends AppCompatActivity {
 
         MainApp.nc = new NutritionContract();
         if (!backPressed && !frontPressed) {
-            MainApp.nc.setDevicetagID(MainApp.getTagName(this));
+            MainApp.nc.setDevicetagID(MainApp.fc.getDevicetagID());
             MainApp.nc.setFormDate(MainApp.fc.getFormDate());
-            MainApp.nc.setUser(MainApp.userName);
-            MainApp.nc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
-                    Settings.Secure.ANDROID_ID));
-            MainApp.nc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
-            MainApp.nc.set_UUID(MainApp.mc.get_UID());
+            MainApp.nc.setUser(MainApp.fc.getUser());
+            MainApp.nc.setDeviceId(MainApp.fc.getDeviceID());
+            MainApp.nc.setApp_ver(MainApp.fc.getAppversion());
+            MainApp.nc.set_UUID(MainApp.fc.getUID());
+            MainApp.nc.setMUID(MainApp.mc.get_UID());
+            MainApp.nc.setFMUID(MainApp.mc.getFMUID());
         } else {
             MainApp.nc.setUpdatedate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
 
@@ -399,6 +399,7 @@ public class SectionB6Activity extends AppCompatActivity {
 
         sB6.put("cluster_no", MainApp.fc.getClusterNo());
         sB6.put("hhno", MainApp.fc.getHhNo());
+        //sB6.put("MUID", MainApp.mc.get_UID());
 
         sB6.put("serial", String.valueOf(MainApp.nuCount));
         //       nw501

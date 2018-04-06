@@ -3,7 +3,6 @@ package edu.aku.hassannaqvi.nns_2018.ui;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -97,6 +96,13 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                     binding.nh2agey.setEnabled(false);
                     binding.nh2agey.setText(String.valueOf(agebyDob));
 
+                } else if (!binding.nh2doby.getText().toString().equals("9998") && !binding.nh2dobm.getText().toString().equals("98")) {
+
+                    dob = DateUtils.getCalendarDate(binding.nh2dobm.getText().toString(),
+                            binding.nh2doby.getText().toString());
+                    agebyDob = DateUtils.ageInYearByDOB(dob);
+                    binding.nh2agey.setEnabled(false);
+                    binding.nh2agey.setText(String.valueOf(agebyDob));
                 } else if (!binding.nh2doby.getText().toString().equals("9998")) {
                     agebyDob = DateUtils.ageInYearByDOB(binding.nh2doby.getText().toString());
                     binding.nh2agey.setEnabled(false);
@@ -113,24 +119,6 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
         @Override
         public void afterTextChanged(Editable s) {
 
-//            timer.cancel();
-//            timer = new Timer();
-//            timer.schedule(
-//                    new TimerTask() {
-//                        @Override
-//                        public void run() {
-//
-//                            SectionA2Activity.this.runOnUiThread(new Runnable() {
-//                                public void run() {
-//                                    formValidation();
-//                                }
-//                                //}
-//                            });
-//
-//                        }
-//                    },
-//                    DELAY1
-//            );
         }
 
     };
@@ -434,11 +422,11 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
 
             MainApp.fmc = new FamilyMembersContract();
 
-            MainApp.fmc.setDevicetagID(MainApp.getTagName(this));
+            MainApp.fmc.setDevicetagID(MainApp.fc.getDevicetagID());
             MainApp.fmc.setFormDate(MainApp.fc.getFormDate());
             MainApp.fmc.setUser(MainApp.fc.getUser());
-            MainApp.fmc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID));
-            MainApp.fmc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
+            MainApp.fmc.setDeviceId(MainApp.fc.getDeviceID());
+            MainApp.fmc.setApp_ver(MainApp.fc.getAppversion());
             MainApp.fmc.set_UUID(MainApp.fc.getUID());
             MainApp.fmc.setEnmNo(MainApp.fc.getClusterNo());
             MainApp.fmc.setHhNo(MainApp.fc.getHhNo());
@@ -469,7 +457,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
 
             //family.setDob(binding.nh2dob.getText().toString());
             family.setAge(binding.nh2agey.getText().toString()); //+ "/" + binding.nh2agem.getText().toString() + "/" + binding.nh2aged.getText().toString());
-            if (Age <= 5) {
+            if (Age < 5) {
                 family.setMotherId(mothersMap.get(binding.nh212.getSelectedItem().toString() + "_" + mothersSerials.get(mothersList.indexOf(binding.nh212.getSelectedItem().toString()) - 1)));
             }
 
@@ -546,7 +534,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
             MainApp.membersCount.setMembers(1, memType);
 
             //MWRA
-            if ((Age >= 15 && Age <= 49) && family.getna204().equals("2")) {
+            if ((Age >= 15 && Age < 50) && family.getna204().equals("2")) {
                 if (binding.nh2mse.isChecked()) {
                     MainApp.membersCount.setWra(MainApp.membersCount.getWra() + 1);
                     if (binding.nh210a.isChecked()) {
@@ -563,7 +551,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                 //MainApp.adolescents.add(family);
             }
             //Adolescent
-            if ((Age >= 10 && Age <= 19) && binding.nh2mse.isChecked()) {
+            if ((Age >= 10 && Age < 20) && binding.nh2mse.isChecked()) {
                 memType = new HashMap<>();
                 if (family.getna204().equals("1")) {
                     memType.put(1, Integer.valueOf(mem.get(2).get(1).toString()) + 1);
@@ -581,7 +569,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                 }
             }
             //Children < 5
-            else if (Age <= 5) {
+            else if (Age < 6) {
                 memType = new HashMap<>();
                 if (family.getna204().equals("1")) {
                     memType.put(1, Integer.valueOf(mem.get(3).get(1).toString()) + 1);
@@ -605,7 +593,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                     //MainApp.adolescents.add(family);
                 }
 
-                if (Age <= 5 && family.getMotherId().equals("00")) {
+                if (Age < 6 && family.getMotherId().equals("00")) {
                     MainApp.childNA.add(family);
                 }
             }

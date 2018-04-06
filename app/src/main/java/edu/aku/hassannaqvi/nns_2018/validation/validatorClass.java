@@ -177,9 +177,9 @@ public abstract class validatorClass {
 
             rdBtn.setError("This data is Required!");    // Set Error on last radio button
 
-            rdBtn.setFocusable(true);
+            //rdBtn.setFocusable(true);
             //rdBtn.setFocusableInTouchMode(true);
-            rdBtn.requestFocus();
+            //rdBtn.requestFocus();
 
             /*rdBtn.clearFocus();
 
@@ -249,9 +249,9 @@ public abstract class validatorClass {
             }
             //rdBtn.setError("This data is Required!");    // Set Error on last radio button
 
-            rdBtn.setFocusable(true);
+            //rdBtn.setFocusable(true);
             //rdBtn.setFocusableInTouchMode(true);
-            rdGrp.requestFocus();
+            //rdGrp.requestFocus();
 
             /*rdGrp.requestFocusFromTouch();
             rdGrp.clearFocus();
@@ -265,6 +265,8 @@ public abstract class validatorClass {
             if (rdBtn.isChecked()) {
                 return EmptyTextBox(context, txt, msg);
             } else {
+                txt.setError(null);
+                txt.clearFocus();
                 return true;
             }
         }
@@ -315,8 +317,11 @@ public abstract class validatorClass {
             cbx.setError(null);
             if (cbx.isChecked()) {
                 return EmptyTextBox(context, txt, msg);
+            } else {
+                txt.setError(null);
+                txt.clearFocus();
+                return true;
             }
-            return true;
         } else {
 
             if (MainApp.validateFlag) {

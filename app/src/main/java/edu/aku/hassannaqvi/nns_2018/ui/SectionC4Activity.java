@@ -48,6 +48,9 @@ public class SectionC4Activity extends AppCompatActivity implements TextWatcher,
 
         this.setTitle(getResources().getString(R.string.nc4heading));
 
+        binding.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
+                + "\n\n" + SectionB1Activity.wraName + " : " + getString(R.string.nh212a));
+
         //        Assigning data to UI binding
         binding.setCallback(this);
 

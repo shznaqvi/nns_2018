@@ -32,6 +32,7 @@ public class EligibleMembersContract {
     private String sA3 = "";
     private String istatus = ""; // Interview Status
     private String istatus88x = ""; // Interview Status
+    private String fmuid = "";
 
     private String synced = "";
     private String syncedDate = "";
@@ -49,6 +50,14 @@ public class EligibleMembersContract {
 
     }
 
+
+    public String getFmuid() {
+        return fmuid;
+    }
+
+    public void setFmuid(String fmuid) {
+        this.fmuid = fmuid;
+    }
 
     public String getProjectName() {
         return projectName;
@@ -203,6 +212,7 @@ public class EligibleMembersContract {
         this._ID = jsonObject.getString(eligibleMembers.COLUMN__ID);
         this._UID = jsonObject.getString(eligibleMembers.COLUMN_UID);
         this._UUID = jsonObject.getString(eligibleMembers.COLUMN_UUID);
+        this.fmuid = jsonObject.getString(eligibleMembers.COLUMN_FM_UID);
         this.formDate = jsonObject.getString(eligibleMembers.COLUMN_FORMDATE);
         this.deviceId = jsonObject.getString(eligibleMembers.COLUMN_DEVICEID);
         this.devicetagID = jsonObject.getString(eligibleMembers.COLUMN_DEVICETAGID);
@@ -228,6 +238,7 @@ public class EligibleMembersContract {
         this._ID = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN__ID));
         this._UID = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_UID));
         this._UUID = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_UUID));
+        this.fmuid = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_FM_UID));
         this.formDate = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_FORMDATE));
         this.deviceId = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_DEVICEID));
         this.devicetagID = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_DEVICETAGID));
@@ -258,6 +269,7 @@ public class EligibleMembersContract {
         json.put(eligibleMembers.COLUMN__ID, this._ID == null ? JSONObject.NULL : this._ID);
         json.put(eligibleMembers.COLUMN_UID, this._UID == null ? JSONObject.NULL : this._UID);
         json.put(eligibleMembers.COLUMN_UUID, this._UUID == null ? JSONObject.NULL : this._UUID);
+        json.put(eligibleMembers.COLUMN_FM_UID, this.fmuid == null ? JSONObject.NULL : this.fmuid);
         json.put(eligibleMembers.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
         json.put(eligibleMembers.COLUMN_DEVICEID, this.deviceId == null ? JSONObject.NULL : this.deviceId);
         json.put(eligibleMembers.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
@@ -290,6 +302,7 @@ public class EligibleMembersContract {
         public static final String COLUMN__ID = "_id";
         public static final String COLUMN_UID = "uid";
         public static final String COLUMN_UUID = "uuid";
+        public static final String COLUMN_FM_UID = "fmuid";
         public static final String COLUMN_FORMDATE = "formdate";
         public static final String COLUMN_DEVICEID = "deviceid";
         public static final String COLUMN_DEVICETAGID = "devicetagid";

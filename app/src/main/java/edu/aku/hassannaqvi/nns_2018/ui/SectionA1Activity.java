@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
 import android.util.Log;
@@ -202,37 +203,35 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+                binding.nh108.setInputType(InputType.TYPE_CLASS_NUMBER);
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
                 clearFields();
+
+                if (!binding.nh108.getText().toString().isEmpty() && binding.nh108.getText().toString().length() == 4) {
+                    if (binding.nh108.getText().toString().substring(0, 3).matches("[0-9]+")) {
+                        binding.nh108.setText(binding.nh108.getText().toString() + "-");
+                        binding.nh108.setSelection(binding.nh108.getText().length());
+                        binding.nh108.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+
+                    }
+                }
+
+
+
+
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
 
-                /*timer.cancel();
-                timer = new Timer();
-                timer.schedule(
-                        new TimerTask() {
-                            @Override
-                            public void run() {
 
-                                runOnUiThread(new Runnable() {
-                                    public void run() {
-                                        formValidation();
-                                    }
-                                });
-
-                            }
-                        },
-                        DELAY
-                );
-*/
             }
         });
+
 
 
 //
@@ -291,6 +290,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
                                 progress = 0;
                                 finish();
+
                                 startActivity(new Intent(SectionA1Activity.this, SectionA2ListActivity.class));
                             }
                         });
@@ -429,16 +429,19 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
                 return false;
             }
 //        na11802
-            if (!validatorClass.EmptyRadioButton(this, binding.na11802, binding.na11802b, getString(R.string.na11802))) {
-                return false;
+
+            if (MainApp.selectedHead.getSelStructure().equals("1")) {
+                if (!validatorClass.EmptyRadioButton(this, binding.na11802, binding.na11802b, getString(R.string.na11802))) {
+                    return false;
+                }
             }
 
-            if (MainApp.selectedHead.getSelStructure().equals("1") && !binding.na11802a.isChecked()) {
+            /*if (MainApp.selectedHead.getSelStructure().equals("1") && !binding.na11802a.isChecked()) {
                 binding.na11802a.setError("Wrong Selection");
                 //Toast.makeText(this, "Wrong Selection", Toast.LENGTH_SHORT).show();
                 return false;
             }
-
+*/
 //        na113
             if (binding.na11801b.isChecked()) {
                 return validatorClass.EmptyCheckBox(this, binding.fldGrpna113, binding.na11996, binding.na11996x, String.valueOf(R.string.na113));
@@ -586,6 +589,17 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
                 binding.hhName.setText(MainApp.selectedHead.getHhhead().toUpperCase());
 
                 binding.fldGrpnh110.setVisibility(View.VISIBLE);
+
+                if (MainApp.selectedHead.getSelStructure().equals("1")) {
+                    binding.na11802a.setEnabled(true);
+                    binding.na11802b.setEnabled(true);
+                } else {
+                    binding.na11802a.setEnabled(false);
+                    binding.na11802b.setEnabled(false);
+                    binding.na11802.clearCheck();
+
+                }
+
 
             } else {
 
