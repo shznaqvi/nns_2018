@@ -229,6 +229,7 @@
                     android:layout_marginTop="16dp"
                     android:background="@color/colorPrimary"
                     android:text="@string/nc202"
+                    android:id="@+id/txtnc202"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
 
@@ -269,6 +270,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    android:id="@+id/txtnc203"
                     android:background="@color/colorPrimary"
                     android:text="@string/nc203"
                     android:textAppearance="?android:attr/textAppearanceLarge"

@@ -80,6 +80,7 @@
 
                 <!--nc401-->
                 <TextView
+                    android:id="@+id/txtnc401"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -123,6 +124,7 @@
 
 
                     <TextView
+                        android:id="@+id/txtnc402"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
@@ -164,10 +166,10 @@
                         android:id="@+id/fldGrnc403"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/txtnc403"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
@@ -373,6 +375,7 @@
 
 
                         <TextView
+                            android:id="@+id/txtnc404"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
@@ -513,6 +516,7 @@
 
                 <!--nc405-->
                 <TextView
+                    android:id="@+id/txtnc405"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -556,6 +560,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/txtnc406"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
@@ -594,7 +599,6 @@
                         android:id="@+id/fldGrnc407"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
                         android:orientation="vertical">
                         <!--nc407-->
                         <TextView

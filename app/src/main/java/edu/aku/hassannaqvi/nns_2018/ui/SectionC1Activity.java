@@ -169,9 +169,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
 
                 binding.fldGrpresp.setVisibility(View.GONE);
 
-
-
-//                Childsize = MainApp.childUnder5.size();
+//              Childsize = MainApp.childUnder5.size();
             }
         }
 
@@ -192,6 +190,9 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
         for (EditText ed : grpDate) {
             ed.addTextChangedListener(this);
         }
+
+        binding.txtnc202.setText(binding.txtnc202.getText().toString().replace("Name", binding.nc101.getSelectedItem().toString()));
+        binding.txtnc203.setText(binding.txtnc203.getText().toString().replace("Name", binding.nc101.getSelectedItem().toString()));
 
         //======= Checking Q201, 202 and 203
         binding.nc203.addTextChangedListener(new TextWatcher() {
