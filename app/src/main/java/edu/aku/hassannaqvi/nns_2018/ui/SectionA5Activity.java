@@ -1,5 +1,7 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -33,9 +35,11 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
     ActivitySectionA5Binding binding;
     DatabaseHelper db;
     int recipientCounter = 0;
+    int prevRecipientCounter = 0;
     Boolean backPressed = false;
     private Timer timer = new Timer();
     static int deceasedCounter = 0;
+    int prevDeceasedCounter = 0;
 
     public CheckBox.OnCheckedChangeListener check = new CompoundButton.OnCheckedChangeListener() {
         @Override
@@ -389,6 +393,9 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
                 );
             }
             binding.nh702.setText(jsonA5.getnh702());
+
+            prevRecipientCounter = Integer.valueOf(jsonA5.getnh702());
+
             if (!jsonA5.getnh801().equals("0")) {
                 binding.nh801.check(
                         jsonA5.getnh801().equals("1") ? binding.nh801a.getId() :
@@ -398,6 +405,7 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
             }
             binding.nh802.setText(jsonA5.getnh802());
 
+            prevDeceasedCounter = Integer.valueOf(jsonA5.getnh802());
 
         }
     }
@@ -421,9 +429,72 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
 //                backPressed = true;
 
                 if (recipientCounter > 0) {
-                    startActivity(new Intent(this, SectionA8AActivity.class).putExtra("recCounter", recipientCounter));
+
+                    if (recipientCounter < prevRecipientCounter) {
+
+                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                                SectionA5Activity.this);
+                        alertDialogBuilder
+                                .setMessage("In previous you saved " + prevRecipientCounter + " Recipient.\n" +
+                                        "Do you want to continue it?")
+                                .setCancelable(false)
+                                .setPositiveButton("Yes",
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog,
+                                                                int id) {
+
+                                                startActivity(new Intent(SectionA5Activity.this,
+                                                        SectionA8AActivity.class).putExtra("recCounter", recipientCounter));
+                                            }
+                                        });
+                        alertDialogBuilder.setNegativeButton("Cancel",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+
+                                    }
+                                });
+                        AlertDialog alert = alertDialogBuilder.create();
+                        alert.show();
+
+                    } else {
+                        startActivity(new Intent(this, SectionA8AActivity.class).putExtra("recCounter", recipientCounter));
+                    }
                 } else if (deceasedCounter > 0) {
-                    startActivity(new Intent(this, SectionH8Activity.class));
+//                    startActivity(new Intent(this, SectionH8Activity.class));
+
+                    if (deceasedCounter < prevDeceasedCounter) {
+
+                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                                SectionA5Activity.this);
+                        alertDialogBuilder
+                                .setMessage("In previous you saved " + prevDeceasedCounter + " Deceased.\n" +
+                                        "Do you want to continue it?")
+                                .setCancelable(false)
+                                .setPositiveButton("Yes",
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog,
+                                                                int id) {
+
+                                                deceasedCounter = prevDeceasedCounter;
+
+                                                startActivity(new Intent(SectionA5Activity.this, SectionH8Activity.class));
+                                            }
+                                        });
+                        alertDialogBuilder.setNegativeButton("Cancel",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+
+                                    }
+                                });
+                        AlertDialog alert = alertDialogBuilder.create();
+                        alert.show();
+
+                    } else {
+                        startActivity(new Intent(SectionA5Activity.this, SectionH8Activity.class));
+                    }
+
                 } else {
                     startActivity(new Intent(this, ViewMemberActivity.class).putExtra(SectionA1Activity.editFormFlag ? "flagEdit" : "activity", SectionA1Activity.editFormFlag ? false : 1));
                 }
