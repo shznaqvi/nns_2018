@@ -54,6 +54,14 @@
                 android:layoutDirection="rtl"
                 android:orientation="vertical">
 
+                <CheckBox
+                    android:id="@+id/nw217Flag"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:text="@string/nw217Flag" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -140,8 +148,8 @@
                             android:background="@color/pink_100"
                             android:gravity="center"
                             android:text="@string/nw201sub2"
-                            android:textSize="22sp"
-                            android:textColor="@color/colorPrimaryDark" />
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="22sp" />
 
 
                         <EditText
@@ -169,8 +177,8 @@
                             android:background="@color/pink_100"
                             android:gravity="center"
                             android:text="@string/nw201sub1"
-                            android:textSize="22sp"
-                            android:textColor="@color/colorPrimaryDark" />
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="22sp" />
 
                         <EditText
                             android:id="@+id/nw21702d"

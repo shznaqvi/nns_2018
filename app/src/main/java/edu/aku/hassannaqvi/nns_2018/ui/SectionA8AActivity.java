@@ -1,10 +1,9 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.provider.Settings;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -29,7 +28,7 @@ import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA8ABinding;
 import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionA8AActivity extends Activity {
+public class SectionA8AActivity extends AppCompatActivity {
 
     static int counter = 1;
     static int reccounter = 0;
@@ -286,13 +285,13 @@ public class SectionA8AActivity extends Activity {
 
         MainApp.rc = new RecipientsContract();
 
-        MainApp.rc.setDevicetagID(MainApp.getTagName(this));
+        MainApp.rc.setDevicetagID(MainApp.fc.getDevicetagID());
         MainApp.rc.setFormDate(MainApp.fc.getFormDate());
-        MainApp.rc.setUser(MainApp.userName);
-        MainApp.rc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
-                Settings.Secure.ANDROID_ID));
-        MainApp.rc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
-        MainApp.rc.set_UUID(fmcSelected.get_UID());
+        MainApp.rc.setUser(MainApp.fc.getUser());
+        MainApp.rc.setDeviceId(MainApp.fc.getDeviceID());
+        MainApp.rc.setApp_ver(MainApp.fc.getAppversion());
+        MainApp.rc.set_UUID(MainApp.fc.getUID());
+        MainApp.rc.setFMUID(fmcSelected.get_UID());
 
         JSONObject sA8a = new JSONObject();
        /* if (backPressed) {

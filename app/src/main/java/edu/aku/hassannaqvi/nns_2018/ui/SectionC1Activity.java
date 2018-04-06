@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -117,6 +116,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
                     }
 
                     NAChildsize = MainApp.childNA.size();
+                    binding.fldGrpresp.setVisibility(View.VISIBLE);
 
                 } else {
                     for (FamilyMembersContract fmc : MainApp.childUnder5) {
@@ -128,6 +128,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
                     }
 
                     Childsize = MainApp.childUnder5.size();
+                    binding.fldGrpresp.setVisibility(View.GONE);
                 }
             }
         } else {
@@ -149,6 +150,14 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
                     childU5.add(MainApp.childNA.get(i).getName() + "-" + MainApp.childNA.get(i).getSerialNo());
                     counterPerNA++;
                 }
+
+                for (FamilyMembersContract fmc : MainApp.respList) {
+                    respName.add(fmc.getName() + "-" + fmc.getSerialNo());
+                    respMap.put(fmc.getName() + "-" + fmc.getSerialNo(), fmc.getSerialNo());
+                }
+
+                binding.resp.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, respName));
+                binding.fldGrpresp.setVisibility(View.VISIBLE);
 //                NAChildsize = MainApp.childNA.size();
             } else {
                 for (int i = Childsize; i < MainApp.childUnder5.size(); i++) {
@@ -156,25 +165,29 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
                     childU5.add(MainApp.childUnder5.get(Childsize).getName() + "-" + MainApp.childUnder5.get(Childsize).getSerialNo());
                     counterPerMom++;
                 }
+
+                binding.fldGrpresp.setVisibility(View.GONE);
+
+
+
 //                Childsize = MainApp.childUnder5.size();
             }
         }
 
-        for (FamilyMembersContract fmc : MainApp.respList) {
-            respName.add(fmc.getName() + "-" + fmc.getSerialNo());
-            respMap.put(fmc.getName() + "-" + fmc.getSerialNo(), fmc.getSerialNo());
-        }
+
 
         // setup head
         if (!isNA) {
-            binding.txtCounter.setText("Count " + counter + " out of " + counterPerMom);
+            binding.txtCounter.setText("Child " + counter + " out of " + counterPerMom +
+                    "\n\n " + SectionB1Activity.wraName + " : " + getString(R.string.nh212a));
         } else {
-            binding.txtCounter.setText("Count " + counter + " out of " + counterPerNA);
+            binding.txtCounter.setText("Child " + counter + " out of " + counterPerNA
+                    + "\n\n " + "Not Available : " + getString(R.string.nh212a));
         }
 
         // setup spinner
         binding.nc101.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, childU5));
-        binding.resp.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, respName));
+
         for (EditText ed : grpDate) {
             ed.addTextChangedListener(this);
         }
@@ -235,7 +248,9 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
 
 //        Validation Boolean
         MainApp.validateFlag = false;
-        autoPopulateFields();
+
+//        autoPopulateFields();
+
     }
 
     private void autoPopulateFields() {
@@ -435,7 +450,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
                 return false;
             }
 
-            if (ageInMontsbyDob <= 12 && !binding.nc202a.isChecked()) {
+            if (ageInMontsbyDob < 12 && !binding.nc202a.isChecked()) {
                 Toast.makeText(this, "ERROR(invalid): " + "Select correct option.. Age is less than 1 year" + getString(R.string.nc202), Toast.LENGTH_LONG).show();
                 binding.nc202a.setError("Select correct option.. Age is less than 1 year");
 
@@ -455,7 +470,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
                 binding.nc202b.setError(null);
             }
 
-            if ((ageInMontsbyDob >= 24 &&
+            if ((ageInMontsbyDob > 24 &&
                     ageInMontsbyDob < 72) && !binding.nc202c.isChecked()) {
                 Toast.makeText(this, "ERROR(invalid): " + "Select correct option.. Age is greater than 2 years" + getString(R.string.nc202), Toast.LENGTH_LONG).show();
                 binding.nc202c.setError("Select correct option.. Age is greater than 2 years");
@@ -506,7 +521,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
                 binding.nc205a.setError(null);
             }
 
-            if (ageInMontsbyDob > 24 && !binding.nc205b.isChecked()) {
+            if (ageInMontsbyDob >= 24 && !binding.nc205b.isChecked()) {
                 Toast.makeText(this, "ERROR(invalid): " + "Select correct option according to age in months" + getString(R.string.nc205), Toast.LENGTH_LONG).show();
                 binding.nc205b.setError("Select correct option according to age in months");
 
@@ -532,18 +547,22 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
 
         if (!backPressed) {
             MainApp.cc = new ChildContract();
-            MainApp.cc.setDevicetagID(MainApp.getTagName(this));
-            MainApp.cc.setFormDate(dtToday);
-            MainApp.cc.setUser(MainApp.userName);
-            MainApp.cc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
-                    Settings.Secure.ANDROID_ID));
-            MainApp.cc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
-
+            MainApp.cc.setDevicetagID(MainApp.fc.getDevicetagID());
+            MainApp.cc.setFormDate(MainApp.fc.getFormDate());
+            MainApp.cc.setUser(MainApp.fc.getUser());
+            MainApp.cc.setDeviceID(MainApp.fc.getDeviceID());
+            MainApp.cc.setAppversion(MainApp.fc.getAppversion());
+            MainApp.cc.setUUID(MainApp.fc.getUID());
+            MainApp.cc.setFMUID(childMap.get(binding.nc101.getSelectedItem().toString()).get_UID());
             if (childMap.get(binding.nc101.getSelectedItem().toString()).getMotherId().equals("00")) {
-                MainApp.cc.setUUID(MainApp.fmc.get_UID());
+                MainApp.cc.setMUID("00");
+
             } else {
-                MainApp.cc.setUUID(MainApp.mc.get_UID());
+
+                MainApp.cc.setMUID(MainApp.mc.get_UID());
+
             }
+
 
         } else {
             sC1.put("updatedate_nc1", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
@@ -551,10 +570,14 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
         }
 
         sC1.put("cluster_no", MainApp.fc.getClusterNo());
+
+
         sC1.put("hhno", MainApp.fc.getHhNo());
 
-        sC1.put("respName", binding.resp.getSelectedItem().toString());
-        sC1.put("respSerial", respMap.get(binding.resp.getSelectedItem().toString()));
+        if (isNA) {
+            sC1.put("respName", binding.resp.getSelectedItem().toString());
+            sC1.put("respSerial", respMap.get(binding.resp.getSelectedItem().toString()));
+        }
 
 //       nc101
         sC1.put("nc101", binding.nc101.getSelectedItem().toString());

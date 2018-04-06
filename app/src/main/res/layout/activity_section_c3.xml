@@ -33,9 +33,20 @@
             android:background="@color/colorPrimary" />
 
         <TextView
+            android:id="@+id/textName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/pink_100"
+            android:gravity="center"
+            android:padding="0dp"
+            android:textColor="@color/colorPrimaryDark" />
+
+        <TextView
             style="@style/sub"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:padding="0dp"
             android:text="@string/nc3info" />
 
         <ScrollView
@@ -254,6 +265,7 @@
                             app:dateFormat="dd-MM-yyyy" />-->
 
 
+
                         <!-- opv0 -->
                         <TextView
                             android:layout_width="match_parent"
@@ -276,7 +288,6 @@
                                 android:background="@color/pink_100"
                                 android:text="@string/nc3response"
                                 android:textColor="@color/colorPrimaryDark" />
-
                             <RadioButton
                                 android:id="@+id/nc3opv0a"
                                 android:layout_width="0dp"
@@ -384,7 +395,6 @@
                                 android:background="@color/pink_100"
                                 android:text="@string/nc3response"
                                 android:textColor="@color/colorPrimaryDark" />
-
                             <RadioButton
                                 android:id="@+id/nc3opv1a"
                                 android:layout_width="0dp"
@@ -409,7 +419,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_2sdp"
                             android:orientation="horizontal">
-
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -472,7 +481,6 @@
                                 android:background="@color/pink_100"
                                 android:text="@string/nc3response"
                                 android:textColor="@color/colorPrimaryDark" />
-
                             <RadioButton
                                 android:id="@+id/nc3p1a"
                                 android:layout_width="0dp"
@@ -547,7 +555,6 @@
                                 android:background="@color/pink_100"
                                 android:text="@string/nc3response"
                                 android:textColor="@color/colorPrimaryDark" />
-
                             <RadioButton
                                 android:id="@+id/nc3pcv1a"
                                 android:layout_width="0dp"
@@ -572,7 +579,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_2sdp"
                             android:orientation="horizontal">
-
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -642,7 +648,6 @@
                                 android:background="@color/pink_100"
                                 android:text="@string/nc3response"
                                 android:textColor="@color/colorPrimaryDark" />
-
                             <RadioButton
                                 android:id="@+id/nc3opv2a"
                                 android:layout_width="0dp"
@@ -717,7 +722,6 @@
                                 android:background="@color/pink_100"
                                 android:text="@string/nc3response"
                                 android:textColor="@color/colorPrimaryDark" />
-
                             <RadioButton
                                 android:id="@+id/nc3p2a"
                                 android:layout_width="0dp"
@@ -792,7 +796,6 @@
                                 android:background="@color/pink_100"
                                 android:text="@string/nc3response"
                                 android:textColor="@color/colorPrimaryDark" />
-
                             <RadioButton
                                 android:id="@+id/nc3pcv2a"
                                 android:layout_width="0dp"
@@ -825,7 +828,6 @@
                                 android:background="@color/pink_100"
                                 android:text="@string/nc3src"
                                 android:textColor="@color/colorPrimaryDark" />
-
                             <RadioButton
                                 android:id="@+id/nc3pcv2srca"
                                 android:layout_width="0dp"
@@ -887,7 +889,6 @@
                                 android:background="@color/pink_100"
                                 android:text="@string/nc3response"
                                 android:textColor="@color/colorPrimaryDark" />
-
                             <RadioButton
                                 android:id="@+id/nc3opv3a"
                                 android:layout_width="0dp"
@@ -962,7 +963,6 @@
                                 android:background="@color/pink_100"
                                 android:text="@string/nc3response"
                                 android:textColor="@color/colorPrimaryDark" />
-
                             <RadioButton
                                 android:id="@+id/nc3p3a"
                                 android:layout_width="0dp"
@@ -995,7 +995,6 @@
                                 android:background="@color/pink_100"
                                 android:text="@string/nc3src"
                                 android:textColor="@color/colorPrimaryDark" />
-
                             <RadioButton
                                 android:id="@+id/nc3p3srca"
                                 android:layout_width="0dp"
@@ -1037,7 +1036,6 @@
                                 android:background="@color/pink_100"
                                 android:text="@string/nc3response"
                                 android:textColor="@color/colorPrimaryDark" />
-
                             <RadioButton
                                 android:id="@+id/nc3pcv3a"
                                 android:layout_width="0dp"
@@ -1062,7 +1060,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_2sdp"
                             android:orientation="horizontal">
-
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -1104,7 +1101,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
-
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -1112,7 +1108,6 @@
                                 android:background="@color/pink_100"
                                 android:text="@string/nc3response"
                                 android:textColor="@color/colorPrimaryDark" />
-
                             <RadioButton
                                 android:id="@+id/nc3ipva"
                                 android:layout_width="0dp"
@@ -1137,7 +1132,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_2sdp"
                             android:orientation="horizontal">
-
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -1207,7 +1201,6 @@
                                 android:background="@color/pink_100"
                                 android:text="@string/nc3response"
                                 android:textColor="@color/colorPrimaryDark" />
-
                             <RadioButton
                                 android:id="@+id/nc3m1a"
                                 android:layout_width="0dp"
@@ -1240,7 +1233,6 @@
                                 android:background="@color/pink_100"
                                 android:text="@string/nc3src"
                                 android:textColor="@color/colorPrimaryDark" />
-
                             <RadioButton
                                 android:id="@+id/nc3m1srca"
                                 android:layout_width="0dp"
@@ -1288,7 +1280,6 @@
                             android:background="@color/colorPrimary"
                             android:text="@string/nc3m2"
                             android:textColor="@color/white" />
-
                         <RadioGroup
                             android:id="@+id/nc3m2"
                             android:layout_width="match_parent"
@@ -1302,7 +1293,6 @@
                                 android:background="@color/pink_100"
                                 android:text="@string/nc3response"
                                 android:textColor="@color/colorPrimaryDark" />
-
                             <RadioButton
                                 android:id="@+id/nc3m2a"
                                 android:layout_width="0dp"
@@ -1335,7 +1325,6 @@
                                 android:background="@color/pink_100"
                                 android:text="@string/nc3src"
                                 android:textColor="@color/colorPrimaryDark" />
-
                             <RadioButton
                                 android:id="@+id/nc3m2srca"
                                 android:layout_width="0dp"

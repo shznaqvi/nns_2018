@@ -34,6 +34,10 @@ public class MWRAContract {
     private String sB4 = "";
     private String sB5 = "";
     private String sB6 = "";
+    private String sb2flag = "";
+
+    private String cluster = "";
+    private String hhno = "";
 
 
     private String synced = "";
@@ -213,6 +217,30 @@ public class MWRAContract {
         this.updatedate = updatedate;
     }
 
+    public String getSb2flag() {
+        return sb2flag;
+    }
+
+    public void setSb2flag(String sb2flag) {
+        this.sb2flag = sb2flag;
+    }
+
+    public String getCluster() {
+        return cluster;
+    }
+
+    public void setCluster(String cluster) {
+        this.cluster = cluster;
+    }
+
+    public String getHhno() {
+        return hhno;
+    }
+
+    public void setHhno(String hhno) {
+        this.hhno = hhno;
+    }
+
     public MWRAContract Sync(JSONObject jsonObject) throws JSONException {
 
         this._ID = jsonObject.getString(MWRATable.COLUMN__ID);
@@ -226,6 +254,9 @@ public class MWRAContract {
         this.b1SerialNo = jsonObject.getString(MWRATable.COLUMN_B1SERIALNO);
         this.sB1 = jsonObject.getString(MWRATable.COLUMN_SB1);
         this.sB2 = jsonObject.getString(MWRATable.COLUMN_SB2);
+
+        this.sb2flag = jsonObject.getString(MWRATable.COLUMN_SB2FLAG);
+
         this.sB3 = jsonObject.getString(MWRATable.COLUMN_SB3);
         this.sB4 = jsonObject.getString(MWRATable.COLUMN_SB4);
         this.sB5 = jsonObject.getString(MWRATable.COLUMN_SB5);
@@ -246,27 +277,32 @@ public class MWRAContract {
         this._UID = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_UID));
         this._UUID = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_UUID));
 
-        if (type == 1 || type == 2) {
-            this.sB2 = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB2));
-        }
-        if (type == 1 || type == 3) {
-            this.sB3 = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB3));
-        }
-        if (type == 1 || type == 4) {
-            this.sB4 = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB4));
-        }
-        if (type == 1 || type == 5) {
-            this.sB5 = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB5));
-        }
-        if (type == 1) {
-            this.formDate = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_FORMDATE));
-            this.deviceId = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_DEVICEID));
-            this.devicetagID = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_DEVICETAGID));
-            this.user = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_USER));
-            this.app_ver = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_APP_VER));
-            this.b1SerialNo = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_B1SERIALNO));
+        if (type == 0 || type == 1) {
             this.sB1 = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB1));
             this.sB6 = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB6));
+            this.sb2flag = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB2FLAG));
+            this.user = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_USER));
+            this.app_ver = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_APP_VER));
+            this.deviceId = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_DEVICEID));
+        }
+        if (type == 0 || type == 2) {
+            this.sB2 = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB2));
+            this.sB6 = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB6));
+            this.sb2flag = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB2FLAG));
+        }
+        if (type == 0 || type == 3) {
+            this.sB3 = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB3));
+        }
+        if (type == 0 || type == 4) {
+            this.sB4 = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB4));
+        }
+        if (type == 0 || type == 5) {
+            this.sB5 = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB5));
+        }
+        if (type == 0) {
+            this.formDate = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_FORMDATE));
+            this.devicetagID = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_DEVICETAGID));
+            this.b1SerialNo = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_B1SERIALNO));
             this.synced = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SYNCED));
             this.syncedDate = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SYNCEDDATE));
             this.mstatus = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_MSTATUS));
@@ -316,9 +352,12 @@ public class MWRAContract {
             json.put(MWRATable.COLUMN_SB5, this.sB5.equals("") ? JSONObject.NULL : new JSONObject(this.sB5));
         }
 
-        if (!this.sB6.equals("")) {
+        /*if (!this.sB6.equals("")) {
             json.put(MWRATable.COLUMN_SB6, this.sB6.equals("") ? JSONObject.NULL : new JSONObject(this.sB6));
-        }
+        }*/
+
+        json.put(MWRATable.COLUMN_SB2FLAG, this.sb2flag == null ? JSONObject.NULL : this.sb2flag);
+        json.put(MWRATable.COLUMN_SB6, this.sB6 == null ? JSONObject.NULL : this.sB6);
 
         /*json.put(MWRATable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
         json.put(MWRATable.COLUMN_SYNCEDDATE, this.syncedDate == null ? JSONObject.NULL : this.syncedDate);*/
@@ -351,6 +390,7 @@ public class MWRAContract {
         public static final String COLUMN_SB4 = "sb4";
         public static final String COLUMN_SB5 = "sb5";
         public static final String COLUMN_SB6 = "sb6";
+        public static final String COLUMN_SB2FLAG = "sb2flag";
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNCEDDATE = "synceddate";
         public static final String COLUMN_MSTATUS = "mstatus";

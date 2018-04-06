@@ -48,8 +48,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="2dp"
             android:background="@drawable/button_bg2"
+            android:layout_marginTop="2dp"
             android:onClick="@{() -> callback.BtnAddMember()}"
             android:text="ADD NEW MEMBER"
             android:textColor="@color/white" />
@@ -65,23 +65,32 @@
                 android:layoutDirection="rtl"
                 android:orientation="vertical">
 
-                <TextView
+
+                <LinearLayout
+                    android:id="@+id/fldGrpresp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/nh113"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/colorPrimary"
+                        android:text="@string/nh113"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@android:color/white" />
 
 
-                <Spinner
-                    android:id="@+id/resp"
-                    style="@style/Widget.AppCompat.Spinner.Underlined"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center" />
+                    <Spinner
+                        android:id="@+id/resp"
+                        style="@style/Widget.AppCompat.Spinner.Underlined"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center" />
+
+                </LinearLayout>
 
 
                 <!--nc101-->
@@ -287,7 +296,6 @@
                         android:hint="@string/nc203a"
                         android:inputType="number"
                         android:maxLength="2" />
-
 
                 </LinearLayout>
 

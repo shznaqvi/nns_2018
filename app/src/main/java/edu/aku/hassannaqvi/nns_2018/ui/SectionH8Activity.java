@@ -3,7 +3,6 @@ package edu.aku.hassannaqvi.nns_2018.ui;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -295,11 +294,11 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
 
         MainApp.dc = new DeceasedContract();
 
-        MainApp.dc.setDevicetagID(MainApp.getTagName(this));
+        MainApp.dc.setDevicetagID(MainApp.fc.getDevicetagID());
         MainApp.dc.setFormDate(MainApp.fc.getFormDate());
-        MainApp.dc.setUser(MainApp.userName);
-        MainApp.dc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID));
-        MainApp.dc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
+        MainApp.dc.setUser(MainApp.fc.getUser());
+        MainApp.dc.setDeviceID(MainApp.fc.getDeviceID());
+        MainApp.dc.setAppversion(MainApp.fc.getAppversion());
         MainApp.dc.setUUID(MainApp.fc.getUID());
 
         JSONObject sA2 = new JSONObject();

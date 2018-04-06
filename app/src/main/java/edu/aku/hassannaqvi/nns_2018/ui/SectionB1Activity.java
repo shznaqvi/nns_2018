@@ -56,6 +56,10 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
 
     public static Boolean editWRAFlag;
 
+    JSONB1ModelClass jsonB1;
+
+    int prevMiscarriages = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,11 +76,15 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
 //        Validation Boolean
         MainApp.validateFlag = false;
 
+        setupSkips();
+
         editWRAFlag = getIntent().getBooleanExtra("editForm", false);
 
-        if (editWRAFlag) {
+        if (editWRAFlag && getIntent().getBooleanExtra("checkflag", false)) {
+
             AutoPopulate(getIntent().getStringExtra("formUid"));
             backPressed = true;
+
         } else {
             setupViews();
         }
@@ -84,183 +92,7 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
 
     }
 
-    private void AutoPopulate(String uuid) {
-        MWRAContract mwraContract = db.getsB1(uuid);
-
-        MainApp.mc = new MWRAContract();
-        MainApp.mc.set_UID(mwraContract.get_UID());
-
-        if (!mwraContract.getsB1().equals("")) {
-
-            JSONB1ModelClass jsonB1 = JSONUtilClass.getModelFromJSON(mwraContract.getsB1(), JSONB1ModelClass.class);
-            bi.nw201years.setText(jsonB1.getnw201years());
-            bi.nw201months.setText(jsonB1.getnw201months());
-            bi.nw201days.setText(jsonB1.getnw201days());
-            bi.nw202.setText(jsonB1.getnw202());
-
-            if (!jsonB1.getnw203().equals("0")) {
-                bi.nw203.check(
-                        jsonB1.getnw203().equals("1") ? bi.nw203a.getId() :
-                                bi.nw203b.getId()
-                );
-            }
-            if (!jsonB1.getnw204().equals("0")) {
-                bi.nw204.check(
-                        jsonB1.getnw204().equals("1") ? bi.nw204a.getId() :
-                                bi.nw204b.getId()
-                );
-            }
-            if (!jsonB1.getnw205().equals("0")) {
-                bi.nw205.check(
-                        jsonB1.getnw205().equals("1") ? bi.nw205a.getId() :
-                                bi.nw205b.getId()
-                );
-            }
-
-            bi.nw206.setText(jsonB1.getnw206());
-
-            if (!jsonB1.getnw205().equals("0")) {
-                bi.nw205.check(
-                        jsonB1.getnw205().equals("1") ? bi.nw205a.getId() :
-                                bi.nw205b.getId()
-                );
-            }
-            if (!jsonB1.getnw207().equals("0")) {
-                bi.nw207.check(
-                        jsonB1.getnw207().equals("1") ? bi.nw207a.getId() :
-                                bi.nw207b.getId()
-                );
-            }
-            if (!jsonB1.getnw208().equals("0")) {
-                bi.nw208.check(
-                        jsonB1.getnw208().equals("1") ? bi.nw208a.getId() :
-                                bi.nw208b.getId()
-                );
-            }
-            if (!jsonB1.getnw209().equals("0")) {
-                bi.nw209.check(
-                        jsonB1.getnw209().equals("1") ? bi.nw209a.getId() :
-                                bi.nw209b.getId()
-                );
-            }
-            if (!jsonB1.getnw21001().equals("0")) {
-                bi.nw21001.check(
-                        jsonB1.getnw21001().equals("1") ? bi.nw21001a.getId() :
-                                bi.nw21001b.getId()
-                );
-            }
-            if (!jsonB1.getnw21002().equals("0")) {
-                bi.nw21002.check(
-                        jsonB1.getnw21002().equals("1") ? bi.nw21002a.getId() :
-                                bi.nw21002b.getId()
-                );
-            }
-            if (!jsonB1.getnw21003().equals("0")) {
-                bi.nw21003.check(
-                        jsonB1.getnw21003().equals("1") ? bi.nw21003a.getId() :
-                                bi.nw21003b.getId()
-                );
-            }
-            if (!jsonB1.getnw21098().equals("0")) {
-                bi.nw21098.check(
-                        jsonB1.getnw21098().equals("1") ? bi.nw21098a.getId() :
-                                bi.nw21098b.getId()
-                );
-            }
-            if (!jsonB1.getnw21099().equals("0")) {
-                bi.nw21099.check(
-                        jsonB1.getnw21099().equals("1") ? bi.nw21099a.getId() :
-                                bi.nw21099b.getId()
-                );
-            }
-            bi.nw211.setText(jsonB1.getnw211());
-            bi.nw212.setText(jsonB1.getnw212());
-            bi.nw213.setText(jsonB1.getnw213());
-            bi.nw214.setText(jsonB1.getnw214());
-            bi.nw215.setText(jsonB1.getnw215());
-
-
-            if (!jsonB1.getnw216().equals("0")) {
-                bi.nw216.check(
-                        jsonB1.getnw216().equals("1") ? bi.nw216a.getId() :
-                                bi.nw216b.getId()
-                );
-            }
-            bi.nw216aa.setText(jsonB1.getnw216aa());
-
-        }
-
-    }
-
-    public void setupViews() {
-
-
-        MainApp.status = 0;
-
-
-//      Get intent
-        if (getIntent().getBooleanExtra("reBackComing", true)) {
-            if (getIntent().getBooleanExtra("mwraFlag", false)) {
-                lstMwra.remove(getIntent().getStringExtra("wraName"));
-                //      Increment WRA COUNTER
-                WRAcounter++;
-
-//                WRAsize = MainApp.mwra.size();
-
-            } else {
-                wraMap = new HashMap<>();
-                lstMwra = new ArrayList<>();
-
-                lstMwra.add("....");
-
-                for (FamilyMembersContract wra : MainApp.mwra) {
-                    wraMap.put(wra.getName() + "-" + wra.getSerialNo(), wra);
-                    lstMwra.add(wra.getName() + "-" + wra.getSerialNo());
-                }
-
-                WRAcounter = 1;
-
-
-            }
-        } else {
-
-            if (WRAcounter == 1) {
-                wraMap = new HashMap<>();
-                lstMwra = new ArrayList<>();
-
-                lstMwra.add("....");
-
-                WRAsize = 0;
-            }
-
-            for (int i = WRAsize; i < MainApp.mwra.size(); i++) {
-                wraMap.put(MainApp.mwra.get(i).getName() + "-" + MainApp.mwra.get(i).getSerialNo(), MainApp.mwra.get(i));
-                lstMwra.add(MainApp.mwra.get(i).getName() + "-" + MainApp.mwra.get(i).getSerialNo());
-            }
-
-//            WRAsize = MainApp.mwra.size();
-
-        }
-
-
-        bi.nb101.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, lstMwra));
-
-        bi.nb101.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (bi.nb101.getSelectedItemPosition() != 0) {
-                    for (FamilyMembersContract fmc : MainApp.childUnder2Check) {
-                        childCheck = fmc.getMotherId().equals(wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
-                    }
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
+    public void setupSkips() {
 
         bi.nw202.addTextChangedListener(new TextWatcher() {
             @Override
@@ -1035,6 +867,176 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
         bi.nw215.addTextChangedListener(this);
         bi.nw216aa.addTextChangedListener(this);
 
+    }
+
+    private void AutoPopulate(String uuid) {
+
+        MainApp.mc = db.getsB1(uuid);
+        childCheck = MainApp.mc.getSb2flag().equals("1");
+        bi.nb101.setVisibility(View.GONE);
+        bi.nb101a.setVisibility(View.VISIBLE);
+
+        if (!MainApp.mc.getsB1().equals("")) {
+
+            jsonB1 = JSONUtilClass.getModelFromJSON(MainApp.mc.getsB1(), JSONB1ModelClass.class);
+
+            MainApp.mc.setCluster(jsonB1.getCluster_no());
+            MainApp.mc.setHhno(jsonB1.getHhno());
+
+            prevMiscarriages = Integer.valueOf(jsonB1.getnw216aa());
+
+            bi.nb101a.setText(jsonB1.getnw101());
+
+            bi.nw201years.setText(jsonB1.getnw201years());
+            bi.nw201months.setText(jsonB1.getnw201months());
+            bi.nw201days.setText(jsonB1.getnw201days());
+            bi.nw202.setText(jsonB1.getnw202());
+
+            if (!jsonB1.getnw203().equals("0")) {
+                bi.nw203.check(
+                        jsonB1.getnw203().equals("1") ? bi.nw203a.getId() :
+                                bi.nw203b.getId()
+                );
+            }
+            if (!jsonB1.getnw204().equals("0")) {
+                bi.nw204.check(
+                        jsonB1.getnw204().equals("1") ? bi.nw204a.getId() :
+                                bi.nw204b.getId()
+                );
+            }
+            if (!jsonB1.getnw205().equals("0")) {
+                bi.nw205.check(
+                        jsonB1.getnw205().equals("1") ? bi.nw205a.getId() :
+                                bi.nw205b.getId()
+                );
+            }
+
+            bi.nw206.setText(jsonB1.getnw206());
+
+            if (!jsonB1.getnw205().equals("0")) {
+                bi.nw205.check(
+                        jsonB1.getnw205().equals("1") ? bi.nw205a.getId() :
+                                bi.nw205b.getId()
+                );
+            }
+            if (!jsonB1.getnw207().equals("0")) {
+                bi.nw207.check(
+                        jsonB1.getnw207().equals("1") ? bi.nw207a.getId() :
+                                bi.nw207b.getId()
+                );
+            }
+            if (!jsonB1.getnw208().equals("0")) {
+                bi.nw208.check(
+                        jsonB1.getnw208().equals("1") ? bi.nw208a.getId() :
+                                bi.nw208b.getId()
+                );
+            }
+            if (!jsonB1.getnw209().equals("0")) {
+                bi.nw209.check(
+                        jsonB1.getnw209().equals("1") ? bi.nw209a.getId() :
+                                bi.nw209b.getId()
+                );
+            }
+
+            if (jsonB1.getnw21001().equals("1")) {
+                bi.nw21001a.setChecked(true);
+            }
+            if (jsonB1.getnw21002().equals("1")) {
+                bi.nw21002a.setChecked(true);
+            }
+            if (jsonB1.getnw21003().equals("1")) {
+                bi.nw21003a.setChecked(true);
+            }
+            if (jsonB1.getnw21098().equals("1")) {
+                bi.nw21098a.setChecked(true);
+            }
+            if (jsonB1.getnw21099().equals("1")) {
+                bi.nw21099a.setChecked(true);
+            }
+
+            bi.nw211.setText(jsonB1.getnw211());
+            bi.nw212.setText(jsonB1.getnw212());
+            bi.nw213.setText(jsonB1.getnw213());
+            bi.nw214.setText(jsonB1.getnw214());
+            bi.nw215.setText(jsonB1.getnw215());
+
+
+            if (!jsonB1.getnw216().equals("0")) {
+                bi.nw216.check(
+                        jsonB1.getnw216().equals("1") ? bi.nw216a.getId() :
+                                bi.nw216b.getId()
+                );
+            }
+            bi.nw216aa.setText(jsonB1.getnw216aa());
+
+        }
+
+    }
+
+    public void setupViews() {
+
+//      Get intent
+        if (getIntent().getBooleanExtra("reBackComing", true)) {
+            if (getIntent().getBooleanExtra("mwraFlag", false)) {
+                lstMwra.remove(getIntent().getStringExtra("wraName"));
+                //      Increment WRA COUNTER
+                WRAcounter++;
+
+//                WRAsize = MainApp.mwra.size();
+
+            } else {
+                wraMap = new HashMap<>();
+                lstMwra = new ArrayList<>();
+
+                lstMwra.add("....");
+
+                for (FamilyMembersContract wra : MainApp.mwra) {
+                    wraMap.put(wra.getName() + "-" + wra.getSerialNo(), wra);
+                    lstMwra.add(wra.getName() + "-" + wra.getSerialNo());
+                }
+
+                WRAcounter = 1;
+
+
+            }
+        } else {
+
+            if (WRAcounter == 1) {
+                wraMap = new HashMap<>();
+                lstMwra = new ArrayList<>();
+
+                lstMwra.add("....");
+
+                WRAsize = 0;
+            }
+
+            for (int i = WRAsize; i < MainApp.mwra.size(); i++) {
+                wraMap.put(MainApp.mwra.get(i).getName() + "-" + MainApp.mwra.get(i).getSerialNo(), MainApp.mwra.get(i));
+                lstMwra.add(MainApp.mwra.get(i).getName() + "-" + MainApp.mwra.get(i).getSerialNo());
+            }
+
+//            WRAsize = MainApp.mwra.size();
+
+        }
+
+
+        bi.nb101.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, lstMwra));
+
+        bi.nb101.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (bi.nb101.getSelectedItemPosition() != 0) {
+                    for (FamilyMembersContract fmc : MainApp.childUnder2Check) {
+                        childCheck = fmc.getMotherId().equals(wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
     }
 
@@ -1058,55 +1060,76 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
 
                 frontPressed = true;
 
-                WRAsize = MainApp.mwra.size();
+                if (!editWRAFlag) {
+                    WRAsize = MainApp.mwra.size();
+                }
 
                 //finish();
 
                 if (bi.nw203a.isChecked()) {
                     if (bi.nw204a.isChecked() || bi.nw205a.isChecked()) {
                         if (bi.nw207a.isChecked()) {
-                            if (MainApp.totalPregnancy > 0) {
-                                startActivityForResult(new Intent(this, SectionB1AActivity.class)
-                                        .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
+                            if (bi.nw216a.isChecked()) {
+                                if (Integer.valueOf(bi.nw216aa.getText().toString()) > 0) {
+
+                                    if (Integer.valueOf(bi.nw216aa.getText().toString()) < prevMiscarriages) {
+
+                                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                                                SectionB1Activity.this);
+                                        alertDialogBuilder
+                                                .setMessage("In previous you saved " + prevMiscarriages + " Miscarriage.\n" +
+                                                        "Do you want to continue it?")
+                                                .setCancelable(false)
+                                                .setPositiveButton("Yes",
+                                                        new DialogInterface.OnClickListener() {
+                                                            public void onClick(DialogInterface dialog,
+                                                                                int id) {
+
+                                                                MainApp.totalPregnancy = prevMiscarriages;
+
+                                                                startActivityForResult(new Intent(SectionB1Activity.this, SectionB1AActivity.class)
+                                                                        .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
+                                                            }
+                                                        });
+                                        alertDialogBuilder.setNegativeButton("Cancel",
+                                                new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int id) {
+                                                        dialog.cancel();
+
+                                                    }
+                                                });
+                                        AlertDialog alert = alertDialogBuilder.create();
+                                        alert.show();
+
+                                    } else {
+                                        MainApp.totalPregnancy = Integer.valueOf(bi.nw216aa.getText().toString());
+
+                                        startActivityForResult(new Intent(this, SectionB1AActivity.class)
+                                                .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
+
+                                    }
+                                }
+
                             } else if (childCheck) {
                                 startActivity(new Intent(this, SectionB2Activity.class));
                             } else {
-                                if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
-                                        &&
-                                        MainApp.B6Flag) {
-                                    startActivityForResult(new Intent(this, SectionB6Activity.class)
-                                            .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
-                                } else {
-                                    startActivity(new Intent(this, MotherEndingActivity.class)
-                                            .putExtra("complete", true));
-                                }
+                                redirectCondition();
                             }
                         } else {
-                            if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
-                                    &&
-                                    MainApp.B6Flag) {
-                                startActivityForResult(new Intent(this, SectionB6Activity.class)
-                                        .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
-                            } else {
-                                startActivity(new Intent(this, MotherEndingActivity.class)
-                                        .putExtra("complete", true));
-                            }
+                            redirectCondition();
                         }
                     } else {
-                        if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
-                                &&
-                                MainApp.B6Flag) {
-                            startActivityForResult(new Intent(this, SectionB6Activity.class)
-                                    .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
-                        } else {
-                            startActivity(new Intent(this, MotherEndingActivity.class)
-                                    .putExtra("complete", true));
-                        }
+                        redirectCondition();
                     }
                 } else {
-                    startActivity(new Intent(this, MotherEndingActivity.class)
-                            .putExtra("checkingFlag", true)
-                            .putExtra("complete", true));
+
+                    if (editWRAFlag) {
+                        startActivity(new Intent(this, ViewMemberActivity.class).putExtra("flagEdit", false));
+                    } else {
+                        startActivity(new Intent(this, MotherEndingActivity.class)
+                                .putExtra("checkingFlag", true)
+                                .putExtra("complete", true));
+                    }
                 }
 
                 //startActivity(new Intent(this, SectionC1Activity.class));
@@ -1117,6 +1140,28 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
 
+        }
+    }
+
+    public void redirectCondition() {
+        if (editWRAFlag) {
+            if (MainApp.mc.getsB6().equals("1")) {
+                startActivityForResult(new Intent(this, SectionB6Activity.class)
+                        .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
+
+            } else {
+                startActivity(new Intent(this, ViewMemberActivity.class).putExtra("flagEdit", false));
+            }
+        } else {
+            if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
+                    &&
+                    MainApp.B6Flag) {
+                startActivityForResult(new Intent(this, SectionB6Activity.class)
+                        .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
+            } else {
+                startActivity(new Intent(this, MotherEndingActivity.class)
+                        .putExtra("complete", true));
+            }
         }
     }
 
@@ -1145,8 +1190,10 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
 
     private boolean ValidateForm() {
 
-        if (!validatorClass.EmptySpinner(this, bi.nb101, getString(R.string.nb101))) {
-            return false;
+        if (!editWRAFlag) {
+            if (!validatorClass.EmptySpinner(this, bi.nb101, getString(R.string.nb101))) {
+                return false;
+            }
         }
 
         if (!validatorClass.EmptyTextBox(this, bi.nw201days, getString(R.string.day))) {
@@ -1295,12 +1342,15 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
                     }
 
                     if (bi.nw216a.isChecked()) {
-                        return validatorClass.EmptyTextBox(this, bi.nw216aa, getString(R.string.nw216a));
+
+                        if (!validatorClass.EmptyTextBox(this, bi.nw216aa, getString(R.string.nw216a))) {
+                            return false;
+                        }
+
+                        return validatorClass.RangeTextBox(this, bi.nw216aa, 1, 10, getString(R.string.nw216a), "");
                     }
 
-
                 }
-
 
                 //}
 
@@ -1325,20 +1375,49 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
             MainApp.mc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
             MainApp.mc.setB1SerialNo(wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
             MainApp.mc.set_UUID(MainApp.fc.getUID());
+
+            wraName = bi.nb101.getSelectedItem().toString();
+
+            sB1.put("cluster_no", MainApp.fc.getClusterNo());
+            sB1.put("hhno", MainApp.fc.getHhNo());
+            sB1.put("nw101", bi.nb101.getSelectedItem().toString());
+            sB1.put("nw1serialno", wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
+
         } else {
+
+            sB1.put("updatedate_nw1", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+
             if (editWRAFlag && !frontPressed) {
                 sB1.put("edit_updatedate_nw1", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+
+                wraName = jsonB1.getnw101();
+
+                sB1.put("cluster_no", jsonB1.getCluster_no());
+                sB1.put("hhno", jsonB1.getHhno());
+                sB1.put("nw101", jsonB1.getnw101());
+                sB1.put("nw1serialno", jsonB1.getnw1serialno());
+
+            } else if (editWRAFlag) {
+
+                wraName = jsonB1.getnw101();
+
+                sB1.put("cluster_no", jsonB1.getCluster_no());
+                sB1.put("hhno", jsonB1.getHhno());
+                sB1.put("nw101", jsonB1.getnw101());
+                sB1.put("nw1serialno", jsonB1.getnw1serialno());
+
+            } else {
+
+                wraName = bi.nb101.getSelectedItem().toString();
+
+                sB1.put("cluster_no", MainApp.fc.getClusterNo());
+                sB1.put("hhno", MainApp.fc.getHhNo());
+                sB1.put("nw101", bi.nb101.getSelectedItem().toString());
+                sB1.put("nw1serialno", wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
+
             }
-            sB1.put("updatedate_nw1", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
 //            MainApp.mc.set_UID(MainApp.mc.get_UID());
         }
-
-        wraName = bi.nb101.getSelectedItem().toString();
-
-        sB1.put("cluster_no", MainApp.fc.getClusterNo());
-        sB1.put("hhno", MainApp.fc.getHhNo());
-        sB1.put("nw101", bi.nb101.getSelectedItem().toString());
-        sB1.put("nw1serialno", wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
 
         //        nw201
         sB1.put("nw201days", bi.nw201days.getText().toString());
@@ -1379,9 +1458,9 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
         sB1.put("nw216", bi.nw216a.isChecked() ? "1" : bi.nw216b.isChecked() ? "2" : "0");
         sB1.put("nw216aa", bi.nw216aa.getText().toString());
 
-        if (bi.nw216a.isChecked() && !bi.nw216aa.getText().toString().isEmpty()) {
+        /*if (bi.nw216a.isChecked() && !bi.nw216aa.getText().toString().isEmpty()) {
             MainApp.totalPregnancy = Integer.valueOf(bi.nw216aa.getText().toString());
-        }
+        }*/
 
 
         MainApp.mc.setsB1(String.valueOf(sB1));

@@ -19,6 +19,8 @@ public class ChildContract {
     private String _ID = "";
     private String _UID = "";
     private String _UUID = "";
+    private String FMUID = "";
+    private String MUID = "";
     private String formDate = ""; // Date
     private String user = ""; // Interviewer
     private String c1SerialNo = "";
@@ -50,6 +52,9 @@ public class ChildContract {
         this._ID = jsonObject.getString(ChildTable.COLUMN__ID);
         this._UID = jsonObject.getString(ChildTable.COLUMN__UID);
         this._UUID = jsonObject.getString(ChildTable.COLUMN__UUID);
+        this.FMUID = jsonObject.getString(ChildTable.COLUMN_FM_UID);
+        this.MUID = jsonObject.getString(ChildTable.COLUMN_MUID);
+
         this.formDate = jsonObject.getString(ChildTable.COLUMN_FORMDATE);
         this.user = jsonObject.getString(ChildTable.COLUMN_USER);
         this.c1SerialNo = jsonObject.getString(ChildTable.COLUMN_C1SERIALNO);
@@ -77,6 +82,8 @@ public class ChildContract {
         this._ID = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN__ID));
         this._UID = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN__UID));
         this._UUID = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN__UUID));
+        this.FMUID = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_FM_UID));
+        this.MUID = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_MUID));
 
         if (type == 1 || type == 2) {
             this.sC2 = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_SC2));
@@ -119,6 +126,9 @@ public class ChildContract {
         json.put(ChildTable.COLUMN__ID, this._ID == null ? JSONObject.NULL : this._ID);
         json.put(ChildTable.COLUMN__UID, this._UID == null ? JSONObject.NULL : this._UID);
         json.put(ChildTable.COLUMN__UUID, this._UUID == null ? JSONObject.NULL : this._UUID);
+        json.put(ChildTable.COLUMN_FM_UID, this.FMUID == null ? JSONObject.NULL : this.FMUID);
+        json.put(ChildTable.COLUMN_MUID, this.MUID == null ? JSONObject.NULL : this.MUID);
+
         json.put(ChildTable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
         json.put(ChildTable.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
         json.put(ChildTable.COLUMN_C1SERIALNO, this.c1SerialNo == null ? JSONObject.NULL : this.c1SerialNo);
@@ -158,6 +168,14 @@ public class ChildContract {
 
 
         return json;
+    }
+
+    public String getFMUID() {
+        return FMUID;
+    }
+
+    public void setFMUID(String FMUID) {
+        this.FMUID = FMUID;
     }
 
     public String getProjectName() {
@@ -312,6 +330,14 @@ public class ChildContract {
         this.cstatus88x = cstatus88x;
     }
 
+    public String getMUID() {
+        return MUID;
+    }
+
+    public void setMUID(String MUID) {
+        this.MUID = MUID;
+    }
+
     public static abstract class ChildTable implements BaseColumns {
 
         public static final String TABLE_NAME = "child";
@@ -321,6 +347,8 @@ public class ChildContract {
         public static final String COLUMN__ID = "_id";
         public static final String COLUMN__UID = "_uid";
         public static final String COLUMN__UUID = "_uuid";
+        public static final String COLUMN_FM_UID = "fmuid";
+        public static final String COLUMN_MUID = "muid";
         public static final String COLUMN_FORMDATE = "formdate";
         public static final String COLUMN_USER = "user";
         public static final String COLUMN_C1SERIALNO = "c1serialno";

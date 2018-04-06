@@ -55,53 +55,53 @@ public class SectionB6Activity extends AppCompatActivity {
 //        if (getIntent().getBooleanExtra("backPressed", false)) {
 //            frontPressed = true;
 
-            Collection<NutritionContract> nutritionContracts = db.getPressedNutrition();
+        Collection<NutritionContract> nutritionContracts = db.getPressedNutrition();
 
-            for (NutritionContract nutritionContract : nutritionContracts) {
-                JSONB6ModelClass jsonB6 = JSONUtilClass.getModelFromJSON(nutritionContract.getsB6(), JSONB6ModelClass.class);
+        for (NutritionContract nutritionContract : nutritionContracts) {
+            JSONB6ModelClass jsonB6 = JSONUtilClass.getModelFromJSON(nutritionContract.getsB6(), JSONB6ModelClass.class);
 
-                if (jsonB6.getSerial().equals(String.valueOf(MainApp.nuCount))) {
+            if (jsonB6.getSerial().equals(String.valueOf(MainApp.nuCount))) {
 
-                    frontPressed = true;
+                frontPressed = true;
 
-                    nutritionCC = nutritionContract;
+                nutritionCC = nutritionContract;
 
-                    if (jsonB6.getnw501a().equals("1")) {
-                        bi.nw501a.setChecked(true);
-                    }
-                    if (jsonB6.getnw501b().equals("1")) {
-                        bi.nw501b.setChecked(true);
-                    }
-                    if (jsonB6.getnw501c().equals("1")) {
-                        bi.nw501c.setChecked(true);
-                    }
-                    if (jsonB6.getnw501d().equals("1")) {
-                        bi.nw501d.setChecked(true);
-                    }
-                    if (jsonB6.getnw501e().equals("1")) {
-                        bi.nw501e.setChecked(true);
-                    }
-                    if (jsonB6.getnw501f().equals("1")) {
-                        bi.nw501f.setChecked(true);
-                    }
-                    if (jsonB6.getnw501g().equals("1")) {
-                        bi.nw501g.setChecked(true);
-                    }
-                    if (jsonB6.getnw501h().equals("1")) {
-                        bi.nw501h.setChecked(true);
-                    }
-                    if (jsonB6.getnw501i().equals("1")) {
-                        bi.nw501i.setChecked(true);
-                    }
-                    if (jsonB6.getnw501j().equals("1")) {
-                        bi.nw501j.setChecked(true);
-                    }
-                    if (jsonB6.getnw501none().equals("1")) {
-                        bi.nw501none.setChecked(true);
-                    }
-
+                if (jsonB6.getnw501a().equals("1")) {
+                    bi.nw501a.setChecked(true);
                 }
+                if (jsonB6.getnw501b().equals("1")) {
+                    bi.nw501b.setChecked(true);
+                }
+                if (jsonB6.getnw501c().equals("1")) {
+                    bi.nw501c.setChecked(true);
+                }
+                if (jsonB6.getnw501d().equals("1")) {
+                    bi.nw501d.setChecked(true);
+                }
+                if (jsonB6.getnw501e().equals("1")) {
+                    bi.nw501e.setChecked(true);
+                }
+                if (jsonB6.getnw501f().equals("1")) {
+                    bi.nw501f.setChecked(true);
+                }
+                if (jsonB6.getnw501g().equals("1")) {
+                    bi.nw501g.setChecked(true);
+                }
+                if (jsonB6.getnw501h().equals("1")) {
+                    bi.nw501h.setChecked(true);
+                }
+                if (jsonB6.getnw501i().equals("1")) {
+                    bi.nw501i.setChecked(true);
+                }
+                if (jsonB6.getnw501j().equals("1")) {
+                    bi.nw501j.setChecked(true);
+                }
+                if (jsonB6.getnw501none().equals("1")) {
+                    bi.nw501none.setChecked(true);
+                }
+
             }
+        }
 
 
 //        }
@@ -332,7 +332,9 @@ public class SectionB6Activity extends AppCompatActivity {
                         }
 
                     } else*/
-                    {
+                    if (SectionB1Activity.editWRAFlag) {
+                        startActivity(new Intent(this, ViewMemberActivity.class).putExtra("flagEdit", false));
+                    } else {
                         startActivity(new Intent(this, MotherEndingActivity.class)
                                 .putExtra("checkingFlag", true)
                                 .putExtra("complete", true));
@@ -441,6 +443,7 @@ public class SectionB6Activity extends AppCompatActivity {
         DatabaseHelper db = new DatabaseHelper(this);
 
         if (!backPressed && !frontPressed) {
+
             Long updcount = db.addNutrition(MainApp.nc, 0);
             MainApp.nc.set_ID(String.valueOf(updcount));
 
@@ -450,6 +453,9 @@ public class SectionB6Activity extends AppCompatActivity {
                 MainApp.nc.set_UID(
                         (MainApp.nc.getDeviceId() + MainApp.nc.get_ID()));
                 db.updateNutritionID();
+
+                MainApp.mc.setsB6("1");
+                db.updateWRAB6();
 
                 uid = MainApp.nc.getDeviceId() + MainApp.nc.get_ID();
 
