@@ -1214,6 +1214,8 @@ public class SectionB2Activity extends AppCompatActivity implements RadioGroup.O
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
+        MainApp.mc.setSb2flag("1");
+
         int updcount = db.updateSB2();
 
         if (updcount == 1) {

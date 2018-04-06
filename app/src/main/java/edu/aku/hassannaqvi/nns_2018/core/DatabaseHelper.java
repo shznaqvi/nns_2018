@@ -221,6 +221,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             MWRATable.COLUMN_SB4 + " TEXT," +
             MWRATable.COLUMN_SB5 + " TEXT," +
             MWRATable.COLUMN_SB6 + " TEXT," +
+            MWRATable.COLUMN_SB2FLAG + " TEXT," +
             MWRATable.COLUMN_SYNCED + " TEXT," +
             MWRATable.COLUMN_MSTATUS + " TEXT," +
             MWRATable.COLUMN_MSTATUS88x + " TEXT," +
@@ -1149,6 +1150,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put(MWRATable.COLUMN_SB4, mc.getsB4());
             values.put(MWRATable.COLUMN_SB5, mc.getsB5());
             values.put(MWRATable.COLUMN_SB6, mc.getsB6());
+            values.put(MWRATable.COLUMN_SB2FLAG, mc.getSb2flag());
             values.put(MWRATable.COLUMN_SYNCED, mc.getSynced());
             values.put(MWRATable.COLUMN_SYNCEDDATE, mc.getSyncedDate());
             values.put(MWRATable.COLUMN_MSTATUS, mc.getMstatus());
@@ -1595,6 +1597,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values,
                 selection,
                 selectionArgs);
+
+        if (count != 0) {
+
+//      New value for one column
+            values = new ContentValues();
+            values.put(MWRATable.COLUMN_SB6, MainApp.mc.getsB6());
+
+//      Which row to update, based on the ID
+            selection = MWRATable.COLUMN_UID + " = ?";
+            selectionArgs = new String[]{String.valueOf(MainApp.mc.get_ID())};
+
+            count = db.update(MWRATable.TABLE_NAME,
+                    values,
+                    selection,
+                    selectionArgs);
+
+        }
+
         return count;
     }
 
@@ -2133,6 +2153,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 MWRATable.COLUMN_SB4,
                 MWRATable.COLUMN_SB5,
                 MWRATable.COLUMN_SB6,
+                MWRATable.COLUMN_SB2FLAG,
                 MWRATable.COLUMN_MSTATUS,
                 MWRATable.COLUMN_MSTATUS88x,
                 MWRATable.COLUMN_SYNCED,
@@ -2639,7 +2660,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 MWRATable.COLUMN_UID,
                 MWRATable.COLUMN_UUID,
                 MWRATable.COLUMN_SB1,
-                MWRATable.COLUMN_SB6
+                MWRATable.COLUMN_SB6,
+                MWRATable.COLUMN_SB2FLAG
         };
 
 
@@ -2685,7 +2707,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 MWRATable.COLUMN_UID,
                 MWRATable.COLUMN_UUID,
                 MWRATable.COLUMN_SB2,
-                MWRATable.COLUMN_SB6
+                MWRATable.COLUMN_SB6,
+                MWRATable.COLUMN_SB2FLAG
         };
 
 
@@ -3237,6 +3260,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 // New value for one column
         ContentValues values = new ContentValues();
         values.put(MWRATable.COLUMN_SB2, MainApp.mc.getsB2());
+        values.put(MWRATable.COLUMN_SB2FLAG, MainApp.mc.getSb2flag());
 
 // Which row to update, based on the ID
         String selection = MWRATable.COLUMN__ID + " = ?";

@@ -59,6 +59,7 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
     JSONB1ModelClass jsonB1;
 
     int prevMiscarriages = 0;
+    MWRAContract mwraContract;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -870,10 +871,10 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
     }
 
     private void AutoPopulate(String uuid) {
-        MWRAContract mwraContract = db.getsB1(uuid);
+        mwraContract = db.getsB1(uuid);
 
         MainApp.mc = new MWRAContract();
-        MainApp.mc.set_UID(mwraContract.get_UID());
+        childCheck = MainApp.mc.getSb2flag().equals("1");
         bi.nb101.setVisibility(View.GONE);
         bi.nb101a.setVisibility(View.VISIBLE);
 
@@ -1067,44 +1068,59 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
                 if (bi.nw203a.isChecked()) {
                     if (bi.nw204a.isChecked() || bi.nw205a.isChecked()) {
                         if (bi.nw207a.isChecked()) {
-                            if (MainApp.totalPregnancy > 0) {
-                                startActivityForResult(new Intent(this, SectionB1AActivity.class)
-                                        .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
+                            if (Integer.valueOf(bi.nw216aa.getText().toString()) > 0) {
+
+                                if (Integer.valueOf(bi.nw216aa.getText().toString()) < prevMiscarriages) {
+
+                                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                                            SectionB1Activity.this);
+                                    alertDialogBuilder
+                                            .setMessage("In previous you saved " + prevMiscarriages + " Miscarriage.\n" +
+                                                    "Do you want to continue it?")
+                                            .setCancelable(false)
+                                            .setPositiveButton("Yes",
+                                                    new DialogInterface.OnClickListener() {
+                                                        public void onClick(DialogInterface dialog,
+                                                                            int id) {
+
+                                                            MainApp.totalPregnancy = Integer.valueOf(bi.nw216aa.getText().toString());
+
+                                                            startActivityForResult(new Intent(SectionB1Activity.this, SectionB1AActivity.class)
+                                                                    .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
+                                                        }
+                                                    });
+                                    alertDialogBuilder.setNegativeButton("No",
+                                            new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int id) {
+                                                    dialog.cancel();
+                                                    MainApp.totalPregnancy = prevMiscarriages;
+
+                                                    startActivityForResult(new Intent(SectionB1Activity.this, SectionB1AActivity.class)
+                                                            .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
+
+                                                }
+                                            });
+                                    AlertDialog alert = alertDialogBuilder.create();
+                                    alert.show();
+
+                                } else {
+                                    MainApp.totalPregnancy = Integer.valueOf(bi.nw216aa.getText().toString());
+
+                                    startActivityForResult(new Intent(this, SectionB1AActivity.class)
+                                            .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
+
+                                }
+
                             } else if (childCheck) {
                                 startActivity(new Intent(this, SectionB2Activity.class));
                             } else {
-                                if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
-                                        &&
-                                        MainApp.B6Flag) {
-                                    startActivityForResult(new Intent(this, SectionB6Activity.class)
-                                            .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
-                                } else {
-                                    startActivity(new Intent(this, MotherEndingActivity.class)
-                                            .putExtra("complete", true));
-                                }
+                                redirectCondition();
                             }
                         } else {
-                            if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
-                                    &&
-                                    MainApp.B6Flag) {
-                                startActivityForResult(new Intent(this, SectionB6Activity.class)
-                                        .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
-                            } else {
-                                startActivity(new Intent(this, MotherEndingActivity.class)
-                                        .putExtra("complete", true));
-                            }
+                            redirectCondition();
                         }
                     } else {
-
-                        if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
-                                &&
-                                MainApp.B6Flag) {
-                            startActivityForResult(new Intent(this, SectionB6Activity.class)
-                                    .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
-                        } else {
-                            startActivity(new Intent(this, MotherEndingActivity.class)
-                                    .putExtra("complete", true));
-                        }
+                        redirectCondition();
                     }
                 } else {
 
@@ -1125,6 +1141,28 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
 
+        }
+    }
+
+    public void redirectCondition() {
+        if (editWRAFlag) {
+            if (mwraContract.getsB6().equals("1")) {
+                startActivityForResult(new Intent(this, SectionB6Activity.class)
+                        .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
+
+            } else {
+                startActivity(new Intent(this, ViewMemberActivity.class).putExtra("flagEdit", false));
+            }
+        } else {
+            if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
+                    &&
+                    MainApp.B6Flag) {
+                startActivityForResult(new Intent(this, SectionB6Activity.class)
+                        .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
+            } else {
+                startActivity(new Intent(this, MotherEndingActivity.class)
+                        .putExtra("complete", true));
+            }
         }
     }
 
