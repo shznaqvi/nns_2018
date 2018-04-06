@@ -555,14 +555,14 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
                 if (!validatorClass.EmptyTextBox(this, binding.nh322acr, getString(R.string.nh322acr))) {
                     return false;
                 }
-                if (!validatorClass.RangeTextBox(this, binding.nh322acr, 1, 999, getString(R.string.nh322acr), "acre")) {
+                if (!validatorClass.RangeTextBox(this, binding.nh322acr, 1.00, 999.0, getString(R.string.nh322acr), "acre")) {
                     return false;
                 }
             } else if (binding.nh322b.isChecked()) {
                 if (!validatorClass.EmptyTextBox(this, binding.nh322can, getString(R.string.nh322can))) {
                     return false;
                 }
-                if (!validatorClass.RangeTextBox(this, binding.nh322can, 1, 999, getString(R.string.nh322can), "kanal")) {
+                if (!validatorClass.RangeTextBox(this, binding.nh322can, 1.00, 999.0, getString(R.string.nh322can), "kanal")) {
                     return false;
                 }
             }
