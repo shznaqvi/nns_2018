@@ -44,6 +44,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.DeceasedContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
@@ -563,6 +564,16 @@ public class MainActivity extends MenuActivity {
                     NutritionContract.class,
                     MainApp._HOST_URL + NutritionContract.NutritionTable._URL,
                     db.getUnsyncedNutrition(), this.findViewById(R.id.syncStatus)
+            ).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing Deceased", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Deceased",
+                    "updateSyncedDeceased",
+                    NutritionContract.class,
+                    MainApp._HOST_URL + DeceasedContract.DeceasedTable._URL,
+                    db.getUnsyncedDeceasedMembers(), this.findViewById(R.id.syncStatus)
             ).execute();
 
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
