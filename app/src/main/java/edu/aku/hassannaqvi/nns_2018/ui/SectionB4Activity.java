@@ -124,10 +124,12 @@ public class SectionB4Activity extends AppCompatActivity implements TextWatcher,
                 if (checkedId == R.id.nb411b || checkedId == R.id.nb41198) {
 
                     clearClass.ClearAllFields(binding.fldGrpnb412, false);
+                    clearClass.ClearAllFields(binding.fldGrpnb412check, false);
 
                 } else {
 
                     clearClass.ClearAllFields(binding.fldGrpnb412, true);
+                    clearClass.ClearAllFields(binding.fldGrpnb412check, true);
                 }
             }
         });

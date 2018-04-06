@@ -1096,7 +1096,7 @@
                             android:layout_weight="1"
                             android:hint="@string/months"
                             android:inputType="number"
-                            android:maxLength="1" />
+                            android:maxLength="2" />
 
 
                         <View
@@ -1112,7 +1112,7 @@
                             android:layout_weight="1"
                             android:hint="@string/day"
                             android:inputType="number"
-                            android:maxLength="1" />
+                            android:maxLength="2" />
 
                     </LinearLayout>
 

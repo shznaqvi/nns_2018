@@ -750,7 +750,8 @@
     <string name="nb412d"> راکھ </string>
     <string name="nb412e"> گوبر </string>
 
-    <string name="nw413"> If Chlorhexidine was used ask the respondent about the source of provision </string>
+  <string name="nw413">
+اگر کلورہیکسیڈین کا استعمال کیا گیا تھا تو جواب دہندہ سے اس کی فراہمی کے زرائع کے بارے میں پوچھیں۔</string>
     <string name="nw413sub1"> بپلک میڈیکل سیکٹ </string>
     <string name="nw413a">سرکاری ہسپتال </string>
     <string name="nw413b">  سرکاری صحت سینٹر</string>
