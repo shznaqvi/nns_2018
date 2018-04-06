@@ -47,6 +47,7 @@ public class SectionB6Activity extends AppCompatActivity {
         bi.setCallback(this);
 
         this.setTitle(getResources().getString(R.string.nw5heading));
+        bi.textName.setText("Selected Woman : " + SectionB1Activity.wraName);
 
         settingTimeToEat();
         setListners();
