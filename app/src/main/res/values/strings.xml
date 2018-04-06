@@ -13,7 +13,7 @@
     completions."
   </string>
 
-    <string name="end_interview"> اختتام </string>
+    <string name="end_interview">اختتام </string>
     <string name="start_interview"> انٹروہو شروع کریں </string>
     <string name="nextSection"> اگلا سیکشن </string>
     <string name="dataShare"> ڈیٹا تقسیم </string>
@@ -135,6 +135,8 @@
     <string name="resp"> کیا یہ جواب دہندہ ہے؟</string>
     <string name="nh211"> والد کا لائن نمبر </string>
     <string name="nh212"> والدہ کا لائن نمبر </string>
+    <string name="nh212a"> ماں کا نام</string>
+    <string name="childname"> بچے کا نام</string>
     <string name="na204"> جنس </string>
 
     <string name="nh2edu"> تعلیم </string>
@@ -752,7 +754,8 @@
     <string name="nb412d"> راکھ </string>
     <string name="nb412e"> گوبر </string>
 
-    <string name="nw413"> If Chlorhexidine was used ask the respondent about the source of provision </string>
+    <string name="nw413">
+اگر کلورہیکسیڈین کا استعمال کیا گیا تھا تو جواب دہندہ سے اس کی فراہمی کے زرائع کے بارے میں پوچھیں۔</string>
     <string name="nw413sub1"> بپلک میڈیکل سیکٹ </string>
     <string name="nw413a">سرکاری ہسپتال </string>
     <string name="nw413b">  سرکاری صحت سینٹر</string>
@@ -873,8 +876,8 @@
     <!--</string>-->
     <string name="nc203a">  مکمل مہینوں میں عمر </string>
     <string name="nc204">  اطمینان کر لیں کہ اوپر کیئے گئے سوالات میں بچے کی عمر یکساں ہے </string>
-    <string name="nc204a">A)	IS THE YEAR RECOREDED IN Q1 CONSISTENT WITH AGE IN YEARS RECORDED IN Q2?</string>
-    <string name="nc204b">B)	ARE YEAR AND MONTH OF BIRHT RECORDED IN Q1 CONSISTENT WITH AGE IN MONTHS RECORDED IN C203</string>
+    <string name="nc204a">A)	IS THE YEAR RECORDED IN Q1 CONSISTENT WITH AGE IN YEARS RECORDED IN Q2?</string>
+    <string name="nc204b">B)	ARE YEAR AND MONTH OF BIRTH RECORDED IN Q1 CONSISTENT WITH AGE IN MONTHS RECORDED IN C203</string>
     <string name="nc205"> کیا بچہ 24 مہینوں سے کم ہے  </string>
     <!--<string name="nc206">کیا بچہ(نام) کو کبھی ماں کا دودھ پلایا گیا ہے ؟</string>-->
     <!--<string name="nc207"> آپ نے پیدائش کےکتنی دیر بعد پہلی دفعہ (نام) کو اپنا دودھ پلایا؟ </string>-->
@@ -1532,6 +1535,7 @@
     <string name="nh804">وفات پانے والے کی والدہ کا نام</string>
     <string name="nh805">وفات پانے والے کی والد کا نام</string>
     <string name="nh806">وفات پانے والے کی جنس</string>
+    <string name="nh806a">وفات پانے والے کی ازدواجی حیثیت</string>
     <string name="nh807">وفات کے وقت عمر</string>
     <string name="nh808">وفات کی تاریخ</string>
     <string name="nh809">وفات کی جگہ</string>

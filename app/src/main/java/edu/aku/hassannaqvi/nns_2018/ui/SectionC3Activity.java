@@ -44,6 +44,9 @@ public class SectionC3Activity extends AppCompatActivity implements RadioGroup.O
 
         this.setTitle(getResources().getString(R.string.nc3heading));
 
+        binding.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
+                + "\n\n" + SectionB1Activity.wraName + " : " + getString(R.string.nh212a));
+
         db = new DatabaseHelper(this);
         binding.setCallback(this);
         binding.nc302.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {

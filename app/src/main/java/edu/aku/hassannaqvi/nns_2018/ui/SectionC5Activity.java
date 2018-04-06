@@ -44,6 +44,8 @@ public class SectionC5Activity extends AppCompatActivity implements TextWatcher,
         bi.setCallback(this);
 
         this.setTitle(getResources().getString(R.string.nc5heading));
+        bi.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
+                + "\n\n" + SectionB1Activity.wraName + " : " + getString(R.string.nh212a));
 
         db = new DatabaseHelper(this);
 

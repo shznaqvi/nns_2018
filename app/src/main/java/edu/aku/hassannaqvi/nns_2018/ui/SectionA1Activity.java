@@ -390,8 +390,8 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
                                 progress = 0;
                                 finish();
-//                                startActivity(new Intent(SectionA1Activity.this, SectionA2ListActivity.class));
-                                startActivity(new Intent(SectionA1Activity.this, SectionA4Activity.class));
+                                startActivity(new Intent(SectionA1Activity.this, SectionA2ListActivity.class));
+//                                startActivity(new Intent(SectionA1Activity.this, SectionA4Activity.class));
                             }
                         });
                     }

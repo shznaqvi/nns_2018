@@ -59,7 +59,6 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
     JSONB1ModelClass jsonB1;
 
     int prevMiscarriages = 0;
-    MWRAContract mwraContract;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -871,16 +870,18 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
     }
 
     private void AutoPopulate(String uuid) {
-        mwraContract = db.getsB1(uuid);
 
-        MainApp.mc = new MWRAContract();
+        MainApp.mc = db.getsB1(uuid);
         childCheck = MainApp.mc.getSb2flag().equals("1");
         bi.nb101.setVisibility(View.GONE);
         bi.nb101a.setVisibility(View.VISIBLE);
 
-        if (!mwraContract.getsB1().equals("")) {
+        if (!MainApp.mc.getsB1().equals("")) {
 
-            jsonB1 = JSONUtilClass.getModelFromJSON(mwraContract.getsB1(), JSONB1ModelClass.class);
+            jsonB1 = JSONUtilClass.getModelFromJSON(MainApp.mc.getsB1(), JSONB1ModelClass.class);
+
+            MainApp.mc.setCluster(jsonB1.getCluster_no());
+            MainApp.mc.setHhno(jsonB1.getHhno());
 
             prevMiscarriages = Integer.valueOf(jsonB1.getnw216aa());
 
@@ -1083,20 +1084,16 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
                                                         public void onClick(DialogInterface dialog,
                                                                             int id) {
 
-                                                            MainApp.totalPregnancy = Integer.valueOf(bi.nw216aa.getText().toString());
+                                                            MainApp.totalPregnancy = prevMiscarriages;
 
                                                             startActivityForResult(new Intent(SectionB1Activity.this, SectionB1AActivity.class)
                                                                     .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
                                                         }
                                                     });
-                                    alertDialogBuilder.setNegativeButton("No",
+                                    alertDialogBuilder.setNegativeButton("Cancel",
                                             new DialogInterface.OnClickListener() {
                                                 public void onClick(DialogInterface dialog, int id) {
                                                     dialog.cancel();
-                                                    MainApp.totalPregnancy = prevMiscarriages;
-
-                                                    startActivityForResult(new Intent(SectionB1Activity.this, SectionB1AActivity.class)
-                                                            .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
 
                                                 }
                                             });
@@ -1146,7 +1143,7 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
 
     public void redirectCondition() {
         if (editWRAFlag) {
-            if (mwraContract.getsB6().equals("1")) {
+            if (MainApp.mc.getsB6().equals("1")) {
                 startActivityForResult(new Intent(this, SectionB6Activity.class)
                         .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
 

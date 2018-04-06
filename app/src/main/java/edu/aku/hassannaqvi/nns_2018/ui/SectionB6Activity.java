@@ -441,10 +441,11 @@ public class SectionB6Activity extends AppCompatActivity {
         DatabaseHelper db = new DatabaseHelper(this);
 
         if (!backPressed && !frontPressed) {
-            Long updcount = db.addNutrition(MainApp.nc, 0);
-            MainApp.nc.set_ID(String.valueOf(updcount));
 
             MainApp.mc.setsB6("1");
+
+            Long updcount = db.addNutrition(MainApp.nc, 0);
+            MainApp.nc.set_ID(String.valueOf(updcount));
 
             if (updcount != 0) {
                 //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();

@@ -105,7 +105,6 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
         bi.nw21701.setOnCheckedChangeListener(this);
 
-
 //        Validation Boolean
         MainApp.validateFlag = false;
 
@@ -130,22 +129,36 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                     if (SectionB1Activity.childCheck) {
                         startActivity(new Intent(this, SectionB2Activity.class));
                     } else {
-                        if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
-                                &&
-                                MainApp.B6Flag) {
-                            startActivityForResult(new Intent(this, SectionB6Activity.class)
-                                    .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
+                        if (SectionB1Activity.editWRAFlag) {
+                            if (MainApp.mc.getsB6().equals("1")) {
+                                startActivityForResult(new Intent(this, SectionB6Activity.class)
+                                        .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
+
+                            } else {
+                                startActivity(new Intent(this, ViewMemberActivity.class).putExtra("flagEdit", false));
+                            }
                         } else {
-                            startActivity(new Intent(this, MotherEndingActivity.class)
-                                    .putExtra("complete", true));
+                            if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
+                                    &&
+                                    MainApp.B6Flag) {
+                                startActivityForResult(new Intent(this, SectionB6Activity.class)
+                                        .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
+                            } else {
+                                startActivity(new Intent(this, MotherEndingActivity.class)
+                                        .putExtra("complete", true));
+                            }
                         }
                     }
 
                 } else {
 
-                    //MainApp.count ++;
-                    startActivityForResult(new Intent(this, SectionB1AActivity.class)
-                            .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
+                    if (SectionB1Activity.editWRAFlag) {
+                        startActivity(new Intent(this, ViewMemberActivity.class).putExtra("flagEdit", false));
+                    } else {
+                        //MainApp.count ++;
+                        startActivityForResult(new Intent(this, SectionB1AActivity.class)
+                                .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
+                    }
                 }
 
 
@@ -221,15 +234,29 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
         if (!backPressed && !frontPressed) {
             MainApp.oc.setDevicetagID(MainApp.getTagName(this));
-            MainApp.oc.setFormDate(MainApp.fc.getFormDate());
-            MainApp.oc.setUser(MainApp.userName);
-            MainApp.oc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
-                    Settings.Secure.ANDROID_ID));
-            MainApp.oc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
+            if (SectionB1Activity.editWRAFlag) {
+                MainApp.oc.setFormDate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+
+                MainApp.oc.setUser(MainApp.mc.getUser());
+                MainApp.oc.setDeviceId(MainApp.mc.getDeviceId());
+                MainApp.oc.setApp_ver(MainApp.mc.getApp_ver());
+
+                sB1a.put("cluster_no", MainApp.mc.getCluster());
+                sB1a.put("hhno", MainApp.mc.getHhno());
+
+            } else {
+                MainApp.oc.setFormDate(MainApp.fc.getFormDate());
+                MainApp.oc.setUser(MainApp.userName);
+                MainApp.oc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
+                        Settings.Secure.ANDROID_ID));
+                MainApp.oc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
+
+                sB1a.put("cluster_no", MainApp.fc.getClusterNo());
+                sB1a.put("hhno", MainApp.fc.getHhNo());
+            }
+
             MainApp.oc.set_UUID(MainApp.mc.get_UID());
 
-            sB1a.put("cluster_no", MainApp.fc.getClusterNo());
-            sB1a.put("hhno", MainApp.fc.getHhNo());
 
         } else {
             MainApp.oc.setUpdatedate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));

@@ -36,6 +36,9 @@ public class MWRAContract {
     private String sB6 = "";
     private String sb2flag = "";
 
+    private String cluster = "";
+    private String hhno = "";
+
 
     private String synced = "";
     private String syncedDate = "";
@@ -220,6 +223,22 @@ public class MWRAContract {
 
     public void setSb2flag(String sb2flag) {
         this.sb2flag = sb2flag;
+    }
+
+    public String getCluster() {
+        return cluster;
+    }
+
+    public void setCluster(String cluster) {
+        this.cluster = cluster;
+    }
+
+    public String getHhno() {
+        return hhno;
+    }
+
+    public void setHhno(String hhno) {
+        this.hhno = hhno;
     }
 
     public MWRAContract Sync(JSONObject jsonObject) throws JSONException {

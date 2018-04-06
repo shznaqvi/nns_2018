@@ -98,41 +98,6 @@ public class SectionC2Activity extends AppCompatActivity implements RadioGroup.O
 
             JSONC2ModelClass jsonC2 = JSONUtilClass.getModelFromJSON(childContract.getsC2(), JSONC2ModelClass.class);
 
-            /*if (!jsonC2.getnc20198().equals("0")) {
-                bi.nc20198.setChecked(true);
-            }
-            bi.nc201d.setText(jsonC2.getnc201d());
-            bi.nc201m.setText(jsonC2.getnc201m());
-            bi.nc201y.setText(jsonC2.getnc201y());
-            bi.nc20198.setText(jsonC2.getnc20198());
-            if (!jsonC2.getnc202().equals("0")) {
-                bi.nc202.check(
-                        jsonC2.getnc202().equals("1") ? bi.nc202a.getId()
-                                : jsonC2.getnc202().equals("2") ? bi.nc202b.getId()
-                                : bi.nc202c.getId());
-            }
-            bi.nc203.setText(jsonC2.getnc203());
-
-            if (!jsonC2.getnc204a().equals("0")) {
-                bi.nc204a.check(
-                        jsonC2.getnc204a().equals("1") ? bi.nc204aa.getId()
-                                : bi.nc204ab.getId()
-                );
-            }
-            if (!jsonC2.getnc204b().equals("0")) {
-                bi.nc204b.check(
-                        jsonC2.getnc204b().equals("1") ? bi.nc204ba.getId()
-                                : bi.nc204bb.getId()
-                );
-            }
-            if (!jsonC2.getnc205().equals("0")) {
-                bi.nc205.check(
-                        jsonC2.getnc205().equals("1") ? bi.nc205a.getId()
-                                : jsonC2.getnc205().equals("2") ? bi.nc205b.getId()
-                                : bi.nc20598.getId()
-                );
-            }*/
-
             if (!jsonC2.getnc206().equals("0")) {
                 bi.nc206.check(
                         jsonC2.getnc206().equals("1") ? bi.nc206a.getId()
@@ -483,7 +448,6 @@ public class SectionC2Activity extends AppCompatActivity implements RadioGroup.O
         }
 
     }
-
     public RadioGroup.OnCheckedChangeListener nc215 = new RadioGroup.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -541,32 +505,6 @@ public class SectionC2Activity extends AppCompatActivity implements RadioGroup.O
 
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_section_c2);
-
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_c2);
-        ButterKnife.bind(this);
-        db = new DatabaseHelper(this);
-        bi.setCallback(this);
-
-        this.setTitle(getResources().getString(R.string.nc2heading));
-
-        setupViews();
-
-//        Validation Boolean
-        MainApp.validateFlag = false;
-
-        autoPopulateFields();
-    }
-
-    public void BtnEnd() {
-
-        MainApp.endChildActivity(this, this, false);
-
-    }
-
     public void BtnContinue() {
 
 //        Validation Boolean
@@ -591,6 +529,37 @@ public class SectionC2Activity extends AppCompatActivity implements RadioGroup.O
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //setContentView(R.layout.activity_section_c2);
+
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_c2);
+        ButterKnife.bind(this);
+        db = new DatabaseHelper(this);
+        bi.setCallback(this);
+
+        this.setTitle(getResources().getString(R.string.nc2heading));
+
+        setupViews();
+        autoPopulateFields();
+
+
+//        Validation Boolean
+        MainApp.validateFlag = false;
+
+        bi.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
+                + "\n\n" + SectionB1Activity.wraName + " : " + getString(R.string.nh212a));
+
+
+    }
+
+    public void BtnEnd() {
+
+        MainApp.endChildActivity(this, this, false);
+
     }
 
 

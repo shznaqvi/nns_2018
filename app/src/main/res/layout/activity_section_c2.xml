@@ -2,15 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="edu.aku.hassannaqvi.src_preg.ui.SectionC2Activity">
-
     <data>
-
         <import type="android.view.View" />
-
         <variable
             name="callback"
             type="edu.aku.hassannaqvi.nns_2018.ui.SectionC2Activity" />
-
     </data>
 
     <LinearLayout
@@ -32,6 +28,14 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/textName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/pink_100"
+            android:gravity="center"
+            android:textColor="@color/colorPrimaryDark" />
 
 
         <ScrollView

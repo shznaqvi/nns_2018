@@ -211,19 +211,20 @@ public class ViewMemberActivity extends MenuActivity {
         if (validatorClass.EmptyTextBox(this, binding.chckenumblock, getString(R.string.nh102))) {
 
             EnumBlockContract enumBlockContract = db.getEnumBlock(binding.chckenumblock.getText().toString());
-            String selected = enumBlockContract.getGeoarea();
-            if (!selected.equals("")) {
+            if (enumBlockContract != null) {
+                String selected = enumBlockContract.getGeoarea();
+                if (!selected.equals("")) {
 
-                String[] selSplit = selected.split("\\|");
-                binding.nsuba.setText(selSplit[0]);
-                binding.nzilla.setText(selSplit[1].equals("") ? "----" : selSplit[1]);
-                binding.ntehsil.setText(selSplit[2].equals("") ? "----" : selSplit[2]);
-                binding.ncity.setText(selSplit[3]);
+                    String[] selSplit = selected.split("\\|");
+                    binding.nsuba.setText(selSplit[0]);
+                    binding.nzilla.setText(selSplit[1].equals("") ? "----" : selSplit[1]);
+                    binding.ntehsil.setText(selSplit[2].equals("") ? "----" : selSplit[2]);
+                    binding.ncity.setText(selSplit[3]);
 
-                binding.fldGrphidden.setVisibility(View.VISIBLE);
+                    binding.fldGrphidden.setVisibility(View.VISIBLE);
 
+                }
             } else {
-                binding.chckhouse.setText(null);
                 Toast.makeText(this, "Sorry not found any block", Toast.LENGTH_SHORT).show();
             }
 
