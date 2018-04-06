@@ -46,10 +46,10 @@
             style="@style/buttons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_bg2"
-            android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_marginTop="2dp"
+            android:background="@drawable/button_bg2"
             android:onClick="@{() -> callback.BtnAddMember()}"
             android:text="ADD NEW MEMBER"
             android:textColor="@color/white" />
@@ -167,8 +167,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="108dp"
                             android:background="@color/pink_100"
-                            android:text="@string/months"
                             android:gravity="center"
+                            android:text="@string/months"
                             android:textColor="@color/colorPrimaryDark" />
 
 
@@ -198,8 +198,8 @@
                             android:background="@color/pink_100"
                             android:gravity="center"
                             android:text="@string/nw201sub1"
-                            android:textSize="22sp"
-                            android:textColor="@color/colorPrimaryDark" />
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="22sp" />
 
                         <EditText
                             android:id="@+id/nc201d"
