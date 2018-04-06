@@ -448,6 +448,7 @@ public class SectionC2Activity extends AppCompatActivity implements RadioGroup.O
         }
 
     }
+
     public RadioGroup.OnCheckedChangeListener nc215 = new RadioGroup.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -1065,6 +1066,9 @@ public class SectionC2Activity extends AppCompatActivity implements RadioGroup.O
         }
 
         if (bi.nc219a.isChecked()) {
+            if (!validatorClass.EmptyTextBox(this, bi.nc219x, getString(R.string.nc219))) {
+                return false;
+            }
             if (!validatorClass.RangeTextBox(this, bi.nc219x, 1, 10, getString(R.string.nc219), " times")) {
                 return false;
             }

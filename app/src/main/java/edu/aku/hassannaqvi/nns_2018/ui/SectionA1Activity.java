@@ -366,8 +366,8 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 //        Validation Boolean
         MainApp.validateFlag = true;
 
-        if (formValidation()) {
-//        if (true) {
+//        if (formValidation()) {
+        if (true) {
             try {
                 SaveDraft();
             } catch (JSONException e) {

@@ -361,7 +361,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_DECEASED);
 
 
-
     }
 
     public void syncEnumBlocks(JSONArray Enumlist) {
@@ -1709,23 +1708,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values,
                 selection,
                 selectionArgs);
+        return count;
+    }
 
-        if (count != 0) {
-
+    public int updateWRAB6() {
+        SQLiteDatabase db = this.getReadableDatabase();
 //      New value for one column
-            values = new ContentValues();
-            values.put(MWRATable.COLUMN_SB6, MainApp.mc.getsB6());
+        ContentValues values = new ContentValues();
+        values.put(MWRATable.COLUMN_SB6, MainApp.mc.getsB6());
 
 //      Which row to update, based on the ID
-            selection = MWRATable.COLUMN_UID + " = ?";
-            selectionArgs = new String[]{String.valueOf(MainApp.mc.get_ID())};
+        String selection = MWRATable.COLUMN_UID + " = ?";
+        String[] selectionArgs = new String[]{String.valueOf(MainApp.mc.get_ID())};
 
-            count = db.update(MWRATable.TABLE_NAME,
-                    values,
-                    selection,
-                    selectionArgs);
-
-        }
+        int count = db.update(MWRATable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
 
         return count;
     }
@@ -2782,6 +2781,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 MWRATable.COLUMN_UUID,
                 MWRATable.COLUMN_SB1,
                 MWRATable.COLUMN_SB6,
+                MWRATable.COLUMN_APP_VER,
+                MWRATable.COLUMN_DEVICEID,
+                MWRATable.COLUMN_USER,
                 MWRATable.COLUMN_SB2FLAG
         };
 

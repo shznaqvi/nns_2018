@@ -151,14 +151,9 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                     }
 
                 } else {
-
-                    if (SectionB1Activity.editWRAFlag) {
-                        startActivity(new Intent(this, ViewMemberActivity.class).putExtra("flagEdit", false));
-                    } else {
-                        //MainApp.count ++;
-                        startActivityForResult(new Intent(this, SectionB1AActivity.class)
-                                .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
-                    }
+                    //MainApp.count ++;
+                    startActivityForResult(new Intent(this, SectionB1AActivity.class)
+                            .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
                 }
 
 
@@ -397,8 +392,8 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
     protected void onPause() {
         super.onPause();
 
-        if (!backPressed) {
-            firstTimePressed = false;
+        if (firstTimePressed && !frontPressed) {
+            backPressed = false;
         }
     }
 

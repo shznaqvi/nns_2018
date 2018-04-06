@@ -332,7 +332,9 @@ public class SectionB6Activity extends AppCompatActivity {
                         }
 
                     } else*/
-                    {
+                    if (SectionB1Activity.editWRAFlag) {
+                        startActivity(new Intent(this, ViewMemberActivity.class).putExtra("flagEdit", false));
+                    } else {
                         startActivity(new Intent(this, MotherEndingActivity.class)
                                 .putExtra("checkingFlag", true)
                                 .putExtra("complete", true));
@@ -442,8 +444,6 @@ public class SectionB6Activity extends AppCompatActivity {
 
         if (!backPressed && !frontPressed) {
 
-            MainApp.mc.setsB6("1");
-
             Long updcount = db.addNutrition(MainApp.nc, 0);
             MainApp.nc.set_ID(String.valueOf(updcount));
 
@@ -453,6 +453,9 @@ public class SectionB6Activity extends AppCompatActivity {
                 MainApp.nc.set_UID(
                         (MainApp.nc.getDeviceId() + MainApp.nc.get_ID()));
                 db.updateNutritionID();
+
+                MainApp.mc.setsB6("1");
+                db.updateWRAB6();
 
                 uid = MainApp.nc.getDeviceId() + MainApp.nc.get_ID();
 

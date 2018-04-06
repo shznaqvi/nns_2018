@@ -1069,43 +1069,45 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
                 if (bi.nw203a.isChecked()) {
                     if (bi.nw204a.isChecked() || bi.nw205a.isChecked()) {
                         if (bi.nw207a.isChecked()) {
-                            if (Integer.valueOf(bi.nw216aa.getText().toString()) > 0) {
+                            if (bi.nw216a.isChecked()) {
+                                if (Integer.valueOf(bi.nw216aa.getText().toString()) > 0) {
 
-                                if (Integer.valueOf(bi.nw216aa.getText().toString()) < prevMiscarriages) {
+                                    if (Integer.valueOf(bi.nw216aa.getText().toString()) < prevMiscarriages) {
 
-                                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                                            SectionB1Activity.this);
-                                    alertDialogBuilder
-                                            .setMessage("In previous you saved " + prevMiscarriages + " Miscarriage.\n" +
-                                                    "Do you want to continue it?")
-                                            .setCancelable(false)
-                                            .setPositiveButton("Yes",
-                                                    new DialogInterface.OnClickListener() {
-                                                        public void onClick(DialogInterface dialog,
-                                                                            int id) {
+                                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                                                SectionB1Activity.this);
+                                        alertDialogBuilder
+                                                .setMessage("In previous you saved " + prevMiscarriages + " Miscarriage.\n" +
+                                                        "Do you want to continue it?")
+                                                .setCancelable(false)
+                                                .setPositiveButton("Yes",
+                                                        new DialogInterface.OnClickListener() {
+                                                            public void onClick(DialogInterface dialog,
+                                                                                int id) {
 
-                                                            MainApp.totalPregnancy = prevMiscarriages;
+                                                                MainApp.totalPregnancy = prevMiscarriages;
 
-                                                            startActivityForResult(new Intent(SectionB1Activity.this, SectionB1AActivity.class)
-                                                                    .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
-                                                        }
-                                                    });
-                                    alertDialogBuilder.setNegativeButton("Cancel",
-                                            new DialogInterface.OnClickListener() {
-                                                public void onClick(DialogInterface dialog, int id) {
-                                                    dialog.cancel();
+                                                                startActivityForResult(new Intent(SectionB1Activity.this, SectionB1AActivity.class)
+                                                                        .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
+                                                            }
+                                                        });
+                                        alertDialogBuilder.setNegativeButton("Cancel",
+                                                new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int id) {
+                                                        dialog.cancel();
 
-                                                }
-                                            });
-                                    AlertDialog alert = alertDialogBuilder.create();
-                                    alert.show();
+                                                    }
+                                                });
+                                        AlertDialog alert = alertDialogBuilder.create();
+                                        alert.show();
 
-                                } else {
-                                    MainApp.totalPregnancy = Integer.valueOf(bi.nw216aa.getText().toString());
+                                    } else {
+                                        MainApp.totalPregnancy = Integer.valueOf(bi.nw216aa.getText().toString());
 
-                                    startActivityForResult(new Intent(this, SectionB1AActivity.class)
-                                            .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
+                                        startActivityForResult(new Intent(this, SectionB1AActivity.class)
+                                                .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
 
+                                    }
                                 }
 
                             } else if (childCheck) {
