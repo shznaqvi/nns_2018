@@ -159,7 +159,7 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
         binding.nh40604.setOnCheckedChangeListener(this);
         binding.nh40605.setOnCheckedChangeListener(this);
         binding.nh40696.setOnCheckedChangeListener(this);
-        binding.nh501.setOnCheckedChangeListener(this);
+        //binding.nh501.setOnCheckedChangeListener(this);
         binding.nh502.setOnCheckedChangeListener(this);
         binding.nh503.setOnCheckedChangeListener(this);
         binding.nh601.setOnCheckedChangeListener(this);
@@ -283,7 +283,6 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
             return false;
         }
         if (!binding.nh501d.isChecked()) {
-
 
 //        nh502
             if (!validatorClass.EmptyRadioButton(this, binding.nh502, binding.nh502a, getString(R.string.nh502))) {

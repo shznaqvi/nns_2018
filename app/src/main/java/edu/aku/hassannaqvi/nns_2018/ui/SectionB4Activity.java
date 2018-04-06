@@ -87,20 +87,23 @@ public class SectionB4Activity extends AppCompatActivity implements TextWatcher,
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 formValidation();
-                if (checkedId == R.id.nw405b) {
+                if (checkedId == R.id.nw405a) {
                     /*binding.fldGrpnw406.setVisibility(View.GONE);
                     binding.nw406c.setText(null);
                     binding.nw406r.setText(null);
                     binding.nw40698.setChecked(false);*/
 
-                    clearClass.ClearAllFields(binding.fldGrpnw406, false);
+                    clearClass.ClearAllFields(binding.fldGrpnw406, true);
                     binding.nw406cx.setText(null);
                     binding.nw406rx.setText(null);
+
+                    binding.nw406cx.setEnabled(false);
+                    binding.nw406rx.setEnabled(false);
 
                 } else {
 //                    binding.fldGrpnw406.setVisibility(View.VISIBLE);
 
-                    clearClass.ClearAllFields(binding.fldGrpnw406, true);
+                    clearClass.ClearAllFields(binding.fldGrpnw406, false);
                     binding.nw406cx.setText(null);
                     binding.nw406rx.setText(null);
 
@@ -167,6 +170,16 @@ public class SectionB4Activity extends AppCompatActivity implements TextWatcher,
             }
         });
 
+        binding.nb412a.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    clearClass.ClearAllFields(binding.fldGrpnw413, true);
+                } else {
+                    clearClass.ClearAllFields(binding.fldGrpnw413, false);
+                }
+            }
+        });
         binding.nw401.setOnCheckedChangeListener(this);
         binding.nw403.setOnCheckedChangeListener(this);
         binding.nw404.setOnCheckedChangeListener(this);
@@ -449,7 +462,7 @@ public class SectionB4Activity extends AppCompatActivity implements TextWatcher,
             return false;
         }
 
-        if (!binding.nw405b.isChecked()) {
+        if (binding.nw405a.isChecked()) {
             // nw406
 
             if (!binding.nw40698.isChecked()) {
@@ -524,8 +537,10 @@ public class SectionB4Activity extends AppCompatActivity implements TextWatcher,
             }
             // nw413
 
-            if (!validatorClass.EmptyRadioButton(this, binding.nw413, binding.nw413a, getString(R.string.nc403))) {
-                return false;
+            if (binding.nb412a.isChecked()) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nw413, binding.nw413a, getString(R.string.nc403))) {
+                    return false;
+                }
             }
 //        nw4139601
             if (!validatorClass.EmptyRadioButton(this, binding.nw413, binding.nw413961, binding.nw413961x, getString(R.string.nw413) + " - " + getString(R.string.nw413961))) {

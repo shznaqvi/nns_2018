@@ -334,8 +334,22 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
 //        nc101
 
         if (endflag) {
-            return validatorClass.EmptySpinner(this, binding.nc101, getString(R.string.nc101));
+            if (!isNA) {
+                return validatorClass.EmptySpinner(this, binding.nc101, getString(R.string.nc101));
+            } else {
+
+                if (!validatorClass.EmptySpinner(this, binding.resp, getString(R.string.resp))) {
+                    return false;
+                }
+                return validatorClass.EmptySpinner(this, binding.nc101, getString(R.string.nc101));
+            }
         } else {
+
+            if (isNA) {
+                if (!validatorClass.EmptySpinner(this, binding.resp, getString(R.string.resp))) {
+                    return false;
+                }
+            }
 
             if (!validatorClass.EmptySpinner(this, binding.nc101, getString(R.string.nc101))) {
                 return false;

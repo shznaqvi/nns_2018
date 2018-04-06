@@ -2418,7 +2418,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 NutritionTable.COLUMN_SB6
         };
 
-        String whereClause = NutritionTable.COLUMN_UUID + "=?";
+        String whereClause = NutritionTable.COLUMN_MUID + "=?";
         String[] whereArgs = new String[]{MainApp.mc.get_UID()};
         String groupBy = null;
         String having = null;
