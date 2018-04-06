@@ -37,9 +37,6 @@ import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionListA2Binding;
 import edu.aku.hassannaqvi.nns_2018.databinding.FamilymemberslistBinding;
 import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 
-import static edu.aku.hassannaqvi.nns_2018.ui.SectionA1Activity.editFormContract;
-
-
 public class SectionA2ListActivity extends AppCompatActivity {
 
     static String respLineNo = "";
@@ -273,8 +270,8 @@ public class SectionA2ListActivity extends AppCompatActivity {
     }
 
     private void setCount() {
-        editFormContract.getCount();
-        countJSON = JSONUtilClass.getModelFromJSON(editFormContract.getCount(), JSONACountModelClass.class);
+//        editFormContract.getCount();
+        countJSON = JSONUtilClass.getModelFromJSON(MainApp.fc.getCount(), JSONACountModelClass.class);
         // Total
         binding.nh2tm.setText(countJSON.getnh2tm());
         binding.nh2tf.setText(countJSON.getnh2tf());

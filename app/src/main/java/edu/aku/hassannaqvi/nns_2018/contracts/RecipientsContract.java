@@ -171,29 +171,23 @@ public class RecipientsContract {
 
     }
 
-    public RecipientsContract Hydrate(Cursor cursor, int type) {
+    public RecipientsContract Hydrate(Cursor cursor) {
 
         this._ID = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN__ID));
         this._UID = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_UID));
         this._UUID = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_UUID));
         this.FMUID = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_FM_UID));
-
-        if (type == 1 || type == 8) {
-            this.sA8A = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_SA8A));
-        }
-        if (type == 1) {
-            this.formDate = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_FORMDATE));
-            this.deviceId = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_DEVICEID));
-            this.devicetagID = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_DEVICETAGID));
-            this.user = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_USER));
-            this.app_ver = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_APP_VER));
-            this.a8aSNo = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_A8ASNO));
-            this.synced = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_SYNCED));
-            this.syncedDate = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_SYNCEDDATE));
-        }
+        this.sA8A = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_SA8A));
+        this.formDate = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_FORMDATE));
+        this.deviceId = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_DEVICEID));
+        this.devicetagID = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_DEVICETAGID));
+        this.user = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_USER));
+        this.app_ver = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_APP_VER));
+        this.a8aSNo = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_A8ASNO));
+        this.synced = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_SYNCED));
+        this.syncedDate = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_SYNCEDDATE));
 
         return this;
-
     }
 
 

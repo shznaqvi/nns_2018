@@ -2453,7 +2453,57 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 RecipientsContract fc = new RecipientsContract();
-                allFC.add(fc.Hydrate(c, 1));
+                allFC.add(fc.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
+    public Collection<RecipientsContract> getPressedRecipients() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                RecipientsTable.COLUMN__ID,
+                RecipientsTable.COLUMN_UID,
+                RecipientsTable.COLUMN_UUID,
+                RecipientsTable.COLUMN_FM_UID,
+                RecipientsTable.COLUMN_FORMDATE,
+                RecipientsTable.COLUMN_DEVICEID,
+                RecipientsTable.COLUMN_DEVICETAGID,
+                RecipientsTable.COLUMN_USER,
+                RecipientsTable.COLUMN_APP_VER,
+                RecipientsTable.COLUMN_A8ASNO,
+                RecipientsTable.COLUMN_SA8A,
+        };
+        String whereClause = RecipientsTable.COLUMN_FM_UID + " =?";
+        String[] whereArgs = {MainApp.fc.getUID()};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                RecipientsTable.COLUMN__ID + " ASC";
+
+        Collection<RecipientsContract> allFC = new ArrayList<RecipientsContract>();
+        try {
+            c = db.query(
+                    RecipientsTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                RecipientsContract fc = new RecipientsContract();
+                allFC.add(fc.Hydrate(c));
             }
         } finally {
             if (c != null) {
@@ -2683,52 +2733,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (c.moveToNext()) {
                 FormsContract fc = new FormsContract();
                 allFC = fc.Hydrate1(c, 5);
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return allFC;
-    }
-
-    public RecipientsContract getsA8A() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-        String[] columns = {
-                RecipientsTable._ID,
-                RecipientsTable.COLUMN_UID,
-                RecipientsTable.COLUMN_UUID,
-                RecipientsTable.COLUMN_FM_UID,
-                RecipientsTable.COLUMN_SA8A
-        };
-
-
-        String whereClause = RecipientsTable.COLUMN_UID + "=?";
-        String[] whereArgs = new String[]{MainApp.rc.get_UID()};
-        String groupBy = null;
-        String having = null;
-
-        String orderBy =
-                RecipientsTable._ID + " ASC";
-
-        RecipientsContract allFC = new RecipientsContract();
-        try {
-            c = db.query(
-                    RecipientsTable.TABLE_NAME,  // The table to query
-                    columns,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                RecipientsContract rc = new RecipientsContract();
-                allFC = rc.Hydrate(c, 8);
             }
         } finally {
             if (c != null) {

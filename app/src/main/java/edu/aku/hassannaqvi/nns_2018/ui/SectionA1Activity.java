@@ -59,7 +59,6 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
     private final long DELAY = 1000;
 
     public static Boolean editFormFlag;
-    public static FormsContract editFormContract;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,13 +99,13 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
     public void AutoCompleteFields() {
 
-        editFormContract = db.getPressedForms(binding.nh102.getText().toString()
+        MainApp.fc = db.getPressedForms(binding.nh102.getText().toString()
                 , binding.nh108.getText().toString());
 
-        if (editFormContract != null) {
+        if (MainApp.fc != null) {
             Toast.makeText(this, "Data Get", Toast.LENGTH_SHORT).show();
 
-            JSONA1ModelClass jsonA1 = JSONUtilClass.getModelFromJSON(editFormContract.getsA1(), JSONA1ModelClass.class);
+            JSONA1ModelClass jsonA1 = JSONUtilClass.getModelFromJSON(MainApp.fc.getsA1(), JSONA1ModelClass.class);
 
             if (jsonA1.getHhheadpresent().equals("1")) {
                 binding.checkHHHeadpresent.setChecked(true);
@@ -551,12 +550,10 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
     private void SaveDraft() throws JSONException {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
-
-        MainApp.fc = new FormsContract();
-
         JSONObject sA1 = new JSONObject();
 
         if (!editFormFlag) {
+            MainApp.fc = new FormsContract();
             MainApp.fc.setDevicetagID(MainApp.getTagName(this));
             MainApp.fc.setFormDate(dtToday);
             MainApp.fc.setUser(MainApp.userName);
@@ -570,8 +567,6 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
             setGPS(); // Set GPS
         } else {
             sA1.put("edit_updatedate_sa1", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
-            MainApp.fc.setUID(editFormContract.getUID());
-            MainApp.fc.set_ID(editFormContract.get_ID());
         }
 
         sA1.put("rndid", MainApp.selectedHead.get_ID());
