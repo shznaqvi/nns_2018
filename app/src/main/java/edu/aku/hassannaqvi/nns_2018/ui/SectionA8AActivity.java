@@ -14,6 +14,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
@@ -42,6 +43,8 @@ public class SectionA8AActivity extends AppCompatActivity {
     int position = 0;
     Boolean backPressed = false;
     private Timer timer = new Timer();
+
+    JSONA8AModelClass jsonA8A;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,57 +112,62 @@ public class SectionA8AActivity extends AppCompatActivity {
     }
 
     private void AutoPopulate() {
-        RecipientsContract recipientsContract = db.getsA8A();
-        if (!recipientsContract.getsA8A().equals("")) {
-            JSONA8AModelClass jsonA8A = JSONUtilClass.getModelFromJSON(recipientsContract.getsA8A(), JSONA8AModelClass.class);
-            //  bi.
-            bi.nh7a03y.setText(jsonA8A.getnh7a03y());
-            bi.nh7a03m.setText(jsonA8A.getnh7a03m());
 
-            if (!jsonA8A.getnh7a04a().equals("0")) {
-                bi.nh7a04a.setChecked(true);
+        Collection<RecipientsContract> recipientsContracts = db.getPressedRecipients();
 
+        for (RecipientsContract recipientsContract : recipientsContracts) {
+
+            if (recipientsContract.getA8aSNo().equals(String.valueOf(MainApp.count))) {
+                jsonA8A = JSONUtilClass.getModelFromJSON(recipientsContract.getsA8A(), JSONA8AModelClass.class);
+
+                //  bi.
+                bi.nh7a03y.setText(jsonA8A.getnh7a03y());
+                bi.nh7a03m.setText(jsonA8A.getnh7a03m());
+
+                if (!jsonA8A.getnh7a04a().equals("0")) {
+                    bi.nh7a04a.setChecked(true);
+
+                }
+                if (!jsonA8A.getnh7a04b().equals("0")) {
+                    bi.nh7a04b.setChecked(true);
+
+                }
+                if (!jsonA8A.getnh7a04c().equals("0")) {
+                    bi.nh7a04c.setChecked(true);
+
+                }
+                if (!jsonA8A.getnh7a04d().equals("0")) {
+                    bi.nh7a04d.setChecked(true);
+
+                }
+                if (!jsonA8A.getnh7a04e().equals("0")) {
+                    bi.nh7a04e.setChecked(true);
+
+                }
+                if (!jsonA8A.getnh7a04f().equals("0")) {
+                    bi.nh7a04f.setChecked(true);
+
+                }
+                if (!jsonA8A.getnh7a04g().equals("0")) {
+                    bi.nh7a04g.setChecked(true);
+
+                }
+                if (!jsonA8A.getnh7a04h().equals("0")) {
+                    bi.nh7a04h.setChecked(true);
+
+                }
+                if (!jsonA8A.getnh7a04i().equals("0")) {
+                    bi.nh7a04i.setChecked(true);
+
+                }
+                if (!jsonA8A.getnh7a0496().equals("0")) {
+                    bi.nh7a0496.setChecked(true);
+                    bi.nh7a0496x.setText(jsonA8A.getnh7a0496x());
+                }
+                bi.nh7a05.setText(jsonA8A.getnh7a05());
+
+                bi.nh7a06.setText(jsonA8A.getnh7a06());
             }
-            if (!jsonA8A.getnh7a04b().equals("0")) {
-                bi.nh7a04b.setChecked(true);
-
-            }
-            if (!jsonA8A.getnh7a04c().equals("0")) {
-                bi.nh7a04c.setChecked(true);
-
-            }
-            if (!jsonA8A.getnh7a04d().equals("0")) {
-                bi.nh7a04d.setChecked(true);
-
-            }
-            if (!jsonA8A.getnh7a04e().equals("0")) {
-                bi.nh7a04e.setChecked(true);
-
-            }
-            if (!jsonA8A.getnh7a04f().equals("0")) {
-                bi.nh7a04f.setChecked(true);
-
-            }
-            if (!jsonA8A.getnh7a04g().equals("0")) {
-                bi.nh7a04g.setChecked(true);
-
-            }
-            if (!jsonA8A.getnh7a04h().equals("0")) {
-                bi.nh7a04h.setChecked(true);
-
-            }
-            if (!jsonA8A.getnh7a04i().equals("0")) {
-                bi.nh7a04i.setChecked(true);
-
-            }
-            if (!jsonA8A.getnh7a0496().equals("0")) {
-                bi.nh7a0496.setChecked(true);
-                bi.nh7a0496x.setText(jsonA8A.getnh7a0496x());
-            }
-            bi.nh7a05.setText(jsonA8A.getnh7a05());
-
-            bi.nh7a06.setText(jsonA8A.getnh7a06());
-
         }
 
     }
@@ -283,20 +291,24 @@ public class SectionA8AActivity extends AppCompatActivity {
     private void SaveDraft() throws JSONException {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
-        MainApp.rc = new RecipientsContract();
-
-        MainApp.rc.setDevicetagID(MainApp.fc.getDevicetagID());
-        MainApp.rc.setFormDate(MainApp.fc.getFormDate());
-        MainApp.rc.setUser(MainApp.fc.getUser());
-        MainApp.rc.setDeviceId(MainApp.fc.getDeviceID());
-        MainApp.rc.setApp_ver(MainApp.fc.getAppversion());
-        MainApp.rc.set_UUID(MainApp.fc.getUID());
-        MainApp.rc.setFMUID(fmcSelected.get_UID());
-
         JSONObject sA8a = new JSONObject();
+
+        if (SectionA1Activity.editFormFlag) {
+            MainApp.rc = new RecipientsContract();
+            MainApp.rc.setDevicetagID(MainApp.fc.getDevicetagID());
+            MainApp.rc.setFormDate(MainApp.fc.getFormDate());
+            MainApp.rc.setUser(MainApp.fc.getUser());
+            MainApp.rc.setDeviceId(MainApp.fc.getDeviceID());
+            MainApp.rc.setApp_ver(MainApp.fc.getAppversion());
+            MainApp.rc.set_UUID(MainApp.fc.getUID());
+            MainApp.rc.setFMUID(fmcSelected.get_UID());
+            MainApp.rc.setA8aSNo(String.valueOf(counter));
+        }
+
        /* if (backPressed) {
             sA8a.put("updatedate_na8a", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
         }*/
+
         sA8a.put("cluster_no", MainApp.fc.getClusterNo());
         sA8a.put("hhno", MainApp.fc.getHhNo());
 
@@ -304,7 +316,6 @@ public class SectionA8AActivity extends AppCompatActivity {
         sA8a.put("nh7a01Serial", fmcSelected.getSerialNo());
 
         sA8a.put("nh7a02", bi.nh7a02.getSelectedItem().toString());
-        //sA8a.put("nh7a02", bi.nh7a02.getText().toString());
 
         sA8a.put("nh7a03y", bi.nh7a03y.getText().toString());
 
