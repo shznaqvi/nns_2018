@@ -24,7 +24,7 @@ import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 public abstract class validatorClass {
 
     public static boolean EmptyTextBox(Context context, EditText txt, String msg) {
-        if (TextUtils.isEmpty(txt.getText().toString())) {
+        if (TextUtils.isEmpty(txt.getText().toString().trim())) {
             if (MainApp.validateFlag) {
                 Toast.makeText(context, "ERROR(empty): " + msg, Toast.LENGTH_SHORT).show();
             }
@@ -41,7 +41,7 @@ public abstract class validatorClass {
 
     public static boolean RangeTextBox(Context context, EditText txt, int min, int max, String msg, String type) {
 
-        if (Integer.valueOf(txt.getText().toString()) < min || Integer.valueOf(txt.getText().toString()) > max) {
+        if (Integer.valueOf(txt.getText().toString().trim()) < min || Integer.valueOf(txt.getText().toString().trim()) > max) {
             if (MainApp.validateFlag) {
                 Toast.makeText(context, "ERROR(invalid): " + msg, Toast.LENGTH_SHORT).show();
             }
@@ -58,7 +58,7 @@ public abstract class validatorClass {
     public static boolean RangeTextBox(Context context, EditText txt, int min, int max, int defaultVal, String msg, String type) {
 
         if (Integer.valueOf(txt.getText().toString()) != defaultVal) {
-            if ((Integer.valueOf(txt.getText().toString()) < min || Integer.valueOf(txt.getText().toString()) > max)) {
+            if ((Integer.valueOf(txt.getText().toString().trim()) < min || Integer.valueOf(txt.getText().toString().trim()) > max)) {
                 if (MainApp.validateFlag) {
                     Toast.makeText(context, "ERROR(invalid): " + msg, Toast.LENGTH_SHORT).show();
                 }
@@ -78,7 +78,7 @@ public abstract class validatorClass {
 
     public static boolean RangeTextBox(Context context, EditText txt, double min, double max, String msg, String type) {
 
-        if (Double.valueOf(txt.getText().toString()) < min || Double.valueOf(txt.getText().toString()) > max) {
+        if (Double.valueOf(txt.getText().toString().trim()) < min || Double.valueOf(txt.getText().toString().trim()) > max) {
             if (MainApp.validateFlag) {
                 Toast.makeText(context, "ERROR(invalid): " + msg, Toast.LENGTH_SHORT).show();
             }
