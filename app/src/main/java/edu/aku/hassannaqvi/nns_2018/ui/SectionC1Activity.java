@@ -10,6 +10,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RadioGroup;
@@ -116,12 +117,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
                         counterPerNA++;
                     }
 
-                    for (FamilyMembersContract fmc : MainApp.respList) {
-                        respName.add(fmc.getName() + "-" + fmc.getSerialNo());
-                        respMap.put(fmc.getName() + "-" + fmc.getSerialNo(), fmc.getSerialNo());
-                    }
 
-                    binding.resp.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, respName));
 
                     NAChildsize = MainApp.childNA.size();
                     binding.fldGrpresp.setVisibility(View.VISIBLE);
@@ -176,6 +172,12 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
         }
 
 
+        for (FamilyMembersContract fmc : MainApp.respList) {
+            respName.add(fmc.getName() + "-" + fmc.getSerialNo());
+            respMap.put(fmc.getName() + "-" + fmc.getSerialNo(), fmc.getSerialNo());
+        }
+
+        binding.resp.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, respName));
 
         // setup head
         if (!isNA) {
@@ -188,6 +190,20 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
 
         // setup spinner
         binding.nc101.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, childU5));
+
+        binding.nc101.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (binding.nc101.getSelectedItemPosition() != 0) {
+                    selectedChildName = binding.nc101.getSelectedItem().toString();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         for (EditText ed : grpDate) {
             ed.addTextChangedListener(this);
@@ -529,9 +545,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
             MainApp.cc.setFMUID(childMap.get(binding.nc101.getSelectedItem().toString()).get_UID());
             if (childMap.get(binding.nc101.getSelectedItem().toString()).getMotherId().equals("00")) {
                 MainApp.cc.setMUID("00");
-
             } else {
-
                 MainApp.cc.setMUID(MainApp.mc.get_UID());
 
             }

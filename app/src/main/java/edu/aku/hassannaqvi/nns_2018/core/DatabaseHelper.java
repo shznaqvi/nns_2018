@@ -1515,6 +1515,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 whereArgs);
     }
 
+    public void updateSyncedDeceasedForm(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(DeceasedContract.DeceasedTable.COLUMN_SYNCED, true);
+        values.put(DeceasedContract.DeceasedTable.COLUMN_SYNCED_DATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = DeceasedContract.DeceasedTable.COLUMN__ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                DeceasedContract.DeceasedTable.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
     public void updateSyncedFamilyMembers(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
 

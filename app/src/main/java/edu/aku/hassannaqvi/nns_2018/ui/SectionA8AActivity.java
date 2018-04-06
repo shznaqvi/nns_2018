@@ -223,6 +223,7 @@ public class SectionA8AActivity extends AppCompatActivity {
         MainApp.rc.setApp_ver(MainApp.fc.getAppversion());
         MainApp.rc.set_UUID(MainApp.fc.getUID());
         MainApp.rc.setFMUID(fmcSelected.get_UID());
+        MainApp.rc.setA8aSNo(String.valueOf(counter));
 
         JSONObject sA8a = new JSONObject();
 

@@ -206,9 +206,12 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
                     if (Integer.valueOf(bi.nh807y.getText().toString()) < 5) {
                         bi.fldGrpfid.setVisibility(View.VISIBLE);
                         bi.fldGrpmid.setVisibility(View.VISIBLE);
+                        bi.fldGrpnh8ms.setVisibility(View.GONE);
+                        bi.nh8ms.clearCheck();
                     } else {
                         bi.fldGrpfid.setVisibility(View.GONE);
                         bi.fldGrpmid.setVisibility(View.GONE);
+                        bi.fldGrpnh8ms.setVisibility(View.VISIBLE);
                         bi.nh804.setSelection(1);
                         bi.nh805.setSelection(1);
                     }
@@ -278,6 +281,12 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
         sA2.put("nh804", bi.nh804.getSelectedItem().toString());
         sA2.put("nh805", bi.nh805.getSelectedItem().toString());
         sA2.put("nh806", bi.nh806a.isChecked() ? "1" : bi.nh806b.isChecked() ? "2" : "0");
+        sA2.put("nh8ms", bi.nh8msa.isChecked() ? "1"
+                : bi.nh8msb.isChecked() ? "2"
+                : bi.nh8msc.isChecked() ? "3"
+                : bi.nh8msd.isChecked() ? "4"
+                : bi.nh8mse.isChecked() ? "5"
+                : "0");
         sA2.put("nh807y", bi.nh807y.getText().toString());
         sA2.put("nh807m", bi.nh807m.getText().toString());
         sA2.put("nh807d", bi.nh807d.getText().toString());
@@ -379,6 +388,10 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
             }
 
             if (!validatorClass.EmptySpinner(this, bi.nh805, getString(R.string.nh805))) {
+                return false;
+            }
+        } else {
+            if (!validatorClass.EmptyRadioButton(this, bi.nh8ms, bi.nh8msa, getString(R.string.nh8ms))) {
                 return false;
             }
         }

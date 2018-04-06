@@ -38,7 +38,6 @@ import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA1Binding;
 import edu.aku.hassannaqvi.nns_2018.other.MembersCount;
-import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionA1Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
@@ -77,17 +76,6 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
     private void SkipPatterns() {
 
-        binding.na11801.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                //formValidation();
-                if (checkedId == R.id.na11801a) {
-                    clearClass.ClearAllFields(binding.fldGrpna113, false);
-                } else {
-                    clearClass.ClearAllFields(binding.fldGrpna113, true);
-                }
-            }
-        });
 
 
         // Field wise validation
@@ -99,7 +87,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
         //binding.nh115.addTextChangedListener(this);
         //binding.nh213.addTextChangedListener(this);
         binding.na11802.setOnCheckedChangeListener(this);
-        binding.na119a.addTextChangedListener(this);
+        //binding.na119a.addTextChangedListener(this);
 
 
     }
@@ -431,9 +419,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 //        na11802
 
             if (MainApp.selectedHead.getSelStructure().equals("1")) {
-                if (!validatorClass.EmptyRadioButton(this, binding.na11802, binding.na11802b, getString(R.string.na11802))) {
-                    return false;
-                }
+                return validatorClass.EmptyRadioButton(this, binding.na11802, binding.na11802b, getString(R.string.na11802));
             }
 
             /*if (MainApp.selectedHead.getSelStructure().equals("1") && !binding.na11802a.isChecked()) {
@@ -443,9 +429,9 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
             }
 */
 //        na113
-            if (binding.na11801b.isChecked()) {
+            /*if (binding.na11801b.isChecked()) {
                 return validatorClass.EmptyCheckBox(this, binding.fldGrpna113, binding.na11996, binding.na11996x, String.valueOf(R.string.na113));
-            }
+            }*/
         }
 
         return true;
@@ -507,7 +493,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
                 : binding.na11802b.isChecked() ? "2" : "0");
 
 //        na117
-        sA1.put("nh119a", binding.na119a.isChecked() ? "1" : "0");
+        /*sA1.put("nh119a", binding.na119a.isChecked() ? "1" : "0");
         sA1.put("nh119b", binding.na119b.isChecked() ? "2" : "0");
         sA1.put("nh119c", binding.na119c.isChecked() ? "3" : "0");
         sA1.put("nh119d", binding.na119d.isChecked() ? "4" : "0");
@@ -515,7 +501,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
         sA1.put("nh119f", binding.na119f.isChecked() ? "6" : "0");
         sA1.put("nh119g", binding.na119g.isChecked() ? "7" : "0");
         sA1.put("nh11996", binding.na11996.isChecked() ? "96" : "0");
-        sA1.put("nh11996x", binding.na11996x.getText().toString());
+        sA1.put("nh11996x", binding.na11996x.getText().toString());*/
 
         MainApp.fc.setsA1(String.valueOf(sA1));
 
