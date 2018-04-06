@@ -68,9 +68,8 @@ public class SectionC4Activity extends AppCompatActivity implements TextWatcher,
         binding.txtnc416.setText(binding.txtnc416.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
         binding.txtnc417.setText(binding.txtnc417.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
         binding.txtnc418.setText(binding.txtnc418.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
-        binding.txtnc419.setText(binding.txtnc418.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
-
-
+        binding.txtnc419.setText(binding.txtnc419.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        binding.txtnc420.setText(binding.txtnc420.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
 
 
         //        Assigning data to UI binding
