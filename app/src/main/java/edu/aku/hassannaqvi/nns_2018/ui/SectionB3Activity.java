@@ -44,6 +44,7 @@ public class SectionB3Activity extends AppCompatActivity implements TextWatcher,
         binding.setCallback(this);
 
         this.setTitle(getResources().getString(R.string.nb3heading));
+        binding.textName.setText("Selected Woman : " + SectionB1Activity.wraName);
 
 //        Skip Patterns
 

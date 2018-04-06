@@ -68,6 +68,8 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
         bi.count.setText("Pregnancy No " + MainApp.count + " out of " + MainApp.totalPregnancy);
 
+        bi.textName.setText("Selected Woman : " + SectionB1Activity.wraName);
+
         for (EditText ed : grpDate) {
             ed.addTextChangedListener(this);
         }
@@ -350,8 +352,8 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
     protected void onPause() {
         super.onPause();
 
-        if (!backPressed) {
-            firstTimePressed = false;
+        if (firstTimePressed && !frontPressed) {
+            backPressed = false;
         }
     }
 

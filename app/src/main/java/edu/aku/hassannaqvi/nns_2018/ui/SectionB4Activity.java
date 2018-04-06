@@ -45,6 +45,7 @@ public class SectionB4Activity extends AppCompatActivity implements TextWatcher,
         binding.setCallback(this);
 
         this.setTitle(getResources().getString(R.string.nb4heading));
+        binding.textName.setText("Selected Woman : " + SectionB1Activity.wraName);
 
         binding.nw40299.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

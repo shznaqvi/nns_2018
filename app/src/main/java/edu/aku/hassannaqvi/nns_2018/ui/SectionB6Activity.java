@@ -452,6 +452,9 @@ public class SectionB6Activity extends AppCompatActivity {
                         (MainApp.nc.getDeviceId() + MainApp.nc.get_ID()));
                 db.updateNutritionID();
 
+                MainApp.mc.setsB6("1");
+                db.updateWRAB6();
+
                 uid = MainApp.nc.getDeviceId() + MainApp.nc.get_ID();
 
                 return true;
