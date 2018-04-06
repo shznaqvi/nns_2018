@@ -569,7 +569,7 @@ public class MainActivity extends MenuActivity {
             Toast.makeText(getApplicationContext(), "Syncing Deceased", Toast.LENGTH_SHORT).show();
             new SyncAllData(
                     this,
-                    "Desceaced",
+                    "Deceased",
                     "updateSyncedDeceased",
                     NutritionContract.class,
                     MainApp._HOST_URL + DeceasedContract.DeceasedTable._URL,
