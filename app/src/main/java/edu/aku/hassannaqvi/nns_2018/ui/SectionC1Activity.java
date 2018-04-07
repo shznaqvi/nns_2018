@@ -196,6 +196,9 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (binding.nc101.getSelectedItemPosition() != 0) {
                     selectedChildName = binding.nc101.getSelectedItem().toString();
+
+                    binding.txtnc202.setText(binding.txtnc202.getText().toString().replace("Name", binding.nc101.getSelectedItem().toString()));
+                    binding.txtnc203.setText(binding.txtnc203.getText().toString().replace("Name", binding.nc101.getSelectedItem().toString()));
                 }
             }
 
@@ -209,8 +212,6 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
             ed.addTextChangedListener(this);
         }
 
-        binding.txtnc202.setText(binding.txtnc202.getText().toString().replace("Name", binding.nc101.getSelectedItem().toString()));
-        binding.txtnc203.setText(binding.txtnc203.getText().toString().replace("Name", binding.nc101.getSelectedItem().toString()));
 
         //======= Checking Q201, 202 and 203
         binding.nc203.addTextChangedListener(new TextWatcher() {
