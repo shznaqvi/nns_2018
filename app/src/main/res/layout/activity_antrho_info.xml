@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/nh102"
+                android:text="@string/nh102a"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
@@ -56,7 +56,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_weight="60"
-                    android:hint="@string/nh102"
+                    android:hint="@string/nh102a"
                     android:inputType="number"
                     android:maxLength="9" />
 
@@ -234,6 +234,8 @@
                         android:layout_weight="60"
                         android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-"
                         android:hint="XXXX-X"
+                        android:layoutDirection="ltr"
+                        android:textDirection="ltr"
                         android:maxLength="6" />
 
                     <Button

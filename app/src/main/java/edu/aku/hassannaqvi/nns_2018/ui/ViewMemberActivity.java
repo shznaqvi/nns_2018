@@ -9,6 +9,9 @@ import android.os.Handler;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.InputType;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Toast;
 
@@ -77,6 +80,34 @@ public class ViewMemberActivity extends MenuActivity {
             initializingLists();
         }
 
+        binding.chckhouse.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                binding.chckhouse.setInputType(InputType.TYPE_CLASS_NUMBER);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                //clearFields();
+
+                if (!binding.chckhouse.getText().toString().isEmpty() && binding.chckhouse.getText().toString().length() == 4) {
+                    if (binding.chckhouse.getText().toString().substring(0, 3).matches("[0-9]+")) {
+                        binding.chckhouse.setText(binding.chckhouse.getText().toString() + "-");
+                        binding.chckhouse.setSelection(binding.chckhouse.getText().length());
+                        binding.chckhouse.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
     }
 
 
@@ -118,7 +149,7 @@ public class ViewMemberActivity extends MenuActivity {
                             if ((Integer.valueOf(json.getAge()) >= 10 && (Integer.valueOf(json.getAge()) < 20)) && json.getMaritalStatus().equals("5")) {
                                 MainApp.adolescents_1.add(fm);
                                 MainApp.all_members_1.add(fm);
-                            } else if (Integer.valueOf(json.getAge()) < 5) {
+                            } else if (Integer.valueOf(json.getAge()) < 6) {
                                 MainApp.childUnder5_1.add(fm);
                                 MainApp.all_members_1.add(fm);
                             } else if (!((Integer.valueOf(json.getAge()) >= 15 && Integer.valueOf(json.getAge()) < 50) && json.getGender().equals("2"))) {

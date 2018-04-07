@@ -95,6 +95,7 @@ public class AntrhoInfoActivity extends Activity {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+                binding.nh108.setInputType(InputType.TYPE_CLASS_NUMBER);
             }
 
             @Override

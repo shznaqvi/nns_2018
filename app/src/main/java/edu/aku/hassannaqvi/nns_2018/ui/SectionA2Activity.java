@@ -48,6 +48,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
     int position = 0;
     int Age = 0;
     long agebyDob = 0;
+    long ageinMonths = 0;
     Boolean flag = false;
     FamilyMembersContract family;
     Calendar dob = Calendar.getInstance();
@@ -93,6 +94,8 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                             binding.nh2doby.getText().toString());
 
                     agebyDob = DateUtils.ageInYearByDOB(dob);
+                    ageinMonths = DateUtils.ageInMonthsByDOB(dob);
+
                     binding.nh2agey.setEnabled(false);
                     binding.nh2agey.setText(String.valueOf(agebyDob));
 
@@ -461,7 +464,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
 
             //family.setDob(binding.nh2dob.getText().toString());
             family.setAge(binding.nh2agey.getText().toString()); //+ "/" + binding.nh2agem.getText().toString() + "/" + binding.nh2aged.getText().toString());
-            if (Age < 5) {
+            if (Age < 6) {
                 family.setMotherId(mothersMap.get(binding.nh212.getSelectedItem().toString() + "_" + mothersSerials.get(mothersList.indexOf(binding.nh212.getSelectedItem().toString()) - 1)));
             }
 
@@ -469,7 +472,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
             JSONObject sA2 = new JSONObject();
 
             sA2.put("cluster_no", MainApp.fc.getClusterNo());
-            sA2.put("hhno", MainApp.fc.getHhNo());
+            //sA2.put("hhno", MainApp.fc.getHhNo());
             sA2.put("resp", family.getResp().equals("0") ? "" : family.getResp());
             sA2.put("nh2SerialNo", family.getSerialNo());
             sA2.put("nh202", family.getName());

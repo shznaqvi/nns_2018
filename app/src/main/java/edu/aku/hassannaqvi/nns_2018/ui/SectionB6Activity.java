@@ -485,8 +485,8 @@ public class SectionB6Activity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
 
-        if (!backPressed) {
-            firstTimePressed = false;
+        if (firstTimePressed && !frontPressed) {
+            backPressed = false;
         }
     }
 
