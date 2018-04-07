@@ -47,6 +47,8 @@ public class SectionA2ListActivity extends AppCompatActivity {
     FamilyMembersAdapter mAdapter;
     JSONModelClass json;
     JSONACountModelClass countJSON;
+    Boolean flagMember = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +63,12 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
         if (SectionA1Activity.editFormFlag) {
 //        binding.btn_AddMore.setVisibility(View.GONE);
+            binding.btnAddMore.setVisibility(View.GONE);
+            binding.btnContinue.setVisibility(View.VISIBLE);
+
         } else {
 //        binding.btn_AddMore.setVisibility(View.VISIBLE);
+            binding.btnAddMore.setVisibility(View.VISIBLE);
         }
     }
 
@@ -152,7 +158,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
                                     break;
                                 }
                             }
-                            if (!flag) {
+                            if (flag) {
                                 AlertDialog.Builder editAlert = new AlertDialog.Builder(
                                         SectionA2ListActivity.this);
                                 editAlert
@@ -175,7 +181,9 @@ public class SectionA2ListActivity extends AppCompatActivity {
                                 editAlert.setNeutralButton("flag", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-
+//                                        flagMember = true;
+                                        MainApp.familyMembersList.get(position).setFlag("1");
+//                                        db.updateFamilyMemberFLAG("1",MainApp.familyMembersList.get(position).get_ID());
                                     }
                                 });
                                 editAlert.setNegativeButton("Cancel",
@@ -315,8 +323,8 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
                 if (SectionA1Activity.reBackFlag) {
                     respLineNo = "";
-//                    startActivity(new Intent(this, SectionA4Activity.class));
-                    startActivity(new Intent(this, SectionB1Activity.class));
+                    startActivity(new Intent(this, SectionA4Activity.class));
+//                    startActivity(new Intent(this, SectionB1Activity.class));
                 } else {
                     startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 6));
                 }
@@ -379,6 +387,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
         MainApp.fc.setCount(String.valueOf(count));
 
+
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
 
     }
@@ -390,6 +399,12 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
         int updcount = db.updateSACount();
 
+//        setting flag true or false
+        if (flagMember) {
+            for (FamilyMembersContract fm : MainApp.familyMembersList) {
+                db.updateFamilyMemberFLAG(fm.getFlag(), fm.get_ID());
+            }
+        }
         if (updcount == 1) {
             //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
             return true;
