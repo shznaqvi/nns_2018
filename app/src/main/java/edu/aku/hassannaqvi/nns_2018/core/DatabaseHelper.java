@@ -2089,7 +2089,57 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 DeceasedContract fc = new DeceasedContract();
-                allFC.add(fc.Hydrate(c, 1));
+                allFC.add(fc.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
+    public Collection<DeceasedContract> getPressedDeceasedMembers() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                DeceasedContract.DeceasedTable.COLUMN__ID,
+                DeceasedContract.DeceasedTable.COLUMN__UID,
+                DeceasedContract.DeceasedTable.COLUMN__UUID,
+                DeceasedContract.DeceasedTable.COLUMN_FORMDATE,
+                DeceasedContract.DeceasedTable.COLUMN_USER,
+                DeceasedContract.DeceasedTable.COLUMN_SH8,
+                DeceasedContract.DeceasedTable.COLUMN_DEVICETAGID,
+                DeceasedContract.DeceasedTable.COLUMN_DEVICEID,
+                DeceasedContract.DeceasedTable.COLUMN_SYNCED,
+                DeceasedContract.DeceasedTable.COLUMN_SYNCED_DATE,
+                DeceasedContract.DeceasedTable.COLUMN_APPVERSION
+        };
+        String whereClause = DeceasedContract.DeceasedTable.COLUMN__UUID + " =?";
+        String[] whereArgs = {MainApp.fc.getUID()};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                DeceasedContract.DeceasedTable.COLUMN__ID + " ASC";
+
+        Collection<DeceasedContract> allFC = new ArrayList<DeceasedContract>();
+        try {
+            c = db.query(
+                    DeceasedContract.DeceasedTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                DeceasedContract fc = new DeceasedContract();
+                allFC.add(fc.Hydrate(c));
             }
         } finally {
             if (c != null) {
@@ -2730,52 +2780,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return allFC;
     }
-
-    public DeceasedContract getsH8() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-        String[] columns = {
-                DeceasedContract.DeceasedTable.COLUMN__ID,
-                DeceasedContract.DeceasedTable.COLUMN__UID,
-                DeceasedContract.DeceasedTable.COLUMN__UUID,
-                DeceasedContract.DeceasedTable.COLUMN_SH8,
-        };
-
-
-        String whereClause = DeceasedContract.DeceasedTable.COLUMN__UID + "=?";
-        String[] whereArgs = new String[]{MainApp.dc.getUID()};
-        String groupBy = null;
-        String having = null;
-
-        String orderBy =
-                DeceasedContract.DeceasedTable.COLUMN__ID + " ASC";
-
-        DeceasedContract allFC = new DeceasedContract();
-        try {
-            c = db.query(
-                    DeceasedContract.DeceasedTable.TABLE_NAME,  // The table to query
-                    columns,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                DeceasedContract dc = new DeceasedContract();
-                allFC = dc.Hydrate(c, 8);
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return allFC;
-    }
-
 
     public MWRAContract getsB1(String formUid) {
         SQLiteDatabase db = this.getReadableDatabase();

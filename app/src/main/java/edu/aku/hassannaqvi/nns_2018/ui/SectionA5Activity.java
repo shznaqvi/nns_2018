@@ -394,6 +394,10 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
             }
             binding.nh702.setText(jsonA5.getnh702());
 
+            if (jsonA5.getnh701().equals("2")) {
+                binding.nh701a.setEnabled(false);
+            }
+
             prevRecipientCounter = Integer.valueOf(jsonA5.getnh702());
 
             if (!jsonA5.getnh801().equals("0")) {
@@ -404,6 +408,10 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
                 );
             }
             binding.nh802.setText(jsonA5.getnh802());
+
+            if (jsonA5.getnh801().equals("2")) {
+                binding.nh801a.setEnabled(false);
+            }
 
             prevDeceasedCounter = Integer.valueOf(jsonA5.getnh802());
 
@@ -643,8 +651,15 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
                 return false;
             }
 
-            if (!validatorClass.RangeTextBox(this, binding.nh702, 1, MainApp.membersCount.getCount(), getString(R.string.nh702), "Recipient no")) {
-                return false;
+            if (SectionA1Activity.editFormFlag) {
+                if (recipientCounter > prevRecipientCounter) {
+                    Toast.makeText(this, "Can't increase no!", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+            } else {
+                if (!validatorClass.RangeTextBox(this, binding.nh702, 1, MainApp.membersCount.getCount(), getString(R.string.nh702), "Recipient no")) {
+                    return false;
+                }
             }
 
         }
@@ -654,7 +669,16 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
         }
 
         if (binding.nh801a.isChecked()) {
-            return validatorClass.EmptyTextBox(this, binding.nh802, getString(R.string.nh802));
+            if (!validatorClass.EmptyTextBox(this, binding.nh802, getString(R.string.nh802))) {
+                return false;
+            }
+
+            if (SectionA1Activity.editFormFlag) {
+                if (deceasedCounter > prevDeceasedCounter) {
+                    Toast.makeText(this, "Can't increase no!", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+            }
         }
 
         return true;

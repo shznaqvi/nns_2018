@@ -16,8 +16,10 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,6 +55,9 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
     List<String> mothersSerials, fathersSerials;
     Map<String, String> mothersMap, fathersMap;
     private Timer timer = new Timer();
+
+    JSONH8ModelClass jsonH8;
+
     public TextWatcher age = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -257,58 +262,88 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
 //        Validation Boolean
         MainApp.validateFlag = false;
 
-//        AutoPopulateFields();
+        if (SectionA1Activity.editFormFlag) {
+            AutoPopulateFields();
+        }
 
     }
 
     private void AutoPopulateFields() {
-        DeceasedContract deceasedContract = db.getsH8();
 
-        if (!deceasedContract.getsH8().equals("")) {
+        Collection<DeceasedContract> deceasedContracts = db.getPressedDeceasedMembers();
 
-            JSONH8ModelClass jsonH8 = JSONUtilClass.getModelFromJSON(deceasedContract.getsH8(), JSONH8ModelClass.class);
-            bi.nh803.setText(jsonH8.getNh803());
+        for (DeceasedContract deceasedContract : deceasedContracts) {
 
-            if (!jsonH8.getNh806().equals("0")) {
-                bi.nh806.check(
-                        jsonH8.getNh806().equals("1") ? bi.nh806a.getId()
-                                : bi.nh806b.getId());
+            jsonH8 = JSONUtilClass.getModelFromJSON(deceasedContract.getsH8(), JSONH8ModelClass.class);
+
+            if (jsonH8.getSerial().equals(String.valueOf(counter))) {
+
+                bi.nh804.setVisibility(View.GONE);
+                bi.nh805.setVisibility(View.GONE);
+
+                bi.nh804a.setVisibility(View.VISIBLE);
+                bi.nh804a.setText(jsonH8.getNh804());
+                bi.nh805a.setVisibility(View.VISIBLE);
+                bi.nh805a.setText(jsonH8.getNh805());
+
+                bi.nh803.setText(jsonH8.getNh803());
+
+                if (!jsonH8.getNh806().equals("0")) {
+                    bi.nh806.check(
+                            jsonH8.getNh806().equals("1") ? bi.nh806a.getId()
+                                    : bi.nh806b.getId());
+                }
+
+                bi.nh807y.setText(jsonH8.getNh807y());
+                bi.nh807m.setText(jsonH8.getNh807m());
+                bi.nh807d.setText(jsonH8.getNh807d());
+                bi.nh808y.setText(jsonH8.getNh808y());
+                bi.nh808m.setText(jsonH8.getNh808m());
+                bi.nh808d.setText(jsonH8.getNh808d());
+                bi.nh809.setText(jsonH8.getNh809());
+
+                if (!jsonH8.getNh8Flag().equals("1")) {
+                    bi.nh8Flag.setChecked(true);
+                }
+
+                bi.nh8Flag.setVisibility(View.VISIBLE);
+
             }
-
-            bi.nh807y.setText(jsonH8.getNh807y());
-            bi.nh807m.setText(jsonH8.getNh807m());
-            bi.nh807d.setText(jsonH8.getNh807d());
-            bi.nh808y.setText(jsonH8.getNh808y());
-            bi.nh808m.setText(jsonH8.getNh808m());
-            bi.nh808d.setText(jsonH8.getNh808d());
-            bi.nh809.setText(jsonH8.getNh809());
-
         }
-
 
     }
 
     private void SaveDraft() throws JSONException {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
-
-        MainApp.dc = new DeceasedContract();
-
-        MainApp.dc.setDevicetagID(MainApp.fc.getDevicetagID());
-        MainApp.dc.setFormDate(MainApp.fc.getFormDate());
-        MainApp.dc.setUser(MainApp.fc.getUser());
-        MainApp.dc.setDeviceID(MainApp.fc.getDeviceID());
-        MainApp.dc.setAppversion(MainApp.fc.getAppversion());
-        MainApp.dc.setUUID(MainApp.fc.getUID());
-
         JSONObject sA2 = new JSONObject();
+        if (!SectionA1Activity.editFormFlag) {
+            MainApp.dc = new DeceasedContract();
+            MainApp.dc.setDevicetagID(MainApp.fc.getDevicetagID());
+            MainApp.dc.setFormDate(MainApp.fc.getFormDate());
+            MainApp.dc.setUser(MainApp.fc.getUser());
+            MainApp.dc.setDeviceID(MainApp.fc.getDeviceID());
+            MainApp.dc.setAppversion(MainApp.fc.getAppversion());
+            MainApp.dc.setUUID(MainApp.fc.getUID());
+
+            sA2.put("nh804", bi.nh804.getSelectedItem().toString());
+            sA2.put("nh805", bi.nh805.getSelectedItem().toString());
+        } else {
+            sA2.put("edit_updatedate_nh8", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+
+            sA2.put("nh804", jsonH8.getNh804());
+            sA2.put("nh805", jsonH8.getNh805());
+        }
 
         sA2.put("cluster_no", MainApp.fc.getClusterNo());
         sA2.put("hhno", MainApp.fc.getHhNo());
 
+        sA2.put("serial", String.valueOf(counter));
+
+        sA2.put("nh8Flag", bi.nh8Flag.isChecked() ? "1" : "2");
+
         sA2.put("nh803", bi.nh803.getText().toString());
-        sA2.put("nh804", bi.nh804.getSelectedItem().toString());
-        sA2.put("nh805", bi.nh805.getSelectedItem().toString());
+
         sA2.put("nh806", bi.nh806a.isChecked() ? "1" : bi.nh806b.isChecked() ? "2" : "0");
         sA2.put("nh807y", bi.nh807y.getText().toString());
         sA2.put("nh807m", bi.nh807m.getText().toString());

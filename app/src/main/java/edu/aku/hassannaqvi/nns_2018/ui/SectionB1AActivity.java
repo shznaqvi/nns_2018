@@ -7,6 +7,7 @@ import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -99,6 +100,13 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 bi.nw21702y.setText(jsonB1A.getnw21702y());
                 bi.nw21702m.setText(jsonB1A.getnw21702m());
                 bi.nw21702d.setText(jsonB1A.getnw21702d());
+
+                if (!jsonB1A.getnw217Flag().equals("1")) {
+                    bi.nw217Flag.setChecked(true);
+                }
+
+                bi.nw217Flag.setVisibility(View.VISIBLE);
+
             }
 
         }
@@ -280,6 +288,8 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
             }
         }
+
+        sB1a.put("nw217Flag", bi.nw217Flag.isChecked() ? "1" : "2");
 
         sB1a.put("serial", Integer.valueOf(MainApp.count));
 

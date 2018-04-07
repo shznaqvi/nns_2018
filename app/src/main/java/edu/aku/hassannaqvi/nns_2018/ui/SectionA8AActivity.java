@@ -13,6 +13,7 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -107,7 +108,9 @@ public class SectionA8AActivity extends AppCompatActivity {
 //        Validation Boolean
         MainApp.validateFlag = false;
 
-//        AutoPopulate();
+        if (SectionA1Activity.editFormFlag) {
+            AutoPopulate();
+        }
 
     }
 
@@ -117,8 +120,13 @@ public class SectionA8AActivity extends AppCompatActivity {
 
         for (RecipientsContract recipientsContract : recipientsContracts) {
 
-            if (recipientsContract.getA8aSNo().equals(String.valueOf(MainApp.count))) {
+            if (recipientsContract.getA8aSNo().equals(String.valueOf(counter))) {
                 jsonA8A = JSONUtilClass.getModelFromJSON(recipientsContract.getsA8A(), JSONA8AModelClass.class);
+
+                bi.nh7a02.setVisibility(View.GONE);
+
+                bi.nh7a02a.setVisibility(View.VISIBLE);
+                bi.nh7a02a.setText(jsonA8A.getnh7a02());
 
                 //  bi.
                 bi.nh7a03y.setText(jsonA8A.getnh7a03y());
@@ -166,7 +174,15 @@ public class SectionA8AActivity extends AppCompatActivity {
                 }
                 bi.nh7a05.setText(jsonA8A.getnh7a05());
 
+
                 bi.nh7a06.setText(jsonA8A.getnh7a06());
+                bi.nh7a06.setEnabled(false);
+
+                if (!jsonA8A.getnh7aFlag().equals("1")) {
+                    bi.nh7aFlag.setChecked(true);
+                }
+
+                bi.nh7aFlag.setVisibility(View.VISIBLE);
             }
         }
 
@@ -237,8 +253,10 @@ public class SectionA8AActivity extends AppCompatActivity {
 
         //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
-        if (!validatorClass.EmptySpinner(this, bi.nh7a02, getString(R.string.nh7a02))) {
-            return false;
+        if (!SectionA1Activity.editFormFlag) {
+            if (!validatorClass.EmptySpinner(this, bi.nh7a02, getString(R.string.nh7a02))) {
+                return false;
+            }
         }
 
         if (!validatorClass.EmptyTextBox(this, bi.nh7a03y, getString(R.string.nh7a03y))) {
@@ -293,7 +311,7 @@ public class SectionA8AActivity extends AppCompatActivity {
 
         JSONObject sA8a = new JSONObject();
 
-        if (SectionA1Activity.editFormFlag) {
+        if (!SectionA1Activity.editFormFlag) {
             MainApp.rc = new RecipientsContract();
             MainApp.rc.setDevicetagID(MainApp.fc.getDevicetagID());
             MainApp.rc.setFormDate(MainApp.fc.getFormDate());
@@ -303,17 +321,26 @@ public class SectionA8AActivity extends AppCompatActivity {
             MainApp.rc.set_UUID(MainApp.fc.getUID());
             MainApp.rc.setFMUID(fmcSelected.get_UID());
             MainApp.rc.setA8aSNo(String.valueOf(counter));
+
+            sA8a.put("nh7a01", fmcSelected.getName());
+            sA8a.put("nh7a01Serial", fmcSelected.getSerialNo());
+
+        } else {
+            sA8a.put("edit_updatedate_nh7a", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+
+            sA8a.put("nh7a01", jsonA8A.getnh7a01());
+            sA8a.put("nh7a01Serial", jsonA8A.getnh7a01Serial());
         }
 
        /* if (backPressed) {
             sA8a.put("updatedate_na8a", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
         }*/
 
+        sA8a.put("nh7aFlag", bi.nh7aFlag.isChecked() ? "1" : "2");
+
         sA8a.put("cluster_no", MainApp.fc.getClusterNo());
         sA8a.put("hhno", MainApp.fc.getHhNo());
 
-        sA8a.put("nh7a01", fmcSelected.getName());
-        sA8a.put("nh7a01Serial", fmcSelected.getSerialNo());
 
         sA8a.put("nh7a02", bi.nh7a02.getSelectedItem().toString());
 

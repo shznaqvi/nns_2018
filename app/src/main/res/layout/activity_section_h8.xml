@@ -49,6 +49,14 @@
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimaryDark" />
 
+            <CheckBox
+                android:id="@+id/nh8Flag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:text="@string/nw217Flag"
+                android:textColor="@color/red"
+                android:visibility="gone" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -161,8 +169,8 @@
                         android:background="@color/pink_100"
                         android:gravity="center"
                         android:text="@string/months"
-                        android:textSize="22sp"
-                        android:textColor="@color/colorPrimaryDark" />
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="22sp" />
 
 
                     <EditText
@@ -190,8 +198,8 @@
                         android:background="@color/pink_100"
                         android:gravity="center"
                         android:text="@string/day"
-                        android:textSize="22sp"
-                        android:textColor="@color/colorPrimaryDark" />
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="22sp" />
 
                     <EditText
                         android:id="@+id/nh807d"
@@ -235,6 +243,15 @@
                     android:layout_weight="1"
                     android:gravity="center" />
 
+                <TextView
+                    android:id="@+id/nh804a"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/black_overlay"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:visibility="gone" />
+
             </LinearLayout>
 
             <!--06-->
@@ -263,6 +280,15 @@
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/nh805a"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/black_overlay"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:visibility="gone" />
 
             </LinearLayout>
 
@@ -322,8 +348,8 @@
                         android:background="@color/pink_100"
                         android:gravity="center"
                         android:text="@string/nw201sub2"
-                        android:textSize="22sp"
-                        android:textColor="@color/colorPrimaryDark" />
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="22sp" />
 
 
                     <EditText
@@ -350,8 +376,8 @@
                         android:background="@color/pink_100"
                         android:gravity="center"
                         android:text="@string/nw201sub1"
-                        android:textSize="22sp"
-                        android:textColor="@color/colorPrimaryDark" />
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="22sp" />
 
                     <EditText
                         android:id="@+id/nh808d"

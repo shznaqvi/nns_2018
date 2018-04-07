@@ -15,6 +15,16 @@ public class JSONB1AModelClass {
     private String nw21702m = "";
     private String nw21702d = "";
 
+    private String nw217Flag = "";
+
+    public String getnw217Flag() {
+        return nw217Flag;
+    }
+
+    public void setnw217Flag(String nw217Flag) {
+        this.nw217Flag = nw217Flag;
+    }
+
     public JSONB1AModelClass() {
 
     }

@@ -17,9 +17,27 @@ public class JSONH8ModelClass {
     private String nh808m = "";
     private String nh808y = "";
     private String nh809 = "";
+    private String serial = "";
+    private String nh8Flag = "";
 
     public JSONH8ModelClass() {
 
+    }
+
+    public String getNh8Flag() {
+        return nh8Flag;
+    }
+
+    public void setNh8Flag(String nh8Flag) {
+        this.nh8Flag = nh8Flag;
+    }
+
+    public String getSerial() {
+        return serial;
+    }
+
+    public void setSerial(String serial) {
+        this.serial = serial;
     }
 
     public String getNh803() {
