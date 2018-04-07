@@ -3,7 +3,6 @@ package edu.aku.hassannaqvi.nns_2018.ui;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -25,7 +24,7 @@ import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionC3Activity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
+public class SectionC3Activity extends Menu2Activity implements RadioGroup.OnCheckedChangeListener {
 
     private final long DELAY = 1000;
     ActivitySectionC3Binding binding;

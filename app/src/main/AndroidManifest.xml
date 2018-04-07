@@ -51,11 +51,12 @@
         <activity
             android:name=".ui.MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/ActionBarTheme"
+            android:theme="@style/AppTheme1"
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
             android:name=".core.AndroidDatabaseManager"
             android:screenOrientation="portrait"
+            android:theme="@style/AppTheme1"
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
             android:name=".ui.EndingActivity"
@@ -193,6 +194,12 @@
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
             android:name=".ui.MenuActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+            android:windowSoftInputMode="stateVisible|adjustPan" />
+
+        <activity
+            android:name=".ui.Menu2Activity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
             android:windowSoftInputMode="stateVisible|adjustPan" />

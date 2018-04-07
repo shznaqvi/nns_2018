@@ -3,7 +3,6 @@ package edu.aku.hassannaqvi.nns_2018.ui;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.CheckBox;
@@ -24,7 +23,7 @@ import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA5Binding;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionA5Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
+public class SectionA5Activity extends Menu2Activity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
     static int deceasedCounter = 0;
     private final long DELAY = 1000;

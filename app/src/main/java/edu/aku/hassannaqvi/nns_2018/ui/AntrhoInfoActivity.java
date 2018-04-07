@@ -294,7 +294,7 @@ public class AntrhoInfoActivity extends Activity {
                                 MainApp.adolescents.add(fm);
                                 MainApp.all_members.add(fm);
                             }
-                            if (Integer.valueOf(json.getAge()) < 5) {
+                            if (Integer.valueOf(json.getAge()) < 6) {
                                 MainApp.childUnder5.add(fm);
                                 MainApp.all_members.add(fm);
                             }

@@ -3,7 +3,6 @@ package edu.aku.hassannaqvi.nns_2018.ui;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
@@ -23,7 +22,7 @@ import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB6Binding;
 import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionB6Activity extends AppCompatActivity {
+public class SectionB6Activity extends Menu2Activity {
 
     private final long DELAY = 1000;
     ActivitySectionB6Binding bi;

@@ -26,6 +26,8 @@
         <item name="android:spinnerStyle">@style/spinnerStyle</item>
         <item name="android:spinnerItemStyle">@style/SpinnerItem</item>
         <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownItem</item>
+
+
         <!-- Customize your theme here. -->
     </style>
 
@@ -37,6 +39,7 @@
         <item name="android:checkboxStyle">@style/checkbox2</item>
         <item name="android:radioButtonStyle">@style/radiobutton</item>
         <item name="android:checkedTextViewStyle">@style/labels2</item>
+
         <!-- Customize your theme here. -->
     </style>
 
@@ -349,5 +352,14 @@
     <style name="HeaderBar">
         <item name="android:background">#303F9F</item>
     </style>
+
+
+    <!-- <style name="itemStyle" parent="Base.TextAppearance.AppCompat.Menu">
+         <item name="textColor">@color/white</item>
+         <item name="android:background">@color/black</item>
+         <item name="textSize">15sp</item>
+
+
+     </style>-->
 
 </resources>
