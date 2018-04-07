@@ -7,6 +7,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -107,6 +108,79 @@ public class SectionC2Activity extends Menu2Activity implements RadioGroup.OnChe
         bi.txtnc212.setText(bi.txtnc212.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
 
 
+        bi.nc207a.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    bi.nc207h.setEnabled(false);
+                    bi.nc207h.setText(null);
+
+                    bi.nc207d.setEnabled(false);
+                    bi.nc207d.setText(null);
+
+                } else {
+                    bi.nc207h.setEnabled(true);
+                    bi.nc207d.setEnabled(true);
+                }
+            }
+        });
+
+        bi.nc207b.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    bi.nc207h.setEnabled(true);
+                } else {
+                    bi.nc207h.setEnabled(false);
+                    bi.nc207h.setText(null);
+                }
+            }
+        });
+
+        bi.nc207c.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    bi.nc207d.setEnabled(true);
+                } else {
+                    bi.nc207d.setEnabled(false);
+                    bi.nc207d.setText(null);
+                }
+            }
+        });
+
+
+        bi.nc220.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if (bi.nc220a.isChecked()) {
+                    bi.nc221a.setEnabled(true);
+                    bi.nc221b.setEnabled(true);
+                    bi.nc221c.setEnabled(true);
+                    bi.nc22196.setEnabled(true);
+
+                    bi.nc222a.setEnabled(true);
+                    bi.nc222b.setEnabled(true);
+                    bi.nc222c.setEnabled(true);
+                    bi.nc22296.setEnabled(true);
+
+
+                } else {
+                    bi.nc221.clearCheck();
+                    bi.nc222.clearCheck();
+
+                    bi.nc221a.setEnabled(false);
+                    bi.nc221b.setEnabled(false);
+                    bi.nc221c.setEnabled(false);
+                    bi.nc22196.setEnabled(false);
+
+                    bi.nc222a.setEnabled(false);
+                    bi.nc222b.setEnabled(false);
+                    bi.nc222c.setEnabled(false);
+                    bi.nc22296.setEnabled(false);
+                }
+            }
+        });
 
     }
 
@@ -791,19 +865,25 @@ public class SectionC2Activity extends Menu2Activity implements RadioGroup.OnChe
         }
 
 
-        if (!validatorClass.EmptyRadioButton(this, bi.nc221, bi.nc221a, getString(R.string.nc221))) {
-            return false;
-        }
-        if (!validatorClass.EmptyRadioButton(this, bi.nc221, bi.nc22196, bi.nc22196x, getString(R.string.nc221))) {
-            return false;
+        if (bi.nc220a.isChecked()) {
+
+            if (!validatorClass.EmptyRadioButton(this, bi.nc221, bi.nc221a, getString(R.string.nc221))) {
+                return false;
+            }
+
+            if (!validatorClass.EmptyRadioButton(this, bi.nc221, bi.nc22196, bi.nc22196x, getString(R.string.nc221))) {
+                return false;
+            }
+
+            if (!validatorClass.EmptyRadioButton(this, bi.nc222, bi.nc222a, getString(R.string.nc222))) {
+                return false;
+            }
+
+            if (!validatorClass.EmptyRadioButton(this, bi.nc222, bi.nc22296, bi.nc22296x, getString(R.string.nc222))) {
+                return false;
+            }
         }
 
-        if (!validatorClass.EmptyRadioButton(this, bi.nc222, bi.nc222a, getString(R.string.nc222))) {
-            return false;
-        }
-        if (!validatorClass.EmptyRadioButton(this, bi.nc222, bi.nc22296, bi.nc22296x, getString(R.string.nc222))) {
-            return false;
-        }
 
         return validatorClass.EmptyRadioButton(this, bi.nc223, bi.nc223a, getString(R.string.nc223));
     }
