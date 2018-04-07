@@ -184,8 +184,8 @@ public class RecipientsContract {
         this.user = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_USER));
         this.app_ver = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_APP_VER));
         this.a8aSNo = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_A8ASNO));
-        this.synced = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_SYNCED));
-        this.syncedDate = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_SYNCEDDATE));
+/*        this.synced = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_SYNCED));
+        this.syncedDate = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_SYNCEDDATE));*/
 
         return this;
     }

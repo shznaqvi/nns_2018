@@ -121,12 +121,15 @@ public class SectionA8AActivity extends AppCompatActivity {
         for (RecipientsContract recipientsContract : recipientsContracts) {
 
             if (recipientsContract.getA8aSNo().equals(String.valueOf(counter))) {
+
+                MainApp.rc = recipientsContract;
+
                 jsonA8A = JSONUtilClass.getModelFromJSON(recipientsContract.getsA8A(), JSONA8AModelClass.class);
 
                 bi.nh7a02.setVisibility(View.GONE);
 
                 bi.nh7a02a.setVisibility(View.VISIBLE);
-                bi.nh7a02a.setText(jsonA8A.getnh7a02());
+                bi.nh7a02a.setText(jsonA8A.getnh7a02().toUpperCase());
 
                 //  bi.
                 bi.nh7a03y.setText(jsonA8A.getnh7a03y());
@@ -174,11 +177,9 @@ public class SectionA8AActivity extends AppCompatActivity {
                 }
                 bi.nh7a05.setText(jsonA8A.getnh7a05());
 
-
                 bi.nh7a06.setText(jsonA8A.getnh7a06());
-                bi.nh7a06.setEnabled(false);
 
-                if (!jsonA8A.getnh7aFlag().equals("1")) {
+                if (jsonA8A.getnh7aFlag().equals("1")) {
                     bi.nh7aFlag.setChecked(true);
                 }
 
@@ -226,7 +227,11 @@ public class SectionA8AActivity extends AppCompatActivity {
                     if (SectionA5Activity.deceasedCounter > 0) {
                         startActivity(new Intent(this, SectionH8Activity.class));
                     } else {
-                        startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 3));
+                        if (SectionA1Activity.editFormFlag) {
+                            startActivity(new Intent(this, ViewMemberActivity.class).putExtra("flagEdit", false));
+                        } else {
+                            startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 3));
+                        }
                     }
                 } else {
 
@@ -376,24 +381,27 @@ public class SectionA8AActivity extends AppCompatActivity {
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        Long updcount = db.addRecipient(MainApp.rc);
-        MainApp.rc.set_ID(String.valueOf(updcount));
-
-        if (updcount != 0) {
-            //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
-
-            MainApp.rc.set_UID(
-                    (MainApp.rc.getDeviceId() + MainApp.rc.get_ID()));
-            db.updateRecepientID();
-
+        if (SectionA1Activity.editFormFlag) {
+            Long updcount = db.addRecipient(MainApp.rc, 1);
             return true;
         } else {
-            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
-            return false;
+            Long updcount = db.addRecipient(MainApp.rc, 0);
+            MainApp.rc.set_ID(String.valueOf(updcount));
+
+            if (updcount != 0) {
+                //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+
+                MainApp.rc.set_UID(
+                        (MainApp.rc.getDeviceId() + MainApp.rc.get_ID()));
+                db.updateRecepientID();
+
+                return true;
+            } else {
+                Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         }
-
         //return true;
-
     }
 
 

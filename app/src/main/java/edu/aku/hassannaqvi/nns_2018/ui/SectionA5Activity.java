@@ -652,8 +652,8 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
             }
 
             if (SectionA1Activity.editFormFlag) {
-                if (recipientCounter > prevRecipientCounter) {
-                    Toast.makeText(this, "Can't increase no!", Toast.LENGTH_SHORT).show();
+                if (Integer.valueOf(binding.nh702.getText().toString()) > prevRecipientCounter) {
+                    Toast.makeText(this, "Can't increase Recipient!", Toast.LENGTH_SHORT).show();
                     return false;
                 }
             } else {
@@ -674,8 +674,8 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
             }
 
             if (SectionA1Activity.editFormFlag) {
-                if (deceasedCounter > prevDeceasedCounter) {
-                    Toast.makeText(this, "Can't increase no!", Toast.LENGTH_SHORT).show();
+                if (Integer.valueOf(binding.nh802.getText().toString()) > prevDeceasedCounter) {
+                    Toast.makeText(this, "Can't increase Deceased!", Toast.LENGTH_SHORT).show();
                     return false;
                 }
             }

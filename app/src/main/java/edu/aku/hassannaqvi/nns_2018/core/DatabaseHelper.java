@@ -1077,64 +1077,85 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public Long addDeceasedMembers(DeceasedContract dc) {
+    public Long addDeceasedMembers(DeceasedContract dc, int type) {
 
         // Gets the data repository in write mode
         SQLiteDatabase db = this.getWritableDatabase();
 
 // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
-        values.put(DeceasedContract.DeceasedTable.COLUMN_PROJECTNAME, dc.getProjectName());
-        values.put(DeceasedContract.DeceasedTable.COLUMN__UID, dc.getUID());
-        values.put(DeceasedContract.DeceasedTable.COLUMN__UUID, dc.getUUID());
-        values.put(DeceasedContract.DeceasedTable.COLUMN_FORMDATE, dc.getFormDate());
-        values.put(DeceasedContract.DeceasedTable.COLUMN_USER, dc.getUser());
-        values.put(DeceasedContract.DeceasedTable.COLUMN_SH8, dc.getsH8());
-        values.put(DeceasedContract.DeceasedTable.COLUMN_DEVICETAGID, dc.getDevicetagID());
-        values.put(DeceasedContract.DeceasedTable.COLUMN_DEVICEID, dc.getDeviceID());
-        values.put(DeceasedContract.DeceasedTable.COLUMN_SYNCED, dc.getSynced());
-        values.put(DeceasedContract.DeceasedTable.COLUMN_SYNCED_DATE, dc.getSynced_date());
-        values.put(DeceasedContract.DeceasedTable.COLUMN_APPVERSION, dc.getAppversion());
-
-
-        // Insert the new row, returning the primary key value of the new row
         long newRowId;
-        newRowId = db.insert(
-                DeceasedContract.DeceasedTable.TABLE_NAME,
-                DeceasedContract.DeceasedTable.COLUMN_NAME_NULLABLE,
-                values);
+        values.put(DeceasedContract.DeceasedTable.COLUMN_SH8, dc.getsH8());
+
+        if (type == 0) {
+            values.put(DeceasedContract.DeceasedTable.COLUMN_PROJECTNAME, dc.getProjectName());
+            values.put(DeceasedContract.DeceasedTable.COLUMN__UID, dc.getUID());
+            values.put(DeceasedContract.DeceasedTable.COLUMN__UUID, dc.getUUID());
+            values.put(DeceasedContract.DeceasedTable.COLUMN_FORMDATE, dc.getFormDate());
+            values.put(DeceasedContract.DeceasedTable.COLUMN_USER, dc.getUser());
+
+            values.put(DeceasedContract.DeceasedTable.COLUMN_DEVICETAGID, dc.getDevicetagID());
+            values.put(DeceasedContract.DeceasedTable.COLUMN_DEVICEID, dc.getDeviceID());
+            values.put(DeceasedContract.DeceasedTable.COLUMN_SYNCED, dc.getSynced());
+            values.put(DeceasedContract.DeceasedTable.COLUMN_SYNCED_DATE, dc.getSynced_date());
+            values.put(DeceasedContract.DeceasedTable.COLUMN_APPVERSION, dc.getAppversion());
+
+            // Insert the new row, returning the primary key value of the new row
+            newRowId = db.insert(
+                    DeceasedContract.DeceasedTable.TABLE_NAME,
+                    DeceasedContract.DeceasedTable.COLUMN_NAME_NULLABLE,
+                    values);
+        } else {
+            newRowId = db.update(
+                    DeceasedContract.DeceasedTable.TABLE_NAME,
+                    values,
+                    DeceasedContract.DeceasedTable.COLUMN__UID + " = ?",
+                    new String[]{MainApp.dc.getUID()}
+            );
+        }
         return newRowId;
     }
 
 
-    public Long addRecipient(RecipientsContract rc) {
+    public Long addRecipient(RecipientsContract rc, int type) {
 
         // Gets the data repository in write mode
         SQLiteDatabase db = this.getWritableDatabase();
 
 // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
-        values.put(RecipientsTable.COLUMN_PROJECTNAME, rc.getProjectName());
-        values.put(RecipientsTable.COLUMN_UID, rc.get_UID());
-        values.put(RecipientsTable.COLUMN_UUID, rc.get_UUID());
-        values.put(RecipientsTable.COLUMN_FM_UID, rc.getFMUID());
-        values.put(RecipientsTable.COLUMN_FORMDATE, rc.getFormDate());
-        values.put(RecipientsTable.COLUMN_USER, rc.getUser());
-        values.put(RecipientsTable.COLUMN_A8ASNO, rc.getA8aSNo());
-        values.put(RecipientsTable.COLUMN_SA8A, rc.getsA8A());
-        values.put(RecipientsTable.COLUMN_DEVICETAGID, rc.getDevicetagID());
-        values.put(RecipientsTable.COLUMN_DEVICEID, rc.getDeviceId());
-        values.put(RecipientsTable.COLUMN_SYNCED, rc.getSynced());
-        values.put(RecipientsTable.COLUMN_SYNCEDDATE, rc.getSyncedDate());
-        values.put(RecipientsTable.COLUMN_APP_VER, rc.getApp_ver());
-
-
-        // Insert the new row, returning the primary key value of the new row
         long newRowId;
-        newRowId = db.insert(
-                RecipientsTable.TABLE_NAME,
-                RecipientsTable.COLUMN_NAME_NULLABLE,
-                values);
+
+        values.put(RecipientsTable.COLUMN_SA8A, rc.getsA8A());
+
+        if (type == 0) {
+            values.put(RecipientsTable.COLUMN_PROJECTNAME, rc.getProjectName());
+            values.put(RecipientsTable.COLUMN_UID, rc.get_UID());
+            values.put(RecipientsTable.COLUMN_UUID, rc.get_UUID());
+            values.put(RecipientsTable.COLUMN_FM_UID, rc.getFMUID());
+            values.put(RecipientsTable.COLUMN_FORMDATE, rc.getFormDate());
+            values.put(RecipientsTable.COLUMN_USER, rc.getUser());
+            values.put(RecipientsTable.COLUMN_A8ASNO, rc.getA8aSNo());
+            values.put(RecipientsTable.COLUMN_DEVICETAGID, rc.getDevicetagID());
+            values.put(RecipientsTable.COLUMN_DEVICEID, rc.getDeviceId());
+            values.put(RecipientsTable.COLUMN_SYNCED, rc.getSynced());
+            values.put(RecipientsTable.COLUMN_SYNCEDDATE, rc.getSyncedDate());
+            values.put(RecipientsTable.COLUMN_APP_VER, rc.getApp_ver());
+
+
+            // Insert the new row, returning the primary key value of the new row
+            newRowId = db.insert(
+                    RecipientsTable.TABLE_NAME,
+                    RecipientsTable.COLUMN_NAME_NULLABLE,
+                    values);
+        } else {
+            newRowId = db.update(
+                    RecipientsTable.TABLE_NAME,
+                    values,
+                    RecipientsTable.COLUMN_UID + " = ?",
+                    new String[]{MainApp.rc.get_UID()}
+            );
+        }
         return newRowId;
     }
 
@@ -2532,7 +2553,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 RecipientsTable.COLUMN_A8ASNO,
                 RecipientsTable.COLUMN_SA8A,
         };
-        String whereClause = RecipientsTable.COLUMN_FM_UID + " =?";
+        String whereClause = RecipientsTable.COLUMN_UUID + " =?";
         String[] whereArgs = {MainApp.fc.getUID()};
         String groupBy = null;
         String having = null;

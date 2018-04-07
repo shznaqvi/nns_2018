@@ -128,7 +128,11 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
                 if (counter == SectionA5Activity.deceasedCounter) {
                     counter = 1;
 
-                    startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 2));
+                    if (SectionA1Activity.editFormFlag) {
+                        startActivity(new Intent(this, ViewMemberActivity.class).putExtra("flagEdit", false));
+                    } else {
+                        startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 2));
+                    }
 
                 } else {
                     counter++;
@@ -278,13 +282,15 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
 
             if (jsonH8.getSerial().equals(String.valueOf(counter))) {
 
+                MainApp.dc = deceasedContract;
+
                 bi.nh804.setVisibility(View.GONE);
                 bi.nh805.setVisibility(View.GONE);
 
                 bi.nh804a.setVisibility(View.VISIBLE);
-                bi.nh804a.setText(jsonH8.getNh804());
+                bi.nh804a.setText("Mother name: " + jsonH8.getNh804().toUpperCase());
                 bi.nh805a.setVisibility(View.VISIBLE);
-                bi.nh805a.setText(jsonH8.getNh805());
+                bi.nh805a.setText("Father name: " + jsonH8.getNh805().toUpperCase());
 
                 bi.nh803.setText(jsonH8.getNh803());
 
@@ -302,7 +308,7 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
                 bi.nh808d.setText(jsonH8.getNh808d());
                 bi.nh809.setText(jsonH8.getNh809());
 
-                if (!jsonH8.getNh8Flag().equals("1")) {
+                if (jsonH8.getNh8Flag().equals("1")) {
                     bi.nh8Flag.setChecked(true);
                 }
 
@@ -317,6 +323,7 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
         JSONObject sA2 = new JSONObject();
+
         if (!SectionA1Activity.editFormFlag) {
             MainApp.dc = new DeceasedContract();
             MainApp.dc.setDevicetagID(MainApp.fc.getDevicetagID());
@@ -363,20 +370,25 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
 
         DatabaseHelper db = new DatabaseHelper(this);
 
-        long updcount = db.addDeceasedMembers(MainApp.dc);
-
-        MainApp.dc.set_ID(String.valueOf(updcount));
-
-        if (updcount != 0) {
-            //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
-
-            MainApp.dc.setUID(
-                    (MainApp.dc.getDeviceID() + MainApp.dc.get_ID()));
-            db.updateDeceasedMemberID();
+        if (SectionA1Activity.editFormFlag) {
+            long updcount = db.addDeceasedMembers(MainApp.dc, 1);
             return true;
         } else {
-            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
-            return false;
+            long updcount = db.addDeceasedMembers(MainApp.dc, 0);
+
+            MainApp.dc.set_ID(String.valueOf(updcount));
+
+            if (updcount != 0) {
+                //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+
+                MainApp.dc.setUID(
+                        (MainApp.dc.getDeviceID() + MainApp.dc.get_ID()));
+                db.updateDeceasedMemberID();
+                return true;
+            } else {
+                Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         }
     }
 
@@ -439,13 +451,15 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
         }
 
 
-        if (Integer.valueOf(bi.nh807y.getText().toString()) < 5) {
-            if (!validatorClass.EmptySpinner(this, bi.nh804, getString(R.string.nh804))) {
-                return false;
-            }
+        if (!SectionA1Activity.editFormFlag) {
+            if (Integer.valueOf(bi.nh807y.getText().toString()) < 5) {
+                if (!validatorClass.EmptySpinner(this, bi.nh804, getString(R.string.nh804))) {
+                    return false;
+                }
 
-            if (!validatorClass.EmptySpinner(this, bi.nh805, getString(R.string.nh805))) {
-                return false;
+                if (!validatorClass.EmptySpinner(this, bi.nh805, getString(R.string.nh805))) {
+                    return false;
+                }
             }
         }
 
