@@ -164,6 +164,7 @@ public class SectionC2Activity extends Menu2Activity implements RadioGroup.OnChe
                     bi.nc222c.setEnabled(true);
                     bi.nc22296.setEnabled(true);
 
+
                 } else {
                     bi.nc221.clearCheck();
                     bi.nc222.clearCheck();
