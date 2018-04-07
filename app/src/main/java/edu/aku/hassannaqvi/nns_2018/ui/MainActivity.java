@@ -43,22 +43,13 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.nns_2018.R;
-import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.DeceasedContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.NutritionContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.nns_2018.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivityMainBinding;
-import edu.aku.hassannaqvi.nns_2018.sync.SyncAllData;
 
 public class MainActivity extends MenuActivity {
 
@@ -476,7 +467,7 @@ public class MainActivity extends MenuActivity {
 
     }
 
-    public void syncServer(View view) {
+    /*public void syncServer(View view) {
 
         // Require permissions INTERNET & ACCESS_NETWORK_STATE
         ConnectivityManager connMgr = (ConnectivityManager)
@@ -570,8 +561,8 @@ public class MainActivity extends MenuActivity {
             new SyncAllData(
                     this,
                     "Deceased",
-                    "updateSyncedDeceased",
-                    NutritionContract.class,
+                    "updateSyncedDeceasedForm",
+                    DeceasedContract.class,
                     MainApp._HOST_URL + DeceasedContract.DeceasedTable._URL,
                     db.getUnsyncedDeceasedMembers(), this.findViewById(R.id.syncStatus)
             ).execute();
@@ -587,7 +578,7 @@ public class MainActivity extends MenuActivity {
             Toast.makeText(this, "No network connection available.", Toast.LENGTH_SHORT).show();
         }
 
-    }
+    }*/
 
     public void syncDevice(View view) {
 

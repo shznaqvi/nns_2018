@@ -5,13 +5,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -38,7 +38,7 @@ import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB1Binding;
 import edu.aku.hassannaqvi.nns_2018.other.DateUtils;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionB1Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
+public class SectionB1Activity extends Menu2Activity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
     public static String wraName = "";
     public static int WRAcounter = 0;
@@ -57,6 +57,15 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
     private Timer timer = new Timer();
     Calendar dob = Calendar.getInstance();
     long agebyDob = 0;
+    @BindViews({R.id.nw21001, R.id.nw21002})
+    List<RadioGroup> nw210a;
+    @BindViews({R.id.nw21003, R.id.nw21098, R.id.nw21099})
+    List<RadioGroup> nw210b;
+    @BindViews({R.id.nw21001a, R.id.nw21002a})
+    List<RadioButton> nw210aYes;
+    @BindViews({R.id.nw21003a, R.id.nw21098a, R.id.nw21099a})
+    List<RadioButton> nw210bYes;
+
     public TextWatcher age = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -688,7 +697,7 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
                         bi.nw216.clearCheck();
                         bi.nw216aa.setText(null);
 
-                    } else if (bi.nw207a.isChecked() && !bi.nw208a.isChecked()) {
+                    } else {
                         bi.nw212.setEnabled(true);
                         bi.nw213.setEnabled(true);
                         bi.nw214.setEnabled(true);
@@ -891,8 +900,67 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
             }
         });
 
+        RadioGroup.OnCheckedChangeListener nw210aListener = new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ValidateForm();
+                if (isoneYes()) {
+                    bi.nw21003a.setEnabled(false);
+                    bi.nw21003b.setEnabled(false);
+                    bi.nw21003.clearCheck();
+                    bi.nw21098a.setEnabled(false);
+                    bi.nw21098b.setEnabled(false);
+                    bi.nw21098.clearCheck();
+                    bi.nw21099a.setEnabled(false);
+                    bi.nw21099b.setEnabled(false);
+                    bi.nw21099.clearCheck();
+                } else {
+                    bi.nw21003a.setEnabled(true);
+                    bi.nw21003b.setEnabled(true);
+                    bi.nw21098a.setEnabled(true);
+                    bi.nw21098b.setEnabled(true);
+                    bi.nw21099a.setEnabled(true);
+                    bi.nw21099b.setEnabled(true);
+                }
 
-        bi.nw21001.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            }
+        };
+
+        RadioGroup.OnCheckedChangeListener nw210bListener = new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                ValidateForm();
+                if (isoneYes2()) {
+                    bi.nw21001a.setEnabled(false);
+                    bi.nw21001b.setEnabled(false);
+                    bi.nw21001.clearCheck();
+                    bi.nw21002a.setEnabled(false);
+                    bi.nw21002b.setEnabled(false);
+                    bi.nw21002.clearCheck();
+                } else {
+                    bi.nw21001a.setEnabled(true);
+                    bi.nw21001b.setEnabled(true);
+                    bi.nw21002a.setEnabled(true);
+                    bi.nw21002b.setEnabled(true);
+
+                }
+            }
+        };
+
+        // Nw210 Skips
+
+        for (RadioGroup rg : nw210a) {
+            rg.setOnCheckedChangeListener(nw210aListener);
+        }
+
+        for (RadioGroup rg : nw210b) {
+            rg.setOnCheckedChangeListener(nw210bListener);
+        }
+
+
+
+        /*bi.nw21001.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 ValidateForm();
@@ -944,8 +1012,8 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
             }
         });
 
-
-        bi.nw21003.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+*/
+        /*bi.nw21003.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 ValidateForm();
@@ -1040,7 +1108,7 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
                 }
             }
         });
-
+*/
         bi.nw213.addTextChangedListener(this);
         bi.nw214.addTextChangedListener(this);
         bi.nw215.addTextChangedListener(this);
@@ -1353,11 +1421,13 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
                         return false;
                     }
 
-                    if (!validatorClass.RangeTextBox(this, bi.nw211, 1, 20, getString(R.string.nw211), " pregnancies"))
+                    if (!validatorClass.RangeTextBox(this, bi.nw211, 1, 20, getString(R.string.nw211), " pregnancies")) {
+                        return false;
+                    }
 
-                        if (!validatorClass.EmptyTextBox(this, bi.nw212, getString(R.string.nw212))) {
-                            return false;
-                        }
+                    if (!validatorClass.EmptyTextBox(this, bi.nw212, getString(R.string.nw212))) {
+                        return false;
+                    }
                     if (!validatorClass.RangeTextBox(this, bi.nw212, 0, Integer.valueOf(bi.nw211.getText().toString()), getString(R.string.nw212), " Deliveries")) {
                         return false;
                     }
@@ -1411,4 +1481,32 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
         }
         return true;
     }
+
+    public boolean isoneYes() {
+
+        int i = 0;
+        for (RadioButton rg : nw210aYes) {
+            if (rg.isChecked())
+                return true;
+        }
+
+        // Show answer here
+        // return i == rg;
+        return false;
+    }
+
+    public boolean isoneYes2() {
+
+        int i = 0;
+        for (RadioButton rg : nw210bYes) {
+            if (rg.isChecked())
+                return true;
+        }
+
+        // Show answer here
+        // return i == rg;
+        return false;
+    }
+
+
 }

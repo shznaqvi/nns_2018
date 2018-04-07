@@ -569,7 +569,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         };
 
-        String whereClause = familyMembers.COLUMN_UUID + "=? "
+        String whereClause = familyMembers.COLUMN_ENM_NO + "=? AND "
                 + familyMembers.COLUMN_HH_NO + "=?";
         String[] whereArgs = new String[]{cluster, hh};
         String groupBy = null;
@@ -1880,7 +1880,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                familyMembers._ID,
+                familyMembers.COLUMN_ID,
                 familyMembers.COLUMN_UID,
                 familyMembers.COLUMN_UUID,
                 familyMembers.COLUMN_FORMDATE,
@@ -1902,7 +1902,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String having = null;
 
         String orderBy =
-                familyMembers._ID + " ASC";
+                familyMembers.COLUMN_ID + " ASC";
 
         Collection<FamilyMembersContract> allFC = new ArrayList<FamilyMembersContract>();
         try {
@@ -1934,7 +1934,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                familyMembers._ID,
+                familyMembers.COLUMN_ID,
                 familyMembers.COLUMN_UID,
                 familyMembers.COLUMN_UUID,
                 familyMembers.COLUMN_FORMDATE,
@@ -2001,7 +2001,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                DeceasedContract.DeceasedTable._ID,
+                DeceasedContract.DeceasedTable.COLUMN__ID,
                 DeceasedContract.DeceasedTable.COLUMN__UID,
                 DeceasedContract.DeceasedTable.COLUMN__UUID,
                 DeceasedContract.DeceasedTable.COLUMN_FORMDATE,
@@ -2020,12 +2020,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String having = null;
 
         String orderBy =
-                DeceasedContract.DeceasedTable._ID + " ASC";
+                DeceasedContract.DeceasedTable.COLUMN__ID + " ASC";
 
         Collection<DeceasedContract> allFC = new ArrayList<DeceasedContract>();
         try {
             c = db.query(
-                    familyMembers.TABLE_NAME,  // The table to query
+                    DeceasedContract.DeceasedTable.TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
                     whereClause,               // The columns for the WHERE clause
                     whereArgs,                 // The values for the WHERE clause

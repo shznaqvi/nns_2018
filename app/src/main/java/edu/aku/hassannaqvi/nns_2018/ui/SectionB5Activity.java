@@ -3,7 +3,6 @@ package edu.aku.hassannaqvi.nns_2018.ui;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.RadioGroup;
@@ -26,7 +25,7 @@ import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionB5Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
+public class SectionB5Activity extends Menu2Activity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
     private final long DELAY = 1000;
     ActivitySectionB5Binding binding;
@@ -253,8 +252,7 @@ public class SectionB5Activity extends AppCompatActivity implements TextWatcher,
 
 //                finish();
 
-                if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
-                        &&
+                if (SectionB1Activity.WRAcounter == MainApp.mwra.size() &&
                         MainApp.B6Flag) {
                     startActivity(new Intent(this, SectionB6Activity.class)
                             .putExtra("backPressed", backPressed));

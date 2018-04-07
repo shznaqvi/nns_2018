@@ -95,6 +95,7 @@ public class AntrhoInfoActivity extends Activity {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+                binding.nh108.setInputType(InputType.TYPE_CLASS_NUMBER);
             }
 
             @Override
@@ -293,7 +294,7 @@ public class AntrhoInfoActivity extends Activity {
                                 MainApp.adolescents.add(fm);
                                 MainApp.all_members.add(fm);
                             }
-                            if (Integer.valueOf(json.getAge()) < 5) {
+                            if (Integer.valueOf(json.getAge()) < 6) {
                                 MainApp.childUnder5.add(fm);
                                 MainApp.all_members.add(fm);
                             }

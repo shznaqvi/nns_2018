@@ -9,7 +9,6 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -40,7 +39,7 @@ import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA1Binding;
 import edu.aku.hassannaqvi.nns_2018.other.MembersCount;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionA1Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
+public class SectionA1Activity extends Menu2Activity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
     private static final String TAG = SectionA1Activity.class.getName();
     static int progress = 0;
@@ -55,6 +54,8 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
     private Timer timer = new Timer();
     static Boolean reBackFlag = true;
     static Boolean reBackChildFlag = true;
+
+    int length = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -192,6 +193,17 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
                 binding.nh108.setInputType(InputType.TYPE_CLASS_NUMBER);
+
+                /*Toast.makeText(SectionA1Activity.this,
+                        "before: " + charSequence + "|" +
+                                i + "|" +
+                                i1 + "|" +
+                                i2
+                        , Toast.LENGTH_SHORT).show();*/
+                String scanned = charSequence.toString();
+
+                length = charSequence.toString().length();
+
             }
 
             @Override
@@ -199,17 +211,24 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
                 clearFields();
 
+                /*Toast.makeText(SectionA1Activity.this,
+                        "onText: " + charSequence + "|" +
+                                i + "|" +
+                                i1 + "|" +
+                                i2
+                        , Toast.LENGTH_SHORT).show();*/
+                String scanned = charSequence.toString();
+
                 if (!binding.nh108.getText().toString().isEmpty() && binding.nh108.getText().toString().length() == 4) {
                     if (binding.nh108.getText().toString().substring(0, 3).matches("[0-9]+")) {
-                        binding.nh108.setText(binding.nh108.getText().toString() + "-");
-                        binding.nh108.setSelection(binding.nh108.getText().length());
-                        binding.nh108.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+                        if (length < 5) {
+                            binding.nh108.setText(binding.nh108.getText().toString() + "-");
+                            binding.nh108.setSelection(binding.nh108.getText().length());
+                            binding.nh108.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+                        }
 
                     }
                 }
-
-
-
 
             }
 
