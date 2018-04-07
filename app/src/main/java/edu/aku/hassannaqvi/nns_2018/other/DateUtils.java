@@ -76,7 +76,7 @@ public class DateUtils {
         Date today = new Date();
         Long diff = today.getTime() - dob.getTime();
         double ageInYears = (diff / (24 * 60 * 60 * 1000)) / 365.25;
-        long age = (long) Math.ceil(ageInYears);
+        long age = (long) Math.floor(ageInYears);
         return age;
     }
 

@@ -148,6 +148,9 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
 
         this.setTitle(getResources().getString(R.string.nh8heading));
 
+//        Validation Boolean
+        MainApp.validateFlag = false;
+
         for (EditText ed : grpdob) {
             ed.addTextChangedListener(age);
         }
@@ -254,8 +257,6 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
         }
 
 
-//        Validation Boolean
-        MainApp.validateFlag = false;
 
     }
 
