@@ -80,7 +80,6 @@
 
                     <RadioButton
                         android:id="@+id/istatusd"
-
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -89,7 +88,6 @@
 
                     <RadioButton
                         android:id="@+id/istatuse"
-
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -125,7 +123,6 @@
      -->
                     <RadioButton
                         android:id="@+id/istatus96"
-
                         style="@style/radiobutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
