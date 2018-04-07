@@ -103,7 +103,6 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
                 , binding.nh108.getText().toString());
 
         if (MainApp.fc != null) {
-            Toast.makeText(this, "Data Get", Toast.LENGTH_SHORT).show();
 
             JSONA1ModelClass jsonA1 = JSONUtilClass.getModelFromJSON(MainApp.fc.getsA1(), JSONA1ModelClass.class);
 
@@ -281,6 +280,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 //        FamilyMembersList initialization
         MainApp.familyMembersList = new ArrayList<>();
         MainApp.hhClicked = new ArrayList<>();
+        MainApp.flagClicked = new ArrayList<>();
 
 //        HH Checkbox validate
         /* binding.checkHHHeadpresent.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

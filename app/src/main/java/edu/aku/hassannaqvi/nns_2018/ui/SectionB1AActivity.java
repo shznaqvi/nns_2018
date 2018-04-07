@@ -101,7 +101,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 bi.nw21702m.setText(jsonB1A.getnw21702m());
                 bi.nw21702d.setText(jsonB1A.getnw21702d());
 
-                if (!jsonB1A.getnw217Flag().equals("1")) {
+                if (jsonB1A.getnw217Flag().equals("1")) {
                     bi.nw217Flag.setChecked(true);
                 }
 
@@ -143,7 +143,13 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                                         .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
 
                             } else {
-                                startActivity(new Intent(this, ViewMemberActivity.class).putExtra("flagEdit", false));
+                                finish();
+                                startActivity(new Intent(this, ViewMemberActivity.class)
+                                        .putExtra("flagEdit", false)
+                                        .putExtra("comingBack", true)
+                                        .putExtra("cluster", MainApp.mc.getCluster())
+                                        .putExtra("hhno", MainApp.mc.getHhno())
+                                );
                             }
                         } else {
                             if (SectionB1Activity.WRAcounter == MainApp.mwra.size()

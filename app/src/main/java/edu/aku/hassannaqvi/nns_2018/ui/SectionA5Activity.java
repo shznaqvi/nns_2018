@@ -504,7 +504,16 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
                     }
 
                 } else {
-                    startActivity(new Intent(this, ViewMemberActivity.class).putExtra(SectionA1Activity.editFormFlag ? "flagEdit" : "activity", SectionA1Activity.editFormFlag ? false : 1));
+                    if (SectionA1Activity.editFormFlag) {
+                        startActivity(new Intent(this, ViewMemberActivity.class)
+                                .putExtra("flagEdit", false)
+                                .putExtra("comingBack", true)
+                                .putExtra("cluster", MainApp.fc.getClusterNo())
+                                .putExtra("hhno", MainApp.fc.getHhNo())
+                        );
+                    } else {
+                        startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 1));
+                    }
                 }
 
             } else {

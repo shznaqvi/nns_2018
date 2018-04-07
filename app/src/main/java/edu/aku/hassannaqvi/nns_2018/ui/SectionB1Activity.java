@@ -1124,7 +1124,13 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
                 } else {
 
                     if (editWRAFlag) {
-                        startActivity(new Intent(this, ViewMemberActivity.class).putExtra("flagEdit", false));
+                        finish();
+                        startActivity(new Intent(this, ViewMemberActivity.class)
+                                .putExtra("flagEdit", false)
+                                .putExtra("comingBack", true)
+                                .putExtra("cluster", MainApp.mc.getCluster())
+                                .putExtra("hhno", MainApp.mc.getHhno())
+                        );
                     } else {
                         startActivity(new Intent(this, MotherEndingActivity.class)
                                 .putExtra("checkingFlag", true)
@@ -1150,7 +1156,13 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
                         .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
 
             } else {
-                startActivity(new Intent(this, ViewMemberActivity.class).putExtra("flagEdit", false));
+                finish();
+                startActivity(new Intent(this, ViewMemberActivity.class)
+                        .putExtra("flagEdit", false)
+                        .putExtra("comingBack", true)
+                        .putExtra("cluster", MainApp.mc.getCluster())
+                        .putExtra("hhno", MainApp.mc.getHhno())
+                );
             }
         } else {
             if (SectionB1Activity.WRAcounter == MainApp.mwra.size()

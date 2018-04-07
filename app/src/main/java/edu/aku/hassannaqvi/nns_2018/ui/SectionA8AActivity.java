@@ -129,7 +129,7 @@ public class SectionA8AActivity extends AppCompatActivity {
                 bi.nh7a02.setVisibility(View.GONE);
 
                 bi.nh7a02a.setVisibility(View.VISIBLE);
-                bi.nh7a02a.setText(jsonA8A.getnh7a02().toUpperCase());
+                bi.nh7a02a.setText(jsonA8A.getnh7a02().toString().toUpperCase());
 
                 //  bi.
                 bi.nh7a03y.setText(jsonA8A.getnh7a03y());
@@ -228,7 +228,14 @@ public class SectionA8AActivity extends AppCompatActivity {
                         startActivity(new Intent(this, SectionH8Activity.class));
                     } else {
                         if (SectionA1Activity.editFormFlag) {
-                            startActivity(new Intent(this, ViewMemberActivity.class).putExtra("flagEdit", false));
+
+                            startActivity(new Intent(this, ViewMemberActivity.class)
+                                    .putExtra("flagEdit", false)
+                                    .putExtra("comingBack", true)
+                                    .putExtra("cluster", MainApp.fc.getClusterNo())
+                                    .putExtra("hhno", MainApp.fc.getHhNo())
+                            );
+
                         } else {
                             startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 3));
                         }

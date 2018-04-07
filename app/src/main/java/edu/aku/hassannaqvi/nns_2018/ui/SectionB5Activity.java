@@ -257,17 +257,32 @@ public class SectionB5Activity extends AppCompatActivity implements TextWatcher,
 
 //                finish();
 
-                if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
-                        &&
-                        MainApp.B6Flag) {
-                    startActivity(new Intent(this, SectionB6Activity.class)
-                            .putExtra("backPressed", backPressed));
-                } else if (MainApp.B2B6Flag) {
-                    startActivity(new Intent(this, SectionB6Activity.class)
-                            .putExtra("backPressed", backPressed));
+                if (SectionB1Activity.editWRAFlag) {
+                    if (MainApp.mc.getsB6().equals("1")) {
+                        startActivity(new Intent(this, SectionB6Activity.class)
+                                .putExtra("backPressed", backPressed));
+                    } else {
+                        finish();
+                        startActivity(new Intent(this, ViewMemberActivity.class)
+                                .putExtra("flagEdit", false)
+                                .putExtra("comingBack", true)
+                                .putExtra("cluster", MainApp.mc.getCluster())
+                                .putExtra("hhno", MainApp.mc.getHhno())
+                        );
+                    }
                 } else {
-                    startActivity(new Intent(this, MotherEndingActivity.class)
-                            .putExtra("complete", true));
+                    if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
+                            &&
+                            MainApp.B6Flag) {
+                        startActivity(new Intent(this, SectionB6Activity.class)
+                                .putExtra("backPressed", backPressed));
+                    } else if (MainApp.B2B6Flag) {
+                        startActivity(new Intent(this, SectionB6Activity.class)
+                                .putExtra("backPressed", backPressed));
+                    } else {
+                        startActivity(new Intent(this, MotherEndingActivity.class)
+                                .putExtra("complete", true));
+                    }
                 }
 
             } else {

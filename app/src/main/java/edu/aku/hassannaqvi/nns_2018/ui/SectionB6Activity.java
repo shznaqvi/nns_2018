@@ -333,7 +333,13 @@ public class SectionB6Activity extends AppCompatActivity {
 
                     } else*/
                     if (SectionB1Activity.editWRAFlag) {
-                        startActivity(new Intent(this, ViewMemberActivity.class).putExtra("flagEdit", false));
+                        finish();
+                        startActivity(new Intent(this, ViewMemberActivity.class)
+                                .putExtra("flagEdit", false)
+                                .putExtra("comingBack", true)
+                                .putExtra("cluster", MainApp.mc.getCluster())
+                                .putExtra("hhno", MainApp.mc.getHhno())
+                        );
                     } else {
                         startActivity(new Intent(this, MotherEndingActivity.class)
                                 .putExtra("checkingFlag", true)

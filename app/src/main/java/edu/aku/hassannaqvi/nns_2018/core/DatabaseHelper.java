@@ -1654,7 +1654,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
-    public int updateFamilyMemberFLAG(String flag, String fmID) {
+    public int updateFamilyMemberFLAG(String flag, String fmUID) {
         SQLiteDatabase db = this.getReadableDatabase();
 
 // New value for one column
@@ -1662,8 +1662,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(familyMembers.COLUMN_FLAG, flag);
 
 // Which row to update, based on the ID
-        String selection = familyMembers.COLUMN_ID + " = ?";
-        String[] selectionArgs = {fmID};
+        String selection = familyMembers.COLUMN_UID + " = ?";
+        String[] selectionArgs = {fmUID};
 
         int count = db.update(familyMembers.TABLE_NAME,
                 values,
@@ -1754,7 +1754,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 //      Which row to update, based on the ID
         String selection = MWRATable.COLUMN_UID + " = ?";
-        String[] selectionArgs = new String[]{String.valueOf(MainApp.mc.get_ID())};
+        String[] selectionArgs = {String.valueOf(MainApp.mc.get_UID())};
 
         int count = db.update(MWRATable.TABLE_NAME,
                 values,

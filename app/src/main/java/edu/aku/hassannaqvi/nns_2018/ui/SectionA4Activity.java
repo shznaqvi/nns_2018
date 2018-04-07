@@ -299,8 +299,9 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
                                                                                                                                         jsonA4.getnh303().equals("15") ? binding.nh303p.getId() :
                                                                                                                                                 binding.nh30396.getId()
                 );
+                binding.nh30396x.setText(jsonA4.getnh30396x());
             }
-            binding.nh30396x.setText(jsonA4.getnh30396x());
+
 
             if (!jsonA4.getnh304().equals("0")) {
                 binding.nh30499.setChecked(false);

@@ -170,20 +170,27 @@ public class SectionA2ListActivity extends AppCompatActivity {
                                                     new DialogInterface.OnClickListener() {
                                                         public void onClick(DialogInterface dialog,
                                                                             int id) {
-                                                            finish();
+                                                            /*finish();
                                                             startActivity(new Intent(getApplicationContext(), SectionA2Activity.class)
                                                                     .putExtra("data", MainApp.familyMembersList.get(position))
                                                                     .putExtra("flag", true)
-                                                                    .putExtra("pos", position));
+                                                                    .putExtra("pos", position));*/
                                                         }
                                                     });
                                 }
-                                editAlert.setNeutralButton("flag", new DialogInterface.OnClickListener() {
+                                editAlert.setNeutralButton("Delete", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
 //                                        flagMember = true;
                                         MainApp.familyMembersList.get(position).setFlag("1");
-//                                        db.updateFamilyMemberFLAG("1",MainApp.familyMembersList.get(position).get_ID());
+                                        binding.recyclerNoMembers.getChildAt(position).setBackgroundColor(getResources().getColor(R.color.brown));
+
+                                        int updcount = db.updateFamilyMemberFLAG("1", MainApp.familyMembersList.get(position).get_UID());
+                                        if (updcount == 1) {
+                                            Toast.makeText(SectionA2ListActivity.this, "Record Flag to delete!", Toast.LENGTH_SHORT).show();
+
+                                            MainApp.flagClicked.add(position);
+                                        }
                                     }
                                 });
                                 editAlert.setNegativeButton("Cancel",
@@ -400,11 +407,11 @@ public class SectionA2ListActivity extends AppCompatActivity {
         int updcount = db.updateSACount();
 
 //        setting flag true or false
-        if (flagMember) {
+        /*if (flagMember) {
             for (FamilyMembersContract fm : MainApp.familyMembersList) {
                 db.updateFamilyMemberFLAG(fm.getFlag(), fm.get_ID());
             }
-        }
+        }*/
         if (updcount == 1) {
             //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
             return true;
@@ -624,6 +631,11 @@ public class SectionA2ListActivity extends AppCompatActivity {
                     for (int item : MainApp.hhClicked) {
                         binding.recyclerNoMembers.getChildAt(item).setBackgroundColor(Color.BLACK);
                     }
+
+                    for (int item : MainApp.flagClicked) {
+                        binding.recyclerNoMembers.getChildAt(item).setBackgroundColor(getResources().getColor(R.color.brown));
+                    }
+
                 }
             }, 800);
         }

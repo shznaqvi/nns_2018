@@ -12,6 +12,8 @@ import android.os.Handler;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -58,6 +60,8 @@ public class ViewMemberActivity extends MenuActivity {
 
     String formUid;
 
+    private Boolean exit = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,7 +98,58 @@ public class ViewMemberActivity extends MenuActivity {
             binding.btnContinue.setVisibility(View.GONE);
 
             flag = false;
+
+            if (getIntent().getBooleanExtra("comingBack", false)) {
+
+                binding.fldGrpVisA.setVisibility(View.GONE);
+                binding.fldGrpVisB.setVisibility(View.GONE);
+                binding.fldGrpEditHH.setVisibility(View.VISIBLE);
+
+                binding.chckenumblock.setText(getIntent().getStringExtra("cluster"));
+                binding.chckhouse.setText(getIntent().getStringExtra("hhno"));
+
+                BtnCheckEnm();
+                BtnCheckHH();
+
+                binding.btnEnd.setVisibility(View.VISIBLE);
+            }
         }
+
+        binding.chckenumblock.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                binding.fldGrpVisB.setVisibility(View.GONE);
+                binding.fldGrpviewlist.setVisibility(View.GONE);
+                binding.chckhouse.setText(null);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        binding.chckhouse.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                binding.fldGrpviewlist.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
     }
 
@@ -224,6 +279,9 @@ public class ViewMemberActivity extends MenuActivity {
                     binding.fldGrphidden.setVisibility(View.VISIBLE);
 
                 }
+
+                binding.fldGrpVisB.setVisibility(View.VISIBLE);
+
             } else {
                 Toast.makeText(this, "Sorry not found any block", Toast.LENGTH_SHORT).show();
             }
@@ -416,6 +474,23 @@ public class ViewMemberActivity extends MenuActivity {
     }
 
     public void BtnEnd() {
+        if (exit) {
+            finish(); // finish activity
+
+            startActivity(new Intent(this, MainActivity.class));
+
+        } else {
+            Toast.makeText(this, "Press Back again to Exit.",
+                    Toast.LENGTH_SHORT).show();
+            exit = true;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    exit = false;
+                }
+            }, 3 * 1000);
+
+        }
     }
 
     public void intentWifi(View view) {
@@ -453,7 +528,7 @@ public class ViewMemberActivity extends MenuActivity {
 
     @Override
     public void onBackPressed() {
-        if (flag) {
+        if (MainApp.all_members_1.size() > 0) {
             Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
         } else {
             super.onBackPressed();
@@ -743,8 +818,6 @@ public class ViewMemberActivity extends MenuActivity {
 
                             if (MainApp.all_members_1.size() > 0) {
                                 Toast.makeText(mContext, "Members Found..", Toast.LENGTH_SHORT).show();
-                                binding.btnContinue.setVisibility(View.VISIBLE);
-                                binding.btnEnd.setVisibility(View.GONE);
                                 binding.fldGrpviewlist.setVisibility(View.VISIBLE);
                                 viewWraList();
                                 viewChildList();
@@ -754,7 +827,6 @@ public class ViewMemberActivity extends MenuActivity {
                             } else {
                                 binding.fldGrpviewlist.setVisibility(View.GONE);
                                 binding.btnContinue.setVisibility(View.GONE);
-                                binding.btnEnd.setVisibility(View.GONE);
                                 Toast.makeText(mContext, "No members found, Check another HH.", Toast.LENGTH_SHORT).show();
                             }
 

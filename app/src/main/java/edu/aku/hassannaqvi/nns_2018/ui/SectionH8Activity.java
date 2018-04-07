@@ -129,7 +129,12 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
                     counter = 1;
 
                     if (SectionA1Activity.editFormFlag) {
-                        startActivity(new Intent(this, ViewMemberActivity.class).putExtra("flagEdit", false));
+                        startActivity(new Intent(this, ViewMemberActivity.class)
+                                .putExtra("flagEdit", false)
+                                .putExtra("comingBack", true)
+                                .putExtra("cluster", MainApp.fc.getClusterNo())
+                                .putExtra("hhno", MainApp.fc.getHhNo())
+                        );
                     } else {
                         startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 2));
                     }
@@ -158,6 +163,9 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
         bi.setCallback(this);
 
         this.setTitle(getResources().getString(R.string.nh8heading));
+
+//        Validation Boolean
+        MainApp.validateFlag = false;
 
         for (EditText ed : grpdob) {
             ed.addTextChangedListener(age);
@@ -263,9 +271,6 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
 
         db = new DatabaseHelper(this);
 
-//        Validation Boolean
-        MainApp.validateFlag = false;
-
         if (SectionA1Activity.editFormFlag) {
             AutoPopulateFields();
         }
@@ -288,9 +293,9 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
                 bi.nh805.setVisibility(View.GONE);
 
                 bi.nh804a.setVisibility(View.VISIBLE);
-                bi.nh804a.setText("Mother name: " + jsonH8.getNh804().toUpperCase());
+                bi.nh804a.setText(jsonH8.getNh804().toString().toUpperCase());
                 bi.nh805a.setVisibility(View.VISIBLE);
-                bi.nh805a.setText("Father name: " + jsonH8.getNh805().toUpperCase());
+                bi.nh805a.setText(jsonH8.getNh805().toString().toUpperCase());
 
                 bi.nh803.setText(jsonH8.getNh803());
 
