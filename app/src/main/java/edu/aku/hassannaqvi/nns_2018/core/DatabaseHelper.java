@@ -1542,7 +1542,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(familyMembers.COLUMN_SYNCED_DATE, new Date().toString());
 
 // Which row to update, based on the title
-        String where = familyMembers._ID + " = ?";
+        String where = familyMembers.COLUMN_ID + " = ?";
         String[] whereArgs = {id};
 
         int count = db.update(

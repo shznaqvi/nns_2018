@@ -653,7 +653,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
         } else {
             int updcount = db.updateFamilyMember(family);
 
-            if (updcount == 1) {
+            if (updcount != 0) {
                 //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
                 return true;
             } else {
