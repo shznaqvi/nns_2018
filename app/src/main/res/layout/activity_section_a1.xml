@@ -311,7 +311,9 @@
                             android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-"
                             android:hint="XXXX-X"
                             android:inputType="text"
-                            android:maxLength="6" />
+                            android:layoutDirection="ltr"
+                            android:maxLength="6"
+                            android:textDirection="ltr" />
 
                         <Button
                             android:id="@+id/checkHHBtn"
