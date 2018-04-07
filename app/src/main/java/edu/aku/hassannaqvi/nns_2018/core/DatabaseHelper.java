@@ -366,7 +366,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_DECEASED);
 
 
-
     }
 
     public void syncEnumBlocks(JSONArray Enumlist) {

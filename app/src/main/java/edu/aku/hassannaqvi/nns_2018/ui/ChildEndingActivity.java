@@ -96,6 +96,7 @@ public class ChildEndingActivity extends AppCompatActivity {
                 : binding.istatusc.isChecked() ? "3"
                 : binding.istatusd.isChecked() ? "4"
                 : binding.istatuse.isChecked() ? "5"
+                : binding.istatusf.isChecked() ? "6"
                 : binding.istatus96.isChecked() ? "96"
                 : "0");
 
