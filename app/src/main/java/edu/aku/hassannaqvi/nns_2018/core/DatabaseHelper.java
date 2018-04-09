@@ -1960,7 +1960,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String having = null;
 
         String orderBy =
-                familyMembers.COLUMN_ID + " ASC";
+                familyMembers._ID + " ASC";
 
         Collection<FamilyMembersContract> allFC = new ArrayList<FamilyMembersContract>();
         JSONArray jsonArray = new JSONArray();
