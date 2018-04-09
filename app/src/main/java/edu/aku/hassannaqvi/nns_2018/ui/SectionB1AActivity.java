@@ -240,7 +240,6 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
         sB1a.put("cluster_no", MainApp.fc.getClusterNo());
         sB1a.put("hhno", MainApp.fc.getHhNo());
-        sB1a.put("MUID", MainApp.mc.get_UID());
 
         sB1a.put("serial", Integer.valueOf(MainApp.count));
         sB1a.put("nw21701", bi.nw21701a.isChecked() ? "1" : bi.nw21701b.isChecked() ? "2" : "0");

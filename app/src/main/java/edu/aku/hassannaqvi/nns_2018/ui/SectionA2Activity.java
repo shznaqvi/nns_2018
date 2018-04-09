@@ -775,7 +775,9 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
             if (!validatorClass.EmptyRadioButton(this, binding.nh2occ, binding.nh2occ96, binding.nh2occ96x, getString(R.string.nh2occ))) {
                 return false;
             }
-
+            if (!validatorClass.EmptyRadioButton(this, binding.nh210, binding.nh210a, getString(R.string.nh210))) {
+                return false;
+            }
             if (!validatorClass.EmptySpinner(this, binding.nh211, getString(R.string.nh211))) {
                 return false;
             }
@@ -784,7 +786,6 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                 return false;
             }
 
-            return validatorClass.EmptyRadioButton(this, binding.nh210, binding.nh210a, getString(R.string.nh210));
         }
 
         return true;
