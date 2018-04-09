@@ -354,7 +354,7 @@ public class FamilyMembersContract implements Serializable {
         public static final String COLUMN_APP_VERSION = "app_ver";
 
         public static final String COLUMN_SA2 = "sA2";
-        public static final String COLUMN_ENM_NO = "enm_no";
+        public static final String COLUMN_ENM_NO = "cluster_no";
         public static final String COLUMN_HH_NO = "hh_no";
         public static final String COLUMN_AV = "av";
 

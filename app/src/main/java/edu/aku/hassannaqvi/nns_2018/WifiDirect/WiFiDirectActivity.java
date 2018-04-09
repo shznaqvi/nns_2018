@@ -124,7 +124,7 @@ public class WiFiDirectActivity extends AppCompatActivity implements ChannelList
                     // not going to send us a result. We will be notified by
                     // WiFiDeviceBroadcastReceiver instead.
 
-                    startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));
+                    startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
                 } else {
                     Log.e(TAG, "channel or manager is null");
                 }
