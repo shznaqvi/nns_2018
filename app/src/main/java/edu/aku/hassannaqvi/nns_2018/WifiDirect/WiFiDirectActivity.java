@@ -20,6 +20,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import edu.aku.hassannaqvi.nns_2018.R;
@@ -44,6 +45,7 @@ public class WiFiDirectActivity extends AppCompatActivity implements ChannelList
     private Channel channel;
     private BroadcastReceiver receiver = null;
     private WifiP2pInfo info;
+    private TextView statusText;
 
     /**
      * @param isWifiP2pEnabled the isWifiP2pEnabled to set
@@ -264,6 +266,7 @@ public class WiFiDirectActivity extends AppCompatActivity implements ChannelList
         intent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_ADDRESS,
                 info.groupOwnerAddress.getHostAddress());
         intent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_PORT, 8988);
+
         this.startActivity(intent);
 
    /* Intent serviceIntent = new Intent(getActivity(), DataTransferService.class);

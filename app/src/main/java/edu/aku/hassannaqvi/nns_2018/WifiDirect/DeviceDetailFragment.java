@@ -268,17 +268,18 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
         @Override
         protected void onPostExecute(String result) {
             if (result != null) {
-                statusText.setText("Message - " + result);
-                Toast.makeText(context, result, Toast.LENGTH_LONG).show();
                 String json = result;
                 if (json.length() > 0) {
                     DatabaseHelper db = new DatabaseHelper(context);
                     try {
                         JSONArray jsonArray = new JSONArray(json);
                         db.syncAnthroFromDevice(jsonArray);
+                        statusText.setText("Message - " + jsonArray.length() + " Members for Anthro Received..");
+                        Toast.makeText(context, jsonArray.length() + " Members for Anthro Received..", Toast.LENGTH_LONG).show();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+
                 }
 
             }
