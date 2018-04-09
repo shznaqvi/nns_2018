@@ -43,7 +43,7 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
     static Map<String, SelectedMem> membersMap;
     static String name;
     static int counter = 1;
-    private final long DELAY = 1000;
+    private final long DELAY = 500;
     ActivitySectionD1Binding binding;
     DatabaseHelper db;
     int slc_type;
@@ -168,13 +168,13 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
         binding.txtCounter.setText("Count " + counter + " out of " + MainApp.all_members.size());
 
 //        Listener
-        binding.nd1w.addTextChangedListener(this);
+        /*binding.nd1w.addTextChangedListener(this);
         binding.nd1h.addTextChangedListener(this);
-        binding.nd1muac.addTextChangedListener(this);
+        binding.nd1muac.addTextChangedListener(this);*/
         binding.nd1bcgscar.setOnCheckedChangeListener(this);
-        binding.nd1g.setOnCheckedChangeListener(this);
+       /* binding.nd1g.setOnCheckedChangeListener(this);
         binding.nd1ca.setOnCheckedChangeListener(this);
-        binding.nd1o.setOnCheckedChangeListener(this);
+        binding.nd1o.setOnCheckedChangeListener(this);*/
 
     }
 
