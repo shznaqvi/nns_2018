@@ -788,7 +788,7 @@ public class ViewMemberActivity extends MenuActivity {
 
                 if (fm.getsA2() != null) {
                     json = JSONUtilClass.getModelFromJSON(fm.getsA2(), JSONModelClass.class);
-                    if ((Integer.valueOf(json.getAge()) >= 15 && Integer.valueOf(json.getAge()) <= 49) && json.getGender().equals("2")) {
+                    if ((Integer.valueOf(json.getAge()) >= 15 && Integer.valueOf(json.getAge()) <= 49) && json.getGender().equals("2") && !json.getMaritalStatus().equals("5")) {
                         MainApp.mwra_1.add(fm);
                         MainApp.all_members_1.add(fm);
                     }

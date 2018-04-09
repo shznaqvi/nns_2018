@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -56,6 +57,8 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_list_a2);
         binding.setCallback(this);
+
+        db = new DatabaseHelper(this);
 
         setupViews();
         this.setTitle(getResources().getString(R.string.na2heading));
@@ -184,11 +187,9 @@ public class SectionA2ListActivity extends AppCompatActivity {
 //                                        flagMember = true;
                                         MainApp.familyMembersList.get(position).setFlag("1");
                                         binding.recyclerNoMembers.getChildAt(position).setBackgroundColor(getResources().getColor(R.color.brown));
-
                                         int updcount = db.updateFamilyMemberFLAG("1", MainApp.familyMembersList.get(position).get_UID());
                                         if (updcount == 1) {
                                             Toast.makeText(SectionA2ListActivity.this, "Record Flag to delete!", Toast.LENGTH_SHORT).show();
-
                                             MainApp.flagClicked.add(position);
                                         }
                                     }
@@ -248,6 +249,8 @@ public class SectionA2ListActivity extends AppCompatActivity {
                 fm.setna204(json.getGender());
                 fm.setSerialNo(json.getSerialNo());
                 fm.setName(json.getName());
+                Log.d("Names", "Name: " + json.getName());
+
 
                 if ((Age >= 15 && Age <= 49) && json.getGender().equals("2")) {
                     MainApp.mwra.add(fm);
@@ -402,8 +405,6 @@ public class SectionA2ListActivity extends AppCompatActivity {
     private boolean UpdateDB() {
 
         //Long rowId;
-        DatabaseHelper db = new DatabaseHelper(this);
-
         int updcount = db.updateSACount();
 
 //        setting flag true or false
