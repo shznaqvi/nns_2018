@@ -782,9 +782,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                 return false;
             }
 
-            if (!validatorClass.EmptySpinner(this, binding.nh212, getString(R.string.nh212))) {
-                return false;
-            }
+            return validatorClass.EmptySpinner(this, binding.nh212, getString(R.string.nh212));
 
         }
 
