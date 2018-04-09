@@ -31,16 +31,9 @@ import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionA5Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
+    static int deceasedCounter = 0;
     private final long DELAY = 1000;
     ActivitySectionA5Binding binding;
-    DatabaseHelper db;
-    int recipientCounter = 0;
-    int prevRecipientCounter = 0;
-    Boolean backPressed = false;
-    private Timer timer = new Timer();
-    static int deceasedCounter = 0;
-    int prevDeceasedCounter = 0;
-
     public CheckBox.OnCheckedChangeListener check = new CompoundButton.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -53,6 +46,12 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
             }
         }
     };
+    DatabaseHelper db;
+    int recipientCounter = 0;
+    int prevRecipientCounter = 0;
+    Boolean backPressed = false;
+    int prevDeceasedCounter = 0;
+    private Timer timer = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -397,8 +396,10 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
             if (jsonA5.getnh701().equals("2")) {
                 binding.nh701a.setEnabled(false);
             }
+            if (!jsonA5.getnh702().equals("")) {
+                prevRecipientCounter = Integer.valueOf(jsonA5.getnh702());
 
-            prevRecipientCounter = Integer.valueOf(jsonA5.getnh702());
+            }
 
             if (!jsonA5.getnh801().equals("0")) {
                 binding.nh801.check(
@@ -412,8 +413,9 @@ public class SectionA5Activity extends AppCompatActivity implements TextWatcher,
             if (jsonA5.getnh801().equals("2")) {
                 binding.nh801a.setEnabled(false);
             }
-
-            prevDeceasedCounter = Integer.valueOf(jsonA5.getnh802());
+            if (!jsonA5.getnh802().equals("")) {
+                prevDeceasedCounter = Integer.valueOf(jsonA5.getnh802());
+            }
 
         }
     }

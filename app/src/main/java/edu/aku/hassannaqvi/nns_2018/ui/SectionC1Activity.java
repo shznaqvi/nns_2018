@@ -50,6 +50,7 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
     public static boolean isNA;
     public static int Childsize = 0;
     public static int NAChildsize = 0;
+    public static Boolean editWRAFlag;
     static List<String> childU5;
     static Map<String, FamilyMembersContract> childMap;
     private final long DELAY = 1000;
@@ -85,7 +86,28 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
         binding.setCallback(this);
 
 
-//        Setup views
+
+
+
+
+//        Validation Boolean
+        MainApp.validateFlag = false;
+        editWRAFlag = getIntent().getBooleanExtra("editForm", false);
+
+        if (editWRAFlag && getIntent().getBooleanExtra("checkflag", false)) {
+
+
+            autoPopulateFields(getIntent().getStringExtra("formUid"), getIntent().getStringExtra("fmUid"));
+
+            backPressed = true;
+
+        } else {
+            //        Setup views
+            setupViews();
+        }
+    }
+
+    private void setupViews() {
         if (getIntent().getBooleanExtra("reBackComing", true)) {
             if (getIntent().getBooleanExtra("childFlag", false)) {
                 childU5.remove(getIntent().getStringExtra("name"));
@@ -169,11 +191,9 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
                 binding.fldGrpresp.setVisibility(View.GONE);
 
 
-
 //                Childsize = MainApp.childUnder5.size();
             }
         }
-
 
 
         // setup head
@@ -245,17 +265,12 @@ public class SectionC1Activity extends AppCompatActivity implements TextWatcher,
         binding.nc202.setOnCheckedChangeListener(this);
         binding.nc205.setOnCheckedChangeListener(this);
 
-
-//        Validation Boolean
-        MainApp.validateFlag = false;
-
-//        autoPopulateFields();
-
     }
 
-    private void autoPopulateFields() {
-        ChildContract childContract = db.getsC1();
-
+    private void autoPopulateFields(String uuid, String uid) {
+        ChildContract childContract = db.getsC1(uuid, uid);
+        binding.resp.setVisibility(View.GONE);
+        binding.respa.setVisibility(View.VISIBLE);
         if (!childContract.getsC1().equals("")) {
 
             JSONC1ModelClass jsonC1 = JSONUtilClass.getModelFromJSON(childContract.getsC1(), JSONC1ModelClass.class);

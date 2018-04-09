@@ -90,6 +90,8 @@ public class ViewMemberActivity extends MenuActivity {
 
             flag = true;
 
+            binding.btnContinue.setVisibility(View.VISIBLE);
+
         } else {
             binding.fldGrpEditHH.setVisibility(View.VISIBLE);
             binding.fldGrpVisA.setVisibility(View.VISIBLE);
@@ -196,8 +198,58 @@ public class ViewMemberActivity extends MenuActivity {
     }
 
     private void viewChildList() {
-
         new populateChildRecyclerView(this).execute();
+
+        binding.recyclerChild.addOnItemTouchListener(
+                new ViewMemRecyclerItemClickListener(getApplicationContext(), new ViewMemRecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, final int position) {
+                        // TODO Handle item click
+
+                        if (position != -1) {
+
+                            if (!flag) {
+
+                                /*checkflag = false;
+                                for (int hh : WraAdapter.wraExistList) {
+                                    if (hh == position) {
+                                        checkflag = true;
+                                        break;
+                                    }
+                                }*/
+
+                                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                                        ViewMemberActivity.this);
+                                alertDialogBuilder
+                                        .setMessage("Are you sure to update this member?")
+                                        .setCancelable(false)
+                                        .setPositiveButton("Ok",
+                                                new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int id) {
+
+                                                        startActivity(new Intent(ViewMemberActivity.this, SectionC1Activity.class)
+                                                                .putExtra("editForm", true)
+                                                                .putExtra("checkflag", true)
+                                                                .putExtra("formUid", MainApp.childUnder5.get(position).get_UUID())
+                                                                .putExtra("fmUid", MainApp.childUnder5.get(position).get_UID())
+                                                        );
+
+                                                    }
+                                                });
+                                alertDialogBuilder.setNegativeButton("Cancel",
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                dialog.cancel();
+                                            }
+                                        });
+                                AlertDialog alert = alertDialogBuilder.create();
+                                alert.show();
+                            }
+                        }
+                    }
+                })
+        );
+
     }
 
     private void viewWraList() {
@@ -233,7 +285,8 @@ public class ViewMemberActivity extends MenuActivity {
                                                         startActivity(new Intent(ViewMemberActivity.this, SectionB1Activity.class)
                                                                 .putExtra("editForm", true)
                                                                 .putExtra("checkflag", true)
-                                                                .putExtra("formUid", formUid));
+                                                                .putExtra("formUid", MainApp.mwra_1.get(position).get_UUID())
+                                                        );
 
                                                     }
                                                 });

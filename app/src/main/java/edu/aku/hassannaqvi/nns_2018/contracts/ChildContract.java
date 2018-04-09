@@ -85,24 +85,26 @@ public class ChildContract {
         this.FMUID = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_FM_UID));
         this.MUID = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_MUID));
 
-        if (type == 1 || type == 2) {
+        if (type == 0 || type == 1) {
+            this.sC1 = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_SC1));
+        }
+        if (type == 0 || type == 2) {
             this.sC2 = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_SC2));
         }
-        if (type == 1 || type == 3) {
+        if (type == 0 || type == 3) {
             this.sC3 = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_SC3));
         }
-        if (type == 1 || type == 4) {
+        if (type == 0 || type == 4) {
             this.sC4 = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_SC4));
         }
-        if (type == 1 || type == 5) {
+        if (type == 0 || type == 5) {
             this.sC5 = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_SC5));
         }
 
-        if (type == 1) {
+        if (type == 0) {
             this.formDate = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_FORMDATE));
             this.user = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_USER));
             this.c1SerialNo = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_C1SERIALNO));
-            this.sC1 = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_SC1));
             this.deviceID = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_DEVICEID));
             this.devicetagID = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_DEVICETAGID));
             this.synced = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_SYNCED));

@@ -41,6 +41,7 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
     public static String wraName = "";
     public static int WRAcounter = 0;
     public static int WRAsize = 0;
+    public static Boolean editWRAFlag;
     static Map<String, FamilyMembersContract> wraMap;
     static ArrayList<String> lstMwra;
     static Boolean childCheck = false;
@@ -52,13 +53,9 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
     Boolean backPressed = false;
     Boolean frontPressed = false;
     String classPassName = "";
-    private Timer timer = new Timer();
-
-    public static Boolean editWRAFlag;
-
     JSONB1ModelClass jsonB1;
-
     int prevMiscarriages = 0;
+    private Timer timer = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -883,7 +880,9 @@ public class SectionB1Activity extends AppCompatActivity implements TextWatcher,
             MainApp.mc.setCluster(jsonB1.getCluster_no());
             MainApp.mc.setHhno(jsonB1.getHhno());
 
-            prevMiscarriages = Integer.valueOf(jsonB1.getnw216aa());
+            if (!jsonB1.getnw216aa().equals("")) {
+                prevMiscarriages = Integer.valueOf(jsonB1.getnw216aa());
+            }
 
             bi.nb101a.setText(jsonB1.getnw101());
 

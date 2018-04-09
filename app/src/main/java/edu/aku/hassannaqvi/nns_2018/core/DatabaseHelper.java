@@ -2235,7 +2235,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 ChildContract fc = new ChildContract();
-                allFC.add(fc.Hydrate(c, 1));
+                allFC.add(fc.Hydrate(c, 0));
             }
         } finally {
             if (c != null) {
@@ -3048,19 +3048,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFC;
     }
 
-    public ChildContract getsC1() {
+    public ChildContract getsC1(String uuid, String uid) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
                 ChildTable.COLUMN__ID,
                 ChildTable.COLUMN__UID,
                 ChildTable.COLUMN__UUID,
-                ChildTable.COLUMN_SC1
+                ChildTable.COLUMN_FM_UID,
+                ChildTable.COLUMN_MUID,
+                ChildTable.COLUMN_C1SERIALNO,
+                ChildTable.COLUMN_SC1,
         };
 
 
-        String whereClause = ChildTable.COLUMN__UID + "=?";
-        String[] whereArgs = new String[]{MainApp.cc.getUID()};
+        String whereClause = ChildTable.COLUMN__UID + " =? AND " + ChildTable.COLUMN_FM_UID + " =?";
+        String[] whereArgs = {uuid, uid};
         String groupBy = null;
         String having = null;
 
