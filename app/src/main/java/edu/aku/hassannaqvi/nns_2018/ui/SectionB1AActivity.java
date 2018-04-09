@@ -279,9 +279,22 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 return false;
             }
         } else {
-            db.addOutcome(MainApp.oc, 1);
+            Long updcount = db.addOutcome(MainApp.oc, 1);
+            if (updcount != 0) {
+                MainApp.oc.set_UID(
+                        (MainApp.oc.getDeviceId() + MainApp.oc.get_ID()));
+                db.updateOutcomeID();
 
-            return true;
+                uid = MainApp.oc.getDeviceId() + MainApp.oc.get_ID();
+
+                return true;
+            } else {
+                Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+
+
+
         }
     }
 
@@ -305,7 +318,6 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
                 yearsBydob = DateUtils.ageInYearByDOB(bi.nw21702y.getText().toString());
             }
-
 
         }
 

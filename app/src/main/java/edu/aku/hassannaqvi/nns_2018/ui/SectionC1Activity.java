@@ -625,7 +625,20 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
         } else {
             Long updcount = db.addChildForm(MainApp.cc, 1);
 
-            return true;
+            if (updcount != 0) {
+                //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+
+                MainApp.cc.setUID(
+                        (MainApp.cc.getDeviceID() + MainApp.cc.get_ID()));
+                db.updateFormChildID();
+
+                return true;
+            } else {
+                Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+
+            //return true;
         }
 
     }

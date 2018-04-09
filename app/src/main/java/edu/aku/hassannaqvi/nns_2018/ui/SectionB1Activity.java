@@ -1213,7 +1213,17 @@ public class SectionB1Activity extends Menu2Activity implements TextWatcher, Rad
         } else {
             Long updcount = db.addMWRA(MainApp.mc, 1);
 
-            return true;
+            if (updcount != 0) {
+                MainApp.mc.set_UID(
+                        (MainApp.mc.getDeviceId() + MainApp.mc.get_ID()));
+                db.updateMWRAID();
+
+                return true;
+            } else {
+                Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+
         }
     }
 
