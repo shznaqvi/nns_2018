@@ -1550,8 +1550,10 @@ public class SectionB1Activity extends Menu2Activity implements TextWatcher, Rad
 
     private boolean ValidateForm() {
 
-        if (!validatorClass.EmptySpinner(this, bi.nb101, getString(R.string.nb101))) {
-            return false;
+        if (!editWRAFlag) {
+            if (!validatorClass.EmptySpinner(this, bi.nb101, getString(R.string.nb101))) {
+                return false;
+            }
         }
 
         if (!validatorClass.EmptyTextBox(this, bi.nw201days, getString(R.string.day))) {

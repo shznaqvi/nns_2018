@@ -18,7 +18,6 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -319,6 +318,8 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
             }
             binding.nc101a.setText(jsonC1.getnc101());
 
+            selectedChildName = jsonC1.getnc101().split("-")[0];
+
             if (!jsonC1.getnc204a().equals("0")) {
                 binding.nc204a.check(
                         jsonC1.getnc204a().equals("1") ? binding.nc204aa.getId() :
@@ -378,13 +379,13 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
 
                 if (ageInMontsbyDob < 24) {
                     startActivity(new Intent(this, SectionC2Activity.class)
-                            .putExtra("selectedChild", editChildFlag ? (Serializable) MainApp.cc :
+                            .putExtra("selectedChild", editChildFlag ? getIntent().getSerializableExtra("childFMClass") :
                                     childMap.get(binding.nc101.getSelectedItem().toString()))
                             .putExtra("backPressed", backPressed));
 
                 } else if (ageInMontsbyDob >= 24 && ageInMontsbyDob < 60) {
                     startActivity(new Intent(this, SectionC3Activity.class)
-                            .putExtra("selectedChild", editChildFlag ? (Serializable) MainApp.cc :
+                            .putExtra("selectedChild", editChildFlag ? getIntent().getSerializableExtra("childFMClass") :
                                     childMap.get(binding.nc101.getSelectedItem().toString()))
                             .putExtra("backPressed", backPressed));
 
@@ -454,24 +455,31 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
 
         if (endflag) {
             if (!isNA) {
-                return validatorClass.EmptySpinner(this, binding.nc101, getString(R.string.nc101));
+                return editChildFlag || validatorClass.EmptySpinner(this, binding.nc101, getString(R.string.nc101));
             } else {
 
-                if (!validatorClass.EmptySpinner(this, binding.resp, getString(R.string.resp))) {
-                    return false;
+                if (!editChildFlag) {
+                    if (!validatorClass.EmptySpinner(this, binding.resp, getString(R.string.resp))) {
+                        return false;
+                    }
+                    return validatorClass.EmptySpinner(this, binding.nc101, getString(R.string.nc101));
                 }
-                return validatorClass.EmptySpinner(this, binding.nc101, getString(R.string.nc101));
+                return true;
             }
         } else {
 
             if (isNA) {
-                if (!validatorClass.EmptySpinner(this, binding.resp, getString(R.string.resp))) {
-                    return false;
+                if (!editChildFlag) {
+                    if (!validatorClass.EmptySpinner(this, binding.resp, getString(R.string.resp))) {
+                        return false;
+                    }
                 }
             }
 
-            if (!validatorClass.EmptySpinner(this, binding.nc101, getString(R.string.nc101))) {
-                return false;
+            if (!editChildFlag) {
+                if (!validatorClass.EmptySpinner(this, binding.nc101, getString(R.string.nc101))) {
+                    return false;
+                }
             }
 
             if (!validatorClass.EmptyTextBox(this, binding.nc201y, getString(R.string.nc201))) {

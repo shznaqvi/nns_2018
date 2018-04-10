@@ -86,8 +86,12 @@ public class SectionC2Activity extends Menu2Activity implements RadioGroup.OnChe
 //        Validation Boolean
         MainApp.validateFlag = false;
 
-        bi.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
-                + "\n\n" + SectionB1Activity.wraName + " : " + getString(R.string.nh212a));
+        if (SectionC1Activity.editChildFlag) {
+            bi.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname));
+        } else {
+            bi.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
+                    + "\n\n" + SectionB1Activity.wraName + " : " + getString(R.string.nh212a));
+        }
 
         bi.txtnc206.setText(bi.txtnc206.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
         bi.txtnc207.setText(bi.txtnc207.getText().toString().replace("Name", SectionC1Activity.selectedChildName));

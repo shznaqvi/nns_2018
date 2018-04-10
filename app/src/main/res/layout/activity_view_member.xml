@@ -50,7 +50,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/colorPrimary"
-                        android:text="@string/nh102"
+                        android:text="@string/nh102a"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@android:color/white" />
 
@@ -68,7 +68,7 @@
                             android:layout_weight="60"
                             android:hint="@string/nh102a"
                             android:inputType="number"
-                            android:maxLength="9" />
+                            android:maxLength="4" />
 
                         <Button
                             android:id="@+id/checkEnmBtn"
@@ -252,8 +252,7 @@
                                 android:layout_weight="60"
                                 android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-"
                                 android:hint="XXXX-X"
-                                android:layoutDirection="ltr"
-                                android:textDirection="ltr"
+                                android:inputType="textCapCharacters"
                                 android:maxLength="6" />
 
 

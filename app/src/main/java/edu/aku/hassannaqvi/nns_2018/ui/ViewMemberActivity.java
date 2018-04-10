@@ -247,8 +247,9 @@ public class ViewMemberActivity extends MenuActivity {
                                                         startActivity(new Intent(ViewMemberActivity.this, SectionC1Activity.class)
                                                                 .putExtra("editForm", true)
                                                                 .putExtra("checkflag", true)
-                                                                .putExtra("formUid", MainApp.childUnder5.get(position).get_UUID())
-                                                                .putExtra("fmUid", MainApp.childUnder5.get(position).get_UID())
+                                                                .putExtra("childFMClass", MainApp.childUnder5_1.get(position))
+                                                                .putExtra("formUid", MainApp.childUnder5_1.get(position).get_UUID())
+                                                                .putExtra("fmUid", MainApp.childUnder5_1.get(position).get_UID())
                                                         );
 
                                                     }
