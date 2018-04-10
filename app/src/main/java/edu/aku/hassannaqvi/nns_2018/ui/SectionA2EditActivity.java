@@ -202,7 +202,19 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
             );
         }
 
+        if (!jsonB2.getResp().equals("0")) {
+            binding.resp.check(
+                    jsonB2.getResp().equals("1") ? binding.respa.getId() :
+                            binding.respb.getId()
+            );
+        }
+
+
         /*Functionality Setting*/
+
+        Age = Integer.valueOf(MainApp.fmc.getAge());
+
+
 //        Calculation
         Map<Integer, Integer> memType = new HashMap<>();
 
@@ -219,24 +231,29 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
 
         //MWRA
         if ((Age >= 15 && Age < 50) && MainApp.fmc.getna204().equals("2")) {
-            if (binding.nh2mse.isChecked()) {
+            if (jsonB2.getnh207().equals("5")) {
                 MainApp.membersCount.setWra(MainApp.membersCount.getWra() - 1);
-                if (binding.nh210a.isChecked()) {
+                if (jsonB2.getnh210().equals("1")) {
                     MainApp.fmc.setAv("1");
                 }
             } else {
                 MainApp.membersCount.setMwra(MainApp.membersCount.getMwra() - 1);
-                if (binding.nh210a.isChecked()) {
+                if (jsonB2.getnh210().equals("1")) {
                     MainApp.fmc.setAv("1");
                 }
 
             }
 //            MainApp.mwra.add(MainApp.fmc);
-            MainApp.mwra.remove(position);
+            for (byte i = 0; i < MainApp.mwra.size(); i++) {
+                if (MainApp.mwra.get(i).getSerialNo().equals(MainApp.fmc.getSerialNo())) {
+                    MainApp.mwra.remove(i);
+                    break;
+                }
+            }
         }
 
         //Adolescent
-        if ((Age >= 10 && Age < 20) && binding.nh2mse.isChecked()) {
+        if ((Age >= 10 && Age < 20) && jsonB2.getnh207().equals("5")) {
             memType = new HashMap<>();
             if (MainApp.fmc.getna204().equals("1")) {
                 memType.put(1, Integer.valueOf(mem.get(2).get(1).toString()) - 1);
@@ -250,9 +267,14 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
             // Add data in list
 
 //            MainApp.adolescents.add(MainApp.fmc);
-            MainApp.adolescents.remove(position);
+            for (byte i = 0; i < MainApp.adolescents.size(); i++) {
+                if (MainApp.adolescents.get(i).getSerialNo().equals(MainApp.fmc.getSerialNo())) {
+                    MainApp.adolescents.remove(i);
+                    break;
+                }
+            }
 
-            if (binding.nh210a.isChecked()) {
+            if (jsonB2.getnh210().equals("1")) {
                 MainApp.fmc.setAv("1");
             }
         }
@@ -268,7 +290,7 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                 memType.put(1, Integer.valueOf(mem.get(3).get(1).toString()));
             }
             MainApp.membersCount.setMembers(3, memType);
-            if (binding.nh210a.isChecked()) {
+            if (jsonB2.getnh210().equals("1")) {
                 MainApp.fmc.setAv("1");
             }
 
@@ -276,43 +298,106 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
             if (Age < 2) {
 //                MainApp.childUnder2.add(MainApp.fmc);
                 for (byte i = 0; i < MainApp.childUnder2.size(); i++) {
-                    if (MainApp.childUnder2.get(i).getSerialNo() == MainApp.fmc.getSerialNo()) {
+                    if (MainApp.childUnder2.get(i).getSerialNo().equals(MainApp.fmc.getSerialNo())) {
                         MainApp.childUnder2.remove(i);
                         break;
                     }
                 }
 
 //                MainApp.childUnder2Check.add(MainApp.fmc);
-                MainApp.childUnder2Check.remove(position);
+                for (byte i = 0; i < MainApp.childUnder2Check.size(); i++) {
+                    if (MainApp.childUnder2Check.get(i).getSerialNo().equals(MainApp.fmc.getSerialNo())) {
+                        MainApp.childUnder2Check.remove(i);
+                        break;
+                    }
+                }
 //                MainApp.childUnder5.add(MainApp.fmc);
-                MainApp.childUnder5.remove(position);
+                for (byte i = 0; i < MainApp.childUnder5.size(); i++) {
+                    if (MainApp.childUnder5.get(i).getSerialNo().equals(MainApp.fmc.getSerialNo())) {
+                        MainApp.childUnder5.remove(i);
+                        break;
+                    }
+                }
 
             } else {
 //                MainApp.childUnder5.add(MainApp.fmc);
-                MainApp.childUnder5.remove(position);
+                for (byte i = 0; i < MainApp.childUnder5.size(); i++) {
+                    if (MainApp.childUnder5.get(i).getSerialNo().equals(MainApp.fmc.getSerialNo())) {
+                        MainApp.childUnder5.remove(i);
+                        break;
+                    }
+                }
             }
 
             if (Age < 6 && MainApp.fmc.getMotherId().equals("00")) {
 //                MainApp.childNA.add(MainApp.fmc);
-                MainApp.childNA.remove(position);
+                for (byte i = 0; i < MainApp.childNA.size(); i++) {
+                    if (MainApp.childNA.get(i).getSerialNo().equals(MainApp.fmc.getSerialNo())) {
+                        MainApp.childNA.remove(i);
+                        break;
+                    }
+                }
             }
         }
 
         if (Age >= 15) {
             // Add data in list
-            if (!binding.nh2mse.isChecked()) {
+            if (!jsonB2.getnh207().equals("5")) {
 //                MainApp.members_f_m.add(MainApp.fmc);
-                MainApp.members_f_m.remove(position);
+                for (byte i = 0; i < MainApp.members_f_m.size(); i++) {
+                    if (MainApp.members_f_m.get(i).getSerialNo().equals(MainApp.fmc.getSerialNo())) {
+                        MainApp.members_f_m.remove(i);
+                        break;
+                    }
+                }
             }
 
 //            MainApp.respList.add(MainApp.fmc);
-            MainApp.respList.remove(position);
+            for (byte i = 0; i < MainApp.respList.size(); i++) {
+                if (MainApp.respList.get(i).getSerialNo().equals(MainApp.fmc.getSerialNo())) {
+                    MainApp.respList.remove(i);
+                    break;
+                }
+            }
         }
 
         // Add data in list for all members
-        MainApp.all_members.remove(position);
+        for (byte i = 0; i < MainApp.all_members.size(); i++) {
+            if (MainApp.all_members.get(i).getSerialNo().equals(MainApp.fmc.getSerialNo())) {
+                MainApp.all_members.remove(i);
+                break;
+            }
+        }
 
         /*End*/
+
+
+//        Visibility for isHead
+
+        if (MainApp.fmc.getRealtionHH().equals("1")) {
+            MainApp.IsHead = false;
+        } else if (MainApp.IsHead) {
+            binding.na203a.setEnabled(false);
+        }
+
+        if (MainApp.fmc.getResp().equals("1")) {
+            MainApp.IsResp = false;
+            binding.fldGrpA20101.setVisibility(View.VISIBLE);
+        } else if (MainApp.IsResp) {
+            binding.fldGrpA20101.setVisibility(View.GONE);
+        } else {
+            binding.fldGrpA20101.setVisibility(View.VISIBLE);
+        }
+
+        /*if (MainApp.IsHead) {
+            binding.na203a.setEnabled(false);
+        } else {
+            binding.na203a.setEnabled(true);
+        }*/
+/*
+        if (MainApp.IsResp) {
+            binding.fldGrpA20101.setVisibility(View.GONE);
+        }*/
 
     }
 
@@ -521,17 +606,6 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
 
         binding.nh211.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, fathersList));
         binding.nh212.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, mothersList));
-
-//        Visibility for isHead
-        if (MainApp.IsHead) {
-            binding.na203a.setEnabled(false);
-        } else {
-            binding.na203a.setEnabled(true);
-        }
-
-        if (MainApp.IsResp) {
-            binding.fldGrpA20101.setVisibility(View.GONE);
-        }
     }
 
     public void BtnContinue() {
@@ -572,7 +646,7 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                 : binding.na203i.isChecked() ? "9" : binding.na203j.isChecked() ? "10" : binding.na203k.isChecked() ? "11" : binding.na203l.isChecked() ? "12"
                 : binding.na203m.isChecked() ? "13" : binding.na20398.isChecked() ? "98" : binding.na20396.isChecked() ? "96" : "0");
 
-        MainApp.fmc.setResp(binding.respa.isChecked() ? "1" : "0"); //respondent
+        MainApp.fmc.setResp(binding.respa.isChecked() ? "1" : binding.respb.isChecked() ? "2" : "0"); //respondent
 
 //        Checking IsHead
         if (!MainApp.IsHead && binding.na203a.isChecked()) {
@@ -861,7 +935,17 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
             return false;
         }
 
-        return validatorClass.EmptyRadioButton(this, binding.nh210, binding.nh210a, getString(R.string.nh210));
+        if (!validatorClass.EmptyRadioButton(this, binding.nh210, binding.nh210a, getString(R.string.nh210))) {
+            return false;
+        }
+
+        if (Age < 5) {
+            if (!validatorClass.EmptySpinner(this, binding.nh211, getString(R.string.nh211))) {
+                return false;
+            }
+            return validatorClass.EmptySpinner(this, binding.nh212, getString(R.string.nh212));
+        }
+        return true;
     }
 
     @Override

@@ -446,7 +446,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                     : binding.na203i.isChecked() ? "9" : binding.na203j.isChecked() ? "10" : binding.na203k.isChecked() ? "11" : binding.na203l.isChecked() ? "12"
                     : binding.na203m.isChecked() ? "13" : binding.na20398.isChecked() ? "98" : binding.na20396.isChecked() ? "96" : "0");
 
-            MainApp.fmc.setResp(binding.respa.isChecked() ? "1" : "0"); //respondent
+            MainApp.fmc.setResp(binding.respa.isChecked() ? "1" : binding.respb.isChecked() ? "2" : "0"); //respondent
 
             MainApp.familyMembersList.add(MainApp.fmc);
 

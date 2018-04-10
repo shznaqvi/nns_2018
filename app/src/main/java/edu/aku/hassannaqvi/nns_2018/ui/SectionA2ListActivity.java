@@ -79,6 +79,8 @@ public class SectionA2ListActivity extends AppCompatActivity {
         //        Recycler click listener
         binding.recyclerNoMembers.addOnItemTouchListener(
                 new RecyclerItemClickListener(getApplicationContext(), new RecyclerItemClickListener.OnItemClickListener() {
+                    Boolean delFlag = true;
+
                     @Override
                     public void onItemClick(View view, final int position) {
                         // TODO Handle item click
@@ -138,8 +140,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
                                     for (int check : MainApp.flagClicked) {
                                         if (check == position) {
-                                            flag = false;
-
+                                            delFlag = false;
                                             break;
                                         }
                                     }
@@ -167,14 +168,20 @@ public class SectionA2ListActivity extends AppCompatActivity {
                                 editAlert.setNeutralButton("Delete", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        MainApp.familyMembersList.get(position).setDelflag("1");
-                                        binding.recyclerNoMembers.getChildAt(position).setBackgroundColor(getResources().getColor(R.color.brown));
 
-                                        int updcount = db.updateFamilyMemberFLAG("1", MainApp.familyMembersList.get(position).get_UID());
+                                        MainApp.familyMembersList.get(position).setDelflag(delFlag ? "1" : "2");
+
+                                        int updcount = db.updateFamilyMemberFLAG(delFlag ? "1" : "2", MainApp.familyMembersList.get(position).get_UID());
                                         if (updcount == 1) {
-                                            Toast.makeText(SectionA2ListActivity.this, "Record Flag to delete!", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(SectionA2ListActivity.this, delFlag ? "Record Flag to delete!" : "Delete undo!!", Toast.LENGTH_SHORT).show();
 
-                                            MainApp.flagClicked.add(position);
+                                            if (delFlag) {
+                                                MainApp.flagClicked.add(position);
+                                                binding.recyclerNoMembers.getChildAt(position).setBackgroundColor(getResources().getColor(R.color.brown));
+                                            } else {
+                                                MainApp.flagClicked.remove(position);
+                                                binding.recyclerNoMembers.getChildAt(position).setBackgroundColor(getResources().getColor(R.color.black));
+                                            }
                                         }
                                     }
                                 });
