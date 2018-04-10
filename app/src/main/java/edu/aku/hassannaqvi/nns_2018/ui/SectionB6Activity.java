@@ -371,7 +371,17 @@ public class SectionB6Activity extends Menu2Activity {
             MainApp.B2B6Flag = false;
         }
 
-        MainApp.endActivityMother(this, this, false);
+        if (SectionB1Activity.editWRAFlag) {
+            finish();
+            startActivity(new Intent(this, ViewMemberActivity.class)
+                    .putExtra("flagEdit", false)
+                    .putExtra("comingBack", true)
+                    .putExtra("cluster", MainApp.mc.getCluster())
+                    .putExtra("hhno", MainApp.mc.getHhno())
+            );
+        } else {
+            MainApp.endActivityMother(this, this, false);
+        }
 
     }
 
@@ -538,6 +548,7 @@ public class SectionB6Activity extends Menu2Activity {
 
         if (firstTimePressed && !frontPressed) {
             backPressed = false;
+            firstTimePressed = false;
         }
     }
 

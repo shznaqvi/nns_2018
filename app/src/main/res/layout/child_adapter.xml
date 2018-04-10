@@ -5,6 +5,7 @@
         style="@style/Widget.AppCompat.ListView"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_53sdp"
+        android:layout_marginBottom="@dimen/_3sdp"
         android:background="@drawable/bacground_border2"
         android:clickable="true"
         android:focusable="true"
@@ -18,6 +19,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
             android:layout_gravity="center_vertical"
+            android:paddingTop="@dimen/_2sdp"
             android:layout_weight="9">
             <!-- Child Name-->
             <TextView

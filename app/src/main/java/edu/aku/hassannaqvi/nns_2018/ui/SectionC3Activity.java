@@ -405,8 +405,17 @@ public class SectionC3Activity extends Menu2Activity implements RadioGroup.OnChe
     }
 
     public void BtnEnd() {
-
-        MainApp.endChildActivity(this, this, false);
+        if (SectionC1Activity.editChildFlag) {
+            finish();
+            startActivity(new Intent(this, ViewMemberActivity.class)
+                    .putExtra("flagEdit", false)
+                    .putExtra("comingBack", true)
+                    .putExtra("cluster", MainApp.cc.getClusterno())
+                    .putExtra("hhno", MainApp.cc.getHhno())
+            );
+        } else {
+            MainApp.endChildActivity(this, this, false);
+        }
 
     }
 
@@ -427,8 +436,8 @@ public class SectionC3Activity extends Menu2Activity implements RadioGroup.OnChe
 
 //        nc3bcg
         if (!validatorClass.EmptyRadioButton(this, binding.nc3bcg, binding.nc3bcga, getString(R.string.nc3bcg) + getString(R.string.nc3response))) {
-                    return false;
-                }
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, binding.nc3bcgsrc, binding.nc3bcgsrca, getString(R.string.nc3bcg) + getString(R.string.nc3src))) {
             return false;
         }
@@ -436,49 +445,45 @@ public class SectionC3Activity extends Menu2Activity implements RadioGroup.OnChe
 
 //        nc3opv0
         if (!validatorClass.EmptyRadioButton(this, binding.nc3opv0, binding.nc3opv0a, getString(R.string.nc3opv0) + getString(R.string.nc3response))) {
-                    return false;
-                }
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, binding.nc3opv0src, binding.nc3opv0srca, getString(R.string.nc3opv0) + getString(R.string.nc3src))) {
             return false;
         }
 
 
-
 //        nc3opv1
         if (!validatorClass.EmptyRadioButton(this, binding.nc3opv1, binding.nc3opv1a, getString(R.string.nc3opv1) + getString(R.string.nc3response))) {
-                    return false;
-                }
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, binding.nc3opv1src, binding.nc3opv1srca, getString(R.string.nc3opv1) + getString(R.string.nc3src))) {
             return false;
         }
 
 
-
 //        nc3p1
         if (!validatorClass.EmptyRadioButton(this, binding.nc3p1, binding.nc3p1a, getString(R.string.nc3p1) + getString(R.string.nc3response))) {
-                    return false;
-                }
+            return false;
+        }
 
         if (!validatorClass.EmptyRadioButton(this, binding.nc3p1src, binding.nc3p1srca, getString(R.string.nc3p1) + getString(R.string.nc3src))) {
             return false;
         }
 
 
-
 //        nc3pcv1
         if (!validatorClass.EmptyRadioButton(this, binding.nc3pcv1, binding.nc3pcv1a, getString(R.string.nc3pcv1) + getString(R.string.nc3response))) {
-                    return false;
-                }
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, binding.nc3pcv1src, binding.nc3pcv1srca, getString(R.string.nc3pcv1) + getString(R.string.nc3src))) {
             return false;
         }
 
 
-
 //        nc3opv2
         if (!validatorClass.EmptyRadioButton(this, binding.nc3opv2, binding.nc3opv2a, getString(R.string.nc3opv2) + getString(R.string.nc3response))) {
-                    return false;
-                }
+            return false;
+        }
 
         if (!validatorClass.EmptyRadioButton(this, binding.nc3opv2src, binding.nc3opv2srca, getString(R.string.nc3opv2) + getString(R.string.nc3src))) {
             return false;
@@ -487,8 +492,8 @@ public class SectionC3Activity extends Menu2Activity implements RadioGroup.OnChe
 
 //        nc3p2
         if (!validatorClass.EmptyRadioButton(this, binding.nc3p2, binding.nc3p2a, getString(R.string.nc3p2) + getString(R.string.nc3response))) {
-                    return false;
-                }
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, binding.nc3p2src, binding.nc3p2srca, getString(R.string.nc3p2) + getString(R.string.nc3src))) {
             return false;
         }
@@ -496,48 +501,44 @@ public class SectionC3Activity extends Menu2Activity implements RadioGroup.OnChe
 
 //        nc3pcv2
         if (!validatorClass.EmptyRadioButton(this, binding.nc3pcv2, binding.nc3pcv2a, getString(R.string.nc3pcv2) + getString(R.string.nc3response))) {
-                    return false;
-                }
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, binding.nc3pcv2src, binding.nc3pcv2srca, getString(R.string.nc3pcv2) + getString(R.string.nc3src))) {
             return false;
         }
 
 
-
 //        nc3opv3
         if (!validatorClass.EmptyRadioButton(this, binding.nc3opv3, binding.nc3opv3a, getString(R.string.nc3opv3) + getString(R.string.nc3response))) {
-                    return false;
-                }
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, binding.nc3opv3src, binding.nc3opv3srca, getString(R.string.nc3opv3) + getString(R.string.nc3src))) {
             return false;
         }
 
 
-
 //        nc3p3
         if (!validatorClass.EmptyRadioButton(this, binding.nc3p3, binding.nc3p3a, getString(R.string.nc3p3) + getString(R.string.nc3response))) {
-                    return false;
-                }
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, binding.nc3p3src, binding.nc3p3srca, getString(R.string.nc3p3) + getString(R.string.nc3src))) {
             return false;
         }
 
 
-
 //        nc3pcv3
         if (!validatorClass.EmptyRadioButton(this, binding.nc3pcv3, binding.nc3pcv3a, getString(R.string.nc3pcv3) + getString(R.string.nc3response))) {
-                    return false;
-                }
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, binding.nc3pcv3src, binding.nc3pcv3srca, getString(R.string.nc3pcv3) + getString(R.string.nc3src))) {
             return false;
         }
 
 
-
 //        nc3ipv3
         if (!validatorClass.EmptyRadioButton(this, binding.nc3ipv, binding.nc3ipva, getString(R.string.nc3ipv) + getString(R.string.nc3response))) {
-                    return false;
-                }
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, binding.nc3ipvsrc, binding.nc3ipvsrca, getString(R.string.nc3ipv) + getString(R.string.nc3src))) {
             return false;
         }
@@ -545,21 +546,20 @@ public class SectionC3Activity extends Menu2Activity implements RadioGroup.OnChe
 
 //        nc3m1dt
         if (!validatorClass.EmptyRadioButton(this, binding.nc3m1, binding.nc3m1a, getString(R.string.nc3m1) + getString(R.string.nc3response))) {
-                    return false;
-                }
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, binding.nc3m1src, binding.nc3m1srca, getString(R.string.nc3m1) + getString(R.string.nc3src))) {
             return false;
         }
 
 
-
 //        nc3m2dt
         if (!validatorClass.EmptyRadioButton(this, binding.nc3m2, binding.nc3m2a, getString(R.string.nc3m2) + getString(R.string.nc3response))) {
-                    return false;
-                }
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, binding.nc3m2src, binding.nc3m2srca, getString(R.string.nc3m2) + getString(R.string.nc3src))) {
             return false;
-                }
+        }
 
 
 //        nc305
@@ -596,6 +596,11 @@ public class SectionC3Activity extends Menu2Activity implements RadioGroup.OnChe
         if (backPressed) {
             sC3.put("updatedate_nc3", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
         }
+
+        if (SectionC1Activity.editChildFlag) {
+            sC3.put("edit_updatedate_sc2", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+        }
+
 //        nc301
         sC3.put("nc3name", selectedChild.getName());
 //        nc302

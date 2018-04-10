@@ -462,7 +462,16 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
                                         finish();
 
-                                        startActivity(new Intent(SectionA1Activity.this, EndingActivity.class).putExtra("complete", false));
+                                        if (editFormFlag) {
+                                            startActivity(new Intent(SectionA1Activity.this, ViewMemberActivity.class)
+                                                    .putExtra("flagEdit", false)
+                                                    .putExtra("comingBack", true)
+                                                    .putExtra("cluster", MainApp.fc.getClusterNo())
+                                                    .putExtra("hhno", MainApp.fc.getHhNo())
+                                            );
+                                        } else {
+                                            startActivity(new Intent(SectionA1Activity.this, EndingActivity.class).putExtra("complete", false));
+                                        }
 
                                     } else {
                                         Toast.makeText(SectionA1Activity.this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();

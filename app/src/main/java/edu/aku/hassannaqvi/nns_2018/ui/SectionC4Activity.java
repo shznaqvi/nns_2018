@@ -570,11 +570,19 @@ public class SectionC4Activity extends Menu2Activity implements TextWatcher, Rad
                             .putExtra("selectedChild", selectedChild));
                 } else {
 
-
-                    startActivity(new Intent(this, ChildEndingActivity.class)
-                            //.putExtra("checkingFlag", false)
-                            .putExtra("complete", true));
-
+                    if (SectionC1Activity.editChildFlag) {
+                        finish();
+                        startActivity(new Intent(this, ViewMemberActivity.class)
+                                .putExtra("flagEdit", false)
+                                .putExtra("comingBack", true)
+                                .putExtra("cluster", MainApp.cc.getClusterno())
+                                .putExtra("hhno", MainApp.cc.getHhno())
+                        );
+                    } else {
+                        startActivity(new Intent(this, ChildEndingActivity.class)
+                                //.putExtra("checkingFlag", false)
+                                .putExtra("complete", true));
+                    }
                 }
 
             } else {
@@ -584,7 +592,17 @@ public class SectionC4Activity extends Menu2Activity implements TextWatcher, Rad
     }
 
     public void BtnEnd() {
-        MainApp.endChildActivity(this, this, false);
+        if (SectionC1Activity.editChildFlag) {
+            finish();
+            startActivity(new Intent(this, ViewMemberActivity.class)
+                    .putExtra("flagEdit", false)
+                    .putExtra("comingBack", true)
+                    .putExtra("cluster", MainApp.cc.getClusterno())
+                    .putExtra("hhno", MainApp.cc.getHhno())
+            );
+        } else {
+            MainApp.endChildActivity(this, this, false);
+        }
     }
 
     private boolean formValidation() {
@@ -777,6 +795,11 @@ public class SectionC4Activity extends Menu2Activity implements TextWatcher, Rad
         if (backPressed) {
             sC4.put("updatedate_nc4", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
         }
+
+        if (SectionC1Activity.editChildFlag) {
+            sC4.put("edit_updatedate_sc2", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+        }
+
 //        nc301
         sC4.put("nc4name", selectedChild.getName());
 //        nc302

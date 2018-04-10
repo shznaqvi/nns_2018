@@ -607,8 +607,17 @@ public class SectionC2Activity extends Menu2Activity implements RadioGroup.OnChe
     }
 
     public void BtnEnd() {
-
-        MainApp.endChildActivity(this, this, false);
+        if (SectionC1Activity.editChildFlag) {
+            finish();
+            startActivity(new Intent(this, ViewMemberActivity.class)
+                    .putExtra("flagEdit", false)
+                    .putExtra("comingBack", true)
+                    .putExtra("cluster", MainApp.cc.getClusterno())
+                    .putExtra("hhno", MainApp.cc.getHhno())
+            );
+        } else {
+            MainApp.endChildActivity(this, this, false);
+        }
 
     }
 
@@ -896,6 +905,11 @@ public class SectionC2Activity extends Menu2Activity implements RadioGroup.OnChe
         if (backPressed) {
             sC2.put("updatedate_nc2", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
         }
+
+        if (SectionC1Activity.editChildFlag) {
+            sC2.put("edit_updatedate_sc2", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+        }
+
 //        nc2_child_name
         sC2.put("nc2_child_name", selectedChild.getName());
 //        nc2_line_no

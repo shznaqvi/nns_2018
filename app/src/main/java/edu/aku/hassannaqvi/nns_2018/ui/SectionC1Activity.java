@@ -18,6 +18,7 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -50,7 +51,7 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
     public static boolean isNA;
     public static int Childsize = 0;
     public static int NAChildsize = 0;
-    public static Boolean editWRAFlag;
+    public static Boolean editChildFlag;
     static List<String> childU5;
     static Map<String, FamilyMembersContract> childMap;
     private final long DELAY = 1000;
@@ -69,6 +70,8 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
     Boolean frontPressed = false;
     private Timer timer = new Timer();
 
+    JSONC1ModelClass jsonC1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,22 +88,81 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
 //        Assigning data to UI binding
         binding.setCallback(this);
 
-
 //        Validation Boolean
         MainApp.validateFlag = false;
-        editWRAFlag = getIntent().getBooleanExtra("editForm", false);
 
-        if (editWRAFlag && getIntent().getBooleanExtra("checkflag", false)) {
+        setupSkips();
 
+        editChildFlag = getIntent().getBooleanExtra("editForm", false);
+
+        if (editChildFlag && getIntent().getBooleanExtra("checkflag", false)) {
 
             autoPopulateFields(getIntent().getStringExtra("formUid"), getIntent().getStringExtra("fmUid"));
-
             backPressed = true;
 
         } else {
-            //        Setup views
             setupViews();
         }
+    }
+
+    public void setupSkips() {
+
+        for (EditText ed : grpDate) {
+            ed.addTextChangedListener(this);
+        }
+
+        //======= Checking Q201, 202 and 203
+        binding.nc203.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                binding.nc204aa.setEnabled(false);
+                binding.nc204ab.setEnabled(false);
+                binding.nc204ba.setEnabled(false);
+                binding.nc204bb.setEnabled(false);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (!binding.nc203.getText().toString().isEmpty()) {
+                    if (ageInMontsbyDob == Integer.valueOf(binding.nc203.getText().toString())) {
+                        binding.nc204aa.setChecked(true);
+                        binding.nc204ba.setChecked(true);
+                    } else {
+                        binding.nc204ab.setChecked(true);
+                        binding.nc204bb.setChecked(true);
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                timer.cancel();
+                timer = new Timer();
+                timer.schedule(
+                        new TimerTask() {
+                            @Override
+                            public void run() {
+
+                                runOnUiThread(new Runnable() {
+                                    public void run() {
+                                        formValidation();
+                                    }
+                                    //}
+                                });
+
+                            }
+                        },
+                        DELAY
+                );
+
+
+            }
+        });
+
+        binding.nc202.setOnCheckedChangeListener(this);
+        binding.nc205.setOnCheckedChangeListener(this);
     }
 
     private void setupViews() {
@@ -223,76 +285,26 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
             }
         });
 
-        for (EditText ed : grpDate) {
-            ed.addTextChangedListener(this);
-        }
-
-        //======= Checking Q201, 202 and 203
-        binding.nc203.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                binding.nc204aa.setEnabled(false);
-                binding.nc204ab.setEnabled(false);
-                binding.nc204ba.setEnabled(false);
-                binding.nc204bb.setEnabled(false);
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                if (!binding.nc203.getText().toString().isEmpty()) {
-                    if (ageInMontsbyDob == Integer.valueOf(binding.nc203.getText().toString())) {
-                        binding.nc204aa.setChecked(true);
-                        binding.nc204ba.setChecked(true);
-                    } else {
-                        binding.nc204ab.setChecked(true);
-                        binding.nc204bb.setChecked(true);
-                    }
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-                timer.cancel();
-                timer = new Timer();
-                timer.schedule(
-                        new TimerTask() {
-                            @Override
-                            public void run() {
-
-                                runOnUiThread(new Runnable() {
-                                    public void run() {
-                                        formValidation();
-                                    }
-                                    //}
-                                });
-
-                            }
-                        },
-                        DELAY
-                );
-
-
-            }
-        });
-
-        binding.nc202.setOnCheckedChangeListener(this);
-        binding.nc205.setOnCheckedChangeListener(this);
-
     }
 
     private void autoPopulateFields(String uuid, String uid) {
-        ChildContract childContract = db.getsC1(uuid, uid);
+
+        MainApp.cc = db.getsC1(uuid, uid);
         binding.resp.setVisibility(View.GONE);
         binding.respa.setVisibility(View.VISIBLE);
-        if (!childContract.getsC1().equals("")) {
+        binding.nc101.setVisibility(View.GONE);
+        binding.nc101a.setVisibility(View.VISIBLE);
 
-            JSONC1ModelClass jsonC1 = JSONUtilClass.getModelFromJSON(childContract.getsC1(), JSONC1ModelClass.class);
+        if (!MainApp.cc.getsC1().equals("")) {
+
+            jsonC1 = JSONUtilClass.getModelFromJSON(MainApp.cc.getsC1(), JSONC1ModelClass.class);
             binding.nc201y.setText(jsonC1.getnc201y());
             binding.nc201m.setText(jsonC1.getnc201m());
             binding.nc201d.setText(jsonC1.getnc201d());
             binding.nc203.setText(jsonC1.getnc203());
+
+            MainApp.cc.setClusterno(jsonC1.getCluster_no());
+            MainApp.cc.setHhno(jsonC1.getHhno());
 
             if (!jsonC1.getnc202().equals("0")) {
                 binding.nc202.check(
@@ -301,6 +313,12 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
                                         : binding.nc202c.getId()
                 );
             }
+
+            if (MainApp.cc.getMUID().equals("00")) {
+                binding.respa.setText(jsonC1.getRespName());
+            }
+            binding.nc101a.setText(jsonC1.getnc101());
+
             if (!jsonC1.getnc204a().equals("0")) {
                 binding.nc204a.check(
                         jsonC1.getnc204a().equals("1") ? binding.nc204aa.getId() :
@@ -350,23 +368,41 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
 
                 frontPressed = true;
 
-                if (isNA) {
-                    NAChildsize = MainApp.childNA.size();
-                } else {
-                    Childsize = MainApp.childUnder5.size();
+                if (!editChildFlag) {
+                    if (isNA) {
+                        NAChildsize = MainApp.childNA.size();
+                    } else {
+                        Childsize = MainApp.childUnder5.size();
+                    }
                 }
 
                 if (ageInMontsbyDob < 24) {
                     startActivity(new Intent(this, SectionC2Activity.class)
-                            .putExtra("selectedChild", childMap.get(binding.nc101.getSelectedItem().toString()))
+                            .putExtra("selectedChild", editChildFlag ? (Serializable) MainApp.cc :
+                                    childMap.get(binding.nc101.getSelectedItem().toString()))
                             .putExtra("backPressed", backPressed));
+
                 } else if (ageInMontsbyDob >= 24 && ageInMontsbyDob < 60) {
                     startActivity(new Intent(this, SectionC3Activity.class)
-                            .putExtra("selectedChild", childMap.get(binding.nc101.getSelectedItem().toString()))
+                            .putExtra("selectedChild", editChildFlag ? (Serializable) MainApp.cc :
+                                    childMap.get(binding.nc101.getSelectedItem().toString()))
                             .putExtra("backPressed", backPressed));
+
                 } else if (ageInMontsbyDob >= 60) {
-                    startActivity(new Intent(this, ChildEndingActivity.class)
-                            .putExtra("childINEligibile", true));
+
+                    if (editChildFlag) {
+                        finish();
+                        startActivity(new Intent(this, ViewMemberActivity.class)
+                                .putExtra("flagEdit", false)
+                                .putExtra("comingBack", true)
+                                .putExtra("cluster", MainApp.cc.getClusterno())
+                                .putExtra("hhno", MainApp.cc.getHhno())
+                        );
+                    } else {
+                        startActivity(new Intent(this, ChildEndingActivity.class)
+                                .putExtra("childINEligibile", true));
+                    }
+
                 }
 
                /* startActivity(new Intent(this, SectionC5Activity.class)
@@ -393,8 +429,17 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
                 //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
                 //finish();
-
-                MainApp.endChildActivity(this, this, false);
+                if (editChildFlag) {
+                    finish();
+                    startActivity(new Intent(this, ViewMemberActivity.class)
+                            .putExtra("flagEdit", false)
+                            .putExtra("comingBack", true)
+                            .putExtra("cluster", MainApp.cc.getClusterno())
+                            .putExtra("hhno", MainApp.cc.getHhno())
+                    );
+                } else {
+                    MainApp.endChildActivity(this, this, false);
+                }
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -585,8 +630,6 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
     private void SaveDraft() throws JSONException {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
-        selectedChildName = binding.nc101.getSelectedItem().toString();
-
         JSONObject sC1 = new JSONObject();
 
         if (!backPressed) {
@@ -607,24 +650,56 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
 
             }
 
+            selectedChildName = binding.nc101.getSelectedItem().toString();
+
+            sC1.put("cluster_no", MainApp.fc.getClusterNo());
+            sC1.put("hhno", MainApp.fc.getHhNo());
+            if (isNA) {
+                sC1.put("respName", binding.resp.getSelectedItem().toString());
+                sC1.put("respSerial", respMap.get(binding.resp.getSelectedItem().toString()));
+            }
+            sC1.put("nc101", binding.nc101.getSelectedItem().toString());
 
         } else {
             sC1.put("updatedate_nc1", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
-            MainApp.cc.setUID(MainApp.cc.getUID());
+//            MainApp.cc.setUID(MainApp.cc.getUID());
+
+            if (editChildFlag && !frontPressed) {
+                sC1.put("edit_updatedate_nw1", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+
+                sC1.put("cluster_no", jsonC1.getCluster_no());
+                sC1.put("hhno", jsonC1.getHhno());
+                if (MainApp.cc.getMUID().equals("00")) {
+                    sC1.put("respName", jsonC1.getRespName());
+                    sC1.put("respSerial", jsonC1.getRespSerial());
+                }
+                sC1.put("nc101", jsonC1.getnc101());
+
+            } else if (editChildFlag) {
+                sC1.put("cluster_no", jsonC1.getCluster_no());
+                sC1.put("hhno", jsonC1.getHhno());
+                if (MainApp.cc.getMUID().equals("00")) {
+                    sC1.put("respName", jsonC1.getRespName());
+                    sC1.put("respSerial", jsonC1.getRespSerial());
+                }
+                sC1.put("nc101", jsonC1.getnc101());
+
+            } else {
+
+                selectedChildName = binding.nc101.getSelectedItem().toString();
+
+                sC1.put("cluster_no", MainApp.fc.getClusterNo());
+                sC1.put("hhno", MainApp.fc.getHhNo());
+                if (isNA) {
+                    sC1.put("respName", binding.resp.getSelectedItem().toString());
+                    sC1.put("respSerial", respMap.get(binding.resp.getSelectedItem().toString()));
+                }
+                sC1.put("nc101", binding.nc101.getSelectedItem().toString());
+
+            }
         }
 
-        sC1.put("cluster_no", MainApp.fc.getClusterNo());
 
-
-        sC1.put("hhno", MainApp.fc.getHhNo());
-
-        if (isNA) {
-            sC1.put("respName", binding.resp.getSelectedItem().toString());
-            sC1.put("respSerial", respMap.get(binding.resp.getSelectedItem().toString()));
-        }
-
-//       nc101
-        sC1.put("nc101", binding.nc101.getSelectedItem().toString());
 //        nc103
 
         sC1.put("nc201d", binding.nc201d.getText().toString());

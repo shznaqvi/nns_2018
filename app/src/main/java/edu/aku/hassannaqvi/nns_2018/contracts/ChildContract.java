@@ -42,6 +42,8 @@ public class ChildContract {
     private String appversion;
     private String cstatus = "";
     private String cstatus88x = "";
+    private String clusterno = "";
+    private String hhno = "";
 
     public ChildContract() {
 
@@ -170,6 +172,22 @@ public class ChildContract {
 
 
         return json;
+    }
+
+    public String getClusterno() {
+        return clusterno;
+    }
+
+    public void setClusterno(String clusterno) {
+        this.clusterno = clusterno;
+    }
+
+    public String getHhno() {
+        return hhno;
+    }
+
+    public void setHhno(String hhno) {
+        this.hhno = hhno;
     }
 
     public String getFMUID() {

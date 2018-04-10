@@ -295,7 +295,17 @@ public class SectionB5Activity extends Menu2Activity implements TextWatcher, Rad
 
     public void BtnEnd() {
 
-        MainApp.endActivityMother(this, this, false);
+        if (SectionB1Activity.editWRAFlag) {
+            finish();
+            startActivity(new Intent(this, ViewMemberActivity.class)
+                    .putExtra("flagEdit", false)
+                    .putExtra("comingBack", true)
+                    .putExtra("cluster", MainApp.mc.getCluster())
+                    .putExtra("hhno", MainApp.mc.getHhno())
+            );
+        } else {
+            MainApp.endActivityMother(this, this, false);
+        }
     }
 
     private boolean ValidateForm() {

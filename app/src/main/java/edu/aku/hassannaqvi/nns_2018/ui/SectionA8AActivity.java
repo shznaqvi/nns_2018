@@ -131,52 +131,52 @@ public class SectionA8AActivity extends AppCompatActivity {
                 bi.nh7a02a.setText(jsonA8A.getnh7a02().toString().toUpperCase());
 
                 //  bi.
-                bi.nh7a03y.setText(jsonA8A.getnh7a03y());
-                bi.nh7a03m.setText(jsonA8A.getnh7a03m());
+                bi.nh7a03y.setText(jsonA8A.getnh7a05y());
+                bi.nh7a03m.setText(jsonA8A.getnh7a06m());
 
-                if (!jsonA8A.getnh7a04a().equals("0")) {
+                if (!jsonA8A.getnh7a07a().equals("0")) {
                     bi.nh7a04a.setChecked(true);
 
                 }
-                if (!jsonA8A.getnh7a04b().equals("0")) {
+                if (!jsonA8A.getnh7a07b().equals("0")) {
                     bi.nh7a04b.setChecked(true);
 
                 }
-                if (!jsonA8A.getnh7a04c().equals("0")) {
+                if (!jsonA8A.getnh7a07c().equals("0")) {
                     bi.nh7a04c.setChecked(true);
 
                 }
-                if (!jsonA8A.getnh7a04d().equals("0")) {
+                if (!jsonA8A.getnh7a07d().equals("0")) {
                     bi.nh7a04d.setChecked(true);
 
                 }
-                if (!jsonA8A.getnh7a04e().equals("0")) {
+                if (!jsonA8A.getnh7a07e().equals("0")) {
                     bi.nh7a04e.setChecked(true);
 
                 }
-                if (!jsonA8A.getnh7a04f().equals("0")) {
+                if (!jsonA8A.getnh7a07f().equals("0")) {
                     bi.nh7a04f.setChecked(true);
 
                 }
-                if (!jsonA8A.getnh7a04g().equals("0")) {
+                if (!jsonA8A.getnh7a07g().equals("0")) {
                     bi.nh7a04g.setChecked(true);
 
                 }
-                if (!jsonA8A.getnh7a04h().equals("0")) {
+                if (!jsonA8A.getnh7a07h().equals("0")) {
                     bi.nh7a04h.setChecked(true);
 
                 }
-                if (!jsonA8A.getnh7a04i().equals("0")) {
+                if (!jsonA8A.getnh7a07i().equals("0")) {
                     bi.nh7a04i.setChecked(true);
 
                 }
-                if (!jsonA8A.getnh7a0496().equals("0")) {
+                if (!jsonA8A.getnh7a0796().equals("0")) {
                     bi.nh7a0496.setChecked(true);
-                    bi.nh7a0496x.setText(jsonA8A.getnh7a0496x());
+                    bi.nh7a0496x.setText(jsonA8A.getnh7a0796x());
                 }
-                bi.nh7a05.setText(jsonA8A.getnh7a05());
+                bi.nh7a05.setText(jsonA8A.getnh7a08());
 
-                bi.nh7a06.setText(jsonA8A.getnh7a06());
+                bi.nh7a06.setText(jsonA8A.getnh7a09());
 
                 if (jsonA8A.getnh7aFlag().equals("1")) {
                     bi.nh7aFlag.setChecked(true);
@@ -248,7 +248,16 @@ public class SectionA8AActivity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        MainApp.endActivity(this, this);
+        if (SectionA1Activity.editFormFlag) {
+            startActivity(new Intent(this, ViewMemberActivity.class)
+                    .putExtra("flagEdit", false)
+                    .putExtra("comingBack", true)
+                    .putExtra("cluster", MainApp.fc.getClusterNo())
+                    .putExtra("hhno", MainApp.fc.getHhNo())
+            );
+        } else {
+            MainApp.endActivity(this, this);
+        }
     }
 
 
@@ -325,14 +334,14 @@ public class SectionA8AActivity extends AppCompatActivity {
             MainApp.rc.setFMUID(fmcSelected.get_UID());
             MainApp.rc.setA8aSNo(String.valueOf(counter));
 
-            sA8a.put("nh7a01", fmcSelected.getName());
-            sA8a.put("nh7a01Serial", fmcSelected.getSerialNo());
+            sA8a.put("nh7a04", fmcSelected.getName());
+            sA8a.put("nh7a03", fmcSelected.getSerialNo());
 
         } else {
             sA8a.put("edit_updatedate_nh7a", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
 
-            sA8a.put("nh7a01", jsonA8A.getnh7a01());
-            sA8a.put("nh7a01Serial", jsonA8A.getnh7a01Serial());
+            sA8a.put("nh7a04", jsonA8A.getnh7a04());
+            sA8a.put("nh7a03", jsonA8A.getnh7a03());
         }
 
        /* if (backPressed) {
@@ -347,24 +356,24 @@ public class SectionA8AActivity extends AppCompatActivity {
 
         sA8a.put("nh7a02", bi.nh7a02.getSelectedItem().toString());
 
-        sA8a.put("nh7a03y", bi.nh7a03y.getText().toString());
+        sA8a.put("nh7a05y", bi.nh7a03y.getText().toString());
 
-        sA8a.put("nh7a03m", bi.nh7a03m.getText().toString());
+        sA8a.put("nh7a06m", bi.nh7a03m.getText().toString());
 
-        sA8a.put("nh7a04a", bi.nh7a04a.isChecked() ? "1" : "0");
-        sA8a.put("nh7a04b", bi.nh7a04b.isChecked() ? "2" : "0");
-        sA8a.put("nh7a04c", bi.nh7a04c.isChecked() ? "3" : "0");
-        sA8a.put("nh7a04d", bi.nh7a04d.isChecked() ? "4" : "0");
-        sA8a.put("nh7a04e", bi.nh7a04e.isChecked() ? "5" : "0");
-        sA8a.put("nh7a04f", bi.nh7a04f.isChecked() ? "6" : "0");
-        sA8a.put("nh7a04g", bi.nh7a04g.isChecked() ? "7" : "0");
-        sA8a.put("nh7a04h", bi.nh7a04h.isChecked() ? "8" : "0");
-        sA8a.put("nh7a04i", bi.nh7a04i.isChecked() ? "9" : "0");
-        sA8a.put("nh7a04j", bi.nh7a04j.isChecked() ? "10" : "0");
-        sA8a.put("nh7a0496", bi.nh7a0496.isChecked() ? "96" : "0");
-        sA8a.put("nh7a0496x", bi.nh7a0496x.getText().toString());
-        sA8a.put("nh7a05", bi.nh7a05.getText().toString());
-        sA8a.put("nh7a06", bi.nh7a06.getText().toString());
+        sA8a.put("nh7a07a", bi.nh7a04a.isChecked() ? "1" : "0");
+        sA8a.put("nh7a07b", bi.nh7a04b.isChecked() ? "2" : "0");
+        sA8a.put("nh7a07c", bi.nh7a04c.isChecked() ? "3" : "0");
+        sA8a.put("nh7a07d", bi.nh7a04d.isChecked() ? "4" : "0");
+        sA8a.put("nh7a07e", bi.nh7a04e.isChecked() ? "5" : "0");
+        sA8a.put("nh7a07f", bi.nh7a04f.isChecked() ? "6" : "0");
+        sA8a.put("nh7a07g", bi.nh7a04g.isChecked() ? "7" : "0");
+        sA8a.put("nh7a07h", bi.nh7a04h.isChecked() ? "8" : "0");
+        sA8a.put("nh7a07i", bi.nh7a04i.isChecked() ? "9" : "0");
+        sA8a.put("nh7a07j", bi.nh7a04j.isChecked() ? "10" : "0");
+        sA8a.put("nh7a0796", bi.nh7a0496.isChecked() ? "96" : "0");
+        sA8a.put("nh7a0796x", bi.nh7a0496x.getText().toString());
+        sA8a.put("nh7a08", bi.nh7a05.getText().toString());
+        sA8a.put("nh7a09", bi.nh7a06.getText().toString());
 
 
         MainApp.rc.setsA8A(String.valueOf(sA8a));

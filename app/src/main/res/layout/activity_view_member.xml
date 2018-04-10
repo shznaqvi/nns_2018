@@ -505,7 +505,6 @@
                                 android:id="@+id/recyclerChild"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="3dp"
                                 android:layout_weight="1"
                                 android:layoutDirection="ltr"
                                 android:scrollbars="vertical"
@@ -538,6 +537,7 @@
                                 style="@style/buttons"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/_3sdp"
                                 android:layout_weight="1"
                                 android:background="#1ed61e"
                                 android:onClick="@{() -> callback.BtnContinue()}"
@@ -550,9 +550,9 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:background="@color/red"
+                                android:background="@color/brown"
                                 android:onClick="intentWifi"
-                                android:text="Connect to Device"
+                                android:text="@string/dataShare"
                                 android:textColor="@color/white"
                                 android:visibility="visible" />
                         </LinearLayout>

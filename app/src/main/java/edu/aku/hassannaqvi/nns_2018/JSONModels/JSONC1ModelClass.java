@@ -17,9 +17,27 @@ public class JSONC1ModelClass {
     private String nc204a = "";
     private String nc204b = "";
     private String nc205 = "";
+    private String cluster_no = "";
+    private String hhno = "";
 
     public JSONC1ModelClass() {
 
+    }
+
+    public String getCluster_no() {
+        return cluster_no;
+    }
+
+    public void setCluster_no(String cluster_no) {
+        this.cluster_no = cluster_no;
+    }
+
+    public String getHhno() {
+        return hhno;
+    }
+
+    public void setHhno(String hhno) {
+        this.hhno = hhno;
     }
 
     public String getRespName() {

@@ -388,7 +388,16 @@ public class SectionA2ListActivity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        MainApp.endActivity(this, this);
+        if (SectionA1Activity.editFormFlag) {
+            startActivity(new Intent(this, ViewMemberActivity.class)
+                    .putExtra("flagEdit", false)
+                    .putExtra("comingBack", true)
+                    .putExtra("cluster", MainApp.fc.getClusterNo())
+                    .putExtra("hhno", MainApp.fc.getHhNo())
+            );
+        } else {
+            MainApp.endActivity(this, this);
+        }
     }
 
     private Boolean formValidation() {

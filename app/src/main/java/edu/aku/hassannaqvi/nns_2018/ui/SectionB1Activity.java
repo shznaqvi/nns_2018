@@ -959,6 +959,12 @@ public class SectionB1Activity extends Menu2Activity implements TextWatcher, Rad
             }
         });
 */
+
+        bi.nw213.addTextChangedListener(this);
+        bi.nw214.addTextChangedListener(this);
+        bi.nw215.addTextChangedListener(this);
+        bi.nw216aa.addTextChangedListener(this);
+
     }
 
     public void setupViews() {
@@ -1026,12 +1032,6 @@ public class SectionB1Activity extends Menu2Activity implements TextWatcher, Rad
 
             }
         });
-
-
-        bi.nw213.addTextChangedListener(this);
-        bi.nw214.addTextChangedListener(this);
-        bi.nw215.addTextChangedListener(this);
-        bi.nw216aa.addTextChangedListener(this);
     }
 
     private void AutoPopulate(String uuid, String uid) {
@@ -1293,7 +1293,17 @@ public class SectionB1Activity extends Menu2Activity implements TextWatcher, Rad
 
             //finish();
 
-            MainApp.endChildActivity(this, this, false);
+            if (editWRAFlag) {
+                finish();
+                startActivity(new Intent(this, ViewMemberActivity.class)
+                        .putExtra("flagEdit", false)
+                        .putExtra("comingBack", true)
+                        .putExtra("cluster", MainApp.mc.getCluster())
+                        .putExtra("hhno", MainApp.mc.getHhno())
+                );
+            } else {
+                MainApp.endChildActivity(this, this, false);
+            }
 
         } else {
             Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();

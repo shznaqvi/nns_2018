@@ -2163,12 +2163,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String having = null;
 
         String orderBy =
-                DeceasedContract.DeceasedTable._ID + " ASC";
+                DeceasedContract.DeceasedTable.COLUMN__ID + " ASC";
 
         Collection<DeceasedContract> allFC = new ArrayList<DeceasedContract>();
         try {
             c = db.query(
-                    familyMembers.TABLE_NAME,  // The table to query
+                    DeceasedContract.DeceasedTable.TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
                     whereClause,               // The columns for the WHERE clause
                     whereArgs,                 // The values for the WHERE clause
@@ -3129,7 +3129,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         };
 
 
-        String whereClause = ChildTable.COLUMN__UID + " =? AND " + ChildTable.COLUMN_FM_UID + " =?";
+        String whereClause = ChildTable.COLUMN__UUID + " =? AND " + ChildTable.COLUMN_FM_UID + " =?";
         String[] whereArgs = {uuid, uid};
         String groupBy = null;
         String having = null;

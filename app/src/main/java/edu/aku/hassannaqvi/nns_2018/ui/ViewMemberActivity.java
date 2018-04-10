@@ -86,6 +86,8 @@ public class ViewMemberActivity extends MenuActivity {
             binding.chckenumblock.setText(MainApp.fc.getClusterNo());
             binding.chckhouse.setText(MainApp.fc.getHhNo());
 
+            binding.chckhouse.setEnabled(false);
+
             BtnCheckEnm();
             BtnCheckHH();
 
