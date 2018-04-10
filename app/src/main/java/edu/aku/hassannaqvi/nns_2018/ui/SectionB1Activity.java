@@ -141,7 +141,7 @@ public class SectionB1Activity extends Menu2Activity implements TextWatcher, Rad
 
         this.setTitle(getResources().getString(R.string.nbheading));
 
-        setupViews();
+//        setupViews();
 
 
 //        Validation Boolean
