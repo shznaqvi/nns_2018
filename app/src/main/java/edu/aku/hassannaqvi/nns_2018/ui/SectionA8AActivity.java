@@ -223,6 +223,7 @@ public class SectionA8AActivity extends AppCompatActivity {
         MainApp.rc.setApp_ver(MainApp.fc.getAppversion());
         MainApp.rc.set_UUID(MainApp.fc.getUID());
         MainApp.rc.setFMUID(fmcSelected.get_UID());
+        MainApp.rc.setA8aSNo(String.valueOf(counter));
 
         JSONObject sA8a = new JSONObject();
 
@@ -230,30 +231,30 @@ public class SectionA8AActivity extends AppCompatActivity {
         sA8a.put("hhno", MainApp.fc.getHhNo());
 
         //sA8a.put("FMUID", fmcSelected.get_UID());
-        sA8a.put("nh7a01", fmcSelected.getName());
-        sA8a.put("nh7a01Serial", fmcSelected.getSerialNo());
+        sA8a.put("nh704", fmcSelected.getName());
+        sA8a.put("nh703", fmcSelected.getSerialNo());
 
-        sA8a.put("nh7a02", bi.nh7a02.getSelectedItem().toString());
+        //sA8a.put("nh7a02", bi.nh7a02.getSelectedItem().toString());
         //sA8a.put("nh7a02", bi.nh7a02.getText().toString());
 
-        sA8a.put("nh7a03y", bi.nh7a03y.getText().toString());
+        sA8a.put("nh705", bi.nh7a03y.getText().toString());
 
-        sA8a.put("nh7a03m", bi.nh7a03m.getText().toString());
+        sA8a.put("nh706", bi.nh7a03m.getText().toString());
 
-        sA8a.put("nh7a04a", bi.nh7a04a.isChecked() ? "1" : "0");
-        sA8a.put("nh7a04b", bi.nh7a04b.isChecked() ? "2" : "0");
-        sA8a.put("nh7a04c", bi.nh7a04c.isChecked() ? "3" : "0");
-        sA8a.put("nh7a04d", bi.nh7a04d.isChecked() ? "4" : "0");
-        sA8a.put("nh7a04e", bi.nh7a04e.isChecked() ? "5" : "0");
-        sA8a.put("nh7a04f", bi.nh7a04f.isChecked() ? "6" : "0");
-        sA8a.put("nh7a04g", bi.nh7a04g.isChecked() ? "7" : "0");
-        sA8a.put("nh7a04h", bi.nh7a04h.isChecked() ? "8" : "0");
-        sA8a.put("nh7a04i", bi.nh7a04i.isChecked() ? "9" : "0");
-        sA8a.put("nh7a04j", bi.nh7a04j.isChecked() ? "10" : "0");
-        sA8a.put("nh7a0496", bi.nh7a0496.isChecked() ? "96" : "0");
-        sA8a.put("nh7a0496x", bi.nh7a0496x.getText().toString());
-        sA8a.put("nh7a05", bi.nh7a05.getText().toString());
-        sA8a.put("nh7a06", bi.nh7a06.getText().toString());
+        sA8a.put("nh707a", bi.nh7a04a.isChecked() ? "1" : "0");
+        sA8a.put("nh707b", bi.nh7a04b.isChecked() ? "2" : "0");
+        sA8a.put("nh707c", bi.nh7a04c.isChecked() ? "3" : "0");
+        sA8a.put("nh707d", bi.nh7a04d.isChecked() ? "4" : "0");
+        sA8a.put("nh707e", bi.nh7a04e.isChecked() ? "5" : "0");
+        sA8a.put("nh707f", bi.nh7a04f.isChecked() ? "6" : "0");
+        sA8a.put("nh707g", bi.nh7a04g.isChecked() ? "7" : "0");
+        sA8a.put("nh707h", bi.nh7a04h.isChecked() ? "8" : "0");
+        sA8a.put("nh707i", bi.nh7a04i.isChecked() ? "9" : "0");
+        sA8a.put("nh707j", bi.nh7a04j.isChecked() ? "10" : "0");
+        sA8a.put("nh70796", bi.nh7a0496.isChecked() ? "96" : "0");
+        sA8a.put("nh70796x", bi.nh7a0496x.getText().toString());
+        sA8a.put("nh708", bi.nh7a05.getText().toString());
+        sA8a.put("nh709", bi.nh7a06.getText().toString());
 
 
         MainApp.rc.setsA8A(String.valueOf(sA8a));

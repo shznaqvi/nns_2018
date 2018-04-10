@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -38,13 +37,13 @@ import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionD1Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener, CompoundButton.OnCheckedChangeListener {
+public class SectionD1Activity extends Menu2Activity implements TextWatcher, RadioGroup.OnCheckedChangeListener, CompoundButton.OnCheckedChangeListener {
 
     static List<String> members;
     static Map<String, SelectedMem> membersMap;
     static String name;
     static int counter = 1;
-    private final long DELAY = 1000;
+    private final long DELAY = 500;
     ActivitySectionD1Binding binding;
     DatabaseHelper db;
     int slc_type;
@@ -169,13 +168,13 @@ public class SectionD1Activity extends AppCompatActivity implements TextWatcher,
         binding.txtCounter.setText("Count " + counter + " out of " + MainApp.all_members.size());
 
 //        Listener
-        binding.nd1w.addTextChangedListener(this);
+        /*binding.nd1w.addTextChangedListener(this);
         binding.nd1h.addTextChangedListener(this);
-        binding.nd1muac.addTextChangedListener(this);
+        binding.nd1muac.addTextChangedListener(this);*/
         binding.nd1bcgscar.setOnCheckedChangeListener(this);
-        binding.nd1g.setOnCheckedChangeListener(this);
+       /* binding.nd1g.setOnCheckedChangeListener(this);
         binding.nd1ca.setOnCheckedChangeListener(this);
-        binding.nd1o.setOnCheckedChangeListener(this);
+        binding.nd1o.setOnCheckedChangeListener(this);*/
 
     }
 
@@ -308,7 +307,7 @@ public class SectionD1Activity extends AppCompatActivity implements TextWatcher,
         MainApp.emc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
         MainApp.emc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
-        MainApp.emc.set_UUID(MainApp.fc.getUID());
+        MainApp.emc.set_UUID(slecMem.get_UUID());
         MainApp.emc.setFmuid(slecMem.get_UID());
         MainApp.emc.setEnm_no(AntrhoInfoActivity.enm_no);
         MainApp.emc.setHh_no(AntrhoInfoActivity.hh_no);

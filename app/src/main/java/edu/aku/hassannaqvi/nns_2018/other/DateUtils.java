@@ -75,16 +75,18 @@ public class DateUtils {
         Date dob = cal.getTime();
         Date today = new Date();
         Long diff = today.getTime() - dob.getTime();
-        long ageInYears = (diff / (24 * 60 * 60 * 1000)) / 365;
-        return ageInYears;
+        double ageInYears = (diff / (24 * 60 * 60 * 1000)) / 365.25;
+        long age = (long) Math.floor(ageInYears);
+        return age;
     }
 
     public static long ageInMonthsByDOB(Calendar cal) {
         Date dob = cal.getTime();
         Date today = new Date();
         Long diff = today.getTime() - dob.getTime();
-        long ageInMonths = (diff / (24 * 60 * 60 * 1000)) / 30L;
-        return ageInMonths;
+        double ageInMonths = (diff / (24 * 60 * 60 * 1000)) / 30.4375;
+        long age = (long) Math.floor(ageInMonths);
+        return age;
     }
 
     public static int getCurrentYear() {

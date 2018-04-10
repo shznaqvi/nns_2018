@@ -63,7 +63,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + UsersTable.FULL_NAME + " TEXT"
             + " );";
     public static final String DATABASE_NAME = "nns_2018.db";
-    public static final String DB_NAME = DATABASE_NAME.replace(".", "_copy.");
+    private static final int DATABASE_VERSION = 3;
+    public static final String DB_NAME = DATABASE_NAME.replace(".", "_" + MainApp.versionName + "_" + DATABASE_VERSION + "_copy.");
     public static final String PROJECT_NAME = "NNS-2018";
 
     public static final String SQL_CREATE_BL_RANDOM = "CREATE TABLE " + singleRandomHH.TABLE_NAME + "("
@@ -77,7 +78,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + singleRandomHH.COLUMN_CONTACT + " TEXT,"
             + singleRandomHH.COLUMN_HH_SELECTED_STRUCT + " TEXT,"
             + singleRandomHH.COLUMN_RANDOMDT + " TEXT );";
-    private static final int DATABASE_VERSION = 2;
 
     private static final String SQL_CREATE_FORMS = "CREATE TABLE "
             + FormsTable.TABLE_NAME + "("
@@ -120,12 +120,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             familyMembers.COLUMN_ENM_NO + " TEXT," +
             familyMembers.COLUMN_HH_NO + " TEXT," +
             familyMembers.COLUMN_AV + " TEXT," +
+            familyMembers.COLUMN_FLAG + " TEXT," +
             familyMembers.COLUMN_DEVICEID + " TEXT," +
             familyMembers.COLUMN_DEVICETAGID + " TEXT," +
             familyMembers.COLUMN_APP_VERSION + " TEXT," +
             familyMembers.COLUMN_SYNCED + " TEXT," +
             familyMembers.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
+
+    private static final String SQL_ALTER_FAMILYMEMBER = "ALTER TABLE " +
+            familyMembers.TABLE_NAME + " ADD COLUMN " +
+            familyMembers.COLUMN_FLAG + " TEXT;";
+
     private static final String SQL_CREATE_CHILD_FORMS = "CREATE TABLE "
             + ChildTable.TABLE_NAME + "("
             + ChildTable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -348,6 +354,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+        /*db.execSQL(SQL_DELETE_USERS);
 
         db.execSQL(SQL_DELETE_USERS);
         db.execSQL(SQL_DELETE_FORMS);
@@ -365,7 +372,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_NUTRITION);
         db.execSQL(SQL_DELETE_DECEASED);
 
+        db.execSQL(SQL_CREATE_NUTRITION);*/
 
+        switch (i) {
+            case 2:
+                db.execSQL(SQL_ALTER_FAMILYMEMBER);
+        }
 
     }
 
@@ -570,7 +582,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         };
 
-        String whereClause = familyMembers.COLUMN_UUID + "=? "
+        String whereClause = familyMembers.COLUMN_ENM_NO + "=? AND "
                 + familyMembers.COLUMN_HH_NO + "=?";
         String[] whereArgs = new String[]{cluster, hh};
         String groupBy = null;
@@ -617,6 +629,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 familyMembers.COLUMN_FORMDATE,
                 familyMembers.COLUMN_USER,
                 familyMembers.COLUMN_HH_NO,
+                familyMembers.COLUMN_FLAG,
                 familyMembers.COLUMN_ENM_NO,
                 familyMembers.COLUMN_SA2,
                 familyMembers.COLUMN_AV,
@@ -1515,6 +1528,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 whereArgs);
     }
 
+    public void updateSyncedDeceasedForm(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(DeceasedContract.DeceasedTable.COLUMN_SYNCED, true);
+        values.put(DeceasedContract.DeceasedTable.COLUMN_SYNCED_DATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = DeceasedContract.DeceasedTable.COLUMN__ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                DeceasedContract.DeceasedTable.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
     public void updateSyncedFamilyMembers(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -1524,7 +1556,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(familyMembers.COLUMN_SYNCED_DATE, new Date().toString());
 
 // Which row to update, based on the title
-        String where = familyMembers._ID + " = ?";
+        String where = familyMembers.COLUMN_ID + " = ?";
         String[] whereArgs = {id};
 
         int count = db.update(
@@ -1629,6 +1661,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
+    public int updateFamilyMemberFLAG(String flag, String fmUID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(familyMembers.COLUMN_FLAG, flag);
+
+// Which row to update, based on the ID
+        String selection = familyMembers.COLUMN_UID + " = ?";
+        String[] selectionArgs = {fmUID};
+
+        int count = db.update(familyMembers.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
+
     public int updateDeceasedMemberID() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -1657,7 +1707,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 // Which row to update, based on the ID
         String selection = familyMembers.COLUMN_UID + " = ?";
-        String[] selectionArgs = {String.valueOf(fmc.get_UID())};
+        String[] selectionArgs = {fmc.get_UID()};
 
         int count = db.update(familyMembers.TABLE_NAME,
                 values,
@@ -1700,6 +1750,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values,
                 selection,
                 selectionArgs);
+        return count;
+    }
+
+    public int updateWRAB6() {
+        SQLiteDatabase db = this.getReadableDatabase();
+//      New value for one column
+        ContentValues values = new ContentValues();
+        values.put(MWRATable.COLUMN_SB6, MainApp.mc.getsB6());
+
+//      Which row to update, based on the ID
+        String selection = MWRATable.COLUMN_UID + " = ?";
+        String[] selectionArgs = new String[]{String.valueOf(MainApp.mc.get_ID())};
+
+        int count = db.update(MWRATable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+
         return count;
     }
 
@@ -1844,13 +1912,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                familyMembers._ID,
+                familyMembers.COLUMN_ID,
                 familyMembers.COLUMN_UID,
                 familyMembers.COLUMN_UUID,
                 familyMembers.COLUMN_FORMDATE,
                 familyMembers.COLUMN_USER,
                 //FormsTable.COLUMN_GPSELEV,
                 familyMembers.COLUMN_HH_NO,
+                familyMembers.COLUMN_FLAG,
                 familyMembers.COLUMN_ENM_NO,
                 familyMembers.COLUMN_SA2,
                 familyMembers.COLUMN_DEVICETAGID,
@@ -1866,7 +1935,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String having = null;
 
         String orderBy =
-                familyMembers._ID + " ASC";
+                familyMembers.COLUMN_ID + " ASC";
 
         Collection<FamilyMembersContract> allFC = new ArrayList<FamilyMembersContract>();
         try {
@@ -1898,7 +1967,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                familyMembers._ID,
+                familyMembers.COLUMN_ID,
                 familyMembers.COLUMN_UID,
                 familyMembers.COLUMN_UUID,
                 familyMembers.COLUMN_FORMDATE,
@@ -1906,6 +1975,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 //FormsTable.COLUMN_GPSELEV,
                 familyMembers.COLUMN_HH_NO,
                 familyMembers.COLUMN_ENM_NO,
+                familyMembers.COLUMN_FLAG,
                 familyMembers.COLUMN_SA2,
                 familyMembers.COLUMN_DEVICETAGID,
                 familyMembers.COLUMN_DEVICEID,
@@ -1924,7 +1994,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String having = null;
 
         String orderBy =
-                familyMembers.COLUMN_ID + " ASC";
+                familyMembers._ID + " ASC";
 
         Collection<FamilyMembersContract> allFC = new ArrayList<FamilyMembersContract>();
         JSONArray jsonArray = new JSONArray();
@@ -1965,7 +2035,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                DeceasedContract.DeceasedTable._ID,
+                DeceasedContract.DeceasedTable.COLUMN__ID,
                 DeceasedContract.DeceasedTable.COLUMN__UID,
                 DeceasedContract.DeceasedTable.COLUMN__UUID,
                 DeceasedContract.DeceasedTable.COLUMN_FORMDATE,
@@ -1984,12 +2054,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String having = null;
 
         String orderBy =
-                DeceasedContract.DeceasedTable._ID + " ASC";
+                DeceasedContract.DeceasedTable.COLUMN__ID + " ASC";
 
         Collection<DeceasedContract> allFC = new ArrayList<DeceasedContract>();
         try {
             c = db.query(
-                    familyMembers.TABLE_NAME,  // The table to query
+                    DeceasedContract.DeceasedTable.TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
                     whereClause,               // The columns for the WHERE clause
                     whereArgs,                 // The values for the WHERE clause
@@ -2418,7 +2488,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 NutritionTable.COLUMN_SB6
         };
 
-        String whereClause = NutritionTable.COLUMN_UUID + "=?";
+        String whereClause = NutritionTable.COLUMN_MUID + "=?";
         String[] whereArgs = new String[]{MainApp.mc.get_UID()};
         String groupBy = null;
         String having = null;

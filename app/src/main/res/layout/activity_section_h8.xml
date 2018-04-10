@@ -107,6 +107,9 @@
             </RadioGroup>
 
 
+
+
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -209,6 +212,78 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/fldGrpnh8ms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/nh8ms"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@android:color/white" />
+
+                <RadioGroup
+                    android:id="@+id/nh8ms"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/nh8msa"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:text="@string/nh8msa" />
+
+
+                    <RadioButton
+                        android:id="@+id/nh8msb"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:text="@string/nh8msa" />
+
+                    <RadioButton
+                        android:id="@+id/nh8msc"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:text="@string/nh8msc" />
+
+                    <RadioButton
+                        android:id="@+id/nh8msd"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:text="@string/nh8msd" />
+
+                    <RadioButton
+                        android:id="@+id/nh8mse"
+                        style="@style/radiobutton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:text="@string/nh8mse" />
+
+
+                </RadioGroup>
+
+            </LinearLayout>
+
 
             <LinearLayout
                 android:id="@+id/fldGrpmid"
@@ -291,7 +366,7 @@
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="108dp"
+                        android:layout_height="95dp"
                         android:background="@color/pink_100"
                         android:gravity="center"
                         android:text="@string/year2"

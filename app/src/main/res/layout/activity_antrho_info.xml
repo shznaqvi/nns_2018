@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/nh102"
+                android:text="@string/nh102a"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
@@ -56,7 +56,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_weight="60"
-                    android:hint="@string/nh102"
+                    android:hint="@string/nh102a"
                     android:inputType="number"
                     android:maxLength="9" />
 
@@ -234,6 +234,8 @@
                         android:layout_weight="60"
                         android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-"
                         android:hint="XXXX-X"
+                        android:layoutDirection="ltr"
+                        android:textDirection="ltr"
                         android:maxLength="6" />
 
                     <Button
@@ -255,7 +257,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     tools:visibility="visible">
 
                     <TextView
@@ -271,13 +273,14 @@
                         android:orientation="horizontal">
 
                         <Button
+                            android:id="@+id/btnScanHC"
                             style="@style/buttons"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
                             android:background="@drawable/button_bg"
                             android:elevation="5dp"
-                            android:onClick="@{() -> callback.BtnScan()}"
+                            android:onClick="@{() -> callback.BtnScanHC()}"
                             android:text="SCAN"
                             android:textColor="@color/colorPrimaryDark" />
 
@@ -287,7 +290,6 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-"
-                            android:hint="HC-XXX"
                             android:inputType="textCapCharacters"
                             android:maxLength="7" />
 
@@ -308,14 +310,14 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/btnScan"
+                            android:id="@+id/btnScanHT"
                             style="@style/buttons"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
                             android:background="@drawable/button_bg"
                             android:elevation="5dp"
-                            android:onClick="@{() -> callback.BtnScan()}"
+                            android:onClick="@{() -> callback.BtnScanHT()}"
                             android:text="SCAN"
                             android:textColor="@color/colorPrimaryDark" />
 
@@ -325,7 +327,6 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-"
-                            android:hint="HT-XXX"
                             android:inputType="textCapCharacters"
                             android:maxLength="7" />
 
@@ -345,13 +346,14 @@
                         android:orientation="horizontal">
 
                         <Button
+                            android:id="@+id/btnScanWT"
                             style="@style/buttons"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
                             android:background="@drawable/button_bg"
                             android:elevation="5dp"
-                            android:onClick="@{() -> callback.BtnScan()}"
+                            android:onClick="@{() -> callback.BtnScanWT()}"
                             android:text="SCAN"
                             android:textColor="@color/colorPrimaryDark" />
 
@@ -361,7 +363,6 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-"
-                            android:hint="WT-XXX"
                             android:inputType="textCapCharacters"
                             android:maxLength="7" />
 

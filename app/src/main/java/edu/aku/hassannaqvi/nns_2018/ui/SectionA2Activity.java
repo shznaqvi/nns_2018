@@ -48,6 +48,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
     int position = 0;
     int Age = 0;
     long agebyDob = 0;
+    long ageinMonths = 0;
     Boolean flag = false;
     FamilyMembersContract family;
     Calendar dob = Calendar.getInstance();
@@ -93,6 +94,8 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                             binding.nh2doby.getText().toString());
 
                     agebyDob = DateUtils.ageInYearByDOB(dob);
+                    ageinMonths = DateUtils.ageInMonthsByDOB(dob);
+
                     binding.nh2agey.setEnabled(false);
                     binding.nh2agey.setText(String.valueOf(agebyDob));
 
@@ -154,6 +157,10 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
 
             MainApp.SetNameClass nameSet = new MainApp.SetNameClass(getString(R.string.nh2dob) + " " + family.getName());
             binding.setName(nameSet);
+
+            binding.txtnh2dob.setText(binding.txtnh2dob.getText().toString().replace("Name", binding.selectedName.getText().toString()));
+            binding.txtna2age.setText(binding.txtna2age.getText().toString().replace("Name", binding.selectedName.getText().toString()));
+            binding.txtnh210.setText(binding.txtnh210.getText().toString().replace("Name", binding.selectedName.getText().toString()));
 
 
             binding.fldGrpA201.setVisibility(View.GONE);
@@ -439,7 +446,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                     : binding.na203i.isChecked() ? "9" : binding.na203j.isChecked() ? "10" : binding.na203k.isChecked() ? "11" : binding.na203l.isChecked() ? "12"
                     : binding.na203m.isChecked() ? "13" : binding.na20398.isChecked() ? "98" : binding.na20396.isChecked() ? "96" : "0");
 
-            MainApp.fmc.setResp(binding.respa.isChecked() ? "1" : "0"); //respondent
+            MainApp.fmc.setResp(binding.respa.isChecked() ? "1" : binding.respb.isChecked() ? "2" : "0"); //respondent
 
             MainApp.familyMembersList.add(MainApp.fmc);
 
@@ -457,15 +464,15 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
 
             //family.setDob(binding.nh2dob.getText().toString());
             family.setAge(binding.nh2agey.getText().toString()); //+ "/" + binding.nh2agem.getText().toString() + "/" + binding.nh2aged.getText().toString());
-            if (Age < 5) {
+            if (Age < 6) {
                 family.setMotherId(mothersMap.get(binding.nh212.getSelectedItem().toString() + "_" + mothersSerials.get(mothersList.indexOf(binding.nh212.getSelectedItem().toString()) - 1)));
             }
 
 
             JSONObject sA2 = new JSONObject();
 
-            sA2.put("cluster_no", MainApp.fc.getClusterNo());
-            sA2.put("hhno", MainApp.fc.getHhNo());
+            //sA2.put("cluster_no", MainApp.fc.getClusterNo());
+            //sA2.put("hhno", MainApp.fc.getHhNo());
             sA2.put("resp", family.getResp().equals("0") ? "" : family.getResp());
             sA2.put("nh2SerialNo", family.getSerialNo());
             sA2.put("nh202", family.getName());
@@ -646,7 +653,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
         } else {
             int updcount = db.updateFamilyMember(family);
 
-            if (updcount == 1) {
+            if (updcount != 0) {
                 //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
                 return true;
             } else {
@@ -768,16 +775,15 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
             if (!validatorClass.EmptyRadioButton(this, binding.nh2occ, binding.nh2occ96, binding.nh2occ96x, getString(R.string.nh2occ))) {
                 return false;
             }
-
+            if (!validatorClass.EmptyRadioButton(this, binding.nh210, binding.nh210a, getString(R.string.nh210))) {
+                return false;
+            }
             if (!validatorClass.EmptySpinner(this, binding.nh211, getString(R.string.nh211))) {
                 return false;
             }
 
-            if (!validatorClass.EmptySpinner(this, binding.nh212, getString(R.string.nh212))) {
-                return false;
-            }
+            return validatorClass.EmptySpinner(this, binding.nh212, getString(R.string.nh212));
 
-            return validatorClass.EmptyRadioButton(this, binding.nh210, binding.nh210a, getString(R.string.nh210));
         }
 
         return true;

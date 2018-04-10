@@ -32,7 +32,7 @@
                 android:id="@+id/btn_send_msg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Send Message"
+                android:text="Send Anthro Data"
                 android:visibility="gone" />
 
             <EditText

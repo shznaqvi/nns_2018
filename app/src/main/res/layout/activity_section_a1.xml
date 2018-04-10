@@ -311,7 +311,9 @@
                             android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-"
                             android:hint="XXXX-X"
                             android:inputType="text"
-                            android:maxLength="6" />
+                            android:layoutDirection="ltr"
+                            android:maxLength="6"
+                            android:textDirection="ltr" />
 
                         <Button
                             android:id="@+id/checkHHBtn"
@@ -711,13 +713,13 @@
                             </LinearLayout>
 
 
-                            <LinearLayout
+                            <!--<LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical">
-                                <!--android:visibility="@{na11801a.checked ? View.GONE : View.VISIBLE}"-->
+                                &lt;!&ndash;android:visibility="@{na11801a.checked ? View.GONE : View.VISIBLE}"&ndash;&gt;
 
-                                <!--na1b-->
+                                &lt;!&ndash;na1b&ndash;&gt;
                                 <TextView
                                     style="@style/sub"
                                     android:layout_width="match_parent"
@@ -725,7 +727,7 @@
                                     android:layout_marginTop="5dp"
                                     android:text="@string/na113info" />
 
-                                <!--na113-->
+                                &lt;!&ndash;na113&ndash;&gt;
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -817,7 +819,7 @@
                                     android:text='@{na11996.checked ? na11996x.getText.toString : ""}'
                                     android:visibility='@{na11996.checked ? View.VISIBLE : View.GONE}' />
 
-                            </LinearLayout>
+                            </LinearLayout>-->
 
                         </LinearLayout>
 

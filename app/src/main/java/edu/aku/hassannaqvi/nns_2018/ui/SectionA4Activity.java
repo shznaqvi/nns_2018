@@ -3,7 +3,6 @@ package edu.aku.hassannaqvi.nns_2018.ui;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -25,7 +24,7 @@ import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA4Binding;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionA4Activity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, TextWatcher {
+public class SectionA4Activity extends Menu2Activity implements RadioGroup.OnCheckedChangeListener, TextWatcher {
 
     private final long DELAY = 1000;
     ActivitySectionA4Binding binding;
@@ -69,11 +68,13 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
                     binding.nh30499.setChecked(false);
                     binding.nh304.setEnabled(false);
                     binding.nh304.setText(null);
+                    binding.nh304.setError(null);
                 } else {
                     binding.nh304.setEnabled(true);
                 }
             }
         });
+
         binding.nh30499.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -81,6 +82,7 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
                     binding.nh30498.setChecked(false);
                     binding.nh304.setEnabled(false);
                     binding.nh304.setText(null);
+                    binding.nh304.setError(null);
                 } else {
                     binding.nh304.setEnabled(true);
                 }
@@ -375,6 +377,7 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
         if (!validatorClass.EmptyRadioButton(this, binding.nh310, binding.nh310a, getString(R.string.nh310))) {
             return false;
         }
+
         if (!validatorClass.EmptyRadioButton(this, binding.nh310, binding.nh31096, binding.nh31096x, getString(R.string.nh310))) {
             return false;
         }
@@ -551,14 +554,14 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
                 if (!validatorClass.EmptyTextBox(this, binding.nh322acr, getString(R.string.nh322acr))) {
                     return false;
                 }
-                if (!validatorClass.RangeTextBox(this, binding.nh322acr, 1, 999, getString(R.string.nh322acr), "acre")) {
+                if (!validatorClass.RangeTextBox(this, binding.nh322acr, 1.00, 999.0, getString(R.string.nh322acr), "acre")) {
                     return false;
                 }
             } else if (binding.nh322b.isChecked()) {
                 if (!validatorClass.EmptyTextBox(this, binding.nh322can, getString(R.string.nh322can))) {
                     return false;
                 }
-                if (!validatorClass.RangeTextBox(this, binding.nh322can, 1, 999, getString(R.string.nh322can), "kanal")) {
+                if (!validatorClass.RangeTextBox(this, binding.nh322can, 1.00, 999.0, getString(R.string.nh322can), "kanal")) {
                     return false;
                 }
             }
@@ -938,13 +941,10 @@ public class SectionA4Activity extends AppCompatActivity implements RadioGroup.O
 
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
     }
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-
     }
 
     @Override

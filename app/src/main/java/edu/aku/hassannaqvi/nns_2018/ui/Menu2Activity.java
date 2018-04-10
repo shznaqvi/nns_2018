@@ -40,7 +40,7 @@ import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.get.GetAllData;
 import edu.aku.hassannaqvi.nns_2018.sync.SyncAllData;
 
-public class MenuActivity extends AppCompatActivity {
+public class Menu2Activity extends AppCompatActivity {
 
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
@@ -58,7 +58,7 @@ public class MenuActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_menu_example, menu);
+        getMenuInflater().inflate(R.menu.activity_menu_example2, menu);
         return true;
     }
 
@@ -301,13 +301,13 @@ public class MenuActivity extends AppCompatActivity {
 
                 @Override
                 public void run() {
-                    Toast.makeText(MenuActivity.this, "Sync Enum Blocks", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Menu2Activity.this, "Sync Enum Blocks", Toast.LENGTH_LONG).show();
                     new GetAllData(mContext, "EnumBlock").execute();
-                    Toast.makeText(MenuActivity.this, "Sync Users", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Menu2Activity.this, "Sync Users", Toast.LENGTH_LONG).show();
                     new GetAllData(mContext, "User").execute();
-                    Toast.makeText(MenuActivity.this, "Sync Users", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Menu2Activity.this, "Sync Users", Toast.LENGTH_LONG).show();
                     new GetAllData(mContext, "BLRandom").execute();
-                    Toast.makeText(MenuActivity.this, "Sync App Version", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Menu2Activity.this, "Sync App Version", Toast.LENGTH_LONG).show();
                     new GetAllData(mContext, "VersionApp").execute();
                 }
             });

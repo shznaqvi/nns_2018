@@ -50,6 +50,8 @@ public class SectionA2ListActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_list_a2);
         binding.setCallback(this);
 
+        db = new DatabaseHelper(this);
+
         setupViews();
         this.setTitle(getResources().getString(R.string.na2heading));
     }
@@ -77,6 +79,8 @@ public class SectionA2ListActivity extends AppCompatActivity {
         //        Recycler click listener
         binding.recyclerNoMembers.addOnItemTouchListener(
                 new RecyclerItemClickListener(getApplicationContext(), new RecyclerItemClickListener.OnItemClickListener() {
+                    Boolean delFlag = true;
+
                     @Override
                     public void onItemClick(View view, final int position) {
                         // TODO Handle item click
@@ -120,6 +124,74 @@ public class SectionA2ListActivity extends AppCompatActivity {
                                             }
                                         });
                                 AlertDialog alert = alertDialogBuilder.create();
+                                alert.show();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onItemLongClick(final View view, final int position) {
+
+                        if (position != -1 && SectionA1Activity.reBackFlag) {
+                            boolean flag = false;
+                            for (int hh : MainApp.hhClicked) {
+                                if (hh == position) {
+                                    flag = true;
+
+                                    for (int check : MainApp.flagClicked) {
+                                        if (check == position) {
+                                            delFlag = false;
+                                            break;
+                                        }
+                                    }
+
+                                    break;
+                                }
+                            }
+                            if (flag) {
+                                AlertDialog.Builder editAlert = new AlertDialog.Builder(
+                                        SectionA2ListActivity.this);
+                                editAlert
+                                        .setMessage("Do you want to edit this member?")
+                                        .setCancelable(false)
+                                        .setPositiveButton("Edit",
+                                                new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog,
+                                                                        int id) {
+                                                        finish();
+                                                        startActivity(new Intent(getApplicationContext(), SectionA2EditActivity.class)
+                                                                .putExtra("data", MainApp.familyMembersList.get(position))
+                                                                .putExtra("pos", position));
+                                                    }
+                                                });
+
+                                editAlert.setNeutralButton("Delete", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+
+                                        MainApp.familyMembersList.get(position).setDelflag(delFlag ? "1" : "2");
+
+                                        int updcount = db.updateFamilyMemberFLAG(delFlag ? "1" : "2", MainApp.familyMembersList.get(position).get_UID());
+                                        if (updcount == 1) {
+                                            Toast.makeText(SectionA2ListActivity.this, delFlag ? "Record Flag to delete!" : "Delete undo!!", Toast.LENGTH_SHORT).show();
+
+                                            if (delFlag) {
+                                                MainApp.flagClicked.add(position);
+                                                binding.recyclerNoMembers.getChildAt(position).setBackgroundColor(getResources().getColor(R.color.brown));
+                                            } else {
+                                                MainApp.flagClicked.remove(position);
+                                                binding.recyclerNoMembers.getChildAt(position).setBackgroundColor(getResources().getColor(R.color.black));
+                                            }
+                                        }
+                                    }
+                                });
+                                editAlert.setNegativeButton("Cancel",
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                dialog.cancel();
+                                            }
+                                        });
+                                AlertDialog alert = editAlert.create();
                                 alert.show();
                             }
                         }
@@ -229,6 +301,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
         MainApp.fc.setCount(String.valueOf(count));
 
+
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
 
     }
@@ -236,7 +309,6 @@ public class SectionA2ListActivity extends AppCompatActivity {
     private boolean UpdateDB() {
 
         //Long rowId;
-        DatabaseHelper db = new DatabaseHelper(this);
 
         int updcount = db.updateSACount();
 
@@ -257,6 +329,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
     public static class RecyclerItemClickListener implements RecyclerView.OnItemTouchListener {
         GestureDetector mGestureDetector;
         private OnItemClickListener mListener;
+        private RecyclerView viewRecycle;
 
         public RecyclerItemClickListener(Context context, OnItemClickListener listener) {
             mListener = listener;
@@ -266,11 +339,21 @@ public class SectionA2ListActivity extends AppCompatActivity {
                 public boolean onSingleTapUp(MotionEvent e) {
                     return true;
                 }
+
+                @Override
+                public void onLongPress(MotionEvent e) {
+                    View child = viewRecycle.findChildViewUnder(e.getX(), e.getY());
+                    if (child != null && mListener != null) {
+                        mListener.onItemLongClick(child, viewRecycle.getChildAdapterPosition(child));
+                    }
+
+                }
             });
         }
 
         @Override
         public boolean onInterceptTouchEvent(RecyclerView view, MotionEvent e) {
+            viewRecycle = view;
             View childView = view.findChildViewUnder(e.getX(), e.getY());
             if (childView != null && mListener != null && mGestureDetector.onTouchEvent(e)) {
                 mListener.onItemClick(childView, view.getChildAdapterPosition(childView));
@@ -289,7 +372,11 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
         public interface OnItemClickListener {
             void onItemClick(View view, int position);
+
+            void onItemLongClick(View view, int position);
         }
+
+
     }
 
     //    Recycler classes
@@ -303,10 +390,9 @@ public class SectionA2ListActivity extends AppCompatActivity {
         }
 
         @Override
-        public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public MyViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
             View itemView = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.familymemberslist, parent, false);
-
             return new MyViewHolder(itemView);
         }
 
@@ -382,6 +468,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
             }
 
             public void bindUser(FamilyMembersContract mem) {
+
                 familyBinding.imgUser.setImageDrawable(getDrawable(SetImage(mem.getna204(), mem.getAgeInYear())));
                 familyBinding.memberName.setText(mem.getName().toUpperCase());
                 familyBinding.na204.setText(mem.getna204().equals("1") ? "Male" : "Female");
@@ -400,6 +487,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
                 } else {
                     familyBinding.imgHead.setVisibility(View.GONE);
                 }
+
             }
         }
     }
@@ -443,6 +531,11 @@ public class SectionA2ListActivity extends AppCompatActivity {
                     for (int item : MainApp.hhClicked) {
                         binding.recyclerNoMembers.getChildAt(item).setBackgroundColor(Color.BLACK);
                     }
+
+                    for (int item : MainApp.flagClicked) {
+                        binding.recyclerNoMembers.getChildAt(item).setBackgroundColor(getResources().getColor(R.color.brown));
+                    }
+
                 }
             }, 800);
         }

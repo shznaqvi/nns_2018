@@ -308,7 +308,7 @@ public class EligibleMembersContract {
         public static final String COLUMN_DEVICETAGID = "devicetagid";
         public static final String COLUMN_USER = "user";
         public static final String COLUMN_APPVERSION = "appversion";
-        public static final String COLUMN_ENM_NO = "enm_no";
+        public static final String COLUMN_ENM_NO = "cluster_no";
         public static final String COLUMN_HH_NO = "hh_no";
         public static final String COLUMN_DOB = "dob";
         public static final String COLUMN_AGE = "age";

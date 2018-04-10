@@ -9,7 +9,6 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -38,10 +37,9 @@ import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA1Binding;
 import edu.aku.hassannaqvi.nns_2018.other.MembersCount;
-import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionA1Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
+public class SectionA1Activity extends Menu2Activity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
     private static final String TAG = SectionA1Activity.class.getName();
     static int progress = 0;
@@ -56,6 +54,8 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
     private Timer timer = new Timer();
     static Boolean reBackFlag = true;
     static Boolean reBackChildFlag = true;
+
+    int length = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,17 +77,6 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
     private void SkipPatterns() {
 
-        binding.na11801.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                //formValidation();
-                if (checkedId == R.id.na11801a) {
-                    clearClass.ClearAllFields(binding.fldGrpna113, false);
-                } else {
-                    clearClass.ClearAllFields(binding.fldGrpna113, true);
-                }
-            }
-        });
 
 
         // Field wise validation
@@ -99,7 +88,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
         //binding.nh115.addTextChangedListener(this);
         //binding.nh213.addTextChangedListener(this);
         binding.na11802.setOnCheckedChangeListener(this);
-        binding.na119a.addTextChangedListener(this);
+        //binding.na119a.addTextChangedListener(this);
 
 
     }
@@ -184,6 +173,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 //        FamilyMembersList initialization
         MainApp.familyMembersList = new ArrayList<>();
         MainApp.hhClicked = new ArrayList<>();
+        MainApp.flagClicked = new ArrayList<>();
 
 //        HH Checkbox validate
         /* binding.checkHHHeadpresent.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -204,6 +194,17 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
                 binding.nh108.setInputType(InputType.TYPE_CLASS_NUMBER);
+
+                /*Toast.makeText(SectionA1Activity.this,
+                        "before: " + charSequence + "|" +
+                                i + "|" +
+                                i1 + "|" +
+                                i2
+                        , Toast.LENGTH_SHORT).show();*/
+                String scanned = charSequence.toString();
+
+                length = charSequence.toString().length();
+
             }
 
             @Override
@@ -211,17 +212,24 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
                 clearFields();
 
+                /*Toast.makeText(SectionA1Activity.this,
+                        "onText: " + charSequence + "|" +
+                                i + "|" +
+                                i1 + "|" +
+                                i2
+                        , Toast.LENGTH_SHORT).show();*/
+                String scanned = charSequence.toString();
+
                 if (!binding.nh108.getText().toString().isEmpty() && binding.nh108.getText().toString().length() == 4) {
                     if (binding.nh108.getText().toString().substring(0, 3).matches("[0-9]+")) {
-                        binding.nh108.setText(binding.nh108.getText().toString() + "-");
-                        binding.nh108.setSelection(binding.nh108.getText().length());
-                        binding.nh108.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+                        if (length < 5) {
+                            binding.nh108.setText(binding.nh108.getText().toString() + "-");
+                            binding.nh108.setSelection(binding.nh108.getText().length());
+                            binding.nh108.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+                        }
 
                     }
                 }
-
-
-
 
             }
 
@@ -431,9 +439,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 //        na11802
 
             if (MainApp.selectedHead.getSelStructure().equals("1")) {
-                if (!validatorClass.EmptyRadioButton(this, binding.na11802, binding.na11802b, getString(R.string.na11802))) {
-                    return false;
-                }
+                return validatorClass.EmptyRadioButton(this, binding.na11802, binding.na11802b, getString(R.string.na11802));
             }
 
             /*if (MainApp.selectedHead.getSelStructure().equals("1") && !binding.na11802a.isChecked()) {
@@ -443,9 +449,9 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
             }
 */
 //        na113
-            if (binding.na11801b.isChecked()) {
+            /*if (binding.na11801b.isChecked()) {
                 return validatorClass.EmptyCheckBox(this, binding.fldGrpna113, binding.na11996, binding.na11996x, String.valueOf(R.string.na113));
-            }
+            }*/
         }
 
         return true;
@@ -507,7 +513,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
                 : binding.na11802b.isChecked() ? "2" : "0");
 
 //        na117
-        sA1.put("nh119a", binding.na119a.isChecked() ? "1" : "0");
+        /*sA1.put("nh119a", binding.na119a.isChecked() ? "1" : "0");
         sA1.put("nh119b", binding.na119b.isChecked() ? "2" : "0");
         sA1.put("nh119c", binding.na119c.isChecked() ? "3" : "0");
         sA1.put("nh119d", binding.na119d.isChecked() ? "4" : "0");
@@ -515,7 +521,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
         sA1.put("nh119f", binding.na119f.isChecked() ? "6" : "0");
         sA1.put("nh119g", binding.na119g.isChecked() ? "7" : "0");
         sA1.put("nh11996", binding.na11996.isChecked() ? "96" : "0");
-        sA1.put("nh11996x", binding.na11996x.getText().toString());
+        sA1.put("nh11996x", binding.na11996x.getText().toString());*/
 
         MainApp.fc.setsA1(String.valueOf(sA1));
 
@@ -616,7 +622,7 @@ public class SectionA1Activity extends AppCompatActivity implements TextWatcher,
 
     public void BtnCheckEnm() {
 
-        if (validatorClass.EmptyTextBox(this, binding.nh102, getString(R.string.nh102))) {
+        if (validatorClass.EmptyTextBox(this, binding.nh101, getString(R.string.nh101)) && validatorClass.EmptyTextBox(this, binding.nh102, getString(R.string.nh102))) {
 
             EnumBlockContract enumBlockContract = db.getEnumBlock(binding.nh102.getText().toString());
             if (enumBlockContract != null) {

@@ -3,7 +3,6 @@ package edu.aku.hassannaqvi.nns_2018.ui;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
@@ -23,7 +22,7 @@ import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB6Binding;
 import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionB6Activity extends AppCompatActivity {
+public class SectionB6Activity extends Menu2Activity {
 
     private final long DELAY = 1000;
     ActivitySectionB6Binding bi;
@@ -47,6 +46,7 @@ public class SectionB6Activity extends AppCompatActivity {
         bi.setCallback(this);
 
         this.setTitle(getResources().getString(R.string.nw5heading));
+        bi.textName.setText("Selected Woman : " + SectionB1Activity.wraName);
 
         settingTimeToEat();
         setListners();
@@ -452,6 +452,9 @@ public class SectionB6Activity extends AppCompatActivity {
                         (MainApp.nc.getDeviceId() + MainApp.nc.get_ID()));
                 db.updateNutritionID();
 
+                MainApp.mc.setsB6("1");
+                db.updateWRAB6();
+
                 uid = MainApp.nc.getDeviceId() + MainApp.nc.get_ID();
 
                 return true;
@@ -481,8 +484,8 @@ public class SectionB6Activity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
 
-        if (!backPressed) {
-            firstTimePressed = false;
+        if (firstTimePressed && !frontPressed) {
+            backPressed = false;
         }
     }
 

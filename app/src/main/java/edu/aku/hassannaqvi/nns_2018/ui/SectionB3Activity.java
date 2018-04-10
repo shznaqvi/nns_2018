@@ -3,7 +3,6 @@ package edu.aku.hassannaqvi.nns_2018.ui;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.RadioGroup;
@@ -26,7 +25,7 @@ import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionB3Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
+public class SectionB3Activity extends Menu2Activity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
     private final long DELAY = 1000;
     ActivitySectionB3Binding binding;
@@ -44,6 +43,7 @@ public class SectionB3Activity extends AppCompatActivity implements TextWatcher,
         binding.setCallback(this);
 
         this.setTitle(getResources().getString(R.string.nb3heading));
+        binding.textName.setText("Selected Woman : " + SectionB1Activity.wraName);
 
 //        Skip Patterns
 

@@ -353,6 +353,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
+                        android:id="@+id/txtnh2dob"
                         android:background="@color/colorPrimary"
                         android:text='@string/nh2dob'
                         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -486,6 +487,7 @@
                             android:layout_marginTop="16dp"
                             android:background="@color/colorPrimary"
                             android:text="@string/na2age"
+                            android:id="@+id/txtna2age"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@android:color/white" />
 
@@ -854,6 +856,7 @@
                         android:layout_marginTop="16dp"
                         android:background="@color/colorPrimary"
                         android:text="@string/nh210"
+                        android:id="@+id/txtnh210"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@android:color/white" />
 

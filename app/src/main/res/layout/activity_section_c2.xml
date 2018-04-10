@@ -2,8 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="edu.aku.hassannaqvi.src_preg.ui.SectionC2Activity">
+
     <data>
+
         <import type="android.view.View" />
+
         <variable
             name="callback"
             type="edu.aku.hassannaqvi.nns_2018.ui.SectionC2Activity" />
@@ -58,6 +61,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/txtnc206"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
@@ -107,6 +111,7 @@
 
 
                         <TextView
+                            android:id="@+id/txtnc207"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
@@ -219,6 +224,7 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/txtnc209"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="16dp"
@@ -285,6 +291,7 @@
 
 
                         <TextView
+                            android:id="@+id/txtnc210"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
@@ -329,6 +336,7 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/txtnc211"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="16dp"
@@ -448,6 +456,7 @@
 
 
                         <TextView
+                            android:id="@+id/txtnc212"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
@@ -496,6 +505,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/txtnc212a"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
@@ -539,6 +549,7 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/txtnc213"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
@@ -581,6 +592,7 @@
 
 
                     <TextView
+                        android:id="@+id/txtnc214"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
@@ -623,6 +635,7 @@
 
 
                     <TextView
+                        android:id="@+id/txtnc215"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
@@ -634,7 +647,6 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
                         android:orientation="vertical">
                         <!--A-->
                         <TextView
@@ -1068,6 +1080,7 @@
 
 
                     <TextView
+                        android:id="@+id/txtnc217"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
@@ -1841,6 +1854,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/txtnc218"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
@@ -1892,6 +1906,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/txtnc219"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
@@ -1941,6 +1956,7 @@
 
 
                     <TextView
+                        android:id="@+id/txtnc220"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
@@ -1979,10 +1995,14 @@
                             android:layout_weight="1"
                             android:text="@string/dkn" />
 
-
                     </RadioGroup>
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"></LinearLayout>
+
                     <TextView
+                        android:id="@+id/txtnc221"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
@@ -2107,6 +2127,7 @@
 
 
                     <TextView
+                        android:id="@+id/txtnc223"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"

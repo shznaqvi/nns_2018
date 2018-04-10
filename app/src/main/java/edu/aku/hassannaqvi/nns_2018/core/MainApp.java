@@ -116,6 +116,7 @@ public class MainApp extends Application {
     public static List<FamilyMembersContract> familyMembersList;
     //public static List<FamilyMembersContract> familyMembersList;
     public static List<Integer> hhClicked;
+    public static List<Integer> flagClicked;
 
     // Gul Sanober
     public static Map<String, FamilyMembersContract> mwraMap;

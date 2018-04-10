@@ -196,6 +196,14 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
 
+                <TextView
+                    android:id="@+id/txtAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/pink_100"
+                    android:padding="0dp"
+                    android:textColor="@color/colorPrimaryDark" />
+
                 <EditText
                     android:id="@+id/nw202"
                     android:layout_width="match_parent"

@@ -68,6 +68,8 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
         bi.count.setText("Pregnancy No " + MainApp.count + " out of " + MainApp.totalPregnancy);
 
+        bi.textName.setText("Selected Woman : " + SectionB1Activity.wraName);
+
         for (EditText ed : grpDate) {
             ed.addTextChangedListener(this);
         }
@@ -238,7 +240,6 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
         sB1a.put("cluster_no", MainApp.fc.getClusterNo());
         sB1a.put("hhno", MainApp.fc.getHhNo());
-        sB1a.put("MUID", MainApp.mc.get_UID());
 
         sB1a.put("serial", Integer.valueOf(MainApp.count));
         sB1a.put("nw21701", bi.nw21701a.isChecked() ? "1" : bi.nw21701b.isChecked() ? "2" : "0");
@@ -277,9 +278,22 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 return false;
             }
         } else {
-            db.addOutcome(MainApp.oc, 1);
+            Long updcount = db.addOutcome(MainApp.oc, 1);
+            if (updcount != 0) {
+                MainApp.oc.set_UID(
+                        (MainApp.oc.getDeviceId() + MainApp.oc.get_ID()));
+                db.updateOutcomeID();
 
-            return true;
+                uid = MainApp.oc.getDeviceId() + MainApp.oc.get_ID();
+
+                return true;
+            } else {
+                Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+
+
+
         }
     }
 
@@ -303,7 +317,6 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
                 yearsBydob = DateUtils.ageInYearByDOB(bi.nw21702y.getText().toString());
             }
-
 
         }
 
@@ -350,8 +363,8 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
     protected void onPause() {
         super.onPause();
 
-        if (!backPressed) {
-            firstTimePressed = false;
+        if (firstTimePressed && !frontPressed) {
+            backPressed = false;
         }
     }
 
