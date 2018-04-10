@@ -349,5 +349,22 @@
     <style name="HeaderBar">
         <item name="android:background">#303F9F</item>
     </style>
+    <!-- res/values/styles.xml -->
+    <style name="ViewMemberList" parent="@android:style/Widget.ListView">
+        <item name="android:background">@color/light_grey</item>
+        <item name="android:cacheColorHint">@android:color/transparent</item>
+        <item name="android:divider">@android:color/transparent</item>
+        <item name="android:dividerHeight">0dp</item>
+    </style>
+
+    <style name="ViewMemlistItems" parent="android:Widget.Material.Light.TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/light_grey</item>
+        <item name="android:textColor">@color/colorPrimaryAlpha</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:padding">4dp</item>
+    </style>
 
 </resources>

@@ -11,6 +11,7 @@
     <color name="colorRedsub">#d6ff8a80</color>
     <color name="lightred">#FFEBEE</color>
     <color name="colorPrimaryBeta">#00BCD4</color>
+    <color name="light_grey">#cccccc</color>
 
     <color name="black">#000000</color>
     <color name="blackOverlay">#66000000</color>
