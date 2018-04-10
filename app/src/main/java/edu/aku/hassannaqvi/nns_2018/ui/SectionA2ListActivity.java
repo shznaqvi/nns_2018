@@ -238,7 +238,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
                 if (SectionA1Activity.reBackFlag) {
                     respLineNo = "";
                     startActivity(new Intent(this, SectionA4Activity.class));
-//                    startActivity(new Intent(this, SectionB1Activity.class));
+                    //startActivity(new Intent(this, ViewMemberActivity .class));
                 } else {
                     startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 6));
                 }

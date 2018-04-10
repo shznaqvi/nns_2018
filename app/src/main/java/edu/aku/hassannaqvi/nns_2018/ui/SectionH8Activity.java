@@ -281,7 +281,8 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
         sA2.put("nh803", bi.nh803.getText().toString());
         sA2.put("nh804", bi.nh804.getSelectedItem().toString());
         sA2.put("nh805", bi.nh805.getSelectedItem().toString());
-        sA2.put("nh806", bi.nh806a.isChecked() ? "1" : bi.nh806b.isChecked() ? "2" : "0");
+        sA2.put("nh806", bi.nh806a.isChecked() ? "1"
+                : bi.nh806b.isChecked() ? "2" : "0");
         sA2.put("nh8ms", bi.nh8msa.isChecked() ? "1"
                 : bi.nh8msb.isChecked() ? "2"
                 : bi.nh8msc.isChecked() ? "3"

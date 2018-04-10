@@ -92,12 +92,6 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
                 childU5.remove(getIntent().getStringExtra("name"));
                 counter++;
 
-                /*if (isNA) {
-                    NAChildsize = MainApp.childNA.size();
-                } else {
-                    Childsize = MainApp.childUnder5.size();
-                }*/
-
             } else {
 
                 counter = 1;
@@ -115,8 +109,6 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
                         childU5.add(fmc.getName() + "-" + fmc.getSerialNo());
                         counterPerNA++;
                     }
-
-
 
                     NAChildsize = MainApp.childNA.size();
                     binding.fldGrpresp.setVisibility(View.VISIBLE);
