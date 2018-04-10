@@ -52,6 +52,15 @@
                 android:layoutDirection="rtl"
                 android:orientation="vertical">
 
+                <CheckBox
+                    android:id="@+id/nh7aFlag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:text="@string/nw217Flag"
+                    android:textColor="@color/red"
+                    android:visibility="gone" />
+
                 <!--nh101-->
                 <TextView
                     android:layout_width="match_parent"
@@ -68,6 +77,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/nh7a02a"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/black_overlay"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:visibility="gone" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -191,7 +209,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
                         android:text="@string/nh7a04j" />
-
 
                     <CheckBox
                         android:id="@+id/nh7a0496"

@@ -81,6 +81,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp" />
 
+                <TextView
+                    android:id="@+id/nb101a"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/black_overlay"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:visibility="gone" />
+
                 <!--201-->
                 <TextView
                     android:layout_width="match_parent"

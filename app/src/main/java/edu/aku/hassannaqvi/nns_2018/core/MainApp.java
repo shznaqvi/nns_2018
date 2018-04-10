@@ -108,6 +108,9 @@ public class MainApp extends Application {
     public static List<FamilyMembersContract> mwra_1;
     public static List<FamilyMembersContract> adolescents;
     public static List<FamilyMembersContract> adolescents_1;
+    public static List<String> editmothersList, editfathersList;
+    public static List<String> editmothersSerials, editfathersSerials;
+
     public static BLRandomContract selectedHead;
     public static int serial_no;
     public static Boolean B6Flag = true;
@@ -125,7 +128,6 @@ public class MainApp extends Application {
     public static boolean flag = false;
     public static int outcome = 0;
     public static String lineNo = "";
-    public static int status = 0;
     public static int mwraPosition = 0;
 
     public static int nuCount = 1;

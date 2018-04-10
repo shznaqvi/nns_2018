@@ -1,5 +1,7 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -13,13 +15,17 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONA5ModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA5Binding;
+import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
@@ -42,6 +48,9 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
     };
     DatabaseHelper db;
     int recipientCounter = 0;
+    int prevRecipientCounter = 0;
+    Boolean backPressed = false;
+    int prevDeceasedCounter = 0;
     private Timer timer = new Timer();
 
     @Override
@@ -177,6 +186,238 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
 //        Validation Boolean
         MainApp.validateFlag = false;
 
+        if (SectionA1Activity.editFormFlag) {
+            AutoPopulate();
+        }
+    }
+
+    private void AutoPopulate() {
+        FormsContract formContract = db.getsA5();
+        if (!formContract.getsA5().equals("")) {
+
+            JSONA5ModelClass jsonA5 = JSONUtilClass.getModelFromJSON(formContract.getsA5(), JSONA5ModelClass.class);
+
+            if (!jsonA5.getnh401().equals("0")) {
+                binding.nh401.check(
+                        jsonA5.getnh401().equals("1") ? binding.nh401a.getId() :
+                                jsonA5.getnh401().equals("2") ? binding.nh401b.getId() :
+                                        jsonA5.getnh401().equals("3") ? binding.nh401c.getId() :
+                                                binding.nh401d.getId()
+                );
+            }
+            if (!jsonA5.getnh402().equals("0")) {
+                binding.nh402.check(
+                        jsonA5.getnh402().equals("1") ? binding.nh402a.getId() :
+                                binding.nh402b.getId()
+                );
+            }
+            if (!jsonA5.getnh403a().equals("0")) {
+                binding.nh403a.setChecked(true);
+            }
+            if (!jsonA5.getnh403b().equals("0")) {
+                binding.nh403b.setChecked(true);
+            }
+            if (!jsonA5.getnh403c().equals("0")) {
+                binding.nh403c.setChecked(true);
+            }
+            if (!jsonA5.getnh403d().equals("0")) {
+                binding.nh403d.setChecked(true);
+            }
+            if (!jsonA5.getnh403e().equals("0")) {
+                binding.nh403e.setChecked(true);
+            }
+
+            if (!jsonA5.getnh404().equals("0")) {
+                binding.nh404.check(
+                        jsonA5.getnh404().equals("1") ? binding.nh404a.getId() :
+                                binding.nh404b.getId()
+                );
+            }
+            if (!jsonA5.getnh405a().equals("0")) {
+                binding.nh405a.setChecked(true);
+            }
+
+            if (!jsonA5.getnh405b().equals("0")) {
+                binding.nh405b.setChecked(true);
+            }
+            if (!jsonA5.getnh405c().equals("0")) {
+                binding.nh405c.setChecked(true);
+            }
+            if (!jsonA5.getnh405d().equals("0")) {
+                binding.nh405d.setChecked(true);
+            }
+            if (!jsonA5.getnh405e().equals("0")) {
+                binding.nh405e.setChecked(true);
+            }
+            if (!jsonA5.getnh40601().equals("0")) {
+                binding.nh40601.check(
+                        jsonA5.getnh404().equals("1") ? binding.nh40601a.getId() :
+                                binding.nh40601b.getId()
+                );
+            }
+            if (!jsonA5.getnh40602().equals("0")) {
+                binding.nh40602.check(
+                        jsonA5.getnh40602().equals("1") ? binding.nh40602a.getId() :
+                                binding.nh40602b.getId()
+                );
+            }
+            if (!jsonA5.getnh40603().equals("0")) {
+                binding.nh40603.check(
+                        jsonA5.getnh404().equals("1") ? binding.nh40603a.getId() :
+                                binding.nh40603b.getId()
+                );
+            }
+            if (!jsonA5.getnh40604().equals("0")) {
+                binding.nh40604.check(
+                        jsonA5.getnh404().equals("1") ? binding.nh40604a.getId() :
+                                binding.nh40604b.getId()
+                );
+            }
+            if (!jsonA5.getnh40605().equals("0")) {
+                binding.nh40605.check(
+                        jsonA5.getnh404().equals("1") ? binding.nh40605a.getId() :
+                                binding.nh40605b.getId()
+                );
+            }
+            if (!jsonA5.getnh40696().equals("0")) {
+                binding.nh40696.check(
+                        jsonA5.getnh404().equals("1") ? binding.nh40696a.getId() :
+                                binding.nh40696b.getId()
+                );
+            }
+            binding.nh40696x.setText(jsonA5.getnh40696x());
+
+            if (!jsonA5.getnh501().equals("0")) {
+                binding.nh501.check(
+                        jsonA5.getnh501().equals("1") ? binding.nh501a.getId() :
+                                jsonA5.getnh501().equals("2") ? binding.nh501b.getId() :
+                                        jsonA5.getnh501().equals("3") ? binding.nh501c.getId() :
+                                                jsonA5.getnh501().equals("4") ? binding.nh501d.getId() :
+                                                        binding.nh50196.getId()
+                );
+            }
+            binding.nh50196x.setText(jsonA5.getnh50196x());
+            if (!jsonA5.getnh502().equals("0")) {
+                binding.nh502.check(
+                        jsonA5.getnh502().equals("1") ? binding.nh502a.getId() :
+                                jsonA5.getnh502().equals("2") ? binding.nh502b.getId() :
+                                        binding.nh502c.getId()
+                );
+            }
+            if (!jsonA5.getnh503().equals("0")) {
+                binding.nh503.check(
+                        jsonA5.getnh503().equals("1") ? binding.nh503a.getId() :
+                                jsonA5.getnh503().equals("2") ? binding.nh503b.getId() :
+                                        jsonA5.getnh503().equals("3") ? binding.nh503c.getId() :
+                                                binding.nh503d.getId()
+                );
+            }
+            if (!jsonA5.getnh601().equals("0")) {
+                binding.nh601.check(
+                        jsonA5.getnh601().equals("1") ? binding.nh601a.getId() :
+                                jsonA5.getnh601().equals("2") ? binding.nh601b.getId() :
+                                        jsonA5.getnh601().equals("98") ? binding.nh60198.getId() :
+                                                binding.nh60199.getId()
+                );
+            }
+            if (!jsonA5.getnh602().equals("0")) {
+                binding.nh602.check(
+                        jsonA5.getnh602().equals("1") ? binding.nh602a.getId() :
+                                jsonA5.getnh602().equals("2") ? binding.nh602b.getId() :
+                                        jsonA5.getnh602().equals("98") ? binding.nh60298.getId() :
+                                                binding.nh60299.getId()
+                );
+            }
+            if (!jsonA5.getnh603().equals("0")) {
+                binding.nh603.check(
+                        jsonA5.getnh603().equals("1") ? binding.nh603a.getId() :
+                                jsonA5.getnh603().equals("2") ? binding.nh603b.getId() :
+                                        jsonA5.getnh603().equals("98") ? binding.nh60398.getId() :
+                                                binding.nh60399.getId()
+                );
+            }
+            if (!jsonA5.getnh604().equals("0")) {
+                binding.nh604.check(
+                        jsonA5.getnh604().equals("1") ? binding.nh604a.getId() :
+                                jsonA5.getnh604().equals("2") ? binding.nh604b.getId() :
+                                        jsonA5.getnh604().equals("98") ? binding.nh60498.getId() :
+                                                binding.nh60499.getId()
+                );
+            }
+            if (!jsonA5.getnh605().equals("0")) {
+                binding.nh605.check(
+                        jsonA5.getnh605().equals("1") ? binding.nh605a.getId() :
+                                jsonA5.getnh605().equals("2") ? binding.nh605b.getId() :
+                                        jsonA5.getnh605().equals("98") ? binding.nh60598.getId() :
+                                                binding.nh60599.getId()
+                );
+            }
+            if (!jsonA5.getnh606().equals("0")) {
+                binding.nh606.check(
+                        jsonA5.getnh606().equals("1") ? binding.nh606a.getId() :
+                                jsonA5.getnh606().equals("2") ? binding.nh606b.getId() :
+                                        jsonA5.getnh606().equals("98") ? binding.nh60698.getId() :
+                                                binding.nh60699.getId()
+                );
+            }
+            if (!jsonA5.getnh607().equals("0")) {
+                binding.nh607.check(
+                        jsonA5.getnh607().equals("1") ? binding.nh607a.getId() :
+                                jsonA5.getnh607().equals("2") ? binding.nh607b.getId() :
+                                        jsonA5.getnh607().equals("98") ? binding.nh60798.getId() :
+                                                binding.nh60799.getId()
+                );
+            }
+            if (!jsonA5.getnh608().equals("0")) {
+                binding.nh608.check(
+                        jsonA5.getnh608().equals("1") ? binding.nh608a.getId() :
+                                jsonA5.getnh608().equals("2") ? binding.nh608b.getId() :
+                                        jsonA5.getnh608().equals("98") ? binding.nh60898.getId() :
+                                                binding.nh60899.getId()
+                );
+            }
+            if (!jsonA5.getnh609().equals("0")) {
+                binding.nh609.check(
+                        jsonA5.getnh609().equals("1") ? binding.nh609a.getId() :
+                                jsonA5.getnh609().equals("2") ? binding.nh609b.getId() :
+                                        jsonA5.getnh609().equals("98") ? binding.nh60998.getId() :
+                                                binding.nh60999.getId()
+                );
+            }
+            if (!jsonA5.getnh701().equals("0")) {
+                binding.nh701.check(
+                        jsonA5.getnh701().equals("1") ? binding.nh701a.getId() :
+                                binding.nh701b.getId()
+
+                );
+            }
+            binding.nh702.setText(jsonA5.getnh702());
+
+            if (jsonA5.getnh701().equals("2")) {
+                binding.nh701a.setEnabled(false);
+            }
+            if (!jsonA5.getnh702().equals("")) {
+                prevRecipientCounter = Integer.valueOf(jsonA5.getnh702());
+
+            }
+
+            if (!jsonA5.getnh801().equals("0")) {
+                binding.nh801.check(
+                        jsonA5.getnh801().equals("1") ? binding.nh801a.getId() :
+                                binding.nh801b.getId()
+
+                );
+            }
+            binding.nh802.setText(jsonA5.getnh802());
+
+            if (jsonA5.getnh801().equals("2")) {
+                binding.nh801a.setEnabled(false);
+            }
+            if (!jsonA5.getnh802().equals("")) {
+                prevDeceasedCounter = Integer.valueOf(jsonA5.getnh802());
+            }
+
+        }
     }
 
     public void BtnContinue() {
@@ -197,11 +438,83 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
                 finish();
 
                 if (recipientCounter > 0) {
-                    startActivity(new Intent(this, SectionA8AActivity.class).putExtra("recCounter", recipientCounter));
+
+                    if (recipientCounter < prevRecipientCounter) {
+
+                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                                SectionA5Activity.this);
+                        alertDialogBuilder
+                                .setMessage("In previous you saved " + prevRecipientCounter + " Recipient.\n" +
+                                        "Do you want to continue it?")
+                                .setCancelable(false)
+                                .setPositiveButton("Yes",
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog,
+                                                                int id) {
+
+                                                startActivity(new Intent(SectionA5Activity.this,
+                                                        SectionA8AActivity.class).putExtra("recCounter", recipientCounter));
+                                            }
+                                        });
+                        alertDialogBuilder.setNegativeButton("Cancel",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+
+                                    }
+                                });
+                        AlertDialog alert = alertDialogBuilder.create();
+                        alert.show();
+
+                    } else {
+                        startActivity(new Intent(this, SectionA8AActivity.class).putExtra("recCounter", recipientCounter));
+                    }
                 } else if (deceasedCounter > 0) {
-                    startActivity(new Intent(this, SectionH8Activity.class));
+//                    startActivity(new Intent(this, SectionH8Activity.class));
+
+                    if (deceasedCounter < prevDeceasedCounter) {
+
+                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                                SectionA5Activity.this);
+                        alertDialogBuilder
+                                .setMessage("In previous you saved " + prevDeceasedCounter + " Deceased.\n" +
+                                        "Do you want to continue it?")
+                                .setCancelable(false)
+                                .setPositiveButton("Yes",
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog,
+                                                                int id) {
+
+                                                deceasedCounter = prevDeceasedCounter;
+
+                                                startActivity(new Intent(SectionA5Activity.this, SectionH8Activity.class));
+                                            }
+                                        });
+                        alertDialogBuilder.setNegativeButton("Cancel",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+
+                                    }
+                                });
+                        AlertDialog alert = alertDialogBuilder.create();
+                        alert.show();
+
+                    } else {
+                        startActivity(new Intent(SectionA5Activity.this, SectionH8Activity.class));
+                    }
+
                 } else {
-                    startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 1));
+                    if (SectionA1Activity.editFormFlag) {
+                        startActivity(new Intent(this, ViewMemberActivity.class)
+                                .putExtra("flagEdit", false)
+                                .putExtra("comingBack", true)
+                                .putExtra("cluster", MainApp.fc.getClusterNo())
+                                .putExtra("hhno", MainApp.fc.getHhNo())
+                        );
+                    } else {
+                        startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 1));
+                    }
                 }
 
             } else {
@@ -283,6 +596,7 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
         }
         if (!binding.nh501d.isChecked()) {
 
+
 //        nh502
             if (!validatorClass.EmptyRadioButton(this, binding.nh502, binding.nh502a, getString(R.string.nh502))) {
                 return false;
@@ -339,8 +653,15 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
                 return false;
             }
 
-            if (!validatorClass.RangeTextBox(this, binding.nh702, 1, MainApp.membersCount.getCount(), getString(R.string.nh702), "Recipient no")) {
-                return false;
+            if (SectionA1Activity.editFormFlag) {
+                if (Integer.valueOf(binding.nh702.getText().toString()) > prevRecipientCounter) {
+                    Toast.makeText(this, "Can't increase Recipient!", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+            } else {
+                if (!validatorClass.RangeTextBox(this, binding.nh702, 1, MainApp.membersCount.getCount(), getString(R.string.nh702), "Recipient no")) {
+                    return false;
+                }
             }
 
         }
@@ -350,7 +671,16 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
         }
 
         if (binding.nh801a.isChecked()) {
-            return validatorClass.EmptyTextBox(this, binding.nh802, getString(R.string.nh802));
+            if (!validatorClass.EmptyTextBox(this, binding.nh802, getString(R.string.nh802))) {
+                return false;
+            }
+
+            if (SectionA1Activity.editFormFlag) {
+                if (Integer.valueOf(binding.nh802.getText().toString()) > prevDeceasedCounter) {
+                    Toast.makeText(this, "Can't increase Deceased!", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+            }
         }
 
         return true;
@@ -366,7 +696,9 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
         JSONObject sA5 = new JSONObject();
-
+        if (SectionA1Activity.editFormFlag) {
+            sA5.put("edit_updatedate_sa5", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+        }
         sA5.put("nh401", binding.nh401a.isChecked() ? "1"
                 : binding.nh401b.isChecked() ? "2"
                 : binding.nh401c.isChecked() ? "3"

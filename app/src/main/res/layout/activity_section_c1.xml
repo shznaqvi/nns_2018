@@ -90,6 +90,14 @@
                         android:layout_marginTop="10dp"
                         android:gravity="center" />
 
+                    <TextView
+                        android:id="@+id/respa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/black_overlay"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:visibility="gone" />
                 </LinearLayout>
 
 

@@ -13,17 +13,21 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
 
+import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONA8AModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA8ABinding;
+import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionA8AActivity extends AppCompatActivity {
@@ -39,6 +43,8 @@ public class SectionA8AActivity extends AppCompatActivity {
     FamilyMembersContract fmcSelected;
     int position = 0;
     private Timer timer = new Timer();
+
+    JSONA8AModelClass jsonA8A;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,9 +104,88 @@ public class SectionA8AActivity extends AppCompatActivity {
         // setup head
         bi.txtCounter.setText("Count " + counter + " out of " + reccounter);
 
-
 //        Validation Boolean
         MainApp.validateFlag = false;
+
+        if (SectionA1Activity.editFormFlag) {
+            AutoPopulate();
+        }
+
+    }
+
+    private void AutoPopulate() {
+
+        Collection<RecipientsContract> recipientsContracts = db.getPressedRecipients();
+
+        for (RecipientsContract recipientsContract : recipientsContracts) {
+
+            if (recipientsContract.getA8aSNo().equals(String.valueOf(counter))) {
+
+                MainApp.rc = recipientsContract;
+
+                jsonA8A = JSONUtilClass.getModelFromJSON(recipientsContract.getsA8A(), JSONA8AModelClass.class);
+
+                bi.nh7a02.setVisibility(View.GONE);
+
+                bi.nh7a02a.setVisibility(View.VISIBLE);
+                bi.nh7a02a.setText(jsonA8A.getnh7a02().toString().toUpperCase());
+
+                //  bi.
+                bi.nh7a03y.setText(jsonA8A.getnh7a03y());
+                bi.nh7a03m.setText(jsonA8A.getnh7a03m());
+
+                if (!jsonA8A.getnh7a04a().equals("0")) {
+                    bi.nh7a04a.setChecked(true);
+
+                }
+                if (!jsonA8A.getnh7a04b().equals("0")) {
+                    bi.nh7a04b.setChecked(true);
+
+                }
+                if (!jsonA8A.getnh7a04c().equals("0")) {
+                    bi.nh7a04c.setChecked(true);
+
+                }
+                if (!jsonA8A.getnh7a04d().equals("0")) {
+                    bi.nh7a04d.setChecked(true);
+
+                }
+                if (!jsonA8A.getnh7a04e().equals("0")) {
+                    bi.nh7a04e.setChecked(true);
+
+                }
+                if (!jsonA8A.getnh7a04f().equals("0")) {
+                    bi.nh7a04f.setChecked(true);
+
+                }
+                if (!jsonA8A.getnh7a04g().equals("0")) {
+                    bi.nh7a04g.setChecked(true);
+
+                }
+                if (!jsonA8A.getnh7a04h().equals("0")) {
+                    bi.nh7a04h.setChecked(true);
+
+                }
+                if (!jsonA8A.getnh7a04i().equals("0")) {
+                    bi.nh7a04i.setChecked(true);
+
+                }
+                if (!jsonA8A.getnh7a0496().equals("0")) {
+                    bi.nh7a0496.setChecked(true);
+                    bi.nh7a0496x.setText(jsonA8A.getnh7a0496x());
+                }
+                bi.nh7a05.setText(jsonA8A.getnh7a05());
+
+                bi.nh7a06.setText(jsonA8A.getnh7a06());
+
+                if (jsonA8A.getnh7aFlag().equals("1")) {
+                    bi.nh7aFlag.setChecked(true);
+                }
+
+                bi.nh7aFlag.setVisibility(View.VISIBLE);
+            }
+        }
+
     }
 
 
@@ -133,7 +218,18 @@ public class SectionA8AActivity extends AppCompatActivity {
                     if (SectionA5Activity.deceasedCounter > 0) {
                         startActivity(new Intent(this, SectionH8Activity.class));
                     } else {
-                        startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 3));
+                        if (SectionA1Activity.editFormFlag) {
+
+                            startActivity(new Intent(this, ViewMemberActivity.class)
+                                    .putExtra("flagEdit", false)
+                                    .putExtra("comingBack", true)
+                                    .putExtra("cluster", MainApp.fc.getClusterNo())
+                                    .putExtra("hhno", MainApp.fc.getHhNo())
+                            );
+
+                        } else {
+                            startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 3));
+                        }
                     }
                 } else {
 
@@ -160,8 +256,10 @@ public class SectionA8AActivity extends AppCompatActivity {
 
         //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
-        if (!validatorClass.EmptySpinner(this, bi.nh7a02, getString(R.string.nh7a02))) {
-            return false;
+        if (!SectionA1Activity.editFormFlag) {
+            if (!validatorClass.EmptySpinner(this, bi.nh7a02, getString(R.string.nh7a02))) {
+                return false;
+            }
         }
 
         if (!validatorClass.EmptyTextBox(this, bi.nh7a03y, getString(R.string.nh7a03y))) {
@@ -214,47 +312,59 @@ public class SectionA8AActivity extends AppCompatActivity {
     private void SaveDraft() throws JSONException {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
-        MainApp.rc = new RecipientsContract();
-
-        MainApp.rc.setDevicetagID(MainApp.fc.getDevicetagID());
-        MainApp.rc.setFormDate(MainApp.fc.getFormDate());
-        MainApp.rc.setUser(MainApp.fc.getUser());
-        MainApp.rc.setDeviceId(MainApp.fc.getDeviceID());
-        MainApp.rc.setApp_ver(MainApp.fc.getAppversion());
-        MainApp.rc.set_UUID(MainApp.fc.getUID());
-        MainApp.rc.setFMUID(fmcSelected.get_UID());
-        MainApp.rc.setA8aSNo(String.valueOf(counter));
-
         JSONObject sA8a = new JSONObject();
+
+        if (!SectionA1Activity.editFormFlag) {
+            MainApp.rc = new RecipientsContract();
+            MainApp.rc.setDevicetagID(MainApp.fc.getDevicetagID());
+            MainApp.rc.setFormDate(MainApp.fc.getFormDate());
+            MainApp.rc.setUser(MainApp.fc.getUser());
+            MainApp.rc.setDeviceId(MainApp.fc.getDeviceID());
+            MainApp.rc.setApp_ver(MainApp.fc.getAppversion());
+            MainApp.rc.set_UUID(MainApp.fc.getUID());
+            MainApp.rc.setFMUID(fmcSelected.get_UID());
+            MainApp.rc.setA8aSNo(String.valueOf(counter));
+
+            sA8a.put("nh7a01", fmcSelected.getName());
+            sA8a.put("nh7a01Serial", fmcSelected.getSerialNo());
+
+        } else {
+            sA8a.put("edit_updatedate_nh7a", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+
+            sA8a.put("nh7a01", jsonA8A.getnh7a01());
+            sA8a.put("nh7a01Serial", jsonA8A.getnh7a01Serial());
+        }
+
+       /* if (backPressed) {
+            sA8a.put("updatedate_na8a", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+        }*/
+
+        sA8a.put("nh7aFlag", bi.nh7aFlag.isChecked() ? "1" : "2");
 
         sA8a.put("cluster_no", MainApp.fc.getClusterNo());
         sA8a.put("hhno", MainApp.fc.getHhNo());
 
-        //sA8a.put("FMUID", fmcSelected.get_UID());
-        sA8a.put("nh704", fmcSelected.getName());
-        sA8a.put("nh703", fmcSelected.getSerialNo());
 
-        //sA8a.put("nh7a02", bi.nh7a02.getSelectedItem().toString());
-        //sA8a.put("nh7a02", bi.nh7a02.getText().toString());
+        sA8a.put("nh7a02", bi.nh7a02.getSelectedItem().toString());
 
-        sA8a.put("nh705", bi.nh7a03y.getText().toString());
+        sA8a.put("nh7a03y", bi.nh7a03y.getText().toString());
 
-        sA8a.put("nh706", bi.nh7a03m.getText().toString());
+        sA8a.put("nh7a03m", bi.nh7a03m.getText().toString());
 
-        sA8a.put("nh707a", bi.nh7a04a.isChecked() ? "1" : "0");
-        sA8a.put("nh707b", bi.nh7a04b.isChecked() ? "2" : "0");
-        sA8a.put("nh707c", bi.nh7a04c.isChecked() ? "3" : "0");
-        sA8a.put("nh707d", bi.nh7a04d.isChecked() ? "4" : "0");
-        sA8a.put("nh707e", bi.nh7a04e.isChecked() ? "5" : "0");
-        sA8a.put("nh707f", bi.nh7a04f.isChecked() ? "6" : "0");
-        sA8a.put("nh707g", bi.nh7a04g.isChecked() ? "7" : "0");
-        sA8a.put("nh707h", bi.nh7a04h.isChecked() ? "8" : "0");
-        sA8a.put("nh707i", bi.nh7a04i.isChecked() ? "9" : "0");
-        sA8a.put("nh707j", bi.nh7a04j.isChecked() ? "10" : "0");
-        sA8a.put("nh70796", bi.nh7a0496.isChecked() ? "96" : "0");
-        sA8a.put("nh70796x", bi.nh7a0496x.getText().toString());
-        sA8a.put("nh708", bi.nh7a05.getText().toString());
-        sA8a.put("nh709", bi.nh7a06.getText().toString());
+        sA8a.put("nh7a04a", bi.nh7a04a.isChecked() ? "1" : "0");
+        sA8a.put("nh7a04b", bi.nh7a04b.isChecked() ? "2" : "0");
+        sA8a.put("nh7a04c", bi.nh7a04c.isChecked() ? "3" : "0");
+        sA8a.put("nh7a04d", bi.nh7a04d.isChecked() ? "4" : "0");
+        sA8a.put("nh7a04e", bi.nh7a04e.isChecked() ? "5" : "0");
+        sA8a.put("nh7a04f", bi.nh7a04f.isChecked() ? "6" : "0");
+        sA8a.put("nh7a04g", bi.nh7a04g.isChecked() ? "7" : "0");
+        sA8a.put("nh7a04h", bi.nh7a04h.isChecked() ? "8" : "0");
+        sA8a.put("nh7a04i", bi.nh7a04i.isChecked() ? "9" : "0");
+        sA8a.put("nh7a04j", bi.nh7a04j.isChecked() ? "10" : "0");
+        sA8a.put("nh7a0496", bi.nh7a0496.isChecked() ? "96" : "0");
+        sA8a.put("nh7a0496x", bi.nh7a0496x.getText().toString());
+        sA8a.put("nh7a05", bi.nh7a05.getText().toString());
+        sA8a.put("nh7a06", bi.nh7a06.getText().toString());
 
 
         MainApp.rc.setsA8A(String.valueOf(sA8a));
@@ -269,24 +379,32 @@ public class SectionA8AActivity extends AppCompatActivity {
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        Long updcount = db.addRecipient(MainApp.rc);
-        MainApp.rc.set_ID(String.valueOf(updcount));
-
-        if (updcount != 0) {
-            //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
-
-            MainApp.rc.set_UID(
-                    (MainApp.rc.getDeviceId() + MainApp.rc.get_ID()));
-            db.updateRecepientID();
-
-            return true;
+        if (SectionA1Activity.editFormFlag) {
+            Long updcount = db.addRecipient(MainApp.rc, 1);
+            if (updcount != 0) {
+                return true;
+            } else {
+                Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         } else {
-            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
-            return false;
+            Long updcount = db.addRecipient(MainApp.rc, 0);
+            MainApp.rc.set_ID(String.valueOf(updcount));
+
+            if (updcount != 0) {
+                //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+
+                MainApp.rc.set_UID(
+                        (MainApp.rc.getDeviceId() + MainApp.rc.get_ID()));
+                db.updateRecepientID();
+
+                return true;
+            } else {
+                Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         }
-
         //return true;
-
     }
 
 

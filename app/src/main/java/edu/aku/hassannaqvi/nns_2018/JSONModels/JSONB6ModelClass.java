@@ -18,9 +18,27 @@ public class JSONB6ModelClass {
     private String nw501i = "";
     private String nw501j = "";
     private String nw501none = "";
+    private String cluster_no = "";
+    private String hhno = "";
 
     public JSONB6ModelClass() {
 
+    }
+
+    public String getCluster_no() {
+        return cluster_no;
+    }
+
+    public void setCluster_no(String cluster_no) {
+        this.cluster_no = cluster_no;
+    }
+
+    public String getHhno() {
+        return hhno;
+    }
+
+    public void setHhno(String hhno) {
+        this.hhno = hhno;
     }
 
     public String getSerial() {

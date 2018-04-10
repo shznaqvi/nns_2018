@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -50,6 +51,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
     private Timer timer = new Timer();
 
     String classPassName = "";
+    JSONB1AModelClass jsonB1A;
 
 
     //static int status;
@@ -80,7 +82,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         Collection<OutcomeContract> outcomeContracts = db.getPressedOutcome();
 
         for (OutcomeContract outcomeContract : outcomeContracts) {
-            JSONB1AModelClass jsonB1A = JSONUtilClass.getModelFromJSON(outcomeContract.getsB1A(), JSONB1AModelClass.class);
+            jsonB1A = JSONUtilClass.getModelFromJSON(outcomeContract.getsB1A(), JSONB1AModelClass.class);
 
             if (jsonB1A.getSerial().equals(String.valueOf(MainApp.count))) {
 
@@ -99,12 +101,18 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 bi.nw21702y.setText(jsonB1A.getnw21702y());
                 bi.nw21702m.setText(jsonB1A.getnw21702m());
                 bi.nw21702d.setText(jsonB1A.getnw21702d());
+
+                if (jsonB1A.getnw217Flag().equals("1")) {
+                    bi.nw217Flag.setChecked(true);
+                }
+
+                bi.nw217Flag.setVisibility(View.VISIBLE);
+
             }
 
         }
 
         bi.nw21701.setOnCheckedChangeListener(this);
-
 
 //        Validation Boolean
         MainApp.validateFlag = false;
@@ -130,24 +138,38 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                     if (SectionB1Activity.childCheck) {
                         startActivity(new Intent(this, SectionB2Activity.class));
                     } else {
-                        if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
-                                &&
-                                MainApp.B6Flag) {
-                            startActivityForResult(new Intent(this, SectionB6Activity.class)
-                                    .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
+                        if (SectionB1Activity.editWRAFlag) {
+                            if (MainApp.mc.getsB6().equals("1")) {
+                                startActivityForResult(new Intent(this, SectionB6Activity.class)
+                                        .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
+
+                            } else {
+                                finish();
+                                startActivity(new Intent(this, ViewMemberActivity.class)
+                                        .putExtra("flagEdit", false)
+                                        .putExtra("comingBack", true)
+                                        .putExtra("cluster", MainApp.mc.getCluster())
+                                        .putExtra("hhno", MainApp.mc.getHhno())
+                                );
+                            }
                         } else {
-                            startActivity(new Intent(this, MotherEndingActivity.class)
-                                    .putExtra("complete", true));
+                            if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
+                                    &&
+                                    MainApp.B6Flag) {
+                                startActivityForResult(new Intent(this, SectionB6Activity.class)
+                                        .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
+                            } else {
+                                startActivity(new Intent(this, MotherEndingActivity.class)
+                                        .putExtra("complete", true));
+                            }
                         }
                     }
 
                 } else {
-
                     //MainApp.count ++;
                     startActivityForResult(new Intent(this, SectionB1AActivity.class)
                             .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
                 }
-
 
 
             } else {
@@ -218,14 +240,40 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
         MainApp.oc = new OutcomeContract();
 
+        JSONObject sB1a = new JSONObject();
+
         if (!backPressed && !frontPressed) {
-            MainApp.oc.setDevicetagID(MainApp.fc.getDevicetagID());
-            MainApp.oc.setFormDate(MainApp.fc.getFormDate());
-            MainApp.oc.setUser(MainApp.fc.getUser());
-            MainApp.oc.setDeviceId(MainApp.fc.getDeviceID());
-            MainApp.oc.setApp_ver(MainApp.fc.getAppversion());
-            MainApp.oc.set_UUID(MainApp.fc.getUID());
-            MainApp.oc.setMUID(MainApp.mc.get_UID());
+            if (SectionB1Activity.editWRAFlag) {
+                MainApp.oc.setDevicetagID(MainApp.mc.getDevicetagID());
+                MainApp.oc.setFormDate(MainApp.mc.getFormDate());
+
+                MainApp.oc.setUser(MainApp.mc.getUser());
+                MainApp.oc.setDeviceId(MainApp.mc.getDeviceId());
+                MainApp.oc.setApp_ver(MainApp.mc.getApp_ver());
+
+                MainApp.oc.set_UUID(MainApp.mc.get_UUID());
+                MainApp.oc.setMUID(MainApp.mc.get_UID());
+
+                sB1a.put("cluster_no", MainApp.mc.getCluster());
+                sB1a.put("hhno", MainApp.mc.getHhno());
+
+            } else {
+
+                MainApp.oc.setDevicetagID(MainApp.fc.getDevicetagID());
+                MainApp.oc.setFormDate(MainApp.fc.getFormDate());
+                MainApp.oc.setUser(MainApp.fc.getUser());
+                MainApp.oc.setDeviceId(MainApp.fc.getDeviceID());
+                MainApp.oc.setApp_ver(MainApp.fc.getAppversion());
+                MainApp.oc.set_UUID(MainApp.fc.getUID());
+                MainApp.oc.setMUID(MainApp.mc.get_UID());
+
+                sB1a.put("cluster_no", MainApp.fc.getClusterNo());
+                sB1a.put("hhno", MainApp.fc.getHhNo());
+            }
+
+            MainApp.oc.set_UUID(MainApp.mc.get_UID());
+
+
         } else {
             MainApp.oc.setUpdatedate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
 
@@ -234,14 +282,30 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
             } else if (backPressed) {
                 MainApp.oc.set_UID(uid);
             }
+
+            if (SectionB1Activity.editWRAFlag && !frontPressed) {
+                sB1a.put("edit_updatedate_nw1", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+
+                sB1a.put("cluster_no", jsonB1A.getCluster_no());
+                sB1a.put("hhno", jsonB1A.getHhno());
+
+            } else if (SectionB1Activity.editWRAFlag) {
+
+                sB1a.put("cluster_no", jsonB1A.getCluster_no());
+                sB1a.put("hhno", jsonB1A.getHhno());
+
+            } else {
+
+                sB1a.put("cluster_no", MainApp.fc.getClusterNo());
+                sB1a.put("hhno", MainApp.fc.getHhNo());
+
+            }
         }
 
-        JSONObject sB1a = new JSONObject();
-
-        sB1a.put("cluster_no", MainApp.fc.getClusterNo());
-        sB1a.put("hhno", MainApp.fc.getHhNo());
+        sB1a.put("nw217Flag", bi.nw217Flag.isChecked() ? "1" : "2");
 
         sB1a.put("serial", Integer.valueOf(MainApp.count));
+
         sB1a.put("nw21701", bi.nw21701a.isChecked() ? "1" : bi.nw21701b.isChecked() ? "2" : "0");
         sB1a.put("nw21702y", bi.nw21702y.getText().toString());
         sB1a.put("nw21702m", bi.nw21702m.getText().toString());
@@ -280,18 +344,11 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         } else {
             Long updcount = db.addOutcome(MainApp.oc, 1);
             if (updcount != 0) {
-                MainApp.oc.set_UID(
-                        (MainApp.oc.getDeviceId() + MainApp.oc.get_ID()));
-                db.updateOutcomeID();
-
-                uid = MainApp.oc.getDeviceId() + MainApp.oc.get_ID();
-
                 return true;
             } else {
                 Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
                 return false;
             }
-
 
 
         }
@@ -317,6 +374,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
                 yearsBydob = DateUtils.ageInYearByDOB(bi.nw21702y.getText().toString());
             }
+
 
         }
 

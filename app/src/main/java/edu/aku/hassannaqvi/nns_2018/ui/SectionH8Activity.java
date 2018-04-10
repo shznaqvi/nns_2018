@@ -16,8 +16,10 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +28,7 @@ import java.util.TimerTask;
 
 import butterknife.BindViews;
 import butterknife.ButterKnife;
+import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONH8ModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.DeceasedContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
@@ -33,24 +36,28 @@ import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionH8Binding;
 import edu.aku.hassannaqvi.nns_2018.other.DateUtils;
+import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionH8Activity extends AppCompatActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
     static int counter = 1;
     static int deccounter = 0;
+    private final long DELAY = 1000;
     ActivitySectionH8Binding bi;
     @BindViews({R.id.nh808d, R.id.nh808m, R.id.nh808y})
     List<EditText> grpdob;
     FamilyMembersContract family;
     long ageInYears = 0;
-
+    DatabaseHelper db;
     Calendar dob = Calendar.getInstance();
     List<String> mothersList, fathersList;
     List<String> mothersSerials, fathersSerials;
     Map<String, String> mothersMap, fathersMap;
-    private final long DELAY = 1000;
     private Timer timer = new Timer();
+
+    JSONH8ModelClass jsonH8;
+
     public TextWatcher age = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -121,7 +128,16 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
                 if (counter == SectionA5Activity.deceasedCounter) {
                     counter = 1;
 
-                    startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 2));
+                    if (SectionA1Activity.editFormFlag) {
+                        startActivity(new Intent(this, ViewMemberActivity.class)
+                                .putExtra("flagEdit", false)
+                                .putExtra("comingBack", true)
+                                .putExtra("cluster", MainApp.fc.getClusterNo())
+                                .putExtra("hhno", MainApp.fc.getHhNo())
+                        );
+                    } else {
+                        startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 2));
+                    }
 
                 } else {
                     counter++;
@@ -256,31 +272,103 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
             }
         }
 
+        db = new DatabaseHelper(this);
 
+        if (SectionA1Activity.editFormFlag) {
+            AutoPopulateFields();
+        }
+
+    }
+
+    private void AutoPopulateFields() {
+
+        Collection<DeceasedContract> deceasedContracts = db.getPressedDeceasedMembers();
+
+        for (DeceasedContract deceasedContract : deceasedContracts) {
+
+            jsonH8 = JSONUtilClass.getModelFromJSON(deceasedContract.getsH8(), JSONH8ModelClass.class);
+
+            if (jsonH8.getSerial().equals(String.valueOf(counter))) {
+
+                MainApp.dc = deceasedContract;
+
+                bi.nh804.setVisibility(View.GONE);
+                bi.nh805.setVisibility(View.GONE);
+
+                bi.nh804a.setVisibility(View.VISIBLE);
+                bi.nh804a.setText(jsonH8.getNh804().toString().toUpperCase());
+                bi.nh805a.setVisibility(View.VISIBLE);
+                bi.nh805a.setText(jsonH8.getNh805().toString().toUpperCase());
+
+                bi.nh803.setText(jsonH8.getNh803());
+
+                if (!jsonH8.getNh806().equals("0")) {
+                    bi.nh806.check(
+                            jsonH8.getNh806().equals("1") ? bi.nh806a.getId()
+                                    : bi.nh806b.getId());
+                }
+
+                if (!jsonH8.getNh8ms().equals("0")) {
+                    bi.nh8ms.check(
+                            jsonH8.getNh8ms().equals("1") ? bi.nh8msa.getId()
+                                    : jsonH8.getNh8ms().equals("2") ? bi.nh8msb.getId()
+                                    : jsonH8.getNh8ms().equals("3") ? bi.nh8msc.getId()
+                                    : jsonH8.getNh8ms().equals("4") ? bi.nh8msd.getId()
+                                    : bi.nh8mse.getId()
+                    );
+                }
+
+                bi.nh807y.setText(jsonH8.getNh807y());
+                bi.nh807m.setText(jsonH8.getNh807m());
+                bi.nh807d.setText(jsonH8.getNh807d());
+                bi.nh808y.setText(jsonH8.getNh808y());
+                bi.nh808m.setText(jsonH8.getNh808m());
+                bi.nh808d.setText(jsonH8.getNh808d());
+                bi.nh809.setText(jsonH8.getNh809());
+
+                if (jsonH8.getNh8Flag().equals("1")) {
+                    bi.nh8Flag.setChecked(true);
+                }
+
+                bi.nh8Flag.setVisibility(View.VISIBLE);
+
+            }
+        }
 
     }
 
     private void SaveDraft() throws JSONException {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
-
-        MainApp.dc = new DeceasedContract();
-
-        MainApp.dc.setDevicetagID(MainApp.fc.getDevicetagID());
-        MainApp.dc.setFormDate(MainApp.fc.getFormDate());
-        MainApp.dc.setUser(MainApp.fc.getUser());
-        MainApp.dc.setDeviceID(MainApp.fc.getDeviceID());
-        MainApp.dc.setAppversion(MainApp.fc.getAppversion());
-        MainApp.dc.setUUID(MainApp.fc.getUID());
-
         JSONObject sA2 = new JSONObject();
+
+        if (!SectionA1Activity.editFormFlag) {
+            MainApp.dc = new DeceasedContract();
+            MainApp.dc.setDevicetagID(MainApp.fc.getDevicetagID());
+            MainApp.dc.setFormDate(MainApp.fc.getFormDate());
+            MainApp.dc.setUser(MainApp.fc.getUser());
+            MainApp.dc.setDeviceID(MainApp.fc.getDeviceID());
+            MainApp.dc.setAppversion(MainApp.fc.getAppversion());
+            MainApp.dc.setUUID(MainApp.fc.getUID());
+
+            sA2.put("nh804", bi.nh804.getSelectedItem().toString());
+            sA2.put("nh805", bi.nh805.getSelectedItem().toString());
+        } else {
+            sA2.put("edit_updatedate_nh8", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+
+            sA2.put("nh804", jsonH8.getNh804());
+            sA2.put("nh805", jsonH8.getNh805());
+        }
 
         sA2.put("cluster_no", MainApp.fc.getClusterNo());
         sA2.put("hhno", MainApp.fc.getHhNo());
 
+        sA2.put("serial", String.valueOf(counter));
+
+        sA2.put("nh8Flag", bi.nh8Flag.isChecked() ? "1" : "2");
+
         sA2.put("nh803", bi.nh803.getText().toString());
-        sA2.put("nh804", bi.nh804.getSelectedItem().toString());
-        sA2.put("nh805", bi.nh805.getSelectedItem().toString());
+
         sA2.put("nh806", bi.nh806a.isChecked() ? "1" : bi.nh806b.isChecked() ? "2" : "0");
         sA2.put("nh8ms", bi.nh8msa.isChecked() ? "1"
                 : bi.nh8msb.isChecked() ? "2"
@@ -306,20 +394,30 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
 
         DatabaseHelper db = new DatabaseHelper(this);
 
-        long updcount = db.addDeceasedMembers(MainApp.dc);
-
-        MainApp.dc.set_ID(String.valueOf(updcount));
-
-        if (updcount != 0) {
-            //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
-
-            MainApp.dc.setUID(
-                    (MainApp.dc.getDeviceID() + MainApp.dc.get_ID()));
-            db.updateDeceasedMemberID();
-            return true;
+        if (SectionA1Activity.editFormFlag) {
+            long updcount = db.addDeceasedMembers(MainApp.dc, 1);
+            if (updcount != 0) {
+                return true;
+            } else {
+                Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         } else {
-            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
-            return false;
+            long updcount = db.addDeceasedMembers(MainApp.dc, 0);
+
+            MainApp.dc.set_ID(String.valueOf(updcount));
+
+            if (updcount != 0) {
+                //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+
+                MainApp.dc.setUID(
+                        (MainApp.dc.getDeviceID() + MainApp.dc.get_ID()));
+                db.updateDeceasedMemberID();
+                return true;
+            } else {
+                Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         }
     }
 
@@ -368,7 +466,6 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
         }
 
 
-
         if (bi.nh807y.getText().toString().equals("0") && bi.nh807m.getText().toString().equals("0")
                 && bi.nh807d.getText().toString().equals("0")) {
             Toast.makeText(this, "ERROR(invalid): " + "All can not be zero" + getString(R.string.na2age), Toast.LENGTH_LONG).show();
@@ -384,12 +481,14 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
 
 
         if (Integer.valueOf(bi.nh807y.getText().toString()) < 5) {
-            if (!validatorClass.EmptySpinner(this, bi.nh804, getString(R.string.nh804))) {
-                return false;
-            }
+            if (!SectionA1Activity.editFormFlag) {
+                if (!validatorClass.EmptySpinner(this, bi.nh804, getString(R.string.nh804))) {
+                    return false;
+                }
 
-            if (!validatorClass.EmptySpinner(this, bi.nh805, getString(R.string.nh805))) {
-                return false;
+                if (!validatorClass.EmptySpinner(this, bi.nh805, getString(R.string.nh805))) {
+                    return false;
+                }
             }
         } else {
             if (!validatorClass.EmptyRadioButton(this, bi.nh8ms, bi.nh8msa, getString(R.string.nh8ms))) {

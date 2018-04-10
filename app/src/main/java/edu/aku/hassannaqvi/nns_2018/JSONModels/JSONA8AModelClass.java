@@ -6,6 +6,8 @@ package edu.aku.hassannaqvi.nns_2018.JSONModels;
 
 public class JSONA8AModelClass {
 
+    private String nh7a01 = "";
+    private String nh7a01Serial = "";
     private String nh7a02 = "";
     private String nh7a03y = "";
     private String nh7a03m = "";
@@ -23,8 +25,34 @@ public class JSONA8AModelClass {
     private String nh7a05 = "";
     private String nh7a06 = "";
 
+    private String nh7aFlag = "";
+
     public JSONA8AModelClass() {
 
+    }
+
+    public String getnh7aFlag() {
+        return nh7aFlag;
+    }
+
+    public void setnh7aFlag(String nh7aFlag) {
+        this.nh7aFlag = nh7aFlag;
+    }
+
+    public String getnh7a01() {
+        return nh7a01;
+    }
+
+    public void setnh7a01(String nh7a01) {
+        this.nh7a01 = nh7a01;
+    }
+
+    public String getnh7a01Serial() {
+        return nh7a01Serial;
+    }
+
+    public void setnh7a01Serial(String nh7a01Serial) {
+        this.nh7a01Serial = nh7a01Serial;
     }
 
     public String getnh7a02() {

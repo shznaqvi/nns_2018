@@ -62,6 +62,15 @@
                 android:layoutDirection="rtl"
                 android:orientation="vertical">
 
+                <CheckBox
+                    android:id="@+id/nw217Flag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:text="@string/nw217Flag"
+                    android:textColor="@color/red"
+                    android:visibility="gone" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

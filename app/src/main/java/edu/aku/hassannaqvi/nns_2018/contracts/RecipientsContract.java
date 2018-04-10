@@ -177,19 +177,17 @@ public class RecipientsContract {
         this._UID = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_UID));
         this._UUID = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_UUID));
         this.FMUID = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_FM_UID));
+        this.sA8A = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_SA8A));
         this.formDate = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_FORMDATE));
         this.deviceId = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_DEVICEID));
         this.devicetagID = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_DEVICETAGID));
         this.user = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_USER));
         this.app_ver = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_APP_VER));
         this.a8aSNo = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_A8ASNO));
-        this.sA8A = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_SA8A));
-        this.synced = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_SYNCED));
-        this.syncedDate = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_SYNCEDDATE));
-
+/*        this.synced = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_SYNCED));
+        this.syncedDate = cursor.getString(cursor.getColumnIndex(RecipientsTable.COLUMN_SYNCEDDATE));*/
 
         return this;
-
     }
 
 

@@ -93,6 +93,14 @@ public class SectionB3Activity extends Menu2Activity implements TextWatcher, Rad
         //binding.nw328.setOnCheckedChangeListener(this);
         binding.nw332.setOnCheckedChangeListener(this);
 
+//        Validation Boolean
+        MainApp.validateFlag = false;
+
+        AutoCompleteFields();
+
+    }
+
+    public void AutoCompleteFields() {
         MWRAContract mwraContract = db.getsB3();
         if (!mwraContract.getsB3().equals("")) {
 
@@ -169,11 +177,6 @@ public class SectionB3Activity extends Menu2Activity implements TextWatcher, Rad
             }
 
         }
-
-
-//        Validation Boolean
-        MainApp.validateFlag = false;
-
     }
 
     public void BtnContinue() {

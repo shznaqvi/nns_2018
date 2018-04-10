@@ -6,6 +6,8 @@ package edu.aku.hassannaqvi.nns_2018.JSONModels;
 
 public class JSONB1AModelClass {
 
+    private String cluster_no = "";
+    private String hhno = "";
     private String serial = "";
     private String nw21701 = "";
 
@@ -13,8 +15,34 @@ public class JSONB1AModelClass {
     private String nw21702m = "";
     private String nw21702d = "";
 
+    private String nw217Flag = "";
+
+    public String getnw217Flag() {
+        return nw217Flag;
+    }
+
+    public void setnw217Flag(String nw217Flag) {
+        this.nw217Flag = nw217Flag;
+    }
+
     public JSONB1AModelClass() {
 
+    }
+
+    public String getCluster_no() {
+        return cluster_no;
+    }
+
+    public void setCluster_no(String cluster_no) {
+        this.cluster_no = cluster_no;
+    }
+
+    public String getHhno() {
+        return hhno;
+    }
+
+    public void setHhno(String hhno) {
+        this.hhno = hhno;
     }
 
     public String getSerial() {

@@ -30,6 +30,7 @@ import java.util.TimerTask;
 
 import butterknife.BindViews;
 import butterknife.ButterKnife;
+import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONC1ModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
@@ -37,6 +38,7 @@ import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC1Binding;
 import edu.aku.hassannaqvi.nns_2018.other.DateUtils;
+import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionC1Activity extends Menu2Activity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
@@ -46,6 +48,9 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
     public static int counterPerNA = 0;
     public static String selectedChildName = "";
     public static boolean isNA;
+    public static int Childsize = 0;
+    public static int NAChildsize = 0;
+    public static Boolean editWRAFlag;
     static List<String> childU5;
     static Map<String, FamilyMembersContract> childMap;
     private final long DELAY = 1000;
@@ -55,7 +60,6 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
     DatabaseHelper db;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     Boolean endflag = false;
-
     long agebyDob = 0;
     long ageInMontsbyDob = 0;
     Calendar dob = Calendar.getInstance();
@@ -63,10 +67,6 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
     List<EditText> grpDate;
     Boolean backPressed = false;
     Boolean frontPressed = false;
-
-    public static int Childsize = 0;
-    public static int NAChildsize = 0;
-
     private Timer timer = new Timer();
 
     @Override
@@ -86,7 +86,24 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
         binding.setCallback(this);
 
 
-//        Setup views
+//        Validation Boolean
+        MainApp.validateFlag = false;
+        editWRAFlag = getIntent().getBooleanExtra("editForm", false);
+
+        if (editWRAFlag && getIntent().getBooleanExtra("checkflag", false)) {
+
+
+            autoPopulateFields(getIntent().getStringExtra("formUid"), getIntent().getStringExtra("fmUid"));
+
+            backPressed = true;
+
+        } else {
+            //        Setup views
+            setupViews();
+        }
+    }
+
+    private void setupViews() {
         if (getIntent().getBooleanExtra("reBackComing", true)) {
             if (getIntent().getBooleanExtra("childFlag", false)) {
                 childU5.remove(getIntent().getStringExtra("name"));
@@ -115,8 +132,6 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
                         childU5.add(fmc.getName() + "-" + fmc.getSerialNo());
                         counterPerNA++;
                     }
-
-
 
                     NAChildsize = MainApp.childNA.size();
                     binding.fldGrpresp.setVisibility(View.VISIBLE);
@@ -166,7 +181,8 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
 
                 binding.fldGrpresp.setVisibility(View.GONE);
 
-//              Childsize = MainApp.childUnder5.size();
+
+//                Childsize = MainApp.childUnder5.size();
             }
         }
 
@@ -210,7 +226,6 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
         for (EditText ed : grpDate) {
             ed.addTextChangedListener(this);
         }
-
 
         //======= Checking Q201, 202 and 203
         binding.nc203.addTextChangedListener(new TextWatcher() {
@@ -265,9 +280,49 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
         binding.nc202.setOnCheckedChangeListener(this);
         binding.nc205.setOnCheckedChangeListener(this);
 
+    }
 
-//        Validation Boolean
-        MainApp.validateFlag = false;
+    private void autoPopulateFields(String uuid, String uid) {
+        ChildContract childContract = db.getsC1(uuid, uid);
+        binding.resp.setVisibility(View.GONE);
+        binding.respa.setVisibility(View.VISIBLE);
+        if (!childContract.getsC1().equals("")) {
+
+            JSONC1ModelClass jsonC1 = JSONUtilClass.getModelFromJSON(childContract.getsC1(), JSONC1ModelClass.class);
+            binding.nc201y.setText(jsonC1.getnc201y());
+            binding.nc201m.setText(jsonC1.getnc201m());
+            binding.nc201d.setText(jsonC1.getnc201d());
+            binding.nc203.setText(jsonC1.getnc203());
+
+            if (!jsonC1.getnc202().equals("0")) {
+                binding.nc202.check(
+                        jsonC1.getnc202().equals("1") ? binding.nc202a.getId() :
+                                jsonC1.getnc202().equals("2") ? binding.nc202b.getId()
+                                        : binding.nc202c.getId()
+                );
+            }
+            if (!jsonC1.getnc204a().equals("0")) {
+                binding.nc204a.check(
+                        jsonC1.getnc204a().equals("1") ? binding.nc204aa.getId() :
+                                binding.nc204ab.getId()
+                );
+            }
+
+            if (!jsonC1.getnc204b().equals("0")) {
+                binding.nc204b.check(
+                        jsonC1.getnc204a().equals("1") ? binding.nc204ba.getId() :
+                                binding.nc204bb.getId()
+                );
+            }
+
+            if (!jsonC1.getnc205().equals("0")) {
+                binding.nc205.check(
+                        jsonC1.getnc205().equals("1") ? binding.nc205a.getId() :
+                                jsonC1.getnc205().equals("2") ? binding.nc205b.getId() :
+                                        binding.nc20598.getId()
+                );
+            }
+        }
 
     }
 
@@ -545,7 +600,9 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
             MainApp.cc.setFMUID(childMap.get(binding.nc101.getSelectedItem().toString()).get_UID());
             if (childMap.get(binding.nc101.getSelectedItem().toString()).getMotherId().equals("00")) {
                 MainApp.cc.setMUID("00");
+
             } else {
+
                 MainApp.cc.setMUID(MainApp.mc.get_UID());
 
             }
@@ -626,19 +683,11 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
             Long updcount = db.addChildForm(MainApp.cc, 1);
 
             if (updcount != 0) {
-                //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
-
-                MainApp.cc.setUID(
-                        (MainApp.cc.getDeviceID() + MainApp.cc.get_ID()));
-                db.updateFormChildID();
-
                 return true;
             } else {
                 Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
                 return false;
             }
-
-            //return true;
         }
 
     }

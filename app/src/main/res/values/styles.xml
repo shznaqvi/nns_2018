@@ -368,6 +368,13 @@
     </style>
 
 
+    <style name="AppTheme.Dark.Dialog" parent="Theme.AppCompat.Dialog">
+        <item name="colorAccent">@color/white</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+
     <!-- <style name="itemStyle" parent="Base.TextAppearance.AppCompat.Menu">
          <item name="textColor">@color/white</item>
          <item name="android:background">@color/black</item>

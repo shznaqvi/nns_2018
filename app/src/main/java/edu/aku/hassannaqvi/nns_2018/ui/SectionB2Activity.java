@@ -51,6 +51,8 @@ public class SectionB2Activity extends Menu2Activity implements RadioGroup.OnChe
 //        Validation Boolean
         MainApp.validateFlag = false;
 
+        AutoCompleteFields();
+
     }
 
     public void setupViews() {
@@ -77,8 +79,6 @@ public class SectionB2Activity extends Menu2Activity implements RadioGroup.OnChe
         bi.nw304m.addTextChangedListener(this);
         bi.nw305.addTextChangedListener(this);
         bi.nw307.setOnCheckedChangeListener(this);
-
-
 
 
         bi.nw306i.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -203,7 +203,9 @@ public class SectionB2Activity extends Menu2Activity implements RadioGroup.OnChe
 
 //        Setting name of women
         bi.nw301Txt.setText(getString(R.string.nw301a) + " " + SectionB1Activity.wraName + " " + getString(R.string.nw301b));
+    }
 
+    public void AutoCompleteFields() {
 
 //        BackPressed event
 
@@ -601,7 +603,6 @@ public class SectionB2Activity extends Menu2Activity implements RadioGroup.OnChe
                                         bi.nw32698.getId());
             }
         }
-
     }
 
     public void BtnContinue() {
@@ -950,7 +951,6 @@ public class SectionB2Activity extends Menu2Activity implements RadioGroup.OnChe
         return validatorClass.EmptyRadioButton(this, bi.nw326, bi.nw326a, getString(R.string.nw326));
     }
 
-
     private void SaveDraft() throws JSONException {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 //       nw301
@@ -1214,6 +1214,8 @@ public class SectionB2Activity extends Menu2Activity implements RadioGroup.OnChe
 
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
+
+        MainApp.mc.setSb2flag("1");
 
         int updcount = db.updateSB2();
 

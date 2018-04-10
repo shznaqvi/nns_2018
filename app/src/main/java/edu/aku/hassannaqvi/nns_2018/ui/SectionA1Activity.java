@@ -29,6 +29,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
 
+import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONA1ModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.EnumBlockContract;
@@ -36,6 +37,7 @@ import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA1Binding;
+import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.other.MembersCount;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
@@ -43,7 +45,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
     private static final String TAG = SectionA1Activity.class.getName();
     static int progress = 0;
-    private final long DELAY = 1000;
+    public static Boolean editFormFlag;
     ActivitySectionA1Binding binding;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     DatabaseHelper db;
@@ -52,9 +54,9 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
     Handler handler = new Handler();
     Boolean flag = false;
     private Timer timer = new Timer();
-    static Boolean reBackFlag = true;
     static Boolean reBackChildFlag = true;
-
+    static Boolean reBackFlag = true;
+    private final long DELAY = 1000;
     int length = 0;
 
     @Override
@@ -68,6 +70,25 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
         SkipPatterns();
 
+//        Edit form intent
+        editFormFlag = getIntent().getBooleanExtra("editForm", false);
+
+        if (editFormFlag) {
+
+            binding.nh102.setText(getIntent().getStringExtra("clusterNo"));
+            binding.nh102.setEnabled(false);
+            binding.checkClusterBtn.setEnabled(false);
+            binding.checkClusterBtn.setBackgroundColor(getResources().getColor(R.color.red));
+            BtnCheckEnm();
+            binding.nh108.setText(getIntent().getStringExtra("hhNo"));
+            binding.nh108.setEnabled(false);
+            BtnCheckHH();
+            binding.checkHHBtn.setEnabled(false);
+            binding.checkHHBtn.setBackgroundColor(getResources().getColor(R.color.red));
+
+            AutoCompleteFields();
+        }
+
         this.setTitle(getResources().getString(R.string.na1heading));
 
 //        Validation Boolean
@@ -75,8 +96,101 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
     }
 
+    public void AutoCompleteFields() {
+
+        MainApp.fc = db.getPressedForms(binding.nh102.getText().toString()
+                , binding.nh108.getText().toString());
+
+        if (MainApp.fc != null) {
+
+            JSONA1ModelClass jsonA1 = JSONUtilClass.getModelFromJSON(MainApp.fc.getsA1(), JSONA1ModelClass.class);
+
+            if (jsonA1.getHhheadpresent().equals("1")) {
+                binding.checkHHHeadpresent.setChecked(true);
+                binding.newHHheadname.setText(jsonA1.getHhheadpresentnew());
+            }
+
+            binding.nh101.setText(jsonA1.getnh101());
+            binding.nh103.setText(jsonA1.getnh103());
+            binding.nh104.setText(jsonA1.getnh104());
+            binding.nh105.setText(jsonA1.getnh105());
+            binding.nh106.setText(jsonA1.getnh106());
+
+            binding.nh113.setText(jsonA1.getnh113());
+            binding.nh115.setText(jsonA1.getnh115());
+            binding.nh213.setText(jsonA1.getnh213());
+
+            if (!jsonA1.getnh11801().equals("0")) {
+                binding.na11801.check(
+                        jsonA1.getnh11801().equals("1") ? binding.na11801a.getId() :
+                                binding.na11801b.getId()
+                );
+
+                binding.na11801b.setEnabled(false);
+            }
+
+            if (!jsonA1.getnh11802().equals("0")) {
+                binding.na11802.check(
+                        jsonA1.getnh11802().equals("1") ? binding.na11802a.getId() :
+                                binding.na11802b.getId()
+                );
+
+                binding.na11802b.setEnabled(false);
+            }
+
+//            na119
+
+/*            // na119a
+            if (jsonA1.getnh119a().equals("1")) {
+                binding.na119a.setChecked(true);
+            }
+            // na119b
+            if (jsonA1.getnh119b().equals("1")) {
+                binding.na119b.setChecked(true);
+            }
+            // na119c
+            if (jsonA1.getnh119c().equals("1")) {
+                binding.na119c.setChecked(true);
+            }
+            // na119d
+            if (jsonA1.getnh119d().equals("1")) {
+                binding.na119d.setChecked(true);
+            }
+            // na119e
+            if (jsonA1.getnh119e().equals("1")) {
+                binding.na119e.setChecked(true);
+            }
+            // na119f
+            if (jsonA1.getnh119f().equals("1")) {
+                binding.na119f.setChecked(true);
+            }
+            // na119g
+            if (jsonA1.getnh119g().equals("1")) {
+                binding.na119g.setChecked(true);
+            }
+            // na11996
+            if (jsonA1.getnh11996().equals("1")) {
+                binding.na11996.setChecked(true);
+                binding.na11996x.setText(jsonA1.getnh11996x());
+            }*/
+
+        }
+
+    }
+
     private void SkipPatterns() {
 
+/*        binding.na11801.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                //formValidation();
+                if (checkedId == R.id.na11801a) {
+                    clearClass.ClearAllFields(binding.fldGrpna113, false);
+                } else {
+                    clearClass.ClearAllFields(binding.fldGrpna113, true);
+                }
+            }
+        });*/
 
 
         // Field wise validation
@@ -239,7 +353,6 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
             }
         });
-
 
 
 //
@@ -460,22 +573,24 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
     private void SaveDraft() throws JSONException {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
-
-        MainApp.fc = new FormsContract();
-
-        MainApp.fc.setDevicetagID(MainApp.getTagName(this));
-        MainApp.fc.setFormDate(dtToday);
-        MainApp.fc.setUser(MainApp.userName);
-        MainApp.fc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
-                Settings.Secure.ANDROID_ID));
-        MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
-        MainApp.fc.setRespLineNo(MainApp.lineNo);
-        MainApp.fc.setClusterNo(binding.nh102.getText().toString());
-        MainApp.fc.setHhNo(binding.nh108.getText().toString().toUpperCase());
-
-        setGPS(); // Set GPS
-
         JSONObject sA1 = new JSONObject();
+
+        if (!editFormFlag) {
+            MainApp.fc = new FormsContract();
+            MainApp.fc.setDevicetagID(MainApp.getTagName(this));
+            MainApp.fc.setFormDate(dtToday);
+            MainApp.fc.setUser(MainApp.userName);
+            MainApp.fc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
+                    Settings.Secure.ANDROID_ID));
+            MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
+            MainApp.fc.setRespLineNo(MainApp.lineNo);
+            MainApp.fc.setClusterNo(binding.nh102.getText().toString());
+            MainApp.fc.setHhNo(binding.nh108.getText().toString().toUpperCase());
+
+            setGPS(); // Set GPS
+        } else {
+            sA1.put("edit_updatedate_sa1", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+        }
 
         sA1.put("rndid", MainApp.selectedHead.get_ID());
         sA1.put("luid", MainApp.selectedHead.getLUID());
@@ -561,20 +676,30 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
         DatabaseHelper db = new DatabaseHelper(this);
 
-        long updcount = db.addForm(MainApp.fc);
+        if (!editFormFlag) {
+            long updcount = db.addForm(MainApp.fc, 0);
 
-        MainApp.fc.set_ID(String.valueOf(updcount));
+            MainApp.fc.set_ID(String.valueOf(updcount));
 
-        if (updcount != 0) {
-            //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+            if (updcount != 0) {
+                //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
 
-            MainApp.fc.setUID(
-                    (MainApp.fc.getDeviceID() + MainApp.fc.get_ID()));
-            db.updateFormID();
-            return true;
+                MainApp.fc.setUID(
+                        (MainApp.fc.getDeviceID() + MainApp.fc.get_ID()));
+                db.updateFormID();
+                return true;
+            } else {
+                Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         } else {
-            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
-            return false;
+            long updcount = db.addForm(MainApp.fc, 1);
+            if (updcount != 0) {
+                return true;
+            } else {
+                Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         }
     }
 

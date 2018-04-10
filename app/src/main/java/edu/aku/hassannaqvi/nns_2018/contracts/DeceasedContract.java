@@ -59,13 +59,12 @@ public class DeceasedContract {
         this._UUID = cursor.getString(cursor.getColumnIndex(DeceasedTable.COLUMN__UUID));
         this.formDate = cursor.getString(cursor.getColumnIndex(DeceasedTable.COLUMN_FORMDATE));
         this.user = cursor.getString(cursor.getColumnIndex(DeceasedTable.COLUMN_USER));
-        this.sH8 = cursor.getString(cursor.getColumnIndex(DeceasedTable.COLUMN_SH8));
         this.deviceID = cursor.getString(cursor.getColumnIndex(DeceasedTable.COLUMN_DEVICEID));
         this.devicetagID = cursor.getString(cursor.getColumnIndex(DeceasedTable.COLUMN_DEVICETAGID));
         this.synced = cursor.getString(cursor.getColumnIndex(DeceasedTable.COLUMN_SYNCED));
         this.synced_date = cursor.getString(cursor.getColumnIndex(DeceasedTable.COLUMN_SYNCED_DATE));
         this.appversion = cursor.getString(cursor.getColumnIndex(DeceasedTable.COLUMN_APPVERSION));
-
+        this.sH8 = cursor.getString(cursor.getColumnIndex(DeceasedTable.COLUMN_SH8));
 
         // TODO:
 

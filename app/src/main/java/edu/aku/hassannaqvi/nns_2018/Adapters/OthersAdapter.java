@@ -21,7 +21,7 @@ import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 
 public class OthersAdapter extends RecyclerView.Adapter<OthersAdapter.OtherViewHolder> {
 
-    OthersAdapter.OtherViewHolder holder;
+    OtherViewHolder holder;
     JSONModelClass json;
     private List<FamilyMembersContract> othList;
 

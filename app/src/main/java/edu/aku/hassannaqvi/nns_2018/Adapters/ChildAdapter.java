@@ -1,5 +1,6 @@
 package edu.aku.hassannaqvi.nns_2018.Adapters;
 
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -7,11 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
+import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.databinding.ChildAdapterBinding;
 import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 
@@ -24,9 +27,16 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHol
     ChildAdapter.ChildViewHolder holder;
     JSONModelClass json;
     private List<FamilyMembersContract> childList;
-    public ChildAdapter(List<FamilyMembersContract> childList) {
+
+    public static ArrayList<Integer> childExistList;
+    DatabaseHelper db;
+
+    public ChildAdapter(Context mContext, List<FamilyMembersContract> childList) {
         json = new JSONModelClass();
         this.childList = childList;
+
+        childExistList = new ArrayList<>();
+        db = new DatabaseHelper(mContext);
     }
 
     @Override
@@ -48,7 +58,11 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHol
     @Override
     public void onBindViewHolder(@NonNull ChildViewHolder holder, int position) {
         this.holder = holder;
-        this.holder.bindUser(this.childList.get(position));
+        this.holder.bindUser(childList.get(position));
+
+        if (db.getChildExistanceByUid(childList.get(position).get_UUID())) {
+            childExistList.add(position);
+        }
     }
 
     @Override
