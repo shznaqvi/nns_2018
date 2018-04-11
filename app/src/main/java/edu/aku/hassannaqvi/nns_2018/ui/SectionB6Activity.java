@@ -548,7 +548,9 @@ public class SectionB6Activity extends Menu2Activity {
 
         if (firstTimePressed && !frontPressed) {
             backPressed = false;
-            firstTimePressed = false;
+            if (!SectionB1Activity.editWRAFlag) {
+                firstTimePressed = false;
+            }
         }
     }
 
