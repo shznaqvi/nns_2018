@@ -294,6 +294,10 @@ public class MWRAContract {
             this.user = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_USER));
             this.app_ver = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_APP_VER));
             this.deviceId = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_DEVICEID));
+
+            this.formDate = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_FORMDATE));
+            this.devicetagID = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_DEVICETAGID));
+            this.b1SerialNo = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_B1SERIALNO));
         }
         if (type == 0 || type == 2) {
             this.sB2 = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB2));
@@ -310,9 +314,6 @@ public class MWRAContract {
             this.sB5 = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SB5));
         }
         if (type == 0) {
-            this.formDate = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_FORMDATE));
-            this.devicetagID = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_DEVICETAGID));
-            this.b1SerialNo = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_B1SERIALNO));
             this.synced = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SYNCED));
             this.syncedDate = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_SYNCEDDATE));
             this.mstatus = cursor.getString(cursor.getColumnIndex(MWRATable.COLUMN_MSTATUS));

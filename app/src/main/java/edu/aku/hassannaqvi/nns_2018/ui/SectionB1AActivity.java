@@ -82,9 +82,10 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         Collection<OutcomeContract> outcomeContracts = db.getPressedOutcome();
 
         for (OutcomeContract outcomeContract : outcomeContracts) {
-            jsonB1A = JSONUtilClass.getModelFromJSON(outcomeContract.getsB1A(), JSONB1AModelClass.class);
+//            if (jsonB1A.getSerial().equals(String.valueOf(MainApp.count))) {
+            if (outcomeContract.getB1aPregSNo().equals(String.valueOf(MainApp.count))) {
 
-            if (jsonB1A.getSerial().equals(String.valueOf(MainApp.count))) {
+                jsonB1A = JSONUtilClass.getModelFromJSON(outcomeContract.getsB1A(), JSONB1AModelClass.class);
 
                 frontPressed = true;
 
@@ -264,6 +265,9 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 MainApp.oc.set_UUID(MainApp.mc.get_UUID());
                 MainApp.oc.setMUID(MainApp.mc.get_UID());
                 MainApp.oc.setFMUID(MainApp.mc.getFMUID());
+                MainApp.oc.setFMUID(MainApp.mc.getFMUID());
+
+                MainApp.oc.setB1aPregSNo(String.valueOf(MainApp.count));
 
                 sB1a.put("cluster_no", MainApp.mc.getCluster());
                 sB1a.put("hhno", MainApp.mc.getHhno());
@@ -278,6 +282,8 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 MainApp.oc.set_UUID(MainApp.fc.getUID());
                 MainApp.oc.setMUID(MainApp.mc.get_UID());
                 MainApp.oc.setFMUID(MainApp.mc.getFMUID());
+
+                MainApp.oc.setB1aPregSNo(String.valueOf(MainApp.count));
 
                 sB1a.put("cluster_no", MainApp.fc.getClusterNo());
                 sB1a.put("hhno", MainApp.fc.getHhNo());
@@ -316,7 +322,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
         sB1a.put("nw217Flag", bi.nw217Flag.isChecked() ? "1" : "2");
 
-        sB1a.put("serial", Integer.valueOf(MainApp.count));
+//        sB1a.put("serial", Integer.valueOf(MainApp.count));
 
         sB1a.put("nw21701", bi.nw21701a.isChecked() ? "1" : bi.nw21701b.isChecked() ? "2" : "0");
         sB1a.put("nw21702y", bi.nw21702y.getText().toString());
@@ -435,7 +441,9 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
         if (firstTimePressed && !frontPressed) {
             backPressed = false;
-            firstTimePressed = false;
+            if (!SectionB1Activity.editWRAFlag) {
+                firstTimePressed = false;
+            }
         }
     }
 

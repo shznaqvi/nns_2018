@@ -2501,7 +2501,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 MWRATable.COLUMN_DEVICEID,
                 MWRATable.COLUMN_USER,
                 MWRATable.COLUMN_SB2FLAG,
-                MWRATable.COLUMN_FM_UID
+                MWRATable.COLUMN_FM_UID,
+                MWRATable.COLUMN_FORMDATE,
+                MWRATable.COLUMN_DEVICETAGID,
+                MWRATable.COLUMN_B1SERIALNO
 
         };
         String whereClause = MWRATable.COLUMN_UID + " =? AND " + MWRATable.COLUMN_UUID + " =?";
@@ -2946,7 +2949,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 MWRATable.COLUMN_DEVICEID,
                 MWRATable.COLUMN_USER,
                 MWRATable.COLUMN_SB2FLAG,
-                MWRATable.COLUMN_FM_UID
+                MWRATable.COLUMN_FM_UID,
+                MWRATable.COLUMN_FORMDATE,
+                MWRATable.COLUMN_DEVICETAGID,
+                MWRATable.COLUMN_B1SERIALNO
         };
 
         String whereClause = MWRATable.COLUMN_UUID + "=? AND " + MWRATable.COLUMN_FM_UID + " =?";

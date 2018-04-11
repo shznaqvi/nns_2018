@@ -63,6 +63,8 @@ public class ViewMemberActivity extends MenuActivity {
 
     private Boolean exit = false;
 
+    int length = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,6 +106,8 @@ public class ViewMemberActivity extends MenuActivity {
 
             flag = false;
 
+            initializingLists();
+
             if (getIntent().getBooleanExtra("comingBack", false)) {
 
                 binding.fldGrpVisA.setVisibility(View.GONE);
@@ -139,32 +143,40 @@ public class ViewMemberActivity extends MenuActivity {
             }
         });
 
+//        HH listener
         binding.chckhouse.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
                 binding.chckhouse.setInputType(InputType.TYPE_CLASS_NUMBER);
+
+                String scanned = charSequence.toString();
+
+                length = charSequence.toString().length();
+
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                //clearFields();
+                binding.fldGrpviewlist.setVisibility(View.GONE);
 
                 if (!binding.chckhouse.getText().toString().isEmpty() && binding.chckhouse.getText().toString().length() == 4) {
                     if (binding.chckhouse.getText().toString().substring(0, 3).matches("[0-9]+")) {
-                        binding.chckhouse.setText(binding.chckhouse.getText().toString() + "-");
-                        binding.chckhouse.setSelection(binding.chckhouse.getText().length());
-                        binding.chckhouse.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+                        if (length < 5) {
+                            binding.chckhouse.setText(binding.chckhouse.getText().toString() + "-");
+                            binding.chckhouse.setSelection(binding.chckhouse.getText().length());
+                            binding.chckhouse.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+                        }
 
                     }
                 }
 
-                binding.fldGrpviewlist.setVisibility(View.GONE);
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
+
 
             }
         });
