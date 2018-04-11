@@ -1217,6 +1217,7 @@ public class SectionC2Activity extends Menu2Activity implements RadioGroup.OnChe
         selectedChild = (FamilyMembersContract) getIntent().getSerializableExtra("selectedChild");
         selectedChild.setAgeInYear(selectedChild.getAge());
 
+
         /*bi.nc205.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
