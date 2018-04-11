@@ -571,7 +571,7 @@ public class SectionC4Activity extends Menu2Activity implements TextWatcher, Rad
             if (UpdateDB()) {
                 backPressed = true;
 
-                if (Integer.valueOf(selectedChild.getAgeInYear()) >= 2) {
+                if (SectionC1Activity.ageInMontsbyDob > 23 && SectionC1Activity.ageInMontsbyDob < 60) {
                     startActivity(new Intent(this, SectionC5Activity.class)
                             .putExtra("selectedChild", selectedChild));
                 } else {

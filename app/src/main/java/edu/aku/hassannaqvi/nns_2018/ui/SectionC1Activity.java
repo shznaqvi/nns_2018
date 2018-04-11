@@ -64,7 +64,7 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     Boolean endflag = false;
     long agebyDob = 0;
-    long ageInMontsbyDob = 0;
+    static long ageInMontsbyDob = 0;
     Calendar dob = Calendar.getInstance();
     @BindViews({R.id.nc201d, R.id.nc201m, R.id.nc201y})
     List<EditText> grpDate;
@@ -399,6 +399,7 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
                     startActivity(new Intent(this, SectionC3Activity.class)
                             .putExtra("selectedChild", editChildFlag ? getIntent().getSerializableExtra("childFMClass") :
                                     childMap.get(binding.nc101.getSelectedItem().toString()))
+                            .putExtra("ageinmonths", ageInMontsbyDob)
                             .putExtra("backPressed", backPressed));
 
                 } else if (ageInMontsbyDob >= 60) {
