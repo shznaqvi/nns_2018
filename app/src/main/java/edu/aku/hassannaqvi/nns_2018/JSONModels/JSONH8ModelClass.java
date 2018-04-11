@@ -20,9 +20,18 @@ public class JSONH8ModelClass {
     private String serial = "";
     private String nh8Flag = "";
     private String nh8ms = "";
+    private String mwraSerial = "";
 
     public JSONH8ModelClass() {
 
+    }
+
+    public String getMwraSerial() {
+        return mwraSerial;
+    }
+
+    public void setMwraSerial(String mwraSerial) {
+        this.mwraSerial = mwraSerial;
     }
 
     public String getNh8Flag() {

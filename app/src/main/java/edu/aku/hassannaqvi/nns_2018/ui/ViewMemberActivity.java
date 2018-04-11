@@ -188,6 +188,7 @@ public class ViewMemberActivity extends MenuActivity {
 
         MainApp.all_members_1 = new ArrayList<>();
         MainApp.otherMembers_1 = new ArrayList<>();
+        MainApp.childUnder2_1 = new ArrayList<>();
         MainApp.childUnder5_1 = new ArrayList<>();
         MainApp.adolescents_1 = new ArrayList<>();
         MainApp.mwra_1 = new ArrayList<>();
@@ -318,6 +319,7 @@ public class ViewMemberActivity extends MenuActivity {
                                                             startActivity(new Intent(ViewMemberActivity.this, SectionB1Activity.class)
                                                                     .putExtra("editForm", true)
                                                                     .putExtra("checkflag", true)
+                                                                    .putExtra("under2Size", MainApp.childUnder2_1.size())
                                                                     .putExtra("formUid", MainApp.mwra_1.get(position).get_UUID())
                                                                     .putExtra("fmUid", MainApp.mwra_1.get(position).get_UID())
                                                             );
@@ -436,8 +438,11 @@ public class ViewMemberActivity extends MenuActivity {
                         if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
                                 ||
                                 SectionB1Activity.lstMwra.size() == 1) {
-                            SectionB1Activity.WRAcounter++;
-                            SectionB1Activity.lstMwra.remove(SectionB1Activity.wraName);
+
+                            if (MainApp.mc != null) {
+                                SectionB1Activity.WRAcounter++;
+                                SectionB1Activity.lstMwra.remove(SectionB1Activity.wraName);
+                            }
 
                             SectionC1Activity.isNA = false;
                             SectionC1Activity.childU5.remove(SectionC1Activity.selectedChildName);
@@ -896,6 +901,9 @@ public class ViewMemberActivity extends MenuActivity {
                         MainApp.adolescents_1.add(fm);
                         MainApp.all_members_1.add(fm);
                     } else if (Integer.valueOf(json.getAge()) < 5) {
+                        if (Integer.valueOf(json.getAge()) < 2) {
+                            MainApp.childUnder2_1.add(fm);
+                        }
                         MainApp.childUnder5_1.add(fm);
                         MainApp.all_members_1.add(fm);
                     } else if (!((Integer.valueOf(json.getAge()) >= 15 && Integer.valueOf(json.getAge()) <= 49) && json.getGender().equals("2"))) {

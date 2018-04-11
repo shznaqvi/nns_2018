@@ -202,7 +202,7 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
 
                 } else {
                     for (FamilyMembersContract fmc : MainApp.childUnder5) {
-                        if (fmc.getMotherId().equals(MainApp.mc.getB1SerialNo())) {
+                        if (MainApp.mc == null || fmc.getMotherId().equals(MainApp.mc.getB1SerialNo())) {
                             childMap.put(fmc.getName() + "-" + fmc.getSerialNo(), fmc);
                             childU5.add(fmc.getName() + "-" + fmc.getSerialNo());
                             counterPerMom++;
@@ -667,7 +667,11 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
 
             } else {
 
-                MainApp.cc.setMUID(MainApp.mc.get_UID());
+                if (MainApp.mc == null) {
+                    MainApp.cc.setMUID("00");
+                } else {
+                    MainApp.cc.setMUID(MainApp.mc.get_UID());
+                }
 
             }
 

@@ -554,7 +554,9 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                     }
 
                 }
-                MainApp.mwra.add(family);
+                if (binding.nh210a.isChecked()) {
+                    MainApp.mwra.add(family);
+                }
                 //MainApp.adolescents.add(family);
             }
             //Adolescent
@@ -591,16 +593,21 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                 }
 
                 // Add data in list
-                if (Age < 2) {
+                if (Age < 2 && binding.nh210a.isChecked()) {
                     MainApp.childUnder2.add(family);
-                    MainApp.childUnder2Check.add(family);
+                    //MainApp.childUnder2Check.add(family);
                     MainApp.childUnder5.add(family);
                 } else {
-                    MainApp.childUnder5.add(family);
+                    if (binding.nh210a.isChecked()) {
+                        MainApp.childUnder5.add(family);
+                    }
                     //MainApp.adolescents.add(family);
                 }
+                if (Age < 2) {
+                    MainApp.childUnder2Check.add(family);
+                }
 
-                if (Age < 6 && family.getMotherId().equals("00")) {
+                if (Age < 6 && family.getMotherId().equals("00") && binding.nh210a.isChecked()) {
                     MainApp.childNA.add(family);
                 }
             }

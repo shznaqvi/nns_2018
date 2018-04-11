@@ -2179,7 +2179,47 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 DeceasedContract fc = new DeceasedContract();
-                allFC.add(fc.Hydrate(c));
+                allFC.add(fc.Hydrate(c, 0));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
+    public Collection<DeceasedContract> getDeceasedMembersCount(String uuid) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                DeceasedContract.DeceasedTable.COLUMN_SH8
+        };
+        String whereClause = DeceasedContract.DeceasedTable.COLUMN__UUID + " =?";
+        String[] whereArgs = {MainApp.fc.getUID()};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                DeceasedContract.DeceasedTable.COLUMN__ID + " ASC";
+
+        Collection<DeceasedContract> allFC = new ArrayList<DeceasedContract>();
+        try {
+            c = db.query(
+                    DeceasedContract.DeceasedTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                DeceasedContract fc = new DeceasedContract();
+                allFC.add(fc.Hydrate(c, 1));
             }
         } finally {
             if (c != null) {
@@ -2229,7 +2269,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 DeceasedContract fc = new DeceasedContract();
-                allFC.add(fc.Hydrate(c));
+                allFC.add(fc.Hydrate(c, 0));
             }
         } finally {
             if (c != null) {

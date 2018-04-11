@@ -21,6 +21,7 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -30,7 +31,9 @@ import java.util.Timer;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONB1ModelClass;
+import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONH8ModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.DeceasedContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
@@ -1040,7 +1043,19 @@ public class SectionB1Activity extends Menu2Activity implements TextWatcher, Rad
     private void AutoPopulate(String uuid, String uid) {
 
         MainApp.mc = db.getsB1(uuid, uid);
-        childCheck = MainApp.mc.getSb2flag().equals("1");
+        if (getIntent().getIntExtra("under2Size", 0) > 0) {
+            childCheck = true;
+        } else {
+            Collection<DeceasedContract> deceasedContracts = db.getDeceasedMembersCount(uuid);
+            for (DeceasedContract deceasedContract : deceasedContracts) {
+                JSONH8ModelClass jsonh8ModelClass = JSONUtilClass.getModelFromJSON(deceasedContract.getsH8(), JSONH8ModelClass.class);
+                if (jsonh8ModelClass.getMwraSerial().equals(MainApp.mc.getB1SerialNo())) {
+                    childCheck = true;
+                    break;
+                }
+            }
+        }
+
         bi.nb101.setVisibility(View.GONE);
         bi.nb101a.setVisibility(View.VISIBLE);
 
