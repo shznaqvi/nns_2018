@@ -43,8 +43,14 @@ public class SectionC5Activity extends Menu2Activity implements TextWatcher, Rad
         bi.setCallback(this);
 
         this.setTitle(getResources().getString(R.string.nc5heading));
-        bi.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
-                + "\n\n" + SectionB1Activity.wraName + " : " + getString(R.string.nh212a));
+
+        if (SectionC1Activity.editChildFlag) {
+            bi.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
+                    + "\n\n" + SectionC1Activity.editMotherName + " : " + getString(R.string.nh212a));
+        } else {
+            bi.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
+                    + "\n\n" + SectionB1Activity.wraName + " : " + getString(R.string.nh212a));
+        }
 
         db = new DatabaseHelper(this);
 
@@ -58,11 +64,11 @@ public class SectionC5Activity extends Menu2Activity implements TextWatcher, Rad
         bi.nc504.setOnCheckedChangeListener(this);
         bi.nc505.setOnCheckedChangeListener(this);
         bi.nc506.setOnCheckedChangeListener(this);
-        autoPopulateFields();
-
 
 //        Validation Boolean
         MainApp.validateFlag = false;
+
+        autoPopulateFields();
 
     }
 

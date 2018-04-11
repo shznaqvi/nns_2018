@@ -80,14 +80,13 @@ public class SectionC2Activity extends Menu2Activity implements RadioGroup.OnChe
         this.setTitle(getResources().getString(R.string.nc2heading));
 
         setupViews();
-        autoPopulateFields();
-
 
 //        Validation Boolean
         MainApp.validateFlag = false;
 
         if (SectionC1Activity.editChildFlag) {
-            bi.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname));
+            bi.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
+                    + "\n\n" + SectionC1Activity.editMotherName + " : " + getString(R.string.nh212a));
         } else {
             bi.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
                     + "\n\n" + SectionB1Activity.wraName + " : " + getString(R.string.nh212a));
@@ -185,6 +184,8 @@ public class SectionC2Activity extends Menu2Activity implements RadioGroup.OnChe
                 }
             }
         });
+
+        autoPopulateFields();
 
     }
 
@@ -1215,7 +1216,6 @@ public class SectionC2Activity extends Menu2Activity implements RadioGroup.OnChe
     public void setupViews() {
         //Get Intent
         selectedChild = (FamilyMembersContract) getIntent().getSerializableExtra("selectedChild");
-        selectedChild.setAgeInYear(selectedChild.getAge());
 
         /*bi.nc205.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override

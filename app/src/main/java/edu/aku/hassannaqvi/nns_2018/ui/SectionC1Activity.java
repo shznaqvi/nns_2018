@@ -49,6 +49,7 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
     public static int counterPerMom = 0;
     public static int counterPerNA = 0;
     public static String selectedChildName = "";
+    public static String editMotherName = "";
     public static boolean isNA;
     public static int Childsize = 0;
     public static int NAChildsize = 0;
@@ -317,11 +318,13 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
 
             if (MainApp.cc.getMUID().equals("00")) {
                 binding.respa.setText(jsonC1.getRespName());
+                editMotherName = "Not Available";
             } else {
                 MWRAContract mwraContract = db.getWRANameByUid(MainApp.cc.getMUID(), MainApp.cc.getUUID());
                 if (!mwraContract.get_UID().equals("")) {
                     JSONB1ModelClass jsonB1 = JSONUtilClass.getModelFromJSON(mwraContract.getsB1(), JSONB1ModelClass.class);
                     binding.respa.setText(jsonB1.getnw101().split("-")[0]);
+                    editMotherName = jsonB1.getnw101().split("-")[0];
                 }
             }
 

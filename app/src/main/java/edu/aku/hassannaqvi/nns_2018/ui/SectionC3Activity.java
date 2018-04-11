@@ -43,9 +43,14 @@ public class SectionC3Activity extends Menu2Activity implements RadioGroup.OnChe
 
         this.setTitle(getResources().getString(R.string.nc3heading));
 
-        binding.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
-                + "\n\n" + SectionB1Activity.wraName + " : " + getString(R.string.nh212a));
 
+        if (SectionC1Activity.editChildFlag) {
+            binding.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
+                    + "\n\n" + SectionC1Activity.editMotherName + " : " + getString(R.string.nh212a));
+        } else {
+            binding.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
+                    + "\n\n" + SectionB1Activity.wraName + " : " + getString(R.string.nh212a));
+        }
 
         db = new DatabaseHelper(this);
         binding.setCallback(this);
@@ -123,12 +128,13 @@ public class SectionC3Activity extends Menu2Activity implements RadioGroup.OnChe
         });
 
 
-        autoPopulateFields();
         //Get Intent
         selectedChild = (FamilyMembersContract) getIntent().getSerializableExtra("selectedChild");
 
 //        Validation Boolean
         MainApp.validateFlag = false;
+
+        autoPopulateFields();
 
     }
 

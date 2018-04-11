@@ -47,8 +47,14 @@ public class SectionC4Activity extends Menu2Activity implements TextWatcher, Rad
 
         this.setTitle(getResources().getString(R.string.nc4heading));
 
-        binding.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
-                + "\n\n" + SectionB1Activity.wraName + " : " + getString(R.string.nh212a));
+        if (SectionC1Activity.editChildFlag) {
+            binding.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
+                    + "\n\n" + SectionC1Activity.editMotherName + " : " + getString(R.string.nh212a));
+        } else {
+            binding.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
+                    + "\n\n" + SectionB1Activity.wraName + " : " + getString(R.string.nh212a));
+        }
+
         binding.txtnc401.setText(binding.txtnc401.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
         binding.txtnc402.setText(binding.txtnc402.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
         binding.txtnc403.setText(binding.txtnc403.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
@@ -196,11 +202,11 @@ public class SectionC4Activity extends Menu2Activity implements TextWatcher, Rad
         binding.nc419.setOnCheckedChangeListener(this);
         binding.nc420m.addTextChangedListener(this);
         binding.nc420d.addTextChangedListener(this);
-        autoPopulateFields();
-
 
 //        Validation Boolean
         MainApp.validateFlag = false;
+
+        autoPopulateFields();
 
     }
 
