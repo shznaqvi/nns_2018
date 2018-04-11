@@ -1023,6 +1023,9 @@ public class SectionB1Activity extends Menu2Activity implements TextWatcher, Rad
                 if (bi.nb101.getSelectedItemPosition() != 0) {
                     for (FamilyMembersContract fmc : MainApp.childUnder2Check) {
                         childCheck = fmc.getMotherId().equals(wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
+                        if (childCheck) {
+                            break;
+                        }
                     }
                 }
             }
