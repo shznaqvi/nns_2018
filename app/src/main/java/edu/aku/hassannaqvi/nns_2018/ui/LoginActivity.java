@@ -561,7 +561,6 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
     public void onBackPressed() {
         super.onBackPressed();
         finish();
-        System.exit(0);
     }
 
     /*public class syncData extends AsyncTask<String, String, String> {

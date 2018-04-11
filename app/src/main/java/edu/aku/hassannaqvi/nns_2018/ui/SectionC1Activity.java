@@ -399,7 +399,6 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
                     startActivity(new Intent(this, SectionC3Activity.class)
                             .putExtra("selectedChild", editChildFlag ? getIntent().getSerializableExtra("childFMClass") :
                                     childMap.get(binding.nc101.getSelectedItem().toString()))
-                            .putExtra("ageinmonths", ageInMontsbyDob)
                             .putExtra("backPressed", backPressed));
 
                 } else if (ageInMontsbyDob >= 60) {

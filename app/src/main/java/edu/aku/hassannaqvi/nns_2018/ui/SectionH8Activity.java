@@ -310,6 +310,7 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
                 bi.nh805a.setText(jsonH8.getNh805().toString().toUpperCase());
 
                 bi.nh803.setText(jsonH8.getNh803());
+                bi.nh803.setVisibility(View.GONE);
 
                 if (!jsonH8.getNh806().equals("0")) {
                     bi.nh806.check(

@@ -606,6 +606,12 @@ public class MainActivity extends MenuActivity {
         if (exit) {
             finish(); // finish activity
 
+            /*Intent intent = new Intent(this, LoginActivity.class);
+            ComponentName cn = intent.getComponent();
+            Intent mainIntent = IntentCompat.makeRestartActivityTask(cn);
+            startActivity(mainIntent);
+            finish();*/
+
             startActivity(new Intent(this, LoginActivity.class));
 
         } else {
