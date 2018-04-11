@@ -756,7 +756,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
     public void BtnCheckEnm() {
 
-        if (validatorClass.EmptyTextBox(this, binding.nh101, getString(R.string.nh101)) && validatorClass.EmptyTextBox(this, binding.nh102, getString(R.string.nh102))) {
+        if (editFormFlag || validatorClass.EmptyTextBox(this, binding.nh101, getString(R.string.nh101)) && validatorClass.EmptyTextBox(this, binding.nh102, getString(R.string.nh102))) {
 
             EnumBlockContract enumBlockContract = db.getEnumBlock(binding.nh102.getText().toString());
             if (enumBlockContract != null) {
