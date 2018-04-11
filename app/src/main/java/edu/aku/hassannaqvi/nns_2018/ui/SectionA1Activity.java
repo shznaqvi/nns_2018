@@ -107,6 +107,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
             if (jsonA1.getHhheadpresent().equals("1")) {
                 binding.checkHHHeadpresent.setChecked(true);
+            } else {
                 binding.newHHheadname.setText(jsonA1.getHhheadpresentnew());
             }
 

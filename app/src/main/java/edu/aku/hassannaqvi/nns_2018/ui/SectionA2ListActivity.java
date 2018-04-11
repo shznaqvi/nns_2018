@@ -265,44 +265,53 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
             for (FamilyMembersContract fm : MainApp.all_members_1) {
 
+                Boolean serialFlag = true;
                 json = JSONUtilClass.getModelFromJSON(fm.getsA2(), JSONModelClass.class);
-                int Age = Integer.valueOf(json.getAge());
-                int gender = Integer.valueOf(json.getGender());
-                fm.setAgeInYear(json.getAge());
-                fm.setna204(json.getGender());
-                fm.setSerialNo(json.getSerialNo());
-                fm.setName(json.getName());
-                Log.d("Names", "Name: " + json.getName());
+
+                for (FamilyMembersContract ser : MainApp.all_members) {
+                    if (ser.getSerialNo() == fm.getSerialNo()) {
+                        serialFlag = false;
+                    }
+                }
+                if (serialFlag) {
+                    int Age = Integer.valueOf(json.getAge());
+                    int gender = Integer.valueOf(json.getGender());
+                    fm.setAgeInYear(json.getAge());
+                    fm.setna204(json.getGender());
+                    fm.setSerialNo(json.getSerialNo());
+                    fm.setName(json.getName());
+                    Log.d("Names", "Name: " + json.getName());
 
 
-                if ((Age >= 15 && Age <= 49) && json.getGender().equals("2")) {
-                    MainApp.mwra.add(fm);
-                    MainApp.all_members.add(fm);
-                }
-                if ((Age >= 10 && (Age <= 19)) && MStatusChecking(json.getMaritalStatus()).equals("5")) {
-                    MainApp.adolescents.add(fm);
-                    MainApp.all_members.add(fm);
-                }
-                if (Integer.valueOf(json.getAge()) < 5) {
-                    MainApp.childUnder5.add(fm);
-                    MainApp.all_members.add(fm);
-                }
-                MainApp.familyMembersList.add(fm);
-                if (Age >= 15 && json.getGender().equals("2") && !MStatusChecking(json.getMaritalStatus()).equals("5")) {
-                    MainApp.editmothersList.add(json.getName());
-                    MainApp.editmothersSerials.add(json.getSerialNo());
-                } else if (Age >= 15 && json.getGender().equals("1") && !MStatusChecking(json.getMaritalStatus()).equals("5")) {
-                    MainApp.editfathersList.add(json.getName());
-                    MainApp.editfathersSerials.add(json.getSerialNo());
-                }
+                    if ((Age >= 15 && Age <= 49) && json.getGender().equals("2")) {
+                        MainApp.mwra.add(fm);
+                        MainApp.all_members.add(fm);
+                    }
+                    if ((Age >= 10 && (Age <= 19)) && MStatusChecking(json.getMaritalStatus()).equals("5")) {
+                        MainApp.adolescents.add(fm);
+                        MainApp.all_members.add(fm);
+                    }
+                    if (Integer.valueOf(json.getAge()) < 5) {
+                        MainApp.childUnder5.add(fm);
+                        MainApp.all_members.add(fm);
+                    }
+                    MainApp.familyMembersList.add(fm);
+                    if (Age >= 15 && json.getGender().equals("2") && !MStatusChecking(json.getMaritalStatus()).equals("5")) {
+                        MainApp.editmothersList.add(json.getName());
+                        MainApp.editmothersSerials.add(json.getSerialNo());
+                    } else if (Age >= 15 && json.getGender().equals("1") && !MStatusChecking(json.getMaritalStatus()).equals("5")) {
+                        MainApp.editfathersList.add(json.getName());
+                        MainApp.editfathersSerials.add(json.getSerialNo());
+                    }
 
-                MainApp.hhClicked.add(position);
+                    MainApp.hhClicked.add(position);
 
-                if (fm.getDelflag().equals("1")) {
-                    MainApp.flagClicked.add(position);
+                    if (fm.getDelflag().equals("1")) {
+                        MainApp.flagClicked.add(position);
+                    }
+
+                    position++;
                 }
-
-                position++;
             }
             setCount();
 
