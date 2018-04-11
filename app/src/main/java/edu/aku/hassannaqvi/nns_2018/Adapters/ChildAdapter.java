@@ -60,7 +60,7 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHol
         this.holder = holder;
         this.holder.bindUser(childList.get(position));
 
-        if (db.getChildExistanceByUid(childList.get(position).get_UUID())) {
+        if (db.getChildExistanceByUid(childList.get(position).get_UUID(), childList.get(position).get_UID())) {
             childExistList.add(position);
         }
     }

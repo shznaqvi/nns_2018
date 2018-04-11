@@ -227,41 +227,43 @@ public class ViewMemberActivity extends MenuActivity {
 
                             if (!flag) {
 
-                                /*checkflag = false;
-                                for (int hh : WraAdapter.wraExistList) {
-                                    if (hh == position) {
+                                checkflag = false;
+                                for (int item : ChildAdapter.childExistList) {
+                                    if (item == position) {
                                         checkflag = true;
                                         break;
                                     }
-                                }*/
+                                }
 
-                                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                                        ViewMemberActivity.this);
-                                alertDialogBuilder
-                                        .setMessage("Are you sure to update this member?")
-                                        .setCancelable(false)
-                                        .setPositiveButton("Ok",
-                                                new DialogInterface.OnClickListener() {
-                                                    public void onClick(DialogInterface dialog, int id) {
+                                if (checkflag) {
+                                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                                            ViewMemberActivity.this);
+                                    alertDialogBuilder
+                                            .setMessage("Are you sure to update this member?")
+                                            .setCancelable(false)
+                                            .setPositiveButton("Ok",
+                                                    new DialogInterface.OnClickListener() {
+                                                        public void onClick(DialogInterface dialog, int id) {
 
-                                                        startActivity(new Intent(ViewMemberActivity.this, SectionC1Activity.class)
-                                                                .putExtra("editForm", true)
-                                                                .putExtra("checkflag", true)
-                                                                .putExtra("childFMClass", MainApp.childUnder5_1.get(position))
-                                                                .putExtra("formUid", MainApp.childUnder5_1.get(position).get_UUID())
-                                                                .putExtra("fmUid", MainApp.childUnder5_1.get(position).get_UID())
-                                                        );
+                                                            startActivity(new Intent(ViewMemberActivity.this, SectionC1Activity.class)
+                                                                    .putExtra("editForm", true)
+                                                                    .putExtra("checkflag", true)
+                                                                    .putExtra("childFMClass", MainApp.childUnder5_1.get(position))
+                                                                    .putExtra("formUid", MainApp.childUnder5_1.get(position).get_UUID())
+                                                                    .putExtra("fmUid", MainApp.childUnder5_1.get(position).get_UID())
+                                                            );
 
-                                                    }
-                                                });
-                                alertDialogBuilder.setNegativeButton("Cancel",
-                                        new DialogInterface.OnClickListener() {
-                                            public void onClick(DialogInterface dialog, int id) {
-                                                dialog.cancel();
-                                            }
-                                        });
-                                AlertDialog alert = alertDialogBuilder.create();
-                                alert.show();
+                                                        }
+                                                    });
+                                    alertDialogBuilder.setNegativeButton("Cancel",
+                                            new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int id) {
+                                                    dialog.cancel();
+                                                }
+                                            });
+                                    AlertDialog alert = alertDialogBuilder.create();
+                                    alert.show();
+                                }
                             }
                         }
                     }
@@ -283,40 +285,42 @@ public class ViewMemberActivity extends MenuActivity {
 
                             if (!flag) {
 
-                                /*checkflag = false;
-                                for (int hh : WraAdapter.wraExistList) {
-                                    if (hh == position) {
+                                checkflag = false;
+                                for (int item : WraAdapter.wraExistList) {
+                                    if (item == position) {
                                         checkflag = true;
                                         break;
                                     }
-                                }*/
+                                }
 
-                                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                                        ViewMemberActivity.this);
-                                alertDialogBuilder
-                                        .setMessage("Are you sure to update this member?")
-                                        .setCancelable(false)
-                                        .setPositiveButton("Ok",
-                                                new DialogInterface.OnClickListener() {
-                                                    public void onClick(DialogInterface dialog, int id) {
+                                if (checkflag) {
+                                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                                            ViewMemberActivity.this);
+                                    alertDialogBuilder
+                                            .setMessage("Are you sure to update this member?")
+                                            .setCancelable(false)
+                                            .setPositiveButton("Ok",
+                                                    new DialogInterface.OnClickListener() {
+                                                        public void onClick(DialogInterface dialog, int id) {
 
-                                                        startActivity(new Intent(ViewMemberActivity.this, SectionB1Activity.class)
-                                                                .putExtra("editForm", true)
-                                                                .putExtra("checkflag", true)
-                                                                .putExtra("formUid", MainApp.mwra_1.get(position).get_UUID())
-                                                                .putExtra("fmUid", MainApp.mwra_1.get(position).get_UID())
-                                                        );
+                                                            startActivity(new Intent(ViewMemberActivity.this, SectionB1Activity.class)
+                                                                    .putExtra("editForm", true)
+                                                                    .putExtra("checkflag", true)
+                                                                    .putExtra("formUid", MainApp.mwra_1.get(position).get_UUID())
+                                                                    .putExtra("fmUid", MainApp.mwra_1.get(position).get_UID())
+                                                            );
 
-                                                    }
-                                                });
-                                alertDialogBuilder.setNegativeButton("Cancel",
-                                        new DialogInterface.OnClickListener() {
-                                            public void onClick(DialogInterface dialog, int id) {
-                                                dialog.cancel();
-                                            }
-                                        });
-                                AlertDialog alert = alertDialogBuilder.create();
-                                alert.show();
+                                                        }
+                                                    });
+                                    alertDialogBuilder.setNegativeButton("Cancel",
+                                            new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int id) {
+                                                    dialog.cancel();
+                                                }
+                                            });
+                                    AlertDialog alert = alertDialogBuilder.create();
+                                    alert.show();
+                                }
                             }
                         }
                     }
@@ -861,7 +865,7 @@ public class ViewMemberActivity extends MenuActivity {
 
                 if (fm.getsA2() != null) {
                     json = JSONUtilClass.getModelFromJSON(fm.getsA2(), JSONModelClass.class);
-                    if ((Integer.valueOf(json.getAge()) >= 15 && Integer.valueOf(json.getAge()) <= 49) && json.getGender().equals("2") && !json.getMaritalStatus().equals("5")) {
+                    if ((Integer.valueOf(json.getAge()) >= 15 && Integer.valueOf(json.getAge()) <= 49) && json.getGender().equals("2")) {
                         MainApp.mwra_1.add(fm);
                         MainApp.all_members_1.add(fm);
                     }

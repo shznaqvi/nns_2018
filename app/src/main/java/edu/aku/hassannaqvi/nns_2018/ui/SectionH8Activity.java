@@ -325,6 +325,9 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
                                     : jsonH8.getNh8ms().equals("4") ? bi.nh8msd.getId()
                                     : bi.nh8mse.getId()
                     );
+                } else {
+                    bi.nh805a.setVisibility(View.GONE);
+                    bi.nh804a.setVisibility(View.GONE);
                 }
 
                 bi.nh807y.setText(jsonH8.getNh807y());

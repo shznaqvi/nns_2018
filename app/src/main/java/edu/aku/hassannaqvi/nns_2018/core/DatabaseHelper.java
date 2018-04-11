@@ -2302,16 +2302,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFC;
     }
 
-    public Boolean getChildExistanceByUid(String uuid) {
+    public Boolean getChildExistanceByUid(String uuid, String fuid) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
                 ChildTable.COLUMN__ID,
                 ChildTable.COLUMN__UID,
-                ChildTable.COLUMN__UUID
+                ChildTable.COLUMN__UUID,
+                ChildTable.COLUMN_FM_UID
         };
-        String whereClause = ChildTable.COLUMN__UUID + " =?";
-        String[] whereArgs = {uuid};
+        String whereClause = ChildTable.COLUMN__UUID + " =? AND " + ChildTable.COLUMN_FM_UID + " =?";
+        String[] whereArgs = {uuid, fuid};
         String groupBy = null;
         String having = null;
 
@@ -2453,17 +2454,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFC;
     }
 
-    public Boolean getWRAExistanceByUid(String uuid) {
+    public Boolean getWRAExistanceByUid(String uuid, String fuid) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
                 MWRATable.COLUMN__ID,
                 MWRATable.COLUMN_UID,
                 MWRATable.COLUMN_UUID,
+                MWRATable.COLUMN_FM_UID
 
         };
-        String whereClause = MWRATable.COLUMN_UUID + " =?";
-        String[] whereArgs = {uuid};
+        String whereClause = MWRATable.COLUMN_UUID + " =? AND " + MWRATable.COLUMN_FM_UID + " =?";
+        String[] whereArgs = {uuid, fuid};
         String groupBy = null;
         String having = null;
 
@@ -2483,6 +2485,57 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return cursorCount > 0;
+    }
+
+    public MWRAContract getWRANameByUid(String uid, String uuid) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                MWRATable.COLUMN__ID,
+                MWRATable.COLUMN_UID,
+                MWRATable.COLUMN_UUID,
+                MWRATable.COLUMN_SB1,
+                MWRATable.COLUMN_SB6,
+                MWRATable.COLUMN_APP_VER,
+                MWRATable.COLUMN_DEVICEID,
+                MWRATable.COLUMN_USER,
+                MWRATable.COLUMN_SB2FLAG,
+                MWRATable.COLUMN_FM_UID
+
+        };
+        String whereClause = MWRATable.COLUMN_UID + " =? AND " + MWRATable.COLUMN_UUID + " =?";
+        String[] whereArgs = {uid, uuid};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = null;
+
+        Cursor cursor = null;
+
+        MWRAContract allFC = new MWRAContract();
+
+        try {
+            c = db.query(
+                    MWRATable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                allFC = new MWRAContract().Hydrate(c, 1);
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
     }
 
 

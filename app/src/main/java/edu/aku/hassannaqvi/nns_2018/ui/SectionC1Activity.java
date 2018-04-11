@@ -30,10 +30,12 @@ import java.util.TimerTask;
 
 import butterknife.BindViews;
 import butterknife.ButterKnife;
+import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONB1ModelClass;
 import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONC1ModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionC1Binding;
@@ -315,7 +317,14 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
 
             if (MainApp.cc.getMUID().equals("00")) {
                 binding.respa.setText(jsonC1.getRespName());
+            } else {
+                MWRAContract mwraContract = db.getWRANameByUid(MainApp.cc.getMUID(), MainApp.cc.getUUID());
+                if (!mwraContract.get_UID().equals("")) {
+                    JSONB1ModelClass jsonB1 = JSONUtilClass.getModelFromJSON(mwraContract.getsB1(), JSONB1ModelClass.class);
+                    binding.respa.setText(jsonB1.getnw101().split("-")[0]);
+                }
             }
+
             binding.nc101a.setText(jsonC1.getnc101());
 
             selectedChildName = jsonC1.getnc101().split("-")[0];
@@ -649,6 +658,7 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
             MainApp.cc.setAppversion(MainApp.fc.getAppversion());
             MainApp.cc.setUUID(MainApp.fc.getUID());
             MainApp.cc.setFMUID(childMap.get(binding.nc101.getSelectedItem().toString()).get_UID());
+            MainApp.cc.setC1SerialNo(childMap.get(binding.nc101.getSelectedItem().toString()).getSerialNo());
             if (childMap.get(binding.nc101.getSelectedItem().toString()).getMotherId().equals("00")) {
                 MainApp.cc.setMUID("00");
 

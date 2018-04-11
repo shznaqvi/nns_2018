@@ -157,6 +157,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
                         if (position != -1 && SectionA1Activity.reBackFlag) {
                             boolean flag = false;
+                            delFlag = true;
                             for (int hh : MainApp.hhClicked) {
                                 if (hh == position) {
                                     flag = true;
@@ -203,7 +204,12 @@ public class SectionA2ListActivity extends AppCompatActivity {
                                                 MainApp.flagClicked.add(position);
                                                 binding.recyclerNoMembers.getChildAt(position).setBackgroundColor(getResources().getColor(R.color.brown));
                                             } else {
-                                                MainApp.flagClicked.remove(position);
+                                                for (byte i = 0; i < MainApp.flagClicked.size(); i++) {
+                                                    if (position == MainApp.flagClicked.get(i)) {
+                                                        MainApp.flagClicked.remove(i);
+                                                    }
+                                                    break;
+                                                }
                                                 binding.recyclerNoMembers.getChildAt(position).setBackgroundColor(getResources().getColor(R.color.black));
                                             }
                                         }
@@ -255,6 +261,8 @@ public class SectionA2ListActivity extends AppCompatActivity {
             MainApp.editmothersList = new ArrayList<>();
             MainApp.editmothersSerials = new ArrayList<>();
 
+            int position = 0;
+
             for (FamilyMembersContract fm : MainApp.all_members_1) {
 
                 json = JSONUtilClass.getModelFromJSON(fm.getsA2(), JSONModelClass.class);
@@ -287,6 +295,14 @@ public class SectionA2ListActivity extends AppCompatActivity {
                     MainApp.editfathersList.add(json.getName());
                     MainApp.editfathersSerials.add(json.getSerialNo());
                 }
+
+                MainApp.hhClicked.add(position);
+
+                if (fm.getDelflag().equals("1")) {
+                    MainApp.flagClicked.add(position);
+                }
+
+                position++;
             }
             setCount();
 

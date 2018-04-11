@@ -56,7 +56,7 @@ public class WraAdapter extends RecyclerView.Adapter<WraAdapter.WraViewHolder> {
         this.holder = holder;
         this.holder.bindUser(wraList.get(position));
 
-        if (db.getWRAExistanceByUid(wraList.get(position).get_UUID())) {
+        if (db.getWRAExistanceByUid(wraList.get(position).get_UUID(), wraList.get(position).get_UID())) {
             wraExistList.add(position);
         }
 

@@ -263,6 +263,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
                 MainApp.oc.set_UUID(MainApp.mc.get_UUID());
                 MainApp.oc.setMUID(MainApp.mc.get_UID());
+                MainApp.oc.setFMUID(MainApp.mc.getFMUID());
 
                 sB1a.put("cluster_no", MainApp.mc.getCluster());
                 sB1a.put("hhno", MainApp.mc.getHhno());
@@ -276,6 +277,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 MainApp.oc.setApp_ver(MainApp.fc.getAppversion());
                 MainApp.oc.set_UUID(MainApp.fc.getUID());
                 MainApp.oc.setMUID(MainApp.mc.get_UID());
+                MainApp.oc.setFMUID(MainApp.mc.getFMUID());
 
                 sB1a.put("cluster_no", MainApp.fc.getClusterNo());
                 sB1a.put("hhno", MainApp.fc.getHhNo());
