@@ -433,7 +433,13 @@ public class ViewMemberActivity extends MenuActivity {
                             SectionC1Activity.counterPerMom = 0;
                             SectionC1Activity.counterPerNA = 0;
 
-                            GetIntent = new Intent(this, EndingActivity.class).putExtra("complete", true);
+                            if (MainApp.childNA.size() > 0) {
+                                SectionC1Activity.isNA = true;
+                                GetIntent = new Intent(this, SectionC1Activity.class);
+                            } else {
+
+                                GetIntent = new Intent(this, EndingActivity.class).putExtra("complete", true);
+                            }
                         } else {
 
                             SectionC1Activity.isNA = false;
@@ -481,10 +487,10 @@ public class ViewMemberActivity extends MenuActivity {
                     }
                     if (childcount > 0) {
                         GetIntent = new Intent(this, SectionC1Activity.class);
-                    } else if (MainApp.childNA.size() > 0) {
+                    } /*else if (MainApp.childNA.size() > 0) {
                         SectionC1Activity.isNA = true;
                         GetIntent = new Intent(this, SectionC1Activity.class);
-                    } else if (SectionB1Activity.WRAcounter == MainApp.mwra.size()) {
+                    }*/ else if (SectionB1Activity.WRAcounter == MainApp.mwra.size()) {
                         SectionB1Activity.WRAcounter++;
                         SectionB1Activity.lstMwra.remove(SectionB1Activity.wraName);
 
@@ -492,7 +498,12 @@ public class ViewMemberActivity extends MenuActivity {
                         SectionC1Activity.counterPerMom = 0;
                         SectionC1Activity.counterPerNA = 0;
 
-                        GetIntent = new Intent(this, EndingActivity.class).putExtra("complete", true);
+                        if (MainApp.childNA.size() > 0) {
+                            SectionC1Activity.isNA = true;
+                            GetIntent = new Intent(this, SectionC1Activity.class);
+                        } else {
+                            GetIntent = new Intent(this, EndingActivity.class).putExtra("complete", true);
+                        }
                     } else {
                         GetIntent = new Intent(this, SectionB1Activity.class)
                                 .putExtra("mwraFlag", true)

@@ -1302,7 +1302,7 @@ public class SectionB1Activity extends Menu2Activity implements TextWatcher, Rad
                         .putExtra("hhno", MainApp.mc.getHhno())
                 );
             } else {
-                MainApp.endChildActivity(this, this, false);
+                MainApp.endActivityMother(this, this, false);
             }
 
         } else {

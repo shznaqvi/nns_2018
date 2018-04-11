@@ -581,6 +581,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 familyMembers.COLUMN_DEVICEID,
                 familyMembers.COLUMN_SYNCED,
                 familyMembers.COLUMN_SYNCED_DATE,
+                familyMembers.COLUMN_FLAG,
                 familyMembers.COLUMN_APP_VERSION
 
         };
