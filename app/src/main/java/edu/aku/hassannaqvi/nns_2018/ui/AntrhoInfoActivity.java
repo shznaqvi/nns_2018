@@ -188,7 +188,7 @@ public class AntrhoInfoActivity extends Activity {
         }
 
 
-        if (!validatorClass.EmptyTextBox(this, binding.hcCode, getString(R.string.hc))) {
+        /*if (!validatorClass.EmptyTextBox(this, binding.hcCode, getString(R.string.hc))) {
             return false;
         }
 
@@ -209,7 +209,9 @@ public class AntrhoInfoActivity extends Activity {
         } else {
             binding.hcCode.setError(null);
         }
+*/
 
+        int scanChar;
 
         if (!validatorClass.EmptyTextBox(this, binding.htCode, getString(R.string.ht))) {
             return false;
@@ -263,7 +265,7 @@ public class AntrhoInfoActivity extends Activity {
 
         enm_no = binding.nh102.getText().toString();
         hh_no = binding.nh108.getText().toString().toUpperCase();
-        hc_code = binding.hcCode.getText().toString();
+        //hc_code = binding.hcCode.getText().toString();
         ht_code = binding.htCode.getText().toString();
         wt_code = binding.wtCode.getText().toString();
 
@@ -357,7 +359,7 @@ public class AntrhoInfoActivity extends Activity {
         }
     }
 
-    public void BtnScanHC() {
+    /*public void BtnScanHC() {
         //binding.hcCode.setText(null);
         isHC = true;
         isWT = false;
@@ -373,7 +375,7 @@ public class AntrhoInfoActivity extends Activity {
 
         integrator.initiateScan();
 
-    }
+    }*/
 
     public void BtnScanHT() {
         //binding.hcCode.setText(null);
@@ -420,14 +422,14 @@ public class AntrhoInfoActivity extends Activity {
 
 
                 if (isHC) {
-                    if (result.getContents().contains("HC")) {
+                    /*if (result.getContents().contains("HC")) {
                         Toast.makeText(this, "HC Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
                         binding.hcCode.setText("§" + result.getContents().trim());
                         binding.hcCode.setEnabled(false);
                         binding.hcCode.setError(null);
                     } else {
                         binding.hcCode.setError("Please Scan correct QR code");
-                    }
+                    }*/
                 } else if (isHT) {
                     if (result.getContents().contains("HT")) {
                         Toast.makeText(this, "HT Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();

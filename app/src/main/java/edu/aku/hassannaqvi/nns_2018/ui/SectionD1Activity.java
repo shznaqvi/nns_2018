@@ -315,6 +315,8 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
         JSONObject sA3 = new JSONObject();
 
         name = binding.nd101.getSelectedItem().toString();
+        sA3.put("ht_code", AntrhoInfoActivity.ht_code);
+        sA3.put("wt_code", AntrhoInfoActivity.wt_code);
         sA3.put("nd101", binding.nd101.getSelectedItem().toString());
         sA3.put("nd101Serial", json.getSerialNo());
 
