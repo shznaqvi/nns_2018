@@ -73,6 +73,7 @@ public class MotherEndingActivity extends AppCompatActivity {
 
 //                finish();
 
+
                 startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 5));
 
 
