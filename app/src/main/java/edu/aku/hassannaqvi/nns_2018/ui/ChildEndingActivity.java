@@ -78,6 +78,8 @@ public class ChildEndingActivity extends AppCompatActivity {
 
 //                finish();
 
+                SectionC1Activity.childU5.remove(SectionC1Activity.selectedChildName);
+
                 startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 4));
 
 

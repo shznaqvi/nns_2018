@@ -170,7 +170,7 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
     private void setupViews() {
         if (getIntent().getBooleanExtra("reBackComing", true)) {
             if (getIntent().getBooleanExtra("childFlag", false)) {
-                childU5.remove(getIntent().getStringExtra("name"));
+//                childU5.remove(getIntent().getStringExtra("name"));
                 counter++;
 
                 /*if (isNA) {

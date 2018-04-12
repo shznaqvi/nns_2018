@@ -445,7 +445,7 @@ public class ViewMemberActivity extends MenuActivity {
                             }
 
                             SectionC1Activity.isNA = false;
-                            SectionC1Activity.childU5.remove(SectionC1Activity.selectedChildName);
+//                            SectionC1Activity.childU5.remove(SectionC1Activity.selectedChildName);
                             SectionC1Activity.counter = 1;
                             SectionC1Activity.counterPerMom = 0;
                             SectionC1Activity.counterPerNA = 0;
@@ -460,7 +460,7 @@ public class ViewMemberActivity extends MenuActivity {
                         } else {
 
                             SectionC1Activity.isNA = false;
-                            SectionC1Activity.childU5.remove(SectionC1Activity.selectedChildName);
+//                            SectionC1Activity.childU5.remove(SectionC1Activity.selectedChildName);
 
                             GetIntent = new Intent(this, SectionB1Activity.class)
                                     .putExtra("mwraFlag", true)
@@ -477,7 +477,7 @@ public class ViewMemberActivity extends MenuActivity {
                     if (SectionC1Activity.counter == SectionC1Activity.counterPerNA) {
 
                         SectionC1Activity.isNA = false;
-                        SectionC1Activity.childU5.remove(SectionC1Activity.selectedChildName);
+//                        SectionC1Activity.childU5.remove(SectionC1Activity.selectedChildName);
                         SectionC1Activity.counter = 1;
                         SectionC1Activity.counterPerMom = 0;
                         SectionC1Activity.counterPerNA = 0;
@@ -488,21 +488,22 @@ public class ViewMemberActivity extends MenuActivity {
                     } else {
 
                         GetIntent = new Intent(this, SectionC1Activity.class)
-                                .putExtra("childFlag", true)
-                                .putExtra("name", SectionC1Activity.selectedChildName);
+                                .putExtra("childFlag", true);
+//                                .putExtra("name", SectionC1Activity.selectedChildName);
                     }
                 }
                 break;
 
             case 5:
                 if (MainApp.childUnder5.size() > 0) {
-                    int childcount = 0;
+                    Boolean childcount = false;
                     for (FamilyMembersContract fmc : MainApp.childUnder5) {
                         if (fmc.getMotherId().equals(MainApp.mc.getB1SerialNo())) {
-                            childcount++;
+                            childcount = true;
+                            break;
                         }
                     }
-                    if (childcount > 0) {
+                    if (childcount) {
                         GetIntent = new Intent(this, SectionC1Activity.class);
                     } /*else if (MainApp.childNA.size() > 0) {
                         SectionC1Activity.isNA = true;
