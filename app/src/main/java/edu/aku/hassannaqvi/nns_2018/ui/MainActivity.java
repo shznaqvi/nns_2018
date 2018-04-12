@@ -606,13 +606,12 @@ public class MainActivity extends MenuActivity {
         if (exit) {
             finish(); // finish activity
 
-            /*Intent intent = new Intent(this, LoginActivity.class);
-            ComponentName cn = intent.getComponent();
-            Intent mainIntent = IntentCompat.makeRestartActivityTask(cn);
-            startActivity(mainIntent);
-            finish();*/
+            Intent ii = new Intent(this, LoginActivity.class);
+            ii.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(ii);
+            finish();
 
-            startActivity(new Intent(this, LoginActivity.class));
+//            startActivity(new Intent(this, LoginActivity.class));
 
         } else {
             Toast.makeText(this, "Press Back again to Exit.",
