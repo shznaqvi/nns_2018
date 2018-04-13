@@ -4,8 +4,7 @@
     <LinearLayout
         style="@style/Widget.AppCompat.ListView"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_53sdp"
-        android:background="@drawable/bacground_border2"
+        android:layout_height="@dimen/_45sdp"
         android:clickable="true"
         android:focusable="true"
         android:orientation="horizontal">
@@ -18,19 +17,18 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
             android:layout_gravity="center_vertical"
-            android:layout_weight="9"
-            android:paddingTop="@dimen/_2sdp">
-            <!-- Wra Name-->
+            android:layout_weight="9">
+            <!--  Name-->
             <TextView
                 android:id="@+id/otherName"
-                style="@style/listItems"
+                style="@style/ViewMemlistItems"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_24sdp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:text="Adol Name"
-                android:textColor="#efefef"
+                android:text="Other member Name"
+                android:textColor="@color/colorAccent"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:typeface="sans" />
@@ -40,28 +38,25 @@
 
             <TextView
                 android:id="@+id/otherAge"
-                style="@style/listItems"
+                style="@style/ViewMemlistItems"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_20sdp"
                 android:layout_alignEnd="@+id/otherName"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="@dimen/_4sdp"
                 android:gravity="right"
                 android:text="Age"
-                android:textColor="@color/colorAccent"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/otherms"
-                style="@style/listItems"
+                style="@style/ViewMemlistItems"
                 android:layout_width="fill_parent"
-                android:layout_height="@dimen/_21sdp"
-                android:layout_alignParentBottom="true"
+                android:layout_height="@dimen/_20sdp"
                 android:layout_alignParentStart="true"
+                android:layout_below="@id/otherName"
                 android:gravity="left"
                 android:text="Married"
-                android:textColor="@color/colorAccent"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 

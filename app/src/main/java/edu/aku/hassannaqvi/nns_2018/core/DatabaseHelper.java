@@ -63,7 +63,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + UsersTable.FULL_NAME + " TEXT"
             + " );";
     public static final String DATABASE_NAME = "nns_2018.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
     public static final String DB_NAME = DATABASE_NAME.replace(".", "_" + MainApp.versionName + "_" + DATABASE_VERSION + "_copy.");
     public static final String PROJECT_NAME = "NNS-2018";
 
@@ -120,12 +120,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             familyMembers.COLUMN_ENM_NO + " TEXT," +
             familyMembers.COLUMN_HH_NO + " TEXT," +
             familyMembers.COLUMN_AV + " TEXT," +
+            familyMembers.COLUMN_FLAG + " TEXT," +
             familyMembers.COLUMN_DEVICEID + " TEXT," +
             familyMembers.COLUMN_DEVICETAGID + " TEXT," +
             familyMembers.COLUMN_APP_VERSION + " TEXT," +
             familyMembers.COLUMN_SYNCED + " TEXT," +
             familyMembers.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
+
+    private static final String SQL_ALTER_FAMILYMEMBER = "ALTER TABLE " +
+            familyMembers.TABLE_NAME + " ADD COLUMN " +
+            familyMembers.COLUMN_FLAG + " TEXT;";
+
     private static final String SQL_CREATE_CHILD_FORMS = "CREATE TABLE "
             + ChildTable.TABLE_NAME + "("
             + ChildTable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -348,6 +354,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+        /*db.execSQL(SQL_DELETE_USERS);
 
         db.execSQL(SQL_DELETE_USERS);
         db.execSQL(SQL_DELETE_FORMS);
@@ -365,6 +372,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_NUTRITION);
         db.execSQL(SQL_DELETE_DECEASED);
 
+        db.execSQL(SQL_CREATE_NUTRITION);*/
+
+        switch (i) {
+            case 2:
+                db.execSQL(SQL_ALTER_FAMILYMEMBER);
+        }
 
     }
 
@@ -616,6 +629,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 familyMembers.COLUMN_FORMDATE,
                 familyMembers.COLUMN_USER,
                 familyMembers.COLUMN_HH_NO,
+                familyMembers.COLUMN_FLAG,
                 familyMembers.COLUMN_ENM_NO,
                 familyMembers.COLUMN_SA2,
                 familyMembers.COLUMN_AV,
@@ -1647,6 +1661,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
+    public int updateFamilyMemberFLAG(String flag, String fmUID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(familyMembers.COLUMN_FLAG, flag);
+
+// Which row to update, based on the ID
+        String selection = familyMembers.COLUMN_UID + " = ?";
+        String[] selectionArgs = {fmUID};
+
+        int count = db.update(familyMembers.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
+
     public int updateDeceasedMemberID() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -1675,7 +1707,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 // Which row to update, based on the ID
         String selection = familyMembers.COLUMN_UID + " = ?";
-        String[] selectionArgs = {String.valueOf(fmc.get_UID())};
+        String[] selectionArgs = {fmc.get_UID()};
 
         int count = db.update(familyMembers.TABLE_NAME,
                 values,
@@ -1887,6 +1919,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 familyMembers.COLUMN_USER,
                 //FormsTable.COLUMN_GPSELEV,
                 familyMembers.COLUMN_HH_NO,
+                familyMembers.COLUMN_FLAG,
                 familyMembers.COLUMN_ENM_NO,
                 familyMembers.COLUMN_SA2,
                 familyMembers.COLUMN_DEVICETAGID,
@@ -1942,6 +1975,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 //FormsTable.COLUMN_GPSELEV,
                 familyMembers.COLUMN_HH_NO,
                 familyMembers.COLUMN_ENM_NO,
+                familyMembers.COLUMN_FLAG,
                 familyMembers.COLUMN_SA2,
                 familyMembers.COLUMN_DEVICETAGID,
                 familyMembers.COLUMN_DEVICEID,

@@ -173,6 +173,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 //        FamilyMembersList initialization
         MainApp.familyMembersList = new ArrayList<>();
         MainApp.hhClicked = new ArrayList<>();
+        MainApp.flagClicked = new ArrayList<>();
 
 //        HH Checkbox validate
         /* binding.checkHHHeadpresent.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

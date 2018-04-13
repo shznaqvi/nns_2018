@@ -84,6 +84,11 @@
             android:theme="@style/AppTheme1"
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
+            android:name=".ui.SectionA2EditActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme1"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
             android:name=".ui.SectionA2ListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme1"

@@ -1141,7 +1141,7 @@ public class SectionB1Activity extends Menu2Activity implements TextWatcher, Rad
         sB1.put("cluster_no", MainApp.fc.getClusterNo());
         sB1.put("hhno", MainApp.fc.getHhNo());
         sB1.put("nw101", bi.nb101.getSelectedItem().toString());
-        sB1.put("nw1serialno", wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
+        //sB1.put("nw1serialno", wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
 
         //        nw201
         sB1.put("nw201days", bi.nw201days.getText().toString());

@@ -323,96 +323,89 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="@dimen/_2sdp"
-                                android:layout_marginTop="16dp"
-                                android:layout_weight="1"
-                                android:background="@color/colorPrimary"
-                                android:gravity="center"
-                                android:text="Other List"
-                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:textColor="@android:color/white" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="@dimen/_2sdp"
-                                android:layout_marginTop="16dp"
-                                android:layout_weight="1"
-                                android:background="@color/colorPrimary"
-                                android:gravity="center"
-                                android:text="Adolescents List"
-                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:textColor="@android:color/white" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/othersfound"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="@dimen/_2sdp"
-                                android:layout_marginTop="-3dp"
-                                android:layout_weight="1"
-                                android:background="@color/pink_100"
-                                android:gravity="center_horizontal|center_vertical"
-                                android:paddingTop="-2dp"
-                                android:text="Others Found"
-                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:textColor="@color/colorPrimaryDark"
-                                android:textSize="16sp"
-                                android:visibility="invisible" />
-
-                            <TextView
-                                android:id="@+id/noadolfound"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="@dimen/_2sdp"
-                                android:layout_marginTop="-3dp"
-                                android:layout_weight="1"
-                                android:background="@color/colorRedsub"
-                                android:gravity="center_horizontal|center_vertical"
-                                android:paddingTop="-2dp"
-                                android:text="No Adolescents"
-                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:textColor="@color/red"
-                                android:textSize="16sp"
-                                android:visibility="invisible" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:orientation="horizontal">
-
-                            <android.support.v7.widget.RecyclerView
-                                android:id="@+id/recyclerOthers"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="3dp"
-                                android:layout_weight="1"
-                                android:layoutDirection="ltr"
-                                android:scrollbars="vertical"
-                                tools:listitem="@layout/child_adapter" />
-
-                            <android.support.v7.widget.RecyclerView
-                                android:id="@+id/recyclerAdol"
+                            <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginRight="@dimen/_2sdp"
                                 android:layout_weight="1"
-                                android:layoutDirection="ltr"
-                                android:scrollbars="vertical"
-                                tools:listitem="@layout/adol_adapter" />
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="3dp"
+                                    android:layout_marginTop="16dp"
+                                    android:background="@color/colorPrimary"
+                                    android:gravity="center"
+                                    android:text="Other List"
+                                    android:textAppearance="?android:attr/textAppearanceLarge"
+                                    android:textColor="@android:color/white" />
+
+                                <TextView
+                                    android:id="@+id/othersfound"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@color/pink_100"
+                                    android:gravity="center_horizontal|center_vertical"
+                                    android:paddingTop="2dp"
+                                    android:text="No Member Found!"
+                                    android:textAppearance="?android:attr/textAppearanceLarge"
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textSize="16sp"
+                                    android:visibility="gone" />
+
+                                <android.support.v7.widget.RecyclerView
+                                    android:id="@+id/recyclerOthers"
+                                    style="@style/ViewMemberList"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layoutDirection="ltr"
+                                    android:scrollbars="vertical"
+                                    tools:listitem="@layout/other_adapter" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/_2sdp"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="3dp"
+                                    android:layout_marginTop="16dp"
+                                    android:background="@color/colorPrimary"
+                                    android:gravity="center"
+                                    android:text="Adolescents List"
+                                    android:textAppearance="?android:attr/textAppearanceLarge"
+                                    android:textColor="@android:color/white" />
+
+                                <TextView
+                                    android:id="@+id/noadolfound"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@color/colorRedsub"
+                                    android:gravity="center_horizontal|center_vertical"
+                                    android:paddingTop="2dp"
+                                    android:text="No Adolescents Found!"
+                                    android:textAppearance="?android:attr/textAppearanceLarge"
+                                    android:textColor="@color/red"
+                                    android:textSize="16sp"
+                                    android:visibility="gone" />
+
+                                <android.support.v7.widget.RecyclerView
+                                    android:id="@+id/recyclerAdol"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layoutDirection="ltr"
+                                    android:scrollbars="vertical"
+                                    tools:listitem="@layout/adol_adapter" />
+                            </LinearLayout>
+
+
                         </LinearLayout>
 
                         <!--WRAs / CHILD-->
@@ -421,95 +414,87 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="@dimen/_2sdp"
-                                android:layout_marginTop="16dp"
-                                android:layout_weight="1"
-                                android:background="@color/colorPrimary"
-                                android:gravity="center"
-                                android:text="WRA List"
-                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:textColor="@android:color/white" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="16dp"
-                                android:layout_weight="1"
-                                android:background="@color/colorPrimary"
-                                android:gravity="center"
-                                android:text="Children List"
-                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:textColor="@android:color/white" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/nowrafound"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="@dimen/_2sdp"
-                                android:layout_marginTop="-3dp"
-                                android:layout_weight="1"
-                                android:background="@color/pink_100"
-                                android:gravity="center_horizontal|center_vertical"
-                                android:paddingTop="-2dp"
-                                android:text="No WRAs Found"
-                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:textColor="@color/colorPrimaryDark"
-                                android:textSize="16sp"
-                                android:visibility="invisible" />
-
-                            <TextView
-                                android:id="@+id/nochildfound"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="-3dp"
-                                android:layout_weight="1"
-                                android:background="@color/pink_100"
-                                android:gravity="center_horizontal|center_vertical"
-                                android:paddingTop="-2dp"
-                                android:text="No Children Found"
-                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:textColor="@color/colorPrimaryDark"
-                                android:textSize="16sp"
-                                android:visibility="invisible" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:orientation="horizontal">
-
-                            <android.support.v7.widget.RecyclerView
-                                android:id="@+id/recyclerMwra"
+                            <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginRight="@dimen/_2sdp"
                                 android:layout_weight="1"
-                                android:layoutDirection="ltr"
-                                android:scrollbars="vertical"
-                                tools:listitem="@layout/wra_adapter" />
+                                android:orientation="vertical">
 
-                            <android.support.v7.widget.RecyclerView
-                                android:id="@+id/recyclerChild"
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="3dp"
+                                    android:layout_marginTop="16dp"
+                                    android:background="@color/colorPrimary"
+                                    android:gravity="center"
+                                    android:text="WRA List"
+                                    android:textAppearance="?android:attr/textAppearanceLarge"
+                                    android:textColor="@android:color/white" />
+
+                                <TextView
+                                    android:id="@+id/nowrafound"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@color/pink_100"
+                                    android:gravity="center_horizontal|center_vertical"
+                                    android:paddingTop="-2dp"
+                                    android:text="No WRAs Found!"
+                                    android:textAppearance="?android:attr/textAppearanceLarge"
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textSize="16sp"
+                                    android:visibility="gone" />
+
+                                <android.support.v7.widget.RecyclerView
+                                    android:id="@+id/recyclerMwra"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layoutDirection="ltr"
+                                    android:scrollbars="vertical"
+                                    tools:listitem="@layout/wra_adapter" />
+                            </LinearLayout>
+
+                            <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="3dp"
+                                android:layout_marginRight="@dimen/_2sdp"
                                 android:layout_weight="1"
-                                android:layoutDirection="ltr"
-                                android:scrollbars="vertical"
-                                tools:listitem="@layout/child_adapter" />
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="3dp"
+                                    android:layout_marginTop="16dp"
+                                    android:background="@color/colorPrimary"
+                                    android:gravity="center"
+                                    android:text="Children List"
+                                    android:textAppearance="?android:attr/textAppearanceLarge"
+                                    android:textColor="@android:color/white" />
+
+
+                                <TextView
+                                    android:id="@+id/nochildfound"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@color/pink_100"
+                                    android:gravity="center_horizontal|center_vertical"
+                                    android:paddingTop="-2dp"
+                                    android:text="No Children Found!"
+                                    android:textAppearance="?android:attr/textAppearanceLarge"
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textSize="16sp"
+                                    android:visibility="gone" />
+
+                                <android.support.v7.widget.RecyclerView
+                                    android:id="@+id/recyclerChild"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layoutDirection="ltr"
+                                    android:scrollbars="vertical"
+                                    tools:listitem="@layout/child_adapter" />
+
+                            </LinearLayout>
 
                         </LinearLayout>
 

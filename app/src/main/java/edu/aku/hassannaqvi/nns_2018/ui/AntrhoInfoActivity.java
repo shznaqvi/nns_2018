@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -42,6 +43,7 @@ public class AntrhoInfoActivity extends Activity {
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     DatabaseHelper db;
     Collection<FamilyMembersContract> members;
+    Boolean isHC = false, isHT = false, isWT = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -186,7 +188,7 @@ public class AntrhoInfoActivity extends Activity {
         }
 
 
-        /*if (!validatorClass.EmptyTextBox(this, binding.hcCode, getString(R.string.hc))) {
+        if (!validatorClass.EmptyTextBox(this, binding.hcCode, getString(R.string.hc))) {
             return false;
         }
 
@@ -250,7 +252,7 @@ public class AntrhoInfoActivity extends Activity {
         } else {
             binding.wtCode.setError(null);
         }
-*/
+
 
 
         return true;
@@ -303,11 +305,15 @@ public class AntrhoInfoActivity extends Activity {
                     }
                     if (MainApp.all_members.size() > 0) {
                         Toast.makeText(this, "Members Found..", Toast.LENGTH_SHORT).show();
+                        binding.fldGrpQR.setVisibility(View.VISIBLE);
                         binding.btnContinue.setVisibility(View.VISIBLE);
                         binding.btnEnd.setVisibility(View.GONE);
 
                     } else {
-
+                        binding.fldGrpQR.setVisibility(View.GONE);
+                        binding.hcCode.setText(null);
+                        binding.htCode.setText(null);
+                        binding.wtCode.setText(null);
                         binding.btnContinue.setVisibility(View.GONE);
                         binding.btnEnd.setVisibility(View.GONE);
                         Toast.makeText(this, "No Eligible member found for anthropometry, Check another HH.", Toast.LENGTH_SHORT).show();
@@ -351,8 +357,46 @@ public class AntrhoInfoActivity extends Activity {
         }
     }
 
-    public void BtnScan() {
+    public void BtnScanHC() {
         //binding.hcCode.setText(null);
+        isHC = true;
+        isWT = false;
+        isHT = false;
+
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+        integrator.setPrompt("Scan the QR code of Machine");
+        integrator.setCameraId(0);  // Use a specific camera of the device
+        integrator.setBeepEnabled(false);
+        integrator.setBarcodeImageEnabled(true);
+        integrator.setOrientationLocked(false);
+
+        integrator.initiateScan();
+
+    }
+
+    public void BtnScanHT() {
+        //binding.hcCode.setText(null);
+        isHT = true;
+        isWT = false;
+        isHC = false;
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+        integrator.setPrompt("Scan the QR code of Machine");
+        integrator.setCameraId(0);  // Use a specific camera of the device
+        integrator.setBeepEnabled(false);
+        integrator.setBarcodeImageEnabled(true);
+        integrator.setOrientationLocked(false);
+
+        integrator.initiateScan();
+
+    }
+
+    public void BtnScanWT() {
+        //binding.hcCode.setText(null);
+        isWT = true;
+        isHT = false;
+        isHC = false;
         IntentIntegrator integrator = new IntentIntegrator(this);
         integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
         integrator.setPrompt("Scan the QR code of Machine");
@@ -374,18 +418,34 @@ public class AntrhoInfoActivity extends Activity {
                 Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
             } else {
 
-                if (result.getContents().contains("HC")) {
-                    Toast.makeText(this, "HC Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
-                    binding.hcCode.setText("§" + result.getContents().trim());
-                    binding.hcCode.setEnabled(false);
-                } else if (result.getContents().contains("HT")) {
-                    Toast.makeText(this, "HT Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
-                    binding.htCode.setText("§" + result.getContents().trim());
-                    binding.htCode.setEnabled(false);
-                } else if (result.getContents().contains("WT")) {
-                    Toast.makeText(this, "WT Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
-                    binding.wtCode.setText("§" + result.getContents().trim());
-                    binding.wtCode.setEnabled(false);
+
+                if (isHC) {
+                    if (result.getContents().contains("HC")) {
+                        Toast.makeText(this, "HC Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                        binding.hcCode.setText("§" + result.getContents().trim());
+                        binding.hcCode.setEnabled(false);
+                        binding.hcCode.setError(null);
+                    } else {
+                        binding.hcCode.setError("Please Scan correct QR code");
+                    }
+                } else if (isHT) {
+                    if (result.getContents().contains("HT")) {
+                        Toast.makeText(this, "HT Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                        binding.htCode.setText("§" + result.getContents().trim());
+                        binding.htCode.setEnabled(false);
+                        binding.htCode.setError(null);
+                    } else {
+                        binding.htCode.setError("Please Scan correct QR code");
+                    }
+                } else if (isWT) {
+                    if (result.getContents().contains("WT")) {
+                        Toast.makeText(this, "WT Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                        binding.wtCode.setText("§" + result.getContents().trim());
+                        binding.wtCode.setEnabled(false);
+                        binding.wtCode.setError(null);
+                    } else {
+                        binding.wtCode.setError("Please Scan correct QR code");
+                    }
                 }
 
 
