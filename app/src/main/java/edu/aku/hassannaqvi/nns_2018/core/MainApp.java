@@ -101,6 +101,7 @@ public class MainApp extends Application {
     public static List<FamilyMembersContract> childUnder2;
     public static List<FamilyMembersContract> childUnder2_1;
     public static List<FamilyMembersContract> childUnder5;
+    public static List<FamilyMembersContract> childUnder5_Del;
     public static List<FamilyMembersContract> childUnder5_1;
     public static List<FamilyMembersContract> childNA;
     public static List<FamilyMembersContract> childUnder2Check;

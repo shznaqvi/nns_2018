@@ -232,6 +232,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
         MainApp.all_members = new ArrayList<>();
         MainApp.childUnder2 = new ArrayList<>();
         MainApp.childUnder5 = new ArrayList<>();
+        MainApp.childUnder5_Del = new ArrayList<>();
         MainApp.childUnder2Check = new ArrayList<>();
         MainApp.childNA = new ArrayList<>();
         MainApp.mwra = new ArrayList<>();

@@ -388,7 +388,7 @@ public class ViewMemberActivity extends MenuActivity {
                 if (MainApp.mwra.size() > 0) {
                     GetIntent = new Intent(this, SectionB1Activity.class);
                 } else if (MainApp.childUnder5.size() > 0) {
-                    if (MainApp.childUnder5.size() == MainApp.childNA.size()) {
+                    if (MainApp.childNA.size() > 0) {
                         SectionC1Activity.isNA = true;
                         GetIntent = new Intent(this, SectionC1Activity.class);
                     } else {
@@ -404,7 +404,7 @@ public class ViewMemberActivity extends MenuActivity {
                 if (MainApp.mwra.size() > 0) {
                     GetIntent = new Intent(this, SectionB1Activity.class);
                 } else if (MainApp.childUnder5.size() > 0) {
-                    if (MainApp.childUnder5.size() == MainApp.childNA.size()) {
+                    if (MainApp.childNA.size() > 0) {
                         SectionC1Activity.isNA = true;
                         GetIntent = new Intent(this, SectionC1Activity.class);
                     } else {
@@ -453,8 +453,11 @@ public class ViewMemberActivity extends MenuActivity {
                             if (MainApp.childNA.size() > 0) {
                                 SectionC1Activity.isNA = true;
                                 GetIntent = new Intent(this, SectionC1Activity.class);
-                            } else {
+                            } else if (MainApp.childUnder5_Del.size() > 0) {
+                                SectionC1Activity.isNA = true;
+                                GetIntent = new Intent(this, SectionC1Activity.class);
 
+                            } else {
                                 GetIntent = new Intent(this, EndingActivity.class).putExtra("complete", true);
                             }
                         } else {
@@ -517,6 +520,9 @@ public class ViewMemberActivity extends MenuActivity {
                         SectionC1Activity.counterPerNA = 0;
 
                         if (MainApp.childNA.size() > 0) {
+                            SectionC1Activity.isNA = true;
+                            GetIntent = new Intent(this, SectionC1Activity.class);
+                        } else if (MainApp.childUnder5_Del.size() > 0) {
                             SectionC1Activity.isNA = true;
                             GetIntent = new Intent(this, SectionC1Activity.class);
                         } else {

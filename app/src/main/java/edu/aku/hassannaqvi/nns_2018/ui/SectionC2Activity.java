@@ -88,8 +88,13 @@ public class SectionC2Activity extends Menu2Activity implements RadioGroup.OnChe
             bi.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
                     + "\n\n" + SectionC1Activity.editMotherName + " : " + getString(R.string.nh212a));
         } else {
-            bi.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
-                    + "\n\n" + SectionB1Activity.wraName + " : " + getString(R.string.nh212a));
+            if (!SectionC1Activity.isNA) {
+                bi.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
+                        + "\n\n" + SectionB1Activity.wraName + " : " + getString(R.string.nh212a));
+            } else {
+                bi.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
+                        + "\n\n" + SectionC1Activity.careTaker + " : " + getString(R.string.nh113));
+            }
         }
 
         bi.txtnc206.setText(bi.txtnc206.getText().toString().replace("Name", SectionC1Activity.selectedChildName));

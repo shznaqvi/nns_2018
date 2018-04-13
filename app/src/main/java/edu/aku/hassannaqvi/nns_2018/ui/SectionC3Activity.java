@@ -48,10 +48,14 @@ public class SectionC3Activity extends Menu2Activity implements RadioGroup.OnChe
             binding.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
                     + "\n\n" + SectionC1Activity.editMotherName + " : " + getString(R.string.nh212a));
         } else {
-            binding.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
-                    + "\n\n" + SectionB1Activity.wraName + " : " + getString(R.string.nh212a));
+            if (!SectionC1Activity.isNA) {
+                binding.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
+                        + "\n\n" + SectionB1Activity.wraName + " : " + getString(R.string.nh212a));
+            } else {
+                binding.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
+                        + "\n\n" + SectionC1Activity.careTaker + " : " + getString(R.string.nh113));
+            }
         }
-
         db = new DatabaseHelper(this);
         binding.setCallback(this);
         binding.nc302.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {

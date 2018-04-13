@@ -49,6 +49,8 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
     public static int counterPerMom = 0;
     public static int counterPerNA = 0;
     public static String selectedChildName = "";
+    public static String motherName = "";
+    public static String careTaker = "";
     public static String editMotherName = "";
     public static boolean isNA;
     public static int Childsize = 0;
@@ -191,14 +193,15 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
                 childU5.add("....");
 
                 if (isNA) {
-                    for (FamilyMembersContract fmc : MainApp.childNA) {
+                    for (FamilyMembersContract fmc : MainApp.childUnder5_Del) {
                         childMap.put(fmc.getName() + "-" + fmc.getSerialNo(), fmc);
                         childU5.add(fmc.getName() + "-" + fmc.getSerialNo());
                         counterPerNA++;
                     }
 
-                    NAChildsize = MainApp.childNA.size();
+                    NAChildsize = MainApp.childUnder5_Del.size();
                     binding.fldGrpresp.setVisibility(View.VISIBLE);
+                    binding.txtCounter.setVisibility(View.GONE);
 
                 } else {
                     for (FamilyMembersContract fmc : MainApp.childUnder5) {
@@ -211,6 +214,7 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
 
                     Childsize = MainApp.childUnder5.size();
                     binding.fldGrpresp.setVisibility(View.GONE);
+                    binding.txtCounter.setVisibility(View.VISIBLE);
                 }
             }
         } else {
@@ -258,13 +262,31 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
 
         binding.resp.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, respName));
 
+        binding.resp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (binding.resp.getSelectedItemPosition() != 0) {
+                    careTaker = binding.resp.getSelectedItem().toString();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         // setup head
         if (!isNA) {
+            binding.txtCounter.setVisibility(View.VISIBLE);
             binding.txtCounter.setText("Child " + counter + " out of " + counterPerMom +
                     "\n\n " + SectionB1Activity.wraName + " : " + getString(R.string.nh212a));
         } else {
+            binding.txtCounter.setVisibility(View.GONE);
             binding.txtCounter.setText("Child " + counter + " out of " + counterPerNA
-                    + "\n\n " + "Not Available : " + getString(R.string.nh212a));
+                    + "\n\n " + motherName + " : " + getString(R.string.nh212a));
+
+
         }
 
         // setup spinner
@@ -275,6 +297,8 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (binding.nc101.getSelectedItemPosition() != 0) {
                     selectedChildName = binding.nc101.getSelectedItem().toString();
+                    //motherName = childMap.get(binding.nc101.getSelectedItem().toString()).getMotherName();
+
 
                     binding.txtnc202.setText(binding.txtnc202.getText().toString().replace("Name", binding.nc101.getSelectedItem().toString()));
                     binding.txtnc203.setText(binding.txtnc203.getText().toString().replace("Name", binding.nc101.getSelectedItem().toString()));

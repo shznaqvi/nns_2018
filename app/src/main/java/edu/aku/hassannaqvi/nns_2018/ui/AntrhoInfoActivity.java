@@ -61,6 +61,7 @@ public class AntrhoInfoActivity extends Activity {
         MainApp.all_members = new ArrayList<>();
         MainApp.childUnder2 = new ArrayList<>();
         MainApp.childUnder5 = new ArrayList<>();
+
         MainApp.childNA = new ArrayList<>();
         MainApp.mwra = new ArrayList<>();
         MainApp.adolescents = new ArrayList<>();
@@ -188,12 +189,12 @@ public class AntrhoInfoActivity extends Activity {
         }
 
 
-        if (!validatorClass.EmptyTextBox(this, binding.hcCode, getString(R.string.hc))) {
+        /*if (!validatorClass.EmptyTextBox(this, binding.hcCode, getString(R.string.hc))) {
             return false;
-        }
+        }*/
 
         int scanChar;
-        if (binding.hcCode.getText().toString().contains("§")) {
+        /*if (binding.hcCode.getText().toString().contains("§")) {
             scanChar = 7;
         } else {
             scanChar = 6;
@@ -210,7 +211,7 @@ public class AntrhoInfoActivity extends Activity {
             binding.hcCode.setError(null);
         }
 
-
+*/
         if (!validatorClass.EmptyTextBox(this, binding.htCode, getString(R.string.ht))) {
             return false;
         }
@@ -263,7 +264,7 @@ public class AntrhoInfoActivity extends Activity {
 
         enm_no = binding.nh102.getText().toString();
         hh_no = binding.nh108.getText().toString().toUpperCase();
-        hc_code = binding.hcCode.getText().toString();
+        //hc_code = binding.hcCode.getText().toString();
         ht_code = binding.htCode.getText().toString();
         wt_code = binding.wtCode.getText().toString();
 
@@ -311,7 +312,7 @@ public class AntrhoInfoActivity extends Activity {
 
                     } else {
                         binding.fldGrpQR.setVisibility(View.GONE);
-                        binding.hcCode.setText(null);
+                        //binding.hcCode.setText(null);
                         binding.htCode.setText(null);
                         binding.wtCode.setText(null);
                         binding.btnContinue.setVisibility(View.GONE);
@@ -357,7 +358,7 @@ public class AntrhoInfoActivity extends Activity {
         }
     }
 
-    public void BtnScanHC() {
+    /*public void BtnScanHC() {
         //binding.hcCode.setText(null);
         isHC = true;
         isWT = false;
@@ -374,7 +375,7 @@ public class AntrhoInfoActivity extends Activity {
         integrator.initiateScan();
 
     }
-
+*/
     public void BtnScanHT() {
         //binding.hcCode.setText(null);
         isHT = true;
@@ -420,14 +421,14 @@ public class AntrhoInfoActivity extends Activity {
 
 
                 if (isHC) {
-                    if (result.getContents().contains("HC")) {
+                 /*   if (result.getContents().contains("HC")) {
                         Toast.makeText(this, "HC Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
                         binding.hcCode.setText("§" + result.getContents().trim());
                         binding.hcCode.setEnabled(false);
                         binding.hcCode.setError(null);
                     } else {
                         binding.hcCode.setError("Please Scan correct QR code");
-                    }
+                    }*/
                 } else if (isHT) {
                     if (result.getContents().contains("HT")) {
                         Toast.makeText(this, "HT Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();

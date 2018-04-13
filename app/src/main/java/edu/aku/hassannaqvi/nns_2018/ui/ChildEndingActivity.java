@@ -10,6 +10,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivityChildEndingBinding;
@@ -79,6 +80,13 @@ public class ChildEndingActivity extends AppCompatActivity {
 //                finish();
 
                 SectionC1Activity.childU5.remove(SectionC1Activity.selectedChildName);
+                //MainApp.childUnder5_Del.remove(MainApp.cc);
+                for (FamilyMembersContract fmc : MainApp.childUnder5_Del) {
+                    if (MainApp.cc.getC1SerialNo().equals(fmc.getSerialNo())) {
+                        MainApp.childUnder5_Del.remove(fmc);
+                        break;
+                    }
+                }
 
                 startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 4));
 

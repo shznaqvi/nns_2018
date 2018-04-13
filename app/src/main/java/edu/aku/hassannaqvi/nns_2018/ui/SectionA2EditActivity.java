@@ -792,21 +792,22 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
             }
 
             // Add data in list
-            if (Age < 2 && binding.nh210a.isChecked()) {
+            if (Age < 2) {
                 MainApp.childUnder2.add(family);
                 //MainApp.childUnder2Check.add(family);
                 MainApp.childUnder5.add(family);
+                MainApp.childUnder5_Del.add(family);
             } else {
-                if (binding.nh210a.isChecked()) {
-                    MainApp.childUnder5.add(family);
-                }
+                MainApp.childUnder5.add(family);
+
                 //MainApp.adolescents.add(family);
             }
             if (Age < 2) {
                 MainApp.childUnder2Check.add(family);
+
             }
 
-            if (Age < 6 && family.getMotherId().equals("00") && binding.nh210a.isChecked()) {
+            if (Age < 6 && family.getMotherId().equals("00")) {
                 MainApp.childNA.add(family);
             }
         }

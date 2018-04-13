@@ -51,8 +51,13 @@ public class SectionC4Activity extends Menu2Activity implements TextWatcher, Rad
             binding.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
                     + "\n\n" + SectionC1Activity.editMotherName + " : " + getString(R.string.nh212a));
         } else {
-            binding.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
-                    + "\n\n" + SectionB1Activity.wraName + " : " + getString(R.string.nh212a));
+            if (!SectionC1Activity.isNA) {
+                binding.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
+                        + "\n\n" + SectionB1Activity.wraName + " : " + getString(R.string.nh212a));
+            } else {
+                binding.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)
+                        + "\n\n" + SectionC1Activity.careTaker + " : " + getString(R.string.nh113));
+            }
         }
 
         binding.txtnc401.setText(binding.txtnc401.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
