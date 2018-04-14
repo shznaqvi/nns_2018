@@ -1,9 +1,9 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -25,21 +25,21 @@ import edu.aku.hassannaqvi.nns_2018.contracts.EnumBlockContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
-import edu.aku.hassannaqvi.nns_2018.databinding.ActivityAntrhoInfoBinding;
+import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySpecimenInfoBinding;
 import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 
-public class AntrhoInfoActivity extends Activity {
+public class SpecimenInfoActivity extends AppCompatActivity {
 
-    private static final String TAG = AntrhoInfoActivity.class.getName();
+    private static final String TAG = SpecimenInfoActivity.class.getName();
     static String enm_no;
     static String hh_no;
     static String hc_code;
     static String ht_code;
     static String wt_code;
     JSONModelClass json;
-    ActivityAntrhoInfoBinding binding;
+    ActivitySpecimenInfoBinding binding;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     DatabaseHelper db;
     Collection<FamilyMembersContract> members;
@@ -48,7 +48,7 @@ public class AntrhoInfoActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_antrho_info);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_specimen_info);
         db = new DatabaseHelper(this);
         binding.setCallback(this);
 
@@ -64,33 +64,22 @@ public class AntrhoInfoActivity extends Activity {
         MainApp.childNA = new ArrayList<>();
         MainApp.mwra = new ArrayList<>();
         MainApp.adolescents = new ArrayList<>();
+        MainApp.minors = new ArrayList<>();
         MainApp.childUnder2Check = new ArrayList<>();
         members = new ArrayList<>();
         json = new JSONModelClass();
 
-        /*if(MainActivity.ftype.equals("A"))
-        {
-            binding.fldGrpQR.setVisibility(View.VISIBLE);
-            binding.fldGrpHC.setVisibility(View.GONE);
-            binding.fldGrpHT.setVisibility(View.VISIBLE);
-            binding.hcCode.setText(null);
-            binding.fldGrpWT.setVisibility(View.VISIBLE);
-        }else if(MainActivity.ftype.equals("B")){
+        if (MainActivity.ftype.equals("B")) {
             binding.fldGrpQR.setVisibility(View.VISIBLE);
             binding.fldGrpHC.setVisibility(View.VISIBLE);
-            binding.fldGrpHT.setVisibility(View.GONE);
-            binding.htCode.setText(null);
-            binding.fldGrpWT.setVisibility(View.GONE);
-            binding.wtCode.setText(null);
-        }else if(MainActivity.ftype.equals("W"))
-        {
+
+        } else if (MainActivity.ftype.equals("W")) {
             binding.fldGrpQR.setVisibility(View.GONE);
             binding.hcCode.setText(null);
-            binding.htCode.setText(null);
-            binding.wtCode.setText(null);
+
         }
 
-*/
+
         //slcMem = new ArrayList<>();
         binding.nh102.addTextChangedListener(new TextWatcher() {
             @Override
@@ -157,7 +146,7 @@ public class AntrhoInfoActivity extends Activity {
                 //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
                 finish();
 
-                startActivity(new Intent(this, SectionD1Activity.class));
+                startActivity(new Intent(this, SectionE1Activity.class));
 
 
             } else {
@@ -211,7 +200,7 @@ public class AntrhoInfoActivity extends Activity {
 
         int scanChar;
 
-        /*if(MainActivity.ftype.equals("B")) {
+        if (MainActivity.ftype.equals("B")) {
             if (!validatorClass.EmptyTextBox(this, binding.hcCode, getString(R.string.hc))) {
                 return false;
             }
@@ -234,8 +223,8 @@ public class AntrhoInfoActivity extends Activity {
             }
         }
 
-        */
-        if (MainActivity.ftype.equals("A")) {
+
+        /*if(MainActivity.ftype.equals("A")) {
             if (!validatorClass.EmptyTextBox(this, binding.htCode, getString(R.string.ht))) {
                 return false;
             }
@@ -278,7 +267,7 @@ public class AntrhoInfoActivity extends Activity {
                 binding.wtCode.setError(null);
             }
         }
-
+*/
 
 
         return true;
@@ -289,9 +278,9 @@ public class AntrhoInfoActivity extends Activity {
 
         enm_no = binding.nh102.getText().toString();
         hh_no = binding.nh108.getText().toString().toUpperCase();
-        //hc_code = binding.hcCode.getText().toString();
-        ht_code = binding.htCode.getText().toString();
-        wt_code = binding.wtCode.getText().toString();
+        hc_code = binding.hcCode.getText().toString();
+        //ht_code = binding.htCode.getText().toString();
+        //wt_code = binding.wtCode.getText().toString();
 
 
     }
@@ -306,49 +295,58 @@ public class AntrhoInfoActivity extends Activity {
 
         if (!binding.nh102.getText().toString().trim().isEmpty() && !binding.nh108.getText().toString().trim().isEmpty()) {
 
-            //String uid = db.getUIDByHH(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase(), "1");
             members = db.getAllMembersByHHforAnthro(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase());
 
-                if (members.size() != 0) {
-                    for (FamilyMembersContract fm : members) {
+            if (members.size() != 0) {
+                for (FamilyMembersContract fm : members) {
 
-                        if (fm.getsA2() != null) {
-                            json = JSONUtilClass.getModelFromJSON(fm.getsA2(), JSONModelClass.class);
-                            if ((Integer.valueOf(json.getAge()) >= 15 && Integer.valueOf(json.getAge()) < 50) && json.getGender().equals("2")) {
-                                MainApp.mwra.add(fm);
-                                MainApp.all_members.add(fm);
-                            }
-                            if ((Integer.valueOf(json.getAge()) >= 10 && (Integer.valueOf(json.getAge()) < 20)) && json.getMaritalStatus().equals("5")) {
-                                MainApp.adolescents.add(fm);
-                                MainApp.all_members.add(fm);
-                            }
-                            if (Integer.valueOf(json.getAge()) < 6) {
-                                MainApp.childUnder5.add(fm);
-                                MainApp.all_members.add(fm);
-                            }
+                    if (fm.getsA2() != null) {
+                        json = JSONUtilClass.getModelFromJSON(fm.getsA2(), JSONModelClass.class);
+                        if ((Integer.valueOf(json.getAge()) > 14 && Integer.valueOf(json.getAge()) < 50)
+                                && json.getGender().equals("2") && json.getNh210().equals("1")) {
+                            MainApp.mwra.add(fm);
+                            MainApp.all_members.add(fm);
+                        }
+                        if ((Integer.valueOf(json.getAge()) >= 10 && (Integer.valueOf(json.getAge()) < 20))
+                                && json.getGender().equals("2") && json.getNh210().equals("1")) {
+                            MainApp.adolescents.add(fm);
+                            MainApp.all_members.add(fm);
+                        }
+
+                        if ((Integer.valueOf(json.getAge()) >= 6 && (Integer.valueOf(json.getAge()) < 13))
+                                && json.getNh210().equals("1")) {
+                            MainApp.minors.add(fm);
+                            MainApp.all_members.add(fm);
+                        }
+
+                        if (Integer.valueOf(json.getAge()) < 6 && json.getNh210().equals("1")) {
+                            MainApp.childUnder5.add(fm);
+                            MainApp.all_members.add(fm);
                         }
 
                     }
-                    if (MainApp.all_members.size() > 0) {
-                        Toast.makeText(this, "Members Found..", Toast.LENGTH_SHORT).show();
-                        binding.fldGrpQR.setVisibility(View.VISIBLE);
-                        binding.btnContinue.setVisibility(View.VISIBLE);
-                        binding.btnEnd.setVisibility(View.GONE);
 
-                    } else {
-                        binding.fldGrpQR.setVisibility(View.GONE);
-                        //binding.hcCode.setText(null);
-                        binding.htCode.setText(null);
-                        binding.wtCode.setText(null);
-                        binding.btnContinue.setVisibility(View.GONE);
-                        binding.btnEnd.setVisibility(View.GONE);
-                        Toast.makeText(this, "No Eligible member found for anthropometry, Check another HH.", Toast.LENGTH_SHORT).show();
-                    }
-
+                }
+                if (MainApp.all_members.size() > 0) {
+                    Toast.makeText(this, "Members Found..", Toast.LENGTH_SHORT).show();
+                    binding.fldGrpQR.setVisibility(View.VISIBLE);
+                    binding.btnContinue.setVisibility(View.VISIBLE);
+                    binding.btnEnd.setVisibility(View.GONE);
 
                 } else {
-                    Toast.makeText(this, "No members found for the HH.", Toast.LENGTH_SHORT).show();
+                    binding.fldGrpQR.setVisibility(View.GONE);
+                    binding.hcCode.setText(null);
+                    //binding.htCode.setText(null);
+                    //binding.wtCode.setText(null);
+                    binding.btnContinue.setVisibility(View.GONE);
+                    binding.btnEnd.setVisibility(View.GONE);
+                    Toast.makeText(this, "No Eligible member found for anthropometry, Check another HH.", Toast.LENGTH_SHORT).show();
                 }
+
+
+            } else {
+                Toast.makeText(this, "No members found for the HH.", Toast.LENGTH_SHORT).show();
+            }
 
 
         } else {
@@ -383,7 +381,7 @@ public class AntrhoInfoActivity extends Activity {
         }
     }
 
-    /*public void BtnScanHC() {
+    public void BtnScanHC() {
         //binding.hcCode.setText(null);
         isHC = true;
         isWT = false;
@@ -400,7 +398,8 @@ public class AntrhoInfoActivity extends Activity {
         integrator.initiateScan();
 
     }
-*/
+
+/*
     public void BtnScanHT() {
         //binding.hcCode.setText(null);
         isHT = true;
@@ -434,6 +433,7 @@ public class AntrhoInfoActivity extends Activity {
         integrator.initiateScan();
 
     }
+*/
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -446,31 +446,13 @@ public class AntrhoInfoActivity extends Activity {
 
 
                 if (isHC) {
-                 /*   if (result.getContents().contains("HC")) {
+                    if (result.getContents().contains("HC")) {
                         Toast.makeText(this, "HC Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
                         binding.hcCode.setText("§" + result.getContents().trim());
                         binding.hcCode.setEnabled(false);
                         binding.hcCode.setError(null);
                     } else {
                         binding.hcCode.setError("Please Scan correct QR code");
-                    }*/
-                } else if (isHT) {
-                    if (result.getContents().contains("HT")) {
-                        Toast.makeText(this, "HT Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
-                        binding.htCode.setText("§" + result.getContents().trim());
-                        binding.htCode.setEnabled(false);
-                        binding.htCode.setError(null);
-                    } else {
-                        binding.htCode.setError("Please Scan correct QR code");
-                    }
-                } else if (isWT) {
-                    if (result.getContents().contains("WT")) {
-                        Toast.makeText(this, "WT Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
-                        binding.wtCode.setText("§" + result.getContents().trim());
-                        binding.wtCode.setEnabled(false);
-                        binding.wtCode.setError(null);
-                    } else {
-                        binding.wtCode.setError("Please Scan correct QR code");
                     }
                 }
 

@@ -203,7 +203,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
             android:windowSoftInputMode="stateVisible|adjustPan" />
-
         <activity
             android:name=".ui.Menu2Activity"
             android:screenOrientation="portrait"
@@ -211,11 +210,18 @@
             android:windowSoftInputMode="stateVisible|adjustPan" />
 
         <activity
+            android:name=".ui.SpecimenInfoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+            android:windowSoftInputMode="stateVisible|adjustPan" />
+        <activity
             android:name=".WifiDirect.WiFiDirectActivity"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
@@ -223,6 +229,17 @@
         <service
             android:name=".WifiDirect.DataTransferService"
             android:enabled="true" />
+
+        <activity
+            android:name=".ui.SectionE1Activity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme1"
+            android:windowSoftInputMode="stateVisible|adjustPan" />
+        <activity
+            android:name=".ui.SectionE2Activity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme1"
+            android:windowSoftInputMode="stateVisible|adjustPan" />
     </application>
 
 </manifest>

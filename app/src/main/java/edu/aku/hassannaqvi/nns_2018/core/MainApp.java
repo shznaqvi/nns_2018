@@ -32,6 +32,7 @@ import edu.aku.hassannaqvi.nns_2018.contracts.NutritionContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.SpecimenContract;
 import edu.aku.hassannaqvi.nns_2018.other.MembersCount;
 import edu.aku.hassannaqvi.nns_2018.ui.AnthroEndingActivity;
 import edu.aku.hassannaqvi.nns_2018.ui.ChildEndingActivity;
@@ -91,6 +92,7 @@ public class MainApp extends Application {
 
     //    Ali
     public static FamilyMembersContract fmc;
+    public static SpecimenContract smc;
     public static DeceasedContract dc;
     public static EligibleMembersContract emc;
     public static List<FamilyMembersContract> members_f_m;
@@ -108,6 +110,7 @@ public class MainApp extends Application {
     public static List<FamilyMembersContract> mwra;
     public static List<FamilyMembersContract> mwra_1;
     public static List<FamilyMembersContract> adolescents;
+    public static List<FamilyMembersContract> minors;
     public static List<FamilyMembersContract> adolescents_1;
     public static List<String> editmothersList, editfathersList;
     public static List<String> editmothersSerials, editfathersSerials;

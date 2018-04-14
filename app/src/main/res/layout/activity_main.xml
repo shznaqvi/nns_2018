@@ -123,6 +123,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+                android:elevation="5dp"
                 android:layout_marginTop="16dp"
                 android:background="#1565C0"
                 android:onClick="@{() -> callback.openForm()}"
@@ -131,12 +132,44 @@
 
             <Button
                 android:id="@+id/openB"
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="16dp"
+                android:background="#1565C0"
                 android:onClick="openB"
+                android:elevation="5dp"
                 android:text="OPEN Anthropometry Section" />
+
+
+            <Button
+                android:id="@+id/openSpecimen"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="16dp"
+                android:background="#1565C0"
+                android:elevation="5dp"
+                android:onClick="@{() -> callback.openSpecimen()}"
+                android:text="OPEN BLOOD / URINE SPECIMEN COLLECTION FORM"
+                android:visibility="gone" />
+
+
+            <Button
+                android:id="@+id/openWaterSpecimen"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:elevation="5dp"
+                android:layout_marginTop="16dp"
+                android:background="#1565C0"
+                android:onClick="@{() -> callback.openWater()}"
+                android:text="OPEN WATER SPECIMEN COLLECTION FORM"
+                android:visibility="gone" />
+
 
             <Button
                 style="@style/Widget.AppCompat.Button.Colored"
@@ -145,6 +178,7 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="16dp"
                 android:background="#1565C0"
+                android:elevation="5dp"
                 android:visibility="gone"
                 android:onClick="@{(v) -> callback.openViewMember(true)}"
                 android:text="View Members" />
@@ -152,6 +186,7 @@
 
 
             <Button
+
                 android:id="@+id/syncServer"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
@@ -224,12 +259,14 @@
                     android:text="Open Database Manager" />
 
                 <Button
+                    style="@style/Widget.AppCompat.Button.Colored"
                     android:id="@+id/testGPS"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="16dp"
                     android:onClick="testGPS"
+                    android:background="#1565C0"
                     android:text="Test GPS Coordinates" />
             </LinearLayout>
 

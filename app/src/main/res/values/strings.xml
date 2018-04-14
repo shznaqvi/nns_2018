@@ -1563,4 +1563,43 @@
     <string name="label_me">THIS DEVICE</string>
     <string name="label_peers">NEAR-BY DEVICES</string>
 
+
+  <!-- Module E-->
+  <string name="ne1heading"> سیکشن ای 1: خون ،پیشاب اور ہیموگلوبن کے نمونے </string>
+  <string name="ne101"> لائن نمبر </string>
+  <string name="ne102"> منتخب شدہ فرد کا نام </string>
+  <string name="neselected"> منتخب شدہ فرد کا گروپ </string>
+  <string-array name="neselected">
+    <item>15 سے 49 سال کی عورت</item>
+    <item> پانچ سال سے کم عمر بچہ </item>
+    <item> 6 سے 12 سال کا بچہ </item>
+    <item> نو عمر لڑکیاں 10-19 </item>-->
+  </string-array>
+  <string name="neselected0"> .... </string>
+  <string name="neselecteda"> 15 سے 49 سال کی عورت </string>
+  <string name="neselectedb"> پانچ سال سے کم عمر بچہ </string>
+  <string name="neselectedc"> 6 سے 12 سال کا بچہ </string>
+  <string name="neselectedd"> نو عمر لڑکیاں 10-19 </string>-->
+  <!--<string name="ne104"> نمونے کی قسم </string>-->
+  <string name="ne104a"> خون کا نمونہ </string>
+  <string name="ne104b"> پیشاب کا نمونہ </string>
+  <string name="ne104c"> پوٹ ایچ بی ٹیسٹ </string>
+  <string name="barcode">اگر ہاں، تو بار کوڈ اسکین کریں</string>
+  <string name="hb_result">ہیموگلوبن کے نتائج درج کریں۔</string>
+  <string name="ne104"> کیا نمونہ حاصل کیا گیا تھا؟ </string>
+  <string name="ne107"> اگر نہیں، تو وضاحت کریں: </string>
+  <string name="ne107a"> گھر پر موجود نہیں </string>
+  <string name="ne107b"> انکار کردیا </string>
+  <string name="ne2heading"> سیکشن ای 2: پانی کے نمونے </string>
+  <string name="ne201"> نمونے کی قسم </string>
+  <string name="ne201a"> Micro </string>
+  <string name="ne201b"> Nitric Acid </string>
+  <string name="ne201c"> Boric Acid </string>
+  <string name="ne201d"> Plain </string>
+  <string name="ne201e"> QC for Micro </string>
+  <string name="ne201f"> Field Blank </string>
+  <string name="ne202"> کیا پانی کا نمونہ حاصل کیا گیا تھا؟ </string>
+  <string name="ne203"> اگر ہاں، تو بار کوڈ اسکین کریں۔ </string>
+
+
 </resources>

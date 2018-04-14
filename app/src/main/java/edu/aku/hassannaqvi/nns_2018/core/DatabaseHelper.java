@@ -42,6 +42,7 @@ import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract.RecipientsTable;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract.singleSerial;
+import edu.aku.hassannaqvi.nns_2018.contracts.SpecimenContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.UCsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.UCsContract.UCsTable;
 import edu.aku.hassannaqvi.nns_2018.contracts.UsersContract;
@@ -327,6 +328,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             ");";
 
 
+    final String SQL_CREATE_SPECIMEN_MEMBERS = "CREATE TABLE " + SpecimenContract.SpecimenTable.TABLE_NAME + " (" +
+            SpecimenContract.SpecimenTable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            SpecimenContract.SpecimenTable.COLUMN__UID + " TEXT," +
+            SpecimenContract.SpecimenTable.COLUMN__UUID + " TEXT," +
+            SpecimenContract.SpecimenTable.COLUMN_FM_UID + " TEXT," +
+            SpecimenContract.SpecimenTable.COLUMN_LINENO + " TEXT," +
+            SpecimenContract.SpecimenTable.COLUMN_PROJECTNAME + " TEXT," +
+            SpecimenContract.SpecimenTable.COLUMN_FORMDATE + " TEXT," +
+            SpecimenContract.SpecimenTable.COLUMN_DEVICEID + " TEXT," +
+            SpecimenContract.SpecimenTable.COLUMN_DEVICETAGID + " TEXT," +
+            SpecimenContract.SpecimenTable.COLUMN_USER + " TEXT," +
+            SpecimenContract.SpecimenTable.COLUMN_APPVERSION + " TEXT," +
+            SpecimenContract.SpecimenTable.COLUMN_CLUSTER + " TEXT," +
+            SpecimenContract.SpecimenTable.COLUMN_HH + " TEXT," +
+            SpecimenContract.SpecimenTable.COLUMN_SE1 + " TEXT," +
+
+            eligibleMembers.COLUMN_SYNCED + " TEXT," +
+            eligibleMembers.COLUMN_SYNCEDDATE + " TEXT" +
+
+            ");";
+
+
     private final String TAG = "DatabaseHelper";
     public String spDateT = new SimpleDateFormat("dd-MM-yy").format(new Date().getTime());
 
@@ -352,6 +375,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_BL_RANDOM);
         db.execSQL(SQL_CREATE_NUTRITION);
         db.execSQL(SQL_CREATE_DECEASED);
+        db.execSQL(SQL_CREATE_SPECIMEN_MEMBERS);
 
     }
 
@@ -620,6 +644,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return allBL;
     }
+
 
 
     public Collection<FamilyMembersContract> getAllMembersByHH(String uid) {
@@ -1104,6 +1129,58 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 familyMembers.COLUMN_NAME_NULLABLE,
                 values);
         return newRowId;
+    }
+
+    public Long addSpecimenMembers(SpecimenContract fmc) {
+
+        // Gets the data repository in write mode
+        SQLiteDatabase db = this.getWritableDatabase();
+
+// Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(SpecimenContract.SpecimenTable.COLUMN_PROJECTNAME, fmc.getProjectName());
+        values.put(SpecimenContract.SpecimenTable.COLUMN__UID, fmc.getUID());
+        values.put(SpecimenContract.SpecimenTable.COLUMN__UUID, fmc.getUUID());
+        values.put(SpecimenContract.SpecimenTable.COLUMN_FM_UID, fmc.getFMUID());
+        values.put(SpecimenContract.SpecimenTable.COLUMN_FORMDATE, fmc.getFormDate());
+        values.put(SpecimenContract.SpecimenTable.COLUMN_USER, fmc.getUser());
+        values.put(SpecimenContract.SpecimenTable.COLUMN_LINENO, fmc.getUser());
+        values.put(SpecimenContract.SpecimenTable.COLUMN_CLUSTER, fmc.getClusterno());
+        values.put(SpecimenContract.SpecimenTable.COLUMN_HH, fmc.getHhno());
+        values.put(SpecimenContract.SpecimenTable.COLUMN_SE1, fmc.getsE1());
+        values.put(SpecimenContract.SpecimenTable.COLUMN_DEVICETAGID, fmc.getDevicetagID());
+        values.put(SpecimenContract.SpecimenTable.COLUMN_DEVICEID, fmc.getDeviceID());
+        values.put(SpecimenContract.SpecimenTable.COLUMN_SYNCED, fmc.getSynced());
+        values.put(SpecimenContract.SpecimenTable.COLUMN_SYNCED_DATE, fmc.getSynced_date());
+        values.put(SpecimenContract.SpecimenTable.COLUMN_APPVERSION, fmc.getAppversion());
+
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId;
+        newRowId = db.insert(
+                SpecimenContract.SpecimenTable.TABLE_NAME,
+                SpecimenContract.SpecimenTable.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
+
+
+    public int updateSpecimenMemberID() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(SpecimenContract.SpecimenTable.COLUMN__UID, MainApp.smc.getUID());
+
+// Which row to update, based on the ID
+        String selection = SpecimenContract.SpecimenTable.COLUMN__ID + " = ?";
+        String[] selectionArgs = {String.valueOf(MainApp.smc.get_ID())};
+
+        int count = db.update(SpecimenContract.SpecimenTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
     }
 
 

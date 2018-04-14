@@ -82,6 +82,7 @@ public class MainActivity extends MenuActivity {
     private ProgressDialog pd;
     private Boolean exit = false;
     private String rSumText = "";
+    static String ftype = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -328,8 +329,24 @@ public class MainActivity extends MenuActivity {
 
 
     public void openB(View v) {
-        //Intent iB = new Intent(this, SectionB3Activity.class);
+        MainActivity.ftype = "A";
         Intent iB = new Intent(this, AntrhoInfoActivity.class);
+        startActivity(iB);
+    }
+
+
+    public void openSpecimen() {
+        //Intent iB = new Intent(this, SectionB3Activity.class);
+        MainActivity.ftype = "B";
+        Intent iB = new Intent(this, SpecimenInfoActivity.class);
+        startActivity(iB);
+    }
+
+
+    public void openWater() {
+        MainActivity.ftype = "W";
+        //Intent iB = new Intent(this, SectionB3Activity.class);
+        Intent iB = new Intent(this, SpecimenInfoActivity.class);
         startActivity(iB);
     }
 
