@@ -283,6 +283,9 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
 
         db = new DatabaseHelper(this);
 
+//        Validation Boolean
+        MainApp.validateFlag = true;
+
         if (SectionA1Activity.editFormFlag) {
             AutoPopulateFields();
         }
@@ -447,9 +450,6 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
     private boolean formValidation() {
 
         //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
-
-//        Validation Boolean
-        MainApp.validateFlag = true;
 
         if (!validatorClass.EmptyTextBox(this, bi.nh803, getString(R.string.nh803))) {
             return false;

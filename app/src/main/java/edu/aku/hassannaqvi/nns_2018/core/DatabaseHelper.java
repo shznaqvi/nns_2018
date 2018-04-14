@@ -2885,7 +2885,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         };
 
         String whereClause = outcomeTable.COLUMN_UUID + "=? AND " + outcomeTable.COLUMN_MUID + "=?";
-        String[] whereArgs = new String[]{MainApp.mc.get_UID(), MainApp.mc.get_UID()};
+        String[] whereArgs = new String[]{MainApp.mc.get_UUID(), MainApp.mc.get_UID()};
         String groupBy = null;
         String having = null;
 
