@@ -12,19 +12,18 @@ import edu.aku.hassannaqvi.nns_2018.R;
  * Created by javed.khan on 1/22/2018.
  */
 
-public class SpecimenContract {
+public class WaterSpecimenContract {
 
 
     private final String projectName = String.valueOf(R.string.app_name);
     private String _ID = "";
     private String _UID = "";
     private String _UUID = "";
-    private String FMUID = "";
     private String formDate = ""; // Date
     private String user = ""; // Interviewer
     private String lineNo = "";
 
-    private String sE1 = ""; // sB
+    private String sE2 = ""; // sB
 
     private String deviceID = "";
     private String devicetagID = "";
@@ -35,57 +34,55 @@ public class SpecimenContract {
     private String clusterno = "";
     private String hhno = "";
 
-    public SpecimenContract() {
+    public WaterSpecimenContract() {
 
     }
 
 
-    public SpecimenContract Sync(JSONObject jsonObject) throws JSONException {
-        this._ID = jsonObject.getString(SpecimenTable.COLUMN__ID);
-        this._UID = jsonObject.getString(SpecimenTable.COLUMN__UID);
-        this._UUID = jsonObject.getString(SpecimenTable.COLUMN__UUID);
-        this.FMUID = jsonObject.getString(SpecimenTable.COLUMN_FM_UID);
-        this.clusterno = jsonObject.getString(SpecimenTable.COLUMN_CLUSTER);
-        this.hhno = jsonObject.getString(SpecimenTable.COLUMN_HH);
-        this.formDate = jsonObject.getString(SpecimenTable.COLUMN_FORMDATE);
-        this.user = jsonObject.getString(SpecimenTable.COLUMN_USER);
-        this.lineNo = jsonObject.getString(SpecimenTable.COLUMN_LINENO);
-        this.sE1 = jsonObject.getString(SpecimenTable.COLUMN_SE1);
-        this.deviceID = jsonObject.getString(SpecimenTable.COLUMN_DEVICEID);
-        this.devicetagID = jsonObject.getString(SpecimenTable.COLUMN_DEVICETAGID);
-        this.synced = jsonObject.getString(SpecimenTable.COLUMN_SYNCED);
-        this.synced_date = jsonObject.getString(SpecimenTable.COLUMN_SYNCED_DATE);
-        this.appversion = jsonObject.getString(SpecimenTable.COLUMN_APPVERSION);
+    public WaterSpecimenContract Sync(JSONObject jsonObject) throws JSONException {
+        this._ID = jsonObject.getString(WaterSpecimenTable.COLUMN__ID);
+        this._UID = jsonObject.getString(WaterSpecimenTable.COLUMN__UID);
+        this._UUID = jsonObject.getString(WaterSpecimenTable.COLUMN__UUID);
+        this.clusterno = jsonObject.getString(WaterSpecimenTable.COLUMN_CLUSTER);
+        this.hhno = jsonObject.getString(WaterSpecimenTable.COLUMN_HH);
+        this.formDate = jsonObject.getString(WaterSpecimenTable.COLUMN_FORMDATE);
+        this.user = jsonObject.getString(WaterSpecimenTable.COLUMN_USER);
+        this.lineNo = jsonObject.getString(WaterSpecimenTable.COLUMN_LINENO);
+        this.sE2 = jsonObject.getString(WaterSpecimenTable.COLUMN_SE2);
+        this.deviceID = jsonObject.getString(WaterSpecimenTable.COLUMN_DEVICEID);
+        this.devicetagID = jsonObject.getString(WaterSpecimenTable.COLUMN_DEVICETAGID);
+        this.synced = jsonObject.getString(WaterSpecimenTable.COLUMN_SYNCED);
+        this.synced_date = jsonObject.getString(WaterSpecimenTable.COLUMN_SYNCED_DATE);
+        this.appversion = jsonObject.getString(WaterSpecimenTable.COLUMN_APPVERSION);
 
 
         return this;
 
     }
 
-    public SpecimenContract Hydrate(Cursor cursor, int type) {
+    public WaterSpecimenContract Hydrate(Cursor cursor, int type) {
 
 
-        this._ID = cursor.getString(cursor.getColumnIndex(SpecimenTable.COLUMN__ID));
-        this._UID = cursor.getString(cursor.getColumnIndex(SpecimenTable.COLUMN__UID));
-        this._UUID = cursor.getString(cursor.getColumnIndex(SpecimenTable.COLUMN__UUID));
-        this.FMUID = cursor.getString(cursor.getColumnIndex(SpecimenTable.COLUMN_FM_UID));
-        this.clusterno = cursor.getString(cursor.getColumnIndex(SpecimenTable.COLUMN_CLUSTER));
-        this.hhno = cursor.getString(cursor.getColumnIndex(SpecimenTable.COLUMN_HH));
+        this._ID = cursor.getString(cursor.getColumnIndex(WaterSpecimenTable.COLUMN__ID));
+        this._UID = cursor.getString(cursor.getColumnIndex(WaterSpecimenTable.COLUMN__UID));
+        this._UUID = cursor.getString(cursor.getColumnIndex(WaterSpecimenTable.COLUMN__UUID));
+        this.clusterno = cursor.getString(cursor.getColumnIndex(WaterSpecimenTable.COLUMN_CLUSTER));
+        this.hhno = cursor.getString(cursor.getColumnIndex(WaterSpecimenTable.COLUMN_HH));
 
 
         if (type == 0 || type == 1) {
-            this.sE1 = cursor.getString(cursor.getColumnIndex(SpecimenTable.COLUMN_SE1));
+            this.sE2 = cursor.getString(cursor.getColumnIndex(WaterSpecimenTable.COLUMN_SE2));
         }
 
         if (type == 0) {
-            this.formDate = cursor.getString(cursor.getColumnIndex(SpecimenTable.COLUMN_FORMDATE));
-            this.user = cursor.getString(cursor.getColumnIndex(SpecimenTable.COLUMN_USER));
-            this.lineNo = cursor.getString(cursor.getColumnIndex(SpecimenTable.COLUMN_LINENO));
-            this.deviceID = cursor.getString(cursor.getColumnIndex(SpecimenTable.COLUMN_DEVICEID));
-            this.devicetagID = cursor.getString(cursor.getColumnIndex(SpecimenTable.COLUMN_DEVICETAGID));
-            this.synced = cursor.getString(cursor.getColumnIndex(SpecimenTable.COLUMN_SYNCED));
-            this.synced_date = cursor.getString(cursor.getColumnIndex(SpecimenTable.COLUMN_SYNCED_DATE));
-            this.appversion = cursor.getString(cursor.getColumnIndex(SpecimenTable.COLUMN_APPVERSION));
+            this.formDate = cursor.getString(cursor.getColumnIndex(WaterSpecimenTable.COLUMN_FORMDATE));
+            this.user = cursor.getString(cursor.getColumnIndex(WaterSpecimenTable.COLUMN_USER));
+            this.lineNo = cursor.getString(cursor.getColumnIndex(WaterSpecimenTable.COLUMN_LINENO));
+            this.deviceID = cursor.getString(cursor.getColumnIndex(WaterSpecimenTable.COLUMN_DEVICEID));
+            this.devicetagID = cursor.getString(cursor.getColumnIndex(WaterSpecimenTable.COLUMN_DEVICETAGID));
+            this.synced = cursor.getString(cursor.getColumnIndex(WaterSpecimenTable.COLUMN_SYNCED));
+            this.synced_date = cursor.getString(cursor.getColumnIndex(WaterSpecimenTable.COLUMN_SYNCED_DATE));
+            this.appversion = cursor.getString(cursor.getColumnIndex(WaterSpecimenTable.COLUMN_APPVERSION));
 
         }
         // TODO:
@@ -99,30 +96,29 @@ public class SpecimenContract {
 
         JSONObject json = new JSONObject();
 
-        json.put(SpecimenTable.COLUMN_PROJECTNAME, this.projectName == null ? JSONObject.NULL : this.projectName);
-        json.put(SpecimenTable.COLUMN__ID, this._ID == null ? JSONObject.NULL : this._ID);
-        json.put(SpecimenTable.COLUMN__UID, this._UID == null ? JSONObject.NULL : this._UID);
-        json.put(SpecimenTable.COLUMN__UUID, this._UUID == null ? JSONObject.NULL : this._UUID);
-        json.put(SpecimenTable.COLUMN_FM_UID, this.FMUID == null ? JSONObject.NULL : this.FMUID);
-        json.put(SpecimenTable.COLUMN_CLUSTER, this.clusterno == null ? JSONObject.NULL : this.clusterno);
-        json.put(SpecimenTable.COLUMN_HH, this.hhno == null ? JSONObject.NULL : this.hhno);
+        json.put(WaterSpecimenTable.COLUMN_PROJECTNAME, this.projectName == null ? JSONObject.NULL : this.projectName);
+        json.put(WaterSpecimenTable.COLUMN__ID, this._ID == null ? JSONObject.NULL : this._ID);
+        json.put(WaterSpecimenTable.COLUMN__UID, this._UID == null ? JSONObject.NULL : this._UID);
+        json.put(WaterSpecimenTable.COLUMN__UUID, this._UUID == null ? JSONObject.NULL : this._UUID);
+        json.put(WaterSpecimenTable.COLUMN_CLUSTER, this.clusterno == null ? JSONObject.NULL : this.clusterno);
+        json.put(WaterSpecimenTable.COLUMN_HH, this.hhno == null ? JSONObject.NULL : this.hhno);
         //json.put(WaterSpecimenTable.COLUMN_MUID, this.MUID == null ? JSONObject.NULL : this.MUID);
 
-        json.put(SpecimenTable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
-        json.put(SpecimenTable.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
-        json.put(SpecimenTable.COLUMN_LINENO, this.lineNo == null ? JSONObject.NULL : this.lineNo);
+        json.put(WaterSpecimenTable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
+        json.put(WaterSpecimenTable.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
+        json.put(WaterSpecimenTable.COLUMN_LINENO, this.lineNo == null ? JSONObject.NULL : this.lineNo);
 
-        if (!this.sE1.equals("")) {
-            json.put(SpecimenTable.COLUMN_SE1, this.sE1.equals("") ? JSONObject.NULL : new JSONObject(this.sE1));
+        if (!this.sE2.equals("")) {
+            json.put(WaterSpecimenTable.COLUMN_SE2, this.sE2.equals("") ? JSONObject.NULL : new JSONObject(this.sE2));
             /*  json.put(WaterSpecimenTable.COLUMN_SC1, this.sC1 == null ? JSONObject.NULL : this.sC1);*/
         }
 
 
-        json.put(SpecimenTable.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
-        json.put(SpecimenTable.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
+        json.put(WaterSpecimenTable.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
+        json.put(WaterSpecimenTable.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
         /*json.put(WaterSpecimenTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
         json.put(WaterSpecimenTable.COLUMN_SYNCED_DATE, this.synced_date == null ? JSONObject.NULL : this.synced_date);*/
-        json.put(SpecimenTable.COLUMN_APPVERSION, this.appversion == null ? JSONObject.NULL : this.appversion);
+        json.put(WaterSpecimenTable.COLUMN_APPVERSION, this.appversion == null ? JSONObject.NULL : this.appversion);
 
 
         return json;
@@ -144,13 +140,6 @@ public class SpecimenContract {
         this.hhno = hhno;
     }
 
-    public String getFMUID() {
-        return FMUID;
-    }
-
-    public void setFMUID(String FMUID) {
-        this.FMUID = FMUID;
-    }
 
     public String getProjectName() {
         return projectName;
@@ -240,12 +229,12 @@ public class SpecimenContract {
     }
 
 
-    public String getsE1() {
-        return sE1;
+    public String getsE2() {
+        return sE2;
     }
 
     public void setsE1(String sE1) {
-        this.sE1 = sE1;
+        this.sE2 = sE2;
     }
 
     public String getLineNo() {
@@ -257,7 +246,7 @@ public class SpecimenContract {
     }
 
 
-    public static abstract class SpecimenTable implements BaseColumns {
+    public static abstract class WaterSpecimenTable implements BaseColumns {
 
         public static final String TABLE_NAME = "specimen";
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
@@ -272,7 +261,7 @@ public class SpecimenContract {
         public static final String COLUMN_LINENO = "lineno";
         public static final String COLUMN_CLUSTER = "cluster";
         public static final String COLUMN_HH = "hh_no";
-        public static final String COLUMN_SE1 = "se1";
+        public static final String COLUMN_SE2 = "se2";
         public static final String COLUMN_DEVICEID = "deviceid";
         public static final String COLUMN_DEVICETAGID = "devicetagid";
         public static final String COLUMN_SYNCED = "synced";

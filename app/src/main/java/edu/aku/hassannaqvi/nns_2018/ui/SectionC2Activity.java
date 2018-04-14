@@ -636,7 +636,7 @@ public class SectionC2Activity extends Menu2Activity implements RadioGroup.OnChe
         //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
 //        Validation Boolean
-        MainApp.validateFlag = true;
+        //MainApp.validateFlag = true;
 
         //if (!bi.nc20198.isChecked()) {
 

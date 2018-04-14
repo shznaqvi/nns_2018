@@ -1,9 +1,9 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,6 +25,7 @@ import java.util.Map;
 import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.SpecimenContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionE1Binding;
@@ -35,6 +36,7 @@ public class SectionE1Activity extends AppCompatActivity {
     static List<String> members;
     static Map<String, FamilyMembersContract> membersMap;
     static String name;
+    static String grouptype;
     static int counter = 1;
     ActivitySectionE1Binding bi;
     DatabaseHelper db;
@@ -44,6 +46,8 @@ public class SectionE1Activity extends AppCompatActivity {
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
 
     int position = 0;
+    static List<String> group;
+    int namePosition = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,34 +65,57 @@ public class SectionE1Activity extends AppCompatActivity {
     public void setupViews() {
 
 //        Setup spinner
-
         //  Getting Extra
-        if (getIntent().getBooleanExtra("flag", false)) {
+        /*if (getIntent().getBooleanExtra("flag", false)) {
             members.remove(getIntent().getStringExtra("name"));
-            counter++;
-        } else {
-            members = new ArrayList<>();
-            membersMap = new HashMap<>();
+            group.remove(getIntent().getStringExtra("grouptype"));*/
 
-            members.add("....");
+        //counter++;
 
-            familyMembersSetting(MainApp.mwra, 1);  // 1 for Mwra
-            familyMembersSetting(MainApp.childUnder5, 2);  // 2 for Under 5
-            familyMembersSetting(MainApp.adolescents, 3);  // 3 for Adolescents
-            familyMembersSetting(MainApp.minors, 4);  // 3 for minors
-        }
         slecMem = new FamilyMembersContract();
 
-        Resources res = getResources();
-        String[] dataAdapter = res.getStringArray(R.array.neselected);
+        if (getIntent().getBooleanExtra("flag", true)) {
 
-        bi.ne103.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, dataAdapter));
+            group = new ArrayList<>();
+
+            group.add("....");
+
+
+            if (MainApp.mwra.size() > 0) {
+                group.add(getResources().getString(R.string.neselecteda));
+            }
+            if (MainApp.childUnder5.size() > 0) {
+                group.add(getResources().getString(R.string.neselectedb));
+            }
+
+            if (MainApp.adolescents.size() > 0) {
+                group.add(getResources().getString(R.string.neselectedd));
+            }
+
+            if (MainApp.minors.size() > 0) {
+                group.add(getResources().getString(R.string.neselectedc));
+            }
+        }
+
+        bi.ne103.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, group));
 
         bi.ne103.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
                 if (bi.ne103.getSelectedItemPosition() != 0) {
                     position = i;
+
+                    members = new ArrayList<>();
+                    membersMap = new HashMap<>();
+                    members.add("....");
+
+                    familyMembersSetting(MainApp.mwra);  // 1 for Mwra
+                    familyMembersSetting(MainApp.childUnder5);  // 2 for Under 5
+                    familyMembersSetting(MainApp.adolescents);  // 3 for Adolescents
+                    familyMembersSetting(MainApp.minors);  // 3 for minors
+
+                    bi.ne102.setAdapter(new ArrayAdapter<>(getApplicationContext(), R.layout.item_style, members));
+
                 }
             }
 
@@ -99,30 +126,33 @@ public class SectionE1Activity extends AppCompatActivity {
         });
 
 
-        bi.ne102.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, members));
+        bi.ne102.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (bi.ne102.getSelectedItemPosition() != 0) {
+                    namePosition = position;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
     }
 
-    public void familyMembersSetting(List<FamilyMembersContract> family, int type) {
+    public void familyMembersSetting(List<FamilyMembersContract> family) {
 
 
         for (FamilyMembersContract fmc : family) {
-            json = JSONUtilClass.getModelFromJSON(fmc.getsA2(), JSONModelClass.class);
-            membersMap.put(json.getName() + "_" + json.getSerialNo(), fmc);
-            members.add(json.getName() + "_" + json.getSerialNo());
-        }
 
-        /*if(position == 1)
-        {
-            for (FamilyMembersContract fmc : MainApp.mwra)
-            {
+            if (position == Integer.valueOf(fmc.getType())) {
                 json = JSONUtilClass.getModelFromJSON(fmc.getsA2(), JSONModelClass.class);
                 membersMap.put(json.getName() + "_" + json.getSerialNo(), fmc);
                 members.add(json.getName() + "_" + json.getSerialNo());
             }
         }
-        */
-
 
     }
 
@@ -197,27 +227,22 @@ public class SectionE1Activity extends AppCompatActivity {
                 e.printStackTrace();
             }
             if (UpdateDB()) {
-                //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
-                finish();
+                //finish();
 
-/*
-                if (counter == MainApp.all_members.size()) {
+                if (group.size() > 0) {
 
-                    counter = 1;
-
-                    startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
-
+                    group.remove(position);
+                    members.clear();
+                    counter++;
+                    finish();
+                    startActivity(new Intent(this, SectionE1Activity.class).putExtra("flag", false));
                 } else {
-
-                    members.remove(binding.nd101.getSelectedItem().toString());
-
-                    startActivity(new Intent(this, SectionD1Activity.class)
-                            .putExtra("flag", true));
+                    group.clear();
+                    members.clear();
+                    counter = 1;
+                    startActivity(new Intent(this, MainActivity.class));
                 }
-*/
-
-                startActivity(new Intent(this, AnthroEndingActivity.class).putExtra("complete", true));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -254,6 +279,19 @@ public class SectionE1Activity extends AppCompatActivity {
     private void SaveDraft() {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
+        MainApp.smc = new SpecimenContract();
+        MainApp.smc.setDevicetagID(MainApp.getTagName(this));
+        MainApp.smc.setFormDate(slecMem.getFormDate());
+        MainApp.smc.setUser(MainApp.userName);
+        MainApp.smc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
+                Settings.Secure.ANDROID_ID));
+        MainApp.smc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
+        MainApp.smc.setUUID(slecMem.get_UUID());
+        MainApp.smc.setFMUID(slecMem.get_UID());
+        MainApp.smc.setLineNo(membersMap.get(bi.ne102.getSelectedItem().toString()).getSerialNo());
+        MainApp.smc.setClusterno(SpecimenInfoActivity.enm_no);
+        MainApp.smc.setHhno(SpecimenInfoActivity.hh_no);
+
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
 
@@ -261,7 +299,25 @@ public class SectionE1Activity extends AppCompatActivity {
 
     private boolean UpdateDB() {
 
-        return true;
+        DatabaseHelper db = new DatabaseHelper(this);
+
+
+        Long updcount = db.addSpecimenMembers(MainApp.smc);
+        MainApp.smc.set_ID(String.valueOf(updcount));
+
+        if (updcount != 0) {
+            //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+
+            MainApp.smc.setUID(
+                    (MainApp.smc.getDeviceID() + MainApp.smc.get_ID()));
+            db.updateSpecimenMemberID();
+
+            return true;
+        } else {
+            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        //return true;
     }
 
     public class SelectedMem {
