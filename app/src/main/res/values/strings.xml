@@ -1570,6 +1570,7 @@
   <string name="ne102"> منتخب شدہ فرد کا نام </string>
   <string name="neselected"> منتخب شدہ فرد کا گروپ </string>
   <string-array name="neselected">
+      <item>....</item>
     <item>15 سے 49 سال کی عورت</item>
     <item> پانچ سال سے کم عمر بچہ </item>
     <item> 6 سے 12 سال کا بچہ </item>

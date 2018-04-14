@@ -343,9 +343,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             SpecimenContract.SpecimenTable.COLUMN_CLUSTER + " TEXT," +
             SpecimenContract.SpecimenTable.COLUMN_HH + " TEXT," +
             SpecimenContract.SpecimenTable.COLUMN_SE1 + " TEXT," +
-
-            eligibleMembers.COLUMN_SYNCED + " TEXT," +
-            eligibleMembers.COLUMN_SYNCEDDATE + " TEXT" +
+            SpecimenContract.SpecimenTable.COLUMN_SYNCED + " TEXT," +
+            SpecimenContract.SpecimenTable.COLUMN_SYNCED_DATE + " TEXT" +
 
             ");";
 
