@@ -15,6 +15,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -53,6 +54,8 @@ public class SectionE1Activity extends AppCompatActivity {
 
     static List<Integer> originalPositions;
     int namePosition = 0;
+    Boolean isBl = false;
+    Boolean isUr = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -220,6 +223,8 @@ public class SectionE1Activity extends AppCompatActivity {
     public void BtnScanBL() {
         //binding.hcCode.setText(null);
 
+        isBl = true;
+        isUr = false;
         IntentIntegrator integrator = new IntentIntegrator(this);
         integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
         integrator.setPrompt("Scan the QR code of Machine");
@@ -235,6 +240,8 @@ public class SectionE1Activity extends AppCompatActivity {
     public void BtnScanUR() {
         //binding.hcCode.setText(null);
 
+        isUr = true;
+        isBl = false;
         IntentIntegrator integrator = new IntentIntegrator(this);
         integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
         integrator.setPrompt("Scan the QR code of Machine");
@@ -257,16 +264,25 @@ public class SectionE1Activity extends AppCompatActivity {
             } else {
 
 
-                /*if (isHC) {
-                    if (result.getContents().contains("HC")) {
-                        Toast.makeText(this, "HC Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
-                        binding.hcCode.setText("§" + result.getContents().trim());
-                        binding.hcCode.setEnabled(false);
-                        binding.hcCode.setError(null);
+                if (isBl) {
+                    if (result.getContents().contains("WB")) {
+                        Toast.makeText(this, "WB Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                        bi.ne105.setText("§" + result.getContents().trim());
+                        bi.ne105.setEnabled(false);
+                        bi.ne105.setError(null);
                     } else {
-                        binding.hcCode.setError("Please Scan correct QR code");
+                        bi.ne105.setError("Please Scan correct QR code");
                     }
-                }*/
+                } else if (isUr) {
+                    if (result.getContents().contains("WU")) {
+                        Toast.makeText(this, "WU Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                        bi.ne109.setText("§" + result.getContents().trim());
+                        bi.ne109.setEnabled(false);
+                        bi.ne109.setError(null);
+                    } else {
+                        bi.ne109.setError("Please Scan correct QR code");
+                    }
+                }
 
 
             }
@@ -282,12 +298,16 @@ public class SectionE1Activity extends AppCompatActivity {
 
         //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
-            SaveDraft();
+            try {
+                SaveDraft();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             if (UpdateDB()) {
 
                 //finish();
 
-                if (group.size() > 0) {
+                if (group.size() > 1) {
 
                     group.remove(position);
                     originalPositions.remove(position);
@@ -313,7 +333,11 @@ public class SectionE1Activity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        SaveDraft();
+        try {
+            SaveDraft();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         if (UpdateDB()) {
             //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
@@ -424,7 +448,7 @@ public class SectionE1Activity extends AppCompatActivity {
         return true;
     }
 
-    private void SaveDraft() {
+    private void SaveDraft() throws JSONException {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
         MainApp.smc = new SpecimenContract();
@@ -439,6 +463,21 @@ public class SectionE1Activity extends AppCompatActivity {
         MainApp.smc.setLineNo(slecMem.getSerialNo());
         MainApp.smc.setClusterno(SpecimenInfoActivity.enm_no);
         MainApp.smc.setHhno(SpecimenInfoActivity.hh_no);
+
+        JSONObject sE1 = new JSONObject();
+
+        sE1.put("ne102", bi.ne102.getSelectedItem().toString());
+        sE1.put("ne103", bi.ne103.getSelectedItem().toString());
+        sE1.put("ne104", bi.ne104a.isChecked() ? "1" : bi.ne104b.isChecked() ? "2" : "0");
+        sE1.put("ne105", bi.ne105.getText().toString());
+        sE1.put("ne106", bi.ne106.getText().toString());
+        sE1.put("ne107", bi.ne107a.isChecked() ? "1" : bi.ne107b.isChecked() ? "2" : "0");
+        sE1.put("ne108", bi.ne108a.isChecked() ? "1" : bi.ne108b.isChecked() ? "2" : "0");
+        sE1.put("ne109", bi.ne109.getText().toString());
+        sE1.put("ne110", bi.ne110a.isChecked() ? "1" : bi.ne110b.isChecked() ? "2" : "0");
+
+
+        MainApp.smc.setsE1(String.valueOf(sE1));
 
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
