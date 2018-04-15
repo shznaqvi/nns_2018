@@ -154,7 +154,7 @@
                 android:elevation="5dp"
                 android:onClick="@{() -> callback.openSpecimen()}"
                 android:text="OPEN BLOOD / URINE SPECIMEN COLLECTION FORM"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
 
             <Button
@@ -168,7 +168,7 @@
                 android:background="#1565C0"
                 android:onClick="@{() -> callback.openWater()}"
                 android:text="OPEN WATER SPECIMEN COLLECTION FORM"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
 
             <Button
