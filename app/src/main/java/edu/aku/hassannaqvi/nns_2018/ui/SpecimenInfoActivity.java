@@ -308,7 +308,7 @@ public class SpecimenInfoActivity extends AppCompatActivity {
                             MainApp.mwra.add(fm);
                             MainApp.all_members.add(fm);
                         } else if ((Integer.valueOf(json.getAge()) >= 10 && (Integer.valueOf(json.getAge()) < 20))
-                                && json.getGender().equals("2") && json.getNh210().equals("1")) {
+                                && json.getGender().equals("2") && json.getNh210().equals("1") && json.getMaritalStatus().equals("5")) {
                             fm.setType("4");
                             MainApp.adolescents.add(fm);
                             MainApp.all_members.add(fm);

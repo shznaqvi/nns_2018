@@ -156,11 +156,13 @@ public class SectionE1Activity extends AppCompatActivity {
         });
 
 
+
         bi.ne102.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (bi.ne102.getSelectedItemPosition() != 0) {
                     namePosition = position;
+                    slecMem = membersMap.get(bi.ne102.getSelectedItem().toString());
                 }
             }
 
@@ -307,7 +309,7 @@ public class SectionE1Activity extends AppCompatActivity {
 
                 //finish();
 
-                if (group.size() > 1) {
+                if (group.size() > 2) {
 
                     group.remove(position);
                     originalPositions.remove(position);
@@ -460,7 +462,7 @@ public class SectionE1Activity extends AppCompatActivity {
         MainApp.smc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
         MainApp.smc.setUUID(slecMem.get_UUID());
         MainApp.smc.setFMUID(slecMem.get_UID());
-        MainApp.smc.setLineNo(slecMem.getSerialNo());
+        MainApp.smc.setLineNo(json.getSerialNo());
         MainApp.smc.setClusterno(SpecimenInfoActivity.enm_no);
         MainApp.smc.setHhno(SpecimenInfoActivity.hh_no);
 

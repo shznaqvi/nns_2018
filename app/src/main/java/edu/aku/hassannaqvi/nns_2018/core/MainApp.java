@@ -93,6 +93,8 @@ public class MainApp extends Application {
     //    Ali
     public static FamilyMembersContract fmc;
     public static SpecimenContract smc;
+    public static SpecimenContract wsc;
+
     public static DeceasedContract dc;
     public static EligibleMembersContract emc;
     public static List<FamilyMembersContract> members_f_m;
