@@ -370,7 +370,7 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
             sA2.put("nh804", bi.nh804.getSelectedItem().toString());
             sA2.put("nh805", bi.nh805.getSelectedItem().toString());
 
-            sA2.put("mwraSerial", mothersSerials.get(bi.nh804.getSelectedItemPosition()));
+            sA2.put("mwraSerial", mothersMap.get(bi.nh804.getSelectedItemPosition()));
 
         } else {
             sA2.put("edit_updatedate_nh8", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
