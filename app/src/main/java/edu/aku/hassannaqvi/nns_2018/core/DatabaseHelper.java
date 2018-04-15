@@ -343,9 +343,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             SpecimenContract.SpecimenTable.COLUMN_CLUSTER + " TEXT," +
             SpecimenContract.SpecimenTable.COLUMN_HH + " TEXT," +
             SpecimenContract.SpecimenTable.COLUMN_SE1 + " TEXT," +
-
-            eligibleMembers.COLUMN_SYNCED + " TEXT," +
-            eligibleMembers.COLUMN_SYNCEDDATE + " TEXT" +
+            SpecimenContract.SpecimenTable.COLUMN_SYNCED + " TEXT," +
+            SpecimenContract.SpecimenTable.COLUMN_SYNCED_DATE + " TEXT" +
 
             ");";
 
@@ -2886,7 +2885,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         };
 
         String whereClause = outcomeTable.COLUMN_UUID + "=? AND " + outcomeTable.COLUMN_MUID + "=?";
-        String[] whereArgs = new String[]{MainApp.mc.get_UID(), MainApp.mc.get_UID()};
+        String[] whereArgs = new String[]{MainApp.mc.get_UUID(), MainApp.mc.get_UID()};
         String groupBy = null;
         String having = null;
 
