@@ -152,30 +152,7 @@ public abstract class validatorClass {
     public static boolean EmptyRadioButton(Context context, RadioGroup rdGrp, final RadioButton rdBtn, String msg) {
         if (rdGrp.getCheckedRadioButtonId() == -1) {
 
-            /*ScrollView scrollView = null;
 
-            Activity myact = (Activity) context;
-            final ViewGroup viewGroup = (ViewGroup) ((ViewGroup) myact.findViewById(android.R.id.content)).getChildAt(0);
-
-            for (int i = 0; i < viewGroup.getChildCount(); i++) {
-                if (viewGroup.getChildAt(i) instanceof ScrollView) {
-                    scrollView = (ScrollView) viewGroup.getChildAt(i);
-                    break;
-                }
-            }
-
-            final ScrollView myScrollView = scrollView;
-
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    int ypos = findYPositionInView(myScrollView, rdBtn, 0);
-                    myScrollView.smoothScrollTo(0, ypos - 200);
-
-                    rdBtn.setError("This data is Required!");
-                }
-            }, 200);
-*/
             if (MainApp.validateFlag) {
                 Toast.makeText(context, "ERROR(Empty)" + msg, Toast.LENGTH_SHORT).show();
             }
@@ -186,14 +163,6 @@ public abstract class validatorClass {
             //rdBtn.setFocusableInTouchMode(true);
             //rdBtn.requestFocus();
 
-            /*rdBtn.clearFocus();
-
-             rdGrp.requestFocus();
-            rdGrp.requestFocusFromTouch();
-            rdGrp.clearFocus();
-            rdGrp.clearChildFocus(rdBtn);
-            */
-            //((LinearLayout)rdGrp.getParent()).scrollTo(rdGrp.getScrollX(), rdGrp.getScrollY());
             Log.i(context.getClass().getName(), context.getResources().getResourceEntryName(rdGrp.getId()) + ": This data is Required!");
             return false;
         } else {

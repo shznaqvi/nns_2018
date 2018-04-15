@@ -67,12 +67,13 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
         binding.nh401.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                formValidation();
+                //formValidation();
                 if (!(checkedId == R.id.nh401a)) {
 
                     clearClass.ClearAllFields(binding.fldGrpnh402, false);
 
                 } else {
+                    formValidation();
                     clearClass.ClearAllFields(binding.fldGrpnh402, true);
                 }
             }
