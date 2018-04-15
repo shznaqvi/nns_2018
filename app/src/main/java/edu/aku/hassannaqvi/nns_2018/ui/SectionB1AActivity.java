@@ -122,6 +122,10 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
 
     public void BtnContinue() {
+
+//        Validation Boolean
+        MainApp.validateFlag = true;
+
         if (ValidateForm()) {
             try {
                 SaveDraft();
@@ -195,9 +199,6 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
     }
 
     private boolean ValidateForm() {
-
-//        Validation Boolean
-        MainApp.validateFlag = true;
 
         if (!validatorClass.EmptyRadioButton(this, bi.nw21701, bi.nw21701a, getString(R.string.nw217))) {
             return false;
