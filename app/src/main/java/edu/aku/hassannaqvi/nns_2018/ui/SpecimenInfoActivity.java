@@ -314,7 +314,6 @@ public class SpecimenInfoActivity extends AppCompatActivity {
                             MainApp.adolescents.add(fm);
                             MainApp.all_members.add(fm);
                         }
-
                         if ((Integer.valueOf(json.getAge()) >= 6 && (Integer.valueOf(json.getAge()) < 13))
                                 && json.getNh210().equals("1")) {
                             fm.setType("3");

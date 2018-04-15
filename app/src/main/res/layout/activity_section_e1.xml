@@ -190,6 +190,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="numberDecimal"
+                            android:hint="@string/hb_result"
                             android:maxLength="4" />
 
                     </LinearLayout>
@@ -294,7 +295,7 @@
                 </RadioGroup>
 
                 <LinearLayout
-                    android:id="@+id/fldGrpneurineyes"
+                    android:id="@+id/fldGrpurineyes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -343,7 +344,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/fldGrpurine01no"
+                    android:id="@+id/fldGrpurinno"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
