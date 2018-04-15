@@ -8,10 +8,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -28,6 +32,8 @@ import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionE1Binding;
 import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
+import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
+import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionE1Activity extends AppCompatActivity {
 
@@ -45,7 +51,11 @@ public class SectionE1Activity extends AppCompatActivity {
 
     int position = 0;
     static List<String> group;
+
+    static List<Integer> originalPositions;
     int namePosition = 0;
+    Boolean isBl = false;
+    Boolean isUr = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,13 +72,6 @@ public class SectionE1Activity extends AppCompatActivity {
 
     public void setupViews() {
 
-//        Setup spinner
-        //  Getting Extra
-        /*if (getIntent().getBooleanExtra("flag", false)) {
-            members.remove(getIntent().getStringExtra("name"));
-            group.remove(getIntent().getStringExtra("grouptype"));*/
-
-        //counter++;
 
         slecMem = new FamilyMembersContract();
 
@@ -76,22 +79,29 @@ public class SectionE1Activity extends AppCompatActivity {
 
             group = new ArrayList<>();
 
+            originalPositions = new ArrayList<>();
+
             group.add("....");
+            originalPositions.add(0);
 
 
             if (MainApp.mwra.size() > 0) {
                 group.add(getResources().getString(R.string.neselecteda));
+                originalPositions.add(1);
             }
             if (MainApp.childUnder5.size() > 0) {
                 group.add(getResources().getString(R.string.neselectedb));
+                originalPositions.add(2);
             }
 
             if (MainApp.adolescents.size() > 0) {
                 group.add(getResources().getString(R.string.neselectedd));
+                originalPositions.add(4);
             }
 
             if (MainApp.minors.size() > 0) {
                 group.add(getResources().getString(R.string.neselectedc));
+                originalPositions.add(3);
             }
         }
 
@@ -101,19 +111,41 @@ public class SectionE1Activity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
                 if (bi.ne103.getSelectedItemPosition() != 0) {
-                    position = i;
+
+                    position = originalPositions.get(i);
 
                     members = new ArrayList<>();
                     membersMap = new HashMap<>();
                     members.add("....");
 
-                    familyMembersSetting(MainApp.mwra);  // 1 for Mwra
-                    familyMembersSetting(MainApp.childUnder5);  // 2 for Under 5
-                    familyMembersSetting(MainApp.adolescents);  // 3 for Adolescents
-                    familyMembersSetting(MainApp.minors);  // 3 for minors
+                    familyMembersSetting(MainApp.all_members);
 
-                    bi.ne102.setAdapter(new ArrayAdapter<>(getApplicationContext(), R.layout.item_style, members));
 
+                    bi.ne102.setAdapter(new ArrayAdapter<>(SectionE1Activity.this, R.layout.item_style, members));
+
+
+                    if (position == 2) {
+                        clearClass.ClearAllFields(bi.fldGrpUnine, false);
+                        clearClass.ClearAllFields(bi.fldGrpblood, true);
+                    } else if (position == 1) {
+                        clearClass.ClearAllFields(bi.fldGrpUnine, true);
+                        clearClass.ClearAllFields(bi.fldGrpblood, true);
+                    } else if (position == 3) {
+                        clearClass.ClearAllFields(bi.fldGrpUnine, true);
+                        clearClass.ClearAllFields(bi.fldGrpblood, false);
+                    } else if (position == 4) {
+                        //clearClass.ClearAllFields(bi.fldGrpbloodyes, false);
+                        bi.ne104a.setEnabled(false);
+                        bi.ne104b.setEnabled(false);
+                        bi.ne104.clearCheck();
+                        bi.ne105.setEnabled(false);
+                        bi.ne105.setText(null);
+                        bi.btnScanBL.setEnabled(false);
+                        clearClass.ClearAllFields(bi.fldGrpbloodno, false);
+                        clearClass.ClearAllFields(bi.fldGrphb, true);
+                        clearClass.ClearAllFields(bi.fldGrpUnine, false);
+
+                    }
                 }
             }
 
@@ -138,6 +170,40 @@ public class SectionE1Activity extends AppCompatActivity {
             }
         });
 
+        bi.ne104.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if (bi.ne104a.isChecked()) {
+                    clearClass.ClearAllFields(bi.fldGrpbloodyes, true);
+                    clearClass.ClearAllFields(bi.fldGrpbloodno, false);
+                    bi.btnScanBL.setEnabled(true);
+                } else {
+                    clearClass.ClearAllFields(bi.fldGrpbloodyes, false);
+                    bi.btnScanBL.setEnabled(false);
+                    clearClass.ClearAllFields(bi.fldGrpbloodno, true);
+                }
+            }
+        });
+
+        bi.ne108.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if (bi.ne104a.isChecked()) {
+                    clearClass.ClearAllFields(bi.fldGrpurineyes, true);
+                    clearClass.ClearAllFields(bi.fldGrpurinno, false);
+                    bi.btnScanUR.setEnabled(true);
+                } else {
+                    clearClass.ClearAllFields(bi.fldGrpurineyes, false);
+                    clearClass.ClearAllFields(bi.fldGrpurinno, true);
+                    bi.btnScanUR.setEnabled(false);
+                }
+            }
+        });
+
+
+
+
+
     }
 
     public void familyMembersSetting(List<FamilyMembersContract> family) {
@@ -157,6 +223,8 @@ public class SectionE1Activity extends AppCompatActivity {
     public void BtnScanBL() {
         //binding.hcCode.setText(null);
 
+        isBl = true;
+        isUr = false;
         IntentIntegrator integrator = new IntentIntegrator(this);
         integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
         integrator.setPrompt("Scan the QR code of Machine");
@@ -172,6 +240,8 @@ public class SectionE1Activity extends AppCompatActivity {
     public void BtnScanUR() {
         //binding.hcCode.setText(null);
 
+        isUr = true;
+        isBl = false;
         IntentIntegrator integrator = new IntentIntegrator(this);
         integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
         integrator.setPrompt("Scan the QR code of Machine");
@@ -194,16 +264,25 @@ public class SectionE1Activity extends AppCompatActivity {
             } else {
 
 
-                /*if (isHC) {
-                    if (result.getContents().contains("HC")) {
-                        Toast.makeText(this, "HC Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
-                        binding.hcCode.setText("§" + result.getContents().trim());
-                        binding.hcCode.setEnabled(false);
-                        binding.hcCode.setError(null);
+                if (isBl) {
+                    if (result.getContents().contains("WB")) {
+                        Toast.makeText(this, "WB Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                        bi.ne105.setText("§" + result.getContents().trim());
+                        bi.ne105.setEnabled(false);
+                        bi.ne105.setError(null);
                     } else {
-                        binding.hcCode.setError("Please Scan correct QR code");
+                        bi.ne105.setError("Please Scan correct QR code");
                     }
-                }*/
+                } else if (isUr) {
+                    if (result.getContents().contains("WU")) {
+                        Toast.makeText(this, "WU Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                        bi.ne109.setText("§" + result.getContents().trim());
+                        bi.ne109.setEnabled(false);
+                        bi.ne109.setError(null);
+                    } else {
+                        bi.ne109.setError("Please Scan correct QR code");
+                    }
+                }
 
 
             }
@@ -219,14 +298,23 @@ public class SectionE1Activity extends AppCompatActivity {
 
         //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
-            SaveDraft();
+            try {
+                SaveDraft();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             if (UpdateDB()) {
 
                 //finish();
 
-                if (group.size() > 0) {
+                if (group.size() > 1) {
 
                     group.remove(position);
+                    originalPositions.remove(position);
+                    //groupRemoved.set(position, 0);
+
+                    //group.get(position);
+
                     members.clear();
                     counter++;
                     finish();
@@ -245,7 +333,11 @@ public class SectionE1Activity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        SaveDraft();
+        try {
+            SaveDraft();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         if (UpdateDB()) {
             //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
@@ -262,11 +354,101 @@ public class SectionE1Activity extends AppCompatActivity {
 
         //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
+        if (!validatorClass.EmptySpinner(this, bi.ne103, getString(R.string.neselected))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptySpinner(this, bi.ne102, getString(R.string.ne102))) {
+            return false;
+        }
+
+        if (position == 1) {
+            if (!validatorClass.EmptyRadioButton(this, bi.ne104, bi.ne104a, getString(R.string.ne104))) {
+                return false;
+            }
+
+            if (bi.ne104a.isChecked()) {
+                if (!validatorClass.EmptyTextBox(this, bi.ne105, getString(R.string.barcode))) {
+                    return false;
+                }
+
+                if (!validatorClass.EmptyTextBox(this, bi.ne106, getString(R.string.hb_result))) {
+                    return false;
+                }
+
+            } else {
+                if (!validatorClass.EmptyRadioButton(this, bi.ne107, bi.ne107a, getString(R.string.ne107))) {
+                    return false;
+                }
+            }
+
+            if (!validatorClass.EmptyRadioButton(this, bi.ne108, bi.ne108a, getString(R.string.ne104))) {
+                return false;
+            }
+
+            if (bi.ne108a.isChecked()) {
+                if (!validatorClass.EmptyTextBox(this, bi.ne109, getString(R.string.barcode))) {
+                    return false;
+                }
+
+
+            } else {
+                if (!validatorClass.EmptyRadioButton(this, bi.ne110, bi.ne110a, getString(R.string.ne107))) {
+                    return false;
+                }
+            }
+
+        }
+
+        if (position == 2) {
+            if (!validatorClass.EmptyRadioButton(this, bi.ne104, bi.ne104a, getString(R.string.ne104))) {
+                return false;
+            }
+
+            if (bi.ne104a.isChecked()) {
+                if (!validatorClass.EmptyTextBox(this, bi.ne105, getString(R.string.barcode))) {
+                    return false;
+                }
+
+                if (!validatorClass.EmptyTextBox(this, bi.ne106, getString(R.string.hb_result))) {
+                    return false;
+                }
+
+            } else {
+                if (!validatorClass.EmptyRadioButton(this, bi.ne107, bi.ne107a, getString(R.string.ne107))) {
+                    return false;
+                }
+            }
+        }
+
+        if (position == 3) {
+            if (!validatorClass.EmptyRadioButton(this, bi.ne108, bi.ne108a, getString(R.string.ne104))) {
+                return false;
+            }
+
+            if (bi.ne108a.isChecked()) {
+                if (!validatorClass.EmptyTextBox(this, bi.ne109, getString(R.string.barcode))) {
+                    return false;
+                }
+
+
+            } else {
+                if (!validatorClass.EmptyRadioButton(this, bi.ne110, bi.ne110a, getString(R.string.ne107))) {
+                    return false;
+                }
+            }
+        }
+
+        if (position == 4) {
+            return validatorClass.EmptyTextBox(this, bi.ne106, getString(R.string.hb_result));
+
+        }
+
 
         return true;
     }
 
-    private void SaveDraft() {
+    private void SaveDraft() throws JSONException {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
         MainApp.smc = new SpecimenContract();
@@ -278,9 +460,24 @@ public class SectionE1Activity extends AppCompatActivity {
         MainApp.smc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
         MainApp.smc.setUUID(slecMem.get_UUID());
         MainApp.smc.setFMUID(slecMem.get_UID());
-        MainApp.smc.setLineNo(membersMap.get(bi.ne102.getSelectedItem().toString()).getSerialNo());
+        MainApp.smc.setLineNo(slecMem.getSerialNo());
         MainApp.smc.setClusterno(SpecimenInfoActivity.enm_no);
         MainApp.smc.setHhno(SpecimenInfoActivity.hh_no);
+
+        JSONObject sE1 = new JSONObject();
+
+        sE1.put("ne102", bi.ne102.getSelectedItem().toString());
+        sE1.put("ne103", bi.ne103.getSelectedItem().toString());
+        sE1.put("ne104", bi.ne104a.isChecked() ? "1" : bi.ne104b.isChecked() ? "2" : "0");
+        sE1.put("ne105", bi.ne105.getText().toString());
+        sE1.put("ne106", bi.ne106.getText().toString());
+        sE1.put("ne107", bi.ne107a.isChecked() ? "1" : bi.ne107b.isChecked() ? "2" : "0");
+        sE1.put("ne108", bi.ne108a.isChecked() ? "1" : bi.ne108b.isChecked() ? "2" : "0");
+        sE1.put("ne109", bi.ne109.getText().toString());
+        sE1.put("ne110", bi.ne110a.isChecked() ? "1" : bi.ne110b.isChecked() ? "2" : "0");
+
+
+        MainApp.smc.setsE1(String.valueOf(sE1));
 
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();

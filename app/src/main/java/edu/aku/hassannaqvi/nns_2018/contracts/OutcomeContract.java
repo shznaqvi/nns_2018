@@ -197,6 +197,7 @@ public class OutcomeContract {
         this.MUID = cursor.getString(cursor.getColumnIndex(outcomeTable.COLUMN_MUID));
 
         this.sB1A = cursor.getString(cursor.getColumnIndex(outcomeTable.COLUMN_SB1A));
+        this.b1aPregSNo = cursor.getString(cursor.getColumnIndex(outcomeTable.COLUMN_B1APregSNO));
 
         if (type == 0) {
             this.formDate = cursor.getString(cursor.getColumnIndex(outcomeTable.COLUMN_FORMDATE));
@@ -204,7 +205,6 @@ public class OutcomeContract {
             this.devicetagID = cursor.getString(cursor.getColumnIndex(outcomeTable.COLUMN_DEVICETAGID));
             this.user = cursor.getString(cursor.getColumnIndex(outcomeTable.COLUMN_USER));
             this.app_ver = cursor.getString(cursor.getColumnIndex(outcomeTable.COLUMN_APP_VER));
-            this.b1aPregSNo = cursor.getString(cursor.getColumnIndex(outcomeTable.COLUMN_B1APregSNO));
             this.synced = cursor.getString(cursor.getColumnIndex(outcomeTable.COLUMN_SYNCED));
             this.syncedDate = cursor.getString(cursor.getColumnIndex(outcomeTable.COLUMN_SYNCEDDATE));
         }
