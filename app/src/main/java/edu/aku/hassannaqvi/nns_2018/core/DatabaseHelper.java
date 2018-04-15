@@ -2384,7 +2384,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 DeceasedContract.DeceasedTable.COLUMN_SH8
         };
         String whereClause = DeceasedContract.DeceasedTable.COLUMN__UUID + " =?";
-        String[] whereArgs = {MainApp.fc.getUID()};
+        String[] whereArgs = {uuid};
         String groupBy = null;
         String having = null;
 
@@ -3102,7 +3102,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 outcomeTable.COLUMN_UUID,
                 outcomeTable.COLUMN_MUID,
                 outcomeTable.COLUMN_FM_UID,
-                outcomeTable.COLUMN_SB1A
+                outcomeTable.COLUMN_SB1A,
+                outcomeTable.COLUMN_B1APregSNO,
         };
 
         String whereClause = outcomeTable.COLUMN_UUID + "=? AND " + outcomeTable.COLUMN_MUID + "=?";
