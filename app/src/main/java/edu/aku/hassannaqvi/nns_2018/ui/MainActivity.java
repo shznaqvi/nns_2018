@@ -18,6 +18,8 @@ import android.os.StrictMode;
 import android.provider.Settings;
 import android.text.InputType;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -83,6 +85,20 @@ public class MainActivity extends MenuActivity {
     private Boolean exit = false;
     private String rSumText = "";
     static String ftype = "";
+
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem dbManager = menu.findItem(R.id.menu_openDB);
+
+        if (MainApp.admin) {
+            dbManager.setVisible(true);
+        } else {
+            dbManager.setVisible(false);
+        }
+
+        return true;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

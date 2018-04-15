@@ -22,6 +22,8 @@ import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.text.method.PasswordTransformationMethod;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
@@ -118,6 +120,18 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
     private int clicks;
 
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
+
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem dbManager = menu.findItem(R.id.menu_openDB);
+        MenuItem editform = menu.findItem(R.id.menu_viewMember);
+
+        dbManager.setVisible(false);
+        editform.setVisible(false);
+
+        return true;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
