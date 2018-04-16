@@ -4,12 +4,11 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-
-import org.json.JSONException;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -26,15 +25,22 @@ public class SectionE2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_section_e2);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_e2);
-
         this.setTitle(getResources().getString(R.string.ne2heading));
-
         bi.setCallback(this);
+
+        bi.ne201a.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+
+                }
+            }
+        });
 
 
     }
 
-    public void BtnScan() {
+    public void BtnScanMirco() {
         //binding.hcCode.setText(null);
 
         IntentIntegrator integrator = new IntentIntegrator(this);
@@ -48,6 +54,83 @@ public class SectionE2Activity extends AppCompatActivity {
         integrator.initiateScan();
 
     }
+
+    public void BtnScanNitric() {
+        //binding.hcCode.setText(null);
+
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+        integrator.setPrompt("Scan the QR code of Machine");
+        integrator.setCameraId(0);  // Use a specific camera of the device
+        integrator.setBeepEnabled(false);
+        integrator.setBarcodeImageEnabled(true);
+        integrator.setOrientationLocked(false);
+
+        integrator.initiateScan();
+
+    }
+
+    public void BtnScanBoric() {
+        //binding.hcCode.setText(null);
+
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+        integrator.setPrompt("Scan the QR code of Machine");
+        integrator.setCameraId(0);  // Use a specific camera of the device
+        integrator.setBeepEnabled(false);
+        integrator.setBarcodeImageEnabled(true);
+        integrator.setOrientationLocked(false);
+
+        integrator.initiateScan();
+
+    }
+
+    public void BtnScanPlain() {
+        //binding.hcCode.setText(null);
+
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+        integrator.setPrompt("Scan the QR code of Machine");
+        integrator.setCameraId(0);  // Use a specific camera of the device
+        integrator.setBeepEnabled(false);
+        integrator.setBarcodeImageEnabled(true);
+        integrator.setOrientationLocked(false);
+
+        integrator.initiateScan();
+
+    }
+
+    public void BtnScanQC() {
+        //binding.hcCode.setText(null);
+
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+        integrator.setPrompt("Scan the QR code of Machine");
+        integrator.setCameraId(0);  // Use a specific camera of the device
+        integrator.setBeepEnabled(false);
+        integrator.setBarcodeImageEnabled(true);
+        integrator.setOrientationLocked(false);
+
+        integrator.initiateScan();
+
+    }
+
+    public void BtnScanField() {
+        //binding.hcCode.setText(null);
+
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+        integrator.setPrompt("Scan the QR code of Machine");
+        integrator.setCameraId(0);  // Use a specific camera of the device
+        integrator.setBeepEnabled(false);
+        integrator.setBarcodeImageEnabled(true);
+        integrator.setOrientationLocked(false);
+
+        integrator.initiateScan();
+
+    }
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -141,6 +224,7 @@ public class SectionE2Activity extends AppCompatActivity {
 
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
+
 
     }
 
