@@ -353,8 +353,8 @@ public class SectionA8AActivity extends AppCompatActivity {
         sA8a.put("cluster_no", MainApp.fc.getClusterNo());
         sA8a.put("hhno", MainApp.fc.getHhNo());
 
-
         sA8a.put("nh7a02", bi.nh7a02.getSelectedItem().toString());
+        sA8a.put("lineno", recpmap.get(bi.nh7a02.getSelectedItem().toString()).getSerialNo());
 
         sA8a.put("nh7a05y", bi.nh7a03y.getText().toString());
 
