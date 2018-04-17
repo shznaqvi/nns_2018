@@ -2,14 +2,12 @@ package edu.aku.hassannaqvi.nns_2018.WifiDirect;
 
 import android.app.Fragment;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.net.wifi.WpsInfo;
 import android.net.wifi.p2p.WifiP2pConfig;
 import android.net.wifi.p2p.WifiP2pDevice;
 import android.net.wifi.p2p.WifiP2pInfo;
 import android.net.wifi.p2p.WifiP2pManager.ConnectionInfoListener;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,19 +18,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.net.ServerSocket;
-import java.net.Socket;
 
+import edu.aku.hassannaqvi.nns_2018.DataTransfers.transferAnthro;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.WifiDirect.DeviceListFragment.DeviceActionListener;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
+import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 
 /**
  * A fragment that manages a particular peer and allows interaction with device
@@ -118,17 +113,76 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
         mContentView.findViewById(R.id.btn_send_msg).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent serviceIntent = new Intent(getActivity(), DataTransferService.class);
-                serviceIntent.setAction(DataTransferService.ACTION_SEND_DATA);
-                serviceIntent.putExtra(Intent.EXTRA_TEXT, String.valueOf(db.getAnthroFamilyMembers()));
-                serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_ADDRESS,
-                        info.groupOwnerAddress.getHostAddress());
-                serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_PORT, 8988);
-                getActivity().startService(serviceIntent);
+                if (MainApp.fc != null) {
+                    JSONArray fmAnthro = db.getAnthroFamilyMembers();
+                    if (fmAnthro != null && fmAnthro.length() > 0) {
+                        Intent serviceIntent = new Intent(getActivity(), DataTransferService.class);
+                        serviceIntent.setAction(DataTransferService.ACTION_SEND_DATA);
+                        serviceIntent.putExtra("Type", "Anthro");
+                        serviceIntent.putExtra(Intent.EXTRA_TEXT, String.valueOf(db.getAnthroFamilyMembers()));
+                        serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_ADDRESS,
+                                info.groupOwnerAddress.getHostAddress());
+                        serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_PORT, 8988);
+                        getActivity().startService(serviceIntent);
+                    } else {
+                        Toast.makeText(getActivity(), "No family members eligible for Anthropometry in this household", Toast.LENGTH_SHORT).show();
+
+                    }
+
+                } else {
+                    Toast.makeText(getActivity(), "No family member data exists", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        mContentView.findViewById(R.id.btn_send_cluster_data).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Forms Contract
+                JSONArray fc = db.getFormsByCluster(getActivity().findViewById(R.id.msgBox).toString());
+                if (fc != null && fc.length() > 0) {
+                    Intent serviceIntent = new Intent(getActivity(), DataTransferService.class);
+                    serviceIntent.setAction(DataTransferService.ACTION_SEND_DATA);
+                    serviceIntent.putExtra(Intent.EXTRA_TEXT, String.valueOf(db.getAnthroFamilyMembers()));
+                    serviceIntent.putExtra(Intent.EXTRA_TEXT, String.valueOf(db.getAnthroFamilyMembers()));
+                    serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_ADDRESS,
+                            info.groupOwnerAddress.getHostAddress());
+                    serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_PORT, 8988);
+                    getActivity().startService(serviceIntent);
+                } else {
+                    Toast.makeText(getActivity(), "No Forms to send", Toast.LENGTH_SHORT).show();
+
+                }
+
+                // WRA
+                JSONArray wc = db.getWRAsByUUID(getActivity().findViewById(R.id.msgBox).toString());
+                if (wc != null && wc.length() > 0) {
+                    Intent serviceIntent = new Intent(getActivity(), DataTransferService.class);
+                    serviceIntent.setAction(DataTransferService.ACTION_SEND_DATA);
+                    serviceIntent.putExtra("Type", "Forms");
+                    serviceIntent.putExtra(Intent.EXTRA_TEXT, String.valueOf(db.getAnthroFamilyMembers()));
+                    serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_ADDRESS,
+                            info.groupOwnerAddress.getHostAddress());
+                    serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_PORT, 8988);
+                    getActivity().startService(serviceIntent);
+                } else {
+                    Toast.makeText(getActivity(), "No Forms to send", Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
 
         return mContentView;
+    }
+
+    public void sendAnthro(View v) {
+        Intent serviceIntent = new Intent(getActivity(), DataTransferService.class);
+        serviceIntent.setAction(DataTransferService.ACTION_SEND_DATA);
+        serviceIntent.putExtra(Intent.EXTRA_TEXT, String.valueOf(db.getAnthroFamilyMembers()));
+        serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_ADDRESS,
+                info.groupOwnerAddress.getHostAddress());
+        serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_PORT, 8988);
+        getActivity().startService(serviceIntent);
     }
 
     @Override
@@ -153,7 +207,7 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
         // server. The file server is single threaded, single connection server
         // socket.
         if (info.groupFormed && info.isGroupOwner) {
-            new FileServerAsyncTask(getActivity(), mContentView.findViewById(R.id.status_text))
+            new transferAnthro(getActivity(), mContentView.findViewById(R.id.status_text))
                     .execute();
         } else if (info.groupFormed) {
             // The other device acts as the client. In this case, we enable the
@@ -205,15 +259,15 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
      * A simple server socket that accepts connection and writes some data on
      * the stream.
      */
-    public static class FileServerAsyncTask extends AsyncTask<Void, Void, String> {
+   /* public static class FileServerAsyncTask extends AsyncTask<Void, Void, String> {
 
         private Context context;
         private TextView statusText;
 
-        /**
+        *//**
          * @param context
          * @param statusText
-         */
+     *//*
         public FileServerAsyncTask(Context context, View statusText) {
             this.context = context;
             this.statusText = (TextView) statusText;
@@ -230,7 +284,7 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
                 Log.d(WiFiDirectActivity.TAG, "Server: Socket opened");
                 Socket client = serverSocket.accept();
                 Log.d(WiFiDirectActivity.TAG, "Server: connection done");
-                /*final File f = new File(Environment.getExternalStorageDirectory() + "/"
+                *//*final File f = new File(Environment.getExternalStorageDirectory() + "/"
                         + context.getPackageName() + "/wifip2pshared-" + System.currentTimeMillis()
                         + ".jpg");
 
@@ -238,7 +292,7 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
                 if (!dirs.exists())
                     dirs.mkdirs();
                 f.createNewFile();
-*/
+*//*
                 //Log.d(WiFiDirectActivity.TAG, "server: copying files " + f.toString());
                 InputStream inputstream = client.getInputStream();
                 //copyFile(inputstream, new FileOutputStream(f));
@@ -261,10 +315,10 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
             }
         }
 
-        /*
+        *//*
          * (non-Javadoc)
          * @see android.os.AsyncTask#onPostExecute(java.lang.Object)
-         */
+     *//*
         @Override
         protected void onPostExecute(String result) {
             if (result != null) {
@@ -286,15 +340,15 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
 
         }
 
-        /*
+        *//*
          * (non-Javadoc)
          * @see android.os.AsyncTask#onPreExecute()
-         */
+     *//*
         @Override
         protected void onPreExecute() {
             statusText.setText("Opening a server socket");
         }
 
-    }
+    }*/
 
 }

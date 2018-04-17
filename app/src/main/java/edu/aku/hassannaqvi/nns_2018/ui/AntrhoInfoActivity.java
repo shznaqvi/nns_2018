@@ -317,12 +317,10 @@ public class AntrhoInfoActivity extends Activity {
                             if ((Integer.valueOf(json.getAge()) >= 15 && Integer.valueOf(json.getAge()) < 50) && json.getGender().equals("2")) {
                                 MainApp.mwra.add(fm);
                                 MainApp.all_members.add(fm);
-                            }
-                            if ((Integer.valueOf(json.getAge()) >= 10 && (Integer.valueOf(json.getAge()) < 20)) && json.getMaritalStatus().equals("5")) {
+                            } else if ((Integer.valueOf(json.getAge()) >= 10 && (Integer.valueOf(json.getAge()) < 20)) && json.getMaritalStatus().equals("5")) {
                                 MainApp.adolescents.add(fm);
                                 MainApp.all_members.add(fm);
-                            }
-                            if (Integer.valueOf(json.getAge()) < 6) {
+                            } else if (Integer.valueOf(json.getAge()) < 6) {
                                 MainApp.childUnder5.add(fm);
                                 MainApp.all_members.add(fm);
                             }

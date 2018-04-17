@@ -52,30 +52,6 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
     Boolean flag = false;
     FamilyMembersContract family;
     Calendar dob = Calendar.getInstance();
-    //Calendar calDob = Calendar.getInstance();
-    @BindViews({R.id.nh2doby, R.id.nh2dobm, R.id.nh2dobd})
-    List<EditText> grpdob;
-    private Timer timer = new Timer();
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_a2);
-
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_section_a2);
-        ButterKnife.bind(this);
-        binding.setCallback(this);
-        setupViews();
-        skipPattern();
-        //setHeading();
-        this.setTitle(getResources().getString(R.string.na2subHeading));
-
-//        Validation Boolean
-        MainApp.validateFlag = false;
-
-    }
-
-
     public TextWatcher age = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -84,8 +60,19 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
+            binding.nh2agey.setText(null);
 
-            if (!binding.nh2dobd.getText().toString().isEmpty() && !binding.nh2dobm.getText().toString().isEmpty() && !binding.nh2doby.getText().toString().isEmpty()) {
+            if (
+                    !binding.nh2dobd.getText().toString().isEmpty()
+                            && !binding.nh2dobm.getText().toString().isEmpty()
+                            && !binding.nh2doby.getText().toString().isEmpty()
+                            && (Integer.valueOf(binding.nh2dobd.getText().toString()) <= 31 || Integer.valueOf(binding.nh2dobd.getText().toString()) == 98)
+                            && (Integer.valueOf(binding.nh2dobm.getText().toString()) <= 12 || Integer.valueOf(binding.nh2dobm.getText().toString()) == 98)
+                            && ((Integer.valueOf(binding.nh2doby.getText().toString()) > 1900 && Integer.valueOf(binding.nh2doby.getText().toString()) <= Calendar.getInstance().get(Calendar.YEAR)) || Integer.valueOf(binding.nh2doby.getText().toString()) == 9998)
+
+
+
+                    ) {
 
                 if (!binding.nh2dobd.getText().toString().equals("98") && !binding.nh2dobm.getText().toString().equals("98")
                         && !binding.nh2doby.getText().toString().equals("9998")) {
@@ -125,6 +112,28 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
         }
 
     };
+    //Calendar calDob = Calendar.getInstance();
+    @BindViews({R.id.nh2doby, R.id.nh2dobm, R.id.nh2dobd})
+    List<EditText> grpdob;
+    private Timer timer = new Timer();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //setContentView(R.layout.activity_a2);
+
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_section_a2);
+        ButterKnife.bind(this);
+        binding.setCallback(this);
+        setupViews();
+        skipPattern();
+        //setHeading();
+        this.setTitle(getResources().getString(R.string.na2subHeading));
+
+//        Validation Boolean
+        MainApp.validateFlag = false;
+
+    }
 
     public void skipPattern() {
 

@@ -112,6 +112,8 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
     };
 
     public void BtnContinue() {
+//        Validation Boolean
+        MainApp.validateFlag = true;
 
         //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
@@ -282,9 +284,6 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
         }
 
         db = new DatabaseHelper(this);
-
-//        Validation Boolean
-        MainApp.validateFlag = true;
 
         if (SectionA1Activity.editFormFlag) {
             AutoPopulateFields();

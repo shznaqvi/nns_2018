@@ -458,6 +458,7 @@ public class SectionB6Activity extends Menu2Activity {
         //sB6.put("MUID", MainApp.mc.get_UID());
 
         sB6.put("serial", String.valueOf(MainApp.nuCount));
+        sB6.put("mserial", MainApp.mc.getB1SerialNo());
         //       nw501
         sB6.put("nw501a", bi.nw501a.isChecked() ? "1"
                 : "2");
