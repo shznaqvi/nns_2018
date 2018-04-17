@@ -1,5 +1,7 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -57,6 +59,8 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
     private Timer timer = new Timer();
 
     JSONH8ModelClass jsonH8;
+
+    Boolean dataFlag = true;
 
     public TextWatcher age = new TextWatcher() {
         @Override
@@ -301,6 +305,8 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
 
             if (jsonH8.getSerial().equals(String.valueOf(counter))) {
 
+                dataFlag = false;
+
                 MainApp.dc = deceasedContract;
 
                 bi.nh804.setVisibility(View.GONE);
@@ -347,7 +353,43 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
 
                 bi.nh8Flag.setVisibility(View.VISIBLE);
 
+                break;
             }
+        }
+
+        if (dataFlag) {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                    SectionH8Activity.this);
+            alertDialogBuilder.setCancelable(false);
+            alertDialogBuilder
+                    .setMessage("In previous you didn't saved No" + counter + " Deceased.\n" +
+                            "Do you want to continue it?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog,
+                                                    int id) {
+
+                                    if (counter == SectionA5Activity.deceasedCounter) {
+
+                                        counter = 1;
+
+                                        startActivity(new Intent(getApplicationContext(), ViewMemberActivity.class)
+                                                .putExtra("flagEdit", false)
+                                                .putExtra("comingBack", true)
+                                                .putExtra("cluster", MainApp.fc.getClusterNo())
+                                                .putExtra("hhno", MainApp.fc.getHhNo())
+                                        );
+
+                                    } else {
+                                        counter++;
+                                        startActivity(new Intent(getApplicationContext(), SectionH8Activity.class));
+                                    }
+
+                                }
+                            });
+            AlertDialog alert = alertDialogBuilder.create();
+            alert.show();
         }
 
     }

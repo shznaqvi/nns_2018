@@ -659,7 +659,7 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
                     return false;
                 }
             } else {
-                if (!validatorClass.RangeTextBox(this, binding.nh702, 1, MainApp.membersCount.getCount(), getString(R.string.nh702), "Recipient no")) {
+                if (!validatorClass.RangeTextBox(this, binding.nh702, 1, MainApp.membersCount.getCount(), getString(R.string.nh702), " Recipient no")) {
                     return false;
                 }
             }
@@ -680,6 +680,8 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
                     Toast.makeText(this, "Can't increase Deceased!", Toast.LENGTH_SHORT).show();
                     return false;
                 }
+            } else {
+                return validatorClass.RangeTextBox(this, binding.nh802, 1, 99, getString(R.string.nh802), " Deceased");
             }
         }
 

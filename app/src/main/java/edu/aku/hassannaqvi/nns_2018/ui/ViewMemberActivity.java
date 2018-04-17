@@ -641,6 +641,7 @@ public class ViewMemberActivity extends MenuActivity {
     @Override
     public void onBackPressed() {
         if (MainApp.all_members_1.size() > 0) {
+            binding.btnEnd.setVisibility(View.VISIBLE);
             Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
         } else {
             super.onBackPressed();

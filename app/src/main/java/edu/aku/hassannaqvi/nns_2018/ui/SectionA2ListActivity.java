@@ -255,6 +255,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
         if (SectionA1Activity.editFormFlag) {
 
+            binding.btnEnd.setVisibility(View.VISIBLE);
 
             MainApp.editfathersList = new ArrayList<>();
             MainApp.editfathersSerials = new ArrayList<>();

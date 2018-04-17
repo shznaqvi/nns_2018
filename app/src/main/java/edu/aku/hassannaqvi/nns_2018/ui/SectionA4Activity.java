@@ -305,9 +305,17 @@ public class SectionA4Activity extends Menu2Activity implements RadioGroup.OnChe
             }
 
 
-            if (!jsonA4.getnh304().equals("0")) {
+            /*if (!jsonA4.getnh304().equals("0")) {
                 binding.nh30499.setChecked(false);
                 binding.nh30498.setChecked(false);
+                binding.nh304.setText(jsonA4.getnh304());
+            }*/
+
+            if (jsonA4.getnh304().equals("000")) {
+                binding.nh30499.setChecked(true);
+            } else if (jsonA4.getnh304().equals("998")) {
+                binding.nh30498.setChecked(true);
+            } else {
                 binding.nh304.setText(jsonA4.getnh304());
             }
 
