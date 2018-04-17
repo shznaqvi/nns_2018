@@ -168,7 +168,11 @@ public class MainActivity extends MenuActivity {
         DatabaseHelper db = new DatabaseHelper(this);
 
 
-        mainBinding.adminsec.setVisibility(View.VISIBLE);
+        if (MainApp.admin) {
+            mainBinding.adminsec.setVisibility(View.VISIBLE);
+        } else {
+            mainBinding.adminsec.setVisibility(View.GONE);
+        }
 
         Collection<FormsContract> todaysForms = db.getTodayForms();
         Collection<FormsContract> unsyncedForms = db.getUnsyncedForms();
