@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -37,6 +38,7 @@ import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionE1Activity extends AppCompatActivity {
 
+    private static final String TAG = SectionE1Activity.class.getSimpleName();
     static List<String> members;
     static Map<String, FamilyMembersContract> membersMap;
     static String name;
@@ -266,23 +268,51 @@ public class SectionE1Activity extends AppCompatActivity {
             } else {
 
 
-                if (isBl) {
-                    if (result.getContents().contains("WB")) {
-                        Toast.makeText(this, "WB Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
-                        bi.ne105.setText("§" + result.getContents().trim());
-                        bi.ne105.setEnabled(false);
-                        bi.ne105.setError(null);
-                    } else {
-                        bi.ne105.setError("Please Scan correct QR code");
+                if (position == 1) {
+                    if (isBl) {
+                        if (result.getContents().contains("WB")) {
+                            Toast.makeText(this, "WB Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                            bi.ne105.setText("§" + result.getContents().trim());
+                            bi.ne105.setEnabled(false);
+                            bi.ne105.setError(null);
+                        } else {
+                            bi.ne105.setError("Please Scan correct QR code");
+                        }
+                    } else if (isUr) {
+                        if (result.getContents().contains("WU")) {
+                            Toast.makeText(this, "WU Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                            bi.ne109.setText("§" + result.getContents().trim());
+                            bi.ne109.setEnabled(false);
+                            bi.ne109.setError(null);
+                        } else {
+                            bi.ne109.setError("Please Scan correct QR code");
+                        }
                     }
-                } else if (isUr) {
-                    if (result.getContents().contains("WU")) {
-                        Toast.makeText(this, "WU Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
-                        bi.ne109.setText("§" + result.getContents().trim());
-                        bi.ne109.setEnabled(false);
-                        bi.ne109.setError(null);
-                    } else {
-                        bi.ne109.setError("Please Scan correct QR code");
+                }
+
+                if (position == 2) {
+                    if (isBl) {
+                        if (result.getContents().contains("CB")) {
+                            Toast.makeText(this, "CB Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                            bi.ne105.setText("§" + result.getContents().trim());
+                            bi.ne105.setEnabled(false);
+                            bi.ne105.setError(null);
+                        } else {
+                            bi.ne105.setError("Please Scan correct QR code");
+                        }
+                    }
+                }
+
+                if (position == 3) {
+                    if (isUr) {
+                        if (result.getContents().contains("CU")) {
+                            Toast.makeText(this, "CU Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                            bi.ne109.setText("§" + result.getContents().trim());
+                            bi.ne109.setEnabled(false);
+                            bi.ne109.setError(null);
+                        } else {
+                            bi.ne109.setError("Please Scan correct QR code");
+                        }
                     }
                 }
 
@@ -355,6 +385,7 @@ public class SectionE1Activity extends AppCompatActivity {
     private boolean formValidation() {
 
         //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
+        int scanChar;
 
         if (!validatorClass.EmptySpinner(this, bi.ne103, getString(R.string.neselected))) {
             return false;
@@ -373,6 +404,25 @@ public class SectionE1Activity extends AppCompatActivity {
                 if (!validatorClass.EmptyTextBox(this, bi.ne105, getString(R.string.barcode))) {
                     return false;
                 }
+
+
+                if (bi.ne105.getText().toString().contains("§")) {
+                    scanChar = 19;
+                } else {
+                    scanChar = 18;
+                }
+
+                if (bi.ne105.getText().length() != scanChar || !bi.ne105.getText().toString().contains("-")
+                        || !bi.ne105.getText().toString().contains("WB")) {
+                    Toast.makeText(this, "ERROR(invalid)" + getString(R.string.barcode), Toast.LENGTH_SHORT).show();
+                    bi.ne105.setError("Invalid Number..");
+
+                    Log.i(TAG, "bloodcode: Invalid number");
+                    return false;
+                } else {
+                    bi.ne105.setError(null);
+                }
+
 
                 if (!validatorClass.EmptyTextBox(this, bi.ne106, getString(R.string.hb_result))) {
                     return false;
@@ -393,6 +443,23 @@ public class SectionE1Activity extends AppCompatActivity {
                     return false;
                 }
 
+                if (bi.ne109.getText().toString().contains("§")) {
+                    scanChar = 19;
+                } else {
+                    scanChar = 18;
+                }
+
+                if (bi.ne109.getText().length() != scanChar || !bi.ne109.getText().toString().contains("-")
+                        || !bi.ne109.getText().toString().contains("WU")) {
+                    Toast.makeText(this, "ERROR(invalid)" + getString(R.string.barcode), Toast.LENGTH_SHORT).show();
+                    bi.ne109.setError("Invalid Number..");
+
+                    Log.i(TAG, "urinecode: Invalid number");
+                    return false;
+                } else {
+                    bi.ne109.setError(null);
+                }
+
 
             } else {
                 if (!validatorClass.EmptyRadioButton(this, bi.ne110, bi.ne110a, getString(R.string.ne107))) {
@@ -411,6 +478,24 @@ public class SectionE1Activity extends AppCompatActivity {
                 if (!validatorClass.EmptyTextBox(this, bi.ne105, getString(R.string.barcode))) {
                     return false;
                 }
+
+                if (bi.ne105.getText().toString().contains("§")) {
+                    scanChar = 19;
+                } else {
+                    scanChar = 18;
+                }
+
+                if (bi.ne105.getText().length() != scanChar || !bi.ne105.getText().toString().contains("-")
+                        || !bi.ne105.getText().toString().contains("CB")) {
+                    Toast.makeText(this, "ERROR(invalid)" + getString(R.string.barcode), Toast.LENGTH_SHORT).show();
+                    bi.ne105.setError("Invalid Number..");
+
+                    Log.i(TAG, "cbCode: Invalid number");
+                    return false;
+                } else {
+                    bi.ne105.setError(null);
+                }
+
 
                 if (!validatorClass.EmptyTextBox(this, bi.ne106, getString(R.string.hb_result))) {
                     return false;
@@ -433,6 +518,22 @@ public class SectionE1Activity extends AppCompatActivity {
                     return false;
                 }
 
+                if (bi.ne109.getText().toString().contains("§")) {
+                    scanChar = 19;
+                } else {
+                    scanChar = 18;
+                }
+
+                if (bi.ne109.getText().length() != scanChar || !bi.ne109.getText().toString().contains("-")
+                        || !bi.ne109.getText().toString().contains("CU")) {
+                    Toast.makeText(this, "ERROR(invalid)" + getString(R.string.barcode), Toast.LENGTH_SHORT).show();
+                    bi.ne109.setError("Invalid Number..");
+
+                    Log.i(TAG, "urinecode: Invalid number");
+                    return false;
+                } else {
+                    bi.ne109.setError(null);
+                }
 
             } else {
                 if (!validatorClass.EmptyRadioButton(this, bi.ne110, bi.ne110a, getString(R.string.ne107))) {

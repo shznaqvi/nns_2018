@@ -146,7 +146,11 @@ public class SpecimenInfoActivity extends AppCompatActivity {
                 //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
                 finish();
 
-                startActivity(new Intent(this, SectionE1Activity.class));
+                if (MainActivity.ftype.equals("B")) {
+                    startActivity(new Intent(this, SectionE1Activity.class));
+                } else if (MainActivity.ftype.equals("W")) {
+                    startActivity(new Intent(this, SectionE2Activity.class));
+                }
 
 
             } else {
