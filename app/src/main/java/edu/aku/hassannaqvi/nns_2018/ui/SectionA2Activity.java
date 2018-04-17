@@ -68,7 +68,8 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                             && !binding.nh2doby.getText().toString().isEmpty()
                             && (Integer.valueOf(binding.nh2dobd.getText().toString()) <= 31 || Integer.valueOf(binding.nh2dobd.getText().toString()) == 98)
                             && (Integer.valueOf(binding.nh2dobm.getText().toString()) <= 12 || Integer.valueOf(binding.nh2dobm.getText().toString()) == 98)
-                            && (Integer.valueOf(binding.nh2doby.getText().toString()) > 1900 && Integer.valueOf(binding.nh2doby.getText().toString()) <= Calendar.getInstance().get(Calendar.YEAR))
+                            && ((Integer.valueOf(binding.nh2doby.getText().toString()) > 1900 && Integer.valueOf(binding.nh2doby.getText().toString()) <= Calendar.getInstance().get(Calendar.YEAR)) || Integer.valueOf(binding.nh2doby.getText().toString()) == 9998)
+
 
 
                     ) {
