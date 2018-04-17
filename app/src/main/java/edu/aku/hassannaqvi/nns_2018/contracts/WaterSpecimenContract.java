@@ -9,7 +9,7 @@ import org.json.JSONObject;
 import edu.aku.hassannaqvi.nns_2018.R;
 
 /**
- * Created by javed.khan on 1/22/2018.
+ * Created by gul.sanober on 4/14/2018.
  */
 
 public class WaterSpecimenContract {
@@ -47,7 +47,6 @@ public class WaterSpecimenContract {
         this.hhno = jsonObject.getString(WaterSpecimenTable.COLUMN_HH);
         this.formDate = jsonObject.getString(WaterSpecimenTable.COLUMN_FORMDATE);
         this.user = jsonObject.getString(WaterSpecimenTable.COLUMN_USER);
-        this.lineNo = jsonObject.getString(WaterSpecimenTable.COLUMN_LINENO);
         this.sE2 = jsonObject.getString(WaterSpecimenTable.COLUMN_SE2);
         this.deviceID = jsonObject.getString(WaterSpecimenTable.COLUMN_DEVICEID);
         this.devicetagID = jsonObject.getString(WaterSpecimenTable.COLUMN_DEVICETAGID);
@@ -77,7 +76,6 @@ public class WaterSpecimenContract {
         if (type == 0) {
             this.formDate = cursor.getString(cursor.getColumnIndex(WaterSpecimenTable.COLUMN_FORMDATE));
             this.user = cursor.getString(cursor.getColumnIndex(WaterSpecimenTable.COLUMN_USER));
-            this.lineNo = cursor.getString(cursor.getColumnIndex(WaterSpecimenTable.COLUMN_LINENO));
             this.deviceID = cursor.getString(cursor.getColumnIndex(WaterSpecimenTable.COLUMN_DEVICEID));
             this.devicetagID = cursor.getString(cursor.getColumnIndex(WaterSpecimenTable.COLUMN_DEVICETAGID));
             this.synced = cursor.getString(cursor.getColumnIndex(WaterSpecimenTable.COLUMN_SYNCED));
@@ -106,7 +104,6 @@ public class WaterSpecimenContract {
 
         json.put(WaterSpecimenTable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
         json.put(WaterSpecimenTable.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
-        json.put(WaterSpecimenTable.COLUMN_LINENO, this.lineNo == null ? JSONObject.NULL : this.lineNo);
 
         if (!this.sE2.equals("")) {
             json.put(WaterSpecimenTable.COLUMN_SE2, this.sE2.equals("") ? JSONObject.NULL : new JSONObject(this.sE2));
@@ -237,28 +234,21 @@ public class WaterSpecimenContract {
         this.sE2 = sE2;
     }
 
-    public String getLineNo() {
-        return lineNo;
-    }
-
-    public void setLineNo(String lineNo) {
-        this.lineNo = lineNo;
-    }
 
 
     public static abstract class WaterSpecimenTable implements BaseColumns {
 
-        public static final String TABLE_NAME = "specimen";
+        public static final String TABLE_NAME = "water_specimen";
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
 
         public static final String COLUMN_PROJECTNAME = "projectname";
         public static final String COLUMN__ID = "_id";
         public static final String COLUMN__UID = "_uid";
         public static final String COLUMN__UUID = "_uuid";
-        public static final String COLUMN_FM_UID = "fmuid";
+        //public static final String COLUMN_FM_UID = "fmuid";
         public static final String COLUMN_FORMDATE = "formdate";
         public static final String COLUMN_USER = "user";
-        public static final String COLUMN_LINENO = "lineno";
+        //public static final String COLUMN_LINENO = "lineno";
         public static final String COLUMN_CLUSTER = "cluster";
         public static final String COLUMN_HH = "hh_no";
         public static final String COLUMN_SE2 = "se2";

@@ -146,7 +146,11 @@ public class SpecimenInfoActivity extends AppCompatActivity {
                 //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
                 finish();
 
-                startActivity(new Intent(this, SectionE1Activity.class));
+                if (MainActivity.ftype.equals("B")) {
+                    startActivity(new Intent(this, SectionE1Activity.class));
+                } else if (MainActivity.ftype.equals("W")) {
+                    startActivity(new Intent(this, SectionE2Activity.class));
+                }
 
 
             } else {
@@ -308,7 +312,7 @@ public class SpecimenInfoActivity extends AppCompatActivity {
                             MainApp.mwra.add(fm);
                             MainApp.all_members.add(fm);
                         } else if ((Integer.valueOf(json.getAge()) >= 10 && (Integer.valueOf(json.getAge()) < 20))
-                                && json.getGender().equals("2") && json.getNh210().equals("1")) {
+                                && json.getGender().equals("2") && json.getNh210().equals("1") && json.getMaritalStatus().equals("5")) {
                             fm.setType("4");
                             MainApp.adolescents.add(fm);
                             MainApp.all_members.add(fm);

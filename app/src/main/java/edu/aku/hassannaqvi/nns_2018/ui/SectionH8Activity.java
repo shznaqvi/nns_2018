@@ -112,6 +112,8 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
     };
 
     public void BtnContinue() {
+//        Validation Boolean
+        MainApp.validateFlag = true;
 
         //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
@@ -283,9 +285,6 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
 
         db = new DatabaseHelper(this);
 
-//        Validation Boolean
-        MainApp.validateFlag = true;
-
         if (SectionA1Activity.editFormFlag) {
             AutoPopulateFields();
         }
@@ -370,7 +369,7 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
             sA2.put("nh804", bi.nh804.getSelectedItem().toString());
             sA2.put("nh805", bi.nh805.getSelectedItem().toString());
 
-            sA2.put("mwraSerial", mothersSerials.get(bi.nh804.getSelectedItemPosition()));
+            sA2.put("mwraSerial", mothersMap.get(bi.nh804.getSelectedItemPosition()));
 
         } else {
             sA2.put("edit_updatedate_nh8", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));

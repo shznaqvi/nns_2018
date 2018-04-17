@@ -49,6 +49,7 @@ import edu.aku.hassannaqvi.nns_2018.contracts.UsersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.UsersContract.UsersTable;
 import edu.aku.hassannaqvi.nns_2018.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.VersionAppContract.VersionAppTable;
+import edu.aku.hassannaqvi.nns_2018.contracts.WaterSpecimenContract;
 
 
 /**
@@ -349,6 +350,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             ");";
 
 
+    final String SQL_CREATE_WATER_SPECIMEN_MEMBERS = "CREATE TABLE " + WaterSpecimenContract.WaterSpecimenTable.TABLE_NAME + " (" +
+            WaterSpecimenContract.WaterSpecimenTable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            WaterSpecimenContract.WaterSpecimenTable.COLUMN__UID + " TEXT," +
+            WaterSpecimenContract.WaterSpecimenTable.COLUMN__UUID + " TEXT," +
+            WaterSpecimenContract.WaterSpecimenTable.COLUMN_PROJECTNAME + " TEXT," +
+            WaterSpecimenContract.WaterSpecimenTable.COLUMN_FORMDATE + " TEXT," +
+            WaterSpecimenContract.WaterSpecimenTable.COLUMN_DEVICEID + " TEXT," +
+            WaterSpecimenContract.WaterSpecimenTable.COLUMN_DEVICETAGID + " TEXT," +
+            WaterSpecimenContract.WaterSpecimenTable.COLUMN_USER + " TEXT," +
+            WaterSpecimenContract.WaterSpecimenTable.COLUMN_APPVERSION + " TEXT," +
+            WaterSpecimenContract.WaterSpecimenTable.COLUMN_CLUSTER + " TEXT," +
+            WaterSpecimenContract.WaterSpecimenTable.COLUMN_HH + " TEXT," +
+            WaterSpecimenContract.WaterSpecimenTable.COLUMN_SE2 + " TEXT," +
+            WaterSpecimenContract.WaterSpecimenTable.COLUMN_SYNCED + " TEXT," +
+            WaterSpecimenContract.WaterSpecimenTable.COLUMN_SYNCED_DATE + " TEXT" +
+
+            ");";
+
+
     private final String TAG = "DatabaseHelper";
     public String spDateT = new SimpleDateFormat("dd-MM-yy").format(new Date().getTime());
 
@@ -375,7 +395,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_NUTRITION);
         db.execSQL(SQL_CREATE_DECEASED);
         db.execSQL(SQL_CREATE_SPECIMEN_MEMBERS);
-
+        db.execSQL(SQL_CREATE_WATER_SPECIMEN_MEMBERS);
     }
 
     @Override
@@ -1143,7 +1163,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(SpecimenContract.SpecimenTable.COLUMN_FM_UID, fmc.getFMUID());
         values.put(SpecimenContract.SpecimenTable.COLUMN_FORMDATE, fmc.getFormDate());
         values.put(SpecimenContract.SpecimenTable.COLUMN_USER, fmc.getUser());
-        values.put(SpecimenContract.SpecimenTable.COLUMN_LINENO, fmc.getUser());
+        values.put(SpecimenContract.SpecimenTable.COLUMN_LINENO, fmc.getLineNo());
         values.put(SpecimenContract.SpecimenTable.COLUMN_CLUSTER, fmc.getClusterno());
         values.put(SpecimenContract.SpecimenTable.COLUMN_HH, fmc.getHhno());
         values.put(SpecimenContract.SpecimenTable.COLUMN_SE1, fmc.getsE1());
@@ -1163,6 +1183,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return newRowId;
     }
 
+    public Long addWaterSpecimenForm(WaterSpecimenContract fmc) {
+
+        // Gets the data repository in write mode
+        SQLiteDatabase db = this.getWritableDatabase();
+
+// Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(WaterSpecimenContract.WaterSpecimenTable.COLUMN_PROJECTNAME, fmc.getProjectName());
+        values.put(WaterSpecimenContract.WaterSpecimenTable.COLUMN__UID, fmc.getUID());
+        values.put(WaterSpecimenContract.WaterSpecimenTable.COLUMN__UUID, fmc.getUUID());
+        //values.put(WaterSpecimenContract.WaterSpecimenTable.COLUMN_FM_UID, fmc.getFMUID());
+        values.put(WaterSpecimenContract.WaterSpecimenTable.COLUMN_FORMDATE, fmc.getFormDate());
+        values.put(WaterSpecimenContract.WaterSpecimenTable.COLUMN_USER, fmc.getUser());
+        //values.put(SpecimenContract.SpecimenTable.COLUMN_LINENO, fmc.getLineNo());
+        values.put(WaterSpecimenContract.WaterSpecimenTable.COLUMN_CLUSTER, fmc.getClusterno());
+        values.put(WaterSpecimenContract.WaterSpecimenTable.COLUMN_HH, fmc.getHhno());
+        values.put(WaterSpecimenContract.WaterSpecimenTable.COLUMN_SE2, fmc.getsE2());
+        values.put(WaterSpecimenContract.WaterSpecimenTable.COLUMN_DEVICETAGID, fmc.getDevicetagID());
+        values.put(WaterSpecimenContract.WaterSpecimenTable.COLUMN_DEVICEID, fmc.getDeviceID());
+        values.put(WaterSpecimenContract.WaterSpecimenTable.COLUMN_SYNCED, fmc.getSynced());
+        values.put(WaterSpecimenContract.WaterSpecimenTable.COLUMN_SYNCED_DATE, fmc.getSynced_date());
+        values.put(WaterSpecimenContract.WaterSpecimenTable.COLUMN_APPVERSION, fmc.getAppversion());
+
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId;
+        newRowId = db.insert(
+                WaterSpecimenContract.WaterSpecimenTable.TABLE_NAME,
+                WaterSpecimenContract.WaterSpecimenTable.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
+
 
     public int updateSpecimenMemberID() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -1176,6 +1229,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] selectionArgs = {String.valueOf(MainApp.smc.get_ID())};
 
         int count = db.update(SpecimenContract.SpecimenTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
+
+    public int updateWaterSpecimenMemberID() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(WaterSpecimenContract.WaterSpecimenTable.COLUMN__UID, MainApp.wsc.getUID());
+
+// Which row to update, based on the ID
+        String selection = WaterSpecimenContract.WaterSpecimenTable.COLUMN__ID + " = ?";
+        String[] selectionArgs = {String.valueOf(MainApp.wsc.get_ID())};
+
+        int count = db.update(WaterSpecimenContract.WaterSpecimenTable.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);
@@ -1607,6 +1678,44 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         int count = db.update(
                 MWRATable.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
+    public void updateSyncedSpecimen(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(SpecimenContract.SpecimenTable.COLUMN_SYNCED, true);
+        values.put(SpecimenContract.SpecimenTable.COLUMN_SYNCED_DATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = SpecimenContract.SpecimenTable.COLUMN__ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                SpecimenContract.SpecimenTable.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
+    public void updateSyncedWaterSpecimen(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(WaterSpecimenContract.WaterSpecimenTable.COLUMN_SYNCED, true);
+        values.put(WaterSpecimenContract.WaterSpecimenTable.COLUMN_SYNCED_DATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = WaterSpecimenContract.WaterSpecimenTable.COLUMN__ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                WaterSpecimenContract.WaterSpecimenTable.TABLE_NAME,
                 values,
                 where,
                 whereArgs);
@@ -2479,6 +2588,118 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 ChildContract fc = new ChildContract();
+                allFC.add(fc.Hydrate(c, 0));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
+    public Collection<SpecimenContract> getUnsyncedSpecimenForms() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                SpecimenContract.SpecimenTable.COLUMN__ID,
+                SpecimenContract.SpecimenTable.COLUMN__UID,
+                SpecimenContract.SpecimenTable.COLUMN__UUID,
+                SpecimenContract.SpecimenTable.COLUMN_FM_UID,
+                SpecimenContract.SpecimenTable.COLUMN_FORMDATE,
+                SpecimenContract.SpecimenTable.COLUMN_USER,
+                SpecimenContract.SpecimenTable.COLUMN_LINENO,
+                SpecimenContract.SpecimenTable.COLUMN_HH,
+                SpecimenContract.SpecimenTable.COLUMN_CLUSTER,
+                SpecimenContract.SpecimenTable.COLUMN_SE1,
+                SpecimenContract.SpecimenTable.COLUMN_DEVICEID,
+                SpecimenContract.SpecimenTable.COLUMN_DEVICETAGID,
+                SpecimenContract.SpecimenTable.COLUMN_SYNCED,
+                SpecimenContract.SpecimenTable.COLUMN_SYNCED_DATE,
+                SpecimenContract.SpecimenTable.COLUMN_APPVERSION,
+
+
+        };
+        String whereClause = SpecimenContract.SpecimenTable.COLUMN_SYNCED + " is null OR " + SpecimenContract.SpecimenTable.COLUMN_SYNCED + " = '' ";
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                SpecimenContract.SpecimenTable.COLUMN__ID + " ASC";
+
+        Collection<SpecimenContract> allFC = new ArrayList<SpecimenContract>();
+        try {
+            c = db.query(
+                    SpecimenContract.SpecimenTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                SpecimenContract fc = new SpecimenContract();
+                allFC.add(fc.Hydrate(c, 0));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
+    public Collection<WaterSpecimenContract> getUnsyncedWaterSpecimenForms() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                WaterSpecimenContract.WaterSpecimenTable.COLUMN__ID,
+                WaterSpecimenContract.WaterSpecimenTable.COLUMN__UID,
+                WaterSpecimenContract.WaterSpecimenTable.COLUMN__UUID,
+                //WaterSpecimenContract.WaterSpecimenTable.COLUMN_FM_UID,
+                WaterSpecimenContract.WaterSpecimenTable.COLUMN_FORMDATE,
+                WaterSpecimenContract.WaterSpecimenTable.COLUMN_USER,
+                //WaterSpecimenContract.WaterSpecimenTable.COLUMN_LINENO,
+                WaterSpecimenContract.WaterSpecimenTable.COLUMN_HH,
+                WaterSpecimenContract.WaterSpecimenTable.COLUMN_CLUSTER,
+                WaterSpecimenContract.WaterSpecimenTable.COLUMN_SE2,
+                WaterSpecimenContract.WaterSpecimenTable.COLUMN_DEVICEID,
+                WaterSpecimenContract.WaterSpecimenTable.COLUMN_DEVICETAGID,
+                WaterSpecimenContract.WaterSpecimenTable.COLUMN_SYNCED,
+                WaterSpecimenContract.WaterSpecimenTable.COLUMN_SYNCED_DATE,
+                WaterSpecimenContract.WaterSpecimenTable.COLUMN_APPVERSION,
+
+
+        };
+        String whereClause = WaterSpecimenContract.WaterSpecimenTable.COLUMN_SYNCED + " is null OR " + WaterSpecimenContract.WaterSpecimenTable.COLUMN_SYNCED + " = '' ";
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                WaterSpecimenContract.WaterSpecimenTable.COLUMN__ID + " ASC";
+
+        Collection<WaterSpecimenContract> allFC = new ArrayList<WaterSpecimenContract>();
+        try {
+            c = db.query(
+                    WaterSpecimenContract.WaterSpecimenTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                WaterSpecimenContract fc = new WaterSpecimenContract();
                 allFC.add(fc.Hydrate(c, 0));
             }
         } finally {

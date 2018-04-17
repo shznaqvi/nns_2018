@@ -4,6 +4,7 @@
     tools:context="edu.aku.hassannaqvi.nns_2018.MainActivity">
 
     <data>
+
         <variable
             name="callback"
             type="edu.aku.hassannaqvi.nns_2018.ui.MainActivity" />
@@ -43,9 +44,9 @@
                 android:layout_marginTop="2dp"
                 android:background="@color/dullWhile"
                 android:text="Main Menu"
-                android:visibility="gone"
                 android:textColor="@color/colorPrimary"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/testing"
@@ -123,9 +124,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:elevation="5dp"
                 android:layout_marginTop="16dp"
                 android:background="#1565C0"
+                android:elevation="5dp"
                 android:onClick="@{() -> callback.openForm()}"
                 android:text="OPEN FORM" />
 
@@ -138,8 +139,8 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="16dp"
                 android:background="#1565C0"
-                android:onClick="openB"
                 android:elevation="5dp"
+                android:onClick="openB"
                 android:text="OPEN Anthropometry Section" />
 
 
@@ -163,9 +164,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:elevation="5dp"
                 android:layout_marginTop="16dp"
                 android:background="#1565C0"
+                android:elevation="5dp"
                 android:onClick="@{() -> callback.openWater()}"
                 android:text="OPEN WATER SPECIMEN COLLECTION FORM"
                 android:visibility="visible" />
@@ -179,10 +180,9 @@
                 android:layout_marginTop="16dp"
                 android:background="#1565C0"
                 android:elevation="5dp"
-                android:visibility="gone"
                 android:onClick="@{(v) -> callback.openViewMember(true)}"
-                android:text="View Members" />
-
+                android:text="View Members"
+                android:visibility="gone" />
 
 
             <Button
@@ -205,47 +205,48 @@
                 android:text="Sync Status"
                 android:visibility="gone" />
 
+            <Button
+                android:id="@+id/syncDevice"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="16dp"
+                android:background="#1565C0"
+                android:onClick="syncDevice"
+                android:text="Download Data"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/downloadApp"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/red"
+                android:text="DOWNLOAD APP"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/updateApp"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="16dp"
+                android:background="#D60000"
+                android:onClick="updateApp"
+                android:text="Update App"
+                android:visibility="gone" />
+
             <LinearLayout
                 android:id="@+id/adminsec"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/syncDevice"
-                    style="@style/Widget.AppCompat.Button.Colored"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="16dp"
-                    android:background="#1565C0"
-                    android:onClick="syncDevice"
-                    android:text="Download Data"
-                    android:visibility="gone" />
-
-                <Button
-                    android:id="@+id/downloadApp"
-                    style="@style/Widget.AppCompat.Button.Colored"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/red"
-                    android:text="DOWNLOAD APP"
-                    android:textColor="@color/white"
-                    android:visibility="gone" />
-
-                <Button
-                    android:id="@+id/updateApp"
-                    style="@style/Widget.AppCompat.Button.Colored"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="16dp"
-                    android:background="#D60000"
-                    android:onClick="updateApp"
-                    android:text="Update App"
-                    android:visibility="gone" />
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <Button
                     android:id="@+id/openDB"
@@ -259,14 +260,14 @@
                     android:text="Open Database Manager" />
 
                 <Button
-                    style="@style/Widget.AppCompat.Button.Colored"
                     android:id="@+id/testGPS"
+                    style="@style/Widget.AppCompat.Button.Colored"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="16dp"
-                    android:onClick="testGPS"
                     android:background="#1565C0"
+                    android:onClick="testGPS"
                     android:text="Test GPS Coordinates" />
             </LinearLayout>
 
