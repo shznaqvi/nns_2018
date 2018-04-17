@@ -13,6 +13,7 @@ import com.google.zxing.integration.android.IntentResult;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionE2Binding;
+import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 
 public class SectionE2Activity extends AppCompatActivity {
 
@@ -32,10 +33,96 @@ public class SectionE2Activity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-
+                    clearClass.ClearAllFields(bi.fldGrpMicro, true);
+                    clearClass.ClearAllFields(bi.fldGrpne20301, true);
+                    bi.btnScanMicro.setEnabled(true);
+                } else {
+                    clearClass.ClearAllFields(bi.fldGrpMicro, false);
+                    clearClass.ClearAllFields(bi.fldGrpne20301, false);
+                    bi.ne20201.clearCheck();
+                    bi.btnScanMicro.setEnabled(false);
                 }
             }
         });
+
+        bi.ne201b.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    clearClass.ClearAllFields(bi.fldGrpNirtric, true);
+                    bi.btnScanNitric.setEnabled(true);
+                } else {
+                    clearClass.ClearAllFields(bi.fldGrpNirtric, false);
+                    bi.btnScanNitric.setEnabled(false);
+                }
+            }
+        });
+
+        bi.ne201c.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    clearClass.ClearAllFields(bi.fldGrpBoric, true);
+                    bi.btnScanBoric.setEnabled(true);
+                } else {
+                    clearClass.ClearAllFields(bi.fldGrpBoric, false);
+                    bi.btnScanBoric.setEnabled(false);
+                }
+            }
+        });
+
+        bi.ne201d.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    clearClass.ClearAllFields(bi.fldGrpPlain, true);
+                    bi.btnScanPlain.setEnabled(true);
+                } else {
+                    clearClass.ClearAllFields(bi.fldGrpPlain, false);
+                    bi.btnScanPlain.setEnabled(false);
+                }
+            }
+        });
+
+
+        bi.ne201e.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    clearClass.ClearAllFields(bi.fldGrpQC, true);
+                    bi.btnScanQC.setEnabled(true);
+                } else {
+                    clearClass.ClearAllFields(bi.fldGrpQC, false);
+                    bi.btnScanQC.setEnabled(false);
+                }
+            }
+        });
+
+        bi.ne201f.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    clearClass.ClearAllFields(bi.fldGrpField, true);
+                    bi.btnScanField.setEnabled(true);
+                } else {
+                    clearClass.ClearAllFields(bi.fldGrpField, false);
+                    bi.btnScanField.setEnabled(false);
+                }
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     }

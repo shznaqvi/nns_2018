@@ -268,23 +268,51 @@ public class SectionE1Activity extends AppCompatActivity {
             } else {
 
 
-                if (isBl) {
-                    if (result.getContents().contains("WB")) {
-                        Toast.makeText(this, "WB Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
-                        bi.ne105.setText("§" + result.getContents().trim());
-                        bi.ne105.setEnabled(false);
-                        bi.ne105.setError(null);
-                    } else {
-                        bi.ne105.setError("Please Scan correct QR code");
+                if (position == 1) {
+                    if (isBl) {
+                        if (result.getContents().contains("WB")) {
+                            Toast.makeText(this, "WB Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                            bi.ne105.setText("§" + result.getContents().trim());
+                            bi.ne105.setEnabled(false);
+                            bi.ne105.setError(null);
+                        } else {
+                            bi.ne105.setError("Please Scan correct QR code");
+                        }
+                    } else if (isUr) {
+                        if (result.getContents().contains("WU")) {
+                            Toast.makeText(this, "WU Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                            bi.ne109.setText("§" + result.getContents().trim());
+                            bi.ne109.setEnabled(false);
+                            bi.ne109.setError(null);
+                        } else {
+                            bi.ne109.setError("Please Scan correct QR code");
+                        }
                     }
-                } else if (isUr) {
-                    if (result.getContents().contains("WU")) {
-                        Toast.makeText(this, "WU Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
-                        bi.ne109.setText("§" + result.getContents().trim());
-                        bi.ne109.setEnabled(false);
-                        bi.ne109.setError(null);
-                    } else {
-                        bi.ne109.setError("Please Scan correct QR code");
+                }
+
+                if (position == 2) {
+                    if (isBl) {
+                        if (result.getContents().contains("CB")) {
+                            Toast.makeText(this, "CB Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                            bi.ne105.setText("§" + result.getContents().trim());
+                            bi.ne105.setEnabled(false);
+                            bi.ne105.setError(null);
+                        } else {
+                            bi.ne105.setError("Please Scan correct QR code");
+                        }
+                    }
+                }
+
+                if (position == 3) {
+                    if (isUr) {
+                        if (result.getContents().contains("CU")) {
+                            Toast.makeText(this, "CU Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                            bi.ne109.setText("§" + result.getContents().trim());
+                            bi.ne109.setEnabled(false);
+                            bi.ne109.setError(null);
+                        } else {
+                            bi.ne109.setError("Please Scan correct QR code");
+                        }
                     }
                 }
 
@@ -416,9 +444,9 @@ public class SectionE1Activity extends AppCompatActivity {
                 }
 
                 if (bi.ne109.getText().toString().contains("§")) {
-                    scanChar = 20;
-                } else {
                     scanChar = 19;
+                } else {
+                    scanChar = 18;
                 }
 
                 if (bi.ne109.getText().length() != scanChar || !bi.ne109.getText().toString().contains("-")
@@ -458,11 +486,11 @@ public class SectionE1Activity extends AppCompatActivity {
                 }
 
                 if (bi.ne105.getText().length() != scanChar || !bi.ne105.getText().toString().contains("-")
-                        || !bi.ne105.getText().toString().contains("WB")) {
+                        || !bi.ne105.getText().toString().contains("CB")) {
                     Toast.makeText(this, "ERROR(invalid)" + getString(R.string.barcode), Toast.LENGTH_SHORT).show();
                     bi.ne105.setError("Invalid Number..");
 
-                    Log.i(TAG, "htCode: Invalid number");
+                    Log.i(TAG, "cbCode: Invalid number");
                     return false;
                 } else {
                     bi.ne105.setError(null);
@@ -497,7 +525,7 @@ public class SectionE1Activity extends AppCompatActivity {
                 }
 
                 if (bi.ne109.getText().length() != scanChar || !bi.ne109.getText().toString().contains("-")
-                        || !bi.ne109.getText().toString().contains("WU")) {
+                        || !bi.ne109.getText().toString().contains("CU")) {
                     Toast.makeText(this, "ERROR(invalid)" + getString(R.string.barcode), Toast.LENGTH_SHORT).show();
                     bi.ne109.setError("Invalid Number..");
 
