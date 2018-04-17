@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.WifiDirect.DeviceListFragment.DeviceActionListener;
+import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 
 /**
  * An activity that uses WiFi Direct APIs to discover and connect with available
@@ -39,6 +40,7 @@ public class WiFiDirectActivity extends AppCompatActivity implements ChannelList
     public static final String ACTION_SEND_DATA = "edu.aku.hassannaqvi.nns_2018.WifiDirect.SEND";
     private final IntentFilter intentFilter = new IntentFilter();
     EditText txtMsg;
+    DatabaseHelper db;
     private WifiP2pManager manager;
     private boolean isWifiP2pEnabled = false;
     private boolean retryChannel = false;
@@ -52,6 +54,28 @@ public class WiFiDirectActivity extends AppCompatActivity implements ChannelList
      */
     public void setIsWifiP2pEnabled(boolean isWifiP2pEnabled) {
         this.isWifiP2pEnabled = isWifiP2pEnabled;
+    }
+
+    public void sendAnthro(View v) {
+       /* if (MainApp.fc != null) {
+            db = new DatabaseHelper(this);
+            JSONArray fmAnthro = db.getAnthroFamilyMembers();
+            if (fmAnthro != null && fmAnthro.length() > 0){
+            Intent serviceIntent = new Intent(this, DataTransferService.class);
+            serviceIntent.setAction(DataTransferService.ACTION_SEND_DATA);
+            serviceIntent.putExtra(Intent.EXTRA_TEXT, String.valueOf(db.getAnthroFamilyMembers()));
+            serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_ADDRESS,
+                    info.groupOwnerAddress.getHostAddress());
+            serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_PORT, 8988);
+            this.startService(serviceIntent);
+            } else {
+                Toast.makeText(this, "No family members eligible for Anthropometry in this household", Toast.LENGTH_SHORT).show();
+
+            }
+
+        } else {
+            Toast.makeText(this, "No family member data exists", Toast.LENGTH_SHORT).show();
+        }*/
     }
 
     @Override
@@ -269,13 +293,13 @@ public class WiFiDirectActivity extends AppCompatActivity implements ChannelList
 
         this.startActivity(intent);
 
-   /* Intent serviceIntent = new Intent(getActivity(), DataTransferService.class);
-    serviceIntent.setAction(DataTransferService.ACTION_SEND_DATA);
-    serviceIntent.putExtra(Intent.EXTRA_TEXT, msgBox.getText().toString());
-    serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_ADDRESS,
-            info.groupOwnerAddress.getHostAddress());
-    serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_PORT, 8988);
-    getActivity().startService(serviceIntent);*/
+        /* Intent serviceIntent = new Intent(getActivity(), DataTransferService.class);
+        serviceIntent.setAction(DataTransferService.ACTION_SEND_DATA);
+        serviceIntent.putExtra(Intent.EXTRA_TEXT, msgBox.getText().toString());
+        serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_ADDRESS,
+                info.groupOwnerAddress.getHostAddress());
+        serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_PORT, 8988);
+        getActivity().startService(serviceIntent); */
     }
 
 }

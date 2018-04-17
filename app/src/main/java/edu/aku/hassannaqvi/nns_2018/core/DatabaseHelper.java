@@ -2030,6 +2030,79 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFC;
     }
 
+    public JSONArray getFormsByCluster(String cluster) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                FormsTable._ID,
+                FormsTable.COLUMN_UID,
+                FormsTable.COLUMN_FORMDATE,
+                FormsTable.COLUMN_USER,
+                FormsTable.COLUMN_RESP_LNO,
+                FormsTable.COLUMN_ISTATUS,
+                FormsTable.COLUMN_ISTATUS88x,
+                FormsTable.COLUMN_GPSELEV,
+                FormsTable.COLUMN_HH_NO,
+                FormsTable.COLUMN_CLUSTER_NO,
+                FormsTable.COLUMN_SA1,
+                FormsTable.COLUMN_SA4,
+                FormsTable.COLUMN_SA5,
+                FormsTable.COLUMN_END_TIME,
+                FormsTable.COLUMN_COUNT,
+                FormsTable.COLUMN_GPSLAT,
+                FormsTable.COLUMN_GPSLNG,
+                FormsTable.COLUMN_GPSDATE,
+                FormsTable.COLUMN_GPSACC,
+                FormsTable.COLUMN_DEVICETAGID,
+                FormsTable.COLUMN_DEVICEID,
+                FormsTable.COLUMN_SYNCED,
+                FormsTable.COLUMN_SYNCED_DATE,
+                FormsTable.COLUMN_APP_VERSION
+        };
+        String whereClause = FormsTable.COLUMN_CLUSTER_NO + "= ? and " + FormsTable.COLUMN_ISTATUS + " = ?";
+        String[] whereArgs = new String[]{cluster, "1"};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                FormsTable._ID + " ASC";
+        JSONArray jsonArray = new JSONArray();
+        Collection<FormsContract> allFC = new ArrayList<FormsContract>();
+        try {
+            c = db.query(
+                    FormsTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                FormsContract fc = new FormsContract();
+                allFC.add(fc.Hydrate(c));
+            }
+            for (FormsContract fc : allFC) {
+                //if (fc.getIstatus().equals("1")) {
+                try {
+                    jsonArray.put(fc.toJSONObject());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                //}
+            }
+
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return jsonArray;
+    }
+
     public FormsContract getPressedForms(String cluster, String hhno) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -2569,6 +2642,77 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allFC;
+    }
+
+    public JSONArray getWRAsByUUID(String uuid) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                MWRATable.COLUMN__ID,
+                MWRATable.COLUMN_UID,
+                MWRATable.COLUMN_UUID,
+                MWRATable.COLUMN_FM_UID,
+                MWRATable.COLUMN_FORMDATE,
+                MWRATable.COLUMN_DEVICEID,
+                MWRATable.COLUMN_DEVICETAGID,
+                MWRATable.COLUMN_USER,
+                MWRATable.COLUMN_APP_VER,
+                MWRATable.COLUMN_B1SERIALNO,
+                MWRATable.COLUMN_SB1,
+                MWRATable.COLUMN_SB2,
+                MWRATable.COLUMN_SB3,
+                MWRATable.COLUMN_SB4,
+                MWRATable.COLUMN_SB5,
+                MWRATable.COLUMN_SB6,
+                MWRATable.COLUMN_SB2FLAG,
+                MWRATable.COLUMN_MSTATUS,
+                MWRATable.COLUMN_MSTATUS88x,
+                MWRATable.COLUMN_SYNCED,
+                MWRATable.COLUMN_SYNCEDDATE
+
+        };
+        String whereClause = MWRATable.COLUMN_UUID + " = ?";
+        String[] whereArgs = {uuid};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                MWRATable.COLUMN__ID + " ASC";
+
+        JSONArray jsonArray = new JSONArray();
+        Collection<MWRAContract> allWC = new ArrayList<MWRAContract>();
+        try {
+            c = db.query(
+                    MWRATable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                MWRAContract wc = new MWRAContract();
+                allWC.add(wc.Hydrate(c, 0));
+            }
+            for (MWRAContract wc : allWC) {
+                //if (fc.getIstatus().equals("1")) {
+                try {
+                    jsonArray.put(wc.toJSONObject());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                //}
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return jsonArray;
     }
 
     public Boolean getWRAExistanceByUid(String uuid, String fuid) {
