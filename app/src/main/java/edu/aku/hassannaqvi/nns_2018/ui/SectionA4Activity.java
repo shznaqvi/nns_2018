@@ -284,22 +284,23 @@ public class SectionA4Activity extends Menu2Activity implements RadioGroup.OnChe
             }
             if (!jsonA4.getnh303().equals("0")) {
                 binding.nh303.check(
-                        jsonA4.getnh303().equals("1") ? binding.nh303b.getId() :
-                                jsonA4.getnh303().equals("2") ? binding.nh303c.getId() :
-                                        jsonA4.getnh303().equals("3") ? binding.nh303d.getId() :
-                                                jsonA4.getnh303().equals("4") ? binding.nh303e.getId() :
-                                                        jsonA4.getnh303().equals("5") ? binding.nh303f.getId() :
-                                                                jsonA4.getnh303().equals("6") ? binding.nh303g.getId() :
-                                                                        jsonA4.getnh303().equals("7") ? binding.nh303h.getId() :
-                                                                                jsonA4.getnh303().equals("8") ? binding.nh303i.getId() :
-                                                                                        jsonA4.getnh303().equals("9") ? binding.nh303j.getId() :
-                                                                                                jsonA4.getnh303().equals("10") ? binding.nh303k.getId() :
-                                                                                                        jsonA4.getnh303().equals("11") ? binding.nh303l.getId() :
-                                                                                                                jsonA4.getnh303().equals("12") ? binding.nh303m.getId() :
-                                                                                                                        jsonA4.getnh303().equals("13") ? binding.nh303n.getId() :
-                                                                                                                                jsonA4.getnh303().equals("14") ? binding.nh303o.getId() :
-                                                                                                                                        jsonA4.getnh303().equals("15") ? binding.nh303p.getId() :
-                                                                                                                                                binding.nh30396.getId()
+                        jsonA4.getnh303().equals("1") ? binding.nh303a.getId() :
+                                jsonA4.getnh303().equals("2") ? binding.nh303b.getId() :
+                                        jsonA4.getnh303().equals("3") ? binding.nh303c.getId() :
+                                                jsonA4.getnh303().equals("4") ? binding.nh303d.getId() :
+                                                        jsonA4.getnh303().equals("5") ? binding.nh303e.getId() :
+                                                                jsonA4.getnh303().equals("6") ? binding.nh303f.getId() :
+                                                                        jsonA4.getnh303().equals("7") ? binding.nh303g.getId() :
+                                                                                jsonA4.getnh303().equals("8") ? binding.nh303h.getId() :
+                                                                                        jsonA4.getnh303().equals("9") ? binding.nh303i.getId() :
+                                                                                                jsonA4.getnh303().equals("10") ? binding.nh303j.getId() :
+                                                                                                        jsonA4.getnh303().equals("11") ? binding.nh303k.getId() :
+                                                                                                                jsonA4.getnh303().equals("12") ? binding.nh303l.getId() :
+                                                                                                                        jsonA4.getnh303().equals("13") ? binding.nh303m.getId() :
+                                                                                                                                jsonA4.getnh303().equals("14") ? binding.nh303n.getId() :
+                                                                                                                                        jsonA4.getnh303().equals("15") ? binding.nh303o.getId() :
+                                                                                                                                                jsonA4.getnh303().equals("16") ? binding.nh303p.getId() :
+                                                                                                                                                        binding.nh30396.getId()
                 );
                 binding.nh30396x.setText(jsonA4.getnh30396x());
             }

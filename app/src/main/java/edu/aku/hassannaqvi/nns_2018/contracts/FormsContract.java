@@ -6,8 +6,6 @@ import android.provider.BaseColumns;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import edu.aku.hassannaqvi.nns_2018.R;
-
 //import edu.aku.hassannaqvi.nns_2018.contracts.dummy.A1Model;
 
 /**
@@ -16,7 +14,7 @@ import edu.aku.hassannaqvi.nns_2018.R;
 
 public class FormsContract {
 
-    private final String projectName = String.valueOf(R.string.app_name);
+    private final String projectName = "National Nutrition Survey 2018";
     //private final String surveyType = "SN";
     private String _ID = "";
     private String _UID = "";

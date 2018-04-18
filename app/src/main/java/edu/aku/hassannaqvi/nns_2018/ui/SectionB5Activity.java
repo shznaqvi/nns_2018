@@ -258,7 +258,10 @@ public class SectionB5Activity extends Menu2Activity implements TextWatcher, Rad
 //                finish();
 
                 if (SectionB1Activity.editWRAFlag) {
-                    if (MainApp.mc.getsB6().equals("1")) {
+                    if (!db.getNutritionCount()) {
+                        startActivity(new Intent(this, SectionB6Activity.class)
+                                .putExtra("backPressed", backPressed));
+                    } else if (MainApp.mc.getsB6().equals("1")) {
                         startActivity(new Intent(this, SectionB6Activity.class)
                                 .putExtra("backPressed", backPressed));
                     } else {

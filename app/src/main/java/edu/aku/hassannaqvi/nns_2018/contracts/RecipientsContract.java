@@ -6,15 +6,13 @@ import android.provider.BaseColumns;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import edu.aku.hassannaqvi.nns_2018.R;
-
 /**
  * Created by hassan.naqvi on 11/30/2016.
  */
 
 public class RecipientsContract {
 
-    private final String projectName = String.valueOf(R.string.app_name);
+    private final String projectName = "National Nutrition Survey 2018";
     private String _ID = "";
     private String _UID = "";
     private String _UUID = "";

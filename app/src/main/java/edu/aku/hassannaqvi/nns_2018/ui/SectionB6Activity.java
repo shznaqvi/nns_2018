@@ -401,13 +401,13 @@ public class SectionB6Activity extends Menu2Activity {
 
         if (!backPressed && !frontPressed) {
             if (SectionB1Activity.editWRAFlag) {
-                MainApp.oc.setDevicetagID(MainApp.mc.getDevicetagID());
-                MainApp.oc.setFormDate(MainApp.mc.getFormDate());
-                MainApp.oc.setUser(MainApp.mc.getUser());
-                MainApp.oc.setDeviceId(MainApp.mc.getDeviceId());
-                MainApp.oc.setApp_ver(MainApp.mc.getApp_ver());
-                MainApp.oc.set_UUID(MainApp.mc.get_UUID());
-                MainApp.oc.setMUID(MainApp.mc.get_UID());
+                MainApp.nc.setDevicetagID(MainApp.mc.getDevicetagID());
+                MainApp.nc.setFormDate(MainApp.mc.getFormDate());
+                MainApp.nc.setUser(MainApp.mc.getUser());
+                MainApp.nc.setDeviceId(MainApp.mc.getDeviceId());
+                MainApp.nc.setApp_ver(MainApp.mc.getApp_ver());
+                MainApp.nc.set_UUID(MainApp.mc.get_UUID());
+                MainApp.nc.setMUID(MainApp.mc.get_UID());
                 MainApp.nc.setFMUID(MainApp.mc.getFMUID());
 
                 sB6.put("cluster_no", MainApp.mc.getCluster());

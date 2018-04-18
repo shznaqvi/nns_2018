@@ -215,6 +215,8 @@ public class ViewMemberActivity extends MenuActivity {
 
                     new PopulatingData(this).execute();
 
+                } else {
+                    Toast.makeText(this, "Sorry no members found!!\nYou can't edit this form!", Toast.LENGTH_SHORT).show();
                 }
             } else {
                 binding.fldGrpviewlist.setVisibility(View.GONE);

@@ -1269,7 +1269,10 @@ public class SectionB1Activity extends Menu2Activity implements TextWatcher, Rad
 
     public void redirectCondition() {
         if (editWRAFlag) {
-            if (MainApp.mc.getsB6().equals("1")) {
+            if (!db.getNutritionCount()) {
+                startActivityForResult(new Intent(this, SectionB6Activity.class)
+                        .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
+            } else if (MainApp.mc.getsB6().equals("1")) {
                 startActivityForResult(new Intent(this, SectionB6Activity.class)
                         .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
 
@@ -1438,8 +1441,6 @@ public class SectionB1Activity extends Menu2Activity implements TextWatcher, Rad
     private boolean UpdateDB() {
 
         //Long rowId;
-        DatabaseHelper db = new DatabaseHelper(this);
-
         if (!backPressed) {
             Long updcount = db.addMWRA(MainApp.mc, 0);
             MainApp.mc.set_ID(String.valueOf(updcount));

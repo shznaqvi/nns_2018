@@ -144,7 +144,10 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                         startActivity(new Intent(this, SectionB2Activity.class));
                     } else {
                         if (SectionB1Activity.editWRAFlag) {
-                            if (MainApp.mc.getsB6().equals("1")) {
+                            if (!db.getNutritionCount()) {
+                                startActivityForResult(new Intent(this, SectionB6Activity.class)
+                                        .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
+                            } else if (MainApp.mc.getsB6().equals("1")) {
                                 startActivityForResult(new Intent(this, SectionB6Activity.class)
                                         .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
 
@@ -266,7 +269,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 MainApp.oc.set_UUID(MainApp.mc.get_UUID());
                 MainApp.oc.setMUID(MainApp.mc.get_UID());
                 MainApp.oc.setFMUID(MainApp.mc.getFMUID());
-
+                MainApp.oc.setFMUID(MainApp.mc.getFMUID());
 
                 MainApp.oc.setB1aPregSNo(String.valueOf(MainApp.count));
 
@@ -289,9 +292,6 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 sB1a.put("cluster_no", MainApp.fc.getClusterNo());
                 sB1a.put("hhno", MainApp.fc.getHhNo());
             }
-
-            //MainApp.oc.set_UUID(MainApp.mc.get_UID());
-
 
         } else {
             MainApp.oc.setUpdatedate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));

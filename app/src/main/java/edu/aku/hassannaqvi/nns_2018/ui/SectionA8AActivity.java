@@ -1,7 +1,5 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -195,7 +193,7 @@ public class SectionA8AActivity extends AppCompatActivity {
             }
         }
 
-        if (dataFlag) {
+        /*if (dataFlag) {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                     SectionA8AActivity.this);
             alertDialogBuilder.setCancelable(false);
@@ -229,7 +227,7 @@ public class SectionA8AActivity extends AppCompatActivity {
                             });
             AlertDialog alert = alertDialogBuilder.create();
             alert.show();
-        }
+        }*/
 
     }
 
@@ -278,8 +276,13 @@ public class SectionA8AActivity extends AppCompatActivity {
                     }
                 } else {
 
-                    recpNames.remove(bi.nh7a02.getSelectedItem().toString());
-                    recpSerial.remove(recpSerial.get(position));
+                    if (dataFlag) {
+                        recpNames.remove(bi.nh7a02.getSelectedItem().toString());
+                        recpSerial.remove(recpSerial.get(position));
+                    } else {
+                        recpNames.remove(jsonA8A.getnh7a02().toString());
+                        recpSerial.remove(jsonA8A.getnh7a03().toString());
+                    }
 
                     startActivity(new Intent(this, SectionA8AActivity.class).putExtra("flag", false));
                 }
@@ -293,6 +296,9 @@ public class SectionA8AActivity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
+
+        counter = 1;
+
         if (SectionA1Activity.editFormFlag) {
             startActivity(new Intent(this, ViewMemberActivity.class)
                     .putExtra("flagEdit", false)
@@ -382,7 +388,8 @@ public class SectionA8AActivity extends AppCompatActivity {
 
         JSONObject sA8a = new JSONObject();
 
-        if (!SectionA1Activity.editFormFlag) {
+//        if (!SectionA1Activity.editFormFlag) {
+        if (dataFlag) {
             MainApp.rc = new RecipientsContract();
             MainApp.rc.setDevicetagID(MainApp.fc.getDevicetagID());
             MainApp.rc.setFormDate(MainApp.fc.getFormDate());
@@ -395,14 +402,16 @@ public class SectionA8AActivity extends AppCompatActivity {
 
             sA8a.put("nh7a04", fmcSelected.getName());
             sA8a.put("nh7a03", fmcSelected.getSerialNo());
-            sA8a.put("lineno", fmcSelected.getSerialNo());
+            sA8a.put("nh7a02", bi.nh7a02.getSelectedItem().toString());
+//            sA8a.put("lineno", fmcSelected.getSerialNo());
 
         } else {
             sA8a.put("edit_updatedate_nh7a", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
 
             sA8a.put("nh7a04", jsonA8A.getnh7a04());
             sA8a.put("nh7a03", jsonA8A.getnh7a03());
-            sA8a.put("lineno", jsonA8A.getnh7a03());
+            sA8a.put("nh7a02", jsonA8A.getnh7a02().toString());
+//            sA8a.put("lineno", jsonA8A.getnh7a03());
         }
 
        /* if (backPressed) {
@@ -413,9 +422,6 @@ public class SectionA8AActivity extends AppCompatActivity {
 
         sA8a.put("cluster_no", MainApp.fc.getClusterNo());
         sA8a.put("hhno", MainApp.fc.getHhNo());
-
-        sA8a.put("nh7a02", bi.nh7a02.getSelectedItem().toString());
-
 
         sA8a.put("nh7a05y", bi.nh7a03y.getText().toString());
 
@@ -449,7 +455,8 @@ public class SectionA8AActivity extends AppCompatActivity {
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        if (SectionA1Activity.editFormFlag) {
+//        if (SectionA1Activity.editFormFlag) {
+        if (!dataFlag) {
             Long updcount = db.addRecipient(MainApp.rc, 1);
             if (updcount != 0) {
                 return true;
