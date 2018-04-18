@@ -269,6 +269,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
                 Boolean serialFlag = true;
                 json = JSONUtilClass.getModelFromJSON(fm.getsA2(), JSONModelClass.class);
 
+                // Done this thing to not add duplicate in list
                 for (FamilyMembersContract ser : MainApp.all_members) {
                     if (ser.getSerialNo() == fm.getSerialNo()) {
                         serialFlag = false;

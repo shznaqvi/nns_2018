@@ -362,10 +362,10 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
                     SectionH8Activity.this);
             alertDialogBuilder.setCancelable(false);
             alertDialogBuilder
-                    .setMessage("In previous you didn't saved No" + counter + " Deceased.\n" +
-                            "Do you want to continue it?")
+                    .setMessage("No Deceased record found against counter no:" + counter + ".\n" +
+                            "Processed to next section?")
                     .setCancelable(false)
-                    .setPositiveButton("Yes",
+                    .setPositiveButton("OK",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog,
                                                     int id) {
