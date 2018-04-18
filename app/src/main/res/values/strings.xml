@@ -1142,7 +1142,7 @@
     <!--<string name="nc417"> آخری بار (۔Name) کو وٹامن اے کی خوراک کب دی گئی تھی؟ </string>-->
     <string name="nc417a"> ایک ہفتہ پہلے </string>
     <string name="nc417b"> ایک ماہ پہلے </string>
-    <string name="nc417c"> گذشتہ3 مہینوں میں </string>
+  <string name="nc417c">۔C401- گذشتہ3 مہینوں میں </string>
     <string name="nc417d"> گذشتہ 6مہینوں میں </string>
     <string name="nc417e"> ایک سال پہلے </string>
     <!--<string name="nc418"> کیا (۔Name) کو کبھی ایم این پی دیا گیا؟ </string>-->

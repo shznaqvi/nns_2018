@@ -40,7 +40,7 @@ public class SectionE1Activity extends AppCompatActivity {
 
     private static final String TAG = SectionE1Activity.class.getSimpleName();
     static List<String> members;
-    static Map<String, FamilyMembersContract> membersMap;
+    static Map<String, SelectedMem> membersMap;
     static String name;
     static String grouptype;
     static int counter = 1;
@@ -75,7 +75,7 @@ public class SectionE1Activity extends AppCompatActivity {
     public void setupViews() {
 
 
-        slecMem = new FamilyMembersContract();
+        //slecMem = new FamilyMembersContract();
 
         if (getIntent().getBooleanExtra("flag", true)) {
 
@@ -164,7 +164,8 @@ public class SectionE1Activity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (bi.ne102.getSelectedItemPosition() != 0) {
                     namePosition = position;
-                    slecMem = membersMap.get(bi.ne102.getSelectedItem().toString());
+                    SelectedMem mem = membersMap.get(bi.ne102.getSelectedItem().toString());
+                    slecMem = mem.getFmc();
                 }
             }
 
@@ -217,7 +218,7 @@ public class SectionE1Activity extends AppCompatActivity {
 
             if (position == Integer.valueOf(fmc.getType())) {
                 json = JSONUtilClass.getModelFromJSON(fmc.getsA2(), JSONModelClass.class);
-                membersMap.put(json.getName() + "_" + json.getSerialNo(), fmc);
+                membersMap.put(json.getName() + "_" + json.getSerialNo(), new SelectedMem(position, fmc, json.getSerialNo()));
                 members.add(json.getName() + "_" + json.getSerialNo());
             }
         }
@@ -563,7 +564,7 @@ public class SectionE1Activity extends AppCompatActivity {
         MainApp.smc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
         MainApp.smc.setUUID(slecMem.get_UUID());
         MainApp.smc.setFMUID(slecMem.get_UID());
-        MainApp.smc.setLineNo(json.getSerialNo());
+        MainApp.smc.setLineNo(membersMap.get(bi.ne102.getSelectedItem()).getFmc().getSerialNo());
         MainApp.smc.setClusterno(SpecimenInfoActivity.enm_no);
         MainApp.smc.setHhno(SpecimenInfoActivity.hh_no);
 
@@ -615,9 +616,10 @@ public class SectionE1Activity extends AppCompatActivity {
         FamilyMembersContract fmc;
 
 
-        public SelectedMem(int type, FamilyMembersContract fmc) {
+        public SelectedMem(int type, FamilyMembersContract fmc, String sno) {
             this.type = type;
             this.fmc = fmc;
+            this.fmc.setSerialNo(sno);
         }
 
         public int getType() {

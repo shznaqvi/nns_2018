@@ -182,7 +182,7 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
 
         for (FamilyMembersContract fmc : family) {
             json = JSONUtilClass.getModelFromJSON(fmc.getsA2(), JSONModelClass.class);
-            membersMap.put(json.getName() + "_" + json.getSerialNo(), new SelectedMem(type, fmc));
+            membersMap.put(json.getName() + "_" + json.getSerialNo(), new SelectedMem(type, fmc, json.getSerialNo()));
             members.add(json.getName() + "_" + json.getSerialNo());
         }
 
@@ -318,7 +318,7 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
         sA3.put("ht_code", AntrhoInfoActivity.ht_code);
         sA3.put("wt_code", AntrhoInfoActivity.wt_code);
         sA3.put("nd101", binding.nd101.getSelectedItem().toString());
-        sA3.put("nd101Serial", json.getSerialNo());
+        sA3.put("nd101Serial", membersMap.get(binding.nd101.getSelectedItem()).getFmc().getSerialNo());
 
         sA3.put("nd1Serial", String.valueOf(counter));
 
@@ -416,9 +416,10 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
         FamilyMembersContract fmc;
 
 
-        public SelectedMem(int type, FamilyMembersContract fmc) {
+        public SelectedMem(int type, FamilyMembersContract fmc, String SerialNo) {
             this.type = type;
             this.fmc = fmc;
+            this.fmc.setSerialNo(SerialNo);
         }
 
         public int getType() {

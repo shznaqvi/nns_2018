@@ -266,7 +266,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 MainApp.oc.set_UUID(MainApp.mc.get_UUID());
                 MainApp.oc.setMUID(MainApp.mc.get_UID());
                 MainApp.oc.setFMUID(MainApp.mc.getFMUID());
-                MainApp.oc.setFMUID(MainApp.mc.getFMUID());
+
 
                 MainApp.oc.setB1aPregSNo(String.valueOf(MainApp.count));
 
@@ -290,7 +290,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 sB1a.put("hhno", MainApp.fc.getHhNo());
             }
 
-            MainApp.oc.set_UUID(MainApp.mc.get_UID());
+            //MainApp.oc.set_UUID(MainApp.mc.get_UID());
 
 
         } else {
