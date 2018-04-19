@@ -400,7 +400,13 @@ public class SectionA2ListActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog,
                                                 int id) {
                                 finish();
-                                startActivity(new Intent(SectionA2ListActivity.this, SectionA2Activity.class).putExtra("flag", true));
+                                if (binding.nh2tm.getText().toString().equals("0") && binding.nh2tf.getText().toString().equals("0")) {
+                                    startActivity(new Intent(SectionA2ListActivity.this, SectionA2Activity.class).putExtra("flag", true)
+                                            .putExtra("count", true));
+                                } else {
+                                    startActivity(new Intent(SectionA2ListActivity.this, SectionA2Activity.class).putExtra("flag", true)
+                                            .putExtra("count", false));
+                                }
                             }
                         });
         alertDialogBuilder.setNegativeButton("Cancel",

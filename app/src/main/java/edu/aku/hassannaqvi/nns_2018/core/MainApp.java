@@ -89,6 +89,7 @@ public class MainApp extends Application {
     public static int versionCode;
     public static String versionName;
     public static Boolean IsHead;
+    public static int gender;
     public static Boolean IsResp;
 
     //    Ali

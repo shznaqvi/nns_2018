@@ -8,6 +8,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -128,8 +129,48 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
         //setHeading();
         this.setTitle(getResources().getString(R.string.na2subHeading));
 
+        Boolean head = getIntent().getExtras().getBoolean("count");
+
 //        Validation Boolean
         MainApp.validateFlag = false;
+
+        if (head) {
+            binding.na203a.setEnabled(true);
+            binding.na203b.setEnabled(false);
+            binding.na203c.setEnabled(false);
+            binding.na203d.setEnabled(false);
+            binding.na203e.setEnabled(false);
+            binding.na203f.setEnabled(false);
+            binding.na203g.setEnabled(false);
+            binding.na203h.setEnabled(false);
+            binding.na203i.setEnabled(false);
+            binding.na203j.setEnabled(false);
+            binding.na203k.setEnabled(false);
+            binding.na203l.setEnabled(false);
+            binding.na203m.setEnabled(false);
+            binding.na203n.setEnabled(false);
+            binding.na203o.setEnabled(false);
+            binding.na20396.setEnabled(false);
+            binding.na20398.setEnabled(false);
+        } else {
+            binding.na203a.setEnabled(false);
+            binding.na203b.setEnabled(true);
+            binding.na203c.setEnabled(true);
+            binding.na203d.setEnabled(true);
+            binding.na203e.setEnabled(true);
+            binding.na203f.setEnabled(true);
+            binding.na203g.setEnabled(true);
+            binding.na203h.setEnabled(true);
+            binding.na203i.setEnabled(true);
+            binding.na203j.setEnabled(true);
+            binding.na203k.setEnabled(true);
+            binding.na203l.setEnabled(true);
+            binding.na203m.setEnabled(true);
+            binding.na203n.setEnabled(true);
+            binding.na203o.setEnabled(true);
+            binding.na20396.setEnabled(true);
+            binding.na20398.setEnabled(true);
+        }
 
     }
 
@@ -293,27 +334,6 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
             @Override
             public void afterTextChanged(Editable s) {
 
-                /*timer.cancel();
-                timer = new Timer();
-                        timer.schedule(
-                                new TimerTask() {
-                                    @Override
-                                    public void run() {
-
-                                        runOnUiThread(new Runnable() {
-                                            public void run() {
-
-                                                formValidation();
-                                            }
-                                        });
-
-                                    }
-                                },
-                                DELAY1
-                        );
-
-*/
-
 
             }
         });
@@ -387,6 +407,21 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
         if (MainApp.IsResp) {
             binding.fldGrpA20101.setVisibility(View.GONE);
         }
+
+        binding.na203b.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    if (MainApp.gender == 1) {
+                        binding.na204a.setEnabled(false);
+                        binding.na204b.setEnabled(true);
+                    } else {
+                        binding.na204a.setEnabled(true);
+                        binding.na204b.setEnabled(false);
+                    }
+                }
+            }
+        });
     }
 
     public void BtnEnd() {
@@ -460,6 +495,8 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
 //        Checking IsHead
             if (!MainApp.IsHead && binding.na203a.isChecked()) {
                 MainApp.IsHead = true;
+                MainApp.gender = binding.na204.indexOfChild(findViewById(binding.na204.getCheckedRadioButtonId())) + 1;
+
             }
 
             if (!MainApp.IsResp && binding.respa.isChecked()) {

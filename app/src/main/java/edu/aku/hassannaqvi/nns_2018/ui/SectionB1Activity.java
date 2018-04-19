@@ -46,7 +46,7 @@ import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 public class SectionB1Activity extends Menu2Activity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
     public static String wraName = "";
-    public static int WRAcounter = 0;
+    public static int WRAcounter = 1;
     public static int WRAsize = 0;
     public static Boolean editWRAFlag;
     static Map<String, FamilyMembersContract> wraMap;
@@ -812,157 +812,6 @@ public class SectionB1Activity extends Menu2Activity implements TextWatcher, Rad
         }
 
 
-
-        /*bi.nw21001.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                ValidateForm();
-                if (checkedId == R.id.nw21001a) {
-                    bi.nw21003.clearCheck();
-                    bi.nw21098.clearCheck();
-                    bi.nw21099.clearCheck();
-                    bi.nw21003a.setEnabled(false);
-                    bi.nw21003b.setEnabled(false);
-                    bi.nw21098a.setEnabled(false);
-                    bi.nw21098b.setEnabled(false);
-                    bi.nw21099a.setEnabled(false);
-                    bi.nw21099b.setEnabled(false);
-                } else {
-
-                    bi.nw21003a.setEnabled(true);
-                    bi.nw21003b.setEnabled(true);
-                    bi.nw21098a.setEnabled(true);
-                    bi.nw21098b.setEnabled(true);
-                    bi.nw21099a.setEnabled(true);
-                    bi.nw21099b.setEnabled(true);
-                }
-            }
-        });
-
-        bi.nw21002.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                ValidateForm();
-                if (checkedId == R.id.nw21002a) {
-                    bi.nw21003.clearCheck();
-                    bi.nw21098.clearCheck();
-                    bi.nw21099.clearCheck();
-                    bi.nw21003a.setEnabled(false);
-                    bi.nw21003b.setEnabled(false);
-                    bi.nw21098a.setEnabled(false);
-                    bi.nw21098b.setEnabled(false);
-                    bi.nw21099a.setEnabled(false);
-                    bi.nw21099b.setEnabled(false);
-                } else {
-
-                    bi.nw21003a.setEnabled(true);
-                    bi.nw21003b.setEnabled(true);
-                    bi.nw21098a.setEnabled(true);
-                    bi.nw21098b.setEnabled(true);
-                    bi.nw21099a.setEnabled(true);
-                    bi.nw21099b.setEnabled(true);
-                }
-            }
-        });
-
-*/
-        /*bi.nw21003.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                ValidateForm();
-                if (checkedId == R.id.nw21003a) {
-                    //  bi.nw209.clearCheck();
-                    bi.nw21001.clearCheck();
-                    bi.nw21002.clearCheck();
-                    bi.nw21098.clearCheck();
-                    bi.nw21099.clearCheck();
-
-                    bi.nw21001a.setEnabled(false);
-                    bi.nw21001b.setEnabled(false);
-                    bi.nw21002a.setEnabled(false);
-                    bi.nw21002b.setEnabled(false);
-                    bi.nw21098a.setEnabled(false);
-                    bi.nw21098b.setEnabled(false);
-                    bi.nw21099a.setEnabled(false);
-                    bi.nw21099b.setEnabled(false);
-                } else {
-                    bi.nw21001a.setEnabled(true);
-                    bi.nw21001b.setEnabled(true);
-                    bi.nw21002a.setEnabled(true);
-                    bi.nw21002b.setEnabled(true);
-                    bi.nw21098a.setEnabled(true);
-                    bi.nw21098b.setEnabled(true);
-                    bi.nw21099a.setEnabled(true);
-                    bi.nw21099b.setEnabled(true);
-                }
-            }
-        });
-
-        bi.nw21098.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                ValidateForm();
-                if (checkedId == R.id.nw21098a) {
-                    //  bi.nw209.clearCheck();
-                    bi.nw21001.clearCheck();
-                    bi.nw21002.clearCheck();
-                    bi.nw21003.clearCheck();
-                    bi.nw21099.clearCheck();
-
-                    bi.nw21001a.setEnabled(false);
-                    bi.nw21001b.setEnabled(false);
-                    bi.nw21002a.setEnabled(false);
-                    bi.nw21002b.setEnabled(false);
-                    bi.nw21003a.setEnabled(false);
-                    bi.nw21003b.setEnabled(false);
-                    bi.nw21099a.setEnabled(false);
-                    bi.nw21099b.setEnabled(false);
-                } else {
-                    bi.nw21001a.setEnabled(true);
-                    bi.nw21001b.setEnabled(true);
-                    bi.nw21002a.setEnabled(true);
-                    bi.nw21002b.setEnabled(true);
-                    bi.nw21003a.setEnabled(true);
-                    bi.nw21003b.setEnabled(true);
-                    bi.nw21099a.setEnabled(true);
-                    bi.nw21099b.setEnabled(true);
-                }
-            }
-        });
-
-
-        bi.nw21099.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                ValidateForm();
-                if (checkedId == R.id.nw21099a) {
-                    bi.nw21001.clearCheck();
-                    bi.nw21002.clearCheck();
-                    bi.nw21003.clearCheck();
-                    bi.nw21098.clearCheck();
-
-                    bi.nw21001a.setEnabled(false);
-                    bi.nw21001b.setEnabled(false);
-                    bi.nw21002a.setEnabled(false);
-                    bi.nw21002b.setEnabled(false);
-                    bi.nw21003a.setEnabled(false);
-                    bi.nw21003b.setEnabled(false);
-                    bi.nw21098a.setEnabled(false);
-                    bi.nw21098b.setEnabled(false);
-                } else {
-                    bi.nw21001a.setEnabled(true);
-                    bi.nw21001b.setEnabled(true);
-                    bi.nw21002a.setEnabled(true);
-                    bi.nw21002b.setEnabled(true);
-                    bi.nw21003a.setEnabled(true);
-                    bi.nw21003b.setEnabled(true);
-                    bi.nw21098a.setEnabled(true);
-                    bi.nw21098b.setEnabled(true);
-                }
-            }
-        });
-*/
-
         bi.nw213.addTextChangedListener(this);
         bi.nw214.addTextChangedListener(this);
         bi.nw215.addTextChangedListener(this);
@@ -999,7 +848,7 @@ public class SectionB1Activity extends Menu2Activity implements TextWatcher, Rad
             }
         } else {
 
-            if (WRAcounter <= 1) {
+            if (WRAcounter == 1) {
                 wraMap = new HashMap<>();
                 lstMwra = new ArrayList<>();
 
@@ -1323,6 +1172,7 @@ public class SectionB1Activity extends Menu2Activity implements TextWatcher, Rad
                         .putExtra("hhno", MainApp.mc.getHhno())
                 );
             } else {
+                WRAsize = MainApp.mwra.size();
                 MainApp.endActivityMother(this, this, false);
             }
 
@@ -1537,26 +1387,6 @@ public class SectionB1Activity extends Menu2Activity implements TextWatcher, Rad
     @Override
     public void afterTextChanged(Editable s) {
 
-/*
-        timer.cancel();
-        timer = new Timer();
-        timer.schedule(
-                new TimerTask() {
-                    @Override
-                    public void run() {
-
-                        SectionB1Activity.this.runOnUiThread(new Runnable() {
-                            public void run() {
-                                ValidateForm();
-                            }
-                            //}
-                        });
-
-                    }
-                },
-                DELAY
-        );
-*/
 
     }
 
