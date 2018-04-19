@@ -711,6 +711,11 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
                 : binding.nw413963.isChecked() ? "963"
                 : "0");
 
+        sB4.put("nw413961x", binding.nw413961x.getText().toString());
+        sB4.put("nw413962x", binding.nw413963x.getText().toString());
+        sB4.put("nw413963x", binding.nw413963x.getText().toString());
+
+
 
         MainApp.mc.setsB4(String.valueOf(sB4));
 

@@ -999,7 +999,7 @@ public class SectionB1Activity extends Menu2Activity implements TextWatcher, Rad
             }
         } else {
 
-            if (WRAcounter == 1 || WRAcounter == 0) {
+            if (WRAcounter <= 1) {
                 wraMap = new HashMap<>();
                 lstMwra = new ArrayList<>();
 

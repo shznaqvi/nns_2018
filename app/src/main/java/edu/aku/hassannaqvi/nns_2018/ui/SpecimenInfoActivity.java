@@ -36,7 +36,7 @@ public class SpecimenInfoActivity extends AppCompatActivity {
     static String enm_no;
     static String hh_no;
     static String hc_code;
-    static String ht_code;
+    static String uuid;
     static String wt_code;
     JSONModelClass json;
     ActivitySpecimenInfoBinding binding;
@@ -75,6 +75,7 @@ public class SpecimenInfoActivity extends AppCompatActivity {
 
         } else if (MainActivity.ftype.equals("W")) {
             binding.fldGrpQR.setVisibility(View.GONE);
+            binding.fldGrpHC.setVisibility(View.GONE);
             binding.hcCode.setText(null);
 
         }
@@ -283,6 +284,7 @@ public class SpecimenInfoActivity extends AppCompatActivity {
         enm_no = binding.nh102.getText().toString();
         hh_no = binding.nh108.getText().toString().toUpperCase();
         hc_code = binding.hcCode.getText().toString();
+
         //ht_code = binding.htCode.getText().toString();
         //wt_code = binding.wtCode.getText().toString();
 
@@ -306,6 +308,7 @@ public class SpecimenInfoActivity extends AppCompatActivity {
 
                     if (fm.getsA2() != null) {
                         json = JSONUtilClass.getModelFromJSON(fm.getsA2(), JSONModelClass.class);
+
                         if ((Integer.valueOf(json.getAge()) > 14 && Integer.valueOf(json.getAge()) < 50)
                                 && json.getGender().equals("2") && json.getNh210().equals("1")) {
                             fm.setType("1");
@@ -330,7 +333,9 @@ public class SpecimenInfoActivity extends AppCompatActivity {
                     }
 
                 }
+
                 if (MainApp.all_members.size() > 0) {
+
                     Toast.makeText(this, "Members Found..", Toast.LENGTH_SHORT).show();
                     binding.fldGrpQR.setVisibility(View.VISIBLE);
                     binding.btnContinue.setVisibility(View.VISIBLE);

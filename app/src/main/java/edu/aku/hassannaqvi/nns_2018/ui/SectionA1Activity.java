@@ -622,7 +622,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
         sA1.put("nh105", binding.nh105.getText().toString());
         sA1.put("nh106", binding.nh106.getText().toString());
 
-        // sA1.put("nh110", binding.nh110.getText().toString());
+
         sA1.put("nh113", binding.nh113.getText().toString());
         sA1.put("nh115", binding.nh115.getText().toString());
 
@@ -637,17 +637,6 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
         sA1.put("nh11802", binding.na11802a.isChecked() ? "1"
                 : binding.na11802b.isChecked() ? "2" : "0");
-
-//        na117
-        /*sA1.put("nh119a", binding.na119a.isChecked() ? "1" : "0");
-        sA1.put("nh119b", binding.na119b.isChecked() ? "2" : "0");
-        sA1.put("nh119c", binding.na119c.isChecked() ? "3" : "0");
-        sA1.put("nh119d", binding.na119d.isChecked() ? "4" : "0");
-        sA1.put("nh119e", binding.na119e.isChecked() ? "5" : "0");
-        sA1.put("nh119f", binding.na119f.isChecked() ? "6" : "0");
-        sA1.put("nh119g", binding.na119g.isChecked() ? "7" : "0");
-        sA1.put("nh11996", binding.na11996.isChecked() ? "96" : "0");
-        sA1.put("nh11996x", binding.na11996x.getText().toString());*/
 
         MainApp.fc.setsA1(String.valueOf(sA1));
 

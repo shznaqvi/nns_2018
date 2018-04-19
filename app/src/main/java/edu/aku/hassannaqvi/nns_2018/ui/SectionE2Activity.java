@@ -3,6 +3,7 @@ package edu.aku.hassannaqvi.nns_2018.ui;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.CompoundButton;
@@ -12,7 +13,16 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.WaterSpecimenContract;
+import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionE2Binding;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
@@ -25,6 +35,9 @@ public class SectionE2Activity extends AppCompatActivity {
     ActivitySectionE2Binding bi;
     Boolean isMicro = false, isNitric = false, isBoric = false, isPlain = false, isQC = false, isField = false;
 
+    //FamilyMembersContract fmc;
+    Map<Integer, FamilyMembersContract> membersMap;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +46,13 @@ public class SectionE2Activity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_e2);
         this.setTitle(getResources().getString(R.string.ne2heading));
         bi.setCallback(this);
+
+        membersMap = new HashMap<>();
+
+        for (FamilyMembersContract fmc : MainApp.all_members) {
+            membersMap.put(0, fmc);
+        }
+
 
         bi.ne201a.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -403,7 +423,12 @@ public class SectionE2Activity extends AppCompatActivity {
 
         //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
-            SaveDraft();
+            try {
+                SaveDraft();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
             if (UpdateDB()) {
                 //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
@@ -418,7 +443,12 @@ public class SectionE2Activity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        SaveDraft();
+        try {
+            SaveDraft();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         if (UpdateDB()) {
             //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
@@ -646,9 +676,49 @@ public class SectionE2Activity extends AppCompatActivity {
         return true;
     }
 
-    private void SaveDraft() {
+    private void SaveDraft() throws JSONException {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
+        MainApp.wsc = new WaterSpecimenContract();
+        MainApp.wsc.setDevicetagID(MainApp.getTagName(this));
+        MainApp.wsc.setFormDate(membersMap.get(0).getFormDate());
+        MainApp.wsc.setUser(MainApp.userName);
+        MainApp.wsc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
+                Settings.Secure.ANDROID_ID));
+        MainApp.wsc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
+        MainApp.wsc.setUUID(membersMap.get(0).get_UUID());
+
+        MainApp.wsc.setClusterno(SpecimenInfoActivity.enm_no);
+        MainApp.wsc.setHhno(SpecimenInfoActivity.hh_no);
+
+        JSONObject sE1 = new JSONObject();
+
+        sE1.put("ne201a", bi.ne201a.isChecked() ? "1" : "2");
+        sE1.put("ne20201", bi.ne20201a.isChecked() ? "1" : bi.ne20201b.isChecked() ? "2" : "0");
+        sE1.put("ne20301", bi.ne20301.getText().toString());
+
+        sE1.put("ne201b", bi.ne201b.isChecked() ? "1" : "2");
+        sE1.put("ne20202", bi.ne20202a.isChecked() ? "1" : bi.ne20202b.isChecked() ? "2" : "0");
+        sE1.put("ne20302", bi.ne20302.getText().toString());
+
+        sE1.put("ne201c", bi.ne201c.isChecked() ? "1" : "2");
+        sE1.put("ne20203", bi.ne20203a.isChecked() ? "1" : bi.ne20203b.isChecked() ? "2" : "0");
+        sE1.put("ne20303", bi.ne20303.getText().toString());
+
+        sE1.put("ne201d", bi.ne201d.isChecked() ? "1" : "2");
+        sE1.put("ne20204", bi.ne20204a.isChecked() ? "1" : bi.ne20204b.isChecked() ? "2" : "0");
+        sE1.put("ne20304", bi.ne20304.getText().toString());
+
+        sE1.put("ne201e", bi.ne201e.isChecked() ? "1" : "2");
+        sE1.put("ne20205", bi.ne20205a.isChecked() ? "1" : bi.ne20205b.isChecked() ? "2" : "0");
+        sE1.put("ne20305", bi.ne20305.getText().toString());
+
+        sE1.put("ne201f", bi.ne201f.isChecked() ? "1" : "2");
+        sE1.put("ne20206", bi.ne20206a.isChecked() ? "1" : bi.ne20206b.isChecked() ? "2" : "0");
+        sE1.put("ne20306", bi.ne20306.getText().toString());
+
+
+        MainApp.wsc.setsE2(String.valueOf(sE1));
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
 
@@ -657,6 +727,26 @@ public class SectionE2Activity extends AppCompatActivity {
 
     private boolean UpdateDB() {
 
-        return true;
+        DatabaseHelper db = new DatabaseHelper(this);
+
+
+        Long updcount = db.addWaterSpecimenForm(MainApp.wsc);
+        MainApp.wsc.set_ID(String.valueOf(updcount));
+
+        if (updcount != 0) {
+            //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+
+            MainApp.wsc.setUID(
+                    (MainApp.wsc.getDeviceID() + MainApp.wsc.get_ID()));
+            db.updateWaterSpecimenMemberID();
+
+            return true;
+        } else {
+            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+
+        //return true;
     }
 }

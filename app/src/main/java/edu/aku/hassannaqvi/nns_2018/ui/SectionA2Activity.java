@@ -478,8 +478,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
 
             JSONObject sA2 = new JSONObject();
 
-            //sA2.put("cluster_no", MainApp.fc.getClusterNo());
-            //sA2.put("hhno", MainApp.fc.getHhNo());
+
             sA2.put("resp", family.getResp().equals("0") ? "" : family.getResp());
             sA2.put("nh2SerialNo", family.getSerialNo());
             sA2.put("nh202", family.getName());
@@ -489,12 +488,10 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
             sA2.put("nh2doby", binding.nh2doby.getText().toString());
             sA2.put("nh2dobm", binding.nh2dobm.getText().toString());
             sA2.put("nh2dobd", binding.nh2dobd.getText().toString());
-            //sA2.put("nh20598", binding.nh20598.isChecked() ? "98" : "0");
+
 
             sA2.put("nh206y", binding.nh2agey.getText().toString());
-            /*sA2.put("nh206m", binding.nh2agem.getText().toString());
-            sA2.put("nh206d", binding.nh2aged.getText().toString());
-*/
+
             if (binding.nh2doby.getText().toString().equals("9998")) {
                 Age = Integer.valueOf(binding.nh2agey.getText().toString());
             } else {
@@ -826,24 +823,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
     @Override
     public void afterTextChanged(Editable s) {
 
-        /*timer.cancel();
-        timer = new Timer();
-                timer.schedule(
-                        new TimerTask() {
-                            @Override
-                            public void run() {
 
-                                runOnUiThread(new Runnable() {
-                                    public void run() {
-                                        formValidation();
-                                    }
-                                    //}
-                                });
-
-                            }
-                        },
-                        DELAY
-                );*/
     }
 
     @Override

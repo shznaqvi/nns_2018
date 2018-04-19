@@ -228,7 +228,7 @@ public class WaterSpecimenContract {
         return sE2;
     }
 
-    public void setsE1(String sE1) {
+    public void setsE2(String sE2) {
         this.sE2 = sE2;
     }
 

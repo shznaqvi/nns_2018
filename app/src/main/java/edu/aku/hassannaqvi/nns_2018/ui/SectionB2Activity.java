@@ -1006,7 +1006,8 @@ public class SectionB2Activity extends Menu2Activity implements RadioGroup.OnChe
 
 
 //        nw304
-        sB2.put("nw304", bi.nw304w.getText().toString());
+        sB2.put("nw304w", bi.nw304w.getText().toString());
+        sB2.put("nw304m", bi.nw304m.getText().toString());
         sB2.put("nw30498", bi.nw30498.isChecked() ? "98" : "0");
 
 
