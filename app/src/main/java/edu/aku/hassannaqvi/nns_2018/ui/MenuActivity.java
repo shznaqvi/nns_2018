@@ -34,6 +34,8 @@ import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.NutritionContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.SpecimenContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.WaterSpecimenContract;
 import edu.aku.hassannaqvi.nns_2018.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -58,7 +60,7 @@ public class MenuActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_menu_example, menu);
+        getMenuInflater().inflate(R.menu.activity_menu_login, menu);
         return true;
     }
 
@@ -273,6 +275,30 @@ public class MenuActivity extends AppCompatActivity {
                     MainApp._HOST_URL + DeceasedContract.DeceasedTable._URL,
                     db.getUnsyncedDeceasedMembers(), this.findViewById(R.id.syncStatus)
             ).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing Blood Specimen", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Specimen",
+                    "updateSyncedSpecimen",
+                    SpecimenContract.class,
+                    MainApp._HOST_URL + SpecimenContract.SpecimenTable._URL,
+                    db.getUnsyncedSpecimenForms(), this.findViewById(R.id.syncStatus)
+            ).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing Blood Specimen", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "WaterSpecimen",
+                    "updateSyncedWaterSpecimen",
+                    WaterSpecimenContract.class,
+                    MainApp._HOST_URL + WaterSpecimenContract.WaterSpecimenTable._URL,
+                    db.getUnsyncedWaterSpecimenForms(), this.findViewById(R.id.syncStatus)
+            ).execute();
+
+
+
+
 
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = syncPref.edit();

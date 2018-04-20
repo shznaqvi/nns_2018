@@ -49,7 +49,9 @@ public class SectionA2ListActivity extends AppCompatActivity {
     JSONModelClass json;
     JSONACountModelClass countJSON;
     Boolean flagMember = false;
+    //static Boolean flag = false;
 
+    Boolean head;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +62,9 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
         db = new DatabaseHelper(this);
 
+        if (MainApp.flag_head) {
+            head = getIntent().getExtras().getBoolean("count");
+        }
         setupViews();
         this.setTitle(getResources().getString(R.string.na2heading));
 
@@ -389,6 +394,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
     public void BtnAddMore() {
 
+        MainApp.flag_head = true;
         //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 SectionA2ListActivity.this);
@@ -400,13 +406,16 @@ public class SectionA2ListActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog,
                                                 int id) {
                                 finish();
-                                if (binding.nh2tm.getText().toString().equals("0") && binding.nh2tf.getText().toString().equals("0")) {
+                                /*if (binding.nh2tm.getText().toString().equals("0") && binding.nh2tf.getText().toString().equals("0")) {
                                     startActivity(new Intent(SectionA2ListActivity.this, SectionA2Activity.class).putExtra("flag", true)
                                             .putExtra("count", true));
                                 } else {
                                     startActivity(new Intent(SectionA2ListActivity.this, SectionA2Activity.class).putExtra("flag", true)
-                                            .putExtra("count", false));
-                                }
+                                            .putExtra("count", head));
+                                }*/
+
+                                startActivity(new Intent(SectionA2ListActivity.this, SectionA2Activity.class)
+                                        .putExtra("flag", true));
                             }
                         });
         alertDialogBuilder.setNegativeButton("Cancel",

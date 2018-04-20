@@ -612,9 +612,9 @@ public class SectionC3Activity extends Menu2Activity implements RadioGroup.OnChe
         }
 
 //        nc301
-        sC3.put("nc3name", selectedChild.getName());
+        //sC3.put("nc3name", selectedChild.getName());
 //        nc302
-        sC3.put("nc300Serial", selectedChild.getSerialNo());
+        //sC3.put("nc300Serial", selectedChild.getSerialNo());
 
 //        nc302
         sC3.put("nc302", binding.nc302a.isChecked() ? "1"

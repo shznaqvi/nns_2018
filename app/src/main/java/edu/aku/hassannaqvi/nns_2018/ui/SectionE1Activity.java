@@ -418,7 +418,7 @@ public class SectionE1Activity extends AppCompatActivity {
                     Toast.makeText(this, "ERROR(invalid)" + getString(R.string.barcode), Toast.LENGTH_SHORT).show();
                     bi.ne105.setError("Invalid QR Code..");
 
-                    Log.i(TAG, "bloodcode: Invalid QR Code");
+                    Log.i(TAG, "bloodcode: Invalid or Incomplete QR Code");
                     return false;
                 } else {
                     bi.ne105.setError(null);
@@ -455,7 +455,7 @@ public class SectionE1Activity extends AppCompatActivity {
                     Toast.makeText(this, "ERROR(invalid)" + getString(R.string.barcode), Toast.LENGTH_SHORT).show();
                     bi.ne109.setError("Invalid QR Code..");
 
-                    Log.i(TAG, "urinecode: Invalid QR Code");
+                    Log.i(TAG, "urinecode: Invalid or Incomplete QR Code");
                     return false;
                 } else {
                     bi.ne109.setError(null);
@@ -491,7 +491,7 @@ public class SectionE1Activity extends AppCompatActivity {
                     Toast.makeText(this, "ERROR(invalid)" + getString(R.string.barcode), Toast.LENGTH_SHORT).show();
                     bi.ne105.setError("Invalid QR Code..");
 
-                    Log.i(TAG, "cbCode: Invalid QR code");
+                    Log.i(TAG, "cbCode: Invalid or Incomplete QR code");
                     return false;
                 } else {
                     bi.ne105.setError(null);
@@ -501,6 +501,7 @@ public class SectionE1Activity extends AppCompatActivity {
                 if (!validatorClass.EmptyTextBox(this, bi.ne106, getString(R.string.hb_result))) {
                     return false;
                 }
+
 
             } else {
                 if (!validatorClass.EmptyRadioButton(this, bi.ne107, bi.ne107a, getString(R.string.ne107))) {
@@ -528,7 +529,7 @@ public class SectionE1Activity extends AppCompatActivity {
                 if (bi.ne109.getText().length() != scanChar || !bi.ne109.getText().toString().contains("-")
                         || !bi.ne109.getText().toString().contains("CU")) {
                     Toast.makeText(this, "ERROR(invalid)" + getString(R.string.barcode), Toast.LENGTH_SHORT).show();
-                    bi.ne109.setError("Invalid QR Code..");
+                    bi.ne109.setError("Invalid or Incomplete QR Code..");
 
                     Log.i(TAG, "urinecode: Invalid QR Code");
                     return false;

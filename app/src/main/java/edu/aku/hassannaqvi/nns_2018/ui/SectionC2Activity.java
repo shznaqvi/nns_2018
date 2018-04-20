@@ -246,22 +246,47 @@ public class SectionC2Activity extends Menu2Activity implements RadioGroup.OnChe
                                 : bi.nc210b.getId()
                 );
             }
-            if (!jsonC2.getnc211().equals("0")) {
-                bi.nc211.check(
-                        jsonC2.getnc211().equals("1") ? bi.nc211a.getId()
-                                : jsonC2.getnc211().equals("2") ? bi.nc211b.getId()
-                                : jsonC2.getnc211().equals("3") ? bi.nc211c.getId()
-                                : jsonC2.getnc211().equals("4") ? bi.nc211d.getId()
-                                : jsonC2.getnc211().equals("5") ? bi.nc211e.getId()
-                                : jsonC2.getnc211().equals("6") ? bi.nc211f.getId()
-                                : jsonC2.getnc211().equals("7") ? bi.nc211g.getId()
-                                : jsonC2.getnc211().equals("8") ? bi.nc211h.getId()
-                                : jsonC2.getnc211().equals("9") ? bi.nc211i.getId()
-                                : jsonC2.getnc211().equals("10") ? bi.nc211j.getId()
-                                : jsonC2.getnc211().equals("99") ? bi.nc21199.getId()
-                                : bi.nc21196.getId()
-                );
+
+
+            if (!jsonC2.getNc211a().equals("0")) {
+                bi.nc211a.setChecked(true);
             }
+            if (!jsonC2.getNc211b().equals("0")) {
+                bi.nc211b.setChecked(true);
+            }
+            if (!jsonC2.getNc211c().equals("0")) {
+                bi.nc211c.setChecked(true);
+            }
+            if (!jsonC2.getNc211d().equals("0")) {
+                bi.nc211d.setChecked(true);
+            }
+
+            if (!jsonC2.getNc211e().equals("0")) {
+                bi.nc211e.setChecked(true);
+            }
+            if (!jsonC2.getNc211f().equals("0")) {
+                bi.nc211f.setChecked(true);
+            }
+
+            if (!jsonC2.getNc211g().equals("0")) {
+                bi.nc211g.setChecked(true);
+            }
+            if (!jsonC2.getNc211h().equals("0")) {
+                bi.nc211h.setChecked(true);
+            }
+            if (!jsonC2.getNc211i().equals("0")) {
+                bi.nc211i.setChecked(true);
+            }
+            if (!jsonC2.getNc211j().equals("0")) {
+                bi.nc211j.setChecked(true);
+            }
+            if (!jsonC2.getNc21196().equals("0")) {
+                bi.nc21196.setChecked(true);
+            }
+            if (!jsonC2.getNc21199().equals("0")) {
+                bi.nc21199.setChecked(true);
+            }
+
             bi.nc21196x.setText(jsonC2.getnc21196x());
 
             if (!jsonC2.getnc212().equals("0")) {
@@ -633,14 +658,7 @@ public class SectionC2Activity extends Menu2Activity implements RadioGroup.OnChe
 
     private boolean ValidateForm() {
 
-        //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
-//        Validation Boolean
-        //MainApp.validateFlag = true;
-
-        //if (!bi.nc20198.isChecked()) {
-
-        //if (bi.nc205a.isChecked()) {
         if (!validatorClass.EmptyRadioButton(this, bi.nc206, bi.nc206a, getString(R.string.nc206))) {
             return false;
         }
@@ -683,10 +701,10 @@ public class SectionC2Activity extends Menu2Activity implements RadioGroup.OnChe
             }
 
             if (bi.nc210a.isChecked()) {
-                if (!validatorClass.EmptyRadioButton(this, bi.nc211, bi.nc211a, getString(R.string.nc211))) {
+                if (!validatorClass.EmptyCheckBox(this, bi.nc211, bi.nc211a, getString(R.string.nc211))) {
                     return false;
                 }
-                if (!validatorClass.EmptyRadioButton(this, bi.nc211, bi.nc21196, bi.nc21196x, getString(R.string.nc211))) {
+                if (!validatorClass.EmptyCheckBox(this, bi.nc211, bi.nc21196, bi.nc21196x, getString(R.string.nc211))) {
                     return false;
                 }
             }
@@ -921,9 +939,9 @@ public class SectionC2Activity extends Menu2Activity implements RadioGroup.OnChe
         }
 
 //        nc2_child_name
-        sC2.put("nc2_child_name", selectedChild.getName());
+        //sC2.put("nc2_child_name", selectedChild.getName());
 //        nc2_line_no
-        sC2.put("nc2_line_noSerial", selectedChild.getSerialNo());
+        //sC2.put("nc2_line_noSerial", selectedChild.getSerialNo());
 
 
         sC2.put("nc206", bi.nc206a.isChecked() ? "1"
@@ -954,19 +972,18 @@ public class SectionC2Activity extends Menu2Activity implements RadioGroup.OnChe
         sC2.put("nc210", bi.nc210a.isChecked() ? "1"
                 : bi.nc210b.isChecked() ? "2"
                 : "0");
-        sC2.put("nc211", bi.nc211a.isChecked() ? "1"
-                : bi.nc211b.isChecked() ? "2"
-                : bi.nc211c.isChecked() ? "3"
-                : bi.nc211d.isChecked() ? "4"
-                : bi.nc211e.isChecked() ? "5"
-                : bi.nc211f.isChecked() ? "6"
-                : bi.nc211g.isChecked() ? "7"
-                : bi.nc211h.isChecked() ? "8"
-                : bi.nc211i.isChecked() ? "9"
-                : bi.nc211j.isChecked() ? "10"
-                : bi.nc21199.isChecked() ? "99"
-                : bi.nc21196.isChecked() ? "96"
-                : "0");
+        sC2.put("nc211a", bi.nc211a.isChecked() ? "1" : "0");
+        sC2.put("nc211b", bi.nc211a.isChecked() ? "2" : "0");
+        sC2.put("nc211c", bi.nc211c.isChecked() ? "3" : "0");
+        sC2.put("nc211d", bi.nc211d.isChecked() ? "4" : "0");
+        sC2.put("nc211e", bi.nc211c.isChecked() ? "5" : "0");
+        sC2.put("nc211f", bi.nc211c.isChecked() ? "6" : "0");
+        sC2.put("nc211g", bi.nc211c.isChecked() ? "7" : "0");
+        sC2.put("nc211h", bi.nc211c.isChecked() ? "8" : "0");
+        sC2.put("nc211i", bi.nc211c.isChecked() ? "9" : "0");
+        sC2.put("nc211j", bi.nc211c.isChecked() ? "10" : "0");
+        sC2.put("nc21199", bi.nc211c.isChecked() ? "99" : "0");
+        sC2.put("nc21196", bi.nc211c.isChecked() ? "96" : "0");
 
         sC2.put("nc21196x", bi.nc21196x.getText().toString());
 
@@ -1352,7 +1369,7 @@ public class SectionC2Activity extends Menu2Activity implements RadioGroup.OnChe
 
         bi.nc207.setOnCheckedChangeListener(this);
         bi.nc209.setOnCheckedChangeListener(this);
-        bi.nc211.setOnCheckedChangeListener(this);
+        //bi.nc211.setOnCheckedChangeListener(this);
         bi.nc21201.setOnCheckedChangeListener(this);
         bi.nc213.setOnCheckedChangeListener(this);
         bi.nc214.setOnCheckedChangeListener(this);

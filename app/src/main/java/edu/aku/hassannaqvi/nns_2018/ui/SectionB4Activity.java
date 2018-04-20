@@ -58,7 +58,7 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
                     binding.nw402e.setChecked(false);
                     binding.nw402f.setChecked(false);
                     binding.nw402g.setChecked(false);
-                    binding.nw402h.setChecked(false);
+                    //binding.nw402h.setChecked(false);
                     binding.nw40296.setChecked(false);
 
                     binding.nw402a.setEnabled(false);
@@ -68,7 +68,6 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
                     binding.nw402e.setEnabled(false);
                     binding.nw402f.setEnabled(false);
                     binding.nw402g.setEnabled(false);
-                    binding.nw402h.setEnabled(false);
                     binding.nw40296.setEnabled(false);
                 } else {
                     binding.nw402a.setEnabled(true);
@@ -78,7 +77,6 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
                     binding.nw402e.setEnabled(true);
                     binding.nw402f.setEnabled(true);
                     binding.nw402g.setEnabled(true);
-                    binding.nw402h.setEnabled(true);
                     binding.nw40296.setEnabled(true);
                 }
             }
@@ -218,7 +216,6 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
                                                         jsonB4.getnw401().equals("5") ? binding.nw401e.getId() :
                                                                 jsonB4.getnw401().equals("6") ? binding.nw401f.getId() :
                                                                         jsonB4.getnw401().equals("7") ? binding.nw401g.getId() :
-                                                                                jsonB4.getnw401().equals("8") ? binding.nw401h.getId() :
                                                                                         binding.nw40196.getId()
                 );
                 binding.nw40196x.setText(jsonB4.getnw40196x());
@@ -244,9 +241,6 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
             }
             if (!jsonB4.getnw402g().equals("0")) {
                 binding.nw402g.setChecked(true);
-            }
-            if (!jsonB4.getnw402h().equals("0")) {
-                binding.nw402h.setChecked(true);
             }
             if (!jsonB4.getnw40299().equals("0")) {
                 binding.nw40299.setChecked(true);
@@ -596,9 +590,7 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
                 : binding.nw401e.isChecked() ? "5"
                 : binding.nw401f.isChecked() ? "6"
                 : binding.nw401g.isChecked() ? "7"
-                : binding.nw401h.isChecked() ? "8"
                 : binding.nw40196.isChecked() ? "96"
-                : binding.nw40199.isChecked() ? "99"
                 : "0");
         sB4.put("nw40196x", binding.nw40196x.getText().toString());
 
@@ -610,7 +602,6 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
         sB4.put("nw402e", binding.nw402e.isChecked() ? "5" : "0");
         sB4.put("nw402f", binding.nw402f.isChecked() ? "6" : "0");
         sB4.put("nw402g", binding.nw402g.isChecked() ? "7" : "0");
-        sB4.put("nw402h", binding.nw402h.isChecked() ? "8" : "0");
         sB4.put("nw40299", binding.nw40299.isChecked() ? "99" : "0");
         sB4.put("nw40296", binding.nw40296.isChecked() ? "96" : "0");
         sB4.put("nw40296x", binding.nw40296x.getText().toString());
@@ -621,16 +612,16 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
                 : binding.nw403c.isChecked() ? "3"
                 : binding.nw403d.isChecked() ? "4"
                 : binding.nw403e.isChecked() ? "5"
-                : binding.nw403f.isChecked() ? "6"
+                : binding.nw403f.isChecked() ? "961"
                 : binding.nw403g.isChecked() ? "7"
                 : binding.nw403h.isChecked() ? "8"
                 : binding.nw403i.isChecked() ? "9"
-                : binding.nw403j.isChecked() ? "10"
-                : binding.nw40396.isChecked() ? "96"
+                : binding.nw403j.isChecked() ? "962"
+                : binding.nw40396.isChecked() ? "963"
                 : "0");
-        sB4.put("nw403fx", binding.nw403fx.getText().toString());
-        sB4.put("nw403jx", binding.nw403jx.getText().toString());
-        sB4.put("nw40396x", binding.nw40396x.getText().toString());
+        sB4.put("nw403961x", binding.nw403fx.getText().toString());
+        sB4.put("nw403962x", binding.nw403jx.getText().toString());
+        sB4.put("nw403963x", binding.nw40396x.getText().toString());
 
 //        nw404
         sB4.put("nw404", binding.nw404a.isChecked() ? "1"
@@ -718,7 +709,7 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
                 : "0");
 
         sB4.put("nw413961x", binding.nw413961x.getText().toString());
-        sB4.put("nw413962x", binding.nw413963x.getText().toString());
+        sB4.put("nw413962x", binding.nw413962x.getText().toString());
         sB4.put("nw413963x", binding.nw413963x.getText().toString());
 
 

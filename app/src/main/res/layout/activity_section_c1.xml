@@ -52,6 +52,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="2dp"
             android:padding="0dp"
+            android:visibility="gone"
             android:background="@drawable/button_bg2"
             android:onClick="@{() -> callback.BtnAddMember()}"
             android:text="ADD NEW MEMBER"
@@ -156,7 +157,7 @@
 
                         <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="90dp"
+                            android:layout_height="80dp"
                             android:background="@color/pink_100"
                             android:gravity="center"
                             android:text="@string/year"
@@ -185,7 +186,7 @@
 
                         <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="90dp"
+                            android:layout_height="80dp"
                             android:background="@color/pink_100"
                             android:gravity="center"
                             android:text="@string/months"

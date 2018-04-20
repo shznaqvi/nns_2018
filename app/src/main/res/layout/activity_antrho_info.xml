@@ -58,7 +58,7 @@
                     android:layout_weight="60"
                     android:hint="@string/nh102a"
                     android:inputType="number"
-                    android:maxLength="9" />
+                    android:maxLength="4" />
 
                 <Button
                     android:id="@+id/checkEnmBtn"

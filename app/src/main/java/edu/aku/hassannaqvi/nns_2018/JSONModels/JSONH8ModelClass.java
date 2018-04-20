@@ -1,5 +1,7 @@
 package edu.aku.hassannaqvi.nns_2018.JSONModels;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by ali.azaz on 3/31/2018.
  */
@@ -20,10 +22,21 @@ public class JSONH8ModelClass {
     private String serial = "";
     private String nh8Flag = "";
     private String nh8ms = "";
+    @SerializedName("wra_lno")
     private String mwraSerial = "";
+    private String fSerial = "";
 
     public JSONH8ModelClass() {
 
+    }
+
+
+    public String getfSerial() {
+        return fSerial;
+    }
+
+    public void setfSerial(String fSerial) {
+        this.fSerial = fSerial;
     }
 
     public String getMwraSerial() {

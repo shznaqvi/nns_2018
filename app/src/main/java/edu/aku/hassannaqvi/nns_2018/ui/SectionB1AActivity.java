@@ -323,7 +323,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
         sB1a.put("nw217Flag", bi.nw217Flag.isChecked() ? "1" : "2");
 
-        sB1a.put("serial", MainApp.mc.getB1SerialNo());
+        sB1a.put("wra_lno", MainApp.mc.getB1SerialNo());
 
         sB1a.put("nw21701", bi.nw21701a.isChecked() ? "1" : bi.nw21701b.isChecked() ? "2" : "0");
         sB1a.put("nw21702y", bi.nw21702y.getText().toString());

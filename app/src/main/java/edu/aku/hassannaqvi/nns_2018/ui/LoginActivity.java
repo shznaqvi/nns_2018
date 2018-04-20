@@ -139,6 +139,8 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
+        MainApp.cluster_no = "";
+
         try {
             long installedOn = this
                     .getPackageManager()

@@ -51,6 +51,7 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
     FamilyMembersContract slecMem;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     private Timer timer = new Timer();
+    Boolean endflag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -167,14 +168,7 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
         // setup head
         binding.txtCounter.setText("Count " + counter + " out of " + MainApp.all_members.size());
 
-//        Listener
-        /*binding.nd1w.addTextChangedListener(this);
-        binding.nd1h.addTextChangedListener(this);
-        binding.nd1muac.addTextChangedListener(this);*/
         binding.nd1bcgscar.setOnCheckedChangeListener(this);
-       /* binding.nd1g.setOnCheckedChangeListener(this);
-        binding.nd1ca.setOnCheckedChangeListener(this);
-        binding.nd1o.setOnCheckedChangeListener(this);*/
 
     }
 
@@ -237,20 +231,23 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
     }
 
     public void BtnEnd() {
-        try {
-            SaveDraft();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        if (UpdateDB()) {
-            //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
+        endflag = true;
+        if (formValidation()) {
+            try {
+                SaveDraft();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            if (UpdateDB()) {
+                //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
-            //finish();
+                //finish();
 
-            MainApp.endAnthroActivity(this, this);
+                MainApp.endAnthroActivity(this, this);
 
-        } else {
-            Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -258,42 +255,74 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
 
         //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
-        if (!validatorClass.EmptySpinner(this, binding.nd101, getString(R.string.nd1w))) {
-            return false;
-        }
+        if (endflag) {
 
-        if (!validatorClass.EmptyTextBox(this, binding.nd1w, getString(R.string.nd1w))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyTextBox(this, binding.nd1h, getString(R.string.nd1h))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyTextBox(this, binding.nd1muac, getString(R.string.nd1muac))) {
-            return false;
-        }
+            return validatorClass.EmptySpinner(this, binding.nd101, getString(R.string.nd101sno));
+        } else {
 
 
-        if (slc_type == 2) {
-            if (!validatorClass.EmptyRadioButton(this, binding.nd1bcgscar, binding.nd1bcgscara, getString(R.string.nd1bcgscar))) {
+            if (!validatorClass.EmptySpinner(this, binding.nd101, getString(R.string.nd101sno))) {
                 return false;
             }
-        }
-        if (!validatorClass.EmptyRadioButton(this, binding.nd1g, binding.nd1ga, getString(R.string.nd1g))) {
-            return false;
-        }
 
-        if (!validatorClass.EmptyRadioButton(this, binding.nd1ca, binding.nd1caa, getString(R.string.nd1ca))) {
-            return false;
-        }
+            /*Add ranges here.. 3 types of*/
+            if (!validatorClass.EmptyTextBox(this, binding.nd1w, getString(R.string.nd1w))) {
+                return false;
+            }
 
-        if (slc_type == 2) {
-            return validatorClass.EmptyRadioButton(this, binding.nd1o, binding.nd1oa, getString(R.string.nd1o));
-        }
+            if (!validatorClass.EmptyTextBox(this, binding.nd1h, getString(R.string.nd1h))) {
+                return false;
+            }
 
+            if (!validatorClass.EmptyTextBox(this, binding.nd1muac, getString(R.string.nd1muac))) {
+                return false;
+            }
+            /*end*/
+
+
+            if (slc_type == 2) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nd1bcgscar, binding.nd1bcgscara, getString(R.string.nd1bcgscar))) {
+                    return false;
+                }
+            }
+            if (!validatorClass.EmptyRadioButton(this, binding.nd1g, binding.nd1ga, getString(R.string.nd1g))) {
+                return false;
+            }
+
+            if (!validatorClass.EmptyRadioButton(this, binding.nd1ca, binding.nd1caa, getString(R.string.nd1ca))) {
+                return false;
+            }
+
+            if (slc_type == 2) {
+                return validatorClass.EmptyRadioButton(this, binding.nd1o, binding.nd1oa, getString(R.string.nd1o));
+            }
+        }
 
         return true;
+    }
+
+    public double MinWeight(int type) {
+
+        switch (type) {
+            case 1:
+            case 3:
+                return 25d;
+            case 2:
+                return 0.5d;
+        }
+        return 0;
+    }
+
+    public double MaxWeight(int type) {
+
+        switch (type) {
+            case 1:
+            case 3:
+                return 250d;
+            case 2:
+                return 99.9d;
+        }
+        return 0;
     }
 
     private void SaveDraft() throws JSONException {

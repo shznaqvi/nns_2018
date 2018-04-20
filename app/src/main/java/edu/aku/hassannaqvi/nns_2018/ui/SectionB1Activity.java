@@ -43,7 +43,7 @@ import edu.aku.hassannaqvi.nns_2018.other.DateUtils;
 import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionB1Activity extends Menu2Activity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
+public class SectionB1Activity extends AddMember_MenuActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
     public static String wraName = "";
     public static int WRAcounter = 1;
@@ -73,6 +73,7 @@ public class SectionB1Activity extends Menu2Activity implements TextWatcher, Rad
     List<RadioButton> nw210aYes;
     @BindViews({R.id.nw21003a, R.id.nw21098a, R.id.nw21099a})
     List<RadioButton> nw210bYes;
+    Boolean endflag = false;
 
     public TextWatcher age = new TextWatcher() {
         @Override
@@ -1163,31 +1164,35 @@ public class SectionB1Activity extends Menu2Activity implements TextWatcher, Rad
     }
 
     public void BtnEnd() {
-        try {
-            SaveDraft();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        if (UpdateDB()) {
-            //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
-            //finish();
-
-            if (editWRAFlag) {
-                finish();
-                startActivity(new Intent(this, ViewMemberActivity.class)
-                        .putExtra("flagEdit", false)
-                        .putExtra("comingBack", true)
-                        .putExtra("cluster", MainApp.mc.getCluster())
-                        .putExtra("hhno", MainApp.mc.getHhno())
-                );
-            } else {
-                WRAsize = MainApp.mwra.size();
-                MainApp.endActivityMother(this, this, false);
+        endflag = true;
+        if (ValidateForm()) {
+            try {
+                SaveDraft();
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
+            if (UpdateDB()) {
+                //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
-        } else {
-            Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
+                //finish();
+
+                if (editWRAFlag) {
+                    finish();
+                    startActivity(new Intent(this, ViewMemberActivity.class)
+                            .putExtra("flagEdit", false)
+                            .putExtra("comingBack", true)
+                            .putExtra("cluster", MainApp.mc.getCluster())
+                            .putExtra("hhno", MainApp.mc.getHhno())
+                    );
+                } else {
+                    WRAsize = MainApp.mwra.size();
+                    MainApp.endActivityMother(this, this, false);
+                }
+
+            } else {
+                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -1211,7 +1216,7 @@ public class SectionB1Activity extends Menu2Activity implements TextWatcher, Rad
             sB1.put("cluster_no", MainApp.fc.getClusterNo());
             sB1.put("hhno", MainApp.fc.getHhNo());
             sB1.put("nw101", bi.nb101.getSelectedItem().toString());
-            sB1.put("nw1serialno", wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
+            sB1.put("wra_lno", wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
 
         } else {
 
@@ -1225,7 +1230,7 @@ public class SectionB1Activity extends Menu2Activity implements TextWatcher, Rad
                 sB1.put("cluster_no", jsonB1.getCluster_no());
                 sB1.put("hhno", jsonB1.getHhno());
                 sB1.put("nw101", jsonB1.getnw101());
-                sB1.put("nw1serialno", jsonB1.getnw1serialno());
+                sB1.put("wra_lno", jsonB1.getnw1serialno());
 
             } else if (editWRAFlag) {
 
@@ -1234,7 +1239,7 @@ public class SectionB1Activity extends Menu2Activity implements TextWatcher, Rad
                 sB1.put("cluster_no", jsonB1.getCluster_no());
                 sB1.put("hhno", jsonB1.getHhno());
                 sB1.put("nw101", jsonB1.getnw101());
-                sB1.put("nw1serialno", jsonB1.getnw1serialno());
+                sB1.put("wra_lno", jsonB1.getnw1serialno());
 
             } else {
 
@@ -1243,7 +1248,7 @@ public class SectionB1Activity extends Menu2Activity implements TextWatcher, Rad
                 sB1.put("cluster_no", MainApp.fc.getClusterNo());
                 sB1.put("hhno", MainApp.fc.getHhNo());
                 sB1.put("nw101", bi.nb101.getSelectedItem().toString());
-                sB1.put("nw1serialno", wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
+                sB1.put("wra_lno", wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
 
             }
 //            MainApp.mc.set_UID(MainApp.mc.get_UID());
@@ -1409,166 +1414,173 @@ public class SectionB1Activity extends Menu2Activity implements TextWatcher, Rad
 
     private boolean ValidateForm() {
 
-        if (!editWRAFlag) {
-            if (!validatorClass.EmptySpinner(this, bi.nb101, getString(R.string.nb101))) {
+        if (endflag) {
+
+            return validatorClass.EmptySpinner(this, bi.nb101, getString(R.string.nb101));
+        } else {
+
+            if (!editWRAFlag) {
+                if (!validatorClass.EmptySpinner(this, bi.nb101, getString(R.string.nb101))) {
+                    return false;
+                }
+            }
+
+            if (!validatorClass.EmptyTextBox(this, bi.nw201days, getString(R.string.day))) {
                 return false;
             }
-        }
-
-        if (!validatorClass.EmptyTextBox(this, bi.nw201days, getString(R.string.day))) {
-            return false;
-        }
-        if (!validatorClass.RangeTextBox(this, bi.nw201days, 1, 31, 98, "Range 1-31 or 98", getString(R.string.day))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyTextBox(this, bi.nw201months, getString(R.string.months))) {
-            return false;
-        }
-        if (!validatorClass.RangeTextBox(this, bi.nw201months, 1, 12, 98, "Range 1-12 or 98", getString(R.string.months))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyTextBox(this, bi.nw201years, getString(R.string.year2))) {
-            return false;
-        }
-
-        Date date = new Date(); // Current date
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        int year = cal.get(Calendar.YEAR);
-
-        /*if (!validatorClass.RangeTextBox(this, bi.nw201years, year - 49, year - 15, 9998,
-                "Range " + (year - 49) + " - " + (year - 15), getString(R.string.year2))) {
-            return false;
-        }*/
-
-        if (!validatorClass.EmptyTextBox(this, bi.nw202, getString(R.string.nw202))) {
-            return false;
-        }
-        /*if (!validatorClass.RangeTextBox(this, bi.nw202, 15, 49, "Range 15-49", getString(R.string.year))) {
-            return false;
-        }*/
-
-
-        if (!validatorClass.EmptyRadioButton(this, bi.nw203, bi.nw203b, getString(R.string.nw203))) {
-            return false;
-        }
-
-        if (bi.nw203a.isChecked()) {
-
-            if (!validatorClass.EmptyRadioButton(this, bi.nw204, bi.nw204a, getString(R.string.nw204))) {
+            if (!validatorClass.RangeTextBox(this, bi.nw201days, 1, 31, 98, "Range 1-31 or 98", getString(R.string.day))) {
                 return false;
             }
 
-            if (bi.nw204b.isChecked()) {
-                if (!validatorClass.EmptyRadioButton(this, bi.nw205, bi.nw205a, getString(R.string.nw205))) {
-                    return false;
-                }
+            if (!validatorClass.EmptyTextBox(this, bi.nw201months, getString(R.string.months))) {
+                return false;
+            }
+            if (!validatorClass.RangeTextBox(this, bi.nw201months, 1, 12, 98, "Range 1-12 or 98", getString(R.string.months))) {
+                return false;
             }
 
-            if (bi.nw204a.isChecked() || bi.nw205a.isChecked()) {
+            if (!validatorClass.EmptyTextBox(this, bi.nw201years, getString(R.string.year2))) {
+                return false;
+            }
 
-                //if (bi.nw204a.isChecked() || bi.nw205a.isChecked()) {
-                if (!validatorClass.EmptyTextBox(this, bi.nw206, getString(R.string.nw206))) {
+            Date date = new Date(); // Current date
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            int year = cal.get(Calendar.YEAR);
+
+            if (!validatorClass.RangeTextBox(this, bi.nw201years, year - 49, year - 15, 9998,
+                    "Range " + (year - 49) + " - " + (year - 15), getString(R.string.year2))) {
+                return false;
+            }
+
+            if (!validatorClass.EmptyTextBox(this, bi.nw202, getString(R.string.nw202))) {
+                return false;
+            }
+            if (!validatorClass.RangeTextBox(this, bi.nw202, 15, 49, "Range 15-49", getString(R.string.year))) {
+                return false;
+            }
+
+
+            if (!validatorClass.EmptyRadioButton(this, bi.nw203, bi.nw203b, getString(R.string.nw203))) {
+                return false;
+            }
+
+            if (bi.nw203a.isChecked()) {
+
+                if (!validatorClass.EmptyRadioButton(this, bi.nw204, bi.nw204a, getString(R.string.nw204))) {
                     return false;
                 }
 
-                if (!validatorClass.RangeTextBox(this, bi.nw206, 10, Integer.valueOf(bi.nw202.getText().toString()), getString(R.string.nw206), " years")) {
-                    return false;
+                if (bi.nw204b.isChecked()) {
+                    if (!validatorClass.EmptyRadioButton(this, bi.nw205, bi.nw205a, getString(R.string.nw205))) {
+                        return false;
+                    }
                 }
 
-                if (!validatorClass.EmptyRadioButton(this, bi.nw207, bi.nw207a, getString(R.string.nw207))) {
-                    return false;
-                }
+                if (bi.nw204a.isChecked() || bi.nw205a.isChecked()) {
 
-                if (bi.nw207a.isChecked()) {
-
-                    if (!validatorClass.EmptyRadioButton(this, bi.nw208, bi.nw208a, getString(R.string.nw208))) {
+                    //if (bi.nw204a.isChecked() || bi.nw205a.isChecked()) {
+                    if (!validatorClass.EmptyTextBox(this, bi.nw206, getString(R.string.nw206))) {
                         return false;
                     }
 
-                    if (bi.nw208a.isChecked()) {
+                    if (!validatorClass.RangeTextBox(this, bi.nw206, 10, Integer.valueOf(bi.nw202.getText().toString()), getString(R.string.nw206), " years")) {
+                        return false;
+                    }
 
-                        if (!validatorClass.EmptyRadioButton(this, bi.nw209, bi.nw209a, getString(R.string.nw210))) {
+                    if (!validatorClass.EmptyRadioButton(this, bi.nw207, bi.nw207a, getString(R.string.nw207))) {
+                        return false;
+                    }
+
+                    if (bi.nw207a.isChecked()) {
+
+                        if (!validatorClass.EmptyRadioButton(this, bi.nw208, bi.nw208a, getString(R.string.nw208))) {
                             return false;
                         }
 
-                        if (bi.nw209a.isChecked()) {
+                        if (bi.nw208a.isChecked()) {
 
-                            if (!bi.nw21098a.isChecked() && !bi.nw21099a.isChecked() && !bi.nw21003a.isChecked()) {
-                                if (!validatorClass.EmptyRadioButton(this, bi.nw21001, bi.nw21001a, getString(R.string.nw21001))) {
+                            if (!validatorClass.EmptyRadioButton(this, bi.nw209, bi.nw209a, getString(R.string.nw210))) {
+                                return false;
+                            }
+
+                            if (bi.nw209a.isChecked()) {
+
+                                if (!bi.nw21098a.isChecked() && !bi.nw21099a.isChecked() && !bi.nw21003a.isChecked()) {
+                                    if (!validatorClass.EmptyRadioButton(this, bi.nw21001, bi.nw21001a, getString(R.string.nw21001))) {
+                                        return false;
+                                    }
+
+                                    if (!validatorClass.EmptyRadioButton(this, bi.nw21002, bi.nw21002a, getString(R.string.nw21002))) {
+                                        return false;
+                                    }
+
+                                }
+                            }
+
+                        }
+
+                        if (!validatorClass.EmptyTextBox(this, bi.nw211, getString(R.string.nw211))) {
+                            return false;
+                        }
+
+                        if (!validatorClass.RangeTextBox(this, bi.nw211, 1, 20, getString(R.string.nw211), " pregnancies")) {
+                            return false;
+                        }
+
+                        if (!validatorClass.EmptyTextBox(this, bi.nw212, getString(R.string.nw212))) {
+                            return false;
+                        }
+                        if (!validatorClass.RangeTextBox(this, bi.nw212, 0, Integer.valueOf(bi.nw211.getText().toString()), getString(R.string.nw212), " Deliveries")) {
+                            return false;
+                        }
+
+                        if (!bi.nw212.getText().toString().equals("0")) {
+                            if (!validatorClass.EmptyTextBox(this, bi.nw213, getString(R.string.nw213))) {
+                                return false;
+                            }
+
+                            if (!validatorClass.EmptyTextBox(this, bi.nw213, getString(R.string.nw213))) {
+                                return false;
+                            }
+
+                            if (!validatorClass.RangeTextBox(this, bi.nw213, Integer.valueOf(bi.nw206.getText().toString()), Integer.valueOf(bi.nw202.getText().toString()), getString(R.string.nw213), " years")) {
+                                return false;
+                            }
+
+
+                            if (!validatorClass.EmptyTextBox(this, bi.nw214, getString(R.string.nw214))) {
+                                return false;
+                            }
+
+                            if (!validatorClass.RangeTextBox(this, bi.nw214, 0, Integer.valueOf(bi.nw211.getText().toString()), getString(R.string.nw211), " Deliveries")) {
+                                return false;
+                            }
+
+                            if (!bi.nw214.getText().toString().equals("0")) {
+
+                                if (!validatorClass.EmptyTextBox(this, bi.nw215, getString(R.string.nw215))) {
+                                    return false;
+                                }
+                                if (!validatorClass.RangeTextBox(this, bi.nw215, 0, Integer.valueOf(bi.nw212.getText().toString()), getString(R.string.nw212), " Deliveries")) {
                                     return false;
                                 }
 
-                                if (!validatorClass.EmptyRadioButton(this, bi.nw21002, bi.nw21002a, getString(R.string.nw21002))) {
+                                if (!validatorClass.EmptyRadioButton(this, bi.nw216, bi.nw216a, getString(R.string.nw216))) {
                                     return false;
                                 }
 
-                            }
-                        }
-
-                    }
-
-                    if (!validatorClass.EmptyTextBox(this, bi.nw211, getString(R.string.nw211))) {
-                        return false;
-                    }
-
-                    if (!validatorClass.RangeTextBox(this, bi.nw211, 1, 20, getString(R.string.nw211), " pregnancies")) {
-                        return false;
-                    }
-
-                    if (!validatorClass.EmptyTextBox(this, bi.nw212, getString(R.string.nw212))) {
-                        return false;
-                    }
-                    if (!validatorClass.RangeTextBox(this, bi.nw212, 0, Integer.valueOf(bi.nw211.getText().toString()), getString(R.string.nw212), " Deliveries")) {
-                        return false;
-                    }
-
-                    if (!bi.nw212.getText().toString().equals("0")) {
-                        if (!validatorClass.EmptyTextBox(this, bi.nw213, getString(R.string.nw213))) {
-                            return false;
-                        }
-
-                        if (!validatorClass.EmptyTextBox(this, bi.nw213, getString(R.string.nw213))) {
-                            return false;
-                        }
-
-                        if (!validatorClass.RangeTextBox(this, bi.nw213, Integer.valueOf(bi.nw206.getText().toString()), Integer.valueOf(bi.nw202.getText().toString()), getString(R.string.nw213), " years")) {
-                            return false;
-                        }
-
-
-                        if (!validatorClass.EmptyTextBox(this, bi.nw214, getString(R.string.nw214))) {
-                            return false;
-                        }
-
-                        if (!validatorClass.RangeTextBox(this, bi.nw214, 0, Integer.valueOf(bi.nw211.getText().toString()), getString(R.string.nw211), " Deliveries")) {
-                            return false;
-                        }
-
-                        if (!bi.nw214.getText().toString().equals("0")) {
-
-                            if (!validatorClass.EmptyTextBox(this, bi.nw215, getString(R.string.nw215))) {
-                                return false;
-                            }
-                            if (!validatorClass.RangeTextBox(this, bi.nw215, 0, Integer.valueOf(bi.nw212.getText().toString()), getString(R.string.nw212), " Deliveries")) {
-                                return false;
+                                if (bi.nw216a.isChecked()) {
+                                    return validatorClass.EmptyTextBox(this, bi.nw216aa, getString(R.string.nw216a));
+                                }
                             }
 
-                            if (!validatorClass.EmptyRadioButton(this, bi.nw216, bi.nw216a, getString(R.string.nw216))) {
-                                return false;
-                            }
-
-                            if (bi.nw216a.isChecked()) {
-                                return validatorClass.EmptyTextBox(this, bi.nw216aa, getString(R.string.nw216a));
-                            }
                         }
-
                     }
+
+                    //}
                 }
 
-                //}
             }
 
         }
