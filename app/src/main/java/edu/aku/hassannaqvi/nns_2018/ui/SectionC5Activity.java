@@ -228,9 +228,9 @@ public class SectionC5Activity extends Menu2Activity implements TextWatcher, Rad
         }
 
 //        nc301
-        sC5.put("nc501", selectedChild.getName());
+        //sC5.put("nc501", selectedChild.getName());
 //        nc302
-        sC5.put("nc502Serial", selectedChild.getSerialNo());
+        //sC5.put("nc502Serial", selectedChild.getSerialNo());
 
 //        nc501
         sC5.put("nc501", bi.nc501a.isChecked() ? "1"

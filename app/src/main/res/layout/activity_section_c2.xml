@@ -345,27 +345,27 @@
                                 android:textAppearance="?android:attr/textAppearanceLarge"
                                 android:textColor="@android:color/white" />
 
-                            <RadioGroup
+                            <LinearLayout
                                 android:id="@+id/nc211"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical">
 
-                                <RadioButton
+                                <CheckBox
                                     android:id="@+id/nc211a"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="1dp"
                                     android:text="@string/nc211a" />
 
-                                <RadioButton
+                                <CheckBox
                                     android:id="@+id/nc211b"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="1dp"
                                     android:text="@string/nc211b" />
 
-                                <RadioButton
+                                <CheckBox
                                     android:id="@+id/nc211c"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -373,56 +373,56 @@
                                     android:text="@string/nc211c" />
 
 
-                                <RadioButton
+                                <CheckBox
                                     android:id="@+id/nc211d"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="1dp"
                                     android:text="@string/nc211d" />
 
-                                <RadioButton
+                                <CheckBox
                                     android:id="@+id/nc211e"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="1dp"
                                     android:text="@string/nc211e" />
 
-                                <RadioButton
+                                <CheckBox
                                     android:id="@+id/nc211f"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="1dp"
                                     android:text="@string/nc211f" />
 
-                                <RadioButton
+                                <CheckBox
                                     android:id="@+id/nc211g"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="1dp"
                                     android:text="@string/nc211g" />
 
-                                <RadioButton
+                                <CheckBox
                                     android:id="@+id/nc211h"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="1dp"
                                     android:text="@string/nc211h" />
 
-                                <RadioButton
+                                <CheckBox
                                     android:id="@+id/nc211i"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="1dp"
                                     android:text="@string/nc211i" />
 
-                                <RadioButton
+                                <CheckBox
                                     android:id="@+id/nc211j"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="1dp"
                                     android:text="@string/nc211j" />
 
-                                <RadioButton
+                                <CheckBox
                                     android:id="@+id/nc21199"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -430,7 +430,7 @@
                                     android:text="@string/nc21199" />
 
 
-                                <RadioButton
+                                <CheckBox
                                     android:id="@+id/nc21196"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -438,7 +438,7 @@
                                     android:text="@string/other" />
 
 
-                            </RadioGroup>
+                            </LinearLayout>
 
                             <EditText
                                 android:id="@+id/nc21196x"
@@ -742,7 +742,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="1dp"
-                            android:hint="@string/times"
+                            android:hint="@string/times2"
                             android:inputType="number"
                             android:maxLength="2" />
 
@@ -797,7 +797,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="1dp"
-                            android:hint="@string/times"
+                            android:hint="@string/times2"
                             android:inputType="number"
                             android:maxLength="2" />
 
@@ -939,7 +939,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="1dp"
-                            android:hint="@string/times"
+                            android:hint="@string/times2"
                             android:inputType="number"
                             android:maxLength="2" />
 

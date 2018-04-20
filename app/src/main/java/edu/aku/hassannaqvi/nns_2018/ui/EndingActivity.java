@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -20,7 +19,7 @@ import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivityEndingBinding;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class EndingActivity extends AppCompatActivity {
+public class EndingActivity extends AddMember_MenuActivity {
 
     private static final String TAG = EndingActivity.class.getSimpleName();
 
@@ -63,7 +62,7 @@ public class EndingActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if (binding.istatus96.isChecked()) {
-                    binding.istatus96x.setVisibility(View.VISIBLE);
+                    binding.istatus96x.setVisibility(View.GONE);
                     //istatus88x.requestFocus();
                 } else {
                     binding.istatus96x.setText(null);

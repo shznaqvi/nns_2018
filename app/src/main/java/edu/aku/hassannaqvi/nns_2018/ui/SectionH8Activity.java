@@ -411,7 +411,8 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
             sA2.put("nh804", bi.nh804.getSelectedItem().toString());
             sA2.put("nh805", bi.nh805.getSelectedItem().toString());
 
-            sA2.put("mwraSerial", mothersMap.get(bi.nh804.getSelectedItemPosition()));
+            sA2.put("wra_lno", mothersMap.get(bi.nh804.getSelectedItemPosition()));
+            sA2.put("f_lno", fathersMap.get(bi.nh805.getSelectedItemPosition()));
 
         } else {
             sA2.put("edit_updatedate_nh8", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
@@ -419,7 +420,8 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
             sA2.put("nh804", jsonH8.getNh804());
             sA2.put("nh805", jsonH8.getNh805());
 
-            sA2.put("mwraSerial", jsonH8.getMwraSerial());
+            sA2.put("wra_lno", jsonH8.getMwraSerial());
+            sA2.put("f_lno", jsonH8.getfSerial());
         }
 
         sA2.put("cluster_no", MainApp.fc.getClusterNo());

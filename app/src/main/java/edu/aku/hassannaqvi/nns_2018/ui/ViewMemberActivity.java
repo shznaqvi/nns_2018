@@ -594,7 +594,7 @@ public class ViewMemberActivity extends MenuActivity {
             startActivity(new Intent(this, MainActivity.class));
 
         } else {
-            Toast.makeText(this, "Press Back again to Exit.",
+            Toast.makeText(this, "Press Button End Again..",
                     Toast.LENGTH_SHORT).show();
             exit = true;
             new Handler().postDelayed(new Runnable() {

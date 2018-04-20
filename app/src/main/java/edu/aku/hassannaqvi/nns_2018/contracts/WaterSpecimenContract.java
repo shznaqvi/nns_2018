@@ -257,7 +257,7 @@ public class WaterSpecimenContract {
         public static final String COLUMN_APPVERSION = "appversion";
 
 
-        public static String _URL = "specimen.php";
+        public static String _URL = "water.php";
     }
 
 }

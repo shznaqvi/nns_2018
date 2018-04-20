@@ -507,7 +507,7 @@ public class SectionE2Activity extends AppCompatActivity {
                 if (bi.ne20301.getText().length() != scanChar || !bi.ne20301.getText().toString().contains("-")
                         || !bi.ne20301.getText().toString().contains("HM")) {
                     Toast.makeText(this, "ERROR(invalid)" + getString(R.string.ne203), Toast.LENGTH_SHORT).show();
-                    bi.ne20301.setError("Invalid Bar code..");
+                    bi.ne20301.setError("Invalid or Incomplete QR code..");
 
                     Log.i(TAG, "ne20301: Invalid Bar code");
                     return false;
@@ -537,7 +537,7 @@ public class SectionE2Activity extends AppCompatActivity {
                 if (bi.ne20302.getText().length() != scanChar || !bi.ne20302.getText().toString().contains("-")
                         || !bi.ne20302.getText().toString().contains("HN")) {
                     Toast.makeText(this, "ERROR(invalid)" + getString(R.string.ne203), Toast.LENGTH_SHORT).show();
-                    bi.ne20302.setError("Invalid Bar code..");
+                    bi.ne20302.setError("Invalid or Incomplete QR code..");
 
                     Log.i(TAG, "ne20302: Invalid Bar code");
                     return false;
@@ -568,7 +568,7 @@ public class SectionE2Activity extends AppCompatActivity {
                 if (bi.ne20303.getText().length() != scanChar || !bi.ne20303.getText().toString().contains("-")
                         || !bi.ne20303.getText().toString().contains("HB")) {
                     Toast.makeText(this, "ERROR(invalid)" + getString(R.string.ne203), Toast.LENGTH_SHORT).show();
-                    bi.ne20303.setError("Invalid Bar code..");
+                    bi.ne20303.setError("Invalid or Incomplete QR code..");
 
                     Log.i(TAG, "ne20303: Invalid Bar code");
                     return false;
@@ -598,7 +598,7 @@ public class SectionE2Activity extends AppCompatActivity {
                 if (bi.ne20304.getText().length() != scanChar || !bi.ne20304.getText().toString().contains("-")
                         || !bi.ne20304.getText().toString().contains("HP")) {
                     Toast.makeText(this, "ERROR(invalid)" + getString(R.string.ne203), Toast.LENGTH_SHORT).show();
-                    bi.ne20304.setError("Invalid Bar code..");
+                    bi.ne20304.setError("Invalid or Incomplete QR code..");
 
                     Log.i(TAG, "ne20304: Invalid Bar code");
                     return false;
@@ -628,7 +628,7 @@ public class SectionE2Activity extends AppCompatActivity {
                 if (bi.ne20305.getText().length() != scanChar || !bi.ne20305.getText().toString().contains("-")
                         || !bi.ne20305.getText().toString().contains("HQ")) {
                     Toast.makeText(this, "ERROR(invalid)" + getString(R.string.ne203), Toast.LENGTH_SHORT).show();
-                    bi.ne20305.setError("Invalid Bar code..");
+                    bi.ne20305.setError("Invalid or Incomplete QR code..");
 
                     Log.i(TAG, "ne20305: Invalid Bar code");
                     return false;
@@ -658,7 +658,7 @@ public class SectionE2Activity extends AppCompatActivity {
                 if (bi.ne20306.getText().length() != scanChar || !bi.ne20306.getText().toString().contains("-")
                         || !bi.ne20306.getText().toString().contains("FB")) {
                     Toast.makeText(this, "ERROR(invalid)" + getString(R.string.ne203), Toast.LENGTH_SHORT).show();
-                    bi.ne20306.setError("Invalid Bar code..");
+                    bi.ne20306.setError("Invalid or Incomplete QR code..");
 
                     Log.i(TAG, "ne20306: Invalid Bar code");
                     return false;

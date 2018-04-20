@@ -808,9 +808,9 @@ public class SectionC4Activity extends Menu2Activity implements TextWatcher, Rad
         }
 
 //        nc301
-        sC4.put("nc4name", selectedChild.getName());
+        //sC4.put("nc4name", selectedChild.getName());
 //        nc302
-        sC4.put("nc402Serial", selectedChild.getSerialNo());
+        //sC4.put("nc402Serial", selectedChild.getSerialNo());
 
 //        nc401
         sC4.put("nc401", binding.nc401a.isChecked() ? "1"

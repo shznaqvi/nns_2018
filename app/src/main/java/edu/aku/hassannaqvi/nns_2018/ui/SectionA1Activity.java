@@ -59,6 +59,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
     private final long DELAY = 1000;
     int length = 0;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -139,41 +140,6 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
                 binding.na11802b.setEnabled(false);
             }
 
-//            na119
-
-/*            // na119a
-            if (jsonA1.getnh119a().equals("1")) {
-                binding.na119a.setChecked(true);
-            }
-            // na119b
-            if (jsonA1.getnh119b().equals("1")) {
-                binding.na119b.setChecked(true);
-            }
-            // na119c
-            if (jsonA1.getnh119c().equals("1")) {
-                binding.na119c.setChecked(true);
-            }
-            // na119d
-            if (jsonA1.getnh119d().equals("1")) {
-                binding.na119d.setChecked(true);
-            }
-            // na119e
-            if (jsonA1.getnh119e().equals("1")) {
-                binding.na119e.setChecked(true);
-            }
-            // na119f
-            if (jsonA1.getnh119f().equals("1")) {
-                binding.na119f.setChecked(true);
-            }
-            // na119g
-            if (jsonA1.getnh119g().equals("1")) {
-                binding.na119g.setChecked(true);
-            }
-            // na11996
-            if (jsonA1.getnh11996().equals("1")) {
-                binding.na11996.setChecked(true);
-                binding.na11996x.setText(jsonA1.getnh11996x());
-            }*/
 
         }
 
@@ -181,29 +147,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
     private void SkipPatterns() {
 
-/*        binding.na11801.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                //formValidation();
-                if (checkedId == R.id.na11801a) {
-                    clearClass.ClearAllFields(binding.fldGrpna113, false);
-                } else {
-                    clearClass.ClearAllFields(binding.fldGrpna113, true);
-                }
-            }
-        });*/
-
-
-        // Field wise validation
-
-        //binding.nh101.addTextChangedListener(this);
-        //binding.checkHHHeadpresent.setOnCheckedChangeListener(this);
-        //binding.newHHheadname.addTextChangedListener(this);
-        //binding.nh103.addTextChangedListener(this);
-        //binding.nh115.addTextChangedListener(this);
-        //binding.nh213.addTextChangedListener(this);
         binding.na11802.setOnCheckedChangeListener(this);
-        //binding.na119a.addTextChangedListener(this);
 
 
     }
@@ -264,23 +208,6 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
             @Override
             public void afterTextChanged(Editable editable) {
 
-/*                timer.cancel();
-                timer = new Timer();
-                timer.schedule(
-                        new TimerTask() {
-                            @Override
-                            public void run() {
-
-                                runOnUiThread(new Runnable() {
-                                    public void run() {
-                                        formValidation();
-                                    }
-                                });
-
-                            }
-                        },
-                        DELAY
-                );*/
 
             }
         });
@@ -291,18 +218,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
         MainApp.hhClicked = new ArrayList<>();
         MainApp.flagClicked = new ArrayList<>();
 
-//        HH Checkbox validate
-        /* binding.checkHHHeadpresent.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b) {
-                    binding.fldGrpnh110a.setVisibility(View.GONE);
-                    binding.newHHheadname.setText(null);
-                } else {
-                    binding.fldGrpnh110a.setVisibility(View.VISIBLE);
-                }
-            }
-        });*/
+
 
 //        HH listener
         binding.nh108.addTextChangedListener(new TextWatcher() {
@@ -310,15 +226,6 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
                 binding.nh108.setInputType(InputType.TYPE_CLASS_NUMBER);
-
-                /*Toast.makeText(SectionA1Activity.this,
-                        "before: " + charSequence + "|" +
-                                i + "|" +
-                                i1 + "|" +
-                                i2
-                        , Toast.LENGTH_SHORT).show();*/
-                String scanned = charSequence.toString();
-
                 length = charSequence.toString().length();
 
             }
@@ -328,13 +235,6 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
                 clearFields();
 
-                /*Toast.makeText(SectionA1Activity.this,
-                        "onText: " + charSequence + "|" +
-                                i + "|" +
-                                i1 + "|" +
-                                i2
-                        , Toast.LENGTH_SHORT).show();*/
-                String scanned = charSequence.toString();
 
                 if (!binding.nh108.getText().toString().isEmpty() && binding.nh108.getText().toString().length() == 4) {
                     if (binding.nh108.getText().toString().substring(0, 3).matches("[0-9]+")) {
@@ -356,14 +256,31 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
             }
         });
 
+        if (MainApp.cluster_no.equals("")) {
+            binding.nh102.setText(null);
+        } else {
+            binding.nh102.setText(MainApp.cluster_no);
 
-//
-//
-//
-//
-//
-//
-//
+            EnumBlockContract enumBlockContract = db.getEnumBlock(binding.nh102.getText().toString());
+            if (enumBlockContract != null) {
+                String selected = enumBlockContract.getGeoarea();
+                if (!selected.equals("")) {
+
+                    String[] selSplit = selected.split("\\|");
+
+                    binding.nh103.setText(selSplit[0]);
+                    binding.nh104.setText(selSplit[1].equals("") ? "----" : selSplit[1]);
+                    binding.nh105.setText(selSplit[2].equals("") ? "----" : selSplit[2]);
+                    binding.nh106.setText(selSplit[3]);
+                    binding.nh107.setText(enumBlockContract.getEbcode());
+
+                    binding.fldGrpnh101.setVisibility(View.VISIBLE);
+                    MainApp.cluster_no = binding.nh102.getText().toString();
+
+                }
+            }
+        }
+
 // Initializing Re-Back functionality
         reBackFlag = true;
         reBackChildFlag = true;
@@ -533,10 +450,6 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
             binding.newHHheadname.setError(null);
         }
 
-//        nh110
-       /* if (!validatorClass.EmptyTextBox(this, binding.nh110, getString(R.string.nh110))) {
-            return false;
-        }*/
 //        nh113
         if (!flag) {
             if (!validatorClass.EmptyTextBox(this, binding.nh113, getString(R.string.nh113))) {
@@ -566,16 +479,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
                 return validatorClass.EmptyRadioButton(this, binding.na11802, binding.na11802b, getString(R.string.na11802));
             }
 
-            /*if (MainApp.selectedHead.getSelStructure().equals("1") && !binding.na11802a.isChecked()) {
-                binding.na11802a.setError("Wrong Selection");
-                //Toast.makeText(this, "Wrong Selection", Toast.LENGTH_SHORT).show();
-                return false;
-            }
-*/
-//        na113
-            /*if (binding.na11801b.isChecked()) {
-                return validatorClass.EmptyCheckBox(this, binding.fldGrpna113, binding.na11996, binding.na11996x, String.valueOf(R.string.na113));
-            }*/
+
         }
 
         return true;
@@ -763,6 +667,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
                     binding.nh107.setText(enumBlockContract.getEbcode());
 
                     binding.fldGrpnh101.setVisibility(View.VISIBLE);
+                    MainApp.cluster_no = binding.nh102.getText().toString();
 
                 }
             } else {

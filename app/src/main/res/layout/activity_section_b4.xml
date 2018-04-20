@@ -113,6 +113,13 @@
                             android:layout_marginBottom="1dp"
                             android:text="@string/nw401d" />
 
+                        <RadioButton
+                            android:id="@+id/nw401e"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="1dp"
+                            android:text="@string/nw401e" />
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -122,12 +129,7 @@
                             android:text="@string/nw401sub1"
                             android:textColor="@color/colorPrimaryDark" />
 
-                        <RadioButton
-                            android:id="@+id/nw401e"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginBottom="1dp"
-                            android:text="@string/nw401e" />
+
 
                         <RadioButton
                             android:id="@+id/nw401f"
@@ -143,19 +145,7 @@
                             android:layout_marginBottom="1dp"
                             android:text="@string/nw401g" />
 
-                        <RadioButton
-                            android:id="@+id/nw401h"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginBottom="1dp"
-                            android:text="@string/nw401h" />
 
-                        <RadioButton
-                            android:id="@+id/nw40199"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginBottom="1dp"
-                            android:text="@string/nw40299" />
 
                         <RadioButton
                             android:id="@+id/nw40196"
@@ -246,6 +236,13 @@
                             android:layout_marginBottom="1dp"
                             android:text="@string/nw402d" />
 
+                        <CheckBox
+                            android:id="@+id/nw402e"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="1dp"
+                            android:text="@string/nw402e" />
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -255,12 +252,6 @@
                             android:text="@string/nw401sub1"
                             android:textColor="@color/colorPrimaryDark" />
 
-                        <CheckBox
-                            android:id="@+id/nw402e"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="1dp"
-                            android:text="@string/nw402e" />
 
                         <CheckBox
                             android:id="@+id/nw402f"
@@ -275,13 +266,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
                             android:text="@string/nw402g" />
-
-                        <CheckBox
-                            android:id="@+id/nw402h"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="1dp"
-                            android:text="@string/nw402h" />
 
 
                         <CheckBox
