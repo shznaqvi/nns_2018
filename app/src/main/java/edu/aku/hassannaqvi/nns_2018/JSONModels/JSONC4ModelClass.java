@@ -1,5 +1,7 @@
 package edu.aku.hassannaqvi.nns_2018.JSONModels;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by ali.azaz on 3/27/2018.
  */
@@ -41,6 +43,7 @@ public class JSONC4ModelClass {
     private String nc408g = "";
     private String nc408h = "";
     private String nc408i = "";
+    private String nc408j = "";
     private String nc4089601 = "";
     private String nc4089601x = "";
     private String nc409 = "";
@@ -49,13 +52,21 @@ public class JSONC4ModelClass {
     private String nc4119601x = "";
     private String nc4119602x = "";
     private String nc4119603x = "";
+    @SerializedName("nc412b")
     private String nc412a = "";
+    @SerializedName("nc412c")
     private String nc412b = "";
+    @SerializedName("nc412e")
     private String nc412c = "";
+    @SerializedName("nc412f")
     private String nc412d = "";
+    @SerializedName("nc412g")
     private String nc412e = "";
+    @SerializedName("nc412h")
     private String nc412f = "";
+    @SerializedName("nc412i")
     private String nc412g = "";
+    @SerializedName("nc412j")
     private String nc412h = "";
     private String nc4129601 = "";
     private String nc4129601x = "";
@@ -347,6 +358,10 @@ public class JSONC4ModelClass {
 
     public String getnc408i() {
         return nc408i;
+    }
+
+    public String getnc408j() {
+        return nc408j;
     }
 
     public void setnc408i(String nc408i) {

@@ -146,6 +146,7 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
                     binding.nb412c.setEnabled(false);
                     binding.nb412d.setEnabled(false);
                     binding.nb412e.setEnabled(false);
+                    binding.nb412f.setEnabled(false);
                     binding.nb41296.setEnabled(false)
                     ;
 
@@ -154,6 +155,7 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
                     binding.nb412c.setChecked(false);
                     binding.nb412d.setChecked(false);
                     binding.nb412e.setChecked(false);
+                    binding.nb412f.setChecked(false);
                     binding.nb41296.setChecked(false);
 
                     binding.nb41296x.setText(null);
@@ -165,6 +167,7 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
                     binding.nb412c.setEnabled(true);
                     binding.nb412d.setEnabled(true);
                     binding.nb412e.setEnabled(true);
+                    binding.nb412f.setEnabled(true);
                     binding.nb41296.setEnabled(true);
                 }
             }
@@ -355,6 +358,9 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
             }
             if (!jsonB4.getnw412e().equals("0")) {
                 binding.nb412e.setChecked(true);
+            }
+            if (!jsonB4.getnw412f().equals("0")) {
+                binding.nb412f.setChecked(true);
             }
             if (!jsonB4.getnw41298().equals("0")) {
                 binding.nb41298.setChecked(true);
@@ -685,7 +691,7 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
         sB4.put("nw412c", binding.nb412c.isChecked() ? "3" : "0");
         sB4.put("nw412d", binding.nb412d.isChecked() ? "4" : "0");
         sB4.put("nw412e", binding.nb412e.isChecked() ? "5" : "0");
-        sB4.put("nw412f", binding.nb412e.isChecked() ? "6" : "0");
+        sB4.put("nw412f", binding.nb412f.isChecked() ? "6" : "0");
         sB4.put("nw41298", binding.nb41298.isChecked() ? "98" : "0");
         sB4.put("nw41296", binding.nb41296.isChecked() ? "96" : "0");
 

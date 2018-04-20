@@ -175,7 +175,8 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                                                             jsonB2.getnh208().equals("6") ? binding.nh2eduf.getId() :
                                                                     jsonB2.getnh208().equals("7") ? binding.nh2edug.getId() :
                                                                             jsonB2.getnh208().equals("8") ? binding.nh2eduh.getId() :
-                                                                                    binding.nh2edui.getId());
+                                                                                    jsonB2.getnh208().endsWith("9") ? binding.nh2edui.getId() :
+                                                                                            binding.nh2edu98.getId());
         }
 
         if (!jsonB2.getnh209().equals("0")) {
@@ -495,6 +496,7 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                         binding.nh2educ.setEnabled(true);
                         binding.nh2edud.setEnabled(true);
                         binding.nh2edue.setEnabled(true);
+                        binding.nh2edu98.setEnabled(true);
 
                         binding.nh2eduf.setEnabled(false);
                         binding.nh2edug.setEnabled(false);
@@ -538,6 +540,7 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                         binding.nh2edug.setEnabled(true);
                         binding.nh2eduh.setEnabled(true);
                         binding.nh2edui.setEnabled(true);
+                        binding.nh2edu98.setEnabled(true);
 
                         binding.nh2occc.setEnabled(true);
                         binding.nh2occd.setEnabled(true);
@@ -700,7 +703,9 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
 
         sA2.put("nh208", binding.nh2edua.isChecked() ? "1" : binding.nh2edub.isChecked() ? "2" : binding.nh2educ.isChecked() ? "3" : binding.nh2edud.isChecked() ? "4"
                 : binding.nh2edue.isChecked() ? "5" : binding.nh2eduf.isChecked() ? "6" : binding.nh2edug.isChecked() ? "7" : binding.nh2eduh.isChecked() ? "8"
-                : binding.nh2edui.isChecked() ? "9" : "0");
+                : binding.nh2edui.isChecked() ? "9"
+                : binding.nh2edu98.isChecked() ? "98"
+                : "0");
 
         sA2.put("nh209", binding.nh2occa.isChecked() ? "1" : binding.nh2occb.isChecked() ? "2" : binding.nh2occc.isChecked() ? "3" : binding.nh2occd.isChecked() ? "4"
                 : binding.nh2occe.isChecked() ? "5" : binding.nh2occf.isChecked() ? "6" : binding.nh2occg.isChecked() ? "7" : binding.nh2occh.isChecked() ? "8"
