@@ -141,8 +141,11 @@ public class SectionB1Activity extends Menu2Activity implements TextWatcher, Rad
 
         //Assigning data to UI binding
         bi.setCallback(this);
+        bi.nw203a.setEnabled(false);
+        bi.nw203b.setEnabled(false);
 
         this.setTitle(getResources().getString(R.string.nbheading));
+
 
 //        setupViews();
 
@@ -177,6 +180,13 @@ public class SectionB1Activity extends Menu2Activity implements TextWatcher, Rad
                 if (!bi.nw202.getText().toString().isEmpty()) {
                     bi.curAge.setText("Current Age is: " + bi.nw202.getText().toString() + " years");
                     bi.curAge1.setText("Current Age is: " + bi.nw202.getText().toString() + " years");
+                    if (Integer.valueOf(bi.nw202.getText().toString()) >= 15 && Integer.valueOf(bi.nw202.getText().toString()) < 49) {
+                        bi.nw203a.setChecked(true);
+                        bi.nw203b.setChecked(false);
+                    } else {
+                        bi.nw203b.setChecked(true);
+                        bi.nw203a.setChecked(false);
+                    }
                 }
 
             }
@@ -1428,17 +1438,17 @@ public class SectionB1Activity extends Menu2Activity implements TextWatcher, Rad
         cal.setTime(date);
         int year = cal.get(Calendar.YEAR);
 
-        if (!validatorClass.RangeTextBox(this, bi.nw201years, year - 49, year - 15, 9998,
+        /*if (!validatorClass.RangeTextBox(this, bi.nw201years, year - 49, year - 15, 9998,
                 "Range " + (year - 49) + " - " + (year - 15), getString(R.string.year2))) {
             return false;
-        }
+        }*/
 
         if (!validatorClass.EmptyTextBox(this, bi.nw202, getString(R.string.nw202))) {
             return false;
         }
-        if (!validatorClass.RangeTextBox(this, bi.nw202, 15, 49, "Range 15-49", getString(R.string.year))) {
+        /*if (!validatorClass.RangeTextBox(this, bi.nw202, 15, 49, "Range 15-49", getString(R.string.year))) {
             return false;
-        }
+        }*/
 
 
         if (!validatorClass.EmptyRadioButton(this, bi.nw203, bi.nw203b, getString(R.string.nw203))) {

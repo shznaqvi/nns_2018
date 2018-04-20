@@ -6,7 +6,7 @@
     "apkInfo": {
       "type": "MAIN",
       "splits": [],
-      "versionCode": 6212,
+      "versionCode": 6239,
       "versionName": "1.5",
       "enabled": true,
       "outputFile": "app-debug.apk",

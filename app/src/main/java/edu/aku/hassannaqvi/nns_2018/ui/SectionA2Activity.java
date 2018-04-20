@@ -83,7 +83,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                     ageinMonths = DateUtils.ageInMonthsByDOB(dob);
 
                     binding.nh2agey.setEnabled(false);
-                    binding.nh2agey.setText(String.valueOf(agebyDob));
+                    binding.nh2agey.setText(agebyDob < 95 ? String.valueOf(agebyDob) : "95");
 
                 } else if (!binding.nh2doby.getText().toString().equals("9998") && !binding.nh2dobm.getText().toString().equals("98")) {
 
@@ -91,11 +91,11 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                             binding.nh2doby.getText().toString());
                     agebyDob = DateUtils.ageInYearByDOB(dob);
                     binding.nh2agey.setEnabled(false);
-                    binding.nh2agey.setText(String.valueOf(agebyDob));
+                    binding.nh2agey.setText(agebyDob < 95 ? String.valueOf(agebyDob) : "95");
                 } else if (!binding.nh2doby.getText().toString().equals("9998")) {
                     agebyDob = DateUtils.ageInYearByDOB(binding.nh2doby.getText().toString());
                     binding.nh2agey.setEnabled(false);
-                    binding.nh2agey.setText(String.valueOf(agebyDob));
+                    binding.nh2agey.setText(agebyDob < 95 ? String.valueOf(agebyDob) : "95");
                 } else if (binding.nh2doby.getText().toString().equals("9998")) {
                     binding.nh2agey.setEnabled(true);
                     binding.nh2agey.setText(null);
