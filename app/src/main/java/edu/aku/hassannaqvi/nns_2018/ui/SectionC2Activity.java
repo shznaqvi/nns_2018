@@ -973,17 +973,17 @@ public class SectionC2Activity extends Menu2Activity implements RadioGroup.OnChe
                 : bi.nc210b.isChecked() ? "2"
                 : "0");
         sC2.put("nc211a", bi.nc211a.isChecked() ? "1" : "0");
-        sC2.put("nc211b", bi.nc211a.isChecked() ? "2" : "0");
+        sC2.put("nc211b", bi.nc211b.isChecked() ? "2" : "0");
         sC2.put("nc211c", bi.nc211c.isChecked() ? "3" : "0");
         sC2.put("nc211d", bi.nc211d.isChecked() ? "4" : "0");
-        sC2.put("nc211e", bi.nc211c.isChecked() ? "5" : "0");
-        sC2.put("nc211f", bi.nc211c.isChecked() ? "6" : "0");
-        sC2.put("nc211g", bi.nc211c.isChecked() ? "7" : "0");
-        sC2.put("nc211h", bi.nc211c.isChecked() ? "8" : "0");
-        sC2.put("nc211i", bi.nc211c.isChecked() ? "9" : "0");
-        sC2.put("nc211j", bi.nc211c.isChecked() ? "10" : "0");
-        sC2.put("nc21199", bi.nc211c.isChecked() ? "99" : "0");
-        sC2.put("nc21196", bi.nc211c.isChecked() ? "96" : "0");
+        sC2.put("nc211e", bi.nc211e.isChecked() ? "5" : "0");
+        sC2.put("nc211f", bi.nc211f.isChecked() ? "6" : "0");
+        sC2.put("nc211g", bi.nc211g.isChecked() ? "7" : "0");
+        sC2.put("nc211h", bi.nc211h.isChecked() ? "8" : "0");
+        sC2.put("nc211i", bi.nc211i.isChecked() ? "9" : "0");
+        sC2.put("nc211j", bi.nc211j.isChecked() ? "10" : "0");
+        sC2.put("nc21199", bi.nc21199.isChecked() ? "99" : "0");
+        sC2.put("nc21196", bi.nc21196.isChecked() ? "96" : "0");
 
         sC2.put("nc21196x", bi.nc21196x.getText().toString());
 
