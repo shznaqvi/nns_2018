@@ -318,7 +318,7 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
         switch (type) {
             case 1:
             case 3:
-                return 20d;
+                return 15d;
             case 2:
                 return 0.5d;
         }
@@ -344,7 +344,7 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
             case 3:
                 return 100d;
             case 2:
-                return 40d;
+                return 10d;
         }
         return 0;
     }
@@ -380,7 +380,7 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
             case 3:
                 return 60d;
             case 2:
-                return 26d;
+                return 25d;
         }
         return 0;
     }
