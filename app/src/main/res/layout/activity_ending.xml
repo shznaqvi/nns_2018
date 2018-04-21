@@ -165,6 +165,7 @@
                     android:layout_weight="1"
                     android:onClick="@{() -> callback.BtnEnd()}"
                     android:text="@string/end_interview"
+                    android:background="@color/blue"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
 
