@@ -315,17 +315,32 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                     }
                 }
 
-            } else {
-
-                if (jsonB2.getnh210().equals("1")) {
-//                MainApp.childUnder5.add(MainApp.fmc);
-                    for (byte i = 0; i < MainApp.childUnder5.size(); i++) {
-                        if (MainApp.childUnder5.get(i).getSerialNo().equals(MainApp.fmc.getSerialNo())) {
-                            MainApp.childUnder5.remove(i);
-                            break;
-                        }
+                for (byte i = 0; i < MainApp.childUnder5_Del.size(); i++) {
+                    if (MainApp.childUnder5_Del.get(i).getSerialNo().equals(MainApp.fmc.getSerialNo())) {
+                        MainApp.childUnder5_Del.remove(i);
+                        break;
                     }
                 }
+
+            } else {
+
+//                if (jsonB2.getnh210().equals("1")) {
+//                MainApp.childUnder5.add(MainApp.fmc);
+                for (byte i = 0; i < MainApp.childUnder5.size(); i++) {
+                    if (MainApp.childUnder5.get(i).getSerialNo().equals(MainApp.fmc.getSerialNo())) {
+                        MainApp.childUnder5.remove(i);
+                        break;
+                    }
+                }
+//                }
+
+                for (byte i = 0; i < MainApp.childUnder5_Del.size(); i++) {
+                    if (MainApp.childUnder5_Del.get(i).getSerialNo().equals(MainApp.fmc.getSerialNo())) {
+                        MainApp.childUnder5_Del.remove(i);
+                        break;
+                    }
+                }
+
             }
 
             if (Age < 2) {
@@ -339,7 +354,8 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                 }
             }
 
-            if (Age < 6 && MainApp.fmc.getMotherId().equals("00") && jsonB2.getnh210().equals("1")) {
+//            if (Age < 6 && MainApp.fmc.getMotherId().equals("00") && jsonB2.getnh210().equals("1")) {
+            if (Age < 6 && MainApp.fmc.getMotherId().equals("00")) {
 //                MainApp.childNA.add(MainApp.fmc);
                 for (byte i = 0; i < MainApp.childNA.size(); i++) {
                     if (MainApp.childNA.get(i).getSerialNo().equals(MainApp.fmc.getSerialNo())) {
@@ -363,10 +379,12 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
             }
 
 //            MainApp.respList.add(MainApp.fmc);
-            for (byte i = 0; i < MainApp.respList.size(); i++) {
-                if (MainApp.respList.get(i).getSerialNo().equals(MainApp.fmc.getSerialNo())) {
-                    MainApp.respList.remove(i);
-                    break;
+            if (jsonB2.getnh210().equals("1")) {
+                for (byte i = 0; i < MainApp.respList.size(); i++) {
+                    if (MainApp.respList.get(i).getSerialNo().equals(MainApp.fmc.getSerialNo())) {
+                        MainApp.respList.remove(i);
+                        break;
+                    }
                 }
             }
         }
