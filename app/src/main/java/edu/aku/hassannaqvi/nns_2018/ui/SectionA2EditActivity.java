@@ -298,7 +298,7 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
             }
 
             // Add data in list
-            if (Age < 2 && jsonB2.getnh210().equals("1")) {
+            if (Age < 2) {
 //                MainApp.childUnder2.add(MainApp.fmc);
                 for (byte i = 0; i < MainApp.childUnder2.size(); i++) {
                     if (MainApp.childUnder2.get(i).getSerialNo().equals(MainApp.fmc.getSerialNo())) {
@@ -476,10 +476,10 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                     } else if (Age > 2 && Age <= 5) {
                         binding.nh2occ.clearCheck();
                         binding.nh2edu.clearCheck();
-                        binding.nh2ms.clearCheck();
                         binding.fldGrpnh2edu.setVisibility(View.VISIBLE);
                         binding.fldGrpnh2ms.setVisibility(View.GONE);
                         binding.fldGrpnh2occ.setVisibility(View.VISIBLE);
+                        binding.nh2mse.setChecked(true);
 
                         binding.fldGrpfid.setVisibility(View.VISIBLE);
                         binding.fldGrpmid.setVisibility(View.VISIBLE);
@@ -527,6 +527,7 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
 
                         binding.fldGrpfid.setVisibility(View.GONE);
                         binding.fldGrpmid.setVisibility(View.GONE);
+                        binding.nh2mse.setChecked(true);
 
                         binding.nh211.setSelection(1);
                         binding.nh212.setSelection(1);
@@ -571,7 +572,10 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                         binding.fldGrpnh2ms.setVisibility(View.VISIBLE);
                         binding.fldGrpnh2occ.setVisibility(View.VISIBLE);
 
-
+                        binding.fldGrpfid.setVisibility(View.GONE);
+                        binding.fldGrpmid.setVisibility(View.GONE);
+                        binding.nh211.setSelection(1);
+                        binding.nh212.setSelection(1);
                         binding.nh2edua.setEnabled(true);
                         binding.nh2edub.setEnabled(true);
                         binding.nh2edu98.setEnabled(true);
@@ -610,6 +614,11 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                         binding.fldGrpnh2ms.setVisibility(View.VISIBLE);
                         binding.fldGrpnh2occ.setVisibility(View.VISIBLE);
 
+                        binding.fldGrpfid.setVisibility(View.GONE);
+                        binding.fldGrpmid.setVisibility(View.GONE);
+                        binding.nh211.setSelection(1);
+                        binding.nh212.setSelection(1);
+
                         binding.nh2edua.setEnabled(true);
                         binding.nh2edub.setEnabled(true);
                         binding.nh2edu98.setEnabled(true);
@@ -647,6 +656,11 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                         binding.fldGrpnh2ms.setVisibility(View.VISIBLE);
                         binding.fldGrpnh2occ.setVisibility(View.VISIBLE);
 
+                        binding.fldGrpfid.setVisibility(View.GONE);
+                        binding.fldGrpmid.setVisibility(View.GONE);
+                        binding.nh211.setSelection(1);
+                        binding.nh212.setSelection(1);
+
                         binding.nh2edua.setEnabled(true);
                         binding.nh2edub.setEnabled(true);
                         binding.nh2edu98.setEnabled(true);
@@ -682,6 +696,11 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                         binding.fldGrpnh2ms.setVisibility(View.VISIBLE);
                         binding.fldGrpnh2occ.setVisibility(View.VISIBLE);
 
+                        binding.fldGrpfid.setVisibility(View.GONE);
+                        binding.fldGrpmid.setVisibility(View.GONE);
+                        binding.nh211.setSelection(1);
+                        binding.nh212.setSelection(1);
+
                         binding.nh2edua.setEnabled(true);
                         binding.nh2edub.setEnabled(true);
                         binding.nh2edu98.setEnabled(true);
@@ -715,6 +734,11 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                         binding.fldGrpnh2edu.setVisibility(View.VISIBLE);
                         binding.fldGrpnh2ms.setVisibility(View.VISIBLE);
                         binding.fldGrpnh2occ.setVisibility(View.VISIBLE);
+
+                        binding.fldGrpfid.setVisibility(View.GONE);
+                        binding.fldGrpmid.setVisibility(View.GONE);
+                        binding.nh211.setSelection(1);
+                        binding.nh212.setSelection(1);
 
                         binding.nh2edua.setEnabled(true);
                         binding.nh2edub.setEnabled(true);
@@ -908,7 +932,6 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
 
         sA2.put("nh211", fathersMap.get(binding.nh211.getSelectedItem().toString() + "_" + fathersSerials.get(fathersList.indexOf(binding.nh211.getSelectedItem().toString()) - 1)));
         sA2.put("nh212", mothersMap.get(binding.nh212.getSelectedItem().toString() + "_" + mothersSerials.get(mothersList.indexOf(binding.nh212.getSelectedItem().toString()) - 1)));
-
 
         MainApp.fmc.setsA2(String.valueOf(sA2));
 

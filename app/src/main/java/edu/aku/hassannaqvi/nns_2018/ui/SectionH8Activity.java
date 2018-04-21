@@ -224,7 +224,8 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
 
         bi.nh803.addTextChangedListener(this);
         bi.nh806.setOnCheckedChangeListener(this);
-        bi.nh809.addTextChangedListener(this);
+//        bi.nh809.addTextChangedListener(this);
+        bi.nh809.setOnCheckedChangeListener(this);
 
 
         bi.nh807y.addTextChangedListener(new TextWatcher() {
@@ -345,7 +346,15 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
                 bi.nh808y.setText(jsonH8.getNh808y());
                 bi.nh808m.setText(jsonH8.getNh808m());
                 bi.nh808d.setText(jsonH8.getNh808d());
-                bi.nh809.setText(jsonH8.getNh809());
+
+                if (!jsonH8.getNh809().equals("0")) {
+                    bi.nh809.check(
+                            jsonH8.getNh809().equals("1") ? bi.nh809a.getId()
+                                    : jsonH8.getNh809().equals("2") ? bi.nh809b.getId()
+                                    : jsonH8.getNh809().equals("3") ? bi.nh809c.getId()
+                                    : bi.nh80996.getId()
+                    );
+                }
 
                 if (jsonH8.getNh8Flag().equals("1")) {
                     bi.nh8Flag.setChecked(true);
@@ -446,7 +455,11 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
         sA2.put("nh808d", bi.nh808d.getText().toString());
         sA2.put("nh808m", bi.nh808m.getText().toString());
         sA2.put("nh808y", bi.nh808y.getText().toString());
-        sA2.put("nh809", bi.nh809.getText().toString());
+        sA2.put("nh809", bi.nh809a.isChecked() ? "1"
+                : bi.nh809b.isChecked() ? "2"
+                : bi.nh809c.isChecked() ? "3"
+                : bi.nh80996.isChecked() ? "96"
+                : "0");
 
         MainApp.dc.setsH8(String.valueOf(sA2));
 
@@ -597,7 +610,8 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
             }
 
         }
-        return validatorClass.EmptyTextBox(this, bi.nh809, getString(R.string.nh809));
+
+        return validatorClass.EmptyRadioButton(this, bi.nh809, bi.nh80996, getString(R.string.nh809));
     }
 
     @Override

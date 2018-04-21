@@ -8,7 +8,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -154,33 +153,14 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
             binding.na20396.setEnabled(false);
             binding.na20398.setEnabled(false);
         }
-        /*else {
-            binding.na203a.setEnabled(false);
-            binding.na203b.setEnabled(true);
-            binding.na203c.setEnabled(true);
-            binding.na203d.setEnabled(true);
-            binding.na203e.setEnabled(true);
-            binding.na203f.setEnabled(true);
-            binding.na203g.setEnabled(true);
-            binding.na203h.setEnabled(true);
-            binding.na203i.setEnabled(true);
-            binding.na203j.setEnabled(true);
-            binding.na203k.setEnabled(true);
-            binding.na203l.setEnabled(true);
-            binding.na203m.setEnabled(true);
-            binding.na203n.setEnabled(true);
-            binding.na203o.setEnabled(true);
-            binding.na20396.setEnabled(true);
-            binding.na20398.setEnabled(true);
-        }*/
 
     }
 
     public void skipPattern() {
 
         binding.na202.addTextChangedListener(this);
-        binding.na203.setOnCheckedChangeListener(this);
-        binding.na204.setOnCheckedChangeListener(this);
+//        binding.na203.setOnCheckedChangeListener(this);
+//        binding.na204.setOnCheckedChangeListener(this);
         binding.resp.setOnCheckedChangeListener(this);
         //binding.nh2ms.setOnCheckedChangeListener(this);
         binding.nh2edu.setOnCheckedChangeListener(this);
@@ -570,15 +550,6 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
             }
         });
 
-        binding.na203.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.na203b) {
-                    binding.nh2mse.setChecked(false);
-                    binding.nh2mse.setEnabled(false);
-                }
-            }
-        });
 
 //        Getting Members with types
         mem = MainApp.membersCount.getMembers();
@@ -628,7 +599,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
             binding.fldGrpA20101.setVisibility(View.GONE);
         }
 
-        binding.na203b.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+/*        binding.na203b.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -639,6 +610,41 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                         binding.na204a.setEnabled(true);
                         binding.na204b.setEnabled(false);
                     }
+                }
+            }
+        });*/
+
+/*        binding.na203.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.na203b) {
+                    binding.nh2mse.setChecked(false);
+                    binding.nh2mse.setEnabled(false);
+                }
+            }
+        });*/
+
+        binding.na203.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.na203b) {
+                    if (MainApp.gender == 1) {
+                        binding.na204a.setEnabled(false);
+                        binding.na204a.setChecked(false);
+                        binding.na204b.setEnabled(true);
+                    } else {
+                        binding.na204a.setEnabled(true);
+                        binding.na204b.setEnabled(false);
+                        binding.na204b.setChecked(false);
+                    }
+
+                    binding.nh2mse.setChecked(false);
+                    binding.nh2mse.setEnabled(false);
+
+                } else {
+                    binding.na204.clearCheck();
+                    binding.na204a.setEnabled(true);
+                    binding.na204b.setEnabled(true);
                 }
             }
         });

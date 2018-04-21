@@ -47,6 +47,7 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="male"> مرد</string>
     <string name="female"> عورت </string>
+  <!--<string name="female"> عورت </string>-->
     <string name="yes"> ہاں </string>
     <string name="no"> نہیں </string>
     <string name="card">کارڈ کے مطابق</string>
@@ -260,7 +261,6 @@
     <string name="nh307i"> کوئی سہولت نہیں /جھاڑیوں/زمین پر </string>
 
 
-
     <string name="nh309a"> گھرانوں کی تعداد </string>
 
 
@@ -301,7 +301,6 @@
     <string name="nh312g"> ٹریکٹر </string>
     <string name="nh312h">موٹر کے ساتھ کشتی</string>
     <string name="nh312i">موٹر کے بغیر کشتی </string>
-
 
 
     <string name="nh313a"> بلب </string>
@@ -559,7 +558,6 @@
     <string name="nw303j"> دیگرنجی  </string>
     <string name="nw303k">  جگہ کا نام </string>
     <string name="nw303l"> </string>
-
 
 
     <string name="nw304info"> جواب نوٹ کریں جیسے جوابدہندہ نے بتایا ہے ۔اگر 9 مہینے یا اس زیادہ ہے تو "9" ریکارڈ کریں </string>
@@ -902,7 +900,6 @@
     <string name="nc222a">صحت مہیا کرنے والا</string>
     <string name="nc222b">فارمیسی/فارمیسٹ</string>
     <string name="nc222c">رشتہ دار</string>
-
 
 
     <string name="nc3heading"> سیکشن سی 3: حفاظتی ٹیکہ جات کی معلومات </string>
@@ -1488,6 +1485,10 @@
     <string name="nh807">۔H807 - وفات کے وقت عمر</string>
     <string name="nh808"> ۔H808 - وفات کی تاریخ</string>
     <string name="nh809"> ۔H809 - وفات کی جگہ </string>
+  <string name="nh809a"> گھر </string>
+  <string name="nh809b"> ہسپتال </string>
+  <string name="nh809c"> راستے میں </string>
+  <string name="nh80996"> دیگر </string>
 
     <string name="enable_p2p_button">Enable Wifi Direct</string>
     <string name="discover_peers_button">Discover</string>
@@ -1511,7 +1512,7 @@
   <string name="ne102"> منتخب شدہ فرد کا نام </string>
   <string name="neselected"> منتخب شدہ فرد کا گروپ </string>
   <string-array name="neselected">
-      <item>....</item>
+    <item>....</item>
     <item>15 سے 49 سال کی عورت</item>
     <item> پانچ سال سے کم عمر بچہ </item>
     <item> 6 سے 12 سال کا بچہ </item>

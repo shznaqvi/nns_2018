@@ -373,15 +373,37 @@ public class SectionA2ListActivity extends AppCompatActivity {
             if (UpdateDB()) {
                 //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
-                finish();
 
-                if (SectionA1Activity.reBackFlag) {
-                    respLineNo = "";
-                    startActivity(new Intent(this, SectionA4Activity.class));
-//                    startActivity(new Intent(this, SectionB1Activity.class));
-                } else {
-                    startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 6));
-                }
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                        SectionA2ListActivity.this);
+                alertDialogBuilder
+                        .setMessage("Are you sure to continue to next section?")
+                        .setCancelable(false)
+                        .setPositiveButton("Ok",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,
+                                                        int id) {
+
+                                        finish();
+
+                                        if (SectionA1Activity.reBackFlag) {
+                                            respLineNo = "";
+                                            startActivity(new Intent(getApplicationContext(), SectionA4Activity.class));
+//                                          startActivity(new Intent(this, SectionB1Activity.class));
+                                        } else {
+                                            startActivity(new Intent(getApplicationContext(), ViewMemberActivity.class).putExtra("activity", 6));
+                                        }
+
+                                    }
+                                });
+                alertDialogBuilder.setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert = alertDialogBuilder.create();
+                alert.show();
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();

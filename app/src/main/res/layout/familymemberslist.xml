@@ -68,7 +68,7 @@
                 android:textColor="#efefef"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:typeface="sans" />
+                android:typeface="monospace" />
 
             <!-- Mother -->
             <TextView
@@ -81,7 +81,8 @@
                 android:gravity="clip_horizontal"
                 android:text="ABCDEFG"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:typeface="normal" />
 
             <!-- Father -->
             <TextView
@@ -94,7 +95,8 @@
                 android:gravity="clip_horizontal"
                 android:text="ABCDEFG"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:typeface="normal" />
 
             <!-- LineNo -->
             <TextView
@@ -109,7 +111,8 @@
                 android:text="Line No"
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:typeface="normal" />
 
             <!-- na204 -->
             <TextView
@@ -125,7 +128,8 @@
                 android:text="na204"
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:typeface="normal" />
 
             <!-- Status -->
             <TextView
@@ -141,7 +145,8 @@
                 android:text="M.S"
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:typeface="normal" />
 
         </RelativeLayout>
 
