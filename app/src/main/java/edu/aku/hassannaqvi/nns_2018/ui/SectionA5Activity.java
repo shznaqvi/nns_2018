@@ -37,7 +37,7 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
     public CheckBox.OnCheckedChangeListener check = new CompoundButton.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            if (isChecked) {
+            if (binding.nh403a.isChecked() || binding.nh403b.isChecked() || binding.nh403c.isChecked()) {
                 clearClass.ClearAllFields(binding.fldGrnh404, false);
                 clearClass.ClearAllFields(binding.fldGrpnh405, false);
             } else {

@@ -62,9 +62,6 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
         db = new DatabaseHelper(this);
 
-        if (MainApp.flag_head) {
-            head = getIntent().getExtras().getBoolean("count");
-        }
         setupViews();
         this.setTitle(getResources().getString(R.string.na2heading));
 
@@ -406,14 +403,6 @@ public class SectionA2ListActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog,
                                                 int id) {
                                 finish();
-                                /*if (binding.nh2tm.getText().toString().equals("0") && binding.nh2tf.getText().toString().equals("0")) {
-                                    startActivity(new Intent(SectionA2ListActivity.this, SectionA2Activity.class).putExtra("flag", true)
-                                            .putExtra("count", true));
-                                } else {
-                                    startActivity(new Intent(SectionA2ListActivity.this, SectionA2Activity.class).putExtra("flag", true)
-                                            .putExtra("count", head));
-                                }*/
-
                                 startActivity(new Intent(SectionA2ListActivity.this, SectionA2Activity.class)
                                         .putExtra("flag", true));
                             }

@@ -270,11 +270,23 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
                 return false;
             }
 
+            if (!validatorClass.RangeTextBox(this, binding.nd1w, MinWeight(slc_type), MaxWeight(slc_type), getString(R.string.nd1w), " weight")) {
+                return false;
+            }
+
             if (!validatorClass.EmptyTextBox(this, binding.nd1h, getString(R.string.nd1h))) {
                 return false;
             }
 
+            if (!validatorClass.RangeTextBox(this, binding.nd1h, MinHeight(slc_type), MaxHeight(slc_type), getString(R.string.nd1h), " height")) {
+                return false;
+            }
+
             if (!validatorClass.EmptyTextBox(this, binding.nd1muac, getString(R.string.nd1muac))) {
+                return false;
+            }
+
+            if (!validatorClass.RangeTextBox(this, binding.nd1muac, MinMAUC(slc_type), MaxMAUC(slc_type), getString(R.string.nd1muac), " MAUC")) {
                 return false;
             }
             /*end*/
@@ -306,7 +318,7 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
         switch (type) {
             case 1:
             case 3:
-                return 25d;
+                return 20d;
             case 2:
                 return 0.5d;
         }
@@ -320,7 +332,55 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
             case 3:
                 return 250d;
             case 2:
-                return 99.9d;
+                return 40d;
+        }
+        return 0;
+    }
+
+    public double MinHeight(int type) {
+
+        switch (type) {
+            case 1:
+            case 3:
+                return 100d;
+            case 2:
+                return 40d;
+        }
+        return 0;
+    }
+
+    public double MaxHeight(int type) {
+
+        switch (type) {
+            case 1:
+            case 3:
+                return 200d;
+            case 2:
+                return 140d;
+        }
+        return 0;
+    }
+
+    public double MinMAUC(int type) {
+
+        switch (type) {
+            case 1:
+            case 3:
+                return 15d;
+            case 2:
+                return 5d;
+        }
+        return 0;
+    }
+
+    public double MaxMAUC(int type) {
+
+        switch (type) {
+            case 1:
+            case 3:
+                return 60d;
+            case 2:
+                return 26d;
         }
         return 0;
     }

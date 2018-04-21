@@ -1480,10 +1480,10 @@
     <string name="nh806">۔H806 - وفات پانے والے کی جنس</string>
     <string name="nh8ms">  وفات پانے والے کی ازدواجی حیثیت</string>
     <string name="nh8msa">شادی شدہ</string>
-    <string name="nh8msb">بیوہ</string>
+  <string name="nh8msb">رنڈوہ/ بیوہ</string>
     <string name="nh8msc">طلاق یافتہ</string>
-    <string name="nh8msd">الگ رہتی ہو</string>
-    <string name="nh8mse">کنوارہ</string>
+  <string name="nh8msd">الگ رہتا/رہتی ہو</string>
+  <string name="nh8mse">غیر شادی شدہ</string>
 
     <string name="nh807">۔H807 - وفات کے وقت عمر</string>
     <string name="nh808"> ۔H808 - وفات کی تاریخ</string>

@@ -429,6 +429,10 @@ public class SectionE1Activity extends AppCompatActivity {
                     return false;
                 }
 
+                if (!validatorClass.RangeTextBox(this, bi.ne106, 0.1, 24.9, getString(R.string.hb_result), " hemoglobin")) {
+                    return false;
+                }
+
             } else {
                 if (!validatorClass.EmptyRadioButton(this, bi.ne107, bi.ne107a, getString(R.string.ne107))) {
                     return false;
