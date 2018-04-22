@@ -9,6 +9,7 @@ import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -45,6 +46,7 @@ public class SpecimenInfoActivity extends AppCompatActivity {
     Collection<FamilyMembersContract> members;
     Boolean isHC = false, isHT = false, isWT = false;
     int length = 0;
+    static int consent = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,15 +73,31 @@ public class SpecimenInfoActivity extends AppCompatActivity {
         json = new JSONModelClass();
 
         if (MainActivity.ftype.equals("B")) {
+            binding.fldGrpnhconsent.setVisibility(View.VISIBLE);
             binding.fldGrpQR.setVisibility(View.VISIBLE);
             binding.fldGrpHC.setVisibility(View.VISIBLE);
 
         } else if (MainActivity.ftype.equals("W")) {
+            binding.fldGrpnhconsent.setVisibility(View.GONE);
             binding.fldGrpQR.setVisibility(View.GONE);
             binding.fldGrpHC.setVisibility(View.GONE);
             binding.hcCode.setText(null);
 
         }
+
+        binding.na11802.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if (binding.na11802a.isChecked()) {
+                    binding.fldGrpQR.setVisibility(View.VISIBLE);
+                    binding.fldGrpHC.setVisibility(View.VISIBLE);
+                } else {
+                    binding.fldGrpQR.setVisibility(View.GONE);
+                    binding.fldGrpHC.setVisibility(View.GONE);
+                    binding.hcCode.setText(null);
+                }
+            }
+        });
 
 
         //slcMem = new ArrayList<>();
@@ -155,7 +173,12 @@ public class SpecimenInfoActivity extends AppCompatActivity {
                 finish();
 
                 if (MainActivity.ftype.equals("B")) {
-                    startActivity(new Intent(this, SectionE1Activity.class));
+
+                    if (binding.na11802a.isChecked()) {
+                        startActivity(new Intent(this, SectionE1Activity.class));
+                    } else {
+                        startActivity(new Intent(this, MainActivity.class));
+                    }
                 } else if (MainActivity.ftype.equals("W")) {
                     startActivity(new Intent(this, SectionE2Activity.class));
                 }
@@ -213,73 +236,36 @@ public class SpecimenInfoActivity extends AppCompatActivity {
         int scanChar;
 
         if (MainActivity.ftype.equals("B")) {
-            if (!validatorClass.EmptyTextBox(this, binding.hcCode, getString(R.string.hc))) {
+
+            if (!validatorClass.EmptyRadioButton(this, binding.na11802, binding.na11802b, getString(R.string.na11802))) {
                 return false;
             }
 
-            if (binding.hcCode.getText().toString().contains("§")) {
-                scanChar = 7;
-            } else {
-                scanChar = 6;
-            }
+            if (binding.na11802a.isChecked()) {
 
-            if (binding.hcCode.getText().length() != scanChar || !binding.hcCode.getText().toString().contains("-")
-                    || !binding.hcCode.getText().toString().contains("HC")) {
-                Toast.makeText(this, "ERROR(invalid)" + getString(R.string.hc), Toast.LENGTH_SHORT).show();
-                binding.hcCode.setError("Invalid Number..");
+                if (!validatorClass.EmptyTextBox(this, binding.hcCode, getString(R.string.hc))) {
+                    return false;
+                }
 
-                Log.i(TAG, "hcCode: Invalid number");
-                return false;
-            } else {
-                binding.hcCode.setError(null);
+                if (binding.hcCode.getText().toString().contains("§")) {
+                    scanChar = 7;
+                } else {
+                    scanChar = 6;
+                }
+
+                if (binding.hcCode.getText().length() != scanChar || !binding.hcCode.getText().toString().contains("-")
+                        || !binding.hcCode.getText().toString().contains("HC")) {
+                    Toast.makeText(this, "ERROR(invalid)" + getString(R.string.hc), Toast.LENGTH_SHORT).show();
+                    binding.hcCode.setError("Invalid Number..");
+
+                    Log.i(TAG, "hcCode: Invalid number");
+                    return false;
+                } else {
+                    binding.hcCode.setError(null);
+                }
             }
         }
 
-
-        /*if(MainActivity.ftype.equals("A")) {
-            if (!validatorClass.EmptyTextBox(this, binding.htCode, getString(R.string.ht))) {
-                return false;
-            }
-
-            if (binding.htCode.getText().toString().contains("§")) {
-                scanChar = 7;
-            } else {
-                scanChar = 6;
-            }
-
-            if (binding.htCode.getText().length() != scanChar || !binding.htCode.getText().toString().contains("-")
-                    || !binding.htCode.getText().toString().contains("HT")) {
-                Toast.makeText(this, "ERROR(invalid)" + getString(R.string.ht), Toast.LENGTH_SHORT).show();
-                binding.htCode.setError("Invalid Number..");
-
-                Log.i(TAG, "htCode: Invalid number");
-                return false;
-            } else {
-                binding.htCode.setError(null);
-            }
-
-            if (!validatorClass.EmptyTextBox(this, binding.wtCode, getString(R.string.wt))) {
-                return false;
-            }
-
-            if (binding.wtCode.getText().toString().contains("§")) {
-                scanChar = 7;
-            } else {
-                scanChar = 6;
-            }
-
-            if (binding.wtCode.getText().length() != scanChar || !binding.wtCode.getText().toString().contains("-")
-                    || !binding.wtCode.getText().toString().contains("WT")) {
-                Toast.makeText(this, "ERROR(invalid)" + getString(R.string.wt), Toast.LENGTH_SHORT).show();
-                binding.wtCode.setError("Invalid Number..");
-
-                Log.i(TAG, "wtCode: Invalid number");
-                return false;
-            } else {
-                binding.wtCode.setError(null);
-            }
-        }
-*/
 
 
         return true;
@@ -291,6 +277,7 @@ public class SpecimenInfoActivity extends AppCompatActivity {
         enm_no = binding.nh102.getText().toString();
         hh_no = binding.nh108.getText().toString().toUpperCase();
         hc_code = binding.hcCode.getText().toString();
+        consent = binding.na11802.indexOfChild(findViewById(binding.na11802.getCheckedRadioButtonId())) + 1;
 
         //ht_code = binding.htCode.getText().toString();
         //wt_code = binding.wtCode.getText().toString();

@@ -131,7 +131,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
                 binding.na11801b.setEnabled(false);
             }
 
-            if (!jsonA1.getnh11802().equals("0")) {
+           /* if (!jsonA1.getnh11802().equals("0")) {
                 binding.na11802.check(
                         jsonA1.getnh11802().equals("1") ? binding.na11802a.getId() :
                                 binding.na11802b.getId()
@@ -139,7 +139,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
                 binding.na11802b.setEnabled(false);
             }
-
+*/
 
         }
 
@@ -147,7 +147,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
     private void SkipPatterns() {
 
-        binding.na11802.setOnCheckedChangeListener(this);
+        // binding.na11802.setOnCheckedChangeListener(this);
 
 
     }
@@ -298,7 +298,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
         binding.nh115.setText(null);
         binding.nh213.setText(null);
         binding.na11801.clearCheck();
-        binding.na11802.clearCheck();
+        //binding.na11802.clearCheck();
     }
 
     public void BtnContinue() {
@@ -470,15 +470,13 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
             }
 
 //        na11801
-            if (!validatorClass.EmptyRadioButton(this, binding.na11801, binding.na11801b, getString(R.string.na11801))) {
-                return false;
-            }
+            return validatorClass.EmptyRadioButton(this, binding.na11801, binding.na11801b, getString(R.string.na11801));
 //        na11802
 
-            if (MainApp.selectedHead.getSelStructure().equals("1")) {
+           /* if (MainApp.selectedHead.getSelStructure().equals("1")) {
                 return validatorClass.EmptyRadioButton(this, binding.na11802, binding.na11802b, getString(R.string.na11802));
             }
-
+*/
 
         }
 
@@ -532,16 +530,16 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
         sA1.put("nh213", binding.nh213.getText().toString());
 
-        sA1.put("nh11701blood", MainApp.selectedHead.getSelStructure());
+        /*sA1.put("nh11701blood", MainApp.selectedHead.getSelStructure());
         sA1.put("nh11702urine", MainApp.selectedHead.getSelStructure());
         sA1.put("nh11703water", MainApp.selectedHead.getSelStructure());
-
+*/
         sA1.put("nh11801", binding.na11801a.isChecked() ? "1"
                 : binding.na11801b.isChecked() ? "2" : "0");
 
-        sA1.put("nh11802", binding.na11802a.isChecked() ? "1"
+        /*sA1.put("nh11802", binding.na11802a.isChecked() ? "1"
                 : binding.na11802b.isChecked() ? "2" : "0");
-
+*/
         MainApp.fc.setsA1(String.valueOf(sA1));
 
     }
@@ -625,7 +623,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
                 binding.fldGrpnh110.setVisibility(View.VISIBLE);
 
-                if (MainApp.selectedHead.getSelStructure().equals("1")) {
+                /*if (MainApp.selectedHead.getSelStructure().equals("1")) {
                     binding.na11802a.setEnabled(true);
                     binding.na11802b.setEnabled(true);
                 } else {
@@ -634,7 +632,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
                     binding.na11802.clearCheck();
 
                 }
-
+*/
 
             } else {
 
@@ -692,23 +690,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
     @Override
     public void afterTextChanged(Editable s) {
 
-        /*timer.cancel();
-        timer = new Timer();
-        timer.schedule(
-                new TimerTask() {
-                    @Override
-                    public void run() {
 
-                        runOnUiThread(new Runnable() {
-                            public void run() {
-                                formValidation();
-                            }
-                        });
-
-                    }
-                },
-                DELAY
-        );*/
     }
 
 

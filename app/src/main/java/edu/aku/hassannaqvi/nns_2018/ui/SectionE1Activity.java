@@ -575,6 +575,8 @@ public class SectionE1Activity extends AppCompatActivity {
 
         JSONObject sE1 = new JSONObject();
 
+        //sE1.put("neconsent", )
+
         sE1.put("ne102", bi.ne102.getSelectedItem().toString());
         sE1.put("ne103", bi.ne103.getSelectedItem().toString());
         sE1.put("ne104", bi.ne104a.isChecked() ? "1" : bi.ne104b.isChecked() ? "2" : "0");
