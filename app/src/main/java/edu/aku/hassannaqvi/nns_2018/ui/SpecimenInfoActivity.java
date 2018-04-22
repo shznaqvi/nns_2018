@@ -66,6 +66,9 @@ public class SpecimenInfoActivity extends AppCompatActivity {
 
         slecMem = new FamilyMembersContract();
 
+        SectionE1Activity.members.clear();
+        SectionE1Activity.membersMap.clear();
+
 
 
     }
@@ -312,8 +315,8 @@ public class SpecimenInfoActivity extends AppCompatActivity {
             //MainApp.smc.setUUID(slecMem.get_UUID());
             //MainApp.smc.setFMUID(slecMem.get_UID());
             //MainApp.smc.setLineNo(membersMap.get(bi.ne102.getSelectedItem()).getFmc().getSerialNo());
-            MainApp.smc.setClusterno(SpecimenInfoActivity.enm_no);
-            MainApp.smc.setHhno(SpecimenInfoActivity.hh_no);
+            MainApp.smc.setClusterno(binding.nh102.getText().toString());
+            MainApp.smc.setHhno(binding.nh108.getText().toString().toUpperCase());
 
             JSONObject sE1 = new JSONObject();
             sE1.put("ne_consent", binding.na11802a.isChecked() ? "1" : binding.na11802b.isChecked() ? "2" : "0");
