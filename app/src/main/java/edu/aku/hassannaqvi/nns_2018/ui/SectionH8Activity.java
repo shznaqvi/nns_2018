@@ -1,5 +1,7 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -57,6 +59,8 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
     private Timer timer = new Timer();
 
     JSONH8ModelClass jsonH8;
+
+    Boolean dataFlag = true;
 
     public TextWatcher age = new TextWatcher() {
         @Override
@@ -220,7 +224,8 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
 
         bi.nh803.addTextChangedListener(this);
         bi.nh806.setOnCheckedChangeListener(this);
-        bi.nh809.addTextChangedListener(this);
+//        bi.nh809.addTextChangedListener(this);
+        bi.nh809.setOnCheckedChangeListener(this);
 
 
         bi.nh807y.addTextChangedListener(new TextWatcher() {
@@ -301,6 +306,8 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
 
             if (jsonH8.getSerial().equals(String.valueOf(counter))) {
 
+                dataFlag = false;
+
                 MainApp.dc = deceasedContract;
 
                 bi.nh804.setVisibility(View.GONE);
@@ -339,7 +346,15 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
                 bi.nh808y.setText(jsonH8.getNh808y());
                 bi.nh808m.setText(jsonH8.getNh808m());
                 bi.nh808d.setText(jsonH8.getNh808d());
-                bi.nh809.setText(jsonH8.getNh809());
+
+                if (!jsonH8.getNh809().equals("0")) {
+                    bi.nh809.check(
+                            jsonH8.getNh809().equals("1") ? bi.nh809a.getId()
+                                    : jsonH8.getNh809().equals("2") ? bi.nh809b.getId()
+                                    : jsonH8.getNh809().equals("3") ? bi.nh809c.getId()
+                                    : bi.nh80996.getId()
+                    );
+                }
 
                 if (jsonH8.getNh8Flag().equals("1")) {
                     bi.nh8Flag.setChecked(true);
@@ -347,7 +362,43 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
 
                 bi.nh8Flag.setVisibility(View.VISIBLE);
 
+                break;
             }
+        }
+
+        if (dataFlag) {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                    SectionH8Activity.this);
+            alertDialogBuilder.setCancelable(false);
+            alertDialogBuilder
+                    .setMessage("No Deceased record found against counter no:" + counter + ".\n" +
+                            "Processed to next section?")
+                    .setCancelable(false)
+                    .setPositiveButton("OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog,
+                                                    int id) {
+
+                                    if (counter == SectionA5Activity.deceasedCounter) {
+
+                                        counter = 1;
+
+                                        startActivity(new Intent(getApplicationContext(), ViewMemberActivity.class)
+                                                .putExtra("flagEdit", false)
+                                                .putExtra("comingBack", true)
+                                                .putExtra("cluster", MainApp.fc.getClusterNo())
+                                                .putExtra("hhno", MainApp.fc.getHhNo())
+                                        );
+
+                                    } else {
+                                        counter++;
+                                        startActivity(new Intent(getApplicationContext(), SectionH8Activity.class));
+                                    }
+
+                                }
+                            });
+            AlertDialog alert = alertDialogBuilder.create();
+            alert.show();
         }
 
     }
@@ -369,7 +420,8 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
             sA2.put("nh804", bi.nh804.getSelectedItem().toString());
             sA2.put("nh805", bi.nh805.getSelectedItem().toString());
 
-            sA2.put("mwraSerial", mothersMap.get(bi.nh804.getSelectedItemPosition()));
+            sA2.put("wra_lno", mothersMap.get(bi.nh804.getSelectedItemPosition()));
+            sA2.put("f_lno", fathersMap.get(bi.nh805.getSelectedItemPosition()));
 
         } else {
             sA2.put("edit_updatedate_nh8", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
@@ -377,7 +429,8 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
             sA2.put("nh804", jsonH8.getNh804());
             sA2.put("nh805", jsonH8.getNh805());
 
-            sA2.put("mwraSerial", jsonH8.getMwraSerial());
+            sA2.put("wra_lno", jsonH8.getMwraSerial());
+            sA2.put("f_lno", jsonH8.getfSerial());
         }
 
         sA2.put("cluster_no", MainApp.fc.getClusterNo());
@@ -402,7 +455,11 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
         sA2.put("nh808d", bi.nh808d.getText().toString());
         sA2.put("nh808m", bi.nh808m.getText().toString());
         sA2.put("nh808y", bi.nh808y.getText().toString());
-        sA2.put("nh809", bi.nh809.getText().toString());
+        sA2.put("nh809", bi.nh809a.isChecked() ? "1"
+                : bi.nh809b.isChecked() ? "2"
+                : bi.nh809c.isChecked() ? "3"
+                : bi.nh80996.isChecked() ? "96"
+                : "0");
 
         MainApp.dc.setsH8(String.valueOf(sA2));
 
@@ -553,7 +610,8 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
             }
 
         }
-        return validatorClass.EmptyTextBox(this, bi.nh809, getString(R.string.nh809));
+
+        return validatorClass.EmptyRadioButton(this, bi.nh809, bi.nh80996, getString(R.string.nh809));
     }
 
     @Override

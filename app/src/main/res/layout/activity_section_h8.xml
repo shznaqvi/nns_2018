@@ -254,7 +254,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
                         android:layout_weight="1"
-                        android:text="@string/nh8msa" />
+                        android:text="@string/nh8msb" />
 
                     <RadioButton
                         android:id="@+id/nh8msc"
@@ -388,7 +388,7 @@
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="95dp"
+                        android:layout_height="73dp"
                         android:background="@color/pink_100"
                         android:gravity="center"
                         android:text="@string/year2"
@@ -475,14 +475,59 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
-            <EditText
+            <!--<EditText
                 android:id="@+id/nh809"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
                 android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                 android:hint="@string/nh809"
-                android:maxLength="25" />
+                android:maxLength="25" />-->
+
+            <RadioGroup
+                android:id="@+id/nh809"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/nh809a"
+                    style="@style/radiobutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:text="@string/nh809a" />
+
+
+                <RadioButton
+                    android:id="@+id/nh809b"
+                    style="@style/radiobutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:text="@string/nh809b" />
+
+                <RadioButton
+                    android:id="@+id/nh809c"
+                    style="@style/radiobutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:text="@string/nh809c" />
+
+                <RadioButton
+                    android:id="@+id/nh80996"
+                    style="@style/radiobutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:text="@string/nh80996" />
+
+            </RadioGroup>
 
 
             <!--  = = = = =  END OF FORM FIELDS  = = = = = -->

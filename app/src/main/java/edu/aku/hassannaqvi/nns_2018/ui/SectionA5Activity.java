@@ -37,7 +37,7 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
     public CheckBox.OnCheckedChangeListener check = new CompoundButton.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            if (isChecked) {
+            if (binding.nh403a.isChecked() || binding.nh403b.isChecked() || binding.nh403c.isChecked()) {
                 clearClass.ClearAllFields(binding.fldGrnh404, false);
                 clearClass.ClearAllFields(binding.fldGrpnh405, false);
             } else {
@@ -436,8 +436,6 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
             if (UpdateDB()) {
                 //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
-                finish();
-
                 if (recipientCounter > 0) {
 
                     if (recipientCounter < prevRecipientCounter) {
@@ -452,6 +450,8 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
                                         new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog,
                                                                 int id) {
+
+                                                finish();
 
                                                 startActivity(new Intent(SectionA5Activity.this,
                                                         SectionA8AActivity.class).putExtra("recCounter", recipientCounter));
@@ -468,6 +468,7 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
                         alert.show();
 
                     } else {
+                        finish();
                         startActivity(new Intent(this, SectionA8AActivity.class).putExtra("recCounter", recipientCounter));
                     }
                 } else if (deceasedCounter > 0) {
@@ -487,7 +488,7 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
                                                                 int id) {
 
                                                 deceasedCounter = prevDeceasedCounter;
-
+                                                finish();
                                                 startActivity(new Intent(SectionA5Activity.this, SectionH8Activity.class));
                                             }
                                         });
@@ -502,10 +503,12 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
                         alert.show();
 
                     } else {
+                        finish();
                         startActivity(new Intent(SectionA5Activity.this, SectionH8Activity.class));
                     }
 
                 } else {
+                    finish();
                     if (SectionA1Activity.editFormFlag) {
                         startActivity(new Intent(this, ViewMemberActivity.class)
                                 .putExtra("flagEdit", false)
@@ -655,12 +658,17 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
             }
 
             if (SectionA1Activity.editFormFlag) {
-                if (Integer.valueOf(binding.nh702.getText().toString()) > prevRecipientCounter) {
+                /*if (Integer.valueOf(binding.nh702.getText().toString()) > prevRecipientCounter) {
                     Toast.makeText(this, "Can't increase Recipient!", Toast.LENGTH_SHORT).show();
                     return false;
+                }*/
+
+                if (!validatorClass.RangeTextBox(this, binding.nh702, 1, MainApp.all_members.size(), getString(R.string.nh702), " Recipient no")) {
+                    return false;
                 }
+
             } else {
-                if (!validatorClass.RangeTextBox(this, binding.nh702, 1, MainApp.membersCount.getCount(), getString(R.string.nh702), "Recipient no")) {
+                if (!validatorClass.RangeTextBox(this, binding.nh702, 1, MainApp.membersCount.getCount(), getString(R.string.nh702), " Recipient no")) {
                     return false;
                 }
             }
@@ -681,6 +689,8 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
                     Toast.makeText(this, "Can't increase Deceased!", Toast.LENGTH_SHORT).show();
                     return false;
                 }
+            } else {
+                return validatorClass.RangeTextBox(this, binding.nh802, 1, 99, getString(R.string.nh802), " Deceased");
             }
         }
 

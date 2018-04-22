@@ -215,6 +215,8 @@ public class ViewMemberActivity extends MenuActivity {
 
                     new PopulatingData(this).execute();
 
+                } else {
+                    Toast.makeText(this, "Sorry no members found!!\nYou can't edit this form!", Toast.LENGTH_SHORT).show();
                 }
             } else {
                 binding.fldGrpviewlist.setVisibility(View.GONE);
@@ -592,7 +594,7 @@ public class ViewMemberActivity extends MenuActivity {
             startActivity(new Intent(this, MainActivity.class));
 
         } else {
-            Toast.makeText(this, "Press Back again to Exit.",
+            Toast.makeText(this, "Press Button End Again..",
                     Toast.LENGTH_SHORT).show();
             exit = true;
             new Handler().postDelayed(new Runnable() {
@@ -641,6 +643,7 @@ public class ViewMemberActivity extends MenuActivity {
     @Override
     public void onBackPressed() {
         if (MainApp.all_members_1.size() > 0) {
+            binding.btnEnd.setVisibility(View.VISIBLE);
             Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
         } else {
             super.onBackPressed();

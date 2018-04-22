@@ -23,7 +23,18 @@ public class JSONC2ModelClass {
     private String nc209 = "";
     private String nc20996x = "";
     private String nc210 = "";
-    private String nc211 = "";
+    private String nc211a = "";
+    private String nc211b = "";
+    private String nc211c = "";
+    private String nc211d = "";
+    private String nc211e = "";
+    private String nc211f = "";
+    private String nc211g = "";
+    private String nc211h = "";
+    private String nc211i = "";
+    private String nc211j = "";
+    private String nc21196 = "";
+    private String nc21199 = "";
     private String nc21196x = "";
     private String nc212 = "";
     private String nc212a = "";
@@ -69,6 +80,102 @@ public class JSONC2ModelClass {
 
     public JSONC2ModelClass() {
 
+    }
+
+    public String getNc211a() {
+        return nc211a;
+    }
+
+    public void setNc211a(String nc211a) {
+        this.nc211a = nc211a;
+    }
+
+    public String getNc211b() {
+        return nc211b;
+    }
+
+    public void setNc211b(String nc211b) {
+        this.nc211b = nc211b;
+    }
+
+    public String getNc211c() {
+        return nc211c;
+    }
+
+    public void setNc211c(String nc211c) {
+        this.nc211c = nc211c;
+    }
+
+    public String getNc211d() {
+        return nc211d;
+    }
+
+    public void setNc211d(String nc211d) {
+        this.nc211d = nc211d;
+    }
+
+    public String getNc211e() {
+        return nc211e;
+    }
+
+    public void setNc211e(String nc211e) {
+        this.nc211e = nc211e;
+    }
+
+    public String getNc211f() {
+        return nc211f;
+    }
+
+    public void setNc211f(String nc211f) {
+        this.nc211f = nc211f;
+    }
+
+    public String getNc211g() {
+        return nc211g;
+    }
+
+    public void setNc211g(String nc211g) {
+        this.nc211g = nc211g;
+    }
+
+    public String getNc211h() {
+        return nc211h;
+    }
+
+    public void setNc211h(String nc211h) {
+        this.nc211h = nc211h;
+    }
+
+    public String getNc211i() {
+        return nc211i;
+    }
+
+    public void setNc211i(String nc211i) {
+        this.nc211i = nc211i;
+    }
+
+    public String getNc211j() {
+        return nc211j;
+    }
+
+    public void setNc211j(String nc211j) {
+        this.nc211j = nc211j;
+    }
+
+    public String getNc21196() {
+        return nc21196;
+    }
+
+    public void setNc21196(String nc21196) {
+        this.nc21196 = nc21196;
+    }
+
+    public String getNc21199() {
+        return nc21199;
+    }
+
+    public void setNc21199(String nc21199) {
+        this.nc21199 = nc21199;
     }
 
     public String getnc201d() {
@@ -205,14 +312,6 @@ public class JSONC2ModelClass {
 
     public void setnc210(String nc210) {
         this.nc210 = nc210;
-    }
-
-    public String getnc211() {
-        return nc211;
-    }
-
-    public void setnc211(String nc211) {
-        this.nc211 = nc211;
     }
 
     public String getnc21196x() {

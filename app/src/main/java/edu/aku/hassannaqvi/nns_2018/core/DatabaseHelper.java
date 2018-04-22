@@ -542,9 +542,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_UID,
         };
 
-        String whereClause = FormsTable.COLUMN_CLUSTER_NO + " =? AND " + FormsTable.COLUMN_HH_NO + " =? AND ("
-                + FormsTable.COLUMN_ISTATUS + " =? OR " + FormsTable.COLUMN_ISTATUS + " =?)";
-        String[] whereArgs = new String[]{cluster, hhno, "1", "7"};
+        String whereClause = FormsTable.COLUMN_CLUSTER_NO + " =? AND " + FormsTable.COLUMN_HH_NO + " =? AND "
+                + FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + " = '' AND ("
+                + FormsTable.COLUMN_ISTATUS + " =? OR " + FormsTable.COLUMN_ISTATUS + " =? OR " + FormsTable.COLUMN_ISTATUS + " =?)";
+        String[] whereArgs = new String[]{cluster, hhno, "1", "7", ""};
 
         String groupBy = null;
         String having = null;
@@ -2242,8 +2243,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_APP_VERSION
         };
         String whereClause = FormsTable.COLUMN_CLUSTER_NO + " =? AND " + FormsTable.COLUMN_HH_NO + " =? AND ("
-                + FormsTable.COLUMN_ISTATUS + " =? OR " + FormsTable.COLUMN_ISTATUS + " =?)";
-        String[] whereArgs = new String[]{cluster, hhno.toUpperCase(), "1", "7"};
+                + FormsTable.COLUMN_ISTATUS + " =? OR " + FormsTable.COLUMN_ISTATUS + " =? OR " + FormsTable.COLUMN_ISTATUS + " =?)";
+        String[] whereArgs = new String[]{cluster, hhno, "1", "7", ""};
         String groupBy = null;
         String having = null;
 
@@ -3328,6 +3329,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allFC;
+    }
+
+    public Boolean getNutritionCount() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                NutritionTable.COLUMN__ID,
+                NutritionTable.COLUMN_UID,
+                NutritionTable.COLUMN_UUID,
+                NutritionTable.COLUMN_FM_UID,
+                NutritionTable.COLUMN_MUID,
+                NutritionTable.COLUMN_SB6
+        };
+
+        String whereClause = NutritionTable.COLUMN_UUID + "=? AND " + NutritionTable.COLUMN_FM_UID + "=?";
+        String[] whereArgs = new String[]{MainApp.mc.get_UUID(), MainApp.mc.getFMUID()};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                NutritionTable.COLUMN__ID + " ASC";
+
+        c = db.query(
+                NutritionTable.TABLE_NAME,  // The table to query
+                columns,                   // The columns to return
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,                 // The values for the WHERE clause
+                groupBy,                   // don't group the rows
+                having,                    // don't filter by row groups
+                orderBy                    // The sort order
+        );
+
+        int cursorCount = c.getCount();
+        c.close();
+        db.close();
+        return cursorCount > 0;
     }
 
     public FormsContract getsA4() {

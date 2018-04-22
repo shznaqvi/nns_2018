@@ -43,7 +43,7 @@ import edu.aku.hassannaqvi.nns_2018.other.DateUtils;
 import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-public class SectionC1Activity extends Menu2Activity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
+public class SectionC1Activity extends AddMember_MenuActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
     public static int counter = 1;
     public static int counterPerMom = 0;
@@ -705,7 +705,9 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
             sC1.put("hhno", MainApp.fc.getHhNo());
             if (isNA) {
                 sC1.put("respName", binding.resp.getSelectedItem().toString());
-                sC1.put("respSerial", respMap.get(binding.resp.getSelectedItem().toString()));
+                sC1.put("resp_lno", respMap.get(binding.resp.getSelectedItem().toString()));
+            } else {
+                sC1.put("wra_lno", childMap.get(binding.nc101.getSelectedItem().toString()).getMotherId());
             }
             sC1.put("nc101", binding.nc101.getSelectedItem().toString());
 
@@ -720,7 +722,9 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
                 sC1.put("hhno", jsonC1.getHhno());
                 if (MainApp.cc.getMUID().equals("00")) {
                     sC1.put("respName", jsonC1.getRespName());
-                    sC1.put("respSerial", jsonC1.getRespSerial());
+                    sC1.put("resp_lno", jsonC1.getRespSerial());
+                } else {
+                    sC1.put("wra_lno", jsonC1.getWra_lno());
                 }
                 sC1.put("nc101", jsonC1.getnc101());
 
@@ -729,7 +733,9 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
                 sC1.put("hhno", jsonC1.getHhno());
                 if (MainApp.cc.getMUID().equals("00")) {
                     sC1.put("respName", jsonC1.getRespName());
-                    sC1.put("respSerial", jsonC1.getRespSerial());
+                    sC1.put("resp_lno", jsonC1.getRespSerial());
+                } else {
+                    sC1.put("wra_lno", jsonC1.getWra_lno());
                 }
                 sC1.put("nc101", jsonC1.getnc101());
 
@@ -741,7 +747,7 @@ public class SectionC1Activity extends Menu2Activity implements TextWatcher, Rad
                 sC1.put("hhno", MainApp.fc.getHhNo());
                 if (isNA) {
                     sC1.put("respName", binding.resp.getSelectedItem().toString());
-                    sC1.put("respSerial", respMap.get(binding.resp.getSelectedItem().toString()));
+                    sC1.put("resp_lno", respMap.get(binding.resp.getSelectedItem().toString()));
                 }
                 sC1.put("nc101", binding.nc101.getSelectedItem().toString());
 

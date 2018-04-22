@@ -36,7 +36,7 @@ public class SpecimenInfoActivity extends AppCompatActivity {
     static String enm_no;
     static String hh_no;
     static String hc_code;
-    static String ht_code;
+    static String uuid;
     static String wt_code;
     JSONModelClass json;
     ActivitySpecimenInfoBinding binding;
@@ -44,6 +44,7 @@ public class SpecimenInfoActivity extends AppCompatActivity {
     DatabaseHelper db;
     Collection<FamilyMembersContract> members;
     Boolean isHC = false, isHT = false, isWT = false;
+    int length = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +76,7 @@ public class SpecimenInfoActivity extends AppCompatActivity {
 
         } else if (MainActivity.ftype.equals("W")) {
             binding.fldGrpQR.setVisibility(View.GONE);
+            binding.fldGrpHC.setVisibility(View.GONE);
             binding.hcCode.setText(null);
 
         }
@@ -109,25 +111,31 @@ public class SpecimenInfoActivity extends AppCompatActivity {
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
                 binding.nh108.setInputType(InputType.TYPE_CLASS_NUMBER);
+
+                length = charSequence.toString().length();
+
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                //clearFields();
 
                 if (!binding.nh108.getText().toString().isEmpty() && binding.nh108.getText().toString().length() == 4) {
                     if (binding.nh108.getText().toString().substring(0, 3).matches("[0-9]+")) {
-                        binding.nh108.setText(binding.nh108.getText().toString() + "-");
-                        binding.nh108.setSelection(binding.nh108.getText().length());
-                        binding.nh108.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+                        if (length < 5) {
+                            binding.nh108.setText(binding.nh108.getText().toString() + "-");
+                            binding.nh108.setSelection(binding.nh108.getText().length());
+                            binding.nh108.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+                        }
 
                     }
                 }
+
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
+
 
             }
         });
@@ -283,6 +291,7 @@ public class SpecimenInfoActivity extends AppCompatActivity {
         enm_no = binding.nh102.getText().toString();
         hh_no = binding.nh108.getText().toString().toUpperCase();
         hc_code = binding.hcCode.getText().toString();
+
         //ht_code = binding.htCode.getText().toString();
         //wt_code = binding.wtCode.getText().toString();
 
@@ -306,6 +315,7 @@ public class SpecimenInfoActivity extends AppCompatActivity {
 
                     if (fm.getsA2() != null) {
                         json = JSONUtilClass.getModelFromJSON(fm.getsA2(), JSONModelClass.class);
+
                         if ((Integer.valueOf(json.getAge()) > 14 && Integer.valueOf(json.getAge()) < 50)
                                 && json.getGender().equals("2") && json.getNh210().equals("1")) {
                             fm.setType("1");
@@ -330,7 +340,9 @@ public class SpecimenInfoActivity extends AppCompatActivity {
                     }
 
                 }
+
                 if (MainApp.all_members.size() > 0) {
+
                     Toast.makeText(this, "Members Found..", Toast.LENGTH_SHORT).show();
                     binding.fldGrpQR.setVisibility(View.VISIBLE);
                     binding.btnContinue.setVisibility(View.VISIBLE);
@@ -455,7 +467,7 @@ public class SpecimenInfoActivity extends AppCompatActivity {
                         binding.hcCode.setEnabled(false);
                         binding.hcCode.setError(null);
                     } else {
-                        binding.hcCode.setError("Please Scan correct QR code");
+                        binding.hcCode.setError("Please Scan QR code of Hemocue Machine");
                     }
                 }
 

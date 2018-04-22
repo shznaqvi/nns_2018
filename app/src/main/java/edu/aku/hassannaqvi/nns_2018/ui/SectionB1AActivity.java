@@ -144,7 +144,10 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                         startActivity(new Intent(this, SectionB2Activity.class));
                     } else {
                         if (SectionB1Activity.editWRAFlag) {
-                            if (MainApp.mc.getsB6().equals("1")) {
+                            if (!db.getNutritionCount()) {
+                                startActivityForResult(new Intent(this, SectionB6Activity.class)
+                                        .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
+                            } else if (MainApp.mc.getsB6().equals("1")) {
                                 startActivityForResult(new Intent(this, SectionB6Activity.class)
                                         .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
 
@@ -290,9 +293,6 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 sB1a.put("hhno", MainApp.fc.getHhNo());
             }
 
-            MainApp.oc.set_UUID(MainApp.mc.get_UID());
-
-
         } else {
             MainApp.oc.setUpdatedate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
 
@@ -323,7 +323,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
         sB1a.put("nw217Flag", bi.nw217Flag.isChecked() ? "1" : "2");
 
-        sB1a.put("serial", MainApp.mc.getB1SerialNo());
+        sB1a.put("wra_lno", MainApp.mc.getB1SerialNo());
 
         sB1a.put("nw21701", bi.nw21701a.isChecked() ? "1" : bi.nw21701b.isChecked() ? "2" : "0");
         sB1a.put("nw21702y", bi.nw21702y.getText().toString());

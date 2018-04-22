@@ -6,8 +6,6 @@ import android.provider.BaseColumns;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import edu.aku.hassannaqvi.nns_2018.R;
-
 /**
  * Created by gul.sanober on 4/14/2018.
  */
@@ -15,7 +13,7 @@ import edu.aku.hassannaqvi.nns_2018.R;
 public class WaterSpecimenContract {
 
 
-    private final String projectName = String.valueOf(R.string.app_name);
+    private final String projectName = "National Nutrition Survey 2018";
     private String _ID = "";
     private String _UID = "";
     private String _UUID = "";
@@ -230,7 +228,7 @@ public class WaterSpecimenContract {
         return sE2;
     }
 
-    public void setsE1(String sE1) {
+    public void setsE2(String sE2) {
         this.sE2 = sE2;
     }
 
@@ -259,7 +257,7 @@ public class WaterSpecimenContract {
         public static final String COLUMN_APPVERSION = "appversion";
 
 
-        public static String _URL = "specimen.php";
+        public static String _URL = "water.php";
     }
 
 }

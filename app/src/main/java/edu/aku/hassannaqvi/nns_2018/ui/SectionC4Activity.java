@@ -195,7 +195,7 @@ public class SectionC4Activity extends Menu2Activity implements TextWatcher, Rad
         binding.nc403.setOnCheckedChangeListener(this);
         binding.nc404a.setOnCheckedChangeListener(this);
         binding.nc407.setOnCheckedChangeListener(this);
-        binding.nc408a.setOnCheckedChangeListener(this);
+        binding.nc408b.setOnCheckedChangeListener(this);
         binding.nc411.setOnCheckedChangeListener(this);
         binding.nc412b.setOnCheckedChangeListener(this);
         binding.nc413.setOnCheckedChangeListener(this);
@@ -397,18 +397,11 @@ public class SectionC4Activity extends Menu2Activity implements TextWatcher, Rad
             binding.nc4079602x.setText(jsonC4.getnc4079602x());
             binding.nc4079603x.setText(jsonC4.getnc4079603x());
 
-            if (!jsonC4.getnc408a().equals("0")) {
-                binding.nc408a.setChecked(true);
-            }
+
             if (!jsonC4.getnc408b().equals("0")) {
                 binding.nc408b.setChecked(true);
             }
-            if (!jsonC4.getnc408c().equals("0")) {
-                binding.nc408c.setChecked(true);
-            }
-            if (!jsonC4.getnc408d().equals("0")) {
-                binding.nc408d.setChecked(true);
-            }
+
             if (!jsonC4.getnc408e().equals("0")) {
                 binding.nc408e.setChecked(true);
             }
@@ -423,6 +416,9 @@ public class SectionC4Activity extends Menu2Activity implements TextWatcher, Rad
             }
             if (!jsonC4.getnc408i().equals("0")) {
                 binding.nc408i.setChecked(true);
+            }
+            if (!jsonC4.getnc408j().equals("0")) {
+                binding.nc408j.setChecked(true);
             }
             if (!jsonC4.getnc4089601().equals("0")) {
                 binding.nc4089601.setChecked(true);
@@ -693,7 +689,7 @@ public class SectionC4Activity extends Menu2Activity implements TextWatcher, Rad
                 }
 
                 //    fldGrnc408check
-                if (!validatorClass.EmptyCheckBox(this, binding.fldGrnc408check, binding.nc408a, getString(R.string.nc408))) {
+                if (!validatorClass.EmptyCheckBox(this, binding.fldGrnc408check, binding.nc408b, getString(R.string.nc408))) {
                     return false;
                 }
                 if (!validatorClass.EmptyCheckBox(this, binding.fldGrnc408check, binding.nc4089601, binding.nc4089601x, getString(R.string.nc408))) {
@@ -812,9 +808,9 @@ public class SectionC4Activity extends Menu2Activity implements TextWatcher, Rad
         }
 
 //        nc301
-        sC4.put("nc4name", selectedChild.getName());
+        //sC4.put("nc4name", selectedChild.getName());
 //        nc302
-        sC4.put("nc402Serial", selectedChild.getSerialNo());
+        //sC4.put("nc402Serial", selectedChild.getSerialNo());
 
 //        nc401
         sC4.put("nc401", binding.nc401a.isChecked() ? "1"
@@ -902,15 +898,13 @@ public class SectionC4Activity extends Menu2Activity implements TextWatcher, Rad
         sC4.put("nc4079603x", binding.nc4079603x.getText().toString());
 
 //     nc408
-        sC4.put("nc408a", binding.nc408a.isChecked() ? "1" : "0");
         sC4.put("nc408b", binding.nc408b.isChecked() ? "2" : "0");
-        sC4.put("nc408c", binding.nc408c.isChecked() ? "3" : "0");
-        sC4.put("nc408d", binding.nc408d.isChecked() ? "4" : "0");
         sC4.put("nc408e", binding.nc408e.isChecked() ? "5" : "0");
         sC4.put("nc408f", binding.nc408f.isChecked() ? "6" : "0");
         sC4.put("nc408g", binding.nc408g.isChecked() ? "7" : "0");
         sC4.put("nc408h", binding.nc408h.isChecked() ? "8" : "0");
         sC4.put("nc408i", binding.nc408i.isChecked() ? "9" : "0");
+        sC4.put("nc408j", binding.nc408j.isChecked() ? "10" : "0");
         sC4.put("nc4089601", binding.nc4089601.isChecked() ? "96" : "0");
 
         sC4.put("nc4089601x", binding.nc4089601x.getText().toString());
@@ -952,15 +946,15 @@ public class SectionC4Activity extends Menu2Activity implements TextWatcher, Rad
         sC4.put("nc4119603x", binding.nc4119603x.getText().toString());
 
 //     nc412
-        sC4.put("nc412a", binding.nc412b.isChecked() ? "1" : "0");
-        sC4.put("nc412b", binding.nc412c.isChecked() ? "2" : "0");
+        sC4.put("nc412b", binding.nc412b.isChecked() ? "2" : "0");
+        sC4.put("nc412c", binding.nc412c.isChecked() ? "3" : "0");
 //        sC4.put("nc412d", binding.nc412d.isChecked() ? "3" : "0");
-        sC4.put("nc412c", binding.nc412e.isChecked() ? "3" : "0");
-        sC4.put("nc412d", binding.nc412f.isChecked() ? "4" : "0");
-        sC4.put("nc412e", binding.nc412g.isChecked() ? "5" : "0");
-        sC4.put("nc412f", binding.nc412h.isChecked() ? "6" : "0");
-        sC4.put("nc412g", binding.nc412i.isChecked() ? "7" : "0");
-        sC4.put("nc412h", binding.nc412j.isChecked() ? "8" : "0");
+        sC4.put("nc412e", binding.nc412e.isChecked() ? "5" : "0");
+        sC4.put("nc412f", binding.nc412f.isChecked() ? "6" : "0");
+        sC4.put("nc412g", binding.nc412g.isChecked() ? "7" : "0");
+        sC4.put("nc412h", binding.nc412h.isChecked() ? "8" : "0");
+        sC4.put("nc412i", binding.nc412i.isChecked() ? "9" : "0");
+        sC4.put("nc412j", binding.nc412j.isChecked() ? "10" : "0");
         sC4.put("nc4129601", binding.nc4129601.isChecked() ? "96" : "0");
 
         sC4.put("nc4129601x", binding.nc4129601x.getText().toString());

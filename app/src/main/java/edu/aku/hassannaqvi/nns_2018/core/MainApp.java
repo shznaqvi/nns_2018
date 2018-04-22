@@ -33,6 +33,7 @@ import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SpecimenContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.WaterSpecimenContract;
 import edu.aku.hassannaqvi.nns_2018.other.MembersCount;
 import edu.aku.hassannaqvi.nns_2018.ui.AnthroEndingActivity;
 import edu.aku.hassannaqvi.nns_2018.ui.ChildEndingActivity;
@@ -88,12 +89,15 @@ public class MainApp extends Application {
     public static int versionCode;
     public static String versionName;
     public static Boolean IsHead;
+    public static int gender;
     public static Boolean IsResp;
+    public static String cluster_no = "";
+    public static Boolean flag_head = false;
 
     //    Ali
     public static FamilyMembersContract fmc;
     public static SpecimenContract smc;
-    public static SpecimenContract wsc;
+    public static WaterSpecimenContract wsc;
 
     public static DeceasedContract dc;
     public static EligibleMembersContract emc;

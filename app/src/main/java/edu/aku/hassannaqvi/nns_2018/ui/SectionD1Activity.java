@@ -51,6 +51,7 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
     FamilyMembersContract slecMem;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     private Timer timer = new Timer();
+    Boolean endflag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -167,14 +168,7 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
         // setup head
         binding.txtCounter.setText("Count " + counter + " out of " + MainApp.all_members.size());
 
-//        Listener
-        /*binding.nd1w.addTextChangedListener(this);
-        binding.nd1h.addTextChangedListener(this);
-        binding.nd1muac.addTextChangedListener(this);*/
         binding.nd1bcgscar.setOnCheckedChangeListener(this);
-       /* binding.nd1g.setOnCheckedChangeListener(this);
-        binding.nd1ca.setOnCheckedChangeListener(this);
-        binding.nd1o.setOnCheckedChangeListener(this);*/
 
     }
 
@@ -182,7 +176,7 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
 
         for (FamilyMembersContract fmc : family) {
             json = JSONUtilClass.getModelFromJSON(fmc.getsA2(), JSONModelClass.class);
-            membersMap.put(json.getName() + "_" + json.getSerialNo(), new SelectedMem(type, fmc));
+            membersMap.put(json.getName() + "_" + json.getSerialNo(), new SelectedMem(type, fmc, json.getSerialNo()));
             members.add(json.getName() + "_" + json.getSerialNo());
         }
 
@@ -237,20 +231,23 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
     }
 
     public void BtnEnd() {
-        try {
-            SaveDraft();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        if (UpdateDB()) {
-            //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
+        endflag = true;
+        if (formValidation()) {
+            try {
+                SaveDraft();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            if (UpdateDB()) {
+                //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
-            //finish();
+                //finish();
 
-            MainApp.endAnthroActivity(this, this);
+                MainApp.endAnthroActivity(this, this);
 
-        } else {
-            Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -258,42 +255,134 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
 
         //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
-        if (!validatorClass.EmptySpinner(this, binding.nd101, getString(R.string.nd1w))) {
-            return false;
-        }
+        if (endflag) {
 
-        if (!validatorClass.EmptyTextBox(this, binding.nd1w, getString(R.string.nd1w))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyTextBox(this, binding.nd1h, getString(R.string.nd1h))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyTextBox(this, binding.nd1muac, getString(R.string.nd1muac))) {
-            return false;
-        }
+            return validatorClass.EmptySpinner(this, binding.nd101, getString(R.string.nd101sno));
+        } else {
 
 
-        if (slc_type == 2) {
-            if (!validatorClass.EmptyRadioButton(this, binding.nd1bcgscar, binding.nd1bcgscara, getString(R.string.nd1bcgscar))) {
+            if (!validatorClass.EmptySpinner(this, binding.nd101, getString(R.string.nd101sno))) {
                 return false;
             }
-        }
-        if (!validatorClass.EmptyRadioButton(this, binding.nd1g, binding.nd1ga, getString(R.string.nd1g))) {
-            return false;
-        }
 
-        if (!validatorClass.EmptyRadioButton(this, binding.nd1ca, binding.nd1caa, getString(R.string.nd1ca))) {
-            return false;
-        }
+            /*Add ranges here.. 3 types of*/
+            if (!validatorClass.EmptyTextBox(this, binding.nd1w, getString(R.string.nd1w))) {
+                return false;
+            }
 
-        if (slc_type == 2) {
-            return validatorClass.EmptyRadioButton(this, binding.nd1o, binding.nd1oa, getString(R.string.nd1o));
-        }
+            if (!validatorClass.RangeTextBox(this, binding.nd1w, MinWeight(slc_type), MaxWeight(slc_type), getString(R.string.nd1w), " weight")) {
+                return false;
+            }
 
+            if (!validatorClass.EmptyTextBox(this, binding.nd1h, getString(R.string.nd1h))) {
+                return false;
+            }
+
+            if (!validatorClass.RangeTextBox(this, binding.nd1h, MinHeight(slc_type), MaxHeight(slc_type), getString(R.string.nd1h), " height")) {
+                return false;
+            }
+
+            if (!validatorClass.EmptyTextBox(this, binding.nd1muac, getString(R.string.nd1muac))) {
+                return false;
+            }
+
+            if (!validatorClass.RangeTextBox(this, binding.nd1muac, MinMAUC(slc_type), MaxMAUC(slc_type), getString(R.string.nd1muac), " MAUC")) {
+                return false;
+            }
+            /*end*/
+
+
+            if (slc_type == 2) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nd1bcgscar, binding.nd1bcgscara, getString(R.string.nd1bcgscar))) {
+                    return false;
+                }
+            }
+            if (!validatorClass.EmptyRadioButton(this, binding.nd1g, binding.nd1ga, getString(R.string.nd1g))) {
+                return false;
+            }
+
+            if (!validatorClass.EmptyRadioButton(this, binding.nd1ca, binding.nd1caa, getString(R.string.nd1ca))) {
+                return false;
+            }
+
+            if (slc_type == 2) {
+                return validatorClass.EmptyRadioButton(this, binding.nd1o, binding.nd1oa, getString(R.string.nd1o));
+            }
+        }
 
         return true;
+    }
+
+    public double MinWeight(int type) {
+
+        switch (type) {
+            case 1:
+            case 3:
+                return 15d;
+            case 2:
+                return 0.5d;
+        }
+        return 0;
+    }
+
+    public double MaxWeight(int type) {
+
+        switch (type) {
+            case 1:
+            case 3:
+                return 250d;
+            case 2:
+                return 40d;
+        }
+        return 0;
+    }
+
+    public double MinHeight(int type) {
+
+        switch (type) {
+            case 1:
+            case 3:
+                return 100d;
+            case 2:
+                return 10d;
+        }
+        return 0;
+    }
+
+    public double MaxHeight(int type) {
+
+        switch (type) {
+            case 1:
+            case 3:
+                return 200d;
+            case 2:
+                return 140d;
+        }
+        return 0;
+    }
+
+    public double MinMAUC(int type) {
+
+        switch (type) {
+            case 1:
+            case 3:
+                return 15d;
+            case 2:
+                return 5d;
+        }
+        return 0;
+    }
+
+    public double MaxMAUC(int type) {
+
+        switch (type) {
+            case 1:
+            case 3:
+                return 60d;
+            case 2:
+                return 25d;
+        }
+        return 0;
     }
 
     private void SaveDraft() throws JSONException {
@@ -318,7 +407,7 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
         sA3.put("ht_code", AntrhoInfoActivity.ht_code);
         sA3.put("wt_code", AntrhoInfoActivity.wt_code);
         sA3.put("nd101", binding.nd101.getSelectedItem().toString());
-        sA3.put("nd101Serial", json.getSerialNo());
+        sA3.put("nd101Serial", membersMap.get(binding.nd101.getSelectedItem()).getFmc().getSerialNo());
 
         sA3.put("nd1Serial", String.valueOf(counter));
 
@@ -416,9 +505,10 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
         FamilyMembersContract fmc;
 
 
-        public SelectedMem(int type, FamilyMembersContract fmc) {
+        public SelectedMem(int type, FamilyMembersContract fmc, String SerialNo) {
             this.type = type;
             this.fmc = fmc;
+            this.fmc.setSerialNo(SerialNo);
         }
 
         public int getType() {

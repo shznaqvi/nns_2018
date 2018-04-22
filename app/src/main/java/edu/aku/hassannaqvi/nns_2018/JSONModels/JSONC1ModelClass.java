@@ -1,5 +1,7 @@
 package edu.aku.hassannaqvi.nns_2018.JSONModels;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by ali.azaz on 3/31/2018.
  */
@@ -7,6 +9,7 @@ package edu.aku.hassannaqvi.nns_2018.JSONModels;
 public class JSONC1ModelClass {
 
     private String respName = "";
+    @SerializedName("resp_lno")
     private String respSerial = "";
     private String nc101 = "";
     private String nc201d = "";
@@ -19,9 +22,19 @@ public class JSONC1ModelClass {
     private String nc205 = "";
     private String cluster_no = "";
     private String hhno = "";
+    private String wra_lno = "";
+
 
     public JSONC1ModelClass() {
 
+    }
+
+    public String getWra_lno() {
+        return wra_lno;
+    }
+
+    public void setWra_lno(String wra_lno) {
+        this.wra_lno = wra_lno;
     }
 
     public String getCluster_no() {

@@ -49,7 +49,9 @@ public class SectionA2ListActivity extends AppCompatActivity {
     JSONModelClass json;
     JSONACountModelClass countJSON;
     Boolean flagMember = false;
+    //static Boolean flag = false;
 
+    Boolean head;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -255,6 +257,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
         if (SectionA1Activity.editFormFlag) {
 
+            binding.btnEnd.setVisibility(View.VISIBLE);
 
             MainApp.editfathersList = new ArrayList<>();
             MainApp.editfathersSerials = new ArrayList<>();
@@ -268,6 +271,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
                 Boolean serialFlag = true;
                 json = JSONUtilClass.getModelFromJSON(fm.getsA2(), JSONModelClass.class);
 
+                // Done this thing to not add duplicate in list
                 for (FamilyMembersContract ser : MainApp.all_members) {
                     if (ser.getSerialNo() == fm.getSerialNo()) {
                         serialFlag = false;
@@ -369,15 +373,37 @@ public class SectionA2ListActivity extends AppCompatActivity {
             if (UpdateDB()) {
                 //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
-                finish();
 
-                if (SectionA1Activity.reBackFlag) {
-                    respLineNo = "";
-                    startActivity(new Intent(this, SectionA4Activity.class));
-//                    startActivity(new Intent(this, SectionB1Activity.class));
-                } else {
-                    startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 6));
-                }
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                        SectionA2ListActivity.this);
+                alertDialogBuilder
+                        .setMessage("Are you sure to continue to next section?")
+                        .setCancelable(false)
+                        .setPositiveButton("Ok",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,
+                                                        int id) {
+
+                                        finish();
+
+                                        if (SectionA1Activity.reBackFlag) {
+                                            respLineNo = "";
+                                            startActivity(new Intent(getApplicationContext(), SectionA4Activity.class));
+//                                          startActivity(new Intent(this, SectionB1Activity.class));
+                                        } else {
+                                            startActivity(new Intent(getApplicationContext(), ViewMemberActivity.class).putExtra("activity", 6));
+                                        }
+
+                                    }
+                                });
+                alertDialogBuilder.setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert = alertDialogBuilder.create();
+                alert.show();
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -387,6 +413,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
     public void BtnAddMore() {
 
+        MainApp.flag_head = true;
         //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 SectionA2ListActivity.this);
@@ -398,7 +425,8 @@ public class SectionA2ListActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog,
                                                 int id) {
                                 finish();
-                                startActivity(new Intent(SectionA2ListActivity.this, SectionA2Activity.class).putExtra("flag", true));
+                                startActivity(new Intent(SectionA2ListActivity.this, SectionA2Activity.class)
+                                        .putExtra("flag", true));
                             }
                         });
         alertDialogBuilder.setNegativeButton("Cancel",

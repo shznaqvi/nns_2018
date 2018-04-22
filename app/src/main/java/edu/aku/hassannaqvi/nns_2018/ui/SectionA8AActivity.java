@@ -46,6 +46,8 @@ public class SectionA8AActivity extends AppCompatActivity {
 
     JSONA8AModelClass jsonA8A;
 
+    Boolean dataFlag = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,6 +110,7 @@ public class SectionA8AActivity extends AppCompatActivity {
         MainApp.validateFlag = false;
 
         if (SectionA1Activity.editFormFlag) {
+
             AutoPopulate();
         }
 
@@ -120,6 +123,8 @@ public class SectionA8AActivity extends AppCompatActivity {
         for (RecipientsContract recipientsContract : recipientsContracts) {
 
             if (recipientsContract.getA8aSNo().equals(String.valueOf(counter))) {
+
+                dataFlag = false;
 
                 MainApp.rc = recipientsContract;
 
@@ -183,8 +188,46 @@ public class SectionA8AActivity extends AppCompatActivity {
                 }
 
                 bi.nh7aFlag.setVisibility(View.VISIBLE);
+
+                break;
             }
         }
+
+        /*if (dataFlag) {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                    SectionA8AActivity.this);
+            alertDialogBuilder.setCancelable(false);
+            alertDialogBuilder
+                    .setMessage("In previous you didn't saved No" + counter + " Recipient.\n" +
+                            "Do you want to continue it?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog,
+                                                    int id) {
+
+                                    if (counter == reccounter) {
+
+                                        counter = 1;
+
+                                        if (SectionA5Activity.deceasedCounter > 0) {
+                                            startActivity(new Intent(getApplicationContext(), SectionH8Activity.class));
+                                        } else {
+                                            startActivity(new Intent(getApplicationContext(), ViewMemberActivity.class)
+                                                    .putExtra("flagEdit", false)
+                                                    .putExtra("comingBack", true)
+                                                    .putExtra("cluster", MainApp.fc.getClusterNo())
+                                                    .putExtra("hhno", MainApp.fc.getHhNo())
+                                            );
+                                        }
+                                    } else {
+                                        startActivity(new Intent(getApplicationContext(), SectionA8AActivity.class).putExtra("flag", false));
+                                    }
+                                }
+                            });
+            AlertDialog alert = alertDialogBuilder.create();
+            alert.show();
+        }*/
 
     }
 
@@ -233,8 +276,13 @@ public class SectionA8AActivity extends AppCompatActivity {
                     }
                 } else {
 
-                    recpNames.remove(bi.nh7a02.getSelectedItem().toString());
-                    recpSerial.remove(recpSerial.get(position));
+                    if (dataFlag) {
+                        recpNames.remove(bi.nh7a02.getSelectedItem().toString());
+                        recpSerial.remove(recpSerial.get(position));
+                    } else {
+                        recpNames.remove(jsonA8A.getnh7a02().toString());
+                        recpSerial.remove(jsonA8A.getnh7a03().toString());
+                    }
 
                     startActivity(new Intent(this, SectionA8AActivity.class).putExtra("flag", false));
                 }
@@ -248,6 +296,9 @@ public class SectionA8AActivity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
+
+        counter = 1;
+
         if (SectionA1Activity.editFormFlag) {
             startActivity(new Intent(this, ViewMemberActivity.class)
                     .putExtra("flagEdit", false)
@@ -256,7 +307,21 @@ public class SectionA8AActivity extends AppCompatActivity {
                     .putExtra("hhno", MainApp.fc.getHhNo())
             );
         } else {
-            MainApp.endActivity(this, this);
+            if (validatorClass.EmptySpinner(this, bi.nh7a02, getString(R.string.nh7a02))) {
+                try {
+                    SaveDraft();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                if (UpdateDB()) {
+                    MainApp.endActivity(this, this);
+                } else {
+                    Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(this, "Select name first!", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -323,7 +388,8 @@ public class SectionA8AActivity extends AppCompatActivity {
 
         JSONObject sA8a = new JSONObject();
 
-        if (!SectionA1Activity.editFormFlag) {
+//        if (!SectionA1Activity.editFormFlag) {
+        if (dataFlag) {
             MainApp.rc = new RecipientsContract();
             MainApp.rc.setDevicetagID(MainApp.fc.getDevicetagID());
             MainApp.rc.setFormDate(MainApp.fc.getFormDate());
@@ -336,12 +402,16 @@ public class SectionA8AActivity extends AppCompatActivity {
 
             sA8a.put("nh7a04", fmcSelected.getName());
             sA8a.put("nh7a03", fmcSelected.getSerialNo());
+            sA8a.put("nh7a02", bi.nh7a02.getSelectedItem().toString());
+//            sA8a.put("lineno", fmcSelected.getSerialNo());
 
         } else {
             sA8a.put("edit_updatedate_nh7a", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
 
             sA8a.put("nh7a04", jsonA8A.getnh7a04());
             sA8a.put("nh7a03", jsonA8A.getnh7a03());
+            sA8a.put("nh7a02", jsonA8A.getnh7a02().toString());
+//            sA8a.put("lineno", jsonA8A.getnh7a03());
         }
 
        /* if (backPressed) {
@@ -352,9 +422,6 @@ public class SectionA8AActivity extends AppCompatActivity {
 
         sA8a.put("cluster_no", MainApp.fc.getClusterNo());
         sA8a.put("hhno", MainApp.fc.getHhNo());
-
-        sA8a.put("nh7a02", bi.nh7a02.getSelectedItem().toString());
-        sA8a.put("lineno", recpmap.get(bi.nh7a02.getSelectedItem().toString()).getSerialNo());
 
         sA8a.put("nh7a05y", bi.nh7a03y.getText().toString());
 
@@ -388,7 +455,8 @@ public class SectionA8AActivity extends AppCompatActivity {
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        if (SectionA1Activity.editFormFlag) {
+//        if (SectionA1Activity.editFormFlag) {
+        if (!dataFlag) {
             Long updcount = db.addRecipient(MainApp.rc, 1);
             if (updcount != 0) {
                 return true;

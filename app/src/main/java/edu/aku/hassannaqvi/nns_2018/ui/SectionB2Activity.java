@@ -993,12 +993,12 @@ public class SectionB2Activity extends Menu2Activity implements RadioGroup.OnChe
                 : bi.nw303c.isChecked() ? "3"
                 : bi.nw303d.isChecked() ? "4"
                 : bi.nw303e.isChecked() ? "5"
-                : bi.nw303f.isChecked() ? "6"
+                : bi.nw303f.isChecked() ? "961"
                 : bi.nw303g.isChecked() ? "7"
                 : bi.nw303h.isChecked() ? "8"
                 : bi.nw303i.isChecked() ? "9"
-                : bi.nw303j.isChecked() ? "10"
-                : bi.nw30396.isChecked() ? "96"
+                : bi.nw303j.isChecked() ? "962"
+                : bi.nw30396.isChecked() ? "963"
                 : "0");
         sB2.put("nw303961x", bi.nw303961x.getText().toString());
         sB2.put("nw303962x", bi.nw303962x.getText().toString());
@@ -1006,7 +1006,8 @@ public class SectionB2Activity extends Menu2Activity implements RadioGroup.OnChe
 
 
 //        nw304
-        sB2.put("nw304", bi.nw304w.getText().toString());
+        sB2.put("nw304w", bi.nw304w.getText().toString());
+        sB2.put("nw304m", bi.nw304m.getText().toString());
         sB2.put("nw30498", bi.nw30498.isChecked() ? "98" : "0");
 
 

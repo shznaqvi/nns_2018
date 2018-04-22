@@ -44,6 +44,8 @@ public class AntrhoInfoActivity extends Activity {
     DatabaseHelper db;
     Collection<FamilyMembersContract> members;
     Boolean isHC = false, isHT = false, isWT = false;
+    int length = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,25 +122,31 @@ public class AntrhoInfoActivity extends Activity {
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
                 binding.nh108.setInputType(InputType.TYPE_CLASS_NUMBER);
+
+                length = charSequence.toString().length();
+
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                //clearFields();
 
                 if (!binding.nh108.getText().toString().isEmpty() && binding.nh108.getText().toString().length() == 4) {
                     if (binding.nh108.getText().toString().substring(0, 3).matches("[0-9]+")) {
-                        binding.nh108.setText(binding.nh108.getText().toString() + "-");
-                        binding.nh108.setSelection(binding.nh108.getText().length());
-                        binding.nh108.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+                        if (length < 5) {
+                            binding.nh108.setText(binding.nh108.getText().toString() + "-");
+                            binding.nh108.setSelection(binding.nh108.getText().length());
+                            binding.nh108.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+                        }
 
                     }
                 }
+
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
+
 
             }
         });

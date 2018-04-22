@@ -850,14 +850,6 @@
                                 android:textColor="@color/colorPrimaryDark" />
 
                             <CheckBox
-                                android:id="@+id/nc408a"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="1dp"
-                                android:layout_weight="1"
-                                android:text="@string/nc408a" />
-
-                            <CheckBox
                                 android:id="@+id/nc408b"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -866,37 +858,20 @@
                                 android:text="@string/nc408b" />
 
                             <CheckBox
-                                android:id="@+id/nc408c"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="1dp"
-                                android:layout_weight="1"
-                                android:text="@string/nc408c" />
-
-                            <CheckBox
-                                android:id="@+id/nc408d"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="1dp"
-                                android:layout_weight="1"
-                                android:text="@string/nc408d" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-
-                                android:background="@color/pink_100"
-                                android:text="@string/nc408sub2"
-                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:textColor="@color/colorPrimaryDark" />
-
-                            <CheckBox
                                 android:id="@+id/nc408e"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
                                 android:layout_weight="1"
                                 android:text="@string/nc408e" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/pink_100"
+                                android:text="@string/nc408sub2"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="@color/colorPrimaryDark" />
 
                             <CheckBox
                                 android:id="@+id/nc408f"
@@ -929,6 +904,14 @@
                                 android:layout_marginBottom="1dp"
                                 android:layout_weight="1"
                                 android:text="@string/nc408i" />
+
+                            <CheckBox
+                                android:id="@+id/nc408j"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:layout_weight="1"
+                                android:text="@string/nc408j" />
 
                             <CheckBox
                                 android:id="@+id/nc4089601"

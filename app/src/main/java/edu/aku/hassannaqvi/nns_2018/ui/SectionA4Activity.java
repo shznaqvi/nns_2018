@@ -91,18 +91,6 @@ public class SectionA4Activity extends Menu2Activity implements RadioGroup.OnChe
         });
 
 
-       /* binding.nh304rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.nh30498 || checkedId == R.id.nh30499) {
-                    binding.nh304.setVisibility(View.GONE);
-                    binding.nh304.setText(null);
-                } else {
-                    binding.nh304.setVisibility(View.VISIBLE);
-
-                }
-            }
-        });*/
         binding.nh305.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -299,25 +287,24 @@ public class SectionA4Activity extends Menu2Activity implements RadioGroup.OnChe
                                                                                                                         jsonA4.getnh303().equals("13") ? binding.nh303n.getId() :
                                                                                                                                 jsonA4.getnh303().equals("14") ? binding.nh303o.getId() :
                                                                                                                                         jsonA4.getnh303().equals("15") ? binding.nh303p.getId() :
-                                                                                                                                                binding.nh30396.getId()
+                                                                                                                                                jsonA4.getnh303().equals("16") ? binding.nh303q.getId() :
+                                                                                                                                                        binding.nh30396.getId()
                 );
                 binding.nh30396x.setText(jsonA4.getnh30396x());
             }
 
 
-            if (!jsonA4.getnh304().equals("0")) {
-                binding.nh30499.setChecked(false);
-                binding.nh30498.setChecked(false);
+
+
+            if (jsonA4.getnh304().equals("000")) {
+                binding.nh30499.setChecked(true);
+            } else if (jsonA4.getnh304().equals("998")) {
+                binding.nh30498.setChecked(true);
+            } else {
                 binding.nh304.setText(jsonA4.getnh304());
             }
 
 
-          /*  if (!jsonA4.getnh30499().equals("0")) {
-                binding.nh30499.setChecked(true);
-            }
-            if (!jsonA4.getnh30498().equals("0")) {
-                binding.nh30498.setChecked(true);
-            }*/
             if (!jsonA4.getnh305().equals("0")) {
                 binding.nh305.check(
                         jsonA4.getnh305().equals("1") ? binding.nh305a.getId() :
@@ -1099,21 +1086,22 @@ public class SectionA4Activity extends Menu2Activity implements RadioGroup.OnChe
                 : binding.nh303a2.isChecked() ? "2"
                 : "0");
 
-        sA4.put("nh303", binding.nh303b.isChecked() ? "2"
-                : binding.nh303c.isChecked() ? "3"
-                : binding.nh303d.isChecked() ? "4"
-                : binding.nh303e.isChecked() ? "5"
-                : binding.nh303f.isChecked() ? "6"
-                : binding.nh303g.isChecked() ? "7"
-                : binding.nh303h.isChecked() ? "8"
-                : binding.nh303i.isChecked() ? "9"
-                : binding.nh303j.isChecked() ? "10"
-                : binding.nh303k.isChecked() ? "11"
-                : binding.nh303l.isChecked() ? "12"
-                : binding.nh303m.isChecked() ? "13"
-                : binding.nh303n.isChecked() ? "14"
-                : binding.nh303o.isChecked() ? "15"
-                : binding.nh303p.isChecked() ? "16"
+        sA4.put("nh303", binding.nh303b.isChecked() ? "1"
+                : binding.nh303c.isChecked() ? "2"
+                : binding.nh303d.isChecked() ? "3"
+                : binding.nh303e.isChecked() ? "4"
+                : binding.nh303f.isChecked() ? "5"
+                : binding.nh303g.isChecked() ? "6"
+                : binding.nh303h.isChecked() ? "7"
+                : binding.nh303i.isChecked() ? "8"
+                : binding.nh303j.isChecked() ? "9"
+                : binding.nh303k.isChecked() ? "10"
+                : binding.nh303l.isChecked() ? "11"
+                : binding.nh303m.isChecked() ? "12"
+                : binding.nh303n.isChecked() ? "13"
+                : binding.nh303o.isChecked() ? "14"
+                : binding.nh303p.isChecked() ? "15"
+                : binding.nh303q.isChecked() ? "16"
                 : binding.nh30396.isChecked() ? "96"
                 : "0");
         sA4.put("nh30396x", binding.nh30396x.getText().toString());
