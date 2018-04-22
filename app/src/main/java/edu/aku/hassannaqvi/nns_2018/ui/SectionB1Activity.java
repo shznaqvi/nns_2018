@@ -1571,7 +1571,10 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                                 }
 
                                 if (bi.nw216a.isChecked()) {
-                                    return validatorClass.EmptyTextBox(this, bi.nw216aa, getString(R.string.nw216a));
+                                    if (!validatorClass.EmptyTextBox(this, bi.nw216aa, getString(R.string.nw216a))) {
+                                        return false;
+                                    }
+                                    return validatorClass.RangeTextBox(this, bi.nw216aa, 1, 5, getString(R.string.nw216a), " ");
                                 }
                             }
 
