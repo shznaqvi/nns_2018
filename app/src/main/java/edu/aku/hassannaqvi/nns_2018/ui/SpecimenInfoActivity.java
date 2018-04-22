@@ -3,16 +3,21 @@ package edu.aku.hassannaqvi.nns_2018.ui;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -23,6 +28,7 @@ import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.EnumBlockContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.SpecimenContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySpecimenInfoBinding;
@@ -45,6 +51,9 @@ public class SpecimenInfoActivity extends AppCompatActivity {
     Collection<FamilyMembersContract> members;
     Boolean isHC = false, isHT = false, isWT = false;
     int length = 0;
+    static int consent = 0;
+    FamilyMembersContract slecMem;
+    String date = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +63,10 @@ public class SpecimenInfoActivity extends AppCompatActivity {
         binding.setCallback(this);
 
         SetupViewFunctionality();
+
+        slecMem = new FamilyMembersContract();
+
+
 
     }
 
@@ -71,15 +84,31 @@ public class SpecimenInfoActivity extends AppCompatActivity {
         json = new JSONModelClass();
 
         if (MainActivity.ftype.equals("B")) {
+            binding.fldGrpnhconsent.setVisibility(View.VISIBLE);
             binding.fldGrpQR.setVisibility(View.VISIBLE);
             binding.fldGrpHC.setVisibility(View.VISIBLE);
 
         } else if (MainActivity.ftype.equals("W")) {
+            binding.fldGrpnhconsent.setVisibility(View.GONE);
             binding.fldGrpQR.setVisibility(View.GONE);
             binding.fldGrpHC.setVisibility(View.GONE);
             binding.hcCode.setText(null);
 
         }
+
+        binding.na11802.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if (binding.na11802a.isChecked()) {
+                    binding.fldGrpQR.setVisibility(View.VISIBLE);
+                    binding.fldGrpHC.setVisibility(View.VISIBLE);
+                } else {
+                    binding.fldGrpQR.setVisibility(View.GONE);
+                    binding.fldGrpHC.setVisibility(View.GONE);
+                    binding.hcCode.setText(null);
+                }
+            }
+        });
 
 
         //slcMem = new ArrayList<>();
@@ -148,14 +177,23 @@ public class SpecimenInfoActivity extends AppCompatActivity {
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
 
-            SaveDraft();
+            try {
+                SaveDraft();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
             if (UpdateDB()) {
                 //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
                 finish();
 
                 if (MainActivity.ftype.equals("B")) {
-                    startActivity(new Intent(this, SectionE1Activity.class));
+
+                    if (binding.na11802a.isChecked()) {
+                        startActivity(new Intent(this, SectionE1Activity.class));
+                    } else {
+                        startActivity(new Intent(this, MainActivity.class));
+                    }
                 } else if (MainActivity.ftype.equals("W")) {
                     startActivity(new Intent(this, SectionE2Activity.class));
                 }
@@ -172,7 +210,12 @@ public class SpecimenInfoActivity extends AppCompatActivity {
         Toast.makeText(this, "Processing End Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
 
-            SaveDraft();
+            try {
+
+                SaveDraft();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
             if (UpdateDB()) {
                 Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
@@ -213,84 +256,71 @@ public class SpecimenInfoActivity extends AppCompatActivity {
         int scanChar;
 
         if (MainActivity.ftype.equals("B")) {
-            if (!validatorClass.EmptyTextBox(this, binding.hcCode, getString(R.string.hc))) {
+
+            if (!validatorClass.EmptyRadioButton(this, binding.na11802, binding.na11802b, getString(R.string.na11802))) {
                 return false;
             }
 
-            if (binding.hcCode.getText().toString().contains("§")) {
-                scanChar = 7;
-            } else {
-                scanChar = 6;
-            }
+            if (binding.na11802a.isChecked()) {
 
-            if (binding.hcCode.getText().length() != scanChar || !binding.hcCode.getText().toString().contains("-")
-                    || !binding.hcCode.getText().toString().contains("HC")) {
-                Toast.makeText(this, "ERROR(invalid)" + getString(R.string.hc), Toast.LENGTH_SHORT).show();
-                binding.hcCode.setError("Invalid Number..");
+                if (!validatorClass.EmptyTextBox(this, binding.hcCode, getString(R.string.hc))) {
+                    return false;
+                }
 
-                Log.i(TAG, "hcCode: Invalid number");
-                return false;
-            } else {
-                binding.hcCode.setError(null);
+                if (binding.hcCode.getText().toString().contains("§")) {
+                    scanChar = 7;
+                } else {
+                    scanChar = 6;
+                }
+
+                if (binding.hcCode.getText().length() != scanChar || !binding.hcCode.getText().toString().contains("-")
+                        || !binding.hcCode.getText().toString().contains("HC")) {
+                    Toast.makeText(this, "ERROR(invalid)" + getString(R.string.hc), Toast.LENGTH_SHORT).show();
+                    binding.hcCode.setError("Invalid Number..");
+
+                    Log.i(TAG, "hcCode: Invalid number");
+                    return false;
+                } else {
+                    binding.hcCode.setError(null);
+                }
             }
         }
 
-
-        /*if(MainActivity.ftype.equals("A")) {
-            if (!validatorClass.EmptyTextBox(this, binding.htCode, getString(R.string.ht))) {
-                return false;
-            }
-
-            if (binding.htCode.getText().toString().contains("§")) {
-                scanChar = 7;
-            } else {
-                scanChar = 6;
-            }
-
-            if (binding.htCode.getText().length() != scanChar || !binding.htCode.getText().toString().contains("-")
-                    || !binding.htCode.getText().toString().contains("HT")) {
-                Toast.makeText(this, "ERROR(invalid)" + getString(R.string.ht), Toast.LENGTH_SHORT).show();
-                binding.htCode.setError("Invalid Number..");
-
-                Log.i(TAG, "htCode: Invalid number");
-                return false;
-            } else {
-                binding.htCode.setError(null);
-            }
-
-            if (!validatorClass.EmptyTextBox(this, binding.wtCode, getString(R.string.wt))) {
-                return false;
-            }
-
-            if (binding.wtCode.getText().toString().contains("§")) {
-                scanChar = 7;
-            } else {
-                scanChar = 6;
-            }
-
-            if (binding.wtCode.getText().length() != scanChar || !binding.wtCode.getText().toString().contains("-")
-                    || !binding.wtCode.getText().toString().contains("WT")) {
-                Toast.makeText(this, "ERROR(invalid)" + getString(R.string.wt), Toast.LENGTH_SHORT).show();
-                binding.wtCode.setError("Invalid Number..");
-
-                Log.i(TAG, "wtCode: Invalid number");
-                return false;
-            } else {
-                binding.wtCode.setError(null);
-            }
-        }
-*/
 
 
         return true;
     }
 
-    private void SaveDraft() {
+    private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
-        enm_no = binding.nh102.getText().toString();
-        hh_no = binding.nh108.getText().toString().toUpperCase();
-        hc_code = binding.hcCode.getText().toString();
+        if (binding.na11802a.isChecked()) {
+
+            enm_no = binding.nh102.getText().toString();
+            hh_no = binding.nh108.getText().toString().toUpperCase();
+            hc_code = binding.hcCode.getText().toString();
+            consent = binding.na11802.indexOfChild(findViewById(binding.na11802.getCheckedRadioButtonId())) + 1;
+        } else {
+            MainApp.smc = new SpecimenContract();
+
+            MainApp.smc.setDevicetagID(MainApp.getTagName(this));
+            MainApp.smc.setFormDate(date);
+            MainApp.smc.setUser(MainApp.userName);
+            MainApp.smc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
+                    Settings.Secure.ANDROID_ID));
+            MainApp.smc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
+            //MainApp.smc.setUUID(slecMem.get_UUID());
+            //MainApp.smc.setFMUID(slecMem.get_UID());
+            //MainApp.smc.setLineNo(membersMap.get(bi.ne102.getSelectedItem()).getFmc().getSerialNo());
+            MainApp.smc.setClusterno(SpecimenInfoActivity.enm_no);
+            MainApp.smc.setHhno(SpecimenInfoActivity.hh_no);
+
+            JSONObject sE1 = new JSONObject();
+            sE1.put("ne_consent", binding.na11802a.isChecked() ? "1" : binding.na11802b.isChecked() ? "2" : "0");
+
+            MainApp.smc.setsE1(String.valueOf(sE1));
+
+        }
 
         //ht_code = binding.htCode.getText().toString();
         //wt_code = binding.wtCode.getText().toString();
@@ -300,8 +330,29 @@ public class SpecimenInfoActivity extends AppCompatActivity {
 
 
     private boolean UpdateDB() {
+        if (binding.na11802b.isChecked()) {
+            DatabaseHelper db = new DatabaseHelper(this);
 
-        return true;
+
+            Long updcount = db.addSpecimenMembers(MainApp.smc);
+            MainApp.smc.set_ID(String.valueOf(updcount));
+
+            if (updcount != 0) {
+                //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+
+                MainApp.smc.setUID(
+                        (MainApp.smc.getDeviceID() + MainApp.smc.get_ID()));
+                db.updateSpecimenMemberID();
+
+                return true;
+            } else {
+                Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        } else {
+
+            return true;
+        }
     }
 
     public void BtnCheckHH() {
@@ -315,7 +366,7 @@ public class SpecimenInfoActivity extends AppCompatActivity {
 
                     if (fm.getsA2() != null) {
                         json = JSONUtilClass.getModelFromJSON(fm.getsA2(), JSONModelClass.class);
-
+                        date = fm.getFormDate();
                         if ((Integer.valueOf(json.getAge()) > 14 && Integer.valueOf(json.getAge()) < 50)
                                 && json.getGender().equals("2") && json.getNh210().equals("1")) {
                             fm.setType("1");
