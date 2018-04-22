@@ -377,7 +377,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                         SectionA2ListActivity.this);
                 alertDialogBuilder
-                        .setMessage("Are you sure to continue to next section?")
+                        .setMessage("Are you sure to continue for next section?")
                         .setCancelable(false)
                         .setPositiveButton("Ok",
                                 new DialogInterface.OnClickListener() {
