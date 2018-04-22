@@ -52,7 +52,6 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
     long agebyDob = 0;
     long ageinMonths = 0;
     Boolean flag = false;
-    FamilyMembersContract family;
     Calendar dob = Calendar.getInstance();
     public TextWatcher age = new TextWatcher() {
         @Override
@@ -914,7 +913,7 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
         sA2.put("nh2SerialNo", MainApp.fmc.getSerialNo());
         sA2.put("nh202", MainApp.fmc.getName());
         sA2.put("nh203", MainApp.fmc.getRealtionHH());
-        sA2.put("nh204", MainApp.fmc.getna204());
+        sA2.put("nh204", binding.na204a.isChecked() ? "1" : binding.na204b.isChecked() ? "2" : "0");
 
         sA2.put("nh2doby", binding.nh2doby.getText().toString());
         sA2.put("nh2dobm", binding.nh2dobm.getText().toString());
@@ -964,7 +963,7 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
         Map<Integer, Integer> memType = new HashMap<>();
 
         //Total
-        if (MainApp.fmc.getna204().equals("1")) {
+        if (binding.na204a.isChecked()) {
             memType.put(1, Integer.valueOf(mem.get(1).get(1).toString()) + 1);
             memType.put(2, Integer.valueOf(mem.get(1).get(2).toString()));
         } else {
@@ -975,7 +974,7 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
         MainApp.membersCount.setMembers(1, memType);
 
         //MWRA
-        if ((Age >= 15 && Age < 50) && MainApp.fmc.getna204().equals("2")) {
+        if ((Age >= 15 && Age < 50) && binding.na204b.isChecked()) {
             if (binding.nh2mse.isChecked()) {
                 MainApp.membersCount.setWra(MainApp.membersCount.getWra() + 1);
                 if (binding.nh210a.isChecked()) {
@@ -989,7 +988,7 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
 
             }
             if (binding.nh210a.isChecked()) {
-                MainApp.mwra.add(family);
+                MainApp.mwra.add(MainApp.fmc);
             }
             //MainApp.adolescents.add(MainApp.fmc);
         }
@@ -997,7 +996,7 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
         //Adolescent
         if ((Age >= 10 && Age < 20) && binding.nh2mse.isChecked()) {
             memType = new HashMap<>();
-            if (MainApp.fmc.getna204().equals("1")) {
+            if (binding.na204a.isChecked()) {
                 memType.put(1, Integer.valueOf(mem.get(2).get(1).toString()) + 1);
                 memType.put(2, Integer.valueOf(mem.get(2).get(2).toString()));
             } else {
@@ -1016,7 +1015,7 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
         //Children < 5
         else if (Age < 6) {
             memType = new HashMap<>();
-            if (family.getna204().equals("1")) {
+            if (binding.na204a.isChecked()) {
                 memType.put(1, Integer.valueOf(mem.get(3).get(1).toString()) + 1);
                 memType.put(2, Integer.valueOf(mem.get(3).get(2).toString()));
             } else {
@@ -1025,27 +1024,28 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
             }
             MainApp.membersCount.setMembers(3, memType);
             if (binding.nh210a.isChecked()) {
-                family.setAv("1");
+                MainApp.fmc.setAv("1");
             }
 
             // Add data in list
             if (Age < 2) {
-                MainApp.childUnder2.add(family);
-                //MainApp.childUnder2Check.add(family);
-                MainApp.childUnder5.add(family);
-                MainApp.childUnder5_Del.add(family);
+                MainApp.childUnder2.add(MainApp.fmc);
+                //MainApp.childUnder2Check.add(MainApp.fmc);
+                MainApp.childUnder5.add(MainApp.fmc);
+                MainApp.childUnder5_Del.add(MainApp.fmc);
             } else {
-                MainApp.childUnder5.add(family);
+                MainApp.childUnder5.add(MainApp.fmc);
+                MainApp.childUnder5_Del.add(MainApp.fmc);
 
-                //MainApp.adolescents.add(family);
+                //MainApp.adolescents.add(MainApp.fmc);
             }
             if (Age < 2) {
-                MainApp.childUnder2Check.add(family);
+                MainApp.childUnder2Check.add(MainApp.fmc);
 
             }
 
-            if (Age < 6 && family.getMotherId().equals("00")) {
-                MainApp.childNA.add(family);
+            if (Age < 6 && MainApp.fmc.getMotherId().equals("00")) {
+                MainApp.childNA.add(MainApp.fmc);
             }
         }
 
@@ -1055,7 +1055,9 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                 MainApp.members_f_m.add(MainApp.fmc);
             }
 
-            MainApp.respList.add(MainApp.fmc);
+            if (binding.nh210a.isChecked()) {
+                MainApp.respList.add(MainApp.fmc);
+            }
         }
 
         // Add data in list for all members

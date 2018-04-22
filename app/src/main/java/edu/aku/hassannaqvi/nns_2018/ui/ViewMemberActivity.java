@@ -757,7 +757,7 @@ public class ViewMemberActivity extends MenuActivity {
                     wraAdapter = new WraAdapter(mContext, MainApp.mwra_1);
                     if (wraAdapter.getItemCount() > 0) {
                         binding.nowrafound.setVisibility(View.VISIBLE);
-                        binding.nowrafound.setText("WRA's found!!");
+                        binding.nowrafound.setText("WRA's/Adolescents found!!");
                         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                         binding.recyclerMwra.setLayoutManager(mLayoutManager);
                         binding.recyclerMwra.setItemAnimator(new DefaultItemAnimator());
@@ -765,7 +765,7 @@ public class ViewMemberActivity extends MenuActivity {
                         wraAdapter.notifyDataSetChanged();
                     } else {
                         binding.nowrafound.setVisibility(View.VISIBLE);
-                        binding.nowrafound.setText("NO WRA's found!!");
+                        binding.nowrafound.setText("NO WRA's/Adolescents found!!");
                     }
                 }
             });
@@ -783,7 +783,7 @@ public class ViewMemberActivity extends MenuActivity {
 
 //                   Change background color for those whose data already filled
                     for (int item : WraAdapter.wraExistList) {
-                        binding.recyclerMwra.getChildAt(item).setBackgroundColor(getResources().getColor(R.color.brown));
+                        binding.recyclerMwra.getChildAt(item).setBackgroundColor(getResources().getColor(R.color.softgreen));
                     }
 
                     wraAdapter.notifyDataSetChanged();
@@ -880,7 +880,7 @@ public class ViewMemberActivity extends MenuActivity {
 
 //                   Change background color for those whose data already filled
                     for (int item : ChildAdapter.childExistList) {
-                        binding.recyclerChild.getChildAt(item).setBackgroundColor(getResources().getColor(R.color.brown));
+                        binding.recyclerChild.getChildAt(item).setBackgroundColor(getResources().getColor(R.color.softgreen));
                     }
 
                 }
