@@ -413,6 +413,8 @@ public class ViewMemberActivity extends MenuActivity {
                         SectionC1Activity.isNA = false;
                         GetIntent = new Intent(this, SectionC1Activity.class);
                     }
+                }else {
+                    GetIntent = new Intent(this, EndingActivity.class).putExtra("complete", true);
                 }
                 break;
 
