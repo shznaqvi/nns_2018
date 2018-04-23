@@ -65,7 +65,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + UsersTable.FULL_NAME + " TEXT"
             + " );";
     public static final String DATABASE_NAME = "nns_2018.db";
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5;
     public static final String DB_NAME = DATABASE_NAME.replace(".", "_" + MainApp.versionName + "_" + DATABASE_VERSION + "_copy.");
     public static final String PROJECT_NAME = "NNS-2018";
 
@@ -183,6 +183,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String SQL_ALTER_MWRAS = "ALTER TABLE " +
             MWRATable.TABLE_NAME + " ADD COLUMN " +
             MWRATable.COLUMN_SB2FLAG + " TEXT;";
+
+    private static final String SQL_ALTER_BLRANDOM1 = "ALTER TABLE " +
+            singleRandomHH.TABLE_NAME + " ADD COLUMN " +
+            singleRandomHH.COLUMN_RANDOM_TYPE + " TEXT;";
+    private static final String SQL_ALTER_BLRANDOM2 = "ALTER TABLE " +
+            singleRandomHH.TABLE_NAME + " ADD COLUMN " +
+            singleRandomHH.COLUMN_ASSIGNED_HH + " TEXT;";
+
     final String SQL_CREATE_MWRAS = "CREATE TABLE " + MWRATable.TABLE_NAME + " (" +
             MWRATable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             MWRATable.COLUMN_PROJECTNAME + " TEXT," +
@@ -425,6 +433,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.execSQL(SQL_ALTER_FAMILYMEMBER);
             case 3:
                 db.execSQL(SQL_ALTER_MWRAS);
+            case 4:
+                db.execSQL(SQL_ALTER_BLRANDOM1);
+                db.execSQL(SQL_ALTER_BLRANDOM2);
         }
 
     }
