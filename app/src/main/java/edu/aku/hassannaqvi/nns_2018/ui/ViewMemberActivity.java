@@ -320,10 +320,12 @@ public class ViewMemberActivity extends MenuActivity {
 
                                                             startActivity(new Intent(ViewMemberActivity.this, SectionB1Activity.class)
                                                                     .putExtra("editForm", true)
-                                                                    .putExtra("checkflag", true)
+                                                                    .putExtra("checkflag", checkflag)
                                                                     .putExtra("under2Size", MainApp.childUnder2_1.size())
                                                                     .putExtra("formUid", MainApp.mwra_1.get(position).get_UUID())
                                                                     .putExtra("fmUid", MainApp.mwra_1.get(position).get_UID())
+                                                                    .putExtra("fmClass", MainApp.mwra_1.get(position))
+
                                                             );
 
                                                         }
@@ -413,7 +415,7 @@ public class ViewMemberActivity extends MenuActivity {
                         SectionC1Activity.isNA = false;
                         GetIntent = new Intent(this, SectionC1Activity.class);
                     }
-                }else {
+                } else {
                     GetIntent = new Intent(this, EndingActivity.class).putExtra("complete", true);
                 }
                 break;
