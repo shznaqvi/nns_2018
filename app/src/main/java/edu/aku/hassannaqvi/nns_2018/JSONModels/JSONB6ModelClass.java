@@ -1,11 +1,14 @@
 package edu.aku.hassannaqvi.nns_2018.JSONModels;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by ali.azaz on 3/27/2018.
  */
 
 public class JSONB6ModelClass {
 
+    @SerializedName("tpsno")
     private String serial = "";
     private String nw501a = "";
     private String nw501b = "";

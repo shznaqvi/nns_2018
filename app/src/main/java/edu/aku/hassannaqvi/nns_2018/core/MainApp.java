@@ -103,6 +103,7 @@ public class MainApp extends Application {
     public static EligibleMembersContract emc;
     public static List<FamilyMembersContract> members_f_m;
     public static List<FamilyMembersContract> respList;
+    public static List<FamilyMembersContract> respList_1;
     public static List<FamilyMembersContract> all_members;
     public static List<FamilyMembersContract> all_members_1;
     public static List<FamilyMembersContract> otherMembers_1;

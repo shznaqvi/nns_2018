@@ -1470,6 +1470,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put(MWRATable.COLUMN_SYNCEDDATE, mc.getSyncedDate());
             values.put(MWRATable.COLUMN_MSTATUS, mc.getMstatus());
             values.put(MWRATable.COLUMN_MSTATUS88x, mc.getMstatus88x());
+
+            values.put(MWRATable.COLUMN_UPDATEDATE, mc.getUpdatedate());
         }
 
         values.put(MWRATable.COLUMN_SB1, mc.getsB1());
@@ -2223,7 +2225,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return jsonArray;
     }
 
-    public FormsContract getAutoPopulateFormForWRA(String uuid) {
+    public FormsContract getAutoPopulateFormForWRAorCHILD(String uuid) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -2912,6 +2914,67 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 MWRATable.COLUMN__ID + " ASC";
 
         Collection<MWRAContract> allFC = new ArrayList<MWRAContract>();
+        try {
+            c = db.query(
+                    MWRATable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                MWRAContract fc = new MWRAContract();
+                allFC.add(fc.Hydrate(c, 0));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
+    public Collection<MWRAContract> getAllMWRAWRTForm(String uuid) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                MWRATable.COLUMN__ID,
+                MWRATable.COLUMN_UID,
+                MWRATable.COLUMN_UUID,
+                MWRATable.COLUMN_FM_UID,
+                MWRATable.COLUMN_FORMDATE,
+                MWRATable.COLUMN_DEVICEID,
+                MWRATable.COLUMN_DEVICETAGID,
+                MWRATable.COLUMN_USER,
+                MWRATable.COLUMN_APP_VER,
+                MWRATable.COLUMN_B1SERIALNO,
+                MWRATable.COLUMN_SB1,
+                MWRATable.COLUMN_SB2,
+                MWRATable.COLUMN_SB3,
+                MWRATable.COLUMN_SB4,
+                MWRATable.COLUMN_SB5,
+                MWRATable.COLUMN_SB6,
+                MWRATable.COLUMN_SB2FLAG,
+                MWRATable.COLUMN_MSTATUS,
+                MWRATable.COLUMN_MSTATUS88x,
+                MWRATable.COLUMN_SYNCED,
+                MWRATable.COLUMN_SYNCEDDATE
+
+        };
+        String whereClause = MWRATable.COLUMN_UUID + " =?";
+        String[] whereArgs = {uuid};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                MWRATable.COLUMN__ID + " ASC";
+
+        Collection<MWRAContract> allFC = new ArrayList<>();
         try {
             c = db.query(
                     MWRATable.TABLE_NAME,  // The table to query

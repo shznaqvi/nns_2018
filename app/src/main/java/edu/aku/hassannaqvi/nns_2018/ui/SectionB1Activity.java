@@ -7,6 +7,8 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -32,6 +34,7 @@ import butterknife.BindViews;
 import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONB1ModelClass;
 import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONH8ModelClass;
+import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.DeceasedContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
@@ -131,6 +134,19 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
     @BindViews({R.id.nw201days, R.id.nw201months, R.id.nw201years})
     List<EditText> grpDob;
 
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem addMember = menu.findItem(R.id.menu_addMember);
+
+        if (editWRAFlag) {
+            addMember.setVisible(false);
+        } else {
+            addMember.setVisible(true);
+        }
+        return true;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -159,17 +175,19 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
         editWRAFlag = getIntent().getBooleanExtra("editForm", false);
 
         if (editWRAFlag) {
-
             if (getIntent().getBooleanExtra("checkflag", true)) {
                 AutoPopulate(getIntent().getStringExtra("formUid"), getIntent().getStringExtra("fmUid"));
                 backPressed = true;
             } else {
-
+                GetDataFromForm(getIntent().getStringExtra("formUid"));
+                setupSkips1();
             }
 
         } else {
             setupViews();
+            setupSkips1();
         }
+
     }
 
     public void setupSkips() {
@@ -834,6 +852,31 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
 
     }
 
+    public void setupSkips1() {
+        bi.nb101.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, lstMwra));
+
+        bi.nb101.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (!editWRAFlag) {
+                    if (bi.nb101.getSelectedItemPosition() != 0) {
+                        for (FamilyMembersContract fmc : MainApp.childUnder2Check) {
+                            childCheck = fmc.getMotherId().equals(wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
+                            if (childCheck) {
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
     public void setupViews() {
 
 
@@ -880,28 +923,6 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
 //            WRAsize = MainApp.mwra.size();
 
         }
-
-
-        bi.nb101.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, lstMwra));
-
-        bi.nb101.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (bi.nb101.getSelectedItemPosition() != 0) {
-                    for (FamilyMembersContract fmc : MainApp.childUnder2Check) {
-                        childCheck = fmc.getMotherId().equals(wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
-                        if (childCheck) {
-                            break;
-                        }
-                    }
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
     }
 
     private void GetDataFromForm(String uuid) {
@@ -918,22 +939,20 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
             }
         }
 
-        bi.nb101.setVisibility(View.GONE);
-        bi.nb101a.setVisibility(View.VISIBLE);
 
-        MainApp.fc = db.getAutoPopulateFormForWRA(uuid);
+        MainApp.fc = db.getAutoPopulateFormForWRAorCHILD(uuid);
 
-        FamilyMembersContract MWR = (FamilyMembersContract) getIntent().getSerializableExtra("fmClass");
+        FamilyMembersContract MWR = (FamilyMembersContract) getIntent().getSerializableExtra("wraFMClass");
 
         wraMap = new HashMap<>();
         lstMwra = new ArrayList<>();
 
         lstMwra.add("....");
 
-        /*for (FamilyMembersContract wra : MWR) {
-            wraMap.put(wra.getName() + "-" + wra.getSerialNo(), wra);
-            lstMwra.add(wra.getName() + "-" + wra.getSerialNo());
-        }*/
+        JSONModelClass json = JSONUtilClass.getModelFromJSON(MWR.getsA2(), JSONModelClass.class);
+        MWR.setSerialNo(json.getSerialNo());
+        wraMap.put(json.getName() + "-" + json.getSerialNo(), MWR);
+        lstMwra.add(json.getName() + "-" + json.getSerialNo());
 
     }
 
@@ -1255,6 +1274,13 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
             sB1.put("nw101", bi.nb101.getSelectedItem().toString());
             sB1.put("wra_lno", wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
 
+            if (editWRAFlag) {
+                MainApp.mc.setUpdatedate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+                MainApp.mc.setCluster(MainApp.fc.getClusterNo());
+                MainApp.mc.setHhno(MainApp.fc.getHhNo());
+            }
+
+
         } else {
 
             sB1.put("updatedate_nw1", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
@@ -1452,8 +1478,13 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
     private boolean ValidateForm() {
 
         if (endflag) {
-
-            return validatorClass.EmptySpinner(this, bi.nb101, getString(R.string.nb101));
+            if (!editWRAFlag) {
+                if (MainApp.fc != null) {
+                    return validatorClass.EmptySpinner(this, bi.nb101, getString(R.string.nb101));
+                }
+            } else {
+                return validatorClass.EmptySpinner(this, bi.nb101, getString(R.string.nb101));
+            }
         } else {
 
             if (!editWRAFlag) {
