@@ -53,6 +53,8 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
     private Timer timer = new Timer();
     Boolean endflag = false;
 
+    String dateTime = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +66,8 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
 //        Assigning data to UI binding
         binding.setCallback(this);
         json = new JSONModelClass();
+
+        dateTime = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis());
 
 
         setupViews();
@@ -428,6 +432,8 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
 
         sA3.put("nd1o", binding.nd1oa.isChecked() ? "1"
                 : binding.nd1ob.isChecked() ? "2" : "0");
+
+        sA3.put("start_time", dateTime);
 
 
         MainApp.emc.setsA3(String.valueOf(sA3));

@@ -234,6 +234,7 @@
                         android:layout_weight="60"
                         android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-"
                         android:hint="XXXX-X"
+                        android:inputType="number"
                         android:layoutDirection="ltr"
                         android:textDirection="ltr"
                         android:maxLength="6" />

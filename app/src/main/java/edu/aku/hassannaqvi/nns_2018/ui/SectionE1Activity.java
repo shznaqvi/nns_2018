@@ -67,6 +67,7 @@ public class SectionE1Activity extends AppCompatActivity {
 
         this.setTitle(getResources().getString(R.string.ne1heading));
 
+
         bi.setCallback(this);
         setupViews();
 
@@ -575,7 +576,10 @@ public class SectionE1Activity extends AppCompatActivity {
 
         JSONObject sE1 = new JSONObject();
 
+        sE1.put("ne_selected_blood", String.valueOf(SpecimenInfoActivity.selected));
         sE1.put("ne_consent", String.valueOf(SpecimenInfoActivity.consent));
+        sE1.put("start_time", SpecimenInfoActivity.datetime);
+
         sE1.put("ne102", bi.ne102.getSelectedItem().toString());
         sE1.put("ne103", bi.ne103.getSelectedItem().toString());
         sE1.put("ne104", bi.ne104a.isChecked() ? "1" : bi.ne104b.isChecked() ? "2" : "0");
@@ -585,6 +589,8 @@ public class SectionE1Activity extends AppCompatActivity {
         sE1.put("ne108", bi.ne108a.isChecked() ? "1" : bi.ne108b.isChecked() ? "2" : "0");
         sE1.put("ne109", bi.ne109.getText().toString());
         sE1.put("ne110", bi.ne110a.isChecked() ? "1" : bi.ne110b.isChecked() ? "2" : "0");
+
+        sE1.put("end_time", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
 
 
         MainApp.smc.setsE1(String.valueOf(sE1));

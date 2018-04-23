@@ -16,6 +16,7 @@ import com.google.zxing.integration.android.IntentResult;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -693,6 +694,8 @@ public class SectionE2Activity extends AppCompatActivity {
 
         JSONObject sE1 = new JSONObject();
 
+        sE1.put("ne_selected_water", String.valueOf(SpecimenInfoActivity.selected));
+        sE1.put("start_time", SpecimenInfoActivity.datetime);
         sE1.put("ne201a", bi.ne201a.isChecked() ? "1" : "2");
         sE1.put("ne20201", bi.ne20201a.isChecked() ? "1" : bi.ne20201b.isChecked() ? "2" : "0");
         sE1.put("ne20301", bi.ne20301.getText().toString());
@@ -716,6 +719,8 @@ public class SectionE2Activity extends AppCompatActivity {
         sE1.put("ne201f", bi.ne201f.isChecked() ? "1" : "2");
         sE1.put("ne20206", bi.ne20206a.isChecked() ? "1" : bi.ne20206b.isChecked() ? "2" : "0");
         sE1.put("ne20306", bi.ne20306.getText().toString());
+
+        sE1.put("end_time", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
 
 
         MainApp.wsc.setsE2(String.valueOf(sE1));

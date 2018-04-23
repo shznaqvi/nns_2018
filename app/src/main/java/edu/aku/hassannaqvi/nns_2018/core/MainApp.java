@@ -90,6 +90,7 @@ public class MainApp extends Application {
     public static String versionName;
     public static Boolean IsHead;
     public static int gender;
+    public static int othergender;
     public static Boolean IsResp;
     public static String cluster_no = "";
     public static Boolean flag_head = false;

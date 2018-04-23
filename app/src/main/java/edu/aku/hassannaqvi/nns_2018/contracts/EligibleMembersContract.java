@@ -31,6 +31,7 @@ public class EligibleMembersContract {
     private String istatus = ""; // Interview Status
     private String istatus88x = ""; // Interview Status
     private String fmuid = "";
+    private String end_time = "";
 
     private String synced = "";
     private String syncedDate = "";
@@ -205,6 +206,14 @@ public class EligibleMembersContract {
         this.istatus88x = istatus88x;
     }
 
+    public String getEnd_time() {
+        return end_time;
+    }
+
+    public void setEnd_time(String end_time) {
+        this.end_time = end_time;
+    }
+
     public EligibleMembersContract Sync(JSONObject jsonObject) throws JSONException {
 
         this._ID = jsonObject.getString(eligibleMembers.COLUMN__ID);
@@ -226,6 +235,7 @@ public class EligibleMembersContract {
         this.istatus88x = jsonObject.getString(eligibleMembers.COLUMN_ISTATUS88x);
         this.synced = jsonObject.getString(eligibleMembers.COLUMN_SYNCED);
         this.syncedDate = jsonObject.getString(eligibleMembers.COLUMN_SYNCEDDATE);
+        this.end_time = jsonObject.getString(eligibleMembers.COLUMN_END_TIME);
 
         return this;
 
@@ -252,6 +262,7 @@ public class EligibleMembersContract {
         this.istatus88x = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_ISTATUS88x));
         this.synced = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_SYNCED));
         this.syncedDate = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_SYNCEDDATE));
+        this.end_time = cursor.getString(cursor.getColumnIndex(eligibleMembers.COLUMN_END_TIME));
 
 
         return this;
@@ -284,6 +295,7 @@ public class EligibleMembersContract {
         json.put(eligibleMembers.COLUMN_na204, this.na204 == null ? JSONObject.NULL : this.na204);
         json.put(eligibleMembers.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
         json.put(eligibleMembers.COLUMN_ISTATUS88x, this.istatus88x == null ? JSONObject.NULL : this.istatus88x);
+        json.put(eligibleMembers.COLUMN_END_TIME, this.end_time == null ? JSONObject.NULL : this.end_time);
         /*json.put(eligibleMembers.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
         json.put(eligibleMembers.COLUMN_SYNCEDDATE, this.syncedDate == null ? JSONObject.NULL : this.syncedDate);*/
 
@@ -316,6 +328,7 @@ public class EligibleMembersContract {
         public static final String COLUMN_ISTATUS88x = "istatus88x";
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNCEDDATE = "synceddate";
+        public static final String COLUMN_END_TIME = "end_time";
 
 
         public static String _URL = "anthros.php";

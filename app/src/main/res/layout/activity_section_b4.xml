@@ -602,7 +602,7 @@
                             android:hint="@string/kg"
                             android:inputType="numberDecimal"
                             android:maxLength="4"
-                            android:text='@{nw40698.checked ? "" : nw406cx.getText.toString}' />
+                            android:text='@{nw406c.checked ? nw406cx.getText.toString : ""}' />
 
                         <RadioButton
                             android:id="@+id/nw406r"
@@ -620,7 +620,7 @@
                             android:hint="@string/kg"
                             android:inputType="numberDecimal"
                             android:maxLength="4"
-                            android:text='@{nw40698.checked ? "" : nw406rx.getText.toString}' />
+                            android:text='@{nw406r.checked ? nw406rx.getText.toString : "" }' />
 
                         <RadioButton
                             android:id="@+id/nw40698"
