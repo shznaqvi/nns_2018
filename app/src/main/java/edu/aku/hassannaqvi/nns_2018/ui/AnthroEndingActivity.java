@@ -9,8 +9,6 @@ import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import org.json.JSONException;
-
 import java.text.SimpleDateFormat;
 
 import edu.aku.hassannaqvi.nns_2018.R;
@@ -60,11 +58,8 @@ public class AnthroEndingActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
-            try {
                 SaveDraft();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+
             if (UpdateDB()) {
 
                 finish();

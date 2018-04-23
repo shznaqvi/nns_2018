@@ -525,7 +525,7 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
 
                 DatabaseHelper db = new DatabaseHelper(LoginActivity.this);
                 if ((mEmail.equals("dmu@aku") && mPassword.equals("aku?dmu")) || db.Login(mEmail, mPassword)
-                        || (mEmail.equals("test1234") && mPassword.equals("test1234"))) {
+                        || (mEmail.equals("test0000") && mPassword.equals("test0000"))) {
                     MainApp.userName = mEmail;
                     MainApp.admin = mEmail.contains("@");
 
