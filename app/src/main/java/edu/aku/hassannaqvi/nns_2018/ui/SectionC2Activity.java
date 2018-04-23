@@ -122,22 +122,23 @@ public class SectionC2Activity extends Menu2Activity implements RadioGroup.OnChe
                 if (b) {
                     bi.nc207h.setEnabled(false);
                     bi.nc207h.setText(null);
-
                     bi.nc207d.setEnabled(false);
                     bi.nc207d.setText(null);
 
-                } else {
+                } /*else {
                     bi.nc207h.setEnabled(true);
                     bi.nc207d.setEnabled(true);
-                }
+                }*/
             }
         });
 
-        bi.nc207b.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+       /* bi.nc207b.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
                     bi.nc207h.setEnabled(true);
+                    bi.nc207d.setEnabled(false);
+                    bi.nc207d.setText(null);
                 } else {
                     bi.nc207h.setEnabled(false);
                     bi.nc207h.setText(null);
@@ -150,12 +151,14 @@ public class SectionC2Activity extends Menu2Activity implements RadioGroup.OnChe
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
                     bi.nc207d.setEnabled(true);
+                    bi.nc207h.setEnabled(false);
+                    bi.nc207h.setText(null);
                 } else {
                     bi.nc207d.setEnabled(false);
                     bi.nc207d.setText(null);
                 }
             }
-        });
+        });*/
 
 
         bi.nc220.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {

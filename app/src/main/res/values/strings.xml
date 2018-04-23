@@ -72,6 +72,8 @@
     <string name="nr">جواب نہیں دیا</string>
     <string name="dose">خوراکیں</string>
     <string name="explain">وضاحت کریں  </string>
+    <string name="selected1">کیا یہ گھرانہ خون اور پیشاب کے نمونے لینے کے لیے منتخب کیا گیا ہے؟ </string>
+    <string name="selected2">کیا یہ گھرانہ پانی کے نمونے لینے کے لیے منتخب کیا گیا ہے؟ </string>
 
 
     <!-- Strings related to Sections Below -->
@@ -143,6 +145,7 @@
     <string name="nh212a"> ماں کا نام</string>
     <string name="childname"> بچے کا نام</string>
     <string name="na204"> جنس </string>
+    <string name="na204c">مخنث</string>
 
     <string name="nh2edu"> ۔H208- تعلیم </string>
     <string name="nh2edua"> کوئی نہیں</string>

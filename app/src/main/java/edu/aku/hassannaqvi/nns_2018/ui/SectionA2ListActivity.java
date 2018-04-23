@@ -626,6 +626,14 @@ public class SectionA2ListActivity extends AppCompatActivity {
                         result = R.drawable.ic_person;
                     }
                     break;
+
+                case "3":
+                    if (age != "") {
+                        result = R.drawable.ic_person;
+                    } else {
+                        result = R.drawable.ic_person;
+                    }
+                    break;
             }
             return result;
         }
@@ -643,7 +651,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
                 familyBinding.imgUser.setImageDrawable(getDrawable(SetImage(mem.getna204(), mem.getAgeInYear())));
                 familyBinding.memberName.setText(mem.getName().toUpperCase());
-                familyBinding.na204.setText(mem.getna204().equals("1") ? "Male" : "Female");
+                familyBinding.na204.setText(mem.getna204().equals("1") ? "Male" : mem.getna204().equals("2") ? "Female" : "Transgender");
                 familyBinding.lineNo.setText("Line No:" + mem.getSerialNo());
                 familyBinding.ffName.setText(mem.getFatherName().equals("") ? "..." : mem.getFatherName());
                 familyBinding.mmName.setText(mem.getMotherName().equals("") ? "..." : mem.getMotherName());

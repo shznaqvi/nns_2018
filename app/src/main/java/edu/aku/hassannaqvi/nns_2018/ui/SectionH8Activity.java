@@ -26,7 +26,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Timer;
-import java.util.TimerTask;
 
 import butterknife.BindViews;
 import butterknife.ButterKnife;
@@ -93,7 +92,7 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
         @Override
         public void afterTextChanged(Editable s) {
 
-            timer.cancel();
+           /* timer.cancel();
             timer = new Timer();
             timer.schedule(
                     new TimerTask() {
@@ -111,7 +110,7 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
                     },
                     DELAY
             );
-
+*/
         }
     };
 
@@ -256,7 +255,7 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
             @Override
             public void afterTextChanged(Editable s) {
 
-                timer.cancel();
+               /* timer.cancel();
                 timer = new Timer();
                 timer.schedule(
                         new TimerTask() {
@@ -273,7 +272,7 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
                             }
                         },
                         DELAY
-                );
+                );*/
 
 
             }
@@ -628,7 +627,7 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
     @Override
     public void afterTextChanged(Editable s) {
 
-        timer.cancel();
+        /*timer.cancel();
         timer = new Timer();
         timer.schedule(
                 new TimerTask() {
@@ -646,7 +645,7 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
                 },
                 DELAY
         );
-
+*/
     }
 
     @Override

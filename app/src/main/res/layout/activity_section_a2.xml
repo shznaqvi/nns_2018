@@ -280,6 +280,16 @@
                             android:layout_weight="1"
                             android:text="@string/female" />
 
+                        <RadioButton
+                            android:id="@+id/na204c"
+                            style="@style/radiobutton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="1dp"
+                            android:layout_weight="1"
+                            android:text="@string/na204c" />
+
+
                     </RadioGroup>
 
 
@@ -904,11 +914,11 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            style="?android:textAppearanceMedium"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_weight="1.5"
+                            android:textColor="@color/gray"
                             android:background="@android:color/transparent"
                             android:text="@string/nh211"
                             android:textAlignment="center"
@@ -933,11 +943,11 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            style="?android:textAppearanceMedium"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_weight="1.5"
+                            android:textColor="@color/gray"
                             android:background="@android:color/transparent"
                             android:text="@string/nh212"
                             android:textAlignment="center"

@@ -65,7 +65,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + UsersTable.FULL_NAME + " TEXT"
             + " );";
     public static final String DATABASE_NAME = "nns_2018.db";
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 6;
     public static final String DB_NAME = DATABASE_NAME.replace(".", "_" + MainApp.versionName + "_" + DATABASE_VERSION + "_copy.");
     public static final String PROJECT_NAME = "NNS-2018";
 
@@ -133,6 +133,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String SQL_ALTER_FAMILYMEMBER = "ALTER TABLE " +
             familyMembers.TABLE_NAME + " ADD COLUMN " +
             familyMembers.COLUMN_FLAG + " TEXT;";
+
+    private static final String SQL_ALTER_ELIGIBLEMEMBER = "ALTER TABLE " +
+            eligibleMembers.TABLE_NAME + " ADD COLUMN " +
+            eligibleMembers.COLUMN_END_TIME + " TEXT;";
 
     private static final String SQL_CREATE_CHILD_FORMS = "CREATE TABLE "
             + ChildTable.TABLE_NAME + "("
@@ -436,6 +440,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             case 4:
                 db.execSQL(SQL_ALTER_BLRANDOM1);
                 db.execSQL(SQL_ALTER_BLRANDOM2);
+            case 5:
+                db.execSQL(SQL_ALTER_ELIGIBLEMEMBER);
         }
 
     }
@@ -1427,6 +1433,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(eligibleMembers.COLUMN_ISTATUS88x, ec.getIstatus88x());
         values.put(eligibleMembers.COLUMN_SYNCED, ec.getSynced());
         values.put(eligibleMembers.COLUMN_SYNCEDDATE, ec.getSyncedDate());
+        values.put(eligibleMembers.COLUMN_END_TIME, ec.getEnd_time());
 
 
         // Insert the new row, returning the primary key value of the new row
@@ -2842,6 +2849,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 eligibleMembers.COLUMN_ISTATUS88x,
                 eligibleMembers.COLUMN_SYNCED,
                 eligibleMembers.COLUMN_SYNCEDDATE,
+                eligibleMembers.COLUMN_END_TIME,
 
         };
         String whereClause = eligibleMembers.COLUMN_SYNCED + " is null OR " + eligibleMembers.COLUMN_SYNCED + " = '' ";
@@ -4519,6 +4527,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(eligibleMembers.COLUMN_ISTATUS, MainApp.emc.getIstatus());
         values.put(eligibleMembers.COLUMN_ISTATUS88x, MainApp.emc.getIstatus88x());
+        values.put(eligibleMembers.COLUMN_END_TIME, MainApp.emc.getEnd_time());
 
 // Which row to update, based on the ID
         String selection = eligibleMembers.COLUMN__ID + " =? ";

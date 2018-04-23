@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import org.json.JSONException;
 
+import java.text.SimpleDateFormat;
+
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -88,7 +90,7 @@ public class AnthroEndingActivity extends AppCompatActivity {
         }
     }
 
-    private void SaveDraft() throws JSONException {
+    private void SaveDraft() {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
         MainApp.emc.setIstatus(binding.istatusa.isChecked() ? "1"
@@ -101,6 +103,8 @@ public class AnthroEndingActivity extends AppCompatActivity {
                 : "0");
 
         MainApp.emc.setIstatus88x(binding.istatus96x.getText().toString());
+
+        MainApp.emc.setEnd_time(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
 
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
