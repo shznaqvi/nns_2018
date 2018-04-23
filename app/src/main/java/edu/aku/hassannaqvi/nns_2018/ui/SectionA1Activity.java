@@ -241,7 +241,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
                         if (length < 5) {
                             binding.nh108.setText(binding.nh108.getText().toString() + "-");
                             binding.nh108.setSelection(binding.nh108.getText().length());
-                            binding.nh108.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+                            //binding.nh108.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
                         }
 
                     }
@@ -613,7 +613,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
             if (selected.size() != 0) {
 
-                Toast.makeText(this, "Household head found!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Household found!", Toast.LENGTH_SHORT).show();
 
                 for (BLRandomContract rnd : selected) {
                     MainApp.selectedHead = new BLRandomContract(rnd);
@@ -638,7 +638,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
                 clearFields();
 
-                Toast.makeText(this, "No Household head found!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "No Household found!", Toast.LENGTH_SHORT).show();
             }
 
         } else {

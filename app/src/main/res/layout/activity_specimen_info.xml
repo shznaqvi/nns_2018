@@ -239,10 +239,10 @@
                             android:layout_marginRight="10dp"
                             android:layout_marginTop="5dp"
                             android:layout_weight="60"
-                            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-"
-                            android:hint="XXXX-X"
+                            android:digits="0123456789-"
+                            android:hint="9999-999"
                             android:layoutDirection="ltr"
-                            android:maxLength="6"
+                            android:maxLength="8"
                             android:textDirection="ltr" />
 
                         <Button
