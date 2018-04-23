@@ -158,10 +158,14 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
 
         editWRAFlag = getIntent().getBooleanExtra("editForm", false);
 
-        if (editWRAFlag && getIntent().getBooleanExtra("checkflag", false)) {
+        if (editWRAFlag) {
 
-            AutoPopulate(getIntent().getStringExtra("formUid"), getIntent().getStringExtra("fmUid"));
-            backPressed = true;
+            if (getIntent().getBooleanExtra("checkflag", true)) {
+                AutoPopulate(getIntent().getStringExtra("formUid"), getIntent().getStringExtra("fmUid"));
+                backPressed = true;
+            } else {
+
+            }
 
         } else {
             setupViews();
@@ -898,6 +902,39 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
 
             }
         });
+    }
+
+    private void GetDataFromForm(String uuid) {
+        if (getIntent().getIntExtra("under2Size", 0) > 0) {
+            childCheck = true;
+        } else {
+            Collection<DeceasedContract> deceasedContracts = db.getDeceasedMembersCount(uuid);
+            for (DeceasedContract deceasedContract : deceasedContracts) {
+                JSONH8ModelClass jsonh8ModelClass = JSONUtilClass.getModelFromJSON(deceasedContract.getsH8(), JSONH8ModelClass.class);
+                if (jsonh8ModelClass.getMwraSerial().equals(MainApp.mc.getB1SerialNo())) {
+                    childCheck = true;
+                    break;
+                }
+            }
+        }
+
+        bi.nb101.setVisibility(View.GONE);
+        bi.nb101a.setVisibility(View.VISIBLE);
+
+        MainApp.fc = db.getAutoPopulateFormForWRA(uuid);
+
+        FamilyMembersContract MWR = (FamilyMembersContract) getIntent().getSerializableExtra("fmClass");
+
+        wraMap = new HashMap<>();
+        lstMwra = new ArrayList<>();
+
+        lstMwra.add("....");
+
+        /*for (FamilyMembersContract wra : MWR) {
+            wraMap.put(wra.getName() + "-" + wra.getSerialNo(), wra);
+            lstMwra.add(wra.getName() + "-" + wra.getSerialNo());
+        }*/
+
     }
 
     private void AutoPopulate(String uuid, String uid) {
