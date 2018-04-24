@@ -102,12 +102,17 @@ public class ViewMemberActivity extends MenuActivity {
 
             binding.btnContinue.setVisibility(View.VISIBLE);
 
+            if (getIntent().getBooleanExtra("endButton", false)) {
+                binding.btnSecEnd.setVisibility(View.VISIBLE);
+            }
+
         } else {
             binding.fldGrpEditHH.setVisibility(View.VISIBLE);
             binding.fldGrpVisA.setVisibility(View.VISIBLE);
             binding.fldGrpVisB.setVisibility(View.VISIBLE);
 
             binding.btnContinue.setVisibility(View.GONE);
+            binding.btnSecEnd.setVisibility(View.GONE);
 
             flag = false;
 
@@ -171,7 +176,7 @@ public class ViewMemberActivity extends MenuActivity {
                         if (length < 5) {
                             binding.chckhouse.setText(binding.chckhouse.getText().toString() + "-");
                             binding.chckhouse.setSelection(binding.chckhouse.getText().length());
-                            binding.chckhouse.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+//                            binding.chckhouse.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
                         }
 
                     }
@@ -637,6 +642,10 @@ public class ViewMemberActivity extends MenuActivity {
             }, 3 * 1000);
 
         }
+    }
+
+    public void BtnSecEnd() {
+        MainApp.endActivityMother(this, this, false);
     }
 
     public void intentWifi(View view) {

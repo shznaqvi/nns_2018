@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -76,6 +78,19 @@ public class SectionC1Activity extends AddMember_MenuActivity implements TextWat
     private Timer timer = new Timer();
 
     JSONC1ModelClass jsonC1;
+
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem addMember = menu.findItem(R.id.menu_addMember);
+
+        if (editChildFlag) {
+            addMember.setVisible(false);
+        } else {
+            addMember.setVisible(true);
+        }
+        return true;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
