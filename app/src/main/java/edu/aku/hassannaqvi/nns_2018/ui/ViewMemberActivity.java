@@ -645,7 +645,7 @@ public class ViewMemberActivity extends MenuActivity {
     }
 
     public void BtnSecEnd() {
-        MainApp.endActivityMother(this, this, false);
+        MainApp.endActivity(this, this);
     }
 
     public void intentWifi(View view) {
