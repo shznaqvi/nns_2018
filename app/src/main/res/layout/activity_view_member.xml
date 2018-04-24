@@ -540,7 +540,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:background="@color/brown"
-                                android:text="@string/nextSection"
+                                android:text="@string/end_interview"
                                 android:textColor="@color/white"
                                 android:visibility="gone" />
 
