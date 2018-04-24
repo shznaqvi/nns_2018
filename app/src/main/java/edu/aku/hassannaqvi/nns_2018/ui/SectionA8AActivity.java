@@ -271,7 +271,8 @@ public class SectionA8AActivity extends AppCompatActivity {
                             );
 
                         } else {
-                            startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 3));
+                            startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 3)
+                                    .putExtra("endButton", true));
                         }
                     }
                 } else {

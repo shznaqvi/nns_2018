@@ -282,6 +282,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                                 binding.nh2occi.setEnabled(true);
                             } else {
                                 binding.nh2occi.setEnabled(false);
+                                binding.nh2occi.setChecked(false);
                             }
                         }
 
@@ -338,6 +339,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                                 binding.nh2occi.setEnabled(true);
                             } else {
                                 binding.nh2occi.setEnabled(false);
+                                binding.nh2occi.setChecked(false);
                             }
                         }
 
@@ -390,6 +392,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                                 binding.nh2occi.setEnabled(true);
                             } else {
                                 binding.nh2occi.setEnabled(false);
+                                binding.nh2occi.setChecked(false);
                             }
                         }
 
@@ -440,6 +443,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                                 binding.nh2occi.setEnabled(true);
                             } else {
                                 binding.nh2occi.setEnabled(false);
+                                binding.nh2occi.setChecked(false);
                             }
                         }
 
@@ -490,6 +494,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                                 binding.nh2occi.setEnabled(true);
                             } else {
                                 binding.nh2occi.setEnabled(false);
+                                binding.nh2occi.setChecked(false);
                             }
                         }
 
@@ -539,6 +544,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                                 binding.nh2occi.setEnabled(true);
                             } else {
                                 binding.nh2occi.setEnabled(false);
+                                binding.nh2occi.setChecked(false);
                             }
                         }
 
@@ -586,6 +592,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                                 binding.nh2occi.setEnabled(true);
                             } else {
                                 binding.nh2occi.setEnabled(false);
+                                binding.nh2occi.setChecked(false);
                             }
                         }
 

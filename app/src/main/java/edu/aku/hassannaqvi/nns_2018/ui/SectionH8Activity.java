@@ -141,7 +141,8 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
                                 .putExtra("hhno", MainApp.fc.getHhNo())
                         );
                     } else {
-                        startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 2));
+                        startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 2)
+                                .putExtra("endButton", true));
                     }
 
                 } else {

@@ -517,7 +517,8 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
                                 .putExtra("hhno", MainApp.fc.getHhNo())
                         );
                     } else {
-                        startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 1));
+                        startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 1)
+                                .putExtra("endButton", true));
                     }
                 }
 
