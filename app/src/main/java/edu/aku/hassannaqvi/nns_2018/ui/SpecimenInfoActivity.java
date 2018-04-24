@@ -286,9 +286,9 @@ public class SpecimenInfoActivity extends AppCompatActivity {
 
 //        nh108
 
-        if (binding.nh108.getText().toString().length() == 8) {
+        if (binding.nh108.getText().toString().length() == 6) {
             String[] str = binding.nh108.getText().toString().split("-");
-            if (str.length > 2 || binding.nh108.getText().toString().charAt(4) != '-' || !str[0].matches("[0-9]+") || !str[1].matches("[0-9]+")) {
+            if (str.length > 2 || binding.nh108.getText().toString().charAt(4) != '-' || !str[0].matches("[0-9]+") || !str[1].matches("[a-zA-Z]")) {
                 binding.nh108.setError("Wrong presentation!!");
                 return false;
             }

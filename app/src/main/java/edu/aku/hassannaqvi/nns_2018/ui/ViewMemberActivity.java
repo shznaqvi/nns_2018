@@ -166,7 +166,7 @@ public class ViewMemberActivity extends MenuActivity {
                         if (length < 5) {
                             binding.chckhouse.setText(binding.chckhouse.getText().toString() + "-");
                             binding.chckhouse.setSelection(binding.chckhouse.getText().length());
-//                            binding.chckhouse.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+                            binding.chckhouse.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
                         }
 
                     }

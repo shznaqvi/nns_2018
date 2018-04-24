@@ -240,9 +240,9 @@
                             android:layout_marginTop="5dp"
                             android:layout_weight="60"
                             android:digits="0123456789-"
-                            android:hint="9999-999"
+                            android:hint="XXXX-X"
                             android:layoutDirection="ltr"
-                            android:maxLength="8"
+                            android:maxLength="6"
                             android:textDirection="ltr" />
 
                         <Button
