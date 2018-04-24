@@ -906,7 +906,6 @@ public class SectionC2Activity extends Menu2Activity implements RadioGroup.OnChe
 
 
         if (bi.nc220a.isChecked()) {
-
             if (!validatorClass.EmptyRadioButton(this, bi.nc221, bi.nc221a, getString(R.string.nc221))) {
                 return false;
             }
@@ -915,12 +914,14 @@ public class SectionC2Activity extends Menu2Activity implements RadioGroup.OnChe
                 return false;
             }
 
-            if (!validatorClass.EmptyRadioButton(this, bi.nc222, bi.nc222a, getString(R.string.nc222))) {
-                return false;
-            }
+            if (bi.nc221a.isChecked()) {
+                if (!validatorClass.EmptyRadioButton(this, bi.nc222, bi.nc222a, getString(R.string.nc222))) {
+                    return false;
+                }
 
-            if (!validatorClass.EmptyRadioButton(this, bi.nc222, bi.nc22296, bi.nc22296x, getString(R.string.nc222))) {
-                return false;
+                if (!validatorClass.EmptyRadioButton(this, bi.nc222, bi.nc22296, bi.nc22296x, getString(R.string.nc222))) {
+                    return false;
+                }
             }
         }
 
@@ -1379,10 +1380,20 @@ public class SectionC2Activity extends Menu2Activity implements RadioGroup.OnChe
         bi.nc218.setOnCheckedChangeListener(this);
         bi.nc219.setOnCheckedChangeListener(this);
         bi.nc220.setOnCheckedChangeListener(this);
-        bi.nc221.setOnCheckedChangeListener(this);
+        //bi.nc221.setOnCheckedChangeListener(this);
         bi.nc222.setOnCheckedChangeListener(this);
         bi.nc223.setOnCheckedChangeListener(this);
 
+        bi.nc221.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (bi.nc221a.isChecked()) {
+                    clearClass.ClearAllFields(bi.fldGrpnc222, true);
+                } else {
+                    clearClass.ClearAllFields(bi.fldGrpnc222, false);
+                }
+            }
+        });
     }
 
     @Override
