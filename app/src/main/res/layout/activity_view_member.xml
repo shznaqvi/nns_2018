@@ -251,9 +251,9 @@
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="60"
                                 android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-"
-                                android:hint="XXXX-X"
+                                android:hint="9999-999"
                                 android:inputType="textCapCharacters"
-                                android:maxLength="6" />
+                                android:maxLength="8" />
 
 
                             <Button

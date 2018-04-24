@@ -335,6 +335,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             eligibleMembers.COLUMN_SA3 + " TEXT," +
             eligibleMembers.COLUMN_ISTATUS + " TEXT," +
             eligibleMembers.COLUMN_ISTATUS88x + " TEXT," +
+            eligibleMembers.COLUMN_END_TIME + " TEXT," +
             eligibleMembers.COLUMN_SYNCED + " TEXT," +
             eligibleMembers.COLUMN_SYNCEDDATE + " TEXT" +
 
