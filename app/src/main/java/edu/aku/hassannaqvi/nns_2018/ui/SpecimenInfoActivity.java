@@ -195,7 +195,7 @@ public class SpecimenInfoActivity extends AppCompatActivity {
                         if (length < 5) {
                             binding.nh108.setText(binding.nh108.getText().toString() + "-");
                             binding.nh108.setSelection(binding.nh108.getText().length());
-                            //binding.nh108.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+                            binding.nh108.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
                         }
 
                     }

@@ -194,7 +194,7 @@ public class SectionE1Activity extends AppCompatActivity {
         bi.ne108.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (bi.ne104a.isChecked()) {
+                if (bi.ne108a.isChecked()) {
                     clearClass.ClearAllFields(bi.fldGrpurineyes, true);
                     clearClass.ClearAllFields(bi.fldGrpurinno, false);
                     bi.btnScanUR.setEnabled(true);
