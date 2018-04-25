@@ -937,6 +937,7 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
 
         if (!MainApp.IsResp && binding.respa.isChecked()) {
             MainApp.IsResp = true;
+            MainApp.gender = binding.na204.indexOfChild(findViewById(binding.na204.getCheckedRadioButtonId())) + 1;
         }
 
         MainApp.fmc.setAge(binding.nh2agey.getText().toString());

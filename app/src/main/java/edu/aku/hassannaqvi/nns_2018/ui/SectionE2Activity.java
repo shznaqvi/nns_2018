@@ -383,8 +383,8 @@ public class SectionE2Activity extends AppCompatActivity {
                         bi.ne20303.setError("Please Scan correct QR code");
                     }
                 } else if (isPlain) {
-                    if (result.getContents().contains("QC")) {
-                        Toast.makeText(this, "QC Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                    if (result.getContents().contains("HP")) {
+                        Toast.makeText(this, "HP Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
                         bi.ne20304.setText("§" + result.getContents().trim());
                         bi.ne20304.setEnabled(false);
                         bi.ne20304.setError(null);
