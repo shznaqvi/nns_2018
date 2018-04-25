@@ -490,7 +490,7 @@ public class SectionE2Activity extends AppCompatActivity {
         }
 
         if (bi.ne201a.isChecked()) {
-            if (!validatorClass.EmptyRadioButton(this, bi.ne20201, bi.ne20201a, getString(R.string.ne202))) {
+            if (!validatorClass.EmptyRadioButton(this, bi.ne20201, bi.ne20201a, getString(R.string.ne202a))) {
                 return false;
             }
 
@@ -520,7 +520,7 @@ public class SectionE2Activity extends AppCompatActivity {
         }
 
         if (bi.ne201b.isChecked()) {
-            if (!validatorClass.EmptyRadioButton(this, bi.ne20202, bi.ne20202a, getString(R.string.ne202))) {
+            if (!validatorClass.EmptyRadioButton(this, bi.ne20202, bi.ne20202a, getString(R.string.ne202b))) {
                 return false;
             }
 
@@ -551,7 +551,7 @@ public class SectionE2Activity extends AppCompatActivity {
 
 
         if (bi.ne201c.isChecked()) {
-            if (!validatorClass.EmptyRadioButton(this, bi.ne20203, bi.ne20203a, getString(R.string.ne202))) {
+            if (!validatorClass.EmptyRadioButton(this, bi.ne20203, bi.ne20203a, getString(R.string.ne202c))) {
                 return false;
             }
 
@@ -581,7 +581,7 @@ public class SectionE2Activity extends AppCompatActivity {
         }
 
         if (bi.ne201d.isChecked()) {
-            if (!validatorClass.EmptyRadioButton(this, bi.ne20204, bi.ne20204a, getString(R.string.ne202))) {
+            if (!validatorClass.EmptyRadioButton(this, bi.ne20204, bi.ne20204a, getString(R.string.ne202d))) {
                 return false;
             }
 
@@ -611,7 +611,7 @@ public class SectionE2Activity extends AppCompatActivity {
         }
 
         if (bi.ne201e.isChecked()) {
-            if (!validatorClass.EmptyRadioButton(this, bi.ne20205, bi.ne20205a, getString(R.string.ne202))) {
+            if (!validatorClass.EmptyRadioButton(this, bi.ne20205, bi.ne20205a, getString(R.string.ne202e))) {
                 return false;
             }
 
@@ -641,7 +641,7 @@ public class SectionE2Activity extends AppCompatActivity {
         }
 
         if (bi.ne201f.isChecked()) {
-            if (!validatorClass.EmptyRadioButton(this, bi.ne20206, bi.ne20206a, getString(R.string.ne202))) {
+            if (!validatorClass.EmptyRadioButton(this, bi.ne20206, bi.ne20206a, getString(R.string.ne202f))) {
                 return false;
             }
 
