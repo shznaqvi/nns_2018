@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -13,9 +14,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import butterknife.BindViews;
+import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONB4ModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
@@ -34,14 +38,33 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
     Boolean backPressed = false;
     private Timer timer = new Timer();
 
+    @BindViews({R.id.nb412b, R.id.nb412c, R.id.nb412d, R.id.nb412e, R.id.nb412f, R.id.nb41296})
+    List<CheckBox> rd_nb412;
+
+    CheckBox.OnCheckedChangeListener check = new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            if (isoneYes()) {
+                clearClass.ClearAllFields(binding.fldGrpnw413, false);
+            } else {
+                clearClass.ClearAllFields(binding.fldGrpnw413, true);
+            }
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_section_b4);
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_b4);
+        ButterKnife.bind(this);
         db = new DatabaseHelper(this);
         binding.setCallback(this);
+
+        for (CheckBox ck : rd_nb412) {
+            ck.setOnCheckedChangeListener(check);
+        }
 
         this.setTitle(getResources().getString(R.string.nb4heading));
         binding.textName.setText("Selected Woman : " + SectionB1Activity.wraName);
@@ -86,10 +109,7 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 formValidation();
                 if (checkedId == R.id.nw405a) {
-                    /*binding.fldGrpnw406.setVisibility(View.GONE);
-                    binding.nw406c.setText(null);
-                    binding.nw406r.setText(null);
-                    binding.nw40698.setChecked(false);*/
+
 
                     clearClass.ClearAllFields(binding.fldGrpnw406, true);
                     binding.nw406cx.setText(null);
@@ -544,10 +564,10 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
 
         if (binding.nb411a.isChecked()) {
             // nb412
-            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnb412check, binding.nb412a, String.valueOf(R.string.nb412))) {
+            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnb412check, binding.nb412a, getString(R.string.nb412))) {
                 return false;
             }
-            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnb412check, binding.nb41296, binding.nb41296x, String.valueOf(R.string.nb412))) {
+            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnb412check, binding.nb41296, binding.nb41296x, getString(R.string.nb412))) {
                 return false;
             }
             // nw413
@@ -795,5 +815,18 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
         formValidation();
     }
 
+
+    public boolean isoneYes() {
+
+        int i = 0;
+        for (CheckBox rg : rd_nb412) {
+            if (rg.isChecked())
+                return true;
+        }
+
+        // Show answer here
+        // return i == rg;
+        return false;
+    }
 
 }
