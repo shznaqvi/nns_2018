@@ -86,6 +86,8 @@ public class MainApp extends Application {
     public static RecipientsContract rc;
     public static MembersCount membersCount;
     public static String userName = "0000";
+    public static String teamno = "";
+    public static String full_name = "";
     public static int versionCode;
     public static String versionName;
     public static Boolean IsHead;

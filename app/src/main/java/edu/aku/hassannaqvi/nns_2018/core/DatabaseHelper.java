@@ -62,10 +62,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + UsersTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + UsersTable.ROW_USERNAME + " TEXT,"
             + UsersTable.ROW_PASSWORD + " TEXT,"
-            + UsersTable.FULL_NAME + " TEXT"
+            + UsersTable.FULL_NAME + " TEXT,"
+            + UsersTable.TEAM_NO + " TEXT"
             + " );";
+
+
     public static final String DATABASE_NAME = "nns_2018.db";
-    private static final int DATABASE_VERSION = 6;
+    private static final int DATABASE_VERSION = 7;
     public static final String DB_NAME = DATABASE_NAME.replace(".", "_" + MainApp.versionName + "_" + DATABASE_VERSION + "_copy.");
     public static final String PROJECT_NAME = "NNS-2018";
 
@@ -133,6 +136,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String SQL_ALTER_FAMILYMEMBER = "ALTER TABLE " +
             familyMembers.TABLE_NAME + " ADD COLUMN " +
             familyMembers.COLUMN_FLAG + " TEXT;";
+
+    private static final String SQL_ALTER_USERS = "ALTER TABLE " +
+            UsersTable.TABLE_NAME + " ADD COLUMN " +
+            UsersTable.TEAM_NO + " TEXT;";
 
     private static final String SQL_ALTER_ELIGIBLEMEMBER = "ALTER TABLE " +
             eligibleMembers.TABLE_NAME + " ADD COLUMN " +
@@ -443,6 +450,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.execSQL(SQL_ALTER_BLRANDOM2);
             case 5:
                 db.execSQL(SQL_ALTER_ELIGIBLEMEMBER);
+            case 6:
+                db.execSQL(SQL_ALTER_USERS);
         }
 
     }
@@ -984,6 +993,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values.put(UsersContract.UsersTable.ROW_USERNAME, user.getUserName());
                 values.put(UsersTable.ROW_PASSWORD, user.getPassword());
                 values.put(UsersTable.FULL_NAME, user.getFULL_NAME());
+                values.put(UsersTable.TEAM_NO, user.getTEAM_NO());
                 db.insert(UsersTable.TABLE_NAME, null, values);
             }
 
@@ -1052,9 +1062,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         int cursorCount = cursor.getCount();
 
-        cursor.close();
+        /*cursor.close();
         db.close();
-        return cursorCount > 0;
+        return cursorCount > 0;*/
+
+        if (cursor != null) {
+            return cursorCount > 0;
+        }
+        return false;
     }
 
     public List<FormsContract> getFormsByDSS(String dssID) {

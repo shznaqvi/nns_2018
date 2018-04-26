@@ -71,6 +71,7 @@
                     android:hint="@string/nh101"
                     android:maxLength="50" />
 
+
                 <!--nh102-->
                 <TextView
                     android:layout_width="match_parent"

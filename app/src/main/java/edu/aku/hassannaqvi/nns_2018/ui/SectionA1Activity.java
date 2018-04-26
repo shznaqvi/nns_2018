@@ -505,6 +505,8 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
             sA1.put("edit_updatedate_sa1", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
         }
 
+        sA1.put("teamno", MainApp.teamno);
+        sA1.put("full_name", MainApp.full_name);
         sA1.put("rndid", MainApp.selectedHead.get_ID());
         sA1.put("luid", MainApp.selectedHead.getLUID());
         sA1.put("randDT", MainApp.selectedHead.getRandomDT());
