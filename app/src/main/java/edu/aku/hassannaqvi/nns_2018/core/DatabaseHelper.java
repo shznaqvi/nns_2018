@@ -1044,21 +1044,50 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         BLRandomContract Vc = new BLRandomContract();
         Vc.Sync(jsonObjectDT);
 
-        ContentValues values = new ContentValues();
+        if (!CheckUIDBLRandomExist(Vc.getLUID())) {
 
-        values.put(singleRandomHH.COLUMN_ID, Vc.get_ID());
-        values.put(singleRandomHH.COLUMN_LUID, Vc.getLUID());
-        values.put(singleRandomHH.COLUMN_STRUCTURE_NO, Vc.getStructure());
-        values.put(singleRandomHH.COLUMN_FAMILY_EXT_CODE, Vc.getExtension());
-        values.put(singleRandomHH.COLUMN_HH, Vc.getHh());
-        values.put(singleRandomHH.COLUMN_ENUM_BLOCK_CODE, Vc.getSubVillageCode());
-        values.put(singleRandomHH.COLUMN_RANDOMDT, Vc.getRandomDT());
-        values.put(singleRandomHH.COLUMN_HH_HEAD, Vc.getHhhead());
-        values.put(singleRandomHH.COLUMN_CONTACT, Vc.getContact());
-        values.put(singleRandomHH.COLUMN_RANDOM_TYPE, Vc.getRandomDT());
-        values.put(singleRandomHH.COLUMN_HH_SELECTED_STRUCT, Vc.getSelStructure());
+            ContentValues values = new ContentValues();
 
-        db.insert(singleRandomHH.TABLE_NAME, null, values);
+            values.put(singleRandomHH.COLUMN_ID, Vc.get_ID());
+            values.put(singleRandomHH.COLUMN_LUID, Vc.getLUID());
+            values.put(singleRandomHH.COLUMN_STRUCTURE_NO, Vc.getStructure());
+            values.put(singleRandomHH.COLUMN_FAMILY_EXT_CODE, Vc.getExtension());
+            values.put(singleRandomHH.COLUMN_HH, Vc.getHh());
+            values.put(singleRandomHH.COLUMN_ENUM_BLOCK_CODE, Vc.getSubVillageCode());
+            values.put(singleRandomHH.COLUMN_RANDOMDT, Vc.getRandomDT());
+            values.put(singleRandomHH.COLUMN_HH_HEAD, Vc.getHhhead());
+            values.put(singleRandomHH.COLUMN_CONTACT, Vc.getContact());
+            values.put(singleRandomHH.COLUMN_RANDOM_TYPE, Vc.getRandomDT());
+            values.put(singleRandomHH.COLUMN_HH_SELECTED_STRUCT, Vc.getSelStructure());
+
+            db.insert(singleRandomHH.TABLE_NAME, null, values);
+        }
+    }
+
+
+    public boolean CheckUIDBLRandomExist(String uid) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        String[] columns = {
+                singleRandomHH.COLUMN_ID
+        };
+
+// Which row to update, based on the ID
+        String selection = singleRandomHH.COLUMN_LUID + " =?";
+        String[] selectionArgs = {uid};
+        Cursor cursor = db.query(singleRandomHH.TABLE_NAME, //Table to query
+                columns,                    //columns to return
+                selection,                  //columns for the WHERE clause
+                selectionArgs,              //The values for the WHERE clause
+                null,                       //group the rows
+                null,                       //filter by row groups
+                null);                      //The sort order
+
+        int cursorCount = cursor.getCount();
+        cursor.close();
+        return cursorCount > 0;
     }
 
     public boolean Login(String username, String password) throws SQLException {
