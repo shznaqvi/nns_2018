@@ -138,37 +138,25 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
         mContentView.findViewById(R.id.btn_send_cluster_data).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Forms Contract
-                JSONArray fc = db.getFormsByCluster(getActivity().findViewById(R.id.msgBox).toString());
-                if (fc != null && fc.length() > 0) {
-                    Intent serviceIntent = new Intent(getActivity(), DataTransferService.class);
-                    serviceIntent.setAction(DataTransferService.ACTION_SEND_DATA);
-                    serviceIntent.putExtra(Intent.EXTRA_TEXT, String.valueOf(db.getAnthroFamilyMembers()));
-                    serviceIntent.putExtra(Intent.EXTRA_TEXT, String.valueOf(db.getAnthroFamilyMembers()));
-                    serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_ADDRESS,
-                            info.groupOwnerAddress.getHostAddress());
-                    serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_PORT, 8988);
-                    getActivity().startService(serviceIntent);
-                } else {
-                    Toast.makeText(getActivity(), "No Forms to send", Toast.LENGTH_SHORT).show();
 
+                if (MainApp.fc != null) {
+                    JSONArray fmAnthro = db.getAnthroFamilyMembers();
+                    if (fmAnthro != null && fmAnthro.length() > 0) {
+                        Intent serviceIntent = new Intent(getActivity(), DataTransferService.class);
+                        serviceIntent.setAction(DataTransferService.ACTION_SEND_DATA);
+                        serviceIntent.putExtra("Type", "Anthro");
+                        serviceIntent.putExtra(Intent.EXTRA_TEXT, String.valueOf(db.getAnthroFamilyMembers()));
+                        serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_ADDRESS,
+                                info.groupOwnerAddress.getHostAddress());
+                        serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_PORT, 8988);
+                        getActivity().startService(serviceIntent);
+                    } else {
+                        Toast.makeText(getActivity(), "No family members eligible for Anthropometry in this household", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(getActivity(), "No family member data exists", Toast.LENGTH_SHORT).show();
                 }
 
-                // WRA
-                JSONArray wc = db.getWRAsByUUID(getActivity().findViewById(R.id.msgBox).toString());
-                if (wc != null && wc.length() > 0) {
-                    Intent serviceIntent = new Intent(getActivity(), DataTransferService.class);
-                    serviceIntent.setAction(DataTransferService.ACTION_SEND_DATA);
-                    serviceIntent.putExtra("Type", "Forms");
-                    serviceIntent.putExtra(Intent.EXTRA_TEXT, String.valueOf(db.getAnthroFamilyMembers()));
-                    serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_ADDRESS,
-                            info.groupOwnerAddress.getHostAddress());
-                    serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_PORT, 8988);
-                    getActivity().startService(serviceIntent);
-                } else {
-                    Toast.makeText(getActivity(), "No Forms to send", Toast.LENGTH_SHORT).show();
-
-                }
             }
         });
 

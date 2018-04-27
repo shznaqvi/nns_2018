@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -32,6 +34,7 @@ import butterknife.BindViews;
 import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONB1ModelClass;
 import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONC1ModelClass;
+import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
@@ -76,6 +79,19 @@ public class SectionC1Activity extends AddMember_MenuActivity implements TextWat
 
     JSONC1ModelClass jsonC1;
 
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem addMember = menu.findItem(R.id.menu_addMember);
+
+        if (editChildFlag) {
+            addMember.setVisible(false);
+        } else {
+            addMember.setVisible(true);
+        }
+        return true;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,14 +115,23 @@ public class SectionC1Activity extends AddMember_MenuActivity implements TextWat
 
         editChildFlag = getIntent().getBooleanExtra("editForm", false);
 
-        if (editChildFlag && getIntent().getBooleanExtra("checkflag", false)) {
+        if (editChildFlag) {
 
-            autoPopulateFields(getIntent().getStringExtra("formUid"), getIntent().getStringExtra("fmUid"));
-            backPressed = true;
+            MainApp.fc = null;
+
+            if (getIntent().getBooleanExtra("checkflag", true)) {
+                autoPopulateFields(getIntent().getStringExtra("formUid"), getIntent().getStringExtra("fmUid"));
+                backPressed = true;
+            } else {
+                GetDataFromForm(getIntent().getStringExtra("formUid"));
+                setupViews1();
+            }
 
         } else {
             setupViews();
+            setupViews1();
         }
+
     }
 
     public void setupSkips() {
@@ -260,6 +285,9 @@ public class SectionC1Activity extends AddMember_MenuActivity implements TextWat
             respMap.put(fmc.getName() + "-" + fmc.getSerialNo(), fmc.getSerialNo());
         }
 
+    }
+
+    private void setupViews1() {
         binding.resp.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, respName));
 
         binding.resp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -280,7 +308,7 @@ public class SectionC1Activity extends AddMember_MenuActivity implements TextWat
         if (!isNA) {
             binding.txtCounter.setVisibility(View.VISIBLE);
             binding.txtCounter.setText("Child " + counter + " out of " + counterPerMom +
-                    "\n\n " + SectionB1Activity.wraName + " : " + getString(R.string.nh212a));
+                    "\n\n " + (editChildFlag ? motherName : SectionB1Activity.wraName) + " : " + getString(R.string.nh212a));
         } else {
             binding.txtCounter.setVisibility(View.GONE);
             binding.txtCounter.setText("Child " + counter + " out of " + counterPerNA
@@ -310,6 +338,46 @@ public class SectionC1Activity extends AddMember_MenuActivity implements TextWat
 
             }
         });
+    }
+
+    private void GetDataFromForm(String uuid) {
+
+        MainApp.fc = db.getAutoPopulateFormForWRAorCHILD(uuid);
+        MainApp.mc = (MWRAContract) getIntent().getSerializableExtra("childMomClass");
+
+        isNA = MainApp.mc == null;
+
+        FamilyMembersContract CHILD = (FamilyMembersContract) getIntent().getSerializableExtra("childFMClass");
+
+        ArrayList<FamilyMembersContract> respList = (ArrayList<FamilyMembersContract>) getIntent().getSerializableExtra("respFMClass");
+
+        childU5 = new ArrayList<>();
+        childMap = new HashMap<>();
+        childU5.add("....");
+
+        JSONModelClass json = JSONUtilClass.getModelFromJSON(CHILD.getsA2(), JSONModelClass.class);
+        CHILD.setSerialNo(json.getSerialNo());
+        CHILD.setMotherId(json.getMotherId());
+        childMap.put(json.getName() + "-" + json.getSerialNo(), CHILD);
+        childU5.add(json.getName() + "-" + json.getSerialNo());
+
+        counterPerMom = 1;
+
+        if (isNA) {
+            binding.fldGrpresp.setVisibility(View.VISIBLE);
+
+            for (FamilyMembersContract fmc : respList) {
+                JSONModelClass json1 = JSONUtilClass.getModelFromJSON(fmc.getsA2(), JSONModelClass.class);
+                respName.add(json1.getName() + "-" + json1.getSerialNo());
+                respMap.put(json1.getName() + "-" + json1.getSerialNo(), json1.getSerialNo());
+            }
+
+        } else {
+            binding.fldGrpresp.setVisibility(View.GONE);
+
+            JSONB1ModelClass jsonB1 = JSONUtilClass.getModelFromJSON(MainApp.mc.getsB1(), JSONB1ModelClass.class);
+            motherName = jsonB1.getnw101();
+        }
 
     }
 
@@ -491,10 +559,23 @@ public class SectionC1Activity extends AddMember_MenuActivity implements TextWat
 
         if (endflag) {
             if (!isNA) {
-                return editChildFlag || validatorClass.EmptySpinner(this, binding.nc101, getString(R.string.nc101));
+                if (editChildFlag) {
+                    if (MainApp.fc != null) {
+                        return validatorClass.EmptySpinner(this, binding.nc101, getString(R.string.nc101));
+                    }
+                } else {
+                    return validatorClass.EmptySpinner(this, binding.nc101, getString(R.string.nc101));
+                }
             } else {
 
-                if (!editChildFlag) {
+                if (editChildFlag) {
+                    if (MainApp.fc != null) {
+                        if (!validatorClass.EmptySpinner(this, binding.resp, getString(R.string.resp))) {
+                            return false;
+                        }
+                        return validatorClass.EmptySpinner(this, binding.nc101, getString(R.string.nc101));
+                    }
+                } else {
                     if (!validatorClass.EmptySpinner(this, binding.resp, getString(R.string.resp))) {
                         return false;
                     }
@@ -505,14 +586,26 @@ public class SectionC1Activity extends AddMember_MenuActivity implements TextWat
         } else {
 
             if (isNA) {
-                if (!editChildFlag) {
+                if (editChildFlag) {
+                    if (MainApp.fc != null) {
+                        if (!validatorClass.EmptySpinner(this, binding.resp, getString(R.string.resp))) {
+                            return false;
+                        }
+                    }
+                } else {
                     if (!validatorClass.EmptySpinner(this, binding.resp, getString(R.string.resp))) {
                         return false;
                     }
                 }
             }
 
-            if (!editChildFlag) {
+            if (editChildFlag) {
+                if (MainApp.fc != null) {
+                    if (!validatorClass.EmptySpinner(this, binding.nc101, getString(R.string.nc101))) {
+                        return false;
+                    }
+                }
+            } else {
                 if (!validatorClass.EmptySpinner(this, binding.nc101, getString(R.string.nc101))) {
                     return false;
                 }
@@ -710,6 +803,12 @@ public class SectionC1Activity extends AddMember_MenuActivity implements TextWat
                 sC1.put("wra_lno", childMap.get(binding.nc101.getSelectedItem().toString()).getMotherId());
             }
             sC1.put("nc101", binding.nc101.getSelectedItem().toString());
+
+            if (editChildFlag) {
+                sC1.put("updatedate", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+                MainApp.cc.setClusterno(MainApp.fc.getClusterNo());
+                MainApp.cc.setHhno(MainApp.fc.getHhNo());
+            }
 
         } else {
             sC1.put("updatedate_nc1", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));

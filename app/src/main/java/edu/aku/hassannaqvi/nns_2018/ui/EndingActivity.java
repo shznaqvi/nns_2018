@@ -81,6 +81,14 @@ public class EndingActivity extends AddMember_MenuActivity {
 
 //                finish();
 
+                MainApp.fc = null;
+                MainApp.mc = null;
+                MainApp.cc = null;
+                MainApp.oc = null;
+                MainApp.rc = null;
+                MainApp.dc = null;
+                MainApp.fmc = null;
+
                 SectionB1Activity.WRAcounter = 1;
                 SectionB1Activity.WRAsize = 0;
 

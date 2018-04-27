@@ -20,6 +20,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -27,12 +28,14 @@ import edu.aku.hassannaqvi.nns_2018.Adapters.AdolescentsAdapter;
 import edu.aku.hassannaqvi.nns_2018.Adapters.ChildAdapter;
 import edu.aku.hassannaqvi.nns_2018.Adapters.OthersAdapter;
 import edu.aku.hassannaqvi.nns_2018.Adapters.WraAdapter;
+import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONB1ModelClass;
 import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.WifiDirect.WiFiDirectActivity;
 import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.EnumBlockContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivityViewMemberBinding;
@@ -64,6 +67,8 @@ public class ViewMemberActivity extends MenuActivity {
     private Boolean exit = false;
 
     int length = 0;
+
+    MWRAContract getMomClassForChild = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,12 +102,17 @@ public class ViewMemberActivity extends MenuActivity {
 
             binding.btnContinue.setVisibility(View.VISIBLE);
 
+            if (getIntent().getBooleanExtra("endButton", false)) {
+                binding.btnSecEnd.setVisibility(View.VISIBLE);
+            }
+
         } else {
             binding.fldGrpEditHH.setVisibility(View.VISIBLE);
             binding.fldGrpVisA.setVisibility(View.VISIBLE);
             binding.fldGrpVisB.setVisibility(View.VISIBLE);
 
             binding.btnContinue.setVisibility(View.GONE);
+            binding.btnSecEnd.setVisibility(View.GONE);
 
             flag = false;
 
@@ -166,7 +176,7 @@ public class ViewMemberActivity extends MenuActivity {
                         if (length < 5) {
                             binding.chckhouse.setText(binding.chckhouse.getText().toString() + "-");
                             binding.chckhouse.setSelection(binding.chckhouse.getText().length());
-                            binding.chckhouse.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+//                            binding.chckhouse.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
                         }
 
                     }
@@ -183,7 +193,6 @@ public class ViewMemberActivity extends MenuActivity {
 
     }
 
-
     private void initializingLists() {
 
         MainApp.all_members_1 = new ArrayList<>();
@@ -192,6 +201,7 @@ public class ViewMemberActivity extends MenuActivity {
         MainApp.childUnder5_1 = new ArrayList<>();
         MainApp.adolescents_1 = new ArrayList<>();
         MainApp.mwra_1 = new ArrayList<>();
+        MainApp.respList_1 = new ArrayList<>();
         json = new JSONModelClass();
 
     }
@@ -250,7 +260,26 @@ public class ViewMemberActivity extends MenuActivity {
                                     }
                                 }
 
-                                if (checkflag) {
+                                Boolean checkingMother = false;
+                                if (json.getMotherId().equals("00")) {
+                                    checkingMother = true;
+                                } else {
+                                    for (MWRAContract wras : db.getAllMWRAWRTForm(MainApp.childUnder5_1.get(position).get_UUID())) {
+                                        if (!wras.getsB1().equals("")) {
+                                            JSONB1ModelClass jsonb1ModelClass = JSONUtilClass.getModelFromJSON(wras.getsB1(), JSONB1ModelClass.class);
+
+                                            if (jsonb1ModelClass.getnw1serialno().equals(json.getMotherId())) {
+                                                checkingMother = true;
+
+                                                getMomClassForChild = wras;
+
+                                                break;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                if (checkingMother) {
                                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                                             ViewMemberActivity.this);
                                     alertDialogBuilder
@@ -262,8 +291,10 @@ public class ViewMemberActivity extends MenuActivity {
 
                                                             startActivity(new Intent(ViewMemberActivity.this, SectionC1Activity.class)
                                                                     .putExtra("editForm", true)
-                                                                    .putExtra("checkflag", true)
+                                                                    .putExtra("checkflag", checkflag)
                                                                     .putExtra("childFMClass", MainApp.childUnder5_1.get(position))
+                                                                    .putExtra("childMomClass", getMomClassForChild)
+                                                                    .putExtra("respFMClass", (Serializable) MainApp.respList_1)
                                                                     .putExtra("formUid", MainApp.childUnder5_1.get(position).get_UUID())
                                                                     .putExtra("fmUid", MainApp.childUnder5_1.get(position).get_UID())
                                                             );
@@ -278,6 +309,8 @@ public class ViewMemberActivity extends MenuActivity {
                                             });
                                     AlertDialog alert = alertDialogBuilder.create();
                                     alert.show();
+                                } else {
+                                    Toast.makeText(ViewMemberActivity.this, "First fill out mother form!!", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         }
@@ -308,7 +341,7 @@ public class ViewMemberActivity extends MenuActivity {
                                     }
                                 }
 
-                                if (checkflag) {
+                                if (true) {
                                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                                             ViewMemberActivity.this);
                                     alertDialogBuilder
@@ -324,7 +357,7 @@ public class ViewMemberActivity extends MenuActivity {
                                                                     .putExtra("under2Size", MainApp.childUnder2_1.size())
                                                                     .putExtra("formUid", MainApp.mwra_1.get(position).get_UUID())
                                                                     .putExtra("fmUid", MainApp.mwra_1.get(position).get_UID())
-                                                                    .putExtra("fmClass", MainApp.mwra_1.get(position))
+                                                                    .putExtra("wraFMClass", MainApp.mwra_1.get(position))
 
                                                             );
 
@@ -609,6 +642,10 @@ public class ViewMemberActivity extends MenuActivity {
             }, 3 * 1000);
 
         }
+    }
+
+    public void BtnSecEnd() {
+        MainApp.endActivity(this, this);
     }
 
     public void intentWifi(View view) {
@@ -923,6 +960,10 @@ public class ViewMemberActivity extends MenuActivity {
                     } else if (!((Integer.valueOf(json.getAge()) >= 15 && Integer.valueOf(json.getAge()) <= 49) && json.getGender().equals("2"))) {
                         MainApp.otherMembers_1.add(fm);
                         MainApp.all_members_1.add(fm);
+                    }
+
+                    if (Integer.valueOf(json.getAge()) > 17) {
+                        MainApp.respList_1.add(fm);
                     }
 
                 }

@@ -335,6 +335,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             eligibleMembers.COLUMN_SA3 + " TEXT," +
             eligibleMembers.COLUMN_ISTATUS + " TEXT," +
             eligibleMembers.COLUMN_ISTATUS88x + " TEXT," +
+            eligibleMembers.COLUMN_END_TIME + " TEXT," +
             eligibleMembers.COLUMN_SYNCED + " TEXT," +
             eligibleMembers.COLUMN_SYNCEDDATE + " TEXT" +
 
@@ -996,29 +997,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public void syncAnthroFromDevice(JSONArray fmlist) {
         SQLiteDatabase db = this.getWritableDatabase();
-        //db.delete(UsersTable.TABLE_NAME, null, null);
         try {
             JSONArray jsonArray = fmlist;
             for (int i = 0; i < jsonArray.length(); i++) {
 
-                JSONObject jsonObjectUser = jsonArray.getJSONObject(i);
+                JSONObject jsonObjectDT = jsonArray.getJSONObject(i);
 
-                FamilyMembersContract fmc = new FamilyMembersContract();
-                fmc.Sync(jsonObjectUser);
-                ContentValues values = new ContentValues();
+                switch (jsonObjectDT.getString("projectname")) {
+                    case "NNS-LINELISTING 2018":
+                        BLRandomInsertion(jsonObjectDT, db);
+                        break;
+                    case "National Nutrition Survey 2018":
+                        AntrhoInsertion(jsonObjectDT, db);
+                        break;
+                }
 
-                values.put(familyMembers.COLUMN_UID, fmc.get_UID());
-                values.put(familyMembers.COLUMN_UUID, fmc.get_UUID());
-                values.put(familyMembers.COLUMN_FORMDATE, fmc.getFormDate());
-                values.put(familyMembers.COLUMN_USER, fmc.getUser());
-                //FormsTable.COLUMN_GPSELEV,
-                values.put(familyMembers.COLUMN_HH_NO, fmc.getHhNo());
-                values.put(familyMembers.COLUMN_ENM_NO, fmc.getEnmNo());
-                values.put(familyMembers.COLUMN_SA2, fmc.getsA2());
-                values.put(familyMembers.COLUMN_AV, fmc.getAv());
-                values.put(familyMembers.COLUMN_DEVICETAGID, fmc.getDeviceId());
-                values.put(familyMembers.COLUMN_DEVICEID, fmc.getDeviceId());
-                db.insert(familyMembers.TABLE_NAME, null, values);
             }
 
 
@@ -1027,6 +1020,45 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         } finally {
             db.close();
         }
+    }
+
+    public void AntrhoInsertion(JSONObject jsonObjectDT, SQLiteDatabase db) throws JSONException {
+        FamilyMembersContract fmc = new FamilyMembersContract();
+        fmc.Sync(jsonObjectDT);
+        ContentValues values = new ContentValues();
+
+        values.put(familyMembers.COLUMN_UID, fmc.get_UID());
+        values.put(familyMembers.COLUMN_UUID, fmc.get_UUID());
+        values.put(familyMembers.COLUMN_FORMDATE, fmc.getFormDate());
+        values.put(familyMembers.COLUMN_USER, fmc.getUser());
+        values.put(familyMembers.COLUMN_HH_NO, fmc.getHhNo());
+        values.put(familyMembers.COLUMN_ENM_NO, fmc.getEnmNo());
+        values.put(familyMembers.COLUMN_SA2, fmc.getsA2());
+        values.put(familyMembers.COLUMN_AV, fmc.getAv());
+        values.put(familyMembers.COLUMN_DEVICETAGID, fmc.getDeviceId());
+        values.put(familyMembers.COLUMN_DEVICEID, fmc.getDeviceId());
+        db.insert(familyMembers.TABLE_NAME, null, values);
+    }
+
+    public void BLRandomInsertion(JSONObject jsonObjectDT, SQLiteDatabase db) throws JSONException {
+        BLRandomContract Vc = new BLRandomContract();
+        Vc.Sync(jsonObjectDT);
+
+        ContentValues values = new ContentValues();
+
+        values.put(singleRandomHH.COLUMN_ID, Vc.get_ID());
+        values.put(singleRandomHH.COLUMN_LUID, Vc.getLUID());
+        values.put(singleRandomHH.COLUMN_STRUCTURE_NO, Vc.getStructure());
+        values.put(singleRandomHH.COLUMN_FAMILY_EXT_CODE, Vc.getExtension());
+        values.put(singleRandomHH.COLUMN_HH, Vc.getHh());
+        values.put(singleRandomHH.COLUMN_ENUM_BLOCK_CODE, Vc.getSubVillageCode());
+        values.put(singleRandomHH.COLUMN_RANDOMDT, Vc.getRandomDT());
+        values.put(singleRandomHH.COLUMN_HH_HEAD, Vc.getHhhead());
+        values.put(singleRandomHH.COLUMN_CONTACT, Vc.getContact());
+        values.put(singleRandomHH.COLUMN_RANDOM_TYPE, Vc.getRandomDT());
+        values.put(singleRandomHH.COLUMN_HH_SELECTED_STRUCT, Vc.getSelStructure());
+
+        db.insert(singleRandomHH.TABLE_NAME, null, values);
     }
 
     public boolean Login(String username, String password) throws SQLException {
@@ -1477,6 +1509,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put(MWRATable.COLUMN_SYNCEDDATE, mc.getSyncedDate());
             values.put(MWRATable.COLUMN_MSTATUS, mc.getMstatus());
             values.put(MWRATable.COLUMN_MSTATUS88x, mc.getMstatus88x());
+
+            values.put(MWRATable.COLUMN_UPDATEDATE, mc.getUpdatedate());
         }
 
         values.put(MWRATable.COLUMN_SB1, mc.getsB1());
@@ -2230,7 +2264,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return jsonArray;
     }
 
-    public FormsContract getAutoPopulateFormForWRA(String uuid) {
+    public FormsContract getAutoPopulateFormForWRAorCHILD(String uuid) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -2920,6 +2954,67 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 MWRATable.COLUMN__ID + " ASC";
 
         Collection<MWRAContract> allFC = new ArrayList<MWRAContract>();
+        try {
+            c = db.query(
+                    MWRATable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                MWRAContract fc = new MWRAContract();
+                allFC.add(fc.Hydrate(c, 0));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
+    public Collection<MWRAContract> getAllMWRAWRTForm(String uuid) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                MWRATable.COLUMN__ID,
+                MWRATable.COLUMN_UID,
+                MWRATable.COLUMN_UUID,
+                MWRATable.COLUMN_FM_UID,
+                MWRATable.COLUMN_FORMDATE,
+                MWRATable.COLUMN_DEVICEID,
+                MWRATable.COLUMN_DEVICETAGID,
+                MWRATable.COLUMN_USER,
+                MWRATable.COLUMN_APP_VER,
+                MWRATable.COLUMN_B1SERIALNO,
+                MWRATable.COLUMN_SB1,
+                MWRATable.COLUMN_SB2,
+                MWRATable.COLUMN_SB3,
+                MWRATable.COLUMN_SB4,
+                MWRATable.COLUMN_SB5,
+                MWRATable.COLUMN_SB6,
+                MWRATable.COLUMN_SB2FLAG,
+                MWRATable.COLUMN_MSTATUS,
+                MWRATable.COLUMN_MSTATUS88x,
+                MWRATable.COLUMN_SYNCED,
+                MWRATable.COLUMN_SYNCEDDATE
+
+        };
+        String whereClause = MWRATable.COLUMN_UUID + " =?";
+        String[] whereArgs = {uuid};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                MWRATable.COLUMN__ID + " ASC";
+
+        Collection<MWRAContract> allFC = new ArrayList<>();
         try {
             c = db.query(
                     MWRATable.TABLE_NAME,  // The table to query

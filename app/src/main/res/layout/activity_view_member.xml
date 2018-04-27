@@ -251,9 +251,9 @@
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="60"
                                 android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-"
-                                android:hint="XXXX-X"
+                                android:hint="9999-999"
                                 android:inputType="textCapCharacters"
-                                android:maxLength="6" />
+                                android:maxLength="8" />
 
 
                             <Button
@@ -533,15 +533,16 @@
                                 android:visibility="gone" />
 
                             <Button
+                                android:id="@+id/btn_sec_end"
                                 style="@style/buttons"
+                                android:onClick="@{() -> callback.BtnSecEnd()}"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:background="@color/brown"
-                                android:onClick="intentWifi"
-                                android:text="@string/dataShare"
+                                android:text="@string/end_interview"
                                 android:textColor="@color/white"
-                                android:visibility="visible" />
+                                android:visibility="gone" />
 
                             <Button
                                 android:id="@+id/btn_Continue"

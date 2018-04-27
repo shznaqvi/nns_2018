@@ -19,8 +19,19 @@ public class JSONModelClass {
     private String mothername = "";
     private String nh210;
 
+    @SerializedName("nh212")
+    private String motherId;
+
     public JSONModelClass() {
 
+    }
+
+    public String getMotherId() {
+        return motherId;
+    }
+
+    public void setMotherId(String motherId) {
+        this.motherId = motherId;
     }
 
     public String getNh210() {

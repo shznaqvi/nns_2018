@@ -58,8 +58,7 @@ public class AnthroEndingActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
-                SaveDraft();
-
+            SaveDraft();
             if (UpdateDB()) {
 
                 finish();
