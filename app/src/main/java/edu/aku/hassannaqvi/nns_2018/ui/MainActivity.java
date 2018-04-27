@@ -370,6 +370,13 @@ public class MainActivity extends MenuActivity {
         startActivity(iB);
     }
 
+    public void openMicroResults() {
+        MainActivity.ftype = "W";
+        //Intent iB = new Intent(this, SectionB3Activity.class);
+        Intent iB = new Intent(this, MicroResultsActivity.class);
+        startActivity(iB);
+    }
+
 
     /*public void openD(View v) {
         Intent iD = new Intent(this, SectionDActivity.class);

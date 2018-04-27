@@ -98,21 +98,21 @@ public class WaterSpecimenContract {
         json.put(WaterSpecimenTable.COLUMN__UUID, this._UUID == null ? JSONObject.NULL : this._UUID);
         json.put(WaterSpecimenTable.COLUMN_CLUSTER, this.clusterno == null ? JSONObject.NULL : this.clusterno);
         json.put(WaterSpecimenTable.COLUMN_HH, this.hhno == null ? JSONObject.NULL : this.hhno);
-        //json.put(WaterSpecimenTable.COLUMN_MUID, this.MUID == null ? JSONObject.NULL : this.MUID);
+        //json.put(MicroTable.COLUMN_MUID, this.MUID == null ? JSONObject.NULL : this.MUID);
 
         json.put(WaterSpecimenTable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
         json.put(WaterSpecimenTable.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
 
         if (!this.sE2.equals("")) {
             json.put(WaterSpecimenTable.COLUMN_SE2, this.sE2.equals("") ? JSONObject.NULL : new JSONObject(this.sE2));
-            /*  json.put(WaterSpecimenTable.COLUMN_SC1, this.sC1 == null ? JSONObject.NULL : this.sC1);*/
+            /*  json.put(MicroTable.COLUMN_SC1, this.sC1 == null ? JSONObject.NULL : this.sC1);*/
         }
 
 
         json.put(WaterSpecimenTable.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
         json.put(WaterSpecimenTable.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
-        /*json.put(WaterSpecimenTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
-        json.put(WaterSpecimenTable.COLUMN_SYNCED_DATE, this.synced_date == null ? JSONObject.NULL : this.synced_date);*/
+        /*json.put(MicroTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
+        json.put(MicroTable.COLUMN_SYNCED_DATE, this.synced_date == null ? JSONObject.NULL : this.synced_date);*/
         json.put(WaterSpecimenTable.COLUMN_APPVERSION, this.appversion == null ? JSONObject.NULL : this.appversion);
 
 
@@ -246,7 +246,7 @@ public class WaterSpecimenContract {
         //public static final String COLUMN_FM_UID = "fmuid";
         public static final String COLUMN_FORMDATE = "formdate";
         public static final String COLUMN_USER = "user";
-        //public static final String COLUMN_LINENO = "lineno";
+        //public static final String COLUMN_WUID = "lineno";
         public static final String COLUMN_CLUSTER = "cluster";
         public static final String COLUMN_HH = "hh_no";
         public static final String COLUMN_SE2 = "se2";
