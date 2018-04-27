@@ -48,6 +48,7 @@ public class SectionE2Activity extends AppCompatActivity {
         this.setTitle(getResources().getString(R.string.ne2heading));
         bi.setCallback(this);
 
+
         membersMap = new HashMap<>();
 
         for (FamilyMembersContract fmc : MainApp.all_members) {
