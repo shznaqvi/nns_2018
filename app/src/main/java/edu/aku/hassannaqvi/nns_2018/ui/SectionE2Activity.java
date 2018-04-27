@@ -217,26 +217,6 @@ public class SectionE2Activity extends AppCompatActivity {
 
     }
 
-    public void BtnScanPetri() {
-        //binding.hcCode.setText(null);
-        isMicro = true;
-        isPlain = false;
-        isNitric = false;
-        isBoric = false;
-        isField = false;
-        isQC = false;
-
-        IntentIntegrator integrator = new IntentIntegrator(this);
-        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
-        integrator.setPrompt("Scan the QR code of Machine");
-        integrator.setCameraId(0);  // Use a specific camera of the device
-        integrator.setBeepEnabled(false);
-        integrator.setBarcodeImageEnabled(true);
-        integrator.setOrientationLocked(false);
-
-        integrator.initiateScan();
-
-    }
 
     public void BtnScanMirco() {
         //binding.hcCode.setText(null);

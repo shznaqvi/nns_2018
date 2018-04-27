@@ -142,7 +142,7 @@ public class MicroResultsActivity extends AppCompatActivity {
 
                     if (fm.getsE2() != null) {
                         json = JSONUtilClass.getModelFromJSON(fm.getsE2(), JSONE2ModelClass.class);
-                        if ((Integer.valueOf(json.getNe201a()) == 1)) {
+                        if ((Integer.valueOf(json.getNe201a()) == 1) && Integer.valueOf(json.getNe20201()) == 1) {
 
                             formdate = fm.getFormDate();
                             uuid = fm.getUUID();
