@@ -1093,8 +1093,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
                 JSONObject jsonObjectDT = jsonArray.getJSONObject(i);
 
-                switch (jsonObjectDT.getString("projectname")) {
-                    case "NNS-LINELISTING 2018":
+                switch (jsonObjectDT.getString("project_name")) {
+                    case "NNS 2018 - Team Leaders":
                         BLRandomInsertion(jsonObjectDT, db);
                         break;
                     case "National Nutrition Survey 2018":
@@ -1147,10 +1147,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put(singleRandomHH.COLUMN_RANDOMDT, Vc.getRandomDT());
             values.put(singleRandomHH.COLUMN_HH_HEAD, Vc.getHhhead());
             values.put(singleRandomHH.COLUMN_CONTACT, Vc.getContact());
-            values.put(singleRandomHH.COLUMN_RANDOM_TYPE, Vc.getRandomDT());
             values.put(singleRandomHH.COLUMN_HH_SELECTED_STRUCT, Vc.getSelStructure());
 
-            db.insert(singleRandomHH.TABLE_NAME, null, values);
+            long count = db.insert(singleRandomHH.TABLE_NAME, null, values);
         }
     }
 
@@ -1186,7 +1185,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 // New value for one column
         String[] columns = {
-                UsersTable._ID
+                UsersTable._ID,
+                UsersTable.ROW_USERNAME,
+                UsersTable.FULL_NAME,
+                UsersTable.TEAM_NO,
+                UsersTable.ROW_PASSWORD
         };
 
 // Which row to update, based on the ID
@@ -1206,9 +1209,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return cursorCount > 0;*/
 
-        if (cursor != null) {
-            return cursorCount > 0;
+        if (cursorCount > 0) {
+            while (cursor.moveToFirst()) {
+                MainApp.usersContract = new UsersContract().Hydrate(cursor);
+            }
+
+            return true;
         }
+
         return false;
     }
 
@@ -2322,6 +2330,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
         return count;
     }
+
     public Collection<FormsContract> getUnsyncedForms() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;

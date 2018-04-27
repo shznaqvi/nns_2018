@@ -219,7 +219,6 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
         MainApp.flagClicked = new ArrayList<>();
 
 
-
 //        HH listener
         binding.nh108.addTextChangedListener(new TextWatcher() {
             @Override
@@ -503,6 +502,12 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
             setGPS(); // Set GPS
         } else {
             sA1.put("edit_updatedate_sa1", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+        }
+
+        if (MainApp.usersContract != null) {
+            sA1.put("userid", MainApp.usersContract.getUserID());
+            sA1.put("fullname", MainApp.usersContract.getFULL_NAME());
+            sA1.put("teamNo", MainApp.usersContract.getTEAM_NO());
         }
 
         sA1.put("rndid", MainApp.selectedHead.get_ID());

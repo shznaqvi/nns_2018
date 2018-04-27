@@ -34,6 +34,7 @@ import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SpecimenContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.UsersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.WaterSpecimenContract;
 import edu.aku.hassannaqvi.nns_2018.other.MembersCount;
 import edu.aku.hassannaqvi.nns_2018.ui.AnthroEndingActivity;
@@ -87,6 +88,7 @@ public class MainApp extends Application {
     public static RecipientsContract rc;
     public static MembersCount membersCount;
     public static String userName = "0000";
+    public static UsersContract usersContract = null;
     public static String teamno = "";
     public static String full_name = "";
     public static int versionCode;
