@@ -17,6 +17,7 @@ public class UsersContract {
     String ROW_USERNAME;
     String ROW_PASSWORD;
     String FULL_NAME;
+    String TEAM_NO;
 //    String REGION_DSS;
 
     public UsersContract() {
@@ -26,6 +27,8 @@ public class UsersContract {
     public UsersContract(String username, String password) {
         this.ROW_PASSWORD = password;
         this.ROW_USERNAME = username;
+
+
     }
 
     public Long getUserID() {
@@ -60,7 +63,15 @@ public class UsersContract {
         this.FULL_NAME = FULL_NAME;
     }
 
-/*    public String getREGION_DSS() {
+    public String getTEAM_NO() {
+        return TEAM_NO;
+    }
+
+    public void setTEAM_NO(String TEAM_NO) {
+        this.TEAM_NO = TEAM_NO;
+    }
+
+    /*    public String getREGION_DSS() {
         return REGION_DSS;
     }
 
@@ -72,6 +83,7 @@ public class UsersContract {
         this.ROW_USERNAME = jsonObject.getString(UsersTable.ROW_USERNAME);
         this.ROW_PASSWORD = jsonObject.getString(UsersTable.ROW_PASSWORD);
         this.FULL_NAME = jsonObject.getString(UsersTable.FULL_NAME);
+        this.TEAM_NO = jsonObject.getString(UsersTable.TEAM_NO);
 //        this.REGION_DSS = jsonObject.getString(UsersTable.REGION_DSS);
         return this;
 
@@ -82,6 +94,7 @@ public class UsersContract {
         this.ROW_USERNAME = cursor.getString(cursor.getColumnIndex(UsersTable.ROW_USERNAME));
         this.ROW_PASSWORD = cursor.getString(cursor.getColumnIndex(UsersTable.ROW_PASSWORD));
         this.FULL_NAME = cursor.getString(cursor.getColumnIndex(UsersTable.FULL_NAME));
+        this.TEAM_NO = cursor.getString(cursor.getColumnIndex(UsersTable.TEAM_NO));
 //        this.REGION_DSS = cursor.getString(cursor.getColumnIndex(UsersTable.REGION_DSS));
         return this;
 
@@ -95,6 +108,7 @@ public class UsersContract {
         json.put(UsersTable.ROW_USERNAME, this.ROW_USERNAME == null ? JSONObject.NULL : this.ROW_USERNAME);
         json.put(UsersTable.ROW_PASSWORD, this.ROW_PASSWORD == null ? JSONObject.NULL : this.ROW_PASSWORD);
         json.put(UsersTable.FULL_NAME, this.FULL_NAME == null ? JSONObject.NULL : this.FULL_NAME);
+        json.put(UsersTable.TEAM_NO, this.TEAM_NO == null ? JSONObject.NULL : this.TEAM_NO);
 //        json.put(UsersTable.REGION_DSS, this.REGION_DSS == null ? JSONObject.NULL : this.REGION_DSS);
         return json;
     }
@@ -106,6 +120,7 @@ public class UsersContract {
         public static final String ROW_USERNAME = "username";
         public static final String ROW_PASSWORD = "password";
         public static final String FULL_NAME = "full_name";
+        public static final String TEAM_NO = "teamno";
 //        public static final String REGION_DSS = "region";
 
         public static final String _URI = "users.php";

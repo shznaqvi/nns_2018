@@ -1551,6 +1551,16 @@
   <string name="ne202e"> کیا مائکروبیالوجی کیو سی کے لئے پانی کا نمونہ حاصل کیا گیا تھا؟ </string>
   <string name="ne202f"> کیا فیلڈ بلینک کے لئے پانی کا نمونہ حاصل کیا گیا تھا؟ </string>
   <string name="ne203"> اگر ہاں، تو بار کوڈ اسکین کریں۔ </string>
+  <string name="ne20301a"> Scan Petri Film Label</string>
+  <string name="ne20301b">Date of Collection</string>
+  <string name="ne20301c">Time of Collection</string>
+  <string name="ne20301d">Inoculation Time</string>
+  <string name="ne20301e">Incubation Time</string>
+  <string name="ne20301f">Date of Reading</string>
+  <string name="ne20301g">Time of Reading</string>
+  <string name="ne20301h">Total Coliform Count (If TNTC, write 999)</string>
+  <string name="ne20301fa">If TNTC, write 999</string>
+  <string name="ne20301i">Total E-Coli Count</string>
 
 
 </resources>

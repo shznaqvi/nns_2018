@@ -13,7 +13,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,7 +35,6 @@ import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 public class DeviceDetailFragment extends Fragment implements ConnectionInfoListener {
 
     protected static final int CHOOSE_FILE_RESULT_CODE = 20;
-    EditText msgBox;
     ProgressDialog progressDialog = null;
     private View mContentView = null;
     private WifiP2pDevice device;
@@ -71,7 +69,6 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
         db = new DatabaseHelper(getActivity());
 
         mContentView = inflater.inflate(R.layout.device_detail, null);
-        msgBox = mContentView.findViewById(R.id.msgBox);
         mContentView.findViewById(R.id.btn_connect).setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -184,8 +181,8 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
         // The owner IP is now known.
         TextView view = mContentView.findViewById(R.id.group_owner);
         view.setText(getResources().getString(R.string.group_owner_text)
-                + ((info.isGroupOwner == true) ? getResources().getString(R.string.yes)
-                : getResources().getString(R.string.no)));
+                + ((info.isGroupOwner == true) ? getResources().getString(R.string.no)
+                : getResources().getString(R.string.yes)));
 
         // InetAddress from WifiP2pInfo struct.
         view = mContentView.findViewById(R.id.device_info);
@@ -201,7 +198,6 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
             // The other device acts as the client. In this case, we enable the
             // get file button.
             mContentView.findViewById(R.id.btn_send_msg).setVisibility(View.VISIBLE);
-            mContentView.findViewById(R.id.msgBox).setVisibility(View.VISIBLE);
             ((TextView) mContentView.findViewById(R.id.status_text)).setText(getResources()
                     .getString(R.string.client_text));
         }
@@ -218,9 +214,7 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
     public void showDetails(WifiP2pDevice device) {
         this.device = device;
         this.getView().setVisibility(View.VISIBLE);
-        TextView view = mContentView.findViewById(R.id.device_address);
-        view.setText(device.deviceAddress);
-        view = mContentView.findViewById(R.id.device_info);
+        TextView view = mContentView.findViewById(R.id.device_info);
         view.setText(device.toString());
 
     }
@@ -230,16 +224,13 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
      */
     public void resetViews() {
         mContentView.findViewById(R.id.btn_connect).setVisibility(View.VISIBLE);
-        TextView view = mContentView.findViewById(R.id.device_address);
-        view.setText(R.string.empty);
-        view = mContentView.findViewById(R.id.device_info);
+        TextView view = mContentView.findViewById(R.id.device_info);
         view.setText(R.string.empty);
         view = mContentView.findViewById(R.id.group_owner);
         view.setText(R.string.empty);
         view = mContentView.findViewById(R.id.status_text);
         view.setText(R.string.empty);
         mContentView.findViewById(R.id.btn_send_msg).setVisibility(View.GONE);
-        mContentView.findViewById(R.id.msgBox).setVisibility(View.GONE);
         this.getView().setVisibility(View.GONE);
     }
 
@@ -253,8 +244,8 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
         private TextView statusText;
 
         *//**
-         * @param context
-         * @param statusText
+     * @param context
+     * @param statusText
      *//*
         public FileServerAsyncTask(Context context, View statusText) {
             this.context = context;
@@ -304,8 +295,8 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
         }
 
         *//*
-         * (non-Javadoc)
-         * @see android.os.AsyncTask#onPostExecute(java.lang.Object)
+     * (non-Javadoc)
+     * @see android.os.AsyncTask#onPostExecute(java.lang.Object)
      *//*
         @Override
         protected void onPostExecute(String result) {
@@ -329,8 +320,8 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
         }
 
         *//*
-         * (non-Javadoc)
-         * @see android.os.AsyncTask#onPreExecute()
+     * (non-Javadoc)
+     * @see android.os.AsyncTask#onPreExecute()
      *//*
         @Override
         protected void onPreExecute() {

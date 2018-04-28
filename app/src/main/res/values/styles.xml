@@ -173,6 +173,32 @@
 
     </style>
 
+
+    <!--Floating label text style-->
+    <style name="MyTextInputLayout" parent="Widget.Design.TextInputLayout">
+        <item name="android:textColorHint">@color/grayOverlay</item>
+        <item name="android:textSize">12sp</item>
+        <!--Label color in TRUE state and bar color FALSE and TRUE State-->
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <item name="colorControlNormal">@color/gray</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+    </style>
+
+    <style name="TextLabel2" parent="TextAppearance.Design.Hint">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="TextLabel" parent="Widget.Design.TextInputLayout">
+        <!-- Hint color and label color in FALSE state -->
+        <item name="android:textColorHint">@color/gray</item>
+        <item name="android:textSize">20sp</item>
+
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/colorPrimary</item>
+        <item name="colorControlActivated">@color/colorPrimaryDark</item>
+    </style>
     <!--<stnamename="spinner" parent="android:Widget.Spinner">
         <inamename="android:layout_width">match_parent</item>
         <inamename="android:layout_height">wrap_content</item>

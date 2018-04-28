@@ -31,6 +31,7 @@ import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.MicroContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.NutritionContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
@@ -296,8 +297,15 @@ public class MenuActivity extends AppCompatActivity {
                     db.getUnsyncedWaterSpecimenForms(), this.findViewById(R.id.syncStatus)
             ).execute();
 
-
-
+            Toast.makeText(getApplicationContext(), "Syncing Micro Results", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Micro",
+                    "updateSyncedMicroForm",
+                    MicroContract.class,
+                    MainApp._HOST_URL + MicroContract.MicroTable._URL,
+                    db.getUnsyncedMicroForms(), this.findViewById(R.id.syncStatus)
+            ).execute();
 
 
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);

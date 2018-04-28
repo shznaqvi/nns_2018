@@ -19,7 +19,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,7 +38,6 @@ public class WiFiDirectActivity extends AppCompatActivity implements ChannelList
     public static final String TAG = "wifidirectdemo";
     public static final String ACTION_SEND_DATA = "edu.aku.hassannaqvi.nns_2018.WifiDirect.SEND";
     private final IntentFilter intentFilter = new IntentFilter();
-    EditText txtMsg;
     DatabaseHelper db;
     private WifiP2pManager manager;
     private boolean isWifiP2pEnabled = false;
@@ -93,7 +91,6 @@ public class WiFiDirectActivity extends AppCompatActivity implements ChannelList
         manager = (WifiP2pManager) getSystemService(Context.WIFI_P2P_SERVICE);
         channel = manager.initialize(this, getMainLooper(), null);
 
-        txtMsg = findViewById(R.id.txtMsg);
     }
 
     /**
@@ -283,7 +280,7 @@ public class WiFiDirectActivity extends AppCompatActivity implements ChannelList
 
     }
 
-    public void SendMsg(View v) {
+/*    public void SendMsg(View v) {
         Intent intent = new Intent();
         intent.setAction(ACTION_SEND_DATA);
         intent.putExtra(Intent.EXTRA_TEXT, txtMsg.getText().toString());
@@ -293,13 +290,13 @@ public class WiFiDirectActivity extends AppCompatActivity implements ChannelList
 
         this.startActivity(intent);
 
-        /* Intent serviceIntent = new Intent(getActivity(), DataTransferService.class);
+        *//* Intent serviceIntent = new Intent(getActivity(), DataTransferService.class);
         serviceIntent.setAction(DataTransferService.ACTION_SEND_DATA);
         serviceIntent.putExtra(Intent.EXTRA_TEXT, msgBox.getText().toString());
         serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_ADDRESS,
                 info.groupOwnerAddress.getHostAddress());
         serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_PORT, 8988);
-        getActivity().startService(serviceIntent); */
-    }
+        getActivity().startService(serviceIntent); *//*
+    }*/
 
 }
