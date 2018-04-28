@@ -564,9 +564,9 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
 
         if (binding.nb411a.isChecked()) {
             // nb412
-            if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnb412check, binding.nb412a, getString(R.string.nb412))) {
+            /*if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnb412check, binding.nb412a, getString(R.string.nb412))) {
                 return false;
-            }
+            }*/
             if (!validatorClass.EmptyCheckBox(this, binding.fldGrpnb412check, binding.nb41296, binding.nb41296x, getString(R.string.nb412))) {
                 return false;
             }
@@ -576,18 +576,17 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
                 if (!validatorClass.EmptyRadioButton(this, binding.nw413, binding.nw413a, getString(R.string.nc403))) {
                     return false;
                 }
+                //        nw4139601
+                if (!validatorClass.EmptyRadioButton(this, binding.nw413, binding.nw413961, binding.nw413961x, getString(R.string.nw413) + " - " + getString(R.string.nw413961))) {
+                    return false;
+                }
+                //        nw4139602
+                if (!validatorClass.EmptyRadioButton(this, binding.nw413, binding.nw413962, binding.nw413962x, getString(R.string.nw413) + " - " + getString(R.string.nw413962))) {
+                    return false;
+                }
+                //        nw4139603
+                return validatorClass.EmptyRadioButton(this, binding.nw413, binding.nw413963, binding.nw413963x, getString(R.string.nw413) + " - " + getString(R.string.other));
             }
-//        nw4139601
-            if (!validatorClass.EmptyRadioButton(this, binding.nw413, binding.nw413961, binding.nw413961x, getString(R.string.nw413) + " - " + getString(R.string.nw413961))) {
-                return false;
-            }
-//        nw4139602
-            if (!validatorClass.EmptyRadioButton(this, binding.nw413, binding.nw413962, binding.nw413962x, getString(R.string.nw413) + " - " + getString(R.string.nw413962))) {
-                return false;
-            }
-//        nw4139603
-            return validatorClass.EmptyRadioButton(this, binding.nw413, binding.nw413963, binding.nw413963x, getString(R.string.nw413) + " - " + getString(R.string.other));
-
         }
         return true;
     }
