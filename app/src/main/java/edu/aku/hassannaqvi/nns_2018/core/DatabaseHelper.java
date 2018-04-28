@@ -562,7 +562,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 BLRandomContract Vc = new BLRandomContract();
                 Vc.Sync(jsonObjectCC);
 
-                if (!CheckUIDBLRandomExist(Vc.getLUID())) {
+                if (!CheckBLRandomExist(Vc.get_ID(), Vc.getStructure())) {
 
                     ContentValues values = new ContentValues();
                     values.put(singleRandomHH.COLUMN_ID, Vc.get_ID());
@@ -1155,7 +1155,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-
     public boolean CheckUIDBLRandomExist(String uid) {
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -1168,6 +1167,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 // Which row to update, based on the ID
         String selection = singleRandomHH.COLUMN_LUID + " =?";
         String[] selectionArgs = {uid};
+        Cursor cursor = db.query(singleRandomHH.TABLE_NAME, //Table to query
+                columns,                    //columns to return
+                selection,                  //columns for the WHERE clause
+                selectionArgs,              //The values for the WHERE clause
+                null,                       //group the rows
+                null,                       //filter by row groups
+                null);                      //The sort order
+
+        int cursorCount = cursor.getCount();
+        cursor.close();
+        return cursorCount > 0;
+    }
+
+    public boolean CheckBLRandomExist(String id, String str) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        String[] columns = {
+                singleRandomHH.COLUMN_ID
+        };
+
+// Which row to update, based on the ID
+        String selection = singleRandomHH.COLUMN_ID + " =? AND " + singleRandomHH.COLUMN_STRUCTURE_NO + " =?";
+        String[] selectionArgs = {id, str};
         Cursor cursor = db.query(singleRandomHH.TABLE_NAME, //Table to query
                 columns,                    //columns to return
                 selection,                  //columns for the WHERE clause
@@ -2328,6 +2352,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
         return count;
     }
+
     public Collection<FormsContract> getUnsyncedForms() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
