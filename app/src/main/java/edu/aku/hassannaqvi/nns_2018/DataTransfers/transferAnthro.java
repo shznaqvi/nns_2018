@@ -93,8 +93,8 @@ public class transferAnthro extends AsyncTask<Void, Void, String> {
                 try {
                     JSONArray jsonArray = new JSONArray(json);
                     db.syncAnthroFromDevice(jsonArray);
-                    statusText.setText("Message - " + jsonArray.length() + " Members for Anthro Received..");
-                    Toast.makeText(context, jsonArray.length() + " Members for Anthro Received..", Toast.LENGTH_LONG).show();
+                    statusText.setText("Message - " + jsonArray.length() + " records of Data Received..");
+                    Toast.makeText(context, jsonArray.length() + " records of Data Received..", Toast.LENGTH_LONG).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

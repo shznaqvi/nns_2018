@@ -13,7 +13,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,7 +35,6 @@ import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 public class DeviceDetailFragment extends Fragment implements ConnectionInfoListener {
 
     protected static final int CHOOSE_FILE_RESULT_CODE = 20;
-    EditText msgBox;
     ProgressDialog progressDialog = null;
     private View mContentView = null;
     private WifiP2pDevice device;
@@ -71,7 +69,6 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
         db = new DatabaseHelper(getActivity());
 
         mContentView = inflater.inflate(R.layout.device_detail, null);
-        msgBox = mContentView.findViewById(R.id.msgBox);
         mContentView.findViewById(R.id.btn_connect).setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -138,37 +135,25 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
         mContentView.findViewById(R.id.btn_send_cluster_data).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Forms Contract
-                JSONArray fc = db.getFormsByCluster(getActivity().findViewById(R.id.msgBox).toString());
-                if (fc != null && fc.length() > 0) {
-                    Intent serviceIntent = new Intent(getActivity(), DataTransferService.class);
-                    serviceIntent.setAction(DataTransferService.ACTION_SEND_DATA);
-                    serviceIntent.putExtra(Intent.EXTRA_TEXT, String.valueOf(db.getAnthroFamilyMembers()));
-                    serviceIntent.putExtra(Intent.EXTRA_TEXT, String.valueOf(db.getAnthroFamilyMembers()));
-                    serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_ADDRESS,
-                            info.groupOwnerAddress.getHostAddress());
-                    serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_PORT, 8988);
-                    getActivity().startService(serviceIntent);
-                } else {
-                    Toast.makeText(getActivity(), "No Forms to send", Toast.LENGTH_SHORT).show();
 
+                if (MainApp.fc != null) {
+                    JSONArray fmAnthro = db.getAnthroFamilyMembers();
+                    if (fmAnthro != null && fmAnthro.length() > 0) {
+                        Intent serviceIntent = new Intent(getActivity(), DataTransferService.class);
+                        serviceIntent.setAction(DataTransferService.ACTION_SEND_DATA);
+                        serviceIntent.putExtra("Type", "Anthro");
+                        serviceIntent.putExtra(Intent.EXTRA_TEXT, String.valueOf(db.getAnthroFamilyMembers()));
+                        serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_ADDRESS,
+                                info.groupOwnerAddress.getHostAddress());
+                        serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_PORT, 8988);
+                        getActivity().startService(serviceIntent);
+                    } else {
+                        Toast.makeText(getActivity(), "No family members eligible for Anthropometry in this household", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(getActivity(), "No family member data exists", Toast.LENGTH_SHORT).show();
                 }
 
-                // WRA
-                JSONArray wc = db.getWRAsByUUID(getActivity().findViewById(R.id.msgBox).toString());
-                if (wc != null && wc.length() > 0) {
-                    Intent serviceIntent = new Intent(getActivity(), DataTransferService.class);
-                    serviceIntent.setAction(DataTransferService.ACTION_SEND_DATA);
-                    serviceIntent.putExtra("Type", "Forms");
-                    serviceIntent.putExtra(Intent.EXTRA_TEXT, String.valueOf(db.getAnthroFamilyMembers()));
-                    serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_ADDRESS,
-                            info.groupOwnerAddress.getHostAddress());
-                    serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_PORT, 8988);
-                    getActivity().startService(serviceIntent);
-                } else {
-                    Toast.makeText(getActivity(), "No Forms to send", Toast.LENGTH_SHORT).show();
-
-                }
             }
         });
 
@@ -196,8 +181,8 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
         // The owner IP is now known.
         TextView view = mContentView.findViewById(R.id.group_owner);
         view.setText(getResources().getString(R.string.group_owner_text)
-                + ((info.isGroupOwner == true) ? getResources().getString(R.string.yes)
-                : getResources().getString(R.string.no)));
+                + ((info.isGroupOwner == true) ? getResources().getString(R.string.no)
+                : getResources().getString(R.string.yes)));
 
         // InetAddress from WifiP2pInfo struct.
         view = mContentView.findViewById(R.id.device_info);
@@ -213,7 +198,6 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
             // The other device acts as the client. In this case, we enable the
             // get file button.
             mContentView.findViewById(R.id.btn_send_msg).setVisibility(View.VISIBLE);
-            mContentView.findViewById(R.id.msgBox).setVisibility(View.VISIBLE);
             ((TextView) mContentView.findViewById(R.id.status_text)).setText(getResources()
                     .getString(R.string.client_text));
         }
@@ -230,9 +214,7 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
     public void showDetails(WifiP2pDevice device) {
         this.device = device;
         this.getView().setVisibility(View.VISIBLE);
-        TextView view = mContentView.findViewById(R.id.device_address);
-        view.setText(device.deviceAddress);
-        view = mContentView.findViewById(R.id.device_info);
+        TextView view = mContentView.findViewById(R.id.device_info);
         view.setText(device.toString());
 
     }
@@ -242,16 +224,13 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
      */
     public void resetViews() {
         mContentView.findViewById(R.id.btn_connect).setVisibility(View.VISIBLE);
-        TextView view = mContentView.findViewById(R.id.device_address);
-        view.setText(R.string.empty);
-        view = mContentView.findViewById(R.id.device_info);
+        TextView view = mContentView.findViewById(R.id.device_info);
         view.setText(R.string.empty);
         view = mContentView.findViewById(R.id.group_owner);
         view.setText(R.string.empty);
         view = mContentView.findViewById(R.id.status_text);
         view.setText(R.string.empty);
         mContentView.findViewById(R.id.btn_send_msg).setVisibility(View.GONE);
-        mContentView.findViewById(R.id.msgBox).setVisibility(View.GONE);
         this.getView().setVisibility(View.GONE);
     }
 
@@ -265,8 +244,8 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
         private TextView statusText;
 
         *//**
-         * @param context
-         * @param statusText
+     * @param context
+     * @param statusText
      *//*
         public FileServerAsyncTask(Context context, View statusText) {
             this.context = context;
@@ -316,8 +295,8 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
         }
 
         *//*
-         * (non-Javadoc)
-         * @see android.os.AsyncTask#onPostExecute(java.lang.Object)
+     * (non-Javadoc)
+     * @see android.os.AsyncTask#onPostExecute(java.lang.Object)
      *//*
         @Override
         protected void onPostExecute(String result) {
@@ -341,8 +320,8 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
         }
 
         *//*
-         * (non-Javadoc)
-         * @see android.os.AsyncTask#onPreExecute()
+     * (non-Javadoc)
+     * @see android.os.AsyncTask#onPreExecute()
      *//*
         @Override
         protected void onPreExecute() {
