@@ -553,7 +553,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public void syncBLRandom(JSONArray BLlist) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(singleRandomHH.TABLE_NAME, null, null);
+//        db.delete(singleRandomHH.TABLE_NAME, null, null);
         try {
             JSONArray jsonArray = BLlist;
             for (int i = 0; i < jsonArray.length(); i++) {
@@ -562,20 +562,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 BLRandomContract Vc = new BLRandomContract();
                 Vc.Sync(jsonObjectCC);
 
-                ContentValues values = new ContentValues();
+                if (!CheckUIDBLRandomExist(Vc.getLUID())) {
 
-                values.put(singleRandomHH.COLUMN_ID, Vc.get_ID());
-                values.put(singleRandomHH.COLUMN_LUID, Vc.getLUID());
-                values.put(singleRandomHH.COLUMN_STRUCTURE_NO, Vc.getStructure());
-                values.put(singleRandomHH.COLUMN_FAMILY_EXT_CODE, Vc.getExtension());
-                values.put(singleRandomHH.COLUMN_HH, Vc.getHh());
-                values.put(singleRandomHH.COLUMN_ENUM_BLOCK_CODE, Vc.getSubVillageCode());
-                values.put(singleRandomHH.COLUMN_RANDOMDT, Vc.getRandomDT());
-                values.put(singleRandomHH.COLUMN_HH_HEAD, Vc.getHhhead());
-                values.put(singleRandomHH.COLUMN_CONTACT, Vc.getContact());
-                values.put(singleRandomHH.COLUMN_HH_SELECTED_STRUCT, Vc.getSelStructure());
+                    ContentValues values = new ContentValues();
+                    values.put(singleRandomHH.COLUMN_ID, Vc.get_ID());
+                    values.put(singleRandomHH.COLUMN_LUID, Vc.getLUID());
+                    values.put(singleRandomHH.COLUMN_STRUCTURE_NO, Vc.getStructure());
+                    values.put(singleRandomHH.COLUMN_FAMILY_EXT_CODE, Vc.getExtension());
+                    values.put(singleRandomHH.COLUMN_HH, Vc.getHh());
+                    values.put(singleRandomHH.COLUMN_ENUM_BLOCK_CODE, Vc.getSubVillageCode());
+                    values.put(singleRandomHH.COLUMN_RANDOMDT, Vc.getRandomDT());
+                    values.put(singleRandomHH.COLUMN_HH_HEAD, Vc.getHhhead());
+                    values.put(singleRandomHH.COLUMN_CONTACT, Vc.getContact());
+                    values.put(singleRandomHH.COLUMN_HH_SELECTED_STRUCT, Vc.getSelStructure());
 
-                db.insert(singleRandomHH.TABLE_NAME, null, values);
+                    db.insert(singleRandomHH.TABLE_NAME, null, values);
+                }
             }
         } catch (Exception e) {
         } finally {
@@ -1091,24 +1093,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             JSONArray jsonArray = fmlist;
             for (int i = 0; i < jsonArray.length(); i++) {
 
-                JSONObject jsonObjectUser = jsonArray.getJSONObject(i);
+                JSONObject jsonObjectDT = jsonArray.getJSONObject(i);
 
-                FamilyMembersContract fmc = new FamilyMembersContract();
-                fmc.Sync(jsonObjectUser);
-                ContentValues values = new ContentValues();
+                switch (jsonObjectDT.getString("project_name")) {
+                    case "NNS 2018 - Team Leaders":
+                        BLRandomInsertion(jsonObjectDT, db);
+                        break;
+                    case "National Nutrition Survey 2018":
+                        AntrhoInsertion(jsonObjectDT, db);
+                        break;
+                }
 
-                values.put(familyMembers.COLUMN_UID, fmc.get_UID());
-                values.put(familyMembers.COLUMN_UUID, fmc.get_UUID());
-                values.put(familyMembers.COLUMN_FORMDATE, fmc.getFormDate());
-                values.put(familyMembers.COLUMN_USER, fmc.getUser());
-                //FormsTable.COLUMN_GPSELEV,
-                values.put(familyMembers.COLUMN_HH_NO, fmc.getHhNo());
-                values.put(familyMembers.COLUMN_ENM_NO, fmc.getEnmNo());
-                values.put(familyMembers.COLUMN_SA2, fmc.getsA2());
-                values.put(familyMembers.COLUMN_AV, fmc.getAv());
-                values.put(familyMembers.COLUMN_DEVICETAGID, fmc.getDeviceId());
-                values.put(familyMembers.COLUMN_DEVICEID, fmc.getDeviceId());
-                db.insert(familyMembers.TABLE_NAME, null, values);
             }
 
 
@@ -1119,13 +1114,84 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public void AntrhoInsertion(JSONObject jsonObjectDT, SQLiteDatabase db) throws JSONException {
+        FamilyMembersContract fmc = new FamilyMembersContract();
+        fmc.Sync(jsonObjectDT);
+        ContentValues values = new ContentValues();
+
+        values.put(familyMembers.COLUMN_UID, fmc.get_UID());
+        values.put(familyMembers.COLUMN_UUID, fmc.get_UUID());
+        values.put(familyMembers.COLUMN_FORMDATE, fmc.getFormDate());
+        values.put(familyMembers.COLUMN_USER, fmc.getUser());
+        values.put(familyMembers.COLUMN_HH_NO, fmc.getHhNo());
+        values.put(familyMembers.COLUMN_ENM_NO, fmc.getEnmNo());
+        values.put(familyMembers.COLUMN_SA2, fmc.getsA2());
+        values.put(familyMembers.COLUMN_AV, fmc.getAv());
+        values.put(familyMembers.COLUMN_DEVICETAGID, fmc.getDeviceId());
+        values.put(familyMembers.COLUMN_DEVICEID, fmc.getDeviceId());
+        db.insert(familyMembers.TABLE_NAME, null, values);
+    }
+
+    public void BLRandomInsertion(JSONObject jsonObjectDT, SQLiteDatabase db) throws JSONException {
+        BLRandomContract Vc = new BLRandomContract();
+        Vc.Sync(jsonObjectDT);
+
+        if (!CheckUIDBLRandomExist(Vc.getLUID())) {
+
+            ContentValues values = new ContentValues();
+
+            values.put(singleRandomHH.COLUMN_ID, Vc.get_ID());
+            values.put(singleRandomHH.COLUMN_LUID, Vc.getLUID());
+            values.put(singleRandomHH.COLUMN_STRUCTURE_NO, Vc.getStructure());
+            values.put(singleRandomHH.COLUMN_FAMILY_EXT_CODE, Vc.getExtension());
+            values.put(singleRandomHH.COLUMN_HH, Vc.getHh());
+            values.put(singleRandomHH.COLUMN_ENUM_BLOCK_CODE, Vc.getSubVillageCode());
+            values.put(singleRandomHH.COLUMN_RANDOMDT, Vc.getRandomDT());
+            values.put(singleRandomHH.COLUMN_HH_HEAD, Vc.getHhhead());
+            values.put(singleRandomHH.COLUMN_CONTACT, Vc.getContact());
+            values.put(singleRandomHH.COLUMN_HH_SELECTED_STRUCT, Vc.getSelStructure());
+
+            long count = db.insert(singleRandomHH.TABLE_NAME, null, values);
+        }
+    }
+
+
+    public boolean CheckUIDBLRandomExist(String uid) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        String[] columns = {
+                singleRandomHH.COLUMN_ID
+        };
+
+// Which row to update, based on the ID
+        String selection = singleRandomHH.COLUMN_LUID + " =?";
+        String[] selectionArgs = {uid};
+        Cursor cursor = db.query(singleRandomHH.TABLE_NAME, //Table to query
+                columns,                    //columns to return
+                selection,                  //columns for the WHERE clause
+                selectionArgs,              //The values for the WHERE clause
+                null,                       //group the rows
+                null,                       //filter by row groups
+                null);                      //The sort order
+
+        int cursorCount = cursor.getCount();
+        cursor.close();
+        return cursorCount > 0;
+    }
+
     public boolean Login(String username, String password) throws SQLException {
 
         SQLiteDatabase db = this.getReadableDatabase();
 
 // New value for one column
         String[] columns = {
-                UsersTable._ID
+                UsersTable._ID,
+                UsersTable.ROW_USERNAME,
+                UsersTable.FULL_NAME,
+                UsersTable.TEAM_NO,
+                UsersTable.ROW_PASSWORD
         };
 
 // Which row to update, based on the ID
@@ -1145,9 +1211,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return cursorCount > 0;*/
 
-        if (cursor != null) {
-            return cursorCount > 0;
+        if (cursorCount > 0) {
+            cursor.moveToFirst();
+            MainApp.usersContract = new UsersContract().Hydrate(cursor);
+            return true;
         }
+
         return false;
     }
 
