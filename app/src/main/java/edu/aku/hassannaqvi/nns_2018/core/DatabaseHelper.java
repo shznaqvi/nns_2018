@@ -553,7 +553,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public void syncBLRandom(JSONArray BLlist) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(singleRandomHH.TABLE_NAME, null, null);
+//        db.delete(singleRandomHH.TABLE_NAME, null, null);
         try {
             JSONArray jsonArray = BLlist;
             for (int i = 0; i < jsonArray.length(); i++) {
@@ -562,20 +562,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 BLRandomContract Vc = new BLRandomContract();
                 Vc.Sync(jsonObjectCC);
 
-                ContentValues values = new ContentValues();
+                if (!CheckUIDBLRandomExist(Vc.getLUID())) {
 
-                values.put(singleRandomHH.COLUMN_ID, Vc.get_ID());
-                values.put(singleRandomHH.COLUMN_LUID, Vc.getLUID());
-                values.put(singleRandomHH.COLUMN_STRUCTURE_NO, Vc.getStructure());
-                values.put(singleRandomHH.COLUMN_FAMILY_EXT_CODE, Vc.getExtension());
-                values.put(singleRandomHH.COLUMN_HH, Vc.getHh());
-                values.put(singleRandomHH.COLUMN_ENUM_BLOCK_CODE, Vc.getSubVillageCode());
-                values.put(singleRandomHH.COLUMN_RANDOMDT, Vc.getRandomDT());
-                values.put(singleRandomHH.COLUMN_HH_HEAD, Vc.getHhhead());
-                values.put(singleRandomHH.COLUMN_CONTACT, Vc.getContact());
-                values.put(singleRandomHH.COLUMN_HH_SELECTED_STRUCT, Vc.getSelStructure());
+                    ContentValues values = new ContentValues();
+                    values.put(singleRandomHH.COLUMN_ID, Vc.get_ID());
+                    values.put(singleRandomHH.COLUMN_LUID, Vc.getLUID());
+                    values.put(singleRandomHH.COLUMN_STRUCTURE_NO, Vc.getStructure());
+                    values.put(singleRandomHH.COLUMN_FAMILY_EXT_CODE, Vc.getExtension());
+                    values.put(singleRandomHH.COLUMN_HH, Vc.getHh());
+                    values.put(singleRandomHH.COLUMN_ENUM_BLOCK_CODE, Vc.getSubVillageCode());
+                    values.put(singleRandomHH.COLUMN_RANDOMDT, Vc.getRandomDT());
+                    values.put(singleRandomHH.COLUMN_HH_HEAD, Vc.getHhhead());
+                    values.put(singleRandomHH.COLUMN_CONTACT, Vc.getContact());
+                    values.put(singleRandomHH.COLUMN_HH_SELECTED_STRUCT, Vc.getSelStructure());
 
-                db.insert(singleRandomHH.TABLE_NAME, null, values);
+                    db.insert(singleRandomHH.TABLE_NAME, null, values);
+                }
             }
         } catch (Exception e) {
         } finally {
@@ -1210,10 +1212,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursorCount > 0;*/
 
         if (cursorCount > 0) {
-            while (cursor.moveToFirst()) {
-                MainApp.usersContract = new UsersContract().Hydrate(cursor);
-            }
-
+            cursor.moveToFirst();
+            MainApp.usersContract = new UsersContract().Hydrate(cursor);
             return true;
         }
 
