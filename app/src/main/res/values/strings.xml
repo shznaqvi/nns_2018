@@ -472,8 +472,8 @@
     <string name="nh7a01info"> وصول کرنے والا
     سیکشن A2 سے دیکھ کر لکھیں </string>
     <string name="nh7a01"> Line No </string>
-    <string name="nh7a02"> Name </string>
-    <string name="nh7a03"> مدت </string>
+    <string name="nh7a02"> امداد وصول کرنے والے کا نام </string>
+    <string name="nh7a03"> وصول کی جانے والی امداد کی مدت </string>
     <string name="nh7a03y"> YY </string>
     <string name="nh7a03m"> MM </string>
 
