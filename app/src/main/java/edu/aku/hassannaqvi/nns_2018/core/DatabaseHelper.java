@@ -69,7 +69,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     public static final String DATABASE_NAME = "nns_2018.db";
-    private static final int DATABASE_VERSION = 8;
+    private static final int DATABASE_VERSION = 9;
     public static final String DB_NAME = DATABASE_NAME.replace(".", "_" + MainApp.versionName + "_" + DATABASE_VERSION + "_copy.");
     public static final String PROJECT_NAME = "NNS-2018";
 
@@ -437,6 +437,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_DECEASED);
         db.execSQL(SQL_CREATE_SPECIMEN_MEMBERS);
         db.execSQL(SQL_CREATE_WATER_SPECIMEN_MEMBERS);
+        db.execSQL(SQL_CREATE_MICRO);
     }
 
     @Override
@@ -473,7 +474,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.execSQL(SQL_ALTER_ELIGIBLEMEMBER);
             case 6:
                 db.execSQL(SQL_ALTER_USERS);
-            case 7:
+            case 8:
                 db.execSQL(SQL_CREATE_MICRO);
         }
 
