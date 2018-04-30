@@ -112,7 +112,7 @@ public class MicroResultsActivity extends AppCompatActivity {
                         if (length < 5) {
                             binding.nh108.setText(binding.nh108.getText().toString() + "-");
                             binding.nh108.setSelection(binding.nh108.getText().length());
-                            //binding.nh108.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+                            binding.nh108.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
                         }
 
                     }
@@ -284,15 +284,15 @@ public class MicroResultsActivity extends AppCompatActivity {
         }
 
 //        nh108
-
-        if (binding.nh108.getText().toString().length() == 8) {
+        if (binding.nh108.getText().toString().length() == 6) {
             String[] str = binding.nh108.getText().toString().split("-");
-            if (str.length > 2 || binding.nh108.getText().toString().charAt(4) != '-' || !str[0].matches("[0-9]+") || !str[1].matches("[0-9]+")) {
+            if (str.length > 2 || binding.nh108.getText().toString().charAt(4) != '-' || !str[0].matches("[0-9]+")
+                    || !str[1].matches("[a-zA-Z]")) {
                 binding.nh108.setError("Wrong presentation!!");
                 return false;
             }
         } else {
-            Toast.makeText(this, "Invalid length: " + getString(R.string.nh108), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Invalid length: " + getString(R.string.nh108), Toast.LENGTH_SHORT).show();
             binding.nh108.setError("Invalid length");
             return false;
         }
