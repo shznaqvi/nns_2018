@@ -690,8 +690,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         };
 
         String whereClause = familyMembers.COLUMN_ENM_NO + "=? AND "
-                + familyMembers.COLUMN_HH_NO + "=?";
-        String[] whereArgs = new String[]{cluster, hh};
+                + familyMembers.COLUMN_HH_NO + "=? AND " + familyMembers.COLUMN_AV + "=?";
+        String[] whereArgs = new String[]{cluster, hh, "1"};
         String groupBy = null;
         String having = null;
 

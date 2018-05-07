@@ -947,7 +947,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                 // Add data in list
                 if (Age < 2) {
                     MainApp.childUnder2.add(family);
-                    //MainApp.childUnder2Check.add(family);
+                    MainApp.childUnder2Check.add(family);
                     MainApp.childUnder5.add(family);
                     MainApp.childUnder5_Del.add(family);
                 } else {
@@ -956,9 +956,9 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
 
                     //MainApp.adolescents.add(family);
                 }
-                if (Age < 2) {
+                /*if (Age < 2) {
                     MainApp.childUnder2Check.add(family);
-                }
+                }*/
 
                 if (Age < 6 && family.getMotherId().equals("00")) {
                     MainApp.childNA.add(family);

@@ -235,12 +235,12 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
             if (jsonB2.getnh207().equals("5")) {
                 MainApp.membersCount.setWra(MainApp.membersCount.getWra() - 1);
                 if (jsonB2.getnh210().equals("1")) {
-                    MainApp.fmc.setAv("1");
+                    MainApp.fmc.setAv("");
                 }
             } else {
                 MainApp.membersCount.setMwra(MainApp.membersCount.getMwra() - 1);
                 if (jsonB2.getnh210().equals("1")) {
-                    MainApp.fmc.setAv("1");
+                    MainApp.fmc.setAv("");
                 }
 
             }
@@ -278,7 +278,7 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
             }
 
             if (jsonB2.getnh210().equals("1")) {
-                MainApp.fmc.setAv("1");
+                MainApp.fmc.setAv("");
             }
         }
 
@@ -294,7 +294,7 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
             }
             MainApp.membersCount.setMembers(3, memType);
             if (jsonB2.getnh210().equals("1")) {
-                MainApp.fmc.setAv("1");
+                MainApp.fmc.setAv("");
             }
 
             // Add data in list
@@ -322,6 +322,14 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                     }
                 }
 
+//                MainApp.childUnder2Check.add(MainApp.fmc);
+                for (byte i = 0; i < MainApp.childUnder2Check.size(); i++) {
+                    if (MainApp.childUnder2Check.get(i).getSerialNo().equals(MainApp.fmc.getSerialNo())) {
+                        MainApp.childUnder2Check.remove(i);
+                        break;
+                    }
+                }
+
             } else {
 
 //                if (jsonB2.getnh210().equals("1")) {
@@ -343,7 +351,7 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
 
             }
 
-            if (Age < 2) {
+/*            if (Age < 2) {
 
 //                MainApp.childUnder2Check.add(MainApp.fmc);
                 for (byte i = 0; i < MainApp.childUnder2Check.size(); i++) {
@@ -352,7 +360,7 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                         break;
                     }
                 }
-            }
+            }*/
 
 //            if (Age < 6 && MainApp.fmc.getMotherId().equals("00") && jsonB2.getnh210().equals("1")) {
             if (Age < 6 && MainApp.fmc.getMotherId().equals("00")) {
@@ -1069,7 +1077,7 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
             // Add data in list
             if (Age < 2) {
                 MainApp.childUnder2.add(MainApp.fmc);
-                //MainApp.childUnder2Check.add(MainApp.fmc);
+                MainApp.childUnder2Check.add(MainApp.fmc);
                 MainApp.childUnder5.add(MainApp.fmc);
                 MainApp.childUnder5_Del.add(MainApp.fmc);
             } else {
@@ -1078,10 +1086,10 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
 
                 //MainApp.adolescents.add(MainApp.fmc);
             }
-            if (Age < 2) {
+            /*if (Age < 2) {
                 MainApp.childUnder2Check.add(MainApp.fmc);
 
-            }
+            }*/
 
             if (Age < 6 && MainApp.fmc.getMotherId().equals("00")) {
                 MainApp.childNA.add(MainApp.fmc);
