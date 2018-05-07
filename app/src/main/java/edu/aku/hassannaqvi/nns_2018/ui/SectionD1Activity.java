@@ -427,7 +427,7 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
         sA3.put("nd1g", binding.nd1ga.isChecked() ? "1"
                 : binding.nd1gb.isChecked() ? "2" : "0");
 
-        sA3.put("nd1g", binding.nd1caa.isChecked() ? "1"
+        sA3.put("nd1ca", binding.nd1caa.isChecked() ? "1"
                 : binding.nd1cab.isChecked() ? "2" : "0");
 
         sA3.put("nd1o", binding.nd1oa.isChecked() ? "1"
