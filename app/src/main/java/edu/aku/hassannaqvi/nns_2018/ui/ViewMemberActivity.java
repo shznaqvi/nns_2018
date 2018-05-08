@@ -452,6 +452,7 @@ public class ViewMemberActivity extends MenuActivity {
                         }
 
                     } else {
+                        SectionC1Activity.isNA = false;
                         GetIntent = new Intent(this, SectionC1Activity.class)
                                 .putExtra("childFlag", true)
                                 .putExtra("name", SectionC1Activity.selectedChildName);
@@ -488,6 +489,7 @@ public class ViewMemberActivity extends MenuActivity {
                         }
                     }
                     if (childcount) {
+                        SectionC1Activity.isNA = false;
                         GetIntent = new Intent(this, SectionC1Activity.class);
                     } /*else if (MainApp.childNA.size() > 0) {
                         SectionC1Activity.isNA = true;
@@ -542,10 +544,12 @@ public class ViewMemberActivity extends MenuActivity {
                             SectionC1Activity.isNA = true;
                             GetIntent = new Intent(this, SectionC1Activity.class)
                                     .putExtra("reBackComing", false);
-                        } else {
+                        } else if ((MainApp.childUnder5.size() - MainApp.childNA.size()) > SectionC1Activity.Childsize && SectionC1Activity.counterPerMom != (SectionC1Activity.counter - 1)) {
                             SectionC1Activity.isNA = false;
                             GetIntent = new Intent(this, SectionC1Activity.class)
                                     .putExtra("reBackComing", false);
+                        } else {
+                            GetIntent = new Intent(this, EndingActivity.class).putExtra("complete", true);
                         }
                     } else {
                         GetIntent = new Intent(this, EndingActivity.class).putExtra("complete", true);

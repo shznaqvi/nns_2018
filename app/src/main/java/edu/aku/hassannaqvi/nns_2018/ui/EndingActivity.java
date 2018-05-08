@@ -11,6 +11,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import edu.aku.hassannaqvi.nns_2018.R;
@@ -70,6 +71,10 @@ public class EndingActivity extends AddMember_MenuActivity {
                 }
             }
         });
+
+        MainApp.childUnder5 = new ArrayList<>();
+        MainApp.childUnder5_Del = new ArrayList<>();
+        MainApp.childUnder2Check = new ArrayList<>();
     }
 
     public void BtnEnd() {

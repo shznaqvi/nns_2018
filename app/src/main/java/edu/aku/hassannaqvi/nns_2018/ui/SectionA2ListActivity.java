@@ -389,7 +389,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
                                         if (SectionA1Activity.reBackFlag) {
                                             respLineNo = "";
                                             startActivity(new Intent(getApplicationContext(), SectionA4Activity.class));
-//                                          startActivity(new Intent(this, SectionB1Activity.class));
+                                            //                                           startActivity(new Intent(getApplicationContext(), ViewMemberActivity.class).putExtra("activity", 1));
                                         } else {
                                             startActivity(new Intent(getApplicationContext(), ViewMemberActivity.class).putExtra("activity", 6));
                                         }
