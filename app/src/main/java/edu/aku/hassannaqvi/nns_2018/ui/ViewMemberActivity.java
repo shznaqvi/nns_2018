@@ -403,7 +403,31 @@ public class ViewMemberActivity extends MenuActivity {
                         SectionC1Activity.isNA = false;
                         GetIntent = new Intent(this, SectionC1Activity.class);
                     }*/
-                    else {
+                    else if (MainApp.childUnder5_Del.size() > 0) {
+                        for (FamilyMembersContract familyMembersContract : MainApp.childUnder5_Del) {
+                            if (!familyMembersContract.getMotherId().equals("00")) {
+                                for (FamilyMembersContract familyMembersContract1 : MainApp.members_f_m) {
+                                    if (familyMembersContract1.getna204().equals("2") && familyMembersContract1.getSerialNo().equals(familyMembersContract.getMotherId())) {
+                                        if (Integer.valueOf(familyMembersContract1.getAgeInYear()) >= 50 && familyMembersContract1.getAv().equals("1")) {
+                                            SectionC1Activity.isNA = true;
+                                            GetIntent = new Intent(this, SectionC1Activity.class);
+
+                                            break;
+                                        } else {
+                                            GetIntent = new Intent(this, EndingActivity.class).putExtra("complete", true);
+
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                            if (GetIntent != null) {
+                                break;
+                            }
+                        }
+
+
+                    } else {
                         GetIntent = new Intent(this, EndingActivity.class).putExtra("complete", true);
                     }
                 } else {
@@ -435,8 +459,27 @@ public class ViewMemberActivity extends MenuActivity {
                                 SectionC1Activity.isNA = true;
                                 GetIntent = new Intent(this, SectionC1Activity.class);
                             } else if (MainApp.childUnder5_Del.size() > 0) {
-                                SectionC1Activity.isNA = true;
-                                GetIntent = new Intent(this, SectionC1Activity.class);
+                                for (FamilyMembersContract familyMembersContract : MainApp.childUnder5_Del) {
+                                    if (!familyMembersContract.getMotherId().equals("00")) {
+                                        for (FamilyMembersContract familyMembersContract1 : MainApp.members_f_m) {
+                                            if (familyMembersContract1.getna204().equals("2") && familyMembersContract1.getSerialNo().equals(familyMembersContract.getMotherId())) {
+                                                if (Integer.valueOf(familyMembersContract1.getAgeInYear()) >= 50 && familyMembersContract1.getAv().equals("1")) {
+                                                    SectionC1Activity.isNA = true;
+                                                    GetIntent = new Intent(this, SectionC1Activity.class);
+
+                                                    break;
+                                                } else {
+                                                    GetIntent = new Intent(this, EndingActivity.class).putExtra("complete", true);
+
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    if (GetIntent != null) {
+                                        break;
+                                    }
+                                }
 
                             } else {
                                 GetIntent = new Intent(this, EndingActivity.class).putExtra("complete", true);
@@ -506,8 +549,29 @@ public class ViewMemberActivity extends MenuActivity {
                             SectionC1Activity.isNA = true;
                             GetIntent = new Intent(this, SectionC1Activity.class);
                         } else if (MainApp.childUnder5_Del.size() > 0) {
-                            SectionC1Activity.isNA = true;
-                            GetIntent = new Intent(this, SectionC1Activity.class);
+                            for (FamilyMembersContract familyMembersContract : MainApp.childUnder5_Del) {
+                                if (!familyMembersContract.getMotherId().equals("00")) {
+                                    for (FamilyMembersContract familyMembersContract1 : MainApp.members_f_m) {
+                                        if (familyMembersContract1.getna204().equals("2") && familyMembersContract1.getSerialNo().equals(familyMembersContract.getMotherId())) {
+                                            if (Integer.valueOf(familyMembersContract1.getAgeInYear()) >= 50 && familyMembersContract1.getAv().equals("1")) {
+                                                SectionC1Activity.isNA = true;
+                                                GetIntent = new Intent(this, SectionC1Activity.class);
+
+                                                break;
+                                            } else {
+                                                GetIntent = new Intent(this, EndingActivity.class).putExtra("complete", true);
+
+                                                break;
+                                            }
+                                        }
+                                    }
+                                }
+                                if (GetIntent != null) {
+                                    break;
+                                }
+                            }
+
+
                         } else {
                             GetIntent = new Intent(this, EndingActivity.class).putExtra("complete", true);
                         }

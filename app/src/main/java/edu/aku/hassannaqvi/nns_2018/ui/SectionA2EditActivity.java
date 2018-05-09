@@ -230,18 +230,23 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
 
         MainApp.membersCount.setMembers(1, memType);
 
+        //Set availability
+        if (jsonB2.getnh210().equals("1")) {
+            MainApp.fmc.setAv("");
+        }
+
         //MWRA
         if ((Age >= 15 && Age < 50) && MainApp.fmc.getna204().equals("2")) {
             if (jsonB2.getnh207().equals("5")) {
                 MainApp.membersCount.setWra(MainApp.membersCount.getWra() - 1);
-                if (jsonB2.getnh210().equals("1")) {
+                /*if (jsonB2.getnh210().equals("1")) {
                     MainApp.fmc.setAv("");
-                }
+                }*/
             } else {
                 MainApp.membersCount.setMwra(MainApp.membersCount.getMwra() - 1);
-                if (jsonB2.getnh210().equals("1")) {
+                /*if (jsonB2.getnh210().equals("1")) {
                     MainApp.fmc.setAv("");
-                }
+                }*/
 
             }
 //            MainApp.mwra.add(MainApp.fmc);
@@ -277,9 +282,9 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                 }
             }
 
-            if (jsonB2.getnh210().equals("1")) {
+            /*if (jsonB2.getnh210().equals("1")) {
                 MainApp.fmc.setAv("");
-            }
+            }*/
         }
 
         //Children < 5
@@ -293,9 +298,9 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                 memType.put(1, Integer.valueOf(mem.get(3).get(1).toString()));
             }
             MainApp.membersCount.setMembers(3, memType);
-            if (jsonB2.getnh210().equals("1")) {
+            /*if (jsonB2.getnh210().equals("1")) {
                 MainApp.fmc.setAv("");
-            }
+            }*/
 
             // Add data in list
             if (Age < 2) {
@@ -1020,18 +1025,23 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
 
         MainApp.membersCount.setMembers(1, memType);
 
+        // Set availability
+        if (binding.nh210a.isChecked()) {
+            MainApp.fmc.setAv("1");
+        }
+
         //MWRA
         if ((Age >= 15 && Age < 50) && binding.na204b.isChecked()) {
             if (binding.nh2mse.isChecked()) {
                 MainApp.membersCount.setWra(MainApp.membersCount.getWra() + 1);
-                if (binding.nh210a.isChecked()) {
+                /*if (binding.nh210a.isChecked()) {
                     MainApp.fmc.setAv("1");
-                }
+                }*/
             } else {
                 MainApp.membersCount.setMwra(MainApp.membersCount.getMwra() + 1);
-                if (binding.nh210a.isChecked()) {
+                /*if (binding.nh210a.isChecked()) {
                     MainApp.fmc.setAv("1");
-                }
+                }*/
 
             }
             if (binding.nh210a.isChecked()) {
@@ -1054,9 +1064,9 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
 
             // Add data in list
             MainApp.adolescents.add(MainApp.fmc);
-            if (binding.nh210a.isChecked()) {
+            /*if (binding.nh210a.isChecked()) {
                 MainApp.fmc.setAv("1");
-            }
+            }*/
         }
 
         //Children < 5
@@ -1070,9 +1080,9 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                 memType.put(1, Integer.valueOf(mem.get(3).get(1).toString()));
             }
             MainApp.membersCount.setMembers(3, memType);
-            if (binding.nh210a.isChecked()) {
+            /*if (binding.nh210a.isChecked()) {
                 MainApp.fmc.setAv("1");
-            }
+            }*/
 
             // Add data in list
             if (Age < 2) {
