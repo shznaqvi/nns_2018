@@ -575,12 +575,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values.put(singleRandomHH.COLUMN_CONTACT, Vc.getContact());
                 values.put(singleRandomHH.COLUMN_HH_SELECTED_STRUCT, Vc.getSelStructure());
 
-                if (CheckBLRandomExist(Vc.get_ID(), Vc.getStructure(), Vc.getExtension())) {
+                if (CheckBLRandomExist(Vc.getLUID(), Vc.getSubVillageCode(), Vc.getStructure(), Vc.getExtension())) {
                     db.update(
                             singleRandomHH.TABLE_NAME,
                             values,
-                            singleRandomHH.COLUMN_LUID + " = ?",
-                            new String[]{Vc.getLUID()}
+                            singleRandomHH.COLUMN_LUID + " =? AND " + singleRandomHH.COLUMN_ENUM_BLOCK_CODE + " =? AND " + singleRandomHH.COLUMN_STRUCTURE_NO + " =? AND " + singleRandomHH.COLUMN_FAMILY_EXT_CODE + " =?",
+                            new String[]{Vc.getLUID(), Vc.getSubVillageCode(), Vc.getStructure(), Vc.getExtension()}
                     );
                 } else {
                     db.insert(singleRandomHH.TABLE_NAME, null, values);
@@ -1187,7 +1187,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursorCount > 0;
     }
 
-    public boolean CheckBLRandomExist(String id, String str, String ext) {
+    public boolean CheckBLRandomExist(String luid, String cluster, String str, String ext) {
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -1197,8 +1197,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         };
 
 // Which row to update, based on the ID
-        String selection = singleRandomHH.COLUMN_ID + " =? AND " + singleRandomHH.COLUMN_STRUCTURE_NO + " =? AND " + singleRandomHH.COLUMN_FAMILY_EXT_CODE + " =?";
-        String[] selectionArgs = {id, str, ext};
+        String selection = singleRandomHH.COLUMN_LUID + " =? AND " + singleRandomHH.COLUMN_ENUM_BLOCK_CODE + " =? AND " + singleRandomHH.COLUMN_STRUCTURE_NO + " =? AND " + singleRandomHH.COLUMN_FAMILY_EXT_CODE + " =?";
+        String[] selectionArgs = {luid, cluster, str, ext};
         Cursor cursor = db.query(singleRandomHH.TABLE_NAME, //Table to query
                 columns,                    //columns to return
                 selection,                  //columns for the WHERE clause
