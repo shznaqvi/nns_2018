@@ -384,6 +384,22 @@ public class ViewMemberActivity extends MenuActivity {
         }
     }
 
+    public Boolean updateEndingFromHH() {
+        MainApp.fc.setIstatus88x("1");
+
+        DatabaseHelper db = new DatabaseHelper(this);
+
+        int updcount = db.updateEnding();
+
+        if (updcount == 1) {
+            //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+            return true;
+        } else {
+            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+    }
+
     public void BtnContinue() {
 
         Intent GetIntent = null;
@@ -391,6 +407,12 @@ public class ViewMemberActivity extends MenuActivity {
             case 1:
             case 2:
             case 3:
+
+                // Update istatus of ending activity
+                if (!updateEndingFromHH()) {
+                    Toast.makeText(this, "Istatus for HH not update!!", Toast.LENGTH_SHORT).show();
+                }
+
                 if (MainApp.mwra.size() > 0) {
                     GetIntent = new Intent(this, SectionB1Activity.class);
                 } else if (MainApp.childUnder5.size() > 0) {
