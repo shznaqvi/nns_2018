@@ -23,6 +23,7 @@ android {
             minSdkVersion 22
             targetSdkVersion 22
 
+
             versionCode code
             versionName "1.5"
             multiDexEnabled true

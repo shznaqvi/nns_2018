@@ -63,7 +63,7 @@ public class MainApp extends Application {
     private static final long MILLIS_IN_SECOND = 1000;
     private static final long SECONDS_IN_MINUTE = 60;
     private static final long MINUTES_IN_HOUR = 60;
-    private static final long HOURS_IN_DAY = 60;
+    private static final long HOURS_IN_DAY = 24;
     public static final long MILLISECONDS_IN_DAY = MILLIS_IN_SECOND * SECONDS_IN_MINUTE * MINUTES_IN_HOUR * HOURS_IN_DAY;
     private static final long DAYS_IN_YEAR = 365;
     public static final long MILLISECONDS_IN_YEAR = MILLIS_IN_SECOND * SECONDS_IN_MINUTE * MINUTES_IN_HOUR * HOURS_IN_DAY * DAYS_IN_YEAR;
@@ -143,6 +143,7 @@ public class MainApp extends Application {
     public static boolean flag = false;
     public static int outcome = 0;
     public static String lineNo = "";
+    public static int status = 0;
     public static int mwraPosition = 0;
 
     public static int nuCount = 1;

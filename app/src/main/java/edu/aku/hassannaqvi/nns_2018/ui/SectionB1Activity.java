@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -21,7 +20,6 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -31,9 +29,7 @@ import java.util.Timer;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONB1ModelClass;
-import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONH8ModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
-import edu.aku.hassannaqvi.nns_2018.contracts.DeceasedContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
@@ -884,7 +880,7 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
 
         bi.nb101.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, lstMwra));
 
-        bi.nb101.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        /*bi.nb101.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (bi.nb101.getSelectedItemPosition() != 0) {
@@ -901,11 +897,11 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-        });
+        });*/
     }
 
     private void GetDataFromForm(String uuid) {
-        if (getIntent().getIntExtra("under2Size", 0) > 0) {
+        /*if (getIntent().getIntExtra("under2Size", 0) > 0) {
             childCheck = true;
         } else {
             Collection<DeceasedContract> deceasedContracts = db.getDeceasedMembersCount(uuid);
@@ -916,7 +912,7 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                     break;
                 }
             }
-        }
+        }*/
 
         bi.nb101.setVisibility(View.GONE);
         bi.nb101a.setVisibility(View.VISIBLE);
@@ -940,7 +936,7 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
     private void AutoPopulate(String uuid, String uid) {
 
         MainApp.mc = db.getsB1(uuid, uid);
-        if (getIntent().getIntExtra("under2Size", 0) > 0) {
+        /*if (getIntent().getIntExtra("under2Size", 0) > 0) {
             childCheck = true;
         } else {
             Collection<DeceasedContract> deceasedContracts = db.getDeceasedMembersCount(uuid);
@@ -951,7 +947,7 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                     break;
                 }
             }
-        }
+        }*/
 
         bi.nb101.setVisibility(View.GONE);
         bi.nb101a.setVisibility(View.VISIBLE);
@@ -1084,7 +1080,7 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                 if (bi.nw203a.isChecked()) {
                     if (bi.nw204a.isChecked() || bi.nw205a.isChecked()) {
                         if (bi.nw207a.isChecked()) {
-                            if (bi.nw216a.isChecked()) {
+                            /*if (bi.nw216a.isChecked()) {
                                 if (Integer.valueOf(bi.nw216aa.getText().toString()) > 0) {
 
                                     if (Integer.valueOf(bi.nw216aa.getText().toString()) < prevMiscarriages) {
@@ -1117,7 +1113,7 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                                         alert.show();
 
                                     } else {
-                                        MainApp.totalPregnancy = Integer.valueOf(bi.nw216aa.getText().toString());
+                                        MainApp.totalPregnancy = Integer.valueOf(bi.nw214.getText().toString());
 
                                         startActivityForResult(new Intent(this, SectionB1AActivity.class)
                                                 .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
@@ -1129,7 +1125,14 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                                 startActivity(new Intent(this, SectionB2Activity.class));
                             } else {
                                 redirectCondition();
+                            }*/
+
+                            if (Integer.valueOf(bi.nw214.getText().toString()) > 0) {
+                                startActivity(new Intent(this, SectionB1AActivity.class));
+                            } else {
+                                redirectCondition();
                             }
+
                         } else {
                             redirectCondition();
                         }
