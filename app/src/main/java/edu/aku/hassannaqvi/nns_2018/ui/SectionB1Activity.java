@@ -58,6 +58,7 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
     String classPassName = "";
     JSONB1ModelClass jsonB1;
     int prevMiscarriages = 0;
+    int prevDeliveries = 0;
     private Timer timer = new Timer();
     Calendar dob = Calendar.getInstance();
     long agebyDob = 0;
@@ -1036,6 +1037,11 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
             bi.nw212.setText(jsonB1.getnw212());
             bi.nw213.setText(jsonB1.getnw213());
             bi.nw214.setText(jsonB1.getnw214());
+
+            if (!jsonB1.getnw214().equals("")) {
+                prevDeliveries = Integer.valueOf(jsonB1.getnw214());
+            }
+
             bi.nw215.setText(jsonB1.getnw215());
 
 
@@ -1128,10 +1134,52 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                             }*/
 
                             if (Integer.valueOf(bi.nw214.getText().toString()) > 0) {
-                                startActivity(new Intent(this, SectionB1AActivity.class));
+
+                                if (Integer.valueOf(bi.nw214.getText().toString()) < prevDeliveries) {
+
+                                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                                            SectionB1Activity.this);
+                                    alertDialogBuilder
+                                            .setMessage("In previous you saved " + prevDeliveries + " Miscarriage.\n" +
+                                                    "Do you want to continue it?")
+                                            .setCancelable(false)
+                                            .setPositiveButton("Yes",
+                                                    new DialogInterface.OnClickListener() {
+                                                        public void onClick(DialogInterface dialog,
+                                                                            int id) {
+
+                                                            MainApp.totalPregnancy = prevDeliveries;
+
+                                                            startActivityForResult(new Intent(SectionB1Activity.this, SectionB1AActivity.class)
+                                                                    .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
+                                                        }
+                                                    });
+                                    alertDialogBuilder.setNegativeButton("Cancel",
+                                            new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int id) {
+                                                    dialog.cancel();
+
+                                                }
+                                            });
+                                    AlertDialog alert = alertDialogBuilder.create();
+                                    alert.show();
+
+                                } else {
+                                    MainApp.totalPregnancy = Integer.valueOf(bi.nw214.getText().toString());
+
+                                    startActivityForResult(new Intent(this, SectionB1AActivity.class)
+                                            .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
+
+                                }
                             } else {
                                 redirectCondition();
                             }
+
+                            /*if (MainApp.totalPregnancy > 0) {
+                                startActivity(new Intent(this, SectionB1AActivity.class));
+                            } else {
+                                redirectCondition();
+                            }*/
 
                         } else {
                             redirectCondition();
@@ -1258,6 +1306,8 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
             sB1.put("nw101", bi.nb101.getSelectedItem().toString());
             sB1.put("wra_lno", wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
 
+            prevDeliveries = Integer.valueOf(bi.nw214.getText().toString());
+
         } else {
 
             sB1.put("updatedate_nw1", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
@@ -1337,7 +1387,6 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
         /*if (bi.nw216a.isChecked() && !bi.nw216aa.getText().toString().isEmpty()) {
             MainApp.totalPregnancy = Integer.valueOf(bi.nw216aa.getText().toString());
         }*/
-
 
         MainApp.mc.setsB1(String.valueOf(sB1));
 
