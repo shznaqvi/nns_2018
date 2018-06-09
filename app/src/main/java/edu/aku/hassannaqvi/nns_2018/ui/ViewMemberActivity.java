@@ -774,8 +774,7 @@ public class ViewMemberActivity extends MenuActivity {
 //              Set Recycler View
                     adolescentsAdapter = new AdolescentsAdapter(MainApp.adolescents_1);
                     if (adolescentsAdapter.getItemCount() > 0) {
-                        binding.noadolfound.setVisibility(View.VISIBLE);
-                        binding.noadolfound.setText("Adolescent found!!");
+                        binding.noadolfound.setVisibility(View.GONE);
                         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                         binding.recyclerAdol.setLayoutManager(mLayoutManager);
                         binding.recyclerAdol.setItemAnimator(new DefaultItemAnimator());
@@ -783,7 +782,6 @@ public class ViewMemberActivity extends MenuActivity {
                         adolescentsAdapter.notifyDataSetChanged();
                     } else {
                         binding.noadolfound.setVisibility(View.VISIBLE);
-                        binding.noadolfound.setText("No Adolescent found!!");
                     }
                 }
             });
@@ -825,8 +823,7 @@ public class ViewMemberActivity extends MenuActivity {
 //              Set Recycler View
                     wraAdapter = new WraAdapter(mContext, MainApp.mwra_1);
                     if (wraAdapter.getItemCount() > 0) {
-                        binding.nowrafound.setVisibility(View.VISIBLE);
-                        binding.nowrafound.setText("WRA's/Adolescents found!!");
+                        binding.nowrafound.setVisibility(View.GONE);
                         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                         binding.recyclerMwra.setLayoutManager(mLayoutManager);
                         binding.recyclerMwra.setItemAnimator(new DefaultItemAnimator());
@@ -834,7 +831,6 @@ public class ViewMemberActivity extends MenuActivity {
                         wraAdapter.notifyDataSetChanged();
                     } else {
                         binding.nowrafound.setVisibility(View.VISIBLE);
-                        binding.nowrafound.setText("NO WRA's/Adolescents found!!");
                     }
                 }
             });
@@ -852,7 +848,7 @@ public class ViewMemberActivity extends MenuActivity {
 
 //                   Change background color for those whose data already filled
                     for (int item : WraAdapter.wraExistList) {
-                        binding.recyclerMwra.getChildAt(item).setBackgroundColor(getResources().getColor(R.color.softgreen));
+                        binding.recyclerMwra.getChildAt(item).setBackgroundColor(getResources().getColor(R.color.lime));
                     }
 
                     wraAdapter.notifyDataSetChanged();
@@ -880,8 +876,7 @@ public class ViewMemberActivity extends MenuActivity {
                     othersAdapter = new OthersAdapter(MainApp.otherMembers_1);
 
                     if (othersAdapter.getItemCount() > 0) {
-                        binding.othersfound.setVisibility(View.VISIBLE);
-                        binding.othersfound.setText("Other Members found!!");
+                        binding.othersfound.setVisibility(View.GONE);
                         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                         binding.recyclerOthers.setLayoutManager(mLayoutManager);
                         binding.recyclerOthers.setItemAnimator(new DefaultItemAnimator());
@@ -890,7 +885,6 @@ public class ViewMemberActivity extends MenuActivity {
 
                     } else {
                         binding.othersfound.setVisibility(View.VISIBLE);
-                        binding.othersfound.setText("No Other Members found!!");
                     }
                 }
             });
@@ -922,8 +916,7 @@ public class ViewMemberActivity extends MenuActivity {
 
 
                     if (childAdapter.getItemCount() > 0) {
-                        binding.nochildfound.setVisibility(View.VISIBLE);
-                        binding.nochildfound.setText("Children's found!!");
+                        binding.nochildfound.setVisibility(View.GONE);
                         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                         binding.recyclerChild.setLayoutManager(mLayoutManager);
                         binding.recyclerChild.setItemAnimator(new DefaultItemAnimator());
@@ -932,7 +925,6 @@ public class ViewMemberActivity extends MenuActivity {
 
                     } else {
                         binding.nochildfound.setVisibility(View.VISIBLE);
-                        binding.nochildfound.setText("No Children found!!");
                     }
                 }
             });
@@ -949,7 +941,8 @@ public class ViewMemberActivity extends MenuActivity {
 
 //                   Change background color for those whose data already filled
                     for (int item : ChildAdapter.childExistList) {
-                        binding.recyclerChild.getChildAt(item).setBackgroundColor(getResources().getColor(R.color.softgreen));
+//                        binding.recyclerChild.getChildAt(item).setBackgroundColor(getResources().getColor(R.color.softgreen));
+                        binding.recyclerChild.getChildAt(item).setBackgroundColor(getResources().getColor(R.color.lime));
                     }
 
                 }
