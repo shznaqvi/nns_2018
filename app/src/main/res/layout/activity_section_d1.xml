@@ -104,7 +104,7 @@
                 android:layout_marginTop="5dp"
                 android:hint="@string/nd1h"
                 android:inputType="numberDecimal"
-                android:maxLength="6" />
+                android:maxLength="5" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -122,7 +122,7 @@
                 android:layout_marginTop="5dp"
                 android:hint="@string/nd1muac"
                 android:inputType="numberDecimal"
-                android:maxLength="6" />
+                android:maxLength="5" />
 
 
             <LinearLayout
