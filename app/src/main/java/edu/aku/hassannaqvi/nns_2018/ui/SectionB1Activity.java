@@ -1140,7 +1140,7 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                                             SectionB1Activity.this);
                                     alertDialogBuilder
-                                            .setMessage("In previous you saved " + prevDeliveries + " Miscarriage.\n" +
+                                            .setMessage("In previous you saved " + prevDeliveries + " Pregnancies.\n" +
                                                     "Do you want to continue it?")
                                             .setCancelable(false)
                                             .setPositiveButton("Yes",
