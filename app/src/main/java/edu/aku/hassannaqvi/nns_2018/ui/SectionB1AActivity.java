@@ -3,11 +3,11 @@ package edu.aku.hassannaqvi.nns_2018.ui;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -17,17 +17,19 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.List;
-import java.util.Timer;
 
 import butterknife.BindViews;
 import butterknife.ButterKnife;
+import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONB1AModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB1ABinding;
 import edu.aku.hassannaqvi.nns_2018.other.DateUtils;
+import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
@@ -41,7 +43,14 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
     List<EditText> grpDate;
     Calendar date = Calendar.getInstance();
     long yearsBydob;
-    private Timer timer = new Timer();
+
+    String classPassName = "";
+    String uid = "";
+    OutcomeContract outcomeCC;
+    Boolean backPressed = false;
+    Boolean frontPressed = false;
+    Boolean firstTimePressed = false;
+    JSONB1AModelClass jsonB1A;
 
     //static int status;
     @Override
@@ -95,6 +104,65 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 bi.nw218f.setEnabled(true);
 
             }
+        }
+
+        AutoPopulate();
+
+    }
+
+    public void AutoPopulate() {
+
+        Collection<OutcomeContract> outcomeContracts = db.getPressedOutcome();
+
+        for (OutcomeContract outcomeContract : outcomeContracts) {
+            if (outcomeContract.getB1aPregSNo().equals(String.valueOf(MainApp.count))) {
+
+                jsonB1A = JSONUtilClass.getModelFromJSON(outcomeContract.getsB1A(), JSONB1AModelClass.class);
+
+                frontPressed = true;
+
+                outcomeCC = outcomeContract;
+
+                bi.nw217y.setText(jsonB1A.getnw217y());
+                bi.nw217m.setText(jsonB1A.getnw217m());
+                bi.nw217d.setText(jsonB1A.getnw217d());
+
+                if (!jsonB1A.getnw218().equals("0")) {
+                    bi.nw218.check(
+                            jsonB1A.getnw218().equals("1") ? bi.nw218a.getId() :
+                                    jsonB1A.getnw218().equals("2") ? bi.nw218b.getId() :
+                                            jsonB1A.getnw218().equals("3") ? bi.nw218c.getId() :
+                                                    jsonB1A.getnw218().equals("4") ? bi.nw218d.getId() :
+                                                            jsonB1A.getnw218().equals("5") ? bi.nw218e.getId() :
+                                                                    bi.nw218f.getId()
+                    );
+                }
+
+
+                if (!jsonB1A.getnw220().equals("0")) {
+                    bi.nw220.check(
+                            jsonB1A.getnw220().equals("1") ? bi.nw220a.getId() : bi.nw220b.getId()
+                    );
+                }
+
+                childSerial = Integer.valueOf(jsonB1A.getnw219());
+
+                bi.nw221y.setText(jsonB1A.getnw221y());
+                bi.nw221m.setText(jsonB1A.getnw221m());
+                bi.nw221d.setText(jsonB1A.getnw221d());
+
+                bi.nw222y.setText(jsonB1A.getnw222y());
+                bi.nw222m.setText(jsonB1A.getnw222m());
+                bi.nw222d.setText(jsonB1A.getnw222d());
+
+                if (jsonB1A.getnw217Flag().equals("1")) {
+                    bi.nw217Flag.setChecked(true);
+                }
+
+                bi.nw217Flag.setVisibility(View.VISIBLE);
+
+            }
+
         }
 
     }
@@ -154,13 +222,6 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
     }
 
-
-    @Override
-    public void onBackPressed() {
-        Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
-    }
-
-
     public void BtnContinue() {
 
         //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
@@ -172,8 +233,8 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
             }
             if (UpdateDB()) {
                 MainApp.nuCount = 1;
-                //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
-                finish();
+
+//                finish();
                 if (MainApp.outcome != 4) {
                     MainApp.count++;
                     if (MainApp.totalPregnancy >= MainApp.count) {
@@ -362,23 +423,68 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         return true;
     }
 
-
     private void SaveDraft() throws JSONException {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
-
         MainApp.oc = new OutcomeContract();
-
-        MainApp.oc.setDevicetagID(MainApp.getTagName(this));
-        MainApp.oc.setFormDate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
-        MainApp.oc.setUser(MainApp.userName);
-        MainApp.oc.setDeviceId(Settings.Secure.getString(getApplicationContext().getContentResolver(),
-                Settings.Secure.ANDROID_ID));
-        MainApp.oc.setApp_ver(MainApp.versionName + "." + MainApp.versionCode);
-        MainApp.oc.set_UUID(MainApp.mc.get_UID());
-
-
         JSONObject sB1a = new JSONObject();
+
+        if (!backPressed && !frontPressed) {
+            if (SectionB1Activity.editWRAFlag) {
+                MainApp.oc.setDevicetagID(MainApp.mc.getDevicetagID());
+                MainApp.oc.setFormDate(MainApp.mc.getFormDate());
+                MainApp.oc.setUser(MainApp.mc.getUser());
+                MainApp.oc.setDeviceId(MainApp.mc.getDeviceId());
+                MainApp.oc.setApp_ver(MainApp.mc.getApp_ver());
+                MainApp.oc.set_UUID(MainApp.mc.get_UID());
+                MainApp.oc.setMUID(MainApp.mc.get_UID());
+                MainApp.oc.setFMUID(MainApp.mc.getFMUID());
+
+                MainApp.oc.setB1aPregSNo(String.valueOf(MainApp.count));
+
+                sB1a.put("cluster_no", MainApp.mc.getCluster());
+                sB1a.put("hhno", MainApp.mc.getHhno());
+            } else {
+                MainApp.oc.setDevicetagID(MainApp.fc.getDevicetagID());
+                MainApp.oc.setFormDate(MainApp.fc.getFormDate());
+                MainApp.oc.setUser(MainApp.fc.getUser());
+                MainApp.oc.setDeviceId(MainApp.fc.getDeviceID());
+                MainApp.oc.setApp_ver(MainApp.fc.getAppversion());
+                MainApp.oc.set_UUID(MainApp.fc.getUID());
+                MainApp.oc.setMUID(MainApp.mc.get_UID());
+                MainApp.oc.setFMUID(MainApp.mc.getFMUID());
+
+                MainApp.oc.setB1aPregSNo(String.valueOf(MainApp.count));
+
+                sB1a.put("cluster_no", MainApp.fc.getClusterNo());
+                sB1a.put("hhno", MainApp.fc.getHhNo());
+            }
+        } else {
+            MainApp.oc.setUpdatedate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+
+            if (frontPressed) {
+                MainApp.oc.set_UID(outcomeCC.get_UID());
+            } else if (backPressed) {
+                MainApp.oc.set_UID(uid);
+            }
+
+            if (SectionB1Activity.editWRAFlag && !frontPressed) {
+                sB1a.put("edit_updatedate_nw1", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+                sB1a.put("cluster_no", jsonB1A.getCluster_no());
+                sB1a.put("hhno", jsonB1A.getHhno());
+
+            } else if (SectionB1Activity.editWRAFlag) {
+                sB1a.put("cluster_no", jsonB1A.getCluster_no());
+                sB1a.put("hhno", jsonB1A.getHhno());
+
+            } else {
+                sB1a.put("cluster_no", MainApp.fc.getClusterNo());
+                sB1a.put("hhno", MainApp.fc.getHhNo());
+            }
+        }
+
+        sB1a.put("nw217Flag", bi.nw217Flag.isChecked() ? "1" : "2");
+        sB1a.put("wra_lno", MainApp.mc.getB1SerialNo());
 
         sB1a.put("nw217y", bi.nw217y.getText().toString());
         sB1a.put("nw217m", bi.nw217m.getText().toString());
@@ -396,7 +502,6 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
             MainApp.outcome = bi.nw218.indexOfChild(findViewById(bi.nw218.getCheckedRadioButtonId())) + 1;
         }
 
-
         sB1a.put("nw220", bi.nw220a.isChecked() ? "1"
                 : bi.nw220b.isChecked() ? "2"
                 : "0");
@@ -413,10 +518,13 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         sB1a.put("nw222m", bi.nw222m.getText().toString());
         sB1a.put("nw222d", bi.nw222d.getText().toString());
 
+        if (backPressed) {
+            sB1a.put("backPressed", backPressed);
+        } else if (frontPressed) {
+            sB1a.put("frontPressed", frontPressed);
+        }
+
         MainApp.oc.setsB1A(String.valueOf(sB1a));
-
-
-        //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -425,7 +533,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        Long updcount = db.addOutcome(MainApp.oc, 0);
+        /*Long updcount = db.addOutcome(MainApp.oc, 0);
         MainApp.oc.set_ID(String.valueOf(updcount));
 
         if (updcount != 0) {
@@ -439,12 +547,35 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
+        }*/
+
+        if (!backPressed && !frontPressed) {
+            Long updcount = db.addOutcome(MainApp.oc, 0);
+            MainApp.oc.set_ID(String.valueOf(updcount));
+
+            if (updcount != 0) {
+                MainApp.oc.set_UID(
+                        (MainApp.oc.getDeviceId() + MainApp.oc.get_ID()));
+                db.updateOutcomeID();
+
+                uid = MainApp.oc.getDeviceId() + MainApp.oc.get_ID();
+
+                return true;
+            } else {
+                Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        } else {
+            Long updcount = db.addOutcome(MainApp.oc, 1);
+            if (updcount != 0) {
+                return true;
+            } else {
+                Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         }
 
-        //return true;
-
     }
-
 
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -475,5 +606,61 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
     public void afterTextChanged(Editable s) {
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                classPassName = data.getStringExtra("backPressedClass");
+            } else {
+                classPassName = "";
+            }
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        try {
+            SaveDraft();
+            UpdateDB();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        MainApp.count--;
+
+        Intent intent = new Intent();
+        intent.putExtra("backPressedClass", SectionB1AActivity.class.getName());
+        setResult(RESULT_OK, intent);
+
+        super.onBackPressed();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (firstTimePressed) {
+            backPressed = true;
+        }
+
+        firstTimePressed = true;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if (firstTimePressed && !frontPressed) {
+            backPressed = false;
+            if (!SectionB1Activity.editWRAFlag) {
+                firstTimePressed = false;
+            }
+        }
+    }
+
 }
 

@@ -1,24 +1,127 @@
 package edu.aku.hassannaqvi.nns_2018.JSONModels;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
- * Created by ali.azaz on 3/27/2018.
+ * Created by ali.azaz on 06/08/2018.
  */
 
 public class JSONB1AModelClass {
 
+    private String nw217y = "";
+    private String nw217m = "";
+    private String nw217d = "";
+    private String nw218 = "";
+    private String nw219 = "";
+    private String nw220 = "";
+    private String nw221y = "";
+    private String nw221m = "";
+    private String nw221d = "";
+    private String nw222y = "";
+    private String nw222m = "";
+    private String nw222d = "";
+    private String nw217Flag = "";
     private String cluster_no = "";
     private String hhno = "";
-    @SerializedName("wra_lno")
-    private String serial = "";
-    private String nw21701 = "";
 
-    private String nw21702y = "";
-    private String nw21702m = "";
-    private String nw21702d = "";
 
-    private String nw217Flag = "";
+    public JSONB1AModelClass() {
+
+    }
+
+    public String getnw217y() {
+        return nw217y;
+    }
+
+    public void setnw217y(String nw217y) {
+        this.nw217y = nw217y;
+    }
+
+    public String getnw217m() {
+        return nw217m;
+    }
+
+    public void setnw217m(String nw217m) {
+        this.nw217m = nw217m;
+    }
+
+    public String getnw217d() {
+        return nw217d;
+    }
+
+    public void setnw217d(String nw217d) {
+        this.nw217d = nw217d;
+    }
+
+    public String getnw218() {
+        return nw218;
+    }
+
+    public void setnw218(String nw218) {
+        this.nw218 = nw218;
+    }
+
+    public String getnw219() {
+        return nw219;
+    }
+
+    public void setnw219(String nw219) {
+        this.nw219 = nw219;
+    }
+
+    public String getnw220() {
+        return nw220;
+    }
+
+    public void setnw220(String nw220) {
+        this.nw220 = nw220;
+    }
+
+    public String getnw221y() {
+        return nw221y;
+    }
+
+    public void setnw221y(String nw221y) {
+        this.nw221y = nw221y;
+    }
+
+    public String getnw221m() {
+        return nw221m;
+    }
+
+    public void setnw221m(String nw221m) {
+        this.nw221m = nw221m;
+    }
+
+    public String getnw221d() {
+        return nw221d;
+    }
+
+    public void setnw221d(String nw221d) {
+        this.nw221d = nw221d;
+    }
+
+    public String getnw222y() {
+        return nw222y;
+    }
+
+    public void setnw222y(String nw222y) {
+        this.nw222y = nw222y;
+    }
+
+    public String getnw222m() {
+        return nw222m;
+    }
+
+    public void setnw222m(String nw222m) {
+        this.nw222m = nw222m;
+    }
+
+    public String getnw222d() {
+        return nw222d;
+    }
+
+    public void setnw222d(String nw222d) {
+        this.nw222d = nw222d;
+    }
 
     public String getnw217Flag() {
         return nw217Flag;
@@ -26,10 +129,6 @@ public class JSONB1AModelClass {
 
     public void setnw217Flag(String nw217Flag) {
         this.nw217Flag = nw217Flag;
-    }
-
-    public JSONB1AModelClass() {
-
     }
 
     public String getCluster_no() {
@@ -46,45 +145,5 @@ public class JSONB1AModelClass {
 
     public void setHhno(String hhno) {
         this.hhno = hhno;
-    }
-
-    public String getSerial() {
-        return serial;
-    }
-
-    public void setSerial(String serial) {
-        this.serial = serial;
-    }
-
-    public String getnw21701() {
-        return nw21701;
-    }
-
-    public void setnw21701(String nw21701) {
-        this.nw21701 = nw21701;
-    }
-
-    public String getnw21702y() {
-        return nw21702y;
-    }
-
-    public void setnw21702y(String nw21702y) {
-        this.nw21702y = nw21702y;
-    }
-
-    public String getnw21702m() {
-        return nw21702m;
-    }
-
-    public void setnw21702m(String nw21702m) {
-        this.nw21702m = nw21702m;
-    }
-
-    public String getnw21702d() {
-        return nw21702d;
-    }
-
-    public void setnw21702d(String nw21702d) {
-        this.nw21702d = nw21702d;
     }
 }
