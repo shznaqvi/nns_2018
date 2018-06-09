@@ -38,7 +38,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
     private final long DELAY = 1000;
     ActivitySectionB1ABinding bi;
     DatabaseHelper db;
-    int childSerial = 1;
+    static int childSerial = 1;
     @BindViews({R.id.nw217y, R.id.nw217m, R.id.nw217d})
     List<EditText> grpDate;
     Calendar date = Calendar.getInstance();
@@ -70,26 +70,26 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         for (EditText ed : grpDate) {
             ed.addTextChangedListener(this);
         }
-        if (MainApp.flag) {
-            Boolean type = getIntent().getExtras().getBoolean("type");
+        if (getIntent().getBooleanExtra("flag", false)) {
+//            Boolean type = getIntent().getExtras().getBoolean("type");
             String datey = getIntent().getExtras().getString("datey");
             String datem = getIntent().getExtras().getString("datem");
             String dated = getIntent().getExtras().getString("dated");
 
-            if (type) {
-                bi.nw217y.setText(datey);
-                bi.nw217m.setText(datem);
-                bi.nw217d.setText(dated);
-                bi.nw218d.setChecked(true);
-                bi.nw217y.setEnabled(false);
-                bi.nw217d.setEnabled(false);
-                bi.nw217m.setEnabled(false);
-                bi.nw218a.setEnabled(false);
-                bi.nw218b.setEnabled(false);
-                bi.nw218c.setEnabled(false);
-                bi.nw218e.setEnabled(false);
-                bi.nw218f.setEnabled(false);
-            } else {
+//            if (type) {
+            bi.nw217y.setText(datey);
+            bi.nw217m.setText(datem);
+            bi.nw217d.setText(dated);
+            bi.nw218d.setChecked(true);
+            bi.nw217y.setEnabled(false);
+            bi.nw217d.setEnabled(false);
+            bi.nw217m.setEnabled(false);
+            bi.nw218a.setEnabled(false);
+            bi.nw218b.setEnabled(false);
+            bi.nw218c.setEnabled(false);
+            bi.nw218e.setEnabled(false);
+            bi.nw218f.setEnabled(false);
+            /*} else {
                 bi.nw217y.setText(null);
                 bi.nw217d.setText(null);
                 bi.nw217m.setText(null);
@@ -103,10 +103,12 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 bi.nw218e.setEnabled(true);
                 bi.nw218f.setEnabled(true);
 
-            }
+            }*/
         }
 
-        AutoPopulate();
+        if (childSerial != 2) {
+            AutoPopulate();
+        }
 
     }
 
@@ -138,14 +140,11 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                     );
                 }
 
-
                 if (!jsonB1A.getnw220().equals("0")) {
                     bi.nw220.check(
                             jsonB1A.getnw220().equals("1") ? bi.nw220a.getId() : bi.nw220b.getId()
                     );
                 }
-
-                childSerial = Integer.valueOf(jsonB1A.getnw219());
 
                 bi.nw221y.setText(jsonB1A.getnw221y());
                 bi.nw221m.setText(jsonB1A.getnw221m());
@@ -160,6 +159,24 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 }
 
                 bi.nw217Flag.setVisibility(View.VISIBLE);
+
+//                childSerial = Integer.valueOf(jsonB1A.getnw219());
+
+                if (jsonB1A.getnw219().equals("2")) {
+                    bi.nw218d.setChecked(true);
+                    bi.nw217y.setEnabled(false);
+                    bi.nw217d.setEnabled(false);
+                    bi.nw217m.setEnabled(false);
+                    bi.nw218a.setEnabled(false);
+                    bi.nw218b.setEnabled(false);
+                    bi.nw218c.setEnabled(false);
+                    bi.nw218e.setEnabled(false);
+                    bi.nw218f.setEnabled(false);
+                }
+
+                if (childSerial == 1) {
+                    break;
+                }
 
             }
 
@@ -234,46 +251,64 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
             if (UpdateDB()) {
                 MainApp.nuCount = 1;
 
-//                finish();
-                if (MainApp.outcome != 4) {
+                if (bi.nw218d.isChecked() && childSerial == 1) {
+
+                    childSerial++;
+
+                    Intent i = new Intent(this, SectionB1AActivity.class);
+                    i.putExtra("datey", bi.nw217y.getText().toString());
+                    i.putExtra("datem", bi.nw217m.getText().toString());
+                    i.putExtra("dated", bi.nw217d.getText().toString());
+                    i.putExtra("flag", true);
+                    startActivity(i);
+
+                } else {
+                    childSerial = 1;
+
                     MainApp.count++;
-                    if (MainApp.totalPregnancy >= MainApp.count) {
-                        startActivity(new Intent(this, SectionB1AActivity.class).putExtra("type", false));
-                    } else {
+                    if (MainApp.count > MainApp.totalPregnancy) {
 
                         MainApp.count = 1;
 
                         if (yearsBydob <= 2 && MainApp.status > 0) {
                             startActivity(new Intent(this, SectionB2Activity.class));
                         } else {
-                            if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
-                                    &&
-                                    MainApp.B6Flag) {
-                                startActivity(new Intent(this, SectionB6Activity.class));
+                            if (SectionB1Activity.editWRAFlag) {
+                                if (!db.getNutritionCount()) {
+                                    startActivityForResult(new Intent(this, SectionB6Activity.class)
+                                            .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
+                                } else if (MainApp.mc.getsB6().equals("1")) {
+                                    startActivityForResult(new Intent(this, SectionB6Activity.class)
+                                            .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
+
+                                } else {
+                                    finish();
+                                    startActivity(new Intent(this, ViewMemberActivity.class)
+                                            .putExtra("flagEdit", false)
+                                            .putExtra("comingBack", true)
+                                            .putExtra("cluster", MainApp.mc.getCluster())
+                                            .putExtra("hhno", MainApp.mc.getHhno())
+                                    );
+                                }
                             } else {
-                                startActivity(new Intent(this, MotherEndingActivity.class)
-                                        .putExtra("complete", true));
+                                if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
+                                        &&
+                                        MainApp.B6Flag) {
+                                    startActivityForResult(new Intent(this, SectionB6Activity.class)
+                                            .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
+                                } else {
+                                    startActivity(new Intent(this, MotherEndingActivity.class)
+                                            .putExtra("complete", true));
+                                }
                             }
                         }
+
+                    } else {
+                        startActivityForResult(new Intent(this, SectionB1AActivity.class)
+                                .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
                     }
-                } else {
 
-                    MainApp.outcome = 0;
-                    MainApp.flag = true;
-                    childSerial++;
-                    Intent i = new Intent(this, SectionB1AActivity.class);
-                    i.putExtra("datey", bi.nw217y.getText().toString());
-                    i.putExtra("datem", bi.nw217m.getText().toString());
-                    i.putExtra("dated", bi.nw217d.getText().toString());
-                    i.putExtra("type", true);
-                    startActivity(i);
-
-                    //startActivity(new Intent(this, SectionB1Activity.class).putExtra(""));
                 }
-
-
-            } else {
-                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
         }
 
@@ -281,8 +316,17 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
     }
 
     public void BtnEnd() {
-        MainApp.endActivityMother(this, this, false);
-
+        if (SectionB1Activity.editWRAFlag) {
+            finish();
+            startActivity(new Intent(this, ViewMemberActivity.class)
+                    .putExtra("flagEdit", false)
+                    .putExtra("comingBack", true)
+                    .putExtra("cluster", MainApp.mc.getCluster())
+                    .putExtra("hhno", MainApp.mc.getHhno())
+            );
+        } else {
+            MainApp.endActivityMother(this, this, false);
+        }
     }
 
     private boolean ValidateForm() {
@@ -444,6 +488,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
                 sB1a.put("cluster_no", MainApp.mc.getCluster());
                 sB1a.put("hhno", MainApp.mc.getHhno());
+
             } else {
                 MainApp.oc.setDevicetagID(MainApp.fc.getDevicetagID());
                 MainApp.oc.setFormDate(MainApp.fc.getFormDate());
@@ -458,6 +503,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
                 sB1a.put("cluster_no", MainApp.fc.getClusterNo());
                 sB1a.put("hhno", MainApp.fc.getHhNo());
+
             }
         } else {
             MainApp.oc.setUpdatedate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
@@ -486,6 +532,8 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         sB1a.put("nw217Flag", bi.nw217Flag.isChecked() ? "1" : "2");
         sB1a.put("wra_lno", MainApp.mc.getB1SerialNo());
 
+        sB1a.put("nw219", String.valueOf(childSerial));
+
         sB1a.put("nw217y", bi.nw217y.getText().toString());
         sB1a.put("nw217m", bi.nw217m.getText().toString());
         sB1a.put("nw217d", bi.nw217d.getText().toString());
@@ -498,7 +546,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 : bi.nw218f.isChecked() ? "6"
                 : "0");
 
-        if (!MainApp.flag) {
+        if (!getIntent().getBooleanExtra("flag", false)) {
             MainApp.outcome = bi.nw218.indexOfChild(findViewById(bi.nw218.getCheckedRadioButtonId())) + 1;
         }
 
@@ -509,7 +557,6 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
             MainApp.status++;
         }
 
-        sB1a.put("nw219", String.valueOf(childSerial));
         sB1a.put("nw221y", bi.nw221y.getText().toString());
         sB1a.put("nw221m", bi.nw221m.getText().toString());
         sB1a.put("nw221d", bi.nw221d.getText().toString());
@@ -630,6 +677,10 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         }
 
         MainApp.count--;
+
+        if (childSerial == 2) {
+            childSerial = 1;
+        }
 
         Intent intent = new Intent();
         intent.putExtra("backPressedClass", SectionB1AActivity.class.getName());
