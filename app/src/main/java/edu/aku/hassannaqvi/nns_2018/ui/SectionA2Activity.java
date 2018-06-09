@@ -162,6 +162,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
             binding.na20398.setEnabled(false);
         }
 
+
     }
 
     public void skipPattern() {
