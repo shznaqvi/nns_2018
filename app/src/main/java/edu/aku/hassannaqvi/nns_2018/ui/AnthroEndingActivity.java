@@ -35,9 +35,22 @@ public class AnthroEndingActivity extends AppCompatActivity {
         if (check) {
             binding.istatusa.setEnabled(true);
             binding.istatusb.setEnabled(false);
+            binding.istatusc.setEnabled(false);
+            binding.istatusd.setEnabled(false);
+            binding.istatuse.setEnabled(false);
+            binding.istatusf.setEnabled(false);
+            binding.istatus96.setEnabled(false);
+
+            binding.istatus96x.setText(null);
+            binding.istatus96x.setVisibility(View.GONE);
         } else {
             binding.istatusa.setEnabled(false);
             binding.istatusb.setEnabled(true);
+            binding.istatusc.setEnabled(true);
+            binding.istatusd.setEnabled(true);
+            binding.istatuse.setEnabled(true);
+            binding.istatusf.setEnabled(true);
+            binding.istatus96.setEnabled(true);
         }
 
         binding.istatus.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {

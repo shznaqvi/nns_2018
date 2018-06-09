@@ -1512,8 +1512,11 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
     private boolean ValidateForm() {
 
         if (endflag) {
-
-            return validatorClass.EmptySpinner(this, bi.nb101, getString(R.string.nb101));
+            if (!editWRAFlag) {
+                if (!validatorClass.EmptySpinner(this, bi.nb101, getString(R.string.nb101))) {
+                    return false;
+                }
+            }
         } else {
 
             if (!editWRAFlag) {

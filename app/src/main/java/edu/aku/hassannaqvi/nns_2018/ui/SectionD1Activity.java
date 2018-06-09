@@ -274,6 +274,15 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
                 return false;
             }
 
+
+            if (!binding.nd1w.getText().toString().matches("^(\\d{3,3}\\.\\d{2,2})$")) {
+                binding.nd1w.setError("Wrong presentation");
+                return false;
+            } else {
+                binding.nd1w.setError(null);
+            }
+
+
             if (!validatorClass.RangeTextBox(this, binding.nd1w, MinWeight(slc_type), MaxWeight(slc_type), getString(R.string.nd1w), " weight")) {
                 return false;
             }
@@ -282,6 +291,15 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
                 return false;
             }
 
+
+            if (!binding.nd1h.getText().toString().matches("^(\\d{3,3}\\.\\d{1,1})$")) {
+                binding.nd1h.setError("Wrong presentation");
+                return false;
+            } else {
+                binding.nd1h.setError(null);
+            }
+
+
             if (!validatorClass.RangeTextBox(this, binding.nd1h, MinHeight(slc_type), MaxHeight(slc_type), getString(R.string.nd1h), " height")) {
                 return false;
             }
@@ -289,6 +307,15 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
             if (!validatorClass.EmptyTextBox(this, binding.nd1muac, getString(R.string.nd1muac))) {
                 return false;
             }
+
+
+            if (!binding.nd1muac.getText().toString().matches("^(\\d{3,3}\\.\\d{1,1})$")) {
+                binding.nd1muac.setError("Wrong presentation");
+                return false;
+            } else {
+                binding.nd1muac.setError(null);
+            }
+
 
             if (!validatorClass.RangeTextBox(this, binding.nd1muac, MinMAUC(slc_type), MaxMAUC(slc_type), getString(R.string.nd1muac), " MAUC")) {
                 return false;
