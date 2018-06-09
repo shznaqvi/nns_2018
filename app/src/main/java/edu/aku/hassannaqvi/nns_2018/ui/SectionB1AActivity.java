@@ -104,11 +104,13 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 bi.nw218f.setEnabled(true);
 
             }*/
+
+            childSerial++;
+        } else {
+            childSerial = 1;
         }
 
-        if (childSerial != 2) {
-            AutoPopulate();
-        }
+        AutoPopulate();
 
     }
 
@@ -120,8 +122,6 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
             if (outcomeContract.getB1aPregSNo().equals(String.valueOf(MainApp.count))) {
 
                 jsonB1A = JSONUtilClass.getModelFromJSON(outcomeContract.getsB1A(), JSONB1AModelClass.class);
-
-                frontPressed = true;
 
                 outcomeCC = outcomeContract;
 
@@ -140,26 +140,6 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                     );
                 }
 
-                if (!jsonB1A.getnw220().equals("0")) {
-                    bi.nw220.check(
-                            jsonB1A.getnw220().equals("1") ? bi.nw220a.getId() : bi.nw220b.getId()
-                    );
-                }
-
-                bi.nw221y.setText(jsonB1A.getnw221y());
-                bi.nw221m.setText(jsonB1A.getnw221m());
-                bi.nw221d.setText(jsonB1A.getnw221d());
-
-                bi.nw222y.setText(jsonB1A.getnw222y());
-                bi.nw222m.setText(jsonB1A.getnw222m());
-                bi.nw222d.setText(jsonB1A.getnw222d());
-
-                if (jsonB1A.getnw217Flag().equals("1")) {
-                    bi.nw217Flag.setChecked(true);
-                }
-
-                bi.nw217Flag.setVisibility(View.VISIBLE);
-
 //                childSerial = Integer.valueOf(jsonB1A.getnw219());
 
                 if (jsonB1A.getnw219().equals("2")) {
@@ -172,9 +152,57 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                     bi.nw218c.setEnabled(false);
                     bi.nw218e.setEnabled(false);
                     bi.nw218f.setEnabled(false);
+
+                    frontPressed = true;
+
+                    if (!jsonB1A.getnw220().equals("0")) {
+                        bi.nw220.check(
+                                jsonB1A.getnw220().equals("1") ? bi.nw220a.getId() : bi.nw220b.getId()
+                        );
+                    }
+
+                    bi.nw221y.setText(jsonB1A.getnw221y());
+                    bi.nw221m.setText(jsonB1A.getnw221m());
+                    bi.nw221d.setText(jsonB1A.getnw221d());
+
+                    bi.nw222y.setText(jsonB1A.getnw222y());
+                    bi.nw222m.setText(jsonB1A.getnw222m());
+                    bi.nw222d.setText(jsonB1A.getnw222d());
+
+                    if (jsonB1A.getnw217Flag().equals("1")) {
+                        bi.nw217Flag.setChecked(true);
+                    }
+
+                    bi.nw217Flag.setVisibility(View.VISIBLE);
+
+                    break;
+
                 }
 
                 if (childSerial == 1) {
+
+                    frontPressed = true;
+
+                    if (!jsonB1A.getnw220().equals("0")) {
+                        bi.nw220.check(
+                                jsonB1A.getnw220().equals("1") ? bi.nw220a.getId() : bi.nw220b.getId()
+                        );
+                    }
+
+                    bi.nw221y.setText(jsonB1A.getnw221y());
+                    bi.nw221m.setText(jsonB1A.getnw221m());
+                    bi.nw221d.setText(jsonB1A.getnw221d());
+
+                    bi.nw222y.setText(jsonB1A.getnw222y());
+                    bi.nw222m.setText(jsonB1A.getnw222m());
+                    bi.nw222d.setText(jsonB1A.getnw222d());
+
+                    if (jsonB1A.getnw217Flag().equals("1")) {
+                        bi.nw217Flag.setChecked(true);
+                    }
+
+                    bi.nw217Flag.setVisibility(View.VISIBLE);
+
                     break;
                 }
 
@@ -253,8 +281,6 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
                 if (bi.nw218d.isChecked() && childSerial == 1) {
 
-                    childSerial++;
-
                     Intent i = new Intent(this, SectionB1AActivity.class);
                     i.putExtra("datey", bi.nw217y.getText().toString());
                     i.putExtra("datem", bi.nw217m.getText().toString());
@@ -263,8 +289,6 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                     startActivity(i);
 
                 } else {
-                    childSerial = 1;
-
                     MainApp.count++;
                     if (MainApp.count > MainApp.totalPregnancy) {
 
@@ -676,10 +700,8 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
             e.printStackTrace();
         }
 
-        MainApp.count--;
-
-        if (childSerial == 2) {
-            childSerial = 1;
+        if (childSerial == 1) {
+            MainApp.count--;
         }
 
         Intent intent = new Intent();

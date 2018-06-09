@@ -734,6 +734,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
         if (flag) {
             MainApp.endActivityAll(this, this, SectionA2ListActivity.class, true);
         } else {
+            binding.btnEnd.setEnabled(false);
             MainApp.hhClicked.remove(position);
             MainApp.endActivityAll(this, this, SectionA2ListActivity.class, true);
         }
