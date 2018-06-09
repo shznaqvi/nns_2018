@@ -27,8 +27,8 @@
             android:layout_gravity="center_horizontal"
             android:background="@color/colorPrimaryDark"
             android:gravity="center"
-            android:visibility="gone"
-            android:text="@string/na2subHeading" />
+            android:text="@string/na2subHeading"
+            android:visibility="gone" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -360,10 +360,10 @@
 
                     <!--07-->
                     <TextView
+                        android:id="@+id/txtnh2dob"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:id="@+id/txtnh2dob"
                         android:background="@color/colorPrimary"
                         android:text='@string/nh2dob'
                         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -492,12 +492,12 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/txtna2age"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
                             android:background="@color/colorPrimary"
                             android:text="@string/na2age"
-                            android:id="@+id/txtna2age"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@android:color/white" />
 
@@ -871,12 +871,12 @@
                     </LinearLayout>
                     <!--12-->
                     <TextView
+                        android:id="@+id/txtnh210"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:background="@color/colorPrimary"
                         android:text="@string/nh210"
-                        android:id="@+id/txtnh210"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@android:color/white" />
 
@@ -918,10 +918,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_weight="1.5"
-                            android:textColor="@color/gray"
                             android:background="@android:color/transparent"
                             android:text="@string/nh211"
                             android:textAlignment="center"
+                            android:textColor="@color/gray"
                             android:textStyle="bold" />
 
                         <Spinner
@@ -947,10 +947,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_weight="1.5"
-                            android:textColor="@color/gray"
                             android:background="@android:color/transparent"
                             android:text="@string/nh212"
                             android:textAlignment="center"
+                            android:textColor="@color/gray"
                             android:textStyle="bold" />
 
                         <Spinner

@@ -807,7 +807,11 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
 
             }
 
-            if (!MainApp.IsResp && binding.respa.isChecked()) {
+            /*if (!MainApp.IsResp && binding.respa.isChecked()) {
+                MainApp.IsResp = true;
+            }*/
+
+            if (binding.respa.isChecked()) {
                 MainApp.IsResp = true;
             }
 
