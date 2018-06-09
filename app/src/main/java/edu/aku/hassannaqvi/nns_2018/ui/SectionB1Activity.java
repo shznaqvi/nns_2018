@@ -7,6 +7,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -18,6 +19,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -71,6 +75,7 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
     @BindViews({R.id.nw21003a, R.id.nw21098a, R.id.nw21099a})
     List<RadioButton> nw210bYes;
     Boolean endflag = false;
+    String LOG_TAG = SectionB1Activity.class.getName();
 
     public TextWatcher age = new TextWatcher() {
         @Override
@@ -1305,8 +1310,11 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
             sB1.put("hhno", MainApp.fc.getHhNo());
             sB1.put("nw101", bi.nb101.getSelectedItem().toString());
             sB1.put("wra_lno", wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
-
-            prevDeliveries = Integer.valueOf(bi.nw214.getText().toString());
+            try {
+                prevDeliveries = Integer.valueOf(bi.nw214.getText().toString());
+            } catch (Exception e) {
+                Log.e(LOG_TAG, e.getMessage());
+            }
 
         } else {
 
@@ -1504,8 +1512,11 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
     private boolean ValidateForm() {
 
         if (endflag) {
-
-            return validatorClass.EmptySpinner(this, bi.nb101, getString(R.string.nb101));
+            if (!editWRAFlag) {
+                if (!validatorClass.EmptySpinner(this, bi.nb101, getString(R.string.nb101))) {
+                    return false;
+                }
+            }
         } else {
 
             if (!editWRAFlag) {

@@ -15,9 +15,11 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindViews;
@@ -28,6 +30,7 @@ import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB1ABinding;
+import edu.aku.hassannaqvi.nns_2018.other.AgeModel;
 import edu.aku.hassannaqvi.nns_2018.other.DateUtils;
 import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
@@ -446,6 +449,20 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                     bi.nw221m.setError(null);
                     bi.nw221d.setError(null);
                 }
+               /* String myDate =bi.nw217y+"/"+bi.nw217m+"/"+bi.nw217d;
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+                Date date = null;
+                try {
+                    date = sdf.parse(myDate);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                long millis = date.getTime();
+                AgeModel ageModel  =  DateUtils.calculateAge(millis);
+                bi.nw221d.setText(ageModel.getdays());
+                bi.nw221m.setText(ageModel.getmonths());
+                bi.nw221y.setText(ageModel.getyears());
+*/
             } else if (bi.nw220b.isChecked()) {
                 if (!validatorClass.EmptyTextBox(this, bi.nw222y, getString(R.string.nw222) + " - " + getString(R.string.year))) {
                     return false;

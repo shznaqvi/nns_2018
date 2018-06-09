@@ -330,7 +330,7 @@
                                 android:layout_weight="1"
                                 android:background="@color/colorPrimary"
                                 android:gravity="center"
-                                android:text="WRA/Adolescent List"
+                                android:text="WRA/Adolescent"
                                 android:textAppearance="?android:attr/textAppearanceLarge"
                                 android:textColor="@android:color/white" />
 
@@ -341,7 +341,7 @@
                                 android:layout_weight="1"
                                 android:background="@color/colorPrimary"
                                 android:gravity="center"
-                                android:text="Children List"
+                                android:text="Children"
                                 android:textAppearance="?android:attr/textAppearanceLarge"
                                 android:textColor="@android:color/white" />
 
@@ -384,7 +384,6 @@
                                     android:layoutDirection="ltr"
                                     android:background="@null"
                                     android:scrollbars="vertical"
-
                                     tools:listitem="@layout/wra_adapter" />
                             </LinearLayout>
 
@@ -437,7 +436,7 @@
                                 android:layout_weight="1"
                                 android:background="@color/colorPrimary"
                                 android:gravity="center"
-                                android:text="Adolescents List"
+                                android:text="Adolescents"
                                 android:textAppearance="?android:attr/textAppearanceLarge"
                                 android:textColor="@android:color/white" />
 
@@ -449,7 +448,7 @@
                                 android:layout_weight="1"
                                 android:background="@color/colorPrimary"
                                 android:gravity="center"
-                                android:text="Other List"
+                                android:text="Others"
                                 android:textAppearance="?android:attr/textAppearanceLarge"
                                 android:textColor="@android:color/white" />
 

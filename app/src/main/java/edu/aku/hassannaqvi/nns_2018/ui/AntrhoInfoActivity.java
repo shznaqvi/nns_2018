@@ -269,7 +269,7 @@ public class AntrhoInfoActivity extends Activity {
                 return false;
             }
 
-            if (binding.wtCode.getText().toString().contains("§")) {
+            if (binding.wtCode.getText(). toString().contains("§")) {
                 scanChar = 7;
             } else {
                 scanChar = 6;
