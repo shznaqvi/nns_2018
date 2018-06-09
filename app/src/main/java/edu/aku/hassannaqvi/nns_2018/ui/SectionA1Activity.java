@@ -21,7 +21,6 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -38,8 +37,6 @@ import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionA1Binding;
-import edu.aku.hassannaqvi.nns_2018.other.AgeModel;
-import edu.aku.hassannaqvi.nns_2018.other.DateUtils;
 import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.other.MembersCount;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
@@ -220,7 +217,6 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
         MainApp.familyMembersList = new ArrayList<>();
         MainApp.hhClicked = new ArrayList<>();
         MainApp.flagClicked = new ArrayList<>();
-
 
 
 //        HH listener
@@ -618,19 +614,60 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
         if (!binding.nh102.getText().toString().trim().isEmpty() && !binding.nh108.getText().toString().trim().isEmpty()) {
 
-            selected = db.getAllBLRandom(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase());
+            FormsContract partialMem = db.getPartialForms(binding.nh102.getText().toString(), binding.nh108.getText().toString(), "1");
 
-            if (selected.size() != 0) {
+            if (partialMem != null) {
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                        SectionA1Activity.this);
+                alertDialogBuilder
+                        .setMessage("یہ House Hold پہلے سے 'مکمل' موجود ہے۔")
+                        .setCancelable(false)
+                        .setPositiveButton("۔Edit فارم شروح کرنا ہے",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
 
-                Toast.makeText(this, "Household found!", Toast.LENGTH_SHORT).show();
+                                        finish();
+                                        startActivity(new Intent(SectionA1Activity.this, ViewMemberActivity.class)
+                                                .putExtra("comingBack", true)
+                                                .putExtra("flagEdit", false)
+                                                .putExtra("cluster", binding.nh102.getText().toString())
+                                                .putExtra("hhno", binding.nh108.getText().toString()));
+                                    }
+                                })
+                        .setNegativeButton("۔دوبارہ فارم شروح کرنا ہے",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                        setupViews();
+                                    }
+                                });
+                AlertDialog alert = alertDialogBuilder.create();
+                alert.show();
+            } else {
+                setupViews();
+            }
 
-                for (BLRandomContract rnd : selected) {
-                    MainApp.selectedHead = new BLRandomContract(rnd);
-                }
+        } else {
+            Toast.makeText(this, "Not found.", Toast.LENGTH_SHORT).show();
+        }
 
-                binding.hhName.setText(MainApp.selectedHead.getHhhead().toUpperCase());
+    }
 
-                binding.fldGrpnh110.setVisibility(View.VISIBLE);
+    public void setupViews() {
+        selected = db.getAllBLRandom(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase());
+
+        if (selected.size() != 0) {
+
+            Toast.makeText(this, "Household found!", Toast.LENGTH_SHORT).show();
+
+            for (BLRandomContract rnd : selected) {
+                MainApp.selectedHead = new BLRandomContract(rnd);
+            }
+
+            binding.hhName.setText(MainApp.selectedHead.getHhhead().toUpperCase());
+
+            binding.fldGrpnh110.setVisibility(View.VISIBLE);
 
                 /*if (MainApp.selectedHead.getSelStructure().equals("1")) {
                     binding.na11802a.setEnabled(true);
@@ -643,17 +680,12 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
                 }
 */
 
-            } else {
-
-                clearFields();
-
-                Toast.makeText(this, "No Household found!", Toast.LENGTH_SHORT).show();
-            }
-
         } else {
-            Toast.makeText(this, "Not found.", Toast.LENGTH_SHORT).show();
-        }
 
+            clearFields();
+
+            Toast.makeText(this, "No Household found!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void BtnCheckEnm() {
