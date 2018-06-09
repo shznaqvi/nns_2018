@@ -461,7 +461,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-
                             android:orientation="horizontal">
 
                             <TextView
@@ -820,6 +819,7 @@
                         android:visibility='@{nh2occ96.checked ? View.VISIBLE : View.GONE}' />
 
                 </LinearLayout>
+
                 <!--12-->
                 <TextView
                     android:id="@+id/txtnh210"
@@ -869,10 +869,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_weight="1.5"
-                        android:textColor="@color/gray"
                         android:background="@android:color/transparent"
                         android:text="@string/nh211"
                         android:textAlignment="center"
+                        android:textColor="@color/gray"
                         android:textStyle="bold" />
 
                     <Spinner
@@ -898,10 +898,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_weight="1.5"
-                        android:textColor="@color/gray"
                         android:background="@android:color/transparent"
                         android:text="@string/nh212"
                         android:textAlignment="center"
+                        android:textColor="@color/gray"
                         android:textStyle="bold" />
 
                     <Spinner

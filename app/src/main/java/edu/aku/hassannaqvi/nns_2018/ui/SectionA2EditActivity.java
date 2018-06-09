@@ -1172,6 +1172,9 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
         }
 
 
+
+
+
         if (!validatorClass.EmptyTextBox(this, binding.nh2dobm, getString(R.string.nh2dob))) {
             return false;
         }
@@ -1248,8 +1251,10 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
             return false;
         }
 
-        if (!validatorClass.EmptyRadioButton(this, binding.nh210, binding.nh210a, getString(R.string.nh210))) {
-            return false;
+        if (!MainApp.IsResp) {
+            if (!validatorClass.EmptyRadioButton(this, binding.nh210, binding.nh210a, getString(R.string.nh210))) {
+                return false;
+            }
         }
 
         if (Age < 5) {
