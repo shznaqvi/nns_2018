@@ -52,6 +52,7 @@ public class SectionE1Activity extends AppCompatActivity {
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
 
     int position = 0;
+    int indexOriginal = 0;
     static List<String> group;
 
     static List<Integer> originalPositions;
@@ -97,15 +98,17 @@ public class SectionE1Activity extends AppCompatActivity {
                 originalPositions.add(2);
             }
 
+            if (MainApp.minors.size() > 0) {
+                group.add(getResources().getString(R.string.neselectedc));
+                originalPositions.add(3);
+            }
+
             if (MainApp.adolescents.size() > 0) {
                 group.add(getResources().getString(R.string.neselectedd));
                 originalPositions.add(4);
             }
 
-            if (MainApp.minors.size() > 0) {
-                group.add(getResources().getString(R.string.neselectedc));
-                originalPositions.add(3);
-            }
+
         }
 
         bi.ne103.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, group));
@@ -116,12 +119,15 @@ public class SectionE1Activity extends AppCompatActivity {
                 if (bi.ne103.getSelectedItemPosition() != 0) {
 
                     position = originalPositions.get(i);
+                    indexOriginal = i;
+                    //position = i;
 
                     members = new ArrayList<>();
                     membersMap = new HashMap<>();
                     members.add("....");
 
-                    familyMembersSetting(MainApp.all_members);
+                    //familyMembersSetting(MainApp.all_members);
+                    fetchMembersFromGroup(position);
 
 
                     bi.ne102.setAdapter(new ArrayAdapter<>(SectionE1Activity.this, R.layout.item_style, members));
@@ -212,15 +218,37 @@ public class SectionE1Activity extends AppCompatActivity {
 
     }
 
+    private void fetchMembersFromGroup(int position) {
+
+        // WRA
+        if (position == 1) {
+            familyMembersSetting(MainApp.mwra);
+        }
+        // Child under 5
+        else if (position == 2) {
+            familyMembersSetting(MainApp.childUnder5);
+        }
+        // Minors
+        else if (position == 3) {
+            familyMembersSetting(MainApp.minors);
+        }
+        // Adoles
+        else if (position == 4) {
+            familyMembersSetting(MainApp.adolescents);
+        }
+    }
+
     public void familyMembersSetting(List<FamilyMembersContract> family) {
 
 
         for (FamilyMembersContract fmc : family) {
 
-            if (position == Integer.valueOf(fmc.getType())) {
+            //if (position == Integer.valueOf(fmc.getType()))
+            {
                 json = JSONUtilClass.getModelFromJSON(fmc.getsA2(), JSONModelClass.class);
                 membersMap.put(json.getName() + "_" + json.getSerialNo(), new SelectedMem(position, fmc, json.getSerialNo()));
-                members.add(json.getName() + "_" + json.getSerialNo());
+                if (!MainApp.duplicateMembers.contains(json.getName() + "_" + json.getSerialNo()))
+                    members.add(json.getName() + "_" + json.getSerialNo());
             }
         }
 
@@ -343,8 +371,13 @@ public class SectionE1Activity extends AppCompatActivity {
 
                 if (group.size() > 2) {
 
-                    group.remove(position);
-                    originalPositions.remove(position);
+                    //String str = group.get(position);
+                    //int myInt = originalPositions.get(position);
+
+                    MainApp.duplicateMembers.add(bi.ne102.getSelectedItem().toString());
+
+                    group.remove(indexOriginal);
+                    originalPositions.remove(indexOriginal);
                     //groupRemoved.set(position, 0);
 
                     //group.get(position);

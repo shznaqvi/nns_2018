@@ -23,6 +23,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
@@ -72,6 +73,7 @@ public class SpecimenInfoActivity extends AppCompatActivity {
         dateTime = new SimpleDateFormat("dd-MM-yyy HH:mm").format(System.currentTimeMillis());
 
         slecMem = new FamilyMembersContract();
+        MainApp.duplicateMembers = new ArrayList<>();
 
         /*SectionE1Activity.members.clear();
         SectionE1Activity.membersMap.clear();*/
@@ -488,21 +490,29 @@ public class SpecimenInfoActivity extends AppCompatActivity {
                             fm.setType("1");
                             MainApp.mwra.add(fm);
                             MainApp.all_members.add(fm);
-                        } else if ((Integer.valueOf(json.getAge()) >= 10 && (Integer.valueOf(json.getAge()) < 20))
+                            addIfNotExists(MainApp.all_members, fm);
+                        }
+                        if ((Integer.valueOf(json.getAge()) >= 10 && (Integer.valueOf(json.getAge()) < 20))
                                 && json.getGender().equals("2") && json.getNh210().equals("1") && json.getMaritalStatus().equals("5")) {
                             fm.setType("4");
                             MainApp.adolescents.add(fm);
                             MainApp.all_members.add(fm);
-                        } else if ((Integer.valueOf(json.getAge()) >= 6 && (Integer.valueOf(json.getAge()) < 13))
+                            addIfNotExists(MainApp.all_members, fm);
+                        }
+                        if ((Integer.valueOf(json.getAge()) >= 6 && (Integer.valueOf(json.getAge()) < 13))
                                 && json.getNh210().equals("1")) {
                             fm.setType("3");
                             MainApp.minors.add(fm);
                             MainApp.all_members.add(fm);
-                        } else if (Integer.valueOf(json.getAge()) < 6 && json.getNh210().equals("1")) {
+                            addIfNotExists(MainApp.all_members, fm);
+                        }
+                        if (Integer.valueOf(json.getAge()) < 6 && json.getNh210().equals("1")) {
                             fm.setType("2");
                             MainApp.childUnder5.add(fm);
                             MainApp.all_members.add(fm);
+                            addIfNotExists(MainApp.all_members, fm);
                         }
+
 
                     }
 
@@ -534,6 +544,10 @@ public class SpecimenInfoActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Not found.", Toast.LENGTH_SHORT).show();
         }
+
+    }
+
+    private void addIfNotExists(List<FamilyMembersContract> all_members, FamilyMembersContract fm) {
 
     }
 

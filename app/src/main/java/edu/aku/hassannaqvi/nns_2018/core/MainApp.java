@@ -16,6 +16,7 @@ import android.text.format.DateFormat;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -125,6 +126,7 @@ public class MainApp extends Application {
     public static List<FamilyMembersContract> adolescents_1;
     public static List<String> editmothersList, editfathersList;
     public static List<String> editmothersSerials, editfathersSerials;
+    public static ArrayList<String> duplicateMembers;
 
     public static BLRandomContract selectedHead;
     public static int serial_no;
