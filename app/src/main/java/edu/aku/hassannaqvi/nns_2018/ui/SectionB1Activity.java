@@ -1246,14 +1246,14 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
 
     public void redirectCondition() {
         if (editWRAFlag) {
-            if (!db.getNutritionCount()) {
-                startActivityForResult(new Intent(this, SectionB6Activity.class)
-                        .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
-            } else if (MainApp.mc.getsB6().equals("1")) {
+            if (MainApp.mc.getsB6().equals("1")) {
                 startActivityForResult(new Intent(this, SectionB6Activity.class)
                         .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
 
-            } else {
+            }/* else if (!db.getNutritionCount()) {
+                startActivityForResult(new Intent(this, SectionB6Activity.class)
+                        .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
+            }*/ else {
                 finish();
                 startActivity(new Intent(this, ViewMemberActivity.class)
                         .putExtra("flagEdit", false)
@@ -1263,9 +1263,10 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                 );
             }
         } else {
-            if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
-                    &&
-                    MainApp.B6Flag) {
+//            if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
+//                    &&
+//                    MainApp.B6Flag) {
+            if (wraMap.get(bi.nb101.getSelectedItem().toString()).getKishSelected().equals("1")) {
                 startActivityForResult(new Intent(this, SectionB6Activity.class)
                         .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
             } else {
@@ -1327,6 +1328,7 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
             MainApp.mc.setB1SerialNo(wraMap.get(bi.nb101.getSelectedItem().toString()).getSerialNo());
             MainApp.mc.set_UUID(MainApp.fc.getUID());
             MainApp.mc.setFMUID(wraMap.get(bi.nb101.getSelectedItem().toString()).get_UID());
+            MainApp.mc.setsB6(wraMap.get(bi.nb101.getSelectedItem().toString()).getKishSelected());
 
             wraName = bi.nb101.getSelectedItem().toString();
 

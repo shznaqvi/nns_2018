@@ -47,6 +47,7 @@ public class FamilyMembersContract implements Serializable {
     private String realtionHH = "";
     private String resp = "";
     private String type = "";
+    private String kishSelected = "";
 
     public FamilyMembersContract() {
     }
@@ -290,6 +291,14 @@ public class FamilyMembersContract implements Serializable {
         this.delflag = delflag;
     }
 
+    public String getKishSelected() {
+        return kishSelected;
+    }
+
+    public void setKishSelected(String kishSelected) {
+        this.kishSelected = kishSelected;
+    }
+
     public FamilyMembersContract Sync(JSONObject jsonObject) throws JSONException {
 
         this._ID = jsonObject.getString(familyMembers.COLUMN_ID);
@@ -305,6 +314,7 @@ public class FamilyMembersContract implements Serializable {
         this.enmNo = jsonObject.getString(familyMembers.COLUMN_ENM_NO);
         this.devicetagID = jsonObject.getString(familyMembers.COLUMN_DEVICETAGID);
         this.delflag = jsonObject.getString(familyMembers.COLUMN_FLAG);
+        this.kishSelected = jsonObject.getString(familyMembers.COLUMN_KISH_SELECTED);
 
         return this;
 
@@ -325,6 +335,7 @@ public class FamilyMembersContract implements Serializable {
         this.hhNo = cursor.getString(cursor.getColumnIndex(familyMembers.COLUMN_HH_NO));
         this.devicetagID = cursor.getString(cursor.getColumnIndex(familyMembers.COLUMN_DEVICETAGID));
         this.delflag = cursor.getString(cursor.getColumnIndex(familyMembers.COLUMN_FLAG));
+        this.kishSelected = cursor.getString(cursor.getColumnIndex(familyMembers.COLUMN_KISH_SELECTED));
 
         return this;
 
@@ -346,6 +357,7 @@ public class FamilyMembersContract implements Serializable {
         json.put(familyMembers.COLUMN_APP_VERSION, this.app_ver == null ? JSONObject.NULL : this.app_ver);
         json.put(familyMembers.COLUMN_AV, this.av == null ? JSONObject.NULL : this.av);
         json.put(familyMembers.COLUMN_FLAG, this.delflag == null ? JSONObject.NULL : this.delflag);
+        json.put(familyMembers.COLUMN_KISH_SELECTED, this.kishSelected == null ? JSONObject.NULL : this.kishSelected);
         if (this.sA2 != null && !this.sA2.equals("")) {
             json.put(familyMembers.COLUMN_SA2, this.sA2.equals("") ? JSONObject.NULL : new JSONObject(this.sA2));
         }
@@ -377,6 +389,7 @@ public class FamilyMembersContract implements Serializable {
         public static final String COLUMN_HH_NO = "hh_no";
         public static final String COLUMN_AV = "av";
         public static final String COLUMN_FLAG = "delflag";
+        public static final String COLUMN_KISH_SELECTED = "kish_sel";
 
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNCED_DATE = "sync_date";

@@ -69,7 +69,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     public static final String DATABASE_NAME = "nns_2018.db";
-    private static final int DATABASE_VERSION = 9;
+    private static final int DATABASE_VERSION = 10;
     public static final String DB_NAME = DATABASE_NAME.replace(".", "_" + MainApp.versionName + "_" + DATABASE_VERSION + "_copy.");
     public static final String PROJECT_NAME = "NNS-2018";
 
@@ -126,6 +126,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             familyMembers.COLUMN_ENM_NO + " TEXT," +
             familyMembers.COLUMN_HH_NO + " TEXT," +
             familyMembers.COLUMN_AV + " TEXT," +
+            familyMembers.COLUMN_KISH_SELECTED + " TEXT," +
             familyMembers.COLUMN_DEVICEID + " TEXT," +
             familyMembers.COLUMN_DEVICETAGID + " TEXT," +
             familyMembers.COLUMN_APP_VERSION + " TEXT," +
@@ -138,6 +139,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String SQL_ALTER_FAMILYMEMBER = "ALTER TABLE " +
             familyMembers.TABLE_NAME + " ADD COLUMN " +
             familyMembers.COLUMN_FLAG + " TEXT;";
+
+    private static final String SQL_ALTER_FAMILYMEMBER1 = "ALTER TABLE " +
+            familyMembers.TABLE_NAME + " ADD COLUMN " +
+            familyMembers.COLUMN_KISH_SELECTED + " TEXT;";
 
     private static final String SQL_ALTER_USERS = "ALTER TABLE " +
             UsersTable.TABLE_NAME + " ADD COLUMN " +
@@ -476,6 +481,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.execSQL(SQL_ALTER_USERS);
             case 8:
                 db.execSQL(SQL_CREATE_MICRO);
+            case 9:
+                db.execSQL(SQL_ALTER_FAMILYMEMBER1);
         }
 
     }
@@ -749,6 +756,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 familyMembers.COLUMN_SYNCED,
                 familyMembers.COLUMN_SYNCED_DATE,
                 familyMembers.COLUMN_FLAG,
+                familyMembers.COLUMN_KISH_SELECTED,
                 familyMembers.COLUMN_APP_VERSION
 
         };
@@ -864,7 +872,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 familyMembers.COLUMN_SYNCED,
                 familyMembers.COLUMN_SYNCED_DATE,
                 familyMembers.COLUMN_APP_VERSION,
-                familyMembers.COLUMN_FLAG
+                familyMembers.COLUMN_FLAG,
+                familyMembers.COLUMN_KISH_SELECTED,
 
         };
 
@@ -1415,6 +1424,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(familyMembers.COLUMN_SYNCED_DATE, fmc.getSyncedDate());
         values.put(familyMembers.COLUMN_APP_VERSION, fmc.getApp_ver());
         values.put(familyMembers.COLUMN_FLAG, fmc.getDelflag());
+        values.put(familyMembers.COLUMN_KISH_SELECTED, fmc.getKishSelected());
 
 
         // Insert the new row, returning the primary key value of the new row
@@ -2259,6 +2269,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
+    public int updateFamilyMemberKishFlag(String uuid, String fmUID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(familyMembers.COLUMN_KISH_SELECTED, "1");
+
+// Which row to update, based on the ID
+        String selection = familyMembers.COLUMN_UUID + " = ? AND " + familyMembers.COLUMN_UID + " = ?";
+        String[] selectionArgs = {uuid, fmUID};
+
+        int count = db.update(familyMembers.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
+
     public int updateDeceasedMemberID() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2704,7 +2732,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 familyMembers.COLUMN_SYNCED,
                 familyMembers.COLUMN_SYNCED_DATE,
                 familyMembers.COLUMN_APP_VERSION,
-                familyMembers.COLUMN_FLAG
+                familyMembers.COLUMN_FLAG,
+                familyMembers.COLUMN_KISH_SELECTED,
         };
         String whereClause = familyMembers.COLUMN_SYNCED + " is null OR " + familyMembers.COLUMN_SYNCED + " = '' ";
         String[] whereArgs = null;
@@ -2753,6 +2782,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 familyMembers.COLUMN_HH_NO,
                 familyMembers.COLUMN_ENM_NO,
                 familyMembers.COLUMN_FLAG,
+                familyMembers.COLUMN_KISH_SELECTED,
                 familyMembers.COLUMN_SA2,
                 familyMembers.COLUMN_DEVICETAGID,
                 familyMembers.COLUMN_DEVICEID,

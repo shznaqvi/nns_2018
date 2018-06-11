@@ -15,11 +15,9 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 import butterknife.BindViews;
@@ -30,7 +28,6 @@ import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionB1ABinding;
-import edu.aku.hassannaqvi.nns_2018.other.AgeModel;
 import edu.aku.hassannaqvi.nns_2018.other.DateUtils;
 import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
@@ -301,10 +298,11 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                             startActivity(new Intent(this, SectionB2Activity.class));
                         } else {
                             if (SectionB1Activity.editWRAFlag) {
-                                if (!db.getNutritionCount()) {
+                                /*if (!db.getNutritionCount()) {
                                     startActivityForResult(new Intent(this, SectionB6Activity.class)
                                             .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
-                                } else if (MainApp.mc.getsB6().equals("1")) {
+                                } else*/
+                                if (MainApp.mc.getsB6().equals("1")) {
                                     startActivityForResult(new Intent(this, SectionB6Activity.class)
                                             .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
 
@@ -318,9 +316,10 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                                     );
                                 }
                             } else {
-                                if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
+                                /*if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
                                         &&
-                                        MainApp.B6Flag) {
+                                        MainApp.B6Flag) {*/
+                                if (MainApp.mc.getsB6().equals("1")) {
                                     startActivityForResult(new Intent(this, SectionB6Activity.class)
                                             .putExtra("backPressed", classPassName.equals(SectionB6Activity.class.getName())), 1);
                                 } else {

@@ -37,6 +37,7 @@ import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionListA2Binding;
 import edu.aku.hassannaqvi.nns_2018.databinding.FamilymemberslistBinding;
 import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
+import edu.aku.hassannaqvi.nns_2018.other.KishGrid;
 
 public class SectionA2ListActivity extends AppCompatActivity {
 
@@ -474,9 +475,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
         MainApp.fc.setCount(String.valueOf(count));
 
-
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
-
     }
 
     private boolean UpdateDB() {
@@ -485,8 +484,21 @@ public class SectionA2ListActivity extends AppCompatActivity {
         int updcount = db.updateSACount();
 
         if (updcount == 1) {
-            //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+
+            if (!SectionA1Activity.editFormFlag && SectionA1Activity.reBackFlag) {
+                int counter = KishGrid.KishGridProcess(Integer.valueOf(MainApp.fc.getHhNo().split("-")[1]), MainApp.mwra.size());
+                updcount = db.updateFamilyMemberKishFlag(MainApp.mwra.get(counter - 1).get_UUID(), MainApp.mwra.get(counter - 1).get_UID());
+
+                if (updcount == 1) {
+                    MainApp.mwra.get(counter - 1).setKishSelected("1");
+                    return true;
+                } else {
+                    Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+            }
             return true;
+
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;

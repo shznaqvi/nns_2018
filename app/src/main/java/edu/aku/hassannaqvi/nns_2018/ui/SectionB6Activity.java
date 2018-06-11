@@ -510,8 +510,8 @@ public class SectionB6Activity extends Menu2Activity {
                         (MainApp.nc.getDeviceId() + MainApp.nc.get_ID()));
                 db.updateNutritionID();
 
-                MainApp.mc.setsB6("1");
-                db.updateWRAB6();
+                /*MainApp.mc.setsB6("1");
+                db.updateWRAB6();*/
 
                 uid = MainApp.nc.getDeviceId() + MainApp.nc.get_ID();
 

@@ -258,10 +258,11 @@ public class SectionB5Activity extends Menu2Activity implements TextWatcher, Rad
 //                finish();
 
                 if (SectionB1Activity.editWRAFlag) {
-                    if (!db.getNutritionCount()) {
+                    /*if (!db.getNutritionCount()) {
                         startActivity(new Intent(this, SectionB6Activity.class)
                                 .putExtra("backPressed", backPressed));
-                    } else if (MainApp.mc.getsB6().equals("1")) {
+                    } else*/
+                    if (MainApp.mc.getsB6().equals("1")) {
                         startActivity(new Intent(this, SectionB6Activity.class)
                                 .putExtra("backPressed", backPressed));
                     } else {
@@ -274,15 +275,16 @@ public class SectionB5Activity extends Menu2Activity implements TextWatcher, Rad
                         );
                     }
                 } else {
-                    if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
+                    /*if (SectionB1Activity.WRAcounter == MainApp.mwra.size()
                             &&
-                            MainApp.B6Flag) {
+                            MainApp.B6Flag) {*/
+                    if (MainApp.mc.getsB6().equals("1")) {
                         startActivity(new Intent(this, SectionB6Activity.class)
                                 .putExtra("backPressed", backPressed));
-                    } else if (MainApp.B2B6Flag) {
+                    }/* else if (MainApp.B2B6Flag) {
                         startActivity(new Intent(this, SectionB6Activity.class)
                                 .putExtra("backPressed", backPressed));
-                    } else {
+                    }*/ else {
                         startActivity(new Intent(this, MotherEndingActivity.class)
                                 .putExtra("complete", true));
                     }
@@ -292,8 +294,6 @@ public class SectionB5Activity extends Menu2Activity implements TextWatcher, Rad
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
         }
-
-        //startActivity(new Intent(this, SectionB6Activity.class));
     }
 
     public void BtnEnd() {
