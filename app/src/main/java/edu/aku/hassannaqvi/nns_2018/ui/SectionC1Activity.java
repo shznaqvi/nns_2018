@@ -167,6 +167,19 @@ public class SectionC1Activity extends AddMember_MenuActivity implements TextWat
 
         binding.nc202.setOnCheckedChangeListener(this);
         binding.nc205.setOnCheckedChangeListener(this);
+
+        binding.na11801.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.na11801b) {
+                    binding.nc202.clearCheck();
+                    binding.nc204a.clearCheck();
+                    binding.nc204b.clearCheck();
+                    binding.nc205.clearCheck();
+                }
+            }
+        });
+
     }
 
     private void setupViews() {
@@ -331,6 +344,13 @@ public class SectionC1Activity extends AddMember_MenuActivity implements TextWat
 
             MainApp.cc.setClusterno(jsonC1.getCluster_no());
             MainApp.cc.setHhno(jsonC1.getHhno());
+
+            if (!jsonC1.getnh11801().equals("0")) {
+                binding.na11801.check(
+                        jsonC1.getnh11801().equals("1") ? binding.na11801a.getId() :
+                                binding.na11801b.getId()
+                );
+            }
 
             if (!jsonC1.getnc202().equals("0")) {
                 binding.nc202.check(
@@ -518,119 +538,125 @@ public class SectionC1Activity extends AddMember_MenuActivity implements TextWat
                 }
             }
 
-            if (!validatorClass.EmptyTextBox(this, binding.nc201y, getString(R.string.nc201))) {
+            if (!validatorClass.EmptyRadioButton(this, binding.na11801, binding.na11801b, getString(R.string.na11801))) {
                 return false;
             }
 
-            if (!validatorClass.RangeTextBox(this, binding.nc201y, DateUtils.getCurrentYear() - 5, DateUtils.getCurrentYear(), getString(R.string.nc201), " years")) {
-                return false;
-            }
+            if (binding.na11801a.isChecked()) {
 
-            if (!validatorClass.EmptyTextBox(this, binding.nc201m, getString(R.string.nc201))) {
-                return false;
-            }
-
-            if (!validatorClass.RangeTextBox(this, binding.nc201m, 1, 12, getString(R.string.nc201), " months")) {
-                return false;
-            }
-
-
-            if (!validatorClass.EmptyTextBox(this, binding.nc201d, getString(R.string.nc201))) {
-                return false;
-            }
-
-            if (!validatorClass.RangeTextBox(this, binding.nc201d, 1, 31, 98, getString(R.string.nc201), " days")) {
-                return false;
-            }
-
-
-            Calendar today = Calendar.getInstance();
-
-            Calendar sixYears = Calendar.getInstance();
-            sixYears.add(Calendar.DAY_OF_YEAR, -2190);
-
-            if (dob.before(sixYears)) {
-                if (!validatorClass.RangeTextBoxforDate(this, binding.nc201d, 1, DateUtils.getCurrentDate(), 98, "Date can not be more than today")) {
+                if (!validatorClass.EmptyTextBox(this, binding.nc201y, getString(R.string.nc201))) {
                     return false;
                 }
 
-                if (!validatorClass.RangeTextBoxforDate(this, binding.nc201m, 1, DateUtils.getCurrentMonth(), "Month can not be more than current month")) {
+                if (!validatorClass.RangeTextBox(this, binding.nc201y, DateUtils.getCurrentYear() - 5, DateUtils.getCurrentYear(), getString(R.string.nc201), " years")) {
                     return false;
                 }
 
-                if (!validatorClass.RangeTextBoxforDate(this, binding.nc201y, DateUtils.getCurrentYear() - 5, DateUtils.getCurrentYear(), "Year can not be more than current year")) {
-                    return false;
-                }
-            }
-
-
-            if (dob.after(today)) {
-                if (!validatorClass.RangeTextBoxforDate(this, binding.nc201d, 1, DateUtils.getCurrentDate(), 98, "Date can not be more than today")) {
+                if (!validatorClass.EmptyTextBox(this, binding.nc201m, getString(R.string.nc201))) {
                     return false;
                 }
 
-                if (!validatorClass.RangeTextBoxforDate(this, binding.nc201m, 1, DateUtils.getCurrentMonth(), "Month can not be more than current month")) {
+                if (!validatorClass.RangeTextBox(this, binding.nc201m, 1, 12, getString(R.string.nc201), " months")) {
                     return false;
                 }
 
-                if (!validatorClass.RangeTextBoxforDate(this, binding.nc201y, DateUtils.getCurrentYear() - 5, DateUtils.getCurrentYear(), "Year can not be more than current year")) {
+
+                if (!validatorClass.EmptyTextBox(this, binding.nc201d, getString(R.string.nc201))) {
                     return false;
                 }
 
-            }
+                if (!validatorClass.RangeTextBox(this, binding.nc201d, 1, 31, 98, getString(R.string.nc201), " days")) {
+                    return false;
+                }
 
-            if (!validatorClass.EmptyRadioButton(this, binding.nc202, binding.nc202a, getString(R.string.nc202))) {
-                return false;
-            }
 
-            if (ageInMontsbyDob < 12 && !binding.nc202a.isChecked()) {
-                Toast.makeText(this, "ERROR(invalid): " + "Select correct option.. Age is less than 1 year" + getString(R.string.nc202), Toast.LENGTH_LONG).show();
-                binding.nc202a.setError("Select correct option.. Age is less than 1 year");
+                Calendar today = Calendar.getInstance();
 
-                Log.i(SectionC1Activity.class.getSimpleName(), "nc202" + ": invalid");
-                return false;
-            } else {
-                binding.nc202a.setError(null);
-            }
+                Calendar sixYears = Calendar.getInstance();
+                sixYears.add(Calendar.DAY_OF_YEAR, -2190);
 
-            if ((ageInMontsbyDob > 12 && ageInMontsbyDob < 24) && !binding.nc202b.isChecked()) {
-                Toast.makeText(this, "ERROR(invalid): " + "Select correct option.. Age is greater than 1 year" + getString(R.string.nc202), Toast.LENGTH_LONG).show();
-                binding.nc202b.setError("Select correct option.. Age is greater than 1 year");
+                if (dob.before(sixYears)) {
+                    if (!validatorClass.RangeTextBoxforDate(this, binding.nc201d, 1, DateUtils.getCurrentDate(), 98, "Date can not be more than today")) {
+                        return false;
+                    }
 
-                Log.i(SectionC1Activity.class.getSimpleName(), "nc202" + ": invalid");
-                return false;
-            } else {
-                binding.nc202b.setError(null);
-            }
+                    if (!validatorClass.RangeTextBoxforDate(this, binding.nc201m, 1, DateUtils.getCurrentMonth(), "Month can not be more than current month")) {
+                        return false;
+                    }
 
-            if ((ageInMontsbyDob > 24 &&
-                    ageInMontsbyDob < 72) && !binding.nc202c.isChecked()) {
-                Toast.makeText(this, "ERROR(invalid): " + "Select correct option.. Age is greater than 2 years" + getString(R.string.nc202), Toast.LENGTH_LONG).show();
-                binding.nc202c.setError("Select correct option.. Age is greater than 2 years");
+                    if (!validatorClass.RangeTextBoxforDate(this, binding.nc201y, DateUtils.getCurrentYear() - 5, DateUtils.getCurrentYear(), "Year can not be more than current year")) {
+                        return false;
+                    }
+                }
 
-                Log.i(SectionC1Activity.class.getSimpleName(), "nc202" + ": invalid");
-                return false;
-            } else {
-                binding.nc202c.setError(null);
-            }
 
-            if (!validatorClass.EmptyTextBox(this, binding.nc203, getString(R.string.nc203))) {
-                return false;
-            }
+                if (dob.after(today)) {
+                    if (!validatorClass.RangeTextBoxforDate(this, binding.nc201d, 1, DateUtils.getCurrentDate(), 98, "Date can not be more than today")) {
+                        return false;
+                    }
 
-            if (!validatorClass.RangeTextBox(this, binding.nc203, 0, 72, getString(R.string.nc203), " months")) {
-                return false;
-            }
+                    if (!validatorClass.RangeTextBoxforDate(this, binding.nc201m, 1, DateUtils.getCurrentMonth(), "Month can not be more than current month")) {
+                        return false;
+                    }
 
-            if (ageInMontsbyDob != Integer.valueOf(binding.nc203.getText().toString())) {
-                Toast.makeText(this, "ERROR(invalid): " + "Check age and dob again" + getString(R.string.nc203), Toast.LENGTH_LONG).show();
-                binding.nc203.setError("Please check age and dob again..");
+                    if (!validatorClass.RangeTextBoxforDate(this, binding.nc201y, DateUtils.getCurrentYear() - 5, DateUtils.getCurrentYear(), "Year can not be more than current year")) {
+                        return false;
+                    }
 
-                Log.i(SectionC1Activity.class.getSimpleName(), "nc203" + ": invalid");
-                return false;
-            } else {
-                binding.nc203.setError(null);
-            }
+                }
+
+                if (!validatorClass.EmptyRadioButton(this, binding.nc202, binding.nc202a, getString(R.string.nc202))) {
+                    return false;
+                }
+
+                if (ageInMontsbyDob < 12 && !binding.nc202a.isChecked()) {
+                    Toast.makeText(this, "ERROR(invalid): " + "Select correct option.. Age is less than 1 year" + getString(R.string.nc202), Toast.LENGTH_LONG).show();
+                    binding.nc202a.setError("Select correct option.. Age is less than 1 year");
+
+                    Log.i(SectionC1Activity.class.getSimpleName(), "nc202" + ": invalid");
+                    return false;
+                } else {
+                    binding.nc202a.setError(null);
+                }
+
+                if ((ageInMontsbyDob > 12 && ageInMontsbyDob < 24) && !binding.nc202b.isChecked()) {
+                    Toast.makeText(this, "ERROR(invalid): " + "Select correct option.. Age is greater than 1 year" + getString(R.string.nc202), Toast.LENGTH_LONG).show();
+                    binding.nc202b.setError("Select correct option.. Age is greater than 1 year");
+
+                    Log.i(SectionC1Activity.class.getSimpleName(), "nc202" + ": invalid");
+                    return false;
+                } else {
+                    binding.nc202b.setError(null);
+                }
+
+                if ((ageInMontsbyDob > 24 &&
+                        ageInMontsbyDob < 72) && !binding.nc202c.isChecked()) {
+                    Toast.makeText(this, "ERROR(invalid): " + "Select correct option.. Age is greater than 2 years" + getString(R.string.nc202), Toast.LENGTH_LONG).show();
+                    binding.nc202c.setError("Select correct option.. Age is greater than 2 years");
+
+                    Log.i(SectionC1Activity.class.getSimpleName(), "nc202" + ": invalid");
+                    return false;
+                } else {
+                    binding.nc202c.setError(null);
+                }
+
+                if (!validatorClass.EmptyTextBox(this, binding.nc203, getString(R.string.nc203))) {
+                    return false;
+                }
+
+                if (!validatorClass.RangeTextBox(this, binding.nc203, 0, 72, getString(R.string.nc203), " months")) {
+                    return false;
+                }
+
+                if (ageInMontsbyDob != Integer.valueOf(binding.nc203.getText().toString())) {
+                    Toast.makeText(this, "ERROR(invalid): " + "Check age and dob again" + getString(R.string.nc203), Toast.LENGTH_LONG).show();
+                    binding.nc203.setError("Please check age and dob again..");
+
+                    Log.i(SectionC1Activity.class.getSimpleName(), "nc203" + ": invalid");
+                    return false;
+                } else {
+                    binding.nc203.setError(null);
+                }
 
             /*if (!validatorClass.EmptyRadioButton(this, binding.nc204a, binding.nc204aa, getString(R.string.nc204a))) {
                 return false;
@@ -640,30 +666,30 @@ public class SectionC1Activity extends AddMember_MenuActivity implements TextWat
                 return false;
             }*/
 
-            if (!validatorClass.EmptyRadioButton(this, binding.nc205, binding.nc205a, getString(R.string.nc205))) {
-                return false;
+                if (!validatorClass.EmptyRadioButton(this, binding.nc205, binding.nc205a, getString(R.string.nc205))) {
+                    return false;
+                }
+
+                if (ageInMontsbyDob < 24 && !binding.nc205a.isChecked()) {
+                    Toast.makeText(this, "ERROR(invalid): " + "Select correct option according to age in months" + getString(R.string.nc205), Toast.LENGTH_LONG).show();
+                    binding.nc205a.setError("Select correct option according to age in months");
+
+                    Log.i(SectionC1Activity.class.getSimpleName(), "nc205" + ": invalid");
+                    return false;
+                } else {
+                    binding.nc205a.setError(null);
+                }
+
+                if (ageInMontsbyDob >= 24 && !binding.nc205b.isChecked()) {
+                    Toast.makeText(this, "ERROR(invalid): " + "Select correct option according to age in months" + getString(R.string.nc205), Toast.LENGTH_LONG).show();
+                    binding.nc205b.setError("Select correct option according to age in months");
+
+                    Log.i(SectionC1Activity.class.getSimpleName(), "nc205" + ": invalid");
+                    return false;
+                } else {
+                    binding.nc205b.setError(null);
+                }
             }
-
-            if (ageInMontsbyDob < 24 && !binding.nc205a.isChecked()) {
-                Toast.makeText(this, "ERROR(invalid): " + "Select correct option according to age in months" + getString(R.string.nc205), Toast.LENGTH_LONG).show();
-                binding.nc205a.setError("Select correct option according to age in months");
-
-                Log.i(SectionC1Activity.class.getSimpleName(), "nc205" + ": invalid");
-                return false;
-            } else {
-                binding.nc205a.setError(null);
-            }
-
-            if (ageInMontsbyDob >= 24 && !binding.nc205b.isChecked()) {
-                Toast.makeText(this, "ERROR(invalid): " + "Select correct option according to age in months" + getString(R.string.nc205), Toast.LENGTH_LONG).show();
-                binding.nc205b.setError("Select correct option according to age in months");
-
-                Log.i(SectionC1Activity.class.getSimpleName(), "nc205" + ": invalid");
-                return false;
-            } else {
-                binding.nc205b.setError(null);
-            }
-
 
         }
 
@@ -755,8 +781,8 @@ public class SectionC1Activity extends AddMember_MenuActivity implements TextWat
         }
 
 
+        sC1.put("nh11801", binding.na11801a.isChecked() ? "1" : binding.na11801b.isChecked() ? "2" : "0");
 //        nc103
-
         sC1.put("nc201d", binding.nc201d.getText().toString());
         sC1.put("nc201m", binding.nc201m.getText().toString());
         sC1.put("nc201y", binding.nc201y.getText().toString());

@@ -36,9 +36,18 @@ public class JSONB1ModelClass {
     private String nw215 = "";
     private String nw216 = "";
     private String nw216aa = "";
+    private String nh11801 = "";
 
     public JSONB1ModelClass() {
 
+    }
+
+    public String getnh11801() {
+        return nh11801;
+    }
+
+    public void setnh11801(String nh11801) {
+        this.nh11801 = nh11801;
     }
 
     public String getnw101() {

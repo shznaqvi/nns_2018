@@ -23,10 +23,18 @@ public class JSONC1ModelClass {
     private String cluster_no = "";
     private String hhno = "";
     private String wra_lno = "";
-
+    private String nh11801 = "";
 
     public JSONC1ModelClass() {
 
+    }
+
+    public String getnh11801() {
+        return nh11801;
+    }
+
+    public void setnh11801(String nh11801) {
+        this.nh11801 = nh11801;
     }
 
     public String getWra_lno() {
