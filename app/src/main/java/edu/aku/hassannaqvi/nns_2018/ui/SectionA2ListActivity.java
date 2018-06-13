@@ -662,7 +662,8 @@ public class SectionA2ListActivity extends AppCompatActivity {
             public void bindUser(FamilyMembersContract mem) {
 
                 familyBinding.imgUser.setImageDrawable(getDrawable(SetImage(mem.getna204(), mem.getAgeInYear())));
-                familyBinding.memberName.setText(mem.getName().toUpperCase());
+                String memName = mem.getName().length() > 15 ? mem.getName().substring(0, 15).toUpperCase() + ".." : mem.getName().toUpperCase();
+                familyBinding.memberName.setText(memName + (mem.getAgeInYear().equals("") ? "" : " \rAge:" + mem.getAgeInYear()));
                 familyBinding.na204.setText(mem.getna204().equals("1") ? "Male" : mem.getna204().equals("2") ? "Female" : "Transgender");
                 familyBinding.lineNo.setText("Line No:" + mem.getSerialNo());
                 familyBinding.ffName.setText(mem.getFatherName().equals("") ? "..." : mem.getFatherName());
