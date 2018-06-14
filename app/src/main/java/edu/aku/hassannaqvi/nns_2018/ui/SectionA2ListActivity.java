@@ -310,6 +310,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
                     }
 
                     MainApp.hhClicked.add(position);
+                    MainApp.familyMembersClicked.put(position, fm);
 
                     if (fm.getDelflag().equals("1")) {
                         MainApp.flagClicked.add(position);
@@ -663,7 +664,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
                 familyBinding.imgUser.setImageDrawable(getDrawable(SetImage(mem.getna204(), mem.getAgeInYear())));
                 String memName = mem.getName().length() > 15 ? mem.getName().substring(0, 15).toUpperCase() + ".." : mem.getName().toUpperCase();
-                familyBinding.memberName.setText(memName + (mem.getAgeInYear().equals("") ? "" : " \rAge:" + mem.getAgeInYear()));
+                familyBinding.memberName.setText(memName + (mem.getAgeInYear().equals("") ? "" : " \r-- " + mem.getAgeInYear() + "Years"));
                 familyBinding.na204.setText(mem.getna204().equals("1") ? "Male" : mem.getna204().equals("2") ? "Female" : "Transgender");
                 familyBinding.lineNo.setText("Line No:" + mem.getSerialNo());
                 familyBinding.ffName.setText(mem.getFatherName().equals("") ? "..." : mem.getFatherName());
@@ -722,7 +723,28 @@ public class SectionA2ListActivity extends AppCompatActivity {
                 public void run() {
 //                   Background black for those that's data filled
                     for (int item : MainApp.hhClicked) {
-                        binding.recyclerNoMembers.getChildAt(item).setBackgroundColor(Color.BLACK);
+
+                        JSONModelClass json = JSONUtilClass.getModelFromJSON(MainApp.familyMembersClicked.get(item).getsA2(), JSONModelClass.class);
+                        int age = Integer.valueOf(json.getAge());
+
+                        if (age >= 10) {
+                            if (json.getGender().equals("1")) {
+                                binding.recyclerNoMembers.getChildAt(item).setBackgroundColor(getResources().getColor(R.color.darkBlue));
+                            } else if (json.getGender().equals("2")) {
+                                binding.recyclerNoMembers.getChildAt(item).setBackgroundColor(getResources().getColor(R.color.darkPink));
+                            } else {
+                                binding.recyclerNoMembers.getChildAt(item).setBackgroundColor(Color.BLACK);
+                            }
+                        } else {
+                            if (json.getGender().equals("1")) {
+                                binding.recyclerNoMembers.getChildAt(item).setBackgroundColor(getResources().getColor(R.color.lightBlue));
+                            } else if (json.getGender().equals("2")) {
+                                binding.recyclerNoMembers.getChildAt(item).setBackgroundColor(getResources().getColor(R.color.lightPink));
+                            } else {
+                                binding.recyclerNoMembers.getChildAt(item).setBackgroundColor(Color.BLACK);
+                            }
+                        }
+
                     }
 
                     for (int item : MainApp.flagClicked) {

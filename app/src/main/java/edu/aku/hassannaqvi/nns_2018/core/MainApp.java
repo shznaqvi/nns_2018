@@ -134,9 +134,10 @@ public class MainApp extends Application {
     public static Boolean B2B6Flag = false;
     // fro section A2
     public static List<FamilyMembersContract> familyMembersList;
-    //public static List<FamilyMembersContract> familyMembersList;
+
     public static List<Integer> hhClicked;
     public static List<Integer> flagClicked;
+    public static Map<Integer, FamilyMembersContract> familyMembersClicked;
 
     // Gul Sanober
     public static Map<String, FamilyMembersContract> mwraMap;

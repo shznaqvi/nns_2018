@@ -737,6 +737,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
         } else {
             binding.btnEnd.setEnabled(false);
             MainApp.hhClicked.remove(position);
+
             MainApp.endActivityAll(this, this, SectionA2ListActivity.class, true);
         }
 //        MainApp.endActivity(this, this);
@@ -997,6 +998,8 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
 
             MainApp.familyMembersList.set(position, family);
 
+            // Add in fm clicked
+            MainApp.familyMembersClicked.put(position, family);
 
         }
 

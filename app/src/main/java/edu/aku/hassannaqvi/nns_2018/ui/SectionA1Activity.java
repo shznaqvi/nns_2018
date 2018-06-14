@@ -217,6 +217,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
         MainApp.familyMembersList = new ArrayList<>();
         MainApp.hhClicked = new ArrayList<>();
         MainApp.flagClicked = new ArrayList<>();
+        MainApp.familyMembersClicked = new HashMap<>();
 
 
 //        HH listener
@@ -614,38 +615,42 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
         if (!binding.nh102.getText().toString().trim().isEmpty() && !binding.nh108.getText().toString().trim().isEmpty()) {
 
-            FormsContract partialMem = db.getPartialForms(binding.nh102.getText().toString(), binding.nh108.getText().toString(), "1");
-
-            if (partialMem != null) {
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                        SectionA1Activity.this);
-                alertDialogBuilder
-                        .setMessage("یہ House Hold پہلے سے 'مکمل' موجود ہے۔")
-                        .setCancelable(false)
-                        .setPositiveButton("۔Edit فارم شروح کرنا ہے",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        dialog.cancel();
-
-                                        finish();
-                                        startActivity(new Intent(SectionA1Activity.this, ViewMemberActivity.class)
-                                                .putExtra("comingBack", true)
-                                                .putExtra("flagEdit", false)
-                                                .putExtra("cluster", binding.nh102.getText().toString())
-                                                .putExtra("hhno", binding.nh108.getText().toString()));
-                                    }
-                                })
-                        .setNegativeButton("۔دوبارہ فارم شروح کرنا ہے",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        dialog.cancel();
-                                        setupViews();
-                                    }
-                                });
-                AlertDialog alert = alertDialogBuilder.create();
-                alert.show();
-            } else {
+            if (editFormFlag) {
                 setupViews();
+            } else {
+                FormsContract partialMem = db.getPartialForms(binding.nh102.getText().toString(), binding.nh108.getText().toString(), "1");
+
+                if (partialMem != null) {
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                            SectionA1Activity.this);
+                    alertDialogBuilder
+                            .setMessage("یہ House Hold پہلے سے 'مکمل' موجود ہے۔")
+                            .setCancelable(false)
+                            .setPositiveButton("۔Edit فارم شروح کرنا ہے",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            dialog.cancel();
+
+                                            finish();
+                                            startActivity(new Intent(SectionA1Activity.this, ViewMemberActivity.class)
+                                                    .putExtra("comingBack", true)
+                                                    .putExtra("flagEdit", false)
+                                                    .putExtra("cluster", binding.nh102.getText().toString())
+                                                    .putExtra("hhno", binding.nh108.getText().toString()));
+                                        }
+                                    })
+                            .setNegativeButton("۔دوبارہ فارم شروح کرنا ہے",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            dialog.cancel();
+                                            setupViews();
+                                        }
+                                    });
+                    AlertDialog alert = alertDialogBuilder.create();
+                    alert.show();
+                } else {
+                    setupViews();
+                }
             }
 
         } else {

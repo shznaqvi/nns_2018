@@ -636,7 +636,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String having = null;
 
         String orderBy =
-                FormsTable._ID + " DESC LIMIT 1";
+                FormsTable.COLUMN_HH_NO + " DESC LIMIT 1";
 
         FormsContract allFC = null;
         try {
