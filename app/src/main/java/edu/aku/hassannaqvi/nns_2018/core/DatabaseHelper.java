@@ -672,10 +672,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_UID,
         };
 
-        String whereClause = FormsTable.COLUMN_CLUSTER_NO + " =? AND " + FormsTable.COLUMN_HH_NO + " =? AND "
-                + FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + " = '' AND ("
-                + FormsTable.COLUMN_ISTATUS + " =? OR " + FormsTable.COLUMN_ISTATUS + " =? OR " + FormsTable.COLUMN_ISTATUS + " =?)";
-        String[] whereArgs = new String[]{cluster, hhno, "1", "7", ""};
+        String whereClause = FormsTable.COLUMN_CLUSTER_NO + " =? AND " + FormsTable.COLUMN_HH_NO + " =? AND ("
+                + FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + " = '') AND ("
+                + FormsTable.COLUMN_ISTATUS + " =? OR " + FormsTable.COLUMN_ISTATUS + " =? OR " + FormsTable.COLUMN_ISTATUS + " = '' OR " + FormsTable.COLUMN_ISTATUS + " is null)";
+        String[] whereArgs = new String[]{cluster, hhno, "1", "7"};
 
         String groupBy = null;
         String having = null;

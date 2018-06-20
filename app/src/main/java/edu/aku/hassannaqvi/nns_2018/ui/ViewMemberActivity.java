@@ -207,9 +207,9 @@ public class ViewMemberActivity extends MenuActivity {
 
                 members = db.getAllMembersByHH(formUid);
 
-                if (members.size() != 0) {
+                initializingLists();
 
-                    initializingLists();
+                if (members.size() != 0) {
 
                     progressDialog.show();
 
