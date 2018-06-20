@@ -18,6 +18,7 @@ import android.text.TextWatcher;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -72,6 +73,7 @@ public class ViewMemberActivity extends MenuActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_view_member);
         db = new DatabaseHelper(this);
         binding.setCallback(this);
+        this.setTitle("Members List");
 
 //        Setting ProgressDialog
         progressDialog = new ProgressDialog(ViewMemberActivity.this,
@@ -168,7 +170,6 @@ public class ViewMemberActivity extends MenuActivity {
                             binding.chckhouse.setSelection(binding.chckhouse.getText().length());
 //                            binding.chckhouse.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
                         }
-
                     }
                 }
 
@@ -849,6 +850,8 @@ public class ViewMemberActivity extends MenuActivity {
 //                   Change background color for those whose data already filled
                     for (int item : WraAdapter.wraExistList) {
                         binding.recyclerMwra.getChildAt(item).setBackgroundColor(getResources().getColor(R.color.lime));
+                    /*   ImageView imgtemp =  binding.recyclerMwra.getChildAt(item).findViewById(R.id.wrastatus);
+                       imgtemp.setImageResource(R.drawable.circleshapegreen);*/
                     }
 
                     wraAdapter.notifyDataSetChanged();

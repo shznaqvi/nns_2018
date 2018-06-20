@@ -2,24 +2,18 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="edu.aku.hassannaqvi.nns_2018.ui.ViewMemberActivity">
-
     <data>
-
         <import type="android.view.View" />
-
         <variable
             name="callback"
             type="edu.aku.hassannaqvi.nns_2018.ui.ViewMemberActivity" />
-
     </data>
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
+   <!--     <TextView
             android:id="@+id/txt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -27,7 +21,7 @@
             android:background="@color/colorPrimaryDark"
             android:gravity="center"
             android:text="CHECKLIST MEMBERS"
-            android:textSize="40sp" />
+            android:textSize="40sp" />-->
 
         <ScrollView
             android:layout_width="match_parent"
@@ -229,27 +223,27 @@
 
                         </LinearLayout>
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:background="@color/colorPrimary"
-                            android:text="@string/nh108"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:textColor="@android:color/white" />
+
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
-
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:layout_weight="3"
+                                android:background="@color/colorPrimary"
+                                android:text="@string/nh108"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="@android:color/white" />
                             <EditText
                                 android:id="@+id/chckhouse"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginRight="10dp"
                                 android:layout_marginTop="5dp"
-                                android:layout_weight="60"
+                                android:layout_weight="4"
                                 android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-"
                                 android:hint="9999-999"
                                 android:inputType="textCapCharacters"
@@ -262,7 +256,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
-                                android:layout_weight="30"
+                                android:layout_weight="2"
                                 android:background="@drawable/button_bg"
                                 android:elevation="5dp"
                                 android:onClick="@{() -> callback.BtnCheckHH()}"

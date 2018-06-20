@@ -13,8 +13,8 @@
         android:id="@+id/info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:background="@null">
+
         <!-- Wra Name-->
         <TextView
             android:id="@+id/wraName"
@@ -32,7 +32,6 @@
             android:textSize="16sp"
             android:textStyle="bold"
              />
-
 
         <!-- Age -->
 

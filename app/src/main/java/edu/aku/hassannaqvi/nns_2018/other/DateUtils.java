@@ -18,7 +18,6 @@ public class DateUtils {
             Date date = sdf.parse(value);
             calendar.setTime(date);
             return calendar;
-
         } catch (ParseException e) {
             e.printStackTrace();
         }
