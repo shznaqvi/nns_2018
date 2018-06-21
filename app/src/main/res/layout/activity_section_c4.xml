@@ -246,7 +246,7 @@
                                 android:layout_marginBottom="1dp"
                                 android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                                 android:enabled="@{nc4039601.checked? true : false}"
-                                android:hint="@string/otherpubm"
+                                android:hint="@string/other"
                                 android:inputType="textCapWords"
                                 android:text='@{nc4039601.checked ? nc4039601x.getText.toString : ""}' />
 
@@ -313,7 +313,7 @@
                                 android:layout_marginBottom="1dp"
                                 android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                                 android:enabled="@{nc4039602.checked ? true : false}"
-                                android:hint="@string/otherprim"
+                                android:hint="@string/other"
                                 android:inputType="textCapWords"
                                 android:text='@{nc4039602.checked ? nc4039602x.getText.toString : ""}' />
 
@@ -687,7 +687,7 @@
                                 android:layout_marginBottom="1dp"
                                 android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                                 android:enabled="@{nc4079601.checked ? true : false}"
-                                android:hint="@string/otherpubm"
+                                android:hint="@string/other"
                                 android:inputType="textCapWords"
                                 android:text='@{nc4079601.checked ? nc4079601x.getText.toString : ""}' />
 
