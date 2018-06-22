@@ -59,6 +59,7 @@
 
     <string name="count"> تعداد </string>
     <string name="other"> دیگر وضاحت کریں </string>
+  <string name="other1"> وضاحت کریں </string>
     <string name="otherpubm"> دوسرے عوامی طبی مرکز </string>
     <string name="otherprim"> دوسرے نجی دواخانہ </string>
     <string name="refused"> جواب سے انکار </string>
@@ -272,7 +273,7 @@
     <string name="nh310c"> پاخانہ نالی /گھڑھے سے بہادیتے ہیں  </string>
     <string name="nh310d"> کچرے میں پھنک دیتے ہیں </string>
     <string name="nh310e"> کھلا پڑا رہتا ہے </string>
-    <string name="nh310f"> زمین میں گاڑھ دیتے ہیں  </string>
+  <string name="nh310f"> زمین میں دبا دیتے ہیں </string>
     <string name="nh310g"> پانچ سال سے کم عمر کوئی بچہ نہیں ہے </string>
 
     <string name="nh31101"> بجلی </string>
@@ -317,7 +318,7 @@
     <string name="nh314a"> بجلی </string>
     <string name="nh314b"> ایل –پی-جی سیلنڈر </string>
     <string name="nh314c"> قدرتی گیس </string>
-    <string name="nh314d"> بائو گیس </string>
+  <string name="nh314d"> بائیو گیس </string>
     <string name="nh314e"> مٹی کا تیل </string>
     <string name="nh314f"> کوئلہ </string>
     <string name="nh314g"> لکٹری کاکوئلہ </string>
@@ -578,7 +579,7 @@
 
 
     <string name="nw305info"> مزید پوچھیں: حمل کے معائنہ کے وزٹ کی تعداد کے بارے میں مزید پوچھیں ،اگر کوئی تعداد بتائی ہے تو جو کم سے کم نمبر وہ لکھیں </string>
-    <string name="nw305a"> معائنہ کی تعداد </string>
+  <string name="nw305a"> معائنوں کی تعداد </string>
     <string name="nw305b"> معلوم نہیں </string>
 
     <string name="nw306info">(ہر انتخاب کے بارے میں پوچھیں اور تمام مثبت جواب کو دائرہ کریں ) </string>
@@ -754,13 +755,13 @@
     <string name="nw415a"> گائنا کولوجسٹ </string>
     <string name="nw415b"> کوئی اور ڈاکٹر </string>
     <string name="nw415c"> نرس </string>
-    <string name="nw415d"> کمیونٹی مڈ وائف  </string>
+  <string name="nw415d"> کمیونٹی مڈوائف </string>
     <string name="nw415e"> لیڈی ہیلتھ ورکر </string>
     <string name="nw415f"> لیڈی ہیلتھ وزیٹر </string>
     <string name="nw415g"> دائی </string>
 
-    <string name="nw416a"> اگر ایک دن سے کم ہے (گھنٹہ ریکارڈ بتائیں) </string>
-    <string name="nw416b"> اگر ایک ہفتے سے کم ہے (دن ریکارڈ بتائیں) </string>
+  <string name="nw416a"> اگر ایک دن سے کم ہے (گھنٹہ درج کریں) </string>
+  <string name="nw416b"> اگر ایک ہفتے سے کم ہے (دن درج کریں) </string>
     <string name="nw416c"> دوسری صورت میں ہفتہ ریکارڈ کریں </string>
     <string name="nw416h"> گھنٹے </string>
     <string name="nw416d"> دنوں </string>
@@ -781,7 +782,7 @@
     <string name="nw420a"> بچے کے ڈاکٹرنے </string>
     <string name="nw420b"> کسی اور ڈاکٹر نے </string>
     <string name="nw420c"> نرس </string>
-    <string name="nw420d"> کمیونٹی مذ وائف  </string>
+  <string name="nw420d"> کمیونٹی مڈوائف </string>
     <string name="nw420e"> لیڈی ہیلتھ ورکر </string>
     <string name="nw420f"> لیڈی ہیلتھ وزیٹر </string>
     <string name="nw420g"> دائی </string>
@@ -1079,7 +1080,7 @@
     <string name="nc4129601"> کچھ اور </string>
     <string name="nc413">۔C413 -  کیا بچہ (۔Name) کوگزشتہ چھ مہینوں میں پیٹ کے کیٹرے مارنے والی دوا دی گئی تھیں </string>
     <string name="nc414"> ۔C414 - کیا بچہ (۔Name) کو گزشتہ چھ مہینے کے دوران رات میں کم نظر آتا ہے </string>
-    <string name="nc416a"> Dosages </string>
+  <string name="nc416a"> خوراکیں </string>
 
     <string name="nc417a"> ایک ہفتہ پہلے </string>
     <string name="nc417b"> ایک ماہ پہلے </string>
@@ -1147,11 +1148,13 @@
     <string name="nw312c">  سرکاری صحت پوسٹ</string>
     <string name="nw312d"> کمیونٹی ہیلتھ ورکر</string>
     <string name="nw312e">سرکاری موبائل / دوسرے کلینک</string>
+  <string name="nw312961">دوسرے عوامی طبی مرکز</string>
     <string name="nw312f"> نجی ہسپتال /کلینک</string>
     <string name="nw312g">  نجی ڈاکٹر</string>
     <string name="nw312h">  نجی  دواخانہ  کمیونیٹی ہیلتھ ورکر </string>
     <string name="nw312i">  غیرسرکاری عوامی صحت کارکن </string>
     <string name="nw312j">  غیر سرکاری موبائل کلینک </string>
+  <string name="nw312962"> دوسرے نجی دواخانہ </string>
     <string name="nw312k">   رشتہ دار / دوست </string>
     <string name="nw312l">  دوکان /بازار/مفت تقسیم کرنے والوں سے  </string>
     <string name="nw312m">   روایتی تجربہ کار   </string>
@@ -1338,6 +1341,8 @@
     <string name="nh501">۔H501 -  ہم چیک کرنا چاہتے ہیں کہ کیاآپ کا گھرانا آیوڈین ملا نمک استعمال کرتا ہے کیا ہم اس نمک کا نمونہ لے سکتے ہیں جو آپ اپنا کھانا پکانے میں استعمال کرتی ہیں </string>
     <string name="nh502">۔H502 -  استعمال ہونے والے نمک کی ساخت کا مشاہدہ کریں </string>
     <string name="nh503">۔H503 - "ہانڈی " کانشنا ن نمک کی تھیلی پر چھپا ہے یا نہیں؟</string>
+  <string name="nh504">۔H504 - کیا آپ کے گھر میں تقویت بخش  غذائیت سے بھرپور آٹا استعمال ہوتا ہے؟</string>
+  <string name="nh505">۔H505 - کیا آپ کے گھر میں تقویت بخش غذائیت سے بھرپور خوردنی تیل/گھی استعمال ہوتا ہے؟</string>
     <string name="na601">۔H601 - ہم چیک کرنا چاہتے ہیں کہ کیاآپ کا گھرانہ آیوڈین ملا نمک استعمال کرتا ہے کیا ہم اس نمک کا نمونہ لے سکتے ہیں جو آپ اپنے کھانا پکانے میں استعمال کرتی ہیں؟</string>
     <string name="na603">۔H603 - "ہانڈی " کانشنا ن نمک کی تھیلی پر چھپا ہے یا نہیں؟</string>
 

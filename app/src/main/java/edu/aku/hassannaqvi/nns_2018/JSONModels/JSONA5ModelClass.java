@@ -30,6 +30,8 @@ public class JSONA5ModelClass {
     private String nh50196x = "";
     private String nh502 = "";
     private String nh503 = "";
+    private String nh504 = "";
+    private String nh505 = "";
     private String nh601 = "";
     private String nh602 = "";
     private String nh603 = "";
@@ -238,6 +240,22 @@ public class JSONA5ModelClass {
 
     public void setnh503(String nh503) {
         this.nh503 = nh503;
+    }
+
+    public String getnh504() {
+        return nh504;
+    }
+
+    public void setnh504(String nh504) {
+        this.nh504 = nh504;
+    }
+
+    public String getnh505() {
+        return nh505;
+    }
+
+    public void setnh505(String nh505) {
+        this.nh505 = nh505;
     }
 
     public String getnh601() {

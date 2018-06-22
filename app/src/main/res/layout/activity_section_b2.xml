@@ -896,7 +896,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginBottom="1dp"
-                                android:text="@string/other" />
+                                android:text="@string/nw312961" />
 
                             <EditText
                                 android:id="@+id/nw312961x"
@@ -905,7 +905,7 @@
                                 android:layout_marginTop="5dp"
                                 android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                                 android:enabled='@{nw312961.checked ? true : false}'
-                                android:hint="@string/other"
+                                android:hint="@string/other1"
                                 android:text='@{nw312961.checked ? nw312961x.getText.toString : ""}' />
 
                             <TextView
@@ -956,7 +956,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginBottom="1dp"
-                                android:text="@string/other" />
+                                android:text="@string/nw312962" />
 
                             <EditText
                                 android:id="@+id/nw312962x"
@@ -965,7 +965,7 @@
                                 android:layout_marginTop="5dp"
                                 android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                                 android:enabled='@{nw312962.checked ? true : false}'
-                                android:hint="@string/other"
+                                android:hint="@string/other1"
                                 android:text='@{nw312962.checked ? nw312962x.getText.toString : ""}' />
 
 
@@ -1330,7 +1330,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginBottom="1dp"
-                                android:text="@string/other" />
+                                android:text="@string/nw312961" />
 
                             <EditText
                                 android:id="@+id/nw317961x"
@@ -1339,7 +1339,7 @@
                                 android:layout_marginTop="5dp"
                                 android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                                 android:enabled='@{nw317961.checked ? true : false}'
-                                android:hint="@string/other"
+                                android:hint="@string/other1"
                                 android:text='@{nw317961.checked ? nw317961x.getText.toString : ""}' />
 
                             <TextView
@@ -1390,7 +1390,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginBottom="1dp"
-                                android:text="@string/other" />
+                                android:text="@string/nw312962" />
 
                             <EditText
                                 android:id="@+id/nw317962x"
@@ -1399,7 +1399,7 @@
                                 android:layout_marginTop="5dp"
                                 android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                                 android:enabled='@{nw317962.checked ? true : false}'
-                                android:hint="@string/other"
+                                android:hint="@string/other1"
                                 android:text='@{nw317962.checked ? nw317962x.getText.toString : ""}' />
 
 
@@ -1748,7 +1748,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginBottom="1dp"
-                                android:text="@string/other" />
+                                android:text="@string/nw312961" />
 
                             <EditText
                                 android:id="@+id/nw322961x"
@@ -1757,7 +1757,7 @@
                                 android:layout_marginTop="5dp"
                                 android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                                 android:enabled='@{nw322961.checked ? true : false}'
-                                android:hint="@string/other"
+                                android:hint="@string/other1"
                                 android:text='@{nw322961.checked ? nw322961x.getText.toString : ""}' />
 
                             <TextView
@@ -1808,7 +1808,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginBottom="1dp"
-                                android:text="@string/other" />
+                                android:text="@string/nw312962" />
 
                             <EditText
                                 android:id="@+id/nw322962x"
@@ -1817,7 +1817,7 @@
                                 android:layout_marginTop="5dp"
                                 android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                                 android:enabled='@{nw322962.checked ? true : false}'
-                                android:hint="@string/other"
+                                android:hint="@string/other1"
                                 android:text='@{nw322962.checked ? nw322962x.getText.toString : ""}' />
 
 

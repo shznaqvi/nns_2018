@@ -237,7 +237,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
-                                android:text="@string/otherpubm" />
+                                android:text="@string/other" />
 
                             <EditText
                                 android:id="@+id/nc4039601x"
@@ -246,7 +246,7 @@
                                 android:layout_marginBottom="1dp"
                                 android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                                 android:enabled="@{nc4039601.checked? true : false}"
-                                android:hint="@string/otherpubm"
+                                android:hint="@string/other"
                                 android:inputType="textCapWords"
                                 android:text='@{nc4039601.checked ? nc4039601x.getText.toString : ""}' />
 
@@ -304,7 +304,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
-                                android:text="@string/otherprim" />
+                                android:text="@string/other" />
 
                             <EditText
                                 android:id="@+id/nc4039602x"
@@ -313,7 +313,7 @@
                                 android:layout_marginBottom="1dp"
                                 android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                                 android:enabled="@{nc4039602.checked ? true : false}"
-                                android:hint="@string/otherprim"
+                                android:hint="@string/other"
                                 android:inputType="textCapWords"
                                 android:text='@{nc4039602.checked ? nc4039602x.getText.toString : ""}' />
 
@@ -678,7 +678,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
                                 android:layout_weight="1"
-                                android:text="@string/otherpubm" />
+                                android:text="@string/other" />
 
                             <EditText
                                 android:id="@+id/nc4079601x"
@@ -753,7 +753,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
                                 android:layout_weight="1"
-                                android:text="@string/otherprim" />
+                                android:text="@string/other" />
 
                             <EditText
                                 android:id="@+id/nc4079602x"
@@ -762,7 +762,7 @@
                                 android:layout_marginBottom="1dp"
                                 android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                                 android:enabled="@{nc4079602.checked ? true : false}"
-                                android:hint="@string/otherprim"
+                                android:hint="@string/other"
                                 android:inputType="textCapWords"
                                 android:text='@{nc4079602.checked ? nc4079602x.getText.toString : ""}' />
 
@@ -1103,7 +1103,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
                                 android:layout_weight="1"
-                                android:text="@string/otherpubm" />
+                                android:text="@string/other" />
 
                             <EditText
                                 android:id="@+id/nc4119601x"
@@ -1112,7 +1112,7 @@
                                 android:layout_marginBottom="1dp"
                                 android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                                 android:enabled="@{nc4119601.checked ? true : false}"
-                                android:hint="@string/otherpubm"
+                                android:hint="@string/other"
                                 android:inputType="textCapWords"
                                 android:text='@{nc4119601.checked ? nc4119601x.getText.toString : ""}' />
 
@@ -1177,7 +1177,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
                                 android:layout_weight="1"
-                                android:text="@string/otherprim" />
+                                android:text="@string/other" />
 
                             <EditText
                                 android:id="@+id/nc4119602x"
@@ -1186,7 +1186,7 @@
                                 android:layout_marginBottom="1dp"
                                 android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                                 android:enabled="@{nc4119602.checked? true : false}"
-                                android:hint="@string/otherprim"
+                                android:hint="@string/other"
                                 android:inputType="textCapWords"
                                 android:text='@{nc4119602.checked ? nc4119602x.getText.toString : ""}' />
 

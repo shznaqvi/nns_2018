@@ -1,5 +1,7 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -735,12 +737,36 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
         if (flag) {
             MainApp.endActivityAll(this, this, SectionA2ListActivity.class, true);
         } else {
-            binding.btnEnd.setEnabled(false);
-            MainApp.hhClicked.remove(position);
+//            MainApp.endActivityAll(this, SectionA2Activity.this, SectionA2ListActivity.class, true);
 
-            MainApp.endActivityAll(this, this, SectionA2ListActivity.class, true);
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                    this);
+            alertDialogBuilder
+                    .setMessage("Do you want to Exit??")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog,
+                                                    int id) {
+
+                                    finish();
+                                    MainApp.hhClicked.remove(position);
+
+                                    Intent end_intent = new Intent(getApplicationContext(), SectionA2ListActivity.class);
+                                    end_intent.putExtra("complete", true);
+                                    startActivity(end_intent);
+                                }
+                            });
+            alertDialogBuilder.setNegativeButton("No",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert = alertDialogBuilder.create();
+            alert.show();
+
         }
-//        MainApp.endActivity(this, this);
     }
 
     public void BtnContinue() {

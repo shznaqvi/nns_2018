@@ -171,6 +171,8 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
         //binding.nh501.setOnCheckedChangeListener(this);
         binding.nh502.setOnCheckedChangeListener(this);
         binding.nh503.setOnCheckedChangeListener(this);
+        binding.nh504.setOnCheckedChangeListener(this);
+        binding.nh505.setOnCheckedChangeListener(this);
         binding.nh601.setOnCheckedChangeListener(this);
         binding.nh602.setOnCheckedChangeListener(this);
         binding.nh603.setOnCheckedChangeListener(this);
@@ -311,6 +313,16 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
                                 jsonA5.getnh503().equals("2") ? binding.nh503b.getId() :
                                         jsonA5.getnh503().equals("3") ? binding.nh503c.getId() :
                                                 binding.nh503d.getId()
+                );
+            }
+            if (!jsonA5.getnh504().equals("0")) {
+                binding.nh504.check(
+                        jsonA5.getnh504().equals("1") ? binding.nh504a.getId() : binding.nh504b.getId()
+                );
+            }
+            if (!jsonA5.getnh505().equals("0")) {
+                binding.nh505.check(
+                        jsonA5.getnh505().equals("1") ? binding.nh505a.getId() : binding.nh505b.getId()
                 );
             }
             if (!jsonA5.getnh601().equals("0")) {
@@ -609,6 +621,14 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
             if (!validatorClass.EmptyRadioButton(this, binding.nh503, binding.nh503a, getString(R.string.nh503))) {
                 return false;
             }
+//        nh504
+            if (!validatorClass.EmptyRadioButton(this, binding.nh504, binding.nh504a, getString(R.string.nh504))) {
+                return false;
+            }
+//        nh505
+            if (!validatorClass.EmptyRadioButton(this, binding.nh505, binding.nh505a, getString(R.string.nh505))) {
+                return false;
+            }
         }
 
 //        nh601
@@ -795,6 +815,12 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
                 : binding.nh503c.isChecked() ? "3"
                 : binding.nh503d.isChecked() ? "4"
                 : "0");
+
+        sA5.put("nh504", binding.nh504a.isChecked() ? "1"
+                : binding.nh504b.isChecked() ? "2" : "0");
+
+        sA5.put("nh505", binding.nh505a.isChecked() ? "1"
+                : binding.nh505b.isChecked() ? "2" : "0");
 
         //Section A7
 

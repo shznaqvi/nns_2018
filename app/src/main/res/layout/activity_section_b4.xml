@@ -1052,7 +1052,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginBottom="1dp"
                                 android:enabled="false"
-                                android:text="@string/nw413961" />
+                                android:text="@string/other" />
 
                             <EditText
                                 android:id="@+id/nw413961x"
@@ -1061,7 +1061,7 @@
                                 android:layout_marginBottom="1dp"
                                 android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                                 android:enabled='@{nw413961.checked ? true : false }'
-                                android:hint="@string/nw413961"
+                                android:hint="@string/other"
                                 android:inputType="text"
                                 android:text='@{nw413961.checked ? nw413961x.getText.toString : ""}' />
 
@@ -1120,7 +1120,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginBottom="1dp"
                                 android:enabled="false"
-                                android:text="@string/nw413962" />
+                                android:text="@string/other" />
 
                             <EditText
                                 android:id="@+id/nw413962x"
@@ -1129,7 +1129,7 @@
                                 android:layout_marginBottom="1dp"
                                 android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                                 android:enabled='@{nw413962.checked ? true : false }'
-                                android:hint="@string/nw413962"
+                                android:hint="@string/other"
                                 android:inputType="text"
                                 android:text='@{nw413962.checked ? nw413962x.getText.toString : ""}' />
 
