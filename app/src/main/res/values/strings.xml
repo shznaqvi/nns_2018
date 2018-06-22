@@ -729,7 +729,7 @@
     <string name="nb412f"> گوبر </string>
 
 
-    <string name="nw413sub1"> بپلک میڈیکل سیکٹ </string>
+    <string name="nw413sub1"> بپلک میڈیکل سیکٹر </string>
     <string name="nw413a">سرکاری ہسپتال </string>
     <string name="nw413b">  سرکاری صحت سینٹر</string>
     <string name="nw413c"> سرکاری صحت پوسٹ </string>
@@ -760,8 +760,8 @@
     <string name="nw415f"> لیڈی ہیلتھ وزیٹر </string>
     <string name="nw415g"> دائی </string>
 
-  <string name="nw416a"> اگر ایک دن سے کم ہے (گھنٹہ درج کریں) </string>
-  <string name="nw416b"> اگر ایک ہفتے سے کم ہے (دن درج کریں) </string>
+    <string name="nw416a"> اگر ایک دن سے کم ہے (گھنٹے درج کریں) </string>
+    <string name="nw416b"> اگر ایک ہفتے سے کم ہے (دن درج کریں) </string>
     <string name="nw416c"> دوسری صورت میں ہفتہ ریکارڈ کریں </string>
     <string name="nw416h"> گھنٹے </string>
     <string name="nw416d"> دنوں </string>
@@ -986,14 +986,14 @@
     <string name="nc403b"> سرکاری صحت سینٹر </string>
     <string name="nc403c"> سرکاری صحت پوسٹ </string>
     <string name="nc403d"> کمیونٹی ہیلتھ ورکر </string>
-    <string name="nc403e">موبائل کلینک </string>
+    <string name="nc403e">سرکاری موبائل / دوسرے کلینک </string>
     <string name="nc4039601"> دوسرے عوامی طبی مرکز وضاحت کریں </string>
     <string name="nc403sub2"> نجی ہسپتال/سیکٹر </string>
     <string name="nc403f"> نجی ہسپتال /کلینک </string>
     <string name="nc403g"> نجی ڈاکٹر </string>
     <string name="nc403h"> نجی دواخانہ </string>
     <string name="nc403i">غیر سرکاری عوامی صحت کارکن </string>
-    <string name="nc403j"> موبائل کلینک </string>
+    <string name="nc403j">   غیر سرکاری موبائل کلینک </string>
     <string name="nc4039602"> دوسرے نجی دواخانہ دیگر وضاحت کریں </string>
     <string name="nc403sub3"> دیگر زرائع </string>
     <string name="nc403k"> رشتہ دار /دوست </string>
@@ -1019,14 +1019,14 @@
     <string name="nc407b"> سرکاری صحت سینٹر </string>
     <string name="nc407c"> سرکاری صحت پوسٹ </string>
     <string name="nc407d"> کمیونٹی ہیلتھ ورکر </string>
-    <string name="nc407e"> موبائل / دوسرے کلینک </string>
+    <string name="nc407e">  سرکاری موبائل / دوسرے کلینک </string>
     <string name="nc4079601"> دوسرے عوامی طبی مرکز </string>
     <string name="nc407sub2"> نجی ہسپتال/سیکٹر </string>
     <string name="nc407f"> نجی ہسپتال /کلینک </string>
     <string name="nc407g"> نجی ڈاکٹر </string>
     <string name="nc407h"> نجی دواخانہ </string>
     <string name="nc407i"> غیرسرکاری عوامی صحت کارکن </string>
-    <string name="nc407j"> موبائل کلینک </string>
+    <string name="nc407j"> غیر سرکاری موبائل کلینک </string>
     <string name="nc4079602"> دوسرے نجی دواخانہ دیگر وضاحت کریں </string>
     <string name="nc407sub3"> دیگر زرائع </string>
     <string name="nc407k"> رشتہ دار /دوست </string>

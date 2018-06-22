@@ -687,7 +687,7 @@
                                 android:layout_marginBottom="1dp"
                                 android:digits="abcdefghijklkmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                                 android:enabled="@{nc4079601.checked ? true : false}"
-                                android:hint="@string/otherpubm"
+                                android:hint="@string/other"
                                 android:inputType="textCapWords"
                                 android:text='@{nc4079601.checked ? nc4079601x.getText.toString : ""}' />
 
