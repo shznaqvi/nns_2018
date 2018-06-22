@@ -52,6 +52,8 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
     Boolean firstTimePressed = false;
     JSONB1AModelClass jsonB1A;
 
+    Boolean twinFlag = false;
+
     //static int status;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +72,10 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         for (EditText ed : grpDate) {
             ed.addTextChangedListener(this);
         }
-        if (getIntent().getBooleanExtra("flag", false)) {
+
+        twinFlag = getIntent().getBooleanExtra("flag", false);
+
+        if (twinFlag) {
 //            Boolean type = getIntent().getExtras().getBoolean("type");
             String datey = getIntent().getExtras().getString("datey");
             String datem = getIntent().getExtras().getString("datem");
@@ -105,9 +110,9 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
             }*/
 
-            childSerial++;
+//            childSerial++;
         } else {
-            childSerial = 1;
+//            childSerial = 1;
         }
 
         AutoPopulate();
@@ -179,7 +184,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
                 }
 
-                if (childSerial == 1) {
+                if (!twinFlag) {
 
                     frontPressed = true;
 
@@ -279,7 +284,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
             if (UpdateDB()) {
                 MainApp.nuCount = 1;
 
-                if (bi.nw218d.isChecked() && childSerial == 1) {
+                if (bi.nw218d.isChecked() && !twinFlag) {
 
                     Intent i = new Intent(this, SectionB1AActivity.class);
                     i.putExtra("datey", bi.nw217y.getText().toString());
@@ -572,7 +577,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         sB1a.put("nw217Flag", bi.nw217Flag.isChecked() ? "1" : "2");
         sB1a.put("wra_lno", MainApp.mc.getB1SerialNo());
 
-        sB1a.put("nw219", String.valueOf(childSerial));
+        sB1a.put("nw219", twinFlag ? "2" : "1");
 
         sB1a.put("nw217y", bi.nw217y.getText().toString());
         sB1a.put("nw217m", bi.nw217m.getText().toString());
@@ -716,7 +721,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
             e.printStackTrace();
         }
 
-        if (childSerial == 1) {
+        if (!twinFlag) {
             MainApp.count--;
         }
 
