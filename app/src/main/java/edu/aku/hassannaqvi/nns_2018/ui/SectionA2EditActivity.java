@@ -1126,6 +1126,9 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
 
         MainApp.familyMembersList.set(position, MainApp.fmc);
 
+        // Add in fm clicked
+        MainApp.familyMembersClicked.put(position, MainApp.fmc);
+
     }
 
     private boolean UpdateDB() {
