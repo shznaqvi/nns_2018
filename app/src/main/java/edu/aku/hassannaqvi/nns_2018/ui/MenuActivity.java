@@ -229,7 +229,7 @@ public class MenuActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Syncing Eligibles", Toast.LENGTH_SHORT).show();
             new SyncAllData(
                     this,
-                    "Eligibles",
+                    "Anthropometry",
                     "updateSyncedEligibles",
                     EligibleMembersContract.class,
                     MainApp._HOST_URL + EligibleMembersContract.eligibleMembers._URL,
