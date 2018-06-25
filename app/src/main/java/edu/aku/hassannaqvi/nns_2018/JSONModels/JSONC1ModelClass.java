@@ -23,6 +23,7 @@ public class JSONC1ModelClass {
     private String cluster_no = "";
     private String hhno = "";
     private String wra_lno = "";
+    @SerializedName("nc11801")
     private String nh11801 = "";
 
     public JSONC1ModelClass() {
