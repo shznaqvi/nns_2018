@@ -486,7 +486,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
         if (updcount == 1) {
 
-            if (!SectionA1Activity.editFormFlag && SectionA1Activity.reBackFlag) {
+            if (!SectionA1Activity.editFormFlag && SectionA1Activity.reBackFlag && MainApp.mwra.size() > 0) {
                 int counter = KishGrid.KishGridProcess(Integer.valueOf(MainApp.fc.getHhNo().split("-")[1]), MainApp.mwra.size());
                 updcount = db.updateFamilyMemberKishFlag(MainApp.mwra.get(counter - 1).get_UUID(), MainApp.mwra.get(counter - 1).get_UID());
 
