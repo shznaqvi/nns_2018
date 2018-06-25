@@ -750,7 +750,11 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                                                     int id) {
 
                                     finish();
-                                    MainApp.hhClicked.remove(position);
+                                    for (int pos = 0; pos < MainApp.hhClicked.size(); pos++) {
+                                        if (MainApp.hhClicked.get(pos) == position) {
+                                            MainApp.hhClicked.remove(pos);
+                                        }
+                                    }
 
                                     Intent end_intent = new Intent(getApplicationContext(), SectionA2ListActivity.class);
                                     end_intent.putExtra("complete", true);
