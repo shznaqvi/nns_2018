@@ -781,7 +781,7 @@ public class SectionC1Activity extends AddMember_MenuActivity implements TextWat
         }
 
 
-        sC1.put("nh11801", binding.na11801a.isChecked() ? "1" : binding.na11801b.isChecked() ? "2" : "0");
+        sC1.put("nc11801", binding.na11801a.isChecked() ? "1" : binding.na11801b.isChecked() ? "2" : "0");
 //        nc103
         sC1.put("nc201d", binding.nc201d.getText().toString());
         sC1.put("nc201m", binding.nc201m.getText().toString());

@@ -386,12 +386,17 @@ public class SectionA2ListActivity extends AppCompatActivity {
                                     public void onClick(DialogInterface dialog,
                                                         int id) {
 
-                                        finish();
-
                                         if (SectionA1Activity.reBackFlag) {
-                                            respLineNo = "";
-                                            startActivity(new Intent(getApplicationContext(), SectionA4Activity.class));
-                                            //                                           startActivity(new Intent(getApplicationContext(), ViewMemberActivity.class).putExtra("activity", 1));
+                                            if (!MainApp.IsHead) {
+                                                Toast.makeText(SectionA2ListActivity.this, "Assign Head to this HH!!", Toast.LENGTH_SHORT).show();
+                                            } else if (!MainApp.IsResp) {
+                                                Toast.makeText(SectionA2ListActivity.this, "Assign Respondent to this HH!!", Toast.LENGTH_SHORT).show();
+                                            } else {
+                                                finish();
+                                                respLineNo = "";
+                                                startActivity(new Intent(getApplicationContext(), SectionA4Activity.class));
+                                                //                                           startActivity(new Intent(getApplicationContext(), ViewMemberActivity.class).putExtra("activity", 1));
+                                            }
                                         } else {
                                             startActivity(new Intent(getApplicationContext(), ViewMemberActivity.class).putExtra("activity", 6));
                                         }

@@ -1378,7 +1378,7 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
 //            MainApp.mc.set_UID(MainApp.mc.get_UID());
         }
 
-        sB1.put("nh11801", bi.na11801a.isChecked() ? "1" : bi.na11801b.isChecked() ? "2" : "0");
+        sB1.put("nw11801", bi.na11801a.isChecked() ? "1" : bi.na11801b.isChecked() ? "2" : "0");
         //        nw201
         sB1.put("nw201days", bi.nw201days.getText().toString());
         sB1.put("nw201months", bi.nw201months.getText().toString());

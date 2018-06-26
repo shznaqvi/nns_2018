@@ -36,6 +36,7 @@ public class JSONB1ModelClass {
     private String nw215 = "";
     private String nw216 = "";
     private String nw216aa = "";
+    @SerializedName("nw11801")
     private String nh11801 = "";
 
     public JSONB1ModelClass() {
