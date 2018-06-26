@@ -83,9 +83,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + singleRandomHH.COLUMN_RANDOM_TYPE + " TEXT,"
             + singleRandomHH.COLUMN_ASSIGNED_HH + " TEXT,"
             + singleRandomHH.COLUMN_SNO_HH + " TEXT );";
-    public static final String DB_NAME = DATABASE_NAME.replace(".", "_" + MainApp.versionName + "_" + DATABASE_VERSION + "_copy.");
+
     public static final String PROJECT_NAME = "NNS-2018";
     private static final int DATABASE_VERSION = 11;
+    public static final String DB_NAME = DATABASE_NAME.replace(".", "_" + MainApp.versionName + "_" + DATABASE_VERSION + "_copy.");
 
     private static final String SQL_CREATE_FORMS = "CREATE TABLE "
             + FormsTable.TABLE_NAME + "("
