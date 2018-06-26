@@ -280,7 +280,8 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
 
 
             if (!binding.nd1w.getText().toString().matches("^(\\d{3,3}\\.\\d{2,2})$")) {
-                binding.nd1w.setError("Wrong presentation");
+                Toast.makeText(this, "ERROR(invalid): " + "Please type the correct format" + getString(R.string.nd1w), Toast.LENGTH_LONG).show();
+                binding.nd1w.setError("Please type correct format (XXX.XX)");
                 return false;
             } else {
                 binding.nd1w.setError(null);
@@ -297,7 +298,8 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
 
 
             if (!binding.nd1h.getText().toString().matches("^(\\d{3,3}\\.\\d{1,1})$")) {
-                binding.nd1h.setError("Wrong presentation");
+                Toast.makeText(this, "ERROR(invalid): " + "Please type the correct format" + getString(R.string.nd1h), Toast.LENGTH_LONG).show();
+                binding.nd1h.setError("Please type correct format (XXX.X)");
                 return false;
             } else {
                 binding.nd1h.setError(null);
@@ -313,8 +315,9 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
             }
 
 
-            if (!binding.nd1muac.getText().toString().matches("^(\\d{3,3}\\.\\d{1,1})$")) {
-                binding.nd1muac.setError("Wrong presentation");
+            if (!binding.nd1muac.getText().toString().matches("^(\\d{2,2}\\.\\d{1,1})$")) {
+                Toast.makeText(this, "ERROR(invalid): " + "Please type the correct format" + getString(R.string.nd1muac), Toast.LENGTH_LONG).show();
+                binding.nd1muac.setError("Please type correct format (XX.X)");
                 return false;
             } else {
                 binding.nd1muac.setError(null);

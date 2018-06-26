@@ -122,7 +122,7 @@
                 android:layout_marginTop="5dp"
                 android:hint="@string/nd1muac"
                 android:inputType="numberDecimal"
-                android:maxLength="5" />
+                android:maxLength="4" />
 
 
             <LinearLayout

@@ -192,13 +192,13 @@
     <string name="na2t"> کل افراد </string>
     <string name="nh2tm"> مرد </string>
     <string name="nh2tf"> خواتین </string>
-    <string name="nd1heading"> سیکشن 3: گھر میں موجود پانچ سال سے کم عمر بچے، شادی شدہ خواتین، اور نوعمر مرد اور خواتین کے لیے </string>
+  <string name="nd1heading"> سیکشن ڈی 1: گھر میں موجود پانچ سال سے کم عمر بچے، شادی شدہ خواتین، اور نوعمر مرد اور خواتین کے لیے </string>
     <string name="na3subHeading"> یہ سیکشن گھر کے سربراہ سے یا گھر میں کم سے کم 18 سال یا اس سے ذائد عمر کے کسی سمجھدار شخص سے پوچھا جائیگا </string>
     <string name="nd101sno"> لائن نمبر </string>
     <string name="nd1w"> وزن(کلو گرام) </string>
     <string name="nd1h"> لمبائی (سینٹی میٹر) </string>
     <string name="nd1muac"> (سینٹی میٹر) MUAC </string>
-    <string name="nd1bcgscar"> BCG Scar </string>
+  <string name="nd1bcgscar"> BCG Scar </string>0
     <string name="nd1bcgscarifo"> (for u-5) </string>
     <string name="nd1g"> Goiter </string>
     <string name="nd1ginfo"> (for MWRA and Adolescent) </string>
