@@ -21,6 +21,7 @@ public class BLRandomContract {
     private String randomDT;
     private String contact;
     private String selStructure;
+    private String sno;
 
     private String rndType;
     private String assignHH;
@@ -39,6 +40,7 @@ public class BLRandomContract {
         this.randomDT = rnd.getRandomDT();
         this.contact = rnd.getContact();
         this.selStructure = rnd.getSelStructure();
+        this.sno = rnd.getSno();
     }
 
     public BLRandomContract Sync(JSONObject jsonObject) throws JSONException {
@@ -56,6 +58,7 @@ public class BLRandomContract {
         this.hhhead = jsonObject.getString(singleRandomHH.COLUMN_HH_HEAD);
         this.contact = jsonObject.getString(singleRandomHH.COLUMN_CONTACT);
         this.selStructure = jsonObject.getString(singleRandomHH.COLUMN_HH_SELECTED_STRUCT);
+        this.sno = jsonObject.getString(singleRandomHH.COLUMN_SNO_HH);
 
         return this;
     }
@@ -71,6 +74,7 @@ public class BLRandomContract {
         this.hhhead = cursor.getString(cursor.getColumnIndex(singleRandomHH.COLUMN_HH_HEAD));
         this.contact = cursor.getString(cursor.getColumnIndex(singleRandomHH.COLUMN_CONTACT));
         this.selStructure = cursor.getString(cursor.getColumnIndex(singleRandomHH.COLUMN_HH_SELECTED_STRUCT));
+        this.sno = cursor.getString(cursor.getColumnIndex(singleRandomHH.COLUMN_SNO_HH));
 
         return this;
     }
@@ -155,7 +159,6 @@ public class BLRandomContract {
         this.selStructure = selStructure;
     }
 
-
     public String getAssignHH() {
         return assignHH;
     }
@@ -172,6 +175,14 @@ public class BLRandomContract {
         this.rndType = rndType;
     }
 
+    public String getSno() {
+        return sno;
+    }
+
+    public void setSno(String sno) {
+        this.sno = sno;
+    }
+
     public static abstract class singleRandomHH implements BaseColumns {
 
         public static final String TABLE_NAME = "BLRandom";
@@ -185,6 +196,8 @@ public class BLRandomContract {
         public static final String COLUMN_HH_HEAD = "hh08";
         public static final String COLUMN_CONTACT = "hh09";
         public static final String COLUMN_HH_SELECTED_STRUCT = "hhss";
+
+        public static final String COLUMN_SNO_HH = "sno";
 
         public static final String COLUMN_RANDOM_TYPE = "rndtype";
         public static final String COLUMN_ASSIGNED_HH = "rndAssign";

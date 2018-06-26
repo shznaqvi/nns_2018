@@ -69,10 +69,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     public static final String DATABASE_NAME = "nns_2018.db";
-    private static final int DATABASE_VERSION = 10;
-    public static final String DB_NAME = DATABASE_NAME.replace(".", "_" + MainApp.versionName + "_" + DATABASE_VERSION + "_copy.");
-    public static final String PROJECT_NAME = "NNS-2018";
-
     public static final String SQL_CREATE_BL_RANDOM = "CREATE TABLE " + singleRandomHH.TABLE_NAME + "("
             + singleRandomHH.COLUMN_ID + " TEXT,"
             + singleRandomHH.COLUMN_ENUM_BLOCK_CODE + " TEXT,"
@@ -83,7 +79,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + singleRandomHH.COLUMN_HH_HEAD + " TEXT,"
             + singleRandomHH.COLUMN_CONTACT + " TEXT,"
             + singleRandomHH.COLUMN_HH_SELECTED_STRUCT + " TEXT,"
-            + singleRandomHH.COLUMN_RANDOMDT + " TEXT );";
+            + singleRandomHH.COLUMN_RANDOMDT + " TEXT,"
+            + singleRandomHH.COLUMN_RANDOM_TYPE + " TEXT,"
+            + singleRandomHH.COLUMN_ASSIGNED_HH + " TEXT,"
+            + singleRandomHH.COLUMN_SNO_HH + " TEXT );";
+    public static final String DB_NAME = DATABASE_NAME.replace(".", "_" + MainApp.versionName + "_" + DATABASE_VERSION + "_copy.");
+    public static final String PROJECT_NAME = "NNS-2018";
+    private static final int DATABASE_VERSION = 11;
 
     private static final String SQL_CREATE_FORMS = "CREATE TABLE "
             + FormsTable.TABLE_NAME + "("
@@ -208,6 +210,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String SQL_ALTER_BLRANDOM2 = "ALTER TABLE " +
             singleRandomHH.TABLE_NAME + " ADD COLUMN " +
             singleRandomHH.COLUMN_ASSIGNED_HH + " TEXT;";
+    private static final String SQL_ALTER_BLRANDOM3 = "ALTER TABLE " +
+            singleRandomHH.TABLE_NAME + " ADD COLUMN " +
+            singleRandomHH.COLUMN_SNO_HH + " TEXT;";
 
     final String SQL_CREATE_MWRAS = "CREATE TABLE " + MWRATable.TABLE_NAME + " (" +
             MWRATable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -483,6 +488,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.execSQL(SQL_CREATE_MICRO);
             case 9:
                 db.execSQL(SQL_ALTER_FAMILYMEMBER1);
+            case 10:
+                db.execSQL(SQL_ALTER_BLRANDOM3);
         }
 
     }
@@ -559,7 +566,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public void syncBLRandom(JSONArray BLlist) {
+ /*   public void syncBLRandom(JSONArray BLlist) {
         SQLiteDatabase db = this.getWritableDatabase();
 //        db.delete(singleRandomHH.TABLE_NAME, null, null);
         try {
@@ -581,6 +588,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values.put(singleRandomHH.COLUMN_HH_HEAD, Vc.getHhhead());
                 values.put(singleRandomHH.COLUMN_CONTACT, Vc.getContact());
                 values.put(singleRandomHH.COLUMN_HH_SELECTED_STRUCT, Vc.getSelStructure());
+                values.put(singleRandomHH.COLUMN_SNO_HH, Vc.getSno());
 
                 if (CheckBLRandomExist(Vc.getLUID(), Vc.getSubVillageCode(), Vc.getStructure(), Vc.getExtension())) {
                     db.update(
@@ -592,6 +600,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 } else {
                     db.insert(singleRandomHH.TABLE_NAME, null, values);
                 }
+            }
+        } catch (Exception e) {
+        } finally {
+            db.close();
+        }
+    }*/
+
+    public void syncBLRandom(JSONArray BLlist) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(singleRandomHH.TABLE_NAME, null, null);
+        try {
+            JSONArray jsonArray = BLlist;
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObjectCC = jsonArray.getJSONObject(i);
+
+                BLRandomContract Vc = new BLRandomContract();
+                Vc.Sync(jsonObjectCC);
+
+                ContentValues values = new ContentValues();
+
+                values.put(singleRandomHH.COLUMN_ID, Vc.get_ID());
+                values.put(singleRandomHH.COLUMN_LUID, Vc.getLUID());
+                values.put(singleRandomHH.COLUMN_STRUCTURE_NO, Vc.getStructure());
+                values.put(singleRandomHH.COLUMN_FAMILY_EXT_CODE, Vc.getExtension());
+                values.put(singleRandomHH.COLUMN_HH, Vc.getHh());
+                values.put(singleRandomHH.COLUMN_ENUM_BLOCK_CODE, Vc.getSubVillageCode());
+                values.put(singleRandomHH.COLUMN_RANDOMDT, Vc.getRandomDT());
+                values.put(singleRandomHH.COLUMN_HH_HEAD, Vc.getHhhead());
+                values.put(singleRandomHH.COLUMN_CONTACT, Vc.getContact());
+                values.put(singleRandomHH.COLUMN_HH_SELECTED_STRUCT, Vc.getSelStructure());
+                values.put(singleRandomHH.COLUMN_SNO_HH, Vc.getSno());
+
+                db.insert(singleRandomHH.TABLE_NAME, null, values);
             }
         } catch (Exception e) {
         } finally {
@@ -736,8 +777,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return fmList;
         }*/
 
-
-    public Collection<FamilyMembersContract> getAllMembersByHHforAnthro(String cluster, String hh) {
+    public ArrayList<FamilyMembersContract> getAllHHforAnthro(String cluster, String hh) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -764,6 +804,67 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String whereClause = familyMembers.COLUMN_ENM_NO + "=? AND "
                 + familyMembers.COLUMN_HH_NO + "=? AND " + familyMembers.COLUMN_AV + "=?";
         String[] whereArgs = new String[]{cluster, hh, "1"};
+        String groupBy = familyMembers.COLUMN_FORMDATE;
+
+        String having = null;
+
+        String orderBy =
+                familyMembers.COLUMN_ID + " ASC";
+
+        ArrayList<FamilyMembersContract> allBL = new ArrayList<>();
+        try {
+            c = db.query(
+                    familyMembers.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                FamilyMembersContract dc = new FamilyMembersContract();
+                allBL.add(dc.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allBL;
+    }
+
+    public Collection<FamilyMembersContract> getAllMembersByHHforAnthro(String cluster, String hh, String uuid, String formDate) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+
+                familyMembers.COLUMN_ID,
+                familyMembers.COLUMN_UID,
+                familyMembers.COLUMN_UUID,
+                familyMembers.COLUMN_FORMDATE,
+                familyMembers.COLUMN_USER,
+                familyMembers.COLUMN_HH_NO,
+                familyMembers.COLUMN_ENM_NO,
+                familyMembers.COLUMN_SA2,
+                familyMembers.COLUMN_AV,
+                familyMembers.COLUMN_DEVICETAGID,
+                familyMembers.COLUMN_DEVICEID,
+                familyMembers.COLUMN_SYNCED,
+                familyMembers.COLUMN_SYNCED_DATE,
+                familyMembers.COLUMN_FLAG,
+                familyMembers.COLUMN_KISH_SELECTED,
+                familyMembers.COLUMN_APP_VERSION
+
+        };
+
+        String whereClause = familyMembers.COLUMN_ENM_NO + "=? AND "
+                + familyMembers.COLUMN_HH_NO + "=? AND " + familyMembers.COLUMN_AV + "=? AND "
+                + familyMembers.COLUMN_UUID + " =? AND " + familyMembers.COLUMN_FORMDATE + " =?";
+        String[] whereArgs = new String[]{cluster, hh, "1", uuid, formDate};
         String groupBy = null;
         String having = null;
 
@@ -926,7 +1027,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 singleRandomHH.COLUMN_RANDOMDT,
                 singleRandomHH.COLUMN_HH_SELECTED_STRUCT,
                 singleRandomHH.COLUMN_CONTACT,
-                singleRandomHH.COLUMN_HH_HEAD
+                singleRandomHH.COLUMN_HH_HEAD,
+                singleRandomHH.COLUMN_SNO_HH
         };
 
         String whereClause = singleRandomHH.COLUMN_ENUM_BLOCK_CODE + "=? AND " +
@@ -1230,6 +1332,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put(singleRandomHH.COLUMN_HH_HEAD, Vc.getHhhead());
             values.put(singleRandomHH.COLUMN_CONTACT, Vc.getContact());
             values.put(singleRandomHH.COLUMN_HH_SELECTED_STRUCT, Vc.getSelStructure());
+            values.put(singleRandomHH.COLUMN_SNO_HH, Vc.getSno());
 
             long count = db.insert(singleRandomHH.TABLE_NAME, null, values);
         }

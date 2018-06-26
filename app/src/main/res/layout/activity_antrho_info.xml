@@ -236,8 +236,8 @@
                         android:hint="9999-999"
                         android:inputType="number"
                         android:layoutDirection="ltr"
-                        android:textDirection="ltr"
-                        android:maxLength="8" />
+                        android:maxLength="8"
+                        android:textDirection="ltr" />
 
                     <Button
                         android:id="@+id/checkHHBtn"
@@ -306,6 +306,21 @@
 
                     </LinearLayout>-->
 
+                    <!--<TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="LIST HH" />
+
+                    <Spinner
+                        android:id="@+id/listHH"
+                        style="@style/Widget.AppCompat.Spinner.Underlined"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="35"
+                        android:gravity="center"
+                        android:popupBackground="#ffffff" />-->
 
                     <LinearLayout
                         android:id="@+id/fldGrpHT"
@@ -313,42 +328,42 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:text="@string/ht" />
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <Button
-                            android:id="@+id/btnScanHT"
-                            style="@style/buttons"
+                        <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:background="@drawable/button_bg"
-                            android:elevation="5dp"
-                            android:onClick="@{() -> callback.BtnScanHT()}"
-                            android:text="SCAN"
-                            android:textColor="@color/colorPrimaryDark" />
+                            android:layout_marginTop="16dp"
+                            android:text="@string/ht" />
 
-                        <EditText
-                            android:id="@+id/htCode"
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-"
-                            android:inputType="textCapCharacters"
-                            android:textDirection="ltr"
-                            android:maxLength="7" />
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/btnScanHT"
+                                style="@style/buttons"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:background="@drawable/button_bg"
+                                android:elevation="5dp"
+                                android:onClick="@{() -> callback.BtnScanHT()}"
+                                android:text="SCAN"
+                                android:textColor="@color/colorPrimaryDark" />
+
+                            <EditText
+                                android:id="@+id/htCode"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-"
+                                android:inputType="textCapCharacters"
+                                android:maxLength="7"
+                                android:textDirection="ltr" />
 
 
-                    </LinearLayout>
+                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -397,9 +412,7 @@
 
                     </LinearLayout>
 
-
                 </LinearLayout>
-
 
                 <LinearLayout
                     android:layout_width="match_parent"

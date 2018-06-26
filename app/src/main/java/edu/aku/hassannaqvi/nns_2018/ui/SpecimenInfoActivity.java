@@ -23,7 +23,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
@@ -52,6 +54,9 @@ public class SpecimenInfoActivity extends AppCompatActivity {
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     DatabaseHelper db;
     Collection<FamilyMembersContract> members;
+    ArrayList<FamilyMembersContract> hh;
+    Map<String, String> hhMap;
+    ArrayList<String> hhList;
     Boolean isHC = false, isHT = false, isWT = false;
     int length = 0;
     static int consent = 0;
@@ -79,7 +84,6 @@ public class SpecimenInfoActivity extends AppCompatActivity {
         SectionE1Activity.membersMap.clear();*/
 
 
-
     }
 
     public void SetupViewFunctionality() {
@@ -93,6 +97,9 @@ public class SpecimenInfoActivity extends AppCompatActivity {
         MainApp.minors = new ArrayList<>();
         MainApp.childUnder2Check = new ArrayList<>();
         members = new ArrayList<>();
+        hhMap = new HashMap<>();
+        hhList = new ArrayList<>();
+        hh = new ArrayList<>();
         json = new JSONModelClass();
 
         if (MainActivity.ftype.equals("B")) {
@@ -191,6 +198,7 @@ public class SpecimenInfoActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+//                binding.fldGrpListHH.setVisibility(View.GONE);
 
                 if (!binding.nh108.getText().toString().isEmpty() && binding.nh108.getText().toString().length() == 4) {
                     if (binding.nh108.getText().toString().substring(0, 3).matches("[0-9]+")) {
@@ -212,8 +220,24 @@ public class SpecimenInfoActivity extends AppCompatActivity {
             }
         });
 
-    }
 
+//        HH Spinner
+/*        binding.listHH.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position != 0) {
+                    String hhUID = hhMap.get(binding.listHH.getSelectedItem().toString());
+                    populateMembers(hhUID, binding.listHH.getSelectedItem().toString());
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });*/
+
+    }
 
     public void BtnContinue() {
 
@@ -344,7 +368,6 @@ public class SpecimenInfoActivity extends AppCompatActivity {
         }
 
 
-
         return true;
     }
 
@@ -420,7 +443,6 @@ public class SpecimenInfoActivity extends AppCompatActivity {
 
     }
 
-
     private boolean UpdateDB() {
 
         if (MainActivity.ftype.equals("B")) {
@@ -477,74 +499,97 @@ public class SpecimenInfoActivity extends AppCompatActivity {
 
         if (!binding.nh102.getText().toString().trim().isEmpty() && !binding.nh108.getText().toString().trim().isEmpty()) {
 
-            members = db.getAllMembersByHHforAnthro(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase());
-
-            if (members.size() != 0) {
-                for (FamilyMembersContract fm : members) {
-
-                    if (fm.getsA2() != null) {
-                        json = JSONUtilClass.getModelFromJSON(fm.getsA2(), JSONModelClass.class);
-                        date = fm.getFormDate();
-                        if ((Integer.valueOf(json.getAge()) > 14 && Integer.valueOf(json.getAge()) < 50)
-                                && json.getGender().equals("2") && json.getNh210().equals("1")) {
-                            fm.setType("1");
-                            MainApp.mwra.add(fm);
-                            MainApp.all_members.add(fm);
-                            addIfNotExists(MainApp.all_members, fm);
-                        }
-                        if ((Integer.valueOf(json.getAge()) >= 10 && (Integer.valueOf(json.getAge()) < 20))
-                                && json.getGender().equals("2") && json.getNh210().equals("1") && json.getMaritalStatus().equals("5")) {
-                            fm.setType("4");
-                            MainApp.adolescents.add(fm);
-                            MainApp.all_members.add(fm);
-                            addIfNotExists(MainApp.all_members, fm);
-                        }
-                        if ((Integer.valueOf(json.getAge()) >= 6 && (Integer.valueOf(json.getAge()) < 13))
-                                && json.getNh210().equals("1")) {
-                            fm.setType("3");
-                            MainApp.minors.add(fm);
-                            MainApp.all_members.add(fm);
-                            addIfNotExists(MainApp.all_members, fm);
-                        }
-                        if (Integer.valueOf(json.getAge()) < 6 && json.getNh210().equals("1")) {
-                            fm.setType("2");
-                            MainApp.childUnder5.add(fm);
-                            MainApp.all_members.add(fm);
-                            addIfNotExists(MainApp.all_members, fm);
-                        }
-
-
-                    }
-
-                }
-
-                if (MainApp.all_members.size() > 0) {
-
-                    Toast.makeText(this, "Members Found..", Toast.LENGTH_SHORT).show();
-                    binding.fldGrpQR.setVisibility(View.VISIBLE);
-                    binding.btnContinue.setVisibility(View.VISIBLE);
-                    binding.btnEnd.setVisibility(View.GONE);
-                    binding.fldGrpHH.setVisibility(View.VISIBLE);
-
-                } else {
-                    binding.fldGrpQR.setVisibility(View.GONE);
-                    binding.hcCode.setText(null);
-                    binding.fldGrpHH.setVisibility(View.GONE);
-                    binding.btnContinue.setVisibility(View.GONE);
-                    binding.btnEnd.setVisibility(View.GONE);
-                    Toast.makeText(this, "No Eligible member found for anthropometry, Check another HH.", Toast.LENGTH_SHORT).show();
-                }
-
-
-            } else {
-                Toast.makeText(this, "No members found for the HH.", Toast.LENGTH_SHORT).show();
+//            populateHH();
+            hh = db.getAllHHforAnthro(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase());
+            if (hh.size() > 0) {
+                populateMembers(hh.get(hh.size() - 1).get_UUID(), hh.get(hh.size() - 1).getFormDate());
             }
-
 
         } else {
             Toast.makeText(this, "Not found.", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+/*    public void populateHH() {
+        hh = db.getAllHHforAnthro(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase());
+        hhList.add("....");
+
+        if (hh.size() > 0) {
+            for (FamilyMembersContract fm : hh) {
+                hhMap.put(fm.getFormDate(), fm.get_UUID());
+                hhList.add(fm.getFormDate());
+            }
+
+            binding.fldGrpListHH.setVisibility(View.VISIBLE);
+
+            binding.listHH.setAdapter(new ArrayAdapter<>(getBaseContext(), android.R.layout.simple_spinner_dropdown_item, hhList));
+        }
+    }*/
+
+    public void populateMembers(String uuid, String formDate) {
+        members = db.getAllMembersByHHforAnthro(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase(), uuid, formDate);
+
+        if (members.size() != 0) {
+            for (FamilyMembersContract fm : members) {
+
+                if (fm.getsA2() != null) {
+                    json = JSONUtilClass.getModelFromJSON(fm.getsA2(), JSONModelClass.class);
+                    date = fm.getFormDate();
+                    if ((Integer.valueOf(json.getAge()) > 14 && Integer.valueOf(json.getAge()) < 50)
+                            && json.getGender().equals("2") && json.getNh210().equals("1")) {
+                        fm.setType("1");
+                        MainApp.mwra.add(fm);
+                        MainApp.all_members.add(fm);
+                        addIfNotExists(MainApp.all_members, fm);
+                    }
+                    if ((Integer.valueOf(json.getAge()) >= 10 && (Integer.valueOf(json.getAge()) < 20))
+                            && json.getGender().equals("2") && json.getNh210().equals("1") && json.getMaritalStatus().equals("5")) {
+                        fm.setType("4");
+                        MainApp.adolescents.add(fm);
+                        MainApp.all_members.add(fm);
+                        addIfNotExists(MainApp.all_members, fm);
+                    }
+                    if ((Integer.valueOf(json.getAge()) >= 6 && (Integer.valueOf(json.getAge()) < 13))
+                            && json.getNh210().equals("1")) {
+                        fm.setType("3");
+                        MainApp.minors.add(fm);
+                        MainApp.all_members.add(fm);
+                        addIfNotExists(MainApp.all_members, fm);
+                    }
+                    if (Integer.valueOf(json.getAge()) < 6 && json.getNh210().equals("1")) {
+                        fm.setType("2");
+                        MainApp.childUnder5.add(fm);
+                        MainApp.all_members.add(fm);
+                        addIfNotExists(MainApp.all_members, fm);
+                    }
+
+
+                }
+
+            }
+
+            if (MainApp.all_members.size() > 0) {
+
+                Toast.makeText(this, "Members Found..", Toast.LENGTH_SHORT).show();
+                binding.fldGrpQR.setVisibility(View.VISIBLE);
+                binding.btnContinue.setVisibility(View.VISIBLE);
+                binding.btnEnd.setVisibility(View.GONE);
+                binding.fldGrpHH.setVisibility(View.VISIBLE);
+
+            } else {
+                binding.fldGrpQR.setVisibility(View.GONE);
+                binding.hcCode.setText(null);
+                binding.fldGrpHH.setVisibility(View.GONE);
+                binding.btnContinue.setVisibility(View.GONE);
+                binding.btnEnd.setVisibility(View.GONE);
+                Toast.makeText(this, "No Eligible member found for anthropometry, Check another HH.", Toast.LENGTH_SHORT).show();
+            }
+
+
+        } else {
+            Toast.makeText(this, "No members found for the HH.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void addIfNotExists(List<FamilyMembersContract> all_members, FamilyMembersContract fm) {

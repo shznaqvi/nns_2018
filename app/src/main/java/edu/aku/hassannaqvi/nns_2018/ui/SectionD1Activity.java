@@ -189,7 +189,11 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
 
     @Override
     public void onBackPressed() {
-        Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
+        if (counter == 1) {
+            super.onBackPressed();
+        } else {
+            Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
+        }
     }
 
 

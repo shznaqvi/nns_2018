@@ -625,7 +625,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
                             SectionA1Activity.this);
                     alertDialogBuilder
                             .setMessage("یہ House Hold پہلے سے 'مکمل' موجود ہے۔")
-                            .setCancelable(false)
+//                            .setCancelable(false)
                             .setPositiveButton("۔Edit فارم شروح کرنا ہے",
                                     new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
