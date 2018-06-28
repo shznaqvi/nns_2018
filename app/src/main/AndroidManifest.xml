@@ -236,6 +236,7 @@
         <service
             android:name=".WifiDirect.DataTransferService"
             android:enabled="true" />
+        <service android:name=".other.DownloadFileService" />
 
         <activity
             android:name=".ui.SectionE1Activity"

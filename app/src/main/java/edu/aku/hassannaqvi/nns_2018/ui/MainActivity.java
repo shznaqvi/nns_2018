@@ -1,11 +1,16 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
+import android.app.ActivityManager;
 import android.app.AlertDialog;
+import android.app.DownloadManager;
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
@@ -40,6 +45,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -86,6 +92,10 @@ public class MainActivity extends MenuActivity {
     private String rSumText = "";
     static String ftype = "";
 
+    int id = 1;
+    DownloadManager downloadManager;
+    Long refID;
+    File file;
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
@@ -212,8 +222,6 @@ public class MainActivity extends MenuActivity {
                     iStatus = "\tN/A";
                 }
 
-                //rSumText += fc.getDSSID();
-
                 rSumText += fc.getClusterNo() + " \t";
                 rSumText += " " + fc.getHhNo() + " \t";
                 rSumText += " " + iStatus + " \t";
@@ -236,30 +244,6 @@ public class MainActivity extends MenuActivity {
         Log.d(TAG, "onCreate: " + rSumText);
         mainBinding.recordSummary.setText(rSumText);
 
-//        Fill spinner
-
-        /*lablesAreas = new ArrayList<>();
-        AreasMap = new HashMap<>();
-        lablesAreas.add("Select Area..");
-
-
-        spAreas.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, lablesAreas));
-
-        spAreas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-                if (spAreas.getSelectedItemPosition() != 0) {
-                    MainApp.areaCode = Integer.valueOf(AreasMap.get(spAreas.getSelectedItem().toString()));
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });*/
-
         /*Add data in Serial date wrt date*/
         MainApp.sc = db.getSerialWRTDate(new SimpleDateFormat("dd-MM-yy").format(new Date()).toString());
 
@@ -271,18 +255,6 @@ public class MainActivity extends MenuActivity {
             MainApp.sc = db.getSerialWRTDate(new SimpleDateFormat("dd-MM-yy").format(new Date()).toString());
         }
 
-//        Version Checking
-        versionAppContract = db.getVersionApp();
-        if (versionAppContract.getVersioncode() != null) {
-            if (MainApp.versionCode < Integer.valueOf(versionAppContract.getVersioncode())) {
-                mainBinding.lblAppVersion.setVisibility(View.VISIBLE);
-                mainBinding.lblAppVersion.setText("New Version Available");
-            } else {
-                mainBinding.lblAppVersion.setVisibility(View.GONE);
-                mainBinding.lblAppVersion.setText(null);
-            }
-        }
-
 //        Testing visibility
         if (Integer.valueOf(MainApp.versionName.split("\\.")[0]) > 0) {
             mainBinding.testing.setVisibility(View.GONE);
@@ -290,13 +262,117 @@ public class MainActivity extends MenuActivity {
             mainBinding.testing.setVisibility(View.VISIBLE);
         }
 
+
+//        Version Checking
+        versionAppContract = db.getVersionApp();
+        if (versionAppContract.getVersioncode() != null) {
+            if (MainApp.versionCode < Integer.valueOf(versionAppContract.getVersioncode())) {
+                mainBinding.lblAppVersion.setVisibility(View.VISIBLE);
+
+                String fileName = DatabaseHelper.DATABASE_NAME.replace(".db", "-New-Apps");
+                file = new File(Environment.getExternalStorageDirectory() + File.separator + fileName, versionAppContract.getPathname());
+
+                if (file.exists()) {
+                    InstallNewApp();
+                } else {
+                    NetworkInfo networkInfo = ((ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
+                    if (networkInfo != null && networkInfo.isConnected()) {
+
+                        mainBinding.lblAppVersion.setText("NNS APP New Version Downloading..");
+                        downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+                        Uri uri = Uri.parse(MainApp._UPDATE_URL + versionAppContract.getPathname());
+                        DownloadManager.Request request = new DownloadManager.Request(uri);
+                        request.setDestinationInExternalPublicDir(fileName, versionAppContract.getPathname())
+                                .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                                .setTitle("Downloading NNS new App");
+                        refID = downloadManager.enqueue(request);
+
+                        editor = sharedPref.edit();
+                        editor.putBoolean("appDownload_flag", false);
+
+                    } else {
+                        mainBinding.lblAppVersion.setText("NNS APP New Version Available..\n(Internet connectivity issue!!)");
+                    }
+                }
+
+            } else {
+                mainBinding.lblAppVersion.setVisibility(View.GONE);
+                mainBinding.lblAppVersion.setText(null);
+            }
+        }
+
+        BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(intent.getAction())) {
+
+                    DownloadManager.Query query = new DownloadManager.Query();
+                    query.setFilterById(refID);
+
+                    Cursor cursor = downloadManager.query(query);
+                    if (cursor.moveToFirst()) {
+                        int colIndex = cursor.getColumnIndex(DownloadManager.COLUMN_STATUS);
+                        if (DownloadManager.STATUS_SUCCESSFUL == cursor.getInt(colIndex)) {
+
+                            editor = sharedPref.edit();
+                            editor.putBoolean("appDownload_flag", true);
+
+                            Toast.makeText(context, "New App downloaded!!", Toast.LENGTH_SHORT).show();
+
+                            ActivityManager am = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
+                            List<ActivityManager.RunningTaskInfo> taskInfo = am.getRunningTasks(1);
+
+                            if (taskInfo.get(0).topActivity.getClassName().equals(this.getClass().getName())) {
+                                InstallNewApp();
+                            }
+                        }
+                    }
+                }
+            }
+        };
+        registerReceiver(broadcastReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+
     }
 
     public void openForm() {
+        if (versionAppContract.getVersioncode() != null) {
+            if (MainApp.versionCode < Integer.valueOf(versionAppContract.getVersioncode())) {
+                if (sharedPref.getBoolean("appDownload_flag", false) && file.exists()) {
+                    InstallNewApp();
+                } else {
+                    OpenFormFun();
+                }
+            } else {
+                OpenFormFun();
+            }
+        } else {
+            Toast.makeText(this, "Sync data!!", Toast.LENGTH_SHORT).show();
+        }
+    }
 
-//        if (spAreas.getSelectedItemPosition() != 0) {
+    private void InstallNewApp() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                MainActivity.this);
+        alertDialogBuilder
+                .setMessage("Install New NNS APP Version Code: " + versionAppContract.getVersioncode())
+                .setCancelable(true)
+                .setPositiveButton("Click here!!",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,
+                                                int id) {
+                                Intent intent = new Intent(Intent.ACTION_VIEW);
+                                intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                            }
+                        });
+        AlertDialog alert = alertDialogBuilder.create();
+        alert.show();
+    }
+
+    private void OpenFormFun() {
+
         final Intent oF = new Intent(MainActivity.this, SectionA1Activity.class);
-
         if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null && !MainApp.userName.equals("0000")) {
             startActivity(oF);
         } else {
@@ -335,9 +411,6 @@ public class MainActivity extends MenuActivity {
 
             builder.show();
         }
-//        } else {
-//            Toast.makeText(getApplicationContext(), "Please select data from combobox!!", Toast.LENGTH_LONG).show();
-//        }
     }
 
 
@@ -507,123 +580,6 @@ public class MainActivity extends MenuActivity {
         startActivity(dbmanager);
     }
 
-    public void CheckCluster(View v) {
-
-    }
-
-    /*public void syncServer(View view) {
-
-        // Require permissions INTERNET & ACCESS_NETWORK_STATE
-        ConnectivityManager connMgr = (ConnectivityManager)
-                getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected()) {
-
-            DatabaseHelper db = new DatabaseHelper(this);
-            syncStatus.setText(null);
-            Toast.makeText(getApplicationContext(), "Syncing Forms", Toast.LENGTH_SHORT).show();
-            new SyncAllData(
-                    this,
-                    "Forms",
-                    "updateSyncedForms",
-                    FormsContract.class,
-                    MainApp._HOST_URL + FormsContract.FormsTable._URL,
-                    db.getUnsyncedForms(), this.findViewById(R.id.syncStatus)
-            ).execute();
-
-            Toast.makeText(getApplicationContext(), "Syncing Family Members", Toast.LENGTH_SHORT).show();
-            new SyncAllData(
-                    this,
-                    "Family Members",
-                    "updateSyncedFamilyMembers",
-                    FamilyMembersContract.class,
-                    MainApp._HOST_URL + FamilyMembersContract.familyMembers._URL,
-                    db.getUnsyncedFamilyMembers(), this.findViewById(R.id.syncStatus)
-            ).execute();
-
-            Toast.makeText(getApplicationContext(), "Syncing WRAs", Toast.LENGTH_SHORT).show();
-            new SyncAllData(
-                    this,
-                    "WRAs",
-                    "updateSyncedMWRAForm",
-                    MWRAContract.class,
-                    MainApp._HOST_URL + MWRAContract.MWRATable._URL,
-                    db.getUnsyncedMWRA(), this.findViewById(R.id.syncStatus)
-            ).execute();
-
-            Toast.makeText(getApplicationContext(), "Syncing Children", Toast.LENGTH_SHORT).show();
-            new SyncAllData(
-                    this,
-                    "Children",
-                    "updateSyncedChildForm",
-                    ChildContract.class,
-                    MainApp._HOST_URL + ChildContract.ChildTable._URL,
-                    db.getUnsyncedChildForms(), this.findViewById(R.id.syncStatus)
-            ).execute();
-
-            Toast.makeText(getApplicationContext(), "Syncing Eligibles", Toast.LENGTH_SHORT).show();
-            new SyncAllData(
-                    this,
-                    "Eligibles",
-                    "updateSyncedEligibles",
-                    EligibleMembersContract.class,
-                    MainApp._HOST_URL + EligibleMembersContract.eligibleMembers._URL,
-                    db.getUnsyncedEligbleMembers(), this.findViewById(R.id.syncStatus)
-            ).execute();
-
-            Toast.makeText(getApplicationContext(), "Syncing Outcomes", Toast.LENGTH_SHORT).show();
-            new SyncAllData(
-                    this,
-                    "Outcomes",
-                    "updateSyncedOutcomeForm",
-                    OutcomeContract.class,
-                    MainApp._HOST_URL + OutcomeContract.outcomeTable._URL,
-                    db.getUnsyncedOutcome(), this.findViewById(R.id.syncStatus)
-            ).execute();
-
-            Toast.makeText(getApplicationContext(), "Syncing Recepients", Toast.LENGTH_SHORT).show();
-            new SyncAllData(
-                    this,
-                    "Recepients",
-                    "updateSyncedRecepientsForm",
-                    RecipientsContract.class,
-                    MainApp._HOST_URL + RecipientsContract.RecipientsTable._URL,
-                    db.getUnsyncedRecipients(), this.findViewById(R.id.syncStatus)
-            ).execute();
-
-            Toast.makeText(getApplicationContext(), "Syncing Nutrition", Toast.LENGTH_SHORT).show();
-            new SyncAllData(
-                    this,
-                    "Nutrition",
-                    "updateSyncedNutrition",
-                    NutritionContract.class,
-                    MainApp._HOST_URL + NutritionContract.NutritionTable._URL,
-                    db.getUnsyncedNutrition(), this.findViewById(R.id.syncStatus)
-            ).execute();
-
-            Toast.makeText(getApplicationContext(), "Syncing Deceased", Toast.LENGTH_SHORT).show();
-            new SyncAllData(
-                    this,
-                    "Deceased",
-                    "updateSyncedDeceasedForm",
-                    DeceasedContract.class,
-                    MainApp._HOST_URL + DeceasedContract.DeceasedTable._URL,
-                    db.getUnsyncedDeceasedMembers(), this.findViewById(R.id.syncStatus)
-            ).execute();
-
-            SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = syncPref.edit();
-
-            editor.putString("LastUpSyncServer", dtToday);
-
-            editor.apply();
-
-        } else {
-            Toast.makeText(this, "No network connection available.", Toast.LENGTH_SHORT).show();
-        }
-
-    }*/
-
     public void syncDevice(View view) {
 
         ConnectivityManager connMgr = (ConnectivityManager)
@@ -670,5 +626,4 @@ public class MainActivity extends MenuActivity {
 
         }
     }
-
 }

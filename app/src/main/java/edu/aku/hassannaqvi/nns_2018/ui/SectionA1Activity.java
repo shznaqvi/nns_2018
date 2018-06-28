@@ -697,28 +697,31 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
         if (editFormFlag || validatorClass.EmptyTextBox(this, binding.nh101, getString(R.string.nh101)) && validatorClass.EmptyTextBox(this, binding.nh102, getString(R.string.nh102))) {
 
-            EnumBlockContract enumBlockContract = db.getEnumBlock(binding.nh102.getText().toString());
-            if (enumBlockContract != null) {
-                String selected = enumBlockContract.getGeoarea();
-                if (!selected.equals("")) {
+            if ((MainApp.userName.equals("test1234") || MainApp.userName.equals("dmu@aku") || MainApp.userName.substring(0, 4).equals("user")) && (Integer.valueOf(binding.nh102.getText().toString()) > 6000)) {
+                EnumBlockContract enumBlockContract = db.getEnumBlock(binding.nh102.getText().toString());
+                if (enumBlockContract != null) {
+                    String selected = enumBlockContract.getGeoarea();
+                    if (!selected.equals("")) {
 
-                    String[] selSplit = selected.split("\\|");
+                        String[] selSplit = selected.split("\\|");
 
-                    binding.nh103.setText(selSplit[0]);
-                    binding.nh104.setText(selSplit[1].equals("") ? "----" : selSplit[1]);
-                    binding.nh105.setText(selSplit[2].equals("") ? "----" : selSplit[2]);
-                    binding.nh106.setText(selSplit[3]);
-                    binding.nh107.setText(enumBlockContract.getEbcode());
+                        binding.nh103.setText(selSplit[0]);
+                        binding.nh104.setText(selSplit[1].equals("") ? "----" : selSplit[1]);
+                        binding.nh105.setText(selSplit[2].equals("") ? "----" : selSplit[2]);
+                        binding.nh106.setText(selSplit[3]);
+                        binding.nh107.setText(enumBlockContract.getEbcode());
 
-                    binding.fldGrpnh101.setVisibility(View.VISIBLE);
-                    MainApp.cluster_no = binding.nh102.getText().toString();
+                        binding.fldGrpnh101.setVisibility(View.VISIBLE);
+                        MainApp.cluster_no = binding.nh102.getText().toString();
 
+                    }
+                } else {
+                    binding.nh108.setText(null);
+                    Toast.makeText(this, "Sorry cluster not found!!", Toast.LENGTH_SHORT).show();
                 }
             } else {
-                binding.nh108.setText(null);
-                Toast.makeText(this, "Sorry cluster not found!!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Can't proceed test cluster for current user!!", Toast.LENGTH_SHORT).show();
             }
-
         }
     }
 

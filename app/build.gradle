@@ -63,6 +63,9 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:27.1.0'
     implementation 'com.google.code.gson:gson:2.8.2'
 
+    // App update
+    implementation 'com.github.javiersantos:AppUpdater:2.6.5'
+
 }
 
 
