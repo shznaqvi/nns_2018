@@ -30,6 +30,12 @@
     <string name="nc3response"> Response </string>
     <string name="nc3src"> Source </string>
 
+  <string name="anthrostatus">Assessment Status</string>
+  <string name="anthroa">Done</string>
+  <string name="anthrob">Not Done</string>
+  <string name="anthroc">Refused</string>
+  <string name="anthrod">Not Available</string>
+
     <string name="istatusha"> مکمل</string>
     <string name="istatushb">گھرانے کا کوئی فرد یا باصلاحیت جواب دہندہ گھر پر موجود نہیں تھا</string>
     <string name="istatushc">گھرانہ کے تمام افراد لمبے عرصے کے لیے گھر سے غیر حاضر تھے </string>

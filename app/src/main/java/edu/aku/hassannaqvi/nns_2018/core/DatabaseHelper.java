@@ -4984,7 +4984,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 // New value for one column
         ContentValues values = new ContentValues();
         values.put(eligibleMembers.COLUMN_ISTATUS, MainApp.emc.getIstatus());
-        values.put(eligibleMembers.COLUMN_ISTATUS88x, MainApp.emc.getIstatus88x());
+        //values.put(eligibleMembers.COLUMN_ISTATUS88x, MainApp.emc.getIstatus88x());
         values.put(eligibleMembers.COLUMN_END_TIME, MainApp.emc.getEnd_time());
 
 // Which row to update, based on the ID
