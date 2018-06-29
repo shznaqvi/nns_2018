@@ -239,9 +239,9 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                     bi.nw212.setEnabled(true);
                     bi.nw214.setEnabled(true);
                     bi.nw215.setEnabled(true);
-                    bi.nw216a.setEnabled(true);
+                    /*bi.nw216a.setEnabled(true);
                     bi.nw216b.setEnabled(true);
-                    bi.nw216aa.setEnabled(true);
+                    bi.nw216aa.setEnabled(true);*/
                     bi.nw213.setEnabled(true);
 
                 } else {
@@ -283,11 +283,11 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                     bi.nw212.setText(null);
                     bi.nw214.setEnabled(false);
                     bi.nw215.setEnabled(false);
-                    bi.nw216a.setEnabled(false);
+                  /*  bi.nw216a.setEnabled(false);
                     bi.nw216b.setEnabled(false);
                     bi.nw216.clearCheck();
                     bi.nw216aa.setEnabled(false);
-                    bi.nw216aa.setText(null);
+                    bi.nw216aa.setText(null);*/
                     bi.nw213.setEnabled(false);
                     bi.nw213.setText(null);
 
@@ -295,7 +295,7 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
             }
         });
 
-        bi.nw216.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        /*bi.nw216.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (bi.nw216a.isChecked()) {
@@ -306,7 +306,7 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                 }
             }
         });
-
+*/
         bi.nw204.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -336,9 +336,9 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                     bi.nw212.setEnabled(true);
                     bi.nw214.setEnabled(true);
                     bi.nw215.setEnabled(true);
-                    bi.nw216a.setEnabled(true);
+                   /* bi.nw216a.setEnabled(true);
                     bi.nw216b.setEnabled(true);
-                    bi.nw216aa.setEnabled(true);
+                    bi.nw216aa.setEnabled(true);*/
                     bi.nw213.setEnabled(true);
 
                 } else {
@@ -372,11 +372,11 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                     bi.nw212.setText(null);
                     bi.nw214.setEnabled(false);
                     bi.nw215.setEnabled(false);
-                    bi.nw216a.setEnabled(false);
+                    /*bi.nw216a.setEnabled(false);
                     bi.nw216b.setEnabled(false);
                     bi.nw216.clearCheck();
                     bi.nw216aa.setEnabled(false);
-                    bi.nw216aa.setText(null);
+                    bi.nw216aa.setText(null);*/
                     bi.nw213.setEnabled(false);
                     bi.nw213.setText(null);
 
@@ -396,9 +396,9 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                     bi.nw212.setEnabled(true);
                     bi.nw215.setEnabled(true);
                     bi.nw214.setEnabled(true);
-                    bi.nw216a.setEnabled(true);
+                    /*bi.nw216a.setEnabled(true);
                     bi.nw216b.setEnabled(true);
-                    bi.nw216aa.setEnabled(true);
+                    bi.nw216aa.setEnabled(true);*/
                     bi.nw215.setEnabled(true);
                     bi.nw213.setEnabled(true);
                     bi.nw208a.setEnabled(true);
@@ -429,11 +429,11 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                     bi.nw212.setText(null);
                     bi.nw215.setEnabled(false);
                     bi.nw214.setEnabled(false);
-                    bi.nw216a.setEnabled(false);
+                    /*bi.nw216a.setEnabled(false);
                     bi.nw216b.setEnabled(false);
                     bi.nw216.clearCheck();
                     bi.nw216aa.setEnabled(false);
-                    bi.nw216aa.setText(null);
+                    bi.nw216aa.setText(null);*/
                     bi.nw213.setEnabled(false);
                     bi.nw213.setText(null);
                     bi.nw208a.setEnabled(false);
@@ -474,9 +474,9 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                     bi.nw212.setEnabled(true);
                     bi.nw215.setEnabled(true);
                     bi.nw214.setEnabled(true);
-                    bi.nw216a.setEnabled(true);
+                   /* bi.nw216a.setEnabled(true);
                     bi.nw216b.setEnabled(true);
-                    bi.nw216aa.setEnabled(true);
+                    bi.nw216aa.setEnabled(true);*/
                     bi.nw213.setEnabled(true);
                     bi.nw208a.setEnabled(true);
                     bi.nw208b.setEnabled(true);
@@ -500,11 +500,11 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                     bi.nw212.setText(null);
                     bi.nw215.setText(null);
                     bi.nw214.setEnabled(false);
-                    bi.nw216a.setEnabled(false);
+                    /*bi.nw216a.setEnabled(false);
                     bi.nw216b.setEnabled(false);
                     bi.nw216.clearCheck();
                     bi.nw216aa.setEnabled(false);
-                    bi.nw216aa.setText(null);
+                    bi.nw216aa.setText(null);*/
                     bi.nw213.setEnabled(false);
                     bi.nw213.setText(null);
                     bi.nw208a.setEnabled(false);
@@ -548,24 +548,24 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                         bi.nw213.setEnabled(false);
                         bi.nw214.setEnabled(false);
                         bi.nw215.setEnabled(false);
-                        bi.nw216a.setEnabled(false);
+                        /*bi.nw216a.setEnabled(false);
                         bi.nw216b.setEnabled(false);
-                        bi.nw216aa.setEnabled(false);
+                        bi.nw216aa.setEnabled(false);*/
                         bi.nw212.setText("0");
                         bi.nw213.setText(null);
                         bi.nw214.setText(null);
                         bi.nw215.setText(null);
-                        bi.nw216.clearCheck();
-                        bi.nw216aa.setText(null);
+                        /*bi.nw216.clearCheck();
+                        bi.nw216aa.setText(null);*/
 
                     } else {
                         bi.nw212.setEnabled(true);
                         bi.nw213.setEnabled(true);
                         bi.nw214.setEnabled(true);
                         bi.nw215.setEnabled(true);
-                        bi.nw216a.setEnabled(true);
+                       /* bi.nw216a.setEnabled(true);
                         bi.nw216b.setEnabled(true);
-                        bi.nw216aa.setEnabled(true);
+                        bi.nw216aa.setEnabled(true);*/
                     }
                 }
 
@@ -594,20 +594,20 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                         bi.nw214.setText(null);
                         bi.nw215.setEnabled(false);
                         bi.nw215.setText(null);
-                        bi.nw216a.setEnabled(false);
+                       /* bi.nw216a.setEnabled(false);
                         bi.nw216b.setEnabled(false);
                         bi.nw216.clearCheck();
                         bi.nw216aa.setEnabled(false);
-                        bi.nw216aa.setText(null);
+                        bi.nw216aa.setText(null);*/
 
                     } else {
 
                         bi.nw213.setEnabled(true);
                         bi.nw214.setEnabled(true);
                         bi.nw215.setEnabled(true);
-                        bi.nw216a.setEnabled(true);
+                        /*bi.nw216a.setEnabled(true);
                         bi.nw216b.setEnabled(true);
-                        bi.nw216aa.setEnabled(true);
+                        bi.nw216aa.setEnabled(true);*/
 
                     }
                 } else if (bi.nw207a.isChecked() && !bi.nw208a.isChecked() && bi.nw211.getText().toString().equals("1")) {
@@ -629,9 +629,9 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                         bi.nw213.setEnabled(true);
                         bi.nw214.setEnabled(true);
                         bi.nw215.setEnabled(true);
-                        bi.nw216a.setEnabled(true);
+                       /* bi.nw216a.setEnabled(true);
                         bi.nw216b.setEnabled(true);
-                        bi.nw216aa.setEnabled(true);
+                        bi.nw216aa.setEnabled(true);*/
 
                     }
                 }
@@ -656,16 +656,16 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                 if (bi.nw214.getText().toString().equals("0")) {
                     bi.nw215.setEnabled(false);
                     bi.nw215.setText(null);
-                    bi.nw216a.setEnabled(false);
+                   /* bi.nw216a.setEnabled(false);
                     bi.nw216b.setEnabled(false);
                     bi.nw216.clearCheck();
                     bi.nw216aa.setEnabled(false);
-                    bi.nw216aa.setText(null);
+                    bi.nw216aa.setText(null);*/
                 } else {
                     bi.nw215.setEnabled(true);
-                    bi.nw216a.setEnabled(true);
+                    /*bi.nw216a.setEnabled(true);
                     bi.nw216b.setEnabled(true);
-                    bi.nw216aa.setEnabled(true);
+                    bi.nw216aa.setEnabled(true);*/
 
                 }
             }
@@ -829,7 +829,7 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
         bi.nw213.addTextChangedListener(this);
         bi.nw214.addTextChangedListener(this);
         bi.nw215.addTextChangedListener(this);
-        bi.nw216aa.addTextChangedListener(this);
+        //bi.nw216aa.addTextChangedListener(this);
 
         bi.na11801.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -846,7 +846,7 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                     bi.nw21003.clearCheck();
                     bi.nw21098.clearCheck();
                     bi.nw21099.clearCheck();
-                    bi.nw216.clearCheck();
+                    //bi.nw216.clearCheck();
                 }
             }
         });
@@ -1074,13 +1074,13 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
             bi.nw215.setText(jsonB1.getnw215());
 
 
-            if (!jsonB1.getnw216().equals("0")) {
+           /* if (!jsonB1.getnw216().equals("0")) {
                 bi.nw216.check(
                         jsonB1.getnw216().equals("1") ? bi.nw216a.getId() :
                                 bi.nw216b.getId()
                 );
             }
-            bi.nw216aa.setText(jsonB1.getnw216aa());
+            bi.nw216aa.setText(jsonB1.getnw216aa());*/
 
         }
 
@@ -1415,8 +1415,8 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
         sB1.put("nw213", bi.nw213.getText().toString());
         sB1.put("nw214", bi.nw214.getText().toString());
         sB1.put("nw215", bi.nw215.getText().toString());
-        sB1.put("nw216", bi.nw216a.isChecked() ? "1" : bi.nw216b.isChecked() ? "2" : "0");
-        sB1.put("nw216aa", bi.nw216aa.getText().toString());
+       /* sB1.put("nw216", bi.nw216a.isChecked() ? "1" : bi.nw216b.isChecked() ? "2" : "0");
+        sB1.put("nw216aa", bi.nw216aa.getText().toString());*/
 
         /*if (bi.nw216a.isChecked() && !bi.nw216aa.getText().toString().isEmpty()) {
             MainApp.totalPregnancy = Integer.valueOf(bi.nw216aa.getText().toString());
@@ -1692,20 +1692,18 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                                     if (!validatorClass.EmptyTextBox(this, bi.nw215, getString(R.string.nw215))) {
                                         return false;
                                     }
-                                    if (!validatorClass.RangeTextBox(this, bi.nw215, 0, Integer.valueOf(bi.nw212.getText().toString()), getString(R.string.nw212), " Deliveries")) {
+                                    return validatorClass.RangeTextBox(this, bi.nw215, 0, Integer.valueOf(bi.nw212.getText().toString()), getString(R.string.nw212), " Deliveries");
+
+                                    /*if (!validatorClass.EmptyRadioButton(this, bi.nw216, bi.nw216a, getString(R.string.nw216))) {
                                         return false;
                                     }
-
-                                    if (!validatorClass.EmptyRadioButton(this, bi.nw216, bi.nw216a, getString(R.string.nw216))) {
-                                        return false;
-                                    }
-
-                                    if (bi.nw216a.isChecked()) {
+*/
+                                    /*if (bi.nw216a.isChecked()) {
                                         if (!validatorClass.EmptyTextBox(this, bi.nw216aa, getString(R.string.nw216a))) {
                                             return false;
                                         }
                                         return validatorClass.RangeTextBox(this, bi.nw216aa, 1, 5, getString(R.string.nw216a), " ");
-                                    }
+                                    }*/
                                 }
 
                             }

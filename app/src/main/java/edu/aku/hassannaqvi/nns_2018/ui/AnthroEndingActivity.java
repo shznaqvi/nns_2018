@@ -3,10 +3,7 @@ package edu.aku.hassannaqvi.nns_2018.ui;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -37,23 +34,15 @@ public class AnthroEndingActivity extends AppCompatActivity {
             binding.istatusb.setEnabled(false);
             binding.istatusc.setEnabled(false);
             binding.istatusd.setEnabled(false);
-            binding.istatuse.setEnabled(false);
-            binding.istatusf.setEnabled(false);
-            binding.istatus96.setEnabled(false);
-
-            binding.istatus96x.setText(null);
-            binding.istatus96x.setVisibility(View.GONE);
         } else {
             binding.istatusa.setEnabled(false);
             binding.istatusb.setEnabled(true);
             binding.istatusc.setEnabled(true);
             binding.istatusd.setEnabled(true);
-            binding.istatuse.setEnabled(true);
-            binding.istatusf.setEnabled(true);
-            binding.istatus96.setEnabled(true);
+
         }
 
-        binding.istatus.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+       /* binding.istatus.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if (binding.istatus96.isChecked()) {
@@ -64,7 +53,7 @@ public class AnthroEndingActivity extends AppCompatActivity {
                     binding.istatus96x.setVisibility(View.GONE);
                 }
             }
-        });
+        });*/
     }
 
     public void BtnEnd() {
@@ -104,12 +93,7 @@ public class AnthroEndingActivity extends AppCompatActivity {
                 : binding.istatusb.isChecked() ? "2"
                 : binding.istatusc.isChecked() ? "3"
                 : binding.istatusd.isChecked() ? "4"
-                : binding.istatuse.isChecked() ? "5"
-                : binding.istatusf.isChecked() ? "6"
-                : binding.istatus96.isChecked() ? "96"
                 : "0");
-
-        MainApp.emc.setIstatus88x(binding.istatus96x.getText().toString());
 
         MainApp.emc.setEnd_time(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
 
@@ -136,7 +120,9 @@ public class AnthroEndingActivity extends AppCompatActivity {
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
 
-        return validatorClass.EmptyRadioButton(this, binding.istatus, binding.istatus96, binding.istatus96x, getString(R.string.istatus));
+        return validatorClass.EmptyRadioButton(this, binding.istatus, binding.istatusa, getString(R.string.istatus));
+
+
     }
 
 

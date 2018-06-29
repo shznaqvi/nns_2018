@@ -902,7 +902,7 @@
                                                 android:text='@{na11801a.checked ? nw215.getText.toString : "" }' />
 
 
-                                            <TextView
+                                            <!--<TextView
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
                                                 android:layout_marginTop="16dp"
@@ -960,7 +960,7 @@
                                                     android:text='@{nw216a.checked ? nw216aa.getText.toString : ""}' />
 
                                             </LinearLayout>
-
+-->
 
                                         </LinearLayout>
 
