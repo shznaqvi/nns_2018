@@ -91,11 +91,14 @@ public class MainActivity extends MenuActivity {
     private Boolean exit = false;
     private String rSumText = "";
     static String ftype = "";
+    ActivityMainBinding mainBinding;
 
     int id = 1;
     DownloadManager downloadManager;
     Long refID;
     File file;
+    SharedPreferences sharedPrefDownload;
+    SharedPreferences.Editor editorDownload;
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
@@ -125,6 +128,10 @@ public class MainActivity extends MenuActivity {
         /*TagID Start*/
         sharedPref = getSharedPreferences("tagName", MODE_PRIVATE);
         editor = sharedPref.edit();
+
+        /*Download File*/
+        sharedPrefDownload = getSharedPreferences("appDownload", MODE_PRIVATE);
+        editorDownload = sharedPrefDownload.edit();
 
         builder = new AlertDialog.Builder(MainActivity.this);
         final AlertDialog dialog = builder.create();
@@ -172,7 +179,7 @@ public class MainActivity extends MenuActivity {
 
 
 //        Binding setting
-        ActivityMainBinding mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         mainBinding.setCallback(this);
 
         DatabaseHelper db = new DatabaseHelper(this);
@@ -287,8 +294,8 @@ public class MainActivity extends MenuActivity {
                                 .setTitle("Downloading NNS new App");
                         refID = downloadManager.enqueue(request);
 
-                        editor = sharedPref.edit();
-                        editor.putBoolean("appDownload_flag", false);
+                        editorDownload.putBoolean("flag", false);
+                        editorDownload.commit();
 
                     } else {
                         mainBinding.lblAppVersion.setText("NNS APP New Version Available..\n(Internet connectivity issue!!)");
@@ -314,15 +321,16 @@ public class MainActivity extends MenuActivity {
                         int colIndex = cursor.getColumnIndex(DownloadManager.COLUMN_STATUS);
                         if (DownloadManager.STATUS_SUCCESSFUL == cursor.getInt(colIndex)) {
 
-                            editor = sharedPref.edit();
-                            editor.putBoolean("appDownload_flag", true);
+                            editorDownload.putBoolean("flag", true);
+                            editorDownload.commit();
 
                             Toast.makeText(context, "New App downloaded!!", Toast.LENGTH_SHORT).show();
+                            mainBinding.lblAppVersion.setText("NNS APP New Version Downloaded.");
 
                             ActivityManager am = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
                             List<ActivityManager.RunningTaskInfo> taskInfo = am.getRunningTasks(1);
 
-                            if (taskInfo.get(0).topActivity.getClassName().equals(this.getClass().getName())) {
+                            if (taskInfo.get(0).topActivity.getClassName().equals(MainActivity.class.getName())) {
                                 InstallNewApp();
                             }
                         }
@@ -337,7 +345,7 @@ public class MainActivity extends MenuActivity {
     public void openForm() {
         if (versionAppContract.getVersioncode() != null) {
             if (MainApp.versionCode < Integer.valueOf(versionAppContract.getVersioncode())) {
-                if (sharedPref.getBoolean("appDownload_flag", false) && file.exists()) {
+                if (sharedPrefDownload.getBoolean("flag", false) && file.exists()) {
                     InstallNewApp();
                 } else {
                     OpenFormFun();
