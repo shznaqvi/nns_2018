@@ -298,7 +298,7 @@ public class MainActivity extends MenuActivity {
                         editorDownload.commit();
 
                     } else {
-                        mainBinding.lblAppVersion.setText("NNS APP New Version Available..\n(Internet connectivity issue!!)");
+                        mainBinding.lblAppVersion.setText("NNS APP New Version Available..\n(Can't download.. Internet connectivity issue!!)");
                     }
                 }
 
