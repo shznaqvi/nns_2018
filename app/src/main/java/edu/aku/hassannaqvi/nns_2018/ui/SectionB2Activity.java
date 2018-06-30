@@ -1140,9 +1140,9 @@ public class SectionB2Activity extends Menu2Activity implements RadioGroup.OnChe
 //        nw318
         sB2.put("nw318", bi.nw318a.isChecked() ? "1"
                 : bi.nw318b.isChecked() ? "2"
-                : bi.nw318b.isChecked() ? "3"
-                : bi.nw318b.isChecked() ? "4"
-                : bi.nw318b.isChecked() ? "5"
+                : bi.nw318c.isChecked() ? "3"
+                : bi.nw318d.isChecked() ? "4"
+                : bi.nw318e.isChecked() ? "5"
                 : "0");
 
 //        nw319
