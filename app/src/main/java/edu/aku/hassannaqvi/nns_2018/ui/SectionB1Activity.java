@@ -1704,6 +1704,14 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                                         }
                                         return validatorClass.RangeTextBox(this, bi.nw216aa, 1, 5, getString(R.string.nw216a), " ");
                                     }*/
+                                }else{
+                                    if (bi.nw208a.isChecked()){
+                                        Toast.makeText(this,"The women is currently pregrnant. Previous pregnencies should be 1",Toast.LENGTH_LONG).show();
+                                        bi.nw214.setError("The women is currently pregrnant. Previous pregnencies should be 1");
+                                        return false;
+                                    }else {
+                                        bi.nw214.setError("null");
+                                    }
                                 }
 
                             }
