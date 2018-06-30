@@ -590,10 +590,12 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                     if (bi.nw212.getText().toString().equals("0")) {
                         bi.nw213.setEnabled(false);
                         bi.nw213.setText(null);
-                        bi.nw214.setEnabled(false);
+
+                        /*bi.nw214.setEnabled(false);
                         bi.nw214.setText(null);
                         bi.nw215.setEnabled(false);
-                        bi.nw215.setText(null);
+                        bi.nw215.setText(null);*/
+
                        /* bi.nw216a.setEnabled(false);
                         bi.nw216b.setEnabled(false);
                         bi.nw216.clearCheck();
@@ -603,8 +605,10 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                     } else {
 
                         bi.nw213.setEnabled(true);
-                        bi.nw214.setEnabled(true);
-                        bi.nw215.setEnabled(true);
+
+                        /*bi.nw214.setEnabled(true);
+                        bi.nw215.setEnabled(true);*/
+
                         /*bi.nw216a.setEnabled(true);
                         bi.nw216b.setEnabled(true);
                         bi.nw216aa.setEnabled(true);*/
@@ -614,10 +618,12 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                     if (bi.nw212.getText().toString().equals("0")) {
                         bi.nw213.setEnabled(false);
                         bi.nw213.setText(null);
-                        bi.nw214.setEnabled(false);
+
+                        /*bi.nw214.setEnabled(false);
                         bi.nw214.setText(null);
                         bi.nw215.setEnabled(false);
-                        bi.nw215.setText(null);
+                        bi.nw215.setText(null);*/
+
                         /*bi.nw216a.setEnabled(false);
                         bi.nw216b.setEnabled(false);
                         bi.nw216.clearCheck();
@@ -627,8 +633,10 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                     } else {
 
                         bi.nw213.setEnabled(true);
-                        bi.nw214.setEnabled(true);
-                        bi.nw215.setEnabled(true);
+
+                        /*bi.nw214.setEnabled(true);
+                        bi.nw215.setEnabled(true);*/
+
                        /* bi.nw216a.setEnabled(true);
                         bi.nw216b.setEnabled(true);
                         bi.nw216aa.setEnabled(true);*/
@@ -1161,13 +1169,12 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                             } else {
                                 redirectCondition();
                             }*/
-                            MainApp.currentlyPregnant = bi.nw208a.isChecked()? 1 : bi.nw208b.isChecked()? 2 : 0; // when women is currently pregnant outcome should be open according to totalPregnencies-1
+                            MainApp.currentlyPregnant = bi.nw208a.isChecked() ? 1 : bi.nw208b.isChecked() ? 2 : 0; // when women is currently pregnant outcome should be open according to totalPregnencies-1
 
                             if (Integer.valueOf(bi.nw214.getText().toString()) > 0) {
-                                if (Integer.valueOf(bi.nw214.getText().toString()) == 1 && MainApp.currentlyPregnant == 1 ){
+                                if (Integer.valueOf(bi.nw214.getText().toString()) == 1 && MainApp.currentlyPregnant == 1) {
                                     redirectCondition();
-                                }
-                                else if (Integer.valueOf(bi.nw214.getText().toString()) < prevDeliveries) {
+                                } else if (Integer.valueOf(bi.nw214.getText().toString()) < prevDeliveries) {
 
                                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                                             SectionB1Activity.this);
@@ -1400,15 +1407,15 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
         sB1.put("nw209", bi.nw209a.isChecked() ? "1" : bi.nw209b.isChecked() ? "2" : "0");
 
         //        nw21001
-        sB1.put("nw21001", bi.nw21001a.isChecked() ? "1" : "2");
+        sB1.put("nw21001", bi.nw21001a.isChecked() ? "1" : bi.nw21001b.isChecked() ? "2" : "0");
         //        nw21002
-        sB1.put("nw21002", bi.nw21002a.isChecked() ? "1" : "2");
+        sB1.put("nw21002", bi.nw21002a.isChecked() ? "1" : bi.nw21002b.isChecked() ? "2" : "0");
         //        nw21003
-        sB1.put("nw21003", bi.nw21003a.isChecked() ? "1" : "2");
+        sB1.put("nw21003", bi.nw21003a.isChecked() ? "1" : bi.nw21003b.isChecked() ? "2" : "0");
         //        nw21098
-        sB1.put("nw21098", bi.nw21098a.isChecked() ? "1" : "2");
+        sB1.put("nw21098", bi.nw21098a.isChecked() ? "1" : bi.nw21098b.isChecked() ? "2" : "0");
         //        nw21099
-        sB1.put("nw21099", bi.nw21099a.isChecked() ? "1" : "2");
+        sB1.put("nw21099", bi.nw21099a.isChecked() ? "1" : bi.nw21099b.isChecked() ? "2" : "0");
 
         sB1.put("nw211", bi.nw211.getText().toString());
         sB1.put("nw212", bi.nw212.getText().toString());
@@ -1678,21 +1685,21 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                                     return false;
                                 }
 
+                            }
+                            if (!validatorClass.EmptyTextBox(this, bi.nw214, getString(R.string.nw214))) {
+                                return false;
+                            }
 
-                                if (!validatorClass.EmptyTextBox(this, bi.nw214, getString(R.string.nw214))) {
+                            if (!validatorClass.RangeTextBox(this, bi.nw214, 0, Integer.valueOf(bi.nw211.getText().toString()), getString(R.string.nw211), " Deliveries")) {
+                                return false;
+                            }
+
+                            if (!bi.nw214.getText().toString().equals("0")) {
+
+                                if (!validatorClass.EmptyTextBox(this, bi.nw215, getString(R.string.nw215))) {
                                     return false;
                                 }
-
-                                if (!validatorClass.RangeTextBox(this, bi.nw214, 0, Integer.valueOf(bi.nw211.getText().toString()), getString(R.string.nw211), " Deliveries")) {
-                                    return false;
-                                }
-
-                                if (!bi.nw214.getText().toString().equals("0")) {
-
-                                    if (!validatorClass.EmptyTextBox(this, bi.nw215, getString(R.string.nw215))) {
-                                        return false;
-                                    }
-                                    return validatorClass.RangeTextBox(this, bi.nw215, 0, Integer.valueOf(bi.nw212.getText().toString()), getString(R.string.nw212), " Deliveries");
+                                return validatorClass.RangeTextBox(this, bi.nw215, 0, Integer.valueOf(bi.nw212.getText().toString()), getString(R.string.nw212), " Deliveries");
 
                                     /*if (!validatorClass.EmptyRadioButton(this, bi.nw216, bi.nw216a, getString(R.string.nw216))) {
                                         return false;
@@ -1704,17 +1711,17 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                                         }
                                         return validatorClass.RangeTextBox(this, bi.nw216aa, 1, 5, getString(R.string.nw216a), " ");
                                     }*/
-                                }else{
-                                    if (bi.nw208a.isChecked()){
-                                        Toast.makeText(this,"The women is currently pregrnant. Previous pregnencies should be 1",Toast.LENGTH_LONG).show();
-                                        bi.nw214.setError("The women is currently pregrnant. Previous pregnencies should be 1");
-                                        return false;
-                                    }else {
-                                        bi.nw214.setError("null");
-                                    }
+                            } else {
+                                if (bi.nw208a.isChecked()) {
+                                    Toast.makeText(this, "The women is currently pregrnant. Previous pregnencies should be 1", Toast.LENGTH_LONG).show();
+                                    bi.nw214.setError("The women is currently pregrnant. Previous pregnencies should be 1");
+                                    return false;
+                                } else {
+                                    bi.nw214.setError("null");
                                 }
-
                             }
+
+
                         }
 
                         //}

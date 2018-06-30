@@ -21,7 +21,7 @@
     <string name="saveMember"> درج کریں </string>
     <string name="istatus">انٹرویو کا نتیجہ</string>
     <string name="istatusa"> مکمل</string>
-    <string name="istatusb"> گھر پرموجود نہیں</string>
+    <string name="istatusb"> گھر پر موجود نہیں</string>
     <string name="istatusc">انکار </string>
     <string name="istatusd"> جزوی مکمل </string>
     <string name="istatuse">جواب دینے سے قاصر</string>
@@ -30,11 +30,11 @@
     <string name="nc3response"> Response </string>
     <string name="nc3src"> Source </string>
 
-  <string name="anthrostatus">Assessment Status</string>
-  <string name="anthroa">Done</string>
-  <string name="anthrob">Not Done</string>
-  <string name="anthroc">Refused</string>
-  <string name="anthrod">Not Available</string>
+    <string name="anthrostatus">Assessment Status</string>
+    <string name="anthroa">مکمل</string>
+    <string name="anthrob">نا مکمل</string>
+    <string name="anthroc">انکار</string>
+    <string name="anthrod"> گھر پر ابھی موجود نہیں </string>
 
     <string name="istatusha"> مکمل</string>
     <string name="istatushb">گھرانے کا کوئی فرد یا باصلاحیت جواب دہندہ گھر پر موجود نہیں تھا</string>
@@ -850,9 +850,9 @@
 
 
     <string name="nc203a">  مکمل مہینوں میں عمر </string>
-    <string name="nc204">  ۔C204A- اطمینان کر لیں کہ اوپر کیئے گئے سوالات میں بچے کی عمر یکساں ہے </string>
-    <string name="nc204a">۔C204A- اطمینان کر لیں کہ اوپر کیئے گئے سوالات میں بچے کی عمر یکساں ہے۔</string>
-    <string name="nc204b">اطمینان کر لیں کہ اوپر کیئے گئے سوالات میں بچے کی عمر یکساں ہے۔</string>
+    <string name="nc204">  ۔C204- کو چیک کریں۔C203اور C201,C202,ڈیٹا کی یکسانیت یا مطابقت  کی تصدیق کرنے کے لِئے سوال نمبر </string>
+    <string name="nc204a">۔C204A- کیاC201میں درج کردہ عمر کے سال C202 میں بتائی گئی عمر کے سالوں سے مطابقت رکھتے ہیں؟ ۔</string>
+    <string name="nc204b">۔C204B- کیا سوال نمبر1 میں درج کردہ پیدائش کا سال اور مہینہC203 میں بتائی گئی عمر کے مہینوں سے مطابقت یا یکسانیت رکھتے ہیں؟ ۔</string>
     <string name="nc205"> کیا بچہ 24 مہینوں سے کم ہے  </string>
 
     <string name="nc207a">  فوراً </string>
