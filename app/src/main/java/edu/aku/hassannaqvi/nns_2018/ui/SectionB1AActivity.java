@@ -67,7 +67,11 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
         setupViews();
 
         bi.textName.setText("Selected Woman : " + SectionB1Activity.wraName);
-        bi.count.setText("Pregnancy No " + MainApp.count + " out of " + MainApp.totalPregnancy);
+        int totalPregnancy = MainApp.totalPregnancy;
+        if(MainApp.currentlyPregnant == 1){
+            totalPregnancy = MainApp.totalPregnancy-1;
+        }
+        bi.count.setText("Pregnancy No " + MainApp.count + " out of " + totalPregnancy);
 
         for (EditText ed : grpDate) {
             ed.addTextChangedListener(this);
@@ -295,7 +299,12 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
                 } else {
                     MainApp.count++;
-                    if (MainApp.count > MainApp.totalPregnancy) {
+                    int totalPregnancy = MainApp.totalPregnancy;
+                    if(MainApp.currentlyPregnant == 1) {
+                        totalPregnancy = MainApp.totalPregnancy - 1;
+                    }
+
+                    if (MainApp.count >totalPregnancy) {
 
                         MainApp.count = 1;
 

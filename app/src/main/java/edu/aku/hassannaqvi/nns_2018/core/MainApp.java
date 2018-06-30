@@ -142,6 +142,7 @@ public class MainApp extends Application {
     // Gul Sanober
     public static Map<String, FamilyMembersContract> mwraMap;
     public static int totalPregnancy = 0;
+    public static int currentlyPregnant = 0;
     public static int count = 1;
     public static boolean flag = false;
     public static int outcome = 0;

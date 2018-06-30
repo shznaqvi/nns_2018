@@ -1161,10 +1161,13 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                             } else {
                                 redirectCondition();
                             }*/
+                            MainApp.currentlyPregnant = bi.nw208a.isChecked()? 1 : bi.nw208b.isChecked()? 2 : 0; // when women is currently pregnant outcome should be open according to totalPregnencies-1
 
                             if (Integer.valueOf(bi.nw214.getText().toString()) > 0) {
-
-                                if (Integer.valueOf(bi.nw214.getText().toString()) < prevDeliveries) {
+                                if (Integer.valueOf(bi.nw214.getText().toString()) == 1 && MainApp.currentlyPregnant == 1 ){
+                                    redirectCondition();
+                                }
+                                else if (Integer.valueOf(bi.nw214.getText().toString()) < prevDeliveries) {
 
                                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                                             SectionB1Activity.this);
@@ -1178,7 +1181,6 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                                                                             int id) {
 
                                                             MainApp.totalPregnancy = prevDeliveries;
-
                                                             startActivityForResult(new Intent(SectionB1Activity.this, SectionB1AActivity.class)
                                                                     .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
                                                         }
@@ -1187,7 +1189,6 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                                             new DialogInterface.OnClickListener() {
                                                 public void onClick(DialogInterface dialog, int id) {
                                                     dialog.cancel();
-
                                                 }
                                             });
                                     AlertDialog alert = alertDialogBuilder.create();
@@ -1195,7 +1196,6 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
 
                                 } else {
                                     MainApp.totalPregnancy = Integer.valueOf(bi.nw214.getText().toString());
-
                                     startActivityForResult(new Intent(this, SectionB1AActivity.class)
                                             .putExtra("backPressed", classPassName.equals(SectionB1AActivity.class.getName())), 1);
 
