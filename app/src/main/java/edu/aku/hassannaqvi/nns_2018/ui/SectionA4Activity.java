@@ -1235,7 +1235,7 @@ public class SectionA4Activity extends Menu2Activity implements RadioGroup.OnChe
         sA4.put("nh313e", binding.nh313e.isChecked() ? "5" : "0");
         sA4.put("nh313f", binding.nh313f.isChecked() ? "6" : "0");
         sA4.put("nh31396", binding.nh31396.isChecked() ? "96" : "0");
-        sA4.put("nh31396x", binding.nh31496x.getText().toString());
+        sA4.put("nh31396x", binding.nh31396x.getText().toString());
 
 //        nh314
         sA4.put("nh314", binding.nh314a.isChecked() ? "1"
@@ -1332,7 +1332,7 @@ public class SectionA4Activity extends Menu2Activity implements RadioGroup.OnChe
 //        nh322
         sA4.put("nh322", binding.nh322a.isChecked() ? "1"
                 : binding.nh322b.isChecked() ? "2"
-                : binding.nh32298.isChecked() ? "3"
+                : binding.nh32298.isChecked() ? "98"
                 : "0");
         sA4.put("nh322acr", binding.nh322acr.getText().toString());
         sA4.put("nh322can", binding.nh322can.getText().toString());

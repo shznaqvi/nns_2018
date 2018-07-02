@@ -963,7 +963,7 @@ public class SectionC4Activity extends Menu2Activity implements TextWatcher, Rad
 //        nc413
         sC4.put("nc413", binding.nc413a.isChecked() ? "1"
                 : binding.nc413b.isChecked() ? "2"
-                : binding.nc41498.isChecked() ? "98"
+                : binding.nc41398.isChecked() ? "98"
                 : "0");
 
 //      nc414
@@ -974,6 +974,7 @@ public class SectionC4Activity extends Menu2Activity implements TextWatcher, Rad
 //        nc415
         sC4.put("nc415", binding.nc415a.isChecked() ? "1"
                 : binding.nc415b.isChecked() ? "2"
+                : binding.nc41598.isChecked() ? "98"
                 : "0");
 
 //        nc416
