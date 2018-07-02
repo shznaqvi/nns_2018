@@ -1,5 +1,7 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -211,9 +213,6 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
             }
             if (UpdateDB()) {
                 //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
-
-                finish();
-
 /*
                 if (counter == MainApp.all_members.size()) {
 
@@ -230,7 +229,31 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
                 }
 */
 
-                startActivity(new Intent(this, AnthroEndingActivity.class).putExtra("complete", true));
+                String readings = "Weight: " + binding.nd1w.getText().toString() + "\n" +
+                        "Height: " + binding.nd1h.getText().toString() + "\n" +
+                        "MUAC: " + binding.nd1muac.getText().toString() + "\n";
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                        SectionD1Activity.this);
+                alertDialogBuilder
+                        .setMessage("Are you sure to confirm these reading's?\n\n" + readings)
+                        .setCancelable(false)
+                        .setPositiveButton("Ok",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,
+                                                        int id) {
+                                        finish();
+                                        startActivity(new Intent(SectionD1Activity.this, AnthroEndingActivity.class).putExtra("complete", true));
+                                    }
+                                });
+                alertDialogBuilder.setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert = alertDialogBuilder.create();
+                alert.show();
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
