@@ -373,8 +373,11 @@ public class AntrhoInfoActivity extends Activity {
         }
     }*/
 
-    public void populateMembers(String uuid, String formDate) {
-        members = db.getAllMembersByHHforAnthro(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase(), uuid, formDate);
+    public void populateMembers(final String uuid, final String formDate) {
+
+        Toast.makeText(getApplicationContext(), "Searching Members!!", Toast.LENGTH_SHORT).show();
+
+        members = db.getAllMembersByHHforAnthro(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase(), uuid, formDate, true);
 
         if (members.size() != 0) {
             for (FamilyMembersContract fm : members) {
@@ -395,7 +398,7 @@ public class AntrhoInfoActivity extends Activity {
 
             }
             if (MainApp.all_members.size() > 0) {
-                Toast.makeText(this, "Members Found..", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Members Found..", Toast.LENGTH_SHORT).show();
                 binding.fldGrpQR.setVisibility(View.VISIBLE);
                 binding.btnContinue.setVisibility(View.VISIBLE);
                 binding.btnEnd.setVisibility(View.GONE);
@@ -407,12 +410,11 @@ public class AntrhoInfoActivity extends Activity {
                 binding.wtCode.setText(null);
                 binding.btnContinue.setVisibility(View.GONE);
                 binding.btnEnd.setVisibility(View.GONE);
-                Toast.makeText(this, "No Eligible member found for anthropometry, Check another HH.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "No Eligible member found for anthropometry, Check another HH.", Toast.LENGTH_SHORT).show();
             }
 
-
         } else {
-            Toast.makeText(this, "No members found for the HH.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "No members found for the HH.", Toast.LENGTH_SHORT).show();
         }
     }
 

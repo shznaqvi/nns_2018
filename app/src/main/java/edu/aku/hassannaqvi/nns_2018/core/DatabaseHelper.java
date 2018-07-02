@@ -824,8 +824,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                FamilyMembersContract dc = new FamilyMembersContract();
-                allBL.add(dc.Hydrate(c));
+                allBL.add(new FamilyMembersContract().Hydrate(c));
             }
         } finally {
             if (c != null) {
@@ -838,7 +837,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allBL;
     }
 
-    public Collection<FamilyMembersContract> getAllMembersByHHforAnthro(String cluster, String hh, String uuid, String formDate) {
+    public Collection<FamilyMembersContract> getAllMembersByHHforAnthro(String cluster, String hh, String uuid, String formDate, Boolean flag) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -884,8 +883,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                FamilyMembersContract dc = new FamilyMembersContract();
-                allBL.add(dc.Hydrate(c));
+                FamilyMembersContract dc = new FamilyMembersContract().Hydrate(c);
+                if (flag) {
+                    if (!getAnthroMembersExist(dc.get_UID())) {
+                        allBL.add(dc);
+                    }
+                } else {
+                    allBL.add(dc);
+                }
             }
         } finally {
             if (c != null) {
@@ -896,6 +901,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allBL;
+    }
+
+    public Boolean getAnthroMembersExist(String uid) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                eligibleMembers.COLUMN__ID,
+                eligibleMembers.COLUMN_FM_UID,
+        };
+        String whereClause = eligibleMembers.COLUMN_FM_UID + " =? ";
+        String[] whereArgs = {uid};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                eligibleMembers.COLUMN_FM_UID + " DESC";
+
+        Boolean allFC = false;
+        try {
+            c = db.query(
+                    eligibleMembers.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            int cursorCount = c.getCount();
+            if (cursorCount > 0) {
+                c.moveToFirst();
+                return true;
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
     }
 
     public Collection<WaterSpecimenContract> getMicroforresults(String cluster, String hh) {

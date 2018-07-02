@@ -528,7 +528,7 @@ public class SpecimenInfoActivity extends AppCompatActivity {
     }*/
 
     public void populateMembers(String uuid, String formDate) {
-        members = db.getAllMembersByHHforAnthro(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase(), uuid, formDate);
+        members = db.getAllMembersByHHforAnthro(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase(), uuid, formDate, false);
 
         if (members.size() != 0) {
             for (FamilyMembersContract fm : members) {
