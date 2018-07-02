@@ -34,6 +34,7 @@ import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.NutritionContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.SummaryContract;
 import edu.aku.hassannaqvi.nns_2018.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -263,7 +264,6 @@ public class Menu2Activity extends AppCompatActivity {
                     db.getUnsyncedNutrition(), this.findViewById(R.id.syncStatus)
             ).execute();
 
-
             Toast.makeText(getApplicationContext(), "Syncing Deceased", Toast.LENGTH_SHORT).show();
             new SyncAllData(
                     this,
@@ -272,6 +272,16 @@ public class Menu2Activity extends AppCompatActivity {
                     DeceasedContract.class,
                     MainApp._HOST_URL + DeceasedContract.DeceasedTable._URL,
                     db.getUnsyncedDeceasedMembers(), this.findViewById(R.id.syncStatus)
+            ).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing Summary", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Summary",
+                    "updateSyncedSummaryForm",
+                    SummaryContract.class,
+                    MainApp._HOST_URL + SummaryContract.singleSum._URL,
+                    db.getUnsyncedSummary(), this.findViewById(R.id.syncStatus)
             ).execute();
 
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);

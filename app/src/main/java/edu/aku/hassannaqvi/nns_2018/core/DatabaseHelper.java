@@ -44,6 +44,8 @@ import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract.RecipientsTable
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract.singleSerial;
 import edu.aku.hassannaqvi.nns_2018.contracts.SpecimenContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.SummaryContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.SummaryContract.singleSum;
 import edu.aku.hassannaqvi.nns_2018.contracts.UCsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.UCsContract.UCsTable;
 import edu.aku.hassannaqvi.nns_2018.contracts.UsersContract;
@@ -85,7 +87,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + singleRandomHH.COLUMN_SNO_HH + " TEXT );";
 
     public static final String PROJECT_NAME = "NNS-2018";
-    private static final int DATABASE_VERSION = 11;
+    private static final int DATABASE_VERSION = 12;
     public static final String DB_NAME = DATABASE_NAME.replace(".", "_" + MainApp.versionName + "_" + DATABASE_VERSION + "_copy.");
 
     private static final String SQL_CREATE_FORMS = "CREATE TABLE "
@@ -314,6 +316,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             ");";
 
+    final String SQL_CREATE_SUMMARY = "CREATE TABLE " + DeceasedContract.DeceasedTable.TABLE_NAME + " (" +
+            singleSum.COLUMN_ROW_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            singleSum.COLUMN_PROJECTNAME + " TEXT," +
+            singleSum.COLUMN__UID + " TEXT," +
+            singleSum.COLUMN_CLUSTERNO + " TEXT," +
+            singleSum.COLUMN_HHNO + " TEXT," +
+            singleSum.COLUMN_HH + " TEXT," +
+            singleSum.COLUMN_WOMEN + " TEXT," +
+            singleSum.COLUMN_CHILD + " TEXT," +
+            singleSum.COLUMN_ANTHRO + " TEXT," +
+            singleSum.COLUMN_SPECIMEN + " TEXT," +
+            singleSum.COLUMN_WATER + " TEXT," +
+            singleSum.COLUMN_SYNCED + " TEXT," +
+            singleSum.COLUMN_SYNCEDDATE + " TEXT," +
+            singleSum.COLUMN_USER + " TEXT," +
+            singleSum.COLUMN_FORMDATE + " TEXT," +
+            singleSum.COLUMN_DEVICEID + " TEXT," +
+            singleSum.COLUMN_DEVICETAGID + " TEXT," +
+            singleSum.COLUMN_APPVERSION + " TEXT);";
 
     final String SQL_CREATE_VERSIONAPP = "CREATE TABLE " + VersionAppTable.TABLE_NAME + " (" +
             VersionAppTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -449,6 +470,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_SPECIMEN_MEMBERS);
         db.execSQL(SQL_CREATE_WATER_SPECIMEN_MEMBERS);
         db.execSQL(SQL_CREATE_MICRO);
+        db.execSQL(SQL_CREATE_SUMMARY);
     }
 
     @Override
@@ -491,6 +513,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.execSQL(SQL_ALTER_FAMILYMEMBER1);
             case 10:
                 db.execSQL(SQL_ALTER_BLRANDOM3);
+            case 11:
+                db.execSQL(SQL_CREATE_SUMMARY);
         }
 
     }
@@ -1555,6 +1579,53 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return newRowId;
     }
 
+    public Long addSummary(SummaryContract ss, int type) {
+
+        // Gets the data repository in write mode
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        // Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+
+        values.put(singleSum.COLUMN__UID, ss.get_uid());
+        values.put(singleSum.COLUMN_CLUSTERNO, ss.getClusterno());
+        values.put(singleSum.COLUMN_HHNO, ss.getHhno());
+        values.put(singleSum.COLUMN_SYNCED, ss.getSynced());
+        values.put(singleSum.COLUMN_SYNCEDDATE, ss.getSynceddate());
+        values.put(singleSum.COLUMN_USER, ss.getUser());
+        values.put(singleSum.COLUMN_FORMDATE, ss.getFormdate());
+        values.put(singleSum.COLUMN_DEVICEID, ss.getDeviceid());
+        values.put(singleSum.COLUMN_DEVICETAGID, ss.getDevicetagID());
+        values.put(singleSum.COLUMN_APPVERSION, ss.getAppversion());
+
+        if (type == 0) {
+            values.put(singleSum.COLUMN_HH, ss.getHh());
+        }
+        if (type == 1) {
+            values.put(singleSum.COLUMN_WOMEN, ss.getWomen());
+        }
+        if (type == 2) {
+            values.put(singleSum.COLUMN_CHILD, ss.getChild());
+        }
+        if (type == 3) {
+            values.put(singleSum.COLUMN_ANTHRO, ss.getAnthro());
+        }
+        if (type == 4) {
+            values.put(singleSum.COLUMN_SPECIMEN, ss.getSpecimen());
+        }
+        if (type == 5) {
+            values.put(singleSum.COLUMN_WATER, ss.getWater());
+        }
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId = db.insert(
+                singleSum.TABLE_NAME,
+                singleSum.COLUMN_NAME_NULLABLE,
+                values);
+
+        return newRowId;
+    }
+
     public Long addFamilyMembers(FamilyMembersContract fmc) {
 
         // Gets the data repository in write mode
@@ -2269,6 +2340,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 whereArgs);
     }
 
+    public void updateSyncedSummaryForm(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(singleSum.COLUMN_SYNCED, true);
+        values.put(singleSum.COLUMN_SYNCEDDATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = singleSum.COLUMN_ROW_ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                singleSum.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
     public void updateSyncedDeceasedForm(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2654,6 +2744,62 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (c.moveToNext()) {
                 FormsContract fc = new FormsContract();
                 allFC.add(fc.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
+    public Collection<SummaryContract> getUnsyncedSummary() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                singleSum.COLUMN_ROW_ID,
+                singleSum.COLUMN__UID,
+                singleSum.COLUMN_CLUSTERNO,
+                singleSum.COLUMN_HHNO,
+                singleSum.COLUMN_HH,
+                singleSum.COLUMN_WOMEN,
+                singleSum.COLUMN_CHILD,
+                singleSum.COLUMN_ANTHRO,
+                singleSum.COLUMN_SPECIMEN,
+                singleSum.COLUMN_WATER,
+                singleSum.COLUMN_SYNCED,
+                singleSum.COLUMN_SYNCEDDATE,
+                singleSum.COLUMN_USER,
+                singleSum.COLUMN_FORMDATE,
+                singleSum.COLUMN_DEVICEID,
+                singleSum.COLUMN_DEVICETAGID,
+                singleSum.COLUMN_APPVERSION
+        };
+        String whereClause = singleSum.COLUMN_SYNCED + " is null OR " + singleSum.COLUMN_SYNCED + " = '' ";
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                singleSum.COLUMN_ROW_ID + " ASC";
+
+        Collection<SummaryContract> allFC = new ArrayList<>();
+        try {
+            c = db.query(
+                    FormsTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                SummaryContract sum = new SummaryContract();
+                allFC.add(sum.Hydrate(c));
             }
         } finally {
             if (c != null) {
