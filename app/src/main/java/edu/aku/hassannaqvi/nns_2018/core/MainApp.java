@@ -13,6 +13,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.format.DateFormat;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -35,6 +36,7 @@ import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SpecimenContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.SummaryContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.UsersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.WaterSpecimenContract;
 import edu.aku.hassannaqvi.nns_2018.other.MembersCount;
@@ -87,6 +89,7 @@ public class MainApp extends Application {
     public static ChildContract cc;
     public static SerialContract sc;
     public static RecipientsContract rc;
+    public static SummaryContract sumc;
     public static MembersCount membersCount;
     public static String userName = "0000";
     public static UsersContract usersContract = null;
@@ -186,6 +189,57 @@ public class MainApp extends Application {
     public static long ageInMonths(String year, String month) {
         long ageInMonths = (Integer.valueOf(year) * 12) + Integer.valueOf(month);
         return ageInMonths;
+    }
+
+    public static SummaryContract AddSummary(FormsContract fc, int type) {
+
+        SummaryContract summaryContract = new SummaryContract();
+        summaryContract.setClusterno(fc.getClusterNo());
+        summaryContract.setHhno(fc.getHhNo());
+        summaryContract.setDevicetagID(fc.getDevicetagID());
+        summaryContract.setFormdate(fc.getFormDate());
+        summaryContract.setUser(fc.getUser());
+        summaryContract.setDeviceid(fc.getDeviceID());
+        summaryContract.setAppversion(fc.getAppversion());
+
+        switch (type) {
+            case 1:
+                summaryContract.setHh("1");
+                break;
+            case 2:
+                summaryContract.setWomen("1");
+                break;
+            case 3:
+                summaryContract.setChild("1");
+                break;
+            case 4:
+                summaryContract.setAnthro("1");
+                break;
+            case 5:
+                summaryContract.setSpecimen("1");
+                break;
+            case 6:
+                summaryContract.setWater("1");
+                break;
+        }
+
+        return summaryContract;
+    }
+
+    public static boolean UpdateSummary(Context context, DatabaseHelper db, int type) {
+        Long updcount = db.addSummaryForms(MainApp.sumc, type);
+        MainApp.sumc.setROW_ID(String.valueOf(updcount));
+
+        if (updcount != 0) {
+            MainApp.sumc.set_uid(
+                    (MainApp.sumc.getDeviceid() + MainApp.sumc.getROW_ID()));
+            db.updateSummaryID();
+
+            return true;
+        } else {
+            Toast.makeText(context, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
     }
 
     public static void errorCheck(final Context context, String error) {

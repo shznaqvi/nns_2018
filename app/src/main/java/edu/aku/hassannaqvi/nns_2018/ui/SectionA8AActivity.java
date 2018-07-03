@@ -271,6 +271,11 @@ public class SectionA8AActivity extends AppCompatActivity {
                             );
 
                         } else {
+
+                            if (!MainApp.UpdateSummary(this, db, 1)) {
+                                Toast.makeText(this, "Summary Table not update!!", Toast.LENGTH_SHORT).show();
+                            }
+
                             startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 3));
                         }
                     }
@@ -442,9 +447,10 @@ public class SectionA8AActivity extends AppCompatActivity {
         sA8a.put("nh7a08", bi.nh7a05.getText().toString());
         sA8a.put("nh7a09", bi.nh7a06.getText().toString());
 
-
         MainApp.rc.setsA8A(String.valueOf(sA8a));
 
+        // Set summary fields
+        MainApp.sumc = MainApp.AddSummary(MainApp.fc, 1);
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
 

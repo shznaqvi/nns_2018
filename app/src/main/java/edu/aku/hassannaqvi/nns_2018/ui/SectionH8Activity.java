@@ -141,6 +141,11 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
                                 .putExtra("hhno", MainApp.fc.getHhNo())
                         );
                     } else {
+
+                        if (!MainApp.UpdateSummary(this, db, 1)) {
+                            Toast.makeText(this, "Summary Table not update!!", Toast.LENGTH_SHORT).show();
+                        }
+
                         startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 2));
                     }
 
@@ -462,6 +467,8 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
 
         MainApp.dc.setsH8(String.valueOf(sA2));
 
+        // Set summary fields
+        MainApp.sumc = MainApp.AddSummary(MainApp.fc, 1);
 
         //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }

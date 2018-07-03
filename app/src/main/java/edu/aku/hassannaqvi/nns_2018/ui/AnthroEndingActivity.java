@@ -9,6 +9,7 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivityAnthroEndingBinding;
@@ -19,6 +20,7 @@ public class AnthroEndingActivity extends AppCompatActivity {
     private static final String TAG = AnthroEndingActivity.class.getSimpleName();
 
     ActivityAnthroEndingBinding binding;
+    DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,8 @@ public class AnthroEndingActivity extends AppCompatActivity {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_anthro_ending);
         binding.setCallback(this);
+
+        db = new DatabaseHelper(this);
 
         Boolean check = getIntent().getExtras().getBoolean("complete");
 
@@ -97,18 +101,29 @@ public class AnthroEndingActivity extends AppCompatActivity {
 
         MainApp.emc.setEnd_time(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
 
+        // Set summary fields
+        FormsContract fc = new FormsContract();
+        fc.setClusterNo(MainApp.emc.getEnm_no());
+        fc.setHhNo(MainApp.emc.getHh_no());
+        fc.setDevicetagID(MainApp.emc.getDevicetagID());
+        fc.setFormDate(MainApp.emc.getFormDate());
+        fc.setUser(MainApp.emc.getUser());
+        fc.setDeviceID(MainApp.emc.getDeviceId());
+        fc.setAppversion(MainApp.emc.getApp_ver());
+        MainApp.sumc = MainApp.AddSummary(fc, 4);
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }
 
     private boolean UpdateDB() {
-        DatabaseHelper db = new DatabaseHelper(this);
 
         int updcount = db.updateAnthroEnding();
 
         if (updcount == 1) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
-            return true;
+
+            return MainApp.UpdateSummary(this, db, 4);
+
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;

@@ -18,7 +18,6 @@ import android.text.TextWatcher;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -401,6 +400,22 @@ public class ViewMemberActivity extends MenuActivity {
         }
     }
 
+    public Boolean updateSummary() {
+        MainApp.fc.setIstatus88x("1");
+
+        DatabaseHelper db = new DatabaseHelper(this);
+
+        int updcount = db.updateEnding();
+
+        if (updcount == 1) {
+            //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+            return true;
+        } else {
+            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+    }
+
     public void BtnContinue() {
 
         Intent GetIntent = null;
@@ -408,6 +423,7 @@ public class ViewMemberActivity extends MenuActivity {
             case 1:
             case 2:
             case 3:
+
 
                 // Update istatus of ending activity
                 if (!updateEndingFromHH()) {
