@@ -316,7 +316,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             ");";
 
-    final String SQL_CREATE_SUMMARY = "CREATE TABLE " + DeceasedContract.DeceasedTable.TABLE_NAME + " (" +
+    final String SQL_CREATE_SUMMARY = "CREATE TABLE " + singleSum.TABLE_NAME + " (" +
             singleSum.COLUMN_ROW_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             singleSum.COLUMN_PROJECTNAME + " TEXT," +
             singleSum.COLUMN__UID + " TEXT," +

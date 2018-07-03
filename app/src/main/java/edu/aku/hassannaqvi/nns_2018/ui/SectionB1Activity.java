@@ -1668,8 +1668,16 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                             if (!validatorClass.EmptyTextBox(this, bi.nw212, getString(R.string.nw212))) {
                                 return false;
                             }
-                            if (!validatorClass.RangeTextBox(this, bi.nw212, 0, Integer.valueOf(bi.nw211.getText().toString()), getString(R.string.nw212), " Deliveries")) {
-                                return false;
+
+
+                            if (bi.nw208a.isChecked()) {
+                                if (!validatorClass.RangeTextBox(this, bi.nw212, 0, (Integer.valueOf(bi.nw211.getText().toString()) - 1), getString(R.string.nw212), " Deliveries")) {
+                                    return false;
+                                }
+                            } else {
+                                if (!validatorClass.RangeTextBox(this, bi.nw212, 0, Integer.valueOf(bi.nw211.getText().toString()), getString(R.string.nw212), " Deliveries")) {
+                                    return false;
+                                }
                             }
 
                             if (!bi.nw212.getText().toString().equals("0")) {
