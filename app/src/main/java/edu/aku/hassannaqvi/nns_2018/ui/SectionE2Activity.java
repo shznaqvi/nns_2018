@@ -22,6 +22,7 @@ import java.util.Map;
 
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.WaterSpecimenContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -348,7 +349,6 @@ public class SectionE2Activity extends AppCompatActivity {
     }
 
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
@@ -673,9 +673,6 @@ public class SectionE2Activity extends AppCompatActivity {
         }
 
 
-
-
-
         return true;
     }
 
@@ -724,8 +721,19 @@ public class SectionE2Activity extends AppCompatActivity {
 
         sE1.put("end_time", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
 
-
         MainApp.wsc.setsE2(String.valueOf(sE1));
+
+
+        // Set summary fields
+        FormsContract fc = new FormsContract();
+        fc.setClusterNo(MainApp.wsc.getClusterno());
+        fc.setHhNo(MainApp.wsc.getHhno());
+        fc.setDevicetagID(MainApp.wsc.getDevicetagID());
+        fc.setFormDate(MainApp.wsc.getFormDate());
+        fc.setUser(MainApp.wsc.getUser());
+        fc.setDeviceID(MainApp.wsc.getDeviceID());
+        fc.setAppversion(MainApp.wsc.getAppversion());
+        MainApp.sumc = MainApp.AddSummary(fc, 6);
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
 
@@ -735,7 +743,6 @@ public class SectionE2Activity extends AppCompatActivity {
     private boolean UpdateDB() {
 
         DatabaseHelper db = new DatabaseHelper(this);
-
 
         Long updcount = db.addWaterSpecimenForm(MainApp.wsc);
         MainApp.wsc.set_ID(String.valueOf(updcount));
@@ -747,7 +754,8 @@ public class SectionE2Activity extends AppCompatActivity {
                     (MainApp.wsc.getDeviceID() + MainApp.wsc.get_ID()));
             db.updateWaterSpecimenMemberID();
 
-            return true;
+            return MainApp.UpdateSummary(this, db, 6);
+
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;

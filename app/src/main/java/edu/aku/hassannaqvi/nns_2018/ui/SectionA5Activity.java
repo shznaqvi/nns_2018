@@ -529,6 +529,11 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
                                 .putExtra("hhno", MainApp.fc.getHhNo())
                         );
                     } else {
+
+                        if (!MainApp.UpdateSummary(this, db, 1)) {
+                            Toast.makeText(this, "Summary Table not update!!", Toast.LENGTH_SHORT).show();
+                        }
+
                         startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 1));
                     }
                 }
@@ -897,9 +902,10 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
             deceasedCounter = Integer.valueOf(binding.nh802.getText().toString());
         }
 
-
         MainApp.fc.setsA5(String.valueOf(sA5));
 
+        // Set summary fields
+        MainApp.sumc = MainApp.AddSummary(MainApp.fc, 1);
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
 

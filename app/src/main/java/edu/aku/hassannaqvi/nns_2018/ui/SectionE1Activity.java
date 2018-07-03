@@ -28,6 +28,7 @@ import java.util.Map;
 import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SpecimenContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -165,7 +166,6 @@ public class SectionE1Activity extends AppCompatActivity {
         });
 
 
-
         bi.ne102.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -211,9 +211,6 @@ public class SectionE1Activity extends AppCompatActivity {
                 }
             }
         });
-
-
-
 
 
     }
@@ -626,12 +623,20 @@ public class SectionE1Activity extends AppCompatActivity {
         sE1.put("ne108", bi.ne108a.isChecked() ? "1" : bi.ne108b.isChecked() ? "2" : "0");
         sE1.put("ne109", bi.ne109.getText().toString());
         sE1.put("ne110", bi.ne110a.isChecked() ? "1" : bi.ne110b.isChecked() ? "2" : "0");
-
         sE1.put("end_time", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
-
 
         MainApp.smc.setsE1(String.valueOf(sE1));
 
+        // Set summary fields
+        FormsContract fc = new FormsContract();
+        fc.setClusterNo(MainApp.smc.getClusterno());
+        fc.setHhNo(MainApp.smc.getHhno());
+        fc.setDevicetagID(MainApp.smc.getDevicetagID());
+        fc.setFormDate(MainApp.smc.getFormDate());
+        fc.setUser(MainApp.smc.getUser());
+        fc.setDeviceID(MainApp.smc.getDeviceID());
+        fc.setAppversion(MainApp.smc.getAppversion());
+        MainApp.sumc = MainApp.AddSummary(fc, 5);
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
 
@@ -652,7 +657,8 @@ public class SectionE1Activity extends AppCompatActivity {
                     (MainApp.smc.getDeviceID() + MainApp.smc.get_ID()));
             db.updateSpecimenMemberID();
 
-            return true;
+            return MainApp.UpdateSummary(this, db, 5);
+
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;

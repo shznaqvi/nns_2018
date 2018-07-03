@@ -694,10 +694,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_SYNCED_DATE,
                 FormsTable.COLUMN_APP_VERSION
         };
-        String whereClause = FormsTable.COLUMN_CLUSTER_NO + "=? AND " +
-                FormsTable.COLUMN_HH_NO + "=? AND " +
-                FormsTable.COLUMN_ISTATUS + "=?";
-        String[] whereArgs = new String[]{subAreaCode, hh, status};
+        String whereClause = FormsTable.COLUMN_CLUSTER_NO + " =? AND " + FormsTable.COLUMN_HH_NO + " =? AND " + FormsTable.COLUMN_ISTATUS + " =?";
+        String[] whereArgs = {subAreaCode, hh, status};
         String groupBy = null;
         String having = null;
 
@@ -1579,7 +1577,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return newRowId;
     }
 
-    public Long addSummary(SummaryContract ss, int type) {
+    public Long addSummaryForms(SummaryContract ss, int type) {
 
         // Gets the data repository in write mode
         SQLiteDatabase db = this.getWritableDatabase();
@@ -1587,6 +1585,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
 
+        values.put(singleSum.COLUMN_PROJECTNAME, ss.getProjectName());
         values.put(singleSum.COLUMN__UID, ss.get_uid());
         values.put(singleSum.COLUMN_CLUSTERNO, ss.getClusterno());
         values.put(singleSum.COLUMN_HHNO, ss.getHhno());
@@ -1598,24 +1597,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(singleSum.COLUMN_DEVICETAGID, ss.getDevicetagID());
         values.put(singleSum.COLUMN_APPVERSION, ss.getAppversion());
 
-        if (type == 0) {
-            values.put(singleSum.COLUMN_HH, ss.getHh());
+        switch (type) {
+            case 1:
+                values.put(singleSum.COLUMN_HH, ss.getHh());
+                break;
+            case 2:
+                values.put(singleSum.COLUMN_WOMEN, ss.getWomen());
+                break;
+            case 3:
+                values.put(singleSum.COLUMN_CHILD, ss.getChild());
+                break;
+            case 4:
+                values.put(singleSum.COLUMN_ANTHRO, ss.getAnthro());
+                break;
+            case 5:
+                values.put(singleSum.COLUMN_SPECIMEN, ss.getSpecimen());
+                break;
+            case 6:
+                values.put(singleSum.COLUMN_WATER, ss.getWater());
+                break;
         }
-        if (type == 1) {
-            values.put(singleSum.COLUMN_WOMEN, ss.getWomen());
-        }
-        if (type == 2) {
-            values.put(singleSum.COLUMN_CHILD, ss.getChild());
-        }
-        if (type == 3) {
-            values.put(singleSum.COLUMN_ANTHRO, ss.getAnthro());
-        }
-        if (type == 4) {
-            values.put(singleSum.COLUMN_SPECIMEN, ss.getSpecimen());
-        }
-        if (type == 5) {
-            values.put(singleSum.COLUMN_WATER, ss.getWater());
-        }
+
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId = db.insert(
@@ -2578,6 +2580,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] selectionArgs = {String.valueOf(MainApp.mc.get_ID())};
 
         int count = db.update(MWRATable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
+
+    public int updateSummaryID() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(singleSum.COLUMN__UID, MainApp.sumc.get_uid());
+
+// Which row to update, based on the ID
+        String selection = singleSum.COLUMN_ROW_ID + " =?";
+        String[] selectionArgs = {String.valueOf(MainApp.sumc.getROW_ID())};
+
+        int count = db.update(singleSum.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);
