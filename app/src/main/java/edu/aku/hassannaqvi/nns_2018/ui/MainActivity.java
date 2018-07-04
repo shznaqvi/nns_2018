@@ -2,7 +2,11 @@ package edu.aku.hassannaqvi.nns_2018.ui;
 
 import android.app.ActivityManager;
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.app.DownloadManager;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -96,9 +100,11 @@ public class MainActivity extends MenuActivity {
     int id = 1;
     DownloadManager downloadManager;
     Long refID;
-    File file;
+    static File file;
     SharedPreferences sharedPrefDownload;
     SharedPreferences.Editor editorDownload;
+
+    String preVer = "", newVer = "";
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
@@ -269,10 +275,13 @@ public class MainActivity extends MenuActivity {
             mainBinding.testing.setVisibility(View.VISIBLE);
         }
 
-
 //        Version Checking
         versionAppContract = db.getVersionApp();
         if (versionAppContract.getVersioncode() != null) {
+
+            preVer = MainApp.versionName + "." + MainApp.versionCode;
+            newVer = MainApp.versionName + "." + versionAppContract.getVersioncode();
+
             if (MainApp.versionCode < Integer.valueOf(versionAppContract.getVersioncode())) {
                 mainBinding.lblAppVersion.setVisibility(View.VISIBLE);
 
@@ -280,25 +289,27 @@ public class MainActivity extends MenuActivity {
                 file = new File(Environment.getExternalStorageDirectory() + File.separator + fileName, versionAppContract.getPathname());
 
                 if (file.exists()) {
-                    InstallNewApp();
+                    mainBinding.lblAppVersion.setText("NNS APP New Version " + newVer + "  Downloaded.");
+//                    InstallNewApp(newVer, preVer);
+                    showDialog(newVer, preVer);
                 } else {
                     NetworkInfo networkInfo = ((ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
                     if (networkInfo != null && networkInfo.isConnected()) {
 
-                        mainBinding.lblAppVersion.setText("NNS APP New Version Downloading..");
+                        mainBinding.lblAppVersion.setText("NNS APP New Version " + newVer + " Downloading..");
                         downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
                         Uri uri = Uri.parse(MainApp._UPDATE_URL + versionAppContract.getPathname());
                         DownloadManager.Request request = new DownloadManager.Request(uri);
                         request.setDestinationInExternalPublicDir(fileName, versionAppContract.getPathname())
                                 .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-                                .setTitle("Downloading NNS new App");
+                                .setTitle("Downloading NNS new App ver." + newVer);
                         refID = downloadManager.enqueue(request);
 
                         editorDownload.putBoolean("flag", false);
                         editorDownload.commit();
 
                     } else {
-                        mainBinding.lblAppVersion.setText("NNS APP New Version Available..\n(Can't download.. Internet connectivity issue!!)");
+                        mainBinding.lblAppVersion.setText("NNS APP New Version " + newVer + "  Available..\n(Can't download.. Internet connectivity issue!!)");
                     }
                 }
 
@@ -325,13 +336,14 @@ public class MainActivity extends MenuActivity {
                             editorDownload.commit();
 
                             Toast.makeText(context, "New App downloaded!!", Toast.LENGTH_SHORT).show();
-                            mainBinding.lblAppVersion.setText("NNS APP New Version Downloaded.");
+                            mainBinding.lblAppVersion.setText("NNS APP New Version " + newVer + "  Downloaded.");
 
                             ActivityManager am = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
                             List<ActivityManager.RunningTaskInfo> taskInfo = am.getRunningTasks(1);
 
                             if (taskInfo.get(0).topActivity.getClassName().equals(MainActivity.class.getName())) {
-                                InstallNewApp();
+//                                InstallNewApp(newVer, preVer);
+                                showDialog(newVer, preVer);
                             }
                         }
                     }
@@ -346,7 +358,8 @@ public class MainActivity extends MenuActivity {
         if (versionAppContract.getVersioncode() != null) {
             if (MainApp.versionCode < Integer.valueOf(versionAppContract.getVersioncode())) {
                 if (sharedPrefDownload.getBoolean("flag", false) && file.exists()) {
-                    InstallNewApp();
+//                    InstallNewApp(newVer, preVer);
+                    showDialog(newVer, preVer);
                 } else {
                     OpenFormFun();
                 }
@@ -358,13 +371,15 @@ public class MainActivity extends MenuActivity {
         }
     }
 
-    private void InstallNewApp() {
+    private void InstallNewApp(String newVer, String prvVer) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 MainActivity.this);
         alertDialogBuilder
-                .setMessage("Install New NNS APP Version Code: " + versionAppContract.getVersioncode())
+                .setMessage("A new version of NNS-2018 App is available!\n" +
+                        "NNS App " + newVer + " is now available. Your are currently using older version " + prvVer + ".\nInstall new version to use this app.")
                 .setCancelable(true)
-                .setPositiveButton("Click here!!",
+                .setIcon(R.mipmap.ic_launcher)
+                .setPositiveButton("UPDATE!!",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog,
                                                 int id) {
@@ -421,13 +436,11 @@ public class MainActivity extends MenuActivity {
         }
     }
 
-
     public void openViewMember(Boolean flag) {
         Intent iA = new Intent(this, ViewMemberActivity.class);
         iA.putExtra("flagEdit", false);
         startActivity(iA);
     }
-
 
     public void openB(View v) {
         MainActivity.ftype = "A";
@@ -435,14 +448,12 @@ public class MainActivity extends MenuActivity {
         startActivity(iB);
     }
 
-
     public void openSpecimen() {
         //Intent iB = new Intent(this, SectionB3Activity.class);
         MainActivity.ftype = "B";
         Intent iB = new Intent(this, SpecimenInfoActivity.class);
         startActivity(iB);
     }
-
 
     public void openWater() {
         MainActivity.ftype = "W";
@@ -514,7 +525,6 @@ public class MainActivity extends MenuActivity {
         Intent iB = new Intent(this, SectionHBActivity.class);
         startActivity(iB);
     }*/
-
 
     public void testGPS(View v) {
 
@@ -633,5 +643,57 @@ public class MainActivity extends MenuActivity {
             }, 3 * 1000);
 
         }
+    }
+
+    void showDialog(String newVer, String preVer) {
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+
+        DialogFragment newFragment = MyDialogFragment.newInstance(newVer, preVer);
+        newFragment.show(ft, "dialog");
+
+    }
+
+    public static class MyDialogFragment extends DialogFragment {
+
+        String newVer, preVer;
+
+        static MyDialogFragment newInstance(String newVer, String preVer) {
+            MyDialogFragment f = new MyDialogFragment();
+
+            Bundle args = new Bundle();
+            args.putString("newVer", newVer);
+            args.putString("preVer", preVer);
+            f.setArguments(args);
+
+            return f;
+        }
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            newVer = getArguments().getString("newVer");
+            preVer = getArguments().getString("preVer");
+
+            return new AlertDialog.Builder(getActivity())
+                    .setIcon(R.drawable.exclamation)
+                    .setTitle("NNS-2018 APP is available!")
+                    .setMessage("NNS App " + newVer + " is now available. Your are currently using older version " + preVer + ".\nInstall new version to use this app.")
+                    .setPositiveButton("INSTALL!!",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int whichButton) {
+                                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                                    intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    startActivity(intent);
+                                }
+                            }
+                    )
+                    .create();
+        }
+
     }
 }
