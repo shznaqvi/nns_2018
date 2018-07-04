@@ -546,14 +546,14 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                     if (bi.nw211.getText().toString().equals("1")) {
                         bi.nw212.setEnabled(false);
                         bi.nw213.setEnabled(false);
-                        bi.nw214.setEnabled(false);
+                        //bi.nw214.setEnabled(false);
                         bi.nw215.setEnabled(false);
                         /*bi.nw216a.setEnabled(false);
                         bi.nw216b.setEnabled(false);
                         bi.nw216aa.setEnabled(false);*/
                         bi.nw212.setText("0");
                         bi.nw213.setText(null);
-                        bi.nw214.setText(null);
+                        //bi.nw214.setText(null);
                         bi.nw215.setText(null);
                         /*bi.nw216.clearCheck();
                         bi.nw216aa.setText(null);*/
@@ -664,17 +664,13 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                 if (bi.nw214.getText().toString().equals("0")) {
                     bi.nw215.setEnabled(false);
                     bi.nw215.setText(null);
-                   /* bi.nw216a.setEnabled(false);
-                    bi.nw216b.setEnabled(false);
-                    bi.nw216.clearCheck();
-                    bi.nw216aa.setEnabled(false);
-                    bi.nw216aa.setText(null);*/
+
+                } else if (bi.nw214.getText().toString().equals("1") && bi.nw208a.isChecked()) {
+                    bi.nw215.setEnabled(false);
+                    bi.nw215.setText(null);
+
                 } else {
                     bi.nw215.setEnabled(true);
-                    /*bi.nw216a.setEnabled(true);
-                    bi.nw216b.setEnabled(true);
-                    bi.nw216aa.setEnabled(true);*/
-
                 }
             }
 
@@ -731,6 +727,16 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                     bi.nw21003b.setEnabled(false);
                     bi.nw21098b.setEnabled(false);
                     bi.nw21099b.setEnabled(false);
+
+                    bi.nw211.setText(null);
+                    bi.nw212.setEnabled(true);
+                    bi.nw212.setText(null);
+                    bi.nw213.setEnabled(true);
+                    bi.nw213.setText(null);
+                    bi.nw214.setText(null);
+                    bi.nw214.setEnabled(true);
+                    bi.nw215.setText(null);
+                    bi.nw215.setEnabled(true);
                 }
 
             }
@@ -1668,8 +1674,16 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                             if (!validatorClass.EmptyTextBox(this, bi.nw212, getString(R.string.nw212))) {
                                 return false;
                             }
-                            if (!validatorClass.RangeTextBox(this, bi.nw212, 0, Integer.valueOf(bi.nw211.getText().toString()), getString(R.string.nw212), " Deliveries")) {
-                                return false;
+
+
+                            if (bi.nw208a.isChecked()) {
+                                if (!validatorClass.RangeTextBox(this, bi.nw212, 0, (Integer.valueOf(bi.nw211.getText().toString()) - 1), getString(R.string.nw212), " Deliveries")) {
+                                    return false;
+                                }
+                            } else {
+                                if (!validatorClass.RangeTextBox(this, bi.nw212, 0, Integer.valueOf(bi.nw211.getText().toString()), getString(R.string.nw212), " Deliveries")) {
+                                    return false;
+                                }
                             }
 
                             if (!bi.nw212.getText().toString().equals("0")) {
@@ -1694,23 +1708,17 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                                 return false;
                             }
 
-                            if (!bi.nw214.getText().toString().equals("0")) {
+                            if (Integer.valueOf(bi.nw214.getText().toString()) > 0) {
 
-                                if (!validatorClass.EmptyTextBox(this, bi.nw215, getString(R.string.nw215))) {
-                                    return false;
-                                }
-                                return validatorClass.RangeTextBox(this, bi.nw215, 0, Integer.valueOf(bi.nw212.getText().toString()), getString(R.string.nw212), " Deliveries");
+                                if (Integer.valueOf(bi.nw214.getText().toString()) == 1 && bi.nw208a.isChecked()) {
 
-                                    /*if (!validatorClass.EmptyRadioButton(this, bi.nw216, bi.nw216a, getString(R.string.nw216))) {
+                                } else {
+                                    if (!validatorClass.EmptyTextBox(this, bi.nw215, getString(R.string.nw215))) {
                                         return false;
                                     }
-*/
-                                    /*if (bi.nw216a.isChecked()) {
-                                        if (!validatorClass.EmptyTextBox(this, bi.nw216aa, getString(R.string.nw216a))) {
-                                            return false;
-                                        }
-                                        return validatorClass.RangeTextBox(this, bi.nw216aa, 1, 5, getString(R.string.nw216a), " ");
-                                    }*/
+                                    return validatorClass.RangeTextBox(this, bi.nw215, 0, Integer.valueOf(bi.nw212.getText().toString()), getString(R.string.nw212), " Deliveries");
+                                }
+
                             } else {
                                 if (bi.nw208a.isChecked()) {
                                     Toast.makeText(this, "The women is currently pregrnant. Previous pregnencies should be 1", Toast.LENGTH_LONG).show();
