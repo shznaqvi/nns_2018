@@ -200,6 +200,9 @@
     <string name="nh2tf"> خواتین </string>
     <string name="nd1heading"> سیکشن ڈی 1: پیمائش اور طبی معائنہ </string>
     <string name="na3subHeading"> یہ سیکشن گھر کے سربراہ سے یا گھر میں کم سے کم 18 سال یا اس سے ذائد عمر کے کسی سمجھدار شخص سے پوچھا جائیگا </string>
+    <string name="na4subHeading"> وزن کا دوبارہ اندراج کریں</string>
+    <string name="na5subHeading"> لمبائی کا دوبارہ اندراج کریں</string>
+    <string name="na6subHeading"> ۔MUAC  کا دوبارہ اندراج کریں</string>
     <string name="nd101sno"> لائن نمبر </string>
     <string name="nd1w"> وزن(کلو گرام) </string>
     <string name="nd1h"> لمبائی (سینٹی میٹر) </string>

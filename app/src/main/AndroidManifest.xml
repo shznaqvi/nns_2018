@@ -208,14 +208,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
             android:windowSoftInputMode="stateVisible|adjustPan" />
-
         <activity
             android:name=".ui.AddMember_MenuActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
             android:windowSoftInputMode="stateVisible|adjustPan" />
-
-
         <activity
             android:name=".ui.SpecimenInfoActivity"
             android:screenOrientation="portrait"
@@ -252,6 +249,7 @@
             android:theme="@style/AppTheme1" />
         android:theme="@style/AppTheme1"
         android:windowSoftInputMode="stateVisible|adjustPan"/>
+        <activity android:name=".ui.DeceasedCountActivity"></activity>
     </application>
 
 </manifest>

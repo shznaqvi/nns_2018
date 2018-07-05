@@ -468,6 +468,7 @@
                         android:layout_marginBottom="2dp"
                         android:hint="@string/ne20301h"
                         android:maxLength="3"
+                        android:inputType="number"
                         android:textColor="@android:color/black"
                         android:textDirection="ltr" />
 
@@ -488,6 +489,7 @@
                         android:layout_marginBottom="2dp"
                         android:hint="@string/ne20301i"
                         android:maxLength="3"
+                        android:inputType="number"
                         android:textColor="@android:color/black"
                         android:textDirection="ltr" />
 
