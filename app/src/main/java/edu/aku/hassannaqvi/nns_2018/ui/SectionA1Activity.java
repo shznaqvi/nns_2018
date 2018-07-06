@@ -697,7 +697,15 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
         if (editFormFlag || validatorClass.EmptyTextBox(this, binding.nh101, getString(R.string.nh101)) && validatorClass.EmptyTextBox(this, binding.nh102, getString(R.string.nh102))) {
 
-            if ((MainApp.userName.equals("test1234") || MainApp.userName.equals("dmu@aku") || MainApp.userName.substring(0, 4).equals("user")) && (Integer.valueOf(binding.nh102.getText().toString()) > 6000)) {
+            Boolean loginFlag = false;
+            int clus = Integer.valueOf(binding.nh102.getText().toString());
+            if (clus < 6000) {
+                loginFlag = !(MainApp.userName.equals("test1234") || MainApp.userName.equals("dmu@aku") || MainApp.userName.substring(0, 4).equals("user"));
+            } else {
+                loginFlag = MainApp.userName.equals("test1234") || MainApp.userName.equals("dmu@aku") || MainApp.userName.substring(0, 4).equals("user");
+            }
+
+            if (loginFlag) {
                 EnumBlockContract enumBlockContract = db.getEnumBlock(binding.nh102.getText().toString());
                 if (enumBlockContract != null) {
                     String selected = enumBlockContract.getGeoarea();
