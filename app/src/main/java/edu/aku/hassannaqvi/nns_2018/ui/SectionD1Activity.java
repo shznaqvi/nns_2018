@@ -57,6 +57,9 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
 
     String dateTime = "";
 
+    String weight1, height1, muac1;
+    Boolean flagW1 = false, flagH1 = false, flagM1 = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -175,6 +178,265 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
         binding.txtCounter.setText("Count " + counter + " out of " + MainApp.all_members.size());
 
         binding.nd1bcgscar.setOnCheckedChangeListener(this);
+
+
+        // Text watcher for another reading of weight
+
+        binding.nd1w.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                //flag = false;
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (!flagW1) {
+                    if (!binding.nd1w.getText().toString().isEmpty()) {
+                        if (binding.nd1w.getText().toString().matches("^(\\d{3,3}\\.\\d{2,2})$")) {
+                            weight1 = binding.nd1w.getText().toString();
+                            binding.fldGrpW2.setVisibility(View.VISIBLE);
+
+                        } else {
+                            //binding.fldGrpW2.setVisibility(View.GONE);
+                            binding.nd1w1.setText(null);
+                            binding.nd1w.setEnabled(true);
+                        }
+                    }
+                }
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+
+            }
+        });
+
+
+        binding.nd1w1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    flagW1 = true;
+                    binding.nd1w.setText("XXX.XX");
+                    binding.nd1w.setEnabled(false);
+                } else {
+                    flagW1 = false;
+                    binding.nd1w.setEnabled(true);
+                    binding.nd1w.setText(weight1);
+                }
+            }
+        });
+
+
+        binding.nd1w1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if (!binding.nd1w1.getText().toString().isEmpty()) {
+                    if (binding.nd1w1.getText().toString().matches("^(\\d{3,3}\\.\\d{2,2})$")) {
+                        if (weight1.equals(binding.nd1w1.getText().toString())) {
+                            binding.nd1w.setText(String.valueOf(weight1));
+                            binding.nd1w.setEnabled(true);
+                            binding.nd1w.setError(null);
+                            binding.nd1w1.setError(null);
+                        } else {
+                            binding.nd1w.setText(weight1);
+                            binding.nd1w.setEnabled(true);
+                            binding.nd1w.setError("Values dont match.. !!");
+                            binding.nd1w1.setError("Values dont match..!!");
+                        }
+                    }
+                }
+
+            }
+        });
+
+        // Text Watcher for 2nd value of Height
+
+        binding.nd1h.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                //flag = false;
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (!flagH1) {
+                    if (!binding.nd1h.getText().toString().isEmpty()) {
+                        if (binding.nd1h.getText().toString().matches("^(\\d{3,3}\\.\\d{1,1})$")) {
+                            height1 = binding.nd1h.getText().toString();
+                            binding.fldGrpH2.setVisibility(View.VISIBLE);
+
+                        } else {
+                            //binding.fldGrpW2.setVisibility(View.GONE);
+                            binding.nd1h1.setText(null);
+                            binding.nd1h.setEnabled(true);
+                        }
+                    }
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
+        binding.nd1h1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    flagH1 = true;
+                    binding.nd1h.setText("XXX.X");
+                    binding.nd1h.setEnabled(false);
+                } else {
+                    flagH1 = false;
+                    binding.nd1h.setEnabled(true);
+                    binding.nd1h.setText(height1);
+                }
+            }
+        });
+
+
+        binding.nd1h1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if (!binding.nd1h1.getText().toString().isEmpty()) {
+                    if (binding.nd1h1.getText().toString().matches("^(\\d{3,3}\\.\\d{1,1})$")) {
+                        if (height1.equals(binding.nd1h1.getText().toString())) {
+                            binding.nd1h.setText(String.valueOf(height1));
+                            binding.nd1h.setEnabled(true);
+                            binding.nd1h.setError(null);
+                            binding.nd1h1.setError(null);
+                        } else {
+                            binding.nd1h.setText(height1);
+                            binding.nd1h.setEnabled(true);
+                            binding.nd1h.setError("Values dont match.. !!");
+                            binding.nd1h1.setError("Values dont match..!!");
+                        }
+                    }
+                }
+
+            }
+        });
+
+
+        // Text watcher for another reading of MUAC
+
+        binding.nd1muac.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                //flag = false;
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (!flagM1) {
+                    if (!binding.nd1muac.getText().toString().isEmpty()) {
+                        if (binding.nd1muac.getText().toString().matches("^(\\d{2,2}\\.\\d{1,1})$")) {
+                            muac1 = binding.nd1muac.getText().toString();
+                            binding.fldGrpMUAC2.setVisibility(View.VISIBLE);
+
+                        } else {
+                            //binding.fldGrpW2.setVisibility(View.GONE);
+                            binding.nd1muac1.setText(null);
+                            binding.nd1muac.setEnabled(true);
+                        }
+                    }
+                }
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+
+            }
+        });
+
+
+        binding.nd1muac1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    flagM1 = true;
+                    binding.nd1muac.setText("XX.X");
+                    binding.nd1muac.setEnabled(false);
+                } else {
+                    flagM1 = false;
+                    binding.nd1muac.setEnabled(true);
+                    binding.nd1muac.setText(muac1);
+                }
+            }
+        });
+
+
+        binding.nd1muac1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if (!binding.nd1muac1.getText().toString().isEmpty()) {
+                    if (binding.nd1muac1.getText().toString().matches("^(\\d{2,2}\\.\\d{1,1})$")) {
+                        if (muac1.equals(binding.nd1muac1.getText().toString())) {
+                            binding.nd1muac.setText(String.valueOf(muac1));
+                            binding.nd1muac.setEnabled(true);
+                            binding.nd1muac.setError(null);
+                            binding.nd1muac1.setError(null);
+                        } else {
+                            binding.nd1muac.setText(muac1);
+                            binding.nd1muac.setEnabled(true);
+                            binding.nd1muac.setError("Values dont match.. !!");
+                            binding.nd1muac1.setError("Values dont match..!!");
+                        }
+                    }
+                }
+
+            }
+        });
+
 
     }
 
@@ -309,6 +571,21 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
             } else {
                 binding.nd1w.setError(null);
             }
+
+            if (!validatorClass.EmptyTextBox(this, binding.nd1w1, getString(R.string.nd1w))) {
+                return false;
+            }
+
+
+            if (!binding.nd1w1.getText().toString().matches("^(\\d{3,3}\\.\\d{2,2})$")) {
+                Toast.makeText(this, "ERROR(invalid): " + "Please type the correct format" + getString(R.string.nd1w), Toast.LENGTH_LONG).show();
+                binding.nd1w1.setError("Please type correct format (XXX.XX)");
+                return false;
+            } else {
+                binding.nd1w1.setError(null);
+            }
+
+
 
 
             if (!validatorClass.RangeTextBox(this, binding.nd1w, MinWeight(slc_type), MaxWeight(slc_type), getString(R.string.nd1w), " weight")) {

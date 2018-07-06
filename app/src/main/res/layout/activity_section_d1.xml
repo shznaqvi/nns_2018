@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -88,6 +89,36 @@
                 android:inputType="numberDecimal"
                 android:maxLength="6" />
 
+            <LinearLayout
+                android:id="@+id/fldGrpW2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <TextView
+                    style="@style/sub"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/na4subHeading" />
+
+                <EditText
+                    android:id="@+id/nd1w1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:hint="@string/nd1w"
+                    android:inputType="numberDecimal"
+                    android:maxLength="6"
+                    android:visibility="visible"
+                    tools:visibility="visible" />
+
+            </LinearLayout>
+
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -106,6 +137,36 @@
                 android:inputType="numberDecimal"
                 android:maxLength="5" />
 
+
+            <LinearLayout
+                android:id="@+id/fldGrpH2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <TextView
+                    style="@style/sub"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/na5subHeading" />
+
+                <EditText
+                    android:id="@+id/nd1h1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:hint="@string/nd1h"
+                    android:inputType="numberDecimal"
+                    android:maxLength="5"
+                    android:visibility="visible"
+                    tools:visibility="visible" />
+
+            </LinearLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -123,6 +184,35 @@
                 android:hint="@string/nd1muac"
                 android:inputType="numberDecimal"
                 android:maxLength="4" />
+
+            <LinearLayout
+                android:id="@+id/fldGrpMUAC2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <TextView
+                    style="@style/sub"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/na6subHeading" />
+
+                <EditText
+                    android:id="@+id/nd1muac1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:hint="@string/nd1muac"
+                    android:inputType="numberDecimal"
+                    android:maxLength="4"
+                    android:visibility="visible"
+                    tools:visibility="visible" />
+
+            </LinearLayout>
 
 
             <LinearLayout

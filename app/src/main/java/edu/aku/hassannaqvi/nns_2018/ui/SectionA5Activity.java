@@ -148,7 +148,7 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 formValidation();
-                if (checkedId == R.id.nh501d) {
+                if (checkedId == R.id.nh501d || checkedId == R.id.nh50196) {
                     clearClass.ClearAllFields(binding.fldGrnh602, false);
                     clearClass.ClearAllFields(binding.fldGrnc502, false);
 
@@ -627,13 +627,15 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
                 return false;
             }
 //        nh504
-            if (!validatorClass.EmptyRadioButton(this, binding.nh504, binding.nh504a, getString(R.string.nh504))) {
-                return false;
-            }
+
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, binding.nh504, binding.nh504a, getString(R.string.nh504))) {
+            return false;
+        }
 //        nh505
-            if (!validatorClass.EmptyRadioButton(this, binding.nh505, binding.nh505a, getString(R.string.nh505))) {
-                return false;
-            }
+        if (!validatorClass.EmptyRadioButton(this, binding.nh505, binding.nh505a, getString(R.string.nh505))) {
+            return false;
         }
 
 //        nh601
