@@ -615,7 +615,7 @@ public class SectionE1Activity extends AppCompatActivity {
         }
 
         sE1.put("ne102", bi.ne102.getSelectedItem().toString());
-        sE1.put("ne103", bi.ne103.getSelectedItem().toString());
+        sE1.put("ne103", originalPositions.get(bi.ne103.getSelectedItemPosition()));
         sE1.put("ne104", bi.ne104a.isChecked() ? "1" : bi.ne104b.isChecked() ? "2" : "0");
         sE1.put("ne105", bi.ne105.getText().toString());
         sE1.put("ne106", bi.ne106.getText().toString());
