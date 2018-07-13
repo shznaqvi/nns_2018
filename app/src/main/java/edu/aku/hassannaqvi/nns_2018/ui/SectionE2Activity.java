@@ -403,8 +403,8 @@ public class SectionE2Activity extends AppCompatActivity {
                         bi.ne20305.setError("Please Scan correct QR code");
                     }
                 } else if (isField) {
-                    if (result.getContents().contains("FB")) {
-                        Toast.makeText(this, "FB Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                    if (result.getContents().contains("HF")) {
+                        Toast.makeText(this, "HF Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
                         bi.ne20306.setText("§" + result.getContents().trim());
                         bi.ne20306.setEnabled(false);
                         bi.ne20306.setError(null);
