@@ -659,7 +659,7 @@ public class SectionE2Activity extends AppCompatActivity {
                 }
 
                 if (bi.ne20306.getText().length() != scanChar || !bi.ne20306.getText().toString().contains("-")
-                        || !bi.ne20306.getText().toString().contains("FB")) {
+                        || !bi.ne20306.getText().toString().contains("HF")) {
                     Toast.makeText(this, "ERROR(invalid)" + getString(R.string.ne203), Toast.LENGTH_SHORT).show();
                     bi.ne20306.setError("Invalid or Incomplete QR code..");
 
