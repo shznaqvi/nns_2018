@@ -43,6 +43,9 @@ public class SectionC3Activity extends Menu2Activity implements RadioGroup.OnChe
 
         this.setTitle(getResources().getString(R.string.nc3heading));
 
+        binding.txtnc305.setText(binding.txtnc305.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+        binding.txtnc306.setText(binding.txtnc306.getText().toString().replace("Name", SectionC1Activity.selectedChildName));
+
 
         if (SectionC1Activity.editChildFlag) {
             binding.textName.setText(SectionC1Activity.selectedChildName + " : " + getString(R.string.childname)

@@ -405,11 +405,11 @@ public class SectionE2Activity extends AppCompatActivity {
                 } else if (isField) {
                     if (result.getContents().contains("FB")) {
                         Toast.makeText(this, "FB Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
-                        bi.ne20305.setText("§" + result.getContents().trim());
-                        bi.ne20305.setEnabled(false);
-                        bi.ne20305.setError(null);
+                        bi.ne20306.setText("§" + result.getContents().trim());
+                        bi.ne20306.setEnabled(false);
+                        bi.ne20306.setError(null);
                     } else {
-                        bi.ne20305.setError("Please Scan correct QR code");
+                        bi.ne20306.setError("Please Scan correct QR code");
                     }
                 }
 
