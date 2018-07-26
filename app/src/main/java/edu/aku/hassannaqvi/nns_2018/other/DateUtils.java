@@ -11,6 +11,15 @@ import java.util.Date;
 
 public class DateUtils {
 
+
+    public static String getThreeDaysBack(String format, int days){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(cal.getTime());
+        cal.add(Calendar.DATE, days);
+        return new SimpleDateFormat(format).format(cal.getTime()).toString(); //"dd-MM-yyyy HH:mm"
+    }
+
+
     public static Calendar getCalendarDate(String value) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         Calendar calendar = Calendar.getInstance();
