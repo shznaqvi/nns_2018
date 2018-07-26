@@ -40,9 +40,6 @@ import edu.aku.hassannaqvi.nns_2018.other.DateUtils;
 import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
-adb-d logcat edu.aku.hassannaqvi.nns_2018:E*:S
-        adb logcat|findstr edu.aku.hassannaqvi.nns_2018
-
 public class SectionB1Activity extends AddMember_MenuActivity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
     public static String wraName = "";
