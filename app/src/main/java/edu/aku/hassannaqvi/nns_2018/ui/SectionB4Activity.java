@@ -62,9 +62,9 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
         db = new DatabaseHelper(this);
         binding.setCallback(this);
 
-        for (CheckBox ck : rd_nb412) {
+        /*for (CheckBox ck : rd_nb412) {
             ck.setOnCheckedChangeListener(check);
-        }
+        }*/
 
         this.setTitle(getResources().getString(R.string.nb4heading));
         binding.textName.setText("Selected Woman : " + SectionB1Activity.wraName);
