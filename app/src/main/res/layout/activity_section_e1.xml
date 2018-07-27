@@ -176,7 +176,8 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:layout_margin="@dimen/_1sdp">
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -204,7 +205,8 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:layout_margin="@dimen/_1sdp">
 
                             <TextView
                                 android:layout_width="0dp"
@@ -252,10 +254,7 @@
                             android:inputType="numberDecimal"
                             android:hint="@string/hb_result"
                             android:maxLength="4" />
-
                     </LinearLayout>
-
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -408,7 +407,8 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:layout_margin="@dimen/_1sdp">
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -436,7 +436,8 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:layout_margin="@dimen/_1sdp">
 
                             <TextView
                                 android:layout_width="0dp"

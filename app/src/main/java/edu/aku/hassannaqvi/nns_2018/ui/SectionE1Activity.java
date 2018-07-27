@@ -203,10 +203,18 @@ public class SectionE1Activity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (bi.ne104a.isChecked()) {
                     clearClass.ClearAllFields(bi.fldGrpbloodyes, true);
+                    bi.ne104d.setEnabled(true);
+                    bi.ne104t.setEnabled(true);
+
                     clearClass.ClearAllFields(bi.fldGrpbloodno, false);
+
                     bi.btnScanBL.setEnabled(true);
                 } else {
                     clearClass.ClearAllFields(bi.fldGrpbloodyes, false);
+                    bi.ne104d.setEnabled(false);
+                    bi.ne104t.setEnabled(false);
+                    bi.ne104d.setText(null);
+                    bi.ne104t.setText(null);
                     bi.btnScanBL.setEnabled(false);
                     clearClass.ClearAllFields(bi.fldGrpbloodno, true);
                 }
@@ -218,10 +226,17 @@ public class SectionE1Activity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (bi.ne108a.isChecked()) {
                     clearClass.ClearAllFields(bi.fldGrpurineyes, true);
+                    bi.ne108d.setEnabled(true);
+                    bi.ne108t.setEnabled(true);
+
                     clearClass.ClearAllFields(bi.fldGrpurinno, false);
                     bi.btnScanUR.setEnabled(true);
                 } else {
                     clearClass.ClearAllFields(bi.fldGrpurineyes, false);
+                    bi.ne108d.setEnabled(false);
+                    bi.ne108t.setEnabled(false);
+                    bi.ne108d.setText(null);
+                    bi.ne108t.setText(null);
                     clearClass.ClearAllFields(bi.fldGrpurinno, true);
                     bi.btnScanUR.setEnabled(false);
                 }
