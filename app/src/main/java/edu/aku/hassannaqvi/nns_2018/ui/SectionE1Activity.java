@@ -33,6 +33,7 @@ import edu.aku.hassannaqvi.nns_2018.contracts.SpecimenContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySectionE1Binding;
+import edu.aku.hassannaqvi.nns_2018.other.DateUtils;
 import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
@@ -51,6 +52,7 @@ public class SectionE1Activity extends AppCompatActivity {
     JSONModelClass json;
     FamilyMembersContract slecMem;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
+    String maxDate = new SimpleDateFormat("dd/MM/yyyy").format(new Date().getTime());
 
     int position = 0;
     int indexOriginal = 0;
@@ -68,6 +70,18 @@ public class SectionE1Activity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_e1);
 
         this.setTitle(getResources().getString(R.string.ne1heading));
+
+        bi.ne104d.setManager(getSupportFragmentManager());
+        bi.ne104d.setMinDate(DateUtils.getThreeDaysBack("dd/MM/yyyy", -3));
+        bi.ne104d.setMaxDate(maxDate);
+        bi.ne104t.setManager(getSupportFragmentManager());
+        bi.ne104t.setTimeFormat("HH:mm");
+
+        bi.ne108d.setManager(getSupportFragmentManager());
+        bi.ne108d.setMinDate(DateUtils.getThreeDaysBack("dd/MM/yyyy", -3));
+        bi.ne108d.setMaxDate(maxDate);
+        bi.ne108t.setManager(getSupportFragmentManager());
+        bi.ne108t.setTimeFormat("HH:mm");
 
 
         bi.setCallback(this);
@@ -150,6 +164,8 @@ public class SectionE1Activity extends AppCompatActivity {
                         bi.ne104.clearCheck();
                         bi.ne105.setEnabled(false);
                         bi.ne105.setText(null);
+                        bi.ne104d.setText(null);
+                        bi.ne104t.setText(null);
                         bi.btnScanBL.setEnabled(false);
                         clearClass.ClearAllFields(bi.fldGrpbloodno, false);
                         clearClass.ClearAllFields(bi.fldGrphb, true);
@@ -187,10 +203,18 @@ public class SectionE1Activity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (bi.ne104a.isChecked()) {
                     clearClass.ClearAllFields(bi.fldGrpbloodyes, true);
+                    bi.ne104d.setEnabled(true);
+                    bi.ne104t.setEnabled(true);
+
                     clearClass.ClearAllFields(bi.fldGrpbloodno, false);
+
                     bi.btnScanBL.setEnabled(true);
                 } else {
                     clearClass.ClearAllFields(bi.fldGrpbloodyes, false);
+                    bi.ne104d.setEnabled(false);
+                    bi.ne104t.setEnabled(false);
+                    bi.ne104d.setText(null);
+                    bi.ne104t.setText(null);
                     bi.btnScanBL.setEnabled(false);
                     clearClass.ClearAllFields(bi.fldGrpbloodno, true);
                 }
@@ -202,10 +226,17 @@ public class SectionE1Activity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (bi.ne108a.isChecked()) {
                     clearClass.ClearAllFields(bi.fldGrpurineyes, true);
+                    bi.ne108d.setEnabled(true);
+                    bi.ne108t.setEnabled(true);
+
                     clearClass.ClearAllFields(bi.fldGrpurinno, false);
                     bi.btnScanUR.setEnabled(true);
                 } else {
                     clearClass.ClearAllFields(bi.fldGrpurineyes, false);
+                    bi.ne108d.setEnabled(false);
+                    bi.ne108t.setEnabled(false);
+                    bi.ne108d.setText(null);
+                    bi.ne108t.setText(null);
                     clearClass.ClearAllFields(bi.fldGrpurinno, true);
                     bi.btnScanUR.setEnabled(false);
                 }
@@ -455,6 +486,13 @@ public class SectionE1Activity extends AppCompatActivity {
                     bi.ne105.setError(null);
                 }
 
+                if (!validatorClass.EmptyTextBox(this, bi.ne104d, getString(R.string.date))) {
+                    return false;
+                }
+
+                if (!validatorClass.EmptyTextBox(this, bi.ne104t, getString(R.string.time))) {
+                    return false;
+                }
 
                 if (!validatorClass.EmptyTextBox(this, bi.ne106, getString(R.string.hb_result))) {
                     return false;
@@ -495,7 +533,12 @@ public class SectionE1Activity extends AppCompatActivity {
                 } else {
                     bi.ne109.setError(null);
                 }
-
+                if (!validatorClass.EmptyTextBox(this, bi.ne108d, getString(R.string.date))) {
+                    return false;
+                }
+                if (!validatorClass.EmptyTextBox(this, bi.ne108t, getString(R.string.time))) {
+                    return false;
+                }
 
             } else {
                 if (!validatorClass.EmptyRadioButton(this, bi.ne110, bi.ne110a, getString(R.string.ne107))) {
@@ -531,7 +574,13 @@ public class SectionE1Activity extends AppCompatActivity {
                 } else {
                     bi.ne105.setError(null);
                 }
+                if (!validatorClass.EmptyTextBox(this, bi.ne104d, getString(R.string.date))) {
+                    return false;
+                }
 
+                if (!validatorClass.EmptyTextBox(this, bi.ne104t, getString(R.string.time))) {
+                    return false;
+                }
 
                 if (!validatorClass.EmptyTextBox(this, bi.ne106, getString(R.string.hb_result))) {
                     return false;
@@ -571,7 +620,12 @@ public class SectionE1Activity extends AppCompatActivity {
                 } else {
                     bi.ne109.setError(null);
                 }
-
+                if (!validatorClass.EmptyTextBox(this, bi.ne108d, getString(R.string.date))) {
+                    return false;
+                }
+                if (!validatorClass.EmptyTextBox(this, bi.ne108t, getString(R.string.time))) {
+                    return false;
+                }
             } else {
                 if (!validatorClass.EmptyRadioButton(this, bi.ne110, bi.ne110a, getString(R.string.ne107))) {
                     return false;
@@ -618,10 +672,14 @@ public class SectionE1Activity extends AppCompatActivity {
         sE1.put("ne103", originalPositions.get(bi.ne103.getSelectedItemPosition()));
         sE1.put("ne104", bi.ne104a.isChecked() ? "1" : bi.ne104b.isChecked() ? "2" : "0");
         sE1.put("ne105", bi.ne105.getText().toString());
+        sE1.put("ne104d", bi.ne104d.getText().toString());
+        sE1.put("ne104t", bi.ne104t.getText().toString());
         sE1.put("ne106", bi.ne106.getText().toString());
         sE1.put("ne107", bi.ne107a.isChecked() ? "1" : bi.ne107b.isChecked() ? "2" : "0");
         sE1.put("ne108", bi.ne108a.isChecked() ? "1" : bi.ne108b.isChecked() ? "2" : "0");
         sE1.put("ne109", bi.ne109.getText().toString());
+        sE1.put("ne108d", bi.ne108d.getText().toString());
+        sE1.put("ne108t", bi.ne108t.getText().toString());
         sE1.put("ne110", bi.ne110a.isChecked() ? "1" : bi.ne110b.isChecked() ? "2" : "0");
         sE1.put("end_time", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
 
