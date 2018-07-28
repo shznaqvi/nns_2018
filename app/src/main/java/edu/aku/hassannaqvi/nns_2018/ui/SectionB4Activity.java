@@ -22,6 +22,7 @@ import butterknife.BindViews;
 import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.nns_2018.JSONModels.JSONB4ModelClass;
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
@@ -37,7 +38,6 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
     DatabaseHelper db;
     Boolean backPressed = false;
     private Timer timer = new Timer();
-
     @BindViews({R.id.nb412b, R.id.nb412c, R.id.nb412d, R.id.nb412e, R.id.nb412f, R.id.nb41296})
     List<CheckBox> rd_nb412;
 
@@ -45,7 +45,9 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             if (isoneYes()) {
-                clearClass.ClearAllFields(binding.fldGrpnw413, false);
+                if (!binding.nb412a.isChecked()){
+                    clearClass.ClearAllFields(binding.fldGrpnw413, false);
+                }
             } else {
                 clearClass.ClearAllFields(binding.fldGrpnw413, true);
             }
@@ -68,6 +70,7 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
 
         this.setTitle(getResources().getString(R.string.nb4heading));
         binding.textName.setText("Selected Woman : " + SectionB1Activity.wraName);
+
 
         binding.nw40299.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -177,7 +180,9 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
                     binding.nb41296.setChecked(false);
 
                     binding.nb41296x.setText(null);
-
+                    if (!binding.nb412a.isChecked()){
+                    clearClass.ClearAllFields(binding.fldGrpnw413, false);
+                    }
 
                 } else {
                     binding.nb412a.setEnabled(true);
@@ -219,6 +224,9 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
 
     }
 
+
+
+
     public void AutoCompleteFields() {
 
 //        BackPressed
@@ -236,7 +244,7 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
                                                         jsonB4.getnw401().equals("5") ? binding.nw401e.getId() :
                                                                 jsonB4.getnw401().equals("6") ? binding.nw401f.getId() :
                                                                         jsonB4.getnw401().equals("7") ? binding.nw401g.getId() :
-                                                                                        binding.nw40196.getId()
+                                                                                binding.nw40196.getId()
                 );
                 binding.nw40196x.setText(jsonB4.getnw40196x());
             }
@@ -731,7 +739,6 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
         sB4.put("nw413961x", binding.nw413961x.getText().toString());
         sB4.put("nw413962x", binding.nw413962x.getText().toString());
         sB4.put("nw413963x", binding.nw413963x.getText().toString());
-
 
 
         MainApp.mc.setsB4(String.valueOf(sB4));

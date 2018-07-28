@@ -447,10 +447,9 @@
                                 android:layout_marginBottom="5dp"
                                 android:layout_marginTop="1dp"
                                 android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
-                                android:enabled="@{nc21196.checked ? true : false}"
                                 android:hint="@string/other"
                                 android:inputType="text"
-                                android:text='@{nc21196.checked ? nc21196x.getText.toString : ""}' />
+                                />
 
                         </LinearLayout>
 

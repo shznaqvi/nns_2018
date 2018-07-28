@@ -7,6 +7,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -40,6 +41,10 @@ public class SectionC2Activity extends Menu2Activity implements RadioGroup.OnChe
     DatabaseHelper db;
     Boolean backPressed = false;
 
+
+    @BindViews({R.id.nc211a, R.id.nc211b, R.id.nc211c, R.id.nc211d, R.id.nc211e, R.id.nc211f,
+            R.id.nc211g, R.id.nc211h, R.id.nc211i, R.id.nc211j})
+    List<CheckBox> grpnc211;
 
     @BindViews({R.id.nc215a, R.id.nc215b, R.id.nc215c, R.id.nc215d, R.id.nc215e, R.id.nc215f,
             R.id.nc215g, R.id.nc215h, R.id.nc215i, R.id.nc217a, R.id.nc217b, R.id.nc217c,
@@ -595,7 +600,7 @@ public class SectionC2Activity extends Menu2Activity implements RadioGroup.OnChe
                 //bi.nc218.clearCheck();
             } else {
                 clearClass.ClearAllFields(bi.fldGrpnc218, true);
-                clearClass.ClearAllFields(bi.fldGrpnc219, true);
+                clearClass.ClearAllFields(bi.fldGrpnc219, false);
                 //bi.fldGrpnc218.setVisibility(View.VISIBLE);
                 //bi.fldGrpnc219.setVisibility(View.VISIBLE);
             }
@@ -603,7 +608,15 @@ public class SectionC2Activity extends Menu2Activity implements RadioGroup.OnChe
 
         }
     };
-
+    public CheckBox.OnCheckedChangeListener check2 = new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//            ValidateForm();
+            if(isChecked){
+                bi.nc21199.setChecked(false);
+            }
+        }
+    };
     @Override
     public void onBackPressed() {
         // Toast.makeText(this, "You can't go back.", Toast.LENGTH_SHORT).show();
@@ -1345,6 +1358,39 @@ public class SectionC2Activity extends Menu2Activity implements RadioGroup.OnChe
                 }
             }
         });*/
+        bi.nc21199.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    bi.nc211a.setChecked(false);
+                    bi.nc211b.setChecked(false);
+                    bi.nc211c.setChecked(false);
+                    bi.nc211d.setChecked(false);
+                    bi.nc211e.setChecked(false);
+                    bi.nc211f.setChecked(false);
+                    bi.nc211g.setChecked(false);
+                    bi.nc211h.setChecked(false);
+                    bi.nc211i.setChecked(false);
+                    bi.nc211j.setChecked(false);
+                    bi.nc21196.setChecked(false);
+                    bi.nc21196x.setText(null);
+                }
+            }
+        });
+        bi.nc21196.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (!isChecked){
+                    bi.nc21196x.setText(null);
+                    bi.nc21196x.setEnabled(false);
+                }else{
+                    bi.nc21196x.setEnabled(true);
+                    if (bi.nc21199.isChecked()){
+                        bi.nc21199.setChecked(false);
+                    }
+                }
+            }
+        });
 
 
 
@@ -1362,6 +1408,9 @@ public class SectionC2Activity extends Menu2Activity implements RadioGroup.OnChe
             }
         });*/
 
+        for (CheckBox chk : grpnc211) {
+            chk.setOnCheckedChangeListener(check2);
+        }
         for (RadioGroup rg : grpnc215) {
             rg.setOnCheckedChangeListener(check);
         }
