@@ -387,9 +387,9 @@ public class SectionA2ListActivity extends AppCompatActivity {
                                                         int id) {
 
                                         if (SectionA1Activity.reBackFlag) {
-                                            if (!MainApp.IsHead) {
+                                            if (!MainApp.IsHead && !SectionA1Activity.editFormFlag) {
                                                 Toast.makeText(SectionA2ListActivity.this, "Assign Head to this HH!!", Toast.LENGTH_SHORT).show();
-                                            } else if (!MainApp.IsResp) {
+                                            } else if (!MainApp.IsResp && !SectionA1Activity.editFormFlag) {
                                                 Toast.makeText(SectionA2ListActivity.this, "Assign Respondent to this HH!!", Toast.LENGTH_SHORT).show();
                                             } else {
                                                 finish();
