@@ -191,7 +191,7 @@
 
                         <LinearLayout
                             android:id="@+id/fldGrpyear"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:orientation="vertical">
@@ -219,7 +219,7 @@
 
                         <LinearLayout
                             android:id="@+id/fldGrpmonths"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:orientation="vertical">
@@ -247,28 +247,30 @@
 
                         <LinearLayout
                             android:id="@+id/fldGrpdays"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:orientation="vertical">
 
                             <TextView
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="0dp"
                                 android:background="@color/pink_100"
                                 android:gravity="center"
+                                android:layout_weight="1.80"
                                 android:text="@string/nw201sub1"
                                 android:textColor="@color/colorPrimaryDark"
-                                android:textSize="22sp" />
+                                android:textSize="18sp" />
 
                             <EditText
                                 android:id="@+id/nc201d"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="0dp"
                                 android:layout_marginBottom="1dp"
                                 android:digits="0123456789"
                                 android:hint="@string/day"
                                 android:inputType="number"
+                                android:layout_weight="1"
                                 android:maxLength="2"
                                 android:text='@{na11801a.checked ? nc201d.getText.toString : "" }'
                                 android:visibility="visible" />
@@ -344,6 +346,7 @@
                         android:background="@color/pink_100"
                         android:padding="0dp"
                         android:text=""
+                        android:visibility="gone"
                         android:textColor="@color/colorPrimaryDark" />
 
                     <LinearLayout

@@ -62,6 +62,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/lblnw401"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
@@ -178,6 +179,7 @@
                     android:orientation="vertical">
                     <!--nw402-->
                     <TextView
+                        android:id="@+id/lblnw402"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
@@ -299,6 +301,7 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/lblnw403"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -460,6 +463,7 @@
                     android:text='@{nw40396.checked ? nw40396x.getText.toString : ""}' />
 
                 <TextView
+                    android:id="@+id/lblnw404"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -565,6 +569,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/lblnw406"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
@@ -757,6 +762,7 @@
 
 
                 <TextView
+                    android:id="@+id/lblnw410"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
