@@ -150,9 +150,9 @@ public class SectionH8infoActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             if (UpdateDB()) {
-                if (bi.nh801a.isChecked()){
+                if (bi.nh801a.isChecked()) {
                     startActivity(new Intent(SectionH8infoActivity.this, SectionH8Activity.class));
-                }else {
+                } else {
                     if (SectionA1Activity.editFormFlag) {
                         startActivity(new Intent(this, ViewMemberActivity.class)
                                 .putExtra("flagEdit", false)
@@ -168,7 +168,8 @@ public class SectionH8infoActivity extends AppCompatActivity {
                         }
 
                         startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 3));
-                    }                }
+                    }
+                }
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
