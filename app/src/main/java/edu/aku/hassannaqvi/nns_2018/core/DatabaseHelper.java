@@ -336,11 +336,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             singleSum.COLUMN_DEVICETAGID + " TEXT," +
             singleSum.COLUMN_APPVERSION + " TEXT);";
 
+    private static final String SQL_ALTER_VERSIONAPP = "ALTER TABLE " +
+            VersionAppTable.TABLE_NAME + " ADD COLUMN " +
+            VersionAppTable.COLUMN_VERSION_NAME + " TEXT;";
     final String SQL_CREATE_VERSIONAPP = "CREATE TABLE " + VersionAppTable.TABLE_NAME + " (" +
             VersionAppTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             VersionAppTable.COLUMN_VERSION_CODE + " TEXT, " +
+            VersionAppTable.COLUMN_VERSION_NAME + " TEXT, " +
             VersionAppTable.COLUMN_PATH_NAME + " TEXT " +
             ");";
+
     private static final String SQL_DELETE_FORMS =
             "DROP TABLE IF EXISTS " + FormsTable.TABLE_NAME;
     private static final String SQL_DELETE_CHILD_FORMS =
@@ -583,6 +588,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             values.put(VersionAppTable.COLUMN_PATH_NAME, Vc.getPathname());
             values.put(VersionAppTable.COLUMN_VERSION_CODE, Vc.getVersioncode());
+            values.put(VersionAppTable.COLUMN_VERSION_NAME, Vc.getVersionname());
 
             db.insert(VersionAppTable.TABLE_NAME, null, values);
         } catch (Exception e) {
@@ -1187,6 +1193,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] columns = {
                 VersionAppTable._ID,
                 VersionAppTable.COLUMN_VERSION_CODE,
+                VersionAppTable.COLUMN_VERSION_NAME,
                 VersionAppTable.COLUMN_PATH_NAME
         };
 

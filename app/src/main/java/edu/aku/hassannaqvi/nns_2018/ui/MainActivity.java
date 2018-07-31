@@ -280,7 +280,7 @@ public class MainActivity extends MenuActivity {
         if (versionAppContract.getVersioncode() != null) {
 
             preVer = MainApp.versionName + "." + MainApp.versionCode;
-            newVer = MainApp.versionName + "." + versionAppContract.getVersioncode();
+            newVer = versionAppContract.getVersionname() + "." + versionAppContract.getVersioncode();
 
             if (MainApp.versionCode < Integer.valueOf(versionAppContract.getVersioncode())) {
                 mainBinding.lblAppVersion.setVisibility(View.VISIBLE);
