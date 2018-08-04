@@ -9,6 +9,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
+import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -511,6 +512,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
             sA1.put("teamNo", MainApp.usersContract.getTEAM_NO());
         }
 
+        sA1.put("imei", ((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId());
         sA1.put("rndid", MainApp.selectedHead.get_ID());
         sA1.put("luid", MainApp.selectedHead.getLUID());
         sA1.put("randDT", MainApp.selectedHead.getRandomDT());
