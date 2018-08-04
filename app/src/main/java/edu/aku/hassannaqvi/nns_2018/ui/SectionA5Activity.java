@@ -31,7 +31,7 @@ import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
 public class SectionA5Activity extends Menu2Activity implements TextWatcher, RadioGroup.OnCheckedChangeListener {
 
-    static int deceasedCounter = 0;
+//    static int deceasedCounter = 0;
     private final long DELAY = 1000;
     ActivitySectionA5Binding binding;
     public CheckBox.OnCheckedChangeListener check = new CompoundButton.OnCheckedChangeListener() {
@@ -52,6 +52,7 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
     Boolean backPressed = false;
     int prevDeceasedCounter = 0;
     private Timer timer = new Timer();
+    String nh801, nh802;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -413,7 +414,7 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
                 prevRecipientCounter = Integer.valueOf(jsonA5.getnh702());
 
             }
-
+           /*
             if (!jsonA5.getnh801().equals("0")) {
                 binding.nh801.check(
                         jsonA5.getnh801().equals("1") ? binding.nh801a.getId() :
@@ -428,6 +429,16 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
             }
             if (!jsonA5.getnh802().equals("")) {
                 prevDeceasedCounter = Integer.valueOf(jsonA5.getnh802());
+            }
+
+            */
+
+            if (!jsonA5.getnh801().equals("0")) {
+               nh801 =  jsonA5.getnh801().equals("1") ? "1" :
+                        "2";
+            }
+            if (!jsonA5.getnh802().equals("")) {
+                nh802 = jsonA5.getnh802();
             }
 
         }
@@ -483,7 +494,9 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
                         finish();
                         startActivity(new Intent(this, SectionA8AActivity.class).putExtra("recCounter", recipientCounter));
                     }
-                } else if (deceasedCounter > 0) {
+                }
+                /*
+                else if (deceasedCounter > 0) {
 //                    startActivity(new Intent(this, SectionH8Activity.class));
 
                     if (deceasedCounter < prevDeceasedCounter) {
@@ -501,7 +514,8 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
 
                                                 deceasedCounter = prevDeceasedCounter;
                                                 finish();
-                                                startActivity(new Intent(SectionA5Activity.this, SectionH8Activity.class));
+//                                                startActivity(new Intent(SectionA5Activity.this, SectionH8Activity.class));
+                                                startActivity(new Intent(SectionA5Activity.this, SectionH8infoActivity.class));
                                             }
                                         });
                         alertDialogBuilder.setNegativeButton("Cancel",
@@ -516,25 +530,31 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
 
                     } else {
                         finish();
-                        startActivity(new Intent(SectionA5Activity.this, SectionH8Activity.class));
+//                        startActivity(new Intent(SectionA5Activity.this, SectionH8Activity.class));
+                        startActivity(new Intent(SectionA5Activity.this, SectionH8infoActivity.class));
                     }
 
-                } else {
+                }
+                */
+                else {
                     finish();
                     if (SectionA1Activity.editFormFlag) {
-                        startActivity(new Intent(this, ViewMemberActivity.class)
+                        startActivity(new Intent(this, SectionH8infoActivity.class));
+
+                       /* startActivity(new Intent(this, ViewMemberActivity.class)
                                 .putExtra("flagEdit", false)
                                 .putExtra("comingBack", true)
                                 .putExtra("cluster", MainApp.fc.getClusterNo())
                                 .putExtra("hhno", MainApp.fc.getHhNo())
-                        );
+                        );*/
                     } else {
-
+/*
                         if (!MainApp.UpdateSummary(this, db, 1)) {
                             Toast.makeText(this, "Summary Table not update!!", Toast.LENGTH_SHORT).show();
-                        }
+                        }*/
 
-                        startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 1));
+//                        startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 1));
+                        startActivity(new Intent(this, SectionH8infoActivity.class));
                     }
                 }
 
@@ -701,7 +721,7 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
             }
 
         }
-
+/*
         if (!validatorClass.EmptyRadioButton(this, binding.nh801, binding.nh801a, getString(R.string.nh801))) {
             return false;
         }
@@ -720,7 +740,7 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
                 return validatorClass.RangeTextBox(this, binding.nh802, 1, 99, getString(R.string.nh802), " Deceased");
             }
         }
-
+*/
         return true;
     }
 
@@ -745,6 +765,7 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
         JSONObject sA5 = new JSONObject();
         if (SectionA1Activity.editFormFlag) {
             sA5.put("edit_updatedate_sa5", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+
         }
         sA5.put("nh401", binding.nh401a.isChecked() ? "1"
                 : binding.nh401b.isChecked() ? "2"
@@ -897,13 +918,18 @@ public class SectionA5Activity extends Menu2Activity implements TextWatcher, Rad
             recipientCounter = Integer.valueOf(binding.nh702.getText().toString());
         }
 
+        if (SectionA1Activity.editFormFlag) {
+            sA5.put("nh801",nh801);
+            sA5.put("nh802",nh802);
+        }
+/*
         sA5.put("nh801", binding.nh801a.isChecked() ? "1" : binding.nh801b.isChecked() ? "2" : "0");
         sA5.put("nh802", binding.nh802.getText().toString());
 
         if (binding.nh801a.isChecked()) {
             deceasedCounter = Integer.valueOf(binding.nh802.getText().toString());
         }
-
+*/
         MainApp.fc.setsA5(String.valueOf(sA5));
 
         // Set summary fields

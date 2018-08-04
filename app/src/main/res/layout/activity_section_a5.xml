@@ -1363,64 +1363,6 @@
                         android:text='@{nh701a.checked ? nh702.getText.toString : ""}' />
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/nh801"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
-
-                <RadioGroup
-                    android:id="@+id/nh801"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/nh801a"
-                        style="@style/radiobutton"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:text="@string/yes" />
-
-
-                    <RadioButton
-                        android:id="@+id/nh801b"
-                        style="@style/radiobutton"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:text="@string/no" />
-
-                </RadioGroup>
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/nh802"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
-
-                <EditText
-                    android:id="@+id/nh802"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:enabled="@{nh801a.checked ? true : false}"
-                    android:hint="@string/nh802"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    android:text='@{nh801a.checked ? nh802.getText.toString : ""}'
-
-                    />
 
 
                 <!--  = = = = =  END OF FORM FIELDS  = = = = = -->

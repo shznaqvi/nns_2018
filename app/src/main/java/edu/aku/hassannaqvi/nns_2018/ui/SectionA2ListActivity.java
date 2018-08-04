@@ -274,7 +274,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
                 // Done this thing to not add duplicate in list
                 for (FamilyMembersContract ser : MainApp.all_members) {
-                    if (ser.getSerialNo() == fm.getSerialNo()) {
+                    if (ser.getSerialNo().equals(fm.getSerialNo())) {
                         serialFlag = false;
                     }
                 }
@@ -287,19 +287,32 @@ public class SectionA2ListActivity extends AppCompatActivity {
                     fm.setName(json.getName());
                     Log.d("Names", "Name: " + json.getName());
 
+                    boolean flag = true;
 
                     if ((Age >= 15 && Age <= 49) && json.getGender().equals("2")) {
                         MainApp.mwra.add(fm);
                         MainApp.all_members.add(fm);
+
+                        flag = false;
                     }
                     if ((Age >= 10 && (Age <= 19)) && MStatusChecking(json.getMaritalStatus()).equals("5")) {
                         MainApp.adolescents.add(fm);
                         MainApp.all_members.add(fm);
+
+                        flag = false;
+
                     }
                     if (Integer.valueOf(json.getAge()) < 5) {
                         MainApp.childUnder5.add(fm);
                         MainApp.all_members.add(fm);
+
+                        flag = false;
                     }
+
+                    if (flag) {
+                        MainApp.all_members.add(fm);
+                    }
+
                     MainApp.familyMembersList.add(fm);
                     if (Age >= 15 && json.getGender().equals("2") && !MStatusChecking(json.getMaritalStatus()).equals("5")) {
                         MainApp.editmothersList.add(json.getName());
@@ -387,9 +400,9 @@ public class SectionA2ListActivity extends AppCompatActivity {
                                                         int id) {
 
                                         if (SectionA1Activity.reBackFlag) {
-                                            if (!MainApp.IsHead) {
+                                            if (!MainApp.IsHead && !SectionA1Activity.editFormFlag) {
                                                 Toast.makeText(SectionA2ListActivity.this, "Assign Head to this HH!!", Toast.LENGTH_SHORT).show();
-                                            } else if (!MainApp.IsResp) {
+                                            } else if (!MainApp.IsResp && !SectionA1Activity.editFormFlag) {
                                                 Toast.makeText(SectionA2ListActivity.this, "Assign Respondent to this HH!!", Toast.LENGTH_SHORT).show();
                                             } else {
                                                 finish();

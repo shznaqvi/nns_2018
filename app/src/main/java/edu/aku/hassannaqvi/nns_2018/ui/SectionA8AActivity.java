@@ -72,6 +72,10 @@ public class SectionA8AActivity extends AppCompatActivity {
                 recpmap.put(fmc.getName() + "_" + fmc.getSerialNo(), fmc);
                 recpNames.add(fmc.getName());
                 recpSerial.add(fmc.getSerialNo());
+
+                fmc.getAge();
+
+                fmc.getAgeInYear();
             }
 
         } else {
@@ -257,9 +261,10 @@ public class SectionA8AActivity extends AppCompatActivity {
                 if (counter == reccounter) {
 
                     counter = 1;
-
+/*
                     if (SectionA5Activity.deceasedCounter > 0) {
-                        startActivity(new Intent(this, SectionH8Activity.class));
+//                        startActivity(new Intent(this, SectionH8Activity.class));
+                        startActivity(new Intent(this, SectionH8infoActivity.class));
                     } else {
                         if (SectionA1Activity.editFormFlag) {
 
@@ -278,7 +283,8 @@ public class SectionA8AActivity extends AppCompatActivity {
 
                             startActivity(new Intent(this, ViewMemberActivity.class).putExtra("activity", 3));
                         }
-                    }
+                    }*/
+                    startActivity(new Intent(this, SectionH8infoActivity.class));
                 } else {
 
                     if (dataFlag) {

@@ -130,7 +130,8 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
 
                 finish();
 
-                if (counter == SectionA5Activity.deceasedCounter) {
+//                if (counter == SectionA5Activity.deceasedCounter) {
+                if (counter == SectionH8infoActivity.deceasedCounter) {
                     counter = 1;
 
                     if (SectionA1Activity.editFormFlag) {
@@ -283,7 +284,8 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
             }
         });
 
-        bi.txtCounter.setText("Count " + counter + " out of " + SectionA5Activity.deceasedCounter);
+//        bi.txtCounter.setText("Count " + counter + " out of " + SectionA5Activity.deceasedCounter);
+        bi.txtCounter.setText("Count " + counter + " out of " + SectionH8infoActivity.deceasedCounter);
 
 
         if (!bi.nh807y.getText().toString().isEmpty()) {
@@ -383,7 +385,8 @@ public class SectionH8Activity extends AppCompatActivity implements TextWatcher,
                                 public void onClick(DialogInterface dialog,
                                                     int id) {
 
-                                    if (counter == SectionA5Activity.deceasedCounter) {
+//                                    if (counter == SectionA5Activity.deceasedCounter) {
+                                    if (counter == SectionH8infoActivity.deceasedCounter) {
 
                                         counter = 1;
 

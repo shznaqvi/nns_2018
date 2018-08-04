@@ -87,7 +87,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + singleRandomHH.COLUMN_SNO_HH + " TEXT );";
 
     public static final String PROJECT_NAME = "NNS-2018";
-    private static final int DATABASE_VERSION = 12;
+    private static final int DATABASE_VERSION = 13;
     public static final String DB_NAME = DATABASE_NAME.replace(".", "_" + MainApp.versionName + "_" + DATABASE_VERSION + "_copy.");
 
     private static final String SQL_CREATE_FORMS = "CREATE TABLE "
@@ -339,8 +339,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     final String SQL_CREATE_VERSIONAPP = "CREATE TABLE " + VersionAppTable.TABLE_NAME + " (" +
             VersionAppTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             VersionAppTable.COLUMN_VERSION_CODE + " TEXT, " +
+            VersionAppTable.COLUMN_VERSION_NAME + " TEXT, " +
             VersionAppTable.COLUMN_PATH_NAME + " TEXT " +
             ");";
+
+    private static final String SQL_ALTER_VERSIONAPP = "ALTER TABLE " +
+            VersionAppTable.TABLE_NAME + " ADD COLUMN " +
+            VersionAppTable.COLUMN_VERSION_NAME + " TEXT;";
+
     private static final String SQL_DELETE_FORMS =
             "DROP TABLE IF EXISTS " + FormsTable.TABLE_NAME;
     private static final String SQL_DELETE_CHILD_FORMS =
@@ -515,6 +521,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.execSQL(SQL_ALTER_BLRANDOM3);
             case 11:
                 db.execSQL(SQL_CREATE_SUMMARY);
+            case 12:
+                db.execSQL(SQL_ALTER_VERSIONAPP);
         }
 
     }
@@ -583,6 +591,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             values.put(VersionAppTable.COLUMN_PATH_NAME, Vc.getPathname());
             values.put(VersionAppTable.COLUMN_VERSION_CODE, Vc.getVersioncode());
+            values.put(VersionAppTable.COLUMN_VERSION_NAME, Vc.getVersionname());
 
             db.insert(VersionAppTable.TABLE_NAME, null, values);
         } catch (Exception e) {
@@ -1187,6 +1196,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] columns = {
                 VersionAppTable._ID,
                 VersionAppTable.COLUMN_VERSION_CODE,
+                VersionAppTable.COLUMN_VERSION_NAME,
                 VersionAppTable.COLUMN_PATH_NAME
         };
 
@@ -1195,7 +1205,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String groupBy = null;
         String having = null;
 
-        String orderBy = singleSerial._ID + " ASC";
+        String orderBy = null;
 
         VersionAppContract allVC = new VersionAppContract();
         try {
