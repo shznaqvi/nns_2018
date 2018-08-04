@@ -122,9 +122,8 @@ public class SectionE1Activity extends AppCompatActivity {
                 group.add(getResources().getString(R.string.neselectedd));
                 originalPositions.add(4);
             }
-
-
         }
+
 
         bi.ne103.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, group));
 
@@ -143,11 +142,7 @@ public class SectionE1Activity extends AppCompatActivity {
 
                     //familyMembersSetting(MainApp.all_members);
                     fetchMembersFromGroup(position);
-
-
                     bi.ne102.setAdapter(new ArrayAdapter<>(SectionE1Activity.this, R.layout.item_style, members));
-
-
                     if (position == 2) {
                         clearClass.ClearAllFields(bi.fldGrpUnine, false);
                         clearClass.ClearAllFields(bi.fldGrpblood, true);
@@ -280,7 +275,24 @@ public class SectionE1Activity extends AppCompatActivity {
             }
         }
 
+
     }
+
+    public boolean checkmembersExists(List<FamilyMembersContract> family) {
+        List<String> memberslist = new ArrayList<>();
+        for (FamilyMembersContract fmc : family) {
+
+
+            {
+                json = JSONUtilClass.getModelFromJSON(fmc.getsA2(), JSONModelClass.class);
+                if (!MainApp.duplicateMembers.contains(json.getName() + "_" + json.getSerialNo()))
+                    memberslist.add(json.getName() + "_" + json.getSerialNo());
+            }
+        }
+
+       return memberslist.size() > 0;
+    }
+
 
     public void BtnScanBL() {
         //binding.hcCode.setText(null);
@@ -396,24 +408,72 @@ public class SectionE1Activity extends AppCompatActivity {
             if (UpdateDB()) {
 
                 //finish();
-
                 if (group.size() > 2) {
+//                if (members.size() > 2) {
 
                     //String str = group.get(position);
                     //int myInt = originalPositions.get(position);
 
                     MainApp.duplicateMembers.add(bi.ne102.getSelectedItem().toString());
 
+
+                    bi.ne103.getSelectedItemPosition();
+                    boolean membersFound;
+//                    wra
+                    if( bi.ne103.getSelectedItem().equals(getResources().getString(R.string.neselecteda))){
+                        membersFound = checkmembersExists(MainApp.adolescents);
+                        if(!membersFound){
+                            for (int i = 0; i < group.size(); i++) {
+                                if(group.get(i).equals(getResources().getString(R.string.neselectedd))) {
+                                    group.remove(i);
+                                }
+                            }
+                        }
+                    }
+//                    adolescents
+                    else if( bi.ne103.getSelectedItem().equals(getResources().getString(R.string.neselectedd))){
+                        membersFound = checkmembersExists(MainApp.mwra);
+                        if(!membersFound){
+                            for (int i = 0; i < group.size(); i++) {
+                                if(group.get(i).equals(getResources().getString(R.string.neselecteda))) {
+                                    group.remove(i);
+                                }
+                            }
+                        }
+                    }
+
                     group.remove(indexOriginal);
                     originalPositions.remove(indexOriginal);
+                   /* for (int i = 0; i < group.size(); i++) {
+//                        mwra
+                       if(group.get(i).equals(getResources().getString(R.string.neselecteda))){
+                           noMembersFound = checkmembersExists(MainApp.mwra);
+                           if(noMembersFound){
+                               group.remove(i);
+                           }
+                       }
+                       else if(group.get(i).equals(getResources().getString(R.string.neselectedd))){
+                           noMembersFound = checkmembersExists(MainApp.adolescents);
+                           if(noMembersFound){
+                               group.remove(i);
+                           }
+                       }
+                    }
+                    */
                     //groupRemoved.set(position, 0);
-
                     //group.get(position);
 
                     members.clear();
-                    counter++;
                     finish();
-                    startActivity(new Intent(this, SectionE1Activity.class).putExtra("flag", false));
+                    if(group.size() <= 1){
+                        group.clear();
+                        counter = 1;
+                        startActivity(new Intent(this, MainActivity.class));
+                    }
+                    else {
+                        counter++;
+                        startActivity(new Intent(this, SectionE1Activity.class).putExtra("flag", false));
+                    }
                 } else {
                     group.clear();
                     members.clear();
