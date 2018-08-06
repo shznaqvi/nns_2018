@@ -119,6 +119,39 @@ public class MainActivity extends MenuActivity {
         return true;
     }
 
+    BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(intent.getAction())) {
+
+                DownloadManager.Query query = new DownloadManager.Query();
+                query.setFilterById(sharedPrefDownload.getLong("refID", 0));
+
+                downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+                Cursor cursor = downloadManager.query(query);
+                if (cursor.moveToFirst()) {
+                    int colIndex = cursor.getColumnIndex(DownloadManager.COLUMN_STATUS);
+                    if (DownloadManager.STATUS_SUCCESSFUL == cursor.getInt(colIndex)) {
+
+                        editorDownload.putBoolean("flag", true);
+                        editorDownload.commit();
+
+                        Toast.makeText(context, "New App downloaded!!", Toast.LENGTH_SHORT).show();
+                        mainBinding.lblAppVersion.setText("NNS APP New Version " + newVer + "  Downloaded.");
+
+                        ActivityManager am = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
+                        List<ActivityManager.RunningTaskInfo> taskInfo = am.getRunningTasks(1);
+
+                        if (taskInfo.get(0).topActivity.getClassName().equals(MainActivity.class.getName())) {
+//                                InstallNewApp(newVer, preVer);
+                            showDialog(newVer, preVer);
+                        }
+                    }
+                }
+            }
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -292,7 +325,7 @@ public class MainActivity extends MenuActivity {
                     mainBinding.lblAppVersion.setText("NNS APP New Version " + newVer + "  Downloaded.");
 //                    InstallNewApp(newVer, preVer);
                     showDialog(newVer, preVer);
-                } else if (!file.exists()) {
+                } else {
                     NetworkInfo networkInfo = ((ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
                     if (networkInfo != null && networkInfo.isConnected()) {
 
@@ -312,8 +345,6 @@ public class MainActivity extends MenuActivity {
                     } else {
                         mainBinding.lblAppVersion.setText("NNS APP New Version " + newVer + "  Available..\n(Can't download.. Internet connectivity issue!!)");
                     }
-                } else {
-                    mainBinding.lblAppVersion.setText("NNS APP New Version " + newVer + " Downloading..");
                 }
 
             } else {
@@ -322,46 +353,20 @@ public class MainActivity extends MenuActivity {
             }
         }
 
-        BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(intent.getAction())) {
-
-                    DownloadManager.Query query = new DownloadManager.Query();
-                    query.setFilterById(sharedPrefDownload.getLong("refID", 0));
-
-                    downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-                    Cursor cursor = downloadManager.query(query);
-                    if (cursor.moveToFirst()) {
-                        int colIndex = cursor.getColumnIndex(DownloadManager.COLUMN_STATUS);
-                        if (DownloadManager.STATUS_SUCCESSFUL == cursor.getInt(colIndex)) {
-
-                            editorDownload.putBoolean("flag", true);
-                            editorDownload.commit();
-
-                            Toast.makeText(context, "New App downloaded!!", Toast.LENGTH_SHORT).show();
-                            mainBinding.lblAppVersion.setText("NNS APP New Version " + newVer + "  Downloaded.");
-
-                            ActivityManager am = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
-                            List<ActivityManager.RunningTaskInfo> taskInfo = am.getRunningTasks(1);
-
-                            if (taskInfo.get(0).topActivity.getClassName().equals(MainActivity.class.getName())) {
-//                                InstallNewApp(newVer, preVer);
-                                showDialog(newVer, preVer);
-                            }
-                        }
-                    }
-                }
-            }
-        };
         registerReceiver(broadcastReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(broadcastReceiver);
     }
 
     public void openForm() {
         if (versionAppContract.getVersioncode() != null) {
             if (MainApp.versionCode < Integer.valueOf(versionAppContract.getVersioncode())) {
-                if (sharedPrefDownload.getBoolean("flag", false) && file.exists()) {
+                if (sharedPrefDownload.getBoolean("flag", true) && file.exists()) {
 //                    InstallNewApp(newVer, preVer);
                     showDialog(newVer, preVer);
                 } else {
