@@ -288,7 +288,7 @@ public class MainActivity extends MenuActivity {
                 String fileName = DatabaseHelper.DATABASE_NAME.replace(".db", "-New-Apps");
                 file = new File(Environment.getExternalStorageDirectory() + File.separator + fileName, versionAppContract.getPathname());
 
-                if (file.exists() && sharedPrefDownload.getBoolean("flag", false)) {
+                if (file.exists()) {
                     mainBinding.lblAppVersion.setText("NNS APP New Version " + newVer + "  Downloaded.");
 //                    InstallNewApp(newVer, preVer);
                     showDialog(newVer, preVer);
