@@ -49,7 +49,6 @@ public class SyncAllData extends AsyncTask<Void, Void, String> {
         this.contractClass = contractClass;
         this.url = url;
         this.dbData = dbData;
-        //this.syncStatus = (TextView) syncStatus;
         TAG = "Get" + syncClass;
     }
 
@@ -60,7 +59,6 @@ public class SyncAllData extends AsyncTask<Void, Void, String> {
         pd.setTitle("Syncing " + syncClass);
         pd.setMessage("Getting connected to server...");
         pd.show();
-        //syncStatus.setText(syncStatus.getText() + "\r\nSyncing " + syncClass);
     }
 
 

@@ -70,7 +70,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + " );";
 
 
-    public static final String DATABASE_NAME = "nns_2018.db";
+    public static final String DATABASE_NAME = "nns_2018_val.db";
     public static final String SQL_CREATE_BL_RANDOM = "CREATE TABLE " + singleRandomHH.TABLE_NAME + "("
             + singleRandomHH.COLUMN_ID + " TEXT,"
             + singleRandomHH.COLUMN_ENUM_BLOCK_CODE + " TEXT,"
@@ -87,7 +87,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + singleRandomHH.COLUMN_SNO_HH + " TEXT );";
 
     public static final String PROJECT_NAME = "NNS-2018";
-    private static final int DATABASE_VERSION = 13;
+    private static final int DATABASE_VERSION = 1;
     public static final String DB_NAME = DATABASE_NAME.replace(".", "_" + MainApp.versionName + "_" + DATABASE_VERSION + "_copy.");
 
     private static final String SQL_CREATE_FORMS = "CREATE TABLE "
@@ -481,8 +481,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        /*db.execSQL(SQL_DELETE_USERS);
-
+        db.execSQL(SQL_DELETE_USERS);
         db.execSQL(SQL_DELETE_USERS);
         db.execSQL(SQL_DELETE_FORMS);
         db.execSQL(SQL_DELETE_CHILD_FORMS);
@@ -498,32 +497,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_BLRANDOM);
         db.execSQL(SQL_DELETE_NUTRITION);
         db.execSQL(SQL_DELETE_DECEASED);
-
-        db.execSQL(SQL_CREATE_NUTRITION);*/
-
-        switch (i) {
-            case 2:
-                db.execSQL(SQL_ALTER_FAMILYMEMBER);
-            case 3:
-                db.execSQL(SQL_ALTER_MWRAS);
-            case 4:
-                db.execSQL(SQL_ALTER_BLRANDOM1);
-                db.execSQL(SQL_ALTER_BLRANDOM2);
-            case 5:
-                db.execSQL(SQL_ALTER_ELIGIBLEMEMBER);
-            case 6:
-                db.execSQL(SQL_ALTER_USERS);
-            case 8:
-                db.execSQL(SQL_CREATE_MICRO);
-            case 9:
-                db.execSQL(SQL_ALTER_FAMILYMEMBER1);
-            case 10:
-                db.execSQL(SQL_ALTER_BLRANDOM3);
-            case 11:
-                db.execSQL(SQL_CREATE_SUMMARY);
-            case 12:
-                db.execSQL(SQL_ALTER_VERSIONAPP);
-        }
 
     }
 

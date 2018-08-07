@@ -25,16 +25,8 @@ import java.util.Date;
 
 import edu.aku.hassannaqvi.nns_2018_validation.R;
 import edu.aku.hassannaqvi.nns_2018_validation.WifiDirect.WiFiDirectActivity;
-import edu.aku.hassannaqvi.nns_2018_validation.contracts.ChildContract;
-import edu.aku.hassannaqvi.nns_2018_validation.contracts.DeceasedContract;
-import edu.aku.hassannaqvi.nns_2018_validation.contracts.EligibleMembersContract;
 import edu.aku.hassannaqvi.nns_2018_validation.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018_validation.contracts.FormsContract;
-import edu.aku.hassannaqvi.nns_2018_validation.contracts.MWRAContract;
-import edu.aku.hassannaqvi.nns_2018_validation.contracts.NutritionContract;
-import edu.aku.hassannaqvi.nns_2018_validation.contracts.OutcomeContract;
-import edu.aku.hassannaqvi.nns_2018_validation.contracts.RecipientsContract;
-import edu.aku.hassannaqvi.nns_2018_validation.contracts.SummaryContract;
 import edu.aku.hassannaqvi.nns_2018_validation.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.nns_2018_validation.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018_validation.core.MainApp;
@@ -204,7 +196,7 @@ public class Menu2Activity extends AppCompatActivity {
                     db.getUnsyncedFamilyMembers(), this.findViewById(R.id.syncStatus)
             ).execute();
 
-            Toast.makeText(getApplicationContext(), "Syncing WRAs", Toast.LENGTH_SHORT).show();
+            /*Toast.makeText(getApplicationContext(), "Syncing WRAs", Toast.LENGTH_SHORT).show();
             new SyncAllData(
                     this,
                     "WRAs",
@@ -282,7 +274,7 @@ public class Menu2Activity extends AppCompatActivity {
                     SummaryContract.class,
                     MainApp._HOST_URL + SummaryContract.singleSum._URL,
                     db.getUnsyncedSummary(), this.findViewById(R.id.syncStatus)
-            ).execute();
+            ).execute();*/
 
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = syncPref.edit();

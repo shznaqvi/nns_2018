@@ -407,11 +407,17 @@ public class SectionA2ListActivity extends AppCompatActivity {
                                             } else {
                                                 finish();
                                                 respLineNo = "";
-                                                startActivity(new Intent(getApplicationContext(), SectionA4Activity.class));
+                                                startActivity(new Intent(getApplicationContext(), EndingActivity.class)
+                                                        .putExtra("complete", true));
                                                 //                                           startActivity(new Intent(getApplicationContext(), ViewMemberActivity.class).putExtra("activity", 1));
                                             }
                                         } else {
-                                            startActivity(new Intent(getApplicationContext(), ViewMemberActivity.class).putExtra("activity", 6));
+//                                            startActivity(new Intent(getApplicationContext(), ViewMemberActivity.class).putExtra("activity", 6));
+                                            startActivity(new Intent(getApplicationContext(), ViewMemberActivity.class)
+                                                    .putExtra("flagEdit", false)
+                                                    .putExtra("comingBack", true)
+                                                    .putExtra("cluster", MainApp.fc.getClusterNo())
+                                                    .putExtra("hhno", MainApp.fc.getHhNo()));
                                         }
 
                                     }

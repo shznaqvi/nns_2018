@@ -9,8 +9,6 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import org.json.JSONException;
-
 import edu.aku.hassannaqvi.nns_2018_validation.JSONModels.JSONA5ModelClass;
 import edu.aku.hassannaqvi.nns_2018_validation.R;
 import edu.aku.hassannaqvi.nns_2018_validation.contracts.FormsContract;
@@ -138,11 +136,7 @@ public class SectionH8infoActivity extends AppCompatActivity {
 
         //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
-            try {
-                SaveDraft();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+            SaveDraft();
             if (UpdateDB()) {
                 if (bi.nh801a.isChecked()) {
                     startActivity(new Intent(SectionH8infoActivity.this, SectionH8Activity.class));
