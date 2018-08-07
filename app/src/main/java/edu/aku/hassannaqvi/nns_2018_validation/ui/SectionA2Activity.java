@@ -170,10 +170,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
     public void skipPattern() {
 
         binding.na202.addTextChangedListener(this);
-//        binding.na203.setOnCheckedChangeListener(this);
-//        binding.na204.setOnCheckedChangeListener(this);
         binding.resp.setOnCheckedChangeListener(this);
-        //binding.nh2ms.setOnCheckedChangeListener(this);
         binding.nh2edu.setOnCheckedChangeListener(this);
         binding.nh2occ.setOnCheckedChangeListener(this);
         binding.nh210.setOnCheckedChangeListener(this);
@@ -280,15 +277,6 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                         binding.nh2occg.setEnabled(true);
                         binding.nh2occh.setEnabled(true);
 
-                       /* if (!flag) {
-                            if (!family.getna204().equals("1")) {
-                                binding.nh2occi.setEnabled(true);
-                            } else {
-                                binding.nh2occi.setEnabled(false);
-                                binding.nh2occi.setChecked(false);
-                            }
-                        }*/
-
                         binding.nh2occ96.setEnabled(true);
                         binding.nh2occ96x.setEnabled(true);
 
@@ -335,17 +323,6 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                         binding.nh2occe.setEnabled(true);
                         binding.nh2occg.setEnabled(true);
                         binding.nh2occh.setEnabled(true);
-                        //binding.nh2occi.setEnabled(true);
-
-                        /*if (!flag) {
-                            if (!family.getna204().equals("1")) {
-                                binding.nh2occi.setEnabled(true);
-                            } else {
-                                binding.nh2occi.setEnabled(false);
-                                binding.nh2occi.setChecked(false);
-                            }
-                        }
-*/
                         binding.nh2occ96.setEnabled(true);
                         binding.nh2occ96x.setEnabled(true);
 
@@ -388,17 +365,6 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                         binding.nh2occe.setEnabled(true);
                         binding.nh2occg.setEnabled(true);
                         binding.nh2occh.setEnabled(true);
-                        //binding.nh2occi.setEnabled(true);
-
-                       /* if (!flag) {
-                            if (!family.getna204().equals("1")) {
-                                binding.nh2occi.setEnabled(true);
-                            } else {
-                                binding.nh2occi.setEnabled(false);
-                                binding.nh2occi.setChecked(false);
-                            }
-                        }*/
-
                         binding.nh2occ96.setEnabled(true);
                         binding.nh2occ96x.setEnabled(true);
 
@@ -441,16 +407,6 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                         binding.nh2occg.setEnabled(true);
                         binding.nh2occh.setEnabled(true);
 
-                       /* if (!flag) {
-                            if (!family.getna204().equals("1")) {
-                                binding.nh2occi.setEnabled(true);
-                            } else {
-                                binding.nh2occi.setEnabled(false);
-                                binding.nh2occi.setChecked(false);
-                            }
-                        }*/
-
-                        //binding.nh2occi.setEnabled(true);
                         binding.nh2occ96.setEnabled(true);
                         binding.nh2occ96x.setEnabled(true);
 
@@ -492,16 +448,6 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                         binding.nh2occg.setEnabled(true);
                         binding.nh2occh.setEnabled(true);
 
-                        /*if (!flag) {
-                            if (!family.getna204().equals("1")) {
-                                binding.nh2occi.setEnabled(true);
-                            } else {
-                                binding.nh2occi.setEnabled(false);
-                                binding.nh2occi.setChecked(false);
-                            }
-                        }*/
-
-                        //binding.nh2occi.setEnabled(true);
                         binding.nh2occ96.setEnabled(true);
                         binding.nh2occ96x.setEnabled(true);
 
@@ -540,17 +486,6 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                         binding.nh2occe.setEnabled(true);
                         binding.nh2occg.setEnabled(true);
                         binding.nh2occh.setEnabled(true);
-                        //binding.nh2occi.setEnabled(true);
-
-                       /* if (!flag) {
-                            if (!family.getna204().equals("1")) {
-                                binding.nh2occi.setEnabled(true);
-                            } else {
-                                binding.nh2occi.setEnabled(false);
-                                binding.nh2occi.setChecked(false);
-                            }
-                        }
-*/
                         binding.nh2occ96.setEnabled(true);
                         binding.nh2occ96x.setEnabled(true);
 
@@ -588,17 +523,6 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                         binding.nh2occe.setEnabled(true);
                         binding.nh2occg.setEnabled(true);
                         binding.nh2occh.setEnabled(true);
-                        //binding.nh2occi.setEnabled(true);
-
-                        /*if (!flag) {
-                            if (!family.getna204().equals("1")) {
-                                binding.nh2occi.setEnabled(true);
-                            } else {
-                                binding.nh2occi.setEnabled(false);
-                                binding.nh2occi.setChecked(false);
-                            }
-                        }*/
-
                         binding.nh2occ96.setEnabled(true);
                         binding.nh2occ96x.setEnabled(true);
 
@@ -737,7 +661,6 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
         if (flag) {
             MainApp.endActivityAll(this, this, SectionA2ListActivity.class, true);
         } else {
-//            MainApp.endActivityAll(this, SectionA2Activity.this, SectionA2ListActivity.class, true);
 
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                     this);
@@ -852,8 +775,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
 
         } else {
 
-            //family.setDob(binding.nh2dob.getText().toString());
-            family.setAge(binding.nh2agey.getText().toString()); //+ "/" + binding.nh2agem.getText().toString() + "/" + binding.nh2aged.getText().toString());
+            family.setAge(binding.nh2agey.getText().toString());
             if (Age < 6) {
                 family.setMotherId(mothersMap.get(binding.nh212.getSelectedItem().toString() + "_" + mothersSerials.get(mothersList.indexOf(binding.nh212.getSelectedItem().toString()) - 1)));
             }
@@ -939,20 +861,12 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
             if ((Age >= 15 && Age < 50) && family.getna204().equals("2")) {
                 if (binding.nh2mse.isChecked()) {
                     MainApp.membersCount.setWra(MainApp.membersCount.getWra() + 1);
-                    /*if (binding.nh210a.isChecked()) {
-                        family.setAv("1");
-                    }*/
                 } else {
                     MainApp.membersCount.setMwra(MainApp.membersCount.getMwra() + 1);
-                    /*if (binding.nh210a.isChecked()) {
-                        family.setAv("1");
-                    }*/
-
                 }
                 if (binding.nh210a.isChecked()) {
                     MainApp.mwra.add(family);
                 }
-                //MainApp.adolescents.add(family);
             }
             //Adolescent
             if ((Age >= 10 && Age < 20) && binding.nh2mse.isChecked()) {
@@ -968,9 +882,6 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
 
                 // Add data in list
                 MainApp.adolescents.add(family);
-                /*if (binding.nh210a.isChecked()) {
-                    family.setAv("1");
-                }*/
             }
             //Children < 5
             else if (Age < 6) {
@@ -983,9 +894,6 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                     memType.put(1, Integer.valueOf(mem.get(3).get(1).toString()));
                 }
                 MainApp.membersCount.setMembers(3, memType);
-                /*if (binding.nh210a.isChecked()) {
-                    family.setAv("1");
-                }*/
 
                 // Add data in list
                 if (Age < 2) {
@@ -997,11 +905,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                     MainApp.childUnder5.add(family);
                     MainApp.childUnder5_Del.add(family);
 
-                    //MainApp.adolescents.add(family);
                 }
-                /*if (Age < 2) {
-                    MainApp.childUnder2Check.add(family);
-                }*/
 
                 if (Age < 6 && family.getMotherId().equals("00")) {
                     MainApp.childNA.add(family);
@@ -1033,7 +937,6 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
 
         }
 
-        //Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }
 
     private boolean UpdateDB() {
@@ -1047,7 +950,6 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
             MainApp.fmc.set_ID(String.valueOf(updcount));
 
             if (updcount != 0) {
-                //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
 
                 MainApp.fmc.set_UID(
                         (MainApp.fmc.getDeviceId() + MainApp.fmc.get_ID()));
@@ -1061,7 +963,6 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
             int updcount = db.updateFamilyMember(family);
 
             if (updcount != 0) {
-                //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
                 return true;
             } else {
                 Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
@@ -1071,8 +972,6 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
     }
 
     private boolean formValidation() {
-
-        //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
         if (flag) {
 
@@ -1174,25 +1073,28 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
                 }
             }
 
-            if (!validatorClass.EmptyRadioButton(this, binding.nh2edu, binding.nh2edua, getString(R.string.nh2edu))) {
-                return false;
+            if (false) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nh2edu, binding.nh2edua, getString(R.string.nh2edu))) {
+                    return false;
+                }
+
+                if (!validatorClass.EmptyRadioButton(this, binding.nh2occ, binding.nh2occa, getString(R.string.nh2occ))) {
+                    return false;
+                }
+
+                if (!validatorClass.EmptyRadioButton(this, binding.nh2occ, binding.nh2occ96, binding.nh2occ96x, getString(R.string.nh2occ))) {
+                    return false;
+                }
+                if (!validatorClass.EmptyRadioButton(this, binding.nh210, binding.nh210a, getString(R.string.nh210))) {
+                    return false;
+                }
+                if (!validatorClass.EmptySpinner(this, binding.nh211, getString(R.string.nh211))) {
+                    return false;
+                }
+                return validatorClass.EmptySpinner(this, binding.nh212, getString(R.string.nh212));
             }
 
-            if (!validatorClass.EmptyRadioButton(this, binding.nh2occ, binding.nh2occa, getString(R.string.nh2occ))) {
-                return false;
-            }
-
-            if (!validatorClass.EmptyRadioButton(this, binding.nh2occ, binding.nh2occ96, binding.nh2occ96x, getString(R.string.nh2occ))) {
-                return false;
-            }
-            if (!validatorClass.EmptyRadioButton(this, binding.nh210, binding.nh210a, getString(R.string.nh210))) {
-                return false;
-            }
-            if (!validatorClass.EmptySpinner(this, binding.nh211, getString(R.string.nh211))) {
-                return false;
-            }
-
-            return validatorClass.EmptySpinner(this, binding.nh212, getString(R.string.nh212));
+            return true;
 
         }
 
@@ -1224,7 +1126,6 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
-        //formValidation();
     }
 }
 

@@ -49,8 +49,6 @@ public class SectionA2ListActivity extends AppCompatActivity {
     FamilyMembersAdapter mAdapter;
     JSONModelClass json;
     JSONACountModelClass countJSON;
-    Boolean flagMember = false;
-    //static Boolean flag = false;
 
     Boolean head;
 
@@ -68,12 +66,10 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
 
         if (SectionA1Activity.editFormFlag) {
-//        binding.btn_AddMore.setVisibility(View.GONE);
             binding.btnAddMore.setVisibility(View.GONE);
             binding.btnContinue.setVisibility(View.VISIBLE);
 
         } else {
-//        binding.btn_AddMore.setVisibility(View.VISIBLE);
             binding.btnAddMore.setVisibility(View.VISIBLE);
         }
     }
@@ -378,7 +374,6 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
     public void BtnContinue() {
 
-        //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
             try {
                 SaveDraft();
@@ -386,8 +381,6 @@ public class SectionA2ListActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             if (UpdateDB()) {
-                //Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
-
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                         SectionA2ListActivity.this);
@@ -511,7 +504,6 @@ public class SectionA2ListActivity extends AppCompatActivity {
         if (updcount == 1) {
 
             if (!SectionA1Activity.editFormFlag && SectionA1Activity.reBackFlag && MainApp.mwra.size() > 0) {
-//                int counter = KishGrid.KishGridProcess(Integer.valueOf(MainApp.fc.getHhNo().split("-")[1]), MainApp.mwra.size());
                 int counter = KishGrid.KishGridProcess(Integer.valueOf(MainApp.selectedHead.getSno()), MainApp.mwra.size());
                 updcount = db.updateFamilyMemberKishFlag(MainApp.mwra.get(counter - 1).get_UUID(), MainApp.mwra.get(counter - 1).get_UID());
 

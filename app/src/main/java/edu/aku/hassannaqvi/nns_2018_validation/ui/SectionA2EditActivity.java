@@ -239,14 +239,8 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
         if ((Age >= 15 && Age < 50) && MainApp.fmc.getna204().equals("2")) {
             if (jsonB2.getnh207().equals("5")) {
                 MainApp.membersCount.setWra(MainApp.membersCount.getWra() - 1);
-                /*if (jsonB2.getnh210().equals("1")) {
-                    MainApp.fmc.setAv("");
-                }*/
             } else {
                 MainApp.membersCount.setMwra(MainApp.membersCount.getMwra() - 1);
-                /*if (jsonB2.getnh210().equals("1")) {
-                    MainApp.fmc.setAv("");
-                }*/
 
             }
 //            MainApp.mwra.add(MainApp.fmc);
@@ -273,18 +267,12 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
             MainApp.membersCount.setMembers(2, memType);
 
             // Add data in list
-
-//            MainApp.adolescents.add(MainApp.fmc);
             for (byte i = 0; i < MainApp.adolescents.size(); i++) {
                 if (MainApp.adolescents.get(i).getSerialNo().equals(MainApp.fmc.getSerialNo())) {
                     MainApp.adolescents.remove(i);
                     break;
                 }
             }
-
-            /*if (jsonB2.getnh210().equals("1")) {
-                MainApp.fmc.setAv("");
-            }*/
         }
 
         //Children < 5
@@ -298,13 +286,9 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                 memType.put(1, Integer.valueOf(mem.get(3).get(1).toString()));
             }
             MainApp.membersCount.setMembers(3, memType);
-            /*if (jsonB2.getnh210().equals("1")) {
-                MainApp.fmc.setAv("");
-            }*/
 
             // Add data in list
             if (Age < 2) {
-//                MainApp.childUnder2.add(MainApp.fmc);
                 for (byte i = 0; i < MainApp.childUnder2.size(); i++) {
                     if (MainApp.childUnder2.get(i).getSerialNo().equals(MainApp.fmc.getSerialNo())) {
                         MainApp.childUnder2.remove(i);
@@ -312,7 +296,6 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                     }
                 }
 
-//                MainApp.childUnder5.add(MainApp.fmc);
                 for (byte i = 0; i < MainApp.childUnder5.size(); i++) {
                     if (MainApp.childUnder5.get(i).getSerialNo().equals(MainApp.fmc.getSerialNo())) {
                         MainApp.childUnder5.remove(i);
@@ -337,8 +320,6 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
 
             } else {
 
-//                if (jsonB2.getnh210().equals("1")) {
-//                MainApp.childUnder5.add(MainApp.fmc);
                 for (byte i = 0; i < MainApp.childUnder5.size(); i++) {
                     if (MainApp.childUnder5.get(i).getSerialNo().equals(MainApp.fmc.getSerialNo())) {
                         MainApp.childUnder5.remove(i);
@@ -356,20 +337,7 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
 
             }
 
-/*            if (Age < 2) {
-
-//                MainApp.childUnder2Check.add(MainApp.fmc);
-                for (byte i = 0; i < MainApp.childUnder2Check.size(); i++) {
-                    if (MainApp.childUnder2Check.get(i).getSerialNo().equals(MainApp.fmc.getSerialNo())) {
-                        MainApp.childUnder2Check.remove(i);
-                        break;
-                    }
-                }
-            }*/
-
-//            if (Age < 6 && MainApp.fmc.getMotherId().equals("00") && jsonB2.getnh210().equals("1")) {
             if (Age < 6 && MainApp.fmc.getMotherId().equals("00")) {
-//                MainApp.childNA.add(MainApp.fmc);
                 for (byte i = 0; i < MainApp.childNA.size(); i++) {
                     if (MainApp.childNA.get(i).getSerialNo().equals(MainApp.fmc.getSerialNo())) {
                         MainApp.childNA.remove(i);
@@ -382,7 +350,6 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
         if (Age >= 15) {
             // Add data in list
             if (!jsonB2.getnh207().equals("5")) {
-//                MainApp.members_f_m.add(MainApp.fmc);
                 for (byte i = 0; i < MainApp.members_f_m.size(); i++) {
                     if (MainApp.members_f_m.get(i).getSerialNo().equals(MainApp.fmc.getSerialNo())) {
                         MainApp.members_f_m.remove(i);
@@ -391,7 +358,6 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                 }
             }
 
-//            MainApp.respList.add(MainApp.fmc);
             if (jsonB2.getnh210().equals("1")) {
                 for (byte i = 0; i < MainApp.respList.size(); i++) {
                     if (MainApp.respList.get(i).getSerialNo().equals(MainApp.fmc.getSerialNo())) {
@@ -429,16 +395,6 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
         } else {
             binding.fldGrpA20101.setVisibility(View.VISIBLE);
         }
-
-        /*if (MainApp.IsHead) {
-            binding.na203a.setEnabled(false);
-        } else {
-            binding.na203a.setEnabled(true);
-        }*/
-/*
-        if (MainApp.IsResp) {
-            binding.fldGrpA20101.setVisibility(View.GONE);
-        }*/
 
     }
 
@@ -540,11 +496,6 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                         binding.nh2occg.setEnabled(true);
                         binding.nh2occh.setEnabled(true);
                         binding.nh2occi.setEnabled(true);
-                        /*if(MainApp.othergender != 1) {
-                            binding.nh2occi.setEnabled(true);
-                        }else{
-                            binding.nh2occi.setEnabled(false);
-                        }*/
                         binding.nh2occ96.setEnabled(true);
                         binding.nh2occ96x.setEnabled(true);
 
@@ -592,11 +543,6 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                         binding.nh2occg.setEnabled(true);
                         binding.nh2occh.setEnabled(true);
                         binding.nh2occi.setEnabled(true);
-                        /*if(MainApp.othergender != 1) {
-                            binding.nh2occi.setEnabled(true);
-                        }else{
-                            binding.nh2occi.setEnabled(false);
-                        }*/
                         binding.nh2occ96.setEnabled(true);
                         binding.nh2occ96x.setEnabled(true);
 
@@ -640,11 +586,6 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                         binding.nh2occg.setEnabled(true);
                         binding.nh2occh.setEnabled(true);
                         binding.nh2occi.setEnabled(true);
-                        /*if(MainApp.othergender != 1) {
-                            binding.nh2occi.setEnabled(true);
-                        }else{
-                            binding.nh2occi.setEnabled(false);
-                        }*/
                         binding.nh2occ96.setEnabled(true);
                         binding.nh2occ96x.setEnabled(true);
 
@@ -687,11 +628,6 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                         binding.nh2occg.setEnabled(true);
                         binding.nh2occh.setEnabled(true);
                         binding.nh2occi.setEnabled(true);
-                        /*if(MainApp.othergender != 1) {
-                            binding.nh2occi.setEnabled(true);
-                        }else{
-                            binding.nh2occi.setEnabled(false);
-                        }*/
                         binding.nh2occ96.setEnabled(true);
                         binding.nh2occ96x.setEnabled(true);
 
@@ -733,11 +669,6 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                         binding.nh2occg.setEnabled(true);
                         binding.nh2occh.setEnabled(true);
                         binding.nh2occi.setEnabled(true);
-                        /*if(MainApp.othergender != 1) {
-                            binding.nh2occi.setEnabled(true);
-                        }else{
-                            binding.nh2occi.setEnabled(false);
-                        }*/
                         binding.nh2occ96.setEnabled(true);
                         binding.nh2occ96x.setEnabled(true);
 
@@ -777,11 +708,6 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                         binding.nh2occg.setEnabled(true);
                         binding.nh2occh.setEnabled(true);
                         binding.nh2occi.setEnabled(true);
-                        /*if(MainApp.othergender != 1) {
-                            binding.nh2occi.setEnabled(true);
-                        }else{
-                            binding.nh2occi.setEnabled(false);
-                        }*/
                         binding.nh2occ96.setEnabled(true);
                         binding.nh2occ96x.setEnabled(true);
 
@@ -820,11 +746,6 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                         binding.nh2occg.setEnabled(true);
                         binding.nh2occh.setEnabled(true);
                         binding.nh2occi.setEnabled(true);
-                        /*if(MainApp.othergender != 1) {
-                            binding.nh2occi.setEnabled(true);
-                        }else{
-                            binding.nh2occi.setEnabled(false);
-                        }*/
                         binding.nh2occ96.setEnabled(true);
                         binding.nh2occ96x.setEnabled(true);
 
@@ -907,7 +828,6 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
 //        Validation Boolean
         MainApp.validateFlag = true;
 
-        //Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
             try {
                 SaveDraft();
@@ -1034,20 +954,13 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
         if ((Age >= 15 && Age < 50) && binding.na204b.isChecked()) {
             if (binding.nh2mse.isChecked()) {
                 MainApp.membersCount.setWra(MainApp.membersCount.getWra() + 1);
-                /*if (binding.nh210a.isChecked()) {
-                    MainApp.fmc.setAv("1");
-                }*/
             } else {
                 MainApp.membersCount.setMwra(MainApp.membersCount.getMwra() + 1);
-                /*if (binding.nh210a.isChecked()) {
-                    MainApp.fmc.setAv("1");
-                }*/
 
             }
             if (binding.nh210a.isChecked()) {
                 MainApp.mwra.add(MainApp.fmc);
             }
-            //MainApp.adolescents.add(MainApp.fmc);
         }
 
         //Adolescent
@@ -1064,9 +977,6 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
 
             // Add data in list
             MainApp.adolescents.add(MainApp.fmc);
-            /*if (binding.nh210a.isChecked()) {
-                MainApp.fmc.setAv("1");
-            }*/
         }
 
         //Children < 5
@@ -1080,9 +990,6 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                 memType.put(1, Integer.valueOf(mem.get(3).get(1).toString()));
             }
             MainApp.membersCount.setMembers(3, memType);
-            /*if (binding.nh210a.isChecked()) {
-                MainApp.fmc.setAv("1");
-            }*/
 
             // Add data in list
             if (Age < 2) {
@@ -1094,12 +1001,7 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
                 MainApp.childUnder5.add(MainApp.fmc);
                 MainApp.childUnder5_Del.add(MainApp.fmc);
 
-                //MainApp.adolescents.add(MainApp.fmc);
             }
-            /*if (Age < 2) {
-                MainApp.childUnder2Check.add(MainApp.fmc);
-
-            }*/
 
             if (Age < 6 && MainApp.fmc.getMotherId().equals("00")) {
                 MainApp.childNA.add(MainApp.fmc);
@@ -1175,9 +1077,6 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
         }
 
 
-
-
-
         if (!validatorClass.EmptyTextBox(this, binding.nh2dobm, getString(R.string.nh2dob))) {
             return false;
         }
@@ -1242,30 +1141,33 @@ public class SectionA2EditActivity extends AppCompatActivity implements TextWatc
             return false;
         }
 
-        if (!validatorClass.EmptyRadioButton(this, binding.nh2edu, binding.nh2edua, getString(R.string.nh2edu))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, binding.nh2occ, binding.nh2occa, getString(R.string.nh2occ))) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyRadioButton(this, binding.nh2occ, binding.nh2occ96, binding.nh2occ96x, getString(R.string.nh2occ))) {
-            return false;
-        }
-
-        if (!MainApp.IsResp) {
-            if (!validatorClass.EmptyRadioButton(this, binding.nh210, binding.nh210a, getString(R.string.nh210))) {
+        if (false) {
+            if (!validatorClass.EmptyRadioButton(this, binding.nh2edu, binding.nh2edua, getString(R.string.nh2edu))) {
                 return false;
+            }
+
+            if (!validatorClass.EmptyRadioButton(this, binding.nh2occ, binding.nh2occa, getString(R.string.nh2occ))) {
+                return false;
+            }
+
+            if (!validatorClass.EmptyRadioButton(this, binding.nh2occ, binding.nh2occ96, binding.nh2occ96x, getString(R.string.nh2occ))) {
+                return false;
+            }
+
+            if (!MainApp.IsResp) {
+                if (!validatorClass.EmptyRadioButton(this, binding.nh210, binding.nh210a, getString(R.string.nh210))) {
+                    return false;
+                }
+            }
+
+            if (Age < 5) {
+                if (!validatorClass.EmptySpinner(this, binding.nh211, getString(R.string.nh211))) {
+                    return false;
+                }
+                return validatorClass.EmptySpinner(this, binding.nh212, getString(R.string.nh212));
             }
         }
 
-        if (Age < 5) {
-            if (!validatorClass.EmptySpinner(this, binding.nh211, getString(R.string.nh211))) {
-                return false;
-            }
-            return validatorClass.EmptySpinner(this, binding.nh212, getString(R.string.nh212));
-        }
         return true;
     }
 
