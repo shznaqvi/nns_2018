@@ -776,9 +776,9 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
         } else {
 
             family.setAge(binding.nh2agey.getText().toString());
-            if (Age < 6) {
+            /*if (Age < 6) {
                 family.setMotherId(mothersMap.get(binding.nh212.getSelectedItem().toString() + "_" + mothersSerials.get(mothersList.indexOf(binding.nh212.getSelectedItem().toString()) - 1)));
-            }
+            }*/
 
 
             JSONObject sA2 = new JSONObject();
@@ -823,8 +823,8 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
 
             sA2.put("nh210", binding.nh210a.isChecked() ? "1" : binding.nh210b.isChecked() ? "2" : "0");
 
-            sA2.put("nh211", fathersMap.get(binding.nh211.getSelectedItem().toString() + "_" + fathersSerials.get(fathersList.indexOf(binding.nh211.getSelectedItem().toString()) - 1)));
-            sA2.put("nh212", mothersMap.get(binding.nh212.getSelectedItem().toString() + "_" + mothersSerials.get(mothersList.indexOf(binding.nh212.getSelectedItem().toString()) - 1)));
+            /*sA2.put("nh211", fathersMap.get(binding.nh211.getSelectedItem().toString() + "_" + fathersSerials.get(fathersList.indexOf(binding.nh211.getSelectedItem().toString()) - 1)));
+            sA2.put("nh212", mothersMap.get(binding.nh212.getSelectedItem().toString() + "_" + mothersSerials.get(mothersList.indexOf(binding.nh212.getSelectedItem().toString()) - 1)));*/
 
 
             family.setsA2(String.valueOf(sA2));
