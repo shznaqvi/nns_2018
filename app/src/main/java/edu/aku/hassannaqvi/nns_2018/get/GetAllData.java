@@ -17,6 +17,7 @@ import java.net.URL;
 
 import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.EnumBlockContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.UsersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
@@ -73,6 +74,9 @@ public class GetAllData extends AsyncTask<String, String, String> {
                 case "VersionApp":
                     url = new URL(MainApp._UPDATE_URL + VersionAppContract.VersionAppTable._URI);
                     break;
+                case "FamilyMembers":
+                    url = new URL(MainApp._UPDATE_URL + FamilyMembersContract.familyMembers._URI);
+                    break;
             }
 
             urlConnection = (HttpURLConnection) url.openConnection();
@@ -125,6 +129,9 @@ public class GetAllData extends AsyncTask<String, String, String> {
                             break;
                         case "VersionApp":
                             db.syncVersionApp(jsonArray);
+                            break;
+                        case "FamilyMembers":
+                            db.syncFamilyMembers(jsonArray);
                             break;
                     }
 

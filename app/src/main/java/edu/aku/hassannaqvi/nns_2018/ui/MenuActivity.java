@@ -343,6 +343,8 @@ public class MenuActivity extends AppCompatActivity {
                     new GetAllData(mContext, "BLRandom").execute();
                     Toast.makeText(MenuActivity.this, "Sync App Version", Toast.LENGTH_LONG).show();
                     new GetAllData(mContext, "VersionApp").execute();
+                    /*Toast.makeText(Menu2Activity.this, "Sync Family Members", Toast.LENGTH_LONG).show();
+                    new GetAllData(mContext, "FamilyMembers").execute();*/
                 }
             });
 
