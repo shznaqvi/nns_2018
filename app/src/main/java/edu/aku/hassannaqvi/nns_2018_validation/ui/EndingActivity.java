@@ -97,6 +97,7 @@ public class EndingActivity extends AddMember_MenuActivity {
                 SectionB1Activity.WRAcounter = 1;
                 SectionB1Activity.WRAsize = 0;
 
+                finish();
                 Intent endSec = new Intent(this, MainActivity.class);
                 startActivity(endSec);
             } else {
