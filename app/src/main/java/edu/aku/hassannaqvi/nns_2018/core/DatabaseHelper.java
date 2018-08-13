@@ -600,6 +600,41 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public void syncFamilyMembers(JSONArray FamilyMembers) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(VersionAppTable.TABLE_NAME, null, null);
+        try {
+            JSONArray jsonArray = FamilyMembers;
+            JSONObject jsonObjectCC = jsonArray.getJSONObject(0);
+
+            FamilyMembersContract fm = new FamilyMembersContract();
+            fm.Sync(jsonObjectCC);
+
+            ContentValues values = new ContentValues();
+
+            values.put(familyMembers.COLUMN_UID, fm.get_UID());
+            values.put(familyMembers.COLUMN_UUID, fm.get_UUID());
+            values.put(familyMembers.COLUMN_FORMDATE, fm.getFormDate());
+            values.put(familyMembers.COLUMN_DEVICEID, fm.getDeviceId());
+            values.put(familyMembers.COLUMN_DEVICETAGID, fm.getDevicetagID());
+            values.put(familyMembers.COLUMN_USER, fm.getUser());
+            values.put(familyMembers.COLUMN_APP_VERSION, fm.getApp_ver());
+            values.put(familyMembers.COLUMN_SA2, fm.getsA2());
+            values.put(familyMembers.COLUMN_ENM_NO, fm.getEnmNo());
+            values.put(familyMembers.COLUMN_HH_NO, fm.getHhNo());
+            values.put(familyMembers.COLUMN_AV, fm.getAv());
+            values.put(familyMembers.COLUMN_FLAG, fm.getDelflag());
+            values.put(familyMembers.COLUMN_KISH_SELECTED, fm.getKishSelected());
+            values.put(familyMembers.COLUMN_SYNCED, fm.getSynced());
+            values.put(familyMembers.COLUMN_SYNCED_DATE, fm.getSyncedDate());
+
+            db.insert(familyMembers.TABLE_NAME, null, values);
+        } catch (Exception e) {
+        } finally {
+            db.close();
+        }
+    }
+
  /*   public void syncBLRandom(JSONArray BLlist) {
         SQLiteDatabase db = this.getWritableDatabase();
 //        db.delete(singleRandomHH.TABLE_NAME, null, null);
