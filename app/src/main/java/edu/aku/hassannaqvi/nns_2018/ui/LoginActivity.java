@@ -97,6 +97,8 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
     TextView txtinstalldate;
     @BindView(R.id.email_sign_in_button)
     Button mEmailSignInButton;
+    @BindView(R.id.SyncActivity)
+    Button SyncActivity;
 
     @BindView(R.id.spUCs)
     Spinner spUCs;
@@ -194,6 +196,12 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
                 }*/
 
                 attemptLogin();
+            }
+        });
+        SyncActivity.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this,SyncActivity.class));
             }
         });
 

@@ -22,24 +22,29 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collection;
+import java.util.List;
 
+import edu.aku.hassannaqvi.nns_2018.Adapters.syncListAdapter;
+import edu.aku.hassannaqvi.nns_2018.Adapters.upload_list_adapter;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
+import edu.aku.hassannaqvi.nns_2018.other.SyncModel;
 
 /**
  * Created by ali.azaz on 3/14/2018.
  */
 
-public class SyncAllData extends AsyncTask<Void, Void, String> {
+public class SyncAllData extends AsyncTask<Void, String, String> {
 
     private String TAG = "";
     private Context mContext;
     private ProgressDialog pd;
-
-
     private String syncClass, url, updateSyncClass;
     private Class contractClass;
     private Collection dbData;
     private TextView syncStatus;
+    upload_list_adapter adapter;
+    List<SyncModel> uploadlist;
+    int position;
 
 
     public SyncAllData(Context context, String syncClass, String updateSyncClass, Class contractClass, String url, Collection dbData, View syncStatus) {
@@ -49,8 +54,24 @@ public class SyncAllData extends AsyncTask<Void, Void, String> {
         this.contractClass = contractClass;
         this.url = url;
         this.dbData = dbData;
+        this.position = position;
         //this.syncStatus = (TextView) syncStatus;
         TAG = "Get" + syncClass;
+        uploadlist.get(position).settableName(syncClass);
+    }
+    public SyncAllData(Context context, String syncClass, String updateSyncClass, Class contractClass, String url, Collection dbData, View syncStatus, int position, upload_list_adapter adapter,  List<SyncModel> uploadlist) {
+        mContext = context;
+        this.syncClass = syncClass;
+        this.updateSyncClass = updateSyncClass;
+        this.contractClass = contractClass;
+        this.url = url;
+        this.dbData = dbData;
+        this.position = position;
+        this.adapter = adapter;
+        this.uploadlist= uploadlist;
+        //this.syncStatus = (TextView) syncStatus;
+        TAG = "Get" + syncClass;
+        uploadlist.get(position).settableName(syncClass);
     }
 
     @Override
@@ -59,7 +80,10 @@ public class SyncAllData extends AsyncTask<Void, Void, String> {
         pd = new ProgressDialog(mContext);
         pd.setTitle("Syncing " + syncClass);
         pd.setMessage("Getting connected to server...");
-        pd.show();
+//        pd.show();
+        uploadlist.get(position).setstatus("Getting connected to server...");
+        uploadlist.get(position).setstatusID(2);
+        adapter.updatesyncList(uploadlist);
         //syncStatus.setText(syncStatus.getText() + "\r\nSyncing " + syncClass);
     }
 
@@ -67,9 +91,17 @@ public class SyncAllData extends AsyncTask<Void, Void, String> {
     @Override
     protected String doInBackground(Void... params) {
         Log.d(TAG, "doInBackground: URL " + url);
+
         return downloadUrl(contractClass);
     }
 
+    @Override
+    protected void onProgressUpdate(String... values) {
+        super.onProgressUpdate(values);
+        uploadlist.get(position).setstatus("Syncing");
+        uploadlist.get(position).setstatusID(2);
+        adapter.updatesyncList(uploadlist);
+    }
     private String downloadUrl(Class<?> contractClass) {
         String line = "No Response";
 
@@ -87,6 +119,7 @@ public class SyncAllData extends AsyncTask<Void, Void, String> {
                 connection = (HttpURLConnection) url.openConnection();
                 connection.connect();
                 int HttpResult = connection.getResponseCode();
+                publishProgress(syncClass);
                 if (HttpResult == HttpURLConnection.HTTP_OK) {
                     JSONArray jsonSync = new JSONArray();
                     connection = (HttpURLConnection) url.openConnection();
@@ -206,7 +239,11 @@ public class SyncAllData extends AsyncTask<Void, Void, String> {
 
             pd.setMessage(syncClass + " synced: " + sSynced + "\r\n\r\n Duplicates: " + sDuplicate + "\r\n\r\n Errors: " + sSyncedError);
             pd.setTitle("Done uploading +" + syncClass + " data");
-            pd.show();
+//            pd.show();
+            uploadlist.get(position).setmessage(syncClass + " synced: " + sSynced + "\r\n\r\n Duplicates: " + sDuplicate + "\r\n\r\n Errors: " + sSyncedError);
+            uploadlist.get(position).setstatus("Successfull");
+            uploadlist.get(position).setstatusID(3);
+            adapter.updatesyncList(uploadlist);
             //syncStatus.setText(syncStatus.getText() + "\r\nDone uploading +" + syncClass + " data");
 
         } catch (JSONException e) {
@@ -215,7 +252,11 @@ public class SyncAllData extends AsyncTask<Void, Void, String> {
 
             pd.setMessage(result);
             pd.setTitle(syncClass + " Sync Failed");
-            pd.show();
+//            pd.show();
+            uploadlist.get(position).setmessage(result);
+            uploadlist.get(position).setstatus("Failed");
+            uploadlist.get(position).setstatusID(1);
+            adapter.updatesyncList(uploadlist);
             //syncStatus.setText(syncStatus.getText() + "\r\n" + syncClass + " Sync Failed");
         } catch (IllegalAccessException e) {
             e.printStackTrace();

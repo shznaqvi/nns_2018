@@ -3,6 +3,8 @@
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
+    <string name="btnSync">Sync</string>
+    <string name="btnUpload">Upload</string>
     <string name="action_sign_in">Login</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
@@ -1132,13 +1134,13 @@
 
     <string name="nc505a"> اپنی دیکھ بھال کرنے میں کوئی مشکل نہیں </string>
     <string name="nc505b"> اپنی دیکھ بھال کرنے میں کچھ مشکل ہے </string>
-  <string name="nc505c"> اپنی دیکھ بھال کرنے میں بہت مشکل ہے </string>
-  <string name="nc505d"> اپنی دیکھ بھال بلکل نہیں کر سکتا </string>
+    <string name="nc505c"> اپنی دیکھ بھال کرنے میں بہت مشکل ہے </string>
+    <string name="nc505d"> اپنی دیکھ بھال بلکل نہیں کر سکتا </string>
 
 
     <string name="nc506a"> کوئی مشکل نہیں </string>
-  <string name="nc506b"> بات چیت کرنے میں کوئی مشکل نہیں </string>
-  <string name="nc506c"> بات چیت کرنے میں بہت مشکل ہے</string>
+    <string name="nc506b"> بات چیت کرنے میں کوئی مشکل نہیں </string>
+    <string name="nc506c"> بات چیت کرنے میں بہت مشکل ہے</string>
     <string name="nc506d"> بلکل نہیں بات چیت کر سکتا </string>
 
 

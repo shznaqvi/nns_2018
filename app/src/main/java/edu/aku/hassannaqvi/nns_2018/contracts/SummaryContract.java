@@ -251,6 +251,7 @@ public class SummaryContract {
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
 
         public static final String COLUMN_PROJECTNAME = "projectname";
+//        public static final String COLUMN_ROW_ID = "row_id";
         public static final String COLUMN_ROW_ID = "row_id";
         public static final String COLUMN__UID = "_uid";
         public static final String COLUMN_CLUSTERNO = "clusterno";
