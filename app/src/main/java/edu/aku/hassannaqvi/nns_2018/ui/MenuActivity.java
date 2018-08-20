@@ -70,10 +70,13 @@ public class MenuActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_sync:
-                onSyncDataClick();
+//                onSyncDataClick();
+                startActivity(new Intent(getApplicationContext(),SyncActivity.class));
+
                 return true;
             case R.id.menu_upload:
-                syncServer();
+//                syncServer();
+                startActivity(new Intent(getApplicationContext(),SyncActivity.class));
                 return true;
 
             case R.id.menu_viewMember:

@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import edu.aku.hassannaqvi.nns_2018.R;
-import edu.aku.hassannaqvi.nns_2018.databinding.SyncListAdapterBinding;
 import edu.aku.hassannaqvi.nns_2018.databinding.UploadListAdapterBinding;
 import edu.aku.hassannaqvi.nns_2018.other.SyncModel;
 
@@ -42,7 +41,7 @@ public class upload_list_adapter extends RecyclerView.Adapter<upload_list_adapte
     @Override
     public UploadListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.sync_list_adapter, parent, false);
+                .inflate(R.layout.upload_list_adapter, parent, false);
         return new UploadListViewHolder(itemView);
     }
 
@@ -60,16 +59,17 @@ public class upload_list_adapter extends RecyclerView.Adapter<upload_list_adapte
         UploadListAdapterBinding binding;
         public UploadListViewHolder(View itemView) {
             super(itemView);
+            binding = DataBindingUtil.bind(itemView);
         }
         public void bindUser(SyncModel model) {
-            binding.statusColor.setBackgroundColor(checkStatus(model.getstatusID()));
-            binding.tvTableName.setText(model.gettableName());
-            binding.tvStatus.setText(model.getstatus());
-            binding.tvMsg.setText(model.getmessage());
+            binding.ustatusColor.setBackgroundColor(checkStatus(model.getstatusID()));
+            binding.utvTableName.setText(model.gettableName());
+            binding.utvStatus.setText(model.getstatus());
+            binding.utvMsg.setText(model.getmessage());
             if(model.getstatusID() == 1 || model.getstatusID() == 3){
-                binding.pb.setVisibility(View.GONE);
+                binding.upb.setVisibility(View.GONE);
             }else{
-                binding.pb.setVisibility(View.VISIBLE);
+                binding.upb.setVisibility(View.VISIBLE);
             }
         }
     }

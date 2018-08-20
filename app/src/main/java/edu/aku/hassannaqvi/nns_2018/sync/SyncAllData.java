@@ -33,7 +33,7 @@ import edu.aku.hassannaqvi.nns_2018.other.SyncModel;
  * Created by ali.azaz on 3/14/2018.
  */
 
-public class SyncAllData extends AsyncTask<Void, String, String> {
+public class SyncAllData extends AsyncTask<Void, Integer, String> {
 
     private String TAG = "";
     private Context mContext;
@@ -96,10 +96,10 @@ public class SyncAllData extends AsyncTask<Void, String, String> {
     }
 
     @Override
-    protected void onProgressUpdate(String... values) {
+    protected void onProgressUpdate(Integer... values) {
         super.onProgressUpdate(values);
-        uploadlist.get(position).setstatus("Syncing");
-        uploadlist.get(position).setstatusID(2);
+        uploadlist.get(values[0]).setstatus("Syncing");
+        uploadlist.get(values[0]).setstatusID(2);
         adapter.updatesyncList(uploadlist);
     }
     private String downloadUrl(Class<?> contractClass) {
@@ -114,12 +114,11 @@ public class SyncAllData extends AsyncTask<Void, String, String> {
             HttpURLConnection connection = null;
             try {
                 String request = url;
-
+                publishProgress(position);
                 URL url = new URL(request);
                 connection = (HttpURLConnection) url.openConnection();
                 connection.connect();
                 int HttpResult = connection.getResponseCode();
-                publishProgress(syncClass);
                 if (HttpResult == HttpURLConnection.HTTP_OK) {
                     JSONArray jsonSync = new JSONArray();
                     connection = (HttpURLConnection) url.openConnection();
@@ -169,7 +168,6 @@ public class SyncAllData extends AsyncTask<Void, String, String> {
                         sb.append(line + "\n");
                     }
                     br.close();
-
                     System.out.println("" + sb.toString());
                     return sb.toString();
                 } else {
@@ -177,7 +175,6 @@ public class SyncAllData extends AsyncTask<Void, String, String> {
                     return connection.getResponseMessage();
                 }
             } catch (MalformedURLException e) {
-
                 e.printStackTrace();
             } catch (IOException e) {
 
@@ -186,11 +183,15 @@ public class SyncAllData extends AsyncTask<Void, String, String> {
                 if (connection != null)
                     connection.disconnect();
             }
-        } else
-
-        {
+        } else {
+          /*  uploadlist.get(position).setstatus("Completed");
+            uploadlist.get(position).setstatusID(3);
+            adapter.updatesyncList(uploadlist);*/
             return "No new records to sync";
         }
+        /*uploadlist.get(position).setstatus("Completed");
+        uploadlist.get(position).setstatusID(3);
+        adapter.updatesyncList(uploadlist);*/
         return line;
     }
 
@@ -241,7 +242,7 @@ public class SyncAllData extends AsyncTask<Void, String, String> {
             pd.setTitle("Done uploading +" + syncClass + " data");
 //            pd.show();
             uploadlist.get(position).setmessage(syncClass + " synced: " + sSynced + "\r\n\r\n Duplicates: " + sDuplicate + "\r\n\r\n Errors: " + sSyncedError);
-            uploadlist.get(position).setstatus("Successfull");
+            uploadlist.get(position).setstatus("Completed");
             uploadlist.get(position).setstatusID(3);
             adapter.updatesyncList(uploadlist);
             //syncStatus.setText(syncStatus.getText() + "\r\nDone uploading +" + syncClass + " data");

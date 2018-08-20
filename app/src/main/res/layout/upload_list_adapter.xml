@@ -25,7 +25,7 @@ xmlns:tools="http://schemas.android.com/tools">
         android:orientation="horizontal">
 
         <FrameLayout
-            android:id="@+id/status_color"
+            android:id="@+id/ustatus_color"
             android:layout_width="20dp"
             android:elevation="@dimen/_4sdp"
             android:layout_height="match_parent"
@@ -44,34 +44,35 @@ xmlns:tools="http://schemas.android.com/tools">
                 android:layout_marginTop="@dimen/_7sdp"
                 android:orientation="horizontal">
                 <TextView
-                    android:id="@+id/tv_table_name"
+                    android:id="@+id/utv_table_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     tools:text="Table Name"/>
                 <TextView
-                    android:id="@+id/tv_status"
+                    android:id="@+id/utv_status"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     tools:text="Status"/>
                 <ProgressBar
-                    android:id="@+id/pb"
+                    android:id="@+id/upb"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@android:style/Widget.ProgressBar.Small" />
             </LinearLayout>
 
 
-            <FrameLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:orientation="horizontal"
                 android:layout_margin="@dimen/_5sdp"
                 android:background="@color/black"
                 >
-            </FrameLayout>
+            </LinearLayout>
             <TextView
-                android:id="@+id/tv_msg"
+                android:id="@+id/utv_msg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/_7sdp"

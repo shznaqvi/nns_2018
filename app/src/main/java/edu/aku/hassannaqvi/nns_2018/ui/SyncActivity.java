@@ -145,8 +145,8 @@ public class SyncActivity extends AppCompatActivity {
     }
     void setUploadAdapter() {
         uploadListAdapter = new upload_list_adapter(uploadlist);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        bi.rvUploadList.setLayoutManager(mLayoutManager);
+        RecyclerView.LayoutManager mLayoutManager2 = new LinearLayoutManager(getApplicationContext());
+        bi.rvUploadList.setLayoutManager(mLayoutManager2);
         bi.rvUploadList.setItemAnimator(new DefaultItemAnimator());
         bi.rvUploadList.setAdapter(uploadListAdapter);
         uploadListAdapter.notifyDataSetChanged();
