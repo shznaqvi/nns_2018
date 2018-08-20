@@ -14,11 +14,14 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.text.method.PasswordTransformationMethod;
 import android.view.KeyEvent;
@@ -46,10 +49,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.contracts.DeviceContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.EnumBlockContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.UCsContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
+import edu.aku.hassannaqvi.nns_2018.sync.SyncDevice;
 
 import static java.lang.Thread.sleep;
 
@@ -140,6 +145,7 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+//        MainApp.deviceContract = new DeviceContract();
 
         MainApp.cluster_no = "";
 
@@ -164,6 +170,9 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
         // Set up the login form.
 //        mEmailView = findViewById(R.id.email);
         populateAutoComplete();
+        sharedPref = getSharedPreferences("tagName", MODE_PRIVATE);
+        editor = sharedPref.edit();
+        sendIMEIandAppVer();
 
         /*Target viewTarget = new ViewTarget(R.id.syncData, this);
 
@@ -184,6 +193,7 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
             }
         });
 
+        db = new DatabaseHelper(this);
 
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -196,6 +206,7 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
                 }*/
 
                 attemptLogin();
+
             }
         });
         SyncActivity.setOnClickListener(new OnClickListener() {
@@ -205,7 +216,6 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
             }
         });
 
-        db = new DatabaseHelper(this);
 
 //        DB backup
 
@@ -218,6 +228,30 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
         } else {
             testing.setVisibility(View.VISIBLE);
         }
+    }
+
+    private void downloadAndSaveTAGID() {
+        // Require permissions INTERNET & ACCESS_NETWORK_STATE
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+
+            new SyncDevice(this).execute();
+    } else {
+        Toast.makeText(this, "No network connection available.", Toast.LENGTH_SHORT).show();
+    }
+    }
+
+    private void sendIMEIandAppVer() {
+        MainApp.IMEI = ((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
+//        MainApp.deviceContract.setappversion(MainApp.versionName+"."+MainApp.versionCode);
+      /*  long insertID = db.addDevice(MainApp.deviceContract);
+        if(insertID > 0){*/
+            downloadAndSaveTAGID();
+       /* }else{
+            Toast.makeText(this, "Failed to get TAG ID", Toast.LENGTH_SHORT).show();
+        }*/
     }
 
 

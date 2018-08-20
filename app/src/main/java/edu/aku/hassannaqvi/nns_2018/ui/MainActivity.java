@@ -212,7 +212,7 @@ public class MainActivity extends MenuActivity {
         });
 
         if (sharedPref.getString("tagName", null) == "" || sharedPref.getString("tagName", null) == null) {
-            builder.show();
+//            builder.show();
         }
         /*TagID End*/
 

@@ -48,6 +48,7 @@ import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySyncBinding;
 import edu.aku.hassannaqvi.nns_2018.get.GetAllData;
 import edu.aku.hassannaqvi.nns_2018.other.SyncModel;
 import edu.aku.hassannaqvi.nns_2018.sync.SyncAllData;
+import edu.aku.hassannaqvi.nns_2018.sync.SyncDevice;
 
 public class SyncActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
@@ -310,6 +311,7 @@ public class SyncActivity extends AppCompatActivity {
 
             DatabaseHelper db = new DatabaseHelper(this);
             //syncStatus.setText(null);
+            new SyncDevice(this).execute();
             Toast.makeText(getApplicationContext(), "Syncing Forms", Toast.LENGTH_SHORT).show();
             if (uploadlistActivityCreated){
                 uploadmodel = new SyncModel();

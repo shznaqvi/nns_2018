@@ -24,6 +24,7 @@ import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract.singleRandomHH;
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract.ChildTable;
 import edu.aku.hassannaqvi.nns_2018.contracts.DeceasedContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.DeviceContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract.eligibleMembers;
 import edu.aku.hassannaqvi.nns_2018.contracts.EnumBlockContract;
@@ -446,6 +447,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             MicroContract.MicroTable.COLUMN_SYNCED_DATE + " TEXT" +
 
             ");";
+    final String SQL_CREATE_DEVICE = "CREATE TABLE " + DeviceContract.DeviceTable.TABLE_NAME + " (" +
+            DeviceContract.DeviceTable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            DeviceContract.DeviceTable.COLUMN_IMEI + " TEXT," +
+            DeviceContract.DeviceTable.COLUMN_APPVERSION + " TEXT," +
+            DeviceContract.DeviceTable.COLUMN_TAGID + " TEXT" + ");";
 
 
     private final String TAG = "DatabaseHelper";
@@ -477,6 +483,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_WATER_SPECIMEN_MEMBERS);
         db.execSQL(SQL_CREATE_MICRO);
         db.execSQL(SQL_CREATE_SUMMARY);
+//        db.execSQL(SQL_CREATE_DEVICE);
     }
 
     @Override
@@ -523,6 +530,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.execSQL(SQL_CREATE_SUMMARY);
             case 12:
                 db.execSQL(SQL_ALTER_VERSIONAPP);
+           /* case 13: not required
+                db.execSQL(SQL_CREATE_DEVICE);*/
+
         }
 
     }
@@ -1704,6 +1714,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values);
         return newRowId;
     }
+    public Long addDevice(DeviceContract dc) {
+
+        // Gets the data repository in write mode
+        SQLiteDatabase db = this.getWritableDatabase();
+
+// Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(DeviceContract.DeviceTable.COLUMN_IMEI, dc.getimei());
+        values.put(DeviceContract.DeviceTable.COLUMN_APPVERSION, dc.getappversion());
+        values.put(DeviceContract.DeviceTable.COLUMN_TAGID, dc.gettagID());
+
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId;
+        newRowId = db.insert(
+                DeviceContract.DeviceTable.TABLE_NAME,
+                DeviceContract.DeviceTable.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
 
     public Long addSpecimenMembers(SpecimenContract fmc) {
 
@@ -2305,6 +2335,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         int count = db.update(
                 MWRATable.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+    public void updateTagID(String tagID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(DeviceContract.DeviceTable.COLUMN_TAGID, tagID);
+
+// Which row to update, based on the title
+        String where = DeviceContract.DeviceTable.COLUMN__ID + " = 1";
+        String[] whereArgs = null;
+
+        int count = db.update(
+                DeviceContract.DeviceTable.TABLE_NAME,
                 values,
                 where,
                 whereArgs);
@@ -3712,6 +3759,47 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (c.moveToNext()) {
                 MWRAContract fc = new MWRAContract();
                 allFC.add(fc.Hydrate(c, 0));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }    public Collection<DeviceContract> getUnsyncedDeviceInfo() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                DeviceContract.DeviceTable.COLUMN__ID,
+                DeviceContract.DeviceTable.COLUMN_IMEI,
+                DeviceContract.DeviceTable.COLUMN_APPVERSION,
+                DeviceContract.DeviceTable.COLUMN_TAGID
+        };
+        String whereClause = null;
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                DeviceContract.DeviceTable.COLUMN__ID + " ASC";
+
+        Collection<DeviceContract> allFC = new ArrayList<DeviceContract>();
+        try {
+            c = db.query(
+                    DeviceContract.DeviceTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                DeviceContract fc = new DeviceContract();
+                allFC.add(fc.Hydrate(c));
             }
         } finally {
             if (c != null) {
@@ -5292,6 +5380,58 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values,
                 selection,
                 selectionArgs);
+        return count;
+    }
+    public String getDeviceTAG() {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        String tagID = null;
+        try {
+            String query = "SELECT "+ DeviceContract.DeviceTable.COLUMN_TAGID+" FROM " + DeviceContract.DeviceTable.TABLE_NAME + " WHERE " + DeviceContract.DeviceTable.COLUMN__ID + " = 1";
+            cursor = db.rawQuery(
+                    query,
+                    new String[]{null}
+            );
+
+            if (null != cursor)
+                if (cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    tagID = cursor.getString(4);
+                }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return tagID;
+    }
+    public int isDeviceInfoExists() {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        int count = 0;
+        try {
+            String query = "SELECT * FROM " + DeviceContract.DeviceTable.TABLE_NAME+" WHERE "+ DeviceContract.DeviceTable.COLUMN_IMEI +" != '' OR null ";
+            cursor = db.rawQuery(
+                    query,
+                    new String[]{null}
+            );
+            if (null != cursor)
+                if (cursor.getCount() > 0) {
+                    count = cursor.getCount();
+                }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
         return count;
     }
 

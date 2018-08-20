@@ -29,6 +29,7 @@ import java.util.Map;
 import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.DeceasedContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.DeviceContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
@@ -86,6 +87,7 @@ public class MainApp extends Application {
 
     public static Boolean admin = false;
     public static FormsContract fc;
+    public static String IMEI;
     public static MWRAContract mc;
     public static NutritionContract nc;
     public static OutcomeContract oc;
@@ -155,6 +157,7 @@ public class MainApp extends Application {
     public static String lineNo = "";
     public static int status = 0;
     public static int mwraPosition = 0;
+    public static String DeviceURL = "devices.php";
 
     public static int nuCount = 1;
 
