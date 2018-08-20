@@ -3199,6 +3199,47 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return jsonArray;
     }
 
+    public JSONArray getCompleteForms() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                FormsTable.COLUMN_UID,
+                FormsTable.COLUMN_FORMDATE,
+                FormsTable.COLUMN_USER,
+                FormsTable.COLUMN_ISTATUS,
+                FormsTable.COLUMN_CLUSTER_NO,
+                FormsTable.COLUMN_HH_NO,
+                FormsTable.COLUMN_DEVICETAGID
+        };
+
+        /*String selection = ChildTable.COLUMN__ID + " = ?";
+        String[] selectionArgs = {String.valueOf(MainApp.cc.get_ID())};*/
+
+        String whereClause = FormsTable.COLUMN_ISTATUS + " = 1 ";
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                FormsTable._ID + " ASC";
+
+        Collection<FormsContract> allFC = new ArrayList<>();
+        JSONArray jsonArray = new JSONArray();
+
+        c = db.query(
+                FormsTable.TABLE_NAME,  // The table to query
+                columns,                   // The columns to return
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,                 // The values for the WHERE clause
+                groupBy,                   // don't group the rows
+                having,                    // don't filter by row groups
+                orderBy                    // The sort order
+        );
+
+
+        return cur2Json(c);
+    }
+
 
     public Collection<DeceasedContract> getUnsyncedDeceasedMembers() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -5295,4 +5336,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
+    public JSONArray cur2Json(Cursor cursor) {
+
+        JSONArray resultSet = new JSONArray();
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            int totalColumn = cursor.getColumnCount();
+            JSONObject rowObject = new JSONObject();
+            for (int i = 0; i < totalColumn; i++) {
+                if (cursor.getColumnName(i) != null) {
+                    try {
+                        rowObject.put(cursor.getColumnName(i),
+                                cursor.getString(i));
+                    } catch (Exception e) {
+                        Log.d(TAG, e.getMessage());
+                    }
+                }
+            }
+            resultSet.put(rowObject);
+            cursor.moveToNext();
+        }
+
+        cursor.close();
+        return resultSet;
+
+    }
 }

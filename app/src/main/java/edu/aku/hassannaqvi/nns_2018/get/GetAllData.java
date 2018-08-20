@@ -62,14 +62,14 @@ public class GetAllData extends AsyncTask<String, String, String> {
         URL url = null;
         try {
             switch (syncClass) {
+                case "BLRandom":
+                    url = new URL(MainApp._HOST_URL + BLRandomContract.singleRandomHH._URI);
+                    break;
                 case "EnumBlock":
                     url = new URL(MainApp._HOST_URL + EnumBlockContract.EnumBlockTable._URI);
                     break;
                 case "User":
                     url = new URL(MainApp._HOST_URL + UsersContract.UsersTable._URI);
-                    break;
-                case "BLRandom":
-                    url = new URL(MainApp._HOST_URL + BLRandomContract.singleRandomHH._URI);
                     break;
                 case "VersionApp":
                     url = new URL(MainApp._UPDATE_URL + VersionAppContract.VersionAppTable._URI);
@@ -80,8 +80,8 @@ public class GetAllData extends AsyncTask<String, String, String> {
             }
 
             urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setReadTimeout(10000 /* milliseconds */);
-            urlConnection.setConnectTimeout(15000 /* milliseconds */);
+            urlConnection.setReadTimeout(100000 /* milliseconds */);
+            urlConnection.setConnectTimeout(150000 /* milliseconds */);
             Log.d(TAG, "doInBackground: " + urlConnection.getResponseCode());
             if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 InputStream in = new BufferedInputStream(urlConnection.getInputStream());
@@ -118,21 +118,21 @@ public class GetAllData extends AsyncTask<String, String, String> {
                     JSONArray jsonArray = new JSONArray(json);
 
                     switch (syncClass) {
+                        case "BLRandom":
+                            db.syncBLRandom(jsonArray);
+                            break;
                         case "EnumBlock":
                             db.syncEnumBlocks(jsonArray);
                             break;
                         case "User":
                             db.syncUser(jsonArray);
                             break;
-                        case "BLRandom":
-                            db.syncBLRandom(jsonArray);
-                            break;
                         case "VersionApp":
                             db.syncVersionApp(jsonArray);
                             break;
-                        case "FamilyMembers":
+                        /*case "FamilyMembers":
                             db.syncFamilyMembers(jsonArray);
-                            break;
+                            break;*/
                     }
 
                     pd.setMessage("Received: " + jsonArray.length());

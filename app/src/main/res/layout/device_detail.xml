@@ -43,6 +43,14 @@
                 android:text="Send Cluster Data"
                 android:visibility="gone" />
 
+            <Button
+                android:id="@+id/btn_send_comp_Forms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="sendFormStatus"
+                android:text="Send Completed Forms"
+                android:visibility="gone" />
+
         </LinearLayout>
 
         <TextView

@@ -157,6 +157,29 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
             }
         });
 
+        mContentView.findViewById(R.id.btn_send_comp_Forms).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                JSONArray formsCom = db.getCompleteForms();
+                if (formsCom != null && formsCom.length() > 0) {
+                    Intent serviceIntent = new Intent(getActivity(), DataTransferService.class);
+                    serviceIntent.setAction("edu.aku.hassannaqvi.nns_2018.WifiDirect.SEND");
+                    serviceIntent.putExtra("Type", "CompForms");
+                    serviceIntent.putExtra(Intent.EXTRA_TEXT, String.valueOf(db.getCompleteForms()));
+                    serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_ADDRESS,
+                            info.groupOwnerAddress.getHostAddress());
+                    serviceIntent.putExtra(DataTransferService.EXTRAS_GROUP_OWNER_PORT, 8988);
+                    getActivity().startService(serviceIntent);
+                } else {
+                    Toast.makeText(getActivity(), "No 'Complete' Forms exist in this device", Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+        });
+
         return mContentView;
     }
 
