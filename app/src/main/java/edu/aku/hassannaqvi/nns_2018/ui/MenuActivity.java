@@ -342,7 +342,7 @@ public class MenuActivity extends AppCompatActivity {
                     new GetAllData(mContext, "EnumBlock").execute();
                     Toast.makeText(MenuActivity.this, "Sync Users", Toast.LENGTH_LONG).show();
                     new GetAllData(mContext, "User").execute();
-                    Toast.makeText(MenuActivity.this, "Sync Users", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MenuActivity.this, "Sync Randomizations", Toast.LENGTH_LONG).show();
                     new GetAllData(mContext, "BLRandom").execute();
                     Toast.makeText(MenuActivity.this, "Sync App Version", Toast.LENGTH_LONG).show();
                     new GetAllData(mContext, "VersionApp").execute();

@@ -24,7 +24,6 @@ import java.net.URL;
 import java.util.Collection;
 import java.util.List;
 
-import edu.aku.hassannaqvi.nns_2018.Adapters.syncListAdapter;
 import edu.aku.hassannaqvi.nns_2018.Adapters.upload_list_adapter;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.other.SyncModel;
@@ -129,6 +128,8 @@ public class SyncAllData extends AsyncTask<Void, Integer, String> {
 
                     connection.setDoOutput(true);
                     connection.setDoInput(true);
+                    connection.setReadTimeout(100000 /* milliseconds */);
+                    connection.setConnectTimeout(150000 /* milliseconds */);
                     connection.setInstanceFollowRedirects(false);
                     connection.setRequestMethod("POST");
                     connection.setRequestProperty("Content-Type", "application/json");
