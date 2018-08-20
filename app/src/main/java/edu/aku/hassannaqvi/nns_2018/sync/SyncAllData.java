@@ -72,6 +72,8 @@ public class SyncAllData extends AsyncTask<Void, Integer, String> {
         //this.syncStatus = (TextView) syncStatus;
         TAG = "Get" + syncClass;
         uploadlist.get(position).settableName(syncClass);
+       /* uploadlist.get(position).setstatusID(0);
+        uploadlist.get(position).setmessage("");*/
     }
 
     @Override
@@ -83,6 +85,7 @@ public class SyncAllData extends AsyncTask<Void, Integer, String> {
 //        pd.show();
         uploadlist.get(position).setstatus("Getting connected to server...");
         uploadlist.get(position).setstatusID(2);
+        uploadlist.get(position).setmessage("");
         adapter.updatesyncList(uploadlist);
         //syncStatus.setText(syncStatus.getText() + "\r\nSyncing " + syncClass);
     }
@@ -100,6 +103,7 @@ public class SyncAllData extends AsyncTask<Void, Integer, String> {
         super.onProgressUpdate(values);
         uploadlist.get(values[0]).setstatus("Syncing");
         uploadlist.get(values[0]).setstatusID(2);
+        uploadlist.get(values[0]).setmessage("");
         adapter.updatesyncList(uploadlist);
     }
     private String downloadUrl(Class<?> contractClass) {
@@ -241,10 +245,18 @@ public class SyncAllData extends AsyncTask<Void, Integer, String> {
             pd.setMessage(syncClass + " synced: " + sSynced + "\r\n\r\n Duplicates: " + sDuplicate + "\r\n\r\n Errors: " + sSyncedError);
             pd.setTitle("Done uploading +" + syncClass + " data");
 //            pd.show();
-            uploadlist.get(position).setmessage(syncClass + " synced: " + sSynced + "\r\n\r\n Duplicates: " + sDuplicate + "\r\n\r\n Errors: " + sSyncedError);
-            uploadlist.get(position).setstatus("Completed");
-            uploadlist.get(position).setstatusID(3);
-            adapter.updatesyncList(uploadlist);
+            if(sSyncedError.equals("")){
+                uploadlist.get(position).setmessage(syncClass + " synced: " + sSynced + "\r\n\r\n Duplicates: " + sDuplicate + "\r\n\r\n Errors: " + sSyncedError);
+                uploadlist.get(position).setstatus("Completed");
+                uploadlist.get(position).setstatusID(3);
+                adapter.updatesyncList(uploadlist);
+            }else{
+                uploadlist.get(position).setmessage(syncClass + " synced: " + sSynced + "\r\n\r\n Duplicates: " + sDuplicate + "\r\n\r\n Errors: " + sSyncedError);
+                uploadlist.get(position).setstatus("Failed");
+                uploadlist.get(position).setstatusID(1);
+                adapter.updatesyncList(uploadlist);
+            }
+
             //syncStatus.setText(syncStatus.getText() + "\r\nDone uploading +" + syncClass + " data");
 
         } catch (JSONException e) {
@@ -254,10 +266,17 @@ public class SyncAllData extends AsyncTask<Void, Integer, String> {
             pd.setMessage(result);
             pd.setTitle(syncClass + " Sync Failed");
 //            pd.show();
-            uploadlist.get(position).setmessage(result);
-            uploadlist.get(position).setstatus("Failed");
-            uploadlist.get(position).setstatusID(1);
-            adapter.updatesyncList(uploadlist);
+           if(result.equals("No new records to sync")){
+               uploadlist.get(position).setmessage(result);
+               uploadlist.get(position).setstatus("Not processed");
+               uploadlist.get(position).setstatusID(4);
+               adapter.updatesyncList(uploadlist);
+           }else{
+               uploadlist.get(position).setmessage(result);
+               uploadlist.get(position).setstatus("Failed");
+               uploadlist.get(position).setstatusID(1);
+               adapter.updatesyncList(uploadlist);
+           }
             //syncStatus.setText(syncStatus.getText() + "\r\n" + syncClass + " Sync Failed");
         } catch (IllegalAccessException e) {
             e.printStackTrace();

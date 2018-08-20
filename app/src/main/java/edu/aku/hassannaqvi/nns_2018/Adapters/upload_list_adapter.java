@@ -25,6 +25,8 @@ public class upload_list_adapter extends RecyclerView.Adapter<upload_list_adapte
                 return Color.YELLOW;
             case 3:
                 return Color.GREEN;
+            case 4:
+                return Color.GRAY;
             default:
                 return Color.BLACK;
         }
@@ -66,7 +68,7 @@ public class upload_list_adapter extends RecyclerView.Adapter<upload_list_adapte
             binding.utvTableName.setText(model.gettableName());
             binding.utvStatus.setText(model.getstatus());
             binding.utvMsg.setText(model.getmessage());
-            if(model.getstatusID() == 1 || model.getstatusID() == 3){
+            if(model.getstatusID() == 1 || model.getstatusID() == 3||model.getstatusID() == 4){
                 binding.upb.setVisibility(View.GONE);
             }else{
                 binding.upb.setVisibility(View.VISIBLE);

@@ -88,6 +88,7 @@ public class GetAllData extends AsyncTask<String, String, String> {
 //        pd.show();
         list.get(position).setstatus("Getting connected to server...");
         list.get(position).setstatusID(2);
+        list.get(position).setmessage("");
         adapter.updatesyncList(list);
 
     }
@@ -114,6 +115,7 @@ public class GetAllData extends AsyncTask<String, String, String> {
         }
         list.get(position).setstatus("Syncing");
         list.get(position).setstatusID(2);
+        list.get(position).setmessage("");
         adapter.updatesyncList(list);
     }
 
