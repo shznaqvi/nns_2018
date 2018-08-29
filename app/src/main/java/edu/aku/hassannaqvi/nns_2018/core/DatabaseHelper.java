@@ -1420,6 +1420,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             db.close();
         }
     }
+    public void getAnthroFromServer(JSONArray fmlist) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        //db.delete(UsersTable.TABLE_NAME, null, null);
+        try {
+            JSONArray jsonArray = fmlist;
+            for (int i = 0; i < jsonArray.length(); i++) {
+
+                JSONObject jsonObjectDT = jsonArray.getJSONObject(i);
+
+                switch (jsonObjectDT.getString("project_name")) {
+                    case "National Nutrition Survey 2018":
+                        AntrhoInsertion(jsonObjectDT, db);
+                        break;
+                }
+
+            }
+
+
+        } catch (Exception e) {
+            Log.d(TAG, "getAnthro(e): " + e);
+        } finally {
+            db.close();
+        }
+    }
 
     public void AntrhoInsertion(JSONObject jsonObjectDT, SQLiteDatabase db) throws JSONException {
         FamilyMembersContract fmc = new FamilyMembersContract();

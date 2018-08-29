@@ -37,6 +37,7 @@ import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySpecimenInfoBinding;
 import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
+import edu.aku.hassannaqvi.nns_2018.sync.SyncMembers;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
@@ -496,8 +497,10 @@ public class SpecimenInfoActivity extends AppCompatActivity {
     }
 
     public void BtnCheckHH() {
-
         if (!binding.nh102.getText().toString().trim().isEmpty() && !binding.nh108.getText().toString().trim().isEmpty()) {
+            // Download a list of members from server!
+
+            new SyncMembers(this,binding.nh102.getText().toString(),binding.nh108.getText().toString()).execute();
 
 //            populateHH();
             hh = db.getAllHHforAnthro(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase());

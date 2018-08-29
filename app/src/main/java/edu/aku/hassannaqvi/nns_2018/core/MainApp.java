@@ -158,6 +158,7 @@ public class MainApp extends Application {
     public static int status = 0;
     public static int mwraPosition = 0;
     public static String DeviceURL = "devices.php";
+    public static String MembersURL = "members.php";
 
     public static int nuCount = 1;
 
