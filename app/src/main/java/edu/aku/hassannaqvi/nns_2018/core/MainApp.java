@@ -512,14 +512,6 @@ public class MainApp extends Application {
         }else {
             requestLocationUpdate();
         }
-        locationManager.requestLocationUpdates(
-                LocationManager.GPS_PROVIDER,
-                MINIMUM_TIME_BETWEEN_UPDATES,
-                MINIMUM_DISTANCE_CHANGE_FOR_UPDATES,
-                new GPSLocationListener() // Implement this class from code
-
-        );
-
 
 //        Initialize Dead Member List
 //        deadMembers = new ArrayList<String>();
@@ -628,7 +620,6 @@ public class MainApp extends Application {
                 MINIMUM_TIME_BETWEEN_UPDATES,
                 MINIMUM_DISTANCE_CHANGE_FOR_UPDATES,
                 new GPSLocationListener() // Implement this class from code
-
         );
     }
 
