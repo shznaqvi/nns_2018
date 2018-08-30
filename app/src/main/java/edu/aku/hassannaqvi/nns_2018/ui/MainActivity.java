@@ -405,9 +405,9 @@ public class MainActivity extends MenuActivity {
     private void OpenFormFun() {
 
         final Intent oF = new Intent(MainActivity.this, SectionA1Activity.class);
-        if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null && !MainApp.userName.equals("0000")) {
+       // if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null && !MainApp.userName.equals("0000")) {
             startActivity(oF);
-        } else {
+       /* } else {
 
             builder = new AlertDialog.Builder(MainActivity.this);
             ImageView img = new ImageView(getApplicationContext());
@@ -442,7 +442,7 @@ public class MainActivity extends MenuActivity {
             });
 
             builder.show();
-        }
+        }*/
     }
 
     public void openViewMember(Boolean flag) {

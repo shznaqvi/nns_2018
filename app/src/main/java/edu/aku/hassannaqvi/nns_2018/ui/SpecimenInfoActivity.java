@@ -497,6 +497,7 @@ public class SpecimenInfoActivity extends AppCompatActivity {
     }
 
     public void BtnCheckHH() {
+
         if (!binding.nh102.getText().toString().trim().isEmpty() && !binding.nh108.getText().toString().trim().isEmpty()) {
             // Download a list of members from server!
 
