@@ -277,7 +277,9 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
                 View v = super.getDropDownView(position, convertView, parent);
 
                 v.setBackgroundColor(Color.WHITE);
-
+                TextView adap = (TextView) v;
+                adap.setTextColor(Color.BLACK);
+                adap.setTextSize(12);
                 return v;
             }
         };

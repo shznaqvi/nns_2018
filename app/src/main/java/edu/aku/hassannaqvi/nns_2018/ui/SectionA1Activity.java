@@ -1,14 +1,18 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
+import android.support.v4.app.ActivityCompat;
 import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.InputType;
@@ -511,8 +515,15 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
             sA1.put("fullname", MainApp.usersContract.getFULL_NAME());
             sA1.put("teamNo", MainApp.usersContract.getTEAM_NO());
         }
-
-        sA1.put("imei", ((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId());
+        String imei = "";
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+                imei = ((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
+            }
+        } else {
+            imei = ((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
+        }
+        sA1.put("imei", imei);
         sA1.put("rndid", MainApp.selectedHead.get_ID());
         sA1.put("luid", MainApp.selectedHead.getLUID());
         sA1.put("randDT", MainApp.selectedHead.getRandomDT());
