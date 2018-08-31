@@ -190,9 +190,7 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
 //        mEmailView = findViewById(R.id.email);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkAndRequestPermissions()) {
-                populateAutoComplete();
-                loadIMEI();
-
+                //populateAutoComplete();
             }
         } else {
             populateAutoComplete();
@@ -359,58 +357,6 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
         return true;
     }
 
-    private void requestReadContactPermission() {
-        if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                Manifest.permission.READ_CONTACTS)) {
-            // Provide an additional rationale to the user if the permission was not granted
-            // and the user would benefit from additional context for the use of the permission.
-            // For example if the user has previously denied the permission.
-            new AlertDialog.Builder(LoginActivity.this)
-                    .setTitle("Permission Request")
-                    .setMessage("permission read contacts rationale")
-                    .setCancelable(false)
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            //re-request
-                            ActivityCompat.requestPermissions(LoginActivity.this,
-                                    new String[]{Manifest.permission.READ_CONTACTS},
-                                    MY_PERMISSIONS_REQUEST_READ_CONTACTS);
-                        }
-                    })
-                    .show();
-        } else {
-            // READ_PHONE_STATE permission has not been granted yet. Request it directly.
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CONTACTS},
-                    MY_PERMISSIONS_REQUEST_READ_CONTACTS);
-        }
-    }
-
-    private void requestGetAccountsPermission() {
-        if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                Manifest.permission.GET_ACCOUNTS)) {
-            // Provide an additional rationale to the user if the permission was not granted
-            // and the user would benefit from additional context for the use of the permission.
-            // For example if the user has previously denied the permission.
-            new AlertDialog.Builder(LoginActivity.this)
-                    .setTitle("Permission Request")
-                    .setMessage("permission get accounts rationale")
-                    .setCancelable(false)
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            //re-request
-                            ActivityCompat.requestPermissions(LoginActivity.this,
-                                    new String[]{Manifest.permission.GET_ACCOUNTS},
-                                    MY_PERMISSIONS_REQUEST_GET_ACCOUNTS);
-                        }
-                    })
-                    .show();
-        } else {
-            // READ_PHONE_STATE permission has not been granted yet. Request it directly.
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.GET_ACCOUNTS},
-                    MY_PERMISSIONS_REQUEST_GET_ACCOUNTS);
-        }
-    }
-
     /**
      * Callback received when a permissions request has been completed.
      */
@@ -420,8 +366,7 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
         for (int i = 0; i < permissions.length; i++) {
             if (permissions[i].equals(Manifest.permission.READ_CONTACTS)) {
                 if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
-
-
+                    populateAutoComplete();
                 }
             } else if (permissions[i].equals(Manifest.permission.GET_ACCOUNTS)) {
                 if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
@@ -431,6 +376,7 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
             } else if (permissions[i].equals(Manifest.permission.READ_PHONE_STATE)) {
                 if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
                     doPermissionGrantedStuffs();
+                    //loadIMEI();
                 }
             } else if (permissions[i].equals(Manifest.permission.ACCESS_COARSE_LOCATION)) {
                 if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
@@ -665,10 +611,7 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)
                     != PackageManager.PERMISSION_GRANTED) {
-                // READ_Contacts permission has not been granted.
-
-                // requestReadContactPermission();
-                //requestGetAccountsPermission();
+                checkAndRequestPermissions();
             } else {
                 // READ_Contacts permission is already been granted.
                 getLoaderManager().initLoader(0, null, this);

@@ -14,6 +14,10 @@ public class JSONUtilClass {
         Gson gson = new GsonBuilder().create();
         return gson.fromJson(json, type);
     }
+    public static <T> String getJSONFromModel(Object obj, Class<T> type) {
+        Gson gson = new GsonBuilder().create();
+        return gson.toJson(obj, type);
+    }
 
 
 

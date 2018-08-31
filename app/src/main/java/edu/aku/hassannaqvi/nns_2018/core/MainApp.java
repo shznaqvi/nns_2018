@@ -518,37 +518,11 @@ public class MainApp extends Application {
 
     }
 
-    private void requestPermission() {
-
-        // The ACCESS_COARSE_LOCATION is denied, then I request it and manage the result in
-        // onRequestPermissionsResult() using the constant MY_PERMISSION_ACCESS_FINE_LOCATION
-      /*  if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
-                    MY_PERMISSION_ACCESS_COARSE_LOCATION);
-        }
-        // The ACCESS_FINE_LOCATION is denied, then I request it and manage the result in
-        // onRequestPermissionsResult() using the constant MY_PERMISSION_ACCESS_FINE_LOCATION
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
-            ActivityCompat.requestPermissions(this,
-                    new String[] { Manifest.permission.ACCESS_FINE_LOCATION },
-                    MY_PERMISSION_ACCESS_FINE_LOCATION);
-        }*/
-    }
 
 
     protected void showCurrentLocation() {
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
+
         Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
         if (location != null) {
