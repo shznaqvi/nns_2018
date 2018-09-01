@@ -38,10 +38,13 @@ import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.MWRAContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.MicroContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.NutritionContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.OutcomeContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.RecipientsContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.SpecimenContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SummaryContract;
+import edu.aku.hassannaqvi.nns_2018.contracts.WaterSpecimenContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivitySyncBinding;
@@ -446,6 +449,52 @@ public class SyncActivity extends AppCompatActivity {
                     MainApp._HOST_URL + DeceasedContract.DeceasedTable._URL,
                     db.getUnsyncedDeceasedMembers(), this.findViewById(R.id.syncStatus),8,uploadListAdapter,uploadlist
             ).execute();
+            Toast.makeText(getApplicationContext(), "Syncing Blood Specimen", Toast.LENGTH_SHORT).show();
+            if (uploadlistActivityCreated){
+                uploadmodel = new SyncModel();
+                uploadmodel.setstatusID(0);
+                uploadlist.add(uploadmodel);
+            }
+            new SyncAllData(
+                    this,
+                    "Specimen",
+                    "updateSyncedSpecimen",
+                    SpecimenContract.class,
+                    MainApp._HOST_URL + SpecimenContract.SpecimenTable._URL,
+                    db.getUnsyncedSpecimenForms(), this.findViewById(R.id.syncStatus),9,uploadListAdapter,uploadlist
+            ).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing Blood Specimen", Toast.LENGTH_SHORT).show();
+            if (uploadlistActivityCreated){
+                uploadmodel = new SyncModel();
+                uploadmodel.setstatusID(0);
+                uploadlist.add(uploadmodel);
+            }
+            new SyncAllData(
+                    this,
+                    "WaterSpecimen",
+                    "updateSyncedWaterSpecimen",
+                    WaterSpecimenContract.class,
+                    MainApp._HOST_URL + WaterSpecimenContract.WaterSpecimenTable._URL,
+                    db.getUnsyncedWaterSpecimenForms(), this.findViewById(R.id.syncStatus),10,uploadListAdapter,uploadlist
+            ).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing Micro Results", Toast.LENGTH_SHORT).show();
+            if (uploadlistActivityCreated){
+                uploadmodel = new SyncModel();
+                uploadmodel.setstatusID(0);
+                uploadlist.add(uploadmodel);
+            }
+            new SyncAllData(
+                    this,
+                    "Micro",
+                    "updateSyncedMicroForm",
+                    MicroContract.class,
+                    MainApp._HOST_URL + MicroContract.MicroTable._URL,
+                    db.getUnsyncedMicroForms(), this.findViewById(R.id.syncStatus),11,uploadListAdapter,uploadlist
+            ).execute();
+
+
 /*
             Toast.makeText(getApplicationContext(), "Syncing Summary", Toast.LENGTH_SHORT).show();
             if (uploadlistActivityCreated){
