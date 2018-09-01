@@ -517,8 +517,9 @@ public class SpecimenInfoActivity extends AppCompatActivity {
             hh = db.getAllHHforAnthro(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase());
             if (hh.size() > 0) {
                 populateMembers(hh.get(hh.size() - 1).get_UUID(), hh.get(hh.size() - 1).getFormDate());
+            }else{
+                Toast.makeText(this, "Household not found!", Toast.LENGTH_SHORT).show();
             }
-
         } else {
             Toast.makeText(this, "Not found.", Toast.LENGTH_SHORT).show();
         }

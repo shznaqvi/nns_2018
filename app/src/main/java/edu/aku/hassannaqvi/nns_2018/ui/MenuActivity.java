@@ -290,7 +290,7 @@ public class MenuActivity extends AppCompatActivity {
                     db.getUnsyncedSpecimenForms(), this.findViewById(R.id.syncStatus)
             ).execute();
 
-            Toast.makeText(getApplicationContext(), "Syncing Blood Specimen", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Syncing Water Specimen", Toast.LENGTH_SHORT).show();
             new SyncAllData(
                     this,
                     "WaterSpecimen",
