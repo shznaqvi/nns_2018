@@ -1,7 +1,10 @@
 package edu.aku.hassannaqvi.nns_2018.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
@@ -500,8 +503,15 @@ public class SpecimenInfoActivity extends AppCompatActivity {
 
         if (!binding.nh102.getText().toString().trim().isEmpty() && !binding.nh108.getText().toString().trim().isEmpty()) {
             // Download a list of members from server!
-
+            // Require permissions INTERNET & ACCESS_NETWORK_STATE
+            ConnectivityManager connMgr = (ConnectivityManager)
+                    getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+            if (networkInfo != null && networkInfo.isConnected()) {
             new SyncMembers(this,binding.nh102.getText().toString(),binding.nh108.getText().toString()).execute();
+            } else {
+                Toast.makeText(this, "No network connection available.", Toast.LENGTH_SHORT).show();
+            }
 
 //            populateHH();
             hh = db.getAllHHforAnthro(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase());
