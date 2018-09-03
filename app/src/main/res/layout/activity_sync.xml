@@ -2,23 +2,21 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
     <data>
-
         <import type="android.view.View" />
-
         <variable
             name="callback"
             type="edu.aku.hassannaqvi.nns_2018.ui.SyncActivity" />
     </data>
 
-    <ScrollView
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
             android:animateLayoutChanges="true"
             android:layoutDirection="ltr"
             android:orientation="vertical">
@@ -39,18 +37,19 @@
                 android:id="@+id/rv_sync_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/sync_list_adapter"
-                android:visibility="visible">
-            </android.support.v7.widget.RecyclerView>
+                android:nestedScrollingEnabled="false"
+                android:visibility="visible"
+                tools:listitem="@layout/sync_list_adapter"></android.support.v7.widget.RecyclerView>
+
             <TextView
                 android:id="@+id/no_item"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="@color/red"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:visibility="gone"
-                android:text="No Activty"/>
+                android:gravity="center"
+                android:text="No Activty"
+                android:textColor="@color/red"
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/btnUpload"
@@ -69,20 +68,26 @@
                 android:id="@+id/rv_upload_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/sync_list_adapter"
-                android:visibility="visible">
+                android:nestedScrollingEnabled="false"
+                android:visibility="visible"
+                tools:listitem="@layout/sync_list_adapter">
+
             </android.support.v7.widget.RecyclerView>
+
             <TextView
                 android:id="@+id/no_data_item"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="@color/red"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:visibility="gone"
-                android:text="No Activty"/>
+                android:gravity="center"
+                android:text="No Activty"
+                android:textColor="@color/red"
+                android:visibility="gone" />
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_15sdp"></FrameLayout>
         </LinearLayout>
-    </ScrollView>
+    </android.support.v4.widget.NestedScrollView>
 </layout>
 

@@ -864,11 +864,11 @@ public class ViewMemberActivity extends MenuActivity {
                 public void run() {
 
 //                   Change background color for those whose data already filled
-                    for (int item : WraAdapter.wraExistList) {
+                  /*  for (int item : WraAdapter.wraExistList) {
                         binding.recyclerMwra.getChildAt(item).setBackgroundColor(getResources().getColor(R.color.lime));
-                    /*   ImageView imgtemp =  binding.recyclerMwra.getChildAt(item).findViewById(R.id.wrastatus);
-                       imgtemp.setImageResource(R.drawable.circleshapegreen);*/
-                    }
+                    *//*   ImageView imgtemp =  binding.recyclerMwra.getChildAt(item).findViewById(R.id.wrastatus);
+                       imgtemp.setImageResource(R.drawable.circleshapegreen);*//*
+                    }*/
 
                     wraAdapter.notifyDataSetChanged();
 
@@ -959,10 +959,10 @@ public class ViewMemberActivity extends MenuActivity {
                 public void run() {
 
 //                   Change background color for those whose data already filled
-                    for (int item : ChildAdapter.childExistList) {
+                   /* for (int item : ChildAdapter.childExistList) {
 //                        binding.recyclerChild.getChildAt(item).setBackgroundColor(getResources().getColor(R.color.softgreen));
                         binding.recyclerChild.getChildAt(item).setBackgroundColor(getResources().getColor(R.color.lime));
-                    }
+                    }*/
 
                 }
             }, 800);

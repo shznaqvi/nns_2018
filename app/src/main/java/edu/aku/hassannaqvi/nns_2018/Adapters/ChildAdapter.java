@@ -2,6 +2,7 @@ package edu.aku.hassannaqvi.nns_2018.Adapters;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -62,6 +63,11 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHol
 
         if (db.getChildExistanceByUid(childList.get(position).get_UUID(), childList.get(position).get_UID())) {
             childExistList.add(position);
+        }
+        for (int item : childExistList) {
+//                        binding.recyclerChild.getChildAt(item).setBackgroundColor(getResources().getColor(R.color.softgreen));
+            if (position == item)
+            this.holder.itemView.setBackgroundColor(Color.parseColor("#80cbc4"));
         }
     }
 

@@ -276,6 +276,8 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
                     != PackageManager.PERMISSION_GRANTED) {
                 // READ_PHONE_STATE permission has not been granted.
                 requestReadPhoneStatePermission();
+            }else{
+                doPermissionGrantedStuffs();
             }
         } else {
             doPermissionGrantedStuffs();
