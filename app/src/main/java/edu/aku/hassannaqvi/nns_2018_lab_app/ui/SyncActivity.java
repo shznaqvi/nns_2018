@@ -313,6 +313,7 @@ public class SyncActivity extends AppCompatActivity {
             DatabaseHelper db = new DatabaseHelper(this);
             //syncStatus.setText(null);
             new SyncDevice(this).execute();
+            /*
             Toast.makeText(getApplicationContext(), "Syncing Forms", Toast.LENGTH_SHORT).show();
             if (uploadlistActivityCreated){
                 uploadmodel = new SyncModel();
@@ -447,7 +448,7 @@ public class SyncActivity extends AppCompatActivity {
                     MainApp._HOST_URL + DeceasedContract.DeceasedTable._URL,
                     db.getUnsyncedDeceasedMembers(), this.findViewById(R.id.syncStatus),8,uploadListAdapter,uploadlist
             ).execute();
-
+*/
             Toast.makeText(getApplicationContext(), "Syncing Blood Specimen", Toast.LENGTH_SHORT).show();
             if (uploadlistActivityCreated){
                 uploadmodel = new SyncModel();
@@ -460,7 +461,7 @@ public class SyncActivity extends AppCompatActivity {
                     "updateSyncedSpecimen",
                     SpecimenContract.class,
                     MainApp._HOST_URL + SpecimenContract.SpecimenTable._URL,
-                    db.getUnsyncedSpecimenForms(), this.findViewById(R.id.syncStatus),9,uploadListAdapter,uploadlist
+                    db.getUnsyncedSpecimenForms(), this.findViewById(R.id.syncStatus),0,uploadListAdapter,uploadlist
             ).execute();
 
             Toast.makeText(getApplicationContext(), "Syncing Water Specimen", Toast.LENGTH_SHORT).show();
@@ -475,7 +476,7 @@ public class SyncActivity extends AppCompatActivity {
                     "updateSyncedWaterSpecimen",
                     WaterSpecimenContract.class,
                     MainApp._HOST_URL + WaterSpecimenContract.WaterSpecimenTable._URL,
-                    db.getUnsyncedWaterSpecimenForms(), this.findViewById(R.id.syncStatus),10,uploadListAdapter,uploadlist
+                    db.getUnsyncedWaterSpecimenForms(), this.findViewById(R.id.syncStatus),1,uploadListAdapter,uploadlist
             ).execute();
 
             Toast.makeText(getApplicationContext(), "Syncing Micro Results", Toast.LENGTH_SHORT).show();
@@ -490,7 +491,7 @@ public class SyncActivity extends AppCompatActivity {
                     "updateSyncedMicroForm",
                     MicroContract.class,
                     MainApp._HOST_URL + MicroContract.MicroTable._URL,
-                    db.getUnsyncedMicroForms(), this.findViewById(R.id.syncStatus),11,uploadListAdapter,uploadlist
+                    db.getUnsyncedMicroForms(), this.findViewById(R.id.syncStatus),2,uploadListAdapter,uploadlist
             ).execute();
 
 

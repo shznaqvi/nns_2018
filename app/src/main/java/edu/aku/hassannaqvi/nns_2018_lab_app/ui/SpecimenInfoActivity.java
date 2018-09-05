@@ -544,7 +544,7 @@ public class SpecimenInfoActivity extends AppCompatActivity {
                     binding.btnEnd.setVisibility(View.GONE);
                     binding.fldGrpHH.setVisibility(View.VISIBLE);
                 }else{
-                    Toast.makeText(this, "Household does not exist!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Please check again!", Toast.LENGTH_LONG).show();
                     binding.fldGrpQR.setVisibility(View.GONE);
                     binding.hcCode.setText(null);
                     binding.fldGrpHH.setVisibility(View.GONE);
