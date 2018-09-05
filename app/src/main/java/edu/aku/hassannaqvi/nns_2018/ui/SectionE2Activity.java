@@ -671,6 +671,53 @@ public class SectionE2Activity extends AppCompatActivity {
 
             }
         }
+        if(bi.ne20202a.isChecked() && bi.ne20203a.isChecked() && bi.ne20204a.isChecked()){
+            String[] typeb = bi.ne20302.getText().toString().split("-");
+            String[] typec = bi.ne20303.getText().toString().split("-");
+            String[] typed = bi.ne20304.getText().toString().split("-");
+            if(!typeb[2].equals(typec[2].equals(typed[2]))){
+                Toast.makeText(this, "ERROR(Wrong QR code)" + getString(R.string.ne201b), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "ERROR(Wrong QR code)" + getString(R.string.ne201c), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "ERROR(Wrong QR code)" + getString(R.string.ne201d), Toast.LENGTH_SHORT).show();
+                bi.ne20302.setError("Invalid or Incomplete QR code. Must be of same characters!");
+                bi.ne20303.setError("Invalid or Incomplete QR code. Must be of same characters!");
+                bi.ne20304.setError("Invalid or Incomplete QR code. Must be of same characters!");
+                return false;
+            }
+        }
+        if(bi.ne20202a.isChecked() && bi.ne20203a.isChecked()){
+            String[] typeb = bi.ne20302.getText().toString().split("-");
+            String[] typec = bi.ne20303.getText().toString().split("-");
+            if(!typeb[2].equals(typec[2])){
+                Toast.makeText(this, "ERROR(Wrong QR code)" + getString(R.string.ne201b), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "ERROR(Wrong QR code)" + getString(R.string.ne201c), Toast.LENGTH_SHORT).show();
+                bi.ne20302.setError("Invalid or Incomplete QR code. Must be of same characters!");
+                bi.ne20303.setError("Invalid or Incomplete QR code. Must be of same characters!");
+                return false;
+            }
+        }
+        if(bi.ne20202a.isChecked()  && bi.ne20204a.isChecked()){
+            String[] typeb = bi.ne20302.getText().toString().split("-");
+            String[] typed = bi.ne20304.getText().toString().split("-");
+            if(!typeb[2].equals(typed[2])){
+                Toast.makeText(this, "ERROR(Wrong QR code)" + getString(R.string.ne201b), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "ERROR(Wrong QR code)" + getString(R.string.ne201d), Toast.LENGTH_SHORT).show();
+                bi.ne20302.setError("Invalid or Incomplete QR code. Must be of same characters!");
+                bi.ne20304.setError("Invalid or Incomplete QR code. Must be of same characters!");
+                return false;
+            }
+        }
+        if( bi.ne20203a.isChecked() && bi.ne20204a.isChecked()){
+            String[] typec = bi.ne20303.getText().toString().split("-");
+            String[] typed = bi.ne20304.getText().toString().split("-");
+            if(!typec[2].equals(typed[2])){
+                Toast.makeText(this, "ERROR(Wrong QR code)" + getString(R.string.ne201c), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "ERROR(Wrong QR code)" + getString(R.string.ne201d), Toast.LENGTH_SHORT).show();
+                bi.ne20303.setError("Invalid or Incomplete QR code. Must be of same characters!");
+                bi.ne20304.setError("Invalid or Incomplete QR code. Must be of same characters!");
+                return false;
+            }
+        }
 
 
         return true;
