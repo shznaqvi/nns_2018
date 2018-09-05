@@ -9,7 +9,7 @@
 
         <variable
             name="callback"
-            type="edu.aku.hassannaqvi.nns_2018.ui.SectionC2Activity" />
+            type="edu.aku.hassannaqvi.nns_2018_lab_app.ui.SectionC2Activity" />
     </data>
 
     <LinearLayout
