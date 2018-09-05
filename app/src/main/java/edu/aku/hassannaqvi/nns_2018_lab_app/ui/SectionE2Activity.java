@@ -681,12 +681,13 @@ public class SectionE2Activity extends AppCompatActivity {
 
         MainApp.wsc = new WaterSpecimenContract();
         MainApp.wsc.setDevicetagID(MainApp.getTagName(this));
-        MainApp.wsc.setFormDate(membersMap.get(0).getFormDate());
+//        MainApp.wsc.setFormDate(membersMap.get(0).getFormDate()); // getting current date instead for lab only
+        MainApp.wsc.setFormDate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
         MainApp.wsc.setUser(MainApp.userName);
         MainApp.wsc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
         MainApp.wsc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
-        MainApp.wsc.setUUID(membersMap.get(0).get_UUID());
+//        MainApp.wsc.setUUID(membersMap.get(0).get_UUID()); commented for lab only
 
         MainApp.wsc.setClusterno(SpecimenInfoActivity.enm_no);
         MainApp.wsc.setHhno(SpecimenInfoActivity.hh_no);

@@ -101,7 +101,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsTable.COLUMN_RESP_LNO + " TEXT," +
             FormsTable.COLUMN_HH_NO + " TEXT," +
             FormsTable.COLUMN_CLUSTER_NO + " TEXT," +
-
             FormsTable.COLUMN_GPSELEV + " TEXT," +
             FormsTable.COLUMN_SA1 + " TEXT," +
             FormsTable.COLUMN_SA4 + " TEXT," +
@@ -1447,7 +1446,40 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(familyMembers.COLUMN_DEVICEID, fmc.getDeviceId());
         db.insert(familyMembers.TABLE_NAME, null, values);
     }
+    public void saveBLRandomFromServer(JSONArray BLlist, String uid) {
+        if (!CheckUIDBLRandomExist(uid)) {
+            SQLiteDatabase db = this.getWritableDatabase();
+            try {
+                JSONArray jsonArray = BLlist;
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject jsonObjectCC = jsonArray.getJSONObject(i);
 
+                    BLRandomContract Vc = new BLRandomContract();
+                    Vc.Sync(jsonObjectCC);
+
+                    ContentValues values = new ContentValues();
+
+                    values.put(singleRandomHH.COLUMN_ID, Vc.get_ID());
+                    values.put(singleRandomHH.COLUMN_LUID, Vc.getLUID());
+
+                    values.put(singleRandomHH.COLUMN_STRUCTURE_NO, Vc.getStructure());
+                    values.put(singleRandomHH.COLUMN_FAMILY_EXT_CODE, Vc.getExtension());
+                    values.put(singleRandomHH.COLUMN_HH, Vc.getHh());
+                    values.put(singleRandomHH.COLUMN_ENUM_BLOCK_CODE, Vc.getSubVillageCode());
+                    values.put(singleRandomHH.COLUMN_RANDOMDT, Vc.getRandomDT());
+                    values.put(singleRandomHH.COLUMN_HH_HEAD, Vc.getHhhead());
+                    values.put(singleRandomHH.COLUMN_CONTACT, Vc.getContact());
+                    values.put(singleRandomHH.COLUMN_HH_SELECTED_STRUCT, Vc.getSelStructure());
+                    values.put(singleRandomHH.COLUMN_SNO_HH, Vc.getSno());
+
+                    db.insert(singleRandomHH.TABLE_NAME, null, values);
+                }
+            } catch (Exception e) {
+            } finally {
+                db.close();
+            }
+        }
+    }
     public void AntrhoInsertion(JSONObject jsonObjectDT, SQLiteDatabase db) throws JSONException {
         FamilyMembersContract fmc = new FamilyMembersContract();
         fmc.Sync(jsonObjectDT);
@@ -1489,6 +1521,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             long count = db.insert(singleRandomHH.TABLE_NAME, null, values);
         }
     }
+
 
     public boolean CheckUIDBLRandomExist(String uid) {
 

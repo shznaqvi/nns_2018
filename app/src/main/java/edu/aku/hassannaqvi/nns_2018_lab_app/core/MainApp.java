@@ -162,6 +162,7 @@ public class MainApp extends Application {
     public static int mwraPosition = 0;
     public static String DeviceURL = "devices.php";
     public static String MembersURL = "members.php";
+    public static String BLRandomWaterURL = "bl_random_water.php";
 
     public static int nuCount = 1;
 

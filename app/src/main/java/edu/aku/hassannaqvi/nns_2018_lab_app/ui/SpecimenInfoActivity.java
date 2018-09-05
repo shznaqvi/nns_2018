@@ -40,6 +40,7 @@ import edu.aku.hassannaqvi.nns_2018_lab_app.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018_lab_app.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018_lab_app.databinding.ActivitySpecimenInfoBinding;
 import edu.aku.hassannaqvi.nns_2018_lab_app.other.JSONUtilClass;
+import edu.aku.hassannaqvi.nns_2018_lab_app.sync.SyncBLRandomWater;
 import edu.aku.hassannaqvi.nns_2018_lab_app.sync.SyncMembers;
 import edu.aku.hassannaqvi.nns_2018_lab_app.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018_lab_app.validation.validatorClass;
@@ -508,10 +509,23 @@ public class SpecimenInfoActivity extends AppCompatActivity {
                     getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
             if (networkInfo != null && networkInfo.isConnected()) {
-            new SyncMembers(this,binding.nh102.getText().toString(),binding.nh108.getText().toString()).execute();
+            if(MainActivity.ftype.equals("B")){
+                new SyncMembers(this,binding.nh102.getText().toString(),binding.nh108.getText().toString()).execute();
+
+            }else if(MainActivity.ftype.equals("W")){
+                try{
+                    String[] hh = binding.nh108.getText().toString().split("-");
+                    new SyncBLRandomWater(this,binding.nh102.getText().toString(),hh[0],hh[1]).execute();
+                }catch (Exception e){
+
+                }
+            }
             } else {
                 Toast.makeText(this, "No network connection available.", Toast.LENGTH_SHORT).show();
             }
+
+
+
 
 //            populateHH();
             if(MainActivity.ftype.equals("B")){
