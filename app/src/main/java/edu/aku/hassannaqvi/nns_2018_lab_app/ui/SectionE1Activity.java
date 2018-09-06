@@ -415,23 +415,26 @@ public class SectionE1Activity extends AppCompatActivity {
                     //int myInt = originalPositions.get(position);
 
                     MainApp.duplicateMembers.add(bi.ne102.getSelectedItem().toString());
-
-
-                    bi.ne103.getSelectedItemPosition();
+                    String selecteditem = null;
+                    selecteditem = bi.ne103.getSelectedItem().toString();
+                    group.remove(indexOriginal);
+                    originalPositions.remove(indexOriginal);
                     boolean membersFound;
 //                    wra
-                    if( bi.ne103.getSelectedItem().equals(getResources().getString(R.string.neselecteda))){
+
+                    if( selecteditem.equals(getResources().getString(R.string.neselecteda))){
                         membersFound = checkmembersExists(MainApp.adolescents);
                         if(!membersFound){
                             for (int i = 0; i < group.size(); i++) {
                                 if(group.get(i).equals(getResources().getString(R.string.neselectedd))) {
                                     group.remove(i);
+
                                 }
                             }
                         }
                     }
 //                    adolescents
-                    else if( bi.ne103.getSelectedItem().equals(getResources().getString(R.string.neselectedd))){
+                    else if(selecteditem.equals(getResources().getString(R.string.neselectedd))){
                         membersFound = checkmembersExists(MainApp.mwra);
                         if(!membersFound){
                             for (int i = 0; i < group.size(); i++) {
@@ -442,8 +445,7 @@ public class SectionE1Activity extends AppCompatActivity {
                         }
                     }
 
-                    group.remove(indexOriginal);
-                    originalPositions.remove(indexOriginal);
+
                    /* for (int i = 0; i < group.size(); i++) {
 //                        mwra
                        if(group.get(i).equals(getResources().getString(R.string.neselecteda))){
