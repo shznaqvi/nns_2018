@@ -156,10 +156,9 @@ public class MicroResultsActivity extends AppCompatActivity {
                         }
                     }
                 }
-
-
             } else {
                 Toast.makeText(this, "Not found.", Toast.LENGTH_SHORT).show();
+                binding.fldGrpne20301a.setVisibility(View.GONE);
             }
         }
     }
