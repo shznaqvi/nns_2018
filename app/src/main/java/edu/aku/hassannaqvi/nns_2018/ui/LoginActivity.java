@@ -257,17 +257,7 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
         }
     }
 
-    private void downloadAndSaveTAGID() {
-        // Require permissions INTERNET & ACCESS_NETWORK_STATE
-        ConnectivityManager connMgr = (ConnectivityManager)
-                getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected()) {
-            new SyncDevice(this).execute();
-        } else {
-            Toast.makeText(this, "No network connection available.", Toast.LENGTH_SHORT).show();
-        }
-    }
+
 
     public void loadIMEI() {
         // Check if the READ_PHONE_STATE permission is already available.
@@ -464,7 +454,6 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
 
     private void doPermissionGrantedStuffs() {
         MainApp.IMEI = ((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
-        downloadAndSaveTAGID();
     }
     protected boolean isBetterLocation(Location location, Location currentBestLocation) {
         if (currentBestLocation == null) {

@@ -160,7 +160,7 @@ public class MainApp extends Application {
     public static String lineNo = "";
     public static int status = 0;
     public static int mwraPosition = 0;
-    public static String DeviceURL = "devices.php";
+    public static String DeviceURL = "devices_test.php";
 
     public static int nuCount = 1;
 
