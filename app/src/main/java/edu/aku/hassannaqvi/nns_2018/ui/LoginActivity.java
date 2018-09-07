@@ -191,12 +191,12 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkAndRequestPermissions()) {
                 populateAutoComplete();
-                loadIMEI();
+               // loadIMEI();
 
             }
         } else {
             populateAutoComplete();
-            loadIMEI();
+            //loadIMEI();
 
         }
 
@@ -432,7 +432,7 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
                 }
             } else if (permissions[i].equals(Manifest.permission.READ_PHONE_STATE)) {
                 if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
-                    doPermissionGrantedStuffs();
+                    //doPermissionGrantedStuffs();
                 }
             } else if (permissions[i].equals(Manifest.permission.ACCESS_COARSE_LOCATION)) {
                 if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {

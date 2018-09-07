@@ -175,6 +175,7 @@ public class SyncActivity extends AppCompatActivity {
 
                 @Override
                 public void run() {
+                    new SyncDevice(SyncActivity.this).execute();
 //                  getting Enum Blocks
                     Toast.makeText(SyncActivity.this, "Sync Enum Blocks", Toast.LENGTH_SHORT).show();
 

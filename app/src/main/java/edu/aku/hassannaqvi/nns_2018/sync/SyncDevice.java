@@ -23,6 +23,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collection;
 
+import edu.aku.hassannaqvi.nns_2018.R;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 
@@ -82,6 +83,7 @@ public class SyncDevice extends AsyncTask<Void, Integer, String> {
                     try {
                         jsonObject.addProperty("imei",MainApp.IMEI);
                         jsonObject.addProperty("appversion",MainApp.versionName+"."+MainApp.versionCode);
+                        jsonObject.addProperty("appname",context.getString(R.string.app_name));
 
                     } catch (Exception e) {
                         e.printStackTrace();
