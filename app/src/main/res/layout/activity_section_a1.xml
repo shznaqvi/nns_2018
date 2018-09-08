@@ -339,68 +339,6 @@
                         android:visibility="gone"
                         tools:visibility="visible">
 
-                        <TextView
-                            android:id="@+id/hhName"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:enabled="false"
-                            android:paddingLeft="10dp" />
-
-                        <CheckBox
-                            android:id="@+id/checkHHHeadpresent"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_8sdp"
-                            android:text="@string/checkHHpresent" />
-
-                        <LinearLayout
-                            android:id="@+id/fldGrpnh110a"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="16dp"
-                                android:background="@color/colorPrimary"
-                                android:text="New Head of Household Name"
-                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:textColor="@android:color/white" />
-
-                            <EditText
-                                android:id="@+id/newHHheadname"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
-                                android:enabled="@{checkHHHeadpresent.checked ? false : true}"
-                                android:maxLength="25"
-                                android:text='@{checkHHHeadpresent.checked ? "" : newHHheadname.getText.toString}' />
-
-                        </LinearLayout>
-
-
-                        <!--   &lt;!&ndash;nh110&ndash;&gt;
-                           <TextView
-                               android:layout_width="match_parent"
-                               android:layout_height="wrap_content"
-                               android:layout_marginTop="16dp"
-                               android:background="@color/colorPrimary"
-                               android:text="@string/nh110"
-                               android:textAppearance="?android:attr/textAppearanceLarge"
-                               android:textColor="@android:color/white" />
-
-                           <EditText
-                               android:id="@+id/nh110"
-                               android:layout_width="match_parent"
-                               android:layout_height="wrap_content"
-                               android:layout_marginBottom="1dp"
-                               android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789"
-                               android:hint="@string/nh110"
-                               android:maxLength="25"
-
-                               />-->
-
                         <!--nh113-->
                         <TextView
                             android:layout_width="match_parent"

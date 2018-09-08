@@ -17,7 +17,6 @@ import java.net.URL;
 import java.util.List;
 
 import edu.aku.hassannaqvi.nns_2018_val.Adapters.syncListAdapter;
-import edu.aku.hassannaqvi.nns_2018_val.contracts.BLRandomContract;
 import edu.aku.hassannaqvi.nns_2018_val.contracts.EnumBlockContract;
 import edu.aku.hassannaqvi.nns_2018_val.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018_val.contracts.UsersContract;
@@ -62,9 +61,9 @@ public class GetAllData extends AsyncTask<String, String, String> {
             case "User":
                 position = 1;
                 break;
-            case "BLRandom":
+            /*case "BLRandom":
                 position = 2;
-                break;
+                break;*/
             case "VersionApp":
                 position = 3;
                 break;
@@ -99,9 +98,9 @@ public class GetAllData extends AsyncTask<String, String, String> {
             case "User":
                 position = 1;
                 break;
-            case "BLRandom":
+            /*case "BLRandom":
                 position = 2;
-                break;
+                break;*/
             case "VersionApp":
                 position = 3;
                 break;
@@ -131,10 +130,10 @@ public class GetAllData extends AsyncTask<String, String, String> {
                     url = new URL(MainApp._HOST_URL + UsersContract.UsersTable._URI);
                     position = 1;
                     break;
-                case "BLRandom":
+                /*case "BLRandom":
                     url = new URL(MainApp._HOST_URL + BLRandomContract.singleRandomHH._URI);
                     position = 2;
-                    break;
+                    break;*/
                 case "VersionApp":
                     url = new URL(MainApp._UPDATE_URL + VersionAppContract.VersionAppTable._URI);
                     position = 3;
@@ -195,10 +194,10 @@ public class GetAllData extends AsyncTask<String, String, String> {
                             db.syncUser(jsonArray);
                             position = 1;
                             break;
-                        case "BLRandom":
+                       /* case "BLRandom":
                             db.syncBLRandom(jsonArray);
                             position = 2;
-                            break;
+                            break;*/
                         case "VersionApp":
                             db.syncVersionApp(jsonArray);
                             position = 3;

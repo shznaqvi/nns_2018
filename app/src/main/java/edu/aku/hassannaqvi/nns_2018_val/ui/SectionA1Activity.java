@@ -63,6 +63,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
     static Boolean reBackFlag = true;
     private final long DELAY = 1000;
     int length = 0;
+    EnumBlockContract enumBlockContract;
 
 
     @Override
@@ -73,8 +74,6 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
         binding.setCallback(this);
 
         SetupViewFunctionality();
-
-        SkipPatterns();
 
 //        Edit form intent
         editFormFlag = getIntent().getBooleanExtra("editForm", false);
@@ -111,12 +110,6 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
             JSONA1ModelClass jsonA1 = JSONUtilClass.getModelFromJSON(MainApp.fc.getsA1(), JSONA1ModelClass.class);
 
-            if (jsonA1.getHhheadpresent().equals("1")) {
-                binding.checkHHHeadpresent.setChecked(true);
-            } else {
-                binding.newHHheadname.setText(jsonA1.getHhheadpresentnew());
-            }
-
             binding.nh101.setText(jsonA1.getnh101());
             binding.nh103.setText(jsonA1.getnh103());
             binding.nh104.setText(jsonA1.getnh104());
@@ -147,13 +140,6 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 */
 
         }
-
-    }
-
-    private void SkipPatterns() {
-
-        // binding.na11802.setOnCheckedChangeListener(this);
-
 
     }
 
@@ -295,15 +281,10 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
     public void clearFields() {
         binding.fldGrpnh110.setVisibility(View.GONE);
 
-        binding.hhName.setText(null);
-        binding.newHHheadname.setText(null);
-        binding.checkHHHeadpresent.setChecked(false);
-        // binding.nh110.setText(null);
         binding.nh113.setText(null);
         binding.nh115.setText(null);
         binding.nh213.setText(null);
         binding.na11801.clearCheck();
-        //binding.na11802.clearCheck();
     }
 
     public void BtnContinue() {
@@ -445,16 +426,6 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
             }
         }
 
-//        New HHHead
-
-        if (!binding.checkHHHeadpresent.isChecked()) {
-            if (!validatorClass.EmptyTextBox(this, binding.newHHheadname, "New head name.")) {
-                return false;
-            }
-        } else {
-            binding.newHHheadname.setError(null);
-        }
-
 //        nh113
         if (!flag) {
             if (!validatorClass.EmptyTextBox(this, binding.nh113, getString(R.string.nh113))) {
@@ -478,10 +449,6 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
             return validatorClass.EmptyRadioButton(this, binding.na11801, binding.na11801b, getString(R.string.na11801));
 //        na11802
 
-           /* if (MainApp.selectedHead.getSelStructure().equals("1")) {
-                return validatorClass.EmptyRadioButton(this, binding.na11802, binding.na11802b, getString(R.string.na11802));
-            }
-*/
 
         }
 
@@ -524,16 +491,17 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
             imei = ((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
         }
         sA1.put("imei", imei);
-        sA1.put("rndid", MainApp.selectedHead.get_ID());
+        /*sA1.put("rndid", MainApp.selectedHead.get_ID());
         sA1.put("luid", MainApp.selectedHead.getLUID());
         sA1.put("randDT", MainApp.selectedHead.getRandomDT());
         sA1.put("hh03", MainApp.selectedHead.getStructure());
         sA1.put("hh07", MainApp.selectedHead.getExtension());
         sA1.put("hhhead", MainApp.selectedHead.getHhhead());
         sA1.put("hh09", MainApp.selectedHead.getContact());
-        sA1.put("hhss", MainApp.selectedHead.getSelStructure());
-        sA1.put("hhheadpresent", binding.checkHHHeadpresent.isChecked() ? "1" : "2");
-        sA1.put("hhheadpresentnew", binding.newHHheadname.getText().toString());
+        sA1.put("hhss", MainApp.selectedHead.getSelStructure());*/
+
+        sA1.put("hh03", enumBlockContract.getEn_hh03());
+        sA1.put("hh07", enumBlockContract.getEn_hh07());
         sA1.put("enumNo", binding.nh107.getText().toString());
 
         sA1.put("nh101", binding.nh101.getText().toString());
@@ -549,16 +517,9 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
         sA1.put("nh213", binding.nh213.getText().toString());
 
-        /*sA1.put("nh11701blood", MainApp.selectedHead.getSelStructure());
-        sA1.put("nh11702urine", MainApp.selectedHead.getSelStructure());
-        sA1.put("nh11703water", MainApp.selectedHead.getSelStructure());
-*/
         sA1.put("nh11801", binding.na11801a.isChecked() ? "1"
                 : binding.na11801b.isChecked() ? "2" : "0");
 
-        /*sA1.put("nh11802", binding.na11802a.isChecked() ? "1"
-                : binding.na11802b.isChecked() ? "2" : "0");
-*/
         MainApp.fc.setsA1(String.valueOf(sA1));
 
     }
@@ -673,7 +634,24 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
     }
 
     public void setupViews() {
-        selected = db.getAllBLRandom(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase());
+
+        String hhNo = enumBlockContract.getEn_hh03() + "-" + enumBlockContract.getEn_hh07();
+
+        if (binding.nh108.getText().toString().equals(hhNo)) {
+            Toast.makeText(this, "Household found!", Toast.LENGTH_SHORT).show();
+
+            for (BLRandomContract rnd : selected) {
+                MainApp.selectedHead = new BLRandomContract(rnd);
+            }
+
+            binding.fldGrpnh110.setVisibility(View.VISIBLE);
+
+        } else {
+            clearFields();
+            Toast.makeText(this, "No Household found!", Toast.LENGTH_SHORT).show();
+        }
+
+        /*selected = db.getAllBLRandom(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase());
 
         if (selected.size() != 0) {
 
@@ -683,27 +661,16 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
                 MainApp.selectedHead = new BLRandomContract(rnd);
             }
 
-            binding.hhName.setText(MainApp.selectedHead.getHhhead().toUpperCase());
 
             binding.fldGrpnh110.setVisibility(View.VISIBLE);
-
-                /*if (MainApp.selectedHead.getSelStructure().equals("1")) {
-                    binding.na11802a.setEnabled(true);
-                    binding.na11802b.setEnabled(true);
-                } else {
-                    binding.na11802a.setEnabled(false);
-                    binding.na11802b.setEnabled(false);
-                    binding.na11802.clearCheck();
-
-                }
-*/
 
         } else {
 
             clearFields();
 
             Toast.makeText(this, "No Household found!", Toast.LENGTH_SHORT).show();
-        }
+        }*/
+
     }
 
     public void BtnCheckEnm() {
@@ -719,7 +686,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
             }
 
             if (loginFlag) {
-                EnumBlockContract enumBlockContract = db.getEnumBlock(binding.nh102.getText().toString());
+                enumBlockContract = db.getEnumBlock(binding.nh102.getText().toString());
                 if (enumBlockContract != null) {
                     String selected = enumBlockContract.getGeoarea();
                     if (!selected.equals("")) {
@@ -762,7 +729,6 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
 
     }
-
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {

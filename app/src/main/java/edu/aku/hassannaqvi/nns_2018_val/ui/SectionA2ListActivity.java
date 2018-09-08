@@ -407,8 +407,8 @@ public class SectionA2ListActivity extends AppCompatActivity {
                                             } else {
                                                 finish();
                                                 respLineNo = "";
-                                                startActivity(new Intent(getApplicationContext(), SectionA4Activity.class));
-                                                //                                           startActivity(new Intent(getApplicationContext(), ViewMemberActivity.class).putExtra("activity", 1));
+                                                startActivity(new Intent(getApplicationContext(), EndingActivity.class)
+                                                        .putExtra("complete", true));
                                             }
                                         } else {
                                             startActivity(new Intent(getApplicationContext(), ViewMemberActivity.class).putExtra("activity", 6));
@@ -605,36 +605,36 @@ public class SectionA2ListActivity extends AppCompatActivity {
             this.holder = holder;
             this.holder.bindUser(this.membersList.get(position));
 //            this.holder.itemView.setBackgroundColor(getResources().getColor(R.color.brown));
-                for (int item : MainApp.hhClicked) {
-                    if(position == item){
-                        JSONModelClass json = JSONUtilClass.getModelFromJSON(MainApp.familyMembersClicked.get(item).getsA2(), JSONModelClass.class);
-                        int age = Integer.valueOf(json.getAge());
+            for (int item : MainApp.hhClicked) {
+                if (position == item) {
+                    JSONModelClass json = JSONUtilClass.getModelFromJSON(MainApp.familyMembersClicked.get(item).getsA2(), JSONModelClass.class);
+                    int age = Integer.valueOf(json.getAge());
 
-                        if (age >= 10) {
-                            if (json.getGender().equals("1")) {
-                                this.holder.itemView.setBackgroundColor(getResources().getColor(R.color.darkBlue));
-                            } else if (json.getGender().equals("2")) {
-                                this.holder.itemView.setBackgroundColor(getResources().getColor(R.color.darkPink));
-                            } else {
-                                this.holder.itemView.setBackgroundColor(Color.BLACK);
-                            }
+                    if (age >= 10) {
+                        if (json.getGender().equals("1")) {
+                            this.holder.itemView.setBackgroundColor(getResources().getColor(R.color.darkBlue));
+                        } else if (json.getGender().equals("2")) {
+                            this.holder.itemView.setBackgroundColor(getResources().getColor(R.color.darkPink));
                         } else {
-                            if (json.getGender().equals("1")) {
-                                this.holder.itemView.setBackgroundColor(getResources().getColor(R.color.lightBlue));
-                            } else if (json.getGender().equals("2")) {
-                                this.holder.itemView.setBackgroundColor(getResources().getColor(R.color.lightPink));
-                            } else {
-                                this.holder.itemView.setBackgroundColor(Color.BLACK);
-                            }
+                            this.holder.itemView.setBackgroundColor(Color.BLACK);
+                        }
+                    } else {
+                        if (json.getGender().equals("1")) {
+                            this.holder.itemView.setBackgroundColor(getResources().getColor(R.color.lightBlue));
+                        } else if (json.getGender().equals("2")) {
+                            this.holder.itemView.setBackgroundColor(getResources().getColor(R.color.lightPink));
+                        } else {
+                            this.holder.itemView.setBackgroundColor(Color.BLACK);
                         }
                     }
-                    }
-//            if (SectionA1Activity.editFormFlag) {
-                for (int item : MainApp.flagClicked) {
-                    if(position == item) {
-                        this.holder.itemView.setBackgroundColor(getResources().getColor(R.color.brown));
-                    }
                 }
+            }
+//            if (SectionA1Activity.editFormFlag) {
+            for (int item : MainApp.flagClicked) {
+                if (position == item) {
+                    this.holder.itemView.setBackgroundColor(getResources().getColor(R.color.brown));
+                }
+            }
 //            }
 
 
