@@ -30,18 +30,8 @@ import java.util.List;
 import edu.aku.hassannaqvi.nns_2018_val.Adapters.syncListAdapter;
 import edu.aku.hassannaqvi.nns_2018_val.Adapters.upload_list_adapter;
 import edu.aku.hassannaqvi.nns_2018_val.R;
-import edu.aku.hassannaqvi.nns_2018_val.contracts.ChildContract;
-import edu.aku.hassannaqvi.nns_2018_val.contracts.DeceasedContract;
-import edu.aku.hassannaqvi.nns_2018_val.contracts.EligibleMembersContract;
 import edu.aku.hassannaqvi.nns_2018_val.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018_val.contracts.FormsContract;
-import edu.aku.hassannaqvi.nns_2018_val.contracts.MWRAContract;
-import edu.aku.hassannaqvi.nns_2018_val.contracts.MicroContract;
-import edu.aku.hassannaqvi.nns_2018_val.contracts.NutritionContract;
-import edu.aku.hassannaqvi.nns_2018_val.contracts.OutcomeContract;
-import edu.aku.hassannaqvi.nns_2018_val.contracts.RecipientsContract;
-import edu.aku.hassannaqvi.nns_2018_val.contracts.SpecimenContract;
-import edu.aku.hassannaqvi.nns_2018_val.contracts.WaterSpecimenContract;
 import edu.aku.hassannaqvi.nns_2018_val.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018_val.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018_val.databinding.ActivitySyncBinding;
@@ -158,150 +148,6 @@ public class SyncActivity extends AppCompatActivity {
         }
     }
 
-    public class syncData extends AsyncTask<String, String, String> {
-
-        private Context mContext;
-
-        public syncData(Context mContext) {
-            this.mContext = mContext;
-        }
-
-        @Override
-        protected String doInBackground(String... strings) {
-            runOnUiThread(new Runnable() {
-
-                @Override
-                public void run() {
-                    new SyncDevice(SyncActivity.this).execute();
-//                  getting Enum Blocks
-                    Toast.makeText(SyncActivity.this, "Sync Enum Blocks", Toast.LENGTH_SHORT).show();
-
-                    if (listActivityCreated){
-                        model = new SyncModel();
-                        model.setstatusID(0);
-                        list.add(model);
-                    }
-                    new GetAllData(mContext, "EnumBlock", syncListAdapter, list).execute();
-                    bi.noItem.setVisibility(View.GONE);
-
-//                  getting Users!!
-                    Toast.makeText(SyncActivity.this, "Sync Users", Toast.LENGTH_SHORT).show();
-
-                    if (listActivityCreated){
-                        model = new SyncModel();
-                        model.setstatusID(0);
-                        list.add(model);
-                    }
-                    new GetAllData(mContext, "User", syncListAdapter, list).execute();
-
-//                   getting BL Random
-                    Toast.makeText(SyncActivity.this, "Sync BL Random", Toast.LENGTH_SHORT).show();
-                    if (listActivityCreated){
-                        model = new SyncModel();
-                        model.setstatusID(0);
-                        list.add(model);
-                    }
-                    new GetAllData(mContext, "BLRandom", syncListAdapter, list).execute();
-
-//                    Getting App Version
-                    Toast.makeText(SyncActivity.this, "Sync App Version", Toast.LENGTH_SHORT).show();
-                    if (listActivityCreated){
-                        model = new SyncModel();
-                        model.setstatusID(0);
-                        list.add(model);
-                    }
-                    new GetAllData(mContext, "VersionApp", syncListAdapter, list).execute();
-                    /*Toast.makeText(Menu2Activity.this, "Sync Family Members", Toast.LENGTH_LONG).show();
-                    new GetAllData(mContext, "FamilyMembers").execute();*/
-
-                    listActivityCreated = false;
-                }
-            });
-
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            new Handler().postDelayed(new Runnable() {
-
-                @Override
-                public void run() {
-
-//                    populateSpinner(mContext);
-
-                    editor.putBoolean("flag", true);
-                    editor.commit();
-
-                    dbBackup();
-
-                }
-            }, 1200);
-        }
-    }
-
-    public void dbBackup() {
-
-        sharedPref = getSharedPreferences("src", MODE_PRIVATE);
-        editor = sharedPref.edit();
-
-        if (sharedPref.getBoolean("flag", false)) {
-
-            String dt = sharedPref.getString("dt", new SimpleDateFormat("dd-MM-yy").format(new Date()).toString());
-
-            if (dt != new SimpleDateFormat("dd-MM-yy").format(new Date()).toString()) {
-                editor.putString("dt", new SimpleDateFormat("dd-MM-yy").format(new Date()).toString());
-
-                editor.commit();
-            }
-
-            File folder = new File(Environment.getExternalStorageDirectory() + File.separator + DatabaseHelper.PROJECT_NAME);
-            boolean success = true;
-            if (!folder.exists()) {
-                success = folder.mkdirs();
-            }
-            if (success) {
-
-                DirectoryName = folder.getPath() + File.separator + sharedPref.getString("dt", "");
-                folder = new File(DirectoryName);
-                if (!folder.exists()) {
-                    success = folder.mkdirs();
-                }
-                if (success) {
-
-                    try {
-                        File dbFile = new File(this.getDatabasePath(DatabaseHelper.DATABASE_NAME).getPath());
-                        FileInputStream fis = new FileInputStream(dbFile);
-
-                        String outFileName = DirectoryName + File.separator +
-                                DatabaseHelper.DB_NAME;
-
-                        // Open the empty db as the output stream
-                        OutputStream output = new FileOutputStream(outFileName);
-
-                        // Transfer bytes from the inputfile to the outputfile
-                        byte[] buffer = new byte[1024];
-                        int length;
-                        while ((length = fis.read(buffer)) > 0) {
-                            output.write(buffer, 0, length);
-                        }
-                        // Close the streams
-                        output.flush();
-                        output.close();
-                        fis.close();
-                    } catch (IOException e) {
-                        Log.e("dbBackup:", e.getMessage());
-                    }
-
-                }
-
-            } else {
-                Toast.makeText(this, "Not create folder", Toast.LENGTH_SHORT).show();
-            }
-        }
-
-    }
     public void syncServer() {
 
         // Require permissions INTERNET & ACCESS_NETWORK_STATE
@@ -343,7 +189,8 @@ public class SyncActivity extends AppCompatActivity {
                     db.getUnsyncedFamilyMembers(), this.findViewById(R.id.syncStatus),1,uploadListAdapter,uploadlist
             ).execute();
             bi.noDataItem.setVisibility(View.GONE);
-            Toast.makeText(getApplicationContext(), "Syncing WRAs", Toast.LENGTH_SHORT).show();
+
+            /*Toast.makeText(getApplicationContext(), "Syncing WRAs", Toast.LENGTH_SHORT).show();
             if (uploadlistActivityCreated){
                 uploadmodel = new SyncModel();
                 uploadmodel.setstatusID(0);
@@ -491,7 +338,7 @@ public class SyncActivity extends AppCompatActivity {
                     MainApp._HOST_URL + MicroContract.MicroTable._URL,
                     db.getUnsyncedMicroForms(), this.findViewById(R.id.syncStatus),11,uploadListAdapter,uploadlist
             ).execute();
-
+*/
 
 /*
             Toast.makeText(getApplicationContext(), "Syncing Summary", Toast.LENGTH_SHORT).show();
@@ -522,6 +369,151 @@ public class SyncActivity extends AppCompatActivity {
             Toast.makeText(this, "No network connection available.", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    public void dbBackup() {
+
+        sharedPref = getSharedPreferences("src", MODE_PRIVATE);
+        editor = sharedPref.edit();
+
+        if (sharedPref.getBoolean("flag", false)) {
+
+            String dt = sharedPref.getString("dt", new SimpleDateFormat("dd-MM-yy").format(new Date()).toString());
+
+            if (dt != new SimpleDateFormat("dd-MM-yy").format(new Date()).toString()) {
+                editor.putString("dt", new SimpleDateFormat("dd-MM-yy").format(new Date()).toString());
+
+                editor.commit();
+            }
+
+            File folder = new File(Environment.getExternalStorageDirectory() + File.separator + DatabaseHelper.PROJECT_NAME);
+            boolean success = true;
+            if (!folder.exists()) {
+                success = folder.mkdirs();
+            }
+            if (success) {
+
+                DirectoryName = folder.getPath() + File.separator + sharedPref.getString("dt", "");
+                folder = new File(DirectoryName);
+                if (!folder.exists()) {
+                    success = folder.mkdirs();
+                }
+                if (success) {
+
+                    try {
+                        File dbFile = new File(this.getDatabasePath(DatabaseHelper.DATABASE_NAME).getPath());
+                        FileInputStream fis = new FileInputStream(dbFile);
+
+                        String outFileName = DirectoryName + File.separator +
+                                DatabaseHelper.DB_NAME;
+
+                        // Open the empty db as the output stream
+                        OutputStream output = new FileOutputStream(outFileName);
+
+                        // Transfer bytes from the inputfile to the outputfile
+                        byte[] buffer = new byte[1024];
+                        int length;
+                        while ((length = fis.read(buffer)) > 0) {
+                            output.write(buffer, 0, length);
+                        }
+                        // Close the streams
+                        output.flush();
+                        output.close();
+                        fis.close();
+                    } catch (IOException e) {
+                        Log.e("dbBackup:", e.getMessage());
+                    }
+
+                }
+
+            } else {
+                Toast.makeText(this, "Not create folder", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+    }
+
+    public class syncData extends AsyncTask<String, String, String> {
+
+        private Context mContext;
+
+        public syncData(Context mContext) {
+            this.mContext = mContext;
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            runOnUiThread(new Runnable() {
+
+                @Override
+                public void run() {
+                    new SyncDevice(SyncActivity.this).execute();
+//                  getting Enum Blocks
+                    Toast.makeText(SyncActivity.this, "Sync Enum Blocks", Toast.LENGTH_SHORT).show();
+
+                    if (listActivityCreated) {
+                        model = new SyncModel();
+                        model.setstatusID(0);
+                        list.add(model);
+                    }
+                    new GetAllData(mContext, "EnumBlock", syncListAdapter, list).execute();
+                    bi.noItem.setVisibility(View.GONE);
+
+//                  getting Users!!
+                    Toast.makeText(SyncActivity.this, "Sync Users", Toast.LENGTH_SHORT).show();
+
+                    if (listActivityCreated) {
+                        model = new SyncModel();
+                        model.setstatusID(0);
+                        list.add(model);
+                    }
+                    new GetAllData(mContext, "User", syncListAdapter, list).execute();
+
+//                   getting BL Random
+                    /*Toast.makeText(SyncActivity.this, "Sync BL Random", Toast.LENGTH_SHORT).show();
+                    if (listActivityCreated){
+                        model = new SyncModel();
+                        model.setstatusID(0);
+                        list.add(model);
+                    }
+                    new GetAllData(mContext, "BLRandom", syncListAdapter, list).execute();*/
+
+//                    Getting App Version
+                    Toast.makeText(SyncActivity.this, "Sync App Version", Toast.LENGTH_SHORT).show();
+                    if (listActivityCreated) {
+                        model = new SyncModel();
+                        model.setstatusID(0);
+                        list.add(model);
+                    }
+                    new GetAllData(mContext, "VersionApp", syncListAdapter, list).execute();
+                    /*Toast.makeText(Menu2Activity.this, "Sync Family Members", Toast.LENGTH_LONG).show();
+                    new GetAllData(mContext, "FamilyMembers").execute();*/
+
+                    listActivityCreated = false;
+                }
+            });
+
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+
+//                    populateSpinner(mContext);
+
+                    editor.putBoolean("flag", true);
+                    editor.commit();
+
+                    dbBackup();
+
+                }
+            }, 1200);
+        }
     }
 
 

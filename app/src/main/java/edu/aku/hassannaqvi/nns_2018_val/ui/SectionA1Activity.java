@@ -640,10 +640,6 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
         if (binding.nh108.getText().toString().equals(hhNo)) {
             Toast.makeText(this, "Household found!", Toast.LENGTH_SHORT).show();
 
-            for (BLRandomContract rnd : selected) {
-                MainApp.selectedHead = new BLRandomContract(rnd);
-            }
-
             binding.fldGrpnh110.setVisibility(View.VISIBLE);
 
         } else {

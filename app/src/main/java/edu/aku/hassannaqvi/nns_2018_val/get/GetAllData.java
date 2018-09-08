@@ -65,10 +65,10 @@ public class GetAllData extends AsyncTask<String, String, String> {
                 position = 2;
                 break;*/
             case "VersionApp":
-                position = 3;
+                position = 2;
                 break;
             case "FamilyMembers":
-                position = 4;
+                position = 3;
                 break;
         }
         list.get(position).settableName(syncClass);
@@ -102,10 +102,10 @@ public class GetAllData extends AsyncTask<String, String, String> {
                 position = 2;
                 break;*/
             case "VersionApp":
-                position = 3;
+                position = 2;
                 break;
             case "FamilyMembers":
-                position = 4;
+                position = 3;
                 break;
         }
         list.get(position).setstatus("Syncing");
@@ -136,11 +136,11 @@ public class GetAllData extends AsyncTask<String, String, String> {
                     break;*/
                 case "VersionApp":
                     url = new URL(MainApp._UPDATE_URL + VersionAppContract.VersionAppTable._URI);
-                    position = 3;
+                    position = 2;
                     break;
                 case "FamilyMembers":
                     url = new URL(MainApp._UPDATE_URL + FamilyMembersContract.familyMembers._URI);
-                    position = 4;
+                    position = 3;
                     break;
             }
 
@@ -200,11 +200,11 @@ public class GetAllData extends AsyncTask<String, String, String> {
                             break;*/
                         case "VersionApp":
                             db.syncVersionApp(jsonArray);
-                            position = 3;
+                            position = 2;
                             break;
                         case "FamilyMembers":
                             db.syncFamilyMembers(jsonArray);
-                            position = 4;
+                            position = 3;
                             break;
                     }
 
