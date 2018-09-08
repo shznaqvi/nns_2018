@@ -102,7 +102,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsTable.COLUMN_HH_NO + " TEXT," +
             FormsTable.COLUMN_CLUSTER_NO + " TEXT," +
 
-            FormsTable.COLUMN_GPSELEV + " TEXT," +
             FormsTable.COLUMN_SA1 + " TEXT," +
             FormsTable.COLUMN_SA4 + " TEXT," +
             FormsTable.COLUMN_SA5 + " TEXT," +
@@ -114,6 +113,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsTable.COLUMN_GPSLNG + " TEXT," +
             FormsTable.COLUMN_GPSDATE + " TEXT," +
             FormsTable.COLUMN_GPSACC + " TEXT," +
+            FormsTable.COLUMN_GPSELEV + " TEXT," +
             FormsTable.COLUMN_DEVICEID + " TEXT," +
             FormsTable.COLUMN_DEVICETAGID + " TEXT," +
             FormsTable.COLUMN_APP_VERSION + " TEXT," +
@@ -469,16 +469,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db.execSQL(SQL_CREATE_USERS);
         db.execSQL(SQL_CREATE_FORMS);
-        db.execSQL(SQL_CREATE_CHILD_FORMS);
+        db.execSQL(SQL_CREATE_FAMILY_MEMEBERS);
+        db.execSQL(SQL_CREATE_VERSIONAPP);
         db.execSQL(SQL_CREATE_SERIAL);
         db.execSQL(SQL_CREATE_TALUKA);
         db.execSQL(SQL_CREATE_UC);
+
+
+        db.execSQL(SQL_CREATE_CHILD_FORMS);
         db.execSQL(SQL_CREATE_ELIGIBLE_MEMBERS);
         db.execSQL(SQL_CREATE_MWRAS);
         db.execSQL(SQL_CREATE_OUTCOME);
-        db.execSQL(SQL_CREATE_FAMILY_MEMEBERS);
         db.execSQL(SQL_CREATE_RECIPIENTS);
-        db.execSQL(SQL_CREATE_VERSIONAPP);
         db.execSQL(SQL_CREATE_BL_RANDOM);
         db.execSQL(SQL_CREATE_NUTRITION);
         db.execSQL(SQL_CREATE_DECEASED);

@@ -405,8 +405,8 @@ public class MainActivity extends MenuActivity {
     private void OpenFormFun() {
 
         final Intent oF = new Intent(MainActivity.this, SectionA1Activity.class);
-       // if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null && !MainApp.userName.equals("0000")) {
-            startActivity(oF);
+        // if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null && !MainApp.userName.equals("0000")) {
+        startActivity(oF);
        /* } else {
 
             builder = new AlertDialog.Builder(MainActivity.this);
@@ -654,15 +654,19 @@ public class MainActivity extends MenuActivity {
     }
 
     void showDialog(String newVer, String preVer) {
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
-        if (prev != null) {
-            ft.remove(prev);
-        }
-        ft.addToBackStack(null);
+        try {
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+            if (prev != null) {
+                ft.remove(prev);
+            }
+            ft.addToBackStack(null);
 
-        DialogFragment newFragment = MyDialogFragment.newInstance(newVer, preVer);
-        newFragment.show(ft, "dialog");
+            DialogFragment newFragment = MyDialogFragment.newInstance(newVer, preVer);
+            newFragment.show(ft, "dialog");
+        } catch (Exception e) {
+            Toast.makeText(this, "Please Re-Login app!!", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
