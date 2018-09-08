@@ -945,7 +945,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 familyMembers.COLUMN_FLAG,
                 familyMembers.COLUMN_KISH_SELECTED,
                 familyMembers.COLUMN_APP_VERSION
-
         };
 
         String whereClause = familyMembers.COLUMN_ENM_NO + "=? AND "

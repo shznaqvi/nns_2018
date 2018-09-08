@@ -19,6 +19,7 @@ import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
+import edu.aku.hassannaqvi.nns_2018_lab_app.R;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collection;
@@ -82,6 +83,7 @@ public class SyncDevice extends AsyncTask<Void, Integer, String> {
                     try {
                         jsonObject.addProperty("imei",MainApp.IMEI);
                         jsonObject.addProperty("appversion",MainApp.versionName+"."+MainApp.versionCode);
+                        jsonObject.addProperty("appname",context.getString(R.string.app_name));
 
                     } catch (Exception e) {
                         e.printStackTrace();
