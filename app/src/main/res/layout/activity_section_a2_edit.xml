@@ -9,11 +9,11 @@
 
         <variable
             name="callback"
-            type="edu.aku.hassannaqvi.nns_2018.ui.SectionA2EditActivity" />
+            type="edu.aku.hassannaqvi.nns_2018_val.ui.SectionA2EditActivity" />
 
         <variable
             name="name"
-            type="edu.aku.hassannaqvi.nns_2018.core.MainApp.SetNameClass" />
+            type="edu.aku.hassannaqvi.nns_2018_val.core.MainApp.SetNameClass" />
     </data>
 
     <LinearLayout
