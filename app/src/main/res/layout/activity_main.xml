@@ -34,7 +34,8 @@
                 android:background="@color/lightOrange"
                 android:textAlignment="center"
                 android:textColor="@color/darkRed"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/lblheader"
@@ -131,135 +132,135 @@
                 android:text="OPEN FORM" />
 
 
-            <Button
-                android:id="@+id/openB"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="16dp"
-                android:background="#1565C0"
-                android:elevation="5dp"
-                android:onClick="openB"
-                android:text="OPEN Anthropometry Section" />
-
-
-            <Button
-                android:id="@+id/openSpecimen"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="16dp"
-                android:background="#1565C0"
-                android:elevation="5dp"
-                android:onClick="@{() -> callback.openSpecimen()}"
-                android:text="OPEN BLOOD / URINE SPECIMEN COLLECTION FORM"
-                android:visibility="visible" />
-
-
-            <Button
-                android:id="@+id/openWaterSpecimen"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="16dp"
-                android:background="#1565C0"
-                android:elevation="5dp"
-                android:onClick="@{() -> callback.openWater()}"
-                android:text="OPEN WATER SPECIMEN COLLECTION FORM"
-                android:visibility="visible" />
-
-            <Button
-                android:id="@+id/openMicroResults"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="16dp"
-                android:background="#1565C0"
-                android:elevation="5dp"
-                android:onClick="@{() -> callback.openMicroResults()}"
-                android:text="OPEN MICRO RESULTS FORM"
-                android:visibility="visible" />
-
-
-            <Button
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="16dp"
-                android:background="#1565C0"
-                android:elevation="5dp"
-                android:onClick="@{(v) -> callback.openViewMember(true)}"
-                android:text="View Members"
-                android:visibility="gone" />
-
-
-            <Button
-
-                android:id="@+id/syncServer"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="16dp"
-                android:background="#1565C0"
-                android:onClick="syncServer"
-                android:text="Upload Data"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/syncStatus"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Sync Status"
-                android:visibility="gone" />
-
-            <Button
-                android:id="@+id/syncDevice"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="16dp"
-                android:background="#1565C0"
-                android:onClick="syncDevice"
-                android:text="Download Data"
-                android:visibility="gone" />
-
-            <Button
-                android:id="@+id/downloadApp"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="16dp"
-                android:background="@color/red"
-                android:text="DOWNLOAD APP"
-                android:textColor="@color/white"
-                android:visibility="gone" />
-
-            <Button
-                android:id="@+id/updateApp"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="16dp"
-                android:background="#D60000"
-                android:onClick="updateApp"
-                android:text="Update App"
-                android:visibility="gone" />
-
             <LinearLayout
                 android:id="@+id/adminsec"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:visibility="gone">
+
+                <Button
+                    android:id="@+id/openB"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="16dp"
+                    android:background="#1565C0"
+                    android:elevation="5dp"
+                    android:onClick="openB"
+                    android:text="OPEN Anthropometry Section" />
+
+
+                <Button
+                    android:id="@+id/openSpecimen"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="16dp"
+                    android:background="#1565C0"
+                    android:elevation="5dp"
+                    android:onClick="@{() -> callback.openSpecimen()}"
+                    android:text="OPEN BLOOD / URINE SPECIMEN COLLECTION FORM"
+                    android:visibility="visible" />
+
+
+                <Button
+                    android:id="@+id/openWaterSpecimen"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="16dp"
+                    android:background="#1565C0"
+                    android:elevation="5dp"
+                    android:onClick="@{() -> callback.openWater()}"
+                    android:text="OPEN WATER SPECIMEN COLLECTION FORM"
+                    android:visibility="visible" />
+
+                <Button
+                    android:id="@+id/openMicroResults"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="16dp"
+                    android:background="#1565C0"
+                    android:elevation="5dp"
+                    android:onClick="@{() -> callback.openMicroResults()}"
+                    android:text="OPEN MICRO RESULTS FORM"
+                    android:visibility="visible" />
+
+
+                <Button
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="16dp"
+                    android:background="#1565C0"
+                    android:elevation="5dp"
+                    android:onClick="@{(v) -> callback.openViewMember(true)}"
+                    android:text="View Members"
+                    android:visibility="gone" />
+
+
+                <Button
+
+                    android:id="@+id/syncServer"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="16dp"
+                    android:background="#1565C0"
+                    android:onClick="syncServer"
+                    android:text="Upload Data"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/syncStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sync Status"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/syncDevice"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="16dp"
+                    android:background="#1565C0"
+                    android:onClick="syncDevice"
+                    android:text="Download Data"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/downloadApp"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/red"
+                    android:text="DOWNLOAD APP"
+                    android:textColor="@color/white"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/updateApp"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="16dp"
+                    android:background="#D60000"
+                    android:onClick="updateApp"
+                    android:text="Update App"
+                    android:visibility="gone" />
 
                 <Button
                     android:id="@+id/openDB"
