@@ -133,13 +133,17 @@ public class SyncBLRandomWater extends AsyncTask<Void, Integer, String> {
         try {
             json = new JSONArray(result);
             DatabaseHelper db = new DatabaseHelper(context);
-            String uid = "";
+            String hh02 = "";
+            String hh03 = "";
+            String hh07 = "";
 //            db.saveBLRandomFromServer(json,);
             for (int i = 0; i < json.length(); i++) {
                JSONObject jsonObject = json.getJSONObject(i);
 //                BLRandomContract bl = new BLRandomContract();
                 //Mapping A2 inside json
-                uid = jsonObject.getString(singleRandomHH.COLUMN_LUID);
+                hh02 = jsonObject.getString(singleRandomHH.COLUMN_ENUM_BLOCK_CODE);
+                hh03 = jsonObject.getString(singleRandomHH.COLUMN_STRUCTURE_NO);
+                hh07 = jsonObject.getString(singleRandomHH.COLUMN_FAMILY_EXT_CODE);
 /*
                 bl.set_ID(jsonObject.getString(singleRandomHH.COLUMN_ID));
                 bl.setRandomDT(jsonObject.getString(singleRandomHH.COLUMN_RANDOMDT));
@@ -156,7 +160,7 @@ public class SyncBLRandomWater extends AsyncTask<Void, Integer, String> {
 */
 //                DatabaseHelper db = new DatabaseHelper(context);
             }
-            db.saveBLRandomFromServer(json,uid);
+            db.saveBLRandomFromServer(json,hh02,hh03,hh07);
 
         } catch (JSONException e) {
             e.printStackTrace();

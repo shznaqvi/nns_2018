@@ -1445,9 +1445,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(familyMembers.COLUMN_DEVICEID, fmc.getDeviceId());
         db.insert(familyMembers.TABLE_NAME, null, values);
     }
-    public void saveBLRandomFromServer(JSONArray BLlist, String uid) {
-        if (!CheckUIDBLRandomExist(uid)) {
+    public void saveBLRandomFromServer(JSONArray BLlist, String hh02, String hh03, String hh07) {
             SQLiteDatabase db = this.getWritableDatabase();
+            if(!CheckClusterBLRandomExist(hh02,hh03,hh07)){
             try {
                 JSONArray jsonArray = BLlist;
                 for (int i = 0; i < jsonArray.length(); i++) {
@@ -1460,7 +1460,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
                     values.put(singleRandomHH.COLUMN_ID, Vc.get_ID());
                     values.put(singleRandomHH.COLUMN_LUID, Vc.getLUID());
-
                     values.put(singleRandomHH.COLUMN_STRUCTURE_NO, Vc.getStructure());
                     values.put(singleRandomHH.COLUMN_FAMILY_EXT_CODE, Vc.getExtension());
                     values.put(singleRandomHH.COLUMN_HH, Vc.getHh());
@@ -1470,14 +1469,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     values.put(singleRandomHH.COLUMN_CONTACT, Vc.getContact());
                     values.put(singleRandomHH.COLUMN_HH_SELECTED_STRUCT, Vc.getSelStructure());
                     values.put(singleRandomHH.COLUMN_SNO_HH, Vc.getSno());
-
                     db.insert(singleRandomHH.TABLE_NAME, null, values);
                 }
             } catch (Exception e) {
             } finally {
                 db.close();
             }
-        }
+            }
+
+    }
+
+    public boolean CheckClusterBLRandomExist(String hh02, String hh03, String hh07) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        String[] columns = {
+                singleRandomHH.COLUMN_ID
+        };
+
+// Which row to update, based on the ID
+        String selection = singleRandomHH.COLUMN_ENUM_BLOCK_CODE + " =? AND "+singleRandomHH.COLUMN_STRUCTURE_NO+"= ? AND "+singleRandomHH.COLUMN_FAMILY_EXT_CODE+"=?";
+        String[] selectionArgs = {hh02, hh03, hh07};
+        Cursor cursor = db.query(singleRandomHH.TABLE_NAME, //Table to query
+                columns,                    //columns to return
+                selection,                  //columns for the WHERE clause
+                selectionArgs,              //The values for the WHERE clause
+                null,                       //group the rows
+                null,                       //filter by row groups
+                null);                      //The sort order
+
+        int cursorCount = cursor.getCount();
+        cursor.close();
+        return cursorCount > 0;
     }
     public void AntrhoInsertion(JSONObject jsonObjectDT, SQLiteDatabase db) throws JSONException {
         FamilyMembersContract fmc = new FamilyMembersContract();

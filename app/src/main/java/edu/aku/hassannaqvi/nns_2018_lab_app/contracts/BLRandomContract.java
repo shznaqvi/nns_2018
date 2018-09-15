@@ -196,9 +196,7 @@ public class BLRandomContract {
         public static final String COLUMN_HH_HEAD = "hh08";
         public static final String COLUMN_CONTACT = "hh09";
         public static final String COLUMN_HH_SELECTED_STRUCT = "hhss";
-
         public static final String COLUMN_SNO_HH = "sno";
-
         public static final String COLUMN_RANDOM_TYPE = "rndtype";
         public static final String COLUMN_ASSIGNED_HH = "rndAssign";
 
