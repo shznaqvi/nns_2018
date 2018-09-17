@@ -37,7 +37,6 @@ import edu.aku.hassannaqvi.nns_2018_val.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018_val.databinding.ActivitySectionListA2Binding;
 import edu.aku.hassannaqvi.nns_2018_val.databinding.FamilymemberslistBinding;
 import edu.aku.hassannaqvi.nns_2018_val.other.JSONUtilClass;
-import edu.aku.hassannaqvi.nns_2018_val.other.KishGrid;
 
 public class SectionA2ListActivity extends AppCompatActivity {
 
@@ -504,8 +503,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
         if (updcount == 1) {
 
-            if (!SectionA1Activity.editFormFlag && SectionA1Activity.reBackFlag && MainApp.mwra.size() > 0) {
-//                int counter = KishGrid.KishGridProcess(Integer.valueOf(MainApp.fc.getHhNo().split("-")[1]), MainApp.mwra.size());
+            /*if (!SectionA1Activity.editFormFlag && SectionA1Activity.reBackFlag && MainApp.mwra.size() > 0) {
                 int counter = KishGrid.KishGridProcess(Integer.valueOf(MainApp.selectedHead.getSno()), MainApp.mwra.size());
                 updcount = db.updateFamilyMemberKishFlag(MainApp.mwra.get(counter - 1).get_UUID(), MainApp.mwra.get(counter - 1).get_UID());
 
@@ -516,7 +514,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
                     Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
                     return false;
                 }
-            }
+            }*/
             return true;
 
         } else {
