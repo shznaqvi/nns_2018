@@ -701,7 +701,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
                     }
                 } else {
                     binding.nh108.setText(null);
-                    Toast.makeText(this, "Sorry cluster not found!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Sorry cluster not ready for validation!!", Toast.LENGTH_SHORT).show();
                 }
             } else {
                 Toast.makeText(this, "Can't proceed test cluster for current user!!", Toast.LENGTH_SHORT).show();
