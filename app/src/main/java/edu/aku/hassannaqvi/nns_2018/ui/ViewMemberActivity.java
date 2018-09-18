@@ -385,27 +385,11 @@ public class ViewMemberActivity extends MenuActivity {
     }
 
     public Boolean updateEndingFromHH() {
-        MainApp.fc.setIstatus88x("1");
+        MainApp.fc.setIstatusHH("1");
 
         DatabaseHelper db = new DatabaseHelper(this);
 
-        int updcount = db.updateEnding();
-
-        if (updcount == 1) {
-            //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
-            return true;
-        } else {
-            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-    }
-
-    public Boolean updateSummary() {
-        MainApp.fc.setIstatus88x("1");
-
-        DatabaseHelper db = new DatabaseHelper(this);
-
-        int updcount = db.updateEnding();
+        int updcount = db.updateHHEnding();
 
         if (updcount == 1) {
             //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();

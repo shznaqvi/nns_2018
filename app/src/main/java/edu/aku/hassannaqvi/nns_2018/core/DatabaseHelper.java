@@ -88,7 +88,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + singleRandomHH.COLUMN_SNO_HH + " TEXT );";
 
     public static final String PROJECT_NAME = "NNS-2018";
-    private static final int DATABASE_VERSION = 13;
+    private static final int DATABASE_VERSION = 14;
     public static final String DB_NAME = DATABASE_NAME.replace(".", "_" + MainApp.versionName + "_" + DATABASE_VERSION + "_copy.");
 
     private static final String SQL_CREATE_FORMS = "CREATE TABLE "
@@ -109,6 +109,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsTable.COLUMN_END_TIME + " TEXT," +
             FormsTable.COLUMN_ISTATUS + " TEXT," +
             FormsTable.COLUMN_ISTATUS88x + " TEXT," +
+            FormsTable.COLUMN_ISTATUSHH + " TEXT," +
             FormsTable.COLUMN_COUNT + " TEXT," +
             FormsTable.COLUMN_GPSLAT + " TEXT," +
             FormsTable.COLUMN_GPSLNG + " TEXT," +
@@ -120,6 +121,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsTable.COLUMN_SYNCED + " TEXT," +
             FormsTable.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
+
+    private static final String SQL_ALTER_FORM = "ALTER TABLE " +
+            FormsTable.TABLE_NAME + " ADD COLUMN " +
+            FormsTable.COLUMN_ISTATUSHH + " TEXT;";
+
     private static final String SQL_CREATE_FAMILY_MEMEBERS = "CREATE TABLE "
             + familyMembers.TABLE_NAME + "("
             + familyMembers.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -140,7 +146,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             familyMembers.COLUMN_SYNCED_DATE + " TEXT," +
             familyMembers.COLUMN_FLAG + " TEXT"
             + " );";
-
 
     private static final String SQL_ALTER_FAMILYMEMBER = "ALTER TABLE " +
             familyMembers.TABLE_NAME + " ADD COLUMN " +
@@ -530,6 +535,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.execSQL(SQL_CREATE_SUMMARY);
             case 12:
                 db.execSQL(SQL_ALTER_VERSIONAPP);
+            case 13:
+                db.execSQL(SQL_ALTER_FORM);
            /* case 13: not required
                 db.execSQL(SQL_CREATE_DEVICE);*/
 
@@ -730,6 +737,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_RESP_LNO,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_ISTATUS88x,
+                FormsTable.COLUMN_ISTATUSHH,
                 FormsTable.COLUMN_GPSELEV,
                 FormsTable.COLUMN_HH_NO,
                 FormsTable.COLUMN_CLUSTER_NO,
@@ -1590,6 +1598,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put(FormsTable.COLUMN_GPSELEV, fc.getGpsElev());
             values.put(FormsTable.COLUMN_ISTATUS, fc.getIstatus());
             values.put(FormsTable.COLUMN_ISTATUS88x, fc.getIstatus88x());
+            values.put(FormsTable.COLUMN_ISTATUSHH, fc.getIstatusHH());
 
             //values.put(FormsTable.COLUMN_END_TIME, fc.getEndtime());
             values.put(FormsTable.COLUMN_COUNT, fc.getCount());
@@ -1714,6 +1723,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values);
         return newRowId;
     }
+
     public Long addDevice(DeviceContract dc) {
 
         // Gets the data repository in write mode
@@ -2339,6 +2349,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 where,
                 whereArgs);
     }
+
     public void updateTagID(String tagID) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2816,6 +2827,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_RESP_LNO,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_ISTATUS88x,
+                FormsTable.COLUMN_ISTATUSHH,
                 FormsTable.COLUMN_GPSELEV,
                 FormsTable.COLUMN_HH_NO,
                 FormsTable.COLUMN_CLUSTER_NO,
@@ -2935,6 +2947,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_RESP_LNO,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_ISTATUS88x,
+                FormsTable.COLUMN_ISTATUSHH,
                 FormsTable.COLUMN_GPSELEV,
                 FormsTable.COLUMN_HH_NO,
                 FormsTable.COLUMN_CLUSTER_NO,
@@ -3008,6 +3021,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_RESP_LNO,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_ISTATUS88x,
+                FormsTable.COLUMN_ISTATUSHH,
                 FormsTable.COLUMN_GPSELEV,
                 FormsTable.COLUMN_HH_NO,
                 FormsTable.COLUMN_CLUSTER_NO,
@@ -3069,6 +3083,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_RESP_LNO,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_ISTATUS88x,
+                FormsTable.COLUMN_ISTATUSHH,
                 FormsTable.COLUMN_GPSELEV,
                 FormsTable.COLUMN_HH_NO,
                 FormsTable.COLUMN_CLUSTER_NO,
@@ -3769,7 +3784,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allFC;
-    }    public Collection<DeviceContract> getUnsyncedDeviceInfo() {
+    }
+
+    public Collection<DeviceContract> getUnsyncedDeviceInfo() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -5323,6 +5340,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
+    public int updateHHEnding() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FormsTable.COLUMN_ISTATUSHH, MainApp.fc.getIstatusHH());
+        values.put(FormsTable.COLUMN_END_TIME, MainApp.fc.getEndtime());
+
+// Which row to update, based on the ID
+        String selection = FormsTable._ID + " =? ";
+        String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};
+
+        int count = db.update(FormsTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
+
 
     public int updateAnthroEnding() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -5382,13 +5418,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
         return count;
     }
+
     public String getDeviceTAG() {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = null;
         String tagID = null;
         try {
-            String query = "SELECT "+ DeviceContract.DeviceTable.COLUMN_TAGID+" FROM " + DeviceContract.DeviceTable.TABLE_NAME + " WHERE " + DeviceContract.DeviceTable.COLUMN__ID + " = 1";
+            String query = "SELECT " + DeviceContract.DeviceTable.COLUMN_TAGID + " FROM " + DeviceContract.DeviceTable.TABLE_NAME + " WHERE " + DeviceContract.DeviceTable.COLUMN__ID + " = 1";
             cursor = db.rawQuery(
                     query,
                     new String[]{null}
@@ -5409,13 +5446,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return tagID;
     }
+
     public int isDeviceInfoExists() {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = null;
         int count = 0;
         try {
-            String query = "SELECT * FROM " + DeviceContract.DeviceTable.TABLE_NAME+" WHERE "+ DeviceContract.DeviceTable.COLUMN_IMEI +" != '' OR null ";
+            String query = "SELECT * FROM " + DeviceContract.DeviceTable.TABLE_NAME + " WHERE " + DeviceContract.DeviceTable.COLUMN_IMEI + " != '' OR null ";
             cursor = db.rawQuery(
                     query,
                     new String[]{null}
