@@ -15,9 +15,7 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.text.format.DateFormat;
 import android.widget.Toast;
 
@@ -26,13 +24,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.ChildContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.DeceasedContract;
-import edu.aku.hassannaqvi.nns_2018.contracts.DeviceContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.EligibleMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
@@ -297,6 +295,16 @@ public class MainApp extends Application {
         return sharedPref.getString("tagName", null);
     }
 
+    public static HashMap<String, String> getTagValues(Context mContext) {
+        SharedPreferences sharedPref = mContext.getSharedPreferences("tagName", MODE_PRIVATE);
+
+        HashMap<String, String> map = new HashMap<>();
+        map.put("tag", sharedPref.getString("tagName", null));
+        map.put("org", sharedPref.getString("orgID", null));
+
+        return map;
+    }
+
     public static void finishActivity(final Context context, final Activity activity) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 context);
@@ -502,12 +510,12 @@ public class MainApp extends Application {
         // Requires Additional permission for 5.0 -- android.hardware.location.gps
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 // requestPermission();
             } else {
                 requestLocationUpdate();
             }
-        }else {
+        } else {
             requestLocationUpdate();
         }
 
@@ -611,8 +619,7 @@ public class MainApp extends Application {
     }
 
 
-
-    public void requestLocationUpdate(){
+    public void requestLocationUpdate() {
         locationManager.requestLocationUpdates(
                 LocationManager.GPS_PROVIDER,
                 MINIMUM_TIME_BETWEEN_UPDATES,

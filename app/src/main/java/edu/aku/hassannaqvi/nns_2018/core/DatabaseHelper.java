@@ -67,9 +67,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + UsersTable.ROW_USERNAME + " TEXT,"
             + UsersTable.ROW_PASSWORD + " TEXT,"
             + UsersTable.FULL_NAME + " TEXT,"
-            + UsersTable.TEAM_NO + " TEXT"
+            + UsersTable.TEAM_NO + " TEXT,"
+            + UsersTable.ORG_ID + " TEXT"
             + " );";
-
 
     public static final String DATABASE_NAME = "nns_2018.db";
     public static final String SQL_CREATE_BL_RANDOM = "CREATE TABLE " + singleRandomHH.TABLE_NAME + "("
@@ -88,7 +88,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + singleRandomHH.COLUMN_SNO_HH + " TEXT );";
 
     public static final String PROJECT_NAME = "NNS-2018";
-    private static final int DATABASE_VERSION = 14;
+    private static final int DATABASE_VERSION = 15;
     public static final String DB_NAME = DATABASE_NAME.replace(".", "_" + MainApp.versionName + "_" + DATABASE_VERSION + "_copy.");
 
     private static final String SQL_CREATE_FORMS = "CREATE TABLE "
@@ -158,6 +158,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String SQL_ALTER_USERS = "ALTER TABLE " +
             UsersTable.TABLE_NAME + " ADD COLUMN " +
             UsersTable.TEAM_NO + " TEXT;";
+
+    private static final String SQL_ALTER_USERS1 = "ALTER TABLE " +
+            UsersTable.TABLE_NAME + " ADD COLUMN " +
+            UsersTable.ORG_ID + " TEXT;";
 
     private static final String SQL_ALTER_ELIGIBLEMEMBER = "ALTER TABLE " +
             eligibleMembers.TABLE_NAME + " ADD COLUMN " +
@@ -537,6 +541,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.execSQL(SQL_ALTER_VERSIONAPP);
             case 13:
                 db.execSQL(SQL_ALTER_FORM);
+            case 14:
+                db.execSQL(SQL_ALTER_USERS1);
            /* case 13: not required
                 db.execSQL(SQL_CREATE_DEVICE);*/
 
@@ -1390,6 +1396,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values.put(UsersTable.ROW_PASSWORD, user.getPassword());
                 values.put(UsersTable.FULL_NAME, user.getFULL_NAME());
                 values.put(UsersTable.TEAM_NO, user.getTEAM_NO());
+                values.put(UsersTable.ORG_ID, user.getORG_ID());
                 db.insert(UsersTable.TABLE_NAME, null, values);
             }
 
@@ -1531,6 +1538,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 UsersTable.ROW_USERNAME,
                 UsersTable.FULL_NAME,
                 UsersTable.TEAM_NO,
+                UsersTable.ORG_ID,
                 UsersTable.ROW_PASSWORD
         };
 
