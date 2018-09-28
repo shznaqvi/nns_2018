@@ -184,7 +184,7 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
                 if (!bi.nw202.getText().toString().isEmpty()) {
                     bi.curAge.setText("Current Age is: " + bi.nw202.getText().toString() + " years");
                     bi.curAge1.setText("Current Age is: " + bi.nw202.getText().toString() + " years");
-                    if (Integer.valueOf(bi.nw202.getText().toString()) >= 15 && Integer.valueOf(bi.nw202.getText().toString()) < 49) {
+                    if (Integer.valueOf(bi.nw202.getText().toString()) >= 15 && Integer.valueOf(bi.nw202.getText().toString()) < 50) {
                         bi.nw203a.setChecked(true);
                         bi.nw203b.setChecked(false);
                     } else {
