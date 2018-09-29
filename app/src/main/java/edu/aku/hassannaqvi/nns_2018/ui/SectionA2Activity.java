@@ -46,6 +46,7 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     Map<Integer, Map<Integer, Integer>> mem;
     List<String> mothersList, fathersList;
+
     List<String> mothersSerials, fathersSerials;
     Map<String, String> mothersMap, fathersMap;
     int position = 0;
@@ -163,8 +164,6 @@ public class SectionA2Activity extends AppCompatActivity implements TextWatcher,
             binding.na20396.setEnabled(false);
             binding.na20398.setEnabled(false);
         }
-
-
     }
 
     public void skipPattern() {
