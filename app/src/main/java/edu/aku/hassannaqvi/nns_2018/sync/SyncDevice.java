@@ -130,7 +130,7 @@ public class SyncDevice extends AsyncTask<Void, Integer, String> {
         JSONArray json = null;
         try {
             json = new JSONArray(result);
-            if (json.length()>0) {
+            if (json.length() > 0) {
                 for (int i = 0; i < json.length(); i++) {
                     JSONObject jsonObject = new JSONObject(json.getString(i));
                     if (!jsonObject.equals("")) {
@@ -149,7 +149,7 @@ public class SyncDevice extends AsyncTask<Void, Integer, String> {
                         sSyncedError += "\nError:This device is not found on server.";
                     }
                 }
-            }else {
+            } else {
                 delegate.processFinish(true);
             }
 //            Toast.makeText(context,  " synced: " + sSynced + "\r\n\r\n Errors: " + sSyncedError, Toast.LENGTH_SHORT).show();
