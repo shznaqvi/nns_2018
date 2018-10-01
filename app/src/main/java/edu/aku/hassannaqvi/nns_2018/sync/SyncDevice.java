@@ -34,11 +34,13 @@ public class SyncDevice extends AsyncTask<Void, Integer, String> {
 
     public SyncDevicInterface delegate;
 
-    public SyncDevice(Context context) {
+    boolean flag;
+
+    public SyncDevice(Context context, boolean flag) {
         this.context = context;
+        this.flag = flag;
 
         delegate = (SyncDevicInterface) context;
-
         delegate.processFinish(false);
     }
 
@@ -142,7 +144,9 @@ public class SyncDevice extends AsyncTask<Void, Integer, String> {
                         editor.putString("orgID", jsonObject.getString("id_org"));
                         editor.commit();
 
-                        delegate.processFinish(true);
+                        if (flag) {
+                            delegate.processFinish(true);
+                        }
 
                     } else if (jsonObject.getString("status").equals("0") && jsonObject.getString("error").equals("1")) {
                     } else {
