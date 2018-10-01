@@ -104,7 +104,7 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
 
-            new SyncDevice(SyncActivity.this).execute();
+            new SyncDevice(SyncActivity.this, true).execute();
 
         } else {
             Toast.makeText(this, "No network connection available.", Toast.LENGTH_SHORT).show();
@@ -166,7 +166,7 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
     public void processFinish(boolean flag) {
         if (flag) {
             HashMap<String, String> tagVal = MainApp.getTagValues(this);
-            new syncData(SyncActivity.this, tagVal.get("org")).execute();
+            new syncData(SyncActivity.this, tagVal.get("org").equals("null") ? null : tagVal.get("org")).execute();
         }
     }
 
@@ -180,7 +180,7 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
 
             DatabaseHelper db = new DatabaseHelper(this);
             //syncStatus.setText(null);
-            new SyncDevice(this).execute();
+            new SyncDevice(this, false).execute();
             Toast.makeText(getApplicationContext(), "Syncing Forms", Toast.LENGTH_SHORT).show();
             if (uploadlistActivityCreated) {
                 uploadmodel = new SyncModel();
