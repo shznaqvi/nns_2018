@@ -25,6 +25,7 @@ import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import edu.aku.hassannaqvi.nns_2018_val.Adapters.syncListAdapter;
@@ -40,7 +41,7 @@ import edu.aku.hassannaqvi.nns_2018_val.other.SyncModel;
 import edu.aku.hassannaqvi.nns_2018_val.sync.SyncAllData;
 import edu.aku.hassannaqvi.nns_2018_val.sync.SyncDevice;
 
-public class SyncActivity extends AppCompatActivity {
+public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDevicInterface {
     SharedPreferences.Editor editor;
     SharedPreferences sharedPref;
     String DirectoryName;
@@ -55,7 +56,6 @@ public class SyncActivity extends AppCompatActivity {
     Boolean listActivityCreated;
     Boolean uploadlistActivityCreated;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +85,7 @@ public class SyncActivity extends AppCompatActivity {
         setAdapter();
         setUploadAdapter();
     }
+
     public void onSyncDataClick() {
 
         // Require permissions INTERNET & ACCESS_NETWORK_STATE
@@ -92,7 +93,9 @@ public class SyncActivity extends AppCompatActivity {
                 getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
-            new syncData(SyncActivity.this).execute();
+
+            new SyncDevice(SyncActivity.this).execute();
+
         } else {
             Toast.makeText(this, "No network connection available.", Toast.LENGTH_SHORT).show();
         }
@@ -134,6 +137,7 @@ public class SyncActivity extends AppCompatActivity {
             bi.noItem.setVisibility(View.VISIBLE);
         }
     }
+
     void setUploadAdapter() {
         uploadListAdapter = new upload_list_adapter(uploadlist);
         RecyclerView.LayoutManager mLayoutManager2 = new LinearLayoutManager(getApplicationContext());
@@ -145,6 +149,14 @@ public class SyncActivity extends AppCompatActivity {
             bi.noDataItem.setVisibility(View.GONE);
         } else {
             bi.noDataItem.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
+    public void processFinish(boolean flag) {
+        if (flag) {
+            HashMap<String, String> tagVal = MainApp.getTagValues(this);
+            new syncData(SyncActivity.this, tagVal.get("org")).execute();
         }
     }
 
@@ -436,9 +448,11 @@ public class SyncActivity extends AppCompatActivity {
     public class syncData extends AsyncTask<String, String, String> {
 
         private Context mContext;
+        String orgID;
 
-        public syncData(Context mContext) {
+        public syncData(Context mContext, String orgID) {
             this.mContext = mContext;
+            this.orgID = orgID;
         }
 
         @Override
@@ -447,7 +461,7 @@ public class SyncActivity extends AppCompatActivity {
 
                 @Override
                 public void run() {
-                    new SyncDevice(SyncActivity.this).execute();
+
 //                  getting Enum Blocks
                     Toast.makeText(SyncActivity.this, "Sync Enum Blocks", Toast.LENGTH_SHORT).show();
 
@@ -515,7 +529,5 @@ public class SyncActivity extends AppCompatActivity {
             }, 1200);
         }
     }
-
-
 
 }

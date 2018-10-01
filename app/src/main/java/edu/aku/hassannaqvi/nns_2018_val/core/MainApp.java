@@ -24,6 +24,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -292,6 +293,16 @@ public class MainApp extends Application {
     public static String getTagName(Context mContext) {
         SharedPreferences sharedPref = mContext.getSharedPreferences("tagName", MODE_PRIVATE);
         return sharedPref.getString("tagName", null);
+    }
+
+    public static HashMap<String, String> getTagValues(Context mContext) {
+        SharedPreferences sharedPref = mContext.getSharedPreferences("tagName", MODE_PRIVATE);
+
+        HashMap<String, String> map = new HashMap<>();
+        map.put("tag", sharedPref.getString("tagName", null));
+        map.put("org", sharedPref.getString("orgID", null));
+
+        return map;
     }
 
     public static void finishActivity(final Context context, final Activity activity) {

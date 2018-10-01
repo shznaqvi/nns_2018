@@ -7,9 +7,11 @@ import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -144,9 +146,44 @@ public class GetAllData extends AsyncTask<String, String, String> {
                     break;
             }
 
+
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setReadTimeout(100000 /* milliseconds */);
             urlConnection.setConnectTimeout(150000 /* milliseconds */);
+
+            switch (syncClass) {
+                case "EnumBlock":
+                case "User":
+
+                    if (args[0] != null && !args[0].equals("")) {
+                        if (Integer.valueOf(args[0]) > 0) {
+                            urlConnection.setRequestMethod("POST");
+                            urlConnection.setDoOutput(true);
+                            urlConnection.setDoInput(true);
+                            urlConnection.setRequestProperty("Content-Type", "application/json");
+                            urlConnection.setRequestProperty("charset", "utf-8");
+                            urlConnection.setUseCaches(false);
+
+                            // Starts the query
+                            urlConnection.connect();
+                            JSONArray jsonSync = new JSONArray();
+                            DataOutputStream wr = new DataOutputStream(urlConnection.getOutputStream());
+                            JSONObject json = new JSONObject();
+                            try {
+                                json.put("id_org", args[0]);
+                            } catch (JSONException e1) {
+                                e1.printStackTrace();
+                            }
+                            Log.d(TAG, "downloadUrl: " + json.toString());
+                            wr.writeBytes(json.toString());
+                            wr.flush();
+                            wr.close();
+                        }
+                    }
+                    break;
+            }
+
+
             Log.d(TAG, "doInBackground: " + urlConnection.getResponseCode());
             publishProgress(syncClass);
             if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
