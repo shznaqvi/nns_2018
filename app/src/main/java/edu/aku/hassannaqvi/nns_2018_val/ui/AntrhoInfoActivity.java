@@ -183,7 +183,6 @@ public class AntrhoInfoActivity extends Activity {
 
     public void BtnContinue() {
 
-        Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
 
             SaveDraft();
@@ -203,7 +202,6 @@ public class AntrhoInfoActivity extends Activity {
 
     public void BtnEnd() {
 
-        Toast.makeText(this, "Processing End Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
 
             SaveDraft();
@@ -319,7 +317,6 @@ public class AntrhoInfoActivity extends Activity {
     }
 
     private void SaveDraft() {
-        Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
         enm_no = binding.nh102.getText().toString();
         hh_no = binding.nh108.getText().toString().toUpperCase();
@@ -327,9 +324,7 @@ public class AntrhoInfoActivity extends Activity {
         ht_code = binding.htCode.getText().toString();
         wt_code = binding.wtCode.getText().toString();
 
-
     }
-
 
     private boolean UpdateDB() {
 
@@ -344,9 +339,11 @@ public class AntrhoInfoActivity extends Activity {
             hh = db.getAllHHforAnthro(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase());
             if (hh.size() > 0) {
                 populateMembers(hh.get(hh.size() - 1).get_UUID(), hh.get(hh.size() - 1).getFormDate());
+            } else {
+                Toast.makeText(this, "Children's not found!!", Toast.LENGTH_SHORT).show();
             }
         } else {
-            Toast.makeText(this, "Not found.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "HH found!!", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -375,8 +372,6 @@ public class AntrhoInfoActivity extends Activity {
 
     public void populateMembers(final String uuid, final String formDate) {
 
-        Toast.makeText(getApplicationContext(), "Searching Members!!", Toast.LENGTH_SHORT).show();
-
         members = db.getAllMembersByHHforAnthro(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase(), uuid, formDate, true);
 
         if (members.size() != 0) {
@@ -384,13 +379,15 @@ public class AntrhoInfoActivity extends Activity {
 
                 if (fm.getsA2() != null) {
                     json = JSONUtilClass.getModelFromJSON(fm.getsA2(), JSONModelClass.class);
-                    if ((Integer.valueOf(json.getAge()) >= 15 && Integer.valueOf(json.getAge()) < 50) && json.getGender().equals("2")) {
+                    /*if ((Integer.valueOf(json.getAge()) >= 15 && Integer.valueOf(json.getAge()) < 50) && json.getGender().equals("2")) {
                         MainApp.mwra.add(fm);
                         MainApp.all_members.add(fm);
                     } else if ((Integer.valueOf(json.getAge()) >= 10 && (Integer.valueOf(json.getAge()) < 20)) && json.getMaritalStatus().equals("5")) {
                         MainApp.adolescents.add(fm);
                         MainApp.all_members.add(fm);
-                    } else if (Integer.valueOf(json.getAge()) < 6) {
+                    } else*/
+
+                    if (Integer.valueOf(json.getAge()) < 6) {
                         MainApp.childUnder5.add(fm);
                         MainApp.all_members.add(fm);
                     }
@@ -398,7 +395,7 @@ public class AntrhoInfoActivity extends Activity {
 
             }
             if (MainApp.all_members.size() > 0) {
-                Toast.makeText(getApplicationContext(), "Members Found..", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Children's Found..", Toast.LENGTH_SHORT).show();
                 binding.fldGrpQR.setVisibility(View.VISIBLE);
                 binding.btnContinue.setVisibility(View.VISIBLE);
                 binding.btnEnd.setVisibility(View.GONE);
@@ -410,11 +407,11 @@ public class AntrhoInfoActivity extends Activity {
                 binding.wtCode.setText(null);
                 binding.btnContinue.setVisibility(View.GONE);
                 binding.btnEnd.setVisibility(View.GONE);
-                Toast.makeText(getApplicationContext(), "No Eligible member found for anthropometry, Check another HH.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "No Eligible children found for anthropometry, Check another HH.", Toast.LENGTH_SHORT).show();
             }
 
         } else {
-            Toast.makeText(getApplicationContext(), "No members found for the HH.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "No children's found for the HH.", Toast.LENGTH_SHORT).show();
         }
     }
 

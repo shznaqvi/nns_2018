@@ -50,7 +50,8 @@ public class GetAllData extends AsyncTask<String, String, String> {
         this.syncClass = syncClass;
         TAG = "Get" + syncClass;
     }
-    public GetAllData(Context context, String syncClass,syncListAdapter adapter, List<SyncModel> list) {
+
+    public GetAllData(Context context, String syncClass, syncListAdapter adapter, List<SyncModel> list) {
         mContext = context;
         this.syncClass = syncClass;
         this.adapter = adapter;
@@ -141,7 +142,7 @@ public class GetAllData extends AsyncTask<String, String, String> {
                     position = 2;
                     break;
                 case "FamilyMembers":
-                    url = new URL(MainApp._UPDATE_URL + FamilyMembersContract.familyMembers._URI);
+                    url = new URL(MainApp._HOST_URL + FamilyMembersContract.familyMembers._URI1);
                     position = 3;
                     break;
             }
@@ -154,6 +155,7 @@ public class GetAllData extends AsyncTask<String, String, String> {
             switch (syncClass) {
                 case "EnumBlock":
                 case "User":
+                case "FamilyMembers":
 
                     if (args[0] != null && !args[0].equals("")) {
                         if (Integer.valueOf(args[0]) > 0) {

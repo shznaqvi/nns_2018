@@ -48,6 +48,7 @@ public class FamilyMembersContract implements Serializable {
     private String resp = "";
     private String type = "";
     private String kishSelected = "";
+    private String id_org = "";
 
     public FamilyMembersContract() {
     }
@@ -299,22 +300,48 @@ public class FamilyMembersContract implements Serializable {
         this.kishSelected = kishSelected;
     }
 
-    public FamilyMembersContract Sync(JSONObject jsonObject) throws JSONException {
+    public String getId_org() {
+        return id_org;
+    }
 
-        this._ID = jsonObject.getString(familyMembers.COLUMN_ID);
-        this._UID = jsonObject.getString(familyMembers.COLUMN_UID);
-        this._UUID = jsonObject.getString(familyMembers.COLUMN_UUID);
-        this.formDate = jsonObject.getString(familyMembers.COLUMN_FORMDATE);
-        this.deviceId = jsonObject.getString(familyMembers.COLUMN_DEVICEID);
-        this.user = jsonObject.getString(familyMembers.COLUMN_USER);
-        this.app_ver = jsonObject.getString(familyMembers.COLUMN_APP_VERSION);
-        this.sA2 = jsonObject.getString(familyMembers.COLUMN_SA2);
-        this.av = jsonObject.getString(familyMembers.COLUMN_AV);
-        this.hhNo = jsonObject.getString(familyMembers.COLUMN_HH_NO);
-        this.enmNo = jsonObject.getString(familyMembers.COLUMN_ENM_NO);
-        this.devicetagID = jsonObject.getString(familyMembers.COLUMN_DEVICETAGID);
-        this.delflag = jsonObject.getString(familyMembers.COLUMN_FLAG);
-        this.kishSelected = jsonObject.getString(familyMembers.COLUMN_KISH_SELECTED);
+    public void setId_org(String id_org) {
+        this.id_org = id_org;
+    }
+
+    public FamilyMembersContract Sync(JSONObject jsonObject, int flag) throws JSONException {
+
+        if (flag == 0 || flag == 1) {
+            this._ID = jsonObject.getString(familyMembers.COLUMN_ID);
+            this._UID = jsonObject.getString(familyMembers.COLUMN_UID);
+            this._UUID = jsonObject.getString(familyMembers.COLUMN_UUID);
+            this.formDate = jsonObject.getString(familyMembers.COLUMN_FORMDATE);
+            this.deviceId = jsonObject.getString(familyMembers.COLUMN_DEVICEID);
+            this.user = jsonObject.getString(familyMembers.COLUMN_USER);
+            this.app_ver = jsonObject.getString(familyMembers.COLUMN_APP_VERSION);
+            this.av = jsonObject.getString(familyMembers.COLUMN_AV);
+            this.hhNo = jsonObject.getString(familyMembers.COLUMN_HH_NO);
+            this.enmNo = jsonObject.getString(familyMembers.COLUMN_ENM_NO);
+            this.devicetagID = jsonObject.getString(familyMembers.COLUMN_DEVICETAGID);
+            this.delflag = jsonObject.getString(familyMembers.COLUMN_FLAG);
+            this.kishSelected = jsonObject.getString(familyMembers.COLUMN_KISH_SELECTED);
+            this.id_org = jsonObject.getString(familyMembers.COLUMN_ORG_ID);
+        }
+
+        if (flag == 0) {
+            this.sA2 = jsonObject.getString(familyMembers.COLUMN_SA2);
+        } else {
+
+            JSONObject sA1 = new JSONObject();
+            sA1.put("nh202", jsonObject.getString("nh202"));
+            sA1.put("age", jsonObject.getString("age"));
+            sA1.put("nh2SerialNo", jsonObject.getString("nh2SerialNo"));
+            sA1.put("nh207", jsonObject.getString("nh207"));
+            sA1.put("nh204", jsonObject.getString("nh204"));
+            sA1.put("nh210", jsonObject.getString("nh210"));
+
+            this.sA2 = String.valueOf(new JSONObject(String.valueOf(sA1)));
+
+        }
 
         return this;
 
@@ -336,6 +363,7 @@ public class FamilyMembersContract implements Serializable {
         this.devicetagID = cursor.getString(cursor.getColumnIndex(familyMembers.COLUMN_DEVICETAGID));
         this.delflag = cursor.getString(cursor.getColumnIndex(familyMembers.COLUMN_FLAG));
         this.kishSelected = cursor.getString(cursor.getColumnIndex(familyMembers.COLUMN_KISH_SELECTED));
+        this.id_org = cursor.getString(cursor.getColumnIndex(familyMembers.COLUMN_ORG_ID));
 
         return this;
 
@@ -364,6 +392,7 @@ public class FamilyMembersContract implements Serializable {
 
         json.put(familyMembers.COLUMN_PROJECT_NAME, this.projectName == null ? JSONObject.NULL : this.projectName);
         json.put(familyMembers.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
+        json.put(familyMembers.COLUMN_ORG_ID, this.id_org == null ? JSONObject.NULL : this.id_org);
 
 
         return json;
@@ -390,11 +419,13 @@ public class FamilyMembersContract implements Serializable {
         public static final String COLUMN_AV = "av";
         public static final String COLUMN_FLAG = "delflag";
         public static final String COLUMN_KISH_SELECTED = "kish_sel";
+        public static final String COLUMN_ORG_ID = "id_org";
 
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNCED_DATE = "sync_date";
 
         public static String _URL = "val_familymembers.php";
         public static String _URI = "getfamilymembers.php";
+        public static String _URI1 = "all_u5.php";
     }
 }

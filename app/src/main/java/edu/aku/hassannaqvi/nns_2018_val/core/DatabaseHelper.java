@@ -136,6 +136,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             familyMembers.COLUMN_DEVICEID + " TEXT," +
             familyMembers.COLUMN_DEVICETAGID + " TEXT," +
             familyMembers.COLUMN_APP_VERSION + " TEXT," +
+            familyMembers.COLUMN_ORG_ID + " TEXT," +
             familyMembers.COLUMN_SYNCED + " TEXT," +
             familyMembers.COLUMN_SYNCED_DATE + " TEXT," +
             familyMembers.COLUMN_FLAG + " TEXT"
@@ -574,34 +575,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public void syncFamilyMembers(JSONArray FamilyMembers) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(VersionAppTable.TABLE_NAME, null, null);
+        db.delete(familyMembers.TABLE_NAME, familyMembers.COLUMN_ORG_ID + " is not null", null);
         try {
             JSONArray jsonArray = FamilyMembers;
-            JSONObject jsonObjectCC = jsonArray.getJSONObject(0);
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObjectCC = jsonArray.getJSONObject(i);
 
-            FamilyMembersContract fm = new FamilyMembersContract();
-            fm.Sync(jsonObjectCC);
+                FamilyMembersContract fm = new FamilyMembersContract();
+                fm.Sync(jsonObjectCC, 1);
 
-            ContentValues values = new ContentValues();
+                ContentValues values = new ContentValues();
 
-            values.put(familyMembers.COLUMN_UID, fm.get_UID());
-            values.put(familyMembers.COLUMN_UUID, fm.get_UUID());
-            values.put(familyMembers.COLUMN_FORMDATE, fm.getFormDate());
-            values.put(familyMembers.COLUMN_DEVICEID, fm.getDeviceId());
-            values.put(familyMembers.COLUMN_DEVICETAGID, fm.getDevicetagID());
-            values.put(familyMembers.COLUMN_USER, fm.getUser());
-            values.put(familyMembers.COLUMN_APP_VERSION, fm.getApp_ver());
-            values.put(familyMembers.COLUMN_SA2, fm.getsA2());
-            values.put(familyMembers.COLUMN_ENM_NO, fm.getEnmNo());
-            values.put(familyMembers.COLUMN_HH_NO, fm.getHhNo());
-            values.put(familyMembers.COLUMN_AV, fm.getAv());
-            values.put(familyMembers.COLUMN_FLAG, fm.getDelflag());
-            values.put(familyMembers.COLUMN_KISH_SELECTED, fm.getKishSelected());
-            values.put(familyMembers.COLUMN_SYNCED, fm.getSynced());
-            values.put(familyMembers.COLUMN_SYNCED_DATE, fm.getSyncedDate());
+                values.put(familyMembers.COLUMN_UID, fm.get_UID());
+                values.put(familyMembers.COLUMN_UUID, fm.get_UUID());
+                values.put(familyMembers.COLUMN_FORMDATE, fm.getFormDate());
+                values.put(familyMembers.COLUMN_DEVICEID, fm.getDeviceId());
+                values.put(familyMembers.COLUMN_DEVICETAGID, fm.getDevicetagID());
+                values.put(familyMembers.COLUMN_USER, fm.getUser());
+                values.put(familyMembers.COLUMN_APP_VERSION, fm.getApp_ver());
+                values.put(familyMembers.COLUMN_ORG_ID, fm.getId_org());
+                values.put(familyMembers.COLUMN_SA2, fm.getsA2());
+                values.put(familyMembers.COLUMN_ENM_NO, fm.getEnmNo());
+                values.put(familyMembers.COLUMN_HH_NO, fm.getHhNo());
+                values.put(familyMembers.COLUMN_AV, fm.getAv());
+                values.put(familyMembers.COLUMN_FLAG, fm.getDelflag());
+                values.put(familyMembers.COLUMN_KISH_SELECTED, fm.getKishSelected());
+                values.put(familyMembers.COLUMN_SYNCED, fm.getSynced());
+                values.put(familyMembers.COLUMN_SYNCED_DATE, fm.getSyncedDate());
 
-            db.insert(familyMembers.TABLE_NAME, null, values);
+                db.insert(familyMembers.TABLE_NAME, null, values);
+            }
         } catch (Exception e) {
+            Log.e(TAG, "syncFamilyMembers: " + e.getMessage());
+            Log.e(TAG, "syncFamilyMembers: " + e.getMessage());
         } finally {
             db.close();
         }
@@ -836,12 +842,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 familyMembers.COLUMN_SYNCED_DATE,
                 familyMembers.COLUMN_FLAG,
                 familyMembers.COLUMN_KISH_SELECTED,
-                familyMembers.COLUMN_APP_VERSION
+                familyMembers.COLUMN_APP_VERSION,
+                familyMembers.COLUMN_ORG_ID
 
         };
 
-        String whereClause = familyMembers.COLUMN_ENM_NO + "=? AND "
-                + familyMembers.COLUMN_HH_NO + "=? AND " + familyMembers.COLUMN_AV + "=?";
+        String whereClause = familyMembers.COLUMN_ENM_NO + "=? AND " + familyMembers.COLUMN_HH_NO + "=? AND "
+                + familyMembers.COLUMN_AV + " =? AND " + familyMembers.COLUMN_ORG_ID + " is not null";
         String[] whereArgs = new String[]{cluster, hh, "1"};
         String groupBy = familyMembers.COLUMN_FORMDATE;
 
@@ -895,13 +902,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 familyMembers.COLUMN_SYNCED_DATE,
                 familyMembers.COLUMN_FLAG,
                 familyMembers.COLUMN_KISH_SELECTED,
-                familyMembers.COLUMN_APP_VERSION
+                familyMembers.COLUMN_APP_VERSION,
+                familyMembers.COLUMN_ORG_ID
 
         };
 
         String whereClause = familyMembers.COLUMN_ENM_NO + "=? AND "
                 + familyMembers.COLUMN_HH_NO + "=? AND " + familyMembers.COLUMN_AV + "=? AND "
-                + familyMembers.COLUMN_UUID + " =? AND " + familyMembers.COLUMN_FORMDATE + " =?";
+                + familyMembers.COLUMN_UUID + " =? AND " + familyMembers.COLUMN_FORMDATE + " =? AND "
+                + familyMembers.COLUMN_ORG_ID + " is not null";
         String[] whereArgs = new String[]{cluster, hh, "1", uuid, formDate};
         String groupBy = null;
         String having = null;
@@ -1059,6 +1068,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 familyMembers.COLUMN_SYNCED,
                 familyMembers.COLUMN_SYNCED_DATE,
                 familyMembers.COLUMN_APP_VERSION,
+                familyMembers.COLUMN_ORG_ID,
                 familyMembers.COLUMN_FLAG,
                 familyMembers.COLUMN_KISH_SELECTED,
 
@@ -1388,7 +1398,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public void AntrhoInsertion(JSONObject jsonObjectDT, SQLiteDatabase db) throws JSONException {
         FamilyMembersContract fmc = new FamilyMembersContract();
-        fmc.Sync(jsonObjectDT);
+        fmc.Sync(jsonObjectDT, 0);
         ContentValues values = new ContentValues();
 
         values.put(familyMembers.COLUMN_UID, fmc.get_UID());
@@ -1679,6 +1689,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values);
         return newRowId;
     }
+
     public Long addDevice(DeviceContract dc) {
 
         // Gets the data repository in write mode
@@ -2304,6 +2315,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 where,
                 whereArgs);
     }
+
     public void updateTagID(String tagID) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -3108,8 +3120,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 familyMembers.COLUMN_APP_VERSION,
                 familyMembers.COLUMN_FLAG,
                 familyMembers.COLUMN_KISH_SELECTED,
+                familyMembers.COLUMN_ORG_ID,
         };
-        String whereClause = familyMembers.COLUMN_SYNCED + " is null OR " + familyMembers.COLUMN_SYNCED + " = '' ";
+        String whereClause = familyMembers.COLUMN_SYNCED + " is null OR " + familyMembers.COLUMN_SYNCED + " = '' " + familyMembers.COLUMN_ORG_ID + " is null";
         String[] whereArgs = null;
         String groupBy = null;
         String having = null;
@@ -3163,7 +3176,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 familyMembers.COLUMN_AV,
                 familyMembers.COLUMN_SYNCED,
                 familyMembers.COLUMN_SYNCED_DATE,
-                familyMembers.COLUMN_APP_VERSION
+                familyMembers.COLUMN_APP_VERSION,
+                familyMembers.COLUMN_ORG_ID
         };
 
         /*String selection = ChildTable.COLUMN__ID + " = ?";
@@ -3734,7 +3748,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allFC;
-    }    public Collection<DeviceContract> getUnsyncedDeviceInfo() {
+    }
+
+    public Collection<DeviceContract> getUnsyncedDeviceInfo() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -5347,13 +5363,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
         return count;
     }
+
     public String getDeviceTAG() {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = null;
         String tagID = null;
         try {
-            String query = "SELECT "+ DeviceContract.DeviceTable.COLUMN_TAGID+" FROM " + DeviceContract.DeviceTable.TABLE_NAME + " WHERE " + DeviceContract.DeviceTable.COLUMN__ID + " = 1";
+            String query = "SELECT " + DeviceContract.DeviceTable.COLUMN_TAGID + " FROM " + DeviceContract.DeviceTable.TABLE_NAME + " WHERE " + DeviceContract.DeviceTable.COLUMN__ID + " = 1";
             cursor = db.rawQuery(
                     query,
                     new String[]{null}
@@ -5374,13 +5391,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return tagID;
     }
+
     public int isDeviceInfoExists() {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = null;
         int count = 0;
         try {
-            String query = "SELECT * FROM " + DeviceContract.DeviceTable.TABLE_NAME+" WHERE "+ DeviceContract.DeviceTable.COLUMN_IMEI +" != '' OR null ";
+            String query = "SELECT * FROM " + DeviceContract.DeviceTable.TABLE_NAME + " WHERE " + DeviceContract.DeviceTable.COLUMN_IMEI + " != '' OR null ";
             cursor = db.rawQuery(
                     query,
                     new String[]{null}

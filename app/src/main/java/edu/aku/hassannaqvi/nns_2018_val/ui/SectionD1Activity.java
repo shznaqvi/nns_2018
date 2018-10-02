@@ -175,7 +175,7 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
         });
 
         // setup head
-        binding.txtCounter.setText("Count " + counter + " out of " + MainApp.all_members.size());
+        binding.txtCounter.setText("Total U5 Children's found: " + MainApp.all_members.size());
 
         binding.nd1bcgscar.setOnCheckedChangeListener(this);
 
@@ -586,8 +586,6 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
             }
 
 
-
-
             if (!validatorClass.RangeTextBox(this, binding.nd1w, MinWeight(slc_type), MaxWeight(slc_type), getString(R.string.nd1w), " weight")) {
                 return false;
             }
@@ -749,32 +747,29 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
 
         sA3.put("nd1Serial", String.valueOf(counter));
 
-        sA3.put("nd1w", binding.nd1w.getText().toString());
+        if (!endflag) {
+            sA3.put("nd1w", binding.nd1w.getText().toString());
 
-        sA3.put("nd1h", binding.nd1h.getText().toString());
+            sA3.put("nd1h", binding.nd1h.getText().toString());
 
-        sA3.put("nd1muac", binding.nd1muac.getText().toString());
+            sA3.put("nd1muac", binding.nd1muac.getText().toString());
 
-        sA3.put("nd1bcgscar", binding.nd1bcgscara.isChecked() ? "1"
-                : binding.nd1bcgscarb.isChecked() ? "2" : "0");
+            sA3.put("nd1bcgscar", binding.nd1bcgscara.isChecked() ? "1"
+                    : binding.nd1bcgscarb.isChecked() ? "2" : "0");
 
-        sA3.put("nd1g", binding.nd1ga.isChecked() ? "1"
-                : binding.nd1gb.isChecked() ? "2" : "0");
+            sA3.put("nd1g", binding.nd1ga.isChecked() ? "1"
+                    : binding.nd1gb.isChecked() ? "2" : "0");
 
-        sA3.put("nd1ca", binding.nd1caa.isChecked() ? "1"
-                : binding.nd1cab.isChecked() ? "2" : "0");
+            sA3.put("nd1ca", binding.nd1caa.isChecked() ? "1"
+                    : binding.nd1cab.isChecked() ? "2" : "0");
 
-        sA3.put("nd1o", binding.nd1oa.isChecked() ? "1"
-                : binding.nd1ob.isChecked() ? "2" : "0");
+            sA3.put("nd1o", binding.nd1oa.isChecked() ? "1"
+                    : binding.nd1ob.isChecked() ? "2" : "0");
+        }
 
         sA3.put("start_time", dateTime);
 
-
         MainApp.emc.setsA3(String.valueOf(sA3));
-
-
-        Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
-
     }
 
     private boolean UpdateDB() {

@@ -94,7 +94,7 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
 
-            new SyncDevice(SyncActivity.this).execute();
+            new SyncDevice(SyncActivity.this, true).execute();
 
         } else {
             Toast.makeText(this, "No network connection available.", Toast.LENGTH_SHORT).show();
@@ -156,7 +156,7 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
     public void processFinish(boolean flag) {
         if (flag) {
             HashMap<String, String> tagVal = MainApp.getTagValues(this);
-            new syncData(SyncActivity.this, tagVal.get("org")).execute();
+            new syncData(SyncActivity.this, tagVal.get("org").equals("null") ? null : tagVal.get("org")).execute();
         }
     }
 
@@ -170,9 +170,12 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
 
             DatabaseHelper db = new DatabaseHelper(this);
             //syncStatus.setText(null);
-            new SyncDevice(this).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing Start", Toast.LENGTH_SHORT).show();
+
+            new SyncDevice(this, false).execute();
             Toast.makeText(getApplicationContext(), "Syncing Forms", Toast.LENGTH_SHORT).show();
-            if (uploadlistActivityCreated){
+            if (uploadlistActivityCreated) {
                 uploadmodel = new SyncModel();
                 uploadmodel.setstatusID(0);
                 uploadlist.add(uploadmodel);
@@ -183,11 +186,11 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
                     "updateSyncedForms",
                     FormsContract.class,
                     MainApp._HOST_URL + FormsContract.FormsTable._URL,
-                    db.getUnsyncedForms(), this.findViewById(R.id.syncStatus),0,uploadListAdapter,uploadlist
+                    db.getUnsyncedForms(), this.findViewById(R.id.syncStatus), 0, uploadListAdapter, uploadlist
             ).execute();
 
             Toast.makeText(getApplicationContext(), "Syncing Family Members", Toast.LENGTH_SHORT).show();
-            if (uploadlistActivityCreated){
+            if (uploadlistActivityCreated) {
                 uploadmodel = new SyncModel();
                 uploadmodel.setstatusID(0);
                 uploadlist.add(uploadmodel);
@@ -198,7 +201,7 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
                     "updateSyncedFamilyMembers",
                     FamilyMembersContract.class,
                     MainApp._HOST_URL + FamilyMembersContract.familyMembers._URL,
-                    db.getUnsyncedFamilyMembers(), this.findViewById(R.id.syncStatus),1,uploadListAdapter,uploadlist
+                    db.getUnsyncedFamilyMembers(), this.findViewById(R.id.syncStatus), 1, uploadListAdapter, uploadlist
             ).execute();
             bi.noDataItem.setVisibility(View.GONE);
 
@@ -470,7 +473,7 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
                         model.setstatusID(0);
                         list.add(model);
                     }
-                    new GetAllData(mContext, "EnumBlock", syncListAdapter, list).execute();
+                    new GetAllData(mContext, "EnumBlock", syncListAdapter, list).execute(orgID);
                     bi.noItem.setVisibility(View.GONE);
 
 //                  getting Users!!
@@ -481,7 +484,7 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
                         model.setstatusID(0);
                         list.add(model);
                     }
-                    new GetAllData(mContext, "User", syncListAdapter, list).execute();
+                    new GetAllData(mContext, "User", syncListAdapter, list).execute(orgID);
 
 //                   getting BL Random
                     /*Toast.makeText(SyncActivity.this, "Sync BL Random", Toast.LENGTH_SHORT).show();
@@ -499,7 +502,16 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
                         model.setstatusID(0);
                         list.add(model);
                     }
-                    new GetAllData(mContext, "VersionApp", syncListAdapter, list).execute();
+                    new GetAllData(mContext, "VersionApp", syncListAdapter, list).execute(orgID);
+
+//                    Getting U5
+                    Toast.makeText(SyncActivity.this, "Sync App Version", Toast.LENGTH_SHORT).show();
+                    if (listActivityCreated) {
+                        model = new SyncModel();
+                        model.setstatusID(0);
+                        list.add(model);
+                    }
+                    new GetAllData(mContext, "FamilyMembers", syncListAdapter, list).execute(orgID);
                     /*Toast.makeText(Menu2Activity.this, "Sync Family Members", Toast.LENGTH_LONG).show();
                     new GetAllData(mContext, "FamilyMembers").execute();*/
 
