@@ -3,7 +3,6 @@ package edu.aku.hassannaqvi.nns_2018.get;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -176,7 +175,7 @@ public class GetAllData extends AsyncTask<String, String, String> {
                             } catch (JSONException e1) {
                                 e1.printStackTrace();
                             }
-                            Log.d(TAG, "downloadUrl: " + json.toString());
+//                            Log.d(TAG, "downloadUrl: " + json.toString());
                             wr.writeBytes(json.toString());
                             wr.flush();
                             wr.close();
@@ -186,7 +185,7 @@ public class GetAllData extends AsyncTask<String, String, String> {
             }
 
 
-            Log.d(TAG, "doInBackground: " + urlConnection.getResponseCode());
+//            Log.d(TAG, "doInBackground: " + urlConnection.getResponseCode());
             publishProgress(syncClass);
             if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 InputStream in = new BufferedInputStream(urlConnection.getInputStream());
@@ -196,7 +195,7 @@ public class GetAllData extends AsyncTask<String, String, String> {
 
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    Log.i(TAG, syncClass + " In: " + line);
+//                    Log.i(TAG, syncClass + " In: " + line);
                     result.append(line);
                 }
             }

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <import type="android.view.View" />
@@ -39,7 +38,9 @@
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false"
                 android:visibility="visible"
-                tools:listitem="@layout/sync_list_adapter"></android.support.v7.widget.RecyclerView>
+                tools:listitem="@layout/sync_list_adapter">
+
+            </android.support.v7.widget.RecyclerView>
 
             <TextView
                 android:id="@+id/no_item"
