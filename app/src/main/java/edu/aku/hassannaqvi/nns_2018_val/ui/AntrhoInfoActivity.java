@@ -61,6 +61,14 @@ public class AntrhoInfoActivity extends Activity {
 
         SetupViewFunctionality();
 
+        binding.nh102.setText(getIntent().getStringExtra("cluster_no"));
+        binding.nh102.setEnabled(false);
+        BtnCheckEnm();
+
+        binding.nh108.setText(getIntent().getStringExtra("hh_no"));
+        binding.nh108.setEnabled(false);
+        BtnCheckHH();
+
     }
 
     public void SetupViewFunctionality() {

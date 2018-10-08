@@ -86,6 +86,9 @@ public class EndingActivity extends AddMember_MenuActivity {
 
 //                finish();
 
+                String cluster = MainApp.fc.getClusterNo();
+                String hhno = MainApp.fc.getHhNo();
+
                 MainApp.fc = null;
                 MainApp.mc = null;
                 MainApp.cc = null;
@@ -97,7 +100,9 @@ public class EndingActivity extends AddMember_MenuActivity {
                 SectionB1Activity.WRAcounter = 1;
                 SectionB1Activity.WRAsize = 0;
 
-                Intent endSec = new Intent(this, MainActivity.class);
+                Intent endSec = new Intent(this, AntrhoInfoActivity.class)
+                        .putExtra("cluster_no", cluster)
+                        .putExtra("hh_no", hhno);
                 startActivity(endSec);
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -110,11 +115,11 @@ public class EndingActivity extends AddMember_MenuActivity {
 
         MainApp.fc.setIstatus(
                 binding.istatusa.isChecked() ? "1"
-                : binding.istatusb.isChecked() ? "2"
-                : binding.istatusc.isChecked() ? "3"
-                : binding.istatusd.isChecked() ? "4"
-                : binding.istatuse.isChecked() ? "5"
-                : binding.istatusf.isChecked() ? "6"
+                        : binding.istatusb.isChecked() ? "2"
+                        : binding.istatusc.isChecked() ? "3"
+                        : binding.istatusd.isChecked() ? "4"
+                        : binding.istatuse.isChecked() ? "5"
+                        : binding.istatusf.isChecked() ? "6"
                         : binding.istatusg.isChecked() ? "7"
                         : binding.istatus96.isChecked() ? "96"
                         : "0");
