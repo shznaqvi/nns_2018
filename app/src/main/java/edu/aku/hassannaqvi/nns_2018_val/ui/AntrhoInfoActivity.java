@@ -349,6 +349,8 @@ public class AntrhoInfoActivity extends Activity {
                 populateMembers(hh.get(hh.size() - 1).get_UUID(), hh.get(hh.size() - 1).getFormDate());
             } else {
                 Toast.makeText(this, "Children's not found!!", Toast.LENGTH_SHORT).show();
+                finish();
+                startActivity(new Intent(this, MainActivity.class));
             }
         } else {
             Toast.makeText(this, "HH found!!", Toast.LENGTH_SHORT).show();
