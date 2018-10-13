@@ -27,7 +27,7 @@
         android:required="true" />
 
     <application
-        android:largeHeap="true"
+
         android:name=".core.MainApp"
         android:allowBackup="true"
         android:icon="@drawable/nns_2018_survey"

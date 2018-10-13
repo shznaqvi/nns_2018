@@ -31,6 +31,7 @@ import java.util.List;
 import edu.aku.hassannaqvi.nns_2018_val.Adapters.syncListAdapter;
 import edu.aku.hassannaqvi.nns_2018_val.Adapters.upload_list_adapter;
 import edu.aku.hassannaqvi.nns_2018_val.R;
+import edu.aku.hassannaqvi.nns_2018_val.contracts.EligibleMembersContract;
 import edu.aku.hassannaqvi.nns_2018_val.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018_val.contracts.FormsContract;
 import edu.aku.hassannaqvi.nns_2018_val.core.DatabaseHelper;
@@ -205,6 +206,21 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
                     db.getUnsyncedFamilyMembers(), this.findViewById(R.id.syncStatus), 1, uploadListAdapter, uploadlist
             ).execute();
             bi.noDataItem.setVisibility(View.GONE);
+
+            Toast.makeText(getApplicationContext(), "Syncing Anthro's", Toast.LENGTH_SHORT).show();
+            if (uploadlistActivityCreated) {
+                uploadmodel = new SyncModel();
+                uploadmodel.setstatusID(0);
+                uploadlist.add(uploadmodel);
+            }
+            new SyncAllData(
+                    this,
+                    "Anthros",
+                    "updateSyncedEligibles",
+                    EligibleMembersContract.class,
+                    MainApp._HOST_URL + EligibleMembersContract.eligibleMembers._URL,
+                    db.getUnsyncedEligbleMembers(), this.findViewById(R.id.syncStatus), 2, uploadListAdapter, uploadlist
+            ).execute();
 
             /*Toast.makeText(getApplicationContext(), "Syncing WRAs", Toast.LENGTH_SHORT).show();
             if (uploadlistActivityCreated){

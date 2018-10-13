@@ -331,6 +331,6 @@ public class EligibleMembersContract {
         public static final String COLUMN_END_TIME = "end_time";
 
 
-        public static String _URL = "anthros.php";
+        public static String _URL = "val_anthros.php";
     }
 }
