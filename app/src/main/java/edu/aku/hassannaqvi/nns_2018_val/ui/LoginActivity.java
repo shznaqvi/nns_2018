@@ -166,15 +166,15 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
         try {
             long installedOn = this
                     .getPackageManager()
-                    .getPackageInfo("edu.aku.hassannaqvi.nns_2018", 0)
+                    .getPackageInfo("edu.aku.hassannaqvi.nns_2018_val", 0)
                     .lastUpdateTime;
             MainApp.versionCode = this
                     .getPackageManager()
-                    .getPackageInfo("edu.aku.hassannaqvi.nns_2018", 0)
+                    .getPackageInfo("edu.aku.hassannaqvi.nns_2018_val", 0)
                     .versionCode;
             MainApp.versionName = this
                     .getPackageManager()
-                    .getPackageInfo("edu.aku.hassannaqvi.nns_2018", 0)
+                    .getPackageInfo("edu.aku.hassannaqvi.nns_2018_val", 0)
                     .versionName;
             txtinstalldate.setText("Ver. " + MainApp.versionName + "." + String.valueOf(MainApp.versionCode) + " \r( Last Updated: " + new SimpleDateFormat("dd MMM. yyyy").format(new Date(installedOn)) + " )");
         } catch (PackageManager.NameNotFoundException e) {
