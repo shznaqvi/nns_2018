@@ -3122,7 +3122,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 familyMembers.COLUMN_KISH_SELECTED,
                 familyMembers.COLUMN_ORG_ID,
         };
-        String whereClause = familyMembers.COLUMN_SYNCED + " is null OR " + familyMembers.COLUMN_SYNCED + " = '' " + familyMembers.COLUMN_ORG_ID + " is null";
+        String whereClause = familyMembers.COLUMN_SYNCED + " is null OR " + familyMembers.COLUMN_SYNCED + " = '' AND " + familyMembers.COLUMN_ORG_ID + " is null";
         String[] whereArgs = null;
         String groupBy = null;
         String having = null;
