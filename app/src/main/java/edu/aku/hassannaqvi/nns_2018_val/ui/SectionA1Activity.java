@@ -604,7 +604,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
                                     new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
                                             dialog.cancel();
-                                            binding.nh108.setText(null);
+                                            binding.nh102.setText(null);
 
                                         }
                                     })
@@ -692,6 +692,10 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
                         binding.fldGrpnh101.setVisibility(View.VISIBLE);
                         MainApp.cluster_no = binding.nh102.getText().toString();
+
+                        binding.nh108.setText(enumBlockContract.getEn_hh03() + "-" + enumBlockContract.getEn_hh07());
+                        binding.nh108.setEnabled(false);
+                        BtnCheckHH();
 
                     }
                 } else {
