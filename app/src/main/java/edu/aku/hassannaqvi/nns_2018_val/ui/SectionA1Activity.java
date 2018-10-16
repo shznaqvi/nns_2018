@@ -703,7 +703,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
                     Toast.makeText(this, "Sorry cluster not ready for validation!!", Toast.LENGTH_SHORT).show();
                 }
             } else {
-                Toast.makeText(this, "Can't proceed test cluster for current user!!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Only proceed test cluster for current user!!", Toast.LENGTH_SHORT).show();
             }
         }
     }
