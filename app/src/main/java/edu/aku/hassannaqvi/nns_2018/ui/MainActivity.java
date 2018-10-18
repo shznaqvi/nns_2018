@@ -20,6 +20,7 @@ import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -364,6 +365,19 @@ public class MainActivity extends MenuActivity {
     }
 
     public void openForm() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (LoginActivity.checkAndRequestPermissions(this, this)) {
+                permissiongrantedStuff();
+            } else {
+                Toast.makeText(this, "Please allow permission from setting", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            permissiongrantedStuff();
+        }
+
+    }
+
+    private void permissiongrantedStuff() {
         if (versionAppContract.getVersioncode() != null) {
             if (MainApp.versionCode < Integer.valueOf(versionAppContract.getVersioncode())) {
                 if (sharedPrefDownload.getBoolean("flag", true) && file.exists()) {
@@ -452,30 +466,76 @@ public class MainActivity extends MenuActivity {
     }
 
     public void openB(View v) {
-        MainActivity.ftype = "A";
-        Intent iB = new Intent(this, AntrhoInfoActivity.class);
-        startActivity(iB);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (LoginActivity.checkAndRequestPermissions(this, this)) {
+                MainActivity.ftype = "A";
+                Intent iB = new Intent(this, AntrhoInfoActivity.class);
+                startActivity(iB);
+            } else {
+                Toast.makeText(this, "Please allow permissions from setting", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            MainActivity.ftype = "A";
+            Intent iB = new Intent(this, AntrhoInfoActivity.class);
+            startActivity(iB);
+        }
+
     }
 
     public void openSpecimen() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (LoginActivity.checkAndRequestPermissions(this, this)) {
+                MainActivity.ftype = "B";
+                Intent iB = new Intent(this, SpecimenInfoActivity.class);
+                startActivity(iB);
+            } else {
+                Toast.makeText(this, "Please allow permissions from setting", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            MainActivity.ftype = "B";
+            Intent iB = new Intent(this, SpecimenInfoActivity.class);
+            startActivity(iB);
+        }
         //Intent iB = new Intent(this, SectionB3Activity.class);
-        MainActivity.ftype = "B";
-        Intent iB = new Intent(this, SpecimenInfoActivity.class);
-        startActivity(iB);
+
     }
 
     public void openWater() {
-        MainActivity.ftype = "W";
-        //Intent iB = new Intent(this, SectionB3Activity.class);
-        Intent iB = new Intent(this, SpecimenInfoActivity.class);
-        startActivity(iB);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (LoginActivity.checkAndRequestPermissions(this, this)) {
+                MainActivity.ftype = "W";
+                //Intent iB = new Intent(this, SectionB3Activity.class);
+                Intent iB = new Intent(this, SpecimenInfoActivity.class);
+                startActivity(iB);
+            } else {
+                Toast.makeText(this, "Please allow permissions from setting", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            MainActivity.ftype = "W";
+            //Intent iB = new Intent(this, SectionB3Activity.class);
+            Intent iB = new Intent(this, SpecimenInfoActivity.class);
+            startActivity(iB);
+        }
+
     }
 
     public void openMicroResults() {
-        MainActivity.ftype = "W";
-        //Intent iB = new Intent(this, SectionB3Activity.class);
-        Intent iB = new Intent(this, MicroResultsActivity.class);
-        startActivity(iB);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (LoginActivity.checkAndRequestPermissions(this, this)) {
+                MainActivity.ftype = "W";
+                //Intent iB = new Intent(this, SectionB3Activity.class);
+                Intent iB = new Intent(this, MicroResultsActivity.class);
+                startActivity(iB);
+            } else {
+                Toast.makeText(this, "Please allow permissions from setting", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            MainActivity.ftype = "W";
+            //Intent iB = new Intent(this, SectionB3Activity.class);
+            Intent iB = new Intent(this, MicroResultsActivity.class);
+            startActivity(iB);
+        }
+
     }
 
 
