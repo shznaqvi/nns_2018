@@ -57,7 +57,7 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
     SharedPreferences sharedPref;
     String DirectoryName;
     DatabaseHelper db;
-    syncListAdapter syncListAdapter;
+    syncListAdapter syncLstAdapter;
     upload_list_adapter uploadListAdapter;
     ActivitySyncBinding bi;
     SyncModel model;
@@ -136,13 +136,13 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
     }
 
     void setAdapter() {
-        syncListAdapter = new syncListAdapter(list);
+        syncLstAdapter = new syncListAdapter(list);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         bi.rvSyncList.setLayoutManager(mLayoutManager);
         bi.rvSyncList.setItemAnimator(new DefaultItemAnimator());
-        bi.rvSyncList.setAdapter(syncListAdapter);
-        syncListAdapter.notifyDataSetChanged();
-        if (syncListAdapter.getItemCount() > 0) {
+        bi.rvSyncList.setAdapter(syncLstAdapter);
+        syncLstAdapter.notifyDataSetChanged();
+        if (syncLstAdapter.getItemCount() > 0) {
             bi.noItem.setVisibility(View.GONE);
         } else {
             bi.noItem.setVisibility(View.VISIBLE);
@@ -400,10 +400,10 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
 
         if (sharedPref.getBoolean("flag", false)) {
 
-            String dt = sharedPref.getString("dt", new SimpleDateFormat("dd-MM-yy").format(new Date()).toString());
+            String dt = sharedPref.getString("dt", new SimpleDateFormat("dd-MM-yy").format(new Date()));
 
-            if (dt != new SimpleDateFormat("dd-MM-yy").format(new Date()).toString()) {
-                editor.putString("dt", new SimpleDateFormat("dd-MM-yy").format(new Date()).toString());
+            if (dt != new SimpleDateFormat("dd-MM-yy").format(new Date())) {
+                editor.putString("dt", new SimpleDateFormat("dd-MM-yy").format(new Date()));
 
                 editor.commit();
             }
@@ -480,7 +480,7 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
                         model.setstatusID(0);
                         list.add(model);
                     }
-                    new GetAllData(mContext, "EnumBlock", syncListAdapter, list).execute(orgID);
+                    new GetAllData(mContext, "EnumBlock", syncLstAdapter, list).execute(orgID);
                     bi.noItem.setVisibility(View.GONE);
 
 //                  getting Users!!
@@ -491,7 +491,7 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
                         model.setstatusID(0);
                         list.add(model);
                     }
-                    new GetAllData(mContext, "User", syncListAdapter, list).execute(orgID);
+                    new GetAllData(mContext, "User", syncLstAdapter, list).execute(orgID);
 
 //                   getting BL Random
                     Toast.makeText(SyncActivity.this, "Sync BL Random", Toast.LENGTH_SHORT).show();
@@ -500,7 +500,7 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
                         model.setstatusID(0);
                         list.add(model);
                     }
-                    new GetAllData(mContext, "BLRandom", syncListAdapter, list).execute(orgID);
+                    new GetAllData(mContext, "BLRandom", syncLstAdapter, list).execute(orgID);
 
 //                    Getting App Version
                     Toast.makeText(SyncActivity.this, "Sync App Version", Toast.LENGTH_SHORT).show();
@@ -509,7 +509,7 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
                         model.setstatusID(0);
                         list.add(model);
                     }
-                    new GetAllData(mContext, "VersionApp", syncListAdapter, list).execute();
+                    new GetAllData(mContext, "VersionApp", syncLstAdapter, list).execute();
                     /*Toast.makeText(Menu2Activity.this, "Sync Family Members", Toast.LENGTH_LONG).show();
                     new GetAllData(mContext, "FamilyMembers").execute();*/
 

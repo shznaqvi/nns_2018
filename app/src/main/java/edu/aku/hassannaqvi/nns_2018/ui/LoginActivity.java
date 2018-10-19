@@ -145,8 +145,6 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
     private static final int MY_PERMISSIONS_REQUEST_CAMERA = 6;
     protected static LocationManager locationManager;
 
-    static HashMap<String, String> tagValues;
-
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         MenuItem dbManager = menu.findItem(R.id.menu_openDB);
@@ -188,7 +186,7 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
             listPermissionsNeeded.add(Manifest.permission.READ_PHONE_STATE);
         }
 
-        tagValues = MainApp.getTagValues(context);
+        HashMap<String, String> tagValues = MainApp.getTagValues(context);
         if (!tagValues.get("org").equals("5")) {
             if (accessFineLocation != PackageManager.PERMISSION_GRANTED) {
                 listPermissionsNeeded.add(Manifest.permission.ACCESS_FINE_LOCATION);
@@ -438,6 +436,16 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
             } else if (permissions[i].equals(Manifest.permission.ACCESS_FINE_LOCATION)) {
                 if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
                     locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        // TODO: Consider calling
+                        //    ActivityCompat#requestPermissions
+                        // here to request the missing permissions, and then overriding
+                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                        //                                          int[] grantResults)
+                        // to handle the case where the user grants the permission. See the documentation
+                        // for ActivityCompat#requestPermissions for more details.
+                        return;
+                    }
                     locationManager.requestLocationUpdates(
                             LocationManager.GPS_PROVIDER,
                             MINIMUM_TIME_BETWEEN_UPDATES,
@@ -459,6 +467,16 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
     }
 
     private void doPermissionGrantedStuffs() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
         MainApp.IMEI = ((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
     }
 
@@ -556,6 +574,16 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
     }
 
     protected void showCurrentLocation() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
         Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
         if (location != null) {
@@ -902,6 +930,8 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
         protected void onPostExecute(final Boolean success) {
             mAuthTask = null;
             showProgress(false);
+
+            HashMap<String, String> tagValues = MainApp.getTagValues(LoginActivity.this);
 
             LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
             if (mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || tagValues.get("org").equals("5")) {
