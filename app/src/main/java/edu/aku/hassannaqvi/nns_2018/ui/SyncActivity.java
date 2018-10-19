@@ -6,6 +6,7 @@ import android.databinding.DataBindingUtil;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -83,13 +84,36 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
         bi.btnSync.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onSyncDataClick();
+
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (LoginActivity.checkAndRequestPermissions(SyncActivity.this, SyncActivity.this)) {
+                        onSyncDataClick();
+                    } else {
+                        Toast.makeText(SyncActivity.this, "Please allow permissions from setting", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    onSyncDataClick();
+                }
+
             }
         });
         bi.btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                syncServer();
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (LoginActivity.checkAndRequestPermissions(SyncActivity.this, SyncActivity.this)) {
+                        syncServer();
+
+                    } else {
+                        Toast.makeText(SyncActivity.this, "Please allow permissions from setting", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    syncServer();
+
+                }
+
             }
         });
         setAdapter();
@@ -109,29 +133,6 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
         } else {
             Toast.makeText(this, "No network connection available.", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    private void settingList() {
-        model = new SyncModel();
-        /*model.settableName("EnumBlock");
-        model.setstatus("In Progress");*/
-        model.setstatusID(0);
-        list.add(model);
-        model = new SyncModel();
-        /*model.settableName("User");
-        model.setstatus("In Progress");*/
-        model.setstatusID(0);
-        list.add(model);
-        model = new SyncModel();
-       /* model.settableName("BLRandom");
-        model.setstatus("In Progress");*/
-        model.setstatusID(0);
-        list.add(model);
-        model = new SyncModel();
-       /* model.settableName("VersionApp");
-        model.setstatus("In Progress");*/
-        model.setstatusID(0);
-        list.add(model);
     }
 
     void setAdapter() {

@@ -4,6 +4,7 @@ import android.Manifest;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
@@ -17,8 +18,6 @@ import android.database.Cursor;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -49,6 +48,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -56,12 +56,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.aku.hassannaqvi.nns_2018.R;
-import edu.aku.hassannaqvi.nns_2018.contracts.DeviceContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.EnumBlockContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.UCsContract;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
-import edu.aku.hassannaqvi.nns_2018.sync.SyncDevice;
 
 import static java.lang.Thread.sleep;
 
@@ -147,6 +145,8 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
     private static final int MY_PERMISSIONS_REQUEST_CAMERA = 6;
     protected static LocationManager locationManager;
 
+    static HashMap<String, String> tagValues;
+
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         MenuItem dbManager = menu.findItem(R.id.menu_openDB);
@@ -156,6 +156,105 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
         editform.setVisible(false);
 
         return true;
+    }
+
+    public static boolean checkAndRequestPermissions(Context context, Activity activity) {
+        int permissionContact = ContextCompat.checkSelfPermission(context,
+                Manifest.permission.READ_CONTACTS);
+        int permissionGetAccount = ContextCompat.checkSelfPermission(context,
+                Manifest.permission.GET_ACCOUNTS);
+        int permissionReadPhoneState = ContextCompat.checkSelfPermission(context,
+                Manifest.permission.READ_PHONE_STATE);
+
+        int accessFineLocation = ContextCompat.checkSelfPermission(context,
+                Manifest.permission.ACCESS_FINE_LOCATION);
+
+        int accessCoarseLocation = ContextCompat.checkSelfPermission(context,
+                Manifest.permission.ACCESS_COARSE_LOCATION);
+
+        int writeExternalStorage = ContextCompat.checkSelfPermission(context,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        int permissionCamera = ContextCompat.checkSelfPermission(context,
+                Manifest.permission.CAMERA);
+
+        List<String> listPermissionsNeeded = new ArrayList<>();
+        if (permissionContact != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.READ_CONTACTS);
+        }
+        if (permissionGetAccount != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.GET_ACCOUNTS);
+        }
+        if (permissionReadPhoneState != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.READ_PHONE_STATE);
+        }
+
+        tagValues = MainApp.getTagValues(context);
+        if (!tagValues.get("org").equals("5")) {
+            if (accessFineLocation != PackageManager.PERMISSION_GRANTED) {
+                listPermissionsNeeded.add(Manifest.permission.ACCESS_FINE_LOCATION);
+            }
+            if (accessCoarseLocation != PackageManager.PERMISSION_GRANTED) {
+                listPermissionsNeeded.add(Manifest.permission.ACCESS_COARSE_LOCATION);
+            }
+        }
+        if (writeExternalStorage != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
+        if (permissionCamera != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.CAMERA);
+        }
+        if (!listPermissionsNeeded.isEmpty()) {
+            ActivityCompat.requestPermissions(activity, listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]), MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+            return false;
+        }
+        return true;
+    }
+
+
+    public void loadIMEI() {
+        // Check if the READ_PHONE_STATE permission is already available.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE)
+                    != PackageManager.PERMISSION_GRANTED) {
+                // READ_PHONE_STATE permission has not been granted.
+                requestReadPhoneStatePermission();
+            } else {
+                doPermissionGrantedStuffs();
+            }
+        } else {
+            doPermissionGrantedStuffs();
+        }
+    }
+
+    /**
+     * Requests the READ_PHONE_STATE permission.
+     * If the permission has been denied previously, a dialog will prompt the user to grant the
+     * permission, otherwise it is requested directly.
+     */
+    private void requestReadPhoneStatePermission() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                Manifest.permission.READ_PHONE_STATE)) {
+            // Provide an additional rationale to the user if the permission was not granted
+            // and the user would benefit from additional context for the use of the permission.
+            // For example if the user has previously denied the permission.
+            new AlertDialog.Builder(LoginActivity.this)
+                    .setTitle("Permission Request")
+                    .setMessage("permission read phone state rationale")
+                    .setCancelable(false)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            //re-request
+                            ActivityCompat.requestPermissions(LoginActivity.this,
+                                    new String[]{Manifest.permission.READ_PHONE_STATE},
+                                    MY_PERMISSIONS_REQUEST_READ_PHONE_STATE);
+                        }
+                    })
+                    .show();
+        } else {
+            // READ_PHONE_STATE permission has not been granted yet. Request it directly.
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE},
+                    MY_PERMISSIONS_REQUEST_READ_PHONE_STATE);
+        }
     }
 
     @Override
@@ -189,7 +288,8 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
         // Set up the login form.
 //        mEmailView = findViewById(R.id.email);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (checkAndRequestPermissions()) {
+
+            if (checkAndRequestPermissions(this, this)) {
                 populateAutoComplete();
                 loadIMEI();
 
@@ -255,100 +355,6 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
         } else {
             testing.setVisibility(View.VISIBLE);
         }
-    }
-
-
-
-    public void loadIMEI() {
-        // Check if the READ_PHONE_STATE permission is already available.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE)
-                    != PackageManager.PERMISSION_GRANTED) {
-                // READ_PHONE_STATE permission has not been granted.
-                requestReadPhoneStatePermission();
-            }else{
-                doPermissionGrantedStuffs();
-            }
-        } else {
-            doPermissionGrantedStuffs();
-        }
-    }
-
-    /**
-     * Requests the READ_PHONE_STATE permission.
-     * If the permission has been denied previously, a dialog will prompt the user to grant the
-     * permission, otherwise it is requested directly.
-     */
-    private void requestReadPhoneStatePermission() {
-        if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                Manifest.permission.READ_PHONE_STATE)) {
-            // Provide an additional rationale to the user if the permission was not granted
-            // and the user would benefit from additional context for the use of the permission.
-            // For example if the user has previously denied the permission.
-            new AlertDialog.Builder(LoginActivity.this)
-                    .setTitle("Permission Request")
-                    .setMessage("permission read phone state rationale")
-                    .setCancelable(false)
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            //re-request
-                            ActivityCompat.requestPermissions(LoginActivity.this,
-                                    new String[]{Manifest.permission.READ_PHONE_STATE},
-                                    MY_PERMISSIONS_REQUEST_READ_PHONE_STATE);
-                        }
-                    })
-                    .show();
-        } else {
-            // READ_PHONE_STATE permission has not been granted yet. Request it directly.
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE},
-                    MY_PERMISSIONS_REQUEST_READ_PHONE_STATE);
-        }
-    }
-
-    private boolean checkAndRequestPermissions() {
-        int permissionContact = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.READ_CONTACTS);
-        int permissionGetAccount = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.GET_ACCOUNTS);
-        int permissionReadPhoneState = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.READ_PHONE_STATE);
-        int accessFineLocation = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION);
-        int accessCoarseLocation = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_COARSE_LOCATION);
-        int writeExternalStorage = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        int permissionCamera = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.CAMERA);
-
-        List<String> listPermissionsNeeded = new ArrayList<>();
-        if (permissionContact != PackageManager.PERMISSION_GRANTED) {
-            listPermissionsNeeded.add(Manifest.permission.READ_CONTACTS);
-        }
-        if (permissionGetAccount != PackageManager.PERMISSION_GRANTED) {
-            listPermissionsNeeded.add(Manifest.permission.GET_ACCOUNTS);
-        }
-        if (permissionReadPhoneState != PackageManager.PERMISSION_GRANTED) {
-            listPermissionsNeeded.add(Manifest.permission.READ_PHONE_STATE);
-        }
-        if (accessFineLocation != PackageManager.PERMISSION_GRANTED) {
-            listPermissionsNeeded.add(Manifest.permission.ACCESS_FINE_LOCATION);
-        }
-        if (accessCoarseLocation != PackageManager.PERMISSION_GRANTED) {
-            listPermissionsNeeded.add(Manifest.permission.ACCESS_COARSE_LOCATION);
-        }
-        if (writeExternalStorage != PackageManager.PERMISSION_GRANTED) {
-            listPermissionsNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        }
-        if (permissionCamera != PackageManager.PERMISSION_GRANTED) {
-            listPermissionsNeeded.add(Manifest.permission.CAMERA);
-        }
-        if (!listPermissionsNeeded.isEmpty()) {
-            ActivityCompat.requestPermissions(this, listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]), MY_PERMISSIONS_REQUEST_READ_CONTACTS);
-            return false;
-        }
-
-        return true;
     }
 
     private void requestReadContactPermission() {
@@ -441,20 +447,21 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
                     );
                 }
             } else if (permissions[i].equals(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                    if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+                if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
 
-                    }
-                } else if (permissions[i].equals(Manifest.permission.CAMERA)) {
-                    if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+                }
+            } else if (permissions[i].equals(Manifest.permission.CAMERA)) {
+                if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
 
-                    }
                 }
             }
+        }
     }
 
     private void doPermissionGrantedStuffs() {
         MainApp.IMEI = ((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
     }
+
     protected boolean isBetterLocation(Location location, Location currentBestLocation) {
         if (currentBestLocation == null) {
             // A new location is always better than no location
@@ -494,6 +501,7 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
             return true;
         } else return isNewer && !isSignificantlyLessAccurate && isFromSameProvider;
     }
+
     private boolean isSameProvider(String provider1, String provider2) {
         if (provider1 == null) {
             return provider2 == null;
@@ -896,7 +904,7 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
             showProgress(false);
 
             LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-            if (mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            if (mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || tagValues.get("org").equals("5")) {
                 DatabaseHelper db = new DatabaseHelper(LoginActivity.this);
                 if ((mEmail.equals("dmu@aku") && mPassword.equals("aku?dmu")) || db.Login(mEmail, mPassword)
                         || (mEmail.equals("test1234") && mPassword.equals("test1234"))) {
