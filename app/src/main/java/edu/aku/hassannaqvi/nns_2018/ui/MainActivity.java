@@ -50,6 +50,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -292,14 +293,14 @@ public class MainActivity extends MenuActivity {
         mainBinding.recordSummary.setText(rSumText);
 
         /*Add data in Serial date wrt date*/
-        MainApp.sc = db.getSerialWRTDate(new SimpleDateFormat("dd-MM-yy").format(new Date()).toString());
+        MainApp.sc = db.getSerialWRTDate(new SimpleDateFormat("dd-MM-yy").format(new Date()));
 
         if (MainApp.sc.getDeviceid() == null) {
             db.addSerialForm(new SerialContract(Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID),
-                    new SimpleDateFormat("dd-MM-yy").format(new Date()).toString(),
+                    new SimpleDateFormat("dd-MM-yy").format(new Date()),
                     "0"));
 
-            MainApp.sc = db.getSerialWRTDate(new SimpleDateFormat("dd-MM-yy").format(new Date()).toString());
+            MainApp.sc = db.getSerialWRTDate(new SimpleDateFormat("dd-MM-yy").format(new Date()));
         }
 
 //        Testing visibility
@@ -418,9 +419,14 @@ public class MainActivity extends MenuActivity {
 
     private void OpenFormFun() {
 
-        final Intent oF = new Intent(MainActivity.this, SectionA1Activity.class);
-       // if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null && !MainApp.userName.equals("0000")) {
-            startActivity(oF);
+        HashMap<String, String> tagValues = MainApp.getTagValues(this);
+
+        Intent oF = new Intent(MainActivity.this, SectionA1Activity.class);
+        startActivity(oF);
+
+
+        // if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null && !MainApp.userName.equals("0000")) {
+//            startActivity(oF);
        /* } else {
 
             builder = new AlertDialog.Builder(MainActivity.this);

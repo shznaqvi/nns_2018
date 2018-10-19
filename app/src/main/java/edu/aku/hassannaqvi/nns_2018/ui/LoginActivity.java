@@ -48,6 +48,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -144,6 +145,8 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
     private static final int MY_PERMISSIONS_REQUEST_CAMERA = 6;
     protected static LocationManager locationManager;
 
+    static HashMap<String, String> tagValues;
+
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         MenuItem dbManager = menu.findItem(R.id.menu_openDB);
@@ -162,10 +165,13 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
                 Manifest.permission.GET_ACCOUNTS);
         int permissionReadPhoneState = ContextCompat.checkSelfPermission(context,
                 Manifest.permission.READ_PHONE_STATE);
+
         int accessFineLocation = ContextCompat.checkSelfPermission(context,
                 Manifest.permission.ACCESS_FINE_LOCATION);
+
         int accessCoarseLocation = ContextCompat.checkSelfPermission(context,
                 Manifest.permission.ACCESS_COARSE_LOCATION);
+
         int writeExternalStorage = ContextCompat.checkSelfPermission(context,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE);
         int permissionCamera = ContextCompat.checkSelfPermission(context,
@@ -181,11 +187,15 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
         if (permissionReadPhoneState != PackageManager.PERMISSION_GRANTED) {
             listPermissionsNeeded.add(Manifest.permission.READ_PHONE_STATE);
         }
-        if (accessFineLocation != PackageManager.PERMISSION_GRANTED) {
-            listPermissionsNeeded.add(Manifest.permission.ACCESS_FINE_LOCATION);
-        }
-        if (accessCoarseLocation != PackageManager.PERMISSION_GRANTED) {
-            listPermissionsNeeded.add(Manifest.permission.ACCESS_COARSE_LOCATION);
+
+        tagValues = MainApp.getTagValues(context);
+        if (!tagValues.get("org").equals("5")) {
+            if (accessFineLocation != PackageManager.PERMISSION_GRANTED) {
+                listPermissionsNeeded.add(Manifest.permission.ACCESS_FINE_LOCATION);
+            }
+            if (accessCoarseLocation != PackageManager.PERMISSION_GRANTED) {
+                listPermissionsNeeded.add(Manifest.permission.ACCESS_COARSE_LOCATION);
+            }
         }
         if (writeExternalStorage != PackageManager.PERMISSION_GRANTED) {
             listPermissionsNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
@@ -278,6 +288,7 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
         // Set up the login form.
 //        mEmailView = findViewById(R.id.email);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
             if (checkAndRequestPermissions(this, this)) {
                 populateAutoComplete();
                 loadIMEI();
@@ -436,20 +447,21 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
                     );
                 }
             } else if (permissions[i].equals(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                    if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+                if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
 
-                    }
-                } else if (permissions[i].equals(Manifest.permission.CAMERA)) {
-                    if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+                }
+            } else if (permissions[i].equals(Manifest.permission.CAMERA)) {
+                if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
 
-                    }
                 }
             }
+        }
     }
 
     private void doPermissionGrantedStuffs() {
         MainApp.IMEI = ((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
     }
+
     protected boolean isBetterLocation(Location location, Location currentBestLocation) {
         if (currentBestLocation == null) {
             // A new location is always better than no location
@@ -489,6 +501,7 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
             return true;
         } else return isNewer && !isSignificantlyLessAccurate && isFromSameProvider;
     }
+
     private boolean isSameProvider(String provider1, String provider2) {
         if (provider1 == null) {
             return provider2 == null;
@@ -891,7 +904,7 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
             showProgress(false);
 
             LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-            if (mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            if (mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || tagValues.get("org").equals("5")) {
                 DatabaseHelper db = new DatabaseHelper(LoginActivity.this);
                 if ((mEmail.equals("dmu@aku") && mPassword.equals("aku?dmu")) || db.Login(mEmail, mPassword)
                         || (mEmail.equals("test1234") && mPassword.equals("test1234"))) {
