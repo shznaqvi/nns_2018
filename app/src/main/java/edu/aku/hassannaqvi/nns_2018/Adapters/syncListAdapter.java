@@ -1,5 +1,4 @@
 package edu.aku.hassannaqvi.nns_2018.Adapters;
-import edu.aku.hassannaqvi.nns_2018.databinding.*;
 
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
@@ -8,19 +7,25 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import java.util.List;
+
 import edu.aku.hassannaqvi.nns_2018.R;
+import edu.aku.hassannaqvi.nns_2018.databinding.SyncListAdapterBinding;
 import edu.aku.hassannaqvi.nns_2018.other.SyncModel;
 
-public class syncListAdapter extends RecyclerView.Adapter<syncListAdapter.SyncListViewHolder>{
-List<SyncModel> synclist;
-SyncListViewHolder holder;
+public class syncListAdapter extends RecyclerView.Adapter<syncListAdapter.SyncListViewHolder> {
+
+    List<SyncModel> synclist;
+    SyncListViewHolder holder;
+
     public syncListAdapter(List<SyncModel> synclist) {
         this.synclist = synclist;
     }
+
     public void updatesyncList(List<SyncModel> synclist) {
-       this.synclist = synclist;
-       notifyDataSetChanged();
+        this.synclist = synclist;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -43,7 +48,7 @@ SyncListViewHolder holder;
     }
 
     public class SyncListViewHolder extends RecyclerView.ViewHolder {
-       SyncListAdapterBinding binding;
+        SyncListAdapterBinding binding;
 
         public SyncListViewHolder(View itemView) {
             super(itemView);
@@ -56,9 +61,9 @@ SyncListViewHolder holder;
             binding.tvTableName.setText(model.gettableName());
             binding.tvStatus.setText(model.getstatus());
             binding.tvMsg.setText(model.getmessage());
-            if(model.getstatusID() == 1 || model.getstatusID() == 3){
+            if (model.getstatusID() == 1 || model.getstatusID() == 3) {
                 binding.pb.setVisibility(View.GONE);
-            }else{
+            } else {
                 binding.pb.setVisibility(View.VISIBLE);
             }
         }
