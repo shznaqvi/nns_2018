@@ -418,10 +418,12 @@ public class AntrhoInfoActivity extends Activity {
                 binding.btnContinue.setVisibility(View.GONE);
                 binding.btnEnd.setVisibility(View.GONE);
                 Toast.makeText(getApplicationContext(), "No Eligible children found for anthropometry, Check another HH.", Toast.LENGTH_SHORT).show();
+                finish();
             }
 
         } else {
             Toast.makeText(getApplicationContext(), "No children's found for the HH.", Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
 
