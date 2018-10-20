@@ -104,6 +104,7 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
 
+            Toast.makeText(this, "Syncing Start.", Toast.LENGTH_SHORT).show();
             new SyncDevice(SyncActivity.this, true).execute();
 
         } else {
@@ -180,6 +181,7 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
 
             DatabaseHelper db = new DatabaseHelper(this);
             //syncStatus.setText(null);
+            Toast.makeText(this, "Syncing Start.", Toast.LENGTH_SHORT).show();
             new SyncDevice(this, false).execute();
             Toast.makeText(getApplicationContext(), "Syncing Forms", Toast.LENGTH_SHORT).show();
             if (uploadlistActivityCreated) {
@@ -399,10 +401,10 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
 
         if (sharedPref.getBoolean("flag", false)) {
 
-            String dt = sharedPref.getString("dt", new SimpleDateFormat("dd-MM-yy").format(new Date()).toString());
+            String dt = sharedPref.getString("dt", new SimpleDateFormat("dd-MM-yy").format(new Date()));
 
-            if (dt != new SimpleDateFormat("dd-MM-yy").format(new Date()).toString()) {
-                editor.putString("dt", new SimpleDateFormat("dd-MM-yy").format(new Date()).toString());
+            if (dt != new SimpleDateFormat("dd-MM-yy").format(new Date())) {
+                editor.putString("dt", new SimpleDateFormat("dd-MM-yy").format(new Date()));
 
                 editor.commit();
             }
