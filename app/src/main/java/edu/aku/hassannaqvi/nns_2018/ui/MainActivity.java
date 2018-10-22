@@ -424,8 +424,37 @@ public class MainActivity extends MenuActivity {
         LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || tagValues.get("org") == null || tagValues.get("org").equals("5")) {
 
-            Intent oF = new Intent(MainActivity.this, SectionA1Activity.class);
-            startActivity(oF);
+            if (tagValues.get("org").equals("5") && !mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                        MainActivity.this);
+                alertDialogBuilder
+                        .setMessage("Do you want to enable the GPS in your device?")
+                        .setCancelable(false)
+                        .setPositiveButton("Enable",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,
+                                                        int id) {
+                                        Intent callGPSSettingIntent = new Intent(
+                                                android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                                        startActivity(callGPSSettingIntent);
+                                    }
+                                });
+                alertDialogBuilder.setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                                Intent oF = new Intent(MainActivity.this, SectionA1Activity.class);
+                                startActivity(oF);
+                            }
+                        });
+                AlertDialog alert = alertDialogBuilder.create();
+                alert.show();
+
+            } else {
+                Intent oF = new Intent(MainActivity.this, SectionA1Activity.class);
+                startActivity(oF);
+            }
 
         } else {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
