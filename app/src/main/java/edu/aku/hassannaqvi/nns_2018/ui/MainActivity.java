@@ -422,7 +422,7 @@ public class MainActivity extends MenuActivity {
 
         HashMap<String, String> tagValues = MainApp.getTagValues(this);
         LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        if (!mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER) && tagValues.get("org") == null || tagValues.get("org").equals("5")) {
+        if (mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || tagValues.get("org") == null || tagValues.get("org").equals("5")) {
 
             Intent oF = new Intent(MainActivity.this, SectionA1Activity.class);
             startActivity(oF);
