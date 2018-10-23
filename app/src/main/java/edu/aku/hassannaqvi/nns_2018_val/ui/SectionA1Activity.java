@@ -247,7 +247,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
             }
         });
 
-        if (MainApp.cluster_no.equals("")) {
+        /*if (MainApp.cluster_no.equals("")) {
             binding.nh102.setText(null);
         } else {
             binding.nh102.setText(MainApp.cluster_no);
@@ -270,7 +270,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
                 }
             }
-        }
+        }*/
 
 // Initializing Re-Back functionality
         reBackFlag = true;
@@ -592,7 +592,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
             if (editFormFlag) {
                 setupViews();
             } else {
-                FormsContract partialMem = db.getPartialForms(binding.nh102.getText().toString(), binding.nh108.getText().toString(), "1");
+                /*FormsContract partialMem = db.getPartialForms(binding.nh102.getText().toString(), binding.nh108.getText().toString(), "1");
 
                 if (partialMem != null) {
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
@@ -619,7 +619,8 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
                     alert.show();
                 } else {
                     setupViews();
-                }
+                }*/
+                setupViews();
             }
 
         } else {
