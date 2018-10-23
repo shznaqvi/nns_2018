@@ -291,14 +291,14 @@ public class MainActivity extends MenuActivity {
         mainBinding.recordSummary.setText(rSumText);
 
         /*Add data in Serial date wrt date*/
-        MainApp.sc = db.getSerialWRTDate(new SimpleDateFormat("dd-MM-yy").format(new Date()).toString());
+        MainApp.sc = db.getSerialWRTDate(new SimpleDateFormat("dd-MM-yy").format(new Date()));
 
         if (MainApp.sc.getDeviceid() == null) {
             db.addSerialForm(new SerialContract(Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID),
-                    new SimpleDateFormat("dd-MM-yy").format(new Date()).toString(),
+                    new SimpleDateFormat("dd-MM-yy").format(new Date()),
                     "0"));
 
-            MainApp.sc = db.getSerialWRTDate(new SimpleDateFormat("dd-MM-yy").format(new Date()).toString());
+            MainApp.sc = db.getSerialWRTDate(new SimpleDateFormat("dd-MM-yy").format(new Date()));
         }
 
 //        Testing visibility
@@ -376,7 +376,7 @@ public class MainActivity extends MenuActivity {
                 OpenFormFun();
             }
         } else {
-            Toast.makeText(this, "Sync data!!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Sync data or Re-login app!!", Toast.LENGTH_SHORT).show();
         }
     }
 
