@@ -932,9 +932,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (c.moveToNext()) {
                 FamilyMembersContract dc = new FamilyMembersContract().Hydrate(c);
                 if (flag) {
-                    if (!getAnthroMembersExist(dc.get_UID())) {
+//                    if (!getAnthroMembersExist(dc.get_UID())) {
                         allBL.add(dc);
-                    }
+//                    }
                 } else {
                     allBL.add(dc);
                 }
