@@ -166,7 +166,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
                     if (!jsonB1A.getnw220().equals("0")) {
                         bi.nw220.check(
-                                jsonB1A.getnw220().equals("1") ? bi.nw220a.getId() : bi.nw220b.getId()
+                                jsonB1A.getnw220().equals("1") ? bi.nw220a.getId() : jsonB1A.getnw220().equals("2") ? bi.nw220b.getId() : bi.nw220c.getId()
                         );
                     }
 
@@ -194,7 +194,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
                     if (!jsonB1A.getnw220().equals("0")) {
                         bi.nw220.check(
-                                jsonB1A.getnw220().equals("1") ? bi.nw220a.getId() : bi.nw220b.getId()
+                                jsonB1A.getnw220().equals("1") ? bi.nw220a.getId() : jsonB1A.getnw220().equals("2") ? bi.nw220b.getId() : bi.nw220c.getId()
                         );
                     }
 
@@ -606,6 +606,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
         sB1a.put("nw220", bi.nw220a.isChecked() ? "1"
                 : bi.nw220b.isChecked() ? "2"
+                : bi.nw220c.isChecked() ? "3"
                 : "0");
         if (bi.nw218c.isChecked() || bi.nw218d.isChecked() || bi.nw218f.isChecked()) {
             MainApp.status++;
