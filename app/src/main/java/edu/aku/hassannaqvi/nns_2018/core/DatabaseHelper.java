@@ -464,27 +464,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             DeviceContract.DeviceTable.COLUMN_APPVERSION + " TEXT," +
             DeviceContract.DeviceTable.COLUMN_TAGID + " TEXT" + ");";
 
-    final String SQL_SUMMARY_JOIN = "SELECT " +
-            "f.formdate, f.cluster_no, f.hh_no, f.istatus, f.istatusHH, f.user, " +
-            "count(fm.*) member, " +
-            "count(m.*) wra, " +
-            "count(c.*) child, " +
-            "count(s.*) blood, " +
-            "count(w.*) water " +
-            "FROM forms f " +
-            "LEFT JOIN mwra m " +
-            "ON f._uid = m.uuid " +
-            "LEFT JOIN child c " +
-            "ON f._uid = c._uuid " +
-            "LEFT JOIN familymembers fm " +
-            "ON f._uid = fm.uuid" +
-            "LEFT JOIN specimen s " +
-            "ON f._uid = s._uuid " +
-            "LEFT JOIN water_specimen w " +
-            "ON f._uid = w._uuid" +
-
-
-            "WHERE b.property_id=? group by f._uid";
+    final String SQL_SUMMARY_JOIN =
+            "SELECT f.formdate, f.cluster_no, f.hh_no, f.istatus, f.istatusHH, f.user,\n" +
+                    "count(fm.uid) member, " +
+                    "count(m.uid) wra,\n" +
+                    "count(c._uid) child,\n" +
+                    "count(s._uid) blood,\n" +
+                    "count(w._uid) water\n" +
+                    "FROM forms f\n" +
+                    "LEFT JOIN mwra m\n" +
+                    "ON f._uid = m.uuid\n" +
+                    "LEFT JOIN child c\n" +
+                    "ON f._uid = c._uuid\n" +
+                    "LEFT JOIN familymembers fm\n" +
+                    "ON f._uid = fm.uuid\n" +
+                    "LEFT JOIN specimen s\n" +
+                    "ON f._uid = s._uuid\n" +
+                    "LEFT JOIN water_specimen w\n" +
+                    "ON f._uid = w._uuid group by f._uid;";
 
 
     private final String TAG = "DatabaseHelper";
@@ -5029,19 +5026,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Map<String, String> getSummary() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
+        Map<String, String> cursorMap = new HashMap<>();
+
         try {
             //execute the query results will be save in Cursor c
             c = db.rawQuery(SQL_SUMMARY_JOIN, null);
-
-            Map<String, String> cursorMap = new HashMap<String, String>();
-            c.moveToFirst();
-            while (!c.isAfterLast()) {
-                cursorMap.put(c.getString(c.getColumnIndex("fromdate"), c.getString(1));
-                cursorMap.put("member", c.getString(2));
-                cursorMap.put("wra", c.getString(3));
-                c.moveToNext();
+            while (c.moveToNext()) {
+                cursorMap.put("formdate", c.getString(c.getColumnIndex("formdate")));
+                cursorMap.put("cluster_no", c.getString(c.getColumnIndex("cluster_no")));
+                cursorMap.put("hh_no", c.getString(c.getColumnIndex("hh_no")));
+                cursorMap.put("istatus", c.getString(c.getColumnIndex("istatus")));
+                cursorMap.put("user", c.getString(c.getColumnIndex("user")));
+                cursorMap.put("member", c.getString(c.getColumnIndex("member")));
+                cursorMap.put("wra", c.getString(c.getColumnIndex("wra")));
+                cursorMap.put("child", c.getString(c.getColumnIndex("child")));
+                cursorMap.put("blood", c.getString(c.getColumnIndex("blood")));
+                cursorMap.put("water", c.getString(c.getColumnIndex("water")));
             }
-            return cursorMap;
         } finally {
 
             if (c != null) {
@@ -5051,6 +5052,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.close();
             }
         }
+        return cursorMap;
     }
 
     // ANDROID DATABASE MANAGER

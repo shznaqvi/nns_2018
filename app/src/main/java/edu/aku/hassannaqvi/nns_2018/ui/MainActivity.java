@@ -358,6 +358,8 @@ public class MainActivity extends MenuActivity {
 
         registerReceiver(broadcastReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
 
+        Map<String, String> dashBoard = db.getSummary();
+
     }
 
     @Override

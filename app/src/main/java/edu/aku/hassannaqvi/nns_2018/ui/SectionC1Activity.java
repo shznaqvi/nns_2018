@@ -58,7 +58,7 @@ public class SectionC1Activity extends AddMember_MenuActivity implements TextWat
     public static Boolean editChildFlag;
     static List<String> childU5;
     static Map<String, FamilyMembersContract> childMap;
-    private final long DELAY = 1000;
+    private final long DELAY = 2000;
     Map<String, String> respMap;
     ArrayList<String> respName;
     ActivitySectionC1Binding binding;
