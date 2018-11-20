@@ -462,6 +462,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             DeviceContract.DeviceTable.COLUMN_APPVERSION + " TEXT," +
             DeviceContract.DeviceTable.COLUMN_TAGID + " TEXT" + ");";
 
+    final String SQL_SUMMARY_JOIN = "SELECT " +
+            "f.formdate, f.cluster_no, f.hh_no, f.istatus, f.istatusHH, f.user, " +
+            "count(fm.*) member, " +
+            "count(m.*) wra, " +
+            "count(c.*) child, " +
+            "count(s.*) blood, " +
+            "count(w.*) water " +
+            "FROM forms f " +
+            "LEFT JOIN mwra m " +
+            "ON f._uid = m.uuid " +
+            "LEFT JOIN child c " +
+            "ON f._uid = c._uuid " +
+            "LEFT JOIN familymembers fm " +
+            "ON f._uid = fm.uuid" +
+            "LEFT JOIN specimen s " +
+            "ON f._uid = s._uuid " +
+            "LEFT JOIN water_specimen w " +
+            "ON f._uid = w._uuid" +
+
+
+            "WHERE b.property_id=? group by f._uid";
+
 
     private final String TAG = "DatabaseHelper";
     public String spDateT = new SimpleDateFormat("dd-MM-yy").format(new Date().getTime());
