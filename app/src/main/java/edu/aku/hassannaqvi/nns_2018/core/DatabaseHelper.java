@@ -17,7 +17,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract.singleRandomHH;
@@ -5022,6 +5024,33 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allFC;
+    }
+
+    public Map<String, String> getSummary() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        try {
+            //execute the query results will be save in Cursor c
+            c = db.rawQuery(SQL_SUMMARY_JOIN, null);
+
+            Map<String, String> cursorMap = new HashMap<String, String>();
+            c.moveToFirst();
+            while (!c.isAfterLast()) {
+                cursorMap.put(c.getString(c.getColumnIndex("fromdate"), c.getString(1));
+                cursorMap.put("member", c.getString(2));
+                cursorMap.put("wra", c.getString(3));
+                c.moveToNext();
+            }
+            return cursorMap;
+        } finally {
+
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
     }
 
     // ANDROID DATABASE MANAGER
