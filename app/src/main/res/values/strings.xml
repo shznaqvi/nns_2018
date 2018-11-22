@@ -537,7 +537,7 @@
     <string name="nw220"> بچے کی موجودہ صورت حال </string>
     <string name="nw220a"> حیات </string>
     <string name="nw220b"> فوت </string>
-  <string name="nw220c"> اس گھر میں نہیں رہتا </string>
+    <string name="nw220c"> اس گھر میں نہیں رہتا </string>
     <string name="nw221"> زندہ بچے کی عمر </string>
     <string name="year">سال </string>
     <string name="year2">سنہ </string>
@@ -1592,6 +1592,9 @@
     <string name="ne20301h">Total Coliform Count (If TNTC, write 999)</string>
     <string name="ne20301fa">If TNTC, write 999</string>
     <string name="ne20301i">Total E-Coli Count</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

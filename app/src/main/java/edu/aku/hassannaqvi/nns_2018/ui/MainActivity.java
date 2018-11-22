@@ -62,9 +62,11 @@ import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.nns_2018.core.AndroidDatabaseManager;
+import edu.aku.hassannaqvi.nns_2018.core.DashboardFunctions;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivityMainBinding;
+import edu.aku.hassannaqvi.nns_2018.other.Summary;
 
 public class MainActivity extends MenuActivity {
 
@@ -358,7 +360,10 @@ public class MainActivity extends MenuActivity {
 
         registerReceiver(broadcastReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
 
-        Map<String, String> dashBoard = db.getSummary();
+        // Summary
+        ArrayList<Summary> dashBoardSummary = db.getSummary();
+        mainBinding.dashboardTable.addView(DashboardFunctions.componentHTableRow(this, Summary.GetHeaders()));
+        mainBinding.dashboardTable.addView(DashboardFunctions.componentBTableRow(this, dashBoardSummary));
 
     }
 

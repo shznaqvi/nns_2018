@@ -17,9 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.BLRandomContract.singleRandomHH;
@@ -56,6 +54,7 @@ import edu.aku.hassannaqvi.nns_2018.contracts.UsersContract.UsersTable;
 import edu.aku.hassannaqvi.nns_2018.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.VersionAppContract.VersionAppTable;
 import edu.aku.hassannaqvi.nns_2018.contracts.WaterSpecimenContract;
+import edu.aku.hassannaqvi.nns_2018.other.Summary;
 
 
 /**
@@ -5023,28 +5022,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFC;
     }
 
-    public Map<String, String> getSummary() {
+    public ArrayList<Summary> getSummary() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
-        Map<String, String> cursorMap = new HashMap<>();
+        ArrayList<Summary> cursorMap = new ArrayList<>();
 
         try {
             //execute the query results will be save in Cursor c
             c = db.rawQuery(SQL_SUMMARY_JOIN, null);
             while (c.moveToNext()) {
-                cursorMap.put("formdate", c.getString(c.getColumnIndex("formdate")));
-                cursorMap.put("cluster_no", c.getString(c.getColumnIndex("cluster_no")));
-                cursorMap.put("hh_no", c.getString(c.getColumnIndex("hh_no")));
-                cursorMap.put("istatus", c.getString(c.getColumnIndex("istatus")));
-                cursorMap.put("user", c.getString(c.getColumnIndex("user")));
-                cursorMap.put("member", c.getString(c.getColumnIndex("member")));
-                cursorMap.put("wra", c.getString(c.getColumnIndex("wra")));
-                cursorMap.put("child", c.getString(c.getColumnIndex("child")));
-                cursorMap.put("blood", c.getString(c.getColumnIndex("blood")));
-                cursorMap.put("water", c.getString(c.getColumnIndex("water")));
+                cursorMap.add(new Summary(c));
             }
         } finally {
-
             if (c != null) {
                 c.close();
             }
