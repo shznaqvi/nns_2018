@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.view.Gravity;
+import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
@@ -17,7 +18,7 @@ public abstract class DashboardFunctions {
 
         TextView headerTextView = new TextView(mContext);
         headerTextView.setBackgroundColor(Color.BLACK);
-        headerTextView.setTextColor(Color.GREEN);
+        headerTextView.setTextColor(Color.WHITE);
         headerTextView.setText(label);
         headerTextView.setTextSize(20);
         headerTextView.setTypeface(Typeface.SANS_SERIF);
@@ -41,12 +42,12 @@ public abstract class DashboardFunctions {
         return bodyTextView;
     }
 
-    public static TableRow componentHTableRow(Context mContext, String[] headers) {
+    public static void componentHTableRow(Context mContext, TableLayout tbl, String[] headers) {
 
         TableRow componentBTableRow = new TableRow(mContext);
 
         TableRow.LayoutParams params = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
-        params.setMargins(1, 0, 0, 0);
+        params.setMargins(1, 0, 0, 3);
 
         for (String label : headers) {
             TextView textView = headerTextView(mContext, label);
@@ -54,18 +55,17 @@ public abstract class DashboardFunctions {
             componentBTableRow.addView(textView);
         }
 
-        return componentBTableRow;
+        tbl.addView(componentBTableRow);
     }
 
 
-    public static TableRow componentBTableRow(Context mContext, ArrayList<Summary> body) {
-
-        TableRow taleRowForTableD = new TableRow(mContext);
+    public static void componentBTableRow(Context mContext, TableLayout tbl, ArrayList<Summary> body) {
 
         for (int i = 0; i < body.size(); i++) {
 
-            String[] getSum = Summary.GetBody(body.get(i));
+            TableRow taleRowForTableD = new TableRow(mContext);
 
+            String[] getSum = Summary.GetBody(body.get(i));
             for (int j = 0; j < getSum.length; j++) {
                 TableRow.LayoutParams params = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
                 params.setMargins(1, 1, 0, 0);
@@ -73,10 +73,9 @@ public abstract class DashboardFunctions {
                 TextView textViewB = bodyTextView(mContext, getSum[j]);
                 taleRowForTableD.addView(textViewB, params);
             }
+
+            tbl.addView(taleRowForTableD);
         }
-
-        return taleRowForTableD;
-
     }
 
 }

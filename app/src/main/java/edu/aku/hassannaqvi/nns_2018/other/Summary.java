@@ -29,16 +29,16 @@ public class Summary {
 
     public static String[] GetHeaders() {
         return new String[]{
-                "HH no",
-                "Cluster no",
-                "Formdate",
-                "Istatus",
-                "User",
-                "Member",
+                "HH NO",
+                "CLUSTER NO",
+                "FORMDATE",
+                "MEMBER",
                 "WRA",
-                "Child",
-                "Blood",
-                "Water"
+                "CHILD",
+                "BLOOD",
+                "WATER",
+                "USER",
+                "ISTATUS"
         };
     }
 
@@ -47,13 +47,13 @@ public class Summary {
                 summary.getHh_no(),
                 summary.getCluster_no(),
                 summary.getFormdate(),
-                summary.istatus,
-                summary.getUser(),
                 summary.getMember(),
                 summary.getWra(),
                 summary.getChild(),
                 summary.getBlood(),
-                summary.getWater()
+                summary.getWater(),
+                summary.getUser(),
+                GetIstatus(summary.getIstatus())
         };
     }
 
@@ -96,4 +96,26 @@ public class Summary {
     public String getWater() {
         return water;
     }
+
+    private static String GetIstatus(String istatus) {
+        switch (istatus) {
+            case "1":
+                return "Complete";
+            case "2":
+                return "Incomplete";
+            case "3":
+                return "N/A";
+            case "4":
+                return "Refused";
+            case "5":
+                return "N/A";
+            case "6":
+                return "N/A";
+            case "7":
+                return "Partial";
+            default:
+                return "Other";
+        }
+    }
+
 }

@@ -261,13 +261,22 @@ public class MainActivity extends MenuActivity {
                             iStatus = "\tIncomplete";
                             break;
                         case "3":
-                            iStatus = "\tRefused";
+                            iStatus = "\tN/A";
                             break;
                         case "4":
                             iStatus = "\tRefused";
                             break;
-                        default:
+                        case "5":
                             iStatus = "\tN/A";
+                            break;
+                        case "6":
+                            iStatus = "\tN/A";
+                            break;
+                        case "7":
+                            iStatus = "\tPartial";
+                            break;
+                        default:
+                            iStatus = "\tOther";
                     }
                 } else {
                     iStatus = "\tN/A";
@@ -362,8 +371,8 @@ public class MainActivity extends MenuActivity {
 
         // Summary
         ArrayList<Summary> dashBoardSummary = db.getSummary();
-        mainBinding.dashboardTable.addView(DashboardFunctions.componentHTableRow(this, Summary.GetHeaders()));
-        mainBinding.dashboardTable.addView(DashboardFunctions.componentBTableRow(this, dashBoardSummary));
+        DashboardFunctions.componentHTableRow(this, mainBinding.dashboardTable, Summary.GetHeaders());
+        DashboardFunctions.componentBTableRow(this, mainBinding.dashboardTable, dashBoardSummary);
 
     }
 
