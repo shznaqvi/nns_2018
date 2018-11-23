@@ -88,7 +88,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_20sdp"
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_3sdp"
                 android:layout_marginBottom="@dimen/_2sdp"
                 android:background="@color/green"
                 android:text="SUMMARY"
@@ -96,28 +96,24 @@
                 android:textAllCaps="true"
                 android:textSize="@dimen/_7sdp" />
 
-            <HorizontalScrollView
+            <android.support.v4.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_180sdp">
+                android:layout_height="@dimen/_180sdp"
+                android:background="@color/white"
+                android:padding="10dp">
 
-                <ScrollView
+                <HorizontalScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/white"
-                    android:padding="0dp"
-                    android:scrollbarSize="1dp">
+                    android:layout_height="match_parent">
 
                     <TableLayout
                         android:id="@+id/dashboardTable"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent" />
 
+                </HorizontalScrollView>
 
-                    </TableLayout>
-
-                </ScrollView>
-
-            </HorizontalScrollView>
+            </android.support.v4.widget.NestedScrollView>
 
             <LinearLayout
                 android:layout_width="match_parent"

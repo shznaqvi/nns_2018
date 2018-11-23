@@ -480,7 +480,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     "LEFT JOIN specimen s\n" +
                     "ON f._uid = s._uuid\n" +
                     "LEFT JOIN water_specimen w\n" +
-                    "ON f._uid = w._uuid group by f._uid;";
+                    "ON f._uid = w._uuid group by f._uid order by f.formdate DESC;";
 
 
     private final String TAG = "DatabaseHelper";
