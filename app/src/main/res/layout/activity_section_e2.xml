@@ -32,8 +32,6 @@
                 android:textSize="40sp"
                 android:visibility="gone" />
 
-
-            <!--na100-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -43,59 +41,16 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
-            <!--<RadioGroup
-                android:id="@+id/ne201"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
--->
+            <!--Micro-->
             <CheckBox
-                    android:id="@+id/ne201a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/ne201a" />
-
-            <LinearLayout
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:orientation="vertical"
-                android:id="@+id/fldGrpMicro">
-
-            <TextView
+                android:id="@+id/ne201a"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/ne202a"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
-
-            <RadioGroup
-                android:id="@+id/ne20201"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/ne20201a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:enabled="false"
-                    android:text="@string/yes" />
-
-                <RadioButton
-                    android:id="@+id/ne20201b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:enabled="false"
-                    android:text="@string/no" />
-
-            </RadioGroup>
+                android:layout_marginBottom="1dp"
+                android:text="@string/ne201a" />
 
             <LinearLayout
-                android:id="@+id/fldGrpne20301"
+                android:id="@+id/fldGrpMicro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -105,49 +60,88 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorPrimary"
-                    android:text="@string/ne203"
+                    android:text="@string/ne202a"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
 
-                <LinearLayout
+                <RadioGroup
+                    android:id="@+id/ne20201"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
                     android:orientation="horizontal">
 
-                    <Button
-                        android:id="@+id/btnScanMicro"
-                        style="@style/buttons"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:background="@drawable/button_bg"
-                        android:elevation="5dp"
-                        android:onClick="@{() -> callback.BtnScanMirco()}"
-                        android:padding="0dp"
-                        android:text="SCAN"
-                        android:enabled="false"
-                        android:textColor="@color/colorPrimaryDark" />
-
-                    <EditText
-                        android:id="@+id/ne20301"
+                    <RadioButton
+                        android:id="@+id/ne20201a"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-"
-                        android:inputType="textCapCharacters"
-                        android:maxLength="19"
                         android:enabled="false"
-                        android:textDirection="ltr" />
+                        android:text="@string/yes" />
+
+                    <RadioButton
+                        android:id="@+id/ne20201b"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="@string/no" />
+
+                </RadioGroup>
+
+                <LinearLayout
+                    android:id="@+id/fldGrpne20301"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/colorPrimary"
+                        android:text="@string/ne203"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@android:color/white" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnScanMicro"
+                            style="@style/buttons"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:background="@drawable/button_bg"
+                            android:elevation="5dp"
+                            android:enabled="false"
+                            android:onClick="@{() -> callback.BtnScanMirco()}"
+                            android:padding="0dp"
+                            android:text="SCAN"
+                            android:textColor="@color/colorPrimaryDark" />
+
+                        <EditText
+                            android:id="@+id/ne20301"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-"
+                            android:enabled="false"
+                            android:inputType="textCapCharacters"
+                            android:maxLength="19"
+                            android:textDirection="ltr" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-            </LinearLayout>
-
 
             </LinearLayout>
 
-
+            <!--Nitric-->
             <CheckBox
                 android:id="@+id/ne201b"
                 android:layout_width="match_parent"
@@ -223,10 +217,10 @@
                             android:layout_weight="2"
                             android:background="@drawable/button_bg"
                             android:elevation="5dp"
+                            android:enabled="false"
                             android:onClick="@{() -> callback.BtnScanNitric()}"
                             android:padding="0dp"
                             android:text="SCAN"
-                            android:enabled="false"
                             android:textColor="@color/colorPrimaryDark" />
 
                         <EditText
@@ -235,9 +229,9 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-"
+                            android:enabled="false"
                             android:inputType="textCapCharacters"
                             android:maxLength="19"
-                            android:enabled="false"
                             android:textDirection="ltr" />
 
                     </LinearLayout>
@@ -246,6 +240,7 @@
 
             </LinearLayout>
 
+            <!--Boric-->
             <CheckBox
                 android:id="@+id/ne201c"
                 android:layout_width="match_parent"
@@ -321,10 +316,10 @@
                             android:layout_weight="2"
                             android:background="@drawable/button_bg"
                             android:elevation="5dp"
+                            android:enabled="false"
                             android:onClick="@{() -> callback.BtnScanBoric()}"
                             android:padding="0dp"
                             android:text="SCAN"
-                            android:enabled="false"
                             android:textColor="@color/colorPrimaryDark" />
 
                         <EditText
@@ -333,9 +328,9 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-"
+                            android:enabled="false"
                             android:inputType="textCapCharacters"
                             android:maxLength="19"
-                            android:enabled="false"
                             android:textDirection="ltr" />
 
                     </LinearLayout>
@@ -344,6 +339,7 @@
 
             </LinearLayout>
 
+            <!--Plain-->
             <CheckBox
                 android:id="@+id/ne201d"
                 android:layout_width="match_parent"
@@ -419,10 +415,10 @@
                             android:layout_weight="2"
                             android:background="@drawable/button_bg"
                             android:elevation="5dp"
+                            android:enabled="false"
                             android:onClick="@{() -> callback.BtnScanPlain()}"
                             android:padding="0dp"
                             android:text="SCAN"
-                            android:enabled="false"
                             android:textColor="@color/colorPrimaryDark" />
 
                         <EditText
@@ -431,9 +427,9 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-"
+                            android:enabled="false"
                             android:inputType="textCapCharacters"
                             android:maxLength="19"
-                            android:enabled="false"
                             android:textDirection="ltr" />
 
                     </LinearLayout>
@@ -442,7 +438,7 @@
 
             </LinearLayout>
 
-
+            <!--QC-->
             <CheckBox
                 android:id="@+id/ne201e"
                 android:layout_width="match_parent"
@@ -518,10 +514,10 @@
                             android:layout_weight="2"
                             android:background="@drawable/button_bg"
                             android:elevation="5dp"
+                            android:enabled="false"
                             android:onClick="@{() -> callback.BtnScanQC()}"
                             android:padding="0dp"
                             android:text="SCAN"
-                            android:enabled="false"
                             android:textColor="@color/colorPrimaryDark" />
 
                         <EditText
@@ -530,9 +526,9 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-"
+                            android:enabled="false"
                             android:inputType="textCapCharacters"
                             android:maxLength="19"
-                            android:enabled="false"
                             android:textDirection="ltr" />
 
                     </LinearLayout>
@@ -541,112 +537,393 @@
 
             </LinearLayout>
 
-
-            <CheckBox
-                android:id="@+id/ne201f"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
-                android:text="@string/ne201f" />
-
-
+            <!--Field Blank-->
             <LinearLayout
-                android:id="@+id/fldGrpField"
+                android:id="@+id/fldGrpMainField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
+                <CheckBox
+                    android:id="@+id/ne201f"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/ne202f"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
-
-                <RadioGroup
-                    android:id="@+id/ne20206"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/ne20206a"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:enabled="false"
-                        android:text="@string/yes" />
-
-                    <RadioButton
-                        android:id="@+id/ne20206b"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:enabled="false"
-                        android:text="@string/no" />
-
-                </RadioGroup>
+                    android:layout_marginBottom="1dp"
+                    android:text="@string/ne201f" />
 
                 <LinearLayout
-                    android:id="@+id/fldGrpneField"
+                    android:id="@+id/fldGrpField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/colorPrimary"
-                        android:text="@string/ne203"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white" />
-
+                    <!--01-->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
-                        <Button
-                            android:id="@+id/btnScanField"
-                            style="@style/buttons"
+                        <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:background="@drawable/button_bg"
-                            android:elevation="5dp"
-                            android:onClick="@{() -> callback.BtnScanField()}"
-                            android:padding="0dp"
-                            android:text="SCAN"
-                            android:enabled="false"
-                            android:textColor="@color/colorPrimaryDark" />
+                            android:layout_marginTop="16dp"
+                            android:background="@color/colorPrimary"
+                            android:text="@string/ne202f01"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@android:color/white" />
 
-                        <EditText
-                            android:id="@+id/ne20306"
+                        <RadioGroup
+                            android:id="@+id/ne2020601"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-"
-                            android:inputType="textCapCharacters"
-                            android:maxLength="19"
-                            android:enabled="false"
-                            android:textDirection="ltr" />
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/ne2020601a"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:enabled="false"
+                                android:text="@string/yes" />
+
+                            <RadioButton
+                                android:id="@+id/ne2020601b"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:enabled="false"
+                                android:text="@string/no" />
+
+                        </RadioGroup>
+
+                        <LinearLayout
+                            android:id="@+id/fldGrpneField01"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:background="@color/colorPrimary"
+                                android:text="@string/ne203"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="@android:color/white" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:id="@+id/btnScanField01"
+                                    style="@style/buttons"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:background="@drawable/button_bg"
+                                    android:elevation="5dp"
+                                    android:enabled="false"
+                                    android:onClick="@{(v) -> callback.BtnScanField(1)}"
+                                    android:padding="0dp"
+                                    android:text="SCAN"
+                                    android:textColor="@color/colorPrimaryDark" />
+
+                                <EditText
+                                    android:id="@+id/ne2030601"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-"
+                                    android:enabled="false"
+                                    android:inputType="textCapCharacters"
+                                    android:maxLength="19"
+                                    android:textDirection="ltr" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!--02-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:background="@color/colorPrimary"
+                            android:text="@string/ne202f02"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@android:color/white" />
+
+                        <RadioGroup
+                            android:id="@+id/ne2020602"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/ne2020602a"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:enabled="false"
+                                android:text="@string/yes" />
+
+                            <RadioButton
+                                android:id="@+id/ne2020602b"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:enabled="false"
+                                android:text="@string/no" />
+
+                        </RadioGroup>
+
+                        <LinearLayout
+                            android:id="@+id/fldGrpneField02"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:background="@color/colorPrimary"
+                                android:text="@string/ne203"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="@android:color/white" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:id="@+id/btnScanField02"
+                                    style="@style/buttons"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:background="@drawable/button_bg"
+                                    android:elevation="5dp"
+                                    android:enabled="false"
+                                    android:onClick="@{(v) -> callback.BtnScanField(2)}"
+                                    android:padding="0dp"
+                                    android:text="SCAN"
+                                    android:textColor="@color/colorPrimaryDark" />
+
+                                <EditText
+                                    android:id="@+id/ne2030602"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-"
+                                    android:enabled="false"
+                                    android:inputType="textCapCharacters"
+                                    android:maxLength="19"
+                                    android:textDirection="ltr" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!--03-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:background="@color/colorPrimary"
+                            android:text="@string/ne202f03"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@android:color/white" />
+
+                        <RadioGroup
+                            android:id="@+id/ne2020603"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/ne2020603a"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:enabled="false"
+                                android:text="@string/yes" />
+
+                            <RadioButton
+                                android:id="@+id/ne2020603b"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:enabled="false"
+                                android:text="@string/no" />
+
+                        </RadioGroup>
+
+                        <LinearLayout
+                            android:id="@+id/fldGrpneField03"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:background="@color/colorPrimary"
+                                android:text="@string/ne203"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="@android:color/white" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:id="@+id/btnScanField03"
+                                    style="@style/buttons"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:background="@drawable/button_bg"
+                                    android:elevation="5dp"
+                                    android:enabled="false"
+                                    android:onClick="@{(v) -> callback.BtnScanField(3)}"
+                                    android:padding="0dp"
+                                    android:text="SCAN"
+                                    android:textColor="@color/colorPrimaryDark" />
+
+                                <EditText
+                                    android:id="@+id/ne2030603"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-"
+                                    android:enabled="false"
+                                    android:inputType="textCapCharacters"
+                                    android:maxLength="19"
+                                    android:textDirection="ltr" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!--04-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:background="@color/colorPrimary"
+                            android:text="@string/ne202f04"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@android:color/white" />
+
+                        <RadioGroup
+                            android:id="@+id/ne2020604"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/ne2020604a"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:enabled="false"
+                                android:text="@string/yes" />
+
+                            <RadioButton
+                                android:id="@+id/ne2020604b"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:enabled="false"
+                                android:text="@string/no" />
+
+                        </RadioGroup>
+
+                        <LinearLayout
+                            android:id="@+id/fldGrpneField04"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:background="@color/colorPrimary"
+                                android:text="@string/ne203"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="@android:color/white" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:id="@+id/btnScanField04"
+                                    style="@style/buttons"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:background="@drawable/button_bg"
+                                    android:elevation="5dp"
+                                    android:enabled="false"
+                                    android:onClick="@{(v) -> callback.BtnScanField(4)}"
+                                    android:padding="0dp"
+                                    android:text="SCAN"
+                                    android:textColor="@color/colorPrimaryDark" />
+
+                                <EditText
+                                    android:id="@+id/ne2030604"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-"
+                                    android:enabled="false"
+                                    android:inputType="textCapCharacters"
+                                    android:maxLength="19"
+                                    android:textDirection="ltr" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
                 </LinearLayout>
 
             </LinearLayout>
-
-
-            <!--</RadioGroup>-->
-
-
-            <!--nh101-->
-
 
             <!--  = = = = =  END OF FORM FIELDS  = = = = = -->
             <LinearLayout
