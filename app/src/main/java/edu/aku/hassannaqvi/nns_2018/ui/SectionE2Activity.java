@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -36,6 +38,7 @@ public class SectionE2Activity extends AppCompatActivity {
     private static final String TAG = SectionE2Activity.class.getSimpleName();
     ActivitySectionE2Binding bi;
     Boolean isMicro = false, isNitric = false, isBoric = false, isPlain = false, isQC = false, isField = false;
+    int isFieldValue = 0;
 
     //FamilyMembersContract fmc;
     Map<Integer, FamilyMembersContract> membersMap;
@@ -56,17 +59,21 @@ public class SectionE2Activity extends AppCompatActivity {
             membersMap.put(0, fmc);
         }
 
+//        checkingFieldBlank();
+
 
         bi.ne201a.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     clearClass.ClearAllFields(bi.fldGrpMicro, true);
-                    bi.btnScanMicro.setEnabled(true);
+//                    bi.btnScanMicro.setEnabled(true);
                 } else {
                     clearClass.ClearAllFields(bi.fldGrpMicro, false);
                     bi.btnScanMicro.setEnabled(false);
                 }
+
+                checkingFieldBlank();
             }
         });
 
@@ -75,11 +82,13 @@ public class SectionE2Activity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     clearClass.ClearAllFields(bi.fldGrpNirtric, true);
-                    bi.btnScanNitric.setEnabled(true);
+//                    bi.btnScanNitric.setEnabled(true);
                 } else {
                     clearClass.ClearAllFields(bi.fldGrpNirtric, false);
                     bi.btnScanNitric.setEnabled(false);
                 }
+
+                checkingFieldBlank();
             }
         });
 
@@ -88,11 +97,13 @@ public class SectionE2Activity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     clearClass.ClearAllFields(bi.fldGrpBoric, true);
-                    bi.btnScanBoric.setEnabled(true);
+//                    bi.btnScanBoric.setEnabled(true);
                 } else {
                     clearClass.ClearAllFields(bi.fldGrpBoric, false);
                     bi.btnScanBoric.setEnabled(false);
                 }
+
+                checkingFieldBlank();
             }
         });
 
@@ -101,11 +112,13 @@ public class SectionE2Activity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     clearClass.ClearAllFields(bi.fldGrpPlain, true);
-                    bi.btnScanPlain.setEnabled(true);
+//                    bi.btnScanPlain.setEnabled(true);
                 } else {
                     clearClass.ClearAllFields(bi.fldGrpPlain, false);
                     bi.btnScanPlain.setEnabled(false);
                 }
+
+                checkingFieldBlank();
             }
         });
 
@@ -115,11 +128,13 @@ public class SectionE2Activity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     clearClass.ClearAllFields(bi.fldGrpQC, true);
-                    bi.btnScanQC.setEnabled(true);
+//                    bi.btnScanQC.setEnabled(true);
                 } else {
                     clearClass.ClearAllFields(bi.fldGrpQC, false);
                     bi.btnScanQC.setEnabled(false);
                 }
+
+                checkingFieldBlank();
             }
         });
 
@@ -128,10 +143,16 @@ public class SectionE2Activity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     clearClass.ClearAllFields(bi.fldGrpField, true);
-                    bi.btnScanField.setEnabled(true);
+                    /*bi.btnScanField01.setEnabled(true);
+                    bi.btnScanField02.setEnabled(true);
+                    bi.btnScanField03.setEnabled(true);
+                    bi.btnScanField04.setEnabled(true);*/
                 } else {
                     clearClass.ClearAllFields(bi.fldGrpField, false);
-                    bi.btnScanField.setEnabled(false);
+                    bi.btnScanField01.setEnabled(false);
+                    bi.btnScanField02.setEnabled(false);
+                    bi.btnScanField03.setEnabled(false);
+                    bi.btnScanField04.setEnabled(false);
                 }
             }
         });
@@ -203,19 +224,68 @@ public class SectionE2Activity extends AppCompatActivity {
             }
         });
 
-        bi.ne20206.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        bi.ne2020601.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (bi.ne20206a.isChecked()) {
-                    clearClass.ClearAllFields(bi.fldGrpneField, true);
-                    bi.btnScanNitric.setEnabled(true);
+                if (bi.ne2020601a.isChecked()) {
+                    clearClass.ClearAllFields(bi.fldGrpneField01, true);
+                    bi.btnScanField01.setEnabled(true);
                 } else {
-                    clearClass.ClearAllFields(bi.fldGrpneField, false);
-                    bi.btnScanField.setEnabled(false);
+                    clearClass.ClearAllFields(bi.fldGrpneField01, false);
+                    bi.btnScanField01.setEnabled(false);
                 }
             }
         });
 
+        bi.ne2020602.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (bi.ne2020602a.isChecked()) {
+                    clearClass.ClearAllFields(bi.fldGrpneField02, true);
+                    bi.btnScanField02.setEnabled(true);
+                } else {
+                    clearClass.ClearAllFields(bi.fldGrpneField02, false);
+                    bi.btnScanField02.setEnabled(false);
+                }
+            }
+        });
+
+        bi.ne2020603.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (bi.ne2020603a.isChecked()) {
+                    clearClass.ClearAllFields(bi.fldGrpneField03, true);
+                    bi.btnScanField03.setEnabled(true);
+                } else {
+                    clearClass.ClearAllFields(bi.fldGrpneField03, false);
+                    bi.btnScanField03.setEnabled(false);
+                }
+            }
+        });
+
+        bi.ne2020604.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (bi.ne2020604a.isChecked()) {
+                    clearClass.ClearAllFields(bi.fldGrpneField04, true);
+                    bi.btnScanField04.setEnabled(true);
+                } else {
+                    clearClass.ClearAllFields(bi.fldGrpneField04, false);
+                    bi.btnScanField04.setEnabled(false);
+                }
+            }
+        });
+
+    }
+
+    public void checkingFieldBlank() {
+        if (bi.ne201a.isChecked() && bi.ne201b.isChecked() && bi.ne201c.isChecked() && bi.ne201d.isChecked() && bi.ne201e.isChecked()) {
+            bi.fldGrpMainField.setVisibility(View.VISIBLE);
+            clearClass.ClearAllFields(bi.fldGrpMainField, true);
+        } else {
+            bi.fldGrpMainField.setVisibility(View.GONE);
+            clearClass.ClearAllFields(bi.fldGrpMainField, false);
+        }
     }
 
 
@@ -326,7 +396,7 @@ public class SectionE2Activity extends AppCompatActivity {
 
     }
 
-    public void BtnScanField() {
+    public void BtnScanField(int value) {
         //binding.hcCode.setText(null);
 
         isField = true;
@@ -335,6 +405,8 @@ public class SectionE2Activity extends AppCompatActivity {
         isBoric = false;
         isQC = false;
         isPlain = false;
+
+        isFieldValue = value;
 
         IntentIntegrator integrator = new IntentIntegrator(this);
         integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
@@ -366,6 +438,9 @@ public class SectionE2Activity extends AppCompatActivity {
                     } else {
                         bi.ne20301.setError("Please Scan correct QR code");
                     }
+
+                    bi.ne20301.setFocusable(true);
+
                 } else if (isNitric) {
                     if (result.getContents().contains("HN")) {
                         Toast.makeText(this, "HN Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
@@ -375,6 +450,9 @@ public class SectionE2Activity extends AppCompatActivity {
                     } else {
                         bi.ne20302.setError("Please Scan correct QR code");
                     }
+
+                    bi.ne20302.setFocusable(true);
+
                 } else if (isBoric) {
                     if (result.getContents().contains("HB")) {
                         Toast.makeText(this, "HB Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
@@ -384,6 +462,9 @@ public class SectionE2Activity extends AppCompatActivity {
                     } else {
                         bi.ne20303.setError("Please Scan correct QR code");
                     }
+
+                    bi.ne20303.setFocusable(true);
+
                 } else if (isPlain) {
                     if (result.getContents().contains("HP")) {
                         Toast.makeText(this, "HP Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
@@ -393,30 +474,73 @@ public class SectionE2Activity extends AppCompatActivity {
                     } else {
                         bi.ne20304.setError("Please Scan correct QR code");
                     }
+
+                    bi.ne20304.setFocusable(true);
+
                 } else if (isQC) {
                     if (result.getContents().contains("HQ")) {
-                        Toast.makeText(this, "HQ Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, "HQ Scanned: " + result.getContents(), Toast.LENGTH_SHORT).show();
                         bi.ne20305.setText("§" + result.getContents().trim());
                         bi.ne20305.setEnabled(false);
                         bi.ne20305.setError(null);
                     } else {
                         bi.ne20305.setError("Please Scan correct QR code");
                     }
+
+                    bi.ne20305.setFocusable(true);
+
                 } else if (isField) {
-                    if (result.getContents().contains("HF")) {
-                        Toast.makeText(this, "HF Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
-                        bi.ne20306.setText("§" + result.getContents().trim());
-                        bi.ne20306.setEnabled(false);
-                        bi.ne20306.setError(null);
-                    } else {
-                        bi.ne20306.setError("Please Scan correct QR code");
+
+                    String selectedField = "";
+                    EditText txt = bi.ne2030601;
+                    switch (isFieldValue) {
+                        case 1:
+                            selectedField = "FM";
+                            txt = bi.ne2030601;
+                            break;
+                        case 2:
+                            selectedField = "FN";
+                            txt = bi.ne2030602;
+                            break;
+                        case 3:
+                            selectedField = "FB";
+                            txt = bi.ne2030603;
+                            break;
+                        case 4:
+                            selectedField = "FP";
+                            txt = bi.ne2030604;
+                            break;
+
                     }
+
+                    if (result.getContents().contains(selectedField)) {
+                        Toast.makeText(this, selectedField + " Scanned: " + result.getContents(), Toast.LENGTH_SHORT).show();
+                        txt.setText("§" + result.getContents().trim());
+                        txt.setEnabled(false);
+                        txt.setError(null);
+                    } else {
+                        txt.setError("Please Scan correct QR code");
+                    }
+
+                    txt.setFocusable(true);
+
+                    focusOnView();
+
                 }
 
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    private final void focusOnView() {
+        bi.scrollE2.post(new Runnable() {
+            @Override
+            public void run() {
+                bi.scrollE2.fullScroll(View.FOCUS_DOWN);
+            }
+        });
     }
 
     public void BtnContinue() {
@@ -471,7 +595,7 @@ public class SectionE2Activity extends AppCompatActivity {
         //Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
         if (!(bi.ne201a.isChecked() || bi.ne201b.isChecked() || bi.ne201c.isChecked() || bi.ne201d.isChecked()
                 || bi.ne201e.isChecked() || bi.ne201f.isChecked())) {
-            Toast.makeText(this, "ERROR(empty): " + getString(R.string.ne201), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "ERROR(empty): " + getString(R.string.ne201), Toast.LENGTH_SHORT).show();
             bi.ne201a.setError("This data is Required!");    // Set Error on last radio button
 
             Log.i(TAG, "ne201: This data is Required!");
@@ -482,7 +606,7 @@ public class SectionE2Activity extends AppCompatActivity {
 
         if (!bi.ne201a.isChecked() && (bi.ne201b.isChecked() || bi.ne201c.isChecked() || bi.ne201d.isChecked()
                 || bi.ne201e.isChecked() || bi.ne201f.isChecked())) {
-            Toast.makeText(this, "ERROR(invalid): " + getString(R.string.ne201a), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "ERROR(invalid): " + getString(R.string.ne201a), Toast.LENGTH_SHORT).show();
             bi.ne201a.setError("Please Select Micro Testing first...");    // Set Error on last radio button
 
             Log.i(TAG, "ne201a: This data is Required!");
@@ -643,30 +767,114 @@ public class SectionE2Activity extends AppCompatActivity {
         }
 
         if (bi.ne201f.isChecked()) {
-            if (!validatorClass.EmptyRadioButton(this, bi.ne20206, bi.ne20206a, getString(R.string.ne202f))) {
+            if (!validatorClass.EmptyRadioButton(this, bi.ne2020601, bi.ne2020601a, getString(R.string.ne202f01))) {
                 return false;
             }
 
-            if (bi.ne20206a.isChecked()) {
-                if (!validatorClass.EmptyTextBox(this, bi.ne20306, getString(R.string.ne203))) {
+            if (bi.ne2020601a.isChecked()) {
+                if (!validatorClass.EmptyTextBox(this, bi.ne2030601, getString(R.string.ne203))) {
                     return false;
                 }
 
-                if (bi.ne20306.getText().toString().contains("§")) {
+                if (bi.ne2030601.getText().toString().contains("§")) {
                     scanChar = 19;
                 } else {
                     scanChar = 18;
                 }
 
-                if (bi.ne20306.getText().length() != scanChar || !bi.ne20306.getText().toString().contains("-")
-                        || !bi.ne20306.getText().toString().contains("HF")) {
+                if (bi.ne2030601.getText().length() != scanChar || !bi.ne2030601.getText().toString().contains("-")
+                        || !bi.ne2030601.getText().toString().contains("FM")) {
                     Toast.makeText(this, "ERROR(invalid)" + getString(R.string.ne203), Toast.LENGTH_SHORT).show();
-                    bi.ne20306.setError("Invalid or Incomplete QR code..");
+                    bi.ne2030601.setError("Invalid or Incomplete QR code..");
 
-                    Log.i(TAG, "ne20306: Invalid Bar code");
+                    Log.i(TAG, "ne2030601: Invalid Bar code");
                     return false;
                 } else {
-                    bi.ne20306.setError(null);
+                    bi.ne2030601.setError(null);
+                }
+
+            }
+
+            if (!validatorClass.EmptyRadioButton(this, bi.ne2020602, bi.ne2020602a, getString(R.string.ne202f02))) {
+                return false;
+            }
+
+            if (bi.ne2020602a.isChecked()) {
+                if (!validatorClass.EmptyTextBox(this, bi.ne2030602, getString(R.string.ne203))) {
+                    return false;
+                }
+
+                if (bi.ne2030602.getText().toString().contains("§")) {
+                    scanChar = 19;
+                } else {
+                    scanChar = 18;
+                }
+
+                if (bi.ne2030602.getText().length() != scanChar || !bi.ne2030602.getText().toString().contains("-")
+                        || !bi.ne2030602.getText().toString().contains("FN")) {
+                    Toast.makeText(this, "ERROR(invalid)" + getString(R.string.ne203), Toast.LENGTH_SHORT).show();
+                    bi.ne2030602.setError("Invalid or Incomplete QR code..");
+
+                    Log.i(TAG, "ne2030602: Invalid Bar code");
+                    return false;
+                } else {
+                    bi.ne2030602.setError(null);
+                }
+
+            }
+
+            if (!validatorClass.EmptyRadioButton(this, bi.ne2020603, bi.ne2020603a, getString(R.string.ne202f03))) {
+                return false;
+            }
+
+            if (bi.ne2020603a.isChecked()) {
+                if (!validatorClass.EmptyTextBox(this, bi.ne2030603, getString(R.string.ne203))) {
+                    return false;
+                }
+
+                if (bi.ne2030603.getText().toString().contains("§")) {
+                    scanChar = 19;
+                } else {
+                    scanChar = 18;
+                }
+
+                if (bi.ne2030603.getText().length() != scanChar || !bi.ne2030603.getText().toString().contains("-")
+                        || !bi.ne2030603.getText().toString().contains("FB")) {
+                    Toast.makeText(this, "ERROR(invalid)" + getString(R.string.ne203), Toast.LENGTH_SHORT).show();
+                    bi.ne2030603.setError("Invalid or Incomplete QR code..");
+
+                    Log.i(TAG, "ne2030603: Invalid Bar code");
+                    return false;
+                } else {
+                    bi.ne2030603.setError(null);
+                }
+
+            }
+
+            if (!validatorClass.EmptyRadioButton(this, bi.ne2020604, bi.ne2020604a, getString(R.string.ne202f04))) {
+                return false;
+            }
+
+            if (bi.ne2020604a.isChecked()) {
+                if (!validatorClass.EmptyTextBox(this, bi.ne2030604, getString(R.string.ne203))) {
+                    return false;
+                }
+
+                if (bi.ne2030604.getText().toString().contains("§")) {
+                    scanChar = 19;
+                } else {
+                    scanChar = 18;
+                }
+
+                if (bi.ne2030604.getText().length() != scanChar || !bi.ne2030604.getText().toString().contains("-")
+                        || !bi.ne2030604.getText().toString().contains("FP")) {
+                    Toast.makeText(this, "ERROR(invalid)" + getString(R.string.ne203), Toast.LENGTH_SHORT).show();
+                    bi.ne2030604.setError("Invalid or Incomplete QR code..");
+
+                    Log.i(TAG, "ne2030604: Invalid Bar code");
+                    return false;
+                } else {
+                    bi.ne2030604.setError(null);
                 }
 
             }
@@ -689,45 +897,45 @@ public class SectionE2Activity extends AppCompatActivity {
                 bi.ne20304.setError(null);
             }
         }*/
-        if(bi.ne20202a.isChecked() && bi.ne20203a.isChecked()){
+        if (bi.ne20202a.isChecked() && bi.ne20203a.isChecked()) {
             String[] typeb = bi.ne20302.getText().toString().split("-");
             String[] typec = bi.ne20303.getText().toString().split("-");
-            if(!typeb[2].equals(typec[2])){
+            if (!typeb[2].equals(typec[2])) {
                 Toast.makeText(this, "ERROR(Wrong QR code)" + getString(R.string.ne201b), Toast.LENGTH_SHORT).show();
                 Toast.makeText(this, "ERROR(Wrong QR code)" + getString(R.string.ne201c), Toast.LENGTH_SHORT).show();
                 bi.ne20302.setError("Invalid or Incomplete QR code. Must be of same characters!");
                 bi.ne20303.setError("Invalid or Incomplete QR code. Must be of same characters!");
                 return false;
-            }else{
+            } else {
                 bi.ne20302.setError(null);
                 bi.ne20303.setError(null);
 
             }
         }
-        if(bi.ne20202a.isChecked()  && bi.ne20204a.isChecked()){
+        if (bi.ne20202a.isChecked() && bi.ne20204a.isChecked()) {
             String[] typeb = bi.ne20302.getText().toString().split("-");
             String[] typed = bi.ne20304.getText().toString().split("-");
-            if(!typeb[2].equals(typed[2])){
+            if (!typeb[2].equals(typed[2])) {
                 Toast.makeText(this, "ERROR(Wrong QR code)" + getString(R.string.ne201b), Toast.LENGTH_SHORT).show();
                 Toast.makeText(this, "ERROR(Wrong QR code)" + getString(R.string.ne201d), Toast.LENGTH_SHORT).show();
                 bi.ne20302.setError("Invalid or Incomplete QR code. Must be of same characters!");
                 bi.ne20304.setError("Invalid or Incomplete QR code. Must be of same characters!");
                 return false;
-            }else{
+            } else {
                 bi.ne20302.setError(null);
                 bi.ne20304.setError(null);
             }
         }
-        if( bi.ne20203a.isChecked() && bi.ne20204a.isChecked()){
+        if (bi.ne20203a.isChecked() && bi.ne20204a.isChecked()) {
             String[] typec = bi.ne20303.getText().toString().split("-");
             String[] typed = bi.ne20304.getText().toString().split("-");
-            if(!typec[2].equals(typed[2])){
+            if (!typec[2].equals(typed[2])) {
                 Toast.makeText(this, "ERROR(Wrong QR code)" + getString(R.string.ne201c), Toast.LENGTH_SHORT).show();
                 Toast.makeText(this, "ERROR(Wrong QR code)" + getString(R.string.ne201d), Toast.LENGTH_SHORT).show();
                 bi.ne20303.setError("Invalid or Incomplete QR code. Must be of same characters!");
                 bi.ne20304.setError("Invalid or Incomplete QR code. Must be of same characters!");
                 return false;
-            }else{
+            } else {
                 bi.ne20303.setError(null);
                 bi.ne20304.setError(null);
             }
@@ -777,8 +985,18 @@ public class SectionE2Activity extends AppCompatActivity {
         sE1.put("ne20305", bi.ne20305.getText().toString());
 
         sE1.put("ne201f", bi.ne201f.isChecked() ? "1" : "2");
-        sE1.put("ne20206", bi.ne20206a.isChecked() ? "1" : bi.ne20206b.isChecked() ? "2" : "0");
-        sE1.put("ne20306", bi.ne20306.getText().toString());
+
+        sE1.put("ne2020601", bi.ne2020601a.isChecked() ? "1" : bi.ne2020601b.isChecked() ? "2" : "0");
+        sE1.put("ne2030601", bi.ne2030601.getText().toString());
+
+        sE1.put("ne2020602", bi.ne2020602a.isChecked() ? "1" : bi.ne2020602b.isChecked() ? "2" : "0");
+        sE1.put("ne2030602", bi.ne2030602.getText().toString());
+
+        sE1.put("ne2020603", bi.ne2020603a.isChecked() ? "1" : bi.ne2020603b.isChecked() ? "2" : "0");
+        sE1.put("ne2030603", bi.ne2030603.getText().toString());
+
+        sE1.put("ne2020604", bi.ne2020604a.isChecked() ? "1" : bi.ne2020604b.isChecked() ? "2" : "0");
+        sE1.put("ne2030604", bi.ne2030604.getText().toString());
 
         sE1.put("end_time", new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
 

@@ -465,11 +465,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     final String SQL_SUMMARY_JOIN =
             "SELECT f.formdate, f.cluster_no, f.hh_no, f.istatus, f.istatusHH, f.user,\n" +
-                    "count(fm.uid) member, " +
-                    "count(m.uid) wra,\n" +
-                    "count(c._uid) child,\n" +
-                    "CASE WHEN count(s._uid) > 0 THEN 'YES' ELSE 'NO' END blood,\n" +
-                    "CASE WHEN count(w._uid) > 0 THEN 'YES' ELSE 'NO' END water\n" +
+                    "count(distinct fm.uid) member, " +
+                    "count(distinct m.uid) wra,\n" +
+                    "count(distinct c._uid) child,\n" +
+                    "CASE WHEN count(distinct s._uid) > 0 THEN 'YES' ELSE 'NO' END blood,\n" +
+                    "CASE WHEN count(distinct w._uid) > 0 THEN 'YES' ELSE 'NO' END water\n" +
                     "FROM forms f\n" +
                     "LEFT JOIN mwra m\n" +
                     "ON f._uid = m.uuid\n" +
