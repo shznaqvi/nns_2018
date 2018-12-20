@@ -686,7 +686,7 @@
     <string name="nw401f"> روایتی دائی </string>
     <string name="nw401b">لیڈی ہیلتھ وزیٹر </string>
     <string name="nw401g">دوست /رشتہ دار </string>
-  <string name="nw401h">گائنا کالوجسٹ  </string>
+    <string name="nw401h">گائنا کالوجسٹ  </string>
 
 
     <string name="nw402info"> پوچھیں : کوئی اور
@@ -699,7 +699,7 @@
     <string name="nw402f"> روایتی دائی  </string>
     <string name="nw402e">  لیڈی ہیلتھ ورکر </string>
     <string name="nw402g"> دوست /رشتہ دار </string>
-  <string name="nw402h">گائنا کالوجسٹ </string>
+    <string name="nw402h">گائنا کالوجسٹ </string>
     <string name="nw40299"> کوئی بھی نہیں </string>
 
 
@@ -1580,12 +1580,12 @@
     <string name="ne202a"> کیا مائکروبیالوجی کے لئے پانی کا نمونہ حاصل کیا گیا تھا؟ </string>
     <string name="ne202b"> کیا نائٹرک ایسڈ کے لئے پانی کا نمونہ حاصل کیا گیا تھا؟ </string>
     <string name="ne202c"> کیا بورک ایسڈ کے لئے پانی کا نمونہ حاصل کیا گیا تھا؟ </string>
-  <string name="ne202d"> کیا پلین واٹر کے لئے پانی کا نمونہ حاصل کیا گیا تھا؟ </string>
+    <string name="ne202d"> کیا پلین واٹر کے لئے پانی کا نمونہ حاصل کیا گیا تھا؟ </string>
     <string name="ne202e"> کیا مائکروبیالوجی کیو سی کے لئے پانی کا نمونہ حاصل کیا گیا تھا؟ </string>
-  <string name="ne202f01"> کیا مائکروبیالوجی (فیلڈ بلینک) کے لئے پانی کا نمونہ حاصل کیا گیا تھا؟ </string>
-  <string name="ne202f02"> کیا نائٹرک ایسڈ (فیلڈ بلینک) کے لئے پانی کا نمونہ حاصل کیا گیا تھا؟ </string>
-  <string name="ne202f03"> کیا بورک ایسڈ (فیلڈ بلینک) کے لئے پانی کا نمونہ حاصل کیا گیا تھا؟ </string>
-  <string name="ne202f04"> کیا پلین واٹر (فیلڈ بلینک) کے لئے پانی کا نمونہ حاصل کیا گیا تھا؟ </string>
+    <string name="ne202f01"> کیا مائکروبیالوجی (فیلڈ بلینک) کے لئے پانی کا نمونہ حاصل کیا گیا تھا؟ </string>
+    <string name="ne202f02"> کیا نائٹرک ایسڈ (فیلڈ بلینک) کے لئے پانی کا نمونہ حاصل کیا گیا تھا؟ </string>
+    <string name="ne202f03"> کیا بورک ایسڈ (فیلڈ بلینک) کے لئے پانی کا نمونہ حاصل کیا گیا تھا؟ </string>
+    <string name="ne202f04"> کیا پلین واٹر (فیلڈ بلینک) کے لئے پانی کا نمونہ حاصل کیا گیا تھا؟ </string>
     <string name="ne203"> اگر ہاں، تو بار کوڈ اسکین کریں۔ </string>
     <string name="ne20301a"> Scan Petri Film Label</string>
     <string name="ne20301b">Date of Collection</string>
