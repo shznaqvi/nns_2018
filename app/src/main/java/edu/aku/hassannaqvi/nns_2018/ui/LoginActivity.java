@@ -15,6 +15,7 @@ import android.content.Loader;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.drawable.AnimatedVectorDrawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -22,6 +23,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -38,6 +40,7 @@ import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.Spinner;
@@ -119,6 +122,9 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
 
     @BindView(R.id.syncData)
     Button syncData;
+
+    @BindView(R.id.showPassword)
+    ImageView showPassword;
 
     @BindView(R.id.testing)
     TextView testing;
@@ -852,12 +858,38 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
     @OnClick(R.id.showPassword)
     void onShowPasswordClick() {
         //TODO implement
+
+        AnimatedVectorDrawable drawable;
+
         if (mPasswordView.getTransformationMethod() == null) {
-            mPasswordView.setTransformationMethod(new PasswordTransformationMethod());
-            txt_password.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_lock_black_24dp, 0, 0, 0);
+
+            drawable = (AnimatedVectorDrawable) getResources().getDrawable(R.drawable.avd_anim_close);
+            showPassword.setImageDrawable(drawable);
+            drawable.start();
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mPasswordView.setTransformationMethod(new PasswordTransformationMethod());
+                    txt_password.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_lock_black_24dp, 0, 0, 0);
+                }
+            }, 1000);
+
+
         } else {
-            mPasswordView.setTransformationMethod(null);
-            txt_password.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_lock_open_black_24dp, 0, 0, 0);
+
+            drawable = (AnimatedVectorDrawable) getResources().getDrawable(R.drawable.avd_anim);
+            showPassword.setImageDrawable(drawable);
+            drawable.start();
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mPasswordView.setTransformationMethod(null);
+                    txt_password.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_lock_open_black_24dp, 0, 0, 0);
+                }
+            }, 1000);
+
         }
     }
 
