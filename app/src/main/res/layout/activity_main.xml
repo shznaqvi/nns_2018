@@ -85,36 +85,6 @@
                 android:textSize="14sp"
                 android:typeface="monospace" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_20sdp"
-                android:layout_marginTop="@dimen/_3sdp"
-                android:layout_marginBottom="@dimen/_2sdp"
-                android:background="@color/green"
-                android:text="SUMMARY"
-                android:textAlignment="center"
-                android:textAllCaps="true"
-                android:textSize="@dimen/_7sdp" />
-
-            <android.support.v4.widget.NestedScrollView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_180sdp"
-                android:background="@color/white"
-                android:padding="5dp">
-
-                <HorizontalScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TableLayout
-                        android:id="@+id/dashboardTable"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-
-                </HorizontalScrollView>
-
-            </android.support.v4.widget.NestedScrollView>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -212,6 +182,18 @@
                 android:text="OPEN MICRO RESULTS FORM"
                 android:visibility="visible" />
 
+            <Button
+                android:id="@+id/openDashboard"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:background="#1565C0"
+                android:elevation="5dp"
+                android:onClick="@{() -> callback.openDashboard()}"
+                android:text="OPEN DASHBOARD"
+                android:visibility="visible" />
 
             <Button
                 style="@style/Widget.AppCompat.Button.Colored"

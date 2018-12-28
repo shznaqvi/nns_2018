@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -21,11 +22,11 @@
         android:id="@+id/login_form"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="10dp"
         android:layout_marginTop="@dimen/_50sdp"
+        android:layout_marginBottom="10dp"
         android:paddingLeft="@dimen/_35sdp"
-        android:paddingRight="@dimen/_35sdp"
         android:paddingTop="@dimen/_12sdp"
+        android:paddingRight="@dimen/_35sdp"
         android:scrollbars="none">
 
         <LinearLayout
@@ -160,7 +161,7 @@
                             android:padding="@dimen/_5sdp"
                             android:textColor="@color/black" />
 
-                        <Button
+                        <!--<Button
                             android:id="@+id/showPassword"
                             style="?android:attr/borderlessButtonStyle"
                             android:layout_width="@dimen/_18sdp"
@@ -174,7 +175,18 @@
                             android:drawableStart="@drawable/ic_remove_red_eye_black_24dp"
                             android:gravity="center"
                             android:padding="@dimen/_3sdp"
-                            android:textAlignment="center" />
+                            android:textAlignment="center" />-->
+
+                        <ImageView
+                            android:id="@+id/showPassword"
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="@dimen/_7sdp"
+                            android:layout_marginRight="@dimen/_4sdp"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            app:srcCompat="@drawable/avd_anim" />
 
                     </RelativeLayout>
 
@@ -236,6 +248,7 @@
                     android:padding="16dp"
                     android:text="@string/action_sign_in"
                     android:textStyle="bold" />
+
                 <Button
                     android:id="@+id/SyncActivity"
                     style="?android:textAppearanceSmall"
@@ -246,9 +259,9 @@
                     android:background="@color/colorPrimary"
                     android:elevation="2dp"
                     android:padding="16dp"
-                    android:visibility="gone"
                     android:text="@string/btnSync"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:visibility="gone" />
             </LinearLayout>
 
             <LinearLayout

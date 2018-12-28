@@ -20,7 +20,7 @@ public abstract class DashboardFunctions {
         headerTextView.setBackgroundColor(Color.BLACK);
         headerTextView.setTextColor(Color.WHITE);
         headerTextView.setText(label);
-        headerTextView.setTextSize(20);
+        headerTextView.setTextSize(30);
         headerTextView.setTypeface(Typeface.SANS_SERIF);
         headerTextView.setGravity(Gravity.CENTER);
         headerTextView.setPadding(10, 2, 10, 5);
@@ -34,7 +34,7 @@ public abstract class DashboardFunctions {
         bodyTextView.setBackgroundColor(Color.BLACK);
         bodyTextView.setTextColor(Color.GREEN);
         bodyTextView.setText(label);
-        bodyTextView.setTextSize(11);
+        bodyTextView.setTextSize(15);
         bodyTextView.setTypeface(Typeface.MONOSPACE);
         bodyTextView.setGravity(Gravity.CENTER);
         bodyTextView.setPadding(5, 5, 5, 5);
@@ -51,7 +51,7 @@ public abstract class DashboardFunctions {
 
         for (String label : headers) {
             TextView textView = headerTextView(mContext, label);
-            textView.setTextSize(11);
+            textView.setTextSize(15);
 
             textView.setLayoutParams(params);
             componentBTableRow.addView(textView);

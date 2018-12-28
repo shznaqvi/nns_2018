@@ -62,11 +62,9 @@ import edu.aku.hassannaqvi.nns_2018.contracts.FormsContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.SerialContract;
 import edu.aku.hassannaqvi.nns_2018.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.nns_2018.core.AndroidDatabaseManager;
-import edu.aku.hassannaqvi.nns_2018.core.DashboardFunctions;
 import edu.aku.hassannaqvi.nns_2018.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018.databinding.ActivityMainBinding;
-import edu.aku.hassannaqvi.nns_2018.other.Summary;
 
 public class MainActivity extends MenuActivity {
 
@@ -369,11 +367,6 @@ public class MainActivity extends MenuActivity {
 
         registerReceiver(broadcastReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
 
-        // Summary
-        ArrayList<Summary> dashBoardSummary = db.getSummary();
-        DashboardFunctions.componentHTableRow(this, mainBinding.dashboardTable, Summary.GetHeaders());
-        DashboardFunctions.componentBTableRow(this, mainBinding.dashboardTable, dashBoardSummary);
-
     }
 
     @Override
@@ -611,6 +604,20 @@ public class MainActivity extends MenuActivity {
             MainActivity.ftype = "W";
             //Intent iB = new Intent(this, SectionB3Activity.class);
             Intent iB = new Intent(this, MicroResultsActivity.class);
+            startActivity(iB);
+        }
+
+    }
+
+    public void openDashboard() {
+        Intent iB = new Intent(this, DashboardActivity.class);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (LoginActivity.checkAndRequestPermissions(this, this)) {
+                startActivity(iB);
+            } else {
+                Toast.makeText(this, "Please allow permissions from setting", Toast.LENGTH_SHORT).show();
+            }
+        } else {
             startActivity(iB);
         }
 
