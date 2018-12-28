@@ -20,6 +20,7 @@ public class JSONB4ModelClass {
     private String nw40296 = "";
     private String nw40296x = "";
     private String nw403 = "";
+    private String nw40301 = "";
     private String nw403fx = "";
     private String nw403jx = "";
     private String nw40396x = "";
@@ -185,6 +186,14 @@ public class JSONB4ModelClass {
 
     public void setnw40396x(String nw40396x) {
         this.nw40396x = nw40396x;
+    }
+
+    public String getnw40301() {
+        return nw40301;
+    }
+
+    public void setnw40301(String nw40301) {
+        this.nw40301 = nw40301;
     }
 
     public String getnw404() {

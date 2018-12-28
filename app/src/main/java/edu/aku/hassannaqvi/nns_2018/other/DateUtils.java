@@ -88,6 +88,16 @@ public class DateUtils {
         return age;
     }
 
+    public static double ageInYearByDOBdouble(Calendar cal) {
+        Date dob = cal.getTime();
+        Date today = new Date();
+        Long diff = today.getTime() - dob.getTime();
+        double ageInYears = (diff / (24 * 60 * 60 * 1000)) / 365.25;
+//        double age = (double) Math.floor(ageInYears);
+        double age = (double) Math.ceil(ageInYears);
+        return age;
+    }
+
     public static long ageInMonthsByDOB(Calendar cal) {
         Date dob = cal.getTime();
         Date today = new Date();

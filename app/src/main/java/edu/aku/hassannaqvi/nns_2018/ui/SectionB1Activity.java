@@ -73,6 +73,8 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
     List<RadioButton> nw210bYes;
     Boolean endflag = false;
     String LOG_TAG = SectionB1Activity.class.getName();
+    public static Boolean childisUnder2AndAlive;
+
 
     public TextWatcher age = new TextWatcher() {
         @Override
@@ -138,7 +140,7 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_b1);
         ButterKnife.bind(this);
         db = new DatabaseHelper(this);
-
+        childisUnder2AndAlive = false;
         //Assigning data to UI binding
         bi.setCallback(this);
         bi.nw203a.setEnabled(false);
@@ -1472,7 +1474,7 @@ public class SectionB1Activity extends AddMember_MenuActivity implements TextWat
     @Override
     protected void onResume() {
         super.onResume();
-
+        childisUnder2AndAlive = false;
         if (frontPressed) {
             backPressed = true;
         }
