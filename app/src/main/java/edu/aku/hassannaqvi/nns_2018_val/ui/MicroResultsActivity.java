@@ -19,6 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 
@@ -170,9 +171,9 @@ public class MicroResultsActivity extends AppCompatActivity {
 
         if (validatorClass.EmptyTextBox(this, binding.nh102, getString(R.string.nh102))) {
 
-            EnumBlockContract enumBlockContract = db.getEnumBlock(binding.nh102.getText().toString());
+            ArrayList<EnumBlockContract> enumBlockContract = db.getEnumBlock(binding.nh102.getText().toString());
             if (enumBlockContract != null) {
-                String selected = enumBlockContract.getGeoarea();
+                String selected = enumBlockContract.get(0).getGeoarea();
                 if (!selected.equals("")) {
 
                     String[] selSplit = selected.split("\\|");

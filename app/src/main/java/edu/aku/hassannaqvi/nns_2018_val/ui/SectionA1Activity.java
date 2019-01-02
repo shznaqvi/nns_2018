@@ -15,11 +15,12 @@ import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.telephony.TelephonyManager;
 import android.text.Editable;
-import android.text.InputType;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -34,7 +35,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
 
-import edu.aku.hassannaqvi.nns_2018_val.JSONModels.JSONA1ModelClass;
 import edu.aku.hassannaqvi.nns_2018_val.R;
 import edu.aku.hassannaqvi.nns_2018_val.contracts.BLRandomContract;
 import edu.aku.hassannaqvi.nns_2018_val.contracts.EnumBlockContract;
@@ -42,7 +42,6 @@ import edu.aku.hassannaqvi.nns_2018_val.contracts.FormsContract;
 import edu.aku.hassannaqvi.nns_2018_val.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018_val.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018_val.databinding.ActivitySectionA1Binding;
-import edu.aku.hassannaqvi.nns_2018_val.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018_val.other.MembersCount;
 import edu.aku.hassannaqvi.nns_2018_val.validation.validatorClass;
 
@@ -63,7 +62,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
     static Boolean reBackFlag = true;
     private final long DELAY = 1000;
     int length = 0;
-    EnumBlockContract enumBlockContract;
+    ArrayList<EnumBlockContract> enumBlockContract;
 
 
     @Override
@@ -85,9 +84,9 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
             binding.checkClusterBtn.setEnabled(false);
             binding.checkClusterBtn.setBackgroundColor(getResources().getColor(R.color.red));
             BtnCheckEnm();
-            binding.nh108.setText(getIntent().getStringExtra("hhNo"));
-            binding.nh108.setEnabled(false);
-            BtnCheckHH();
+//            binding.nh108.setText(getIntent().getStringExtra("hhNo"));
+//            binding.nh108.setEnabled(false);
+//            BtnCheckHH();
             binding.checkHHBtn.setEnabled(false);
             binding.checkHHBtn.setBackgroundColor(getResources().getColor(R.color.red));
 
@@ -103,8 +102,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
     public void AutoCompleteFields() {
 
-        MainApp.fc = db.getPressedForms(binding.nh102.getText().toString()
-                , binding.nh108.getText().toString());
+        /*MainApp.fc = db.getPressedForms(binding.nh102.getText().toString(), binding.nh108.getText().toString());
 
         if (MainApp.fc != null) {
 
@@ -129,7 +127,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
                 binding.na11801b.setEnabled(false);
             }
 
-           /* if (!jsonA1.getnh11802().equals("0")) {
+           *//* if (!jsonA1.getnh11802().equals("0")) {
                 binding.na11802.check(
                         jsonA1.getnh11802().equals("1") ? binding.na11802a.getId() :
                                 binding.na11802b.getId()
@@ -137,9 +135,9 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
                 binding.na11802b.setEnabled(false);
             }
-*/
+*//*
 
-        }
+        }*/
 
     }
 
@@ -183,7 +181,6 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
         MainApp.B2B6Flag = false;
 
 //        Listener
-
         binding.nh102.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -192,7 +189,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                binding.nh108.setText(null);
+                binding.nh108.setSelection(0);
                 binding.fldGrpnh101.setVisibility(View.GONE);
             }
 
@@ -212,7 +209,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
 
 //        HH listener
-        binding.nh108.addTextChangedListener(new TextWatcher() {
+        /*binding.nh108.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -243,6 +240,23 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
             @Override
             public void afterTextChanged(Editable editable) {
 
+
+            }
+        });*/
+        binding.nh108.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                if (i > 0)
+                    binding.fldGrpnh110.setVisibility(View.VISIBLE);
+                else {
+                    clearFields();
+                    binding.fldGrpnh110.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
@@ -409,8 +423,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
         }
 
 //        nh108
-
-        if (!binding.nh102.getText().toString().isEmpty()) {
+        /*if (!binding.nh102.getText().toString().isEmpty()) {
 
             if (binding.nh108.getText().toString().length() == 8) {
                 String[] str = binding.nh108.getText().toString().split("-");
@@ -424,7 +437,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
                 binding.nh108.setError("Invalid length");
                 return false;
             }
-        }
+        }*/
 
 //        nh113
         if (!flag) {
@@ -470,7 +483,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
             MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
             MainApp.fc.setRespLineNo(MainApp.lineNo);
             MainApp.fc.setClusterNo(binding.nh102.getText().toString());
-            MainApp.fc.setHhNo(binding.nh108.getText().toString().toUpperCase());
+            MainApp.fc.setHhNo(enumBlockContract.get(0).getEn_hhno());
 
             setGPS(); // Set GPS
         } else {
@@ -500,8 +513,8 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
         sA1.put("hh09", MainApp.selectedHead.getContact());
         sA1.put("hhss", MainApp.selectedHead.getSelStructure());*/
 
-        sA1.put("hh03", enumBlockContract.getEn_hh03());
-        sA1.put("hh07", enumBlockContract.getEn_hh07());
+        sA1.put("hh03", enumBlockContract.get(0).getEn_hh03());
+        sA1.put("hh07", enumBlockContract.get(0).getEn_hh07());
         sA1.put("enumNo", binding.nh107.getText().toString());
 
         sA1.put("nh101", binding.nh101.getText().toString());
@@ -587,12 +600,12 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
     public void BtnCheckHH() {
 
-        if (!binding.nh102.getText().toString().trim().isEmpty() && !binding.nh108.getText().toString().trim().isEmpty()) {
+        /*if (!binding.nh102.getText().toString().trim().isEmpty() && !binding.nh108.getText().toString().trim().isEmpty()) {
 
             if (editFormFlag) {
                 setupViews();
             } else {
-                /*FormsContract partialMem = db.getPartialForms(binding.nh102.getText().toString(), binding.nh108.getText().toString(), "1");
+                FormsContract partialMem = db.getPartialForms(binding.nh102.getText().toString(), binding.nh108.getText().toString(), "1");
 
                 if (partialMem != null) {
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
@@ -619,17 +632,17 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
                     alert.show();
                 } else {
                     setupViews();
-                }*/
+                }
                 setupViews();
             }
 
         } else {
             Toast.makeText(this, "Not found.", Toast.LENGTH_SHORT).show();
-        }
+        }*/
 
     }
 
-    public void setupViews() {
+/*    public void setupViews() {
 
         String hhNo = enumBlockContract.getEn_hh03() + "-" + enumBlockContract.getEn_hh07();
 
@@ -643,7 +656,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
             Toast.makeText(this, "No Household found!", Toast.LENGTH_SHORT).show();
         }
 
-        /*selected = db.getAllBLRandom(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase());
+        *//*selected = db.getAllBLRandom(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase());
 
         if (selected.size() != 0) {
 
@@ -661,9 +674,9 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
             clearFields();
 
             Toast.makeText(this, "No Household found!", Toast.LENGTH_SHORT).show();
-        }*/
+        }*//*
 
-    }
+    }*/
 
     public void BtnCheckEnm() {
 
@@ -679,8 +692,8 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
             if (loginFlag) {
                 enumBlockContract = db.getEnumBlock(binding.nh102.getText().toString());
-                if (enumBlockContract != null) {
-                    String selected = enumBlockContract.getGeoarea();
+                if (enumBlockContract.size() > 0) {
+                    String selected = enumBlockContract.get(0).getGeoarea();
                     if (!selected.equals("")) {
 
                         String[] selSplit = selected.split("\\|");
@@ -689,18 +702,25 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
                         binding.nh104.setText(selSplit[1].equals("") ? "----" : selSplit[1]);
                         binding.nh105.setText(selSplit[2].equals("") ? "----" : selSplit[2]);
                         binding.nh106.setText(selSplit[3]);
-                        binding.nh107.setText(enumBlockContract.getEbcode());
+                        binding.nh107.setText(enumBlockContract.get(0).getEbcode());
 
                         binding.fldGrpnh101.setVisibility(View.VISIBLE);
                         MainApp.cluster_no = binding.nh102.getText().toString();
 
-                        binding.nh108.setText(enumBlockContract.getEn_hh03() + "-" + enumBlockContract.getEn_hh07());
-                        binding.nh108.setEnabled(false);
-                        BtnCheckHH();
+                        ArrayList<String> hh = new ArrayList<>();
+                        hh.add("....");
+                        for (int i = 0; i < enumBlockContract.size(); i++) {
+                            hh.add(enumBlockContract.get(i).getEn_hh03() + "-" + enumBlockContract.get(i).getEn_hh07());
+                        }
+
+                        binding.nh108.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, hh));
+//                        binding.nh108.setEnabled(false);
+//                        BtnCheckHH();
 
                     }
                 } else {
-                    binding.nh108.setText(null);
+//                    binding.nh108.setText(null);
+                    binding.nh108.setEnabled(false);
                     Toast.makeText(this, "Sorry cluster not ready for validation!!", Toast.LENGTH_SHORT).show();
                 }
             } else {

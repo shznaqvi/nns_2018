@@ -607,7 +607,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         } catch (Exception e) {
             Log.e(TAG, "syncFamilyMembers: " + e.getMessage());
-            Log.e(TAG, "syncFamilyMembers: " + e.getMessage());
         } finally {
             db.close();
         }
@@ -933,7 +932,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FamilyMembersContract dc = new FamilyMembersContract().Hydrate(c);
                 if (flag) {
 //                    if (!getAnthroMembersExist(dc.get_UID())) {
-                        allBL.add(dc);
+                    allBL.add(dc);
 //                    }
                 } else {
                     allBL.add(dc);
@@ -950,25 +949,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allBL;
     }
 
-    public Boolean getAnthroMembersExist(String uid) {
+    public Boolean getHHFormExist(String cluster, String hhno) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                eligibleMembers.COLUMN__ID,
-                eligibleMembers.COLUMN_FM_UID,
+                FormsTable._ID,
+                FormsTable.COLUMN_CLUSTER_NO,
+                FormsTable.COLUMN_HH_NO,
+                FormsTable.COLUMN_ISTATUS
         };
-        String whereClause = eligibleMembers.COLUMN_FM_UID + " =? ";
-        String[] whereArgs = {uid};
+        String whereClause = FormsTable.COLUMN_CLUSTER_NO + " =? AND " + FormsTable.COLUMN_HH_NO + " =? AND " + FormsTable.COLUMN_ISTATUS + " =? ";
+        String[] whereArgs = {cluster, hhno, "1"};
         String groupBy = null;
         String having = null;
 
-        String orderBy =
-                eligibleMembers.COLUMN_FM_UID + " DESC";
+        String orderBy = FormsTable.COLUMN_HH_NO + " DESC";
 
         Boolean allFC = false;
         try {
             c = db.query(
-                    eligibleMembers.TABLE_NAME,  // The table to query
+                    FormsTable.TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
                     whereClause,               // The columns for the WHERE clause
                     whereArgs,                 // The values for the WHERE clause
@@ -1162,7 +1162,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allBL;
     }
 
-    public EnumBlockContract getEnumBlock(String cluster) {
+    public ArrayList<EnumBlockContract> getEnumBlock(String cluster) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -1181,10 +1181,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String groupBy = null;
         String having = null;
 
-        String orderBy =
-                EnumBlockTable._ID + " ASC";
+        String orderBy = EnumBlockTable._ID + " ASC";
 
-        EnumBlockContract allEB = null;
+        ArrayList<EnumBlockContract> allEB = new ArrayList<>();
         try {
             c = db.query(
                     EnumBlockTable.TABLE_NAME,  // The table to query
@@ -1196,7 +1195,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                allEB = new EnumBlockContract().HydrateEnum(c);
+                EnumBlockContract enumBlck = new EnumBlockContract().HydrateEnum(c);
+                if (!getHHFormExist(cluster, enumBlck.getEn_hhno())) {
+                    allEB.add(enumBlck);
+                }
             }
         } finally {
             if (c != null) {

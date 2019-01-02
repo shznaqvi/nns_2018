@@ -302,19 +302,26 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <EditText
+                        <!-- <EditText
+                             android:id="@+id/nh108"
+                             android:layout_width="0dp"
+                             android:layout_height="wrap_content"
+                             android:layout_marginTop="5dp"
+                             android:layout_marginRight="10dp"
+                             android:layout_weight="60"
+                             android:digits="0123456789-"
+                             android:hint="9999-999"
+                             android:inputType="number"
+                             android:layoutDirection="ltr"
+                             android:maxLength="8"
+                             android:textDirection="ltr" />-->
+
+                        <Spinner
                             android:id="@+id/nh108"
-                            android:layout_width="0dp"
+                            style="@style/Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_weight="60"
-                            android:digits="0123456789-"
-                            android:hint="9999-999"
-                            android:inputType="number"
-                            android:layoutDirection="ltr"
-                            android:maxLength="8"
-                            android:textDirection="ltr" />
+                            android:layout_marginTop="5dp" />
 
                         <Button
                             android:id="@+id/checkHHBtn"

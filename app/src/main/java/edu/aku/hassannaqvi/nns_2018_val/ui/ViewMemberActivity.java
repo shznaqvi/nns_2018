@@ -359,9 +359,9 @@ public class ViewMemberActivity extends MenuActivity {
 
         if (validatorClass.EmptyTextBox(this, binding.chckenumblock, getString(R.string.nh102))) {
 
-            EnumBlockContract enumBlockContract = db.getEnumBlock(binding.chckenumblock.getText().toString());
+            ArrayList<EnumBlockContract> enumBlockContract = db.getEnumBlock(binding.chckenumblock.getText().toString());
             if (enumBlockContract != null) {
-                String selected = enumBlockContract.getGeoarea();
+                String selected = enumBlockContract.get(0).getGeoarea();
                 if (!selected.equals("")) {
 
                     String[] selSplit = selected.split("\\|");
