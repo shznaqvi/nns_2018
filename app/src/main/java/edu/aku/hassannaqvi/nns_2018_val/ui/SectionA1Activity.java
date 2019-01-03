@@ -714,7 +714,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
                             hh.add(enumBlockContract.get(i).getEn_hh03() + "-" + enumBlockContract.get(i).getEn_hh07());
                         }
 
-                        binding.nh108.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, hh));
+                        binding.nh108.setAdapter(new ArrayAdapter<>(this, R.layout.item_style, hh));
 //                        binding.nh108.setEnabled(false);
 //                        BtnCheckHH();
 
@@ -722,7 +722,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
                 } else {
 //                    binding.nh108.setText(null);
                     binding.nh108.setEnabled(false);
-                    Toast.makeText(this, "Sorry cluster not ready for validation!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Sorry no structure found for validation!!", Toast.LENGTH_SHORT).show();
                 }
             } else {
                 Toast.makeText(this, "Only proceed test cluster for current user!!", Toast.LENGTH_SHORT).show();
