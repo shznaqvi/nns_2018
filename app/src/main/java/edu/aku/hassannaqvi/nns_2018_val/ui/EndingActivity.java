@@ -101,9 +101,16 @@ public class EndingActivity extends AddMember_MenuActivity {
                 SectionB1Activity.WRAsize = 0;
 
                 finish();
-                Intent endSec = new Intent(this, AntrhoInfoActivity.class)
-                        .putExtra("cluster_no", cluster)
-                        .putExtra("hh_no", hhno);
+                Intent endSec;
+
+                if (binding.istatusa.isChecked()) {
+                    endSec = new Intent(this, AntrhoInfoActivity.class)
+                            .putExtra("cluster_no", cluster)
+                            .putExtra("hh_no", hhno);
+                } else {
+                    endSec = new Intent(this, MainActivity.class);
+                }
+
                 startActivity(endSec);
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();

@@ -1196,7 +1196,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 EnumBlockContract enumBlck = new EnumBlockContract().HydrateEnum(c);
-                if (!getHHFormExist(cluster, enumBlck.getEn_hhno())) {
+                if (!getHHFormExist(cluster, enumBlck.getEn_hh03() + "-" + enumBlck.getEn_hh07())) {
                     allEB.add(enumBlck);
                 }
             }

@@ -483,7 +483,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
             MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
             MainApp.fc.setRespLineNo(MainApp.lineNo);
             MainApp.fc.setClusterNo(binding.nh102.getText().toString());
-            MainApp.fc.setHhNo(enumBlockContract.get(0).getEn_hhno());
+            MainApp.fc.setHhNo(binding.nh108.getSelectedItem().toString());
 
             setGPS(); // Set GPS
         } else {
@@ -515,6 +515,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
 
         sA1.put("hh03", enumBlockContract.get(0).getEn_hh03());
         sA1.put("hh07", enumBlockContract.get(0).getEn_hh07());
+        sA1.put("hhno", enumBlockContract.get(0).getEn_hhno());
         sA1.put("enumNo", binding.nh107.getText().toString());
 
         sA1.put("nh101", binding.nh101.getText().toString());
