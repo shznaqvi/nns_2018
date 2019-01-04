@@ -622,13 +622,11 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
             }
 
 
-            if (!validatorClass.RangeTextBox(this, binding.nd1muac, MinMAUC(slc_type), MaxMAUC(slc_type), getString(R.string.nd1muac), " MAUC")) {
-                return false;
-            }
+            return validatorClass.RangeTextBox(this, binding.nd1muac, MinMAUC(slc_type), MaxMAUC(slc_type), getString(R.string.nd1muac), " MAUC");
             /*end*/
 
 
-            if (slc_type == 2) {
+            /*if (slc_type == 2) {
                 if (!validatorClass.EmptyRadioButton(this, binding.nd1bcgscar, binding.nd1bcgscara, getString(R.string.nd1bcgscar))) {
                     return false;
                 }
@@ -643,10 +641,9 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
 
             if (slc_type == 2) {
                 return validatorClass.EmptyRadioButton(this, binding.nd1o, binding.nd1oa, getString(R.string.nd1o));
-            }
+            }*/
         }
 
-        return true;
     }
 
     public double MinWeight(int type) {

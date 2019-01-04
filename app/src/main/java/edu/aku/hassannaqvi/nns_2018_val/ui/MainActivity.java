@@ -109,6 +109,8 @@ public class MainActivity extends MenuActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         MenuItem dbManager = menu.findItem(R.id.menu_openDB);
+        MenuItem editForm = menu.findItem(R.id.menu_viewMember);
+        editForm.setVisible(false);
 
         if (MainApp.admin) {
             dbManager.setVisible(true);
