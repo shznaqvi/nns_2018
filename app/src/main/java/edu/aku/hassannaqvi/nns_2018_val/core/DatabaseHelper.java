@@ -1162,7 +1162,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allBL;
     }
 
-    public ArrayList<EnumBlockContract> getEnumBlock(String cluster) {
+    public ArrayList<EnumBlockContract> getEnumBlock(String cluster, boolean... flag) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -1196,9 +1196,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 EnumBlockContract enumBlck = new EnumBlockContract().HydrateEnum(c);
-                if (!getHHFormExist(cluster, enumBlck.getEn_hh03() + "-" + enumBlck.getEn_hh07())) {
+                if (flag.length > 0) {
+                    if (!getHHFormExist(cluster, enumBlck.getEn_hh03() + "-" + enumBlck.getEn_hh07())) {
+                        allEB.add(enumBlck);
+                    }
+                } else
                     allEB.add(enumBlck);
-                }
             }
         } finally {
             if (c != null) {

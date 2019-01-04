@@ -692,7 +692,7 @@ public class SectionA1Activity extends Menu2Activity implements TextWatcher, Rad
             }
 
             if (loginFlag) {
-                enumBlockContract = db.getEnumBlock(binding.nh102.getText().toString());
+                enumBlockContract = db.getEnumBlock(binding.nh102.getText().toString(), true);
                 if (enumBlockContract.size() > 0) {
                     String selected = enumBlockContract.get(0).getGeoarea();
                     if (!selected.equals("")) {
