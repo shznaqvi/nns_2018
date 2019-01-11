@@ -158,7 +158,7 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
     public void processFinish(boolean flag) {
         if (flag) {
             HashMap<String, String> tagVal = MainApp.getTagValues(this);
-            new syncData(SyncActivity.this, tagVal.get("org") != null ? tagVal.get("org").equals("null") ? null : tagVal.get("org") : null).execute();
+            new syncData(SyncActivity.this, tagVal.get("distID") != null ? tagVal.get("distID").equals("null") ? null : tagVal.get("distID") : null).execute();
         }
     }
 
@@ -482,9 +482,39 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
                 @Override
                 public void run() {
 
+                    if (orgID == null) {
+//                  getting Users!!
+                        Toast.makeText(SyncActivity.this, "Sync Users", Toast.LENGTH_SHORT).show();
+                        if (listActivityCreated) {
+                            model = new SyncModel();
+                            model.setstatusID(0);
+                            list.add(model);
+                        }
+                        new GetAllData(mContext, "User", syncListAdapter, list).execute(orgID);
+
+//                    Getting App Version
+                        Toast.makeText(SyncActivity.this, "Sync App Version", Toast.LENGTH_SHORT).show();
+                        if (listActivityCreated) {
+                            model = new SyncModel();
+                            model.setstatusID(0);
+                            list.add(model);
+                        }
+                        new GetAllData(mContext, "VersionApp", syncListAdapter, list).execute(orgID);
+
+//                    Getting Districts
+                        Toast.makeText(SyncActivity.this, "Sync Districts", Toast.LENGTH_SHORT).show();
+                        if (listActivityCreated) {
+                            model = new SyncModel();
+                            model.setstatusID(0);
+                            list.add(model);
+                        }
+                        new GetAllData(mContext, "District", syncListAdapter, list).execute();
+
+                        return;
+                    }
+
 //                  getting Enum Blocks
                     Toast.makeText(SyncActivity.this, "Sync Enum Blocks", Toast.LENGTH_SHORT).show();
-
                     if (listActivityCreated) {
                         model = new SyncModel();
                         model.setstatusID(0);
@@ -493,44 +523,15 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
                     new GetAllData(mContext, "EnumBlock", syncListAdapter, list).execute(orgID);
                     bi.noItem.setVisibility(View.GONE);
 
-//                  getting Users!!
-                    Toast.makeText(SyncActivity.this, "Sync Users", Toast.LENGTH_SHORT).show();
-
-                    if (listActivityCreated) {
-                        model = new SyncModel();
-                        model.setstatusID(0);
-                        list.add(model);
-                    }
-                    new GetAllData(mContext, "User", syncListAdapter, list).execute(orgID);
-
-//                   getting BL Random
-                    /*Toast.makeText(SyncActivity.this, "Sync BL Random", Toast.LENGTH_SHORT).show();
-                    if (listActivityCreated){
-                        model = new SyncModel();
-                        model.setstatusID(0);
-                        list.add(model);
-                    }
-                    new GetAllData(mContext, "BLRandom", syncListAdapter, list).execute();*/
-
-//                    Getting App Version
-                    Toast.makeText(SyncActivity.this, "Sync App Version", Toast.LENGTH_SHORT).show();
-                    if (listActivityCreated) {
-                        model = new SyncModel();
-                        model.setstatusID(0);
-                        list.add(model);
-                    }
-                    new GetAllData(mContext, "VersionApp", syncListAdapter, list).execute(orgID);
-
 //                    Getting U5
-                    Toast.makeText(SyncActivity.this, "Sync App Version", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SyncActivity.this, "Sync U5 Version", Toast.LENGTH_SHORT).show();
                     if (listActivityCreated) {
                         model = new SyncModel();
                         model.setstatusID(0);
                         list.add(model);
                     }
                     new GetAllData(mContext, "FamilyMembers", syncListAdapter, list).execute(orgID);
-                    /*Toast.makeText(Menu2Activity.this, "Sync Family Members", Toast.LENGTH_LONG).show();
-                    new GetAllData(mContext, "FamilyMembers").execute();*/
+
 
                     listActivityCreated = false;
                 }

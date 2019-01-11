@@ -19,6 +19,7 @@ import java.net.URL;
 import java.util.List;
 
 import edu.aku.hassannaqvi.nns_2018_val.Adapters.syncListAdapter;
+import edu.aku.hassannaqvi.nns_2018_val.contracts.DistrictContract;
 import edu.aku.hassannaqvi.nns_2018_val.contracts.EnumBlockContract;
 import edu.aku.hassannaqvi.nns_2018_val.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018_val.contracts.UsersContract;
@@ -58,20 +59,21 @@ public class GetAllData extends AsyncTask<String, String, String> {
         this.list = list;
         TAG = "Get" + syncClass;
         switch (syncClass) {
+            case "User":
+                position = 0;
+                break;
+            case "VersionApp":
+                position = 1;
+                break;
+            case "District":
+                position = 2;
+                break;
+
             case "EnumBlock":
                 position = 0;
                 break;
-            case "User":
-                position = 1;
-                break;
-            /*case "BLRandom":
-                position = 2;
-                break;*/
-            case "VersionApp":
-                position = 2;
-                break;
             case "FamilyMembers":
-                position = 3;
+                position = 1;
                 break;
         }
         list.get(position).settableName(syncClass);
@@ -95,20 +97,21 @@ public class GetAllData extends AsyncTask<String, String, String> {
     protected void onProgressUpdate(String... values) {
         super.onProgressUpdate(values);
         switch (values[0]) {
+            case "User":
+                position = 0;
+                break;
+            case "VersionApp":
+                position = 1;
+                break;
+            case "District":
+                position = 2;
+                break;
+
             case "EnumBlock":
                 position = 0;
                 break;
-            case "User":
-                position = 1;
-                break;
-            /*case "BLRandom":
-                position = 2;
-                break;*/
-            case "VersionApp":
-                position = 2;
-                break;
             case "FamilyMembers":
-                position = 3;
+                position = 1;
                 break;
         }
         list.get(position).setstatus("Syncing");
@@ -125,25 +128,26 @@ public class GetAllData extends AsyncTask<String, String, String> {
         URL url = null;
         try {
             switch (syncClass) {
+                case "User":
+                    url = new URL(MainApp._HOST_URL + UsersContract.UsersTable._URI);
+                    position = 0;
+                    break;
+                case "VersionApp":
+                    url = new URL(MainApp._UPDATE_URL + VersionAppContract.VersionAppTable._URI);
+                    position = 1;
+                    break;
+                case "District":
+                    url = new URL(MainApp._HOST_URL + DistrictContract.singleDistricts._URI);
+                    position = 2;
+                    break;
+
                 case "EnumBlock":
                     url = new URL(MainApp._HOST_URL + EnumBlockContract.EnumBlockTable._URI);
                     position = 0;
                     break;
-                case "User":
-                    url = new URL(MainApp._HOST_URL + UsersContract.UsersTable._URI);
-                    position = 1;
-                    break;
-                /*case "BLRandom":
-                    url = new URL(MainApp._HOST_URL + BLRandomContract.singleRandomHH._URI);
-                    position = 2;
-                    break;*/
-                case "VersionApp":
-                    url = new URL(MainApp._UPDATE_URL + VersionAppContract.VersionAppTable._URI);
-                    position = 2;
-                    break;
                 case "FamilyMembers":
                     url = new URL(MainApp._HOST_URL + FamilyMembersContract.familyMembers._URI1);
-                    position = 3;
+                    position = 1;
                     break;
             }
 
@@ -172,7 +176,12 @@ public class GetAllData extends AsyncTask<String, String, String> {
                             DataOutputStream wr = new DataOutputStream(urlConnection.getOutputStream());
                             JSONObject json = new JSONObject();
                             try {
-                                json.put("id_org", args[0]);
+                                if (syncClass.equals("User")) {
+                                    json.put("id_org", 1);
+                                }
+
+                                json.put("dcode", args[0]);
+
                             } catch (JSONException e1) {
                                 e1.printStackTrace();
                             }
@@ -225,25 +234,26 @@ public class GetAllData extends AsyncTask<String, String, String> {
                     JSONArray jsonArray = new JSONArray(json);
 
                     switch (syncClass) {
+                        case "User":
+                            db.syncUser(jsonArray);
+                            position = 0;
+                            break;
+                        case "VersionApp":
+                            db.syncVersionApp(jsonArray);
+                            position = 1;
+                            break;
+                        case "District":
+                            db.syncDistricts(jsonArray);
+                            position = 2;
+                            break;
+
                         case "EnumBlock":
                             db.syncEnumBlocks(jsonArray);
                             position = 0;
                             break;
-                        case "User":
-                            db.syncUser(jsonArray);
-                            position = 1;
-                            break;
-                       /* case "BLRandom":
-                            db.syncBLRandom(jsonArray);
-                            position = 2;
-                            break;*/
-                        case "VersionApp":
-                            db.syncVersionApp(jsonArray);
-                            position = 2;
-                            break;
                         case "FamilyMembers":
                             db.syncFamilyMembers(jsonArray);
-                            position = 3;
+                            position = 1;
                             break;
                     }
 

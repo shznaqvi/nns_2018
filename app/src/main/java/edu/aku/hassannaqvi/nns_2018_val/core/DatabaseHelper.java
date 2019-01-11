@@ -25,6 +25,8 @@ import edu.aku.hassannaqvi.nns_2018_val.contracts.ChildContract;
 import edu.aku.hassannaqvi.nns_2018_val.contracts.ChildContract.ChildTable;
 import edu.aku.hassannaqvi.nns_2018_val.contracts.DeceasedContract;
 import edu.aku.hassannaqvi.nns_2018_val.contracts.DeviceContract;
+import edu.aku.hassannaqvi.nns_2018_val.contracts.DistrictContract;
+import edu.aku.hassannaqvi.nns_2018_val.contracts.DistrictContract.singleDistricts;
 import edu.aku.hassannaqvi.nns_2018_val.contracts.EligibleMembersContract;
 import edu.aku.hassannaqvi.nns_2018_val.contracts.EligibleMembersContract.eligibleMembers;
 import edu.aku.hassannaqvi.nns_2018_val.contracts.EnumBlockContract;
@@ -88,7 +90,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + singleRandomHH.COLUMN_SNO_HH + " TEXT );";
 
     public static final String PROJECT_NAME = "NNS-2018-Validation";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     public static final String DB_NAME = DATABASE_NAME.replace(".", "_" + MainApp.versionName + "_" + DATABASE_VERSION + "_copy.");
 
     private static final String SQL_CREATE_FORMS = "CREATE TABLE "
@@ -457,6 +459,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             DeviceContract.DeviceTable.COLUMN_APPVERSION + " TEXT," +
             DeviceContract.DeviceTable.COLUMN_TAGID + " TEXT" + ");";
 
+    final String SQL_CREATE_DISTRICTS = "CREATE TABLE " + singleDistricts.TABLE_NAME + "("
+            + singleDistricts._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + singleDistricts.COLUMN_DISTRICT_NAME + " TEXT,"
+            + singleDistricts.COLUMN_DISTRICT_CODE + " TEXT,"
+            + singleDistricts.COLUMN_PROV_CODE + " TEXT );";
+
 
     private final String TAG = "DatabaseHelper";
     public String spDateT = new SimpleDateFormat("dd-MM-yy").format(new Date().getTime());
@@ -476,7 +484,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_TALUKA);
         db.execSQL(SQL_CREATE_UC);
 
-
         db.execSQL(SQL_CREATE_CHILD_FORMS);
         db.execSQL(SQL_CREATE_ELIGIBLE_MEMBERS);
         db.execSQL(SQL_CREATE_MWRAS);
@@ -490,10 +497,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_MICRO);
         db.execSQL(SQL_CREATE_SUMMARY);
 //        db.execSQL(SQL_CREATE_DEVICE);
+
+        db.execSQL(SQL_CREATE_DISTRICTS);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+
+        switch (i) {
+            case 1:
+                db.execSQL(SQL_CREATE_DISTRICTS);
+        }
 
     }
 
@@ -5421,6 +5435,71 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return count;
+    }
+
+    public void syncDistricts(JSONArray dislist) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(singleDistricts.TABLE_NAME, null, null);
+
+        try {
+            JSONArray jsonArray = dislist;
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObjectDC = jsonArray.getJSONObject(i);
+                DistrictContract dc = new DistrictContract();
+                dc.Sync(jsonObjectDC);
+
+                ContentValues values = new ContentValues();
+                values.put(singleDistricts.COLUMN_DISTRICT_NAME, dc.getDistrict_name());
+                values.put(singleDistricts.COLUMN_DISTRICT_CODE, dc.getDistrict_code());
+                values.put(singleDistricts.COLUMN_PROV_CODE, dc.getProv_code());
+                db.insert(singleDistricts.TABLE_NAME, null, values);
+            }
+        } catch (Exception e) {
+        } finally {
+            db.close();
+        }
+    }
+
+    public ArrayList<DistrictContract> getAllDistricts(String prov_code) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                singleDistricts.COLUMN_DISTRICT_CODE,
+                singleDistricts.COLUMN_DISTRICT_NAME,
+                singleDistricts.COLUMN_PROV_CODE
+        };
+
+        String whereClause = singleDistricts.COLUMN_PROV_CODE + "=?";
+        String[] whereArgs = {prov_code};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = singleDistricts.COLUMN_DISTRICT_NAME + " ASC";
+
+        ArrayList<DistrictContract> allBL = new ArrayList<>();
+        try {
+            c = db.query(
+                    singleDistricts.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                DistrictContract dc = new DistrictContract();
+                allBL.add(dc.HydrateDistricts(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allBL;
     }
 
 }

@@ -34,6 +34,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -54,10 +55,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.aku.hassannaqvi.nns_2018_val.R;
+import edu.aku.hassannaqvi.nns_2018_val.contracts.DistrictContract;
 import edu.aku.hassannaqvi.nns_2018_val.contracts.EnumBlockContract;
 import edu.aku.hassannaqvi.nns_2018_val.contracts.UCsContract;
 import edu.aku.hassannaqvi.nns_2018_val.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018_val.core.MainApp;
+import edu.aku.hassannaqvi.nns_2018_val.get.Dist_Prov_Data;
+import edu.aku.hassannaqvi.nns_2018_val.validation.validatorClass;
 
 import static java.lang.Thread.sleep;
 
@@ -110,10 +114,12 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
     @BindView(R.id.SyncActivity)
     Button SyncActivity;
 
-    @BindView(R.id.spUCs)
-    Spinner spUCs;
-    @BindView(R.id.spTaluka)
-    Spinner spTalukas;
+    @BindView(R.id.spProvince)
+    Spinner spProvince;
+    @BindView(R.id.spDistricts)
+    Spinner spDistricts;
+
+    private ArrayList<DistrictContract> districts;
 
     @BindView(R.id.syncData)
     Button syncData;
@@ -251,9 +257,36 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
         } else {
             testing.setVisibility(View.VISIBLE);
         }
+
+//        Populating spinner
+        spProvince.setAdapter(new ArrayAdapter<>(LoginActivity.this, android.R.layout.simple_spinner_dropdown_item, Dist_Prov_Data.getProvinceNames()));
+        spProvince.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                ArrayList<String> districtsName = new ArrayList<>();
+                districtsName.add("....");
+
+                if (i > 0) {
+                    districts = db.getAllDistricts(Dist_Prov_Data.getProvinceCode(spProvince.getSelectedItem().toString()));
+                    for (DistrictContract districtDT : districts) {
+                        districtsName.add(districtDT.getDistrict_name());
+                    }
+                }
+
+                spDistricts.setAdapter(new ArrayAdapter<>(LoginActivity.this, android.R.layout.simple_spinner_dropdown_item, districtsName));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        editor.putString("distID", null);
+        editor.commit();
+
     }
-
-
 
     public void loadIMEI() {
         // Check if the READ_PHONE_STATE permission is already available.
@@ -262,7 +295,7 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
                     != PackageManager.PERMISSION_GRANTED) {
                 // READ_PHONE_STATE permission has not been granted.
                 requestReadPhoneStatePermission();
-            }else{
+            } else {
                 doPermissionGrantedStuffs();
             }
         } else {
@@ -437,20 +470,21 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
                     );
                 }
             } else if (permissions[i].equals(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                    if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+                if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
 
-                    }
-                } else if (permissions[i].equals(Manifest.permission.CAMERA)) {
-                    if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+                }
+            } else if (permissions[i].equals(Manifest.permission.CAMERA)) {
+                if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
 
-                    }
                 }
             }
+        }
     }
 
     private void doPermissionGrantedStuffs() {
         MainApp.IMEI = ((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
     }
+
     protected boolean isBetterLocation(Location location, Location currentBestLocation) {
         if (currentBestLocation == null) {
             // A new location is always better than no location
@@ -490,6 +524,7 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
             return true;
         } else return isNewer && !isSignificantlyLessAccurate && isFromSameProvider;
     }
+
     private boolean isSameProvider(String provider1, String provider2) {
         if (provider1 == null) {
             return provider2 == null;
@@ -894,10 +929,22 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
             LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
             if (mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
                 DatabaseHelper db = new DatabaseHelper(LoginActivity.this);
+
+                if (!validatorClass.EmptySpinner(LoginActivity.this, spProvince, "Province"))
+                    return;
+
+                if (!validatorClass.EmptySpinner(LoginActivity.this, spDistricts, "District"))
+                    return;
+
                 if ((mEmail.equals("dmu@aku") && mPassword.equals("aku?dmu")) || db.Login(mEmail, mPassword)
                         || (mEmail.equals("test1234") && mPassword.equals("test1234"))) {
                     MainApp.userName = mEmail;
                     MainApp.admin = mEmail.contains("@");
+
+                    sharedPref = getSharedPreferences("tagName", MODE_PRIVATE);
+                    editor = sharedPref.edit();
+                    editor.putString("distID", districts.get(spDistricts.getSelectedItemPosition() - 1).getDistrict_code());
+                    editor.commit();
 
                     Intent iLogin = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(iLogin);

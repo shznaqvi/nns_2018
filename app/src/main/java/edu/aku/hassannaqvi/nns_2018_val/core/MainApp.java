@@ -300,7 +300,7 @@ public class MainApp extends Application {
 
         HashMap<String, String> map = new HashMap<>();
         map.put("tag", sharedPref.getString("tagName", null));
-        map.put("org", sharedPref.getString("orgID", null));
+        map.put("distID", sharedPref.getString("distID", null));
 
         return map;
     }
@@ -510,12 +510,12 @@ public class MainApp extends Application {
         // Requires Additional permission for 5.0 -- android.hardware.location.gps
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 // requestPermission();
             } else {
                 requestLocationUpdate();
             }
-        }else {
+        } else {
             requestLocationUpdate();
         }
 
@@ -619,8 +619,7 @@ public class MainApp extends Application {
     }
 
 
-
-    public void requestLocationUpdate(){
+    public void requestLocationUpdate() {
         locationManager.requestLocationUpdates(
                 LocationManager.GPS_PROVIDER,
                 MINIMUM_TIME_BETWEEN_UPDATES,
