@@ -24,6 +24,7 @@ public class FormsContract {
 
     private String istatus = ""; // Interview Status
     private String istatus88x = ""; // Interview Status
+    private String istatusHH = ""; // HH Status
 
     private String sA1 = "";     // Info Section
     private String sA4 = ""; // sA4
@@ -61,6 +62,7 @@ public class FormsContract {
 
         this.istatus = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
         this.istatus88x = jsonObject.getString(FormsTable.COLUMN_ISTATUS88x);
+        this.istatusHH = jsonObject.getString(FormsTable.COLUMN_ISTATUSHH);
         this.gpsElev = jsonObject.getString(FormsTable.COLUMN_GPSELEV);
         this.sA1 = jsonObject.getString(FormsTable.COLUMN_SA1);
         this.sA4 = jsonObject.getString(FormsTable.COLUMN_SA4);
@@ -91,6 +93,7 @@ public class FormsContract {
         this.hhNo = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_HH_NO));
         this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
         this.istatus88x = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS88x));
+        this.istatusHH = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUSHH));
         this.gpsElev = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSELEV));
         this.sA1 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA1));
         this.sA4 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA4));
@@ -132,6 +135,7 @@ public class FormsContract {
             this.hhNo = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_HH_NO));
             this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
             this.istatus88x = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS88x));
+            this.istatusHH = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUSHH));
             this.endtime = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_END_TIME));
             this.count = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_COUNT));
             this.gpsLat = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSLAT));
@@ -172,6 +176,7 @@ public class FormsContract {
 
         json.put(FormsTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
         json.put(FormsTable.COLUMN_ISTATUS88x, this.istatus88x == null ? JSONObject.NULL : this.istatus88x);
+        json.put(FormsTable.COLUMN_ISTATUSHH, this.istatusHH == null ? JSONObject.NULL : this.istatusHH);
         json.put(FormsTable.COLUMN_GPSELEV, this.gpsElev == null ? JSONObject.NULL : this.gpsElev);
 
 
@@ -410,6 +415,14 @@ public class FormsContract {
         this.hhNo = hhNo;
     }
 
+    public String getIstatusHH() {
+        return istatusHH;
+    }
+
+    public void setIstatusHH(String istatusHH) {
+        this.istatusHH = istatusHH;
+    }
+
     public static abstract class FormsTable implements BaseColumns {
 
         public static final String TABLE_NAME = "forms";
@@ -421,6 +434,7 @@ public class FormsContract {
         public static final String COLUMN_USER = "user";
         public static final String COLUMN_ISTATUS = "istatus";
         public static final String COLUMN_ISTATUS88x = "istatus88x";
+        public static final String COLUMN_ISTATUSHH = "istatusHH";
 
         public static final String COLUMN_SA1 = "sa1";
         public static final String COLUMN_SA4 = "sa4";

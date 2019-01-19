@@ -18,7 +18,7 @@ public class UsersContract {
     String ROW_PASSWORD;
     String FULL_NAME;
     String TEAM_NO;
-//    String REGION_DSS;
+    String ORG_ID;
 
     public UsersContract() {
         // Default Constructor
@@ -71,20 +71,20 @@ public class UsersContract {
         this.TEAM_NO = TEAM_NO;
     }
 
-    /*    public String getREGION_DSS() {
-        return REGION_DSS;
+    public String getORG_ID() {
+        return ORG_ID;
     }
 
-    public void setREGION_DSS(String REGION_DSS) {
-        this.REGION_DSS = REGION_DSS;
-    }*/
+    public void setORG_ID(String ORG_ID) {
+        this.ORG_ID = ORG_ID;
+    }
 
     public UsersContract Sync(JSONObject jsonObject) throws JSONException {
         this.ROW_USERNAME = jsonObject.getString(UsersTable.ROW_USERNAME);
         this.ROW_PASSWORD = jsonObject.getString(UsersTable.ROW_PASSWORD);
         this.FULL_NAME = jsonObject.getString(UsersTable.FULL_NAME);
         this.TEAM_NO = jsonObject.getString(UsersTable.TEAM_NO);
-//        this.REGION_DSS = jsonObject.getString(UsersTable.REGION_DSS);
+        this.ORG_ID = jsonObject.getString(UsersTable.ORG_ID);
         return this;
 
     }
@@ -95,7 +95,7 @@ public class UsersContract {
         this.ROW_PASSWORD = cursor.getString(cursor.getColumnIndex(UsersTable.ROW_PASSWORD));
         this.FULL_NAME = cursor.getString(cursor.getColumnIndex(UsersTable.FULL_NAME));
         this.TEAM_NO = cursor.getString(cursor.getColumnIndex(UsersTable.TEAM_NO));
-//        this.REGION_DSS = cursor.getString(cursor.getColumnIndex(UsersTable.REGION_DSS));
+        this.ORG_ID = cursor.getString(cursor.getColumnIndex(UsersTable.ORG_ID));
         return this;
 
     }
@@ -109,7 +109,7 @@ public class UsersContract {
         json.put(UsersTable.ROW_PASSWORD, this.ROW_PASSWORD == null ? JSONObject.NULL : this.ROW_PASSWORD);
         json.put(UsersTable.FULL_NAME, this.FULL_NAME == null ? JSONObject.NULL : this.FULL_NAME);
         json.put(UsersTable.TEAM_NO, this.TEAM_NO == null ? JSONObject.NULL : this.TEAM_NO);
-//        json.put(UsersTable.REGION_DSS, this.REGION_DSS == null ? JSONObject.NULL : this.REGION_DSS);
+        json.put(UsersTable.ORG_ID, this.ORG_ID == null ? JSONObject.NULL : this.ORG_ID);
         return json;
     }
 
@@ -121,7 +121,7 @@ public class UsersContract {
         public static final String ROW_PASSWORD = "password";
         public static final String FULL_NAME = "full_name";
         public static final String TEAM_NO = "teamno";
-//        public static final String REGION_DSS = "region";
+        public static final String ORG_ID = "id_org";
 
         public static final String _URI = "users.php";
     }

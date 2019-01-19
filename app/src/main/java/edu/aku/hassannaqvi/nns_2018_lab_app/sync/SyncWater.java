@@ -17,32 +17,30 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import edu.aku.hassannaqvi.nns_2018_lab_app.R;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import edu.aku.hassannaqvi.nns_2018_lab_app.JSONModels.JSONA2ModelClass;
+import edu.aku.hassannaqvi.nns_2018_lab_app.contracts.FamilyMembersContract;
+import edu.aku.hassannaqvi.nns_2018_lab_app.contracts.FamilyMembersContract.familyMembers;
 import edu.aku.hassannaqvi.nns_2018_lab_app.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018_lab_app.core.MainApp;
+import edu.aku.hassannaqvi.nns_2018_lab_app.other.JSONUtilClass;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class SyncDevice extends AsyncTask<Void, Integer, String> {
+public class SyncMembers extends AsyncTask<Void, Integer, String> {
     private String TAG = "";
     Context context;
+    String clusterNo, hhno;
 
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
 
-    public SyncDevicInterface delegate;
-
-    boolean flag;
-
-    public SyncDevice(Context context, boolean flag) {
+    public SyncMembers(Context context, String clusterNo, String hhno) {
         this.context = context;
-        this.flag = flag;
-
-        delegate = (SyncDevicInterface) context;
-        delegate.processFinish(false);
+        this.clusterNo = clusterNo;
+        this.hhno = hhno;
     }
 
     @Override
@@ -57,7 +55,7 @@ public class SyncDevice extends AsyncTask<Void, Integer, String> {
 
     @Override
     protected String doInBackground(Void... voids) {
-        Log.d(TAG, "doInBackground: URL " + MainApp.DeviceURL);
+        Log.d(TAG, "doInBackground: URL " + MainApp.MembersURL);
 
         return downloadUrl();
     }
@@ -66,7 +64,7 @@ public class SyncDevice extends AsyncTask<Void, Integer, String> {
         String line = "No Response";
         HttpURLConnection connection = null;
         try {
-            String request = MainApp._HOST_URL + MainApp.DeviceURL;
+            String request = MainApp._HOST_URL + MainApp.MembersURL;
             URL url = new URL(request);
             connection = (HttpURLConnection) url.openConnection();
             connection.connect();
@@ -84,12 +82,11 @@ public class SyncDevice extends AsyncTask<Void, Integer, String> {
                 connection.setUseCaches(false);
                 connection.connect();
 
-                    DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
+                DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
 
                 try {
-                    jsonObject.addProperty("imei", MainApp.IMEI);
-                    jsonObject.addProperty("appversion", MainApp.versionName + "." + MainApp.versionCode);
-                    jsonObject.addProperty("appname", context.getString(R.string.app_name));
+                    jsonObject.addProperty("cluster", clusterNo);
+                    jsonObject.addProperty("hhno", hhno);
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -133,45 +130,48 @@ public class SyncDevice extends AsyncTask<Void, Integer, String> {
         JSONArray json = null;
         try {
             json = new JSONArray(result);
-            if (json.length() > 0) {
-                for (int i = 0; i < json.length(); i++) {
-                    JSONObject jsonObject = new JSONObject(json.getString(i));
-                    if (!jsonObject.equals("")) {
-                        //  db.updateSyncedChildForm(jsonObject.getString("id"));  // UPDATE SYNCED
-                        String tag = jsonObject.getString("tag");
-                        sharedPref = context.getSharedPreferences("tagName", MODE_PRIVATE);
-                        editor = sharedPref.edit();
-                        editor.putString("tagName", tag);
-                        editor.putString("orgID", jsonObject.getString("id_org"));
-                        editor.commit();
+            for (int i = 0; i < json.length(); i++) {
+                JSONObject jsonObject = json.getJSONObject(i);
+                FamilyMembersContract fm = new FamilyMembersContract();
+                //Mapping A2 inside json
+                JSONA2ModelClass jsonA2 = new JSONA2ModelClass();
+                jsonA2.setCluster_no(jsonObject.getString("cluster_no"));
+                jsonA2.setResp(jsonObject.getString("resp"));
+                jsonA2.setnh2SerialNo(jsonObject.getString("nh2SerialNo"));
+                jsonA2.setnh202(jsonObject.getString("nh202"));
+                jsonA2.setnh203(jsonObject.getString("nh203"));
+                jsonA2.setnh204(jsonObject.getString("nh204"));
+                jsonA2.setnh2doby(jsonObject.getString("nh2doby"));
+                jsonA2.setnh2dobm(jsonObject.getString("nh2dobm"));
+                jsonA2.setnh2dobd(jsonObject.getString("nh2dobd"));
+                jsonA2.setnh206y(jsonObject.getString("nh206y"));
+                jsonA2.setAge(jsonObject.getString("age"));
+                jsonA2.setnh207(jsonObject.getString("nh207"));
+                jsonA2.setnh208(jsonObject.getString("nh208"));
+                jsonA2.setnh209(jsonObject.getString("nh209"));
+                jsonA2.setnh20996x(jsonObject.getString("nh20996x"));
+                jsonA2.setnh210(jsonObject.getString("nh210"));
+                jsonA2.setnh211(jsonObject.getString("nh211"));
+                jsonA2.setnh212(jsonObject.getString("nh212"));
 
-                        if (flag) {
-                            delegate.processFinish(true);
-                        }
-
-                    } else if (jsonObject.getString("status").equals("0") && jsonObject.getString("error").equals("1")) {
-                    } else {
-                        sSyncedError += "\nError:This device is not found on server.";
-                    }
-                }
-            } else {
-                if (flag) {
-                    delegate.processFinish(true);
-                }
+                fm.setsA2(JSONUtilClass.getJSONFromModel(jsonA2, JSONA2ModelClass.class));
+                //setting all values in family members contract
+                fm.set_UID(jsonObject.getString(familyMembers.COLUMN_UID));
+                fm.set_UUID(jsonObject.getString(familyMembers.COLUMN_UUID));
+                fm.setFormDate(jsonObject.getString(familyMembers.COLUMN_FORMDATE));
+                fm.setUser(jsonObject.getString(familyMembers.COLUMN_USER));
+                fm.setHhNo(jsonObject.getString(familyMembers.COLUMN_HH_NO));
+                fm.setEnmNo(jsonObject.getString(familyMembers.COLUMN_ENM_NO));
+                fm.setAv(jsonObject.getString(familyMembers.COLUMN_AV));
+                fm.setDevicetagID(jsonObject.getString(familyMembers.COLUMN_DEVICETAGID));
+                fm.setDeviceId(jsonObject.getString(familyMembers.COLUMN_DEVICEID));
+                DatabaseHelper db = new DatabaseHelper(context);
+                db.saveAnthroMembersFromServer(fm);
             }
-//            Toast.makeText(context,  " synced: " + sSynced + "\r\n\r\n Errors: " + sSyncedError, Toast.LENGTH_SHORT).show();
 
         } catch (JSONException e) {
             e.printStackTrace();
-            Toast.makeText(context, "Failed to get TAG ID " + result, Toast.LENGTH_SHORT).show();
-            if (flag) {
-                delegate.processFinish(true);
-            }
+            Toast.makeText(context, "Failed to get members " + result, Toast.LENGTH_SHORT).show();
         }
     }
-
-    public interface SyncDevicInterface {
-        void processFinish(boolean flag);
-    }
-
 }

@@ -6,6 +6,7 @@
     android:paddingTop="10dp">
 
     <RelativeLayout
+        android:id="@+id/rlcontainer"
         style="@style/Widget.AppCompat.ListView"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_73sdp"

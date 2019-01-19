@@ -31,7 +31,6 @@ public class DeviceContract {
         return this;
     }
 
-
     public JSONObject toJSONObject() throws JSONException {
         JSONObject json = new JSONObject();
         json.put(DeviceTable.COLUMN_IMEI, this.imei == null ? JSONObject.NULL : this.imei);

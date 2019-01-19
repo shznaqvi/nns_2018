@@ -4,6 +4,7 @@ import android.Manifest;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
@@ -49,6 +50,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -838,9 +840,10 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
             mAuthTask = null;
             showProgress(false);
 
-            LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-            if (mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            HashMap<String, String> tagValues = MainApp.getTagValues(LoginActivity.this);
 
+            LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            if (mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || tagValues.get("org").equals("5")) {
                 DatabaseHelper db = new DatabaseHelper(LoginActivity.this);
                 if ((mEmail.equals("dmu@aku") && mPassword.equals("aku?dmu")) || db.Login(mEmail, mPassword)
                         || (mEmail.equals("test1234") && mPassword.equals("test1234"))) {

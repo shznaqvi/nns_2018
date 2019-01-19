@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.nns_2018_lab_app.core;
+package edu.aku.hassannaqvi.nns_2018.core;
 
 import android.Manifest;
 import android.app.Activity;
@@ -12,12 +12,9 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.text.format.DateFormat;
 import android.widget.Toast;
 
@@ -297,6 +294,16 @@ public class MainApp extends Application {
     public static String getTagName(Context mContext) {
         SharedPreferences sharedPref = mContext.getSharedPreferences("tagName", MODE_PRIVATE);
         return sharedPref.getString("tagName", null);
+    }
+
+    public static HashMap<String, String> getTagValues(Context mContext) {
+        SharedPreferences sharedPref = mContext.getSharedPreferences("tagName", MODE_PRIVATE);
+
+        HashMap<String, String> map = new HashMap<>();
+        map.put("tag", sharedPref.getString("tagName", null));
+        map.put("org", sharedPref.getString("orgID", null));
+
+        return map;
     }
 
     public static void finishActivity(final Context context, final Activity activity) {

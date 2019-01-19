@@ -534,7 +534,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 MainApp.oc.setUser(MainApp.mc.getUser());
                 MainApp.oc.setDeviceId(MainApp.mc.getDeviceId());
                 MainApp.oc.setApp_ver(MainApp.mc.getApp_ver());
-                MainApp.oc.set_UUID(MainApp.mc.get_UID());
+                MainApp.oc.set_UUID(MainApp.mc.get_UUID());
                 MainApp.oc.setMUID(MainApp.mc.get_UID());
                 MainApp.oc.setFMUID(MainApp.mc.getFMUID());
 

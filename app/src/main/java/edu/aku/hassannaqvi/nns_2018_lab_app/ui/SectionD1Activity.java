@@ -749,23 +749,27 @@ public class SectionD1Activity extends Menu2Activity implements TextWatcher, Rad
 
         sA3.put("nd1Serial", String.valueOf(counter));
 
-        sA3.put("nd1w", binding.nd1w.getText().toString());
+        if (!endflag) {
 
-        sA3.put("nd1h", binding.nd1h.getText().toString());
+            sA3.put("nd1w", binding.nd1w.getText().toString());
 
-        sA3.put("nd1muac", binding.nd1muac.getText().toString());
+            sA3.put("nd1h", binding.nd1h.getText().toString());
 
-        sA3.put("nd1bcgscar", binding.nd1bcgscara.isChecked() ? "1"
-                : binding.nd1bcgscarb.isChecked() ? "2" : "0");
+            sA3.put("nd1muac", binding.nd1muac.getText().toString());
 
-        sA3.put("nd1g", binding.nd1ga.isChecked() ? "1"
-                : binding.nd1gb.isChecked() ? "2" : "0");
+            sA3.put("nd1bcgscar", binding.nd1bcgscara.isChecked() ? "1"
+                    : binding.nd1bcgscarb.isChecked() ? "2" : "0");
 
-        sA3.put("nd1ca", binding.nd1caa.isChecked() ? "1"
-                : binding.nd1cab.isChecked() ? "2" : "0");
+            sA3.put("nd1g", binding.nd1ga.isChecked() ? "1"
+                    : binding.nd1gb.isChecked() ? "2" : "0");
 
-        sA3.put("nd1o", binding.nd1oa.isChecked() ? "1"
-                : binding.nd1ob.isChecked() ? "2" : "0");
+            sA3.put("nd1ca", binding.nd1caa.isChecked() ? "1"
+                    : binding.nd1cab.isChecked() ? "2" : "0");
+
+            sA3.put("nd1o", binding.nd1oa.isChecked() ? "1"
+                    : binding.nd1ob.isChecked() ? "2" : "0");
+
+        }
 
         sA3.put("start_time", dateTime);
 

@@ -281,6 +281,8 @@ public class SectionE1Activity extends AppCompatActivity {
     public boolean checkmembersExists(List<FamilyMembersContract> family) {
         List<String> memberslist = new ArrayList<>();
         for (FamilyMembersContract fmc : family) {
+
+
             {
                 json = JSONUtilClass.getModelFromJSON(fmc.getsA2(), JSONModelClass.class);
                 if (!MainApp.duplicateMembers.contains(json.getName() + "_" + json.getSerialNo()))
@@ -426,7 +428,6 @@ public class SectionE1Activity extends AppCompatActivity {
                             for (int i = 0; i < group.size(); i++) {
                                 if(group.get(i).equals(getResources().getString(R.string.neselectedd))) {
                                     group.remove(i);
-
                                 }
                             }
                         }

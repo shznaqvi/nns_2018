@@ -342,6 +342,7 @@
         <item name="android:elevation">5dp</item>
     </style>
 
+
     <style name="checkbox" parent="android:Widget.Material.Light.CompoundButton.CheckBox">
         <item name="android:layout_gravity">right</item>
         <item name="android:layout_width">match_parent</item>

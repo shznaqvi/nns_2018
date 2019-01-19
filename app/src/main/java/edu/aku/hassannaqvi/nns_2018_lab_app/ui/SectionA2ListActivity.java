@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -101,8 +102,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
         new populateRecyclerView(this).execute();
 
         //        Recycler click listener
-        binding.recyclerNoMembers.addOnItemTouchListener(
-                new RecyclerItemClickListener(getApplicationContext(), new RecyclerItemClickListener.OnItemClickListener() {
+        binding.recyclerNoMembers.addOnItemTouchListener(new RecyclerItemClickListener(getApplicationContext(), new RecyclerItemClickListener.OnItemClickListener() {
                     Boolean delFlag = true;
 
                     @Override
@@ -131,9 +131,9 @@ public class SectionA2ListActivity extends AppCompatActivity {
                                                                             int id) {
 
                                                             MainApp.hhClicked.add(position);
-                                                            for (int item : MainApp.hhClicked) {
+                                                          /*  for (int item : MainApp.hhClicked) {
                                                                 binding.recyclerNoMembers.getChildAt(item).setBackgroundColor(Color.BLACK);
-                                                            }
+                                                            }*/
 
                                                             finish();
                                                             startActivity(new Intent(getApplicationContext(), SectionA2Activity.class)
@@ -205,7 +205,8 @@ public class SectionA2ListActivity extends AppCompatActivity {
 
                                             if (delFlag) {
                                                 MainApp.flagClicked.add(position);
-                                                binding.recyclerNoMembers.getChildAt(position).setBackgroundColor(getResources().getColor(R.color.brown));
+//                                                binding.recyclerNoMembers.getChildAt(position).setBackgroundColor(getResources().getColor(R.color.brown));
+
                                             } else {
                                                 for (byte i = 0; i < MainApp.flagClicked.size(); i++) {
                                                     if (position == MainApp.flagClicked.get(i)) {
@@ -213,7 +214,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
                                                     }
                                                     break;
                                                 }
-                                                binding.recyclerNoMembers.getChildAt(position).setBackgroundColor(getResources().getColor(R.color.black));
+//                                                binding.recyclerNoMembers.getChildAt(position).setBackgroundColor(getResources().getColor(R.color.black));
                                             }
                                         }
                                     }
@@ -604,6 +605,40 @@ public class SectionA2ListActivity extends AppCompatActivity {
         public void onBindViewHolder(MyViewHolder holder, int position) {
             this.holder = holder;
             this.holder.bindUser(this.membersList.get(position));
+//            this.holder.itemView.setBackgroundColor(getResources().getColor(R.color.brown));
+                for (int item : MainApp.hhClicked) {
+                    if(position == item){
+                        JSONModelClass json = JSONUtilClass.getModelFromJSON(MainApp.familyMembersClicked.get(item).getsA2(), JSONModelClass.class);
+                        int age = Integer.valueOf(json.getAge());
+
+                        if (age >= 10) {
+                            if (json.getGender().equals("1")) {
+                                this.holder.itemView.setBackgroundColor(getResources().getColor(R.color.darkBlue));
+                            } else if (json.getGender().equals("2")) {
+                                this.holder.itemView.setBackgroundColor(getResources().getColor(R.color.darkPink));
+                            } else {
+                                this.holder.itemView.setBackgroundColor(Color.BLACK);
+                            }
+                        } else {
+                            if (json.getGender().equals("1")) {
+                                this.holder.itemView.setBackgroundColor(getResources().getColor(R.color.lightBlue));
+                            } else if (json.getGender().equals("2")) {
+                                this.holder.itemView.setBackgroundColor(getResources().getColor(R.color.lightPink));
+                            } else {
+                                this.holder.itemView.setBackgroundColor(Color.BLACK);
+                            }
+                        }
+                    }
+                    }
+//            if (SectionA1Activity.editFormFlag) {
+                for (int item : MainApp.flagClicked) {
+                    if(position == item) {
+                        this.holder.itemView.setBackgroundColor(getResources().getColor(R.color.brown));
+                    }
+                }
+//            }
+
+
         }
 
         @Override
@@ -677,6 +712,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
             public MyViewHolder(View itemView) {
                 super(itemView);
                 familyBinding = DataBindingUtil.bind(itemView);
+
             }
 
             public void bindUser(FamilyMembersContract mem) {
@@ -741,7 +777,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
                 @Override
                 public void run() {
 //                   Background black for those that's data filled
-                    for (int item : MainApp.hhClicked) {
+                /*    for (int item : MainApp.hhClicked) {
 
                         JSONModelClass json = JSONUtilClass.getModelFromJSON(MainApp.familyMembersClicked.get(item).getsA2(), JSONModelClass.class);
                         int age = Integer.valueOf(json.getAge());
@@ -769,7 +805,7 @@ public class SectionA2ListActivity extends AppCompatActivity {
                     for (int item : MainApp.flagClicked) {
                         binding.recyclerNoMembers.getChildAt(item).setBackgroundColor(getResources().getColor(R.color.brown));
                     }
-
+*/
                 }
             }, 800);
         }
