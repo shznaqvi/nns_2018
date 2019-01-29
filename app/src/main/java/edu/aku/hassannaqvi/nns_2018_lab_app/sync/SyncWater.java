@@ -20,24 +20,21 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import edu.aku.hassannaqvi.nns_2018_lab_app.JSONModels.JSONA2ModelClass;
-import edu.aku.hassannaqvi.nns_2018_lab_app.contracts.FamilyMembersContract;
-import edu.aku.hassannaqvi.nns_2018_lab_app.contracts.FamilyMembersContract.familyMembers;
+import edu.aku.hassannaqvi.nns_2018_lab_app.JSONModels.JSONE2ModelClass;
+import edu.aku.hassannaqvi.nns_2018_lab_app.contracts.WaterSpecimenContract;
+import edu.aku.hassannaqvi.nns_2018_lab_app.contracts.WaterSpecimenContract.WaterSpecimenTable;
 import edu.aku.hassannaqvi.nns_2018_lab_app.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018_lab_app.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018_lab_app.other.JSONUtilClass;
 
-import static android.content.Context.MODE_PRIVATE;
-
-public class SyncMembers extends AsyncTask<Void, Integer, String> {
-    private String TAG = "";
+public class SyncWater extends AsyncTask<Void, Integer, String> {
     Context context;
     String clusterNo, hhno;
-
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
+    private String TAG = "";
 
-    public SyncMembers(Context context, String clusterNo, String hhno) {
+    public SyncWater(Context context, String clusterNo, String hhno) {
         this.context = context;
         this.clusterNo = clusterNo;
         this.hhno = hhno;
@@ -55,7 +52,7 @@ public class SyncMembers extends AsyncTask<Void, Integer, String> {
 
     @Override
     protected String doInBackground(Void... voids) {
-        Log.d(TAG, "doInBackground: URL " + MainApp.MembersURL);
+        Log.d(TAG, "doInBackground: URL " + MainApp.WaterURL);
 
         return downloadUrl();
     }
@@ -64,7 +61,7 @@ public class SyncMembers extends AsyncTask<Void, Integer, String> {
         String line = "No Response";
         HttpURLConnection connection = null;
         try {
-            String request = MainApp._HOST_URL + MainApp.MembersURL;
+            String request = MainApp._HOST_URL + MainApp.WaterURL;
             URL url = new URL(request);
             connection = (HttpURLConnection) url.openConnection();
             connection.connect();
@@ -132,46 +129,37 @@ public class SyncMembers extends AsyncTask<Void, Integer, String> {
             json = new JSONArray(result);
             for (int i = 0; i < json.length(); i++) {
                 JSONObject jsonObject = json.getJSONObject(i);
-                FamilyMembersContract fm = new FamilyMembersContract();
+                WaterSpecimenContract fm = new WaterSpecimenContract();
                 //Mapping A2 inside json
-                JSONA2ModelClass jsonA2 = new JSONA2ModelClass();
-                jsonA2.setCluster_no(jsonObject.getString("cluster_no"));
-                jsonA2.setResp(jsonObject.getString("resp"));
-                jsonA2.setnh2SerialNo(jsonObject.getString("nh2SerialNo"));
-                jsonA2.setnh202(jsonObject.getString("nh202"));
-                jsonA2.setnh203(jsonObject.getString("nh203"));
-                jsonA2.setnh204(jsonObject.getString("nh204"));
-                jsonA2.setnh2doby(jsonObject.getString("nh2doby"));
-                jsonA2.setnh2dobm(jsonObject.getString("nh2dobm"));
-                jsonA2.setnh2dobd(jsonObject.getString("nh2dobd"));
-                jsonA2.setnh206y(jsonObject.getString("nh206y"));
-                jsonA2.setAge(jsonObject.getString("age"));
-                jsonA2.setnh207(jsonObject.getString("nh207"));
-                jsonA2.setnh208(jsonObject.getString("nh208"));
-                jsonA2.setnh209(jsonObject.getString("nh209"));
-                jsonA2.setnh20996x(jsonObject.getString("nh20996x"));
-                jsonA2.setnh210(jsonObject.getString("nh210"));
-                jsonA2.setnh211(jsonObject.getString("nh211"));
-                jsonA2.setnh212(jsonObject.getString("nh212"));
+                JSONE2ModelClass jsonE2 = new JSONE2ModelClass();
+                jsonE2.setNe201a(jsonObject.getString("ne201a"));
+                jsonE2.setNe20201(jsonObject.getString("ne20201"));
 
-                fm.setsA2(JSONUtilClass.getJSONFromModel(jsonA2, JSONA2ModelClass.class));
+                fm.setsE2(JSONUtilClass.getJSONFromModel(jsonE2, JSONE2ModelClass.class));
                 //setting all values in family members contract
-                fm.set_UID(jsonObject.getString(familyMembers.COLUMN_UID));
-                fm.set_UUID(jsonObject.getString(familyMembers.COLUMN_UUID));
-                fm.setFormDate(jsonObject.getString(familyMembers.COLUMN_FORMDATE));
-                fm.setUser(jsonObject.getString(familyMembers.COLUMN_USER));
-                fm.setHhNo(jsonObject.getString(familyMembers.COLUMN_HH_NO));
-                fm.setEnmNo(jsonObject.getString(familyMembers.COLUMN_ENM_NO));
-                fm.setAv(jsonObject.getString(familyMembers.COLUMN_AV));
-                fm.setDevicetagID(jsonObject.getString(familyMembers.COLUMN_DEVICETAGID));
-                fm.setDeviceId(jsonObject.getString(familyMembers.COLUMN_DEVICEID));
+
+                fm.setUID(jsonObject.getString(WaterSpecimenTable.COLUMN__UID));
+                fm.setUUID(jsonObject.getString(WaterSpecimenTable.COLUMN__UUID));
+                fm.setClusterno(jsonObject.getString(WaterSpecimenTable.COLUMN_CLUSTER));
+                fm.setFormDate(jsonObject.getString(WaterSpecimenTable.COLUMN_FORMDATE));
+                fm.setUser(jsonObject.getString(WaterSpecimenTable.COLUMN_USER));
+                fm.setHhno(jsonObject.getString(WaterSpecimenTable.COLUMN_HH));
+                fm.setDevicetagID(jsonObject.getString(WaterSpecimenTable.COLUMN_DEVICETAGID));
+                fm.setDeviceID(jsonObject.getString(WaterSpecimenTable.COLUMN_DEVICEID));
+                fm.setAppversion(jsonObject.getString(WaterSpecimenTable.COLUMN_APPVERSION));
+
                 DatabaseHelper db = new DatabaseHelper(context);
-                db.saveAnthroMembersFromServer(fm);
+                Boolean waterrecordAlreadyExist = db.CheckWaterRecordExist(fm.getClusterno(), fm.getHhno());
+                if (!waterrecordAlreadyExist) {
+                    db.saveWaterFromServer(fm);
+                } else {
+                    // Record already saved in DB
+                }
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
-            Toast.makeText(context, "Failed to get members " + result, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Failed to get Water Records" + result, Toast.LENGTH_SHORT).show();
         }
     }
 }

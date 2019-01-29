@@ -31,6 +31,7 @@ public class WaterSpecimenContract {
 
     private String clusterno = "";
     private String hhno = "";
+    private String serverRecord = "";
 
     public WaterSpecimenContract() {
 
@@ -65,6 +66,7 @@ public class WaterSpecimenContract {
         this._UUID = cursor.getString(cursor.getColumnIndex(WaterSpecimenTable.COLUMN__UUID));
         this.clusterno = cursor.getString(cursor.getColumnIndex(WaterSpecimenTable.COLUMN_CLUSTER));
         this.hhno = cursor.getString(cursor.getColumnIndex(WaterSpecimenTable.COLUMN_HH));
+//        this.serverRecord = cursor.getString(cursor.getColumnIndex(WaterSpecimenTable.COLUMN_SERVER_RECORD));
 
 
         if (type == 0 || type == 1) {
@@ -232,7 +234,13 @@ public class WaterSpecimenContract {
         this.sE2 = sE2;
     }
 
+    public String getServerRecord() {
+        return serverRecord;
+    }
 
+    public void setServerRecord(String serverRecord) {
+        this.serverRecord = serverRecord;
+    }
 
     public static abstract class WaterSpecimenTable implements BaseColumns {
 
@@ -255,6 +263,7 @@ public class WaterSpecimenContract {
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNCED_DATE = "synced_date";
         public static final String COLUMN_APPVERSION = "appversion";
+        public static final String COLUMN_SERVER_RECORD = "serverRecord";
 
 
         public static String _URL = "water.php";

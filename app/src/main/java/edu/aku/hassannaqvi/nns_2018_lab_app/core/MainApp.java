@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.nns_2018.core;
+package edu.aku.hassannaqvi.nns_2018_lab_app.core;
 
 import android.Manifest;
 import android.app.Activity;
@@ -12,6 +12,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
@@ -23,13 +24,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import edu.aku.hassannaqvi.nns_2018_lab_app.contracts.BLRandomContract;
 import edu.aku.hassannaqvi.nns_2018_lab_app.contracts.ChildContract;
 import edu.aku.hassannaqvi.nns_2018_lab_app.contracts.DeceasedContract;
-import edu.aku.hassannaqvi.nns_2018_lab_app.contracts.DeviceContract;
 import edu.aku.hassannaqvi.nns_2018_lab_app.contracts.EligibleMembersContract;
 import edu.aku.hassannaqvi.nns_2018_lab_app.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.nns_2018_lab_app.contracts.FormsContract;
@@ -159,6 +160,7 @@ public class MainApp extends Application {
     public static int mwraPosition = 0;
     public static String DeviceURL = "devices.php";
     public static String MembersURL = "members.php";
+    public static String WaterURL = "getwaterforlab.php";
     public static String BLRandomWaterURL = "bl_random_water.php";
 
     public static int nuCount = 1;

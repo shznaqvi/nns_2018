@@ -1,5 +1,4 @@
 package edu.aku.hassannaqvi.nns_2018_lab_app.Adapters;
-import edu.aku.hassannaqvi.nns_2018_lab_app.databinding.*;
 
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
@@ -8,8 +7,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import java.util.List;
+
 import edu.aku.hassannaqvi.nns_2018_lab_app.R;
+import edu.aku.hassannaqvi.nns_2018_lab_app.databinding.SyncListAdapterBinding;
 import edu.aku.hassannaqvi.nns_2018_lab_app.other.SyncModel;
 
 public class syncListAdapter extends RecyclerView.Adapter<syncListAdapter.SyncListViewHolder>{
@@ -44,6 +46,7 @@ SyncListViewHolder holder;
 
     public class SyncListViewHolder extends RecyclerView.ViewHolder {
        SyncListAdapterBinding binding;
+
 
         public SyncListViewHolder(View itemView) {
             super(itemView);

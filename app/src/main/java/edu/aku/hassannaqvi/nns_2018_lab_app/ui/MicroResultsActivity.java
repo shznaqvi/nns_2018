@@ -1,7 +1,10 @@
 package edu.aku.hassannaqvi.nns_2018_lab_app.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
@@ -31,6 +34,7 @@ import edu.aku.hassannaqvi.nns_2018_lab_app.core.DatabaseHelper;
 import edu.aku.hassannaqvi.nns_2018_lab_app.core.MainApp;
 import edu.aku.hassannaqvi.nns_2018_lab_app.databinding.ActivityMicroResultsBinding;
 import edu.aku.hassannaqvi.nns_2018_lab_app.other.JSONUtilClass;
+import edu.aku.hassannaqvi.nns_2018_lab_app.sync.SyncWater;
 import edu.aku.hassannaqvi.nns_2018_lab_app.validation.validatorClass;
 
 public class MicroResultsActivity extends AppCompatActivity {
@@ -134,7 +138,14 @@ public class MicroResultsActivity extends AppCompatActivity {
     public void BtnCheckHH() {
 
         if (!binding.nh102.getText().toString().trim().isEmpty() && !binding.nh108.getText().toString().trim().isEmpty()) {
-
+            ConnectivityManager connMgr = (ConnectivityManager)
+                    getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+            if (networkInfo != null && networkInfo.isConnected()) {
+                new SyncWater(this, binding.nh102.getText().toString(), binding.nh108.getText().toString()).execute();
+            } else {
+                Toast.makeText(this, "No network connection available.", Toast.LENGTH_SHORT).show();
+            }
             specimen = db.getMicroforresults(binding.nh102.getText().toString(), binding.nh108.getText().toString().toUpperCase());
 
             if (specimen.size() != 0) {
@@ -151,9 +162,12 @@ public class MicroResultsActivity extends AppCompatActivity {
                             binding.fldGrpne20301a.setVisibility(View.VISIBLE);
 
                         } else {
-                            Toast.makeText(this, "Not Found..", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "Not Required!!", Toast.LENGTH_SHORT).show();
                             binding.fldGrpne20301a.setVisibility(View.GONE);
                         }
+                    } else {
+                        Toast.makeText(this, "Not Found..", Toast.LENGTH_SHORT).show();
+                        binding.fldGrpne20301a.setVisibility(View.GONE);
                     }
                 }
             } else {

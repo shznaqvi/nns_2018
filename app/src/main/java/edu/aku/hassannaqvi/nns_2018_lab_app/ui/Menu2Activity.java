@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -78,20 +77,9 @@ public class Menu2Activity extends AppCompatActivity {
                 return true;
 
             case R.id.menu_viewMember:
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    if (LoginActivity.checkAndRequestPermissions(this, this)) {
-                        Intent iA = new Intent(this, ViewMemberActivity.class);
-                        iA.putExtra("flagEdit", false);
-                        startActivity(iA);
-                    } else {
-                        Toast.makeText(this, "Please allow permissions from setting", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Intent iA = new Intent(this, ViewMemberActivity.class);
-                    iA.putExtra("flagEdit", false);
-                    startActivity(iA);
-                }
-
+                Intent iA = new Intent(this, ViewMemberActivity.class);
+                iA.putExtra("flagEdit", false);
+                startActivity(iA);
                 return true;
 
             case R.id.menu_openDB:

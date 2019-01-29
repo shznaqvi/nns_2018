@@ -1,6 +1,5 @@
-package edu.aku.hassannaqvi.nns_2018.ui;
+package edu.aku.hassannaqvi.nns_2018_lab_app.ui;
 
-import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -8,13 +7,10 @@ import android.app.DownloadManager;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
@@ -50,7 +46,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -120,7 +115,7 @@ public class MainActivity extends MenuActivity {
         return true;
     }
 
-    BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+   /* BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(intent.getAction())) {
@@ -151,7 +146,7 @@ public class MainActivity extends MenuActivity {
                 }
             }
         }
-    };
+    };*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -308,6 +303,7 @@ public class MainActivity extends MenuActivity {
         } else {
             mainBinding.testing.setVisibility(View.VISIBLE);
         }
+/*
 
 //        Version Checking
         versionAppContract = db.getVersionApp();
@@ -355,13 +351,14 @@ public class MainActivity extends MenuActivity {
         }
 
         registerReceiver(broadcastReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+*/
 
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unregisterReceiver(broadcastReceiver);
+//        unregisterReceiver(broadcastReceiver);
     }
 
     public void openForm() {
@@ -458,76 +455,30 @@ public class MainActivity extends MenuActivity {
     }
 
     public void openB(View v) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (LoginActivity.checkAndRequestPermissions(this, this)) {
-                MainActivity.ftype = "A";
-                Intent iB = new Intent(this, AntrhoInfoActivity.class);
-                startActivity(iB);
-            } else {
-                Toast.makeText(this, "Please allow permissions from setting", Toast.LENGTH_SHORT).show();
-            }
-        } else {
-            MainActivity.ftype = "A";
-            Intent iB = new Intent(this, AntrhoInfoActivity.class);
-            startActivity(iB);
-        }
-
+        MainActivity.ftype = "A";
+        Intent iB = new Intent(this, AntrhoInfoActivity.class);
+        startActivity(iB);
     }
 
     public void openSpecimen() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (LoginActivity.checkAndRequestPermissions(this, this)) {
-                MainActivity.ftype = "B";
-                Intent iB = new Intent(this, SpecimenInfoActivity.class);
-                startActivity(iB);
-            } else {
-                Toast.makeText(this, "Please allow permissions from setting", Toast.LENGTH_SHORT).show();
-            }
-        } else {
-            MainActivity.ftype = "B";
-            Intent iB = new Intent(this, SpecimenInfoActivity.class);
-            startActivity(iB);
-        }
         //Intent iB = new Intent(this, SectionB3Activity.class);
-
+        MainActivity.ftype = "B";
+        Intent iB = new Intent(this, SpecimenInfoActivity.class);
+        startActivity(iB);
     }
 
     public void openWater() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (LoginActivity.checkAndRequestPermissions(this, this)) {
-                MainActivity.ftype = "W";
-                //Intent iB = new Intent(this, SectionB3Activity.class);
-                Intent iB = new Intent(this, SpecimenInfoActivity.class);
-                startActivity(iB);
-            } else {
-                Toast.makeText(this, "Please allow permissions from setting", Toast.LENGTH_SHORT).show();
-            }
-        } else {
-            MainActivity.ftype = "W";
-            //Intent iB = new Intent(this, SectionB3Activity.class);
-            Intent iB = new Intent(this, SpecimenInfoActivity.class);
-            startActivity(iB);
-        }
-
+        MainActivity.ftype = "W";
+        //Intent iB = new Intent(this, SectionB3Activity.class);
+        Intent iB = new Intent(this, SpecimenInfoActivity.class);
+        startActivity(iB);
     }
 
     public void openMicroResults() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (LoginActivity.checkAndRequestPermissions(this, this)) {
-                MainActivity.ftype = "W";
-                //Intent iB = new Intent(this, SectionB3Activity.class);
-                Intent iB = new Intent(this, MicroResultsActivity.class);
-                startActivity(iB);
-            } else {
-                Toast.makeText(this, "Please allow permissions from setting", Toast.LENGTH_SHORT).show();
-            }
-        } else {
-            MainActivity.ftype = "W";
-            //Intent iB = new Intent(this, SectionB3Activity.class);
-            Intent iB = new Intent(this, MicroResultsActivity.class);
-            startActivity(iB);
-        }
-
+        MainActivity.ftype = "W";
+        //Intent iB = new Intent(this, SectionB3Activity.class);
+        Intent iB = new Intent(this, MicroResultsActivity.class);
+        startActivity(iB);
     }
 
 

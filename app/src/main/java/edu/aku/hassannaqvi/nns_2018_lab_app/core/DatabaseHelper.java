@@ -54,6 +54,7 @@ import edu.aku.hassannaqvi.nns_2018_lab_app.contracts.UsersContract.UsersTable;
 import edu.aku.hassannaqvi.nns_2018_lab_app.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.nns_2018_lab_app.contracts.VersionAppContract.VersionAppTable;
 import edu.aku.hassannaqvi.nns_2018_lab_app.contracts.WaterSpecimenContract;
+import edu.aku.hassannaqvi.nns_2018_lab_app.contracts.WaterSpecimenContract.WaterSpecimenTable;
 
 
 /**
@@ -88,7 +89,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + singleRandomHH.COLUMN_SNO_HH + " TEXT );";
 
 
-    private static final int DATABASE_VERSION = 15;
+    private static final int DATABASE_VERSION = 16;
     public static final String PROJECT_NAME = "NNS-2018-Lab";
 
     public static final String DB_NAME = DATABASE_NAME.replace(".", "_" + MainApp.versionName + "_" + DATABASE_VERSION + "_copy.");
@@ -359,6 +360,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String SQL_ALTER_VERSIONAPP = "ALTER TABLE " +
             VersionAppTable.TABLE_NAME + " ADD COLUMN " +
             VersionAppTable.COLUMN_VERSION_NAME + " TEXT;";
+    private static final String SQL_ALTER_ADD_SERVERRECORD_WATER = "ALTER TABLE " +
+            WaterSpecimenTable.TABLE_NAME + " ADD COLUMN " +
+            WaterSpecimenTable.COLUMN_SERVER_RECORD + " TEXT;";
 
     private static final String SQL_DELETE_FORMS =
             "DROP TABLE IF EXISTS " + FormsTable.TABLE_NAME;
@@ -437,7 +441,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             WaterSpecimenContract.WaterSpecimenTable.COLUMN_HH + " TEXT," +
             WaterSpecimenContract.WaterSpecimenTable.COLUMN_SE2 + " TEXT," +
             WaterSpecimenContract.WaterSpecimenTable.COLUMN_SYNCED + " TEXT," +
-            WaterSpecimenContract.WaterSpecimenTable.COLUMN_SYNCED_DATE + " TEXT" +
+            WaterSpecimenContract.WaterSpecimenTable.COLUMN_SYNCED_DATE + " TEXT," +
+            WaterSpecimenTable.COLUMN_SERVER_RECORD + " TEXT" +
 
             ");";
 
@@ -546,6 +551,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.execSQL(SQL_ALTER_FORM);
             case 14:
                 db.execSQL(SQL_ALTER_USERS1);
+            case 15:
+                db.execSQL(SQL_ALTER_ADD_SERVERRECORD_WATER);
            /* case 13: not required
                 db.execSQL(SQL_CREATE_DEVICE);*/
 
@@ -1067,7 +1074,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 WaterSpecimenContract.WaterSpecimenTable.COLUMN_DEVICEID,
                 WaterSpecimenContract.WaterSpecimenTable.COLUMN_SYNCED,
                 WaterSpecimenContract.WaterSpecimenTable.COLUMN_SYNCED_DATE,
-                WaterSpecimenContract.WaterSpecimenTable.COLUMN_APPVERSION
+                WaterSpecimenContract.WaterSpecimenTable.COLUMN_APPVERSION,
+                WaterSpecimenTable.COLUMN_SERVER_RECORD
 
         };
 
@@ -1465,6 +1473,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(familyMembers.COLUMN_DEVICEID, fmc.getDeviceId());
         db.insert(familyMembers.TABLE_NAME, null, values);
     }
+
+    public void saveWaterFromServer(WaterSpecimenContract wsc) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(WaterSpecimenTable.COLUMN__UID, wsc.getUID());
+        values.put(WaterSpecimenTable.COLUMN__UUID, wsc.getUUID());
+        values.put(WaterSpecimenTable.COLUMN_FORMDATE, wsc.getFormDate());
+        values.put(WaterSpecimenTable.COLUMN_USER, wsc.getUser());
+        values.put(WaterSpecimenTable.COLUMN_HH, wsc.getHhno());
+        values.put(WaterSpecimenTable.COLUMN_CLUSTER, wsc.getClusterno());
+        values.put(WaterSpecimenTable.COLUMN_SE2, wsc.getsE2());
+        values.put(WaterSpecimenTable.COLUMN_DEVICETAGID, wsc.getDevicetagID());
+        values.put(WaterSpecimenTable.COLUMN_DEVICEID, wsc.getDeviceID());
+        values.put(WaterSpecimenTable.COLUMN_APPVERSION, wsc.getAppversion());
+        values.put(WaterSpecimenTable.COLUMN_SERVER_RECORD, "1");
+        db.insert(WaterSpecimenTable.TABLE_NAME, null, values);
+    }
     public void saveBLRandomFromServer(JSONArray BLlist, String hh02, String hh03, String hh07) {
             SQLiteDatabase db = this.getWritableDatabase();
             if(!CheckClusterBLRandomExist(hh02,hh03,hh07)){
@@ -1499,6 +1524,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public boolean CheckWaterRecordExist(String cluster, String hhno) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        String[] columns = {
+                WaterSpecimenTable.COLUMN__ID
+        };
+
+// Which row to update, based on the ID
+        String selection = WaterSpecimenTable.COLUMN_CLUSTER + " =? AND " + WaterSpecimenTable.COLUMN_HH + "= ? ";
+        String[] selectionArgs = {cluster, hhno};
+        Cursor cursor = db.query(WaterSpecimenTable.TABLE_NAME, //Table to query
+                columns,                    //columns to return
+                selection,                  //columns for the WHERE clause
+                selectionArgs,              //The values for the WHERE clause
+                null,                       //group the rows
+                null,                       //filter by row groups
+                null);                      //The sort order
+
+        int cursorCount = cursor.getCount();
+        cursor.close();
+        return cursorCount > 0;
+    }
+
     public boolean CheckClusterBLRandomExist(String hh02, String hh03, String hh07) {
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -1509,7 +1559,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         };
 
 // Which row to update, based on the ID
-        String selection = singleRandomHH.COLUMN_ENUM_BLOCK_CODE + " =? AND "+singleRandomHH.COLUMN_STRUCTURE_NO+"= ? AND "+singleRandomHH.COLUMN_FAMILY_EXT_CODE+"=?";
+        String selection = singleRandomHH.COLUMN_ENUM_BLOCK_CODE + " =? AND " + singleRandomHH.COLUMN_STRUCTURE_NO + "= ? AND " + singleRandomHH.COLUMN_FAMILY_EXT_CODE + "=?";
         String[] selectionArgs = {hh02, hh03, hh07};
         Cursor cursor = db.query(singleRandomHH.TABLE_NAME, //Table to query
                 columns,                    //columns to return
@@ -3632,10 +3682,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 WaterSpecimenContract.WaterSpecimenTable.COLUMN_SYNCED,
                 WaterSpecimenContract.WaterSpecimenTable.COLUMN_SYNCED_DATE,
                 WaterSpecimenContract.WaterSpecimenTable.COLUMN_APPVERSION,
-
-
+//                WaterSpecimenTable.COLUMN_SERVER_RECORD,
         };
-        String whereClause = WaterSpecimenContract.WaterSpecimenTable.COLUMN_SYNCED + " is null OR " + WaterSpecimenContract.WaterSpecimenTable.COLUMN_SYNCED + " = '' ";
+        String whereClause = "(" + WaterSpecimenTable.COLUMN_SERVER_RECORD + " = '' OR " + WaterSpecimenTable.COLUMN_SERVER_RECORD + " is null) AND (" + WaterSpecimenContract.WaterSpecimenTable.COLUMN_SYNCED + " is null OR " + WaterSpecimenContract.WaterSpecimenTable.COLUMN_SYNCED + " = '')";
         String[] whereArgs = null;
         String groupBy = null;
         String having = null;

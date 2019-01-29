@@ -2,15 +2,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools">
-<data>
-    <import type="android.view.View" />
-    <variable
-        name="callback"
-        type="edu.aku.hassannaqvi.nns_2018_lab_app.Adapters.upload_list_adapter" />
-</data>
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="edu.aku.hassannaqvi.nns_2018_lab_app.Adapters.upload_list_adapter.UploadListViewHolder">
 
     <data>
 
@@ -20,10 +11,10 @@ xmlns:tools="http://schemas.android.com/tools">
     <android.support.v7.widget.CardView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/_15sdp"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:layout_marginRight="@dimen/_15sdp"
         android:layout_marginBottom="@dimen/_2sdp"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_marginRight="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_5sdp"
         app:cardCornerRadius="6dp"
         app:cardElevation="4dp">
 
@@ -48,8 +39,8 @@ xmlns:tools="http://schemas.android.com/tools">
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_7sdp"
-                    android:layout_marginTop="@dimen/_7sdp"
                     android:layout_marginRight="@dimen/_7sdp"
+                    android:layout_marginTop="@dimen/_7sdp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -85,9 +76,9 @@ xmlns:tools="http://schemas.android.com/tools">
                     android:id="@+id/utv_msg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_7sdp"
                     android:layout_marginLeft="@dimen/_7sdp"
                     android:layout_marginRight="@dimen/_7sdp"
-                    android:layout_marginBottom="@dimen/_7sdp"
                     tools:text="Results:    " />
             </LinearLayout>
         </LinearLayout>

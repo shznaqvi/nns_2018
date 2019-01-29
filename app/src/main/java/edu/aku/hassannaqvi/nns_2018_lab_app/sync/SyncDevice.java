@@ -17,11 +17,10 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import edu.aku.hassannaqvi.nns_2018_lab_app.R;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import edu.aku.hassannaqvi.nns_2018_lab_app.core.DatabaseHelper;
+import edu.aku.hassannaqvi.nns_2018_lab_app.R;
 import edu.aku.hassannaqvi.nns_2018_lab_app.core.MainApp;
 
 import static android.content.Context.MODE_PRIVATE;

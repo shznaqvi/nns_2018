@@ -67,7 +67,7 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHol
         for (int item : childExistList) {
 //                        binding.recyclerChild.getChildAt(item).setBackgroundColor(getResources().getColor(R.color.softgreen));
             if (position == item)
-            this.holder.itemView.setBackgroundColor(Color.parseColor("#80cbc4"));
+                this.holder.itemView.setBackgroundColor(Color.parseColor("#80cbc4"));
         }
     }
 

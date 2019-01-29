@@ -2,13 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="edu.aku.hassannaqvi.nns_2018.Adapters.syncListAdapter.SyncListViewHolder">
+    tools:context="edu.aku.hassannaqvi.nns_2018_lab_app.Adapters.syncListAdapter.SyncListViewHolder">
 
     <data>
+
         <import type="android.view.View" />
-        <variable
-            name="callback"
-            type="edu.aku.hassannaqvi.nns_2018_lab_app.Adapters.syncListAdapter" />
     </data>
 
     <android.support.v7.widget.CardView
@@ -16,8 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/_15sdp"
         android:layout_marginTop="@dimen/_5sdp"
-        android:layout_marginRight="@dimen/_15sdp"
         android:layout_marginBottom="@dimen/_2sdp"
+        android:layout_marginRight="@dimen/_15sdp"
         app:cardCornerRadius="6dp"
         app:cardElevation="4dp">
 
