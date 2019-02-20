@@ -209,6 +209,7 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
         });
         binding.nw401.setOnCheckedChangeListener(this);
         binding.nw403.setOnCheckedChangeListener(this);
+        binding.nw40301.setOnCheckedChangeListener(this);
         binding.nw404.setOnCheckedChangeListener(this);
         binding.nw406c.addTextChangedListener(this);
         binding.nw406r.addTextChangedListener(this);
@@ -300,6 +301,12 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
                 binding.nw403fx.setText(jsonB4.getnw403fx());
                 binding.nw403jx.setText(jsonB4.getnw403jx());
                 binding.nw40396x.setText(jsonB4.getnw40396x());
+            }
+            if (!jsonB4.getnw40301().equals("0")) {
+                binding.nw40301.check(
+                        jsonB4.getnw40301().equals("1") ? binding.nw40301a.getId() :
+                                jsonB4.getnw40301().equals("2") ? binding.nw40301b.getId() : binding.nw40301c.getId()
+                );
             }
 
             if (!jsonB4.getnw404().equals("0")) {
@@ -489,9 +496,6 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
         if (!validatorClass.EmptyRadioButton(this, binding.nw403, binding.nw403a, getString(R.string.nw403))) {
             return false;
         }
-        if (!validatorClass.EmptyRadioButton(this, binding.nw403, binding.nw403a, getString(R.string.nw403))) {
-            return false;
-        } // nw403
         if (!validatorClass.EmptyRadioButton(this, binding.nw403, binding.nw403f, binding.nw403fx, getString(R.string.nw403) + " " + getString(R.string.nw403f))) {
             return false;
         }
@@ -501,6 +505,11 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
         if (!validatorClass.EmptyRadioButton(this, binding.nw403, binding.nw40396, binding.nw40396x, getString(R.string.nw403) + " " + getString(R.string.other))) {
             return false;
         }
+//        nw40301
+        if (!validatorClass.EmptyRadioButton(this, binding.nw40301, binding.nw40301a, getString(R.string.nw40301))) {
+            return false;
+        }
+
         // nw404
         if (!validatorClass.EmptyRadioButton(this, binding.nw404, binding.nw404a, getString(R.string.nw404))) {
             return false;
@@ -653,10 +662,17 @@ public class SectionB4Activity extends Menu2Activity implements TextWatcher, Rad
                 : binding.nw403j.isChecked() ? "962"
                 : binding.nw40396.isChecked() ? "963"
                 : "0");
+//       nw403
+
         sB4.put("nw403961x", binding.nw403fx.getText().toString());
         sB4.put("nw403962x", binding.nw403jx.getText().toString());
         sB4.put("nw403963x", binding.nw40396x.getText().toString());
 
+        sB4.put("nw40301", binding.nw40301a.isChecked() ? "1"
+                : binding.nw40301b.isChecked() ? "2"
+                : binding.nw40301c.isChecked() ? "3"
+
+                : "0");
 //        nw404
         sB4.put("nw404", binding.nw404a.isChecked() ? "1"
                 : binding.nw404b.isChecked() ? "2"

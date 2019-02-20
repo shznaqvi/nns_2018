@@ -464,7 +464,6 @@
                         android:text="@string/other" />
 
                 </RadioGroup>
-
                 <EditText
                     android:id="@+id/nw40396x"
                     android:layout_width="match_parent"
@@ -475,6 +474,47 @@
                     android:hint="@string/nw403k"
                     android:inputType="text"
                     android:text='@{nw40396.checked ? nw40396x.getText.toString : ""}' />
+
+                <TextView
+                    android:id="@+id/lblnw40301"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/nw40301"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@android:color/white" />
+
+
+                <RadioGroup
+                    android:id="@+id/nw40301"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <RadioButton
+                        android:id="@+id/nw40301a"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nw40301a" />
+
+                    <RadioButton
+                        android:id="@+id/nw40301b"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nw40301b" />
+
+
+                    <RadioButton
+                        android:id="@+id/nw40301c"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/nw40301c" />
+                </RadioGroup>
+
 
                 <TextView
                     android:id="@+id/lblnw404"

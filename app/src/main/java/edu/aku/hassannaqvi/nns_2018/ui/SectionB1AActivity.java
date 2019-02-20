@@ -33,6 +33,8 @@ import edu.aku.hassannaqvi.nns_2018.other.JSONUtilClass;
 import edu.aku.hassannaqvi.nns_2018.validation.clearClass;
 import edu.aku.hassannaqvi.nns_2018.validation.validatorClass;
 
+import static edu.aku.hassannaqvi.nns_2018.ui.SectionB1Activity.childisUnder2AndAlive;
+
 public class SectionB1AActivity extends AppCompatActivity implements TextWatcher {
 
     private final long DELAY = 1000;
@@ -42,7 +44,8 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
     @BindViews({R.id.nw217y, R.id.nw217m, R.id.nw217d})
     List<EditText> grpDate;
     Calendar date = Calendar.getInstance();
-    long yearsBydob;
+    //    long yearsBydob;
+    double yearsBydob;
 
     String classPassName = "";
     String uid = "";
@@ -68,8 +71,8 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
         bi.textName.setText("Selected Woman : " + SectionB1Activity.wraName);
         int totalPregnancy = MainApp.totalPregnancy;
-        if(MainApp.currentlyPregnant == 1){
-            totalPregnancy = MainApp.totalPregnancy-1;
+        if (MainApp.currentlyPregnant == 1) {
+            totalPregnancy = MainApp.totalPregnancy - 1;
         }
         bi.count.setText("Pregnancy No " + MainApp.count + " out of " + totalPregnancy);
 
@@ -300,15 +303,16 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 } else {
                     MainApp.count++;
                     int totalPregnancy = MainApp.totalPregnancy;
-                    if(MainApp.currentlyPregnant == 1) {
+                    if (MainApp.currentlyPregnant == 1) {
                         totalPregnancy = MainApp.totalPregnancy - 1;
                     }
 
-                    if (MainApp.count >totalPregnancy) {
+                    if (MainApp.count > totalPregnancy) {
 
                         MainApp.count = 1;
 
-                        if (yearsBydob <= 2 && MainApp.status > 0) {
+//                        if (yearsBydob <= 2 && MainApp.status > 0) {
+                        if (childisUnder2AndAlive) {
                             startActivity(new Intent(this, SectionB2Activity.class));
                         } else {
                             if (SectionB1Activity.editWRAFlag) {
@@ -523,7 +527,19 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
 
     private void SaveDraft() throws JSONException {
         //Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
+      /*  if (!bi.nw217y.getText().toString().isEmpty() && !bi.nw217m.getText().toString().isEmpty() && !bi.nw217d.getText().toString().isEmpty()) {
+            if (!bi.nw217d.getText().toString().equals("98") && !bi.nw217m.getText().toString().equals("98")) {
+                date = DateUtils.getCalendarDate(bi.nw217d.getText().toString(), bi.nw217m.getText().toString(), bi.nw217y.getText().toString());
 
+                yearsBydob = DateUtils.ageInYearByDOBdouble(date);
+
+            } else {
+                //date = bi.nw217d.getText().toString() + "-" bi.nw21
+                yearsBydob = DateUtils.ageInYearByDOB(bi.nw217y.getText().toString());
+            }
+
+
+        }*/
         MainApp.oc = new OutcomeContract();
         JSONObject sB1a = new JSONObject();
 
@@ -543,6 +559,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 sB1a.put("cluster_no", MainApp.mc.getCluster());
                 sB1a.put("hhno", MainApp.mc.getHhno());
 
+
             } else {
                 MainApp.oc.setDevicetagID(MainApp.fc.getDevicetagID());
                 MainApp.oc.setFormDate(MainApp.fc.getFormDate());
@@ -558,7 +575,9 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 sB1a.put("cluster_no", MainApp.fc.getClusterNo());
                 sB1a.put("hhno", MainApp.fc.getHhNo());
 
+
             }
+
         } else {
             MainApp.oc.setUpdatedate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
 
@@ -581,6 +600,11 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
                 sB1a.put("cluster_no", MainApp.fc.getClusterNo());
                 sB1a.put("hhno", MainApp.fc.getHhNo());
             }
+
+        }
+
+        if ((bi.nw218c.isChecked() || bi.nw218d.isChecked() || bi.nw218f.isChecked()) && yearsBydob <= 2) {
+            childisUnder2AndAlive = true;
         }
 
         sB1a.put("nw217Flag", bi.nw217Flag.isChecked() ? "1" : "2");
@@ -692,7 +716,7 @@ public class SectionB1AActivity extends AppCompatActivity implements TextWatcher
             if (!bi.nw217d.getText().toString().equals("98") && !bi.nw217m.getText().toString().equals("98")) {
                 date = DateUtils.getCalendarDate(bi.nw217d.getText().toString(), bi.nw217m.getText().toString(), bi.nw217y.getText().toString());
 
-                yearsBydob = DateUtils.ageInYearByDOB(date);
+                yearsBydob = DateUtils.ageInYearByDOBdouble(date);
 
             } else {
                 //date = bi.nw217d.getText().toString() + "-" bi.nw21
