@@ -35,7 +35,7 @@ import edu.aku.hassannaqvi.nns_2018_val.other.SyncModel;
 public class GetAllData extends AsyncTask<String, String, String> {
 
     HttpURLConnection urlConnection;
-    private String TAG = "";
+    private String TAG = "GET DATA";
     private Context mContext;
     private ProgressDialog pd;
     syncListAdapter adapter;
