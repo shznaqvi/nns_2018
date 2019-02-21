@@ -360,6 +360,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String SQL_ALTER_VERSIONAPP = "ALTER TABLE " +
             VersionAppTable.TABLE_NAME + " ADD COLUMN " +
             VersionAppTable.COLUMN_VERSION_NAME + " TEXT;";
+
     private static final String SQL_ALTER_ADD_SERVERRECORD_WATER = "ALTER TABLE " +
             WaterSpecimenTable.TABLE_NAME + " ADD COLUMN " +
             WaterSpecimenTable.COLUMN_SERVER_RECORD + " TEXT;";

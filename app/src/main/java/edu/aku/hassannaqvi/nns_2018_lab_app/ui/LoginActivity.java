@@ -261,7 +261,7 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
                     != PackageManager.PERMISSION_GRANTED) {
                 // READ_PHONE_STATE permission has not been granted.
                 requestReadPhoneStatePermission();
-            }else {
+            } else {
                 doPermissionGrantedStuffs();
             }
         } else {
@@ -384,21 +384,22 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
                     );
                 }
             } else if (permissions[i].equals(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                    if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+                if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
 
-                    }
-                } else if (permissions[i].equals(Manifest.permission.CAMERA)) {
-                    if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+                }
+            } else if (permissions[i].equals(Manifest.permission.CAMERA)) {
+                if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
 
-                    }
                 }
             }
+        }
     }
 
     private void doPermissionGrantedStuffs() {
         MainApp.IMEI = ((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
 
     }
+
     protected boolean isBetterLocation(Location location, Location currentBestLocation) {
         if (currentBestLocation == null) {
             // A new location is always better than no location
@@ -438,6 +439,7 @@ public class LoginActivity extends MenuActivity implements LoaderCallbacks<Curso
             return true;
         } else return isNewer && !isSignificantlyLessAccurate && isFromSameProvider;
     }
+
     private boolean isSameProvider(String provider1, String provider2) {
         if (provider1 == null) {
             return provider2 == null;
